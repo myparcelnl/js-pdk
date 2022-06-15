@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, watchEffect, UnwrapRef } from 'vue';
+import {UnwrapRef, defineComponent, reactive, ref, watchEffect} from 'vue';
 import {formatOptions, outputOptions, positionOptions, positions} from '@/data/printOptions';
 import {ContextKey} from '@/data/global/context';
 import FormGroup from '@/components/common/form/FormGroup.vue';

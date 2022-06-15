@@ -6,9 +6,7 @@
     aria-expanded="false"
     :disabled="disabled">
     <slot>
-      <span
-        v-t="'toggle_dropdown'"
-        class="sr-only" />
+      <span v-t="'toggle_dropdown'" class="sr-only" />
     </slot>
     <div class="dropdown-menu dropdown-menu-right">
       <PsDropdownButtonItem
@@ -24,15 +22,15 @@
 </template>
 
 <script lang="ts">
-import PsButton from '@/components/common/PsButton.vue';
-import PsDropdownButtonItem from '@/components/common/PsDropdownButtonItem.vue';
-import { defineComponent } from 'vue';
-import { disabledProps } from '@/composables/props/disabledProps';
-import { useOptionsProps } from '@/composables/props/useOptionsProps';
+import PsButton from '@/plug-n-play/prestashop/PsButton.vue';
+import PsDropdownButtonItem from '@/plug-n-play/prestashop/PsDropdownButtonItem.vue';
+import {defineComponent} from 'vue';
+import {disabledProps} from '@/composables/props/disabledProps';
+import {useOptionsProps} from '@/composables/props/useOptionsProps';
 
 export default defineComponent({
   name: 'PsDropdownButton',
-  components: { PsDropdownButtonItem, PsButton },
+  components: {PsDropdownButtonItem, PsButton},
   props: {
     ...disabledProps,
     ...useOptionsProps<DropdownButtonItem>(),

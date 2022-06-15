@@ -1,8 +1,5 @@
 <template>
-  <Transition
-    name="mypa__fade"
-    @beforeEnter="shown = true"
-    @afterLeave="shown = false">
+  <Transition name="mypa__fade" @beforeEnter="shown = true" @afterLeave="shown = false">
     <div
       v-show="show"
       class="h-100 mypa__loader-overlay position-absolute w-100"
@@ -15,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import {defineComponent, ref} from 'vue';
 
 export default defineComponent({
   name: 'LoaderOverlay',
@@ -29,6 +26,5 @@ export default defineComponent({
     // Toggled by the transition to be able to differentiate between its start and end.
     shown: ref(false),
   }),
-
 });
 </script>

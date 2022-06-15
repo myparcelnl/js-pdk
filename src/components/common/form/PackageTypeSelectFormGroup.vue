@@ -1,24 +1,20 @@
 <template>
-  <SelectFormGroup
-    v-model="mutableValue"
-    :disabled="disabled"
-    :options="options"
-    label="shipment_package_type" />
+  <SelectFormGroup v-model="mutableValue" :disabled="disabled" :options="options" label="shipment_package_type" />
 </template>
 
 <script lang="ts">
-import { ContextKey } from '@/data/global/context';
+import {ContextKey} from '@/data/global/context';
 import SelectFormGroup from '@/components/common/form/SelectFormGroup.vue';
-import { defineComponent } from 'vue';
-import { disabledProps } from '@/composables/props/disabledProps';
-import { useGlobalContext } from '@/composables/context/useGlobalContext';
-import { useSelectModel } from '@/composables/props/model/useSelectModel';
+import {defineComponent} from 'vue';
+import {disabledProps} from '@/composables/props/disabledProps';
+import {useGlobalContext} from '@/composables/context/useGlobalContext';
+import {useSelectModel} from '@/composables/props/model/useSelectModel';
 
-const { model, props, setup } = useSelectModel();
+const {model, props, setup} = useSelectModel();
 
 export default defineComponent({
   name: 'PackageTypeSelectFormGroup',
-  components: { SelectFormGroup },
+  components: {SelectFormGroup},
   model,
   props: {
     ...props,

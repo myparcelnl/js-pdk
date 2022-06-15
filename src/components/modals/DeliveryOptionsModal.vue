@@ -1,8 +1,5 @@
 <template>
-  <Modal
-    context-key="deliveryOptions"
-    title="delivery_options_title"
-    :on-save="onSave">
+  <Modal context-key="deliveryOptions" title="delivery_options_title" :on-save="onSave">
     <template #default="data">
       <DeliveryOptions v-bind="data" />
     </template>
@@ -10,14 +7,14 @@
 </template>
 
 <script lang="ts">
-import { ContextKey } from '@/data/global/context';
+import {ContextKey} from '@/data/global/context';
 import DeliveryOptions from '@/components/order-card/DeliveryOptions.vue';
 import Modal from '@/components/modals/Modal.vue';
-import { ModalCallback } from '@/composables/context/useModalContext';
-import { defineComponent } from 'vue';
-import { deliveryOptionsEventBus } from '@/data/eventBus/DeliveryOptionsEventBus';
-import { shipmentOptionsContextEventBus } from '@/data/eventBus/ShipmentOptionsContextEventBus';
-import { useGlobalContext } from '@/composables/context/useGlobalContext';
+import {ModalCallback} from '@/composables/context/useModalContext';
+import {defineComponent} from 'vue';
+import {deliveryOptionsEventBus} from '@/data/eventBus/DeliveryOptionsEventBus';
+import {shipmentOptionsContextEventBus} from '@/data/eventBus/ShipmentOptionsContextEventBus';
+import {useGlobalContext} from '@/composables/context/useGlobalContext';
 
 /**
  * Modal used in the single order view to edit delivery options for the order.
@@ -30,7 +27,7 @@ export default defineComponent({
   },
 
   setup: () => {
-    const onSave: ModalCallback = async() => {
+    const onSave: ModalCallback = async () => {
       const contextData = useGlobalContext(ContextKey.SHIPMENT_OPTIONS);
       await deliveryOptionsEventBus.saveConfiguration();
 
@@ -41,7 +38,7 @@ export default defineComponent({
       }
     };
 
-    return { onSave };
+    return {onSave};
   },
 });
 </script>

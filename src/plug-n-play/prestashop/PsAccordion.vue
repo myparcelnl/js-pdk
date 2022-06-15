@@ -5,16 +5,12 @@
     <PsCard
       v-for="(child, index) in item.children"
       :key="[child.name, child.type, index].join('_')"
-      @click-header="openedItem = child.name === openedItem ? null : child.name">
+      @clickHeader="openedItem = child.name === openedItem ? null : child.name">
       <template #header>
         {{ child.label }}
 
-        <span v-if="child.name === openedItem">
-          v
-        </span>
-        <span v-else>
-          >
-        </span>
+        <span v-if="child.name === openedItem"> v </span>
+        <span v-else> > </span>
       </template>
 
       <template #default>
@@ -31,8 +27,8 @@
 </template>
 
 <script lang="ts">
-import { PropType, defineComponent, ref, watch, watchEffect } from 'vue';
-import PsCard from '@/components/common/PsCard.vue';
+import {PropType, defineComponent, ref, watch, watchEffect} from 'vue';
+import PsCard from '@/plug-n-play/prestashop/PsCard.vue';
 
 export default defineComponent({
   name: 'PsAccordion',

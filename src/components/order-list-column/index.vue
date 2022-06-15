@@ -1,8 +1,6 @@
 <template>
   <div>
-    <TransitionGroup
-      name="mypa__fade"
-      appear>
+    <TransitionGroup name="mypa__fade" appear>
       <LabelCard
         v-for="label in labels"
         :key="`${label.id_order}_${label.id_order_label}_${label.id_label}`"
@@ -14,15 +12,12 @@
         variant="outline-secondary"
         data-toggle="modal"
         data-target="#shipmentOptions"
-        :click-context="{ orderId }">
+        :click-context="{orderId}">
         <MaterialIcon icon="label" />
         {{ $filters.translate('create') }}
       </PsButton>
 
-      <PsButton
-        v-if="labels.length"
-        variant="primary"
-        @click="print">
+      <PsButton v-if="labels.length" variant="primary" @click="print">
         <MaterialIcon icon="print" />
         {{ $filters.translate('print') }}
       </PsButton>
@@ -31,14 +26,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
-import { ContextKey } from '@/data/global/context';
+import {defineComponent, ref, watch} from 'vue';
+import {ContextKey} from '@/data/global/context';
 import LabelCard from '@/components/order-list-column/LabelCard.vue';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
-import { OrderAction } from '@/data/global/actions';
-import PsButton from '@/components/common/PsButton.vue';
-import { executeOrderAction } from '@/services/actions/executeOrderAction';
-import { useGlobalInstanceContext } from '@/composables/context/useGlobalInstanceContext';
+import {OrderAction} from '@/data/global/actions';
+import PsButton from '@/plug-n-play/prestashop/PsButton.vue';
+import {executeOrderAction} from '@/services/actions/executeOrderAction';
+import {useGlobalInstanceContext} from '@/composables/context/useGlobalInstanceContext';
 
 /**
  * The "Labels" column in the orders list.
@@ -56,18 +51,22 @@ export default defineComponent({
   setup: () => {
     const shipmentLabelsContext = useGlobalInstanceContext(ContextKey.SHIPMENT_LABELS);
     const shipmentOptionsContext = useGlobalInstanceContext(ContextKey.SHIPMENT_OPTIONS);
-    const { orderId } = shipmentOptionsContext.value;
+    const {orderId} = shipmentOptionsContext.value;
 
     const labels = ref<ShipmentLabel[]>([]);
 
-    watch(shipmentLabelsContext, (newContext) => {
-      labels.value = newContext.labels;
-    }, { deep: true, immediate: true });
+    watch(
+      shipmentLabelsContext,
+      (newContext) => {
+        labels.value = newContext.labels;
+      },
+      {deep: true, immediate: true},
+    );
 
     return {
       orderId,
       labels,
-      print: async(): Promise<void> => {
+      print: async (): Promise<void> => {
         await executeOrderAction(OrderAction.PRINT, orderId ?? undefined);
       },
     };

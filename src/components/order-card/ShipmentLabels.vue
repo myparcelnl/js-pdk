@@ -8,26 +8,15 @@
             :disabled="!contextData.labels.length"
             @change="selectAll" />
         </PsTableCol>
-        <PsTableCol
-          v-t="'order_labels_column_track_trace'"
-          component="th" />
-        <PsTableCol
-          v-t="'order_labels_column_status'"
-          component="th" />
-        <PsTableCol
-          v-t="'order_labels_column_last_update'"
-          component="th" />
-        <PsTableCol
-          v-t="'order_labels_column_actions'"
-          component="th"
-          class="text-right" />
+        <PsTableCol v-t="'order_labels_column_track_trace'" component="th" />
+        <PsTableCol v-t="'order_labels_column_status'" component="th" />
+        <PsTableCol v-t="'order_labels_column_last_update'" component="th" />
+        <PsTableCol v-t="'order_labels_column_actions'" component="th" class="text-right" />
       </PsTableRow>
     </template>
 
     <template #default>
-      <PsTableRow
-        v-if="!contextData.labels.length"
-        key="tr_no_shipments">
+      <PsTableRow v-if="!contextData.labels.length" key="tr_no_shipments">
         <PsTableCol colspan="5">
           <div class="p-3 text-center">
             <MaterialIcon icon="warning" />
@@ -46,18 +35,18 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
-import { ContextKey } from '@/data/global/context';
-import { EventName } from '@/data/eventBus/EventBus';
+import {computed, defineComponent, ref} from 'vue';
+import {ContextKey} from '@/data/global/context';
+import {EventName} from '@/data/eventBus/EventBus';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
 import PsCheckbox from '@/components/common/form/PsCheckbox.vue';
-import PsTable from '@/components/common/table/PsTable.vue';
-import PsTableCol from '@/components/common/table/PsTableCol.vue';
-import PsTableRow from '@/components/common/table/PsTableRow.vue';
+import PsTable from '@/plug-n-play/prestashop/table/PsTable.vue';
+import PsTableCol from '@/plug-n-play/prestashop/table/PsTableCol.vue';
+import PsTableRow from '@/plug-n-play/prestashop/table/PsTableRow.vue';
 import ShipmentLabel from '@/components/order-card/ShipmentLabel.vue';
-import { labelActionsEventBus } from '@/data/eventBus/LabelActionsEventBus';
-import { orderActionsEventBus } from '@/data/eventBus/OrderActionsEventBus';
-import { useGlobalContext } from '@/composables/context/useGlobalContext';
+import {labelActionsEventBus} from '@/data/eventBus/LabelActionsEventBus';
+import {orderActionsEventBus} from '@/data/eventBus/OrderActionsEventBus';
+import {useGlobalContext} from '@/composables/context/useGlobalContext';
 
 export default defineComponent({
   name: 'ShipmentLabels',
@@ -89,9 +78,10 @@ export default defineComponent({
      * Handles (de)selecting bulk checkboxes when clicking the checkbox in the table header.
      */
     const selectAll = (bulkCheckboxChecked: boolean): void => {
-      selectedRows.value = bulkCheckboxChecked || selectedRows.value.length !== labels.value.length
-        ? labels.value.map((label) => label.id_label.toString())
-        : [];
+      selectedRows.value =
+        bulkCheckboxChecked || selectedRows.value.length !== labels.value.length
+          ? labels.value.map((label) => label.id_label.toString())
+          : [];
     };
 
     const clearSelection = (): void => {

@@ -1,37 +1,19 @@
 <template>
-  <div
-    :id="modalId"
-    class="fade modal"
-    tabindex="-1"
-    role="dialog">
-    <div
-      class="modal-dialog"
-      role="document">
+  <div :id="modalId" class="fade modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4
-            v-t="title"
-            class="modal-title" />
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal">
+          <h4 v-t="title" class="modal-title" />
+          <button type="button" class="close" data-dismiss="modal">
             <MaterialIcon icon="close" />
           </button>
         </div>
-        <div
-          v-if="shown"
-          class="modal-body">
-          <slot
-            :modal-data="modalData"
-            :context="contextData" />
+        <div v-if="shown" class="modal-body">
+          <slot :modal-data="modalData" :context="contextData" />
           <LoaderOverlay v-show="loading" />
         </div>
         <div class="modal-footer">
-          <PsButton
-            class="btn-lg btn-outline-secondary"
-            label="cancel"
-            @click="() => onButtonClick('leave')" />
+          <PsButton class="btn-lg btn-outline-secondary" label="cancel" @click="() => onButtonClick('leave')" />
           <PsButton
             class="btn-lg btn-primary"
             :label="saveLabel || 'save'"
@@ -44,13 +26,13 @@
 </template>
 
 <script lang="ts">
-import { ModalCallbackProps, useModalContext } from '@/composables/context/useModalContext';
-import { PropType, computed, defineComponent, ref, watch } from 'vue';
+import {ModalCallbackProps, useModalContext} from '@/composables/context/useModalContext';
+import {PropType, computed, defineComponent, ref, watch} from 'vue';
 import LoaderOverlay from '@/components/common/LoaderOverlay.vue';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
-import PsButton from '@/components/common/PsButton.vue';
-import { contextProps } from '@/composables/props/contextProps';
-import { useContext } from '@/composables/context/useContext';
+import PsButton from '@/plug-n-play/prestashop/PsButton.vue';
+import {contextProps} from '@/composables/props/contextProps';
+import {useContext} from '@/composables/context/useContext';
 
 export default defineComponent({
   name: 'Modal',
@@ -107,11 +89,14 @@ export default defineComponent({
       throw new Error('Modal must have an ID or context');
     }
 
-    const { additionalContext, ...modalContext } = useModalContext(modalId, props.onSave, props.onLeave);
+    const {additionalContext, ...modalContext} = useModalContext(modalId, props.onSave, props.onLeave);
 
-    watch(() => props.forceLoading, (loading) => {
-      modalContext.setLoading(loading);
-    });
+    watch(
+      () => props.forceLoading,
+      (loading) => {
+        modalContext.setLoading(loading);
+      },
+    );
 
     return {
       ...modalContext,

@@ -4,15 +4,15 @@
 
 <script lang="ts">
 import PsInput from '@/components/common/form/PsInput.vue';
-import { defineComponent } from 'vue';
-import { disabledProps } from '@/composables/props/disabledProps';
-import { useModel } from '@/composables/props/model/useModel';
+import {defineComponent} from 'vue';
+import {disabledProps} from '@/composables/props/disabledProps';
+import {useModel} from '@/composables/props/model/useModel';
 
-const { model, props, setup } = useModel();
+const {model, props, setup} = useModel();
 
 export default defineComponent({
   name: 'FormSwitch',
-  components: { PsInput },
+  components: {PsInput},
   model,
   props: {
     // eslint-disable-next-line vue/no-unused-properties

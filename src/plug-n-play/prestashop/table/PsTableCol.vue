@@ -5,14 +5,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 
 export default defineComponent({
-  name: 'PsTableRow',
+  name: 'PsTableCol',
   props: {
     component: {
       type: String,
-      default: 'tr',
+      default: 'td',
     },
   },
 });

@@ -1,15 +1,9 @@
 <template>
   <div>
-    <PsInput
-      v-model="contextData.orderId"
-      type="hidden" />
+    <PsInput v-model="contextData.orderId" type="hidden" />
 
     <FormGroup label="extra_options_label_amount">
-      <PsInput
-        v-model="contextData.extraOptions.labelAmount"
-        type="number"
-        min="1"
-        max="10" />
+      <PsInput v-model="contextData.extraOptions.labelAmount" type="number" min="1" max="10" />
     </FormGroup>
 
     <PackageTypeSelectFormGroup v-model="packageType" />
@@ -58,28 +52,23 @@
 </template>
 
 <script lang="ts">
-import { ContextKey, ShipmentOptionsContext } from '@/data/global/context';
-import { computed, defineComponent, ref, watch, watchEffect } from 'vue';
+import {ContextKey, ShipmentOptionsContext} from '@/data/global/context';
+import {computed, defineComponent, ref, watch, watchEffect} from 'vue';
 import DigitalStampWeightSelectFormGroup from '@/components/common/form/DigitalStampWeightSelectFormGroup.vue';
 import FormGroup from '@/components/common/form/FormGroup.vue';
 import InsuranceSelectFormGroup from '@/components/common/form/InsuranceSelectFormGroup.vue';
 import PackageFormatSelectFormGroup from '@/components/common/form/PackageFormatSelectFormGroup.vue';
 import PackageTypeSelectFormGroup from '@/components/common/form/PackageTypeSelectFormGroup.vue';
-import PsAlert from '@/components/common/PsAlert.vue';
+import PsAlert from '@/plug-n-play/prestashop/PsAlert.vue';
 import PsCheckbox from '@/components/common/form/PsCheckbox.vue';
 import PsInput from '@/components/common/form/PsInput.vue';
-import { contextProps } from '@/composables/props/contextProps';
-import { deliveryOptionsEventBus } from '@/data/eventBus/DeliveryOptionsEventBus';
-import { orderActionsEventBus } from '@/data/eventBus/OrderActionsEventBus';
-import { shipmentOptionsContextEventBus } from '@/data/eventBus/ShipmentOptionsContextEventBus';
-import { useGlobalContext } from '@/composables/context/useGlobalContext';
+import {contextProps} from '@/composables/props/contextProps';
+import {deliveryOptionsEventBus} from '@/data/eventBus/DeliveryOptionsEventBus';
+import {orderActionsEventBus} from '@/data/eventBus/OrderActionsEventBus';
+import {shipmentOptionsContextEventBus} from '@/data/eventBus/ShipmentOptionsContextEventBus';
+import {useGlobalContext} from '@/composables/context/useGlobalContext';
 
-const KEYS_TO_SAVE: (keyof ShipmentOptionsContext)[] = [
-  'orderId',
-  'deliveryOptions',
-  'extraOptions',
-  'labelOptions',
-];
+const KEYS_TO_SAVE: (keyof ShipmentOptionsContext)[] = ['orderId', 'deliveryOptions', 'extraOptions', 'labelOptions'];
 
 const CONSIGNMENT_SHIPMENT_OPTIONS_KEYS: (keyof Consignment)[] = [
   'canHaveOnlyRecipient',
@@ -118,7 +107,7 @@ export default defineComponent({
       return CONSIGNMENT_SHIPMENT_OPTIONS_KEYS.some((property) => Boolean(contextData.value?.consignment[property]));
     });
 
-    watch([packageType], async([oldPackageType], [newPackageType]) => {
+    watch([packageType], async ([oldPackageType], [newPackageType]) => {
       if (oldPackageType === newPackageType || !contextData.value.orderId) {
         return;
       }
@@ -137,7 +126,7 @@ export default defineComponent({
      */
     watchEffect(() => {
       const values = KEYS_TO_SAVE.reduce((acc, key) => {
-        return { ...acc, [key]: contextData.value[key] };
+        return {...acc, [key]: contextData.value[key]};
       }, {});
 
       deliveryOptionsEventBus.update(values);

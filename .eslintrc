@@ -1,9 +1,17 @@
 {
   "extends": [
     "@myparcel/eslint-config/preset-vue3-typescript",
-    "plugin:prettier/recommended"
+    "@vue/eslint-config-typescript/recommended",
+    "@vue/eslint-config-prettier"
   ],
+  "parserOptions": {
+    "project": "./tsconfig.app.json"
+  },
+  "env": {
+    "vue/setup-compiler-macros": true
+  },
   "rules": {
+    "@typescript-eslint/no-implied-eval": "off",
     "class-methods-use-this": "off",
     "prettier/prettier": [
       "warn",
@@ -65,20 +73,11 @@
     },
     {
       "files": [
-        "./test/**/*.example.ts",
-        "./src/**/*.types.ts"
+        "cypress/e2e/**.{cy,spec}.{js,ts,jsx,tsx}"
       ],
-      "rules": {
-        "@typescript-eslint/naming-convention": [
-          "warn",
-          {
-            "selector": [
-              "typeProperty"
-            ],
-            "format": null
-          }
-        ]
-      }
+      "extends": [
+        "plugin:cypress/recommended"
+      ]
     }
   ]
 }

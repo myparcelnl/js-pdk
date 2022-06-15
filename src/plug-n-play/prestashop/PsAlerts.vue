@@ -1,7 +1,5 @@
 <template>
-  <TransitionGroup
-    name="mypa__fade"
-    appear>
+  <TransitionGroup name="mypa__fade" appear>
     <PsAlert
       v-for="(alert, index) in alerts"
       :key="`alert_${index}_${alert.content}`"
@@ -11,12 +9,12 @@
 </template>
 
 <script lang="ts">
-import { PropType, defineComponent } from 'vue';
-import PsAlert from '@/components/common/PsAlert.vue';
+import {PropType, defineComponent} from 'vue';
+import PsAlert from '@/plug-n-play/prestashop/PsAlert.vue';
 
 export default defineComponent({
   name: 'PsAlerts',
-  components: { PsAlert },
+  components: {PsAlert},
   props: {
     alerts: {
       type: Array as PropType<AlertData[]>,

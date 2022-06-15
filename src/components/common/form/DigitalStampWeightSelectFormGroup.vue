@@ -1,30 +1,25 @@
 <template>
-  <SelectFormGroup
-    v-model="mutableValue"
-    :disabled="disabled"
-    :options="options">
+  <SelectFormGroup v-model="mutableValue" :disabled="disabled" :options="options">
     {{ $filters.translate('extra_options_digital_stamp_weight') }}
-    <p
-      class="form-text"
-      v-text="weightString" />
+    <p class="form-text" v-text="weightString" />
   </SelectFormGroup>
 </template>
 
 <script lang="ts">
-import { ContextKey } from '@/data/global/context';
+import {ContextKey} from '@/data/global/context';
 import SelectFormGroup from '@/components/common/form/SelectFormGroup.vue';
-import { defineComponent } from 'vue';
-import { disabledProps } from '@/composables/props/disabledProps';
-import { formatNumber } from '@/filters/formatNumber';
-import { translate } from '@/filters/translate';
-import { useGlobalContext } from '@/composables/context/useGlobalContext';
-import { useSelectModel } from '@/composables/props/model/useSelectModel';
+import {defineComponent} from 'vue';
+import {disabledProps} from '@/composables/props/disabledProps';
+import {formatNumber} from '@/filters/formatNumber';
+import {translate} from '@/filters/translate';
+import {useGlobalContext} from '@/composables/context/useGlobalContext';
+import {useSelectModel} from '@/composables/props/model/useSelectModel';
 
-const { model, props, setup } = useSelectModel();
+const {model, props, setup} = useSelectModel();
 
 export default defineComponent({
   name: 'DigitalStampWeightSelectFormGroup',
-  components: { SelectFormGroup },
+  components: {SelectFormGroup},
   model,
 
   props: {

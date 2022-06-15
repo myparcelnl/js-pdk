@@ -2,9 +2,7 @@
   <PsCard :loading="loading">
     <template #header>
       <MaterialIcon icon="article" />
-      <span
-        v-t="'concept'"
-        class="mr-2" />
+      <span v-t="'concept'" class="mr-2" />
       <DeliveryMomentSelector />
     </template>
     <template #default>
@@ -18,22 +16,13 @@
       </div>
     </template>
     <template #footer>
-      <PsButton
-        icon="save"
-        @click="saveDeliveryOptions" />
+      <PsButton icon="save" @click="saveDeliveryOptions" />
 
       <div class="flex-fill" />
 
       <div class="btn-group">
-        <PsButton
-          variant="outline-primary"
-          icon="add"
-          label="action_new_shipment"
-          @click="exportOrder" />
-        <PsButton
-          variant="outline-primary"
-          :icon="['add', 'local_printshop']"
-          @click="() => exportOrder(true)">
+        <PsButton variant="outline-primary" icon="add" label="action_new_shipment" @click="exportOrder" />
+        <PsButton variant="outline-primary" :icon="['add', 'local_printshop']" @click="() => exportOrder(true)">
           {{ $filters.translate('action_new_shipment_print') }}
         </PsButton>
       </div>
@@ -44,17 +33,17 @@
 <script lang="ts">
 import DeliveryMomentSelector from '@/components/order-card/DeliveryMomentSelector.vue';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
-import { OrderAction } from '@/data/global/actions';
-import PsButton from '@/components/common/PsButton.vue';
-import PsCard from '@/components/common/PsCard.vue';
+import {OrderAction} from '@/data/global/actions';
+import PsButton from '@/plug-n-play/prestashop/PsButton.vue';
+import PsCard from '@/plug-n-play/prestashop/PsCard.vue';
 import ShipmentOptionsForm from '@/components/forms/ShipmentOptionsForm.vue';
 import ShippingAddress from '@/components/order-card/ShippingAddress.vue';
-import { defineComponent } from 'vue';
-import { deliveryOptionsEventBus } from '@/data/eventBus/DeliveryOptionsEventBus';
-import { executeOrderAction } from '@/services/actions/executeOrderAction';
-import { orderActionsEventBus } from '@/data/eventBus/OrderActionsEventBus';
-import { shipmentOptionsContextEventBus } from '@/data/eventBus/ShipmentOptionsContextEventBus';
-import { useEventBusLoadingState } from '@/composables/useEventBusLoadingState';
+import {defineComponent} from 'vue';
+import {deliveryOptionsEventBus} from '@/data/eventBus/DeliveryOptionsEventBus';
+import {executeOrderAction} from '@/services/actions/executeOrderAction';
+import {orderActionsEventBus} from '@/data/eventBus/OrderActionsEventBus';
+import {shipmentOptionsContextEventBus} from '@/data/eventBus/ShipmentOptionsContextEventBus';
+import {useEventBusLoadingState} from '@/composables/useEventBusLoadingState';
 
 export default defineComponent({
   name: 'ConceptCard',
@@ -69,17 +58,13 @@ export default defineComponent({
 
   setup: () => {
     return {
-      ...useEventBusLoadingState(
-        deliveryOptionsEventBus,
-        orderActionsEventBus,
-        shipmentOptionsContextEventBus,
-      ),
+      ...useEventBusLoadingState(deliveryOptionsEventBus, orderActionsEventBus, shipmentOptionsContextEventBus),
 
-      saveDeliveryOptions: async(): Promise<void> => {
+      saveDeliveryOptions: async (): Promise<void> => {
         await deliveryOptionsEventBus.saveConfiguration();
       },
 
-      exportOrder: async(print: boolean = false): Promise<void> => {
+      exportOrder: async (print = false): Promise<void> => {
         const action = print ? OrderAction.EXPORT_PRINT : OrderAction.EXPORT;
 
         await executeOrderAction(action);

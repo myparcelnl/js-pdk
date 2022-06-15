@@ -1,20 +1,12 @@
 <template>
   <PsTableRow>
     <PsTableCol>
-      <PsCheckbox
-        v-model="mutableValue"
-        :value="shipmentLabel.id_label" />
+      <PsCheckbox v-model="mutableValue" :value="shipmentLabel.id_label" />
     </PsTableCol>
     <PsTableCol>
-      <a
-        class="text-nowrap"
-        :href="shipmentLabel.track_link"
-        target="_blank"
-        rel="noopener noreferrer">
+      <a class="text-nowrap" :href="shipmentLabel.track_link" target="_blank" rel="noopener noreferrer">
         {{ shipmentLabel.barcode }}
-        <MaterialIcon
-          icon="open_in_new"
-          class="font-16" />
+        <MaterialIcon icon="open_in_new" class="font-16" />
       </a>
     </PsTableCol>
 
@@ -22,11 +14,7 @@
     <PsTableCol v-text="shipmentLabel.date_upd" />
     <PsTableCol class="text-right">
       <div class="btn-group">
-        <PsButton
-          class="btn-sm"
-          icon="local_printshop"
-          label="action_print"
-          @click="() => doLabelAction()" />
+        <PsButton class="btn-sm" icon="local_printshop" label="action_print" @click="() => doLabelAction()" />
 
         <PsDropdownButton
           class="dropdown-toggle-split"
@@ -38,19 +26,19 @@
 </template>
 
 <script lang="ts">
-import { PropType, defineComponent } from 'vue';
-import { deleteAction, refreshAction, returnAction } from '@/data/dropdownActions';
-import { LabelAction } from '@/data/global/actions';
+import {PropType, defineComponent} from 'vue';
+import {deleteAction, refreshAction, returnAction} from '@/data/dropdownActions';
+import {LabelAction} from '@/data/global/actions';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
-import PsButton from '@/components/common/PsButton.vue';
+import PsButton from '@/plug-n-play/prestashop/PsButton.vue';
 import PsCheckbox from '@/components/common/form/PsCheckbox.vue';
-import PsDropdownButton from '@/components/common/PsDropdownButton.vue';
-import PsTableCol from '@/components/common/table/PsTableCol.vue';
-import PsTableRow from '@/components/common/table/PsTableRow.vue';
-import { executeLabelAction } from '@/services/actions/executeLabelAction';
-import { useCheckboxModel } from '@/composables/props/model/useCheckboxModel';
+import PsDropdownButton from '@/plug-n-play/prestashop/PsDropdownButton.vue';
+import PsTableCol from '@/plug-n-play/prestashop/table/PsTableCol.vue';
+import PsTableRow from '@/plug-n-play/prestashop/table/PsTableRow.vue';
+import {executeLabelAction} from '@/services/actions/executeLabelAction';
+import {useCheckboxModel} from '@/composables/props/model/useCheckboxModel';
 
-const { model, props, setup } = useCheckboxModel();
+const {model, props, setup} = useCheckboxModel();
 
 export default defineComponent({
   name: 'ShipmentLabel',
@@ -85,11 +73,7 @@ export default defineComponent({
     return {
       ...setup(props, ctx),
       doLabelAction,
-      rowDropdownItems: [
-        refreshAction,
-        returnAction,
-        deleteAction,
-      ],
+      rowDropdownItems: [refreshAction, returnAction, deleteAction],
     };
   },
 });

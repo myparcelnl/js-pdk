@@ -1,7 +1,5 @@
 <template>
-  <Modal
-    id="printOptions"
-    title="print_options_title">
+  <Modal id="printOptions" title="print_options_title">
     <PrintOptionsForm />
   </Modal>
 </template>
@@ -9,7 +7,7 @@
 <script lang="ts">
 import Modal from '@/components/modals/Modal.vue';
 import PrintOptionsForm from '@/components/forms/PrintOptionsForm.vue';
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 
 /**
  * Modal with print options. Opened when any print action is executed, if the modal is enabled in the module settings.

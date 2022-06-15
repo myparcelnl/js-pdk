@@ -1,9 +1,7 @@
 <template>
   <PsCard>
     <template #header>
-      <h3
-        class="card-header-title"
-        v-text="'MyParcel'" />
+      <h3 class="card-header-title" v-text="'MyParcel'" />
     </template>
 
     <template #default>
@@ -15,9 +13,9 @@
 
 <script lang="ts">
 import ConceptCard from '@/components/order-card/ConceptCard.vue';
-import PsCard from '@/components/common/PsCard.vue';
+import PsCard from '@/plug-n-play/prestashop/PsCard.vue';
 import ShipmentsCard from '@/components/order-card/ShipmentsCard.vue';
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 
 /**
  * The "MyParcel" card in the single order view.

@@ -1,9 +1,7 @@
 <template>
   <div>
     <template v-if="config.hasValue">
-      <label
-        v-if="item.label"
-        v-text="item.label" />
+      <label v-if="item.label" v-text="item.label" />
 
       <component
         :is="config.component"
@@ -11,13 +9,10 @@
         :name="item.name"
         :label="item.label"
         v-bind="item.attributes"
-        @change="$emit('change', { name: item.name, value: $event })"
-        @input="$emit('change', { name: item.name, value: $event })" />
+        @change="$emit('change', {name: item.name, value: $event})"
+        @input="$emit('change', {name: item.name, value: $event})" />
 
-      <p
-        v-if="item.description"
-        class="help-block"
-        v-text="item.description" />
+      <p v-if="item.description" class="help-block" v-text="item.description" />
     </template>
 
     <component
@@ -30,19 +25,12 @@
       :is="config.component"
       v-else-if="item.action"
       v-bind="item.attributes"
-      @click="$emit('action', { action: item.action })">
-      <label
-        v-if="item.label"
-        v-text="item.label" />
+      @click="$emit('action', {action: item.action})">
+      <label v-if="item.label" v-text="item.label" />
     </component>
 
-    <component
-      :is="config.component"
-      v-else
-      v-bind="item.attributes">
-      <h1
-        v-if="item.label"
-        v-text="item.label" />
+    <component :is="config.component" v-else v-bind="item.attributes">
+      <h1 v-if="item.label" v-text="item.label" />
 
       <SettingsFormItem
         v-for="(child, index) in item.children"
@@ -69,20 +57,20 @@
 </template>
 
 <script lang="ts">
-import { PropType, computed, defineComponent } from 'vue';
-import { ContextKey } from '@/data/global/context';
-import PsAccordion from '@/components/common/PsAccordion.vue';
-import PsButton from '@/components/common/PsButton.vue';
+import {PropType, computed, defineComponent} from 'vue';
+import {ContextKey} from '@/data/global/context';
+import PsAccordion from '@/plug-n-play/prestashop/PsAccordion.vue';
+import PsButton from '@/plug-n-play/prestashop/PsButton.vue';
 import PsCheckbox from '@/components/common/form/PsCheckbox.vue';
 import PsInput from '@/components/common/form/PsInput.vue';
 import PsMultipleCheckboxes from '@/components/common/form/PsMultipleCheckboxes.vue';
 import PsSelect from '@/components/common/form/PsSelect.vue';
 import PsSwitch from '@/components/common/form/PsSwitch.vue';
-import { useGlobalContext } from '@/composables/context/useGlobalContext';
+import {useGlobalContext} from '@/composables/context/useGlobalContext';
 
 export default defineComponent({
   name: 'SettingsFormItem',
-  components: { PsInput },
+  components: {PsInput},
   props: {
     item: {
       type: Object as PropType<ModuleSettingsFormItem>,

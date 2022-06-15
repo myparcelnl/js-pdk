@@ -4,9 +4,7 @@ interface Configuration {
   components: Record<string, string>;
 }
 
-export const setup = (configuration: Configuration) => {
-
-};
+export const setup = (configuration: Configuration) => {};
 
 export const renderAfterHeader = render('components/after-header');
 export const renderLoadingPage = render('components/loading-page');

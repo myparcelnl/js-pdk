@@ -9,11 +9,7 @@
     :disabled="disabled"
     :data-context="encodedContextData"
     @click="() => $emit('click')">
-    <MaterialIcon
-      v-for="iconName in icons"
-      :key="iconName"
-      class="mr-1"
-      v-text="iconName" />
+    <MaterialIcon v-for="iconName in icons" :key="iconName" class="mr-1" v-text="iconName" />
     <slot>
       {{ $filters.translate(label) }}
     </slot>
@@ -21,16 +17,16 @@
 </template>
 
 <script lang="ts">
-import { PropType, computed, defineComponent } from 'vue';
-import { AnyContext } from '@/data/global/context';
+import {PropType, computed, defineComponent} from 'vue';
+import {AnyContext} from '@/data/global/context';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
-import { disabledProps } from '@/composables/props/disabledProps';
-import { toArray } from '@/utils/toArray';
-import { variantProps } from '@/composables/props/variantProps';
+import {disabledProps} from '@/composables/props/disabledProps';
+import {toArray} from '@/utils/toArray';
+import {variantProps} from '@/composables/props/variantProps';
 
 export default defineComponent({
   name: 'PsButton',
-  components: { MaterialIcon },
+  components: {MaterialIcon},
   props: {
     ...variantProps('primary'),
     ...disabledProps,

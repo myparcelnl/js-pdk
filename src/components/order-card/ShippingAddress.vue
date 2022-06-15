@@ -5,15 +5,15 @@
 </template>
 
 <script lang="ts">
-import { ContextKey } from '@/data/global/context';
-import PsCard from '@/components/common/PsCard.vue';
-import { contextProps } from '@/composables/props/contextProps';
-import { defineComponent } from 'vue';
-import { useContext } from '@/composables/context/useContext';
+import {ContextKey} from '@/data/global/context';
+import PsCard from '@/plug-n-play/prestashop/PsCard.vue';
+import {contextProps} from '@/composables/props/contextProps';
+import {defineComponent} from 'vue';
+import {useContext} from '@/composables/context/useContext';
 
 export default defineComponent({
   name: 'ShippingAddress',
-  components: { PsCard },
+  components: {PsCard},
   props: contextProps,
   setup: (props) => ({
     contextData: useContext(props.context ?? ContextKey.SHIPPING_ADDRESS),

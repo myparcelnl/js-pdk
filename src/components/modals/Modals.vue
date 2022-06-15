@@ -9,9 +9,9 @@
 </template>
 
 <script lang="ts">
-import { ContextKey } from '@/data/global/context';
-import { defineComponent } from 'vue';
-import { useGlobalContext } from '@/composables/context/useGlobalContext';
+import {ContextKey} from '@/data/global/context';
+import {defineComponent} from 'vue';
+import {useGlobalContext} from '@/composables/context/useGlobalContext';
 import AddCarrierModal from '@/components/modals/AddCarrierModal.vue';
 
 export default defineComponent({
@@ -19,10 +19,10 @@ export default defineComponent({
   components: {
     AddCarrierModal,
     /* eslint-disable @typescript-eslint/naming-convention */
-    DeliveryOptionsModal: async() => import('@/components/modals/DeliveryOptionsModal.vue'),
-    PrintOptionsModal: async() => import('@/components/modals/PrintOptionsModal.vue'),
-    ReturnsFormModal: async() => import('@/components/modals/ReturnsFormModal.vue'),
-    ShipmentOptionsModal: async() => import('@/components/modals/ShipmentOptionsModal.vue'),
+    DeliveryOptionsModal: async () => import('@/components/modals/DeliveryOptionsModal.vue'),
+    PrintOptionsModal: async () => import('@/components/modals/PrintOptionsModal.vue'),
+    ReturnsFormModal: async () => import('@/components/modals/ReturnsFormModal.vue'),
+    ShipmentOptionsModal: async () => import('@/components/modals/ShipmentOptionsModal.vue'),
     /* eslint-enable @typescript-eslint/naming-convention */
   },
 

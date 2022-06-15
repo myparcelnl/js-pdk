@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import PsAlerts from '@/components/common/PsAlerts.vue';
+import PsAlerts from '@/plug-n-play/prestashop/PsAlerts.vue';
 import {buttonActionsEventBus} from '@/data/eventBus/ButtonActionsEventBus';
 import {defineComponent} from 'vue';
 import {labelActionsEventBus} from '@/data/eventBus/LabelActionsEventBus';

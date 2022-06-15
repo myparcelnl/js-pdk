@@ -16,9 +16,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import {defineComponent, ref} from 'vue';
 import Modal from '@/components/modals/Modal.vue';
-import { buttonActionsEventBus } from '@/data/eventBus/ButtonActionsEventBus';
+import {buttonActionsEventBus} from '@/data/eventBus/ButtonActionsEventBus';
 
 export default defineComponent({
   name: 'AddCarrierModal',

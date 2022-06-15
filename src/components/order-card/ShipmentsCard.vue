@@ -8,31 +8,25 @@
       <ShipmentLabels @select="setSelectedLabels" />
     </template>
     <template #footer>
-      <PsDropdownButton
-        :options="bulkActionDropdownItems"
-        :disabled="!selectedLabels.length"
-        @click="onBulkAction">
+      <PsDropdownButton :options="bulkActionDropdownItems" :disabled="!selectedLabels.length" @click="onBulkAction">
         {{ $filters.translate('bulk_actions') }}
-        <span
-          v-if="selectedLabels.length"
-          class="badge badge-dark ml-1"
-          v-text="selectedLabels.length" />
+        <span v-if="selectedLabels.length" class="badge badge-dark ml-1" v-text="selectedLabels.length" />
       </PsDropdownButton>
     </template>
   </PsCard>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { deleteAction, printAction, refreshAction } from '@/data/dropdownActions';
-import { LabelAction } from '@/data/global/actions';
+import {defineComponent, ref} from 'vue';
+import {deleteAction, printAction, refreshAction} from '@/data/dropdownActions';
+import {LabelAction} from '@/data/global/actions';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
-import PsCard from '@/components/common/PsCard.vue';
-import PsDropdownButton from '@/components/common/PsDropdownButton.vue';
+import PsCard from '@/plug-n-play/prestashop/PsCard.vue';
+import PsDropdownButton from '@/plug-n-play/prestashop/PsDropdownButton.vue';
 import ShipmentLabels from '@/components/order-card/ShipmentLabels.vue';
-import { executeLabelAction } from '@/services/actions/executeLabelAction';
-import { labelActionsEventBus } from '@/data/eventBus/LabelActionsEventBus';
-import { useEventBusLoadingState } from '@/composables/useEventBusLoadingState';
+import {executeLabelAction} from '@/services/actions/executeLabelAction';
+import {labelActionsEventBus} from '@/data/eventBus/LabelActionsEventBus';
+import {useEventBusLoadingState} from '@/composables/useEventBusLoadingState';
 
 export default defineComponent({
   name: 'ShipmentsCard',
@@ -54,11 +48,7 @@ export default defineComponent({
         selectedLabels.value = labels;
       },
 
-      bulkActionDropdownItems: [
-        refreshAction,
-        printAction,
-        deleteAction,
-      ],
+      bulkActionDropdownItems: [refreshAction, printAction, deleteAction],
 
       async onBulkAction(action: LabelAction): Promise<void> {
         await executeLabelAction(action, selectedLabels.value);

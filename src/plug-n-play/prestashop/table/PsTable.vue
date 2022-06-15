@@ -1,24 +1,19 @@
 <template>
   <table class="table table-borderless text-nowrap">
-    <thead
-      v-if="$slots.header">
+    <thead v-if="$slots.header">
       <slot name="header" />
     </thead>
-    <tbody
-      is="transition-group"
-      class="mypa__table"
-      name="mypa__table">
+    <tbody is="transition-group" class="mypa__table" name="mypa__table">
       <slot />
     </tbody>
-    <tfoot
-      v-if="$slots.footer">
+    <tfoot v-if="$slots.footer">
       <slot name="footer" />
     </tfoot>
   </table>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 
 export default defineComponent({
   name: 'PsTable',

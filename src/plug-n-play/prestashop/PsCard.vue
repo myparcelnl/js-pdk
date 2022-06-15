@@ -1,17 +1,12 @@
 <template>
   <div class="card">
-    <div
-      v-if="$slots.header"
-      class="card-header"
-      @click="$emit('click-header')">
+    <div v-if="$slots.header" class="card-header" @click="$emit('click-header')">
       <slot name="header" />
     </div>
     <div class="card-body">
       <slot />
     </div>
-    <div
-      v-if="$slots.footer"
-      class="card-footer d-flex">
+    <div v-if="$slots.footer" class="card-footer d-flex">
       <slot name="footer" />
     </div>
     <LoaderOverlay :show="loading" />
@@ -20,11 +15,11 @@
 
 <script lang="ts">
 import LoaderOverlay from '@/components/common/LoaderOverlay.vue';
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 
 export default defineComponent({
   name: 'PsCard',
-  components: { LoaderOverlay },
+  components: {LoaderOverlay},
 
   props: {
     loading: {

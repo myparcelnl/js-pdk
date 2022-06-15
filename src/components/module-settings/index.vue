@@ -1,20 +1,14 @@
 <template>
   <div>
-    <ul
-      class="nav nav-tabs"
-      role="tablist">
+    <ul class="nav nav-tabs" role="tablist">
       <li
         v-for="(tab, index) in moduleSettingsFormContext"
         :key="[tab.name, index, 'tab'].join('_')"
         class="nav-item"
         :class="{
-          'active': activeTab === tab.name,
+          active: activeTab === tab.name,
         }">
-        <a
-          class="active nav-link"
-          :href="`#${tab.name}`"
-          @click="() => changeTab(tab.name)"
-          v-text="tab.label" />
+        <a class="active nav-link" :href="`#${tab.name}`" @click="() => changeTab(tab.name)" v-text="tab.label" />
       </li>
     </ul>
 
@@ -29,23 +23,21 @@
         @action="doTheBartman"
         @change="processValue" />
 
-      <PsButton
-        label="save"
-        @click="save" />
+      <PsButton label="save" @click="save" />
     </PsCard>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
-import { ContextKey } from '@/data/global/context';
+import {defineComponent, ref, watch} from 'vue';
+import {ContextKey} from '@/data/global/context';
 import HeaderAlerts from '@/components/after-header/HeaderAlerts.vue';
-import PsButton from '@/components/common/PsButton.vue';
-import PsCard from '@/components/common/PsCard.vue';
-import { buttonActionsEventBus } from '@/data/eventBus/ButtonActionsEventBus';
-import { moduleSettingsEventBus } from '@/data/eventBus/ModuleSettingsEventBus';
-import { useGlobalContext } from '@/composables/context/useGlobalContext';
-import { useEventBusAlerts } from '@/composables/useEventBusAlerts';
+import PsButton from '@/plug-n-play/prestashop/PsButton.vue';
+import PsCard from '@/plug-n-play/prestashop/PsCard.vue';
+import {buttonActionsEventBus} from '@/data/eventBus/ButtonActionsEventBus';
+import {moduleSettingsEventBus} from '@/data/eventBus/ModuleSettingsEventBus';
+import {useGlobalContext} from '@/composables/context/useGlobalContext';
+import {useEventBusAlerts} from '@/composables/useEventBusAlerts';
 
 export default defineComponent({
   name: 'ModuleSettings',
@@ -64,13 +56,13 @@ export default defineComponent({
     const activeTab = ref<string>(moduleSettingsFormContext.value[0].name);
 
     watch(activeTab, (tab) => {
-      const { clear } = useEventBusAlerts();
+      const {clear} = useEventBusAlerts();
 
       clear();
       console.log(tab);
     });
 
-    const save = async() => {
+    const save = async () => {
       await moduleSettingsEventBus.save(values.value);
     };
 
@@ -79,11 +71,11 @@ export default defineComponent({
       moduleSettingsFormContext,
       accountSettingsContext,
 
-      processValue(changed: { name: string; value: unknown }) {
+      processValue(changed: {name: string; value: unknown}) {
         values.value[changed.name] = changed.value;
       },
 
-      doTheBartman: async(event: { action: [string, string] }) => {
+      doTheBartman: async (event: {action: [string, string]}) => {
         // TODO
         if (event.action[0] === 'showModal') {
           const carrierSettings = moduleSettingsFormContext.value.find((item) => item.name === 'carrier-settings');

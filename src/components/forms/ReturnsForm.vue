@@ -9,19 +9,14 @@
     <FormGroup label="custom_label">
       <PsInput v-model="customLabel" />
     </FormGroup>
-    <PackageTypeSelectFormGroup
-      v-if="packageTypeOptions.length"
-      v-model="packageType"
-      :options="packageTypeOptions" />
+    <PackageTypeSelectFormGroup v-if="packageTypeOptions.length" v-model="packageType" :options="packageTypeOptions" />
     <PackageFormatSelectFormGroup
       v-if="packageFormatOptions.length"
       v-model="packageFormat"
       :options="packageFormatOptions" />
 
     <FormGroup>
-      <PsCheckbox
-        v-model="shipmentOptions.signature"
-        label="shipment_options_signature" />
+      <PsCheckbox v-model="shipmentOptions.signature" label="shipment_options_signature" />
     </FormGroup>
 
     <InsuranceSelectFormGroup v-model="shipmentOptions.insurance" />
@@ -29,16 +24,16 @@
 </template>
 
 <script lang="ts">
-import { PropType, defineComponent, reactive, ref } from 'vue';
-import { ContextKey } from '@/data/global/context';
+import {PropType, defineComponent, reactive, ref} from 'vue';
+import {ContextKey} from '@/data/global/context';
 import FormGroup from '@/components/common/form/FormGroup.vue';
 import InsuranceSelectFormGroup from '@/components/common/form/InsuranceSelectFormGroup.vue';
 import PackageFormatSelectFormGroup from '@/components/common/form/PackageFormatSelectFormGroup.vue';
 import PackageTypeSelectFormGroup from '@/components/common/form/PackageTypeSelectFormGroup.vue';
 import PsCheckbox from '@/components/common/form/PsCheckbox.vue';
 import PsInput from '@/components/common/form/PsInput.vue';
-import { translate } from '@/filters/translate';
-import { useGlobalContext } from '@/composables/context/useGlobalContext';
+import {translate} from '@/filters/translate';
+import {useGlobalContext} from '@/composables/context/useGlobalContext';
 
 export default defineComponent({
   name: 'ReturnsForm',
@@ -60,7 +55,7 @@ export default defineComponent({
 
   setup: (props) => {
     const contextData = useGlobalContext(ContextKey.RETURNS_FORM);
-    const label = { barcode: props.modalData.barcode };
+    const label = {barcode: props.modalData.barcode};
 
     return {
       contextData,

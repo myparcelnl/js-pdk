@@ -1,34 +1,27 @@
 <template>
   <Transition name="mypa__fade">
-    <PsAlerts
-      v-if="alerts.length"
-      :alerts="alerts" />
+    <PsAlerts v-if="alerts.length" :alerts="alerts" />
     <form v-else-if="loaded">
-      <div
-        v-show="loaded"
-        v-html="htmlContent" />
+      <div v-show="loaded" v-html="htmlContent" />
     </form>
-    <LoaderOverlay
-      v-else
-      :show="true"
-      style="height: 100px" />
+    <LoaderOverlay v-else :show="true" style="height: 100px" />
   </Transition>
 </template>
 
 <script lang="ts">
-import { ContextKey } from '@/data/global/context';
+import {ContextKey} from '@/data/global/context';
 import LoaderOverlay from '@/components/common/LoaderOverlay.vue';
-import PsAlerts from '@/components/common/PsAlerts.vue';
-import { contextProps } from '@/composables/props/contextProps';
-import { defineComponent } from 'vue';
-import { deliveryOptionsEventBus } from '@/data/eventBus/DeliveryOptionsEventBus';
-import { useDeliveryOptions } from '@/composables/useDeliveryOptions';
-import { useEventBusAlerts } from '@/composables/useEventBusAlerts';
-import { useGlobalContext } from '@/composables/context/useGlobalContext';
+import PsAlerts from '@/plug-n-play/prestashop/PsAlerts.vue';
+import {contextProps} from '@/composables/props/contextProps';
+import {defineComponent} from 'vue';
+import {deliveryOptionsEventBus} from '@/data/eventBus/DeliveryOptionsEventBus';
+import {useDeliveryOptions} from '@/composables/useDeliveryOptions';
+import {useEventBusAlerts} from '@/composables/useEventBusAlerts';
+import {useGlobalContext} from '@/composables/context/useGlobalContext';
 
 export default defineComponent({
   name: 'DeliveryOptions',
-  components: { PsAlerts, LoaderOverlay },
+  components: {PsAlerts, LoaderOverlay},
   props: {
     ...contextProps,
   },
