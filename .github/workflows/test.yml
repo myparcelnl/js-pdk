@@ -1,0 +1,12 @@
+name: 'Run tests'
+
+on:
+  workflow_call:
+
+jobs:
+  unit:
+    name: 'Run unit tests'
+    runs-on: ubuntu-20.04
+    steps:
+      - run: actions/checkout@v3
+
