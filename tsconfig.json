@@ -1,14 +1,21 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.config.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.vitest.json"
-    }
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": [
+      "node",
+      "vite/client"
+    ]
+  },
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.vue",
+    "types/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "dist",
+    "cypress/**/*"
   ]
 }

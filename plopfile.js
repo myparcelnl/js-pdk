@@ -21,12 +21,12 @@ module.exports = (plop) => {
       return [
         {
           type: 'add',
-          path: 'src/components/{{ path }}{{kebabCase name}}/{{ pascalCase name }}.vue',
+          path: 'packages/core/components/{{ path }}{{kebabCase name}}/{{ pascalCase name }}.vue',
           templateFile: 'plop-templates/Component.vue.hbs',
         },
         {
           type: 'add',
-          path: 'src/components/{{ path }}{{ kebabCase name }}/{{ pascalCase name}}.spec.ts',
+          path: 'packages/core/components/{{ path }}{{ kebabCase name }}/{{ pascalCase name}}.spec.ts',
           templateFile: 'plop-templates/Component.spec.hbs',
         },
       ];
