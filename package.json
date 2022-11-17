@@ -33,19 +33,19 @@
     "ws:vite:typecheck": "cd $0 && vue-tsc --noEmit",
     "ws:vite:watch": "cd $0 && vite build --mode development --watch"
   },
-  "nodemonConfig": {
-    "ext": "ts,vue,tsx",
-    "watch": [
-      "apps",
-      "libs"
-    ],
-    "ignore": [
-      "**/lib/**"
-    ]
-  },
   "lint-staged": {
     "*.{ts,vue}": "eslint --fix",
     "package.json": "npx sort-package-json"
+  },
+  "nodemonConfig": {
+    "ext": "ts,vue,tsx",
+    "ignore": [
+      "**/lib/**"
+    ],
+    "watch": [
+      "apps",
+      "libs"
+    ]
   },
   "prettier": "@myparcel/prettier-config",
   "devDependencies": {
@@ -63,8 +63,5 @@
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2"
   },
-  "packageManager": "yarn@3.2.4",
-  "resolutions": {
-    "@myparcel/sdk": "portal:/Users/edie/Sites/myparcel/js-sdk"
-  }
+  "packageManager": "yarn@3.2.4"
 }

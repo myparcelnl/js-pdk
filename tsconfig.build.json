@@ -6,7 +6,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "lib": [
-      "ESNext"
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
     ],
     "module": "ESNext",
     "moduleResolution": "Node",

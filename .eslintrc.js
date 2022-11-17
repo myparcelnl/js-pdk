@@ -23,7 +23,7 @@ module.exports = {
       extends: '@myparcel-eslint/eslint-config-prettier-typescript',
       parserOptions: {
         tsconfigRootDir: __dirname,
-        project: ['./tsconfig.base.json'],
+        project: ['./tsconfig.build.json'],
         extraFileExtensions: ['.vue'],
       },
       rules: {

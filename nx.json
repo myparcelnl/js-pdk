@@ -31,7 +31,7 @@
       "!{projectRoot}/lib",
       "{projectRoot}/**/*",
       "{workspaceRoot}/package.json",
-      "{workspaceRoot}/tsconfig.base.json"
+      "{workspaceRoot}/tsconfig.build.json"
     ]
   },
   "targetDefaults": {

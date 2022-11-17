@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.build.json",
+  "references": [
+    {
+      "path": "./component-tests/tsconfig.build.json"
+    },
+    {
+      "path": "./core/tsconfig.build.json"
+    },
+    {
+      "path": "./shared/tsconfig.build.json"
+    },
+    {
+      "path": "./test-unit/tsconfig.build.json"
+    }
+  ]
+}

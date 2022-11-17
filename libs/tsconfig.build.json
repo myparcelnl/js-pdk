@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.build.json",
+  "references": [
+    {
+      "path": "./backend/tsconfig.build.json"
+    },
+    {
+      "path": "./build/tsconfig.build.json"
+    },
+    {
+      "path": "./common/tsconfig.build.json"
+    },
+    {
+      "path": "./frontend/tsconfig.build.json"
+    }
+  ]
+}

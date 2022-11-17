@@ -47,10 +47,12 @@ module.exports = (plop) => {
       },
       {
         type: 'add',
-        path: '{{ kind }}s/{{ category }}/{{ kebabCase name }}/tsconfig.json',
+        path: '{{ kind }}s/{{ category }}/{{ kebabCase name }}/tsconfig.build.json',
         template: `{
-  "extends": "../tsconfig.json",
-  "include": ["./src/**/*"]
+  "extends": "../tsconfig.build.json",
+  "include": [
+    "./src/**/*"
+  ]
 }
 `,
       },

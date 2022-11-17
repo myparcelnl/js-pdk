@@ -318,6 +318,7 @@ __metadata:
     typescript: ^4.9.3
     vite: ^3.2.4
     vite-plugin-banner: ^0.6.1
+    vite-plugin-custom-tsconfig: ^1.0.1
     vite-plugin-dts: ^1.7.1
   languageName: unknown
   linkType: soft
@@ -6344,6 +6345,13 @@ __metadata:
   version: 0.6.1
   resolution: "vite-plugin-banner@npm:0.6.1"
   checksum: 10103a0614778f5c74a631db0a9fcf7a0495498796de5a8f615b668dddf03ab7bcfbf993de4c98e4cd096aa4094d0df0b0ca7ba10ead7ff2b241687754d4b51c
+  languageName: node
+  linkType: hard
+
+"vite-plugin-custom-tsconfig@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "vite-plugin-custom-tsconfig@npm:1.0.1"
+  checksum: aa44f015efdce020ff3db438d541cf42173702ec34c71add002feea79617ca563d1dd4ce36436222e5c5324c901f0b2d2ef1b341495ba4af6cc22650b5cb92f0
   languageName: node
   linkType: hard
 

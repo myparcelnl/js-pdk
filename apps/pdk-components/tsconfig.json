@@ -1,6 +1,0 @@
-{
-  "extends": "../../libs/frontend/tsconfig.json",
-  "include": [
-    "./src/**/*"
-  ]
-}
