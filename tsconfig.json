@@ -1,21 +1,28 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "types": [
-      "node",
-      "vite/client"
-    ]
-  },
-  "include": [
-    "packages/**/*.ts",
-    "packages/**/*.vue",
-    "types/**/*.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "lib",
-    "dist",
-    "cypress/**/*"
-  ]
+    "paths": {
+      "@myparcel/pdk-backend": [
+        "./libs/backend/core/src"
+      ],
+      "@myparcel-pdk/common": [
+        "./libs/common/src"
+      ],
+      "@myparcel/pdk-frontend": [
+        "./apps/pdk-frontend/src"
+      ],
+      "@myparcel/pdk-components": [
+        "./apps/pdk-components/src"
+      ],
+      "@myparcel-pdk/frontend-*": [
+        "./libs/frontend/*/src"
+      ],
+      "@myparcel-pdk/backend-*": [
+        "./libs/backend/*/src"
+      ],
+      "@myparcel-pdk/build-*": [
+        "./libs/build/*/src"
+      ]
+    }
+  }
 }

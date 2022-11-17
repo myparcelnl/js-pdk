@@ -1,0 +1,23 @@
+{
+  "name": "@myparcel-pdk/{{ category }}-{{ kebabCase name }}",
+  "version": "1.0.0-alpha.0",
+  "license": "MIT",
+  "type": "module",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "run ws:{{ build }}:build \"$(pwd)\"",
+    "build:dev": "run ws:{{ build }}:build:dev \"$(pwd)\"",
+    "buildOnly": "run ws:{{ build }}:buildOnly \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "serve": "run ws:{{ build }}:serve \"$(pwd)\""
+  },
+  "dependencies": {
+    "@myparcel-pdk/{{ category }}-shared": "workspace:*"
+  },
+  "devDependencies": {
+    "{{ build }}": "*"
+  }
+}

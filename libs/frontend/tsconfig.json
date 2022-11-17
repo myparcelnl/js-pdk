@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ]
+  },
+  "references": [
+    { "path": "./actions/tsconfig.json" },
+    { "path": "../../apps/pdk-components/tsconfig.json" },
+    { "path": "./context/tsconfig.json" },
+    { "path": "./core/tsconfig.json" },
+    { "path": "../../apps/frontend-demo/tsconfig.json" },
+    { "path": "./test-e2e/tsconfig.json" },
+    { "path": "./modal/tsconfig.json" },
+    { "path": "./sdk/tsconfig.json" },
+    { "path": "./shared/tsconfig.json" },
+  ]
+}

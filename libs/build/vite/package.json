@@ -1,0 +1,28 @@
+{
+  "name": "@myparcel-pdk/build-vite",
+  "version": "1.0.0-alpha.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "run ws:tsup:build \"$(pwd)\"",
+    "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
+    "buildOnly": "run ws:tsup:buildOnly \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "serve": "run ws:tsup:serve \"$(pwd)\"",
+    "watch": "run ws:tsup:watch \"$(pwd)\""
+  },
+  "dependencies": {
+    "vite": "^3.2.4",
+    "vite-plugin-banner": "^0.6.1",
+    "vite-plugin-dts": "^1.7.1"
+  },
+  "devDependencies": {
+    "@myparcel-pdk/build-tsup": "workspace:*",
+    "@myparcel/ts-utils": "^1.0.0",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.3"
+  },
+  "private": true
+}

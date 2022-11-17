@@ -1,1 +1,0 @@
-var e=(E=>(E.CREATE_RETURN_LABEL="createReturnLabel",E.LABEL_DELETE="delete",E.LABEL_PRINT="print",E.LABEL_REFRESH="refresh",E.ORDER_EXPORT="export",E.ORDER_EXPORT_PRINT="exportPrint",E.ORDER_GET_CONTEXT="getOrderDataContext",E.ORDER_PRINT="print",E.ORDER_REFRESH_LABELS="refreshLabels",E.ORDER_SAVE_DELIVERY_OPTIONS="saveDeliveryOptions",E))(e||{});export{e};

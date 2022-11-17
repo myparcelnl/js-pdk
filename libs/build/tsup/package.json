@@ -1,0 +1,23 @@
+{
+  "name": "@myparcel-pdk/build-tsup",
+  "version": "1.0.0-alpha.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "run ws:tsup:build \"$(pwd)\"",
+    "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
+    "buildOnly": "run ws:tsup:buildOnly \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "serve": "run ws:tsup:serve \"$(pwd)\"",
+    "watch": "run ws:tsup:watch \"$(pwd)\""
+  },
+  "dependencies": {
+    "tsup": "^6.5.0"
+  },
+  "devDependencies": {
+    "@myparcel/ts-utils": "^1.0.0"
+  },
+  "private": true
+}

@@ -1,0 +1,43 @@
+{
+  "name": "@myparcel-pdk/frontend-core",
+  "version": "1.0.0-alpha.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "run ws:vite:build \"$(pwd)\"",
+    "build:dev": "run ws:vite:build:dev \"$(pwd)\"",
+    "buildOnly": "run ws:vite:buildOnly \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "serve": "run ws:vite:serve \"$(pwd)\"",
+    "watch": "run ws:vite:watch \"$(pwd)\""
+  },
+  "prettier": "@myparcel/prettier-config",
+  "dependencies": {
+    "@myparcel-pdk/frontend-shared": "workspace:*",
+    "@myparcel/sdk": "^2.8.1",
+    "@myparcel/ts-utils": "^1.0.0",
+    "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
+    "@tanstack/vue-query": "^4.17.0",
+    "@types/lodash-es": "^4.17.6",
+    "@vueuse/core": "^9.3.0",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "lodash-unified": "^1.0.3",
+    "pinia": "^2.0.23",
+    "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "@myparcel-pdk/build-vite": "workspace:*",
+    "@vitejs/plugin-vue": "^3.2.0",
+    "@vue/test-utils": "^2.2.3",
+    "vite": "^3.2.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
