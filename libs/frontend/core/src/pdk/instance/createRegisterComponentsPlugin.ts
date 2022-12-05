@@ -1,7 +1,7 @@
-import {ComponentMap, PdkComponentName, logError} from '@myparcel-pdk/frontend-shared';
+import {PdkComponentMap, PdkComponentName, logger} from '@myparcel-pdk/frontend-shared';
 import {Plugin} from 'vue';
 
-type RegisterComponentsPlugin = (components: ComponentMap) => Plugin;
+type RegisterComponentsPlugin = (components: PdkComponentMap) => Plugin;
 
 const baseComponents: Record<PdkComponentName, null> = Object.freeze({
   PdkAccordion: null,
@@ -10,17 +10,18 @@ const baseComponents: Record<PdkComponentName, null> = Object.freeze({
   PdkCard: null,
   PdkCheckbox: null,
   PdkDropdownButton: null,
-  PdkDropdownButtonItem: null,
   PdkFormGroup: null,
   PdkIcon: null,
   PdkInput: null,
   PdkModal: null,
   PdkMultiCheckbox: null,
+  PdkNumberInput: null,
   PdkRadio: null,
   PdkSelect: null,
   PdkTable: null,
   PdkTableCol: null,
   PdkTableRow: null,
+  PdkToggle: null,
 });
 
 /**
@@ -31,7 +32,7 @@ export const createRegisterComponentsPlugin: RegisterComponentsPlugin = (compone
     install(app) {
       Object.entries({...baseComponents, ...components}).forEach(([name, component]) => {
         if (!component) {
-          logError(
+          logger.error(
             `Component is missing: ${name}. You must provide your own, or pass DefaultPdk${name} in your config.`,
           );
           return;

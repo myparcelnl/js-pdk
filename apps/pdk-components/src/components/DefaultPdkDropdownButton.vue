@@ -1,31 +1,33 @@
 <template>
   <PdkButton
+    v-for="button in standaloneOptions"
+    :key="button.label"
+    v-bind="button" />
+
+  <PdkButton
     :aria-expanded="toggled"
     :disabled="disabled"
     aria-haspopup="true"
+    :aria-label="translate('toggle_dropdown')"
     @focus="toggled = true"
     @focusout="toggled = false"
     @mouseout="toggled = false"
     @mouseover="toggled = true">
-    <!-- Dropdown button item content. -->
-    <slot><span v-text="translate('toggle_dropdown')" /></slot>
-    <div v-show="toggled">
-      <PdkDropdownButtonItem
-        v-for="(option, index) in options"
-        :key="`${index}_${option.label}`"
-        :icon="option.icon"
-        :variant="option.variant"
-        @click="() => $emit('click', option.action)">
-        {{ translate(option.label) }}
-      </PdkDropdownButtonItem>
-    </div>
   </PdkButton>
+
+  <div v-show="toggled">
+    <PdkButton
+      v-for="(option, index) in dropdownOptions"
+      :key="`${index}_${option.label}`"
+      v-bind="option">
+      {{ translate(option.label) }}
+    </PdkButton>
+  </div>
 </template>
 
 <script lang="ts">
-import {PropType, defineComponent, ref} from 'vue';
-import {DropdownButtonItem} from '@myparcel-pdk/common';
-import {useTranslate} from '@myparcel-pdk/frontend-core';
+import {PropType, computed, defineComponent, ref, toRefs} from 'vue';
+import {PdkDropdownAction, useTranslate} from '@myparcel-pdk/frontend-core';
 
 /**
  * This component is used to render a dropdown button. The dropdown button is a
@@ -46,14 +48,15 @@ export default defineComponent({
      * List of options.
      */
     options: {
-      type: Array as PropType<DropdownButtonItem[]>,
+      type: Array as PropType<PdkDropdownAction[]>,
       default: (): never[] => [],
     },
   },
 
   emits: ['click'],
 
-  setup: () => {
+  setup: (props) => {
+    const propRefs = toRefs(props);
     const toggled = ref(false);
 
     return {
@@ -63,6 +66,9 @@ export default defineComponent({
       },
 
       toggled,
+
+      standaloneOptions: computed(() => propRefs.options.value.filter((option) => option.standalone)),
+      dropdownOptions: computed(() => propRefs.options.value.filter((option) => !option.standalone)),
     };
   },
 });

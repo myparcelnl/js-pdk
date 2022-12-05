@@ -1,6 +1,6 @@
 import {Pinia, createPinia} from 'pinia';
 import {FinalPdkConfiguration} from '../../types';
-import {logDebug} from '@myparcel-pdk/frontend-shared';
+import {logger} from '@myparcel-pdk/frontend-shared';
 
 let store: Pinia;
 let initialized = false;
@@ -16,7 +16,7 @@ export const createStorePlugin: CreateStore = (config) => {
     }
 
     initialized = true;
-    logDebug('Calling store renderer hook');
+    logger.debug('Calling store renderer hook');
     config.onCreateStore(storeContext);
   });
 

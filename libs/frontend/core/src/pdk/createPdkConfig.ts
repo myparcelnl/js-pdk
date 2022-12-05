@@ -1,11 +1,16 @@
 import {DefaultPdkConfiguration, FinalPdkConfiguration, InputPdkConfiguration} from '../types';
+import {LogLevel} from '@myparcel-pdk/frontend-shared';
 import {getElementContext} from '../services';
 import {mergeWith} from 'lodash-unified';
 
 const defaultConfig = Object.freeze<DefaultPdkConfiguration>({
+  logLevel: import.meta.env.PROD ? LogLevel.INFO : LogLevel.DEBUG,
   components: undefined,
   context: undefined,
-  pluginSettings: {},
+  transitions: {
+    notification: undefined,
+    labelCard: undefined,
+  },
 });
 
 /**

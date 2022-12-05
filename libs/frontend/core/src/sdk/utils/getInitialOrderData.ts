@@ -1,13 +1,13 @@
-import {Pdk} from '@myparcel-pdk/frontend-shared';
+import {Plugin} from '@myparcel-pdk/frontend-shared';
 import {useContextStore} from '../../stores';
 
 export const getInitialOrderData = (
   queryKey: readonly [string, string | undefined],
-): undefined | Pdk.PluginModelContextOrderDataContext => {
+): undefined | Plugin.ModelContextOrderDataContext => {
   const contextStore = useContextStore();
-  const order = contextStore.context.orderData?.find(
-    (order: Pdk.PluginModelPdkOrder) => order.externalIdentifier === queryKey[1],
+  const order = contextStore.context.orderData.find(
+    (order: Plugin.ModelPdkOrder) => order.externalIdentifier === queryKey[1],
   );
 
-  return {...order} as Pdk.PluginModelContextOrderDataContext;
+  return {...order} as Plugin.ModelContextOrderDataContext;
 };

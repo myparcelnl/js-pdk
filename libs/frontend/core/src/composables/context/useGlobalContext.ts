@@ -24,7 +24,7 @@ export const useGlobalContext: UseGlobalContext = (contextKey, context?) => {
       // })?.value;
 
       // if (!foundEntry) {
-      //   const localContext = ref<AnyContext>(useInstanceContext(context ?? contextKey));
+      //   const localContext = ref<AnyContext>(useContext(context ?? contextKey));
       //
       //   const createdEntry = computed({
       //     get() {

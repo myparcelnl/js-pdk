@@ -1,11 +1,5 @@
 <template>
-  <PdkCard>
-    <template #header>
-      <h3
-        class="card-header-title"
-        v-text="'MyParcel'" />
-    </template>
-
+  <PdkCard title="single_order_card_title">
     <template #default>
       <ConceptCard />
       <ShipmentsCard />
@@ -14,11 +8,11 @@
 </template>
 
 <script lang="ts">
+import {useContextStore, useQueryStore} from '../../stores';
 import ConceptCard from './ConceptCard.vue';
-import {ContextKey} from '../../types';
 import ShipmentsCard from './ShipmentsCard.vue';
 import {defineComponent} from 'vue';
-import {useInstanceContext} from '../../composables';
+import {useOrderQuery} from '../../composables';
 
 /**
  * The "MyParcel" card in the single order view.
@@ -32,8 +26,29 @@ export default defineComponent({
     ShipmentsCard,
   },
 
-  setup: () => ({
-    context: useInstanceContext(ContextKey.ORDER_DATA as any),
-  }),
+  setup: () => {
+    const order = useOrderQuery();
+    const contextStore = useContextStore();
+    const queryStore = useQueryStore();
+
+    const orderId = order.data.value?.externalIdentifier;
+
+    queryStore.registerOrderQueries(orderId);
+
+    // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // // @ts-expect-error
+    // queryStore.queryClient = useQueryClient();
+    // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // // @ts-expect-error
+    // queryStore.updateOrders = useUpdateOrdersQuery();
+    // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // // @ts-expect-error
+    // queryStore.exportOrders = useExportOrdersQuery();
+    // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // // @ts-expect-error
+    // queryStore.order = useOrderQuery();
+
+    contextStore.context.orderIdentifier = orderId;
+  },
 });
 </script>

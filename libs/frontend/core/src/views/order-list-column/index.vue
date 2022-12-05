@@ -2,24 +2,21 @@
   <div>
     <TransitionGroup
       appear
-      name="mypa__fade">
+      :name="pdkConfig?.transitions?.labelCard">
       <LabelCard
-        v-for="shipment in order?.shipments"
+        v-for="shipment in order?.shipments ?? []"
         :key="`${order?.externalIdentifier}_shipment_${shipment.id}`"
         :shipment="shipment" />
     </TransitionGroup>
 
     <div class="btn-group">
-      <PdkButton
-        variant="outline-secondary"
-        @click="openModal">
+      <PdkButton @click="openModal">
         <PdkIcon icon="label" />
         {{ translate('action_create') }} #{{ externalIdentifier }}
       </PdkButton>
 
       <PdkButton
         v-if="order?.shipments.length"
-        variant="primary"
         @click="print">
         <PdkIcon icon="print" />
         {{ translate('action_print') }}
@@ -29,13 +26,10 @@
 </template>
 
 <script lang="ts">
+import {ModalKey, useModalStore, useOrderQuery, usePdkConfig, useTranslate} from '../../';
 import {computed, defineComponent, inject} from 'vue';
 import LabelCard from './LabelCard.vue';
-import {ModalKey} from '../../types';
-import {Pdk} from '@myparcel-pdk/frontend-shared';
-import {useModalStore} from '../../stores';
-import {useOrder} from '../../sdk';
-import {useTranslate} from '../../composables';
+import {Plugin} from '@myparcel-pdk/common';
 
 /**
  * The "Labels" column in the orders list.
@@ -49,24 +43,15 @@ export default defineComponent({
   },
 
   setup: () => {
-    const orderQuery = useOrder();
-
-    console.log(orderQuery, orderQuery.data);
+    const query = useOrderQuery();
+    const pdkConfig = usePdkConfig();
 
     const id = inject('id');
-    console.log(id);
 
-    try {
-      const modalStore = useModalStore();
-      console.log(modalStore);
-    } catch (e) {
-      console.log(e);
-    }
+    // const query = useOrderQuery();
 
-    // const orderQuery = useOrder();
-
-    const order = computed<undefined | Pdk.PluginModelContextOrderDataContext>(() => {
-      return orderQuery.data.value;
+    const order = computed<undefined | Plugin.ModelContextOrderDataContext>(() => {
+      return query.data.value;
     });
 
     const externalIdentifier = computed(() => {
@@ -74,20 +59,21 @@ export default defineComponent({
     });
 
     return {
+      id,
       externalIdentifier,
       order,
-      orderQuery,
+      query,
+      translate: useTranslate(),
+      pdkConfig,
 
       openModal() {
         const modalStore = useModalStore();
 
-        modalStore.open(ModalKey.SHIPMENT_OPTIONS, externalIdentifier.value as any);
+        modalStore.open(ModalKey.SHIPMENT_OPTIONS, externalIdentifier.value);
       },
 
-      id,
-      translate: useTranslate(),
       print: async (): Promise<void> => {
-        // await executeOrderAction(PdkAction.LABEL_PRINT, externalIdentifier ?? undefined);
+        // await executeOrderAction(PdkAction.SHIPMENT_PRINT, externalIdentifier ?? undefined);
       },
     };
   },

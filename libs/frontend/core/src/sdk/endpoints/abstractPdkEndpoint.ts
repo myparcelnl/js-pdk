@@ -1,18 +1,55 @@
-import {AbstractEndpoint, CreateDefinition} from '@myparcel/sdk';
-import {EndpointMap, EndpointName, EndpointResponse} from '@myparcel-pdk/frontend-shared';
+import {EndpointName, Plugin} from '@myparcel-pdk/common';
+import {AbstractEndpoint} from '@myparcel/sdk';
+import {RecursivePartial} from '@myparcel/ts-utils';
 
-type EndpointMapDefinition<K extends EndpointName> = CreateDefinition<
-  {
-    name: K;
-    headers: EndpointMap[K]['headers'];
-    parameters: EndpointMap[K]['parameters'];
-  } & EndpointResponse<K>
->;
+export type GetOrderDefinition = {
+  name: EndpointName.GET_ORDERS;
+  response: Plugin.ModelContextOrderDataContext[];
+  parameters: {
+    orderIds: string;
+  };
+};
 
-export abstract class AbstractPdkEndpoint<E extends EndpointName = EndpointName> extends AbstractEndpoint<
-  EndpointMapDefinition<E>
+export type ExportOrderDefinition = Omit<UpdateOrderDefinition, 'parameters' | 'name'> & {
+  name: EndpointName.EXPORT_ORDERS;
+  parameters: {
+    orderIds: string;
+    print?: string;
+  };
+};
+
+export type UpdateOrderDefinition = {
+  name: EndpointName.UPDATE_ORDERS;
+  body: RecursivePartial<Plugin.ModelContextOrderDataContext>;
+  response: Plugin.ModelContextOrderDataContext[];
+  parameters: {
+    orderIds: string;
+  };
+};
+
+export type RefreshShipmentsDefinition = {
+  name: EndpointName.REFRESH_SHIPMENTS;
+  body: RecursivePartial<Plugin.ModelContextOrderDataContext>;
+  response: Plugin.ModelContextOrderDataContext[];
+  parameters: {
+    shipmentIds: string;
+  };
+};
+
+type Definition<N extends EndpointName> = N extends EndpointName.GET_ORDERS
+  ? GetOrderDefinition
+  : N extends EndpointName.EXPORT_ORDERS
+  ? ExportOrderDefinition
+  : N extends EndpointName.UPDATE_ORDERS
+  ? UpdateOrderDefinition
+  : N extends EndpointName.REFRESH_SHIPMENTS
+  ? RefreshShipmentsDefinition
+  : never;
+
+export type PdkEndpointDefinition<N extends EndpointName> = Omit<Definition<N>, 'name' | 'response'>;
+
+export abstract class AbstractPdkEndpoint<N extends EndpointName = EndpointName> extends AbstractEndpoint<
+  Definition<N>
 > {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  public readonly name: E;
+  public declare readonly name: N;
 }

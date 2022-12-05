@@ -1,13 +1,12 @@
 <template>
   <PdkModal
-    id="printOptions"
+    id="pdk-modal-printOptions"
     title="print_options_title">
-    <PrintOptionsForm />
+    <!--    <PrintOptionsForm /> -->
   </PdkModal>
 </template>
 
 <script lang="ts">
-import PrintOptionsForm from '@myparcel-pdk/frontend'components/forms/PrintOptionsForm.vue';
 import {defineComponent} from 'vue';
 
 /**
@@ -15,8 +14,5 @@ import {defineComponent} from 'vue';
  */
 export default defineComponent({
   name: 'PrintOptionsModal',
-  components: {
-    PrintOptionsForm,
-  },
 });
 </script>

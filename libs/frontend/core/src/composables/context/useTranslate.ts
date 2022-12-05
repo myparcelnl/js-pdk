@@ -1,4 +1,4 @@
-import {decodeHtmlEntities, logWarning} from '@myparcel-pdk/frontend-shared';
+import {decodeHtmlEntities, logger} from '@myparcel-pdk/frontend-shared';
 import {useContextStore} from '../../stores';
 
 type UseTranslate = () => (key: string) => string;
@@ -20,11 +20,11 @@ const memoizedTranslate = (key: string) => {
   let translated = key;
 
   const contextStore = useContextStore();
-  const translations = contextStore?.context?.global?.translations as unknown as Record<string, string>;
+  const translations = contextStore?.context?.global?.translations;
 
   if (!translations && !warned) {
     // eslint-disable-next-line no-console
-    logWarning('GlobalContext.translations is missing.');
+    logger.warn('GlobalContext.translations is missing.');
     warned = true;
   }
 
@@ -36,7 +36,7 @@ const memoizedTranslate = (key: string) => {
     translated = cache[key];
   } else {
     // eslint-disable-next-line no-console
-    logWarning(`Missing translation: ${key}`);
+    logger.warn(`Missing translation: ${key}`);
   }
 
   return translated;

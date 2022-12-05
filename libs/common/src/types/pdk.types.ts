@@ -7,17 +7,19 @@ export type PdkComponentName =
   | 'PdkCard'
   | 'PdkCheckbox'
   | 'PdkDropdownButton'
-  | 'PdkDropdownButtonItem'
   | 'PdkFormGroup'
   | 'PdkIcon'
+  | 'PdkImage'
   | 'PdkInput'
   | 'PdkModal'
   | 'PdkMultiCheckbox'
+  | 'PdkNumberInput'
   | 'PdkRadio'
   | 'PdkSelect'
   | 'PdkTable'
   | 'PdkTableCol'
-  | 'PdkTableRow';
+  | 'PdkTableRow'
+  | 'PdkToggle';
 
 export type PdkRenderComponent =
   | 'LoadingPage'
@@ -27,7 +29,7 @@ export type PdkRenderComponent =
   | 'OrderCard'
   | 'OrderListColumn';
 
-export type ComponentMap = {
+export type PdkComponentMap = {
   [K in PdkComponentName]: Component;
 };
 

@@ -5,19 +5,9 @@
 </template>
 
 <script lang="ts">
+import {PdkIcon} from '@myparcel-pdk/frontend-core';
 import {defineComponent} from 'vue';
-
-const ICONS: string[] = [
-  'add',
-  'save',
-  'delete',
-  'edit',
-  'close',
-  'arrow-down',
-  'arrow-up',
-  'arrow-left',
-  'arrow-right',
-];
+import {isEnumValue} from '@myparcel/ts-utils';
 
 /**
  * A simple icon component.
@@ -25,23 +15,10 @@ const ICONS: string[] = [
 export default defineComponent({
   name: 'DefaultPdkIcon',
   props: {
-    /**
-     * @example
-     *  Possible values:
-     *   - `add`
-     *   - `save`
-     *   - `delete`
-     *   - `edit`
-     *   - `close`
-     *   - `arrow-down`
-     *   - `arrow-up`
-     *   - `arrow-left`
-     *   - `arrow-right`
-     */
     icon: {
       type: String,
       required: true,
-      validator: (value: string) => ICONS.includes(value),
+      validator: (value: string) => isEnumValue(value, PdkIcon),
     },
   },
 });

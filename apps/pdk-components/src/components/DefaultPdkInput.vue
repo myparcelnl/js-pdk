@@ -27,7 +27,7 @@ export default defineComponent({
     },
 
     /**
-     * Input type.
+     * ExportOrderInput type.
      */
     type: {
       type: String,

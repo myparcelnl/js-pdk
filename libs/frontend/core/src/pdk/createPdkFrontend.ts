@@ -1,9 +1,10 @@
-import {logError, logSuccess} from '@myparcel-pdk/frontend-shared';
 import {GlobalPdkFrontend} from './GlobalPdkFrontend';
 import {InputPdkConfiguration} from '../types';
 import {createPdkConfig} from './createPdkConfig';
+import {isDef} from '@vueuse/core';
 import {isOfType} from '@myparcel/ts-utils';
-import {sendBootEvent} from './sendBootEvent';
+import {logger} from '@myparcel-pdk/frontend-shared';
+import {sendBootEvent} from './utils/sendBootEvent';
 
 export type CreatePdkFrontend = (configuration?: InputPdkConfiguration) => undefined | GlobalPdkFrontend;
 
@@ -12,13 +13,17 @@ export const createPdkFrontend: CreatePdkFrontend = (configuration?) => {
     const config = createPdkConfig(configuration);
     const pdkFrontend = new GlobalPdkFrontend(config);
 
+    if (isDef(config.logLevel)) {
+      logger.level = config.logLevel;
+    }
+
     sendBootEvent(pdkFrontend);
-    logSuccess('Created PDK core!', config.context);
+    logger.debug('Created PDK core!', config.context);
 
     return pdkFrontend;
   } catch (e) {
     if (isOfType<Error>(e, 'message')) {
-      logError('Failed to create PDK core:', e.message);
+      logger.error('Failed to create PDK core:', e.message);
       return;
     }
 

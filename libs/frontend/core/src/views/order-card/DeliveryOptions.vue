@@ -17,13 +17,13 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-import {useDeliveryOptions} from '../../composables/useDeliveryOptions';
+import {useDeliveryOptions} from '../../';
 
 export default defineComponent({
   name: 'DeliveryOptions',
 
   setup: () => {
-    // const contextData = useGlobalContext(ContextKey.ORDER_DATA);
+    // const contextData = useGlobalContext(ContextKey.GET_ORDERS);
     // const deliveryOptionsEventBus = useDeliveryOptionsEventBus();
 
     const onUpdate = (event: CustomEvent): void => {

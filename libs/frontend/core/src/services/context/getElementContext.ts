@@ -1,5 +1,5 @@
 import {PdkContextObject} from '../../types';
-import {logWarning} from '@myparcel-pdk/frontend-shared';
+import {logger} from '@myparcel-pdk/frontend-shared';
 
 export const getElementContext = (selector: string): Partial<PdkContextObject> => {
   const element = document.querySelector(selector);
@@ -11,6 +11,6 @@ export const getElementContext = (selector: string): Partial<PdkContextObject> =
     return parsedContext;
   }
 
-  logWarning(`No context found in ${selector}`);
+  logger.info(`No context found in ${selector}`);
   return {};
 };

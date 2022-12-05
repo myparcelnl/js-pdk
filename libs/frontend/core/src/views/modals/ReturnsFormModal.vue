@@ -4,14 +4,13 @@
     save-label="create"
     title="returns_form_title">
     <template #default="data">
-      <ReturnsForm v-bind="data" />
+      <!--      <ReturnsForm v-bind="data" /> -->
     </template>
   </PdkModal>
 </template>
 
 <script lang="ts">
 import {ContextKey} from '../../types';
-import ReturnsForm from '../../components/ReturnsForm.vue';
 import {defineComponent} from 'vue';
 
 /**
@@ -20,10 +19,6 @@ import {defineComponent} from 'vue';
  */
 export default defineComponent({
   name: 'ReturnsFormModal',
-  components: {
-    ReturnsForm,
-  },
-
   setup: () => {
     return {
       contextKey: ContextKey,

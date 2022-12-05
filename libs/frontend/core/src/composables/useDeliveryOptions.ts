@@ -1,6 +1,6 @@
 import {Ref, onBeforeUnmount, onMounted, ref} from 'vue';
 import {isOfType} from '@myparcel/ts-utils';
-import {useOrder} from '../sdk';
+import {useOrderQuery} from '../pdk';
 
 enum Events {
   UPDATED_DELIVERY_OPTIONS = 'myparcel_updated_delivery_options',
@@ -17,7 +17,7 @@ type UseDeliveryOptions = (listener: (event: CustomEvent) => void) => {
  */
 export const useDeliveryOptions: UseDeliveryOptions = (listener) => {
   const htmlContent = ref<string | null>(null);
-  const orderQuery = useOrder();
+  const orderQuery = useOrderQuery();
 
   const loaded = ref(false);
 

@@ -16,8 +16,9 @@
 </template>
 
 <script lang="ts">
-import {AddCarrierValue, ContextKey} from '@myparcel-pdk/frontend-shared';
 import {defineComponent, ref} from 'vue';
+import {AddCarrierValue} from '@myparcel-pdk/frontend-shared';
+import {ContextKey} from '../../types';
 
 export default defineComponent({
   name: 'AddCarrierModal',

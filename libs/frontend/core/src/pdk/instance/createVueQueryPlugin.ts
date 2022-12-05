@@ -1,54 +1,40 @@
-import {QueryClient, VueQueryPlugin, VueQueryPluginOptions} from '@tanstack/vue-query';
+import {QueryClient, VueQueryPlugin} from '@tanstack/vue-query';
+import {NotificationCategory} from '../../types';
 import {Plugin} from 'vue';
+import {addErrorToNotifications} from '../../services';
 
 let queryClient: QueryClient;
+
+// eslint-disable-next-line max-lines-per-function
+const createQueryClient = (): QueryClient =>
+  new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchInterval: false,
+        refetchOnMount: false,
+        refetchOnReconnect: false,
+        refetchOnWindowFocus: false,
+        staleTime: Infinity,
+        onError(error) {
+          addErrorToNotifications(error, NotificationCategory.API);
+        },
+      },
+
+      mutations: {
+        retry: false,
+        onError(error) {
+          addErrorToNotifications(error, NotificationCategory.API);
+        },
+      },
+    },
+  });
 
 export const createVueQueryPlugin = (): Plugin => {
   return {
     install(app) {
-      queryClient ??= new QueryClient();
+      queryClient ??= createQueryClient();
 
-      const vueQueryPluginOptions: VueQueryPluginOptions = {
-        queryClient,
-        queryClientConfig: {
-          defaultOptions: {
-            queries: {
-              staleTime: Infinity,
-              refetchOnWindowFocus: false,
-            },
-
-            mutations: {
-              onError(error) {
-                console.log(error);
-
-                // if (isOfType<ApiException>(error, 'data')) {
-                //   const store = useNotificationStore();
-                //
-                //   store.add({
-                //     variant: 'danger',
-                //     title: error.message,
-                //     content: error.data.errors.map((error) => `${error.title} (code: ${error.code})`),
-                //   });
-                // }
-              },
-
-              onSettled(input, error, response) {
-                console.log('onSettled', input, error, response);
-              },
-
-              onSuccess(input, response) {
-                console.log('onSuccess', input, response);
-              },
-
-              onMutate(response) {
-                console.log('onMutate', response);
-              },
-            },
-          },
-        },
-      };
-
-      app.use(VueQueryPlugin, vueQueryPluginOptions);
+      app.use(VueQueryPlugin, {queryClient});
     },
   };
 };

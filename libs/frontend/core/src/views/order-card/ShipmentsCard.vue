@@ -25,10 +25,11 @@
 </template>
 
 <script lang="ts">
-import {PdkAction, deleteAction, printAction, refreshAction} from '../../data';
+import {PdkAction, deleteAction, shipmentPrintAction, shipmentRefreshAction} from '../../data';
 import {defineComponent, ref} from 'vue';
 import ShipmentLabels from './ShipmentLabels.vue';
 import {useTranslate} from '../../composables';
+import {doAction} from '../../pdk';
 
 export default defineComponent({
   name: 'ShipmentsCard',
@@ -45,10 +46,10 @@ export default defineComponent({
         selectedLabels.value = labels;
       },
 
-      bulkActionDropdownItems: [refreshAction, printAction, deleteAction],
+      bulkActionDropdownItems: [shipmentRefreshAction, shipmentPrintAction, deleteAction],
 
-      async onBulkAction(action: PdkAction): Promise<void> {
-        // await actions.execute(action);
+      async onBulkAction<A extends PdkAction.SHIPMENT_REFRESH>(action: A): Promise<void> {
+        await doAction<A>(action, {shipmentIds: selectedLabels.value});
       },
     };
   },

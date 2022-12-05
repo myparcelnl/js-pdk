@@ -1,7 +1,7 @@
 import {CARRIERS, DELIVERY_TYPES} from '@myparcel/sdk';
-import {Pdk} from '@myparcel/pdk-frontend';
+import {Plugin} from '@myparcel-pdk/common/src/types/php-pdk.types';
 
-export const useStaticOrderData = (): Pdk.PluginModelContextOrderDataContext[] => [
+export const useStaticOrderData = (): Plugin.ModelContextOrderDataContext[] => [
   {
     externalIdentifier: '3',
     customsDeclaration: {

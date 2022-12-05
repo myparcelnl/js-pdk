@@ -34,9 +34,6 @@ export const executePdkComponentTest = (name: PdkComponentName, component: Omit<
     // case 'PdkDropdownButton':
     //   break;
 
-    // case 'PdkDropdownButtonItem':
-    //   break;
-
     // case 'PdkFormGroup':
     //   break;
 

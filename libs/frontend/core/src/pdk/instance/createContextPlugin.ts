@@ -24,8 +24,6 @@ export const createContextPlugin = (
     }
 
     app.provide('id', `${componentName}_${elementId}`);
-    app.provide(INJECT_PDK_INSTANCE, {component: componentName, context});
-
-    console.log(INJECT_PDK_INSTANCE, {component: componentName, context});
+    app.provide(INJECT_PDK_INSTANCE, {component: componentName, context, config});
   },
 });

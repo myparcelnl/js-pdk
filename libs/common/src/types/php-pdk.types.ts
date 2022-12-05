@@ -1,135 +1,24 @@
+/* eslint-disable @typescript-eslint/no-empty-interface,@typescript-eslint/no-namespace,@typescript-eslint/naming-convention */
 // noinspection JSUnusedGlobalSymbols
-/* eslint-disable @typescript-eslint/no-empty-interface */
 
-export namespace Pdk {
-  export interface Account {}
+export namespace Account {
+  export type GetAccountsRequest = Base.Request;
 
-  export interface AccountAccountRepository extends BaseApiRepository {
-    api: unknown;
-    storage: unknown;
-    storageHashMap: unknown;
-  }
+  export type GetCarrierOptionsRequest = Base.Request;
 
-  export interface AccountCarrierOptionsRepository extends BaseApiRepository {
-    api: unknown;
-    storage: unknown;
-    storageHashMap: unknown;
-  }
+  export type GetShopCarrierConfigurationRequest = Base.Request;
 
-  export interface AccountShopCarrierConfigurationRepository extends BaseApiRepository {
-    api: unknown;
-    storage: unknown;
-    storageHashMap: unknown;
-  }
+  export type GetShopCarrierConfigurationsRequest = Base.Request;
 
-  export interface AccountShopRepository extends BaseApiRepository {
-    api: unknown;
-    storage: unknown;
-    storageHashMap: unknown;
-  }
+  export type GetShopRequest = Base.Request;
 
-  export interface AccountGetAccountsRequest extends BaseRequest {}
+  export type GetShopsRequest = Base.Request;
+}
 
-  export interface AccountGetCarrierOptionsRequest extends BaseRequest {
-    shopId: unknown;
-  }
+export namespace Base {
+  export type Model = Record<string, unknown>;
 
-  export interface AccountGetShopCarrierConfigurationRequest extends BaseRequest {
-    body: unknown;
-    carrier: unknown;
-    headers: unknown;
-    method: unknown;
-    parameters: unknown;
-    path: unknown;
-    shopId: unknown;
-  }
-
-  export interface AccountGetShopCarrierConfigurationsRequest extends BaseRequest {
-    shopId: unknown;
-  }
-
-  export interface AccountGetShopRequest extends BaseRequest {
-    shopId: unknown;
-  }
-
-  export interface AccountGetShopsRequest extends BaseRequest {}
-
-  export interface AccountResponseGetAccountsResponseWithBody extends ApiResponseAbstractApiResponseWithBody {
-    account: unknown;
-  }
-
-  export interface AccountResponseGetCarrierOptionsResponseWithBody extends ApiResponseAbstractApiResponseWithBody {
-    options: unknown;
-  }
-
-  export interface AccountResponseGetShopCarrierConfigurationsResponseWithBody
-    extends ApiResponseAbstractApiResponseWithBody {
-    configurations: unknown;
-  }
-
-  export interface AccountResponseGetShopsResponseWithBody extends ApiResponseAbstractApiResponseWithBody {
-    shop: unknown;
-  }
-
-  export type ApiApiException = Exception;
-
-  export type ApiPdkEndpointException = Exception;
-
-  export interface ApiAbstractApiResponse {
-    errors: unknown;
-    response: unknown;
-  }
-
-  export interface ApiResponseAbstractApiResponseWithBody extends ApiAbstractApiResponse {
-    body: unknown;
-  }
-
-  export interface ApiClientResponse {
-    body: unknown;
-    statusCode: unknown;
-  }
-
-  interface HttpFoundation {}
-
-  export interface ApiJsonResponse extends HttpFoundation {
-    charset: unknown;
-    content: unknown;
-    statusCode: unknown;
-    statusText: unknown;
-    version: unknown;
-  }
-
-  export interface ApiAbstractApiService {
-    baseUrl: unknown;
-    clientAdapter: unknown;
-  }
-
-  export interface ApiMyParcelApiService extends ApiAbstractApiService {
-    apiKey: unknown;
-    baseUrl: unknown;
-    clientAdapter: unknown;
-    userAgent: unknown;
-  }
-
-  export interface Base {
-    cache: unknown;
-  }
-
-  export interface Exception {}
-
-  export type BaseInvalidCastException = Exception;
-
-  export type BaseInvalidFacadeException = Exception;
-
-  export interface Base {
-    pdk: unknown;
-  }
-
-  export interface BasePdkFactory {}
-
-  export interface BaseHttpResponseCodes {}
-
-  export interface BaseModelAddress extends BaseModel {
+  export type ModelAddress = {
     boxNumber?: string;
     cc?: string;
     city?: string;
@@ -141,413 +30,358 @@ export namespace Pdk {
     state?: string;
     street?: string;
     streetAdditionalInfo?: string;
-  }
+  };
 
-  export interface BaseModelContactDetails extends BaseModelAddress {
-    cc?: string;
-    city?: string;
+  export type ModelContactDetails = ModelAddress & {
     company?: string;
     email?: string;
+    person?: string;
+    phone?: string;
+    cc?: string;
+    city?: string;
     fullStreet?: string;
     number?: string;
     numberSuffix?: string;
-    person?: string;
-    phone?: string;
     postalCode?: string;
     region?: string;
     state?: string;
     street?: string;
     streetAdditionalInfo?: string;
-  }
+  };
 
-  export interface BaseModelCurrency extends BaseModel {
+  export type ModelCurrency = {
     amount: number;
     currency: string;
-  }
+  };
 
-  export interface BaseModel {}
+  export type Request = {
+    body?: string;
+    headers: Record<string, string>;
+    method: string;
+    parameters: Record<string, string>;
+    path: string;
+    property: string;
+  };
+}
 
-  export interface Base {
-    container: unknown;
-  }
+export namespace Carrier {
+  export type CarrierCapabilitiesCollection = ModelCarrierCapabilities[];
 
-  export interface BasePdkActions {}
+  export type CarrierOptionsCollection = ModelCarrierOptions[];
 
-  export interface BasePdkEndpoint {
-    manager: unknown;
-  }
-
-  export interface BaseApiRepository extends BaseRepository {
-    api: unknown;
-    storage: unknown;
-    storageHashMap: unknown;
-  }
-
-  export interface BaseRepository {
-    storage: unknown;
-    storageHashMap: unknown;
-  }
-
-  export interface BaseRequest {}
-
-  export interface BaseCountryService {}
-
-  export interface BaseWeightService {}
-
-  export interface BaseSupportCollection {
-    cast: unknown;
-    items: unknown;
-    proxies: unknown;
-  }
-
-  export type BaseSupportHelpers = unknown;
-
-  export type BaseSupportUtils = unknown;
-
-  export type CarrierCarrierCapabilitiesCollection = CarrierModelCarrierCapabilities[];
-
-  export type CarrierCarrierOptionsCollection = CarrierModelCarrierOptions[];
-
-  export interface CarrierModelCapability extends BaseModel {
+  export type ModelCapability = {
+    type: string;
     enum: unknown[];
-    maxLength: number;
+    minimum: number;
     maximum: number;
     minLength: number;
-    minimum: number;
-    type: string;
-  }
+    maxLength: number;
+  };
 
-  export interface CarrierModelCarrierCapabilities extends BaseModel {
-    deliveryTypes: ShipmentDeliveryTypeCollection;
-    packageType: ShipmentModelPackageType;
-    shipmentOptions: ShipmentModelShipmentOptions;
-  }
+  export type ModelCarrierCapabilities = {
+    deliveryTypes: Shipment.DeliveryTypeCollection;
+    packageType: Shipment.ModelPackageType;
+    shipmentOptions: Shipment.ModelShipmentOptions;
+  };
 
-  export interface CarrierModelCarrierOptions extends BaseModel {
-    human?: string;
+  export type ModelCarrierOptions = {
     id?: number;
-    isDefault?: boolean;
-    label?: string;
     name?: string;
-    optional?: boolean;
-    options: CarrierCarrierCapabilitiesCollection;
-    primary?: boolean;
-    returnOptions: CarrierCarrierCapabilitiesCollection;
+    human?: string;
     subscriptionId?: number;
+    primary?: boolean;
+    isDefault?: boolean;
+    optional?: boolean;
+    label?: string;
     type?: string;
-  }
+    options: CarrierCapabilitiesCollection;
+    returnOptions: CarrierCapabilitiesCollection;
+  };
 
-  export interface CarrierModelShipmentOptionsCapabilities extends BaseModel {
-    ageCheck: CarrierModelCapability;
-    dropOffAtPostalPoint: CarrierModelCapability;
-    insurance: CarrierModelCapability;
-    labelDescription: CarrierModelCapability;
-    largeFormat: CarrierModelCapability;
-    onlyRecipient: CarrierModelCapability;
-    return: CarrierModelCapability;
-    sameDayDelivery: CarrierModelCapability;
-    saturdayDelivery: CarrierModelCapability;
-    signature: CarrierModelCapability;
-  }
+  export type ModelShipmentOptionsCapabilities = {
+    ageCheck: ModelCapability;
+    dropOffAtPostalPoint: ModelCapability;
+    insurance: ModelCapability;
+    labelDescription: ModelCapability;
+    largeFormat: ModelCapability;
+    onlyRecipient: ModelCapability;
+    return: ModelCapability;
+    sameDayDelivery: ModelCapability;
+    saturdayDelivery: ModelCapability;
+    signature: ModelCapability;
+  };
+}
 
-  export type FormInputOptionsCollection = FormModelInputOptions[];
+export namespace Form {
+  export type InputOptionsCollection = ModelInputOptions[];
 
-  export type FormSelectOptionsCollection = FormModelSelectOptions[];
-
-  export interface FormModelFormGroup extends BaseModel {
+  export type ModelFormGroup = {
     name: string;
-  }
+  };
 
-  export interface FormModelInputOptions extends BaseModel {
+  export type ModelInputBaseInput = {
+    element: string;
+    type: string;
+    name: string;
+    label: string;
+    description: string;
+  };
+
+  export type ModelInputCheckboxInput = ModelInputBaseInput & {
+    description: string;
+    element: string;
+    label: string;
+    name: string;
+    type: string;
+  };
+
+  export type ModelInputHiddenInput = ModelInputTextInput & {
+    description: string;
+    element: string;
+    label: string;
+    name: string;
+    type: string;
+  };
+
+  export type ModelInputNumberInput = ModelInputTextInput & {
+    description: string;
+    element: string;
+    label: string;
+    name: string;
+    type: string;
+  };
+
+  export type ModelInputOptions = {
+    query: unknown[];
     id: number;
     name: string;
-    query: unknown[];
-  }
+  };
 
-  export interface FormModelInputAbstractInput extends BaseModel {}
-
-  export interface FormModelInputCheckboxInput extends FormModelInputAbstractInput {
+  export type ModelInputRadioButtonInput = ModelInputBaseInput & {
     description: string;
+    element: string;
     label: string;
     multiple: boolean;
     name: string;
+    options: ModelInputOptions;
+  };
+
+  export type ModelInputSelectCountrySelectInput = ModelInputSelectInput & {
     type: string;
-  }
-
-  export interface FormModelInputHiddenInput extends FormModelInputAbstractInput {}
-
-  export interface FormModelInputRadioButtonInput extends FormModelInputAbstractInput {
-    description: string;
     label: string;
-    multiple: boolean;
     name: string;
-    options: FormModelInputOptions;
-    type: string;
-  }
-
-  export interface FormModelInputSelectInput extends FormModelInputAbstractInput {
-    options: FormSelectOptionsCollection;
-  }
-
-  export interface FormModelInputSelectCountrySelectInput {
+    description: string;
     options: unknown[];
-  }
+  };
 
-  export interface FormModelInputSelectDropOffDaySelectInput extends FormModelInputAbstractInput {}
-
-  export interface FormModelInputTextInput extends FormModelInputAbstractInput {}
-
-  export interface FormModelInputToggleInput extends FormModelInputAbstractInput {
+  export type ModelInputSelectDropOffDaySelectInput = ModelInputBaseInput & {
+    type: string;
+    name: string;
+    label: string;
     description: string;
+  };
+
+  export type ModelInputSelectInput = ModelInputBaseInput & {
+    description: string;
+    element: string;
+    label: string;
+    name: string;
+    options: SelectOptionsCollection;
+    type: string;
+  };
+
+  export type ModelInputTextInput = ModelInputBaseInput & {
+    description: string;
+    element: string;
+    label: string;
+    name: string;
+    type: string;
+  };
+
+  export type ModelInputToggleInput = ModelInputBaseInput & {
+    description: string;
+    element: string;
     isBool: boolean;
     label: string;
     name: string;
     type: string;
     values: unknown[];
-  }
+  };
 
-  export interface FormModelSelectOptions extends BaseModel {
-    label: string;
+  export type ModelSelectOptions = {
     name: string;
+    label: string;
     options: unknown[];
-  }
+  };
 
-  export type FulfilmentOrderCollection = FulfilmentModelOrder[];
+  export type SelectOptionsCollection = ModelSelectOptions[];
+}
 
-  export type FulfilmentOrderLineCollection = FulfilmentModelOrderLine[];
+export namespace Fulfilment {
+  export type GetOrdersRequest = Base.Request;
 
-  export interface FulfilmentModelOrder extends BaseModel {
+  export type ModelOrder = {
     accountId?: number;
     createdAt?: string;
     externalIdentifier?: string;
     fulfilmentPartnerIdentifier?: string;
-    invoiceAddress?: BaseModelContactDetails;
+    invoiceAddress?: Base.ModelContactDetails;
     language?: string;
     orderDate?: string;
-    orderLines?: FulfilmentOrderLineCollection;
+    orderLines?: OrderLineCollection;
     price?: number;
     priceAfterVat?: number;
-    shipment?: ShipmentModelShipment;
+    deliveryOptions?: Shipment.ModelDeliveryOptions;
     shopId?: number;
     status?: string;
     type?: string;
     updatedAt?: string;
     uuid?: string;
     vat?: number;
-  }
+  };
 
-  export interface FulfilmentModelOrderLine extends BaseModel {
-    price: number;
-    priceAfterVat: number;
-    product?: FulfilmentModelProduct;
-    quantity: number;
+  export type ModelOrderLine = {
     uuid?: string;
+    quantity: number;
+    price: number;
     vat: number;
-  }
+    priceAfterVat: number;
+    product?: ModelProduct;
+    instructions: string;
+    shippable: boolean;
+  };
 
-  export interface FulfilmentModelProduct extends BaseModel {
-    description?: string;
+  export type ModelProduct = {
+    uuid?: string;
+    sku?: string;
     ean?: string;
     externalIdentifier?: string;
-    height: number;
-    length: number;
     name?: string;
-    sku?: string;
-    uuid?: string;
-    weight: number;
+    description?: string;
     width: number;
-  }
+    length: number;
+    height: number;
+    weight: number;
+  };
 
-  export interface FulfilmentOrderRepository extends BaseApiRepository {
-    api: unknown;
-    storage: unknown;
-    storageHashMap: unknown;
-  }
+  export type OrderCollection = ModelOrder[];
 
-  export interface FulfilmentGetOrdersRequest extends BaseRequest {}
+  export type OrderLineCollection = ModelOrderLine[];
 
-  export interface FulfilmentPostOrdersRequest extends BaseRequest {
-    body: unknown;
-    collection: unknown;
-    headers: unknown;
-    method: unknown;
-    parameters: unknown;
-    path: unknown;
-  }
+  export type PostOrdersRequest = Base.Request;
+}
 
-  export interface FulfilmentGetOrdersResponse extends ApiResponseAbstractApiResponseWithBody {
-    orders: unknown;
-  }
+export namespace Plugin {
+  export type AbstractEndpointRequest = Base.Request;
 
-  export interface FulfilmentPostOrdersResponse extends ApiResponseAbstractApiResponseWithBody {
-    ids: unknown;
-  }
+  export type Context = Record<string, unknown>;
 
-  export interface LanguageLanguageRepository extends BaseApiRepository {
-    api: unknown;
-    storage: unknown;
-    storageHashMap: unknown;
-  }
+  export type EndpointRequestCollection = Record<string, AbstractEndpointRequest>[];
 
-  export interface LanguageAbstractLanguageService {
-    repository: unknown;
-  }
+  export type ExportOrdersEndpointRequest = AbstractEndpointRequest;
 
-  export interface LoggerAbstractLogger {}
+  export type ExportPrintOrdersEndpointRequest = AbstractEndpointRequest;
 
-  export interface PlatformPlatformManager {
-    platform: unknown;
-  }
+  export type GetOrdersEndpointRequest = AbstractEndpointRequest;
 
-  export interface PluginOrderAbstractOrderAction {
-    orderRepository: unknown;
-  }
+  export type ModelContextContextBag = {
+    global: ModelContextGlobalContext;
+    orderData?: OrderDataContextCollection;
+    deliveryOptions?: ModelContextDeliveryOptionsContext;
+  };
 
-  export interface PluginOrderExportOrderAction extends PluginOrderAbstractOrderAction {
-    orderRepository: unknown;
-    shipmentRepository: unknown;
-  }
-
-  export interface PluginOrderExportPrintOrderAction extends PluginOrderExportOrderAction {
-    orderRepository: unknown;
-  }
-
-  export interface PluginOrderGetOrderDataAction extends PluginOrderAbstractOrderAction {
-    orderRepository: unknown;
-  }
-
-  export interface PluginActionPdkActionManager {}
-
-  export interface PluginActionPdkEndpointActions {
-    headers: unknown;
-    parameters: unknown;
-  }
-
-  export type PluginOrderDataContextCollection = PluginModelContextOrderDataContext[];
-
-  export type PluginPdkOrderCollection = PluginModelPdkOrder[];
-
-  export type PluginPdkOrderLineCollection = PluginModelPdkOrderLine[];
-
-  export type PluginPdkProductCollection = PluginModelPdkProduct[];
-
-  export interface Plugin {}
-
-  export interface PluginModelContextContextBag extends BaseModel {
-    deliveryOptions?: PluginModelContextDeliveryOptionsContext;
-    global: PluginModelContextGlobalContext;
-    orderData?: PluginOrderDataContextCollection;
-  }
-
-  export interface PluginModelContextDeliveryOptions extends BaseModel {
+  export type ModelContextDeliveryOptionsConfig = {
     apiBaseUrl: string;
-    basePrice: number;
-    carrierSettings: unknown[];
     currency: string;
-    locale: string;
     packageType: string;
-    pickupLocationsDefaultView: string;
+    locale: string;
     platform: string;
-    priceStandardDelivery: number;
+    basePrice: number;
     showPriceSurcharge: boolean;
-  }
+    pickupLocationsDefaultView: string;
+    priceStandardDelivery: number;
+    carrierSettings: unknown[];
+  };
 
-  export interface PluginModelContextDeliveryOptionsContext extends BaseModel {
-    config?: PluginModelContextDeliveryOptions;
+  export type ModelContextDeliveryOptionsContext = {
     strings: Record<string, string>;
-  }
+    config?: Shipment.ModelDeliveryOptions;
+  };
 
-  export type PluginModelContextEndpointRequestCollection = Record<string, PluginAbstractEndpointRequest>[];
-
-  export interface PluginModelContextGlobalContext extends BaseModel {
+  export type ModelContextGlobalContext = {
     baseUrl: string;
     bootstrapId: string;
-    endpoints: PluginModelContextEndpointRequestCollection;
+    endpoints: EndpointRequestCollection;
     event: string;
     mode: string;
-    pluginSettings: {
-      carrier: SettingsModelCarrierSettings[];
-      checkout: SettingsModelCheckoutSettings;
-      general: SettingsModelGeneralSettings;
-      label: SettingsModelLabelSettings;
-      order: SettingsModelOrderSettings;
-    };
+    pluginSettings: Settings.ModelSettings;
     translations: Record<string, string>;
-  }
+  };
 
-  export interface PluginModelContextOrderDataContext extends PluginModelPdkOrder {
-    customsDeclaration?: ShipmentModelCustomsDeclaration;
-    deliveryOptions?: ShipmentModelDeliveryOptions;
+  export type ModelContextOrderDataContext = ModelPdkOrder & {
     externalIdentifier?: string;
-    label?: ShipmentModelLabel;
-    recipient?: BaseModelContactDetails;
-    sender?: BaseModelContactDetails;
-    shipments?: ShipmentShipmentCollection;
-  }
+    customsDeclaration?: Shipment.ModelCustomsDeclaration;
+    deliveryOptions?: Shipment.ModelDeliveryOptions;
+    recipient?: Base.ModelContactDetails;
+    sender?: Base.ModelContactDetails;
+    shipments?: Shipment.ShipmentCollection;
+    label?: Shipment.ModelLabel;
+  };
 
-  export interface PluginModelPdkOrder extends BaseModel {
-    customsDeclaration?: ShipmentModelCustomsDeclaration;
-    deliveryOptions?: ShipmentModelDeliveryOptions;
+  export type ModelPdkOrder = {
     externalIdentifier?: string;
-    label?: ShipmentModelLabel;
-    lines?: PluginPdkOrderLineCollection;
-    recipient?: BaseModelContactDetails;
-    sender?: BaseModelContactDetails;
+    customsDeclaration?: Shipment.ModelCustomsDeclaration;
+    deliveryOptions?: Shipment.ModelDeliveryOptions;
+    lines?: PdkOrderLineCollection;
+    recipient?: Base.ModelContactDetails;
+    sender?: Base.ModelContactDetails;
     shipmentPrice?: number;
-    shipmentPriceAfterVat?: number;
     shipmentVat?: number;
-    shipments?: ShipmentShipmentCollection;
-  }
+    shipments?: Shipment.ShipmentCollection;
+    label?: Shipment.ModelLabel;
+    orderPrice: number;
+    orderVat: number;
+    orderPriceAfterVat: number;
+    shipmentPriceAfterVat: number;
+    totalPrice: number;
+    totalVat: number;
+    totalPriceAfterVat: number;
+  };
 
-  export interface PluginModelPdkOrderLine extends BaseModel {
-    price: number;
-    priceAfterVat: number;
-    product?: FulfilmentModelProduct;
+  export type ModelPdkOrderLine = {
     quantity: number;
+    price: number;
     vat: number;
-  }
+    priceAfterVat: number;
+    product?: Fulfilment.ModelProduct;
+  };
 
-  export interface PluginModelPdkProduct extends BaseModel {
-    settings: SettingsModelProductSettings;
+  export type ModelPdkProduct = {
     sku?: string;
+    name?: string;
     weight: number;
-  }
+    settings: Settings.ModelProductSettings;
+  };
 
-  export interface PluginAbstractPdkOrderRepository extends BaseApiRepository {
-    api: unknown;
-    storage: unknown;
-    storageHashMap: unknown;
-  }
+  export type OrderDataContextCollection = ModelContextOrderDataContext[];
 
-  export interface PluginAbstractEndpointRequest extends BaseRequest {
-    body: unknown;
-    headers: unknown;
-    method: unknown;
-    parameters: unknown;
-    path: unknown;
-  }
+  export type PdkOrderCollection = ModelPdkOrder[];
 
-  export interface PluginExportOrderEndpointRequest extends PluginAbstractEndpointRequest {}
+  export type PdkOrderLineCollection = ModelPdkOrderLine[];
 
-  export interface PluginExportPrintOrderEndpointRequest extends PluginAbstractEndpointRequest {}
+  export type PdkProductCollection = ModelPdkProduct[];
 
-  export interface PluginGetOrderDataEndpointRequest extends PluginAbstractEndpointRequest {}
+  export type PrintOrderEndpointRequest = AbstractEndpointRequest;
+}
 
-  export interface PluginContextService {}
+export namespace Settings {
+  export type CarrierSettingsCollection = ModelCarrierSettings[];
 
-  export interface PluginRenderService {
-    contextService: unknown;
-    jsInitTemplate: unknown;
-    renderTemplate: unknown;
-  }
-
-  export interface ProductAbstractProductRepository extends BaseRepository {}
-
-  export type SettingsCarrierSettingsCollection = SettingsModelCarrierSettings[];
-
-  export interface SettingsModelCarrierSettings extends BaseModel {
+  export type ModelCarrierSettings = {
+    carrierName: string;
     allowDeliveryOptions: boolean;
     allowEveningDelivery: boolean;
+    allowInsuranceBelgium: boolean;
     allowMondayDelivery: boolean;
     allowMorningDelivery: boolean;
     allowOnlyRecipient: boolean;
@@ -555,20 +389,31 @@ export namespace Pdk {
     allowSameDayDelivery: boolean;
     allowSaturdayDelivery: boolean;
     allowSignature: boolean;
+    cutoffTime: string;
+    cutoffTimeSameDay: string;
     defaultPackageType: string;
-    digitalStampDefaultWeight: string;
-    dropOffPossibilities: SettingsModelDropOffPossibilities;
+    deliveryOptionsCustomCss: string;
+    deliveryOptionsDisplay: string;
+    deliveryOptionsEnabledForBackorders: boolean;
+    deliveryOptionsPosition: string;
+    digitalStampDefaultWeight: number;
+    dropOffPossibilities: ModelDropOffPossibilities;
+    dropOffDelay: number;
+    dropOffPoint: string;
     exportAgeCheck: boolean;
-    exportExtraLargeFormat: boolean;
-    exportInsured: boolean;
-    exportInsuredAmount: number;
-    exportInsuredAmountMax: number;
-    exportInsuredForBe: boolean;
+    exportInsurance: boolean;
+    exportInsuranceAmount: number;
+    exportInsuranceUpTo: number;
+    exportLargeFormat: boolean;
     exportOnlyRecipient: boolean;
+    exportReturnLargeFormat: boolean;
+    exportReturnPackageType: string;
     exportReturnShipments: boolean;
     exportSignature: boolean;
     featureShowDeliveryDate: boolean;
+    pickupLocationsDefaultView: string;
     priceEveningDelivery: number;
+    priceMondayDelivery: number;
     priceMorningDelivery: number;
     priceOnlyRecipient: number;
     pricePackageTypeDigitalStamp: number;
@@ -577,86 +422,116 @@ export namespace Pdk {
     priceSameDayDelivery: number;
     priceSignature: number;
     priceStandardDelivery: number;
-  }
+    showDeliveryDay: boolean;
+    showPriceAsSurcharge: boolean;
+    useSeparateAddressFields: boolean;
+    stringAddressNotFound: string;
+    stringCity: string;
+    stringCountry: string;
+    stringDelivery: string;
+    stringDiscount: string;
+    stringEveningDelivery: string;
+    stringFrom: string;
+    stringHouseNumber: string;
+    stringLoadMore: string;
+    stringMorningDelivery: string;
+    stringOnlyRecipient: string;
+    stringOpeningHours: string;
+    stringPickup: string;
+    stringPickupLocationsListButton: string;
+    stringPickupLocationsMapButton: string;
+    stringPostalCode: string;
+    stringRecipient: string;
+    stringRetry: string;
+    stringSaturdayDelivery: string;
+    stringSignature: string;
+    stringStandardDelivery: string;
+    stringWrongNumberPostalCode: string;
+    stringWrongPostalCodeCity: string;
+  };
 
-  export interface SettingsModelCheckoutSettings extends BaseModel {
+  export type ModelCheckoutSettings = {
+    deliveryOptionsCustomCss: string;
+    deliveryOptionsDisplay: boolean;
+    deliveryOptionsPosition: string;
     pickupLocationsDefaultView: string;
-    showPriceSurcharge: boolean;
-  }
+    priceType: string;
+    showDeliveryDay: boolean;
+    showPriceAsSurcharge: boolean;
+    useSeparateAddressFields: boolean;
+    stringAddressNotFound: string;
+    stringCountry: string;
+    stringCity: string;
+    stringDelivery: string;
+    stringDiscount: string;
+    stringEveningDelivery: string;
+    stringFrom: string;
+    stringHouseNumber: string;
+    stringLoadMore: string;
+    stringMorningDelivery: string;
+    stringOnlyRecipient: string;
+    stringOpeningHours: string;
+    stringPickupLocationsListButton: string;
+    stringPickupLocationsMapButton: string;
+    stringPickup: string;
+    stringPostalCode: string;
+    stringRecipient: string;
+    stringRetry: string;
+    stringSaturdayDelivery: string;
+    stringSignature: string;
+    stringStandardDelivery: string;
+    stringWrongNumberPostalCode: string;
+    stringWrongPostalCodeCity: string;
+  };
 
-  export interface SettingsModelCustomsSettings extends BaseModel {
-    defaultCountryOfOrigin?: string;
-    defaultCustomsCode: string;
-    defaultPackageContents: string;
-  }
+  export type ModelCustomsSettings = {
+    countryOfOrigin?: string;
+    customsCode: string;
+    packageContents: string;
+  };
 
-  export interface SettingsModelDeliveryOptionsStringsSettings extends BaseModel {
-    addressNotFoundTitle?: string;
-    cc?: string;
-    city?: string;
-    deliveryTitle?: string;
-    discount?: string;
-    eveningDeliveryTitle?: string;
-    from?: string;
-    houseNumber?: string;
-    loadMore?: string;
-    morningDeliveryTitle?: string;
-    onlyRecipientTitle?: string;
-    openingHours?: string;
-    pickupLocationsListButton?: string;
-    pickupLocationsMapButton?: string;
-    pickupTitle?: string;
-    postcode?: string;
-    recipientTitle?: string;
-    retry?: string;
-    saturdayDeliveryTitle?: string;
-    signatureTitle?: string;
-    standardDeliveryTitle?: string;
-    wrongNumberPostalCode?: string;
-    wrongPostalCodeCity?: string;
-  }
-
-  export interface SettingsModelDropOffPossibilities extends BaseModel {
-    deliveryDaysWindow: number;
-    dropOffDays: unknown[];
-    dropOffDaysDeviations: unknown[];
+  export type ModelDropOffPossibilities = {
+    dropOffDays: Shipment.DropOffDayCollection;
+    dropOffDaysDeviations: Shipment.DropOffDayCollection;
     dropOffDelay: number;
-  }
+    deliveryDaysWindow: number;
+  };
 
-  export interface SettingsModelGeneralSettings extends BaseModel {
+  export type ModelGeneralSettings = {
     apiKey?: string;
+    apiLogging: boolean;
     barcodeInNote: boolean;
     conceptShipments: boolean;
-    enableApiLogging: boolean;
+    exportWithAutomaticStatus?: string;
     orderMode: boolean;
-    priceType?: string;
     processDirectly: boolean;
     shareCustomerInformation: boolean;
-    showDeliveryDay: boolean;
-    trackTraceEmail: boolean;
-    trackTraceMyAccount: boolean;
-    useSeparateAddressFields: boolean;
-  }
+    trackTraceInAccount: boolean;
+    trackTraceInEmail: boolean;
+  };
 
-  export interface SettingsModelLabelSettings extends BaseModel {
-    defaultPosition?: string;
-    labelDescription?: string;
-    labelOpenDownload?: string;
-    labelSize?: string;
-    promptPosition: boolean;
-  }
+  export type ModelLabelSettings = {
+    description?: string;
+    format: string;
+    output: string;
+    position: number;
+    prompt: boolean;
+  };
 
-  export interface SettingsModelOrderSettings extends BaseModel {
-    ignoreOrderStatuses: string;
-    orderStatusMail: string;
-    sendNotificationAfter: string;
-    sendOrderStateForDigitalStamps: number;
-    statusOnLabelCreate: string;
-    statusWhenDelivered: string;
-    statusWhenLabelScanned: string;
-  }
+  export type ModelOrderSettings = {
+    emptyDigitalStampWeight?: number;
+    emptyParcelWeight?: number;
+    ignoreOrderStatuses?: string;
+    orderStatusMail: boolean;
+    saveCustomerAddress: boolean;
+    sendNotificationAfter?: string;
+    sendOrderStateForDigitalStamps: boolean;
+    statusOnLabelCreate?: string;
+    statusWhenDelivered?: string;
+    statusWhenLabelScanned?: string;
+  };
 
-  export interface SettingsModelProductSettings extends BaseModel {
+  export type ModelProductSettings = {
     allowOnlyRecipient: boolean;
     allowSignature: boolean;
     countryOfOrigin: string;
@@ -669,156 +544,134 @@ export namespace Pdk {
     fitInMailbox: number;
     packageType: string;
     returnShipments: boolean;
-  }
+  };
 
-  export interface SettingsModelSettings extends BaseModel {
-    carrier: unknown[];
-    customs: SettingsModelCustomsSettings;
-    general: SettingsModelGeneralSettings;
-    label: SettingsModelLabelSettings;
-    order: SettingsModelOrderSettings;
-  }
+  export type ModelSettings = {
+    general: ModelGeneralSettings;
+    order: ModelOrderSettings;
+    label: ModelLabelSettings;
+    customs: ModelCustomsSettings;
+    checkout: ModelCheckoutSettings;
+    carrier: CarrierSettingsCollection;
+  };
+}
 
-  export interface SettingsAbstractSettingsRepository extends BaseApiRepository {
-    api: unknown;
-    storage: unknown;
-    storageHashMap: unknown;
-  }
+export namespace Shipment {
+  export type CustomsDeclarationItemCollection = ModelCustomsDeclarationItem;
 
-  export interface SettingsSettingsManager {
-    repository: unknown;
-    settings: unknown;
-  }
+  export type DeliveryTypeCollection = ModelDeliveryType[];
 
-  export interface SettingsAbstractView {
-    fields: unknown;
-  }
+  export type DropOffDayCollection = ModelDropOffDay[];
 
-  export type SettingsCarrierSettingsView = SettingsAbstractView;
+  export type GetLabelsAsPdfRequest = GetLabelsRequest;
 
-  export type SettingsCustomsSettingsView = SettingsAbstractView;
+  export type GetLabelsRequest = Base.Request;
 
-  export type SettingsDeliveryOptionsStringsSettingsView = SettingsAbstractView;
+  export type GetShipmentsRequest = Base.Request;
 
-  export type SettingsGeneralSettingsView = SettingsAbstractView;
-
-  export type SettingsLabelSettingsView = SettingsAbstractView;
-
-  export type SettingsOrderSettingsView = SettingsAbstractView;
-
-  export type SettingsProductSettingsView = SettingsAbstractView;
-
-  export type ShipmentCustomsDeclarationItemCollection = unknown[];
-
-  export type ShipmentDeliveryTypeCollection = ShipmentModelDeliveryType[];
-
-  export type ShipmentDropOffDayCollection = ShipmentModelDropOffDay[];
-
-  export type ShipmentShipmentCollection = ShipmentModelShipment[];
-
-  export interface ShipmentModelCustomsDeclaration extends BaseModel {
+  export type ModelCustomsDeclaration = {
     contents: number;
+    items: CustomsDeclarationItemCollection;
     invoice?: string;
-    items: ShipmentCustomsDeclarationItemCollection;
     weight: number;
-  }
+  };
 
-  export interface ShipmentModelCustomsDeclarationItem extends BaseModel {
+  export type ModelCustomsDeclarationItem = {
     amount: number;
     classification?: string;
     country?: string;
     description?: string;
-    itemValue: BaseModelCurrency;
+    itemValue: Base.ModelCurrency;
     weight: number;
-  }
+  };
 
-  export interface ShipmentModelDeliveryOptions extends BaseModel {
+  export type ModelDeliveryOptions = {
     carrier?: string;
-    date?: Record<string, unknown>;
+    date?: DateTime;
     deliveryType?: string;
     labelAmount: number;
     packageType?: string;
-    pickupLocation?: ShipmentModelRetailLocation;
-    shipmentOptions: ShipmentModelShipmentOptions;
-  }
+    pickupLocation?: ModelRetailLocation;
+    shipmentOptions: ModelShipmentOptions;
+  };
 
-  export interface ShipmentModelDeliveryType extends BaseModel {
+  export type ModelDeliveryType = {
     id?: number;
     name?: string;
-  }
+  };
 
-  export interface ShipmentModelDropOffDay extends BaseModel {
+  export type ModelDropOffDay = {
     cutoffTime?: string;
-    date: Record<string, unknown>;
+    date: DateTimeImmutable;
     dispatch?: boolean;
     sameDayCutoffTime?: string;
     weekday: number;
-  }
+  };
 
-  export interface ShipmentModelLabel extends BaseModel {
+  export type ModelLabel = {
     link: string;
     pdf: string;
-  }
+  };
 
-  export interface ShipmentModelPackageType extends BaseModel {
+  export type ModelPackageType = {
     id?: number;
     name?: string;
-  }
+  };
 
-  export interface ShipmentModelPhysicalProperties extends BaseModel {
+  export type ModelPhysicalProperties = {
     height?: number;
     length?: number;
     weight?: number;
     width?: number;
-  }
+  };
 
-  export interface ShipmentModelRetailLocation extends BaseModelAddress {
+  export type ModelRetailLocation = Base.ModelAddress & {
+    locationCode?: string;
+    locationName?: string;
+    retailNetworkId?: string;
     boxNumber?: string;
     cc?: string;
     city?: string;
-    locationCode?: string;
-    locationName?: string;
     number?: string;
     numberSuffix?: string;
     postalCode?: string;
     region?: string;
-    retailNetworkId?: string;
     state?: string;
     street?: string;
-  }
+  };
 
-  export interface ShipmentModelShipment extends BaseModel {
+  export type ModelShipment = {
+    id?: number;
+    orderId?: string;
+    shopId?: number;
+    referenceIdentifier?: string;
+    externalIdentifier?: string;
     apiKey?: string;
     barcode?: string;
-    carrier?: CarrierModelCarrierOptions;
+    carrier?: Carrier.ModelCarrierOptions;
     collectionContact?: string;
-    created?: Record<string, unknown>;
-    createdBy?: string;
-    customsDeclaration?: ShipmentModelCustomsDeclaration;
+    customsDeclaration?: ModelCustomsDeclaration;
     delayed?: boolean;
     delivered?: boolean;
-    deliveryOptions: ShipmentModelDeliveryOptions;
-    dropOffPoint?: ShipmentModelRetailLocation;
-    externalIdentifier?: string;
-    id?: number;
+    deliveryOptions: ModelDeliveryOptions;
+    dropOffPoint?: ModelRetailLocation;
     isReturn?: boolean;
     linkConsumerPortal?: string;
-    modified?: Record<string, unknown>;
-    modifiedBy?: string;
     multiCollo: boolean;
     multiColloMainShipmentId?: string;
-    orderId?: string;
     partnerTrackTraces?: unknown[];
-    physicalProperties?: ShipmentModelPhysicalProperties;
-    recipient: BaseModelContactDetails;
-    referenceIdentifier?: string;
-    sender?: BaseModelContactDetails;
-    shopId?: number;
+    physicalProperties?: ModelPhysicalProperties;
+    recipient: Base.ModelContactDetails;
+    sender?: Base.ModelContactDetails;
     status?: number;
     updated?: boolean;
-  }
+    created?: DateTime;
+    createdBy?: string;
+    modified?: DateTime;
+    modifiedBy?: string;
+  };
 
-  export interface ShipmentModelShipmentOptions extends BaseModel {
+  export type ModelShipmentOptions = {
     ageCheck?: boolean;
     insurance?: number;
     labelDescription?: string;
@@ -827,87 +680,13 @@ export namespace Pdk {
     return?: boolean;
     sameDayDelivery?: boolean;
     signature?: boolean;
-  }
+  };
 
-  export interface ShipmentShipmentRepository extends BaseApiRepository {
-    api: unknown;
-    storage: unknown;
-    storageHashMap: unknown;
-  }
+  export type PostReturnShipmentsRequest = Base.Request;
 
-  export interface ShipmentGetLabelsAsPdfRequest extends ShipmentGetLabelsRequest {}
+  export type PostShipmentsRequest = Base.Request;
 
-  export interface ShipmentGetLabelsRequest extends BaseRequest {
-    body: unknown;
-    collection: unknown;
-    headers: unknown;
-    method: unknown;
-    parameters: unknown;
-    path: unknown;
-  }
+  export type ShipmentCollection = ModelShipment[];
 
-  export interface ShipmentGetShipmentsRequest extends BaseRequest {}
-
-  export interface ShipmentPostReturnShipmentsRequest extends BaseRequest {
-    body: unknown;
-    collection: unknown;
-    headers: unknown;
-    method: unknown;
-    parameters: unknown;
-    path: unknown;
-  }
-
-  export interface ShipmentPostShipmentsRequest extends BaseRequest {
-    body: unknown;
-    collection: unknown;
-    headers: unknown;
-    method: unknown;
-    parameters: unknown;
-    path: unknown;
-  }
-
-  export interface ShipmentUpdateShipmentsRequest extends BaseRequest {
-    body: unknown;
-    headers: unknown;
-    ids: unknown;
-    method: unknown;
-    parameters: unknown;
-    path: unknown;
-    referenceIdentifiers: unknown;
-    size: unknown;
-  }
-
-  export interface ShipmentGetLabelsPdfResponse extends ApiResponseAbstractApiResponseWithBody {
-    pdf: unknown;
-  }
-
-  export interface ShipmentGetLabelsResponse extends ApiResponseAbstractApiResponseWithBody {
-    labelLink: unknown;
-  }
-
-  export interface ShipmentGetShipmentsResponse extends ApiResponseAbstractApiResponseWithBody {
-    shipments: unknown;
-  }
-
-  export interface ShipmentPostShipmentsResponse extends ApiResponseAbstractApiResponseWithBody {
-    ids: unknown;
-  }
-
-  export interface ShipmentDeliveryDateService {}
-
-  export interface ShipmentServiceDeliveryOptionsMerger {}
-
-  export interface StorageAbstractStorage {}
-
-  export interface StorageMemoryCacheStorage extends StorageAbstractStorage {
-    data: unknown;
-  }
-
-  export interface ValidationOrderValidator {
-    additionalSchema: unknown;
-    baseSchema: unknown;
-    errors: unknown;
-    order: unknown;
-    orderArray: unknown;
-  }
+  export type UpdateShipmentsRequest = Base.Request;
 }

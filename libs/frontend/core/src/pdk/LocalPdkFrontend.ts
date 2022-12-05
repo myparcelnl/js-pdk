@@ -1,10 +1,4 @@
-import {
-  ComponentImportFunction,
-  PdkRenderComponent,
-  logDebug,
-  logError,
-  logSuccess,
-} from '@myparcel-pdk/frontend-shared';
+import {ComponentImportFunction, PdkRenderComponent, logger} from '@myparcel-pdk/frontend-shared';
 import {createContextPlugin, createRegisterComponentsPlugin, createStorePlugin, createVueQueryPlugin} from './instance';
 import {FinalPdkConfiguration} from '../types';
 import {createApp} from 'vue';
@@ -38,7 +32,7 @@ export class LocalPdkFrontend {
     const newContext = getElementContext(selector);
 
     this.localConfig.context = merge({}, this.localConfig.context, newContext);
-    logDebug(`Initialized local PDK frontend for ${componentName} in ${selector}`);
+    logger.debug(`Initialized local PDK frontend for ${componentName} in ${selector}`);
   }
 
   public async renderComponent(): Promise<void> {
@@ -53,13 +47,10 @@ export class LocalPdkFrontend {
     this.localConfig?.onCreated?.(this.localConfig);
 
     try {
-      console.log(component.name, app);
       app.mount(this.selector);
-      logSuccess(`Rendered ${this.componentName} in ${this.selector}`, this.localConfig.context);
+      logger.debug(`Rendered ${this.componentName} in ${this.selector}`, this.localConfig.context);
     } catch (e) {
-      logError('Error mounting app:');
-      // eslint-disable-next-line no-console
-      console.error(e);
+      logger.error('Error mounting app', e);
     }
   }
 }

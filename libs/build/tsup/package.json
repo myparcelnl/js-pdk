@@ -4,7 +4,6 @@
   "private": true,
   "license": "MIT",
   "type": "module",
-  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "run ws:tsup:build \"$(pwd)\"",
@@ -18,6 +17,11 @@
     "tsup": "^6.5.0"
   },
   "devDependencies": {
-    "@myparcel/ts-utils": "^1.0.0"
-  }
+    "@myparcel/ts-utils": "^1.1.0"
+  },
+  "files": [
+    "src"
+  ],
+  "main": "lib/index.js",
+  "module": "src/index.ts"
 }

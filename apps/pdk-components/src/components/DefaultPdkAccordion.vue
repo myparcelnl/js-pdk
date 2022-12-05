@@ -14,7 +14,7 @@
       <!--      <SettingsFormItem -->
       <!--        v-for="(grandchild, grandchildIndex) in child.children" -->
       <!--        v-show="openedItem === child.name" -->
-      <!--        :key="[child.name, grandchild.name, grandchild.type, grandchildIndex].join('_')" -->
+      <!--        :k="[child.name, grandchild.name, grandchild.type, grandchildIndex].join('_')" -->
       <!--        :item="grandchild" -->
       <!--        @change="$emit('change', $event)" -->
       <!--        @click="$emit('click', $event)" /> -->
@@ -23,8 +23,7 @@
 </template>
 
 <script lang="ts">
-import {PropType, defineComponent, ref} from 'vue';
-import {ModuleSettingsFormItem} from '@myparcel-pdk/common';
+import {defineComponent, ref} from 'vue';
 
 /**
  * Accordion component that can expand and render a form item inside it.
@@ -36,7 +35,7 @@ export default defineComponent({
      * The settings form item to render inside the accordion.
      */
     item: {
-      type: Object as PropType<ModuleSettingsFormItem>,
+      type: Object,
       required: true,
     },
   },

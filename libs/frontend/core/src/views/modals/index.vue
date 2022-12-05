@@ -15,7 +15,6 @@ import {useModalStore} from '../../stores';
 export default defineComponent({
   name: 'Modals',
   components: {
-    // AddCarrierModal,
     /* eslint-disable @typescript-eslint/naming-convention */
     // DeliveryOptionsModal: defineAsyncComponent(() => import('@/components/modals/DeliveryOptionsModal.vue')),
     // PrintOptionsModal: defineAsyncComponent(() => import('@/components/modals/PrintOptionsModal.vue')),

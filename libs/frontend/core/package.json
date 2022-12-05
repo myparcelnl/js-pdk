@@ -6,7 +6,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "scripts": {
     "build": "run ws:vite:build \"$(pwd)\"",
@@ -19,8 +20,8 @@
   "prettier": "@myparcel/prettier-config",
   "dependencies": {
     "@myparcel-pdk/frontend-shared": "workspace:*",
-    "@myparcel/sdk": "^2.8.1",
-    "@myparcel/ts-utils": "^1.0.0",
+    "@myparcel/sdk": "^2.9.1",
+    "@myparcel/ts-utils": "^1.1.0",
     "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
     "@tanstack/vue-query": "^4.17.0",
     "@types/lodash-es": "^4.17.6",
@@ -28,7 +29,7 @@
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3",
-    "pinia": "^2.0.23",
+    "pinia": "^2.0.27",
     "vue": "^3.2.45"
   },
   "devDependencies": {
@@ -39,5 +40,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "module": "src/index.ts"
 }

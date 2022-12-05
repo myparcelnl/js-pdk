@@ -1,6 +1,6 @@
 <template>
   <PdkCard>
-    <p v-if="orderQuery.isLoading">
+    <p v-if="query.isLoading">
       <span class="animate-pulse bg-gray-400 h-4 w-12"></span>
       <span class="animate-pulse bg-gray-400 h-4 w-12"></span>
     </p>
@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import {computed, defineComponent, toRefs} from 'vue';
-import {useOrder} from '../../sdk';
+import {useOrderQuery} from '../../pdk';
 
 export default defineComponent({
   name: 'ShippingAddress',
@@ -32,11 +32,9 @@ export default defineComponent({
 
   setup: (props) => {
     const propRefs = toRefs(props);
-    const orderQuery = useOrder(propRefs.orderId);
+    const query = useOrderQuery(propRefs.orderId);
 
-    const recipient = computed(() => {
-      return orderQuery.data.value?.recipient;
-    });
+    const recipient = computed(() => query.data.value?.recipient);
 
     const stringify = (...parts: (string | undefined)[]) => parts.filter(Boolean).join(' ');
 
@@ -51,7 +49,7 @@ export default defineComponent({
     const postalCodeCity = computed(() => stringify(recipient.value?.postalCode, recipient.value?.city));
 
     return {
-      orderQuery,
+      query,
 
       addressParts: computed(() =>
         [

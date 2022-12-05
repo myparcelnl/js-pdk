@@ -1,6 +1,4 @@
 <template>
-  <pre v-text="options"></pre>
-
   <select
     v-model="model"
     :disabled="disabled"
@@ -37,7 +35,7 @@ export default defineComponent({
      */
     options: {
       type: Array as PropType<SelectOption[]>,
-      default: (): never[] => [],
+      default: (): SelectOption[] => [],
     },
 
     /**

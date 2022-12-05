@@ -6,41 +6,42 @@
         :value="shipment.id" />
     </PdkTableCol>
     <PdkTableCol>
+      <PdkImage
+        v-if="carrier"
+        width="20"
+        :alt="carrier?.human"
+        :title="carrier?.human"
+        :src="useAssetUrl(carrier?.meta.logo_svg)" />
+
       <a
         :href="shipment.barcode"
-        class="text-nowrap"
         rel="noopener noreferrer"
         target="_blank">
         {{ shipment.barcode }}
-        <PdkIcon
-          class="font-16"
-          icon="open_in_new" />
+        <PdkIcon icon="external" />
       </a>
     </PdkTableCol>
 
     <PdkTableCol>{{ shipment.status }}</PdkTableCol>
     <PdkTableCol>{{ shipment.updated }}</PdkTableCol>
-    <PdkTableCol class="text-right">
-      <div class="btn-group">
-        <PdkButton
-          class="btn-sm"
-          icon="local_printshop"
-          label="action_print"
-          @click="() => doLabelAction()" />
-
-        <PdkDropdownButton
-          :options="rowDropdownItems"
-          class="dropdown-toggle-split"
-          @click="(action) => doLabelAction(action)" />
-      </div>
+    <PdkTableCol align="right">
+      <PdkDropdownButton :options="dropdownActions" />
     </PdkTableCol>
   </PdkTableRow>
 </template>
 
 <script lang="ts">
-import {PdkAction, deleteAction, refreshAction, returnAction} from '../../data';
-import {PropType, defineComponent} from 'vue';
-import {Pdk} from '@myparcel-pdk/frontend-shared';
+import {PropType, computed, defineComponent} from 'vue';
+import {
+  deleteAction,
+  shipmentCreateReturnAction,
+  shipmentPrintAction,
+  shipmentRefreshAction,
+  useAssetUrl,
+  useCarriers,
+} from '../../';
+import {Shipment} from '@myparcel-pdk/common';
+import {useQuery} from '@tanstack/vue-query';
 import {useVModel} from '@vueuse/core';
 
 export default defineComponent({
@@ -48,31 +49,35 @@ export default defineComponent({
 
   props: {
     shipment: {
-      type: Object as PropType<Pdk.ShipmentModelShipment>,
+      type: Object as PropType<Required<Shipment.ModelShipment>>,
       required: true,
     },
 
     // eslint-disable-next-line vue/no-unused-properties
     modelValue: {
-      type: String,
+      type: Array as PropType<number[]>,
       default: null,
     },
   },
 
-  setup: (props, ctx) => {
-    /**
-     * Callback function for any label action.
-     */
-    const doLabelAction = async (action: PdkAction = PdkAction.LABEL_PRINT): Promise<void> => {
-      // await executeLabelAction(action, Number(props.shipment.id_label), props.shipment);
-    };
+  emits: ['update:modelValue'],
 
-    const model = useVModel(props, 'modelValue', ctx.emit);
+  setup: (props, ctx) => {
+    const query = useQuery(['shipments', props.shipment.id], () => {
+      return props.shipment;
+    });
 
     return {
-      model,
-      doLabelAction,
-      rowDropdownItems: [refreshAction, returnAction, deleteAction],
+      query,
+      useAssetUrl: useAssetUrl,
+      carrier: computed(() => {
+        const query = useCarriers(props.shipment.carrier.name);
+
+        return query.data.value;
+      }),
+
+      model: useVModel(props, 'modelValue', ctx.emit),
+      dropdownActions: [shipmentPrintAction, shipmentRefreshAction, shipmentCreateReturnAction, deleteAction],
     };
   },
 });

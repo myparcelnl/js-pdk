@@ -10,10 +10,9 @@
 </template>
 
 <script lang="ts">
+import {ModalCallback, useOrderQuery} from '../../';
 import DeliveryOptions from '../order-card/DeliveryOptions.vue';
-import {ModalCallback} from '../../composables';
 import {defineComponent} from 'vue';
-import {useOrder} from '../../sdk';
 
 /**
  * Modal used in the single order view to edit delivery options for the order.
@@ -26,10 +25,10 @@ export default defineComponent({
 
   setup: () => {
     const onSave: ModalCallback = async () => {
-      const orderQuery = useOrder();
+      const query = useOrderQuery();
 
       // Refresh global shipment options context
-      if (orderQuery.data.value?.externalIdentifier) {
+      if (query.data.value?.externalIdentifier) {
         // const response = await useOrderDataContextEventBus().refresh(order.value?.externalIdentifier);
         // order.value = response?.context;
       }

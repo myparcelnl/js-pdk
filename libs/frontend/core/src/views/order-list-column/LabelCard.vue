@@ -6,7 +6,7 @@
         :href="shipment.barcode"
         rel="noopener noreferrer"
         target="_blank"
-        v-text="shipment.barcode" />
+        v-text="shipment.barcode ?? translate('error_missing_barcode')" />
       <a
         class="btn btn-link"
         @click="() => print(shipment.id)">
@@ -23,16 +23,16 @@
 </template>
 
 <script lang="ts">
+import {PdkAction, useTranslate} from '../../';
 import {PropType, defineComponent} from 'vue';
-import {Pdk} from '@myparcel-pdk/frontend-shared';
-import {PdkAction} from '../../data';
+import {Shipment} from '@myparcel-pdk/common';
 
 export default defineComponent({
   name: 'LabelCard',
 
   props: {
     shipment: {
-      type: Object as PropType<Pdk.ShipmentModelShipment>,
+      type: Object as PropType<Shipment.ModelShipment>,
       required: true,
     },
   },
@@ -43,8 +43,9 @@ export default defineComponent({
     };
 
     return {
-      print: async (shipmentId: number): Promise<void> => execute(PdkAction.LABEL_PRINT, shipmentId),
-      refresh: async (shipmentId: number): Promise<void> => execute(PdkAction.LABEL_REFRESH, shipmentId),
+      print: async (shipmentId: number): Promise<void> => execute(PdkAction.SHIPMENT_PRINT, shipmentId),
+      refresh: async (shipmentId: number): Promise<void> => execute(PdkAction.SHIPMENT_REFRESH, shipmentId),
+      translate: useTranslate(),
     };
   },
 });

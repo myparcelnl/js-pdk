@@ -13,10 +13,10 @@ export interface ModalCallbackProps {
 }
 
 type UseModalContext = (
-  modalId: Ref<ModalKey>,
+  modalId?: Ref<null | ModalKey>,
   onSave?: Ref<null | ModalCallback>,
   onCancel?: Ref<null | ModalCallback>,
-) => {
+) => null | {
   loading: Ref<boolean>;
   modalData: Ref;
   onButtonClick: (type: string) => Promise<void>;
@@ -26,22 +26,32 @@ type UseModalContext = (
 
 export const useModalContext: UseModalContext = (modalId, onSave, onCancel) => {
   const store = useModalStore();
+  const resolvedId = ref<ModalKey>(modalId?.value as ModalKey);
+
+  if (!modalId?.value) {
+    if (!store.opened) {
+      return null;
+    }
+
+    resolvedId.value = store.opened;
+  }
 
   const {loading, setLoading} = useLoading();
   const modalData = ref();
-  const shown = computed(() => store.opened === modalId.value);
+  const shown = computed(() => store.opened === resolvedId.value);
 
   const onButtonClick = async (type: string): Promise<void> => {
     const callback = type === 'save' ? onSave : onCancel;
 
     if (callback) {
       setLoading(true);
-      await callback.value?.(modalId.value);
+      await callback.value?.(resolvedId.value);
       setLoading(false);
     }
   };
 
   return {
+    opened: store.opened,
     loading,
     modalData,
     onButtonClick,

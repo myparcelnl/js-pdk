@@ -23,9 +23,9 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
-import {PdkNotification} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {variantStyleMap} from '../services/variantStyleMap';
+import {PdkNotification} from '@myparcel-pdk/frontend-core';
 
 export default defineComponent({
   name: 'DefaultPdkAlert',

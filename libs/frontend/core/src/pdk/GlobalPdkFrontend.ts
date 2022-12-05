@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import {PdkRenderComponent, logger} from '@myparcel-pdk/frontend-shared';
 import {FinalPdkConfiguration} from '../types';
 import {LocalPdkFrontend} from './LocalPdkFrontend';
-import {PdkRenderComponent} from '@myparcel-pdk/frontend-shared';
 
 export class GlobalPdkFrontend {
   // noinspection TypeScriptFieldCanBeMadeReadonly
@@ -17,8 +17,11 @@ export class GlobalPdkFrontend {
 
   // noinspection JSUnusedGlobalSymbols
   public async render(component: PdkRenderComponent, selector: string): Promise<void> {
+    logger.debug(`Rendering "${component}" in "${selector}"`);
     const clonedConfig: FinalPdkConfiguration = {...this._config};
 
-    return new LocalPdkFrontend(clonedConfig, component, selector).renderComponent();
+    const localPdkFrontend = new LocalPdkFrontend(clonedConfig, component, selector);
+
+    return localPdkFrontend.renderComponent();
   }
 }

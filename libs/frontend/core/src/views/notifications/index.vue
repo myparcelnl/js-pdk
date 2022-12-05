@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
+import NotificationContainer from '../../components/NotificationContainer.vue';
 import {defineComponent} from 'vue';
-import NotificationContainer from './HeaderAlerts.vue';
 
 export default defineComponent({
   name: 'Notifications',

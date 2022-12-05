@@ -1,36 +1,50 @@
 <template>
-  <div class="relative">
+  <div
+    :id="`pdk-modal-${modalKey}`"
+    ref="wrapper"
+    tabindex="-1"
+    class="fixed h-full inset-0 overflow-x-hidden overflow-y-auto w-full z-50"
+    :aria-hidden="isOpen ? 'false' : 'true'"
+    :class="{
+      hidden: !isOpen,
+    }"
+    @keydown.esc="close">
     <div
-      v-if="shown"
-      class="bg-black fixed inset-0 opacity-10 z-50" />
+      v-show="isOpen"
+      class="absolute bg-black/50 h-full w-full"
+      @click="close" />
 
     <Transition name="slide-up">
       <div
-        :id="id"
-        :class="{
-          'inline-flex': shown,
-          hidden: !shown,
-        }"
-        class="bg-white border border-gray-300 fixed inset-0 m-auto overflow-y-auto rounded-lg shadow-lg z-50"
-        role="dialog"
-        tabindex="-1">
-        <div>
-          <h4 v-text="translate(title)" />
-          <PdkButton>
-            <PdkIcon icon="close" />
-          </PdkButton>
-        </div>
+        v-show="isOpen"
+        class="m-auto max-w-md p-8 w-full">
+        <NotificationContainer category="modal" />
 
-        <div v-if="modalContext.shown">
-          <!-- Modal content. -->
-          <slot :state="modalStore.$state" />
-          <!--                  <slot -->
-          <!--                    :modal-data="modalContext.modalData" -->
-          <!--                    :context="modalContext.additionalContext.value" /> -->
-          <!--          <LoaderOverlay v-show="loading" /> -->
-        </div>
+        <div class="bg-white dark:bg-zinc-800 relative rounded-lg shadow">
+          <button
+            type="button"
+            class="absolute bg-transparent dark:hover:bg-zinc-900 dark:hover:text-white hover:bg-zinc-200 hover:text-zinc-900 inline-flex items-center ml-auto p-1.5 right-2.5 rounded-lg text-sm text-zinc-400 top-3"
+            @click="close">
+            <svg
+              aria-hidden="true"
+              class="h-5 w-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
 
-        <div class="modal-footer">
+          <div class="lg:px-8 px-6 py-6">
+            <h3 v-text="title" />
+
+            <slot :state="modalStore.$state" />
+          </div>
+
           <PdkButton
             v-for="(action, index) in actionButtons"
             :key="`action_${action.id}_${index}`"
@@ -42,8 +56,17 @@
 </template>
 
 <script lang="ts">
-import {ModalCallbackProps, ModalKey, useModalContext, useModalStore, useTranslate} from '@myparcel-pdk/frontend-core';
-import {PropType, computed, defineComponent, toRefs} from 'vue';
+import {
+  InputPdkButtonAction,
+  ModalCallbackProps,
+  ModalKey,
+  NotificationContainer,
+  modalCancelAction,
+  useModalContext,
+  useModalStore,
+  useTranslate,
+} from '@myparcel-pdk/frontend-core';
+import {PropType, computed, defineComponent, ref, toRefs} from 'vue';
 
 /**
  * A modal that can be used to render content.
@@ -52,11 +75,16 @@ import {PropType, computed, defineComponent, toRefs} from 'vue';
  */
 export default defineComponent({
   name: 'DefaultPdkModal',
+
+  components: {
+    NotificationContainer,
+  },
+
   props: {
     /**
-     * Modal ID. Must be unique.
+     * Modal k. Must be unique.
      */
-    id: {
+    modalKey: {
       type: String as PropType<ModalKey>,
       default: null,
     },
@@ -89,30 +117,23 @@ export default defineComponent({
      * Available actions in the modal. Each action needs an unique id and a label.
      */
     actions: {
-      type: Array as PropType<{id: string; onClick?: () => void}[]>,
-      default: () => [
-        {
-          id: 'cancel',
-          label: 'cancel',
-        },
-        {
-          id: 'save',
-          label: 'save',
-        },
-      ],
+      type: Array as PropType<InputPdkButtonAction[]>,
+      default: () => [modalCancelAction],
     },
   },
 
   setup: (props) => {
+    const wrapper = ref<HTMLElement | null>(null);
+
     const modalStore = useModalStore();
     const propRefs = toRefs(props);
-    const modalContext = useModalContext(propRefs.id, propRefs.onSave, propRefs.onCancel);
+    const modalContext = useModalContext(propRefs.modalKey, propRefs.onSave, propRefs.onCancel);
 
     return {
       modalContext,
 
-      shown: computed(() => {
-        return propRefs.id.value === modalStore.opened || true;
+      isOpen: computed(() => {
+        return propRefs.modalKey.value === modalStore.opened;
       }),
 
       modalStore,
@@ -120,17 +141,24 @@ export default defineComponent({
 
       actionButtons: computed(() => {
         return props.actions.map((action) => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
           const {onClick, ...data} = action;
 
+          console.log(action);
           return {
             ...data,
             onClick() {
               onClick?.();
-              return modalContext.onButtonClick(action.id);
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-expect-error
+              return modalContext?.onButtonClick(action.id);
             },
           };
         });
       }),
+
+      wrapper,
     };
   },
 });

@@ -3,7 +3,6 @@
   "version": "1.0.0-alpha.0",
   "license": "MIT",
   "type": "module",
-  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "vitest",
@@ -11,12 +10,12 @@
   },
   "dependencies": {
     "@myparcel-pdk/frontend-shared": "workspace:*",
-    "@myparcel/ts-utils": "^1.0.0",
+    "@myparcel/ts-utils": "^1.1.0",
     "@vitejs/plugin-vue": "^3.2.0",
     "@vue/test-utils": "^2.2.3",
-    "pinia": "^2.0.23",
+    "pinia": "^2.0.27",
     "vite": "^3.2.4",
-    "vitest": "^0.25.2",
+    "vitest": "^0.25.3",
     "vue": "^3.2.45"
   },
   "devDependencies": {
@@ -24,5 +23,10 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "src"
+  ],
+  "main": "lib/index.js",
+  "module": "src/index.ts"
 }

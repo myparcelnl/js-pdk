@@ -73,23 +73,28 @@
 </template>
 
 <script lang="ts">
-import {GlobalPdkFrontend, INJECT_GLOBAL_PDK_FRONTEND} from '@myparcel/pdk-frontend';
+import {INJECT_GLOBAL_PDK_FRONTEND, ModalKey, useModalStore} from '@myparcel/pdk-frontend';
 import {defineComponent, inject, ref} from 'vue';
-import {useStaticOrderData} from './composables/useStaticOrderData';
+import {useStaticOrderData} from './composables';
 
 export default defineComponent({
   name: 'DemoApp',
   setup: () => {
-    const fe: GlobalPdkFrontend = inject(INJECT_GLOBAL_PDK_FRONTEND);
+    const fe = inject(INJECT_GLOBAL_PDK_FRONTEND);
+
+    if (!fe) {
+      throw new Error('PDK frontend not found');
+    }
+
     const orderData = useStaticOrderData();
 
     // void fe.render('Notifications', '#mypa-notifications');
 
     void fe.render('Modals', '#mypa-modals');
 
-    // orderData.forEach((order) => {
-    // void fe.render('OrderListColumn', `mypa-order-${orderData[0].externalIdentifier}`);
-    // });
+    orderData.forEach((order) => {
+      void fe.render('OrderListColumn', `#mypa-order-${order.externalIdentifier}`);
+    });
 
     const toggled = ref<string | null>(null);
     return {
@@ -97,7 +102,11 @@ export default defineComponent({
       toggled,
 
       toggle: (id: string) => {
-        toggled.value = toggled.value === id ? null : id;
+        const modalStore = useModalStore();
+
+        modalStore.open(ModalKey.SHIPMENT_OPTIONS, {
+          order: id,
+        });
       },
 
       context: {

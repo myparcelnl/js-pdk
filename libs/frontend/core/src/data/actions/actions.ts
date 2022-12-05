@@ -1,26 +1,45 @@
 /* eslint-disable max-len,vue/max-len */
 
+import {FormInstance} from '@myparcel/vue-form-builder';
+import {Plugin} from '@myparcel-pdk/common';
+
 export enum PdkAction {
-  CREATE_RETURN_LABEL = 'createReturnLabel',
-  LABEL_DELETE = 'delete',
-  LABEL_PRINT = 'print',
-  LABEL_REFRESH = 'refresh',
-  ORDER_EXPORT = 'export',
-  ORDER_EXPORT_PRINT = 'exportPrint',
-  ORDER_GET_CONTEXT = 'getOrderDataContext',
-  ORDER_PRINT = 'print',
-  ORDER_REFRESH_LABELS = 'refreshLabels',
-  ORDER_SAVE_DELIVERY_OPTIONS = 'saveDeliveryOptions',
+  LABEL_CREATE_RETURN = 'labelCreateReturn',
+  LABEL_DELETE = 'labelDelete',
+  ORDER_EXPORT = 'orderExport',
+  ORDER_EXPORT_PRINT = 'orderExportPrint',
+  ORDER_PRINT = 'orderPrint',
+  ORDER_REFRESH_LABELS = 'orderRefreshLabels',
+  ORDER_UPDATE = 'orderUpdate',
+  SHIPMENT_PRINT = 'shipmentPrint',
+  SHIPMENT_REFRESH = 'shipmentRefresh',
 }
 
-export type ActionResponse<CK = PdkAction> = Record<string, unknown>;
+export type ActionFn<A extends PdkAction> = (parameters: ActionParameters<A>) => Promise<ActionResponse<A>>;
 
-export const printActions = [PdkAction.LABEL_PRINT, PdkAction.ORDER_EXPORT_PRINT, PdkAction.ORDER_PRINT] as const;
+export type ActionParameters<A extends PdkAction> = A extends PdkAction.ORDER_EXPORT | PdkAction.ORDER_EXPORT_PRINT
+  ? {orderIds: string[] | string; print: boolean; form?: FormInstance}
+  : A extends PdkAction.ORDER_UPDATE
+  ? {orderId: string; form: FormInstance}
+  : A extends PdkAction.SHIPMENT_REFRESH | PdkAction.SHIPMENT_PRINT
+  ? {orderId: string; shipmentIds: number[] | number}
+  : Record<string, unknown>;
 
-export const modifyLabelActions = [
+export type ActionResponse<A extends PdkAction> = A extends
+  | PdkAction.ORDER_EXPORT
+  | PdkAction.ORDER_EXPORT_PRINT
+  | PdkAction.ORDER_REFRESH_LABELS
+  | PdkAction.ORDER_PRINT
+  | PdkAction.ORDER_UPDATE
+  ? Plugin.ModelPdkOrder[]
+  : Record<string, unknown>;
+
+export const printActions = [PdkAction.SHIPMENT_PRINT, PdkAction.ORDER_EXPORT_PRINT, PdkAction.ORDER_PRINT];
+
+export const updateShipmentActions = [
   PdkAction.LABEL_DELETE,
-  PdkAction.LABEL_REFRESH,
+  PdkAction.SHIPMENT_REFRESH,
   PdkAction.ORDER_EXPORT,
   PdkAction.ORDER_EXPORT_PRINT,
   PdkAction.ORDER_REFRESH_LABELS,
-] as const;
+];

@@ -1,53 +1,31 @@
 <template>
-  <PdkCard :loading="loading">
+  <PdkCard :actions="actions">
     <template #header>
       <span
         class="mr-2"
-        v-text="translate('concept')" />
+        v-text="`${translate('concept')} #${order?.externalIdentifier}`" />
     </template>
 
     <template #default>
-      <div class="sm:flex">
-        <div class="sm:w-1/2">
+      <div>
+        <div>
           <ShipmentOptionsForm />
         </div>
 
-        <div class="sm:w-1/2">
+        <div>
           <ShippingAddress />
         </div>
-      </div>
-    </template>
-
-    <template #footer>
-      <PdkButton
-        icon="save"
-        @click="saveDeliveryOptions" />
-
-      <div class="flex-fill" />
-
-      <div class="gap-2 grid-flow-col inline-grid">
-        <PdkButton
-          icon="add"
-          label="action_new_shipment"
-          variant="outline-primary"
-          @click="exportOrderQuery" />
-        <PdkButton
-          :icon="['add', 'local_printshop']"
-          variant="outline-primary"
-          @click="() => exportOrderQuery(true)">
-          {{ translate('action_new_shipment_print') }}
-        </PdkButton>
       </div>
     </template>
   </PdkCard>
 </template>
 
 <script lang="ts">
-import {PdkAction} from '../../data';
+import {PdkAction, orderExportAction, orderExportPrintAction, useOrderQuery, useTranslate} from '../../';
+import {computed, defineComponent} from 'vue';
 import ShipmentOptionsForm from '../../components/ShipmentOptionsForm.vue';
 import ShippingAddress from './ShippingAddress.vue';
-import {defineComponent} from 'vue';
-import {useTranslate} from '../../composables';
+import {createActions} from '../modals/createActions';
 
 export default defineComponent({
   name: 'ConceptCard',
@@ -57,18 +35,31 @@ export default defineComponent({
   },
 
   setup: () => {
+    const order = computed(() => {
+      return useOrderQuery().data.value;
+    });
+
     return {
+      order,
       translate: useTranslate(),
 
-      saveDeliveryOptions: async (): Promise<void> => {
-        // await useDeliveryOptionsEventBus().saveConfiguration();
-      },
-
-      exportOrderQuery: async (print = false): Promise<void> => {
-        const action = print ? PdkAction.ORDER_EXPORT_PRINT : PdkAction.ORDER_EXPORT;
-
-        // await executeOrderAction(action);
-      },
+      actions: createActions([
+        {
+          action: PdkAction.ORDER_UPDATE,
+          label: 'action_save',
+          icon: 'save',
+        },
+        {
+          ...orderExportAction,
+          icon: 'add',
+          label: 'action_new_shipment',
+        },
+        {
+          ...orderExportPrintAction,
+          icon: 'print',
+          label: 'action_new_shipment_and_print',
+        },
+      ]),
     };
   },
 });

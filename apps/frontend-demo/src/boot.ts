@@ -7,7 +7,7 @@ import {createApp} from 'vue';
 export const boot = (initialConfig: InputPdkConfiguration): void => {
   const div = document.createElement('div');
 
-  div.setAttribute('id', 'myparcel-core-bootstrap');
+  div.setAttribute('id', 'myparcel-pdk-bootstrap');
   div.setAttribute('data-pdk-context', JSON.stringify(context));
 
   document.body.appendChild(div);
