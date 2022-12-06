@@ -23,7 +23,7 @@
         <PdkButton
           v-for="(action, index) in actions"
           :key="`${index}_${action.id}`"
-          v-bind="action" />
+          :action="action" />
       </slot>
     </div>
     <!--    <LoaderOverlay :show="loading" /> -->

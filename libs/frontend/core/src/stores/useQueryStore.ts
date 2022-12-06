@@ -2,6 +2,19 @@ import {QueryClient, useQueryClient} from '@tanstack/vue-query';
 import {Ref, ref} from 'vue';
 import {useExportOrdersQuery, useOrderQuery, useUpdateOrdersQuery} from '../';
 import {defineStore} from 'pinia';
+import {useDeleteLabelsQuery} from '../composables/queries/useDeleteLabelsQuery';
+
+export type QueryObject<I extends QueryId = QueryId> = Record<I, ResolvedQuery<I>>;
+
+export type ResolvedQuery<I extends QueryId = QueryId> = I extends QueryId.EXPORT_ORDERS
+  ? ReturnType<typeof useExportOrdersQuery>
+  : I extends QueryId.ORDER
+  ? ReturnType<typeof useOrderQuery>
+  : I extends QueryId.DELETE_LABELS
+  ? ReturnType<typeof useDeleteLabelsQuery>
+  : I extends QueryId.UPDATE_ORDERS
+  ? ReturnType<typeof useUpdateOrdersQuery>
+  : unknown;
 
 export enum QueryId {
   DELETE_LABELS = 'deleteLabels',
@@ -9,18 +22,6 @@ export enum QueryId {
   ORDER = 'order',
   UPDATE_ORDERS = 'updateOrders',
 }
-
-export type ResolvedQuery<I extends QueryId = QueryId> = I extends QueryId.EXPORT_ORDERS
-  ? ReturnType<typeof useExportOrdersQuery>
-  : I extends QueryId.ORDER
-  ? ReturnType<typeof useOrderQuery>
-  : I extends QueryId.DELETE_LABELS
-  ? ReturnType<typeof useLab>
-  : I extends QueryId.UPDATE_ORDERS
-  ? ReturnType<typeof useUpdateOrdersQuery>
-  : unknown;
-
-export type QueryObject<I extends QueryId = QueryId> = Record<I, ResolvedQuery<I>>;
 
 export const useQueryStore = defineStore('query', () => {
   const queries = ref({} as QueryObject);
@@ -33,6 +34,8 @@ export const useQueryStore = defineStore('query', () => {
       throw new Error(`No query found for key ${key}`);
     }
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     return queries.value[key];
   };
 
@@ -41,6 +44,8 @@ export const useQueryStore = defineStore('query', () => {
       queryClient.value = useQueryClient();
     }
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     queries.value[key] = query;
   };
 

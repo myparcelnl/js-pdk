@@ -1,6 +1,7 @@
 export enum EndpointName {
+  DELETE_LABELS = 'deleteLabels',
   EXPORT_ORDERS = 'exportOrders',
   GET_ORDERS = 'getOrders',
-  UPDATE_ORDERS = 'updateOrders',
   REFRESH_SHIPMENTS = 'refreshShipments',
+  UPDATE_ORDERS = 'updateOrders',
 }

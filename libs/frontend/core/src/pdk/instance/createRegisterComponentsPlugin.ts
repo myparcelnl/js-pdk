@@ -1,28 +1,17 @@
-import {PdkComponentMap, PdkComponentName, logger} from '@myparcel-pdk/frontend-shared';
+import {PdkComponentMap, PdkComponentName, componentNames, logger} from '@myparcel-pdk/frontend-shared';
 import {Plugin} from 'vue';
 
 type RegisterComponentsPlugin = (components: PdkComponentMap) => Plugin;
 
-const baseComponents: Record<PdkComponentName, null> = Object.freeze({
-  PdkAccordion: null,
-  PdkAlert: null,
-  PdkButton: null,
-  PdkCard: null,
-  PdkCheckbox: null,
-  PdkDropdownButton: null,
-  PdkFormGroup: null,
-  PdkIcon: null,
-  PdkInput: null,
-  PdkModal: null,
-  PdkMultiCheckbox: null,
-  PdkNumberInput: null,
-  PdkRadio: null,
-  PdkSelect: null,
-  PdkTable: null,
-  PdkTableCol: null,
-  PdkTableRow: null,
-  PdkToggle: null,
-});
+const baseComponents = Object.freeze(
+  componentNames.reduce(
+    (acc, name) => ({
+      ...acc,
+      [name]: null,
+    }),
+    {} as Record<PdkComponentName, null>,
+  ),
+);
 
 /**
  * All components must be manually passed, because dynamic importing is not performant enough.

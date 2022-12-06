@@ -31,7 +31,6 @@ export const createShipmentOptionsForm = (id: string) => {
         props: {
           options: [],
         },
-
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         onBeforeMount: async (field) => {

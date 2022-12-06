@@ -3,9 +3,10 @@
 </template>
 
 <script lang="ts">
-import {createShipmentOptionsForm, useOrderQuery} from '../pdk';
 import {MagicForm} from '@myparcel/vue-form-builder';
+import {createShipmentOptionsForm} from '../forms';
 import {defineComponent} from 'vue';
+import {useOrderQuery} from '../composables';
 
 export default defineComponent({
   name: 'ShipmentOptionsForm',
@@ -21,7 +22,8 @@ export default defineComponent({
   },
 
   setup(props) {
-    const orderId = props.orderId ?? useOrderQuery().data.value?.externalIdentifier;
+    const orderId =
+      props.orderId ?? useOrderQuery().data.value?.externalIdentifier;
 
     if (!orderId) {
       throw new Error('Order ID is required.');

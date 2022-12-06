@@ -5,10 +5,10 @@
       'px-3 py-1 text-sm': 'sm' === size,
       'px-2 py-0.5 text-xs': 'xs' === size,
     }"
-    :disabled="disabled"
+    :disabled="resolvedProps.disabled"
     class="active:bg-orange-800 bg-orange-600 duration-75 focus:bg-orange-700 hover:bg-orange-700 rounded-full text-white transition-colors"
     type="button"
-    @click="() => $emit('click')">
+    @click="onClick">
     <PdkIcon
       v-for="iconName in icons"
       :key="iconName"
@@ -23,9 +23,9 @@
 </template>
 
 <script lang="ts">
-import {PropType, computed, defineComponent} from 'vue';
 import {toArray} from '@myparcel/ts-utils';
-import {useTranslate} from '@myparcel-pdk/frontend-core';
+import {PdkButtonAction, useTranslate} from '@myparcel-pdk/frontend-core';
+import {ComputedRef, PropType, computed, defineComponent} from 'vue';
 
 /**
  * This component is used to render a button. The button can be used to trigger
@@ -35,11 +35,33 @@ import {useTranslate} from '@myparcel-pdk/frontend-core';
 export default defineComponent({
   name: 'DefaultPdkButton',
   props: {
+    action: {
+      type: Object as PropType<PdkButtonAction>,
+      default: null,
+    },
+
     /**
      * Controls disabled state.
      */
     disabled: {
-      type: Boolean,
+      type: Boolean as PropType<PdkButtonAction['disabled']>,
+      default: false,
+    },
+
+    /**
+     * Icon.
+     */
+    icon: {
+      type: [Array, String] as PropType<PdkButtonAction['icon']>,
+      default: () => [],
+    },
+
+    /**
+     * Button label. Can be used instead of the slot.
+     */
+    label: {
+      type: String as PropType<PdkButtonAction['label']>,
+      default: 'action_save',
     },
 
     /**
@@ -50,29 +72,33 @@ export default defineComponent({
       default: 'md',
       validator: (value: string) => ['md', 'sm', 'xs'].includes(value),
     },
-
-    /**
-     * Icon.
-     */
-    icon: {
-      type: [Array, String] as PropType<string | string[]>,
-      default: () => [],
-    },
-
-    /**
-     * Button label. Can be used instead of the slot.
-     */
-    label: {
-      type: String,
-      default: 'action_save',
-    },
   },
 
   emits: ['click'],
 
-  setup: (props) => ({
-    translate: useTranslate(),
-    icons: computed(() => toArray(props.icon)),
-  }),
+  setup: (props, ctx) => {
+    const resolvedProps: ComputedRef<Partial<PdkButtonAction>> = computed(() => {
+      console.log(props);
+
+      if (!props.action) {
+        return props;
+      }
+
+      return {
+        ...props.action,
+        ...props,
+      };
+    });
+
+    return {
+      icons: computed(() => toArray(props.icon)),
+      resolvedProps,
+      translate: useTranslate(),
+      onClick: (event: MouseEvent) => {
+        resolvedProps.value.onClick?.(event);
+        ctx.emit('click', event);
+      },
+    };
+  },
 });
 </script>

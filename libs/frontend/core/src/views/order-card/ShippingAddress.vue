@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import {computed, defineComponent, toRefs} from 'vue';
-import {useOrderQuery} from '../../pdk';
+import {useOrderQuery} from '../../composables';
 
 export default defineComponent({
   name: 'ShippingAddress',
@@ -36,17 +36,24 @@ export default defineComponent({
 
     const recipient = computed(() => query.data.value?.recipient);
 
-    const stringify = (...parts: (string | undefined)[]) => parts.filter(Boolean).join(' ');
+    const stringify = (...parts: (string | undefined)[]) =>
+      parts.filter(Boolean).join(' ');
 
     const fullStreet = computed(() => {
       // todo where's box number?
       return (
         recipient.value?.fullStreet ??
-        stringify(recipient.value?.street, recipient.value?.number, recipient.value?.numberSuffix)
+        stringify(
+          recipient.value?.street,
+          recipient.value?.number,
+          recipient.value?.numberSuffix,
+        )
       );
     });
 
-    const postalCodeCity = computed(() => stringify(recipient.value?.postalCode, recipient.value?.city));
+    const postalCodeCity = computed(() =>
+      stringify(recipient.value?.postalCode, recipient.value?.city),
+    );
 
     return {
       query,

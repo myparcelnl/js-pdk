@@ -6,26 +6,20 @@
         :href="shipment.barcode"
         rel="noopener noreferrer"
         target="_blank"
-        v-text="shipment.barcode ?? translate('error_missing_barcode')" />
-      <a
-        class="btn btn-link"
-        @click="() => print(shipment.id)">
-        <PdkIcon icon="print" />
-      </a>
-      <a
-        class="btn btn-link"
-        @click="() => refresh(shipment.id)">
-        <PdkIcon icon="refresh" />
-      </a>
+        v-text="shipment.barcode ?? translate('no_barcode')" />
+
+      <PdkLink :action="print" />
+      <PdkLink :action="refresh" />
     </div>
     <!--    <LoaderOverlay v-show="loading" /> -->
   </div>
 </template>
 
 <script lang="ts">
-import {PdkAction, useTranslate} from '../../';
 import {PropType, defineComponent} from 'vue';
-import {Shipment} from '@myparcel-pdk/common';
+import {shipmentPrintAction, shipmentRefreshAction, useTranslate} from '../../';
+import {Shipment} from '@myparcel-pdk/frontend-shared';
+import {createAction} from '../modals/createActions';
 
 export default defineComponent({
   name: 'LabelCard',
@@ -37,14 +31,10 @@ export default defineComponent({
     },
   },
 
-  setup: () => {
-    const execute = async (action: PdkAction, shipmentId: number): Promise<void> => {
-      // await executeLabelAction(action, Number(label.id_label));
-    };
-
+  setup: (props) => {
     return {
-      print: async (shipmentId: number): Promise<void> => execute(PdkAction.SHIPMENT_PRINT, shipmentId),
-      refresh: async (shipmentId: number): Promise<void> => execute(PdkAction.SHIPMENT_REFRESH, shipmentId),
+      print: createAction(shipmentPrintAction, {shipmentIds: props.shipment.id}),
+      refresh: createAction(shipmentRefreshAction, {shipmentIds: props.shipment.id}),
       translate: useTranslate(),
     };
   },

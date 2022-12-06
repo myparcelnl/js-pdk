@@ -2,6 +2,15 @@ import {LogLevel, PdkComponentMap} from '@myparcel-pdk/frontend-shared';
 import {PdkContextObject} from './context.types';
 import {PiniaPluginContext} from 'pinia';
 
+export type DefaultPdkConfiguration = Omit<FinalPdkConfiguration, 'context' | 'components'> & {
+  context?: Partial<PdkContextObject>;
+  components?: Record<string, undefined>;
+};
+
+export type FinalPdkConfiguration = InputPdkConfiguration & {
+  context: PdkContextObject;
+};
+
 export type InputPdkConfiguration = {
   components: PdkComponentMap;
 
@@ -27,14 +36,6 @@ export type InputPdkConfiguration = {
     labelCard?: string;
     notification?: string;
     shipmentRow?: string;
+    tableRow?: string;
   };
-};
-
-export type FinalPdkConfiguration = InputPdkConfiguration & {
-  context: PdkContextObject;
-};
-
-export type DefaultPdkConfiguration = Omit<FinalPdkConfiguration, 'context' | 'components'> & {
-  context?: Partial<PdkContextObject>;
-  components?: Record<string, undefined>;
 };

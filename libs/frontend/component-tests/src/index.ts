@@ -1,3 +1,2 @@
-export * from './executePdkComponentTest';
-export * from './executePdkComponentTests';
-export * from './mount';
+export * from './common';
+export * from './tests';

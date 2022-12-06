@@ -1,4 +1,5 @@
-import {NotificationCategory, useNotificationStore} from '../.';
+import {NotificationCategory} from '../../types';
+import {useNotificationStore} from '../../stores';
 
 export const onQueryStart = (): void => {
   const store = useNotificationStore();

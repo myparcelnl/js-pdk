@@ -29,7 +29,7 @@
 import {ModalKey, useModalStore, useOrderQuery, usePdkConfig, useTranslate} from '../../';
 import {computed, defineComponent, inject} from 'vue';
 import LabelCard from './LabelCard.vue';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/frontend-shared';
 
 /**
  * The "Labels" column in the orders list.

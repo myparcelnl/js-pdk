@@ -4,6 +4,11 @@
   "private": true,
   "repository": "github:myparcelnl/js-pdk.git",
   "license": "MIT",
+  "main": "lib/index.js",
+  "module": "src/index.ts",
+  "files": [
+    "src"
+  ],
   "workspaces": [
     "apps/**",
     "libs/**"
@@ -13,7 +18,8 @@
     "build:all": "nx run-many --target=build",
     "build:dev": "nx run-many --target=build:dev",
     "buildOnly": "nx run-many --target=buildOnly",
-    "clean": "nx run-many --target=clean",
+    "clean": "nx run-many --target=clean --exclude=.",
+    "lint": "nx run-many --target=lint --exclude=.",
     "prepare": "is-ci || husky install",
     "serve": "yarn build:dev && npx concurrently yarn:watch yarn:serve:demo",
     "serve:demo": "nx serve @myparcel/pdk-frontend-demo",
@@ -22,6 +28,7 @@
     "typecheck": "nx run-many --target=typecheck",
     "watch": "nodemon --exec 'yarn build:dev --output-style=stream' -V",
     "ws:clean": "cd $0 && rimraf lib dist",
+    "ws:lint": "cd $0 && pwd && eslint --fix --cache src",
     "ws:tsup:build": "cd $0 && tsup --dts --minify",
     "ws:tsup:build:dev": "cd $0 && tsup --sourcemap --dts",
     "ws:tsup:buildOnly": "cd $0 && tsup",
@@ -34,7 +41,8 @@
     "ws:vite:watch": "cd $0 && vite build --mode development --watch"
   },
   "lint-staged": {
-    "*.{ts,vue}": "eslint --fix",
+    "*.{json,md}": "prettier --write",
+    "*.{ts,vue}": "eslint --fix --cache",
     "package.json": "npx sort-package-json"
   },
   "nodemonConfig": {
@@ -55,18 +63,15 @@
     "@myparcel-eslint/eslint-config-prettier-typescript": "^1.0.0-alpha.1",
     "@myparcel-eslint/eslint-config-prettier-typescript-vue": "^1.0.0-alpha.1",
     "@myparcel/prettier-config": "^1.1.0",
-    "eslint": "^8.28.0",
+    "@vitest/ui": "^0.25.4",
+    "eslint": "^8.29.0",
+    "eslint-plugin-sort-exports": "^0.8.0",
     "husky": "^8.0.2",
-    "lint-staged": "^13.0.4",
+    "lint-staged": "^13.1.0",
     "nx": "^15.2.4",
     "plop": "^3.1.1",
     "prettier": "^2.8.0",
     "rimraf": "^3.0.2"
   },
-  "packageManager": "yarn@3.3.0",
-  "files": [
-    "src"
-  ],
-  "main": "lib/index.js",
-  "module": "src/index.ts"
+  "packageManager": "yarn@3.3.0"
 }

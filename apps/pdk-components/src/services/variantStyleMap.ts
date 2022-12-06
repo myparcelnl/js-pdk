@@ -1,4 +1,4 @@
-import {Variant} from '@myparcel-pdk/frontend-shared';
+import {Variant} from '@myparcel-pdk/common';
 
 type VariantStyleMap = {
   variant: Variant;

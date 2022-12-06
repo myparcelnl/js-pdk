@@ -8,6 +8,7 @@ import DefaultPdkFormGroup from './DefaultPdkFormGroup.vue';
 import DefaultPdkIcon from './DefaultPdkIcon.vue';
 import DefaultPdkImage from './DefaultPdkImage.vue';
 import DefaultPdkInput from './DefaultPdkInput.vue';
+import DefaultPdkLink from './DefaultPdkLink.vue';
 import DefaultPdkModal from './DefaultPdkModal.vue';
 import DefaultPdkMultiCheckbox from './DefaultPdkMultiCheckbox.vue';
 import DefaultPdkNumberInput from './DefaultPdkNumberInput.vue';
@@ -18,28 +19,6 @@ import DefaultPdkTableCol from './DefaultPdkTableCol.vue';
 import DefaultPdkTableRow from './DefaultPdkTableRow.vue';
 import DefaultPdkToggle from './DefaultPdkToggle.vue';
 import {PdkComponentMap} from '@myparcel-pdk/frontend-shared';
-
-export const defaultComponents: PdkComponentMap = {
-  PdkAccordion: DefaultPdkAccordion,
-  PdkAlert: DefaultPdkAlert,
-  PdkButton: DefaultPdkButton,
-  PdkCard: DefaultPdkCard,
-  PdkCheckbox: DefaultPdkCheckbox,
-  PdkDropdownButton: DefaultPdkDropdownButton,
-  PdkFormGroup: DefaultPdkFormGroup,
-  PdkIcon: DefaultPdkIcon,
-  PdkImage: DefaultPdkImage,
-  PdkInput: DefaultPdkInput,
-  PdkModal: DefaultPdkModal,
-  PdkMultiCheckbox: DefaultPdkMultiCheckbox,
-  PdkNumberInput: DefaultPdkNumberInput,
-  PdkRadio: DefaultPdkRadio,
-  PdkSelect: DefaultPdkSelect,
-  PdkTable: DefaultPdkTable,
-  PdkTableCol: DefaultPdkTableCol,
-  PdkTableRow: DefaultPdkTableRow,
-  PdkToggle: DefaultPdkToggle,
-};
 
 export {
   DefaultPdkAccordion,
@@ -52,6 +31,7 @@ export {
   DefaultPdkIcon,
   DefaultPdkImage,
   DefaultPdkInput,
+  DefaultPdkLink,
   DefaultPdkModal,
   DefaultPdkMultiCheckbox,
   DefaultPdkNumberInput,
@@ -61,4 +41,27 @@ export {
   DefaultPdkTableCol,
   DefaultPdkTableRow,
   DefaultPdkToggle,
+};
+
+export const defaultComponents: PdkComponentMap = {
+  PdkAccordion: DefaultPdkAccordion,
+  PdkAlert: DefaultPdkAlert,
+  PdkButton: DefaultPdkButton,
+  PdkCard: DefaultPdkCard,
+  PdkCheckbox: DefaultPdkCheckbox,
+  PdkDropdownButton: DefaultPdkDropdownButton,
+  PdkFormGroup: DefaultPdkFormGroup,
+  PdkIcon: DefaultPdkIcon,
+  PdkImage: DefaultPdkImage,
+  PdkInput: DefaultPdkInput,
+  PdkLink: DefaultPdkLink,
+  PdkModal: DefaultPdkModal,
+  PdkMultiCheckbox: DefaultPdkMultiCheckbox,
+  PdkNumberInput: DefaultPdkNumberInput,
+  PdkRadio: DefaultPdkRadio,
+  PdkSelect: DefaultPdkSelect,
+  PdkTable: DefaultPdkTable,
+  PdkTableCol: DefaultPdkTableCol,
+  PdkTableRow: DefaultPdkTableRow,
+  PdkToggle: DefaultPdkToggle,
 };

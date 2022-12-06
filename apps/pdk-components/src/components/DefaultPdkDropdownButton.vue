@@ -1,8 +1,8 @@
 <template>
   <PdkButton
-    v-for="button in standaloneOptions"
-    :key="button.label"
-    v-bind="button" />
+    v-for="action in standaloneActions"
+    :key="action.id"
+    :action="action" />
 
   <PdkButton
     :aria-expanded="toggled"
@@ -17,10 +17,10 @@
 
   <div v-show="toggled">
     <PdkButton
-      v-for="(option, index) in dropdownOptions"
-      :key="`${index}_${option.label}`"
-      v-bind="option">
-      {{ translate(option.label) }}
+      v-for="(action, index) in dropdownActions"
+      :key="`${index}_${action.id}`"
+      :action="action">
+      {{ translate(action.label) }}
     </PdkButton>
   </div>
 </template>
@@ -67,8 +67,8 @@ export default defineComponent({
 
       toggled,
 
-      standaloneOptions: computed(() => propRefs.options.value.filter((option) => option.standalone)),
-      dropdownOptions: computed(() => propRefs.options.value.filter((option) => !option.standalone)),
+      standaloneActions: computed(() => propRefs.options.value.filter((option) => option.standalone)),
+      dropdownActions: computed(() => propRefs.options.value.filter((option) => !option.standalone)),
     };
   },
 });

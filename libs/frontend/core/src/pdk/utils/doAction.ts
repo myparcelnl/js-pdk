@@ -1,15 +1,16 @@
 import {ActionParameters, ActionResponse, PdkAction} from '../../data';
-import {deleteLabels, exportOrders, refreshShipments, updateOrders} from '../../actions';
+import {QueryId, useQueryStore} from '../../stores';
 import {afterAction} from './afterAction';
 import {beforeAction} from './beforeAction';
 
 type DoAction = <A extends PdkAction>(
   action: A,
-  parameters: Partial<ActionParameters<A>>,
+  parameters?: Partial<ActionParameters<A>>,
 ) => Promise<ActionResponse<A>>;
 
 export const doAction: DoAction = async (action, parameters) => {
   let response;
+  const queryStore = useQueryStore();
 
   console.trace('doAction', action, parameters);
 
@@ -18,29 +19,35 @@ export const doAction: DoAction = async (action, parameters) => {
   switch (action) {
     case PdkAction.ORDER_EXPORT:
     case PdkAction.ORDER_EXPORT_PRINT:
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      response = await exportOrders({...resolvedParameters, print: PdkAction.ORDER_EXPORT_PRINT === action});
+      response = await queryStore
+        .get(QueryId.EXPORT_ORDERS)
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        .mutateAsync(resolvedParameters);
       break;
 
     case PdkAction.SHIPMENT_REFRESH:
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      response = await refreshShipments(resolvedParameters);
+      response = (await queryStore.get(QueryId.ORDER).refetch()).data;
       break;
 
     case PdkAction.ORDER_UPDATE:
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
-      response = await updateOrders(resolvedParameters);
+      response = await queryStore.get(QueryId.UPDATE_ORDERS).mutateAsync(resolvedParameters);
       break;
 
     case PdkAction.LABEL_DELETE:
-      response = await deleteLabels(resolvedParameters);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      response = await queryStore.get(QueryId.DELETE_LABELS).mutateAsync(resolvedParameters);
       break;
 
     default:
       throw new Error(`Action "${action}" is not found.`);
+  }
+
+  if (!response) {
+    throw new Error(`Action "${action}" failed.`);
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -1,0 +1,10 @@
+{
+  "directory": "src",
+  "exclude": [
+    "__tests__",
+    "*.d.ts"
+  ],
+  "mode": "branch",
+  "singleQuotes": true,
+  "include": "libs/**/src/**/*.ts"
+}

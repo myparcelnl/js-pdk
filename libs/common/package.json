@@ -3,6 +3,8 @@
   "version": "1.0.0-alpha.0",
   "license": "MIT",
   "type": "module",
+  "main": "lib/index.js",
+  "module": "src/index.ts",
   "types": "lib/index.d.ts",
   "files": [
     "lib",
@@ -13,8 +15,14 @@
     "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
     "buildOnly": "run ws:tsup:buildOnly \"$(pwd)\"",
     "clean": "run ws:clean \"$(pwd)\"",
+    "lint": "run ws:lint \"$(pwd)\"",
     "serve": "run ws:tsup:serve \"$(pwd)\"",
     "watch": "run ws:tsup:watch \"$(pwd)\""
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "tsconfig.build.json"
+    }
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:*",
@@ -22,7 +30,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "main": "lib/index.js",
-  "module": "src/index.ts"
+  }
 }

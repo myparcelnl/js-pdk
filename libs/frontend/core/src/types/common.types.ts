@@ -1,4 +1,12 @@
-import {Variant} from '@myparcel-pdk/common';
+import {OneOrMore} from '@myparcel/ts-utils';
+import {Variant} from '@myparcel-pdk/frontend-shared';
+
+export interface PdkNotification {
+  content?: OneOrMore<string>;
+  title?: string;
+  variant: Variant;
+  category?: NotificationCategory;
+}
 
 export enum NotificationCategory {
   API = 'api',
@@ -23,11 +31,5 @@ export enum PdkIcon {
   REFRESH = 'refresh',
   RETURN = 'return',
   SAVE = 'save',
-}
-
-export interface PdkNotification {
-  content?: string | string[];
-  title?: string;
-  variant: Variant;
-  category?: NotificationCategory;
+  WARNING = 'warning',
 }

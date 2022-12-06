@@ -1,12 +1,12 @@
 <template>
-  <table class="table table-borderless text-nowrap">
+  <table>
     <thead v-if="$slots.header">
       <!-- Table header -->
       <slot name="header" />
     </thead>
 
     <TransitionGroup
-      name="mypa__table"
+      :name="pdkConfig?.transitions.tableRow"
       tag="tbody">
       <!-- Table body -->
       <slot />
@@ -21,11 +21,15 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
+import {usePdkConfig} from '@myparcel-pdk/frontend-core';
 
 /**
  * A table component that can be used to render data via slots.
  */
 export default defineComponent({
   name: 'DefaultPdkTable',
+  setup: () => ({
+    pdkConfig: usePdkConfig(),
+  }),
 });
 </script>

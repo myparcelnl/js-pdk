@@ -16,7 +16,16 @@ const TOP_RIGHT: LabelPosition = '2';
 const BOTTOM_LEFT: LabelPosition = '3';
 const BOTTOM_RIGHT: LabelPosition = '4';
 
-export const positions: LabelPosition[] = [TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT];
+export const outputOptions: SelectOption<LabelOutput>[] = [
+  {
+    label: 'output_download',
+    value: 'download',
+  },
+  {
+    label: 'output_open',
+    value: 'open',
+  },
+];
 
 export const positionOptions: SelectOption<LabelPosition>[] = [
   {
@@ -37,13 +46,4 @@ export const positionOptions: SelectOption<LabelPosition>[] = [
   },
 ];
 
-export const outputOptions: SelectOption<LabelOutput>[] = [
-  {
-    label: 'output_download',
-    value: 'download',
-  },
-  {
-    label: 'output_open',
-    value: 'open',
-  },
-];
+export const positions: LabelPosition[] = [TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT];

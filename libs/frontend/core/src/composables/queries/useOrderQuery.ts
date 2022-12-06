@@ -5,7 +5,7 @@ import {useContext, useModalOrder} from '../index';
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
 import {InstanceContextKey} from '../../types';
 import {MaybeRef} from '@vueuse/core';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/frontend-shared';
 import {ref} from 'vue';
 
 export const useOrderQuery = (externalIdentifier?: MaybeRef<string | undefined>) => {

@@ -24,7 +24,7 @@
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
 import {toArray} from '@myparcel/ts-utils';
-import {variantStyleMap} from '../services/variantStyleMap';
+import {variantStyleMap} from '../services';
 import {PdkNotification} from '@myparcel-pdk/frontend-core';
 
 export default defineComponent({

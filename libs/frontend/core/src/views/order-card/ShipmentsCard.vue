@@ -25,7 +25,12 @@
 </template>
 
 <script lang="ts">
-import {PdkAction, deleteAction, shipmentPrintAction, shipmentRefreshAction} from '../../data';
+import {
+  PdkAction,
+  deleteAction,
+  shipmentPrintAction,
+  shipmentRefreshAction,
+} from '../../data';
 import {defineComponent, ref} from 'vue';
 import ShipmentLabels from './ShipmentLabels.vue';
 import {useTranslate} from '../../composables';
@@ -46,9 +51,15 @@ export default defineComponent({
         selectedLabels.value = labels;
       },
 
-      bulkActionDropdownItems: [shipmentRefreshAction, shipmentPrintAction, deleteAction],
+      bulkActionDropdownItems: [
+        shipmentRefreshAction,
+        shipmentPrintAction,
+        deleteAction,
+      ],
 
-      async onBulkAction<A extends PdkAction.SHIPMENT_REFRESH>(action: A): Promise<void> {
+      async onBulkAction<A extends PdkAction.SHIPMENT_REFRESH>(
+        action: A,
+      ): Promise<void> {
         await doAction<A>(action, {shipmentIds: selectedLabels.value});
       },
     };

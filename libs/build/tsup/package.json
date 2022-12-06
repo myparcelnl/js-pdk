@@ -4,24 +4,30 @@
   "private": true,
   "license": "MIT",
   "type": "module",
+  "main": "lib/index.js",
+  "module": "src/index.ts",
   "types": "lib/index.d.ts",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "build": "run ws:tsup:build \"$(pwd)\"",
     "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
     "buildOnly": "run ws:tsup:buildOnly \"$(pwd)\"",
     "clean": "run ws:clean \"$(pwd)\"",
+    "lint": "run ws:lint \"$(pwd)\"",
     "serve": "run ws:tsup:serve \"$(pwd)\"",
     "watch": "run ws:tsup:watch \"$(pwd)\""
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "tsconfig.build.json"
+    }
   },
   "dependencies": {
     "tsup": "^6.5.0"
   },
   "devDependencies": {
-    "@myparcel/ts-utils": "^1.1.0"
-  },
-  "files": [
-    "src"
-  ],
-  "main": "lib/index.js",
-  "module": "src/index.ts"
+    "@myparcel/ts-utils": "^1.2.0"
+  }
 }

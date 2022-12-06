@@ -3,11 +3,21 @@ module.exports = {
   extends: ['@myparcel-eslint/eslint-config-esnext', '@myparcel-eslint/eslint-config-prettier'],
   rules: {
     'class-methods-use-this': 'off',
+    'sort-exports/sort-exports': [
+      'warn',
+      { sortDir: 'asc', sortExportKindFirst: 'type' },
+    ],
   },
+  plugins: [
+    'sort-exports',
+  ],
   overrides: [
     {
       files: ['./**/*.vue'],
       extends: '@myparcel-eslint/eslint-config-prettier-typescript-vue',
+      parserOptions: {
+        project: 'tsconfig.build.json',
+      },
       rules: {
         '@typescript-eslint/no-misused-promises': 'off',
         'vue/no-undef-components': [
@@ -22,9 +32,7 @@ module.exports = {
       files: ['./**/*.ts', './**/*.tsx'],
       extends: '@myparcel-eslint/eslint-config-prettier-typescript',
       parserOptions: {
-        tsconfigRootDir: __dirname,
-        project: ['./tsconfig.build.json'],
-        extraFileExtensions: ['.vue'],
+        project: 'tsconfig.build.json',
       },
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',

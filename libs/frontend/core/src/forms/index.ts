@@ -1,6 +1,4 @@
+export * from './createLabelSettingsForm';
+export * from './createReturnsForm';
 export * from './createShipmentOptionsForm';
-export {createLabelSettingsForm} from './createLabelSettingsForm';
-
-export {createReturnsForm} from './createReturnsForm';
-
-export {renderWithFormGroup} from './renderWithFormGroup';
+export * from './renderWithFormGroup';

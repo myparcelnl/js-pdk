@@ -5,11 +5,7 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": [
-      "ESNext",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "moduleResolution": "Node",
     "noImplicitThis": true,
@@ -17,20 +13,9 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "types": [
-      "node",
-      "vite/client"
-    ],
+    "types": ["node", "vite/client"],
     "useDefineForClassFields": true
   },
-  "include": [
-    "libs/**/*",
-    "apps/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "lib",
-    "dist",
-    "cypress/**/*"
-  ]
+  "include": ["libs/**/*.ts", "apps/**/*.ts","libs/**/*.vue", "apps/**/*.vue"],
+  "exclude": ["node_modules", "lib", "dist", "cypress/**/*"]
 }

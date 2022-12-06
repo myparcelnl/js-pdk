@@ -4,15 +4,26 @@
   "private": true,
   "license": "MIT",
   "type": "module",
+  "main": "lib/index.js",
+  "module": "src/index.ts",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "build": "vite build",
+    "lint": "run ws:lint \"$(pwd)\"",
     "serve": "vite"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "tsconfig.build.json"
+    }
   },
   "dependencies": {
     "@myparcel/pdk-components": "workspace:^",
     "@myparcel/pdk-frontend": "workspace:^",
     "@myparcel/sdk": "^2.9.1",
-    "@myparcel/ts-utils": "^1.1.0",
+    "@myparcel/ts-utils": "^1.2.0",
     "@tanstack/vue-query": "^4.17.0",
     "tailwindcss": "^3.2.4",
     "vue": "^3.2.45"
@@ -21,11 +32,6 @@
     "@vitejs/plugin-vue": "^3.2.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",
-    "vite": "^3.2.4"
-  },
-  "files": [
-    "src"
-  ],
-  "main": "lib/index.js",
-  "module": "src/index.ts"
+    "vite": "^3.2.5"
+  }
 }

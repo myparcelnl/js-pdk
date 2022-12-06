@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EndpointName, Plugin} from '@myparcel-pdk/common';
+import {EndpointName, Plugin, convertDotNotationToObject, encodeArrayParameter} from '@myparcel-pdk/frontend-shared';
 import {MutationMode, getCallbackForMutationMode, getOptionsForMutationMode} from '../../services';
 import {PdkEndpointDefinition, usePdkApi} from '../../sdk';
 import {QUERY_KEY_ORDER, QUERY_KEY_SHIPMENT} from './queryKeys';
-import {convertDotNotationToObject, encodeArrayParameter} from '@myparcel-pdk/frontend-shared';
 import {useMutation, useQueryClient} from '@tanstack/vue-query';
 import {ApiException} from '@myparcel/sdk';
+import {FormInstance} from '@myparcel/vue-form-builder';
+import {OneOrMore} from '@myparcel/ts-utils';
 
 type ExportOrderInput = {
-  orderIds: string | string[];
+  orderIds: OneOrMore<string>;
   print?: boolean;
-  data: Partial<Plugin.ModelContextOrderDataContext>;
+  form?: FormInstance;
 };
 
 export const useExportOrdersQuery = (mode: MutationMode = MutationMode.DEFAULT) => {
@@ -27,7 +28,7 @@ export const useExportOrdersQuery = (mode: MutationMode = MutationMode.DEFAULT) 
           orderIds: encodeArrayParameter(input.orderIds),
           print: String(Number(input?.print ?? false)),
         },
-        body: convertDotNotationToObject(input.data),
+        body: convertDotNotationToObject(input.form?.getValues() ?? {}),
       };
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment

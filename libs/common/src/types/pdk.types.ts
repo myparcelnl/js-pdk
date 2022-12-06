@@ -11,6 +11,7 @@ export type PdkComponentName =
   | 'PdkIcon'
   | 'PdkImage'
   | 'PdkInput'
+  | 'PdkLink'
   | 'PdkModal'
   | 'PdkMultiCheckbox'
   | 'PdkNumberInput'
@@ -20,6 +21,29 @@ export type PdkComponentName =
   | 'PdkTableCol'
   | 'PdkTableRow'
   | 'PdkToggle';
+
+export const componentNames: PdkComponentName[] = [
+  'PdkAccordion',
+  'PdkAlert',
+  'PdkButton',
+  'PdkCard',
+  'PdkCheckbox',
+  'PdkDropdownButton',
+  'PdkFormGroup',
+  'PdkIcon',
+  'PdkImage',
+  'PdkInput',
+  'PdkLink',
+  'PdkModal',
+  'PdkMultiCheckbox',
+  'PdkNumberInput',
+  'PdkRadio',
+  'PdkSelect',
+  'PdkTable',
+  'PdkTableCol',
+  'PdkTableRow',
+  'PdkToggle',
+];
 
 export type PdkRenderComponent =
   | 'LoadingPage'

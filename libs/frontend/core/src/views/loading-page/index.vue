@@ -1,6 +1,11 @@
 <template>
   <div>
-    <p v-text="translate('Your label(s) are being generated... Please wait. Do not close this page.')" />
+    <p
+      v-text="
+        translate(
+          'Your label(s) are being generated... Please wait. Do not close this page.',
+        )
+      " />
   </div>
 </template>
 

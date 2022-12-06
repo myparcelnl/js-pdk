@@ -3,11 +3,11 @@
 **/dist
 
 *.local
-*.timestamp-*.mjs
 *.tsbuildinfo
 .DS_Store
 .eslintcache
 .vitest-result.json
+vite.config.ts.timestamp-*
 node_modules
 
 # Logs

@@ -3,14 +3,14 @@ import {ModalKey} from '../types';
 import {useLoading} from '@myparcel-pdk/frontend-shared';
 import {useModalStore} from '../stores';
 
-export type ModalData = Record<never, unknown> | null | undefined;
-
 export type ModalCallback = (id: string) => Promise<void> | void;
 
 export interface ModalCallbackProps {
   onCancel: ModalCallback;
   onSave: ModalCallback;
 }
+
+export type ModalData = Record<never, unknown> | null | undefined;
 
 type UseModalContext = (
   modalId?: Ref<null | ModalKey>,

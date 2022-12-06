@@ -1,4 +1,5 @@
-import {createViteConfig, externalDependencies} from '@myparcel-pdk/build-vite';
+import {createViteConfig} from '@myparcel-pdk/build-vite';
+import {externalDependencies} from '@myparcel-pdk/build-tsup';
 import vue from '@vitejs/plugin-vue';
 
 export default createViteConfig({

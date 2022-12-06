@@ -12,18 +12,23 @@
         :alt="carrier?.human"
         :title="carrier?.human"
         :src="useAssetUrl(carrier?.meta.logo_svg)" />
+    </PdkTableCol>
 
-      <a
-        :href="shipment.barcode"
-        rel="noopener noreferrer"
-        target="_blank">
+    <PdkTableCol>
+      <PdkLink
+        v-if="shipment.barcode"
+        :href="shipment.barcode">
         {{ shipment.barcode }}
         <PdkIcon icon="external" />
-      </a>
+      </PdkLink>
+
+      <span
+        v-else
+        v-text="translate('no_barcode')"></span>
     </PdkTableCol>
 
     <PdkTableCol>{{ shipment.status }}</PdkTableCol>
-    <PdkTableCol>{{ shipment.updated }}</PdkTableCol>
+    <PdkTableCol>{{ formatter.formatRelative(shipment.updated) }}</PdkTableCol>
     <PdkTableCol align="right">
       <PdkDropdownButton :options="dropdownActions" />
     </PdkTableCol>
@@ -39,8 +44,10 @@ import {
   shipmentRefreshAction,
   useAssetUrl,
   useCarriers,
+  useDateFormatter,
+  useTranslate,
 } from '../../';
-import {Shipment} from '@myparcel-pdk/common';
+import {Shipment} from '@myparcel-pdk/frontend-shared';
 import {useQuery} from '@tanstack/vue-query';
 import {useVModel} from '@vueuse/core';
 
@@ -68,16 +75,19 @@ export default defineComponent({
     });
 
     return {
-      query,
-      useAssetUrl: useAssetUrl,
       carrier: computed(() => {
         const query = useCarriers(props.shipment.carrier.name);
 
         return query.data.value;
       }),
 
-      model: useVModel(props, 'modelValue', ctx.emit),
       dropdownActions: [shipmentPrintAction, shipmentRefreshAction, shipmentCreateReturnAction, deleteAction],
+
+      formatter: useDateFormatter(),
+      model: useVModel(props, 'modelValue', ctx.emit),
+      query,
+      translate: useTranslate(),
+      useAssetUrl: useAssetUrl,
     };
   },
 });

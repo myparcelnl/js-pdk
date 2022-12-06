@@ -1,6 +1,8 @@
 <template>
   <div>
-    <PdkButton @click="toggle = !toggle">{{ toggle ? 'Hide' : 'Show' }} {{ title }}</PdkButton>
+    <PdkButton @click="toggle = !toggle"
+      >{{ toggle ? 'Hide' : 'Show' }} {{ title }}</PdkButton
+    >
 
     <div v-show="toggle">
       <pre v-text="data" />

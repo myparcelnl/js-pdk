@@ -8,7 +8,16 @@
     <template #default="data">
       <PdkSettingsFormItem
         v-for="(child, index) in data.context.children"
-        :key="[data.context.name, child.name, child.action, child.label, child.type, index].join('_')"
+        :key="
+          [
+            data.context.name,
+            child.name,
+            child.action,
+            child.label,
+            child.type,
+            index,
+          ].join('_')
+        "
         :item="child"
         @change="processValue" />
     </template>

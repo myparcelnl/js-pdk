@@ -3,37 +3,46 @@
   "version": "1.0.0-alpha.0",
   "license": "MIT",
   "type": "module",
+  "main": "lib/index.js",
+  "module": "src/index.ts",
   "types": "lib/index.d.ts",
+  "files": [
+    "src"
+  ],
   "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
     "build": "run ws:vite:build \"$(pwd)\"",
     "build:dev": "run ws:vite:build:dev \"$(pwd)\"",
     "buildOnly": "run ws:vite:buildOnly \"$(pwd)\"",
     "clean": "run ws:clean \"$(pwd)\"",
+    "lint": "run ws:lint \"$(pwd)\"",
     "serve": "run ws:vite:serve \"$(pwd)\"",
     "watch": "run ws:vite:watch \"$(pwd)\""
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "tsconfig.build.json"
+    }
   },
   "dependencies": {
     "@myparcel-pdk/frontend-component-tests": "workspace:*",
     "@myparcel-pdk/frontend-core": "workspace:*",
     "@myparcel-pdk/frontend-shared": "workspace:*",
-    "@myparcel/ts-utils": "^1.1.0",
+    "@myparcel/ts-utils": "^1.2.0",
     "@vueuse/core": "^9.3.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.2.0",
     "@vue/test-utils": "^2.2.3",
-    "happy-dom": "^7.7.0",
+    "happy-dom": "^7.7.2",
     "pinia": "^2.0.27",
     "typescript": "^4.9.3",
-    "vite": "^3.2.4"
+    "vite": "^3.2.5",
+    "vitest": "^0.25.4"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "files": [
-    "src"
-  ],
-  "main": "lib/index.js",
-  "module": "src/index.ts"
+  }
 }

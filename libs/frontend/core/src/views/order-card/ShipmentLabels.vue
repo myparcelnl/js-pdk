@@ -5,9 +5,13 @@
         <PdkTableCol component="th">
           <PdkCheckbox
             v-model="bulkCheckbox"
+            :title="translate('select_all')"
             :disabled="!shipments.length" />
         </PdkTableCol>
-        <PdkTableCol component="th">{{ translate('order_labels_column_track_trace') }}</PdkTableCol>
+        <PdkTableCol
+          component="th"
+          :title="translate('carrier')" />
+        <PdkTableCol component="th">{{ translate('order_labels_column_track_trace') }} </PdkTableCol>
         <PdkTableCol component="th">{{ translate('order_labels_column_status') }}</PdkTableCol>
         <PdkTableCol component="th">{{ translate('order_labels_column_last_update') }}</PdkTableCol>
         <PdkTableCol
@@ -42,8 +46,8 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, ref, watchEffect} from 'vue';
-import {useContextStore, useOrderQuery, usePdkConfig, useTranslate} from '../../';
+import {computed, defineComponent, ref} from 'vue';
+import {useOrderQuery, usePdkConfig, useTranslate} from '../../';
 import ShipmentLabel from './ShipmentLabel.vue';
 import {isDef} from '@vueuse/core';
 
@@ -57,19 +61,6 @@ export default defineComponent({
 
   setup: (props, ctx) => {
     const query = useOrderQuery();
-    const shipments = query.data.value?.shipments ?? [];
-    const contextStore = useContextStore();
-
-    watchEffect(() => {
-      console.log('watchEffect 1', query.data.value);
-      console.log(contextStore.context.orderData);
-    });
-
-    watchEffect(() => {
-      console.log('watchEffect 2', contextStore.context.orderData);
-      console.log(query.data.value);
-    });
-
     const mutableSelectedRows = ref<string[]>([]);
 
     const selectedRows = computed({
@@ -82,13 +73,6 @@ export default defineComponent({
       },
     });
 
-    // const clearSelection = (): void => {
-    //   selectedRows.value = [];
-    // };
-
-    // useOrderActionsEventBus().on(EventName.RESPONSE, clearSelection);
-    // useLabelActionsEventBus().on(EventName.RESPONSE, clearSelection);
-
     const bulkCheckbox = computed({
       get(): boolean {
         return selectedRows.value.length === query.data.value?.shipments?.length;
@@ -96,14 +80,9 @@ export default defineComponent({
 
       set(bulkCheckboxChecked: boolean): void {
         const hasShipments = query.data.value && selectedRows.value.length !== query.data.value?.shipments?.length;
-
         const checked = bulkCheckboxChecked || hasShipments;
-        const ids = (query.data.value?.shipments ?? []).map((shipment) => {
-          console.log({shipment});
-          return shipment.id?.toString();
-        });
+        const ids = (query.data.value?.shipments ?? []).map((shipment) => shipment.id?.toString());
 
-        console.log({checked: checked, ids});
         selectedRows.value = (checked ? ids ?? [] : []).filter(isDef);
       },
     });
@@ -111,9 +90,9 @@ export default defineComponent({
     return {
       bulkCheckbox,
       pdkConfig: usePdkConfig(),
-      query: query,
+      query,
       selectedRows,
-      shipments,
+      shipments: computed(() => query.data.value?.shipments ?? []),
       translate: useTranslate(),
     };
   },

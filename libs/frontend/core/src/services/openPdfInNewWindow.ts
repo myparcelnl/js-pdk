@@ -1,4 +1,4 @@
-import {usePdfWindow} from '../composables/context/usePdfWindow';
+import {usePdfWindow} from '../composables';
 
 /**
  * Creates a new window from given base64 encoded pdf string.

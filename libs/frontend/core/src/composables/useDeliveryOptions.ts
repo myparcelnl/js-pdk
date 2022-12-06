@@ -1,6 +1,6 @@
 import {Ref, onBeforeUnmount, onMounted, ref} from 'vue';
 import {isOfType} from '@myparcel/ts-utils';
-import {useOrderQuery} from '../pdk';
+import {useOrderQuery} from './queries';
 
 enum Events {
   UPDATED_DELIVERY_OPTIONS = 'myparcel_updated_delivery_options',

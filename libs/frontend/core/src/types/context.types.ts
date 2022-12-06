@@ -2,16 +2,13 @@
 
 import {Replace, RequireOnly} from '@myparcel/ts-utils';
 import {ModalKey} from '../';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/frontend-shared';
 
-export enum InstanceContextKey {
-  ORDER_IDENTIFIER = 'orderIdentifier',
-}
+export type AnyContext = PdkContext<ContextKey>;
 
-export enum ContextKey {
-  GLOBAL = 'global',
-  ORDER_DATA = 'orderData',
-}
+export type BaseContext = Record<never, never>;
+
+export type FinalPdkContextObject = RequireOnly<Partial<PdkContextObject>, ContextKey.GLOBAL>;
 
 export type GlobalContext = Replace<
   Plugin.ModelContextGlobalContext,
@@ -27,16 +24,19 @@ export type PdkContext<T> = T extends ContextKey.GLOBAL
   ? Plugin.ModelContextOrderDataContext['externalIdentifier']
   : null;
 
-export type PdkModalContext<T extends ModalKey = ModalKey> = T extends ModalKey.SHIPMENT_OPTIONS ? string : never;
-
-export type BaseContext = Record<never, never>;
-
-export type AnyContext = PdkContext<ContextKey>;
-
-export type PdkInstanceContext = Partial<Pick<PdkContextObject, InstanceContextKey>>;
-
 export type PdkContextObject = {
   [k in ContextKey | InstanceContextKey]: PdkContext<k>;
 };
 
-export type FinalPdkContextObject = RequireOnly<Partial<PdkContextObject>, ContextKey.GLOBAL>;
+export type PdkInstanceContext = Partial<Pick<PdkContextObject, InstanceContextKey>>;
+
+export type PdkModalContext<T extends ModalKey = ModalKey> = T extends ModalKey.SHIPMENT_OPTIONS ? string : never;
+
+export enum ContextKey {
+  GLOBAL = 'global',
+  ORDER_DATA = 'orderData',
+}
+
+export enum InstanceContextKey {
+  ORDER_IDENTIFIER = 'orderIdentifier',
+}

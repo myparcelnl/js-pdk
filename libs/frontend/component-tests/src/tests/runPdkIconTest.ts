@@ -1,9 +1,7 @@
+import {ComponentTest, mount, runCommonComponentTests, runHasPropTest} from '../common';
 import {expect, it} from 'vitest';
-import {Component} from 'vue';
-import {mount} from './mount';
-import {runCommonComponentTests} from './runCommonComponentTests';
 
-export const createPdkIconTest = (name: string, component: Omit<Component, 'props'>): void => {
+export const runPdkIconTest: ComponentTest = (component) => {
   const defaultProps = {
     props: {
       icon: 'truck',
@@ -12,7 +10,9 @@ export const createPdkIconTest = (name: string, component: Omit<Component, 'prop
 
   runCommonComponentTests(component, defaultProps);
 
-  it('has icon prop', () => {
+  runHasPropTest(component, 'icon');
+
+  it.skip('has icon prop', () => {
     const wrapper = mount(component, defaultProps);
 
     expect(wrapper.props().icon).toBe('truck');

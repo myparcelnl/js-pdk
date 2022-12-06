@@ -2,7 +2,11 @@ import {FinalPdkConfiguration, PdkInstanceContext} from '../types';
 import {GlobalPdkFrontend} from '../pdk';
 import {InjectionKey} from 'vue';
 
-export type PdkInstance = {component: string; context: PdkInstanceContext; config: FinalPdkConfiguration};
+export type PdkInstance = {
+  component: string;
+  context: PdkInstanceContext;
+  config: FinalPdkConfiguration;
+};
 
 export const INJECT_GLOBAL_PDK_FRONTEND: InjectionKey<GlobalPdkFrontend> = Symbol('pdkFrontend');
 

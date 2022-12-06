@@ -19,7 +19,9 @@ export default defineComponent({
     // DeliveryOptionsModal: defineAsyncComponent(() => import('@/components/modals/DeliveryOptionsModal.vue')),
     // PrintOptionsModal: defineAsyncComponent(() => import('@/components/modals/PrintOptionsModal.vue')),
     // ReturnsFormModal: defineAsyncComponent(() => import('@/components/modals/ReturnsFormModal.vue')),
-    ShipmentOptionsModal: defineAsyncComponent(() => import('./ShipmentOptionsModal.vue')),
+    ShipmentOptionsModal: defineAsyncComponent(
+      () => import('./ShipmentOptionsModal.vue'),
+    ),
     /* eslint-enable @typescript-eslint/naming-convention */
   },
 

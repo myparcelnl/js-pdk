@@ -1,6 +1,9 @@
 import {Ref, ref} from 'vue';
 
-type UseLoading = (initialValue?: boolean) => {loading: Ref<boolean>; setLoading: (state: boolean) => void};
+type UseLoading = (initialValue?: boolean) => {
+  loading: Ref<boolean>;
+  setLoading: (state: boolean) => void;
+};
 
 /**
  * Manages loading state.

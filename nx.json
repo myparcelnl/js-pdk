@@ -15,85 +15,55 @@
           "build",
           "build:dev",
           "buildOnly",
+          "lint",
           "watch"
         ]
       }
     }
   },
   "namedInputs": {
+    "default": [
+      "!{projectRoot}/lib",
+      "{projectRoot}/**/*",
+      "{workspaceRoot}/package.json",
+      "{workspaceRoot}/tsconfig.build.json"
+    ],
     "production": [
       "default",
       "!{projectRoot}/**/*.spec.*",
       "!{projectRoot}/**/__tests__",
       "!{projectRoot}/**/*.test.*"
     ],
-    "default": [
-      "!{projectRoot}/lib",
-      "{projectRoot}/**/*",
-      "{workspaceRoot}/package.json",
-      "{workspaceRoot}/tsconfig.build.json"
-    ]
+    "src": ["{projectRoot}/src/**/*"]
   },
   "targetDefaults": {
+    "lint": {
+      "inputs": ["src"],
+      "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
+    },
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production"
-      ],
-      "outputs": [
-        "{projectRoot}/lib"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["production"],
+      "outputs": ["{projectRoot}/lib"]
     },
     "build:dev": {
-      "dependsOn": [
-        "^build:dev"
-      ],
-      "inputs": [
-        "production"
-      ],
-      "outputs": [
-        "{projectRoot}/lib"
-      ]
+      "dependsOn": ["^build:dev"],
+      "inputs": ["production"],
+      "outputs": ["{projectRoot}/lib"]
     },
     "buildOnly": {
-      "dependsOn": [
-        "^buildOnly"
-      ],
-      "inputs": [
-        "production"
-      ],
-      "outputs": [
-        "{projectRoot}/lib"
-      ]
+      "dependsOn": ["^buildOnly"],
+      "inputs": ["production"],
+      "outputs": ["{projectRoot}/lib"]
     },
     "serve": {
-      "dependsOn": [
-        "build:dev"
-      ],
-      "outputs": [
-        "default"
-      ]
-    },
-    "test": {
-      "inputs": [
-        "default"
-      ],
-      "outputs": [
-        "{projectRoot}/coverage"
-      ]
+      "dependsOn": ["build:dev"],
+      "outputs": ["default"]
     },
     "watch": {
-      "dependsOn": [
-        "^build:dev"
-      ],
-      "inputs": [
-        "production"
-      ],
-      "outputs": [
-        "{projectRoot}/lib"
-      ]
+      "dependsOn": ["^build:dev"],
+      "inputs": ["production"],
+      "outputs": ["{projectRoot}/lib"]
     }
   },
   "defaultBase": "main"

@@ -46,9 +46,9 @@
           </div>
 
           <PdkButton
-            v-for="(action, index) in actionButtons"
+            v-for="(action, index) in resolvedActions"
             :key="`action_${action.id}_${index}`"
-            v-bind="action" />
+            :action="action" />
         </div>
       </div>
     </Transition>
@@ -114,7 +114,7 @@ export default defineComponent({
     },
 
     /**
-     * Available actions in the modal. Each action needs an unique id and a label.
+     * Available actions in the modal. Each action needs a unique id and a label.
      */
     actions: {
       type: Array as PropType<InputPdkButtonAction[]>,
@@ -139,7 +139,7 @@ export default defineComponent({
       modalStore,
       translate: useTranslate(),
 
-      actionButtons: computed(() => {
+      resolvedActions: computed(() => {
         return props.actions.map((action) => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-expect-error

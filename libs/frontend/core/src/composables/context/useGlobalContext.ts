@@ -11,7 +11,7 @@ interface UseGlobalContext {
 const cache: ContextRef<ContextKey>[] = [];
 
 /**
- * Get a globally defined context, filtered by context.id and context.orderId.
+ * Get a globally defined context, filtered by `context.id` and `context.orderId`.
  */
 export const useGlobalContext: UseGlobalContext = (contextKey, context?) => {
   const localEntry = ref<WritableComputedRef<AnyContext>>();
