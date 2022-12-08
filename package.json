@@ -22,7 +22,7 @@
     "lint": "nx run-many --target=lint --exclude=.",
     "prepare": "is-ci || husky install",
     "serve": "yarn build:dev && npx concurrently yarn:watch yarn:serve:demo",
-    "serve:demo": "nx serve @myparcel/pdk-frontend-demo",
+    "serve:demo": "nx serve @myparcel-pdk/demo",
     "test": "nx run-many --parallel --target=test",
     "test:run": "nx run-many --target=test:run",
     "typecheck": "nx run-many --target=typecheck",
