@@ -1,5 +1,5 @@
-import {expect, it} from 'vitest';
 import {ComponentTest, mount, runCommonComponentTests} from '../common';
+import {expect, it} from 'vitest';
 
 const DEFAULT_OPTIONS = {
   props: {

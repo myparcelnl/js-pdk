@@ -45,7 +45,7 @@
             <slot :state="modalStore.$state" />
           </div>
 
-          <PdkButton
+          <ActionButton
             v-for="(action, index) in resolvedActions"
             :key="`action_${action.id}_${index}`"
             :action="action" />
@@ -57,6 +57,7 @@
 
 <script lang="ts">
 import {
+  ActionButton,
   InputPdkButtonAction,
   ModalCallbackProps,
   ModalKey,
@@ -78,6 +79,7 @@ export default defineComponent({
 
   components: {
     NotificationContainer,
+    ActionButton: ActionButton,
   },
 
   props: {

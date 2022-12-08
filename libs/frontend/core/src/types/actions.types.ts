@@ -1,5 +1,6 @@
-import {PdkAction} from '../data';
+import {FrontendAction} from '../data';
 import {PdkIcon} from './common.types';
+import {PromiseOr} from '@myparcel/ts-utils';
 import {Ref} from 'vue';
 import {Variant} from '@myparcel-pdk/frontend-shared';
 
@@ -10,15 +11,16 @@ interface BaseAction {
   disabled?: Ref<boolean> | boolean;
 }
 
-export type InputPdkButtonAction<A extends PdkAction = PdkAction> = OnClickAction | NamedAction<A>;
+export type InputPdkButtonAction<A extends FrontendAction = FrontendAction> = OnClickAction | NamedAction<A>;
 
-export type NamedAction<A extends PdkAction = PdkAction> = BaseAction & {
+export type NamedAction<A extends FrontendAction = FrontendAction> = BaseAction & {
   action: A;
 };
 
 export interface OnClickAction extends BaseAction {
   id: string;
-  onClick(...args: unknown[]): void;
+
+  onClick(...args: unknown[]): PromiseOr<void>;
 }
 
 export type PdkButtonAction = OnClickAction;

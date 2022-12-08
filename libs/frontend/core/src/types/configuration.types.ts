@@ -1,10 +1,12 @@
-import {LogLevel, PdkComponentMap} from '@myparcel-pdk/frontend-shared';
+import {LogLevel, PdkComponentMap, PdkFormatterObject} from '@myparcel-pdk/frontend-shared';
+import {IetfLanguageTag} from './common.types';
 import {PdkContextObject} from './context.types';
 import {PiniaPluginContext} from 'pinia';
 
 export type DefaultPdkConfiguration = Omit<FinalPdkConfiguration, 'context' | 'components'> & {
   context?: Partial<PdkContextObject>;
   components?: Record<string, undefined>;
+  formatters?: Record<string, undefined>;
 };
 
 export type FinalPdkConfiguration = InputPdkConfiguration & {
@@ -12,7 +14,23 @@ export type FinalPdkConfiguration = InputPdkConfiguration & {
 };
 
 export type InputPdkConfiguration = {
+  /**
+   * Components to use.
+   */
   components: PdkComponentMap;
+
+  /**
+   * Override default formatters.
+   */
+  formatters?: PdkFormatterObject;
+
+  /**
+   * IETF language tag.
+   *
+   * @example en-US
+   * @example nl-NL
+   */
+  locale: IetfLanguageTag;
 
   /**
    * Log level to use. Defaults to 'info' on production and 'debug' on development.
@@ -20,14 +38,14 @@ export type InputPdkConfiguration = {
   logLevel?: LogLevel;
 
   /**
-   * Hook that executes when the pdk frontend is booted.
-   */
-  onCreated?: (pdkFrontend?: FinalPdkConfiguration) => void;
-
-  /**
    * Hook that executes when a store is created.
    */
   onCreateStore?: (piniaContext: PiniaPluginContext) => void;
+
+  /**
+   * Hook that executes when the pdk frontend is booted.
+   */
+  onCreated?: (pdkFrontend?: FinalPdkConfiguration) => void;
 
   /**
    * Transition names.

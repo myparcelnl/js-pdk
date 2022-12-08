@@ -1,17 +1,12 @@
 /* eslint-disable no-console,@typescript-eslint/explicit-module-boundary-types */
-import {QUERY_KEY_ORDER, QUERY_KEY_SHIPMENT} from './queryKeys';
-import {getInitialOrderData, usePdkApi} from '../../sdk';
-import {useContext, useModalOrder} from '../index';
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
-import {InstanceContextKey} from '../../types';
-import {MaybeRef} from '@vueuse/core';
 import {Plugin} from '@myparcel-pdk/frontend-shared';
-import {ref} from 'vue';
+import {QUERY_KEY_ORDER} from './queryKeys';
+import {fillOrderQueryData} from '../../pdk';
+import {usePdkApi} from '../../sdk';
 
-export const useOrderQuery = (externalIdentifier?: MaybeRef<string | undefined>) => {
-  const id = ref(externalIdentifier ?? useModalOrder() ?? useContext(InstanceContextKey.ORDER_IDENTIFIER));
-
-  const queryKey = [QUERY_KEY_ORDER, id.value] as const;
+export const useOrderQuery = (externalIdentifier: string) => {
+  const queryKey = [QUERY_KEY_ORDER, {id: externalIdentifier}] as const;
   const queryClient = useQueryClient();
 
   return useQuery<Plugin.ModelContextOrderDataContext>(
@@ -21,7 +16,7 @@ export const useOrderQuery = (externalIdentifier?: MaybeRef<string | undefined>)
 
       const options = {
         parameters: {
-          orderIds: id.value as string,
+          orderIds: externalIdentifier,
         },
       };
 
@@ -31,12 +26,9 @@ export const useOrderQuery = (externalIdentifier?: MaybeRef<string | undefined>)
     },
     {
       ...queryClient.defaultQueryOptions(),
-      enabled: Boolean(id.value),
-      initialData: getInitialOrderData(queryKey),
       onSuccess: (data) => {
-        data.shipments?.forEach((shipment) => {
-          queryClient.setQueryData([QUERY_KEY_ORDER, id.value, QUERY_KEY_SHIPMENT, shipment.id], shipment);
-        });
+        console.log('useOrderQuery', data);
+        fillOrderQueryData(queryClient, data);
       },
     },
   );

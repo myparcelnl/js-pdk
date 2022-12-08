@@ -1,19 +1,16 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-
+import {EndpointName, ModalKey} from '../';
 import {Replace, RequireOnly} from '@myparcel/ts-utils';
-import {ModalKey} from '../';
 import {Plugin} from '@myparcel-pdk/frontend-shared';
 
 export type AnyContext = PdkContext<ContextKey>;
-
-export type BaseContext = Record<never, never>;
 
 export type FinalPdkContextObject = RequireOnly<Partial<PdkContextObject>, ContextKey.GLOBAL>;
 
 export type GlobalContext = Replace<
   Plugin.ModelContextGlobalContext,
   'endpoints',
-  Record<string, Plugin.AbstractEndpointRequest>
+  Record<EndpointName, Plugin.AbstractEndpointRequest>
 >;
 
 export type PdkContext<T> = T extends ContextKey.GLOBAL

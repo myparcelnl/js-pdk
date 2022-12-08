@@ -19,7 +19,7 @@ export type {
   PdkContextObject,
   PdkDropdownAction,
   PdkInstanceContext,
-  PdkRenderComponent,
+  PdkViewComponent,
   Plugin,
   SelectOption,
   Settings,
@@ -27,6 +27,7 @@ export type {
 } from '@myparcel-pdk/frontend-core';
 
 export {
+  ActionButton,
   ContextKey,
   GlobalPdkFrontend,
   INJECT_GLOBAL_PDK_FRONTEND,
@@ -41,13 +42,12 @@ export {
   PdkFrontendPlugin,
   PdkIcon,
   createPdkFrontend,
-  useContext,
+  useAction,
   useContextStore,
   useGlobalContext,
   useModalContext,
   useModalStore,
   useNotificationStore,
   usePdfWindow,
-  usePropAction,
   useTranslate,
 } from '@myparcel-pdk/frontend-core';

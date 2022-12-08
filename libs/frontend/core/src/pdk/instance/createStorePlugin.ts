@@ -10,6 +10,8 @@ type CreateStore = (config?: FinalPdkConfiguration) => Pinia;
 export const createStorePlugin: CreateStore = (config) => {
   store ??= createPinia();
 
+  logger.debug('Preparing store plugin');
+
   store.use((storeContext) => {
     if (initialized || !config?.onCreateStore) {
       return;

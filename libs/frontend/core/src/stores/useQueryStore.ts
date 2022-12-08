@@ -1,35 +1,43 @@
 import {QueryClient, useQueryClient} from '@tanstack/vue-query';
 import {Ref, ref} from 'vue';
-import {useExportOrdersQuery, useOrderQuery, useUpdateOrdersQuery} from '../';
+import {
+  useDeleteShipmentsMutation,
+  useExportOrdersMutation,
+  useInstanceContext,
+  useModalOrder,
+  useOrderQuery,
+  usePrintOrdersMutation,
+  useRefreshShipmentsQuery,
+  useUpdateOrdersMutation,
+} from '../composables';
+import {EndpointName} from '@myparcel-pdk/common';
+import {InstanceContextKey} from '../types';
+import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
-import {useDeleteLabelsQuery} from '../composables/queries/useDeleteLabelsQuery';
 
-export type QueryObject<I extends QueryId = QueryId> = Record<I, ResolvedQuery<I>>;
+export type QueryObject<I extends EndpointName = EndpointName> = Record<I, ResolvedQuery<I>>;
 
-export type ResolvedQuery<I extends QueryId = QueryId> = I extends QueryId.EXPORT_ORDERS
-  ? ReturnType<typeof useExportOrdersQuery>
-  : I extends QueryId.ORDER
+export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends EndpointName.EXPORT_ORDERS
+  ? ReturnType<typeof useExportOrdersMutation>
+  : I extends EndpointName.GET_ORDERS
   ? ReturnType<typeof useOrderQuery>
-  : I extends QueryId.DELETE_LABELS
-  ? ReturnType<typeof useDeleteLabelsQuery>
-  : I extends QueryId.UPDATE_ORDERS
-  ? ReturnType<typeof useUpdateOrdersQuery>
+  : I extends EndpointName.DELETE_SHIPMENTS
+  ? ReturnType<typeof useDeleteShipmentsMutation>
+  : I extends EndpointName.PRINT_ORDERS
+  ? ReturnType<typeof usePrintOrdersMutation>
+  : I extends EndpointName.UPDATE_ORDERS
+  ? ReturnType<typeof useUpdateOrdersMutation>
+  : I extends EndpointName.REFRESH_SHIPMENTS
+  ? ReturnType<typeof useRefreshShipmentsQuery>
   : unknown;
-
-export enum QueryId {
-  DELETE_LABELS = 'deleteLabels',
-  EXPORT_ORDERS = 'exportOrders',
-  ORDER = 'order',
-  UPDATE_ORDERS = 'updateOrders',
-}
 
 export const useQueryStore = defineStore('query', () => {
   const queries = ref({} as QueryObject);
   const queryClient: Ref<QueryClient | undefined> = ref<QueryClient>();
 
-  const has = <I extends QueryId>(key: I): boolean => !!queries.value[key];
+  const has = <N extends EndpointName>(key: N): boolean => !!queries.value[key];
 
-  const get = <I extends QueryId>(key: I): ResolvedQuery<I> => {
+  const get = <N extends EndpointName>(key: N): ResolvedQuery<N> => {
     if (!has(key)) {
       throw new Error(`No query found for key ${key}`);
     }
@@ -39,13 +47,11 @@ export const useQueryStore = defineStore('query', () => {
     return queries.value[key];
   };
 
-  const register = <I extends QueryId>(key: I, query: ResolvedQuery<I>): void => {
+  const register = <N extends EndpointName>(key: N, query: ResolvedQuery<N>): void => {
     if (!queryClient.value) {
       queryClient.value = useQueryClient();
     }
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
     queries.value[key] = query;
   };
 
@@ -54,11 +60,21 @@ export const useQueryStore = defineStore('query', () => {
     get,
     has,
     register,
-    registerOrderQueries: (orderId?: string | null) => {
-      register(QueryId.EXPORT_ORDERS, useExportOrdersQuery());
-      register(QueryId.UPDATE_ORDERS, useUpdateOrdersQuery());
 
-      register(QueryId.ORDER, useOrderQuery());
+    registerOrderQueries: (orderId?: string | null, mode: MutationMode = MutationMode.DEFAULT) => {
+      const id = orderId ?? useModalOrder() ?? useInstanceContext(InstanceContextKey.ORDER_IDENTIFIER);
+
+      if (!id) {
+        throw new Error('No order id found');
+      }
+
+      register(EndpointName.GET_ORDERS, useOrderQuery(id));
+
+      register(EndpointName.EXPORT_ORDERS, useExportOrdersMutation(mode));
+      register(EndpointName.UPDATE_ORDERS, useUpdateOrdersMutation());
+
+      register(EndpointName.DELETE_SHIPMENTS, useDeleteShipmentsMutation());
+      register(EndpointName.REFRESH_SHIPMENTS, useRefreshShipmentsQuery());
     },
 
     queryClient,

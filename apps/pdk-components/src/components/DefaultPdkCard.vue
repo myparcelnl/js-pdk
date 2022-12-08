@@ -20,7 +20,7 @@
       class="d-flex p-4">
       <!-- Card footer. -->
       <slot name="footer">
-        <PdkButton
+        <ActionButton
           v-for="(action, index) in actions"
           :key="`${index}_${action.id}`"
           :action="action" />
@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import {PdkButtonAction, useTranslate} from '@myparcel-pdk/frontend-core';
+import {ActionButton, PdkButtonAction, useTranslate} from '@myparcel-pdk/frontend-core';
 import {PropType, defineComponent} from 'vue';
 
 /**
@@ -39,6 +39,11 @@ import {PropType, defineComponent} from 'vue';
  */
 export default defineComponent({
   name: 'DefaultPdkCard',
+
+  components: {
+    ActionButton,
+  },
+
   props: {
     /**
      * Used to control loading state.

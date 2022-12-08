@@ -17,6 +17,8 @@ type UseDeliveryOptions = (listener: (event: CustomEvent) => void) => {
  */
 export const useDeliveryOptions: UseDeliveryOptions = (listener) => {
   const htmlContent = ref<string | null>(null);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   const orderQuery = useOrderQuery();
 
   const loaded = ref(false);

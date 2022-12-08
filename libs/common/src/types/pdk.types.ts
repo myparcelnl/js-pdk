@@ -45,7 +45,7 @@ export const componentNames: PdkComponentName[] = [
   'PdkToggle',
 ];
 
-export type PdkRenderComponent =
+export type PdkViewComponent =
   | 'LoadingPage'
   | 'Modals'
   | 'ModuleSettings'

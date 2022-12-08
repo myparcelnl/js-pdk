@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {PdkRenderComponent, logger} from '@myparcel-pdk/frontend-shared';
+import {PdkViewComponent, logger} from '@myparcel-pdk/frontend-shared';
 import {FinalPdkConfiguration} from '../types';
 import {LocalPdkFrontend} from './LocalPdkFrontend';
 
@@ -16,7 +16,7 @@ export class GlobalPdkFrontend {
   }
 
   // noinspection JSUnusedGlobalSymbols
-  public async render(component: PdkRenderComponent, selector: string): Promise<void> {
+  public async render(component: PdkViewComponent, selector: string): Promise<void> {
     logger.debug(`Rendering "${component}" in "${selector}"`);
     const clonedConfig: FinalPdkConfiguration = {...this._config};
 

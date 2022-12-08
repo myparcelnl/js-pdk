@@ -1,26 +1,19 @@
 <template>
-  <a
-    @click="onClick"
-    v-bind="attributes">
+  <a v-bind="linkAttributes">
     <PdkIcon
-      v-for="iconName in icons"
-      :key="iconName"
-      class="mr-1">
-      {{ iconName }}
-    </PdkIcon>
+      v-if="resolvedAction.icon"
+      class="mr-1"
+      :icon="resolvedAction.icon" />
     <!-- Link content. Can be used instead of `label` prop. -->
-    <slot>
+    <slot v-if="!hideText">
       {{ translate(resolvedAction.label) }}
     </slot>
   </a>
 </template>
 
 <script lang="ts">
-/* eslint-disable vue/no-unused-properties */
-import {PdkButtonAction, useTranslate} from '@myparcel-pdk/frontend-core';
-import {PropType, computed, defineComponent, AnchorHTMLAttributes} from 'vue';
-import {toArray} from '@myparcel/ts-utils';
-import {usePropAction} from '@myparcel-pdk/frontend-core/src/services/usePropAction';
+import {PdkButtonAction, useAction, useTranslate} from '@myparcel-pdk/frontend-core';
+import {PropType, computed, defineComponent} from 'vue';
 
 /**
  * This component is used to render a button. The button can be used to trigger
@@ -28,65 +21,46 @@ import {usePropAction} from '@myparcel-pdk/frontend-core/src/services/usePropAct
  * disabled.
  */
 export default defineComponent({
-  name: 'DefaultPdkButton',
+  name: 'DefaultPdkLink',
   props: {
     action: {
       type: Object as PropType<PdkButtonAction>,
       default: null,
     },
 
-    /**
-     * Controls disabled state.
-     */
-    disabled: {
-      type: Boolean as PropType<PdkButtonAction['disabled']>,
-      default: false,
+    hideText: {
+      type: Boolean,
     },
 
     href: {
       type: String,
-      default: null,
-    },
-
-    /**
-     * Icon.
-     */
-    icon: {
-      type: [Array, String] as PropType<PdkButtonAction['icon']>,
-      default: () => [],
-    },
-
-    /**
-     * Label. Can be used instead of the slot.
-     */
-    label: {
-      type: String as PropType<PdkButtonAction['label']>,
-      default: 'action_save',
+      default: '#',
     },
   },
 
   emits: ['click'],
 
   setup: (props, ctx) => {
-    const resolvedAction = usePropAction(props);
+    const resolvedAction = useAction(props.action);
+
+    const onClick: (event: MouseEvent) => void = (event: MouseEvent) => {
+      resolvedAction.value.onClick?.(event);
+
+      ctx.emit('click', event);
+    };
 
     return {
-      icons: computed(() => toArray(resolvedAction.value.icon)),
       resolvedAction,
       translate: useTranslate(),
 
-      onClick: (event: MouseEvent) => {
-        resolvedAction.value.onClick?.(event);
+      linkAttributes: computed(() => {
+        const attributes: Record<string, unknown> = {...props};
 
-        ctx.emit('click', event);
-      },
-
-      attributes: computed(() => {
-        const attributes: AnchorHTMLAttributes = { ...props };
-
-        if (props.href && props.href.startsWith('http')) {
+        if (props.href?.startsWith('http')) {
           attributes.rel = 'noopener noreferrer';
           attributes.target = '_blank';
+        } else {
+          attributes['onClick.prevent'] = onClick;
         }
 
         return attributes;

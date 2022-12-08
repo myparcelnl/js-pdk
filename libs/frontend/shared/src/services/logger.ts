@@ -9,7 +9,7 @@ export enum LogLevel {
 
 const colors = {
   [LogLevel.DEBUG]: '#9E9E9E',
-  [LogLevel.INFO]: '#F9F2ED',
+  [LogLevel.INFO]: '#2196F3',
   [LogLevel.WARN]: '#FFB562',
   [LogLevel.ERROR]: '#F87474',
 };

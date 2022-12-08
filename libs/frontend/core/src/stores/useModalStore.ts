@@ -3,28 +3,17 @@ import {defineStore} from 'pinia';
 import {ref} from 'vue';
 import {useNotificationStore} from './useNotificationStore';
 
-export type ModalContextMap<K extends ModalKey = ModalKey> = Record<K, PdkModalContext<K>>;
+type ModalOpenFn = <K extends ModalKey>(modal: K, context?: PdkModalContext<K>) => void;
+
+type ModalCloseFn = <K extends ModalKey>(modal: K) => void;
 
 export const useModalStore = defineStore('modal', () => {
   const opened = ref<ModalKey | null>(null);
   const context = ref<PdkModalContext | null>(null);
-  const onOpen = ref<null | ((modal: ModalKey) => void)>(null);
-  const onClose = ref<null | ((modal: null | ModalKey) => void)>(null);
   const loading = ref<boolean>(false);
 
-  const open = <K extends ModalKey>(modal: K, newContext?: PdkModalContext<K>) => {
-    onOpen.value?.(modal);
-
-    opened.value = modal;
-    context.value = newContext ?? null;
-  };
-
-  const close = () => {
-    useNotificationStore().remove(NotificationCategory.MODAL);
-    onClose.value?.(opened.value);
-    opened.value = null;
-    context.value = null;
-  };
+  const openHooks = ref<ModalOpenFn[]>([]);
+  const closeHooks = ref<ModalCloseFn[]>([]);
 
   return {
     loading,
@@ -32,10 +21,27 @@ export const useModalStore = defineStore('modal', () => {
     opened,
     context,
 
-    onOpen,
-    onClose,
+    onOpen: (callback: ModalOpenFn): void => {
+      openHooks.value.push(callback);
+    },
 
-    open,
-    close,
+    onClose: (callback: ModalCloseFn): void => {
+      closeHooks.value.push(callback);
+    },
+
+    open: <K extends ModalKey>(modal: K, newContext?: PdkModalContext<K>) => {
+      openHooks.value.forEach((hook) => hook(modal, newContext));
+      context.value = newContext ?? null;
+      opened.value = modal;
+    },
+
+    close: () => {
+      useNotificationStore().remove(NotificationCategory.MODAL);
+      const modal = opened.value as ModalKey;
+
+      opened.value = null;
+      context.value = null;
+      closeHooks.value.forEach((hook) => hook(modal));
+    },
   };
 });

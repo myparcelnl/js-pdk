@@ -3,15 +3,15 @@ module.exports = {
   extends: ['@myparcel-eslint/eslint-config-esnext', '@myparcel-eslint/eslint-config-prettier'],
   rules: {
     'class-methods-use-this': 'off',
-    'sort-exports/sort-exports': [
-      'warn',
-      { sortDir: 'asc', sortExportKindFirst: 'type' },
-    ],
   },
-  plugins: [
-    'sort-exports',
-  ],
   overrides: [
+    {
+      files: ['./**/index.ts'],
+      rules: {
+        'sort-exports/sort-exports': ['warn', {sortDir: 'asc', sortExportKindFirst: 'type'}],
+      },
+      plugins: ['sort-exports'],
+    },
     {
       files: ['./**/*.vue'],
       extends: '@myparcel-eslint/eslint-config-prettier-typescript-vue',

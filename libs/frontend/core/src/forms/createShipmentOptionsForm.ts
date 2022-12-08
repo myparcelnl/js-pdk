@@ -1,9 +1,10 @@
 import {CARRIERS, PACKAGE_TYPES} from '@myparcel/sdk';
 import {defineField, defineForm} from '@myparcel/vue-form-builder';
-import {useOrderQuery, useTranslate} from '../composables';
+import {Plugin} from '@myparcel-pdk/common';
 import {ref} from 'vue';
 import {renderWithFormGroup} from './renderWithFormGroup';
 import {useCarriers} from '../sdk';
+import {useTranslate} from '../composables';
 
 const deliveryOptionsCarrier = 'deliveryOptions.carrier';
 const deliveryOptionsLabelAmount = 'deliveryOptions.labelAmount';
@@ -17,17 +18,16 @@ const deliveryOptionsShipmentOptionsSameDayDelivery = 'deliveryOptions.shipmentO
 const deliveryOptionsShipmentOptionsInsurance = 'deliveryOptions.shipmentOptions.insurance';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,max-lines-per-function
-export const createShipmentOptionsForm = (id: string) => {
+export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
   const translate = useTranslate();
-  const order = useOrderQuery(id);
 
-  return defineForm(`shipmentOptions${id}`, {
+  return defineForm(`shipmentOptions${order.externalIdentifier}`, {
     fields: [
       defineField({
         name: deliveryOptionsCarrier,
         label: 'carrier',
         component: renderWithFormGroup('PdkSelect'),
-        ref: ref(order.data.value?.deliveryOptions?.carrier),
+        ref: ref(order.deliveryOptions?.carrier),
         props: {
           options: [],
         },
@@ -50,7 +50,7 @@ export const createShipmentOptionsForm = (id: string) => {
       defineField({
         name: deliveryOptionsLabelAmount,
         component: renderWithFormGroup('PdkNumberInput'),
-        ref: ref(order.data.value?.deliveryOptions?.labelAmount),
+        ref: ref(order.deliveryOptions?.labelAmount),
         label: 'label_amount',
         props: {
           min: 1,
@@ -61,7 +61,7 @@ export const createShipmentOptionsForm = (id: string) => {
       defineField({
         name: deliveryOptionsPackageType,
         component: renderWithFormGroup('PdkSelect'),
-        ref: ref(order.data.value?.deliveryOptions?.packageType),
+        ref: ref(order.deliveryOptions?.packageType),
         label: 'shipment_options_package_type',
         props: {
           options: PACKAGE_TYPES.ALL.map((type) => ({
@@ -74,7 +74,7 @@ export const createShipmentOptionsForm = (id: string) => {
       defineField({
         name: deliveryOptionsShipmentOptionsSignature,
         component: renderWithFormGroup('PdkToggle'),
-        ref: ref(order.data.value?.deliveryOptions?.shipmentOptions.signature),
+        ref: ref(order.deliveryOptions?.shipmentOptions.signature),
         label: 'shipment_options_signature',
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
@@ -84,7 +84,7 @@ export const createShipmentOptionsForm = (id: string) => {
       defineField({
         name: deliveryOptionsShipmentOptionsOnlyRecipient,
         component: renderWithFormGroup('PdkToggle'),
-        ref: ref(order.data.value?.deliveryOptions?.shipmentOptions.onlyRecipient),
+        ref: ref(order.deliveryOptions?.shipmentOptions.onlyRecipient),
         label: 'shipment_options_only_recipient',
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
@@ -94,7 +94,7 @@ export const createShipmentOptionsForm = (id: string) => {
       defineField({
         name: deliveryOptionsShipmentOptionsAgeCheck,
         component: renderWithFormGroup('PdkToggle'),
-        ref: ref(order.data.value?.deliveryOptions?.shipmentOptions.ageCheck),
+        ref: ref(order.deliveryOptions?.shipmentOptions.ageCheck),
         label: 'shipment_options_age_check',
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
@@ -104,7 +104,7 @@ export const createShipmentOptionsForm = (id: string) => {
       defineField({
         name: deliveryOptionsShipmentOptionsReturn,
         component: renderWithFormGroup('PdkToggle'),
-        ref: ref(order.data.value?.deliveryOptions?.shipmentOptions.return),
+        ref: ref(order.deliveryOptions?.shipmentOptions.return),
         label: 'shipment_options_return',
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
@@ -114,7 +114,7 @@ export const createShipmentOptionsForm = (id: string) => {
       defineField({
         name: deliveryOptionsShipmentOptionsLargeFormat,
         component: renderWithFormGroup('PdkToggle'),
-        ref: ref(order.data.value?.deliveryOptions?.shipmentOptions.largeFormat),
+        ref: ref(order.deliveryOptions?.shipmentOptions.largeFormat),
         label: 'shipment_options_large_format',
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
@@ -124,7 +124,7 @@ export const createShipmentOptionsForm = (id: string) => {
       defineField({
         name: deliveryOptionsShipmentOptionsSameDayDelivery,
         component: renderWithFormGroup('PdkToggle'),
-        ref: ref(order.data.value?.deliveryOptions?.shipmentOptions.sameDayDelivery),
+        ref: ref(order.deliveryOptions?.shipmentOptions.sameDayDelivery),
         label: 'shipment_options_same_day_delivery',
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
@@ -139,7 +139,7 @@ export const createShipmentOptionsForm = (id: string) => {
       defineField({
         name: deliveryOptionsShipmentOptionsInsurance,
         component: renderWithFormGroup('PdkNumberInput'),
-        ref: ref(order.data.value?.deliveryOptions?.shipmentOptions.insurance),
+        ref: ref(order.deliveryOptions?.shipmentOptions.insurance),
         label: 'shipment_options_insurance',
         validate: (field, value: number) => value > 100,
         errorMessage: 'Insurance must be at least 100',

@@ -28,6 +28,6 @@
     "tsup": "^6.5.0"
   },
   "devDependencies": {
-    "@myparcel/ts-utils": "^1.2.0"
+    "@myparcel/ts-utils": "^1.2.1"
   }
 }

@@ -60,7 +60,6 @@ export namespace Base {
     method: string;
     parameters: Record<string, string>;
     path: string;
-    property: string;
   };
 }
 
@@ -231,7 +230,7 @@ export namespace Fulfilment {
     orderLines?: OrderLineCollection;
     price?: number;
     priceAfterVat?: number;
-    deliveryOptions?: Shipment.ModelDeliveryOptions;
+    shipment?: unknown; // todo fix this in the generator
     shopId?: number;
     status?: string;
     type?: string;
@@ -275,6 +274,8 @@ export namespace Plugin {
   export type AbstractEndpointRequest = Base.Request;
 
   export type Context = Record<string, unknown>;
+
+  export type DeleteShipmentsEndpointRequest = AbstractEndpointRequest;
 
   export type EndpointRequestCollection = Record<string, AbstractEndpointRequest>[];
 
@@ -332,20 +333,20 @@ export namespace Plugin {
     externalIdentifier?: string;
     customsDeclaration?: Shipment.ModelCustomsDeclaration;
     deliveryOptions?: Shipment.ModelDeliveryOptions;
-    lines?: PdkOrderLineCollection;
-    recipient?: Base.ModelContactDetails;
-    sender?: Base.ModelContactDetails;
-    shipmentPrice?: number;
-    shipmentVat?: number;
-    shipments?: Shipment.ShipmentCollection;
     label?: Shipment.ModelLabel;
-    orderPrice: number;
-    orderVat: number;
-    orderPriceAfterVat: number;
+    lines?: PdkOrderLineCollection;
+    recipient: Base.ModelContactDetails;
+    sender?: Base.ModelContactDetails;
+    shipments?: Shipment.ShipmentCollection;
+    shipmentPrice: number;
     shipmentPriceAfterVat: number;
+    shipmentVat: number;
+    orderPrice: number;
+    orderPriceAfterVat: number;
+    orderVat: number;
     totalPrice: number;
-    totalVat: number;
     totalPriceAfterVat: number;
+    totalVat: number;
   };
 
   export type ModelPdkOrderLine = {
@@ -371,7 +372,11 @@ export namespace Plugin {
 
   export type PdkProductCollection = ModelPdkProduct[];
 
-  export type PrintOrderEndpointRequest = AbstractEndpointRequest;
+  export type PrintOrdersEndpointRequest = AbstractEndpointRequest;
+
+  export type RefreshShipmentsEndpointRequest = AbstractEndpointRequest;
+
+  export type UpdateOrdersEndpointRequest = AbstractEndpointRequest;
 }
 
 export namespace Settings {
@@ -621,7 +626,7 @@ export namespace Shipment {
   export type ModelPhysicalProperties = {
     height?: number;
     length?: number;
-    weight?: number;
+    weight: number;
     width?: number;
   };
 
@@ -642,8 +647,8 @@ export namespace Shipment {
 
   export type ModelShipment = {
     id?: number;
-    orderId?: string;
     shopId?: number;
+    orderId?: string;
     referenceIdentifier?: string;
     externalIdentifier?: string;
     apiKey?: string;
@@ -651,24 +656,28 @@ export namespace Shipment {
     carrier?: Carrier.ModelCarrierOptions;
     collectionContact?: string;
     customsDeclaration?: ModelCustomsDeclaration;
-    delayed?: boolean;
-    delivered?: boolean;
+    delayed: boolean;
+    delivered: boolean;
     deliveryOptions: ModelDeliveryOptions;
     dropOffPoint?: ModelRetailLocation;
-    isReturn?: boolean;
+    hidden: boolean;
+    isReturn: boolean;
     linkConsumerPortal?: string;
     multiCollo: boolean;
     multiColloMainShipmentId?: string;
-    partnerTrackTraces?: unknown[];
+    partnerTrackTraces: unknown[];
     physicalProperties?: ModelPhysicalProperties;
-    recipient: Base.ModelContactDetails;
+    price: Base.ModelCurrency;
+    recipient?: Base.ModelContactDetails;
     sender?: Base.ModelContactDetails;
+    shipmentType?: number;
     status?: number;
-    updated?: boolean;
+    deleted?: DateTime;
+    updated?: DateTime;
     created?: DateTime;
-    createdBy?: string;
+    createdBy?: number;
     modified?: DateTime;
-    modifiedBy?: string;
+    modifiedBy?: number;
   };
 
   export type ModelShipmentOptions = {
@@ -689,4 +698,21 @@ export namespace Shipment {
   export type ShipmentCollection = ModelShipment[];
 
   export type UpdateShipmentsRequest = Base.Request;
+}
+
+export namespace Webhook {
+  export type DeleteWebhookSubscriptionRequest = Base.Request;
+
+  export type GetWebhookSubscriptionRequest = Base.Request;
+
+  export type GetWebhookSubscriptionsRequest = Base.Request;
+
+  export type ModelWebhookSubscription = {
+    hook: string;
+    url: string;
+  };
+
+  export type PostWebhookSubscriptionRequest = Base.Request;
+
+  export type WebhookSubscriptionCollection = ModelWebhookSubscription[];
 }

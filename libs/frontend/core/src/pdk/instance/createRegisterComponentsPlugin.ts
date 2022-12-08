@@ -19,6 +19,8 @@ const baseComponents = Object.freeze(
 export const createRegisterComponentsPlugin: RegisterComponentsPlugin = (components) => {
   return {
     install(app) {
+      logger.debug('Installing components plugin');
+
       Object.entries({...baseComponents, ...components}).forEach(([name, component]) => {
         if (!component) {
           logger.error(

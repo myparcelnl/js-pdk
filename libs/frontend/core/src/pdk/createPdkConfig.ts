@@ -4,13 +4,12 @@ import {getElementContext} from '../services';
 import {mergeWith} from 'lodash-unified';
 
 const defaultConfig = Object.freeze<DefaultPdkConfiguration>({
-  logLevel: import.meta.env.PROD ? LogLevel.INFO : LogLevel.DEBUG,
   components: undefined,
   context: undefined,
-  transitions: {
-    notification: undefined,
-    labelCard: undefined,
-  },
+  formatters: {},
+  locale: 'en-US',
+  logLevel: import.meta.env.PROD ? LogLevel.INFO : LogLevel.DEBUG,
+  transitions: {},
 });
 
 /**

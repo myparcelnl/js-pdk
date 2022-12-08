@@ -1,12 +1,12 @@
 <template>
   <i
     :class="`icon-${icon}`"
-    class="icon"></i>
+    class="icon" />
 </template>
 
 <script lang="ts">
+import {PropType, defineComponent} from 'vue';
 import {PdkIcon} from '@myparcel-pdk/frontend-core';
-import {defineComponent} from 'vue';
 import {isEnumValue} from '@myparcel/ts-utils';
 
 /**
@@ -16,7 +16,7 @@ export default defineComponent({
   name: 'DefaultPdkIcon',
   props: {
     icon: {
-      type: String,
+      type: String as PropType<PdkIcon>,
       required: true,
       validator: (value: string) => isEnumValue(value, PdkIcon),
     },

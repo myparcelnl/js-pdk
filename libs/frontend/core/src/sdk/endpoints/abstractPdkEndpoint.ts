@@ -2,7 +2,7 @@ import {EndpointName, Plugin} from '@myparcel-pdk/frontend-shared';
 import {AbstractEndpoint} from '@myparcel/sdk';
 import {RecursivePartial} from '@myparcel/ts-utils';
 
-export type DeleteLabelsDefinition = {
+export type DeleteShipmentsDefinition = {
   response: Plugin.ModelContextOrderDataContext[];
   parameters: {
     orderIds?: string;
@@ -41,8 +41,8 @@ type Definition<N extends EndpointName> = N extends EndpointName.GET_ORDERS
   ? ExportOrderDefinition
   : N extends EndpointName.UPDATE_ORDERS
   ? UpdateOrderDefinition
-  : N extends EndpointName.DELETE_LABELS
-  ? DeleteLabelsDefinition
+  : N extends EndpointName.DELETE_SHIPMENTS
+  ? DeleteShipmentsDefinition
   : N extends EndpointName.REFRESH_SHIPMENTS
   ? RefreshShipmentsDefinition
   : never;
