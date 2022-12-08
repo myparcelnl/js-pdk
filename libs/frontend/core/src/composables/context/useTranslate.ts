@@ -1,4 +1,4 @@
-import {decodeHtmlEntities, logger} from '@myparcel-pdk/frontend-shared';
+import {decodeHtmlEntities, logger} from '@myparcel-pdk/common';
 import {useContextStore} from '../../stores';
 
 type UseTranslate = () => (key: string) => string;

@@ -2,7 +2,7 @@ import {FrontendAction} from '../data';
 import {PdkIcon} from './common.types';
 import {PromiseOr} from '@myparcel/ts-utils';
 import {Ref} from 'vue';
-import {Variant} from '@myparcel-pdk/frontend-shared';
+import {Variant} from '@myparcel-pdk/common';
 
 interface BaseAction {
   id?: string;

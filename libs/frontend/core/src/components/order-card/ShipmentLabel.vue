@@ -41,7 +41,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {Shipment, useFormatter} from '@myparcel-pdk/frontend-shared';
+import {Shipment, useFormatter} from '@myparcel-pdk/common';
 import {deleteAction, shipmentCreateReturnAction, shipmentPrintAction, shipmentRefreshAction} from '../../data';
 import {useAssetUrl, useTranslate} from '../../composables';
 import {createActions} from '../../services';

@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import {Plugin, useFormatter} from '@myparcel-pdk/frontend-shared';
+import {Plugin, useFormatter} from '@myparcel-pdk/common';
 import {PropType, defineComponent} from 'vue';
 
 export default defineComponent({

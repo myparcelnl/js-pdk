@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {IetfLanguageTag, usePdkConfig} from '@myparcel-pdk/frontend-core';
+import {IetfLanguageTag} from '@myparcel-pdk/common';
+import {usePdkConfig} from '@myparcel-pdk/frontend-core';
 import {Ref, ref} from 'vue';
 import {
   createDefaultCurrencyFormatter,
   createDefaultDateLongFormatter,
   createDefaultDateRelativeFormatter,
-} from './default';
+} from 'libs/frontend/core/src/composables/formatter/default';
 import {Formatter, LocaleFormatterObject} from './formatter.types';
 
 let formats: Ref<LocaleFormatterObject>;

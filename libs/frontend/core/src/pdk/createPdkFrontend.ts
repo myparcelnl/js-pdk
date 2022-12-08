@@ -3,7 +3,7 @@ import {InputPdkConfiguration} from '../types';
 import {createPdkConfig} from './createPdkConfig';
 import {isDef} from '@vueuse/core';
 import {isOfType} from '@myparcel/ts-utils';
-import {logger} from '@myparcel-pdk/frontend-shared';
+import {logger} from '@myparcel-pdk/common';
 import {sendBootEvent} from '../utils';
 
 export type CreatePdkFrontend = (configuration?: InputPdkConfiguration) => undefined | GlobalPdkFrontend;

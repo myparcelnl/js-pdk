@@ -6,9 +6,9 @@ import {
   PdkDropdownAction,
   PdkIcon,
   PdkModalContext,
-} from '../../types';
+} from '../types';
 import {FrontendAction} from './actions';
-import {useModalStore} from '../../stores';
+import {useModalStore} from '../stores';
 
 export const deleteAction: PdkDropdownAction = {
   action: FrontendAction.SHIPMENT_DELETE,

@@ -18,7 +18,7 @@ import DefaultPdkTable from './DefaultPdkTable.vue';
 import DefaultPdkTableCol from './DefaultPdkTableCol.vue';
 import DefaultPdkTableRow from './DefaultPdkTableRow.vue';
 import DefaultPdkToggle from './DefaultPdkToggle.vue';
-import {PdkComponentMap} from '@myparcel-pdk/frontend-shared';
+import {PdkComponentMap} from '@myparcel-pdk/common';
 
 export {
   DefaultPdkAccordion,

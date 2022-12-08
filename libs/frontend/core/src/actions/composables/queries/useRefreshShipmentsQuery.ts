@@ -1,11 +1,12 @@
 /* eslint-disable no-console,@typescript-eslint/explicit-module-boundary-types */
-import {Plugin, encodeArrayParameter} from '@myparcel-pdk/frontend-shared';
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
 import {ApiException} from '@myparcel/sdk';
 import {OneOrMore} from '@myparcel/ts-utils';
+import {Plugin} from '@myparcel-pdk/common';
 import {QUERY_KEY_SHIPMENT} from './queryKeys';
-import {fillOrderQueryData} from '../../pdk';
-import {usePdkApi} from '../../sdk';
+import {encodeArrayParameter} from '../../../utils';
+import {fillOrderQueryData} from '../../../pdk';
+import {usePdkApi} from '../../../sdk';
 
 interface RefreshShipmentsInput {
   orderIds?: OneOrMore<string>;

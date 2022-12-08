@@ -1,6 +1,6 @@
 import {Pinia, createPinia} from 'pinia';
 import {FinalPdkConfiguration} from '../../types';
-import {logger} from '@myparcel-pdk/frontend-shared';
+import {logger} from '@myparcel-pdk/common';
 
 let store: Pinia;
 let initialized = false;

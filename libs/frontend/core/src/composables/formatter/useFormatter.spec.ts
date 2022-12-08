@@ -1,6 +1,5 @@
 import {describe, expect, it, vi} from 'vitest';
-import {useFormatter} from '../index';
-import {FormatName} from './formatter.types';
+import {useFormatter} from './useFormatter';
 
 describe('format strings', () => {
   const now = new Date('2022-12-05T12:00:00.000Z');
@@ -75,7 +74,7 @@ describe('format strings', () => {
     dateSpy.mockImplementation(() => now.getTime());
 
     const formatter = useFormatter('en-GB');
-    const result = formatter.format(FormatName.DATE_RELATIVE, date);
+    const result = formatter.format('dateRelative', date);
 
     expect(result).toEqual(expectation);
 
@@ -84,7 +83,7 @@ describe('format strings', () => {
 
   it('formats date', () => {
     const formatter = useFormatter('en-GB');
-    const result = formatter.format(FormatName.DATE_LONG, now);
+    const result = formatter.format('dateLong', now);
 
     expect(result).toEqual('Mon, 5 Dec 2022');
   });

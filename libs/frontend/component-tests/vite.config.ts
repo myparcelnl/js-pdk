@@ -13,7 +13,7 @@ export default createViteConfig({
     rollupOptions: {
       external: [
         ...externalDependencies,
-        '@myparcel-pdk/frontend-shared',
+        '@myparcel-pdk/common',
         '@vue/test-utils',
         '@vueuse/core',
         'pinia',

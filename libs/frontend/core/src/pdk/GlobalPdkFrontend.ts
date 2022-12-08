@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {PdkViewComponent, logger} from '@myparcel-pdk/frontend-shared';
+import {PdkViewComponent, logger} from '@myparcel-pdk/common';
 import {FinalPdkConfiguration} from '../types';
 import {LocalPdkFrontend} from './LocalPdkFrontend';
 

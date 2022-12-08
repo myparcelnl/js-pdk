@@ -2,13 +2,8 @@
   "name": "@myparcel-pdk/monorepo",
   "version": "1.0.0-alpha.0",
   "private": true,
-  "repository": "github:myparcelnl/js-pdk.git",
+  "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
-  "main": "lib/index.js",
-  "module": "src/index.ts",
-  "files": [
-    "src"
-  ],
   "workspaces": [
     "apps/**",
     "libs/**"
@@ -57,20 +52,21 @@
   },
   "prettier": "@myparcel/prettier-config",
   "devDependencies": {
-    "@myparcel-eslint/eslint-config-esnext": "^1.0.0-alpha.2",
-    "@myparcel-eslint/eslint-config-node": "^1.0.0-alpha.2",
-    "@myparcel-eslint/eslint-config-prettier": "^1.0.0-alpha.2",
-    "@myparcel-eslint/eslint-config-prettier-typescript": "^1.0.0-alpha.1",
-    "@myparcel-eslint/eslint-config-prettier-typescript-vue": "^1.0.0-alpha.1",
+    "@myparcel-eslint/eslint-config-esnext": "^1.2.0",
+    "@myparcel-eslint/eslint-config-node": "^1.2.0",
+    "@myparcel-eslint/eslint-config-prettier": "^1.2.0",
+    "@myparcel-eslint/eslint-config-prettier-typescript": "^1.2.0",
+    "@myparcel-eslint/eslint-config-prettier-typescript-vue": "^1.2.0",
     "@myparcel/prettier-config": "^1.1.0",
-    "@vitest/ui": "^0.25.4",
+    "@vitest/ui": "^0.25.6",
     "eslint": "^8.29.0",
     "eslint-plugin-sort-exports": "^0.8.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
-    "nx": "^15.2.4",
+    "nodemon": "^2.0.20",
+    "nx": "^15.3.0",
     "plop": "^3.1.1",
-    "prettier": "^2.8.0",
+    "prettier": "^2.8.1",
     "rimraf": "^3.0.2"
   },
   "packageManager": "yarn@3.3.0"

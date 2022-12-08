@@ -1,6 +1,6 @@
 import {ComputedRef, Ref, computed, ref} from 'vue';
 import {ModalKey} from '../types';
-import {useLoading} from '@myparcel-pdk/frontend-shared';
+import {useLoading} from '@myparcel-pdk/common';
 import {useModalStore} from '../stores';
 
 export type ModalCallback = (id: string) => Promise<void> | void;

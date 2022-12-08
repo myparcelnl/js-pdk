@@ -6,10 +6,6 @@
   "main": "lib/index.js",
   "module": "src/index.ts",
   "types": "lib/index.d.ts",
-  "files": [
-    "lib",
-    "src"
-  ],
   "scripts": {
     "build": "run ws:tsup:build \"$(pwd)\"",
     "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
@@ -29,5 +25,8 @@
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:*",
     "tsup": "^6.5.0"
-  }
+  },
+  "files": [
+    "lib"
+  ]
 }

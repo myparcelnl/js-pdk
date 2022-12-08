@@ -1,7 +1,5 @@
 import {OneOrMore} from '@myparcel/ts-utils';
-import {Variant} from '@myparcel-pdk/frontend-shared';
-
-export type IetfLanguageTag = string;
+import {Variant} from '@myparcel-pdk/common';
 
 export interface PdkNotification {
   content?: OneOrMore<string>;

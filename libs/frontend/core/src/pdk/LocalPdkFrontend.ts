@@ -1,4 +1,4 @@
-import {ComponentImportFunction, PdkViewComponent, logger} from '@myparcel-pdk/frontend-shared';
+import {ComponentImportFunction, PdkViewComponent, logger} from '@myparcel-pdk/common';
 import {createContextPlugin, createRegisterComponentsPlugin, createStorePlugin} from './instance';
 import {FinalPdkConfiguration} from '../types';
 import {createApp} from 'vue';

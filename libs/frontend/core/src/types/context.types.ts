@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {EndpointName, ModalKey} from '../';
 import {Replace, RequireOnly} from '@myparcel/ts-utils';
-import {Plugin} from '@myparcel-pdk/frontend-shared';
+import {Plugin} from '@myparcel-pdk/common';
 
 export type AnyContext = PdkContext<ContextKey>;
 

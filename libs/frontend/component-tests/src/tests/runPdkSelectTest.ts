@@ -1,6 +1,6 @@
 import {ComponentTest, mount, runCommonComponentTests} from '../common';
 import {expect, it} from 'vitest';
-import {SelectOption} from '@myparcel-pdk/frontend-shared';
+import {SelectOption} from '@myparcel-pdk/common';
 
 const options: SelectOption[] = [
   {value: '1', label: 'One'},

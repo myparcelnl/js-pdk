@@ -6,10 +6,6 @@
   "main": "lib/index.js",
   "module": "src/index.ts",
   "types": "lib/index.d.ts",
-  "files": [
-    "lib",
-    "src"
-  ],
   "scripts": {
     "build": "run ws:vite:build \"$(pwd)\"",
     "build:dev": "run ws:vite:build:dev \"$(pwd)\"",
@@ -26,7 +22,7 @@
     }
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-shared": "workspace:*",
+    "@myparcel-pdk/common": "workspace:*",
     "@myparcel/sdk": "^2.9.1",
     "@myparcel/ts-utils": "^1.2.1",
     "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
@@ -47,5 +43,8 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "lib"
+  ]
 }

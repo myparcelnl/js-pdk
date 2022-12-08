@@ -31,7 +31,7 @@
 import {PropType, defineComponent} from 'vue';
 import {shipmentPrintAction, shipmentRefreshAction} from '../../data';
 import {useAssetUrl, useTranslate} from '../../composables';
-import {Shipment} from '@myparcel-pdk/frontend-shared';
+import {Shipment} from '@myparcel-pdk/common';
 import {createActions} from '../../services';
 import {useCarriers} from '../../sdk';
 

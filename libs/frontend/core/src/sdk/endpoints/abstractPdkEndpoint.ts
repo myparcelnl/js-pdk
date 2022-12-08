@@ -1,4 +1,4 @@
-import {EndpointName, Plugin} from '@myparcel-pdk/frontend-shared';
+import {EndpointName, Plugin} from '@myparcel-pdk/common';
 import {AbstractEndpoint} from '@myparcel/sdk';
 import {RecursivePartial} from '@myparcel/ts-utils';
 

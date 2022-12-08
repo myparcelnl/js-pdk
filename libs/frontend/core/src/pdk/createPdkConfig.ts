@@ -1,5 +1,5 @@
 import {DefaultPdkConfiguration, FinalPdkConfiguration, InputPdkConfiguration} from '../types';
-import {LogLevel} from '@myparcel-pdk/frontend-shared';
+import {LogLevel} from '@myparcel-pdk/common';
 import {getElementContext} from '../services';
 import {mergeWith} from 'lodash-unified';
 

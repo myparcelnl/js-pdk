@@ -4,11 +4,6 @@
   "private": true,
   "license": "MIT",
   "type": "module",
-  "main": "lib/index.js",
-  "module": "src/index.ts",
-  "files": [
-    "src"
-  ],
   "scripts": {
     "build": "vite build",
     "lint": "run ws:lint \"$(pwd)\"",

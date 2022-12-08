@@ -1,5 +1,5 @@
 import {FormatterFunction} from '../formatter.types';
-import {IetfLanguageTag} from '@myparcel-pdk/frontend-core';
+import {IetfLanguageTag} from '@myparcel-pdk/common';
 import {createCurrencyFormat} from './createCurrencyFormat';
 
 let formatCurrency: Intl.NumberFormat;

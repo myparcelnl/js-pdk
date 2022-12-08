@@ -9,4 +9,4 @@ export * from './stores';
 export * from './types';
 export * from './utils';
 
-export * from '@myparcel-pdk/frontend-shared';
+export * from '@myparcel-pdk/common';

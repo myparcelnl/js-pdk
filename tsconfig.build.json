@@ -16,6 +16,6 @@
     "types": ["node", "vite/client"],
     "useDefineForClassFields": true
   },
-  "include": ["libs/**/*.ts", "apps/**/*.ts","libs/**/*.vue", "apps/**/*.vue"],
+  "include": ["libs/**/*.ts", "apps/**/*.ts", "libs/**/*.vue", "apps/**/*.vue"],
   "exclude": ["node_modules", "lib", "dist", "cypress/**/*"]
 }

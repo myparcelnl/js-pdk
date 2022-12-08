@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EndpointName, Plugin, convertDotNotationToObject, encodeArrayParameter} from '@myparcel-pdk/frontend-shared';
-import {PdkEndpointDefinition, usePdkApi} from '../../sdk';
+import {EndpointName, Plugin} from '@myparcel-pdk/common';
+import {PdkEndpointDefinition, usePdkApi} from '../../../sdk';
+import {convertDotNotationToObject, encodeArrayParameter} from '../../../utils';
 import {useMutation, useQueryClient} from '@tanstack/vue-query';
 import {ApiException} from '@myparcel/sdk';
 import {FormInstance} from '@myparcel/vue-form-builder';

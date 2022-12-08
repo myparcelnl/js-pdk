@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EndpointName, Plugin, encodeArrayParameter} from '@myparcel-pdk/frontend-shared';
-import {PdkEndpointDefinition, usePdkApi} from '../../sdk';
+import {EndpointName, Plugin} from '@myparcel-pdk/common';
+import {PdkEndpointDefinition, usePdkApi} from '../../../sdk';
 import {useMutation, useQueryClient} from '@tanstack/vue-query';
 import {ApiException} from '@myparcel/sdk';
 import {OneOrMore} from '@myparcel/ts-utils';
 import {QUERY_KEY_DELETE_SHIPMENTS} from '../queries';
+import {encodeArrayParameter} from '../../../utils';
 
 type DeleteLabelsInput = {
   orderIds: OneOrMore<string>;

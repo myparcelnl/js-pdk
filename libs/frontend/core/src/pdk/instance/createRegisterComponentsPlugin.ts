@@ -1,4 +1,4 @@
-import {PdkComponentMap, PdkComponentName, componentNames, logger} from '@myparcel-pdk/frontend-shared';
+import {PdkComponentMap, PdkComponentName, componentNames, logger} from '@myparcel-pdk/common';
 import {Plugin} from 'vue';
 
 type RegisterComponentsPlugin = (components: PdkComponentMap) => Plugin;

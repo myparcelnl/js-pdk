@@ -21,4 +21,7 @@ runs:
     - name: 'Build packages'
       shell: bash
       run: |
-        yarn build
+        yarn nx run-many \
+          --output-style=stream \
+          --target=build \
+          --projects=@myparcel/pdk-frontend,@myparcel/pdk-components

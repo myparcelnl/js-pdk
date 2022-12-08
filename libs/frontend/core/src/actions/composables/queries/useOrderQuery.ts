@@ -1,9 +1,9 @@
 /* eslint-disable no-console,@typescript-eslint/explicit-module-boundary-types */
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
-import {Plugin} from '@myparcel-pdk/frontend-shared';
+import {Plugin} from '@myparcel-pdk/common';
 import {QUERY_KEY_ORDER} from './queryKeys';
-import {fillOrderQueryData} from '../../pdk';
-import {usePdkApi} from '../../sdk';
+import {fillOrderQueryData} from '../../../pdk';
+import {usePdkApi} from '../../../sdk';
 
 export const useOrderQuery = (externalIdentifier: string) => {
   const queryKey = [QUERY_KEY_ORDER, {id: externalIdentifier}] as const;

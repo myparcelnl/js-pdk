@@ -1,8 +1,7 @@
 import {OneOrMore, toArray} from '@myparcel/ts-utils';
 import {QUERY_KEY_ORDER, QUERY_KEY_SHIPMENT} from '../composables';
 import {QueryClient, QueryKey} from '@tanstack/vue-query';
-import {Plugin} from '@myparcel-pdk/common';
-import {logger} from '@myparcel-pdk/frontend-shared';
+import {Plugin, logger} from '@myparcel-pdk/common';
 
 export function fillOrderQueryData(queryClient: QueryClient, orders: OneOrMore<Plugin.ModelPdkOrder>): void {
   const orderArray = toArray(orders);

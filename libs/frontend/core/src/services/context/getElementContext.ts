@@ -1,5 +1,5 @@
 import {PdkContextObject} from '../../types';
-import {logger} from '@myparcel-pdk/frontend-shared';
+import {logger} from '@myparcel-pdk/common';
 
 export const getElementContext = (selector: string): Partial<PdkContextObject> => {
   const element = document.querySelector(selector);

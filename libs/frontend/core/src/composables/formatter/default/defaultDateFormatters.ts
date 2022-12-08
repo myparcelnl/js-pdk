@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import {FormatterFunction} from '../formatter.types';
-import {IetfLanguageTag} from '@myparcel-pdk/frontend-core';
+import {IetfLanguageTag} from '@myparcel-pdk/common';
 import {createLongDateFormat} from './createLongDateFormat';
 import {createRelativeTimeFormat} from './createRelativeTimeFormat';
 import {parseDate} from './parseDate';

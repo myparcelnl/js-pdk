@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import {defineComponent, ref} from 'vue';
-import {AddCarrierValue} from '@myparcel-pdk/frontend-shared';
+import {AddCarrierValue} from '@myparcel-pdk/common';
 import {ContextKey} from '../../types';
 
 export default defineComponent({

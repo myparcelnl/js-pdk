@@ -1,7 +1,7 @@
-import {LogLevel, PdkComponentMap, PdkFormatterObject} from '@myparcel-pdk/frontend-shared';
-import {IetfLanguageTag} from './common.types';
+import {PdkFormatterObject, PdkComponentMap, IetfLanguageTag} from '@myparcel-pdk/common';
 import {PdkContextObject} from './context.types';
 import {PiniaPluginContext} from 'pinia';
+import {LogLevel} from 'vite';
 
 export type DefaultPdkConfiguration = Omit<FinalPdkConfiguration, 'context' | 'components'> & {
   context?: Partial<PdkContextObject>;

@@ -1,4 +1,4 @@
-import {ActionParameters, ActionResponse, FrontendAction} from '../data';
+import {ActionParameters, ActionResponse, FrontendAction} from '../actions';
 import {EndpointName} from '@myparcel-pdk/common';
 import {afterAction} from './afterAction';
 import {beforeAction} from './beforeAction';
@@ -17,8 +17,6 @@ export const doAction = async <A extends FrontendAction>(
   switch (action) {
     case FrontendAction.ORDER_EXPORT:
     case FrontendAction.ORDER_EXPORT_PRINT:
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
       response = await queryStore.get(EndpointName.EXPORT_ORDERS).mutateAsync(resolvedParameters);
       break;
 
@@ -29,9 +27,6 @@ export const doAction = async <A extends FrontendAction>(
       break;
 
     case FrontendAction.ORDER_UPDATE:
-      console.log(action, resolvedParameters);
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
       response = await queryStore.get(EndpointName.UPDATE_ORDERS).mutateAsync(resolvedParameters);
       break;
 
@@ -46,12 +41,12 @@ export const doAction = async <A extends FrontendAction>(
       break;
 
     case FrontendAction.SHIPMENT_REFRESH:
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       response = await queryStore.get(EndpointName.REFRESH_SHIPMENTS).mutateAsync(resolvedParameters);
       break;
 
     case FrontendAction.SHIPMENT_DELETE:
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
       response = await queryStore.get(EndpointName.DELETE_SHIPMENTS).mutateAsync(resolvedParameters);
       break;
 
@@ -63,7 +58,5 @@ export const doAction = async <A extends FrontendAction>(
     throw new Error(`Action "${action}" failed.`);
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
   return afterAction(action, resolvedParameters, response);
 };

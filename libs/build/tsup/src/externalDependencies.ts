@@ -1,7 +1,7 @@
 export const externalDependencies = [
   '@myparcel-pdk/common',
   '@myparcel-pdk/frontend-core',
-  '@myparcel-pdk/frontend-shared',
+  '@myparcel-pdk/common',
   '@myparcel/pdk-components',
   '@myparcel/pdk-frontend',
   '@myparcel/sdk',

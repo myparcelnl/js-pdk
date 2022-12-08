@@ -1,4 +1,4 @@
-import {IetfLanguageTag} from '@myparcel-pdk/frontend-core';
+import {IetfLanguageTag} from '@myparcel-pdk/common';
 
 /**
  * Available formatters.

@@ -10,7 +10,7 @@ import {
   runPdkTableTest,
 } from '../tests';
 import {Component} from 'vue';
-import {PdkComponentName} from '@myparcel-pdk/frontend-shared';
+import {PdkComponentName} from '@myparcel-pdk/common';
 import {describe} from 'vitest';
 
 export type ComponentTest = (component: Omit<Component, 'props'>, ...args: unknown[]) => void;

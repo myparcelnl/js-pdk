@@ -1,4 +1,4 @@
-import {LabelFormat, LabelOutput, LabelPosition, SelectOption} from '@myparcel-pdk/frontend-shared';
+import {LabelFormat, LabelOutput, LabelPosition, SelectOption} from '@myparcel-pdk/common';
 
 export const formatOptions: SelectOption<LabelFormat>[] = [
   {

@@ -2,6 +2,8 @@
   "name": "@myparcel-pdk/frontend-test-unit",
   "version": "1.0.0",
   "private": true,
+  "main": "lib/index.js",
+  "module": "src/index.ts",
   "scripts": {
     "test": "vitest",
     "test:run": "vitest run"
@@ -11,14 +13,13 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.2.0",
-    "happy-dom": "^7.7.0",
-    "vite": "^3.2.4",
-    "vitest": "^0.25.3",
+    "happy-dom": "^8.1.0",
+    "vite": "^3.2.5",
+    "vitest": "^0.25.6",
     "vue": "^3.2.45"
   },
+  "license": "MIT",
   "files": [
-    "src"
-  ],
-  "main": "lib/index.js",
-  "module": "src/index.ts"
+    "lib"
+  ]
 }
