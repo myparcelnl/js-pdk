@@ -408,7 +408,7 @@ __metadata:
     "@myparcel-eslint/eslint-config-prettier-typescript": ^1.0.0-alpha.1
     "@myparcel-eslint/eslint-config-prettier-typescript-vue": ^1.0.0-alpha.1
     "@myparcel/prettier-config": ^1.1.0
-    "@vitest/ui": ^0.25.4
+    "@vitest/ui": ^0.26.1
     eslint: ^8.29.0
     eslint-plugin-sort-exports: ^0.8.0
     husky: ^8.0.2
@@ -1011,12 +1011,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/ui@npm:^0.25.4":
-  version: 0.25.4
-  resolution: "@vitest/ui@npm:0.25.4"
+"@vitest/ui@npm:^0.26.1":
+  version: 0.26.1
+  resolution: "@vitest/ui@npm:0.26.1"
   dependencies:
+    fast-glob: ^3.2.12
+    flatted: ^3.2.7
     sirv: ^2.0.2
-  checksum: db9361ac3e01b02e942749a68e0bdc8afbd12dbae5a4c665ca57829c5cfe6816d33e03548c524d07187e1244f713cafa40003b14294d53bd1c5fb3f35c258302
+  checksum: d32a4334db421547ce1738b050641a684d55cac8666aa63459198587e8b5f310fc00ed571cc0f61bbabf962fc3cbad07c63543ab985d1565cade9d1af687892c
   languageName: node
   linkType: hard
 
@@ -2986,7 +2988,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flatted@npm:^3.1.0":
+"flatted@npm:^3.1.0, flatted@npm:^3.2.7":
   version: 3.2.7
   resolution: "flatted@npm:3.2.7"
   checksum: 427633049d55bdb80201c68f7eb1cbd533e03eac541f97d3aecab8c5526f12a20ccecaeede08b57503e772c769e7f8680b37e8d482d1e5f8d7e2194687f9ea35
