@@ -63,7 +63,7 @@
     "@myparcel-eslint/eslint-config-prettier-typescript": "^1.0.0-alpha.1",
     "@myparcel-eslint/eslint-config-prettier-typescript-vue": "^1.0.0-alpha.1",
     "@myparcel/prettier-config": "^1.1.0",
-    "@vitest/ui": "^0.25.4",
+    "@vitest/ui": "^0.26.2",
     "eslint": "^8.29.0",
     "eslint-plugin-sort-exports": "^0.8.0",
     "husky": "^8.0.2",
