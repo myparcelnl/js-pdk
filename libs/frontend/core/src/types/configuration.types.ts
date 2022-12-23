@@ -1,19 +1,15 @@
-import {PdkFormatterObject, PdkComponentMap, IetfLanguageTag} from '@myparcel-pdk/common';
-import {PdkContextObject} from './context.types';
+import {FormConfiguration} from '@myparcel/vue-form-builder';
+import {LogLevel} from '../services';
+import {PdkComponentMap} from '@myparcel-pdk/common';
+import {PdkFormatterObject} from '../composables';
 import {PiniaPluginContext} from 'pinia';
-import {LogLevel} from 'vite';
 
-export type DefaultPdkConfiguration = Omit<FinalPdkConfiguration, 'context' | 'components'> & {
-  context?: Partial<PdkContextObject>;
+export type DefaultPdkConfiguration = Omit<PdkConfiguration, 'context' | 'components'> & {
   components?: Record<string, undefined>;
   formatters?: Record<string, undefined>;
 };
 
-export type FinalPdkConfiguration = InputPdkConfiguration & {
-  context: PdkContextObject;
-};
-
-export type InputPdkConfiguration = {
+export type PdkConfiguration = {
   /**
    * Components to use.
    */
@@ -25,27 +21,14 @@ export type InputPdkConfiguration = {
   formatters?: PdkFormatterObject;
 
   /**
-   * IETF language tag.
-   *
-   * @example en-US
-   * @example nl-NL
-   */
-  locale: IetfLanguageTag;
-
-  /**
    * Log level to use. Defaults to 'info' on production and 'debug' on development.
    */
-  logLevel?: LogLevel;
+  logLevel: LogLevel;
 
   /**
-   * Hook that executes when a store is created.
+   * Configuration to pass to @myparcel/vue-form-builder.
    */
-  onCreateStore?: (piniaContext: PiniaPluginContext) => void;
-
-  /**
-   * Hook that executes when the pdk frontend is booted.
-   */
-  onCreated?: (pdkFrontend?: FinalPdkConfiguration) => void;
+  formConfig?: Omit<FormConfiguration, 'fields'>;
 
   /**
    * Transition names.
@@ -56,4 +39,29 @@ export type InputPdkConfiguration = {
     shipmentRow?: string;
     tableRow?: string;
   };
+
+  /**
+   * Css classes for common utility usage.
+   */
+  cssUtilities?: {
+    textCenter?: string;
+    whitespaceNoWrap?: string;
+  };
+
+  /**
+   * Hook that executes when a store is created.
+   */
+  onCreateStore?(piniaContext: PiniaPluginContext): void;
+
+  /**
+   * Hook that executes before the pdk frontend is booted.
+   */
+  beforeCreate?(configuration?: PdkConfiguration): void;
+
+  /**
+   * Hook that executes after the pdk frontend is booted.
+   */
+  onCreated?(configuration?: PdkConfiguration): void;
 };
+
+export type PdkConfigurationPreset = Omit<Partial<PdkConfiguration>, 'components'>;

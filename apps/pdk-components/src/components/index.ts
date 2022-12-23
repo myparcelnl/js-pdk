@@ -1,67 +1,55 @@
-import DefaultPdkAccordion from './DefaultPdkAccordion.vue';
-import DefaultPdkAlert from './DefaultPdkAlert.vue';
-import DefaultPdkButton from './DefaultPdkButton.vue';
-import DefaultPdkCard from './DefaultPdkCard.vue';
-import DefaultPdkCheckbox from './DefaultPdkCheckbox.vue';
-import DefaultPdkDropdownButton from './DefaultPdkDropdownButton.vue';
-import DefaultPdkFormGroup from './DefaultPdkFormGroup.vue';
-import DefaultPdkIcon from './DefaultPdkIcon.vue';
-import DefaultPdkImage from './DefaultPdkImage.vue';
-import DefaultPdkInput from './DefaultPdkInput.vue';
-import DefaultPdkLink from './DefaultPdkLink.vue';
-import DefaultPdkModal from './DefaultPdkModal.vue';
-import DefaultPdkMultiCheckbox from './DefaultPdkMultiCheckbox.vue';
-import DefaultPdkNumberInput from './DefaultPdkNumberInput.vue';
-import DefaultPdkRadio from './DefaultPdkRadio.vue';
-import DefaultPdkSelect from './DefaultPdkSelect.vue';
-import DefaultPdkTable from './DefaultPdkTable.vue';
-import DefaultPdkTableCol from './DefaultPdkTableCol.vue';
-import DefaultPdkTableRow from './DefaultPdkTableRow.vue';
-import DefaultPdkToggle from './DefaultPdkToggle.vue';
-import {PdkComponentMap} from '@myparcel-pdk/common';
+import {DefaultCol, PdkColProps} from './DefaultCol';
+import {DefaultRow, PdkRowProps} from './DefaultRow';
+import DefaultButton from './DefaultButton.vue';
+import {DefaultButtonGroup} from './DefaultButtonGroup';
+import DefaultCard from './DefaultCard.vue';
+import DefaultCheckboxInput from './DefaultCheckboxInput.vue';
+import DefaultCurrencyInput from './DefaultCurrencyInput.vue';
+import DefaultDropdownButton from './DefaultDropdownButton.vue';
+import DefaultFormGroup from './DefaultFormGroup.vue';
+import DefaultIcon from './DefaultIcon.vue';
+import DefaultImage from './DefaultImage.vue';
+import DefaultLink from './DefaultLink.vue';
+import DefaultModal from './DefaultModal.vue';
+import DefaultMultiCheckbox from './DefaultMultiCheckbox.vue';
+import DefaultMultiRadio from './DefaultMultiRadio.vue';
+import DefaultNotification from './DefaultNotification.vue';
+import DefaultNumberInput from './DefaultNumberInput.vue';
+import DefaultPluginSettingsWrapper from './DefaultPluginSettingsWrapper.vue';
+import DefaultRadioInput from './DefaultRadioInput.vue';
+import DefaultSelectInput from './DefaultSelectInput.vue';
+import DefaultTable from './DefaultTable.vue';
+import DefaultTableCol from './DefaultTableCol.vue';
+import DefaultTableRow from './DefaultTableRow.vue';
+import DefaultTextInput from './DefaultTextInput.vue';
+import DefaultToggleInput from './DefaultToggleInput.vue';
+
+export type {PdkColProps, PdkRowProps};
 
 export {
-  DefaultPdkAccordion,
-  DefaultPdkAlert,
-  DefaultPdkButton,
-  DefaultPdkCard,
-  DefaultPdkCheckbox,
-  DefaultPdkDropdownButton,
-  DefaultPdkFormGroup,
-  DefaultPdkIcon,
-  DefaultPdkImage,
-  DefaultPdkInput,
-  DefaultPdkLink,
-  DefaultPdkModal,
-  DefaultPdkMultiCheckbox,
-  DefaultPdkNumberInput,
-  DefaultPdkRadio,
-  DefaultPdkSelect,
-  DefaultPdkTable,
-  DefaultPdkTableCol,
-  DefaultPdkTableRow,
-  DefaultPdkToggle,
-};
-
-export const defaultComponents: PdkComponentMap = {
-  PdkAccordion: DefaultPdkAccordion,
-  PdkAlert: DefaultPdkAlert,
-  PdkButton: DefaultPdkButton,
-  PdkCard: DefaultPdkCard,
-  PdkCheckbox: DefaultPdkCheckbox,
-  PdkDropdownButton: DefaultPdkDropdownButton,
-  PdkFormGroup: DefaultPdkFormGroup,
-  PdkIcon: DefaultPdkIcon,
-  PdkImage: DefaultPdkImage,
-  PdkInput: DefaultPdkInput,
-  PdkLink: DefaultPdkLink,
-  PdkModal: DefaultPdkModal,
-  PdkMultiCheckbox: DefaultPdkMultiCheckbox,
-  PdkNumberInput: DefaultPdkNumberInput,
-  PdkRadio: DefaultPdkRadio,
-  PdkSelect: DefaultPdkSelect,
-  PdkTable: DefaultPdkTable,
-  PdkTableCol: DefaultPdkTableCol,
-  PdkTableRow: DefaultPdkTableRow,
-  PdkToggle: DefaultPdkToggle,
+  DefaultButton,
+  DefaultButtonGroup,
+  DefaultCard,
+  DefaultCheckboxInput,
+  DefaultCol,
+  DefaultCurrencyInput,
+  DefaultDropdownButton,
+  DefaultFormGroup,
+  DefaultIcon,
+  DefaultImage,
+  DefaultLink,
+  DefaultModal,
+  DefaultMultiCheckbox,
+  DefaultMultiRadio,
+  DefaultNotification,
+  DefaultNumberInput,
+  DefaultPluginSettingsWrapper,
+  DefaultRadioInput,
+  DefaultRow,
+  DefaultSelectInput,
+  DefaultTable,
+  DefaultTableCol,
+  DefaultTableRow,
+  DefaultTextInput,
+  DefaultToggleInput,
 };

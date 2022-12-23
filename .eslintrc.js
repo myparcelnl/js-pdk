@@ -1,25 +1,24 @@
 module.exports = {
   root: true,
   extends: ['@myparcel-eslint/eslint-config-esnext', '@myparcel-eslint/eslint-config-prettier'],
-  rules: {
-    'class-methods-use-this': 'off',
-  },
   overrides: [
     {
       files: ['./**/index.ts'],
+      plugins: ['sort-exports'],
       rules: {
         'sort-exports/sort-exports': ['warn', {sortDir: 'asc', sortExportKindFirst: 'type'}],
       },
-      plugins: ['sort-exports'],
     },
     {
       files: ['./**/*.vue'],
       extends: '@myparcel-eslint/eslint-config-prettier-typescript-vue',
       parserOptions: {
-        project: 'tsconfig.build.json',
+        dir: __dirname,
+        project: 'tsconfig.json',
       },
       rules: {
         '@typescript-eslint/no-misused-promises': 'off',
+        'vue/no-bare-strings-in-template': 'off',
         'vue/no-undef-components': [
           'error',
           {
@@ -37,6 +36,7 @@ module.exports = {
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-misused-promises': 'off',
+        'class-methods-use-this': 'off',
       },
     },
     {
@@ -44,7 +44,7 @@ module.exports = {
       extends: '@myparcel-eslint/eslint-config-node',
     },
     {
-      files: ['./**/*.spec.*', './**/*.test.*', './**/__tests__/**'],
+      files: ['./**/*.spec.*', './**/*.test.*', './**/__tests__/**', './**/*Test.*'],
       rules: {
         '@typescript-eslint/no-magic-numbers': 'off',
         'max-len': 'off',

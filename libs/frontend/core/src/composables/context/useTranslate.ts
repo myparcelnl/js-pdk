@@ -1,5 +1,7 @@
-import {decodeHtmlEntities, logger} from '@myparcel-pdk/common';
+import {decodeHtmlEntities} from '../../utils';
+import {memoize} from 'lodash-unified';
 import {useContextStore} from '../../stores';
+import {useLogger} from '../useLogger';
 
 type UseTranslate = () => (key: string) => string;
 
@@ -12,7 +14,7 @@ const cache: Record<string, string> = {};
 
 let warned = false;
 
-const memoizedTranslate = (key: string) => {
+const memoizedTranslate = memoize((key: string) => {
   if (!key) {
     return '';
   }
@@ -21,6 +23,8 @@ const memoizedTranslate = (key: string) => {
 
   const contextStore = useContextStore();
   const translations = contextStore?.context?.global?.translations;
+
+  const logger = useLogger();
 
   if (!translations && !warned) {
     // eslint-disable-next-line no-console
@@ -40,7 +44,7 @@ const memoizedTranslate = (key: string) => {
   }
 
   return translated;
-};
+});
 
 export const useTranslate: UseTranslate = () => {
   return memoizedTranslate;

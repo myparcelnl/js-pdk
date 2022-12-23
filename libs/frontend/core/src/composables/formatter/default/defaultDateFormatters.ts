@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import {FormatterFunction} from '../formatter.types';
-import {IetfLanguageTag} from '@myparcel-pdk/common';
 import {createLongDateFormat} from './createLongDateFormat';
 import {createRelativeTimeFormat} from './createRelativeTimeFormat';
 import {parseDate} from './parseDate';
@@ -9,14 +8,14 @@ let formatDateLong: Intl.DateTimeFormat;
 
 let formatDateRelative: Intl.RelativeTimeFormat;
 
-export const createDefaultDateLongFormatter = (locale: IetfLanguageTag): FormatterFunction => {
+export const createDefaultDateLongFormatter = (locale: string): FormatterFunction => {
   formatDateLong ??= createLongDateFormat(locale);
   return (input) => {
     return formatDateLong.format(parseDate(input));
   };
 };
 
-export const createDefaultDateRelativeFormatter = (locale: IetfLanguageTag): FormatterFunction => {
+export const createDefaultDateRelativeFormatter = (locale: string): FormatterFunction => {
   formatDateLong ??= createLongDateFormat(locale);
   formatDateRelative ??= createRelativeTimeFormat(locale);
 

@@ -9,7 +9,7 @@
 /**
  * This is the main entry point for the order list column.
  */
-import {OrderActions, ShipmentCards} from '../components/order-list-column';
+import {OrderActions, ShipmentCards} from '../components/OrderListColumn';
 import {EndpointName} from '@myparcel-pdk/common';
 import {useQueryStore} from '../stores';
 

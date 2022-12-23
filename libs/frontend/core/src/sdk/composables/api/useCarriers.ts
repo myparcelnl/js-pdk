@@ -10,8 +10,7 @@ type UseCarriers = {
   (carrier?: undefined): UseQueryReturnType<Carrier[], ApiException>;
 };
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+// @ts-expect-error todo
 export const useCarriers: UseCarriers = (carrier: CarrierName | undefined) => {
   const queryClient = useQueryClient();
 

@@ -1,45 +1,49 @@
-import {CARRIERS, PACKAGE_TYPES} from '@myparcel/sdk';
+/* eslint-disable @typescript-eslint/no-magic-numbers */
+import {CARRIERS, CarrierName, PACKAGE_TYPES, PackageTypeName} from '@myparcel/sdk';
 import {defineField, defineForm} from '@myparcel/vue-form-builder';
+import {ModalKey} from '../types';
 import {Plugin} from '@myparcel-pdk/common';
 import {ref} from 'vue';
 import {renderWithFormGroup} from './renderWithFormGroup';
 import {useCarriers} from '../sdk';
 import {useTranslate} from '../composables';
 
-const deliveryOptionsCarrier = 'deliveryOptions.carrier';
-const deliveryOptionsLabelAmount = 'deliveryOptions.labelAmount';
-const deliveryOptionsPackageType = 'deliveryOptions.packageType';
-const deliveryOptionsShipmentOptionsSignature = 'deliveryOptions.shipmentOptions.signature';
-const deliveryOptionsShipmentOptionsOnlyRecipient = 'deliveryOptions.shipmentOptions.onlyRecipient';
-const deliveryOptionsShipmentOptionsAgeCheck = 'deliveryOptions.shipmentOptions.ageCheck';
-const deliveryOptionsShipmentOptionsReturn = 'deliveryOptions.shipmentOptions.return';
-const deliveryOptionsShipmentOptionsLargeFormat = 'deliveryOptions.shipmentOptions.largeFormat';
-const deliveryOptionsShipmentOptionsSameDayDelivery = 'deliveryOptions.shipmentOptions.sameDayDelivery';
-const deliveryOptionsShipmentOptionsInsurance = 'deliveryOptions.shipmentOptions.insurance';
+const deliveryOptionsPrefix = 'deliveryOptions';
+const shipmentOptionsPrefix = `${deliveryOptionsPrefix}.shipmentOptions`;
+
+const carrier = `${deliveryOptionsPrefix}.carrier`;
+const labelAmount = `${deliveryOptionsPrefix}.labelAmount`;
+const packageType = `${deliveryOptionsPrefix}.packageType`;
+const signature = `${shipmentOptionsPrefix}.signature`;
+const onlyRecipient = `${shipmentOptionsPrefix}.onlyRecipient`;
+const ageCheck = `${shipmentOptionsPrefix}.ageCheck`;
+const directReturn = `${shipmentOptionsPrefix}.return`;
+const largeFormat = `${shipmentOptionsPrefix}.largeFormat`;
+const sameDayDelivery = `${shipmentOptionsPrefix}.sameDayDelivery`;
+const insurance = `${shipmentOptionsPrefix}.insurance`;
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,max-lines-per-function
 export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
   const translate = useTranslate();
 
-  return defineForm(`shipmentOptions${order.externalIdentifier}`, {
+  const form = defineForm(`${ModalKey.SHIPMENT_OPTIONS}_${order.externalIdentifier}`, {
     fields: [
       defineField({
-        name: deliveryOptionsCarrier,
+        name: carrier,
         label: 'carrier',
-        component: renderWithFormGroup('PdkSelect'),
-        ref: ref(order.deliveryOptions?.carrier),
+        component: renderWithFormGroup('PdkSelectInput'),
+        ref: ref<CarrierName>(order.deliveryOptions?.carrier as CarrierName),
         props: {
           options: [],
         },
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
+
+        // @ts-expect-error todo
         onBeforeMount: async (field) => {
           const carriers = useCarriers();
           await carriers.suspense();
 
           field.props.options =
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
+            // @ts-expect-error todo
             carriers.data.value?.map((carrier) => ({
               label: carrier.human,
               value: carrier.name,
@@ -48,9 +52,9 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
       }),
 
       defineField({
-        name: deliveryOptionsLabelAmount,
+        name: labelAmount,
         component: renderWithFormGroup('PdkNumberInput'),
-        ref: ref(order.deliveryOptions?.labelAmount),
+        ref: ref(order.deliveryOptions?.labelAmount ?? 1),
         label: 'label_amount',
         props: {
           min: 1,
@@ -59,9 +63,9 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
       }),
 
       defineField({
-        name: deliveryOptionsPackageType,
-        component: renderWithFormGroup('PdkSelect'),
-        ref: ref(order.deliveryOptions?.packageType),
+        name: packageType,
+        component: renderWithFormGroup('PdkSelectInput'),
+        ref: ref<PackageTypeName>((order.deliveryOptions?.packageType as PackageTypeName) ?? PACKAGE_TYPES.PACKAGE),
         label: 'shipment_options_package_type',
         props: {
           options: PACKAGE_TYPES.ALL.map((type) => ({
@@ -72,82 +76,89 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
       }),
 
       defineField({
-        name: deliveryOptionsShipmentOptionsSignature,
-        component: renderWithFormGroup('PdkToggle'),
-        ref: ref(order.deliveryOptions?.shipmentOptions.signature),
+        name: signature,
+        component: renderWithFormGroup('PdkToggleInput'),
+        ref: ref(order.deliveryOptions?.shipmentOptions.signature ?? false),
         label: 'shipment_options_signature',
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        visibleCb: (field) => field.form.model[deliveryOptionsPackageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
+
+        // @ts-expect-error todo
+        visibleCb: ({form}) => form.model[packageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
       }),
 
       defineField({
-        name: deliveryOptionsShipmentOptionsOnlyRecipient,
-        component: renderWithFormGroup('PdkToggle'),
-        ref: ref(order.deliveryOptions?.shipmentOptions.onlyRecipient),
+        name: onlyRecipient,
+        component: renderWithFormGroup('PdkToggleInput'),
+        ref: ref(order.deliveryOptions?.shipmentOptions.onlyRecipient ?? false),
         label: 'shipment_options_only_recipient',
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        visibleCb: (field) => field.form.model[deliveryOptionsPackageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
+
+        // @ts-expect-error todo
+        visibleCb: ({form}) => form.model[packageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
       }),
 
       defineField({
-        name: deliveryOptionsShipmentOptionsAgeCheck,
-        component: renderWithFormGroup('PdkToggle'),
-        ref: ref(order.deliveryOptions?.shipmentOptions.ageCheck),
+        name: ageCheck,
+        component: renderWithFormGroup('PdkToggleInput'),
+        ref: ref(order.deliveryOptions?.shipmentOptions.ageCheck ?? false),
         label: 'shipment_options_age_check',
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        visibleCb: (field) => field.form.model[deliveryOptionsPackageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
+
+        // @ts-expect-error todo
+        visibleCb: ({form}) => form.model[packageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
       }),
 
       defineField({
-        name: deliveryOptionsShipmentOptionsReturn,
-        component: renderWithFormGroup('PdkToggle'),
-        ref: ref(order.deliveryOptions?.shipmentOptions.return),
+        name: directReturn,
+        component: renderWithFormGroup('PdkToggleInput'),
+        ref: ref(order.deliveryOptions?.shipmentOptions.return ?? false),
         label: 'shipment_options_return',
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        visibleCb: (field) => field.form.model[deliveryOptionsPackageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
+
+        // @ts-expect-error todo
+        visibleCb: ({form}) => form.model[packageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
       }),
 
       defineField({
-        name: deliveryOptionsShipmentOptionsLargeFormat,
-        component: renderWithFormGroup('PdkToggle'),
-        ref: ref(order.deliveryOptions?.shipmentOptions.largeFormat),
+        name: largeFormat,
+        component: renderWithFormGroup('PdkToggleInput'),
+        ref: ref(order.deliveryOptions?.shipmentOptions.largeFormat ?? false),
         label: 'shipment_options_large_format',
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        visibleCb: (field) => field.form.model[deliveryOptionsPackageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
+
+        // @ts-expect-error todo
+        visibleCb: ({form}) => {
+          return form.model[packageType].ref === PACKAGE_TYPES.PACKAGE_NAME;
+        },
       }),
 
       defineField({
-        name: deliveryOptionsShipmentOptionsSameDayDelivery,
-        component: renderWithFormGroup('PdkToggle'),
-        ref: ref(order.deliveryOptions?.shipmentOptions.sameDayDelivery),
+        name: sameDayDelivery,
+        component: renderWithFormGroup('PdkToggleInput'),
+        ref: ref(order.deliveryOptions?.shipmentOptions.sameDayDelivery ?? false),
         label: 'shipment_options_same_day_delivery',
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
+
+        // @ts-expect-error todo
         visibleCb: ({form}) => {
           return (
-            form.model[deliveryOptionsPackageType].ref === PACKAGE_TYPES.PACKAGE_NAME &&
-            ['dhlforyou', CARRIERS.INSTABOX_NAME].includes(form.model[deliveryOptionsCarrier].ref)
+            form.model[packageType].ref === PACKAGE_TYPES.PACKAGE_NAME &&
+            ['dhlforyou', CARRIERS.INSTABOX_NAME].includes(form.model[carrier].ref)
           );
         },
       }),
 
       defineField({
-        name: deliveryOptionsShipmentOptionsInsurance,
+        name: insurance,
         component: renderWithFormGroup('PdkNumberInput'),
-        ref: ref(order.deliveryOptions?.shipmentOptions.insurance),
+        ref: ref(order.deliveryOptions?.shipmentOptions.insurance ?? 0),
         label: 'shipment_options_insurance',
         validate: (field, value: number) => value > 100,
         errorMessage: 'Insurance must be at least 100',
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        visibleCb: (field) => field.form.model[deliveryOptionsPackageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
-        optionalCb: () => true,
+
+        // @ts-expect-error todo
+        visibleCb: ({form}) => {
+          return form.model[packageType].ref === PACKAGE_TYPES.PACKAGE_NAME;
+        },
+        // TODO: CAUSES INFINITE LOOP
+        // optionalCb: () => true,
       }),
     ],
   });
+
+  return form;
 };

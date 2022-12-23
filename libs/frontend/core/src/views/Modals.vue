@@ -1,6 +1,5 @@
 <template>
   <div id="myparcel-pdk-modals">
-    <!--    <DeliveryOptionsModal /> -->
     <!--    <PrintOptionsModal v-if="showPrintModal" /> -->
     <!--    <ReturnsFormModal /> -->
     <ShipmentOptionsModal />
@@ -11,10 +10,9 @@
 import {defineAsyncComponent} from 'vue';
 
 /* eslint-disable @typescript-eslint/naming-convention */
-const ShipmentOptionsModal = defineAsyncComponent(() => import('../components/modals/ShipmentOptionsModal.vue'));
-// const ReturnsFormModal = defineAsyncComponent(() => import('../components/modals/ReturnsFormModal.vue'));
-// const DeliveryOptionsModal = defineAsyncComponent(() => import('../components/modals/DeliveryOptionsModal.vue'));
-// const PrintOptionsModal = defineAsyncComponent(() => import('../components/modals/PrintOptionsModal.vue'));
+const ShipmentOptionsModal = defineAsyncComponent(() => import('../components/Modals/ShipmentOptionsModal.vue'));
+// const ReturnsFormModal = defineAsyncComponent(() => import('../components/Modals/ReturnsFormModal.vue'));
+// const PrintOptionsModal = defineAsyncComponent(() => import('../components/Modals/PrintOptionsModal.vue'));
 /* eslint-enable @typescript-eslint/naming-convention */
 
 // const pluginSettings = usePluginSettings();

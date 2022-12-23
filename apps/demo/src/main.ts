@@ -1,13 +1,13 @@
 import './assets/css/tailwind.css';
+import * as defaultComponents from '@myparcel/pdk-components';
 import App from './App.vue';
 import {PdkFrontendPlugin} from '@myparcel/pdk-frontend';
 import {context} from './context';
 import {createApp} from 'vue';
-import {defaultComponents} from '@myparcel/pdk-components';
 
 const div = document.createElement('div');
 
-div.setAttribute('id', 'myparcel-pdk-bootstrap');
+div.setAttribute('id', 'myparcel-pdk-boot');
 div.setAttribute('data-pdk-context', JSON.stringify(context));
 document.body.appendChild(div);
 

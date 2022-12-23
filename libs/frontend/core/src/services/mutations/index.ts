@@ -1,3 +1,3 @@
 export * from './getCallbackForMutationMode';
-export * from './getOptionsForMutationMode';
+export * from './getModalMutationOptions';
 export * from './mutationMode';

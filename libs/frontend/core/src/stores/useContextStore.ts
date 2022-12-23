@@ -1,5 +1,5 @@
-import {ContextKey, PdkContextObject} from '../types';
 import {MergeWithCustomizer} from 'lodash';
+import {PdkContextObject} from '../types';
 import {defineStore} from 'pinia';
 import {mergeWith} from 'lodash-unified';
 import {ref} from 'vue';
@@ -14,7 +14,10 @@ export const useContextStore = defineStore('context', () => {
         newContext,
         callback ??
           ((src, val, key) => {
-            if (key === ContextKey.ORDER_DATA && Array.isArray(src) && Array.isArray(val)) {
+            /**
+             * Merge orderData into existing values.
+             */
+            if (key === 'orderData' && Array.isArray(src) && Array.isArray(val)) {
               src.push(...val);
             }
           }),

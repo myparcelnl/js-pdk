@@ -13,6 +13,7 @@ type UsePdfWindow = () => {
 /**
  * Keeps a reference to a window.
  */
+// eslint-disable-next-line max-lines-per-function
 export const usePdfWindow: UsePdfWindow = () => {
   const open: ReturnType<UsePdfWindow>['open'] = async () => {
     return new Promise((resolve) => {

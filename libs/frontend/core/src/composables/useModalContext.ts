@@ -1,6 +1,6 @@
 import {ComputedRef, Ref, computed, ref} from 'vue';
 import {ModalKey} from '../types';
-import {useLoading} from '@myparcel-pdk/common';
+import {useLoading} from './useLoading';
 import {useModalStore} from '../stores';
 
 export type ModalCallback = (id: string) => Promise<void> | void;
@@ -9,8 +9,6 @@ export interface ModalCallbackProps {
   onCancel: ModalCallback;
   onSave: ModalCallback;
 }
-
-export type ModalData = Record<never, unknown> | null | undefined;
 
 type UseModalContext = (
   modalId?: Ref<null | ModalKey>,

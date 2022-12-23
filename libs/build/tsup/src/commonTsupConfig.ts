@@ -11,7 +11,7 @@ export const commonTsupConfig: Options = {
   },
   entry: ['src/index.ts'],
   external: externalDependencies,
-  format: ['esm'],
+  format: ['esm', 'cjs'],
   outDir: 'lib',
   target: 'esnext',
   tsconfig: 'tsconfig.build.json',

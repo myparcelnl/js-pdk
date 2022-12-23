@@ -1,6 +1,6 @@
 <template>
   <div
-    id="myparcel-pdk-bootstrap"
+    id="myparcel-pdk-boot"
     :data-pdk-context="context"></div>
 
   <div class="flex flex-col min-h-full">
@@ -54,7 +54,7 @@
 
                 <tr>
                   <div
-                    v-for="item in ['mypa-order-card']"
+                    v-for="item in ['mypa-OrderCard']"
                     v-show="toggled"
                     :key="item">
                     <div :id="item">
@@ -73,7 +73,7 @@
 </template>
 
 <script lang="ts">
-import {INJECT_GLOBAL_PDK_FRONTEND, ModalKey, useModalStore} from '@myparcel/pdk-frontend';
+import {INJECT_GLOBAL_PDK_FRONTEND, ModalKey, useModalStore} from '@myparcel-pdk/frontend-core';
 import {defineComponent, inject, ref} from 'vue';
 import {useStaticOrderData} from './composables';
 
@@ -90,7 +90,7 @@ export default defineComponent({
 
     // void fe.render('Notifications', '#mypa-notifications');
 
-    void fe.render('Modals', '#mypa-modals');
+    void fe.render('Modals', '#mypa-Modals');
 
     orderData.forEach((order) => {
       void fe.render('OrderListColumn', `#mypa-order-${order.externalIdentifier}`);
@@ -104,9 +104,7 @@ export default defineComponent({
       toggle: (id: string) => {
         const modalStore = useModalStore();
 
-        modalStore.open(ModalKey.SHIPMENT_OPTIONS, {
-          order: id,
-        });
+        modalStore.open(ModalKey.SHIPMENT_OPTIONS, id);
       },
 
       context: {

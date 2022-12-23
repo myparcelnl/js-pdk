@@ -1,0 +1,4 @@
+{
+  "extends": "../../libs/frontend/tsconfig.build.json",
+  "include": ["./src/**/*"]
+}

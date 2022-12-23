@@ -1,35 +1,29 @@
-import {PdkComponentMap, PdkComponentName, componentNames, logger} from '@myparcel-pdk/common';
-import {Plugin} from 'vue';
-
-type RegisterComponentsPlugin = (components: PdkComponentMap) => Plugin;
-
-const baseComponents = Object.freeze(
-  componentNames.reduce(
-    (acc, name) => ({
-      ...acc,
-      [name]: null,
-    }),
-    {} as Record<PdkComponentName, null>,
-  ),
-);
+import {PdkAppPlugin} from '../types';
+import {componentNames} from '@myparcel-pdk/common';
+import {globalLogger} from '../../services';
 
 /**
- * All components must be manually passed, because dynamic importing is not performant enough.
+ * Registers all replaceable vue components. They must all be provided, for tree shaking purposes.
  */
-export const createRegisterComponentsPlugin: RegisterComponentsPlugin = (components) => {
+export const createRegisterComponentsPlugin: PdkAppPlugin = ({config}) => {
   return {
     install(app) {
-      logger.debug('Installing components plugin');
+      globalLogger.debug(`Installing components plugin`);
 
-      Object.entries({...baseComponents, ...components}).forEach(([name, component]) => {
+      const components = {
+        ...componentNames.reduce((acc, name) => ({...acc, [name]: null}), {}),
+        ...config.components,
+      };
+
+      Object.entries(components).forEach(([componentName, component]) => {
         if (!component) {
-          logger.error(
-            `Component is missing: ${name}. You must provide your own, or pass DefaultPdk${name} in your config.`,
+          globalLogger.error(
+            `Missing component: "${componentName}". You must provide your own, or use the default(s) from @myparcel/pdk-components.`,
           );
           return;
         }
 
-        app.component(name, component);
+        app.component(componentName, component);
       });
     },
   };

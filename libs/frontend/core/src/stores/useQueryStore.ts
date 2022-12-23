@@ -3,13 +3,14 @@ import {Ref, ref} from 'vue';
 import {
   useDeleteShipmentsMutation,
   useExportOrdersMutation,
-  useInstanceContext,
-  useModalOrder,
   useOrderQuery,
   usePrintOrdersMutation,
-  useRefreshShipmentsQuery,
+  usePrintShipmentsMutation,
+  useRefreshShipmentsMutation,
   useUpdateOrdersMutation,
-} from '../composables';
+  useUpdatePluginSettingsMutation,
+} from '../actions';
+import {useInstanceContext, useModalOrder} from '../composables';
 import {EndpointName} from '@myparcel-pdk/common';
 import {InstanceContextKey} from '../types';
 import {MutationMode} from '../services';
@@ -17,18 +18,24 @@ import {defineStore} from 'pinia';
 
 export type QueryObject<I extends EndpointName = EndpointName> = Record<I, ResolvedQuery<I>>;
 
-export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends EndpointName.EXPORT_ORDERS
-  ? ReturnType<typeof useExportOrdersMutation>
-  : I extends EndpointName.GET_ORDERS
+export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends EndpointName.GET_ORDERS
   ? ReturnType<typeof useOrderQuery>
-  : I extends EndpointName.DELETE_SHIPMENTS
-  ? ReturnType<typeof useDeleteShipmentsMutation>
+  : I extends EndpointName.EXPORT_ORDERS
+  ? ReturnType<typeof useExportOrdersMutation>
   : I extends EndpointName.PRINT_ORDERS
   ? ReturnType<typeof usePrintOrdersMutation>
   : I extends EndpointName.UPDATE_ORDERS
   ? ReturnType<typeof useUpdateOrdersMutation>
+  : I extends EndpointName.PRINT_SHIPMENTS
+  ? ReturnType<typeof usePrintShipmentsMutation>
   : I extends EndpointName.REFRESH_SHIPMENTS
-  ? ReturnType<typeof useRefreshShipmentsQuery>
+  ? ReturnType<typeof useRefreshShipmentsMutation>
+  : I extends EndpointName.DELETE_SHIPMENTS
+  ? ReturnType<typeof useDeleteShipmentsMutation>
+  : I extends EndpointName.UPDATE_PLUGIN_SETTINGS
+  ? ReturnType<typeof useUpdatePluginSettingsMutation>
+  : I extends EndpointName.UPDATE_PRODUCT_SETTINGS
+  ? ReturnType<typeof useUpdatePluginSettingsMutation>
   : unknown;
 
 export const useQueryStore = defineStore('query', () => {
@@ -42,8 +49,7 @@ export const useQueryStore = defineStore('query', () => {
       throw new Error(`No query found for key ${key}`);
     }
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
+    // @ts-expect-error todo
     return queries.value[key];
   };
 
@@ -61,6 +67,13 @@ export const useQueryStore = defineStore('query', () => {
     has,
     register,
 
+    /**
+     * Queries must be registered manually, because vue-query hooks can only be
+     * called from a component's setup() function.
+     *
+     * @param {string | null} orderId
+     * @param {MutationMode} mode
+     */
     registerOrderQueries: (orderId?: string | null, mode: MutationMode = MutationMode.DEFAULT) => {
       const id = orderId ?? useModalOrder() ?? useInstanceContext(InstanceContextKey.ORDER_IDENTIFIER);
 
@@ -71,10 +84,12 @@ export const useQueryStore = defineStore('query', () => {
       register(EndpointName.GET_ORDERS, useOrderQuery(id));
 
       register(EndpointName.EXPORT_ORDERS, useExportOrdersMutation(mode));
+      register(EndpointName.PRINT_ORDERS, usePrintOrdersMutation());
       register(EndpointName.UPDATE_ORDERS, useUpdateOrdersMutation());
 
       register(EndpointName.DELETE_SHIPMENTS, useDeleteShipmentsMutation());
-      register(EndpointName.REFRESH_SHIPMENTS, useRefreshShipmentsQuery());
+      register(EndpointName.PRINT_SHIPMENTS, usePrintShipmentsMutation());
+      register(EndpointName.REFRESH_SHIPMENTS, useRefreshShipmentsMutation());
     },
 
     queryClient,

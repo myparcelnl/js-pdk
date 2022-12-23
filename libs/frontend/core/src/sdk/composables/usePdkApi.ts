@@ -16,10 +16,6 @@ export const usePdkApi = (): MyParcelSdk<AbstractPdkEndpoint> => {
 
   const contextStore = useContextStore();
 
-  if (!contextStore.context.global.endpoints) {
-    throw new Error('Endpoints are not available');
-  }
-
   const client = new FetchClient({
     baseUrl: contextStore.context.global.baseUrl,
   });

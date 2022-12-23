@@ -2,13 +2,13 @@
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
     "paths": {
-      "@myparcel/pdk-backend": ["./libs/backend/core/src"],
-      "@myparcel-pdk/common": ["./libs/common/src"],
-      "@myparcel/pdk-frontend": ["./apps/pdk-frontend/src"],
-      "@myparcel/pdk-components": ["./apps/pdk-components/src"],
-      "@myparcel-pdk/frontend-*": ["./libs/frontend/*/src"],
       "@myparcel-pdk/backend-*": ["./libs/backend/*/src"],
-      "@myparcel-pdk/build-*": ["./libs/build/*/src"]
+      "@myparcel-pdk/build-*": ["./libs/build/*/src"],
+      "@myparcel-pdk/common": ["./libs/common/src"],
+      "@myparcel-pdk/frontend-*": ["./libs/frontend/*/src"],
+      "@myparcel/pdk-backend": ["./libs/backend/core/src"],
+      "@myparcel/pdk-components": ["./apps/pdk-components/src"],
+      "@myparcel/pdk-frontend": ["./apps/pdk-frontend/src"]
     }
   }
 }

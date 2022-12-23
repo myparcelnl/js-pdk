@@ -5,11 +5,9 @@ import {isOfType} from '@myparcel/ts-utils';
 export const addErrorToNotifications = (error: unknown, category: NotificationCategory): void => {
   const store = useNotificationStore();
 
-  console.log(error);
-
   if (isOfType<ApiException>(error, 'data')) {
     return store.add({
-      variant: 'danger',
+      variant: 'error',
       category: category,
       title: error.message,
       content: error.data.errors.map((error) => `${error.title} (code: ${error.code})`),
@@ -18,7 +16,7 @@ export const addErrorToNotifications = (error: unknown, category: NotificationCa
 
   if (isOfType<Error>(error, 'message')) {
     return store.add({
-      variant: 'danger',
+      variant: 'error',
       category: category,
       title: error.message,
       content: error.stack,

@@ -2,7 +2,7 @@
   "extends": "../tsconfig.build.json",
   "references": [
     {
-      "path": "./component-tests/tsconfig.build.json"
+      "path": "../../apps/pdk-component-tests/tsconfig.build.json"
     },
     {
       "path": "./core/tsconfig.build.json"

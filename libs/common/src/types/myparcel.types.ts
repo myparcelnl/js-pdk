@@ -8,7 +8,15 @@ export enum EndpointName {
   GET_ORDERS = 'getOrders',
   PRINT_ORDERS = 'printOrders',
   UPDATE_ORDERS = 'updateOrders',
+
   DELETE_SHIPMENTS = 'deleteShipments',
   PRINT_SHIPMENTS = 'printShipments',
   REFRESH_SHIPMENTS = 'refreshShipments',
+
+  UPDATE_PLUGIN_SETTINGS = 'updatePluginSettings',
+  UPDATE_PRODUCT_SETTINGS = 'updateProductSettings',
+
+  CREATE_WEBHOOKS = 'createWebhooks',
+  DELETE_WEBHOOKS = 'deleteWebhooks',
+  REFRESH_WEBHOOKS = 'refreshWebhooks',
 }

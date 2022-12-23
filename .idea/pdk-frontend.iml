@@ -6,7 +6,6 @@
       <excludeFolder url="file://$MODULE_DIR$/.yarn" />
       <excludeFolder url="file://$MODULE_DIR$/lib" />
       <excludePattern pattern="yarn.lock" />
-      <excludePattern pattern="*.tsbuildinfo" />
       <excludePattern pattern="lib" />
       <excludePattern pattern="dist" />
       <excludePattern pattern="coverage" />

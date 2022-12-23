@@ -2,6 +2,7 @@
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
 import {Plugin} from '@myparcel-pdk/common';
 import {QUERY_KEY_ORDER} from './queryKeys';
+import {encodeArrayParameter} from '../../../utils';
 import {fillOrderQueryData} from '../../../pdk';
 import {usePdkApi} from '../../../sdk';
 
@@ -16,18 +17,16 @@ export const useOrderQuery = (externalIdentifier: string) => {
 
       const options = {
         parameters: {
-          orderIds: externalIdentifier,
+          orderIds: encodeArrayParameter(externalIdentifier),
         },
       };
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+      // @ts-expect-error custom endpoints are not typed correctly
       return sdk.getOrders(options);
     },
     {
       ...queryClient.defaultQueryOptions(),
       onSuccess: (data) => {
-        console.log('useOrderQuery', data);
         fillOrderQueryData(queryClient, data);
       },
     },

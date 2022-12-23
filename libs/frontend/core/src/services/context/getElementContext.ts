@@ -1,7 +1,7 @@
 import {PdkContextObject} from '../../types';
-import {logger} from '@myparcel-pdk/common';
+import {globalLogger} from '../logger';
 
-export const getElementContext = (selector: string): Partial<PdkContextObject> => {
+export const getElementContext = (selector: string): PdkContextObject => {
   const element = document.querySelector(selector);
   const context = element?.getAttribute('data-pdk-context');
   const parsedContext = context ? JSON.parse(context) : null;
@@ -11,6 +11,6 @@ export const getElementContext = (selector: string): Partial<PdkContextObject> =
     return parsedContext;
   }
 
-  logger.info(`No context found in ${selector}`);
-  return {};
+  globalLogger.info(`No context found in ${selector}`);
+  return {} as PdkContextObject;
 };

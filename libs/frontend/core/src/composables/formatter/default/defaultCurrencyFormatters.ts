@@ -1,10 +1,9 @@
 import {FormatterFunction} from '../formatter.types';
-import {IetfLanguageTag} from '@myparcel-pdk/common';
 import {createCurrencyFormat} from './createCurrencyFormat';
 
 let formatCurrency: Intl.NumberFormat;
 
-export const createDefaultCurrencyFormatter = (locale: IetfLanguageTag): FormatterFunction => {
+export const createDefaultCurrencyFormatter = (locale: string): FormatterFunction => {
   formatCurrency ??= createCurrencyFormat(locale);
 
   return (input) => {

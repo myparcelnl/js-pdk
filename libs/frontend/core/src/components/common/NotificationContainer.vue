@@ -2,7 +2,7 @@
   <TransitionGroup
     appear
     :name="pdkConfig.transitions.notification">
-    <PdkAlert
+    <PdkNotification
       v-for="(notification, index) in notifications"
       :key="`alert_${index}_${notification.content}`"
       :notification="notification" />

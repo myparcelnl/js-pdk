@@ -1,18 +1,17 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {EndpointName, Plugin} from '@myparcel-pdk/common';
-import {MutationMode, getCallbackForMutationMode, getOptionsForMutationMode} from '../../../services';
-import {PdkEndpointDefinition, usePdkApi} from '../../../sdk';
-import {convertDotNotationToObject, encodeArrayParameter} from '../../../utils';
+import {EndpointOptions, usePdkApi} from '../../../sdk';
+import {MutationMode, getCallbackForMutationMode, getModalMutationOptions} from '../../../services';
+import {encodeArrayParameter, formToBody} from '../../../utils';
 import {useMutation, useQueryClient} from '@tanstack/vue-query';
 import {ApiException} from '@myparcel/sdk';
 import {FormInstance} from '@myparcel/vue-form-builder';
 import {OneOrMore} from '@myparcel/ts-utils';
-import {QUERY_KEY_EXPORT_ORDERS} from '../queries';
 import {fillOrderQueryData} from '../../../pdk';
+import {useModalStore} from '../../../stores';
 
-type ExportOrderInput = {
+type ExportOrdersInput = {
   orderIds: OneOrMore<string>;
-  print?: boolean;
   form?: FormInstance;
 };
 
@@ -20,29 +19,28 @@ export const useExportOrdersMutation = (mode: MutationMode = MutationMode.DEFAUL
   const queryClient = useQueryClient();
   const sdk = usePdkApi();
 
-  return useMutation<Plugin.ModelContextOrderDataContext[], ApiException, ExportOrderInput>(
-    [QUERY_KEY_EXPORT_ORDERS],
+  return useMutation<Plugin.ModelContextOrderDataContext[], ApiException, ExportOrdersInput>(
+    [EndpointName.EXPORT_ORDERS],
     async (input) => {
       getCallbackForMutationMode(mode)?.();
 
-      const options: PdkEndpointDefinition<EndpointName.EXPORT_ORDERS> = {
+      const options: EndpointOptions<EndpointName.EXPORT_ORDERS> = {
         parameters: {
           orderIds: encodeArrayParameter(input.orderIds),
-          print: String(Number(input?.print ?? false)),
         },
-        body: convertDotNotationToObject(input.form?.getValues() ?? {}),
+        body: formToBody(input.form),
       };
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+      // @ts-expect-error custom endpoints are not typed correctly
       return sdk.exportOrders(options);
     },
     {
       ...queryClient.defaultMutationOptions(),
-      ...getOptionsForMutationMode(mode),
-      onSuccess: (data) => {
-        console.log('onSuccess', data);
+      ...(mode === MutationMode.MODAL ? getModalMutationOptions() : {}),
+      async onSuccess(data, input) {
+        useModalStore().close();
         fillOrderQueryData(queryClient, data);
+        await input.form?.reset();
       },
     },
   );

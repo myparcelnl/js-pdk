@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import {PropType, defineComponent} from 'vue';
+import {PropType, defineComponent, toRaw} from 'vue';
 import {MagicForm} from '@myparcel/vue-form-builder';
 import {Plugin} from '@myparcel-pdk/common';
 import {createShipmentOptionsForm} from '../../forms';
@@ -23,7 +23,7 @@ export default defineComponent({
 
   setup(props) {
     return {
-      shipmentOptionsForm: createShipmentOptionsForm(props.order),
+      shipmentOptionsForm: createShipmentOptionsForm(toRaw(props.order)),
     };
   },
 });

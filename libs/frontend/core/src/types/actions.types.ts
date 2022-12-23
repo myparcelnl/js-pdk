@@ -1,8 +1,8 @@
-import {FrontendAction} from '../data';
+import {FrontendAction} from '../actions';
 import {PdkIcon} from './common.types';
+import {PdkVariant} from '@myparcel-pdk/common';
 import {PromiseOr} from '@myparcel/ts-utils';
 import {Ref} from 'vue';
-import {Variant} from '@myparcel-pdk/common';
 
 interface BaseAction {
   id?: string;
@@ -27,5 +27,5 @@ export type PdkButtonAction = OnClickAction;
 
 export interface PdkDropdownAction extends NamedAction {
   standalone?: boolean;
-  variant?: Variant;
+  variant?: PdkVariant;
 }

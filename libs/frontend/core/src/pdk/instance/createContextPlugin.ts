@@ -1,28 +1,23 @@
-import {FinalPdkConfiguration} from '../../types';
 import {INJECT_PDK_INSTANCE} from '../../data';
-import {PdkViewComponent} from '@myparcel-pdk/common';
-import {Plugin as VuePlugin} from 'vue';
+import {PdkAppPlugin} from '../types';
 import {createInstanceContext} from './createInstanceContext';
-import {logger} from '@myparcel-pdk/frontend-shared/src';
 import {useContextStore} from '../../stores';
 
-export const createContextPlugin = (
-  config: FinalPdkConfiguration,
-  elementId: string,
-  componentName: PdkViewComponent,
-): VuePlugin => ({
+export const createContextPlugin: PdkAppPlugin = ({appName, logger, config, context}) => ({
   install(app) {
-    logger.debug('Installing context plugin');
+    logger.debug(`Installing context plugin`);
 
     const contextStore = useContextStore();
-    contextStore.addContext(config.context);
+    contextStore.addContext(context);
 
-    const instanceContext = createInstanceContext(config.context);
+    const instanceContext = createInstanceContext(context);
+    contextStore.addContext(instanceContext);
 
     app.provide(INJECT_PDK_INSTANCE, {
-      component: componentName,
-      context: instanceContext,
+      appName,
       config,
+      context: instanceContext,
+      logger,
     });
   },
 });

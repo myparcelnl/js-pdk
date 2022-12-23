@@ -45,5 +45,3 @@ export const positionOptions: SelectOption<LabelPosition>[] = [
     value: BOTTOM_RIGHT,
   },
 ];
-
-export const positions: LabelPosition[] = [TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT];

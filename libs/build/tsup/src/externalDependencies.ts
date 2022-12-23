@@ -1,7 +1,6 @@
 export const externalDependencies = [
   '@myparcel-pdk/common',
   '@myparcel-pdk/frontend-core',
-  '@myparcel-pdk/common',
   '@myparcel/pdk-components',
   '@myparcel/pdk-frontend',
   '@myparcel/sdk',
@@ -9,6 +8,7 @@ export const externalDependencies = [
   '@myparcel/vue-form-builder',
   '@tanstack/vue-query',
   '@types/lodash-es',
+  '@vue/test-utils',
   '@vueuse/core',
   'lodash',
   'lodash-es',
@@ -16,5 +16,6 @@ export const externalDependencies = [
   'pinia',
   'tsup',
   'vite',
+  'vitest',
   'vue',
 ];

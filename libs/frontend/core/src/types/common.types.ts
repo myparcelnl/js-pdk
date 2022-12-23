@@ -1,10 +1,10 @@
 import {OneOrMore} from '@myparcel/ts-utils';
-import {Variant} from '@myparcel-pdk/common';
+import {PdkVariant} from '@myparcel-pdk/common';
 
 export interface PdkNotification {
   content?: OneOrMore<string>;
   title?: string;
-  variant: Variant;
+  variant: PdkVariant;
   category?: NotificationCategory;
 }
 

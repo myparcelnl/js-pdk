@@ -11,14 +11,12 @@
 /**
  * The "MyParcel" card in the single order view.
  */
-import ConceptCard from '../components/order-card/ConceptCard.vue';
-import ShipmentsCard from '../components/order-card/ShipmentsCard.vue';
-import {useQueryStore} from '../stores';
+import ConceptCard from '../components/OrderCard/ConceptCard.vue';
 import {EndpointName} from '@myparcel-pdk/common';
+import ShipmentsCard from '../components/OrderCard/ShipmentsCard.vue';
+import {useQueryStore} from '../stores';
 
 const queryStore = useQueryStore();
-
-queryStore.registerOrderQueries();
 
 queryStore.registerOrderQueries();
 

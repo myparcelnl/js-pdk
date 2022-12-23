@@ -1,12 +1,8 @@
-import {FinalPdkConfiguration, INJECT_PDK_INSTANCE} from '../';
-import {inject} from 'vue';
+import {PdkConfiguration} from '../';
+import {usePdkInstance} from './usePdkInstance';
 
-export const usePdkConfig = (): FinalPdkConfiguration => {
-  const pdk = inject(INJECT_PDK_INSTANCE);
+export const usePdkConfig = (): PdkConfiguration => {
+  const instance = usePdkInstance();
 
-  if (!pdk) {
-    throw new Error('No PDK instance found');
-  }
-
-  return pdk.config;
+  return instance.config;
 };

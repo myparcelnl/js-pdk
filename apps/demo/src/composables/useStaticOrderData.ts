@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 import {CARRIERS, DELIVERY_TYPES} from '@myparcel/sdk';
-import {Plugin} from '@myparcel-pdk/common/src/types/php-pdk.types';
+import {Plugin} from '@myparcel-pdk/common';
 
+// eslint-disable-next-line max-lines-per-function
 export const useStaticOrderData = (): Plugin.ModelContextOrderDataContext[] => [
   {
     externalIdentifier: '3',
@@ -98,13 +100,13 @@ export const useStaticOrderData = (): Plugin.ModelContextOrderDataContext[] => [
         dropOffPoint: undefined,
         externalIdentifier: undefined,
         id: 4,
-        isReturn: undefined,
+        isReturn: false,
         linkConsumerPortal: undefined,
         modified: undefined,
         modifiedBy: undefined,
         multiCollo: false,
         multiColloMainShipmentId: undefined,
-        partnerTrackTraces: undefined,
+        partnerTrackTraces: [],
         physicalProperties: {
           height: undefined,
           length: undefined,
@@ -238,7 +240,7 @@ export const useStaticOrderData = (): Plugin.ModelContextOrderDataContext[] => [
         created: {
           date: '2021-09-15 14:00:00.000000',
         },
-        createdBy: 'undefined',
+        createdBy: undefined,
         customsDeclaration: undefined,
         delayed: false,
         delivered: false,
@@ -266,13 +268,13 @@ export const useStaticOrderData = (): Plugin.ModelContextOrderDataContext[] => [
         dropOffPoint: undefined,
         externalIdentifier: undefined,
         id: 4,
-        isReturn: undefined,
+        isReturn: false,
         linkConsumerPortal: undefined,
         modified: undefined,
         modifiedBy: undefined,
         multiCollo: false,
         multiColloMainShipmentId: undefined,
-        partnerTrackTraces: undefined,
+        partnerTrackTraces: [],
         physicalProperties: {
           height: undefined,
           length: undefined,

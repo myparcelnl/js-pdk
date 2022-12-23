@@ -1,0 +1,44 @@
+{
+  "name": "@myparcel/pdk-preset-bootstrap4",
+  "version": "1.0.0-alpha.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "run ws:vite:build \"$(pwd)\"",
+    "build:dev": "run ws:vite:build:dev \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "lint": "run ws:lint \"$(pwd)\"",
+    "serve": "run ws:vite:serve \"$(pwd)\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "watch": "run ws:vite:watch \"$(pwd)\""
+  },
+  "dependencies": {
+    "@myparcel-pdk/common": "workspace:*",
+    "@myparcel-pdk/frontend-core": "workspace:*",
+    "@myparcel/pdk-components": "workspace:*",
+    "@myparcel/ts-utils": "^1.3.0",
+    "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "@myparcel/pdk-component-tests": "workspace:*",
+    "@types/bootstrap": "^4.5.0",
+    "@types/jquery": "^3.5.14",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/test-utils": "^2.2.6",
+    "happy-dom": "^8.1.0",
+    "pinia": "^2.0.28",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.3",
+    "vitest": "^0.26.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

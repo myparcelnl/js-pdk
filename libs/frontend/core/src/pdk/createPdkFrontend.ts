@@ -1,31 +1,37 @@
-import {GlobalPdkFrontend} from './GlobalPdkFrontend';
-import {InputPdkConfiguration} from '../types';
+import {getElementContext, globalLogger} from '../services';
+import {PdkConfiguration} from '../types';
+import {PdkFrontend} from './PdkFrontend';
 import {createPdkConfig} from './createPdkConfig';
-import {isDef} from '@vueuse/core';
-import {isOfType} from '@myparcel/ts-utils';
-import {logger} from '@myparcel-pdk/common';
 import {sendBootEvent} from '../utils';
 
-export type CreatePdkFrontend = (configuration?: InputPdkConfiguration) => undefined | GlobalPdkFrontend;
+export type CreatePdkFrontend = (configuration?: PdkConfiguration) => undefined | PdkFrontend;
 
+/**
+ * Must match \MyParcelNL\Pdk\Plugin\Service\RenderService::BOOTSTRAP_CONTAINER_ID.
+ *
+ * @see https://github.com/myparcelnl/pdk/blob/main/src/Plugin/Service/RenderService.php
+ */
+const BOOTSTRAP_CONTAINER_SELECTOR = '#myparcel-pdk-boot';
+
+/**
+ * Initialize the pdk frontend, parse configuration, and send a boot event that triggers the
+ * components to render themselves using the PdkFrontend class.
+ */
 export const createPdkFrontend: CreatePdkFrontend = (configuration?) => {
   try {
     const config = createPdkConfig(configuration);
-    const pdkFrontend = new GlobalPdkFrontend(config);
+    const context = getElementContext(BOOTSTRAP_CONTAINER_SELECTOR);
 
-    if (isDef(config.logLevel)) {
-      logger.level = config.logLevel;
-    }
+    const pdkFrontend = new PdkFrontend(config, context);
 
-    sendBootEvent(pdkFrontend);
-    logger.debug('Created PDK core!', config.context);
+    globalLogger.level = config.logLevel;
+
+    sendBootEvent(pdkFrontend, context);
+    globalLogger.debug('Created PDK core!', {context});
 
     return pdkFrontend;
   } catch (e) {
-    if (isOfType<Error>(e, 'message')) {
-      logger.error('Failed to create PDK core:', e.message);
-      return;
-    }
+    globalLogger.error('Failed to create PDK core:');
 
     // eslint-disable-next-line no-console
     console.error(e);

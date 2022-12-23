@@ -7,14 +7,14 @@ import {
   PdkIcon,
   PdkModalContext,
 } from '../types';
-import {FrontendAction} from './actions';
+import {FrontendAction} from './consts';
 import {useModalStore} from '../stores';
 
 export const deleteAction: PdkDropdownAction = {
-  action: FrontendAction.SHIPMENT_DELETE,
+  action: FrontendAction.SHIPMENTS_DELETE,
   icon: PdkIcon.DELETE,
   label: 'action_delete',
-  variant: 'danger',
+  variant: 'error',
 };
 
 export const modalCancelAction: OnClickAction = {
@@ -28,7 +28,7 @@ export const modalCancelAction: OnClickAction = {
 
 export const modalOpenAction: OnClickAction = {
   id: 'open',
-  label: 'action_open',
+  label: 'action_open_shipment_modal',
   onClick: <K extends ModalKey>(modalKey: K, context: PdkModalContext<K>) => {
     const modalStore = useModalStore();
     modalStore.open(modalKey, context);
@@ -37,7 +37,7 @@ export const modalOpenAction: OnClickAction = {
 
 export const orderExportAction: InputPdkButtonAction = {
   action: FrontendAction.ORDER_EXPORT,
-  icon: PdkIcon.ADD,
+  icon: PdkIcon.EXPORT,
   label: 'action_export',
 };
 
@@ -60,19 +60,43 @@ export const orderUpdateAction = {
 };
 
 export const shipmentCreateReturnAction: PdkDropdownAction = {
-  action: FrontendAction.LABEL_CREATE_RETURN,
+  action: FrontendAction.SHIPMENTS_CREATE_RETURN,
   icon: PdkIcon.RETURN,
   label: 'action_create_return_label',
 };
 
 export const shipmentPrintAction: PdkDropdownAction = {
-  action: FrontendAction.SHIPMENT_PRINT,
+  action: FrontendAction.SHIPMENTS_PRINT,
   icon: PdkIcon.PRINT,
   label: 'action_print',
 };
 
 export const shipmentRefreshAction: PdkDropdownAction = {
-  action: FrontendAction.SHIPMENT_REFRESH,
+  action: FrontendAction.SHIPMENTS_REFRESH,
+  icon: PdkIcon.REFRESH,
+  label: 'action_refresh',
+};
+
+export const pluginSettingsUpdateAction: NamedAction = {
+  action: FrontendAction.PLUGIN_SETTINGS_UPDATE,
+  icon: PdkIcon.SAVE,
+  label: 'action_save',
+};
+
+export const webhooksCreateAction: NamedAction = {
+  action: FrontendAction.WEBHOOKS_CREATE,
+  icon: PdkIcon.ADD,
+  label: 'action_create',
+};
+
+export const webhooksDeleteAction: NamedAction = {
+  action: FrontendAction.WEBHOOKS_DELETE,
+  icon: PdkIcon.DELETE,
+  label: 'action_delete',
+};
+
+export const webhooksRefreshAction: NamedAction = {
+  action: FrontendAction.WEBHOOKS_REFRESH,
   icon: PdkIcon.REFRESH,
   label: 'action_refresh',
 };

@@ -1,37 +1,32 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {EndpointName, ModalKey} from '../';
-import {Replace, RequireOnly} from '@myparcel/ts-utils';
-import {Plugin} from '@myparcel-pdk/common';
+import {EndpointName, Plugin} from '@myparcel-pdk/common';
+import {ModalKey} from './modal.types';
+import {Replace} from '@myparcel/ts-utils';
 
-export type AnyContext = PdkContext<ContextKey>;
+export type PdkContextObject = Replace<Plugin.ModelContextContextBag, 'global', GlobalContext> &
+  Partial<PdkInstanceContext>;
 
-export type FinalPdkContextObject = RequireOnly<Partial<PdkContextObject>, ContextKey.GLOBAL>;
-
-export type GlobalContext = Replace<
+type GlobalContext = Replace<
   Plugin.ModelContextGlobalContext,
   'endpoints',
   Record<EndpointName, Plugin.AbstractEndpointRequest>
 >;
 
-export type PdkContext<T> = T extends ContextKey.GLOBAL
-  ? GlobalContext
-  : T extends ContextKey.ORDER_DATA
-  ? Plugin.OrderDataContextCollection
-  : T extends InstanceContextKey.ORDER_IDENTIFIER
-  ? Plugin.ModelContextOrderDataContext['externalIdentifier']
-  : null;
+export type AnyContext = PdkContext<ContextKey>;
 
-export type PdkContextObject = {
-  [k in ContextKey | InstanceContextKey]: PdkContext<k>;
+export type PdkContext<T> = T extends keyof PdkContextObject ? PdkContextObject[T] : never;
+
+export type PdkInstanceContext = {
+  [InstanceContextKey.ORDER_IDENTIFIER]: Plugin.ModelContextOrderDataContext['externalIdentifier'];
 };
-
-export type PdkInstanceContext = Partial<Pick<PdkContextObject, InstanceContextKey>>;
 
 export type PdkModalContext<T extends ModalKey = ModalKey> = T extends ModalKey.SHIPMENT_OPTIONS ? string : never;
 
 export enum ContextKey {
   GLOBAL = 'global',
   ORDER_DATA = 'orderData',
+  PLUGIN_SETTINGS_VIEW = 'pluginSettingsView',
+  PRODUCT_SETTINGS_VIEW = 'productSettingsView',
 }
 
 export enum InstanceContextKey {

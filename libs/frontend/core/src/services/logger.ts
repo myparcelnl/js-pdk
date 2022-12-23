@@ -1,71 +1,115 @@
 /* eslint-disable @typescript-eslint/no-explicit-any,no-console */
 
 export enum LogLevel {
-  ERROR = 4,
-  WARN = 3,
-  INFO = 2,
   DEBUG = 1,
+  INFO = 2,
+  WARN = 3,
+  ERROR = 4,
+  OFF = 5,
 }
 
-const colors = {
+const logLevelNameMap: Partial<Record<LogLevel, string>> = {
+  [LogLevel.ERROR]: 'error',
+  [LogLevel.WARN]: 'warn',
+  [LogLevel.INFO]: 'info',
+  [LogLevel.DEBUG]: 'debug',
+};
+
+const backgroundColors: Partial<Record<LogLevel, string>> = {
   [LogLevel.DEBUG]: '#9E9E9E',
   [LogLevel.INFO]: '#2196F3',
   [LogLevel.WARN]: '#FFB562',
   [LogLevel.ERROR]: '#F87474',
 };
 
-interface Logger {
+export interface PdkLogger {
   level: LogLevel;
+  scope: string | null;
 
   debug: (...messages: any[]) => void;
   error: (...messages: any[]) => void;
   info: (...messages: any[]) => void;
   warn: (...messages: any[]) => void;
 
-  log: (msg: string, css: string[], ...messages: any[]) => void;
+  log: (level: LogLevel, ...messages: any[]) => void;
+
+  setScope(scope: string | null): void;
 }
 
-export const logger: Logger = {
+export const globalLogger: PdkLogger = {
   level: LogLevel.DEBUG,
 
-  log(msg: string, css: string[], ...messages: any[]): void {
-    console.log(
-      `%cMyParcel%c${msg}`,
-      ['background: #0F5C47', 'border-radius: 3px 0 0 3px', 'color: #ccc', 'padding: 2px 4px'].join(';'),
-      ['border-radius: 0 3px 3px 0', 'padding: 2px 4px', 'color: #222', ...css].join(';'),
-      ...messages,
-    );
+  scope: null,
+
+  log(level: LogLevel, ...messages: any[]): void {
+    if (level > this.level) {
+      return;
+    }
+
+    const scope = this.scope ?? 'PDK';
+
+    if (process.env.NODE_ENV === 'production') {
+      console.log(`[${scope}] ${level}`, ...messages);
+    } else {
+      const background = this.scope ? '#002621' : '#0F5C47';
+      const levelName = logLevelNameMap[level];
+      let method;
+
+      // define console method based on level
+      switch (level) {
+        case LogLevel.ERROR:
+          method = console.error;
+          break;
+
+        case LogLevel.WARN:
+          method = console.warn;
+          break;
+
+        default:
+          method = console.log;
+      }
+
+      method(
+        ...[
+          `%c${scope}%c${levelName?.toUpperCase()}`,
+          [`background: ${background}`, 'border-radius: 3px 0 0 3px', 'padding: 2px 4px', 'color: #ccc'].join(';'),
+          [
+            `background: ${backgroundColors[level]}`,
+            'border-radius: 0 3px 3px 0',
+            'padding: 2px 4px',
+            'color: #222',
+          ].join(';'),
+          ...messages,
+        ],
+      );
+    }
   },
 
   debug(...messages: any[]): void {
-    if (this.level > LogLevel.DEBUG) {
-      return;
-    }
-
-    logger.log('DEBUG', [`background:${colors[LogLevel.DEBUG]}`], ...messages);
+    this.log(LogLevel.DEBUG, ...messages);
   },
 
   info(...messages: any[]): void {
-    if (this.level > LogLevel.INFO) {
-      return;
-    }
-
-    logger.log('INFO', [`background:${colors[LogLevel.INFO]}`], ...messages);
+    this.log(LogLevel.INFO, ...messages);
   },
 
   warn(...messages: any[]): void {
-    if (this.level > LogLevel.WARN) {
-      return;
-    }
-
-    logger.log('WARN', [`background:${colors[LogLevel.WARN]}`], ...messages);
+    this.log(LogLevel.WARN, ...messages);
   },
 
   error(...messages: any[]): void {
-    if (this.level > LogLevel.ERROR) {
-      return;
-    }
-
-    logger.log('ERROR', [`background:${colors[LogLevel.ERROR]}`], ...messages);
+    this.log(LogLevel.ERROR, ...messages);
   },
+
+  setScope(scope: string | null): void {
+    this.scope = scope;
+  },
+};
+
+export const createLogger = (scope: string | null = null, logLevel: LogLevel | null = null): PdkLogger => {
+  const loggerInstance = {...globalLogger};
+  loggerInstance.setScope(scope);
+  loggerInstance.level = logLevel ?? globalLogger.level;
+
+  return loggerInstance;
 };

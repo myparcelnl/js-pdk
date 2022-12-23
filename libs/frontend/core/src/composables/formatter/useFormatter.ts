@@ -1,21 +1,23 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {IetfLanguageTag} from '@myparcel-pdk/common';
-import {usePdkConfig} from '@myparcel-pdk/frontend-core';
+import {Formatter, LocaleFormatterObject} from './formatter.types';
 import {Ref, ref} from 'vue';
 import {
   createDefaultCurrencyFormatter,
   createDefaultDateLongFormatter,
   createDefaultDateRelativeFormatter,
-} from 'libs/frontend/core/src/composables/formatter/default';
-import {Formatter, LocaleFormatterObject} from './formatter.types';
+} from './default';
+import {useContextStore} from '../../stores';
+import {usePdkConfig} from '../usePdkConfig';
 
 let formats: Ref<LocaleFormatterObject>;
 
-export const useFormatter = (locale?: IetfLanguageTag): Formatter => {
+export const useFormatter = (locale?: string): Formatter => {
   formats ??= ref({});
 
   const config = usePdkConfig();
-  const resolvedLocale = locale ?? config.locale;
+  const contextStore = useContextStore();
+
+  const resolvedLocale = locale ?? contextStore.context.global.language;
 
   const getFormatters: Formatter['getFormatters'] = (locale) => {
     if (!formats.value[locale]) {
