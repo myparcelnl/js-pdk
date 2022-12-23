@@ -44,9 +44,8 @@
 </template>
 
 <script lang="ts">
-import {PdkComponentName, useTranslate} from '@myparcel/pdk-frontend';
+import {PdkComponentName, generateId, useTranslate} from '@myparcel-pdk/frontend-core';
 import {PropType, defineComponent} from 'vue';
-import {generateId} from '@myparcel-pdk/frontend-core';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultFormGroup

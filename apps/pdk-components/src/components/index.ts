@@ -1,5 +1,5 @@
-import {DefaultCol, PdkColProps} from './DefaultCol';
-import {DefaultRow, PdkRowProps} from './DefaultRow';
+import {DefaultCol} from './DefaultCol';
+import {DefaultRow} from './DefaultRow';
 import DefaultButton from './DefaultButton.vue';
 import {DefaultButtonGroup} from './DefaultButtonGroup';
 import DefaultCard from './DefaultCard.vue';
@@ -23,6 +23,7 @@ import DefaultTableCol from './DefaultTableCol.vue';
 import DefaultTableRow from './DefaultTableRow.vue';
 import DefaultTextInput from './DefaultTextInput.vue';
 import DefaultToggleInput from './DefaultToggleInput.vue';
+import {PdkRowProps} from '@myparcel-pdk/frontend-components';
 
 export type {PdkColProps, PdkRowProps};
 

@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel/pdk-frontend",
+  "name": "@myparcel-pdk/frontend-components",
   "version": "1.0.0-alpha.0",
   "license": "MIT",
   "type": "module",
@@ -13,16 +13,17 @@
     "build": "run ws:tsup:build \"$(pwd)\"",
     "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
     "clean": "run ws:clean \"$(pwd)\"",
-    "lint": "run ws:lint \"$(pwd)\"",
-    "serve": "run ws:tsup:serve \"$(pwd)\""
+    "lint": "run ws:lint \"$(pwd)\""
   },
+  "prettier": "@myparcel/prettier-config",
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^",
-    "@myparcel-pdk/frontend-core": "workspace:^"
+    "@myparcel-pdk/common": "workspace:^"
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:^",
-    "@myparcel/pdk-component-tests": "workspace:^",
     "tsup": "^6.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

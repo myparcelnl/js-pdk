@@ -1,17 +1,3 @@
 {
-  "extends": "../tsconfig.build.json",
-  "references": [
-    {
-      "path": "../../apps/pdk-component-tests/tsconfig.build.json"
-    },
-    {
-      "path": "./core/tsconfig.build.json"
-    },
-    {
-      "path": "./shared/tsconfig.build.json"
-    },
-    {
-      "path": "./test-unit/tsconfig.build.json"
-    }
-  ]
+  "extends": "../tsconfig.build.json"
 }

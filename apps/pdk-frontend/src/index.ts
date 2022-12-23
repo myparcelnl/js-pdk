@@ -66,5 +66,3 @@ export {
   usePdkConfig,
   useTranslate,
 } from '@myparcel-pdk/frontend-core';
-
-export {executePdkComponentTest, executePdkComponentTests} from '@myparcel/pdk-component-tests';

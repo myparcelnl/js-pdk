@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {FunctionalComponent, h} from 'vue';
-import {PdkColProps} from '@myparcel/pdk-components';
+import {PdkColProps} from '@myparcel-pdk/frontend-components';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultCol

@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import {ActionButton, PdkDropdownAction, useTranslate} from '@myparcel/pdk-frontend';
+import {ActionButton, PdkDropdownAction, useTranslate} from '@myparcel-pdk/frontend-core';
 import {PropType, computed, defineComponent, toRefs} from 'vue';
 import BaseButton from './common/BaseButton.vue';
 

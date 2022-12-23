@@ -47,7 +47,7 @@ import {
   PdkButtonAction,
   useModalStore,
   useTranslate,
-} from '@myparcel/pdk-frontend';
+} from '@myparcel-pdk/frontend-core';
 import {PropType, computed, defineComponent, toRefs} from 'vue';
 
 /**

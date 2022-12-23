@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-import {generateId} from '@myparcel-pdk/frontend-core';
+import {generateId} from '@myparcel/pdk-frontend';
 import {useVModel} from '@vueuse/core';
 
 /**

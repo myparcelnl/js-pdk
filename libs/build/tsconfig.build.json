@@ -2,13 +2,5 @@
   "extends": "../tsconfig.build.json",
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ESNext"]
-  },
-  "references": [
-    {
-      "path": "./vite/tsconfig.build.json"
-    },
-    {
-      "path": "./tsup/tsconfig.build.json"
-    }
-  ]
+  }
 }

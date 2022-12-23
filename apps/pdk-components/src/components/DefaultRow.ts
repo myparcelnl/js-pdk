@@ -1,9 +1,5 @@
 import {FunctionalComponent, h} from 'vue';
-
-export interface PdkRowProps {
-  collapseGutters?: boolean;
-  columns?: number | null;
-}
+import {PdkRowProps} from '@myparcel-pdk/frontend-components';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const DefaultRow: FunctionalComponent<PdkRowProps> = (props, ctx) => {

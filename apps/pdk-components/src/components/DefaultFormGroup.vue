@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {generateId, useTranslate} from '@myparcel-pdk/frontend-core';
+import {generateId, useTranslate} from '@myparcel/pdk-frontend';
 import {PdkComponentName} from '@myparcel-pdk/common';
 
 /**

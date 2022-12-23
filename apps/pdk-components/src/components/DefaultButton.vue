@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import {PdkIcon, useTranslate} from '@myparcel-pdk/frontend-core';
+import {PdkIcon, useTranslate} from '@myparcel/pdk-frontend';
 import {PropType, defineComponent} from 'vue';
 
 // const sizePropValidator: (value: string) => boolean = (value: string) => ['md', 'sm', 'xs'].includes(value);

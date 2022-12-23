@@ -1,8 +1,13 @@
 export const externalDependencies = [
+  '@myparcel-pdk/build-tsup',
+  '@myparcel-pdk/build-vite',
   '@myparcel-pdk/common',
+  '@myparcel-pdk/demo',
   '@myparcel-pdk/frontend-core',
+  '@myparcel/pdk-component-tests',
   '@myparcel/pdk-components',
   '@myparcel/pdk-frontend',
+  '@myparcel/pdk-preset-bootstrap4',
   '@myparcel/sdk',
   '@myparcel/ts-utils',
   '@myparcel/vue-form-builder',

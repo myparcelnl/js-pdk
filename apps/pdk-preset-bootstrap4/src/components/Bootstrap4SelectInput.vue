@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {SelectOption} from '@myparcel/pdk-frontend';
+import {SelectOption} from '@myparcel-pdk/frontend-core';
 import {useVModel} from '@vueuse/core';
 
 /**

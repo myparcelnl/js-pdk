@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {FunctionalComponent, h} from 'vue';
-import {PdkRowProps} from '@myparcel/pdk-components';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultRow
