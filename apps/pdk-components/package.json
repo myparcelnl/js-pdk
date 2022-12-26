@@ -23,7 +23,7 @@
     "@myparcel-pdk/frontend-components": "workspace:^",
     "@myparcel/pdk-frontend": "workspace:^",
     "@myparcel/ts-utils": "^1.3.0",
-    "@vueuse/core": "^9.6.0",
+    "@vueuse/core": "^9.9.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {
