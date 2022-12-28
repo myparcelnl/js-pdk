@@ -556,7 +556,7 @@ __metadata:
     husky: ^8.0.2
     lint-staged: ^13.1.0
     nodemon: ^2.0.20
-    nx: ^15.3.3
+    nx: ^15.4.2
     plop: ^3.1.1
     prettier: ^2.8.1
     rimraf: ^3.0.2
@@ -763,23 +763,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nrwl/cli@npm:15.4.0":
-  version: 15.4.0
-  resolution: "@nrwl/cli@npm:15.4.0"
+"@nrwl/cli@npm:15.4.2":
+  version: 15.4.2
+  resolution: "@nrwl/cli@npm:15.4.2"
   dependencies:
-    nx: 15.4.0
-  checksum: e4bd066c688c5ec8b3481a7cce3bd648be854c5af99b9fcc52ecb487b18b9d01f32926b209af668298bc50d659c20140a5cc8e9de128b1a3c314c0b320f6611e
+    nx: 15.4.2
+  checksum: bfc6a201868026a8d0e2598fa580996409dbe57c884c2d58158eb7fc322180e9e410b9a35ccbfc8ad6f1672c43fc0c8594c3464a50377058762bb1caec1c0ba2
   languageName: node
   linkType: hard
 
-"@nrwl/tao@npm:15.4.0":
-  version: 15.4.0
-  resolution: "@nrwl/tao@npm:15.4.0"
+"@nrwl/tao@npm:15.4.2":
+  version: 15.4.2
+  resolution: "@nrwl/tao@npm:15.4.2"
   dependencies:
-    nx: 15.4.0
+    nx: 15.4.2
   bin:
     tao: index.js
-  checksum: 83754affe47f1e201748bc0e83cc15beb7d453d31ad0ffbdbabd405f45ffd91c5009c013e695596470f5d86ade7e7c2d0477a77f8a5c33dbfa88aef55af9bf4c
+  checksum: 2a15c41c93c2c8e021895c10049080534eb4281a89dcfce52416baac2e6e1e402d25d27e08ee32781ecef687103a1bb87c0fac479d478be486970af512f24ce7
   languageName: node
   linkType: hard
 
@@ -4809,12 +4809,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nx@npm:15.4.0, nx@npm:^15.3.3":
-  version: 15.4.0
-  resolution: "nx@npm:15.4.0"
+"nx@npm:15.4.2, nx@npm:^15.4.2":
+  version: 15.4.2
+  resolution: "nx@npm:15.4.2"
   dependencies:
-    "@nrwl/cli": 15.4.0
-    "@nrwl/tao": 15.4.0
+    "@nrwl/cli": 15.4.2
+    "@nrwl/tao": 15.4.2
     "@parcel/watcher": 2.0.4
     "@yarnpkg/lockfile": ^1.1.0
     "@yarnpkg/parsers": ^3.0.0-rc.18
@@ -4858,7 +4858,7 @@ __metadata:
       optional: true
   bin:
     nx: bin/nx.js
-  checksum: 6c706fcd2f554abc4638d93980d4372dd1c7018b7161bd7ea9bb4c20330f8039167eb782f89243eba93dde396d2351cf51c1388283cb4d9aba9bda5297f6720a
+  checksum: 1e0de4cc59cbfadd75bda32d394ef7cc8d0c9bed8cfe169ca0c8d74cc3ed236d3b577d2a9bb14605393e17e60c5c2495ab2934db2c321301f04fe26bf8f38027
   languageName: node
   linkType: hard
 
