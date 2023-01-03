@@ -58,7 +58,7 @@
     "@myparcel-eslint/eslint-config-prettier-typescript": "^1.2.0",
     "@myparcel-eslint/eslint-config-prettier-typescript-vue": "^1.2.0",
     "@myparcel/prettier-config": "^1.1.0",
-    "eslint": "^8.29.0",
+    "eslint": "^8.31.0",
     "eslint-plugin-sort-exports": "^0.8.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
