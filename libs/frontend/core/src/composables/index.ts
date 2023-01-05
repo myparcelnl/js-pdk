@@ -1,6 +1,7 @@
 export * from './context';
 export * from './formatter';
 export * from './useAssetUrl';
+export * from './useGlobalPdkFrontend';
 export * from './useLoading';
 export * from './useModalContext';
 export * from './useModalOrder';

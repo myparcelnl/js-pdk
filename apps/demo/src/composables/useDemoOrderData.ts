@@ -3,7 +3,7 @@ import {CARRIERS, DELIVERY_TYPES} from '@myparcel/sdk';
 import {Plugin} from '@myparcel-pdk/common';
 
 // eslint-disable-next-line max-lines-per-function
-export const useStaticOrderData = (): Plugin.ModelContextOrderDataContext[] => [
+export const useDemoOrderData = (): Plugin.ModelContextOrderDataContext[] => [
   {
     externalIdentifier: '3',
     customsDeclaration: {

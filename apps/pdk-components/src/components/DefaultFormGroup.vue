@@ -17,10 +17,7 @@
     </PdkCol>
 
     <PdkCol>
-      <component
-        :is="component"
-        :id="id"
-        v-bind="{...$attrs, ...$props}" />
+      <slot />
 
       <div v-if="!valid">
         <ul>

@@ -2,8 +2,13 @@
 import {App, createApp} from 'vue';
 import {PdkConfiguration, PdkContextObject} from '../types';
 import {PdkLogger, createLogger, getElementContext} from '../services';
-import {createContextPlugin, createRegisterComponentsPlugin, createStorePlugin, createVueQueryPlugin} from './instance';
-import {MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder';
+import {
+  createContextPlugin,
+  createLoggerPlugin,
+  createRegisterComponentsPlugin,
+  createStorePlugin,
+  createVueQueryPlugin,
+} from './instance';
 import {PdkViewComponent} from '@myparcel-pdk/common';
 import {renderViewComponent} from './renderMap';
 
@@ -54,11 +59,11 @@ export class PdkFrontend {
     const component = await renderViewComponent(view);
     const app = createApp({...component, name: appConfig.appName});
 
-    app.use(MyParcelFormBuilderPlugin);
     app.use(createStorePlugin(appConfig));
     app.use(createContextPlugin(appConfig));
     app.use(createVueQueryPlugin(appConfig));
     app.use(createRegisterComponentsPlugin(appConfig));
+    app.use(createLoggerPlugin(appConfig));
 
     appConfig.config?.onCreated?.(appConfig.config);
 

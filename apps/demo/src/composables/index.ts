@@ -1,1 +1,1 @@
-export * from './useStaticOrderData';
+export * from './useDemoOrderData';

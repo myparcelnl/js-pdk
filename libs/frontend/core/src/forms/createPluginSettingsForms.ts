@@ -11,7 +11,6 @@ export const createPluginSettingsForms = (): FormInstance[] => {
 
   const updatePluginSettingsMutation = useUpdatePluginSettingsMutation();
 
-  // @ts-expect-error todo
   return Object.entries(contextStore.context.pluginSettingsView ?? {}).map(([key, fields]) => {
     return defineForm(`${key}Settings`, {
       fields: [

@@ -24,7 +24,9 @@ export const createPdkFrontend: CreatePdkFrontend = (configuration?) => {
 
     const pdkFrontend = new PdkFrontend(config, context);
 
-    globalLogger.level = config.logLevel;
+    if (config.logLevel) {
+      globalLogger.level = config.logLevel;
+    }
 
     sendBootEvent(pdkFrontend, context);
     globalLogger.debug('Created PDK core!', {context});

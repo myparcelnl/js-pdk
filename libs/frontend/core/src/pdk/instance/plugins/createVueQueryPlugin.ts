@@ -1,18 +1,17 @@
 import {QueryClient, VueQueryPlugin} from '@tanstack/vue-query';
-import {PdkAppPlugin} from '../types';
-import {createQueryClient} from './index';
-import {fillOrderQueryData} from '../fillOrderQueryData';
-import {globalLogger} from '../../services';
+import {PdkAppPlugin} from './plugins.types';
+import {createQueryClient} from '../createQueryClient';
+import {fillOrderQueryData} from '../../fillOrderQueryData';
 
 let queryClient: QueryClient;
 
 /**
  * Instantiate vue query client if it does not exist yet and provide it to the app.
  */
-export const createVueQueryPlugin: PdkAppPlugin = ({context}) => {
+export const createVueQueryPlugin: PdkAppPlugin = ({context, logger}) => {
   return {
     install: (app) => {
-      globalLogger.debug(`Installing vue-query plugin`);
+      logger.debug(`Installing vue-query plugin`);
 
       queryClient ??= createQueryClient();
 

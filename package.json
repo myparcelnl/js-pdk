@@ -16,7 +16,7 @@
     "lint": "nx run-many --target=lint --exclude=.",
     "prepare": "is-ci || husky install",
     "serve": "yarn build:dev && npx concurrently yarn:watch yarn:serve:demo",
-    "serve:demo": "nx serve @myparcel-pdk/demo",
+    "serve:demo": "nx serve demo",
     "test": "nx run-many --parallel --target=test --output-style=stream",
     "test:watch": "nx run-many --parallel --target=test:watch",
     "typecheck": "nx run-many --target=typecheck",

@@ -1,7 +1,7 @@
-import {INJECT_PDK_INSTANCE} from '../../data';
-import {PdkAppPlugin} from '../types';
-import {createInstanceContext} from './createInstanceContext';
-import {useContextStore} from '../../stores';
+import {INJECT_PDK_INSTANCE} from '../../../data';
+import {PdkAppPlugin} from './plugins.types';
+import {createInstanceContext} from '../createInstanceContext';
+import {useContextStore} from '../../../stores';
 
 export const createContextPlugin: PdkAppPlugin = ({appName, logger, config, context}) => ({
   install(app) {

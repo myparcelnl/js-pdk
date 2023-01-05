@@ -4,7 +4,6 @@ import {mergeWith} from 'lodash-unified';
 
 const defaultConfig = Object.freeze<DefaultPdkConfiguration>({
   components: undefined,
-  formConfig: {},
   formatters: {},
   logLevel: import.meta.env.PROD ? LogLevel.INFO : LogLevel.DEBUG,
   transitions: {},

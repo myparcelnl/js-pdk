@@ -1,10 +1,6 @@
 <template>
-  <PdkCard title="single_order_card_title">
-    <template #default>
-      <ConceptCard :order="query.data" />
-      <ShipmentsCard :order="query.data" />
-    </template>
-  </PdkCard>
+  <ConceptCard :order="query.data" />
+  <ShipmentsCard :order="query.data" />
 </template>
 
 <script lang="ts" setup>

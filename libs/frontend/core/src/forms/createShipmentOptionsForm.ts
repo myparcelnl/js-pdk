@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import {CARRIERS, CarrierName, PACKAGE_TYPES, PackageTypeName} from '@myparcel/sdk';
-import {defineField, defineForm} from '@myparcel/vue-form-builder';
+import {InteractiveElementConfiguration, defineField, defineForm} from '@myparcel/vue-form-builder';
+import {ref, resolveComponent} from 'vue';
 import {ModalKey} from '../types';
 import {Plugin} from '@myparcel-pdk/common';
-import {ref} from 'vue';
-import {renderWithFormGroup} from './renderWithFormGroup';
 import {useCarriers} from '../sdk';
 import {useTranslate} from '../composables';
 
@@ -22,17 +21,29 @@ const largeFormat = `${shipmentOptionsPrefix}.largeFormat`;
 const sameDayDelivery = `${shipmentOptionsPrefix}.sameDayDelivery`;
 const insurance = `${shipmentOptionsPrefix}.insurance`;
 
+const defineFormField = (config: InteractiveElementConfiguration): InteractiveElementConfiguration => {
+  const {label} = config;
+
+  return defineField({
+    ...config,
+    props: {
+      description: `${label}_description`,
+      ...config.props,
+    },
+  });
+};
+
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,max-lines-per-function
 export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
   const translate = useTranslate();
 
-  const form = defineForm(`${ModalKey.SHIPMENT_OPTIONS}_${order.externalIdentifier}`, {
+  return defineForm(`${ModalKey.SHIPMENT_OPTIONS}_${order.externalIdentifier}`, {
     fields: [
-      defineField({
+      defineFormField({
         name: carrier,
         label: 'carrier',
-        component: renderWithFormGroup('PdkSelectInput'),
         ref: ref<CarrierName>(order.deliveryOptions?.carrier as CarrierName),
+        component: resolveComponent('PdkSelectInput'),
         props: {
           options: [],
         },
@@ -51,22 +62,22 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         },
       }),
 
-      defineField({
+      defineFormField({
         name: labelAmount,
-        component: renderWithFormGroup('PdkNumberInput'),
-        ref: ref(order.deliveryOptions?.labelAmount ?? 1),
         label: 'label_amount',
+        ref: ref(order.deliveryOptions?.labelAmount ?? 1),
+        component: resolveComponent('PdkNumberInput'),
         props: {
           min: 1,
           max: 10,
         },
       }),
 
-      defineField({
+      defineFormField({
         name: packageType,
-        component: renderWithFormGroup('PdkSelectInput'),
-        ref: ref<PackageTypeName>((order.deliveryOptions?.packageType as PackageTypeName) ?? PACKAGE_TYPES.PACKAGE),
         label: 'shipment_options_package_type',
+        ref: ref<PackageTypeName>((order.deliveryOptions?.packageType as PackageTypeName) ?? PACKAGE_TYPES.PACKAGE),
+        component: resolveComponent('PdkSelectInput'),
         props: {
           options: PACKAGE_TYPES.ALL.map((type) => ({
             label: translate(`package_type_${type.NAME}`),
@@ -75,29 +86,28 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         },
       }),
 
-      defineField({
+      defineFormField({
         name: signature,
-        component: renderWithFormGroup('PdkToggleInput'),
-        ref: ref(order.deliveryOptions?.shipmentOptions.signature ?? false),
         label: 'shipment_options_signature',
+        ref: ref(order.deliveryOptions?.shipmentOptions.signature ?? false),
+        component: resolveComponent('PdkToggleInput'),
 
         // @ts-expect-error todo
         visibleCb: ({form}) => form.model[packageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
       }),
 
-      defineField({
+      defineFormField({
         name: onlyRecipient,
-        component: renderWithFormGroup('PdkToggleInput'),
-        ref: ref(order.deliveryOptions?.shipmentOptions.onlyRecipient ?? false),
         label: 'shipment_options_only_recipient',
-
+        ref: ref(order.deliveryOptions?.shipmentOptions.onlyRecipient ?? false),
+        component: resolveComponent('PdkToggleInput'),
         // @ts-expect-error todo
         visibleCb: ({form}) => form.model[packageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
       }),
 
-      defineField({
+      defineFormField({
         name: ageCheck,
-        component: renderWithFormGroup('PdkToggleInput'),
+        component: resolveComponent('PdkToggleInput'),
         ref: ref(order.deliveryOptions?.shipmentOptions.ageCheck ?? false),
         label: 'shipment_options_age_check',
 
@@ -105,9 +115,9 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         visibleCb: ({form}) => form.model[packageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
       }),
 
-      defineField({
+      defineFormField({
         name: directReturn,
-        component: renderWithFormGroup('PdkToggleInput'),
+        component: resolveComponent('PdkToggleInput'),
         ref: ref(order.deliveryOptions?.shipmentOptions.return ?? false),
         label: 'shipment_options_return',
 
@@ -115,9 +125,9 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         visibleCb: ({form}) => form.model[packageType].ref === PACKAGE_TYPES.PACKAGE_NAME,
       }),
 
-      defineField({
+      defineFormField({
         name: largeFormat,
-        component: renderWithFormGroup('PdkToggleInput'),
+        component: resolveComponent('PdkToggleInput'),
         ref: ref(order.deliveryOptions?.shipmentOptions.largeFormat ?? false),
         label: 'shipment_options_large_format',
 
@@ -127,9 +137,9 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         },
       }),
 
-      defineField({
+      defineFormField({
         name: sameDayDelivery,
-        component: renderWithFormGroup('PdkToggleInput'),
+        component: resolveComponent('PdkToggleInput'),
         ref: ref(order.deliveryOptions?.shipmentOptions.sameDayDelivery ?? false),
         label: 'shipment_options_same_day_delivery',
 
@@ -142,9 +152,9 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         },
       }),
 
-      defineField({
+      defineFormField({
         name: insurance,
-        component: renderWithFormGroup('PdkNumberInput'),
+        component: resolveComponent('PdkNumberInput'),
         ref: ref(order.deliveryOptions?.shipmentOptions.insurance ?? 0),
         label: 'shipment_options_insurance',
         validate: (field, value: number) => value > 100,
@@ -159,6 +169,4 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
       }),
     ],
   });
-
-  return form;
 };

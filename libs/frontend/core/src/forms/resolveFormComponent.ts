@@ -1,9 +1,8 @@
-import {Component} from 'vue';
+import {Component, resolveComponent} from 'vue';
 import {memoize} from 'lodash-unified';
-import {renderWithFormGroup} from './renderWithFormGroup';
 
 const memoizedResolveFormComponent = memoize((string: string): Component => {
-  return renderWithFormGroup(`Pdk${string}`);
+  return resolveComponent(`Pdk${string}`) as Component;
 });
 
 export const resolveFormComponent = (type: string): Component => {

@@ -13,6 +13,7 @@
     "build": "run ws:tsup:build \"$(pwd)\"",
     "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
     "clean": "run ws:clean \"$(pwd)\"",
+    "emit": "run ws:tsup:emit \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "serve": "run ws:tsup:serve \"$(pwd)\"",
     "watch": "run ws:tsup:watch \"$(pwd)\""

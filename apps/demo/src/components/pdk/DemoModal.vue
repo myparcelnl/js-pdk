@@ -12,7 +12,7 @@
     <div
       v-show="isOpen"
       class="absolute bg-black/50 h-full w-full"
-      @click="close" />
+      @click.self="modalStore.close" />
 
     <Transition name="slide-up">
       <div
@@ -24,7 +24,7 @@
           <button
             type="button"
             class="absolute bg-transparent dark:hover:bg-zinc-900 dark:hover:text-white hover:bg-zinc-200 hover:text-zinc-900 inline-flex items-center ml-auto p-1.5 right-2.5 rounded-lg text-sm text-zinc-400 top-3"
-            @click="close">
+            @click="modalStore.close">
             <svg
               aria-hidden="true"
               class="h-5 w-5"

@@ -11,11 +11,7 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "parallel": 10,
-        "cacheableOperations": [
-          "build",
-          "build:dev",
-          "lint"
-        ]
+        "cacheableOperations": ["build", "build:dev", "lint"]
       }
     }
   },
@@ -29,8 +25,8 @@
     "production": [
       "default",
       "!{projectRoot}/**/*.spec.*",
-      "!{projectRoot}/**/__tests__",
-      "!{projectRoot}/**/*.test.*"
+      "!{projectRoot}/**/*.test.*",
+      "!{projectRoot}/**/__tests__"
     ],
     "src": ["{projectRoot}/src/**/*"]
   },

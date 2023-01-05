@@ -42,7 +42,7 @@ export const globalLogger: PdkLogger = {
   scope: null,
 
   log(level: LogLevel, ...messages: any[]): void {
-    if (level > this.level) {
+    if (level < this.level) {
       return;
     }
 

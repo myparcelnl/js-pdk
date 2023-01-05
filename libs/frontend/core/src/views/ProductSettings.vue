@@ -19,7 +19,6 @@ const createProductSettingsForm = (): FormInstance => {
     throw new Error('Plugin settings not loaded');
   }
 
-  // @ts-expect-error afterSubmit currently generates an error but it does work
   return defineForm('productSettings', {
     fields: generateFormFields(contextStore.context.productSettingsView),
 

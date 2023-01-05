@@ -8,10 +8,9 @@
 
 <script lang="ts">
 import {MagicForm, defineForm} from '@myparcel/vue-form-builder';
-import {defineComponent, ref} from 'vue';
+import {defineComponent, ref, resolveComponent} from 'vue';
 import {formatOptions, outputOptions, positionOptions} from '../../data';
 import {ModalKey} from '../../types';
-import {renderWithFormGroup} from '../../forms';
 import {usePluginSettings} from '../../composables';
 
 /**
@@ -32,19 +31,19 @@ export default defineComponent({
           {
             name: 'format',
             ref: ref(pluginSettings.label.format),
-            component: renderWithFormGroup('PdkSelectInput'),
+            component: resolveComponent('PdkSelectInput'),
             options: formatOptions,
           },
           {
             name: 'output',
             ref: ref(pluginSettings.label.output),
-            component: renderWithFormGroup('PdkSelectInput'),
+            component: resolveComponent('PdkSelectInput'),
             options: outputOptions,
           },
           {
             name: 'position',
             ref: ref(pluginSettings.label.position),
-            component: renderWithFormGroup('PdkMultiCheckbox'),
+            component: resolveComponent('PdkMultiCheckbox'),
             options: positionOptions,
           },
         ],

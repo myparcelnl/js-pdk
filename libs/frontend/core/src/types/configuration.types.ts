@@ -23,7 +23,7 @@ export type PdkConfiguration = {
   /**
    * Log level to use. Defaults to 'info' on production and 'debug' on development.
    */
-  logLevel: LogLevel;
+  logLevel?: LogLevel;
 
   /**
    * Configuration to pass to @myparcel/vue-form-builder.

@@ -27,7 +27,7 @@
         v-if="!order.shipments.length"
         key="row_no_shipments">
         <PdkTableCol colspan="6">
-          <div :class="config?.cssUtilities.textCenter">
+          <div :class="config?.cssUtilities?.textCenter">
             <PdkIcon icon="warn" />
             {{ translate('no_shipments') }}
           </div>

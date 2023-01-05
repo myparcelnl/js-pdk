@@ -1,14 +1,13 @@
 import {Pinia, createPinia} from 'pinia';
-import {PdkAppPlugin} from '../types';
-import {globalLogger} from '../../services';
+import {PdkAppPlugin} from './plugins.types';
 
 let store: Pinia;
 let initialized = false;
 
-export const createStorePlugin: PdkAppPlugin = ({config}) => {
+export const createStorePlugin: PdkAppPlugin = ({config, logger}) => {
   store ??= createPinia();
 
-  globalLogger.debug(`Preparing store plugin`);
+  logger.debug(`Preparing store plugin`);
 
   store.use((storeContext) => {
     if (initialized || !config.onCreateStore) {
@@ -16,7 +15,7 @@ export const createStorePlugin: PdkAppPlugin = ({config}) => {
     }
 
     initialized = true;
-    globalLogger.debug(`Calling store renderer hook`);
+    logger.debug(`Calling store renderer hook`);
     config.onCreateStore(storeContext);
   });
 

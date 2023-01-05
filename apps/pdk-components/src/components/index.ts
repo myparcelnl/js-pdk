@@ -23,9 +23,6 @@ import DefaultTableCol from './DefaultTableCol.vue';
 import DefaultTableRow from './DefaultTableRow.vue';
 import DefaultTextInput from './DefaultTextInput.vue';
 import DefaultToggleInput from './DefaultToggleInput.vue';
-import {PdkRowProps} from '@myparcel-pdk/frontend-components';
-
-export type {PdkColProps, PdkRowProps};
 
 export {
   DefaultButton,

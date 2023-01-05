@@ -1,7 +1,19 @@
 <template>
   <button
     :disabled="disabled"
-    class="active:bg-orange-800 bg-orange-600 duration-75 focus:bg-orange-700 hover:bg-orange-700 px-5 py-2 rounded-full text-white transition-colors"
+    :class="[
+      'active:bg-orange-800',
+      'bg-orange-600',
+      'duration-75',
+      'focus:bg-orange-700',
+      'hover:bg-orange-700',
+      'px-5',
+      'py-2',
+      'rounded-full',
+      'text-white',
+      'transition-colors',
+      'select-none',
+    ]"
     type="button"
     @click="$emit('click')">
     <PdkIcon
