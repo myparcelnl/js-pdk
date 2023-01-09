@@ -361,7 +361,7 @@ export namespace Plugin {
   };
 
   export type ModelPdkOrder = {
-    externalIdentifier?: string;
+    externalIdentifier: string;
     customsDeclaration?: Shipment.ModelCustomsDeclaration;
     deliveryOptions?: Shipment.ModelDeliveryOptions;
     label?: Shipment.ModelLabel;

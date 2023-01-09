@@ -3,6 +3,8 @@ export * from './convertDotNotationToObject';
 export * from './decodeHtmlEntities';
 export * from './encodeArrayParameter';
 export * from './formToBody';
+export * from './forms';
 export * from './generateId';
+export * from './getOrderId';
 export * from './onQueryStart';
 export * from './sendBootEvent';

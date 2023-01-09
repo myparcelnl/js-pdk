@@ -10,11 +10,10 @@ import {
   useUpdateOrdersMutation,
   useUpdatePluginSettingsMutation,
 } from '../actions';
-import {useInstanceContext, useModalOrder} from '../composables';
 import {EndpointName} from '@myparcel-pdk/common';
-import {InstanceContextKey} from '../types';
 import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
+import {getOrderId} from '../utils';
 
 export type QueryObject<I extends EndpointName = EndpointName> = Record<I, ResolvedQuery<I>>;
 
@@ -75,7 +74,7 @@ export const useQueryStore = defineStore('query', () => {
      * @param {MutationMode} mode
      */
     registerOrderQueries: (orderId?: string | null, mode: MutationMode = MutationMode.DEFAULT) => {
-      const id = orderId ?? useModalOrder() ?? useInstanceContext(InstanceContextKey.ORDER_IDENTIFIER);
+      const id = orderId ?? getOrderId();
 
       if (!id) {
         throw new Error('No order id found');

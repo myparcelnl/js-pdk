@@ -11,19 +11,22 @@ export interface UpdateProductSettingsInput {
 }
 
 export const useUpdateProductSettingsMutation = () => {
-  return useMutation<unknown, ApiException, FormInstance>([EndpointName.UPDATE_PRODUCT_SETTINGS], (form) => {
-    const sdk = usePdkApi();
+  return useMutation<unknown, ApiException, UpdateProductSettingsInput>(
+    [EndpointName.UPDATE_PRODUCT_SETTINGS],
+    ({form, productIds}) => {
+      const sdk = usePdkApi();
 
-    const options = {
-      params: {
-        productIds: '',
-      },
-      body: {
-        [form.name]: form.getValues(),
-      },
-    };
+      const options = {
+        params: {
+          productIds,
+        },
+        body: {
+          [form.name]: form.getValues(),
+        },
+      };
 
-    // @ts-expect-error custom endpoints are not typed correctly
-    return sdk.updatePluginSettings(options);
-  });
+      // @ts-expect-error custom endpoints are not typed correctly
+      return sdk.updatePluginSettings(options);
+    },
+  );
 };

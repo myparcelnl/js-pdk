@@ -1,20 +1,19 @@
 import {ActionParameters, FrontendAction} from '../index';
-import {InstanceContextKey, ModalKey} from '../../types';
-import {useContextStore} from '../../stores';
+import {createShipmentFormName, getOrderId} from '../../utils';
 import {useFormBuilder} from '@myparcel/vue-form-builder';
-import {useModalOrder} from '../../composables';
 
 export const beforeOrderAction = <A extends FrontendAction>(
   action: A,
   parameters: Partial<ActionParameters<A>> = {},
 ): Promise<ActionParameters<A>> => {
-  const orderId = useModalOrder() ?? useContextStore().context[InstanceContextKey.ORDER_IDENTIFIER] ?? null;
+  const formBuilder = useFormBuilder();
+  const orderId = getOrderId();
 
   // @ts-expect-error todo
   parameters.orderIds = orderId;
 
   // @ts-expect-error todo
-  parameters.form = useFormBuilder().forms[`${ModalKey.SHIPMENT_OPTIONS}_${orderId}`];
+  parameters.form = formBuilder.forms.value[createShipmentFormName(orderId)];
 
   return Promise.resolve(parameters as ActionParameters<A>);
 };

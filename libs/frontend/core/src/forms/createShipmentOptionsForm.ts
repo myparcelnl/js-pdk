@@ -2,8 +2,8 @@
 import {CARRIERS, CarrierName, PACKAGE_TYPES, PackageTypeName} from '@myparcel/sdk';
 import {InteractiveElementConfiguration, defineField, defineForm} from '@myparcel/vue-form-builder';
 import {ref, resolveComponent} from 'vue';
-import {ModalKey} from '../types';
 import {Plugin} from '@myparcel-pdk/common';
+import {createShipmentFormName} from '../utils';
 import {useCarriers} from '../sdk';
 import {useTranslate} from '../composables';
 
@@ -37,7 +37,7 @@ const defineFormField = (config: InteractiveElementConfiguration): InteractiveEl
 export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
   const translate = useTranslate();
 
-  return defineForm(`${ModalKey.SHIPMENT_OPTIONS}_${order.externalIdentifier}`, {
+  return defineForm(createShipmentFormName(order.externalIdentifier), {
     fields: [
       defineFormField({
         name: carrier,
