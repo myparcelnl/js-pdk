@@ -1,10 +1,11 @@
-import {ActionResponse, FrontendAction, FrontendActionParameterMap, actionEndpointMap} from '../consts';
+import {ActionResponse, FrontendAction, actionEndpointMap} from '../consts';
+import {ActionContext} from './types';
 import {useQueryStore} from '../../stores';
 
-export function executeMutation<A extends FrontendAction>(
-  action: A,
-  resolvedParameters: FrontendActionParameterMap[A],
-): Promise<ActionResponse<A>> {
+export function executeMutation<A extends FrontendAction>({
+  action,
+  parameters,
+}: ActionContext): Promise<ActionResponse<A>> {
   const queryStore = useQueryStore();
 
   const endpoint = actionEndpointMap[action];
@@ -20,5 +21,5 @@ export function executeMutation<A extends FrontendAction>(
   const mutation = queryStore.get(endpoint);
 
   // @ts-expect-error todo
-  return mutation.mutateAsync(resolvedParameters);
+  return mutation.mutateAsync(parameters);
 }

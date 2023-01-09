@@ -1,28 +1,23 @@
-import {ActionParameters, ActionResponse, FrontendAction} from '../index';
+import {ActionResponse, FrontendAction} from '../index';
+import {ActionContext} from './types';
 import {afterAction} from './afterAction';
 import {beforeAction} from './beforeAction';
 import {executeAction} from './executeAction';
-import {useLogger} from '../../composables/useLogger';
 
-export const doAction = async <A extends FrontendAction>(
-  action: A,
-  parameters?: Partial<ActionParameters<A>>,
-): Promise<ActionResponse<A>> => {
-  const logger = useLogger();
+export const doAction = async <A extends FrontendAction>({
+  action,
+  logger,
+  parameters,
+}: ActionContext<A>): Promise<ActionResponse<A>> => {
+  const resolvedParameters = await beforeAction<A>({action, parameters});
 
-  logger.debug(action, 'Initial parameters:', parameters);
+  logger?.debug({parameters, resolvedParameters});
 
-  const resolvedParameters = await beforeAction<A>(action, parameters);
+  const response = await executeAction<A>({action, parameters: resolvedParameters});
 
-  logger.debug(action, 'Resolved parameters:', resolvedParameters);
+  const resolvedResponse = afterAction<A>({action, parameters: resolvedParameters, response});
 
-  const response = await executeAction(action, resolvedParameters);
-
-  logger.debug(action, 'Response', response);
-
-  const resolvedResponse = afterAction(action, resolvedParameters, response);
-
-  logger.debug(action, 'Resolved response', resolvedResponse);
+  logger?.debug({response, resolvedResponse});
 
   return resolvedResponse;
 };

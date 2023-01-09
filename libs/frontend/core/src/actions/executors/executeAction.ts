@@ -1,13 +1,14 @@
-import {ActionResponse, FrontendAction, FrontendActionParameterMap} from '../consts';
+import {ActionResponse, FrontendAction} from '../consts';
+import {ActionContext} from './types';
 import {EndpointName} from '@myparcel-pdk/common';
 import {executeMutation} from './executeMutation';
 import {useQueryStore} from '../../stores';
 
 // eslint-disable-next-line complexity
-export async function executeAction<A extends FrontendAction>(
-  action: A,
-  resolvedParameters: FrontendActionParameterMap[A],
-): Promise<ActionResponse<A>> {
+export async function executeAction<A extends FrontendAction>({
+  action,
+  parameters,
+}: ActionContext): Promise<ActionResponse<A>> {
   const queryStore = useQueryStore();
 
   let response;
@@ -26,7 +27,7 @@ export async function executeAction<A extends FrontendAction>(
     case FrontendAction.SHIPMENTS_DELETE:
     case FrontendAction.SHIPMENTS_PRINT:
     case FrontendAction.SHIPMENTS_REFRESH:
-      response = await executeMutation(action, resolvedParameters);
+      response = await executeMutation({action, parameters});
       break;
 
     default:

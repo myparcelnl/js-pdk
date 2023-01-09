@@ -1,5 +1,6 @@
 /* eslint-disable no-case-declarations */
 import {
+  ActionContext,
   ActionParameters,
   FrontendAction,
   formActions,
@@ -13,10 +14,10 @@ import {beforePrintAction} from './beforePrintAction';
 import {beforeShipmentAction} from './beforeShipmentAction';
 import {isInArray} from '@myparcel/ts-utils';
 
-export const beforeAction = async <A extends FrontendAction>(
-  action: A,
-  parameters: Partial<ActionParameters<A>> = {},
-): Promise<ActionParameters<A>> => {
+export const beforeAction = async <A extends FrontendAction>({
+  action,
+  parameters,
+}: ActionContext<A>): Promise<ActionParameters<A>> => {
   if (isInArray(action, formActions)) {
     parameters = await beforeFormAction(action, parameters);
   }
