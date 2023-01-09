@@ -1,9 +1,11 @@
-import {FunctionalComponent, h} from 'vue';
+import {defineComponent, h} from 'vue';
 
 /**
  * A wrapper that can be used to group buttons together.
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const DefaultButtonGroup: FunctionalComponent = (props, ctx) => {
-  return h('div', ctx.attrs, ctx.slots);
-};
+export default defineComponent({
+  name: 'DefaultButtonGroup',
+  render() {
+    return h('div', this.$attrs, this.$slots);
+  },
+});

@@ -1,24 +1,16 @@
-import {FunctionalComponent, h} from 'vue';
-import {PdkRowProps} from '@myparcel-pdk/frontend-components';
+import {defineComponent, h} from 'vue';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const DefaultRow: FunctionalComponent<PdkRowProps> = (props, ctx) => {
-  const classes = [
-    ctx.attrs.class,
-    'grid',
-    props.collapseGutters ? '' : 'gap-4',
-    props.columns ? `grid-cols-${props.columns}` : 'grid-cols-auto',
-  ];
-
-  return h('div', {...ctx.attrs, class: classes}, ctx.slots);
-};
-
-DefaultRow.props = {
-  collapseGutters: {
-    type: Boolean,
+export default defineComponent({
+  name: 'DefaultRow',
+  props: {
+    span: {
+      type: Number,
+    },
+    width: {
+      type: String,
+    },
   },
-  columns: {
-    type: Number,
-    default: null,
+  render() {
+    return h('div', this.$attrs, this.$slots);
   },
-};
+});
