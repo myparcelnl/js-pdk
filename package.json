@@ -63,9 +63,9 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "nodemon": "^2.0.20",
-    "nx": "^15.4.4",
+    "nx": "^15.4.5",
     "plop": "^3.1.1",
-    "prettier": "^2.8.1",
+    "prettier": "^2.8.2",
     "rimraf": "^3.0.2"
   },
   "packageManager": "yarn@3.3.0"
