@@ -9,14 +9,19 @@ export const createRouterInstance = (): Router => {
         alias: '/',
         name: 'Orders',
         component: () => import('./views/Orders.vue'),
-        meta: {
-          menu: true,
-        },
       },
       {
         path: '/orders/:id',
         name: 'Order',
         component: () => import('./views/Order.vue'),
+        meta: {
+          hidden: true,
+        },
+      },
+      {
+        path: '/settings',
+        name: 'Settings',
+        component: () => import('./views/Settings.vue'),
       },
     ],
   });

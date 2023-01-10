@@ -1,18 +1,30 @@
 <template>
   <div class="flex">
-    <label class="w-1/3">
-      <slot name="label">
-        {{ translate(label) }}
-      </slot>
-    </label>
-    <div class="w-2/3">
+    <div class="px-2 py-2 text-right w-1/3">
+      <label
+        :for="id"
+        v-text="element.label" />
+
+      <ul v-if="element.errors.length">
+        <li
+          v-for="error in element.errors"
+          :key="error"
+          class="text-red-500 text-xs">
+          {{ error }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="px-2 py-2 w-2/3">
       <slot />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {generateFieldId} from '@myparcel-pdk/frontend-core/src/utils/generateFieldId';
 import {useTranslate} from '@myparcel-pdk/frontend-core';
 
 /**
@@ -21,14 +33,15 @@ import {useTranslate} from '@myparcel-pdk/frontend-core';
 export default defineComponent({
   name: 'DemoFormGroup',
   props: {
-    label: {
-      type: String,
-      default: null,
+    element: {
+      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      required: true,
     },
   },
 
-  setup: () => ({
+  setup: (props) => ({
     translate: useTranslate(),
+    id: generateFieldId(props.element),
   }),
 });
 </script>

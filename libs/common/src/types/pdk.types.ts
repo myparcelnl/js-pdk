@@ -1,42 +1,45 @@
 import {Component} from 'vue';
 
-export const componentNames: readonly string[] = [
-  // Form inputs
-  'PdkCheckboxInput',
-  'PdkCurrencyInput',
-  'PdkNumberInput',
-  'PdkRadioInput',
-  'PdkSelectInput',
-  'PdkTextInput',
-  'PdkToggleInput',
-
-  // Form components
+export const requiredComponentNames = [
   'PdkButton',
-  'PdkFormGroup',
-  'PdkMultiCheckbox',
-  'PdkMultiRadio',
-
-  'PdkPluginSettingsWrapper',
-
-  // Other components
-  'PdkNotification',
-  'PdkButtonGroup',
   'PdkCard',
+  'PdkCheckboxInput',
+  'PdkCol',
+  'PdkCurrencyInput',
   'PdkDropdownButton',
+  'PdkFormGroup',
+  'PdkHeading',
   'PdkIcon',
   'PdkImage',
   'PdkLink',
   'PdkModal',
+  'PdkMultiCheckbox',
+  'PdkMultiRadio',
+  'PdkNotification',
+  'PdkNumberInput',
+  'PdkRadioInput',
+  'PdkRow',
+  'PdkSelectInput',
+  'PdkTabNavButton',
   'PdkTable',
+  'PdkTextInput',
+  'PdkToggleInput',
+] as const;
+
+export const optionalComponentNames = [
+  'PdkButtonGroup',
+  'PdkPluginSettingsWrapper',
+  'PdkTabNavButtonWrapper',
+  'PdkTabNavContentWrapper',
   'PdkTableCol',
   'PdkTableRow',
+] as const;
 
-  // Used for all positioning
-  'PdkRow',
-  'PdkCol',
-];
+export type RequiredPdkComponentName = (typeof requiredComponentNames)[number];
 
-export type PdkComponentName = typeof componentNames[number];
+export type OptionalPdkComponentName = (typeof optionalComponentNames)[number];
+
+export type PdkComponentName = RequiredPdkComponentName | OptionalPdkComponentName;
 
 export type PdkViewComponent =
   | 'LoadingPage'
@@ -47,7 +50,8 @@ export type PdkViewComponent =
   | 'ProductSettings'
   | 'PluginSettings';
 
-export type PdkComponentMap = Record<PdkComponentName, Component>;
+export type PdkComponentMap = Record<RequiredPdkComponentName, Component> &
+  Partial<Record<OptionalPdkComponentName, Component>>;
 
 export type ComponentImportFunction = () => Promise<{default: Component}>;
 

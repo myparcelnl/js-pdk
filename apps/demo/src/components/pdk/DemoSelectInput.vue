@@ -1,20 +1,22 @@
 <template>
   <select
+    :id="id"
     v-model="model"
-    :disabled="disabled"
+    :disabled="element.isDisabled || element.isSuspended"
     class="border flex-grow px-2 py-1 rounded">
     <option
-      v-for="(item, index) in options"
+      v-for="(item, index) in element.props?.options"
       :key="index"
-      :disabled="item.disabled || disabled"
+      :disabled="item.disabled || element.isDisabled || element.isSuspended"
       :value="item.value"
       v-text="item.label" />
   </select>
 </template>
 
 <script lang="ts">
-import {PropType, defineComponent} from 'vue';
-import {SelectOption} from '@myparcel-pdk/common';
+import {PropType, UnwrapNestedRefs, defineComponent, watchEffect} from 'vue';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {generateFieldId} from '@myparcel-pdk/frontend-core';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -24,24 +26,11 @@ import {useVModel} from '@vueuse/core';
 export default defineComponent({
   name: 'DemoSelectInput',
   props: {
-    /**
-     * Controls disabled state.
-     */
-    disabled: {
-      type: Boolean,
+    element: {
+      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      required: true,
     },
 
-    /**
-     * The options of the select.
-     */
-    options: {
-      type: Array as PropType<SelectOption[]>,
-      default: (): SelectOption[] => [],
-    },
-
-    /**
-     * The value of the model.
-     */
     // eslint-disable-next-line vue/no-unused-properties
     modelValue: {
       type: [String, Number],
@@ -52,7 +41,16 @@ export default defineComponent({
   setup: (props, ctx) => {
     const model = useVModel(props, 'modelValue', ctx.emit);
 
-    return {model};
+    watchEffect(() => {
+      if (props.element.props?.options?.length && !props.modelValue) {
+        model.value = props.element.props.options[0].value;
+      }
+    });
+
+    return {
+      id: generateFieldId(props.element),
+      model,
+    };
   },
 });
 </script>

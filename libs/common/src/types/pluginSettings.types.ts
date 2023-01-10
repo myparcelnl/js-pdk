@@ -1,3 +1,5 @@
+import {Component} from 'vue';
+
 export type LabelFormat = 'a4' | 'a6';
 
 export type LabelOutput = 'open' | 'download';
@@ -8,4 +10,11 @@ export interface SelectOption<Value = string | number> {
   disabled?: boolean;
   label: string;
   value: Value;
+}
+
+export interface PdkTab {
+  name: string;
+  label: string;
+  icon?: string;
+  component: string | Component;
 }

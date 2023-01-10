@@ -1,53 +1,57 @@
-import DefaultButton from './DefaultButton.vue';
-import DefaultButtonGroup from './DefaultButtonGroup';
-import DefaultCard from './DefaultCard.vue';
-import DefaultCheckboxInput from './DefaultCheckboxInput.vue';
-import DefaultCol from './DefaultCol';
-import DefaultCurrencyInput from './DefaultCurrencyInput.vue';
-import DefaultDropdownButton from './DefaultDropdownButton.vue';
-import DefaultFormGroup from './DefaultFormGroup.vue';
-import DefaultIcon from './DefaultIcon.vue';
-import DefaultImage from './DefaultImage.vue';
-import DefaultLink from './DefaultLink.vue';
-import DefaultModal from './DefaultModal.vue';
-import DefaultMultiCheckbox from './DefaultMultiCheckbox.vue';
-import DefaultMultiRadio from './DefaultMultiRadio.vue';
-import DefaultNotification from './DefaultNotification.vue';
-import DefaultNumberInput from './DefaultNumberInput.vue';
-import DefaultPluginSettingsWrapper from './DefaultPluginSettingsWrapper.vue';
-import DefaultRadioInput from './DefaultRadioInput.vue';
-import DefaultRow from './DefaultRow';
-import DefaultSelectInput from './DefaultSelectInput.vue';
-import DefaultTable from './DefaultTable.vue';
-import DefaultTableCol from './DefaultTableCol.vue';
-import DefaultTableRow from './DefaultTableRow.vue';
-import DefaultTextInput from './DefaultTextInput.vue';
-import DefaultToggleInput from './DefaultToggleInput.vue';
+export {default as DefaultButton} from './DefaultButton.vue';
 
-export {
-  DefaultButton,
-  DefaultButtonGroup,
-  DefaultCard,
-  DefaultCheckboxInput,
-  DefaultCol,
-  DefaultCurrencyInput,
-  DefaultDropdownButton,
-  DefaultFormGroup,
-  DefaultIcon,
-  DefaultImage,
-  DefaultLink,
-  DefaultModal,
-  DefaultMultiCheckbox,
-  DefaultMultiRadio,
-  DefaultNotification,
-  DefaultNumberInput,
-  DefaultPluginSettingsWrapper,
-  DefaultRadioInput,
-  DefaultRow,
-  DefaultSelectInput,
-  DefaultTable,
-  DefaultTableCol,
-  DefaultTableRow,
-  DefaultTextInput,
-  DefaultToggleInput,
-};
+export {default as DefaultButtonGroup} from './DefaultButtonGroup';
+
+export {default as DefaultCard} from './DefaultCard.vue';
+
+export {default as DefaultCheckboxInput} from './DefaultCheckboxInput.vue';
+
+export {default as DefaultCol} from './DefaultCol';
+
+export {default as DefaultCurrencyInput} from './DefaultCurrencyInput.vue';
+
+export {default as DefaultDropdownButton} from './DefaultDropdownButton.vue';
+
+export {default as DefaultFormGroup} from './DefaultFormGroup.vue';
+
+export {default as DefaultHeading} from './DefaultHeading';
+
+export {default as DefaultIcon} from './DefaultIcon.vue';
+
+export {default as DefaultImage} from './DefaultImage.vue';
+
+export {default as DefaultLink} from './DefaultLink.vue';
+
+export {default as DefaultModal} from './DefaultModal.vue';
+
+export {default as DefaultMultiCheckbox} from './DefaultMultiCheckbox.vue';
+
+export {default as DefaultMultiRadio} from './DefaultMultiRadio.vue';
+
+export {default as DefaultNotification} from './DefaultNotification.vue';
+
+export {default as DefaultNumberInput} from './DefaultNumberInput.vue';
+
+export {default as DefaultPluginSettingsWrapper} from './DefaultPluginSettingsWrapper';
+
+export {default as DefaultRadioInput} from './DefaultRadioInput.vue';
+
+export {default as DefaultRow} from './DefaultRow';
+
+export {default as DefaultSelectInput} from './DefaultSelectInput.vue';
+
+export {default as DefaultTabNavButton} from './DefaultTabNavButton.vue';
+
+export {default as DefaultTabNavigation} from './DefaultTabNavigation.vue';
+
+export {default as DefaultTable} from './DefaultTable.vue';
+
+export {default as DefaultTableCol} from './DefaultTableCol.vue';
+
+export {default as DefaultTableRow} from './DefaultTableRow.vue';
+
+export {default as DefaultTextInput} from './DefaultTextInput.vue';
+
+export {default as DefaultToggleInput} from './DefaultToggleInput.vue';
+
+export {default as PlainDiv} from './PlainDiv';

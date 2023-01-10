@@ -37,6 +37,7 @@ export type PdkConfiguration = {
     labelCard?: string;
     notification?: string;
     shipmentRow?: string;
+    tabNavigation?: string;
     tableRow?: string;
   };
 

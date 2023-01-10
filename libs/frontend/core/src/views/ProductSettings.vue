@@ -23,7 +23,8 @@ const createProductSettingsForm = (): FormInstance => {
     fields: generateFormFields(contextStore.context.productSettingsView),
 
     afterSubmit: async (form: FormInstance) => {
-      await updateProductSettingsMutation.mutateAsync(form);
+      // todo: get product ids
+      await updateProductSettingsMutation.mutateAsync({form, productIds: []});
     },
   });
 };

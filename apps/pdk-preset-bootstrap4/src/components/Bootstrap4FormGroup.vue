@@ -4,36 +4,29 @@
       class="col-sm-4 form-control-label"
       :for="id"
       :class="{
-        required: !optional,
+        required: !element.isOptional,
       }">
       <slot name="label">
-        {{ translate(label) }}
+        {{ translate(element.label) }}
       </slot>
     </label>
 
     <div class="col-sm-8">
-      <component
-        :is="component"
-        :id="id"
-        class="form-control"
-        :class="{
-          'is-invalid': !valid,
-        }"
-        v-bind="{...$attrs, ...$props}"
-        :aria-describedby="description ? helpId : null" />
+      <slot></slot>
+
       <small
-        v-if="description"
+        v-if="element.props?.description"
         :id="helpId"
         class="form-text text-muted">
-        {{ translate(description) }}
+        {{ translate(element.props?.description) }}
       </small>
 
       <div
-        v-if="!valid"
+        v-if="!element.isValid"
         class="invalid-feedback">
         <ul class="list-unstyled">
           <li
-            v-for="(error, index) in errors"
+            v-for="(error, index) in element.errors"
             :key="`error_${index}`">
             {{ error }}
           </li>
@@ -44,9 +37,10 @@
 </template>
 
 <script lang="ts">
-import {PropType, defineComponent} from 'vue';
-import {generateId, useTranslate} from '@myparcel-pdk/frontend-core';
-import {PdkComponentName} from '@myparcel-pdk/common';
+import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {generateFieldId} from '@myparcel-pdk/frontend-core/src/utils/generateFieldId';
+import {useTranslate} from '@myparcel-pdk/frontend-core';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultFormGroup
@@ -55,44 +49,18 @@ export default defineComponent({
   name: 'Bootstrap4FormGroup',
   inheritAttrs: false,
   props: {
-    component: {
-      type: String as PropType<PdkComponentName>,
-      default: null,
-    },
-
-    description: {
-      type: String,
-      default: null,
-    },
-
-    errors: {
-      type: Array as PropType<string[]>,
-      default: () => [],
-    },
-
-    label: {
-      type: String,
-      default: null,
-    },
-
-    optional: {
-      type: Boolean,
-    },
-
-    // eslint-disable-next-line vue/no-unused-properties
-    suspended: {
-      type: Boolean,
-    },
-
-    valid: {
-      type: Boolean,
+    element: {
+      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      required: true,
     },
   },
 
-  setup: () => {
+  setup: (props) => {
+    const id = generateFieldId(props.element);
+
     return {
-      id: `fg${generateId()}`,
-      helpId: `fgHelp${generateId()}`,
+      id,
+      helpId: `fgHelp${id}`,
       translate: useTranslate(),
     };
   },

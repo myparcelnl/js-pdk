@@ -1,53 +1,55 @@
-import DemoButton from './DemoButton.vue';
-import DemoButtonGroup from './DemoButtonGroup';
-import DemoCard from './DemoCard.vue';
-import DemoCheckboxInput from './DemoCheckboxInput.vue';
-import DemoCol from './DemoCol';
-import DemoCurrencyInput from './DemoCurrencyInput.vue';
-import DemoDropdownButton from './DemoDropdownButton.vue';
-import DemoFormGroup from './DemoFormGroup.vue';
-import DemoIcon from './DemoIcon.vue';
-import DemoImage from './DemoImage.vue';
-import DemoLink from './DemoLink.vue';
-import DemoModal from './DemoModal.vue';
-import DemoMultiCheckbox from './DemoMultiCheckbox.vue';
-import DemoMultiRadio from './DemoMultiRadio.vue';
-import DemoNotification from './DemoNotification.vue';
-import DemoNumberInput from './DemoNumberInput.vue';
-import DemoPluginSettingsWrapper from './DemoPluginSettingsWrapper.vue';
-import DemoRadioInput from './DemoRadioInput.vue';
-import DemoRow from './DemoRow';
-import DemoSelectInput from './DemoSelectInput.vue';
-import DemoTable from './DemoTable.vue';
-import DemoTableCol from './DemoTableCol.vue';
-import DemoTableRow from './DemoTableRow.vue';
-import DemoTextInput from './DemoTextInput.vue';
-import DemoToggleInput from './DemoToggleInput.vue';
+export {default as DemoButton} from './DemoButton.vue';
 
-export {
-  DemoButton,
-  DemoButtonGroup,
-  DemoCard,
-  DemoCheckboxInput,
-  DemoCol,
-  DemoCurrencyInput,
-  DemoDropdownButton,
-  DemoFormGroup,
-  DemoIcon,
-  DemoImage,
-  DemoLink,
-  DemoModal,
-  DemoMultiCheckbox,
-  DemoMultiRadio,
-  DemoNotification,
-  DemoNumberInput,
-  DemoPluginSettingsWrapper,
-  DemoRadioInput,
-  DemoRow,
-  DemoSelectInput,
-  DemoTable,
-  DemoTableCol,
-  DemoTableRow,
-  DemoTextInput,
-  DemoToggleInput,
-};
+export {default as DemoButtonGroup} from './DemoButtonGroup';
+
+export {default as DemoCard} from './DemoCard.vue';
+
+export {default as DemoCheckboxInput} from './DemoCheckboxInput.vue';
+
+export {default as DemoCol} from './DemoCol';
+
+export {default as DemoCurrencyInput} from './DemoCurrencyInput.vue';
+
+export {default as DemoDropdownButton} from './DemoDropdownButton.vue';
+
+export {default as DemoFormGroup} from './DemoFormGroup.vue';
+
+export {default as DemoIcon} from './DemoIcon.vue';
+
+export {default as DemoImage} from './DemoImage.vue';
+
+export {default as DemoLink} from './DemoLink.vue';
+
+export {default as DemoModal} from './DemoModal.vue';
+
+export {default as DemoMultiCheckbox} from './DemoMultiCheckbox.vue';
+
+export {default as DemoMultiRadio} from './DemoMultiRadio.vue';
+
+export {default as DemoNotification} from './DemoNotification.vue';
+
+export {default as DemoNumberInput} from './DemoNumberInput.vue';
+
+export {default as DemoPluginSettingsWrapper} from './DemoPluginSettingsWrapper';
+
+export {default as DemoRadioInput} from './DemoRadioInput.vue';
+
+export {default as DemoRow} from './DemoRow';
+
+export {default as DemoSelectInput} from './DemoSelectInput.vue';
+
+export {default as DemoTabNavButton} from './DemoTabNavButton.vue';
+
+export {default as DemoTabNavButtonWrapper} from './DemoTabNavButtonWrapper';
+
+export {default as DemoTabNavContentWrapper} from './DemoTabNavContentWrapper';
+
+export {default as DemoTable} from './DemoTable.vue';
+
+export {default as DemoTableCol} from './DemoTableCol.vue';
+
+export {default as DemoTableRow} from './DemoTableRow.vue';
+
+export {default as DemoTextInput} from './DemoTextInput.vue';
+
+export {default as DemoToggleInput} from './DemoToggleInput.vue';

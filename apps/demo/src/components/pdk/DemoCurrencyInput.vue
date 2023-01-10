@@ -3,11 +3,12 @@
     v-model="model"
     :min="0"
     :step="0.01"
-    :disabled="disabled" />
+    :element="element" />
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -16,8 +17,9 @@ import {useVModel} from '@vueuse/core';
 export default defineComponent({
   name: 'DemoCurrencyInput',
   props: {
-    disabled: {
-      type: Boolean,
+    element: {
+      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      required: true,
     },
 
     // eslint-disable-next-line vue/no-unused-properties

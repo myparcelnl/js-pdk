@@ -8,6 +8,7 @@ import {
   runCurrencyInputTest,
   runDropDownButtonTest,
   runFormGroupTest,
+  runHeadingTest,
   runIconTest,
   runImageTest,
   runLinkTest,
@@ -20,6 +21,9 @@ import {
   runRadioInputTest,
   runRowTest,
   runSelectInputTest,
+  runTabNavButtonTest,
+  runTabNavButtonWrapperTest,
+  runTabNavContentWrapperTest,
   runTableColTest,
   runTableRowTest,
   runTableTest,
@@ -33,7 +37,6 @@ import {describe} from 'vitest';
 export type ComponentTest = (component: Omit<Component, 'props'>, ...args: unknown[]) => void;
 
 const testMap: Record<PdkComponentName, ComponentTest> = {
-  PdkNotification: runNotificationTest,
   PdkButton: runButtonTest,
   PdkButtonGroup: runButtonGroupTest,
   PdkCard: runCardTest,
@@ -42,22 +45,27 @@ const testMap: Record<PdkComponentName, ComponentTest> = {
   PdkCurrencyInput: runCurrencyInputTest,
   PdkDropdownButton: runDropDownButtonTest,
   PdkFormGroup: runFormGroupTest,
+  PdkHeading: runHeadingTest,
   PdkIcon: runIconTest,
   PdkImage: runImageTest,
   PdkLink: runLinkTest,
   PdkModal: runModalTest,
   PdkMultiCheckbox: runMultiCheckboxTest,
   PdkMultiRadio: runMultiRadioTest,
+  PdkNotification: runNotificationTest,
   PdkNumberInput: runNumberInputTest,
   PdkPluginSettingsWrapper: runPluginSettingsWrapperTest,
   PdkRadioInput: runRadioInputTest,
   PdkRow: runRowTest,
   PdkSelectInput: runSelectInputTest,
+  PdkTabNavButton: runTabNavButtonTest,
   PdkTable: runTableTest,
   PdkTableCol: runTableColTest,
   PdkTableRow: runTableRowTest,
   PdkTextInput: runTextInputTest,
   PdkToggleInput: runToggleInputTest,
+  PdkTabNavButtonWrapper: runTabNavButtonWrapperTest,
+  PdkTabNavContentWrapper: runTabNavContentWrapperTest,
 };
 
 export const executePdkComponentTest = (name: PdkComponentName, component: Omit<Component, 'props'>): void => {

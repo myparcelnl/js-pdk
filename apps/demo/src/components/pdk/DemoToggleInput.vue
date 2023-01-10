@@ -3,19 +3,20 @@
     <input
       :id="id"
       v-model="model"
-      :disabled="disabled"
+      :disabled="element.isDisabled || element.isSuspended"
       :value="true"
       type="checkbox" />
 
     <label :for="id">
-      {{ model ? labelYes : labelNo }}
+      {{ model ? 'yes' : 'no' }}
     </label>
   </label>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
-import {generateId} from '@myparcel-pdk/frontend-core';
+import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {generateFieldId} from '@myparcel-pdk/frontend-core';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -25,32 +26,11 @@ import {useVModel} from '@vueuse/core';
 export default defineComponent({
   name: 'DemoToggleInput',
   props: {
-    /**
-     * Controls the disabled state.
-     */
-    disabled: {
-      type: Boolean,
+    element: {
+      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      required: true,
     },
 
-    /**
-     * Label in the disabled state.
-     */
-    labelNo: {
-      type: String,
-      default: 'no',
-    },
-
-    /**
-     * Label in the enabled state.
-     */
-    labelYes: {
-      type: String,
-      default: 'yes',
-    },
-
-    /**
-     * The value of the model.
-     */
     // eslint-disable-next-line vue/no-unused-properties
     modelValue: {
       type: [String, Boolean],
@@ -64,7 +44,7 @@ export default defineComponent({
     const model = useVModel(props, 'modelValue', ctx.emit);
 
     return {
-      id: generateId(),
+      id: generateFieldId(props.element),
       model,
     };
   },

@@ -1,17 +1,18 @@
 <template>
   <label>
-    {{ label }}
+    {{ element.label }}
     <input
       v-model="model"
-      :disabled="disabled"
-      :value="value"
+      :disabled="element.isDisabled || element.isSuspended"
+      :value="element.props?.value ?? true"
       type="checkbox" />
     <i />
   </label>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -20,18 +21,9 @@ import {useVModel} from '@vueuse/core';
 export default defineComponent({
   name: 'DemoCheckboxInput',
   props: {
-    disabled: {
-      type: Boolean,
-    },
-
-    label: {
-      type: String,
-      default: null,
-    },
-
-    value: {
-      type: [String, Boolean],
-      default: true,
+    element: {
+      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      required: true,
     },
 
     // eslint-disable-next-line vue/no-unused-properties

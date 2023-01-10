@@ -4,25 +4,25 @@
       <label :for="id">
         <!-- Can be used instead of the label prop. -->
         <slot name="label">
-          {{ translate(label) }}
+          {{ translate(element.label) }}
           <span
-            v-if="optional"
+            v-if="element.isOptional"
             v-text="translate('form_optional_tip')" />
         </slot>
       </label>
 
-      <small v-if="description">
-        {{ translate(description) }}
+      <small v-if="element.props?.description">
+        {{ translate(element.props?.description) }}
       </small>
     </PdkCol>
 
     <PdkCol>
       <slot />
 
-      <div v-if="!valid">
+      <div v-if="!element.isValid">
         <ul>
           <li
-            v-for="(error, index) in errors"
+            v-for="(error, index) in element.errors"
             :key="`error_${index}`">
             {{ error }}
           </li>
@@ -33,9 +33,10 @@
 </template>
 
 <script lang="ts">
-import {PropType, defineComponent} from 'vue';
-import {generateId, useTranslate} from '@myparcel/pdk-frontend';
-import {PdkComponentName} from '@myparcel-pdk/common';
+import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {generateFieldId} from '@myparcel-pdk/frontend-core/src/utils/generateFieldId';
+import {useTranslate} from '@myparcel/pdk-frontend';
 
 /**
  * A form group is used to render a label and a form element.
@@ -44,64 +45,15 @@ export default defineComponent({
   name: 'DefaultFormGroup',
   inheritAttrs: false,
   props: {
-    /**
-     * Component to render as the form group's control.
-     */
-    component: {
-      type: String as PropType<PdkComponentName>,
-      default: null,
-    },
-
-    /**
-     * Description to explain what this form group is for.
-     */
-    description: {
-      type: String,
-      default: null,
-    },
-
-    /**
-     * Errors to display.
-     */
-    errors: {
-      type: Array as PropType<string[]>,
-      default: () => [],
-    },
-
-    /**
-     * Label of the form group. Can be used instead of the label slot.
-     */
-    label: {
-      type: String,
-      default: null,
-    },
-
-    /**
-     * Whether the form group is optional.
-     */
-    optional: {
-      type: Boolean,
-    },
-
-    /**
-     * Suspended form groups are disabled and cannot be interacted with.
-     */
-    // eslint-disable-next-line vue/no-unused-properties
-    suspended: {
-      type: Boolean,
-    },
-
-    /**
-     * Whether the form group is valid.
-     */
-    valid: {
-      type: Boolean,
+    element: {
+      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      required: true,
     },
   },
 
-  setup: () => ({
+  setup: (props) => ({
+    id: generateFieldId(props.element),
     translate: useTranslate(),
-    id: `fg${generateId()}`,
   }),
 });
 </script>

@@ -17,7 +17,6 @@
 import {PdkIcon, useTranslate} from '@myparcel/pdk-frontend';
 import {PropType, defineComponent} from 'vue';
 
-// const sizePropValidator: (value: string) => boolean = (value: string) => ['md', 'sm', 'xs'].includes(value);
 /**
  * This component is used to render a button. The button can be used to trigger
  * an action. The button can have multiple icons and a label. The button can be

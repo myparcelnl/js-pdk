@@ -1,6 +1,7 @@
 import {FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder';
+import {optionalComponentNames, requiredComponentNames} from '@myparcel-pdk/common';
 import {PdkAppPlugin} from './plugins.types';
-import {componentNames} from '@myparcel-pdk/common';
+import {PlainElement} from '../../../components';
 import {globalLogger} from '../../../services';
 import {merge} from 'lodash-unified';
 import {useTranslate} from '../../../composables';
@@ -14,7 +15,8 @@ export const createRegisterComponentsPlugin: PdkAppPlugin = ({config, logger}) =
       logger.debug(`Installing components plugin`);
 
       const components = {
-        ...componentNames.reduce((acc, name) => ({...acc, [name]: null}), {}),
+        ...optionalComponentNames.reduce((acc, name) => ({...acc, [name]: PlainElement}), {}),
+        ...requiredComponentNames.reduce((acc, name) => ({...acc, [name]: null}), {}),
         ...config.components,
       };
 

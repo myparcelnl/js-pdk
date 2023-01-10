@@ -1,13 +1,16 @@
 <template>
   <input
+    :id="id"
     v-model="model"
-    :disabled="disabled"
-    :type="type"
+    :disabled="element.isDisabled || element.isSuspended"
+    :type="element.props?.type ?? 'text'"
     class="border px-3 py-2 rounded" />
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {generateFieldId} from '@myparcel-pdk/frontend-core/src/utils/generateFieldId';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -17,24 +20,11 @@ import {useVModel} from '@vueuse/core';
 export default defineComponent({
   name: 'DemoTextInput',
   props: {
-    /**
-     * Controls disabled state.
-     */
-    disabled: {
-      type: Boolean,
+    element: {
+      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      required: true,
     },
 
-    /**
-     * ExportOrdersInput type.
-     */
-    type: {
-      type: String,
-      default: 'text',
-    },
-
-    /**
-     * The value of the model.
-     */
     // eslint-disable-next-line vue/no-unused-properties
     modelValue: {
       type: [String, Number],
@@ -43,10 +33,9 @@ export default defineComponent({
   },
 
   setup: (props, ctx) => {
-    const model = useVModel(props, 'modelValue', ctx.emit);
-
     return {
-      model,
+      model: useVModel(props, 'modelValue', ctx.emit),
+      id: generateFieldId(props.element),
     };
   },
 });

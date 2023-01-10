@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@myparcel/pdk-component-tests": "workspace:^",
+    "@myparcel/vue-form-builder": "^1.0.0-alpha.29",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/test-utils": "^2.2.7",
     "happy-dom": "^8.1.3",

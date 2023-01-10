@@ -20,6 +20,9 @@ import {
   DemoRadioInput,
   DemoRow,
   DemoSelectInput,
+  DemoTabNavButton,
+  DemoTabNavButtonWrapper,
+  DemoTabNavContentWrapper,
   DemoTable,
   DemoTableCol,
   DemoTableRow,
@@ -28,6 +31,7 @@ import {
 } from './components';
 import {LogLevel, createPdkFrontendPlugin} from '@myparcel-pdk/frontend-core';
 import App from './App.vue';
+import {DefaultHeading} from '@myparcel/pdk-components';
 import {context} from './context';
 import {createApp} from 'vue';
 import {createRouterInstance} from './router';
@@ -54,6 +58,7 @@ app.use(
       PdkCurrencyInput: DemoCurrencyInput,
       PdkDropdownButton: DemoDropdownButton,
       PdkFormGroup: DemoFormGroup,
+      PdkHeading: DefaultHeading,
       PdkIcon: DemoIcon,
       PdkImage: DemoImage,
       PdkLink: DemoLink,
@@ -66,6 +71,9 @@ app.use(
       PdkRadioInput: DemoRadioInput,
       PdkRow: DemoRow,
       PdkSelectInput: DemoSelectInput,
+      PdkTabNavButton: DemoTabNavButton,
+      PdkTabNavButtonWrapper: DemoTabNavButtonWrapper,
+      PdkTabNavContentWrapper: DemoTabNavContentWrapper,
       PdkTable: DemoTable,
       PdkTableCol: DemoTableCol,
       PdkTableRow: DemoTableRow,

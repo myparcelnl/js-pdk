@@ -54,7 +54,7 @@ export default defineComponent({
       routes: useRouter()
         .getRoutes()
         .filter((route) => {
-          return route.meta?.menu && route.aliasOf === undefined;
+          return !route.meta?.hidden && route.aliasOf === undefined;
         }),
     };
   },

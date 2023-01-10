@@ -343,7 +343,7 @@ export namespace Plugin {
     name: string;
     label: string;
     type: string;
-  };
+  } & Record<string, unknown>;
 
   export type ModelContextPluginSettingsViewContext = {
     general: SettingsView[];

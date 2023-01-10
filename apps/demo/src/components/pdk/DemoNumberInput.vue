@@ -2,14 +2,15 @@
   <PdkTextInput
     v-model="model"
     type="number"
-    :min="min"
-    :max="max"
-    :disabled="disabled"
-    :step="step" />
+    :element="element"
+    :min="element.props?.min ?? 0"
+    :max="element.props?.max ?? null"
+    :step="element.props?.step ?? 1" />
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -19,35 +20,15 @@ import {useVModel} from '@vueuse/core';
 export default defineComponent({
   name: 'DemoNumberInput',
   props: {
-    /**
-     * Controls disabled state.
-     */
-    disabled: {
-      type: Boolean,
+    element: {
+      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      required: true,
     },
 
-    max: {
-      type: Number,
-      default: null,
-    },
-
-    min: {
-      type: Number,
-      default: 0,
-    },
-
-    /**
-     * The value of the model.
-     */
     // eslint-disable-next-line vue/no-unused-properties
     modelValue: {
       type: Number,
       default: null,
-    },
-
-    step: {
-      type: Number,
-      default: 1,
     },
   },
 

@@ -1,4 +1,4 @@
-import {EndpointName, componentNames} from '@myparcel-pdk/common';
+import {EndpointName, requiredComponentNames} from '@myparcel-pdk/common';
 import {LogLevel, createLogger, globalLogger} from '../../services';
 import {MountingOptions, mount as vtuMount, shallowMount as vtuShallowMount} from '@vue/test-utils';
 import {PdkFrontendAppConfig, createContextPlugin, createStorePlugin} from '../../pdk';
@@ -60,7 +60,7 @@ export const doMount = <R extends typeof vtuMount | typeof vtuShallowMount>(
   options.global.plugins.push(createStorePlugin(appConfig));
   options.global.plugins.push(createContextPlugin(appConfig));
 
-  componentNames.forEach((name) => {
+  requiredComponentNames.forEach((name) => {
     // @ts-expect-error todo
     options.global.stubs[name] = true;
   });

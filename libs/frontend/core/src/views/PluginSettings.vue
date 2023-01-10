@@ -1,11 +1,6 @@
 <template>
   <PdkPluginSettingsWrapper>
-    <template
-      v-for="form in forms"
-      :key="`plugin_settings_${form.name}`">
-      <h1>{{ form.name }}</h1>
-      <MagicForm :form="form" />
-    </template>
+    <TabNavigation :tabs="tabs" />
   </PdkPluginSettingsWrapper>
 </template>
 
@@ -14,7 +9,14 @@
  * Plugin settings screen.
  */
 import {MagicForm} from '@myparcel/vue-form-builder';
+import {TabNavigation} from '../components/common';
 import {createPluginSettingsForms} from '../forms';
+import {h} from 'vue';
 
 const forms = createPluginSettingsForms();
+
+const tabs = forms.map((form) => ({
+  name: form.name,
+  component: h('div', [h('PdkHeading', {level: 1}, form.name), h(MagicForm, {form})]),
+}));
 </script>

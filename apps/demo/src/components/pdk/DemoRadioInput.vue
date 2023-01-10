@@ -1,15 +1,16 @@
 <template>
   <PdkRadio
-    v-for="option in options"
+    v-for="option in element.props?.options ?? []"
+    :id="id"
     :key="option.value"
-    :disabled="disabled || option.disabled"
+    :disabled="element.isDisabled || element.isSuspended || option.disabled"
     v-bind="option" />
 </template>
 
 <script lang="ts">
-import {PropType, defineComponent} from 'vue';
-import {SelectOption} from '@myparcel-pdk/common';
-import {useTranslate} from '@myparcel-pdk/frontend-core';
+import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
+import {generateFieldId, useTranslate} from '@myparcel-pdk/frontend-core';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -19,13 +20,9 @@ import {useVModel} from '@vueuse/core';
 export default defineComponent({
   name: 'DemoRadioInput',
   props: {
-    disabled: {
-      type: Boolean,
-    },
-
-    options: {
-      type: Array as PropType<SelectOption[]>,
-      default: (): SelectOption[] => [],
+    element: {
+      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      required: true,
     },
 
     // eslint-disable-next-line vue/no-unused-properties
@@ -35,13 +32,10 @@ export default defineComponent({
     },
   },
 
-  setup(props, ctx) {
-    const model = useVModel(props, 'modelValue', ctx.emit);
-
-    return {
-      translate: useTranslate(),
-      model,
-    };
-  },
+  setup: (props, ctx) => ({
+    id: generateFieldId(props.element),
+    model: useVModel(props, 'modelValue', ctx.emit),
+    translate: useTranslate(),
+  }),
 });
 </script>
