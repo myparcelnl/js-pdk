@@ -35,7 +35,7 @@
 <script lang="ts">
 import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {generateFieldId} from '@myparcel-pdk/frontend-core/src/utils/generateFieldId';
+import {generateFieldId} from '@myparcel-pdk/frontend-core';
 import {useTranslate} from '@myparcel/pdk-frontend';
 
 /**
@@ -43,7 +43,6 @@ import {useTranslate} from '@myparcel/pdk-frontend';
  */
 export default defineComponent({
   name: 'DefaultFormGroup',
-  inheritAttrs: false,
   props: {
     element: {
       type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,

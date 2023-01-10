@@ -16,7 +16,7 @@
 <script lang="ts">
 import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {generateFieldId} from '@myparcel-pdk/frontend-core/src/utils/generateFieldId';
+import {generateFieldId} from '@myparcel-pdk/frontend-core';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -43,11 +43,9 @@ export default defineComponent({
   emits: ['update:modelValue'],
 
   setup: (props, ctx) => {
-    const model = useVModel(props, 'modelValue', ctx.emit);
-
     return {
       id: generateFieldId(props.element),
-      model,
+      model: useVModel(props, 'modelValue', ctx.emit),
     };
   },
 });

@@ -32,8 +32,6 @@ export {default as DefaultNotification} from './DefaultNotification.vue';
 
 export {default as DefaultNumberInput} from './DefaultNumberInput.vue';
 
-export {default as DefaultPluginSettingsWrapper} from './DefaultPluginSettingsWrapper';
-
 export {default as DefaultRadioInput} from './DefaultRadioInput.vue';
 
 export {default as DefaultRow} from './DefaultRow';
@@ -41,8 +39,6 @@ export {default as DefaultRow} from './DefaultRow';
 export {default as DefaultSelectInput} from './DefaultSelectInput.vue';
 
 export {default as DefaultTabNavButton} from './DefaultTabNavButton.vue';
-
-export {default as DefaultTabNavigation} from './DefaultTabNavigation.vue';
 
 export {default as DefaultTable} from './DefaultTable.vue';
 
@@ -53,5 +49,3 @@ export {default as DefaultTableRow} from './DefaultTableRow.vue';
 export {default as DefaultTextInput} from './DefaultTextInput.vue';
 
 export {default as DefaultToggleInput} from './DefaultToggleInput.vue';
-
-export {default as PlainDiv} from './PlainDiv';

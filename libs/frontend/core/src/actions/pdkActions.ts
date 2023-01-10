@@ -36,25 +36,25 @@ export const modalOpenAction: OnClickAction = {
 };
 
 export const orderExportAction: InputPdkButtonAction = {
-  action: FrontendAction.ORDER_EXPORT,
+  action: FrontendAction.ORDERS_EXPORT,
   icon: PdkIcon.EXPORT,
   label: 'action_export',
 };
 
 export const orderExportPrintAction: InputPdkButtonAction = {
-  action: FrontendAction.ORDER_EXPORT_PRINT,
+  action: FrontendAction.ORDERS_EXPORT_PRINT,
   icon: PdkIcon.PRINT,
   label: 'action_export_print',
 };
 
 export const orderPrintAction: InputPdkButtonAction = {
-  action: FrontendAction.ORDER_PRINT,
+  action: FrontendAction.ORDERS_PRINT,
   icon: PdkIcon.PRINT,
   label: 'action_print',
 };
 
 export const orderUpdateAction = {
-  action: FrontendAction.ORDER_UPDATE,
+  action: FrontendAction.ORDERS_UPDATE,
   icon: PdkIcon.SAVE,
   label: 'action_save',
 };
@@ -72,7 +72,7 @@ export const shipmentPrintAction: PdkDropdownAction = {
 };
 
 export const shipmentRefreshAction: PdkDropdownAction = {
-  action: FrontendAction.SHIPMENTS_REFRESH,
+  action: FrontendAction.SHIPMENTS_UPDATE,
   icon: PdkIcon.REFRESH,
   label: 'action_refresh',
 };

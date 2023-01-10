@@ -21,9 +21,12 @@ export const beforePrintAction = <A extends FrontendAction>(
     modalStore.onClose(() => {
       const formBuilder = useFormBuilder();
 
+      // @ts-expect-error this works
+      const form = formBuilder.forms?.[ModalKey.PRINT_OPTIONS];
+
       resolve({
         ...parameters,
-        ...(formBuilder.forms[ModalKey.PRINT_OPTIONS]?.getValues() ?? {}),
+        ...(form?.getValues() ?? {}),
       } as ActionParameters<A>);
     });
   });

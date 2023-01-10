@@ -9,5 +9,3 @@ export * from './services';
 export * from './stores';
 export * from './types';
 export * from './utils';
-
-export {mount, shallowMount} from './__tests__/mount';

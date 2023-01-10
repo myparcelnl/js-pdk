@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent, ref} from 'vue';
-import {usePdkConfig, useTranslate} from '@myparcel/pdk-frontend';
+import {usePdkConfig, useTranslate} from '../../composables';
 import {PdkTab} from '@myparcel-pdk/common';
 
 /**

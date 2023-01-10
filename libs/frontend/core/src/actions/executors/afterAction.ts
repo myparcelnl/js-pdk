@@ -10,7 +10,8 @@ export const afterAction = async <A extends FrontendAction>({
 }: ActionContextWithResponse<A>): Promise<ActionResponse<A>> => {
   if (isInArray(action, printActions)) {
     // @ts-expect-error todo
-    response = await afterPrintAction(action, parameters, response);
+    response = await afterPrintAction({logger, action, parameters, response});
+
     logger?.debug(action, 'Modified response', response);
   }
 

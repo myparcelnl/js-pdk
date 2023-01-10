@@ -10,7 +10,7 @@
 <script lang="ts">
 import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {generateFieldId} from '@myparcel-pdk/frontend-core/src/utils/generateFieldId';
+import {generateFieldId} from '@myparcel-pdk/frontend-core';
 import {useVModel} from '@vueuse/core';
 
 /**

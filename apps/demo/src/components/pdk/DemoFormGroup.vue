@@ -23,9 +23,8 @@
 
 <script lang="ts">
 import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
+import {generateFieldId, useTranslate} from '@myparcel-pdk/frontend-core';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {generateFieldId} from '@myparcel-pdk/frontend-core/src/utils/generateFieldId';
-import {useTranslate} from '@myparcel-pdk/frontend-core';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultFormGroup

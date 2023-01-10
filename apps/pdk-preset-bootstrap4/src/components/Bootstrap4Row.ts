@@ -1,26 +1,28 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {FunctionalComponent, h} from 'vue';
-import {PdkRowProps} from '@myparcel-pdk/frontend-components';
+import {defineComponent, h} from 'vue';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultRow
  */
-export const Bootstrap4Row: FunctionalComponent<PdkRowProps> = (props, ctx) => {
-  const classes = [
-    ctx.attrs.class,
-    props.columns ? `row-cols-${props.columns}` : 'row',
-    props.collapseGutters ? 'no-gutters' : '',
-  ];
-
-  return h('div', {...ctx.attrs, class: classes}, ctx.slots);
-};
-
-Bootstrap4Row.props = {
-  collapseGutters: {
-    type: Boolean,
+export default defineComponent({
+  name: 'Bootstrap4Row',
+  props: {
+    collapseGutters: {
+      type: Boolean,
+    },
+    columns: {
+      type: Number,
+      default: null,
+    },
   },
-  columns: {
-    type: Number,
-    default: null,
+
+  render() {
+    const classes = [
+      this.$attrs.class,
+      this.columns ? `row-cols-${this.columns}` : 'row',
+      this.collapseGutters ? 'no-gutters' : '',
+    ];
+
+    return h('div', {...this.$attrs, class: classes}, this.$slots);
   },
-};
+});

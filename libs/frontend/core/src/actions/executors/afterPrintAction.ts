@@ -1,14 +1,14 @@
-import {ActionParameters, ActionResponse, printActions} from '../index';
-import {useLogger} from '../../composables/useLogger';
+import {ActionContextWithResponse, ActionResponse, FrontendAction, doAction, printActions} from '../index';
 
-export const afterPrintAction = async <A extends typeof printActions[number]>(
-  action: A,
-  parameters: ActionParameters<A>,
-  response: ActionResponse<A>,
-): Promise<ActionResponse<A>> => {
-  const logger = useLogger();
+export const afterPrintAction = async <A extends (typeof printActions)[number]>({
+  parameters,
+  response,
+  logger,
+}: ActionContextWithResponse<A>): Promise<ActionResponse<A>> => {
+  logger?.debug('Please pretend your pdf was just downloaded or opened. 🚀');
+  logger?.debug('Parameters', parameters, response);
 
-  logger.debug('Please pretend your pdf was just downloaded or opened. 🚀');
+  void doAction({action: FrontendAction.ORDERS_UPDATE, parameters: {orderIds: parameters?.orderIds}, logger});
 
   return Promise.resolve(response);
 };

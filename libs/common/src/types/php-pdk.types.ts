@@ -405,7 +405,7 @@ export namespace Plugin {
 
   export type PrintOrdersEndpointRequest = AbstractEndpointRequest;
 
-  export type RefreshShipmentsEndpointRequest = AbstractEndpointRequest;
+  export type UpdateShipmentsEndpointRequest = AbstractEndpointRequest;
 
   export type UpdateOrdersEndpointRequest = AbstractEndpointRequest;
 }

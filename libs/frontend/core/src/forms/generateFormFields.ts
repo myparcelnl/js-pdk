@@ -1,5 +1,5 @@
 import {AnyElementConfiguration, defineField} from '@myparcel/vue-form-builder';
-import {Form} from '@myparcel-pdk/common/src';
+import {Form} from '@myparcel-pdk/common';
 import {RequireOnly} from '@myparcel/ts-utils';
 import {ref} from 'vue';
 import {resolveFormComponent} from './resolveFormComponent';

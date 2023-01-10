@@ -37,8 +37,8 @@ export type DeleteShipmentsDefinition = CreateDefinition<{
   response: Plugin.ModelContextOrderDataContext[];
 }>;
 
-export type RefreshShipmentsDefinition = CreateDefinition<{
-  name: EndpointName.REFRESH_SHIPMENTS;
+export type UpdateShipmentsDefinition = CreateDefinition<{
+  name: EndpointName.UPDATE_SHIPMENTS;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
@@ -79,7 +79,7 @@ export type PdkEndpointDefinition<N extends EndpointName> = Extract<
   | ExportOrdersDefinition
   | UpdateOrdersDefinition
   | DeleteShipmentsDefinition
-  | RefreshShipmentsDefinition
+  | UpdateShipmentsDefinition
   | UpdatePluginSettingsDefinition
   | PrintShipmentsDefinition
   | UpdateProductSettingsDefinition,

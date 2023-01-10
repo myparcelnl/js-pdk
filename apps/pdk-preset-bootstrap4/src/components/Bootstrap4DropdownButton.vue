@@ -56,7 +56,6 @@ export default defineComponent({
     return {
       translate: useTranslate(),
       standaloneActions: computed(() => propRefs.actions.value.filter((option) => option.standalone)),
-
       dropdownActions: computed(() => propRefs.actions.value.filter((option) => !option.standalone)),
     };
   },

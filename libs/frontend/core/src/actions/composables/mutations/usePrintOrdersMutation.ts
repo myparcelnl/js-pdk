@@ -1,9 +1,8 @@
 /* eslint-disable no-console,@typescript-eslint/explicit-module-boundary-types */
+import {EndpointName, Plugin} from '@myparcel-pdk/common';
 import {useMutation, useQueryClient} from '@tanstack/vue-query';
 import {ApiException} from '@myparcel/sdk';
-import {EndpointName} from '@myparcel-pdk/common/src';
 import {OneOrMore} from '@myparcel/ts-utils';
-import {Plugin} from '@myparcel-pdk/common';
 import {encodeArrayParameter} from '../../../utils';
 import {fillOrderQueryData} from '../../../pdk';
 import {usePdkApi} from '../../../sdk';

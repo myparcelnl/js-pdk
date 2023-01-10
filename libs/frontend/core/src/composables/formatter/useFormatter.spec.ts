@@ -1,5 +1,5 @@
 import {describe, expect, it, vi} from 'vitest';
-import {mount} from '../../__tests__/mount';
+import {mount} from '@vue/test-utils';
 import {useFormatter} from './useFormatter';
 
 describe('format strings', () => {

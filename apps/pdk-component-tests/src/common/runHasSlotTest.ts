@@ -1,6 +1,6 @@
 import {expect, it} from 'vitest';
 import {Component} from 'vue';
-import {mount} from '@myparcel-pdk/frontend-core';
+import {mount} from '@vue/test-utils';
 
 export const runHasSlotTest = (component: Omit<Component, 'props'>, slot = 'default'): void => {
   it(`has slot #${slot}`, () => {

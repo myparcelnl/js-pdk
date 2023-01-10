@@ -10,5 +10,6 @@
       "@myparcel/pdk-components": ["./apps/pdk-components/src"],
       "@myparcel/pdk-frontend": ["./apps/pdk-frontend/src"]
     }
-  }
+  },
+  "exclude": []
 }

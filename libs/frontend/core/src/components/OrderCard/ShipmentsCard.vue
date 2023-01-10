@@ -1,5 +1,5 @@
 <template>
-  <PdkCard>
+  <PdkCard :loading="loading">
     <template #header>
       <PdkIcon icon="local_shipping" />
       {{ translate('order_labels_header') }}
@@ -27,12 +27,12 @@
 </template>
 
 <script lang="ts">
-import {FrontendAction, deleteAction, shipmentPrintAction, shipmentRefreshAction} from '../../actions';
 import {PropType, defineComponent, ref} from 'vue';
+import {deleteAction, shipmentPrintAction, shipmentRefreshAction} from '../../actions';
+import {useLoading, useTranslate} from '../../composables';
 import {Plugin} from '@myparcel-pdk/common';
 import ShipmentLabelsTable from './ShipmentLabelsTable.vue';
-import {doAction} from '../../utils';
-import {useTranslate} from '../../composables';
+import {createActions} from '../../services';
 
 export default defineComponent({
   name: 'ShipmentsCard',
@@ -47,20 +47,33 @@ export default defineComponent({
 
   setup: () => {
     const selectedLabels = ref<number[]>([]);
+    const {loading, setLoading} = useLoading();
 
     return {
-      translate: useTranslate(),
+      bulkActionDropdownItems: createActions(
+        [shipmentRefreshAction, shipmentPrintAction, deleteAction],
+        {
+          shipmentIds: selectedLabels.value,
+        },
+        {
+          start() {
+            setLoading(true);
+          },
+          end() {
+            setLoading(false);
+          },
+        },
+      ),
+
+      loading,
+
       selectedLabels,
 
       setSelectedLabels(labels: number[]): void {
         selectedLabels.value = labels;
       },
 
-      bulkActionDropdownItems: [shipmentRefreshAction, shipmentPrintAction, deleteAction],
-
-      async onBulkAction<A extends FrontendAction.SHIPMENTS_REFRESH>(action: A): Promise<void> {
-        await doAction<A>(action, {shipmentIds: selectedLabels.value});
-      },
+      translate: useTranslate(),
     };
   },
 });

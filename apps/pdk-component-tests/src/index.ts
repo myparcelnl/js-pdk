@@ -1,9 +1,3 @@
-export * from './common';
+export {doVitestSetup} from './doVitestSetup';
 
-export * from './tests';
-
-export {executePdkComponentTest} from './executePdkComponentTest';
-
-export {executePdkComponentTests} from './executePdkComponentTests';
-
-export {mount, shallowMount} from '@myparcel-pdk/frontend-core';
+export {executePdkComponentTest, executePdkComponentTests} from './tests';

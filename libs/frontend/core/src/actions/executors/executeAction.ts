@@ -14,19 +14,19 @@ export async function executeAction<A extends FrontendAction>({
   let response;
 
   switch (action) {
-    case FrontendAction.ORDER_REFRESH:
+    case FrontendAction.ORDERS_REFRESH:
       response = (await queryStore.get(EndpointName.GET_ORDERS).refetch()).data;
       break;
 
-    case FrontendAction.ORDER_EXPORT:
-    case FrontendAction.ORDER_EXPORT_PRINT:
-    case FrontendAction.ORDER_PRINT:
-    case FrontendAction.ORDER_UPDATE:
+    case FrontendAction.ORDERS_EXPORT:
+    case FrontendAction.ORDERS_EXPORT_PRINT:
+    case FrontendAction.ORDERS_PRINT:
+    case FrontendAction.ORDERS_UPDATE:
     case FrontendAction.PLUGIN_SETTINGS_UPDATE:
     case FrontendAction.PRODUCT_SETTINGS_UPDATE:
     case FrontendAction.SHIPMENTS_DELETE:
     case FrontendAction.SHIPMENTS_PRINT:
-    case FrontendAction.SHIPMENTS_REFRESH:
+    case FrontendAction.SHIPMENTS_UPDATE:
       response = await executeMutation({action, parameters});
       break;
 

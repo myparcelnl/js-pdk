@@ -1,6 +1,6 @@
 import {expect, it} from 'vitest';
-import {ComponentTest} from '../executePdkComponentTest';
-import {mount} from '@myparcel-pdk/frontend-core';
+import {ComponentTest} from '../types';
+import {mount} from '@vue/test-utils';
 
 export const runHasPropTest: ComponentTest = (component, prop, value = 'value') => {
   it(`has prop ${prop}`, () => {

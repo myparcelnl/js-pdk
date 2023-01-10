@@ -6,9 +6,9 @@ import {
   useOrderQuery,
   usePrintOrdersMutation,
   usePrintShipmentsMutation,
-  useRefreshShipmentsMutation,
   useUpdateOrdersMutation,
   useUpdatePluginSettingsMutation,
+  useUpdateShipmentsMutation,
 } from '../actions';
 import {EndpointName} from '@myparcel-pdk/common';
 import {MutationMode} from '../services';
@@ -27,8 +27,8 @@ export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends End
   ? ReturnType<typeof useUpdateOrdersMutation>
   : I extends EndpointName.PRINT_SHIPMENTS
   ? ReturnType<typeof usePrintShipmentsMutation>
-  : I extends EndpointName.REFRESH_SHIPMENTS
-  ? ReturnType<typeof useRefreshShipmentsMutation>
+  : I extends EndpointName.UPDATE_SHIPMENTS
+  ? ReturnType<typeof useUpdateShipmentsMutation>
   : I extends EndpointName.DELETE_SHIPMENTS
   ? ReturnType<typeof useDeleteShipmentsMutation>
   : I extends EndpointName.UPDATE_PLUGIN_SETTINGS
@@ -88,7 +88,7 @@ export const useQueryStore = defineStore('query', () => {
 
       register(EndpointName.DELETE_SHIPMENTS, useDeleteShipmentsMutation());
       register(EndpointName.PRINT_SHIPMENTS, usePrintShipmentsMutation());
-      register(EndpointName.REFRESH_SHIPMENTS, useRefreshShipmentsMutation());
+      register(EndpointName.UPDATE_SHIPMENTS, useUpdateShipmentsMutation());
     },
 
     queryClient,

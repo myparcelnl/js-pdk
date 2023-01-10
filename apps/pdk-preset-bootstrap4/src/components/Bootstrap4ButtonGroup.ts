@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {FunctionalComponent, h} from 'vue';
+import {defineComponent, h} from 'vue';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultButtonGroup
  */
-export const Bootstrap4ButtonGroup: FunctionalComponent = (props, ctx) => {
-  return h('div', {...ctx.attrs, class: [ctx.attrs.class, 'btn-group']}, ctx.slots);
-};
+export default defineComponent({
+  name: 'Bootstrap4ButtonGroup',
+  render() {
+    return h('div', {...this.$attrs, class: [this.$attrs.class, 'btn-group']}, this.$slots);
+  },
+});
