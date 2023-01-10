@@ -11,8 +11,11 @@ libs/**/tsconfig.json
 .DS_Store
 .eslintcache
 .vitest-result.json
-vite.config.ts.timestamp-*
 node_modules
+
+# Temporary build files
+vite.config.ts.timestamp-*
+tsup.config.bundled_*.mjs
 
 # Logs
 logs
