@@ -13,9 +13,14 @@
       :name="pdkConfig.transitions.tabNavigation"
       mode="out-in">
       <KeepAlive>
-        <component
-          :is="activeTabContents?.component"
-          :key="`tab_${activeTabContents?.name}`" />
+        <Suspense>
+          <template #default>
+            <component
+              :is="activeTabContents?.component"
+              :key="`tab_${activeTabContents?.name}`" />
+          </template>
+          <template #fallback>{{ translate('loading') }}</template>
+        </Suspense>
       </KeepAlive>
     </Transition>
   </PdkTabNavContentWrapper>
