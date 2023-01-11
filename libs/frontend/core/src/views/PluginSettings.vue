@@ -17,6 +17,6 @@ const forms = createPluginSettingsForms();
 
 const tabs = forms.map((form) => ({
   name: form.name,
-  component: h('div', [h('PdkHeading', {level: 1}, form.name), h(MagicForm, {form})]),
+  component: h(MagicForm, {form}),
 }));
 </script>

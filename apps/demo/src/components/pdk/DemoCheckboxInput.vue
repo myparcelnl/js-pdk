@@ -11,8 +11,8 @@
 </template>
 
 <script lang="ts">
-import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {PropType, defineComponent} from 'vue';
+import {ElementInstance} from '@myparcel/pdk-frontend';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -22,7 +22,7 @@ export default defineComponent({
   name: 'DemoCheckboxInput',
   props: {
     element: {
-      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      type: Object as PropType<ElementInstance>,
       required: true,
     },
 

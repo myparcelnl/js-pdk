@@ -14,9 +14,8 @@
 </template>
 
 <script lang="ts">
-import {PropType, UnwrapNestedRefs, defineComponent, watchEffect} from 'vue';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {generateFieldId} from '@myparcel-pdk/frontend-core';
+import {ElementInstance, generateFieldId} from '@myparcel/pdk-frontend';
+import {PropType, defineComponent, onMounted} from 'vue';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -27,7 +26,7 @@ export default defineComponent({
   name: 'DemoSelectInput',
   props: {
     element: {
-      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      type: Object as PropType<ElementInstance>,
       required: true,
     },
 
@@ -38,12 +37,14 @@ export default defineComponent({
     },
   },
 
+  emits: ['update:modelValue'],
+
   setup: (props, ctx) => {
     const model = useVModel(props, 'modelValue', ctx.emit);
 
-    watchEffect(() => {
-      if (props.element.props?.options?.length && !props.modelValue) {
-        model.value = props.element.props.options[0].value;
+    onMounted(() => {
+      if (props.element.props?.options?.length === 1 || !props.modelValue) {
+        model.value = props.element.props.options[0]?.value;
       }
     });
 

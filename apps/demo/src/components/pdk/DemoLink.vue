@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import {AnchorHTMLAttributes, PropType, computed, defineComponent} from 'vue';
-import {PdkButtonAction, useAction, useTranslate} from '@myparcel-pdk/frontend-core';
+import {PdkButtonAction, useAction, useTranslate} from '@myparcel/pdk-frontend';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultLink

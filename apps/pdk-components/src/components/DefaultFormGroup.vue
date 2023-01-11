@@ -33,10 +33,8 @@
 </template>
 
 <script lang="ts">
-import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {generateFieldId} from '@myparcel-pdk/frontend-core';
-import {useTranslate} from '@myparcel/pdk-frontend';
+import {ElementInstance, generateFieldId, useTranslate} from '@myparcel/pdk-frontend';
+import {PropType, defineComponent} from 'vue';
 
 /**
  * A form group is used to render a label and a form element.
@@ -45,7 +43,7 @@ export default defineComponent({
   name: 'DefaultFormGroup',
   props: {
     element: {
-      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      type: Object as PropType<ElementInstance>,
       required: true,
     },
   },

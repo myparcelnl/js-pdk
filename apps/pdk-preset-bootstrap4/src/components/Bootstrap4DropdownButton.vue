@@ -27,8 +27,8 @@
 </template>
 
 <script lang="ts">
-import {ActionButton, PdkDropdownAction, useTranslate} from '@myparcel-pdk/frontend-core';
-import {PropType, computed, defineComponent, toRefs} from 'vue';
+import {ActionButton, PdkDropdownAction, useTranslate} from '@myparcel/pdk-frontend';
+import {PropType, computed, defineComponent} from 'vue';
 import BaseButton from './common/BaseButton.vue';
 
 /**
@@ -51,12 +51,10 @@ export default defineComponent({
   emits: ['click'],
 
   setup: (props) => {
-    const propRefs = toRefs(props);
-
     return {
       translate: useTranslate(),
-      standaloneActions: computed(() => propRefs.actions.value.filter((option) => option.standalone)),
-      dropdownActions: computed(() => propRefs.actions.value.filter((option) => !option.standalone)),
+      standaloneActions: computed(() => props.actions.filter((option) => option.standalone)),
+      dropdownActions: computed(() => props.actions.filter((option) => !option.standalone)),
     };
   },
 });

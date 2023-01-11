@@ -22,9 +22,8 @@
 </template>
 
 <script lang="ts">
-import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
-import {generateFieldId, useTranslate} from '@myparcel-pdk/frontend-core';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {ElementInstance, generateFieldId, useTranslate} from '@myparcel/pdk-frontend';
+import {PropType, defineComponent} from 'vue';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultFormGroup
@@ -33,7 +32,7 @@ export default defineComponent({
   name: 'DemoFormGroup',
   props: {
     element: {
-      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      type: Object as PropType<ElementInstance>,
       required: true,
     },
   },

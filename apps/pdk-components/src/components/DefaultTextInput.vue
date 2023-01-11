@@ -40,6 +40,8 @@ export default defineComponent({
     },
   },
 
+  emits: ['update:modelValue'],
+
   setup: (props, ctx) => {
     const model = useVModel(props, 'modelValue', ctx.emit);
 

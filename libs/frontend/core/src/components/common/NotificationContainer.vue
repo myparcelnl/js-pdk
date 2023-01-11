@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import {PropType, computed, defineComponent, toRefs} from 'vue';
+import {PropType, computed, defineComponent} from 'vue';
 import {NotificationCategory} from '../../types';
 import {useNotificationStore} from '../../stores';
 import {usePdkConfig} from '../../composables';
@@ -26,7 +26,6 @@ export default defineComponent({
   },
 
   setup: (props) => {
-    const propRefs = toRefs(props);
     const pdkConfig = usePdkConfig();
 
     return {
@@ -35,7 +34,7 @@ export default defineComponent({
         const {notifications} = useNotificationStore();
 
         return notifications.filter((notification) => {
-          return notification.category === propRefs.category.value;
+          return notification.category === props.category;
         });
       }),
     };

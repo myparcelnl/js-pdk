@@ -1,6 +1,5 @@
-import {AnyElementInstance} from '@myparcel/vue-form-builder';
-import {UnwrapNestedRefs} from 'vue';
+import {ElementInstance} from '../types';
 
-export const generateFieldId = (element: UnwrapNestedRefs<AnyElementInstance>): string => {
+export const generateFieldId = (element: ElementInstance): string => {
   return `${element.form.name}-${element.name}`;
 };

@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import {PdkIcon, useTranslate} from '@myparcel-pdk/frontend-core';
+import {PdkIcon, useTranslate} from '@myparcel/pdk-frontend';
 import {PropType, defineComponent} from 'vue';
 
 /**

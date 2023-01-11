@@ -8,15 +8,14 @@
       type="checkbox" />
 
     <label :for="id">
-      {{ model ? 'yes' : 'no' }}
+      {{ translate(`toggle_${model ? 'yes' : 'no'}`) }}
     </label>
   </label>
 </template>
 
 <script lang="ts">
-import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {generateFieldId} from '@myparcel-pdk/frontend-core';
+import {ElementInstance, generateFieldId, useTranslate} from '@myparcel/pdk-frontend';
+import {PropType, defineComponent} from 'vue';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -26,7 +25,7 @@ export default defineComponent({
   name: 'DefaultToggleInput',
   props: {
     element: {
-      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      type: Object as PropType<ElementInstance>,
       required: true,
     },
 
@@ -46,6 +45,7 @@ export default defineComponent({
     return {
       id: generateFieldId(props.element),
       model: useVModel(props, 'modelValue', ctx.emit),
+      translate: useTranslate(),
     };
   },
 });

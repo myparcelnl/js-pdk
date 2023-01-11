@@ -17,6 +17,7 @@ export type {
 export type {
   AnyContext,
   DefaultPdkConfiguration,
+  ElementInstance,
   InputPdkButtonAction,
   ModalCallback,
   ModalCallbackProps,

@@ -29,7 +29,7 @@ import {
   DemoTextInput,
   DemoToggleInput,
 } from './components';
-import {LogLevel, createPdkFrontendPlugin} from '@myparcel-pdk/frontend-core';
+import {LogLevel, createPdkFrontendPlugin} from '@myparcel/pdk-frontend';
 import App from './App.vue';
 import {DefaultHeading} from '@myparcel/pdk-components';
 import {context} from './context';

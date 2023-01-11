@@ -14,6 +14,6 @@ export default defineComponent({
   },
 
   render() {
-    return h(`h${this.level}`, this.$slots);
+    return h(`h${this.level}`, {}, this.$slots);
   },
 });

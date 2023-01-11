@@ -8,9 +8,8 @@
 </template>
 
 <script lang="ts">
-import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
-import {generateFieldId, useTranslate} from '@myparcel-pdk/frontend-core';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {ElementInstance, generateFieldId, useTranslate} from '@myparcel/pdk-frontend';
+import {PropType, defineComponent} from 'vue';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -21,7 +20,7 @@ export default defineComponent({
   name: 'DemoRadioInput',
   props: {
     element: {
-      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      type: Object as PropType<ElementInstance>,
       required: true,
     },
 
@@ -31,6 +30,8 @@ export default defineComponent({
       default: null,
     },
   },
+
+  emits: ['update:modelValue'],
 
   setup: (props, ctx) => ({
     id: generateFieldId(props.element),

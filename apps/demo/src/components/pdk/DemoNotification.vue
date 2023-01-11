@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
-import {PdkNotification} from '@myparcel-pdk/frontend-core';
+import {PdkNotification} from '@myparcel/pdk-frontend';
 import {toArray} from '@myparcel/ts-utils';
 
 export default defineComponent({

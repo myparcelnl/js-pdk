@@ -10,7 +10,7 @@
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
 import {SelectOption} from '@myparcel-pdk/common';
-import {useTranslate} from '@myparcel-pdk/frontend-core';
+import {useTranslate} from '@myparcel/pdk-frontend';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -46,6 +46,8 @@ export default defineComponent({
       default: null,
     },
   },
+
+  emits: ['update:modelValue'],
 
   setup(props, ctx) {
     const model = useVModel(props, 'modelValue', ctx.emit);

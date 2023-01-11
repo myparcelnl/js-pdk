@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {PdkIcon} from '@myparcel-pdk/frontend-core';
+import {PdkIcon} from '@myparcel/pdk-frontend';
 import {isEnumValue} from '@myparcel/ts-utils';
 
 /**

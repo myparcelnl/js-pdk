@@ -3,6 +3,7 @@ import {optionalComponentNames, requiredComponentNames} from '@myparcel-pdk/comm
 import {PdkAppPlugin} from './plugins.types';
 import {PlainElement} from '../../../components';
 import {globalLogger} from '../../../services';
+import {markRaw} from 'vue';
 import {merge} from 'lodash-unified';
 import {useTranslate} from '../../../composables';
 
@@ -27,6 +28,8 @@ export const createRegisterComponentsPlugin: PdkAppPlugin = ({config, logger}) =
           );
           return;
         }
+
+        markRaw(component);
 
         app.component(componentName, component);
       });

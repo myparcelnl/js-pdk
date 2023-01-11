@@ -11,5 +11,6 @@
       "@myparcel/pdk-frontend": ["./apps/pdk-frontend/src"]
     }
   },
+  "include": ["apps/**/*", "libs/**/*"],
   "exclude": []
 }

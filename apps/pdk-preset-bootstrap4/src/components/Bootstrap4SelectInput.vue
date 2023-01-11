@@ -50,7 +50,7 @@ export default defineComponent({
     },
   },
 
-  emits: ['change', 'update:modelValue'],
+  emits: ['update:modelValue'],
 
   setup: (props, ctx) => {
     return {

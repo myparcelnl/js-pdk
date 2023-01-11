@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import {ActionButton, PdkButtonAction, useTranslate} from '@myparcel-pdk/frontend-core';
+import {ActionButton, PdkButtonAction, useTranslate} from '@myparcel/pdk-frontend';
 import {PropType, defineComponent} from 'vue';
 
 /**

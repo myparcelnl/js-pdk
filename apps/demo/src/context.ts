@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import {EndpointName} from '@myparcel-pdk/common';
-import {PdkContextObject} from '@myparcel-pdk/frontend-core';
+import {PdkContextObject} from '@myparcel/pdk-frontend';
 import translations from './translations/en.json';
 
 export const context: PdkContextObject = {

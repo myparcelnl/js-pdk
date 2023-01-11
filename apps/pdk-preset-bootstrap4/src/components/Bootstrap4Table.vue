@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-import {usePdkConfig} from '@myparcel-pdk/frontend-core';
+import {usePdkConfig} from '@myparcel/pdk-frontend';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultTable

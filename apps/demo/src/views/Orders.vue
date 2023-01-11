@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import {ModalKey, useGlobalPdkFrontend, useModalStore} from '@myparcel-pdk/frontend-core';
+import {ModalKey, useGlobalPdkFrontend, useModalStore} from '@myparcel/pdk-frontend';
 import {defineComponent, ref} from 'vue';
 import {RouterLink} from 'vue-router';
 import {useDemoOrderData} from '../composables';
@@ -59,7 +59,7 @@ export default defineComponent({
     RouterLink,
   },
 
-  setup: (props, ctx) => {
+  setup: () => {
     const fe = useGlobalPdkFrontend();
 
     const orderData = useDemoOrderData();

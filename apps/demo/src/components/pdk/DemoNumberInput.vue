@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
-import {PropType, UnwrapNestedRefs, defineComponent} from 'vue';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {PropType, defineComponent} from 'vue';
+import {ElementInstance} from '@myparcel/pdk-frontend';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -21,7 +21,7 @@ export default defineComponent({
   name: 'DemoNumberInput',
   props: {
     element: {
-      type: Object as PropType<UnwrapNestedRefs<InteractiveElementInstance>>,
+      type: Object as PropType<ElementInstance>,
       required: true,
     },
 
@@ -31,6 +31,8 @@ export default defineComponent({
       default: null,
     },
   },
+
+  emits: ['update:modelValue'],
 
   setup: (props, {emit}) => ({
     model: useVModel(props, 'modelValue', emit),
