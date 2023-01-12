@@ -9,8 +9,7 @@
     "libs/**"
   ],
   "scripts": {
-    "build": "nx build",
-    "build:all": "nx run-many --target=build",
+    "build": "nx run-many --target=build",
     "build:dev": "nx run-many --target=build:dev",
     "clean": "nx run-many --target=clean --exclude=.",
     "lint": "nx run-many --target=lint --exclude=.",
