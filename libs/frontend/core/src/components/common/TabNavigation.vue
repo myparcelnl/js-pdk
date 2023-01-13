@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent, ref} from 'vue';
-import {usePdkConfig, useTranslate} from '../../composables';
+import {useLanguage, usePdkConfig} from '../../composables';
 import {PdkTab} from '@myparcel-pdk/common';
 
 /**
@@ -37,6 +37,11 @@ import {PdkTab} from '@myparcel-pdk/common';
 export default defineComponent({
   name: 'TabNavigation',
   props: {
+    hashPrefix: {
+      type: String,
+      default: '',
+    },
+
     tabs: {
       type: Array as PropType<PdkTab[]>,
       required: true,
@@ -44,20 +49,23 @@ export default defineComponent({
   },
 
   setup: (props) => {
-    const initialTab = window.location.hash.replace('#', '') || props.tabs[0].name;
+    const hash = window.location.hash.replace('#', '').replace(props.hashPrefix, '');
+    const isValidHash = props.tabs.some((tab) => tab.name === hash);
+    const initialTab = isValidHash ? hash : props.tabs[0].name;
 
     const activeTab = ref<string>(initialTab);
+    const {translate} = useLanguage();
 
     return {
       handleClick: (tab: PdkTab) => {
-        window.location.hash = tab.name;
+        window.location.hash = props.hashPrefix + tab.name;
         activeTab.value = tab.name;
       },
 
       pdkConfig: usePdkConfig(),
       activeTab,
       activeTabContents: computed(() => props.tabs.find((tab) => tab.name === activeTab.value)),
-      translate: useTranslate(),
+      translate,
     };
   },
 });

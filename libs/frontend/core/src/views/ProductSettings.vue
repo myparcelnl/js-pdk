@@ -7,24 +7,37 @@
  * Product settings.
  */
 import {FormInstance, MagicForm, defineForm} from '@myparcel/vue-form-builder';
-import {generateFormFields} from '../forms/generateFormFields';
+import {generateFormFields} from '../forms';
 import {useContextStore} from '../stores';
+import {usePdkConfig} from '../composables';
 import {useUpdateProductSettingsMutation} from '../actions';
 
 const contextStore = useContextStore();
 const updateProductSettingsMutation = useUpdateProductSettingsMutation();
+const pdkConfig = usePdkConfig();
 
 const createProductSettingsForm = (): FormInstance => {
-  if (!contextStore.context.productSettingsView) {
-    throw new Error('Plugin settings not loaded');
+  const {productSettingsView} = contextStore.context;
+
+  if (!productSettingsView) {
+    throw new Error('Product settings not loaded');
   }
 
   return defineForm('productSettings', {
-    fields: generateFormFields(contextStore.context.productSettingsView),
+    ...pdkConfig.formConfigProductSettings,
+    fields: [
+      ...generateFormFields(
+        {
+          fields: productSettingsView.view.fields,
+          values: productSettingsView.values,
+        },
+        'product',
+      ),
+    ],
 
     afterSubmit: async (form: FormInstance) => {
       // todo: get product ids
-      await updateProductSettingsMutation.mutateAsync({form, productIds: []});
+      await updateProductSettingsMutation.mutateAsync({form, productIds: [productSettingsView.product.sku]});
     },
   });
 };

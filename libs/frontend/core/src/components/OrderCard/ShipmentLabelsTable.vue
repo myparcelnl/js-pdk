@@ -45,7 +45,7 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent, ref} from 'vue';
-import {usePdkConfig, useTranslate} from '../../composables';
+import {useLanguage, usePdkConfig} from '../../composables';
 import {Plugin} from '@myparcel-pdk/common';
 import ShipmentLabelTableItem from './ShipmentLabelTableItem.vue';
 import {isDef} from '@vueuse/core';
@@ -67,6 +67,7 @@ export default defineComponent({
 
   setup: (props, ctx) => {
     const mutableSelectedRows = ref<string[]>([]);
+    const {translate} = useLanguage();
 
     const selectedRows = computed({
       get(): string[] {
@@ -96,7 +97,7 @@ export default defineComponent({
       bulkCheckbox,
       config: usePdkConfig(),
       selectedRows,
-      translate: useTranslate(),
+      translate: translate,
     };
   },
 });

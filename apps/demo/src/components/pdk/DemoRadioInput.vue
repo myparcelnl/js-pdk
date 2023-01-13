@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import {ElementInstance, generateFieldId, useTranslate} from '@myparcel/pdk-frontend';
+import {ElementInstance, generateFieldId} from '@myparcel/pdk-frontend';
 import {PropType, defineComponent} from 'vue';
 import {useVModel} from '@vueuse/core';
 
@@ -36,7 +36,6 @@ export default defineComponent({
   setup: (props, ctx) => ({
     id: generateFieldId(props.element),
     model: useVModel(props, 'modelValue', ctx.emit),
-    translate: useTranslate(),
   }),
 });
 </script>

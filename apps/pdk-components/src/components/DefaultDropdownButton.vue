@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import {ActionButton, PdkDropdownAction, useTranslate} from '@myparcel/pdk-frontend';
+import {ActionButton, PdkDropdownAction, useLanguage} from '@myparcel/pdk-frontend';
 import {PropType, computed, defineComponent, ref} from 'vue';
 
 /**
@@ -62,9 +62,10 @@ export default defineComponent({
 
   setup: (props) => {
     const toggled = ref(false);
+    const {translate} = useLanguage();
 
     return {
-      translate: useTranslate(),
+      translate: translate,
       toggle: () => {
         toggled.value = !toggled.value;
       },

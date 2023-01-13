@@ -31,7 +31,7 @@ export class PdkFrontend {
   }
 
   /**
-   * Render a view in given selector.
+   * Render a views in given selector.
    */
   public async render(view: PdkViewComponent, selector: string): Promise<void> {
     const config: PdkConfiguration = {...this.config};

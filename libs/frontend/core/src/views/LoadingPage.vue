@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import {useTranslate} from '../composables';
+import {useLanguage} from '../composables';
 
-const translate = useTranslate();
+const translate = useLanguage();
 </script>

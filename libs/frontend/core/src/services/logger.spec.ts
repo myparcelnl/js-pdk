@@ -2,20 +2,26 @@ import {LogLevel, createLogger, globalLogger} from './logger';
 import {afterAll, afterEach, describe, expect, it, vi} from 'vitest';
 
 describe('logger', () => {
-  const logSpy = vi.spyOn(console, 'log');
+  const spies = {
+    log: vi.spyOn(console, 'log'),
+    warn: vi.spyOn(console, 'warn'),
+    error: vi.spyOn(console, 'error'),
+  };
 
   afterEach(() => {
-    logSpy.mockClear();
+    Object.values(spies).forEach((spy) => spy.mockReset());
   });
 
   afterAll(() => {
-    logSpy.mockRestore();
+    Object.values(spies).forEach((spy) => spy.mockRestore());
   });
 
   it('can use the global logger', () => {
     globalLogger.error('test');
 
-    expect(logSpy).toHaveBeenCalledWith('ERROR', ['background:#F44336'], 'test');
+    expect(spies.warn).toHaveBeenCalledTimes(0);
+    expect(spies.error).toHaveBeenCalledTimes(0);
+    expect(spies.error).toHaveBeenCalledTimes(1);
   });
 
   it('can use a scoped logger', () => {
@@ -23,16 +29,18 @@ describe('logger', () => {
 
     logger.debug('test');
 
-    expect(logSpy).toHaveBeenCalledWith('DEBUG', ['background:#4CAF50'], 'test');
+    expect(spies.log).toHaveBeenCalledTimes(1);
+    expect(spies.warn).toHaveBeenCalledTimes(0);
+    expect(spies.error).toHaveBeenCalledTimes(0);
   });
 
   it.each([
-    {logLevel: LogLevel.OFF, amountOfLogs: 0},
-    {logLevel: LogLevel.ERROR, amountOfLogs: 1},
-    {logLevel: LogLevel.WARN, amountOfLogs: 2},
-    {logLevel: LogLevel.INFO, amountOfLogs: 3},
-    {logLevel: LogLevel.DEBUG, amountOfLogs: 4},
-  ])('honors log levels', ({logLevel, amountOfLogs}) => {
+    {logLevel: LogLevel.OFF, logs: 0, warns: 0, errors: 0},
+    {logLevel: LogLevel.ERROR, logs: 0, warns: 0, errors: 1},
+    {logLevel: LogLevel.WARN, logs: 0, warns: 1, errors: 1},
+    {logLevel: LogLevel.INFO, logs: 1, warns: 1, errors: 1},
+    {logLevel: LogLevel.DEBUG, logs: 2, warns: 1, errors: 1},
+  ])('honors log level $logLevel', ({logLevel, logs, warns, errors}) => {
     const logger = createLogger('test', logLevel);
 
     logger.debug('debug');
@@ -40,6 +48,8 @@ describe('logger', () => {
     logger.warn('warn');
     logger.error('error');
 
-    expect(logSpy).toHaveBeenCalledTimes(amountOfLogs);
+    expect(spies.log).toHaveBeenCalledTimes(logs);
+    expect(spies.warn).toHaveBeenCalledTimes(warns);
+    expect(spies.error).toHaveBeenCalledTimes(errors);
   });
 });

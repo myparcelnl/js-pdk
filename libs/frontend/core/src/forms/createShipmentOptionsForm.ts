@@ -5,7 +5,7 @@ import {ref, resolveComponent} from 'vue';
 import {Plugin} from '@myparcel-pdk/common';
 import {createShipmentFormName} from '../utils';
 import {useCarriers} from '../sdk';
-import {useTranslate} from '../composables';
+import {useLanguage} from '../composables';
 
 const deliveryOptionsPrefix = 'deliveryOptions';
 const shipmentOptionsPrefix = `${deliveryOptionsPrefix}.shipmentOptions`;
@@ -35,7 +35,7 @@ const defineFormField = (config: InteractiveElementConfiguration): InteractiveEl
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,max-lines-per-function
 export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
-  const translate = useTranslate();
+  const {translate} = useLanguage();
 
   return defineForm(createShipmentFormName(order.externalIdentifier), {
     fields: [

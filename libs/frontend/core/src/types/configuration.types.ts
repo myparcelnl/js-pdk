@@ -30,11 +30,17 @@ export type PdkConfiguration = {
    */
   formConfig?: Omit<FormConfiguration, 'fields'>;
 
+  formConfigPluginSettings?: Omit<FormConfiguration, 'fields'>;
+
+  formConfigProductSettings?: Omit<FormConfiguration, 'fields'>;
+
   /**
    * Transition names.
    */
   transitions?: {
     labelCard?: string;
+    modal?: string;
+    modalBackdrop?: string;
     notification?: string;
     shipmentRow?: string;
     tabNavigation?: string;

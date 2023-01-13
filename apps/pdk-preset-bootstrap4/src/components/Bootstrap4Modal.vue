@@ -9,9 +9,11 @@
       role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4
-            class="modal-title"
-            v-text="translate(title)" />
+          <PdkHeading
+            level="4"
+            class="modal-title">
+            {{ translate(title) }}
+          </PdkHeading>
           <button
             type="button"
             class="close"
@@ -45,8 +47,8 @@ import {
   ModalKey,
   NotificationContainer,
   PdkButtonAction,
+  useLanguage,
   useModalStore,
-  useTranslate,
 } from '@myparcel/pdk-frontend';
 import {PropType, computed, defineComponent, toRefs} from 'vue';
 
@@ -84,9 +86,10 @@ export default defineComponent({
   setup: (props) => {
     const propRefs = toRefs(props);
     const modalStore = useModalStore();
+    const {translate} = useLanguage();
 
     return {
-      translate: useTranslate(),
+      translate,
 
       context: computed(() => {
         return propRefs.modalKey.value === modalStore.opened ? modalStore.context : null;

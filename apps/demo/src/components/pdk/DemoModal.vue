@@ -63,9 +63,9 @@ import {
   ModalKey,
   NotificationContainer,
   modalCancelAction,
+  useLanguage,
   useModalContext,
   useModalStore,
-  useTranslate,
 } from '@myparcel/pdk-frontend';
 import {PropType, computed, defineComponent, ref, toRefs} from 'vue';
 
@@ -123,8 +123,8 @@ export default defineComponent({
   },
 
   setup: (props) => {
+    const {translate} = useLanguage();
     const wrapper = ref<HTMLElement | null>(null);
-
     const modalStore = useModalStore();
     const propRefs = toRefs(props);
     const modalContext = useModalContext(propRefs.modalKey, propRefs.onSave, propRefs.onCancel);
@@ -137,7 +137,7 @@ export default defineComponent({
       }),
 
       modalStore,
-      translate: useTranslate(),
+      translate,
 
       resolvedActions: computed(() => {
         return props.actions.map((action) => {

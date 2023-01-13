@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import {ElementInstance, generateFieldId, useTranslate} from '@myparcel/pdk-frontend';
+import {ElementInstance, generateFieldId, useLanguage} from '@myparcel/pdk-frontend';
 import {PropType, defineComponent} from 'vue';
 
 /**
@@ -53,12 +53,13 @@ export default defineComponent({
   },
 
   setup: (props) => {
+    const {translate} = useLanguage();
     const id = generateFieldId(props.element);
 
     return {
       id,
       helpId: `fgHelp${id}`,
-      translate: useTranslate(),
+      translate: translate,
     };
   },
 });

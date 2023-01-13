@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-import {useTranslate} from '@myparcel/pdk-frontend';
+import {useLanguage} from '@myparcel/pdk-frontend';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -51,9 +51,11 @@ export default defineComponent({
   emits: ['update:modelValue'],
 
   setup: (props, ctx) => {
+    const {translate} = useLanguage();
+
     return {
       model: useVModel(props, 'modelValue', ctx.emit),
-      translate: useTranslate(),
+      translate: translate,
     };
   },
 });

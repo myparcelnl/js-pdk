@@ -118,6 +118,20 @@ export namespace Carrier {
   };
 }
 
+export namespace Frontend {
+  export type FormElementCollection = (FormPlainElement | FormInteractiveElement)[];
+
+  export type FormInteractiveElement = FormPlainElement & {
+    name: string;
+    label: string;
+  };
+
+  export type FormPlainElement = {
+    component: string;
+    props: Record<string, unknown>;
+  };
+}
+
 export namespace Form {
   export type InputOptionsCollection = ModelInputOptions[];
 
@@ -126,11 +140,10 @@ export namespace Form {
   };
 
   export type ModelInputBaseInput = {
-    element: string;
-    type: string;
+    component: string;
     name: string;
     label: string;
-    description: string;
+    props: Record<string, unknown>;
   };
 
   export type ModelInputCheckboxInput = ModelInputBaseInput & {
@@ -339,24 +352,31 @@ export namespace Plugin {
     label?: Shipment.ModelLabel;
   };
 
-  type SettingsView = {
-    name: string;
+  export type Field = {
+    $component: string;
+    $slot?: string;
     label: string;
-    type: string;
+    name: string;
   } & Record<string, unknown>;
 
+  export type SettingsView = {
+    title: string;
+    description?: string;
+    fields: Field[];
+  };
+
   export type ModelContextPluginSettingsViewContext = {
-    general: SettingsView[];
-    order: SettingsView[];
-    label: SettingsView[];
-    customs: SettingsView[];
-    checkout: SettingsView[];
+    general: SettingsView;
+    order: SettingsView;
+    label: SettingsView;
+    customs: SettingsView;
+    checkout: SettingsView;
     carrier: SettingsView[];
   };
 
   export type ModelContextProductSettingsViewContext = {
     product: ModelPdkProduct;
-    fields: SettingsView[];
+    view: SettingsView[];
     values: Settings.ModelProductSettings;
   };
 

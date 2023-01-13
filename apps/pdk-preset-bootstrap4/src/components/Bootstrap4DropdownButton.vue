@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import {ActionButton, PdkDropdownAction, useTranslate} from '@myparcel/pdk-frontend';
+import {ActionButton, PdkDropdownAction, useLanguage} from '@myparcel/pdk-frontend';
 import {PropType, computed, defineComponent} from 'vue';
 import BaseButton from './common/BaseButton.vue';
 
@@ -51,8 +51,10 @@ export default defineComponent({
   emits: ['click'],
 
   setup: (props) => {
+    const {translate} = useLanguage();
+
     return {
-      translate: useTranslate(),
+      translate: translate,
       standaloneActions: computed(() => props.actions.filter((option) => option.standalone)),
       dropdownActions: computed(() => props.actions.filter((option) => !option.standalone)),
     };

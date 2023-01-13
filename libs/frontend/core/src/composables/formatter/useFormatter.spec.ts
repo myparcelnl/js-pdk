@@ -1,9 +1,26 @@
-import {describe, expect, it, vi} from 'vitest';
-import {mount} from '@vue/test-utils';
+import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
+import {PdkInstance} from '../../data';
+import {createLogger} from '../../services';
+import {createPdkConfig} from '../../pdk';
 import {useFormatter} from './useFormatter';
 
 describe('format strings', () => {
   const fakeDate = new Date('2022-12-05T12:00:00.000Z');
+
+  beforeEach(() => {
+    vi.mock('../usePdkInstance', () => ({
+      usePdkInstance: (): PdkInstance => ({
+        appName: 'test',
+        context: {},
+        config: createPdkConfig(),
+        logger: createLogger('test'),
+      }),
+    }));
+  });
+
+  afterEach(() => {
+    vi.unmock('../usePdkInstance');
+  });
 
   it.each([
     {
@@ -74,26 +91,16 @@ describe('format strings', () => {
     const dateSpy = vi.spyOn(global.Date, 'now');
     dateSpy.mockImplementation(() => fakeDate.getTime());
 
-    const wrapper = mount({
-      template: '<div></div>',
-      setup: () => ({
-        formatter: useFormatter('nl-NL'),
-      }),
-    });
+    const formatter = useFormatter('nl-NL');
 
-    expect(wrapper.vm.formatter.format('dateRelative', date)).toBe(expectation);
+    expect(formatter.format('dateRelative', date)).toBe(expectation);
 
     dateSpy.mockRestore();
   });
 
   it('formats date', () => {
-    const wrapper = mount({
-      template: '<div></div>',
-      setup: () => ({
-        formatter: useFormatter('nl-NL'),
-      }),
-    });
+    const formatter = useFormatter('nl-NL');
 
-    expect(wrapper.vm.formatter.format('dateLong', fakeDate)).toBe('5 december 2022');
+    expect(formatter.format('dateLong', fakeDate)).toBe('5 december 2022');
   });
 });

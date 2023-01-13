@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import {AnchorHTMLAttributes, PropType, computed, defineComponent} from 'vue';
-import {PdkButtonAction, useAction, useTranslate} from '@myparcel/pdk-frontend';
+import {PdkButtonAction, useAction, useLanguage} from '@myparcel/pdk-frontend';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultLink
@@ -40,17 +40,15 @@ export default defineComponent({
 
   setup: (props, ctx) => {
     const resolvedAction = useAction(props.action);
+    const {translate} = useLanguage();
 
     const onClick = async (event: MouseEvent): Promise<void> => {
-      event.preventDemo();
+      event.preventDefault();
       ctx.emit('click', event);
       await resolvedAction.value?.onClick?.();
     };
 
     return {
-      resolvedAction,
-      translate: useTranslate(),
-
       linkAttributes: computed(() => {
         const attributes: AnchorHTMLAttributes = {
           href: props.href,
@@ -65,6 +63,10 @@ export default defineComponent({
 
         return attributes;
       }),
+
+      resolvedAction,
+
+      translate,
     };
   },
 });

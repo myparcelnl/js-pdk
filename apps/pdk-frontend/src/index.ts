@@ -63,10 +63,10 @@ export {
   useContextStore,
   useFormatter,
   useGlobalPdkFrontend,
+  useLanguage,
   useModalContext,
   useModalStore,
   useNotificationStore,
   usePdfWindow,
   usePdkConfig,
-  useTranslate,
 } from '@myparcel-pdk/frontend-core';

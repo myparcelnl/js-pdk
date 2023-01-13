@@ -42,7 +42,7 @@
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
 import {deleteAction, shipmentCreateReturnAction, shipmentPrintAction, shipmentRefreshAction} from '../../actions';
-import {useAssetUrl, useFormatter, useTranslate} from '../../composables';
+import {useAssetUrl, useFormatter, useLanguage} from '../../composables';
 import {Shipment} from '@myparcel-pdk/common';
 import {createActions} from '../../services';
 import {useCarriers} from '../../sdk';
@@ -68,6 +68,7 @@ export default defineComponent({
 
   setup: (props, ctx) => {
     const carriersQuery = useCarriers(props.shipment.carrier.name);
+    const {translate} = useLanguage();
 
     return {
       carrier: carriersQuery.data,
@@ -81,7 +82,7 @@ export default defineComponent({
 
       formatter: useFormatter(),
       model: useVModel(props, 'modelValue', ctx.emit),
-      translate: useTranslate(),
+      translate: translate,
       useAssetUrl: useAssetUrl,
     };
   },

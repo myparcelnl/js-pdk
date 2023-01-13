@@ -12,7 +12,7 @@
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
 import {PdkTab} from '@myparcel-pdk/common';
-import {useTranslate} from '@myparcel/pdk-frontend';
+import {useLanguage} from '@myparcel/pdk-frontend';
 
 export default defineComponent({
   name: 'DefaultTabNavButton',
@@ -25,8 +25,12 @@ export default defineComponent({
 
   emits: ['click'],
 
-  setup: () => ({
-    translate: useTranslate(),
-  }),
+  setup: () => {
+    const {translate} = useLanguage();
+
+    return {
+      translate,
+    };
+  },
 });
 </script>

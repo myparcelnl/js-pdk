@@ -50,7 +50,7 @@
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
 import {shipmentPrintAction, shipmentRefreshAction} from '../../actions';
-import {useAssetUrl, useLoading, usePdkConfig, useTranslate} from '../../composables';
+import {useAssetUrl, useLanguage, useLoading, usePdkConfig} from '../../composables';
 import {Shipment} from '@myparcel-pdk/common';
 import {createActions} from '../../services';
 import {useCarriers} from '../../sdk';
@@ -69,6 +69,7 @@ export default defineComponent({
     const {loading, setLoading} = useLoading();
     const config = usePdkConfig();
     const carriersQuery = useCarriers(props.shipment.carrier?.name);
+    const {translate} = useLanguage();
 
     return {
       actions: createActions(
@@ -90,7 +91,7 @@ export default defineComponent({
       carrier: carriersQuery.data,
       config,
       loading,
-      translate: useTranslate(),
+      translate: translate,
       useAssetUrl,
     };
   },

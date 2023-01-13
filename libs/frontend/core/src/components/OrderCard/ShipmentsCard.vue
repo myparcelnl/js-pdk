@@ -29,7 +29,7 @@
 <script lang="ts">
 import {PropType, defineComponent, ref} from 'vue';
 import {deleteAction, shipmentPrintAction, shipmentRefreshAction} from '../../actions';
-import {useLoading, useTranslate} from '../../composables';
+import {useLanguage, useLoading} from '../../composables';
 import {Plugin} from '@myparcel-pdk/common';
 import ShipmentLabelsTable from './ShipmentLabelsTable.vue';
 import {createActions} from '../../services';
@@ -48,6 +48,7 @@ export default defineComponent({
   setup: () => {
     const selectedLabels = ref<number[]>([]);
     const {loading, setLoading} = useLoading();
+    const {translate} = useLanguage();
 
     return {
       bulkActionDropdownItems: createActions(
@@ -73,7 +74,7 @@ export default defineComponent({
         selectedLabels.value = labels;
       },
 
-      translate: useTranslate(),
+      translate,
     };
   },
 });

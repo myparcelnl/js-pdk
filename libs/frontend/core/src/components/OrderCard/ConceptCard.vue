@@ -24,7 +24,7 @@ import {Plugin} from '@myparcel-pdk/common';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
 import ShippingAddress from './ShippingAddress.vue';
 import {createActions} from '../../services';
-import {useTranslate} from '../../composables';
+import {useLanguage} from '../../composables';
 
 export default defineComponent({
   name: 'ConceptCard',
@@ -41,9 +41,11 @@ export default defineComponent({
   },
 
   setup: () => {
+    const {translate} = useLanguage();
+
     return {
       actions: createActions([orderUpdateAction, orderExportAction, orderExportPrintAction]),
-      translate: useTranslate(),
+      translate: translate,
     };
   },
 });

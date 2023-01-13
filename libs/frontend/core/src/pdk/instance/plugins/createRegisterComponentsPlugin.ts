@@ -4,8 +4,8 @@ import {PdkAppPlugin} from './plugins.types';
 import {PlainElement} from '../../../components';
 import {globalLogger} from '../../../services';
 import {markRaw} from 'vue';
-import {merge} from 'lodash-unified';
-import {useTranslate} from '../../../composables';
+import {mergeWith} from 'lodash-unified';
+import {useLanguage} from '../../../composables';
 
 /**
  * Registers all replaceable vue components. They must all be provided, for tree shaking purposes.
@@ -34,11 +34,11 @@ export const createRegisterComponentsPlugin: PdkAppPlugin = ({config, logger}) =
         app.component(componentName, component);
       });
 
-      const translate = useTranslate();
+      const {translate} = useLanguage();
 
       app.use(
         MyParcelFormBuilderPlugin,
-        merge(
+        mergeWith(
           {
             renderLabel: translate,
             field: {
