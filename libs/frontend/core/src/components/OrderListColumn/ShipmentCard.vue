@@ -1,5 +1,5 @@
 <template>
-  <PdkCard :loading="loading">
+  <PdkOrderCardShipmentsWrapper :loading="loading">
     <PdkRow collapse-gutters>
       <PdkCol>
         <PdkImage
@@ -44,7 +44,7 @@
           :action="action" />
       </PdkCol>
     </PdkRow>
-  </PdkCard>
+  </PdkOrderCardShipmentsWrapper>
 </template>
 
 <script lang="ts">

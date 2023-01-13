@@ -1,5 +1,5 @@
 <template>
-  <PdkCard
+  <PdkConceptCardWrapper
     :actions="actions"
     :loading="loading">
     <template #header>
@@ -13,7 +13,7 @@
         </PdkCol>
       </PdkRow>
     </template>
-  </PdkCard>
+  </PdkConceptCardWrapper>
 </template>
 
 <script lang="ts">

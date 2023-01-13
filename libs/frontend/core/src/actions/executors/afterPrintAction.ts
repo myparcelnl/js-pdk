@@ -3,12 +3,12 @@ import {ActionContextWithResponse, ActionResponse, FrontendAction, doAction, pri
 export const afterPrintAction = async <A extends (typeof printActions)[number]>({
   parameters,
   response,
-  logger,
+  instance,
 }: ActionContextWithResponse<A>): Promise<ActionResponse<A>> => {
-  logger?.debug('Please pretend your pdf was just downloaded or opened. 🚀');
-  logger?.debug('Parameters', parameters, response);
+  instance.logger?.debug('Please pretend your pdf was just downloaded or opened. 🚀');
+  instance.logger?.debug('Parameters', parameters, response);
 
-  void doAction({action: FrontendAction.ORDERS_UPDATE, parameters: {orderIds: parameters?.orderIds}, logger});
+  void doAction({action: FrontendAction.ORDERS_UPDATE, parameters: {orderIds: parameters?.orderIds}, instance});
 
   return Promise.resolve(response);
 };

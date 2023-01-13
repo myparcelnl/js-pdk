@@ -26,7 +26,7 @@ export const requiredComponentNames = [
   'PdkToggleInput',
 ] as const;
 
-export const optionalComponentNames = [
+export const optionalPlainWrapperComponentNames = [
   'PdkButtonGroup',
   'PdkPluginSettingsWrapper',
   'PdkTabNavButtonWrapper',
@@ -35,9 +35,17 @@ export const optionalComponentNames = [
   'PdkTableRow',
 ] as const;
 
+export const optionalActionContainerComponentNames = [
+  'PdkConceptCardWrapper',
+  'PdkOrderGridShipmentWrapper',
+  'PdkOrderCardShipmentsWrapper',
+] as const;
+
 export type RequiredPdkComponentName = (typeof requiredComponentNames)[number];
 
-export type OptionalPdkComponentName = (typeof optionalComponentNames)[number];
+export type OptionalPdkComponentName =
+  | (typeof optionalPlainWrapperComponentNames)[number]
+  | (typeof optionalActionContainerComponentNames)[number];
 
 export type PdkComponentName = RequiredPdkComponentName | OptionalPdkComponentName;
 

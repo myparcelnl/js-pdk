@@ -15,7 +15,7 @@
       <PdkDropdownButton
         :disabled="!selectedLabels.length"
         :actions="bulkActionDropdownItems"
-        @click="onBulkAction">
+        @click="onAction">
         {{ translate('bulk_actions') }}
         <span
           v-if="selectedLabels.length"
@@ -75,6 +75,11 @@ export default defineComponent({
       },
 
       translate,
+
+      onAction(action: string): void {
+        // eslint-disable-next-line no-console
+        console.log(action);
+      },
     };
   },
 });

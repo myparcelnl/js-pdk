@@ -1,7 +1,7 @@
 import {ComponentTest} from '../types';
 import {runHasSlotTest} from '../common';
 
-export const runCardTest: ComponentTest = (component) => {
+export const runActionContainerWrapper: ComponentTest = (component) => {
   runHasSlotTest(component, 'default');
   runHasSlotTest(component, 'header');
   runHasSlotTest(component, 'footer');

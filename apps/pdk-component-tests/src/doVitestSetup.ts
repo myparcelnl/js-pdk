@@ -1,4 +1,9 @@
-import {EndpointName, PdkComponentMap, optionalComponentNames, requiredComponentNames} from '@myparcel-pdk/common';
+import {
+  EndpointName,
+  PdkComponentMap,
+  optionalPlainWrapperComponentNames,
+  requiredComponentNames,
+} from '@myparcel-pdk/common';
 import {
   LogLevel,
   PdkContextObject,
@@ -55,7 +60,7 @@ export const doVitestSetup = (): void => {
 
   config.global.plugins = [createStorePlugin(appConfig), createContextPlugin(appConfig)];
 
-  [...requiredComponentNames, ...optionalComponentNames].forEach((name) => {
+  [...requiredComponentNames, ...optionalPlainWrapperComponentNames].forEach((name) => {
     config.global.stubs[name] = true;
   });
 };
