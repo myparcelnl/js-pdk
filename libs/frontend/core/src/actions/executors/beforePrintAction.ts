@@ -1,13 +1,12 @@
-import {ActionParameters, FrontendAction} from '../index';
+import {ActionContext, ActionParameters, FrontendAction} from '../index';
 import {ModalKey} from '../../types';
 import {useFormBuilder} from '@myparcel/vue-form-builder';
 import {useModalStore} from '../../stores';
 import {usePluginSettings} from '../../composables';
 
-export const beforePrintAction = <A extends FrontendAction>(
-  action: A,
-  parameters: Partial<ActionParameters<A>> = {},
-): Promise<ActionParameters<A>> => {
+export const beforePrintAction = <A extends FrontendAction>({
+  parameters,
+}: ActionContext<A>): Promise<ActionParameters<A>> => {
   const pluginSettings = usePluginSettings();
 
   if (!pluginSettings.label.prompt) {

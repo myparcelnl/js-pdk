@@ -1,13 +1,13 @@
-import {ActionParameters, FrontendAction} from '../index';
+import {ActionContext, ActionParameters, FrontendAction} from '../index';
 import {createShipmentFormName, getOrderId} from '../../utils';
 import {useFormBuilder} from '@myparcel/vue-form-builder';
 
-export const beforeOrderAction = <A extends FrontendAction>(
-  action: A,
-  parameters: Partial<ActionParameters<A>> = {},
-): Promise<ActionParameters<A>> => {
+export const beforeOrderAction = <A extends FrontendAction>({
+  parameters,
+  instance,
+}: ActionContext<A>): Promise<ActionParameters<A>> => {
   const formBuilder = useFormBuilder();
-  const orderId = getOrderId();
+  const orderId = getOrderId(instance);
 
   // @ts-expect-error todo
   parameters.orderIds = orderId;

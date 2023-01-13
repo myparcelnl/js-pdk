@@ -1,8 +1,7 @@
-import {ActionParameters, FrontendAction} from '../index';
+import {ActionContext, ActionParameters, FrontendAction} from '../index';
 
-export const beforeShipmentAction = async <A extends FrontendAction>(
-  action: A,
-  parameters: Partial<ActionParameters<A>> = {},
-): Promise<ActionParameters<A>> => {
+export const beforeShipmentAction = async <A extends FrontendAction>({
+  parameters,
+}: ActionContext<A>): Promise<ActionParameters<A>> => {
   return Promise.resolve(parameters as ActionParameters<A>);
 };

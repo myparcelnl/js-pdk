@@ -1,10 +1,11 @@
 import {ActionParameters, FrontendAction} from '../consts';
+import {ActionContext} from './types';
 import {useFormBuilder} from '@myparcel/vue-form-builder';
 
-export const beforeFormAction = async <A extends FrontendAction>(
-  action: A,
-  parameters: Partial<ActionParameters<A>> = {},
-): Promise<ActionParameters<A>> => {
+export const beforeFormAction = async <A extends FrontendAction>({
+  action,
+  parameters,
+}: ActionContext<A>): Promise<ActionParameters<A>> => {
   const formBuilder = useFormBuilder();
 
   // @ts-expect-error todo

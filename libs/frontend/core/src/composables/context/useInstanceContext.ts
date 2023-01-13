@@ -7,7 +7,7 @@ interface UseInstanceContext {
 }
 
 export const useInstanceContext: UseInstanceContext = (context: InstanceContextKey) => {
-  const instance = inject(INJECT_PDK_INSTANCE);
+  const foundInstance = inject(INJECT_PDK_INSTANCE);
 
-  return instance?.context?.[context] ?? null;
+  return foundInstance?.context?.[context] ?? null;
 };

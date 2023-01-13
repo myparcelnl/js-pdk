@@ -3,6 +3,7 @@ import {InputPdkButtonAction, OnClickAction, PdkButtonAction} from '../../types'
 import {PromiseOr, isOfType} from '@myparcel/ts-utils';
 import {createLogger} from '../logger';
 import {doAction} from '../../utils';
+import {usePdkInstance} from '../../composables/usePdkInstance';
 
 export type ActionCallbacks = {
   start?(): PromiseOr<void>;
@@ -21,6 +22,8 @@ export const createAction: CreateAction = (input, parameters, callbacks) => {
   }
 
   const {action, ...rest} = input;
+
+  const instance = usePdkInstance();
   const logger = createLogger(action);
 
   return {
@@ -28,7 +31,7 @@ export const createAction: CreateAction = (input, parameters, callbacks) => {
     id: action,
     onClick: async () => {
       await callbacks?.start?.();
-      await doAction({action, parameters, logger});
+      await doAction({action, parameters, instance: {...instance, logger}});
       await callbacks?.end?.();
     },
   };

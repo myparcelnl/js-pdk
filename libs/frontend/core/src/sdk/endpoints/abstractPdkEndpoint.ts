@@ -15,7 +15,7 @@ export type ExportOrdersDefinition = CreateDefinition<{
   parameters: {
     orderIds: string;
   };
-  body?: RecursivePartial<Plugin.ModelContextOrderDataContext>;
+  body?: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
   response: Plugin.ModelContextOrderDataContext[];
 }>;
 
@@ -24,7 +24,7 @@ export type UpdateOrdersDefinition = CreateDefinition<{
   parameters: {
     orderIds: string;
   };
-  body?: RecursivePartial<Plugin.ModelContextOrderDataContext>;
+  body?: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
   response: Plugin.ModelContextOrderDataContext[];
 }>;
 
@@ -43,7 +43,7 @@ export type UpdateShipmentsDefinition = CreateDefinition<{
     orderIds: string;
     shipmentIds?: string;
   };
-  body: RecursivePartial<Plugin.ModelContextOrderDataContext>;
+  body: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
   response: Plugin.ModelContextOrderDataContext[];
 }>;
 

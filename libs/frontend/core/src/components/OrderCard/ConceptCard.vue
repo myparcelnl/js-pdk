@@ -1,5 +1,7 @@
 <template>
-  <PdkCard :actions="actions">
+  <PdkCard
+    :actions="actions"
+    :loading="loading">
     <template #header>
       <span v-text="`${translate('concept')} #${order?.externalIdentifier}`" />
     </template>
@@ -9,9 +11,6 @@
         <PdkCol>
           <ShipmentOptionsForm :order="order" />
         </PdkCol>
-        <PdkCol>
-          <ShippingAddress :order="order" />
-        </PdkCol>
       </PdkRow>
     </template>
   </PdkCard>
@@ -20,17 +19,15 @@
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
 import {orderExportAction, orderExportPrintAction, orderUpdateAction} from '../../actions';
+import {useLanguage, useLoading} from '../../composables';
 import {Plugin} from '@myparcel-pdk/common';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
-import ShippingAddress from './ShippingAddress.vue';
 import {createActions} from '../../services';
-import {useLanguage} from '../../composables';
 
 export default defineComponent({
   name: 'ConceptCard',
   components: {
     ShipmentOptionsForm,
-    ShippingAddress,
   },
 
   props: {
@@ -41,10 +38,25 @@ export default defineComponent({
   },
 
   setup: () => {
+    const {loading, setLoading} = useLoading();
+
     const {translate} = useLanguage();
 
     return {
-      actions: createActions([orderUpdateAction, orderExportAction, orderExportPrintAction]),
+      loading,
+      actions: createActions(
+        [orderUpdateAction, orderExportAction, orderExportPrintAction],
+        {},
+        {
+          start() {
+            setLoading(true);
+          },
+          end() {
+            setLoading(false);
+          },
+        },
+      ),
+
       translate: translate,
     };
   },

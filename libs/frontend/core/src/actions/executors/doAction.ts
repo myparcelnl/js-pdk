@@ -6,18 +6,18 @@ import {executeAction} from './executeAction';
 
 export const doAction = async <A extends FrontendAction>({
   action,
-  logger,
   parameters,
+  instance,
 }: ActionContext<A>): Promise<ActionResponse<A>> => {
-  const resolvedParameters = await beforeAction<A>({action, parameters, logger});
+  const resolvedParameters = await beforeAction<A>({action, parameters, instance});
 
-  logger?.debug({parameters, resolvedParameters});
+  instance.logger?.debug({parameters, resolvedParameters});
 
-  const response = await executeAction<A>({action, parameters: resolvedParameters, logger});
+  const response = await executeAction<A>({action, parameters: resolvedParameters, instance});
 
-  const resolvedResponse = afterAction<A>({action, parameters: resolvedParameters, response, logger});
+  const resolvedResponse = afterAction<A>({action, parameters: resolvedParameters, response, instance});
 
-  logger?.debug({response, resolvedResponse});
+  instance.logger?.debug({response, resolvedResponse});
 
   return resolvedResponse;
 };
