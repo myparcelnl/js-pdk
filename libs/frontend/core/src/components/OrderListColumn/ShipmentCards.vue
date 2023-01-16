@@ -1,7 +1,7 @@
 <template>
   <TransitionGroup
     appear
-    :name="pdkConfig?.transitions?.labelCard">
+    :name="pdkConfig?.transitions?.shipmentCard">
     <ShipmentCard
       v-for="shipment in order.shipments ?? []"
       :key="`${order?.externalIdentifier}_${shipment.id}`"

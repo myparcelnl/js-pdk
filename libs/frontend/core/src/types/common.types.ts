@@ -26,10 +26,8 @@ export enum PdkIcon {
   EDIT = 'edit',
   EXPORT = 'export',
   EXTERNAL = 'external',
-  LABEL = 'label',
   PRINT = 'print',
   REFRESH = 'refresh',
   RETURN = 'return',
   SAVE = 'save',
-  WARNING = 'warning',
 }

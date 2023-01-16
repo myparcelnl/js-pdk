@@ -1,10 +1,13 @@
+import {runHasPropTest, runHasSlotTest} from '../common';
 import {ComponentTest} from '../types';
-import {runHasSlotTest} from '../common';
 
-export const runActionContainerWrapper: ComponentTest = (component) => {
+export const runActionContainerTest: ComponentTest = (component) => {
   runHasSlotTest(component, 'default');
   runHasSlotTest(component, 'header');
   runHasSlotTest(component, 'footer');
+
+  runHasPropTest(component, 'loading', true);
+  runHasPropTest(component, 'actions', []);
 
   // it('sets options from props', () => {
   //   const wrapper = mount(component, {props: {options}});

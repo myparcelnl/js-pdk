@@ -1,6 +1,7 @@
 <template>
   <PdkButton
-    :disabled="disabled || loading"
+    :loading="loading"
+    :disabled="disabled"
     :icon="PdkIcon.SAVE"
     label="action_save"
     @click="submit" />

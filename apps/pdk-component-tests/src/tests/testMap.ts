@@ -1,5 +1,5 @@
 import {
-  runActionContainerWrapper,
+  runActionContainerTest,
   runButtonGroupTest,
   runButtonTest,
   runCheckboxInputTest,
@@ -35,10 +35,10 @@ import {PdkComponentName} from '@myparcel-pdk/common';
 export const testMap: Record<PdkComponentName, ComponentTest> = {
   PdkButton: runButtonTest,
   PdkButtonGroup: runButtonGroupTest,
-  PdkCard: runActionContainerWrapper,
+  PdkCard: runActionContainerTest,
   PdkCheckboxInput: runCheckboxInputTest,
   PdkCol: runColTest,
-  PdkConceptCardWrapper: runActionContainerWrapper,
+  PdkConceptCardWrapper: runActionContainerTest,
   PdkCurrencyInput: runCurrencyInputTest,
   PdkDropdownButton: runDropDownButtonTest,
   PdkFormGroup: runFormGroupTest,
@@ -51,6 +51,8 @@ export const testMap: Record<PdkComponentName, ComponentTest> = {
   PdkMultiRadio: runMultiRadioTest,
   PdkNotification: runNotificationTest,
   PdkNumberInput: runNumberInputTest,
+  PdkOrderCardShipmentsWrapper: runActionContainerTest,
+  PdkOrderGridShipmentWrapper: runActionContainerTest,
   PdkPluginSettingsWrapper: runPluginSettingsWrapperTest,
   PdkRadioInput: runRadioInputTest,
   PdkRow: runRowTest,

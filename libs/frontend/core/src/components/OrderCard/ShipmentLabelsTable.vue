@@ -6,16 +6,18 @@
           <PdkCheckboxInput
             v-model="bulkCheckbox"
             :title="translate('select_all')"
-            :disabled="!order.shipments.length" />
+            :element="bulkCheckboxElement"
+            :disabled="!shipments.length" />
         </PdkTableCol>
-        <PdkTableCol
-          component="th"
-          :title="translate('carrier')" />
-        <PdkTableCol component="th">{{ translate('order_labels_column_track_trace') }} </PdkTableCol>
+
+        <PdkTableCol component="th">{{ translate('order_labels_column_track_trace') }}</PdkTableCol>
+
         <PdkTableCol component="th">{{ translate('order_labels_column_status') }}</PdkTableCol>
+
         <PdkTableCol component="th">{{ translate('order_labels_column_last_update') }}</PdkTableCol>
+
         <PdkTableCol
-          class="text-right"
+          align="right"
           component="th">
           {{ translate('order_labels_column_actions') }}
         </PdkTableCol>
@@ -24,7 +26,7 @@
 
     <template #default>
       <PdkTableRow
-        v-if="!order.shipments.length"
+        v-if="!shipments.length"
         key="row_no_shipments">
         <PdkTableCol colspan="6">
           <div :class="config?.cssUtilities?.textCenter">
@@ -34,8 +36,8 @@
         </PdkTableCol>
       </PdkTableRow>
 
-      <ShipmentLabelTableItem
-        v-for="shipment in order.shipments"
+      <ShipmentLabelTableRow
+        v-for="shipment in shipments"
         :key="`row_${shipment?.id}_${shipment.updated}`"
         v-model="selectedRows"
         :shipment="shipment" />
@@ -44,16 +46,17 @@
 </template>
 
 <script lang="ts">
+import {FormInstance, InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {PropType, computed, defineComponent, ref} from 'vue';
 import {useLanguage, usePdkConfig} from '../../composables';
 import {Plugin} from '@myparcel-pdk/common';
-import ShipmentLabelTableItem from './ShipmentLabelTableItem.vue';
+import ShipmentLabelTableRow from './ShipmentLabelTableRow.vue';
 import {isDef} from '@vueuse/core';
 
 export default defineComponent({
   name: 'ShipmentLabelsTable',
   components: {
-    ShipmentLabelTableItem,
+    ShipmentLabelTableRow,
   },
 
   props: {
@@ -93,11 +96,24 @@ export default defineComponent({
       },
     });
 
+    const bulkCheckboxElement: InteractiveElementInstance = {
+      name: 'bulk-checkbox',
+      ref: bulkCheckbox,
+      form: {
+        name: 'bulk-checkbox',
+      } as FormInstance,
+    };
+
     return {
       bulkCheckbox,
+
       config: usePdkConfig(),
       selectedRows,
       translate: translate,
+
+      bulkCheckboxElement,
+
+      shipments: computed(() => props.order?.shipments?.filter((shipment) => !shipment.deleted) ?? []),
     };
   },
 });

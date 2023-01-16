@@ -8,3 +8,4 @@ export * from './useModalContext';
 export * from './useModalOrder';
 export * from './usePdkConfig';
 export * from './usePluginSettings';
+export * from './useShipmentCardData';

@@ -7,6 +7,7 @@ import {useQueryStore} from '../../stores';
 // eslint-disable-next-line complexity
 export async function executeAction<A extends FrontendAction>({
   action,
+  instance,
   parameters,
 }: ActionContext): Promise<ActionResponse<A>> {
   const queryStore = useQueryStore();
@@ -27,7 +28,7 @@ export async function executeAction<A extends FrontendAction>({
     case FrontendAction.SHIPMENTS_DELETE:
     case FrontendAction.SHIPMENTS_PRINT:
     case FrontendAction.SHIPMENTS_UPDATE:
-      response = await executeMutation({action, parameters});
+      response = await executeMutation({action, parameters, instance});
       break;
 
     default:

@@ -28,6 +28,7 @@ const createProductSettingsForm = (): FormInstance => {
     fields: [
       ...generateFormFields(
         {
+          // @ts-expect-error todo
           fields: productSettingsView.view.fields,
           values: productSettingsView.values,
         },
@@ -37,7 +38,10 @@ const createProductSettingsForm = (): FormInstance => {
 
     afterSubmit: async (form: FormInstance) => {
       // todo: get product ids
-      await updateProductSettingsMutation.mutateAsync({form, productIds: [productSettingsView.product.sku]});
+      await updateProductSettingsMutation.mutateAsync({
+        form,
+        productIds: [productSettingsView.product.externalIdentifier],
+      });
     },
   });
 };

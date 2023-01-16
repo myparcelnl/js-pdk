@@ -22,6 +22,9 @@ export const createPluginSettingsForm = (id: string, view: Plugin.SettingsView):
       ),
       {
         component: SubmitButton,
+        props: {
+          loading: updatePluginSettingsMutation.isLoading,
+        },
       },
     ],
 

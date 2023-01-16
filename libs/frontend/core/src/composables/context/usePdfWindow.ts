@@ -27,7 +27,7 @@ export const usePdfWindow: UsePdfWindow = () => {
       }
 
       // todo loading window
-      const newWindow = window.open('loading', '_blank');
+      const newWindow = window.open('about:blank', '_blank');
 
       if (!newWindow) {
         throw new Error('Failed to create new window.');

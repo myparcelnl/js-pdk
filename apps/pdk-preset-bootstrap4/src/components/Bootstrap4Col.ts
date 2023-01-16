@@ -10,9 +10,6 @@ export default defineComponent({
     span: {
       type: Number,
     },
-    width: {
-      type: String,
-    },
   },
   render() {
     return h('div', {...this.$attrs, class: [this.$attrs.class, 'col']}, this.$slots);

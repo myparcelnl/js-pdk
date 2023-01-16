@@ -1,17 +1,18 @@
 <template>
   <label>
-    {{ label }}
+    {{ element.label }}
     <input
       v-model="model"
-      :disabled="disabled"
-      :value="value"
+      :disabled="element.isDisabled || element.isSuspended"
+      :value="element.props?.value"
       type="checkbox" />
     <i />
   </label>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-core';
+import {PropType, defineComponent} from 'vue';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -20,27 +21,9 @@ import {useVModel} from '@vueuse/core';
 export default defineComponent({
   name: 'DefaultCheckboxInput',
   props: {
-    /**
-     * Controls the disabled state.
-     */
-    disabled: {
-      type: Boolean,
-    },
-
-    /**
-     * The label of the checkbox.
-     */
-    label: {
-      type: String,
-      default: null,
-    },
-
-    /**
-     * The value of the checkbox.
-     */
-    value: {
-      type: [String, Boolean],
-      default: true,
+    element: {
+      type: Object as PropType<ElementInstance>,
+      required: true,
     },
 
     /**
@@ -56,10 +39,9 @@ export default defineComponent({
   emits: ['update:modelValue'],
 
   setup: (props, ctx) => {
-    const model = useVModel(props, 'modelValue', ctx.emit);
-
     return {
-      model,
+      id: generateFieldId(props.element),
+      model: useVModel(props, 'modelValue', ctx.emit),
     };
   },
 });

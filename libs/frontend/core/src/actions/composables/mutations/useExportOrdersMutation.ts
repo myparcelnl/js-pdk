@@ -28,7 +28,7 @@ export const useExportOrdersMutation = (mode: MutationMode = MutationMode.DEFAUL
         parameters: {
           orderIds: encodeArrayParameter(input.orderIds),
         },
-        body: formToBody(input.form),
+        body: [formToBody(input.form)],
       };
 
       // @ts-expect-error custom endpoints are not typed correctly

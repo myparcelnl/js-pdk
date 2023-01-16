@@ -272,10 +272,10 @@ export namespace Fulfilment {
   };
 
   export type ModelProduct = {
+    externalIdentifier: string;
     uuid?: string;
     sku?: string;
     ean?: string;
-    externalIdentifier?: string;
     name?: string;
     description?: string;
     width: number;
@@ -409,6 +409,7 @@ export namespace Plugin {
   };
 
   export type ModelPdkProduct = {
+    externalIdentifier: string;
     sku?: string;
     name?: string;
     weight: number;

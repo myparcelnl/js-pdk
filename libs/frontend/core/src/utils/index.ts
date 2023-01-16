@@ -6,6 +6,7 @@ export * from './formToBody';
 export * from './forms';
 export * from './generateFieldId';
 export * from './generateId';
+export * from './generateLabelFilename';
 export * from './getOrderId';
 export * from './onQueryStart';
 export * from './sendBootEvent';
