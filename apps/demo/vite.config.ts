@@ -4,10 +4,11 @@ import vue from '@vitejs/plugin-vue';
 
 export const PORT = 9420;
 
-export default defineConfig({
+export default defineConfig((env) => ({
   plugins: [vue()],
   server: {
     port: PORT,
+    base: env.mode === 'production' ? `/js-pdk/` : '/',
   },
 
   build: {
@@ -21,4 +22,4 @@ export default defineConfig({
     'process.env': {},
     'process.argv': [],
   },
-});
+}));

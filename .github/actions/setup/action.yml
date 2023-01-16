@@ -32,4 +32,4 @@ runs:
     - name: 'Build packages'
       shell: bash
       run: |
-        yarn build:all --output-style=static
+        yarn build --output-style=static
