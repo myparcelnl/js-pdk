@@ -59,7 +59,7 @@ export default defineComponent({
     return {
       id,
       helpId: `fgHelp${id}`,
-      translate: translate,
+      translate,
     };
   },
 });

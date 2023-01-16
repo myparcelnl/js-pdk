@@ -42,7 +42,7 @@ export default defineComponent({
 
     return {
       id: generateFieldId(props.element),
-      translate: translate,
+      translate,
     };
   },
 });

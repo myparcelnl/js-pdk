@@ -133,7 +133,7 @@ export default defineComponent({
       }),
 
       modalStore,
-      translate: translate,
+      translate,
 
       resolvedActions: computed(() => {
         return props.actions.map((action) => {

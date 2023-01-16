@@ -75,7 +75,7 @@ export default defineComponent({
     const {translate} = useLanguage();
 
     return {
-      translate: translate,
+      translate,
     };
   },
 });

@@ -57,7 +57,7 @@ export default defineComponent({
     const {translate} = useLanguage();
 
     return {
-      translate: translate,
+      translate,
       toggle: () => {
         toggled.value = !toggled.value;
       },

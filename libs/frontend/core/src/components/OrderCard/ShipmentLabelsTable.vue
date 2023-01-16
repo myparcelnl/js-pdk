@@ -109,7 +109,7 @@ export default defineComponent({
 
       config: usePdkConfig(),
       selectedRows,
-      translate: translate,
+      translate,
 
       bulkCheckboxElement,
 

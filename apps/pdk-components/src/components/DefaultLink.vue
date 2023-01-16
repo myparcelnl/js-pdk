@@ -51,7 +51,7 @@ export default defineComponent({
 
     return {
       resolvedAction,
-      translate: translate,
+      translate,
 
       linkAttributes: computed(() => {
         const attributes: AnchorHTMLAttributes = {

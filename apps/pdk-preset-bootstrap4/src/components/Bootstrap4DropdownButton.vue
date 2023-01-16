@@ -54,7 +54,7 @@ export default defineComponent({
     const {translate} = useLanguage();
 
     return {
-      translate: translate,
+      translate,
       standaloneActions: computed(() => props.actions.filter((option) => option.standalone)),
       dropdownActions: computed(() => props.actions.filter((option) => !option.standalone)),
     };

@@ -100,7 +100,7 @@ export default defineComponent({
 
       formatter: useFormatter(),
       model,
-      translate: translate,
+      translate,
       useAssetUrl: useAssetUrl,
 
       checkboxElement,

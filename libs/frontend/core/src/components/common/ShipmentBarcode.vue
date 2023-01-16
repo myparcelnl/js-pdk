@@ -45,7 +45,7 @@ export default defineComponent({
     return {
       carrier: carriersQuery.data,
       config: usePdkConfig(),
-      translate: translate,
+      translate,
       useAssetUrl,
     };
   },
