@@ -6,6 +6,10 @@ on:
       - alpha
       - beta
 
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     uses: ./.github/workflows/--test.yml
@@ -14,8 +18,9 @@ jobs:
   release:
     name: 'Publish new release 🚀'
     runs-on: ubuntu-22.04
-    # TODO: uncomment when working from main branch
-    # needs: test
+    needs: test
+    # TODO: remove this when tests are mandatory
+    if: always()
     steps:
       - uses: actions/checkout@v3
 
