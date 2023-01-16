@@ -14,7 +14,8 @@ jobs:
 
       - uses: ./.github/actions/setup
         with:
-          token: ${{ secrets.GH_REPO_TOKEN }}
+          app-id: ${{ secrets.MYPARCEL_APP_ID }}
+          private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
 
       - name: 'Run tests'
         run: yarn test:run
