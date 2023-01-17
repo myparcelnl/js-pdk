@@ -45,6 +45,7 @@ module.exports = {
     {
       files: ['./**/*.spec.*', './**/*.test.*', './**/__tests__/**', './**/*Test.*'],
       rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-magic-numbers': 'off',
         'max-len': 'off',
         'max-lines-per-function': 'off',

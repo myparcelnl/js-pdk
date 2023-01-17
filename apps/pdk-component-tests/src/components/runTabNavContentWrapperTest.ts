@@ -1,6 +1,11 @@
-import {ComponentTest} from '../types';
-import {runHasSlotTest} from '../common';
+import {runCommonComponentTests, runHasSlotTest} from '../common';
+import {MountingOptions} from '@vue/test-utils';
+import {PdkComponentTest} from '../tests';
 
-export const runTabNavContentWrapperTest: ComponentTest = (component) => {
+export const runTabNavContentWrapperTest: PdkComponentTest = (component) => {
+  const options: MountingOptions<any> = {};
+
+  runCommonComponentTests(component, options);
+
   runHasSlotTest(component);
 };

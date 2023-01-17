@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {App, createApp} from 'vue';
 import {PdkConfiguration, PdkContextObject} from '../types';
-import {PdkLogger, createLogger, getElementContext} from '../services';
 import {
   createContextPlugin,
   createLoggerPlugin,
@@ -9,15 +8,10 @@ import {
   createStorePlugin,
   createVueQueryPlugin,
 } from './instance';
+import {createLogger, getElementContext} from '../services';
+import {PdkAppConfig} from '../data';
 import {PdkViewComponent} from '@myparcel-pdk/common';
 import {renderViewComponent} from './renderMap';
-
-export type PdkFrontendAppConfig = {
-  appName: string;
-  logger: PdkLogger;
-  config: PdkConfiguration;
-  context: PdkContextObject;
-};
 
 export class PdkFrontend {
   public readonly config: PdkConfiguration;
@@ -53,7 +47,7 @@ export class PdkFrontend {
     }
   }
 
-  protected async createApp(view: PdkViewComponent, appConfig: PdkFrontendAppConfig): Promise<App> {
+  protected async createApp(view: PdkViewComponent, appConfig: PdkAppConfig): Promise<App> {
     appConfig.config?.beforeCreate?.(appConfig.config);
 
     const component = await renderViewComponent(view);

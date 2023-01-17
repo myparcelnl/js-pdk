@@ -1,8 +1,13 @@
-import {ComponentTest} from '../types';
-import {runHasSlotTest} from '../common';
+import {runCommonComponentTests, runHasSlotTest} from '../common';
+import {MountingOptions} from '@vue/test-utils';
+import {PdkComponentTest} from '../tests';
 
-export const runTableTest: ComponentTest = (component) => {
-  runHasSlotTest(component, 'default');
-  runHasSlotTest(component, 'header');
-  runHasSlotTest(component, 'footer');
+export const runTableTest: PdkComponentTest = (component) => {
+  const options: MountingOptions<any> = {};
+
+  runCommonComponentTests(component, options);
+
+  runHasSlotTest(component, options, 'default');
+  runHasSlotTest(component, options, 'header');
+  runHasSlotTest(component, options, 'footer');
 };

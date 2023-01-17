@@ -6,8 +6,8 @@ import {
 } from '@myparcel-pdk/common';
 import {
   LogLevel,
+  PdkAppConfig,
   PdkContextObject,
-  PdkFrontendAppConfig,
   createContextPlugin,
   createLogger,
   createStorePlugin,
@@ -48,17 +48,21 @@ const context: PdkContextObject = {
   },
 };
 
-const appConfig: PdkFrontendAppConfig = {
+const appConfig: PdkAppConfig = {
   appName: 'test',
   logger: createLogger('test'),
   config: {components: {} as PdkComponentMap, logLevel: LogLevel.OFF},
   context,
 };
 
-export const doVitestSetup = (): void => {
+export const doComponentTestSetup = (): void => {
   globalLogger.level = LogLevel.OFF;
 
   config.global.plugins = [createStorePlugin(appConfig), createContextPlugin(appConfig)];
+
+  // config.global.provide ??= {};
+  // // @ts-expect-error yes we can
+  // config.global.provide[INJECT_PDK_INSTANCE] = {...appConfig, context: {}};
 
   [...requiredComponentNames, ...optionalPlainWrapperComponentNames].forEach((name) => {
     config.global.stubs[name] = true;

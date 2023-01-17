@@ -1,5 +1,5 @@
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
-import {PdkInstance} from '../../data';
+import {INJECT_PDK_INSTANCE} from '../../data';
 import {createLogger} from '../../services';
 import {createPdkConfig} from '../../pdk';
 import {useFormatter} from './useFormatter';
@@ -8,18 +8,28 @@ describe('format strings', () => {
   const fakeDate = new Date('2022-12-05T12:00:00.000Z');
 
   beforeEach(() => {
-    vi.mock('../usePdkInstance', () => ({
-      usePdkInstance: (): PdkInstance => ({
-        appName: 'test',
-        context: {},
-        config: createPdkConfig(),
-        logger: createLogger('test'),
-      }),
-    }));
+    vi.mock('vue', async () => {
+      const realVue: any = await vi.importActual('vue');
+
+      return {
+        ...realVue,
+
+        inject(key: symbol) {
+          if (INJECT_PDK_INSTANCE === key) {
+            return {
+              appName: 'test',
+              context: {},
+              config: createPdkConfig(),
+              logger: createLogger('test'),
+            };
+          }
+        },
+      };
+    });
   });
 
   afterEach(() => {
-    vi.unmock('../usePdkInstance');
+    vi.restoreAllMocks();
   });
 
   it.each([

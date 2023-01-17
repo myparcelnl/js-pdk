@@ -1,6 +1,5 @@
 import {
   runActionContainerTest,
-  runButtonGroupTest,
   runButtonTest,
   runCheckboxInputTest,
   runColTest,
@@ -16,29 +15,36 @@ import {
   runMultiRadioTest,
   runNotificationTest,
   runNumberInputTest,
-  runPluginSettingsWrapperTest,
+  runPlainWrapperTest,
   runRadioInputTest,
   runRowTest,
   runSelectInputTest,
   runTabNavButtonTest,
-  runTabNavButtonWrapperTest,
-  runTabNavContentWrapperTest,
   runTableColTest,
   runTableRowTest,
   runTableTest,
   runTextInputTest,
   runToggleInputTest,
 } from '../components';
-import {ComponentTest} from '../types';
+import {Component} from 'vue';
 import {PdkComponentName} from '@myparcel-pdk/common';
 
-export const testMap: Record<PdkComponentName, ComponentTest> = {
-  PdkButton: runButtonTest,
-  PdkButtonGroup: runButtonGroupTest,
+export type PdkComponentTest = (component: Omit<Component, 'props'>) => void;
+
+export const testMap: Record<PdkComponentName, PdkComponentTest> = {
   PdkCard: runActionContainerTest,
+  PdkConceptCardWrapper: runActionContainerTest,
+  PdkOrderCardShipmentsWrapper: runActionContainerTest,
+  PdkOrderGridShipmentWrapper: runActionContainerTest,
+
+  PdkButtonGroup: runPlainWrapperTest,
+  PdkPluginSettingsWrapper: runPlainWrapperTest,
+  PdkTabNavButtonWrapper: runPlainWrapperTest,
+  PdkTabNavContentWrapper: runPlainWrapperTest,
+
+  PdkButton: runButtonTest,
   PdkCheckboxInput: runCheckboxInputTest,
   PdkCol: runColTest,
-  PdkConceptCardWrapper: runActionContainerTest,
   PdkCurrencyInput: runCurrencyInputTest,
   PdkDropdownButton: runDropDownButtonTest,
   PdkFormGroup: runFormGroupTest,
@@ -51,15 +57,10 @@ export const testMap: Record<PdkComponentName, ComponentTest> = {
   PdkMultiRadio: runMultiRadioTest,
   PdkNotification: runNotificationTest,
   PdkNumberInput: runNumberInputTest,
-  PdkOrderCardShipmentsWrapper: runActionContainerTest,
-  PdkOrderGridShipmentWrapper: runActionContainerTest,
-  PdkPluginSettingsWrapper: runPluginSettingsWrapperTest,
   PdkRadioInput: runRadioInputTest,
   PdkRow: runRowTest,
   PdkSelectInput: runSelectInputTest,
   PdkTabNavButton: runTabNavButtonTest,
-  PdkTabNavButtonWrapper: runTabNavButtonWrapperTest,
-  PdkTabNavContentWrapper: runTabNavContentWrapperTest,
   PdkTable: runTableTest,
   PdkTableCol: runTableColTest,
   PdkTableRow: runTableRowTest,

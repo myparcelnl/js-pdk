@@ -1,13 +1,17 @@
-import {runHasPropTest, runHasSlotTest} from '../common';
-import {ComponentTest} from '../types';
+import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from '../common';
+import {MountingOptions} from '@vue/test-utils';
+import {PdkComponentTest} from '../tests';
 
-export const runActionContainerTest: ComponentTest = (component) => {
-  runHasSlotTest(component, 'default');
-  runHasSlotTest(component, 'header');
-  runHasSlotTest(component, 'footer');
+export const runActionContainerTest: PdkComponentTest = (component) => {
+  const options: MountingOptions<any> = {};
+  runCommonComponentTests(component, options);
 
-  runHasPropTest(component, 'loading', true);
-  runHasPropTest(component, 'actions', []);
+  runHasSlotTest(component, options, 'default');
+  runHasSlotTest(component, options, 'header');
+  runHasSlotTest(component, options, 'footer');
+
+  runHasPropTest(component, options, 'loading', true);
+  runHasPropTest(component, options, 'actions', []);
 
   // it('sets options from props', () => {
   //   const wrapper = mount(component, {props: {options}});

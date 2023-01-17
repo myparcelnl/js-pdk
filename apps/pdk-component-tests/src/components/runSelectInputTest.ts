@@ -1,14 +1,25 @@
+import {ElementInstance, createFormElement} from '@myparcel-pdk/frontend-core';
+import {MountingOptions, mount} from '@vue/test-utils';
 import {expect, it} from 'vitest';
-import {ComponentTest} from '../types';
+import {PdkComponentTest} from '../tests';
 import {SelectOption} from '@myparcel-pdk/common';
-import {mount} from '@vue/test-utils';
+import {runCommonComponentTests} from '../common';
 
-const options: SelectOption[] = [
+const selectOptions: SelectOption[] = [
   {value: '1', label: 'One'},
   {value: '2', label: 'Two'},
 ];
 
-export const runSelectInputTest: ComponentTest = (component) => {
+export const runSelectInputTest: PdkComponentTest = (component) => {
+  const options: MountingOptions<{element: ElementInstance; options: SelectOption[]}> = {
+    props: {
+      element: createFormElement({}),
+      options: selectOptions,
+    },
+  };
+
+  runCommonComponentTests(component, options);
+
   it('can be disabled', () => {
     const wrapper = mount(component, {props: {disabled: true}});
     expect(wrapper.find('select').attributes('disabled')).toBeDefined();

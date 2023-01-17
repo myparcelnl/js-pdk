@@ -1,8 +1,18 @@
+import {ElementInstance, createFormElement} from '@myparcel-pdk/frontend-core';
+import {MountingOptions, mount} from '@vue/test-utils';
 import {expect, it} from 'vitest';
-import {ComponentTest} from '../types';
-import {mount} from '@vue/test-utils';
+import {PdkComponentTest} from '../tests';
+import {runCommonComponentTests} from '../common';
 
-export const runTextInputTest: ComponentTest = (component) => {
+export const runTextInputTest: PdkComponentTest = (component) => {
+  const options: MountingOptions<{element: ElementInstance}> = {
+    props: {
+      element: createFormElement({}),
+    },
+  };
+
+  runCommonComponentTests(component, options);
+
   it('can be disabled', () => {
     const wrapper = mount(component, {props: {disabled: true}});
     expect(wrapper.find('input').attributes('disabled')).toBeDefined();

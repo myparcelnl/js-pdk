@@ -1,7 +1,16 @@
-import {ComponentTest} from '../types';
-import {runCommonInputTests} from '../common';
+import {ElementInstance, createFormElement} from '@myparcel-pdk/frontend-core';
+import {runCommonComponentTests, runCommonInputTests} from '../common';
+import {MountingOptions} from '@vue/test-utils';
+import {PdkComponentTest} from '../tests';
 
-export const runCurrencyInputTest: ComponentTest = (component) => {
-  runCommonInputTests(component);
+export const runCurrencyInputTest: PdkComponentTest = (component) => {
+  const options: MountingOptions<{element: ElementInstance}> = {
+    props: {
+      element: createFormElement({}),
+    },
+  };
+
+  runCommonComponentTests(component, options);
+  runCommonInputTests(component, options);
   // TODO write more tests
 };

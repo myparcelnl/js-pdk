@@ -15,7 +15,7 @@ export * from './runMultiCheckboxTest';
 export * from './runMultiRadioTest';
 export * from './runNotificationTest';
 export * from './runNumberInputTest';
-export * from './runPluginSettingsWrapperTest';
+export * from './runPlainWrapperTest';
 export * from './runRadioInputTest';
 export * from './runRowTest';
 export * from './runSelectInputTest';

@@ -1,12 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {MountingOptions, mount} from '@vue/test-utils';
 import {expect, it} from 'vitest';
-import {Component} from 'vue';
+import {PartialComponentTest} from '../types';
+import {mount} from '@vue/test-utils';
 
-export const runCommonComponentTests = <C extends Omit<Component, 'props'>>(
-  component: C,
-  options: MountingOptions<any> = {},
-): void => {
+export const runCommonComponentTests: PartialComponentTest = (component, options): void => {
   it('can be rendered', () => {
     expect(() => mount(component, options)).not.toThrow();
   });

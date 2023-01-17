@@ -1,5 +1,6 @@
 export * from '../actions';
 export * from './convertDotNotationToObject';
+export * from './createFormElement';
 export * from './decodeHtmlEntities';
 export * from './encodeArrayParameter';
 export * from './formToBody';

@@ -6,6 +6,7 @@ export const PORT = 9420;
 
 export default defineConfig((env) => ({
   plugins: [vue()],
+
   server: {
     port: PORT,
     base: env.mode === 'production' ? `/js-pdk/` : '/',
@@ -21,5 +22,13 @@ export default defineConfig((env) => ({
   define: {
     'process.env': {},
     'process.argv': [],
+  },
+
+  test: {
+    environment: 'happy-dom',
+    coverage: {
+      enabled: false,
+      reporter: ['text', 'clover'],
+    },
   },
 }));

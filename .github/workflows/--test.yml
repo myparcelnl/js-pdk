@@ -18,7 +18,7 @@ jobs:
           private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
 
       - name: 'Run tests'
-        run: yarn test:run
+        run: yarn test --output-style=static
 
       - uses: codecov/codecov-action@v3
 

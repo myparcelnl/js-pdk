@@ -1,4 +1,4 @@
-import {PdkFrontendAppConfig} from '../../PdkFrontend';
+import {PdkAppConfig} from '../../../data';
 import {Plugin} from 'vue';
 
-export type PdkAppPlugin = (appConfig: PdkFrontendAppConfig) => Plugin;
+export type PdkAppPlugin = (appConfig: PdkAppConfig) => Plugin;

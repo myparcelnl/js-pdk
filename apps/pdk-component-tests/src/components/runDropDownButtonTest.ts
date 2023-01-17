@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
+import {MountingOptions, mount} from '@vue/test-utils';
 import {expect, it} from 'vitest';
 import {runCommonComponentTests, runHasPropTest} from '../common';
-import {ComponentTest} from '../types';
-import {mount} from '@vue/test-utils';
+import {PdkComponentTest} from '../tests';
 
 const DEFAULT_OPTIONS = {
   props: {
@@ -22,11 +23,14 @@ const DEFAULT_OPTIONS = {
   },
 };
 
-export const runDropDownButtonTest: ComponentTest = (component) => {
+export const runDropDownButtonTest: PdkComponentTest = (component) => {
+  const options: MountingOptions<any> = {};
+
+  runCommonComponentTests(component, options);
   runCommonComponentTests(component, DEFAULT_OPTIONS);
 
-  runHasPropTest(component, 'actions', DEFAULT_OPTIONS.props.actions);
-  runHasPropTest(component, 'disabled', true);
+  runHasPropTest(component, options, 'actions', DEFAULT_OPTIONS.props.actions);
+  runHasPropTest(component, options, 'disabled', true);
 
   it('emits click event when action is clicked', async () => {
     expect.assertions(1);
@@ -48,4 +52,21 @@ export const runDropDownButtonTest: ComponentTest = (component) => {
     await wrapper.vm.$nextTick();
     expect(wrapper.emitted().click).toBeUndefined();
   });
+
+  it('emits click event when dropdown action is clicked', async () => {
+    expect.assertions(1);
+    const wrapper = mount(component, DEFAULT_OPTIONS);
+    const dropdown = wrapper.find('button');
+
+    dropdown.element.click();
+    await wrapper.vm.$nextTick();
+    const action = wrapper.find('.dropdown-item');
+
+    action.element.click();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.emitted().click).toHaveLength(2);
+  });
+
+  // TODO write more tests
 };

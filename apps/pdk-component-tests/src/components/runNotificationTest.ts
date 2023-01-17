@@ -1,22 +1,22 @@
+import {MountingOptions, mount} from '@vue/test-utils';
 import {expect, it} from 'vitest';
-import {ComponentTest} from '../types';
-import {mount} from '@vue/test-utils';
+import {PdkComponentTest} from '../tests';
 import {runCommonComponentTests} from '../common';
 
-const DEFAULT_OPTIONS = {
-  props: {
-    notification: {
-      variant: 'error',
-      content: 'This is a plain string',
+export const runNotificationTest: PdkComponentTest = (component) => {
+  const options: MountingOptions<any> = {
+    props: {
+      notification: {
+        variant: 'error',
+        content: 'This is a plain string',
+      },
     },
-  },
-};
+  };
 
-export const runNotificationTest: ComponentTest = (component) => {
-  runCommonComponentTests(component, DEFAULT_OPTIONS);
+  runCommonComponentTests(component, options);
 
   it('renders notification with string content', () => {
-    const wrapper = mount(component, DEFAULT_OPTIONS);
+    const wrapper = mount(component, options);
 
     expect(wrapper.findAll('*').map((wrapper) => wrapper.text())).toContain('This is a plain string');
   });

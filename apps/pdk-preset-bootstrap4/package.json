@@ -15,8 +15,9 @@
     "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "serve": "run ws:vite:serve \"$(pwd)\"",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "run ws:test \"$(pwd)\"",
+    "test:related": "run ws:test:related \"$(pwd)\"",
+    "test:watch": "run ws:test:watch \"$(pwd)\"",
     "watch": "run ws:vite:watch \"$(pwd)\""
   },
   "dependencies": {

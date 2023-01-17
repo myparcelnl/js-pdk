@@ -1,7 +1,9 @@
-import {runHasPropTest, runHasSlotTest} from '../common';
-import {ComponentTest} from '../types';
+import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from '../common';
+import {PdkComponentTest} from '../tests';
 
-export const runColTest: ComponentTest = (component) => {
-  runHasSlotTest(component);
-  runHasPropTest(component, 'span', 3);
+export const runColTest: PdkComponentTest = (component) => {
+  runCommonComponentTests(component);
+
+  runHasSlotTest(component, {});
+  runHasPropTest(component, {}, 'span', 3);
 };

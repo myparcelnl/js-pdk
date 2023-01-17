@@ -1,8 +1,8 @@
 /* eslint-disable no-magic-numbers */
+import {PdkAppInstance, createLogger, createPdkConfig} from '@myparcel-pdk/frontend-core';
+import {afterAll, beforeAll, describe, vi} from 'vitest';
 import {Component} from 'vue';
 import {PdkComponentName} from '@myparcel-pdk/common';
-import {describe} from 'vitest';
-import {runCommonComponentTests} from '../common';
 import {testMap} from './testMap';
 
 export const executePdkComponentTest = (name: PdkComponentName, component: Omit<Component, 'props'>): void => {
@@ -15,7 +15,21 @@ export const executePdkComponentTest = (name: PdkComponentName, component: Omit<
   }
 
   describe(name, () => {
-    runCommonComponentTests(component);
+    beforeAll(() => {
+      vi.mock('../usePdkInstance', () => ({
+        usePdkInstance: (): PdkAppInstance => ({
+          appName: 'test',
+          context: {},
+          config: createPdkConfig(),
+          logger: createLogger('test'),
+        }),
+      }));
+    });
+
     test(component);
+
+    afterAll(() => {
+      vi.restoreAllMocks();
+    });
   });
 };

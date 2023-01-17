@@ -1,8 +1,11 @@
 import {expect, it} from 'vitest';
-import {ComponentTest} from '../types';
+import {PdkComponentTest} from '../tests';
 import {mount} from '@vue/test-utils';
+import {runCommonComponentTests} from '../common';
 
-export const runButtonTest: ComponentTest = (component) => {
+export const runButtonTest: PdkComponentTest = (component) => {
+  runCommonComponentTests(component);
+
   it('handles click event', async () => {
     expect.assertions(1);
     const wrapper = mount(component);

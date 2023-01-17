@@ -16,12 +16,16 @@
     "prepare": "is-ci || husky install",
     "serve": "yarn build:dev && npx concurrently yarn:watch yarn:serve:demo",
     "serve:demo": "nx serve demo",
-    "test": "nx run-many --parallel --target=test --output-style=stream",
-    "test:watch": "nx run-many --parallel --target=test:watch",
+    "test": "nx run-many --target=test --output-style=stream",
+    "test:related": "nx run-many --target=test:related --output-style=stream",
+    "test:watch": "nx run-many --target=test:watch --output-style=stream",
     "typecheck": "nx run-many --target=typecheck",
     "watch": "nodemon",
     "ws:clean": "cd $0 && rimraf lib dist",
     "ws:lint": "cd $0 && pwd && eslint --fix --cache .",
+    "ws:test": "cd $0 && vitest run --coverage",
+    "ws:test:related": "cd $0 && vitest related",
+    "ws:test:watch": "cd $0 && vitest",
     "ws:tsup:build": "cd $0 && tsup-node --dts --minify",
     "ws:tsup:build:dev": "cd $0 && tsup-node --sourcemap --dts",
     "ws:tsup:buildOnly": "cd $0 && tsup-node",
@@ -35,7 +39,8 @@
   },
   "lint-staged": {
     "*.{json,md}": "prettier --write",
-    "*.{ts,vue}": "eslint --fix --cache",
+    "*.{ts,vue,__p1}": "eslint --fix --cache",
+    "*.{ts,vue,__p2}": "yarn test:related",
     "package.json": "npx sort-package-json"
   },
   "nodemonConfig": {
