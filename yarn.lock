@@ -601,7 +601,7 @@ __metadata:
     husky: ^8.0.3
     lint-staged: ^13.1.0
     nodemon: ^2.0.20
-    nx: ^15.4.5
+    nx: ^15.5.1
     plop: ^3.1.1
     prettier: ^2.8.2
     rimraf: ^3.0.2
@@ -806,23 +806,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nrwl/cli@npm:15.4.5":
-  version: 15.4.5
-  resolution: "@nrwl/cli@npm:15.4.5"
+"@nrwl/cli@npm:15.5.1":
+  version: 15.5.1
+  resolution: "@nrwl/cli@npm:15.5.1"
   dependencies:
-    nx: 15.4.5
-  checksum: f740871fb0b658ac70b25d21d0e70328242ad4f3f7d57e7287d941df61250e273d8f35bc62eff6ad51f758a8d4fa973252e785e5f8573ebe0143372dc97800a7
+    nx: 15.5.1
+  checksum: 6fac24afa5bb7dcaf05a974342d79337e359be6cc52e600d83598729527a3005d28d2697b44acca422bc1967e760008e930c6b32026c34f3fe9d67e2f4faf61e
   languageName: node
   linkType: hard
 
-"@nrwl/tao@npm:15.4.5":
-  version: 15.4.5
-  resolution: "@nrwl/tao@npm:15.4.5"
+"@nrwl/tao@npm:15.5.1":
+  version: 15.5.1
+  resolution: "@nrwl/tao@npm:15.5.1"
   dependencies:
-    nx: 15.4.5
+    nx: 15.5.1
   bin:
     tao: index.js
-  checksum: e9ae7fb1f2ecb13fa191bc9c8c973260d98db196912cbda183885f7648daba482a24138e602d86c052e97d0695e1c5c58c7946f7df9bffcf9174113df60981c1
+  checksum: d884a8a62356dd7babdd26789531499ad95cc5c37dd22c04a381896d8f70a95b1eba52e3792d04df862cc0cad22ec2d609c9ab47a995413cdf4add9ac7ce628e
   languageName: node
   linkType: hard
 
@@ -3349,6 +3349,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fs-extra@npm:^11.1.0":
+  version: 11.1.0
+  resolution: "fs-extra@npm:11.1.0"
+  dependencies:
+    graceful-fs: ^4.2.0
+    jsonfile: ^6.0.1
+    universalify: ^2.0.0
+  checksum: 5ca476103fa1f5ff4a9b3c4f331548f8a3c1881edaae323a4415d3153b5dc11dc6a981c8d1dd93eec8367ceee27b53f8bd27eecbbf66ffcdd04927510c171e7f
+  languageName: node
+  linkType: hard
+
 "fs-extra@npm:~7.0.1":
   version: 7.0.1
   resolution: "fs-extra@npm:7.0.1"
@@ -4261,6 +4272,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lines-and-columns@npm:~2.0.3":
+  version: 2.0.3
+  resolution: "lines-and-columns@npm:2.0.3"
+  checksum: 5955363dfd7d3d7c476d002eb47944dbe0310d57959e2112dce004c0dc76cecfd479cf8c098fd479ff344acdf04ee0e82b455462a26492231ac152f6c48d17a1
+  languageName: node
+  linkType: hard
+
 "lint-staged@npm:^13.1.0":
   version: 13.1.0
   resolution: "lint-staged@npm:13.1.0"
@@ -4949,19 +4967,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nx@npm:15.4.5, nx@npm:^15.4.5":
-  version: 15.4.5
-  resolution: "nx@npm:15.4.5"
+"nx@npm:15.5.1, nx@npm:^15.5.1":
+  version: 15.5.1
+  resolution: "nx@npm:15.5.1"
   dependencies:
-    "@nrwl/cli": 15.4.5
-    "@nrwl/tao": 15.4.5
+    "@nrwl/cli": 15.5.1
+    "@nrwl/tao": 15.5.1
     "@parcel/watcher": 2.0.4
     "@yarnpkg/lockfile": ^1.1.0
     "@yarnpkg/parsers": ^3.0.0-rc.18
     "@zkochan/js-yaml": 0.0.6
     axios: ^1.0.0
     chalk: 4.1.0
-    chokidar: ^3.5.1
     cli-cursor: 3.1.0
     cli-spinners: 2.6.1
     cliui: ^7.0.2
@@ -4970,11 +4987,12 @@ __metadata:
     fast-glob: 3.2.7
     figures: 3.2.0
     flat: ^5.0.2
-    fs-extra: ^10.1.0
+    fs-extra: ^11.1.0
     glob: 7.1.4
     ignore: ^5.0.4
     js-yaml: 4.1.0
     jsonc-parser: 3.2.0
+    lines-and-columns: ~2.0.3
     minimatch: 3.0.5
     npm-run-path: ^4.0.1
     open: ^8.4.0
@@ -4998,7 +5016,7 @@ __metadata:
       optional: true
   bin:
     nx: bin/nx.js
-  checksum: b643ccbdc3c99950abc9d7ad59eced62f70edf97936c518c6d8fd95fe4b349fc78e7b48477f9a50521f38064ccbd1303e2b1a25c224ab38a91329965d775c2f6
+  checksum: 010a38660eaff660aa13080c1247ed7606e35eb6eb5eb9cf6b921d6354f1590b84b2af4d8524a068dc804584cda0f61f3f2940c0aecee6214bfdd580a5aedf6e
   languageName: node
   linkType: hard
 
