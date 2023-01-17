@@ -3,6 +3,7 @@
 
 import {ModalKey, PdkConfigurationPreset, useModalStore} from '@myparcel/pdk-frontend';
 
+// noinspection JSUnusedGlobalSymbols
 export const bootstrap4Config: PdkConfigurationPreset = {
   cssUtilities: {
     textCenter: 'text-center',

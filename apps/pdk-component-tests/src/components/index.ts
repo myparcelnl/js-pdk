@@ -1,5 +1,4 @@
 export * from './runActionContainerTest';
-export * from './runButtonGroupTest';
 export * from './runButtonTest';
 export * from './runCheckboxInputTest';
 export * from './runColTest';
@@ -20,8 +19,6 @@ export * from './runRadioInputTest';
 export * from './runRowTest';
 export * from './runSelectInputTest';
 export * from './runTabNavButtonTest';
-export * from './runTabNavButtonWrapperTest';
-export * from './runTabNavContentWrapperTest';
 export * from './runTableColTest';
 export * from './runTableRowTest';
 export * from './runTableTest';
