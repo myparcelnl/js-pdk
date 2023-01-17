@@ -32,7 +32,7 @@
   "devDependencies": {
     "@myparcel/vue-form-builder": "^1.0.0-alpha.29",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vitest/coverage-c8": "^0.27.0",
+    "@vitest/coverage-c8": "^0.27.2",
     "autoprefixer": "^10.4.13",
     "happy-dom": "^8.1.3",
     "postcss": "^8.4.21",
