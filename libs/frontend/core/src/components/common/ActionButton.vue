@@ -2,7 +2,9 @@
   <PdkButton
     :disabled="disabled || resolvedAction?.disabled"
     :icon="resolvedAction?.icon"
-    :label="resolvedAction?.label"
+    :label="!hideText ? resolvedAction?.label : null"
+    :title="hideText ? resolvedAction?.label : null"
+    :aria-label="hideText ? resolvedAction?.label : null"
     @click="resolvedAction?.onClick" />
 </template>
 
@@ -22,6 +24,10 @@ export default defineComponent({
     },
 
     disabled: {
+      type: Boolean,
+    },
+
+    hideText: {
       type: Boolean,
     },
   },

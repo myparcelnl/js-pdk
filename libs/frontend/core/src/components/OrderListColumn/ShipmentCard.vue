@@ -10,15 +10,15 @@
       <PdkCol>
         <ShipmentStatus :shipment="shipment" />
       </PdkCol>
-    </PdkRow>
 
-    <PdkRow collapse-gutters>
-      <PdkCol
-        v-for="action in actions"
-        :key="`${shipment.id}_${action.id}`">
-        <PdkLink
-          hide-text
-          :action="action" />
+      <PdkCol>
+        <PdkButtonGroup>
+          <ActionButton
+            v-for="action in actions"
+            :key="`${shipment.id}_${action.id}`"
+            :action="action"
+            hide-text />
+        </PdkButtonGroup>
       </PdkCol>
     </PdkRow>
   </PdkOrderCardShipmentsWrapper>
@@ -26,6 +26,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
+import ActionButton from '../common/ActionButton.vue';
 import {Shipment} from '@myparcel-pdk/common';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
@@ -34,6 +35,7 @@ import {useShipmentCardData} from '../../composables';
 export default defineComponent({
   name: 'ShipmentCard',
   components: {
+    ActionButton,
     ShipmentStatus,
     ShipmentBarcode,
   },

@@ -19,9 +19,7 @@
     <ActionButton
       v-for="(action, index) in dropdownActions"
       :key="`${index}_${action.id}`"
-      :action="action">
-      {{ translate(action.label) }}
-    </ActionButton>
+      :action="action" />
   </div>
 </template>
 
