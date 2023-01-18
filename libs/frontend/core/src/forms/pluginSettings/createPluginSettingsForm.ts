@@ -10,7 +10,9 @@ export const createPluginSettingsForm = (id: string, view: Plugin.SettingsView):
   const pluginSettings = usePluginSettings();
   const pdkConfig = usePdkConfig();
 
-  return defineForm(`PluginSettings_${id}`, {
+  console.log({id, view});
+
+  return defineForm(`PluginSettings${id}`, {
     ...pdkConfig.formConfigPluginSettings,
     fields: [
       ...generateFormFields(

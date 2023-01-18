@@ -17,6 +17,7 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
 
     const component = resolveFormComponent($component);
 
+    // Plain element
     if (!label || !name) {
       return defineField({
         slots: $slot ? {default: $slot} : undefined,
@@ -26,6 +27,7 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
       });
     }
 
+    // Interactive element
     return defineField({
       name: prefix + name,
       ref: ref(values[name]),

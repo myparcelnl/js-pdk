@@ -15,6 +15,7 @@ export interface SelectOption<Value = string | number> {
 export interface PdkTab {
   name: string;
   label: string;
+  description?: string;
   icon?: string;
   component: string | Component;
 }

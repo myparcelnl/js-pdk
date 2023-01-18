@@ -5,7 +5,7 @@
     <PdkIcon
       v-if="tab.icon"
       :icon="tab.icon" />
-    {{ translate(tab.name) }}
+    {{ translate(tab.label) }}
   </button>
 </template>
 

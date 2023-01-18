@@ -363,6 +363,7 @@ export namespace Plugin {
     title: string;
     description?: string;
     fields: Field[];
+    children: SettingsView[];
   };
 
   export type ModelContextPluginSettingsViewContext = {
@@ -371,7 +372,7 @@ export namespace Plugin {
     label: SettingsView;
     customs: SettingsView;
     checkout: SettingsView;
-    carrier: SettingsView[];
+    carrier: SettingsView;
   };
 
   export type ModelContextProductSettingsViewContext = {

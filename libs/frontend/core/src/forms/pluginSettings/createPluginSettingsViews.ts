@@ -28,24 +28,25 @@ export const createPluginSettingsViews = (): (FormSettingsView | ChildrenSetting
   }
 
   return Object.entries(contextStore.context.pluginSettingsView).map(([id, view]) => {
-    if (Array.isArray(view)) {
+    if (!view.children.length) {
       return {
-        title: view[0].title,
         id,
-        children: view.map((subview) => {
-          return {
-            title: subview.title,
-            id: id + subview.title,
-            form: createPluginSettingsForm(id, subview),
-          };
-        }),
+        title: view.title,
+        description: view.description,
+        form: createPluginSettingsForm(id, view),
       };
     }
 
     return {
-      title: view.title,
       id,
-      form: createPluginSettingsForm(id, view),
+      title: view.title,
+      description: view.description,
+      children: view.children.map((subview) => ({
+        id: id + subview.title,
+        title: subview.title,
+        description: subview.description,
+        form: createPluginSettingsForm(id, subview),
+      })),
     };
   });
 };

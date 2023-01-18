@@ -29,10 +29,11 @@ const removeRef: any = (field: InteractiveElementConfiguration) => {
 };
 
 describe('generateFieldsFromView', () => {
-  it('should generate fields from a views', () => {
+  it('should generate fields from a view', () => {
     const view: Plugin.SettingsView = {
       title: 'general_settings',
       description: 'general_settings_description',
+      children: [],
       fields: [
         {
           name: 'generalSettings.name',
@@ -59,6 +60,50 @@ describe('generateFieldsFromView', () => {
       {
         component: 'PdkTextInput',
         label: 'general_settings_description',
+        name: 'generalSettings.description',
+        props: {},
+      },
+    ]);
+  });
+
+  it('should generate fields from a view with children', () => {
+    const view: Plugin.SettingsView = {
+      title: 'carrier_settings',
+      description: 'carrier_settings_description',
+      children: [
+        {
+          title: 'carrier_settings',
+          description: 'carrier_settings_description',
+          children: [],
+          fields: [
+            {
+              name: 'carrierSettings.name',
+              label: 'carrier_settings_name',
+              $component: 'TextInput',
+            },
+            {
+              name: 'carrierSettings.description',
+              label: 'carrier_settings_description',
+              $component: 'TextInput',
+            },
+          ],
+        },
+      ],
+      fields: [],
+    };
+
+    const fields = generateFormFields({fields: view.fields, values: {}});
+
+    expect(fields.map(removeRef)).toEqual([
+      {
+        component: 'PdkTextInput',
+        label: 'carrier_settings_name',
+        name: 'generalSettings.name',
+        props: {},
+      },
+      {
+        component: 'PdkTextInput',
+        label: 'carrier_settings_description',
         name: 'generalSettings.description',
         props: {},
       },

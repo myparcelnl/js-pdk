@@ -14,14 +14,25 @@ import {PdkTab} from '@myparcel-pdk/common';
 import {TabNavigation} from '../components/common';
 import {h} from 'vue';
 import {isOfType} from '@myparcel/ts-utils';
+import {useLanguage} from '../composables';
 
 const views = createPluginSettingsViews();
+
+const language = useLanguage();
+
+const createDescription = (description?: string) => {
+  if (description && language.has(description)) {
+    return h('p', language.translate(description));
+  }
+
+  return null;
+};
 
 const renderFormTab = (view: FormSettingsView): PdkTab => {
   return {
     name: view.id,
     label: view.title,
-    component: () => h('div', [h('p', view.description), h(MagicForm, {form: view.form})]),
+    component: () => h('div', [createDescription(view.description), h(MagicForm, {form: view.form})]),
   };
 };
 
@@ -32,7 +43,8 @@ const tabs = views.map((view) => {
     return {
       name: view.id,
       label: view.title,
-      component: () => h(TabNavigation, {tabs: childTabs, hashPrefix: view.id + '-'}),
+      component: () =>
+        h('div', [createDescription(view.description), h(TabNavigation, {tabs: childTabs, hashPrefix: view.id + '-'})]),
     };
   }
 
