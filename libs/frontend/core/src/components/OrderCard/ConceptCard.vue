@@ -18,8 +18,13 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {orderExportAction, orderExportPrintAction, orderUpdateAction} from '../../actions';
-import {useLanguage, useLoading} from '../../composables';
+import {
+  orderExportAction,
+  orderExportPrintShipmentsAction,
+  orderExportShipmentsAction,
+  orderUpdateAction,
+} from '../../actions';
+import {useLanguage, useLoading, usePluginSettings} from '../../composables';
 import {Plugin} from '@myparcel-pdk/common';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
 import {createActions} from '../../services';
@@ -39,13 +44,18 @@ export default defineComponent({
 
   setup: () => {
     const {loading, setLoading} = useLoading();
+    const pluginSettings = usePluginSettings();
+    const {orderMode} = pluginSettings.general;
 
     const {translate} = useLanguage();
 
     return {
       loading,
       actions: createActions(
-        [orderUpdateAction, orderExportAction, orderExportPrintAction],
+        [
+          orderUpdateAction,
+          ...(orderMode ? [orderExportAction] : [orderExportShipmentsAction, orderExportPrintShipmentsAction]),
+        ],
         {},
         {
           start() {

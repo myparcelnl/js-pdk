@@ -8,7 +8,6 @@ export const afterPrintAction = async <A extends (typeof printActions)[number]>(
   response,
   instance,
 }: ActionContextWithResponse<A>): Promise<ActionResponse<A>> => {
-  instance.logger?.debug('Please pretend your pdf was just downloaded or opened. 🚧');
   instance.logger?.debug('Parameters', parameters, response);
 
   // @ts-expect-error todo

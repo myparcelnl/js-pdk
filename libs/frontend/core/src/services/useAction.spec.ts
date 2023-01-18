@@ -1,30 +1,12 @@
-import {afterAll, beforeAll, describe, expect, it, vi} from 'vitest';
+import {NamedAction, OnClickAction, PdkButtonAction} from '../types';
+import {describe, expect, it} from 'vitest';
 import {FrontendAction} from '../actions';
-import {PdkAppInstance} from '../data';
-import {PdkButtonAction} from '../types';
-import {createLogger} from './logger';
-import {createPdkConfig} from '../pdk';
 import {useAction} from './useAction';
 
 describe('usePropAction', () => {
-  beforeAll(() => {
-    vi.mock('../usePdkInstance', () => ({
-      usePdkInstance: (): PdkAppInstance => ({
-        appName: 'test',
-        context: {},
-        config: createPdkConfig(),
-        logger: createLogger('test'),
-      }),
-    }));
-  });
-
-  afterAll(() => {
-    vi.restoreAllMocks();
-  });
-
-  const inputs: {input: Partial<PdkButtonAction> & {action: PdkButtonAction}; output: PdkButtonAction}[] = [
+  const inputs: {input: Partial<NamedAction | OnClickAction>; output: PdkButtonAction}[] = [
     {
-      input: {action: {label: 'test', id: 'test', onClick: () => undefined}},
+      input: {action: FrontendAction.SHIPMENTS_DELETE},
       output: {label: 'test', id: 'test', onClick: () => undefined},
     },
     {

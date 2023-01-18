@@ -26,9 +26,10 @@ export const modalCancelAction: OnClickAction = {
   },
 };
 
-export const modalOpenAction: OnClickAction = {
+export const orderEditAction: OnClickAction = {
   id: 'open',
-  label: 'action_open_shipment_modal',
+  icon: PdkIcon.EDIT,
+  label: 'action_edit',
   onClick: <K extends ModalKey>(modalKey: K, context: PdkModalContext<K>) => {
     const modalStore = useModalStore();
     modalStore.open(modalKey, context);
@@ -41,7 +42,13 @@ export const orderExportAction: InputPdkButtonAction = {
   label: 'action_export',
 };
 
-export const orderExportPrintAction: InputPdkButtonAction = {
+export const orderExportShipmentsAction: InputPdkButtonAction = {
+  action: FrontendAction.ORDERS_EXPORT,
+  icon: PdkIcon.EXPORT,
+  label: 'action_export_shipments',
+};
+
+export const orderExportPrintShipmentsAction: InputPdkButtonAction = {
   action: FrontendAction.ORDERS_EXPORT_PRINT,
   icon: PdkIcon.PRINT,
   label: 'action_export_print',
@@ -104,10 +111,15 @@ export const webhooksRefreshAction: NamedAction = {
 export const actions: NamedAction[] = [
   deleteAction,
   orderExportAction,
-  orderExportPrintAction,
+  orderExportPrintShipmentsAction,
+  orderExportShipmentsAction,
   orderPrintAction,
   orderUpdateAction,
+  pluginSettingsUpdateAction,
   shipmentCreateReturnAction,
   shipmentPrintAction,
   shipmentRefreshAction,
+  webhooksCreateAction,
+  webhooksDeleteAction,
+  webhooksRefreshAction,
 ];

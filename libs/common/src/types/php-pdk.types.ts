@@ -382,20 +382,21 @@ export namespace Plugin {
   };
 
   export type ModelPdkOrder = {
-    externalIdentifier: string;
     customsDeclaration?: Shipment.ModelCustomsDeclaration;
     deliveryOptions?: Shipment.ModelDeliveryOptions;
+    exported: boolean;
+    externalIdentifier: string;
     label?: Shipment.ModelLabel;
     lines?: PdkOrderLineCollection;
-    recipient: Base.ModelContactDetails;
-    sender?: Base.ModelContactDetails;
-    shipments?: Shipment.ShipmentCollection;
-    shipmentPrice: number;
-    shipmentPriceAfterVat: number;
-    shipmentVat: number;
     orderPrice: number;
     orderPriceAfterVat: number;
     orderVat: number;
+    recipient: Base.ModelContactDetails;
+    sender?: Base.ModelContactDetails;
+    shipmentPrice: number;
+    shipmentPriceAfterVat: number;
+    shipmentVat: number;
+    shipments?: Shipment.ShipmentCollection;
     totalPrice: number;
     totalPriceAfterVat: number;
     totalVat: number;

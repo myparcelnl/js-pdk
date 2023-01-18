@@ -1,23 +1,31 @@
 <template>
   <PdkButtonGroup>
-    <ActionButton
-      :action="modalOpenAction"
-      :title="`Create shipment for order ${order.externalIdentifier}`" />
+    <template v-if="order.exported">
+      <PdkLink :action="showExportedOrderAction" />
+    </template>
 
-    <ActionButton
-      v-if="order?.shipments.length"
-      :action="printAction" />
+    <template v-else>
+      <ActionButton
+        :loading="loading"
+        hide-text
+        :action="editAction" />
+
+      <ActionButton
+        :loading="loading"
+        hide-text
+        :action="exportAction" />
+    </template>
   </PdkButtonGroup>
 </template>
 
 <script lang="ts">
+import {ModalKey, PdkIcon} from '../../types';
 import {PropType, defineComponent} from 'vue';
 import {createAction, createButtonAction} from '../../services';
-import {modalOpenAction, orderPrintAction} from '../../actions';
+import {orderEditAction, orderExportAction} from '../../actions';
 import {ActionButton} from '../common';
-import {ModalKey} from '../../types';
 import {Plugin} from '@myparcel-pdk/common';
-import {usePdkConfig} from '../../composables';
+import {useLoading} from '../../composables';
 
 export default defineComponent({
   name: 'OrderActions',
@@ -33,10 +41,27 @@ export default defineComponent({
   },
 
   setup: (props) => {
+    const {loading, actionCallbacks} = useLoading();
+
     return {
-      pdkConfig: usePdkConfig(),
-      printAction: createAction(orderPrintAction, {orderIds: [props.order.externalIdentifier]}),
-      modalOpenAction: createButtonAction(modalOpenAction, ModalKey.SHIPMENT_OPTIONS, props.order.externalIdentifier),
+      loading,
+      showExportedOrderAction: createButtonAction({
+        icon: PdkIcon.EXTERNAL,
+        label: 'Show in MyParcel',
+        id: 'show-exported-order',
+        onClick: () => {
+          window.open(`https://backoffice.myparcel.nl/orders`, '_blank');
+        },
+      }),
+
+      editAction: createButtonAction(
+        orderEditAction,
+        ModalKey.SHIPMENT_OPTIONS,
+        props.order.externalIdentifier,
+        actionCallbacks,
+      ),
+
+      exportAction: createAction(orderExportAction, {orderIds: [props.order.externalIdentifier]}, actionCallbacks),
     };
   },
 });
