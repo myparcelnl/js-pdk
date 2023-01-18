@@ -31,7 +31,13 @@ export const createAction: CreateAction = (input, parameters, callbacks) => {
     id: action,
     onClick: async () => {
       await callbacks?.start?.();
-      await doAction({action, parameters, instance: {...instance, logger}});
+
+      await doAction({
+        action,
+        parameters: parameters ?? {},
+        instance: {...instance, logger},
+      });
+
       await callbacks?.end?.();
     },
   };
