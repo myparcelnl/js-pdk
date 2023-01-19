@@ -43,8 +43,7 @@
   },
   "lint-staged": {
     "*.{json,md}": "prettier --write",
-    "*.{ts,vue,__p1}": "eslint --fix --cache",
-    "*.{ts,vue,__p2}": "yarn test:related",
+    "*.{ts,vue}": "eslint --fix --cache",
     "package.json": "npx sort-package-json"
   },
   "nodemonConfig": {
