@@ -16,8 +16,7 @@
     "lint": "run ws:lint \"$(pwd)\"",
     "serve": "vite",
     "test": "run ws:test \"$(pwd)\"",
-    "test:related": "run ws:test:related \"$(pwd)\"",
-    "test:watch": "run ws:test:watch \"$(pwd)\"",
+    "test:run": "run ws:test:run \"$(pwd)\"",
     "translations:import": "npx -q @edielemoine/google-docs-importer --documentId 1TPE7gwG2GXtX7vlKIaskwMy0Xr4o_ir-lsedWB86xyc -o src/translations"
   },
   "dependencies": {

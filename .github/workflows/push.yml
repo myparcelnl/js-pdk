@@ -8,12 +8,35 @@ on:
 
 concurrency:
   group: publish-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   test:
-    uses: ./.github/workflows/--test.yml
-    secrets: inherit
+    name: 'Run unit tests 🧪'
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_REPO_TOKEN }}
+
+      - uses: ./.github/actions/setup
+        with:
+          app-id: ${{ secrets.MYPARCEL_APP_ID }}
+          private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
+
+      - name: 'Run tests'
+        run: |
+          nx run-many \
+          --parallel \
+          --target=test:run \
+          --output-style=static
+
+      - uses: codecov/codecov-action@v3
+        continue-on-error: true
+
+      - uses: codacy/codacy-coverage-reporter-action@v1
+        continue-on-error: true
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
 
   release:
     name: 'Publish new release 🚀'
@@ -22,18 +45,18 @@ jobs:
     # TODO: remove this when tests are mandatory
     if: always()
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: ./.github/actions/setup
-        id: setup
+      - uses: myparcelnl/actions/setup-git-credentials@v3
+        id: credentials
         with:
-          app-id: ${{ secrets.MYPARCEL_APP_ID }}
-          private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
+          app-id: ${{ inputs.app-id }}
+          private-key: ${{ inputs.private-key }}
 
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          token: ${{ steps.setup.outputs.token }}
+          token: ${{ steps.credentials.outputs.token }}
+
+      - uses: ./.github/actions/setup
 
       - name: 'Run monodeploy'
         run: |
@@ -41,10 +64,11 @@ jobs:
             --config-file monodeploy.config.cjs \
             --log-level 0
         env:
-          GH_TOKEN: ${{ steps.setup.outputs.token }}
+          GH_TOKEN: ${{ steps.credentials.outputs.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: 'Dispatch deploy demo command'
         uses: peter-evans/repository-dispatch@v2
         with:
+          token: ${{ steps.credentials.outputs.token }}
           event-type: deploy-demo

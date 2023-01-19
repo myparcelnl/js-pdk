@@ -1,40 +1,24 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "defaultBase": "alpha",
+  "affected": {
+    "defaultBase": "alpha"
+  },
   "workspaceLayout": {
     "appsDir": "apps",
     "libsDir": "libs"
   },
-  "defaultProject": "@myparcel/pdk-components",
   "npmScope": "myparcel-pdk",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "parallel": 10,
-        "cacheableOperations": ["build", "build:dev", "lint"]
-      }
-    }
-  },
   "namedInputs": {
-    "default": [
-      "!{projectRoot}/lib",
-      "{projectRoot}/**/*",
-      "{workspaceRoot}/package.json",
-      "{workspaceRoot}/tsconfig.build.json"
-    ],
+    "default": ["!{projectRoot}/lib", "{projectRoot}/**/*"],
     "production": [
       "default",
       "!{projectRoot}/**/*.spec.*",
       "!{projectRoot}/**/*.test.*",
       "!{projectRoot}/**/__tests__"
-    ],
-    "src": ["{projectRoot}/src/**/*"]
+    ]
   },
   "targetDefaults": {
-    "lint": {
-      "inputs": ["src"],
-      "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
-    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production"],
@@ -45,9 +29,17 @@
       "inputs": ["production"],
       "outputs": ["{projectRoot}/lib", "{projectRoot}/dist"]
     },
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.cjs"],
+      "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
+    },
     "serve": {
       "dependsOn": ["build:dev"],
       "outputs": ["{projectRoot}/lib", "{projectRoot}/dist"]
+    },
+    "test:run": {
+      "inputs": ["default"],
+      "outputs": ["{projectRoot}/coverage"]
     },
     "watch": {
       "dependsOn": ["^build:dev"],
@@ -55,5 +47,13 @@
       "outputs": ["{projectRoot}/lib", "{projectRoot}/dist"]
     }
   },
-  "defaultBase": "main"
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "parallel": 10,
+        "cacheableOperations": ["build", "build:dev", "lint", "test:run"]
+      }
+    }
+  }
 }

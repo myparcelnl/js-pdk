@@ -17,8 +17,7 @@
     "lint": "run ws:lint \"$(pwd)\"",
     "serve": "run ws:vite:serve \"$(pwd)\"",
     "test": "run ws:test \"$(pwd)\"",
-    "test:related": "run ws:test:related \"$(pwd)\"",
-    "test:watch": "run ws:test:watch \"$(pwd)\"",
+    "test:run": "run ws:test:run \"$(pwd)\"",
     "watch": "run ws:vite:watch \"$(pwd)\""
   },
   "dependencies": {
