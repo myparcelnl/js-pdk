@@ -9,7 +9,13 @@
     <template #default>
       <PdkRow>
         <PdkCol>
-          <ShipmentOptionsForm :order="order" />
+          <template v-if="order.exported">
+            {{ translate('order_exported') }}
+          </template>
+
+          <ShipmentOptionsForm
+            v-else
+            :order="order" />
         </PdkCol>
       </PdkRow>
     </template>
@@ -17,17 +23,18 @@
 </template>
 
 <script lang="ts">
-import {PropType, defineComponent} from 'vue';
+import {PropType, computed, defineComponent} from 'vue';
 import {
   orderExportAction,
   orderExportPrintShipmentsAction,
   orderExportShipmentsAction,
   orderUpdateAction,
+  viewOrderInBackofficeAction,
 } from '../../actions';
 import {useLanguage, useLoading, usePluginSettings} from '../../composables';
 import {Plugin} from '@myparcel-pdk/common';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
-import {createActions} from '../../services';
+import {createActions, createButtonAction} from '../../services';
 
 export default defineComponent({
   name: 'ConceptCard',
@@ -42,8 +49,8 @@ export default defineComponent({
     },
   },
 
-  setup: () => {
-    const {loading, setLoading} = useLoading();
+  setup: (props) => {
+    const {loading, actionCallbacks} = useLoading();
     const pluginSettings = usePluginSettings();
     const {orderMode} = pluginSettings.general;
 
@@ -51,21 +58,21 @@ export default defineComponent({
 
     return {
       loading,
-      actions: createActions(
-        [
-          orderUpdateAction,
-          ...(orderMode ? [orderExportAction] : [orderExportShipmentsAction, orderExportPrintShipmentsAction]),
-        ],
-        {},
-        {
-          start() {
-            setLoading(true);
-          },
-          end() {
-            setLoading(false);
-          },
-        },
-      ),
+
+      actions: computed(() => {
+        if (props.order.exported) {
+          return [createButtonAction(viewOrderInBackofficeAction)];
+        }
+
+        return createActions(
+          [
+            orderUpdateAction,
+            ...(orderMode ? [orderExportAction] : [orderExportShipmentsAction, orderExportPrintShipmentsAction]),
+          ],
+          {},
+          actionCallbacks,
+        );
+      }),
 
       translate,
     };

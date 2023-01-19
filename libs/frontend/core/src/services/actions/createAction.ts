@@ -1,5 +1,5 @@
 import {ActionParameters, FrontendAction} from '../../actions';
-import {InputPdkButtonAction, OnClickAction, PdkButtonAction} from '../../types';
+import {InputPdkButtonAction, OnClickAction, PdkButtonAction, PdkNotification} from '../../types';
 import {PromiseOr, isOfType} from '@myparcel/ts-utils';
 import {createLogger} from '../logger';
 import {doAction} from '../../utils';
@@ -32,10 +32,22 @@ export const createAction: CreateAction = (input, parameters, callbacks) => {
     onClick: async () => {
       await callbacks?.start?.();
 
+      const notifications = ['success', 'error'].reduce((acc, type) => {
+        return {
+          ...acc,
+          [type]: {
+            variant: type,
+            title: `notification_${action}_${type}_title`,
+            content: `notification_${action}_${type}_body_`,
+          },
+        };
+      }, {} as Record<'success' | 'error', PdkNotification>);
+
       await doAction({
         action,
         parameters: parameters ?? {},
         instance: {...instance, logger},
+        notifications,
       });
 
       await callbacks?.end?.();

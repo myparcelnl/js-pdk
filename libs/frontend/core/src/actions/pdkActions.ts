@@ -36,24 +36,48 @@ export const orderEditAction: OnClickAction = {
   },
 };
 
+/**
+ * Shown in order mode. Exports entire order.
+ */
 export const orderExportAction: InputPdkButtonAction = {
   action: FrontendAction.ORDERS_EXPORT,
   icon: PdkIcon.EXPORT,
   label: 'action_export',
 };
 
+/**
+ * Shown on orders that have been exported to MyParcel using order mode.
+ */
+export const viewOrderInBackofficeAction: OnClickAction = {
+  icon: PdkIcon.EXTERNAL,
+  label: 'order_view_in_backoffice',
+  id: 'show-exported-order',
+  onClick: () => {
+    window.open(`https://backoffice.myparcel.nl/orders`, '_blank');
+  },
+};
+
+/**
+ * Shown if not in order mode. Exports shipments.
+ */
 export const orderExportShipmentsAction: InputPdkButtonAction = {
   action: FrontendAction.ORDERS_EXPORT,
   icon: PdkIcon.EXPORT,
   label: 'action_export_shipments',
 };
 
+/**
+ * Shown if not in order mode. Prints shipment labels.
+ */
 export const orderExportPrintShipmentsAction: InputPdkButtonAction = {
   action: FrontendAction.ORDERS_EXPORT_PRINT,
   icon: PdkIcon.PRINT,
   label: 'action_export_print',
 };
 
+/**
+ * Shown if not in order mode. Exports all shipment labels.
+ */
 export const orderPrintAction: InputPdkButtonAction = {
   action: FrontendAction.ORDERS_PRINT,
   icon: PdkIcon.PRINT,

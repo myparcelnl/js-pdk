@@ -19,11 +19,11 @@
 </template>
 
 <script lang="ts">
-import {ModalKey, PdkIcon} from '../../types';
 import {PropType, defineComponent} from 'vue';
 import {createAction, createButtonAction} from '../../services';
-import {orderEditAction, orderExportAction} from '../../actions';
+import {orderEditAction, orderExportAction, viewOrderInBackofficeAction} from '../../actions';
 import {ActionButton} from '../common';
+import {ModalKey} from '../../types';
 import {Plugin} from '@myparcel-pdk/common';
 import {useLoading} from '../../composables';
 
@@ -45,14 +45,7 @@ export default defineComponent({
 
     return {
       loading,
-      showExportedOrderAction: createButtonAction({
-        icon: PdkIcon.EXTERNAL,
-        label: 'Show in MyParcel',
-        id: 'show-exported-order',
-        onClick: () => {
-          window.open(`https://backoffice.myparcel.nl/orders`, '_blank');
-        },
-      }),
+      showExportedOrderAction: createButtonAction(viewOrderInBackofficeAction),
 
       editAction: createButtonAction(
         orderEditAction,
