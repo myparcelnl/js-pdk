@@ -61,13 +61,13 @@ import {
   ModalCallbackProps,
   ModalKey,
   NotificationContainer,
-  PdkAction,
   modalCancelAction,
   useLanguage,
   useModalContext,
   useModalStore,
 } from '@myparcel/pdk-frontend';
 import {PropType, computed, defineComponent, ref, toRefs} from 'vue';
+import {ResolvedAction} from '@myparcel-pdk/frontend-core';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultModal
@@ -117,7 +117,7 @@ export default defineComponent({
      * Available actions in the modal. Each action needs a unique id and a label.
      */
     actions: {
-      type: Array as PropType<PdkAction[]>,
+      type: Array as PropType<ResolvedAction[]>,
       default: () => [modalCancelAction],
     },
   },

@@ -31,8 +31,9 @@
 </template>
 
 <script lang="ts">
-import {ActionButton, PdkAction, useLanguage} from '@myparcel/pdk-frontend';
+import {ActionButton, useLanguage} from '@myparcel/pdk-frontend';
 import {PropType, defineComponent} from 'vue';
+import {ResolvedAction} from '@myparcel-pdk/frontend-core';
 
 /**
  * A "card" component that can be used to wrap content in a block.
@@ -64,7 +65,7 @@ export default defineComponent({
      * Available actions on the card.
      */
     actions: {
-      type: Array as PropType<PdkAction[]>,
+      type: Array as PropType<ResolvedAction[]>,
       default: () => [],
     },
   },

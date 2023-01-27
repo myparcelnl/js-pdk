@@ -1,7 +1,7 @@
 <template>
   <div class="btn-group">
     <ActionButton
-      v-for="action in standaloneActions"
+      v-for="action in dropdownActions.standalone"
       :key="`dropdown_${action.id}`"
       class="btn-sm"
       :action="action" />
@@ -16,7 +16,7 @@
 
     <div class="dropdown-menu">
       <BaseButton
-        v-for="(action, index) in dropdownActions"
+        v-for="(action, index) in dropdownActions.hidden"
         :key="`${index}_${action.label}`"
         class="dropdown-item"
         :disabled="action.disabled"
@@ -27,9 +27,10 @@
 </template>
 
 <script lang="ts">
-import {ActionButton, PdkDropdownAction, useLanguage} from '@myparcel/pdk-frontend';
-import {PropType, computed, defineComponent} from 'vue';
+import {ActionButton, useDropdownData, useLanguage} from '@myparcel/pdk-frontend';
+import {PropType, defineComponent} from 'vue';
 import BaseButton from './common/BaseButton.vue';
+import {ResolvedAction} from '@myparcel-pdk/frontend-core';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultDropdownButton
@@ -43,7 +44,7 @@ export default defineComponent({
     },
 
     actions: {
-      type: Array as PropType<PdkDropdownAction[]>,
+      type: Array as PropType<ResolvedAction[]>,
       required: true,
     },
   },
@@ -52,11 +53,11 @@ export default defineComponent({
 
   setup: (props) => {
     const {translate} = useLanguage();
+    const dropdownData = useDropdownData(props.actions);
 
     return {
       translate,
-      standaloneActions: computed(() => props.actions.filter((option) => option.standalone)),
-      dropdownActions: computed(() => props.actions.filter((option) => !option.standalone)),
+      ...dropdownData,
     };
   },
 });

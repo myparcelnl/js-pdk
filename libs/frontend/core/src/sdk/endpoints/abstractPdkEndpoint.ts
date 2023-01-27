@@ -2,7 +2,7 @@ import {AbstractEndpoint, CreateDefinition} from '@myparcel/sdk';
 import {EndpointName, LabelFormat, LabelOutput, LabelPosition, Plugin, Settings} from '@myparcel-pdk/common';
 import {RecursivePartial} from '@myparcel/ts-utils';
 
-export type GetOrdersDefinition = CreateDefinition<{
+export type FetchOrdersDefinition = CreateDefinition<{
   name: EndpointName.FETCH_ORDERS;
   parameters: {
     orderIds: string;
@@ -50,6 +50,7 @@ export type UpdateShipmentsDefinition = CreateDefinition<{
 export type UpdatePluginSettingsDefinition = CreateDefinition<{
   name: EndpointName.UPDATE_PLUGIN_SETTINGS;
   body: Settings.ModelSettings;
+  parameters: undefined;
   response: Settings.ModelSettings[];
 }>;
 
@@ -86,7 +87,7 @@ export type PrintOrdersDefinition = CreateDefinition<{
 }>;
 
 export type PdkEndpointDefinition<N extends EndpointName> = Extract<
-  | GetOrdersDefinition
+  | FetchOrdersDefinition
   | ExportOrdersDefinition
   | PrintOrdersDefinition
   | UpdateOrdersDefinition

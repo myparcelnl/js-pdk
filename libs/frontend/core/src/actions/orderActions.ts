@@ -48,13 +48,15 @@ export const ordersFetchAction = defineAction({
   name: FrontendAction.ORDERS_FETCH,
   icon: PdkIcon.REFRESH,
   label: 'action_refresh',
-
-  // @ts-expect-error todo: fix types in generated endpoints
   async handler() {
     const queryStore = useQueryStore();
     const query = queryStore.get(EndpointName.FETCH_ORDERS);
 
     await query.refetch();
+
+    if (!query.data.value) {
+      throw new Error('No data received');
+    }
 
     return query.data.value;
   },

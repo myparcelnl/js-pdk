@@ -42,15 +42,9 @@
 </template>
 
 <script lang="ts">
-import {
-  ActionButton,
-  ModalKey,
-  NotificationContainer,
-  PdkAction,
-  useLanguage,
-  useModalStore,
-} from '@myparcel/pdk-frontend';
+import {ActionButton, ModalKey, NotificationContainer, useLanguage, useModalStore} from '@myparcel/pdk-frontend';
 import {PropType, computed, defineComponent, toRefs} from 'vue';
+import {ResolvedAction} from '@myparcel-pdk/frontend-core/src';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultModal
@@ -78,7 +72,7 @@ export default defineComponent({
      * Available actions in the modal.
      */
     actions: {
-      type: Array as PropType<PdkAction[]>,
+      type: Array as PropType<ResolvedAction[]>,
       required: true,
     },
   },

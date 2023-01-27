@@ -52,10 +52,10 @@
 <script lang="ts">
 import {
   ActionButton,
-  InputPdkButtonAction,
   ModalCallbackProps,
   ModalKey,
   NotificationContainer,
+  PdkAction,
   modalCancelAction,
   useLanguage,
   useModalContext,
@@ -113,7 +113,7 @@ export default defineComponent({
      * Available actions in the modal. Each action needs a unique id and a label.
      */
     actions: {
-      type: Array as PropType<InputPdkButtonAction[]>,
+      type: Array as PropType<PdkAction[]>,
       default: () => [modalCancelAction],
     },
   },

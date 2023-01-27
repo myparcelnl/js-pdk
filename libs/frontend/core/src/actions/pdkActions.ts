@@ -1,3 +1,4 @@
+import {PdkAction, PdkIcon} from '../types';
 import {
   orderExportAction,
   orderExportToShipmentsAction,
@@ -8,17 +9,9 @@ import {
 import {shipmentsCreateReturnAction, shipmentsFetchAction, shipmentsPrintAction} from './shipmentActions';
 import {EndpointName} from '@myparcel-pdk/common';
 import {FrontendAction} from './consts';
-import {PdkAction, PdkIcon} from '../types';
 import {createMutationExecutor} from './executors';
 import {defineAction} from './defineAction';
 import {useModalStore} from '../stores';
-
-const deleteAction = defineAction({
-  name: FrontendAction.SHIPMENTS_DELETE,
-  icon: PdkIcon.DELETE,
-  label: 'action_delete',
-  handler: createMutationExecutor(EndpointName.DELETE_SHIPMENTS),
-});
 
 export const modalCancelAction = defineAction({
   id: 'cancel',

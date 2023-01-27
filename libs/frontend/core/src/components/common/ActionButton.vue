@@ -1,17 +1,18 @@
 <template>
   <PdkButton
+    :size="size"
     :disabled="disabled || action?.disabled"
     :icon="action?.icon"
     :label="!hideText ? action?.label : null"
     :title="hideText ? action?.label : null"
     :aria-label="hideText ? action?.label : null"
-    @click="action?.onClick" />
+    @click="onClick" />
 </template>
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {ResolvedAction} from '../../types';
 import {PdkButtonSize} from '@myparcel-pdk/common';
+import {ResolvedAction} from '../../types';
 
 export default defineComponent({
   name: 'ActionButton',
@@ -34,6 +35,18 @@ export default defineComponent({
       type: String as PropType<PdkButtonSize>,
       default: PdkButtonSize.MEDIUM,
     },
+  },
+
+  emits: ['click'],
+
+  setup: (props, ctx) => {
+    return {
+      async onClick() {
+        console.log(props.action);
+        ctx.emit('click');
+        await props.action?.onClick();
+      },
+    };
   },
 });
 </script>

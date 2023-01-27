@@ -2,6 +2,7 @@ export * from './context';
 export * from './formatter';
 export * from './translations';
 export * from './useAssetUrl';
+export * from './useDropdownData';
 export * from './useGlobalPdkFrontend';
 export * from './useLoading';
 export * from './useLogger';

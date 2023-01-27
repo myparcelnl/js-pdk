@@ -47,5 +47,7 @@ export const shipmentsPrintAction = defineAction({
       },
       instance: context.instance,
     });
+
+    return context.response;
   },
 });

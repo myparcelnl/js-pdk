@@ -1,4 +1,4 @@
-import {ComputedRef, Ref, computed, ref} from 'vue';
+import {ComputedRef, Ref, ref} from 'vue';
 import {Plugin} from '@myparcel-pdk/common';
 import {Replace} from '@myparcel/ts-utils';
 
@@ -17,14 +17,14 @@ export function useOrderData<O extends Plugin.ModelPdkOrder>(
   return {
     ...order,
     deletedShipments,
-    shipments: computed(() => {
-      console.log(order.shipments);
-
-      return (
-        order.shipments?.filter((shipment) => {
-          return !shipment.deleted && shipment.id && !deletedShipments.value.includes(shipment.id);
-        }) ?? []
-      );
-    }),
+    // shipments: computed(() => {
+    //   console.log(order.shipments);
+    //
+    //   return (
+    //     order.shipments?.filter((shipment) => {
+    //       return !shipment.deleted && shipment.id && !deletedShipments.value.includes(shipment.id);
+    //     }) ?? []
+    //   );
+    // }),
   };
 }

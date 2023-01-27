@@ -1,6 +1,6 @@
 <template>
   <ActionButton
-    v-for="action in standaloneActions"
+    v-for="action in dropdownActions.standalone"
     :key="action.id"
     :hide-text="hideText"
     :action="action" />
@@ -18,15 +18,17 @@
 
   <div v-show="toggled">
     <ActionButton
-      v-for="(action, index) in dropdownActions"
+      v-for="(action, index) in dropdownActions.hidden"
       :key="`${index}_${action.id}`"
       :action="action" />
   </div>
 </template>
 
 <script lang="ts">
-import {ActionButton, PdkDropdownAction, useLanguage} from '@myparcel/pdk-frontend';
-import {PropType, computed, defineComponent, ref} from 'vue';
+import {ActionButton, useLanguage} from '@myparcel/pdk-frontend';
+import {PropType, defineComponent} from 'vue';
+import {useDropdownData} from '@myparcel-pdk/frontend-core/src/composables/useDropdownData';
+import {ResolvedAction} from '@myparcel-pdk/frontend-core';
 
 /**
  * This component is used to render a dropdown button. The dropdown button is a
@@ -59,7 +61,7 @@ export default defineComponent({
      * List of actions.
      */
     actions: {
-      type: Array as PropType<PdkDropdownAction[]>,
+      type: Array as PropType<ResolvedAction[]>,
       default: (): never[] => [],
     },
   },
@@ -67,19 +69,11 @@ export default defineComponent({
   emits: ['click'],
 
   setup: (props) => {
-    const toggled = ref(false);
     const {translate} = useLanguage();
 
     return {
       translate,
-      toggle: () => {
-        toggled.value = !toggled.value;
-      },
-
-      toggled,
-
-      standaloneActions: computed(() => props.actions.filter((option) => option.standalone)),
-      dropdownActions: computed(() => props.actions.filter((option) => !option.standalone)),
+      ...useDropdownData(props.actions),
     };
   },
 });

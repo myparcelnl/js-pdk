@@ -1,8 +1,7 @@
-import {ActionCallbacks, PdkAction, PdkDropdownAction, ResolvedAction} from '../../types';
+import {ActionCallbacks, PdkAction, ResolvedAction} from '../../types';
 import {ActionParameters, FrontendAction, executeAction} from '../../actions';
 import {createActionContext} from './createActionContext';
 import {getActionIdentifier} from './getActionIdentifier';
-import {isOfType} from '@myparcel/ts-utils';
 import {useMemoize} from '@vueuse/core';
 
 type CreateAction = <A extends FrontendAction | undefined = FrontendAction | undefined>(
@@ -21,6 +20,7 @@ const createActionHandler: CreateAction = (action, parameters, callbacks) => {
     label: action.label,
     variant: action.variant,
     disabled: action.disabled,
+    standalone: action.standalone,
 
     // @ts-expect-error todo
     parameters: action.parameters ?? {},
@@ -36,10 +36,6 @@ const createActionHandler: CreateAction = (action, parameters, callbacks) => {
       await callbacks?.end?.();
     },
   };
-
-  if (isOfType<PdkDropdownAction>(action, 'standalone')) {
-    data.standalone = action.standalone;
-  }
 
   return data;
 };

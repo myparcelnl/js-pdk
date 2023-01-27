@@ -6,7 +6,7 @@
 import {PropType, computed, defineComponent} from 'vue';
 import {orderExportAction, ordersEditAction, ordersExportPrintShipmentsAction, ordersPrintAction} from '../../actions';
 import {useLoading, useOrderData} from '../../composables';
-import {PdkDropdownAction} from '../../types';
+import {PdkAction} from '../../types';
 import {Plugin} from '@myparcel-pdk/common';
 
 export default defineComponent({
@@ -27,7 +27,7 @@ export default defineComponent({
       loading,
 
       actions: computed(() => {
-        const actions: PdkDropdownAction[] = [];
+        const actions: PdkAction[] = [];
 
         if (orderData.shipments.value?.length) {
           actions.push(orderExportAction);

@@ -1,6 +1,6 @@
 /* eslint-disable no-console,@typescript-eslint/explicit-module-boundary-types */
+import {ActionResponse, FrontendAction} from '../../consts';
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
-import {Plugin} from '@myparcel-pdk/common';
 import {QUERY_KEY_ORDER} from './queryKeys';
 import {encodeArrayParameter} from '../../../utils';
 import {fillOrderQueryData} from '../../../pdk';
@@ -10,7 +10,7 @@ export const useOrderQuery = (externalIdentifier: string) => {
   const queryKey = [QUERY_KEY_ORDER, {id: externalIdentifier}] as const;
   const queryClient = useQueryClient();
 
-  return useQuery<Plugin.ModelContextOrderDataContext>(
+  return useQuery<ActionResponse<FrontendAction.ORDERS_FETCH>>(
     queryKey,
     () => {
       const pdk = usePdkApi();

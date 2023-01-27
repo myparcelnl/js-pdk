@@ -21,7 +21,6 @@ export type {
   DefaultPdkConfiguration,
   ElementInstance,
   GenericAction,
-  InputPdkButtonAction,
   ModalCallback,
   ModalCallbackProps,
   NamedAction,
@@ -30,7 +29,6 @@ export type {
   PdkConfigurationPreset,
   PdkContext,
   PdkContextObject,
-  PdkDropdownAction,
   PdkInstanceContext,
   PdkNotification,
 } from '@myparcel-pdk/frontend-core';
@@ -65,6 +63,7 @@ export {
   shipmentsFetchAction,
   shipmentsPrintAction,
   useContextStore,
+  useDropdownData,
   useFormatter,
   useGlobalPdkFrontend,
   useLanguage,
