@@ -1,20 +1,20 @@
 <template>
   <a v-bind="linkAttributes">
     <PdkIcon
-      v-if="resolvedAction?.icon"
+      v-if="action?.icon"
       class="mr-1"
-      :icon="resolvedAction?.icon" />
+      :icon="action?.icon" />
     <!-- Link content. Can be used instead of `label` prop. -->
     <slot v-if="!hideText">
-      {{ translate(resolvedAction?.label) }}
+      {{ translate(action?.label) }}
     </slot>
   </a>
 </template>
 
 <script lang="ts">
 import {AnchorHTMLAttributes, PropType, computed, defineComponent} from 'vue';
-import {GenericAction, useLanguage} from '@myparcel/pdk-frontend';
-import {createAction} from '@myparcel-pdk/frontend-core';
+import {useLanguage} from '@myparcel/pdk-frontend';
+import {ResolvedAction} from '@myparcel-pdk/frontend-core';
 
 /**
  * @see import('@myparcel/pdk-components').DefaultLink
@@ -23,7 +23,7 @@ export default defineComponent({
   name: 'DemoLink',
   props: {
     action: {
-      type: Object as PropType<GenericAction>,
+      type: Object as PropType<ResolvedAction>,
       default: null,
     },
 
@@ -40,13 +40,12 @@ export default defineComponent({
   emits: ['click'],
 
   setup: (props, ctx) => {
-    const resolvedAction = createAction(props.action);
     const {translate} = useLanguage();
 
     const onClick = async (event: MouseEvent): Promise<void> => {
       event.preventDefault();
       ctx.emit('click', event);
-      await resolvedAction.onClick?.();
+      await props.action?.onClick?.();
     };
 
     return {
@@ -64,8 +63,6 @@ export default defineComponent({
 
         return attributes;
       }),
-
-      resolvedAction,
 
       translate,
     };

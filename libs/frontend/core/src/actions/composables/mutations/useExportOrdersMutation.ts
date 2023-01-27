@@ -37,9 +37,11 @@ export const useExportOrdersMutation = (mode: MutationMode = MutationMode.DEFAUL
     {
       ...queryClient.defaultMutationOptions(),
       ...(mode === MutationMode.MODAL ? getModalMutationOptions() : {}),
+
       async onSuccess(data, input) {
         useModalStore().close();
         fillOrderQueryData(queryClient, data);
+
         await input.form?.reset();
       },
     },

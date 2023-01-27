@@ -28,6 +28,8 @@ export const executeAction = async <A extends FrontendAction | undefined>(
     if (context.notifications?.error) {
       store.add(context.notifications.error);
     }
+
+    context.instance?.logger.error(error);
   }
 
   // @ts-expect-error todo

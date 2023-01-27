@@ -1,25 +1,24 @@
 <template>
   <PdkButton
-    :disabled="disabled || resolvedAction?.disabled"
-    :icon="resolvedAction?.icon"
-    :label="!hideText ? resolvedAction?.label : null"
-    :title="hideText ? resolvedAction?.label : null"
-    :aria-label="hideText ? resolvedAction?.label : null"
-    @click="resolvedAction?.onClick" />
+    :disabled="disabled || action?.disabled"
+    :icon="action?.icon"
+    :label="!hideText ? action?.label : null"
+    :title="hideText ? action?.label : null"
+    :aria-label="hideText ? action?.label : null"
+    @click="action?.onClick" />
 </template>
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {PdkAction} from '../../types';
+import {ResolvedAction} from '../../types';
 import {PdkButtonSize} from '@myparcel-pdk/common';
-import {createAction} from '../../services';
 
 export default defineComponent({
   name: 'ActionButton',
 
   props: {
     action: {
-      type: Object as PropType<PdkAction>,
+      type: Object as PropType<ResolvedAction>,
       required: true,
     },
 
@@ -35,12 +34,6 @@ export default defineComponent({
       type: String as PropType<PdkButtonSize>,
       default: PdkButtonSize.MEDIUM,
     },
-  },
-
-  setup: (props) => {
-    return {
-      resolvedAction: createAction(props.action),
-    };
   },
 });
 </script>

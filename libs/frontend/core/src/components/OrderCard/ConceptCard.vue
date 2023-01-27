@@ -58,10 +58,6 @@ export default defineComponent({
     const isExported = computed(() => orderMode && props.order.exported);
 
     return {
-      loading,
-
-      isExported,
-
       actions: computed(() => {
         if (isExported.value) {
           return [createAction(orderViewInBackofficeAction)];
@@ -77,6 +73,8 @@ export default defineComponent({
         );
       }),
 
+      isExported,
+      loading,
       translate,
     };
   },
