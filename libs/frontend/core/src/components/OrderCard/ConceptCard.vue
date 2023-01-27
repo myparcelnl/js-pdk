@@ -9,7 +9,7 @@
     <template #default>
       <PdkRow>
         <PdkCol>
-          <template v-if="order.exported">
+          <template v-if="isExported">
             {{ translate('order_exported') }}
           </template>
 
@@ -50,17 +50,20 @@ export default defineComponent({
   },
 
   setup: (props) => {
+    const {translate} = useLanguage();
     const {loading, actionCallbacks} = useLoading();
     const pluginSettings = usePluginSettings();
     const {orderMode} = pluginSettings.general;
 
-    const {translate} = useLanguage();
+    const isExported = computed(() => orderMode && props.order.exported);
 
     return {
       loading,
 
+      isExported,
+
       actions: computed(() => {
-        if (props.order.exported) {
+        if (isExported.value) {
           return [createAction(orderViewInBackofficeAction)];
         }
 
