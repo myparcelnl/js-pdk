@@ -34,8 +34,7 @@ export type PdkComponentTest = (component: Omit<Component, 'props'>) => void;
 export const testMap: Record<PdkComponentName, PdkComponentTest> = {
   PdkCard: runActionContainerTest,
   PdkConceptCardWrapper: runActionContainerTest,
-  PdkOrderCardShipmentsWrapper: runActionContainerTest,
-  PdkOrderGridShipmentWrapper: runActionContainerTest,
+  PdkShipmentLabelWrapper: runActionContainerTest,
 
   PdkButtonGroup: runPlainWrapperTest,
   PdkPluginSettingsWrapper: runPlainWrapperTest,

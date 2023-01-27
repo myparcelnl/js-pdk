@@ -1,18 +1,13 @@
-import {ActionResponse, FrontendAction, actionEndpointMap} from '../consts';
+import {ActionResponse, FrontendAction} from '../consts';
 import {ActionContext} from './types';
+import {EndpointName} from '@myparcel-pdk/common';
 import {useQueryStore} from '../../stores';
 
-export function executeMutation<A extends FrontendAction>({
-  action,
-  parameters,
-}: ActionContext): Promise<ActionResponse<A>> {
+export function executeMutation<A extends FrontendAction>(
+  endpoint: EndpointName,
+  context: ActionContext<A>,
+): Promise<ActionResponse<A>> {
   const queryStore = useQueryStore();
-
-  const endpoint = actionEndpointMap[action];
-
-  if (!endpoint) {
-    throw new Error(`Unknown action: ${action}`);
-  }
 
   if (!queryStore.has(endpoint)) {
     throw new Error(`Query not registered: ${endpoint}`);
@@ -21,5 +16,13 @@ export function executeMutation<A extends FrontendAction>({
   const mutation = queryStore.get(endpoint);
 
   // @ts-expect-error todo
-  return mutation.mutateAsync(parameters);
+  return mutation.mutateAsync(context.parameters);
 }
+
+type MutationExecutor = (
+  endpoint: EndpointName,
+) => <A extends FrontendAction>(context: ActionContext<A>) => Promise<ActionResponse<A>>;
+
+export const createMutationExecutor: MutationExecutor = (endpoint) => {
+  return (context) => executeMutation(endpoint, context);
+};

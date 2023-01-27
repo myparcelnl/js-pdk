@@ -8,7 +8,7 @@ export enum EndpointName {
   /**
    * Get order data from the plugin.
    */
-  GET_ORDERS = 'getOrders',
+  FETCH_ORDERS = 'fetchOrders',
   /**
    * Tells the plugin to update the orders by fetching data from MyParcel.
    */
@@ -33,18 +33,27 @@ export enum EndpointName {
   /**
    * Tell the plugin to update given shipments by fetching data from MyParcel.
    */
-  UPDATE_SHIPMENTS = 'updateShipments',
+  FETCH_SHIPMENTS = 'fetchShipments',
+
+  /**
+   * Create return shipments
+   */
+  CREATE_RETURN_SHIPMENTS = 'createReturnShipments',
 
   /**
    * Update plugin settings.
    */
   UPDATE_PLUGIN_SETTINGS = 'updatePluginSettings',
+
   /**
    * Update product settings
    */
   UPDATE_PRODUCT_SETTINGS = 'updateProductSettings',
 
+  // todo
   CREATE_WEBHOOKS = 'createWebhooks',
+  // todo
   DELETE_WEBHOOKS = 'deleteWebhooks',
+  // todo
   REFRESH_WEBHOOKS = 'refreshWebhooks',
 }

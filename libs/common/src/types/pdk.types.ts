@@ -35,11 +35,7 @@ export const optionalPlainWrapperComponentNames = [
   'PdkTableRow',
 ] as const;
 
-export const optionalActionContainerComponentNames = [
-  'PdkConceptCardWrapper',
-  'PdkOrderGridShipmentWrapper',
-  'PdkOrderCardShipmentsWrapper',
-] as const;
+export const optionalActionContainerComponentNames = ['PdkConceptCardWrapper', 'PdkShipmentLabelWrapper'] as const;
 
 export type RequiredPdkComponentName = (typeof requiredComponentNames)[number];
 
@@ -64,3 +60,9 @@ export type PdkComponentMap = Record<RequiredPdkComponentName, Component> &
 export type ComponentImportFunction = () => Promise<{default: Component}>;
 
 export type PdkVariant = 'primary' | 'secondary' | 'info' | 'warning' | 'error' | 'success';
+
+export enum PdkButtonSize {
+  SMALL = 'sm',
+  MEDIUM = 'md',
+  LARGE = 'lg',
+}

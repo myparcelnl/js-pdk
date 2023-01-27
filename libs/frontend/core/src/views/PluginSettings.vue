@@ -8,46 +8,15 @@
 /**
  * Plugin settings screen.
  */
-import {ChildrenSettingsView, FormSettingsView, createPluginSettingsViews} from '../forms';
-import {MagicForm} from '@myparcel/vue-form-builder';
-import {PdkTab} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common';
 import {TabNavigation} from '../components/common';
-import {h} from 'vue';
-import {isOfType} from '@myparcel/ts-utils';
-import {useLanguage} from '../composables';
+import {useQueryStore} from '../stores';
+import {useUpdatePluginSettingsMutation} from '../actions';
+import {createPluginSettingsTabs} from '../forms';
 
-const views = createPluginSettingsViews();
+const queryStore = useQueryStore();
 
-const language = useLanguage();
+queryStore.register(EndpointName.UPDATE_PLUGIN_SETTINGS, useUpdatePluginSettingsMutation());
 
-const createDescription = (description?: string) => {
-  if (description && language.has(description)) {
-    return h('p', language.translate(description));
-  }
-
-  return null;
-};
-
-const renderFormTab = (view: FormSettingsView): PdkTab => {
-  return {
-    name: view.id,
-    label: view.title,
-    component: () => h('div', [createDescription(view.description), h(MagicForm, {form: view.form})]),
-  };
-};
-
-const tabs = views.map((view) => {
-  if (isOfType<ChildrenSettingsView>(view, 'children')) {
-    const childTabs: PdkTab[] = view.children.map(renderFormTab);
-
-    return {
-      name: view.id,
-      label: view.title,
-      component: () =>
-        h('div', [createDescription(view.description), h(TabNavigation, {tabs: childTabs, hashPrefix: view.id + '-'})]),
-    };
-  }
-
-  return renderFormTab(view);
-});
+const tabs = createPluginSettingsTabs();
 </script>

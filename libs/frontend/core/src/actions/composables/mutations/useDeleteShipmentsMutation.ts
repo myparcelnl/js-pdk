@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {EndpointName, Plugin} from '@myparcel-pdk/common';
-import {EndpointOptions, usePdkApi} from '../../../sdk';
+import {usePdkApi} from '../../../sdk';
+import {OneOrMore, toArray} from '@myparcel/ts-utils';
+import {encodeArrayParameter, normalizeOrder} from '../../../utils';
 import {useMutation, useQueryClient} from '@tanstack/vue-query';
 import {ApiException} from '@myparcel/sdk';
-import {OneOrMore} from '@myparcel/ts-utils';
-import {encodeArrayParameter} from '../../../utils';
+import {useOrderData} from '../../../composables';
 
 type DeleteShipmentsInput = {
   orderIds: OneOrMore<string>;
@@ -13,20 +14,28 @@ type DeleteShipmentsInput = {
 
 export const useDeleteShipmentsMutation = () => {
   const queryClient = useQueryClient();
-  const sdk = usePdkApi();
+  const pdk = usePdkApi();
 
   return useMutation<Plugin.ModelContextOrderDataContext[], ApiException, DeleteShipmentsInput>(
     [EndpointName.DELETE_SHIPMENTS],
-    (input) => {
-      const options: EndpointOptions<EndpointName.DELETE_SHIPMENTS> = {
-        parameters: {
-          orderIds: encodeArrayParameter(input.orderIds),
-          shipmentIds: encodeArrayParameter(input.shipmentIds),
-        },
-      };
+    async (input) => {
+      const orderIds = toArray(input.orderIds);
+      const shipmentIds = toArray(input.shipmentIds);
 
-      // @ts-expect-error custom endpoints are not typed correctly
-      return sdk.deleteShipments(options);
+      orderIds
+        .map((orderId) => normalizeOrder(orderId))
+        .forEach((order) => {
+          const orderData = useOrderData(order.value);
+          orderData.deletedShipments.value.push(...shipmentIds);
+        });
+
+      return pdk.deleteShipments({
+        // @ts-expect-error custom endpoints are not typed correctly
+        parameters: {
+          orderIds: encodeArrayParameter(orderIds),
+          shipmentIds: encodeArrayParameter(shipmentIds),
+        },
+      });
     },
     queryClient.defaultMutationOptions(),
   );

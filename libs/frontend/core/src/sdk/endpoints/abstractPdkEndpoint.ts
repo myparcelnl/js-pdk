@@ -3,7 +3,7 @@ import {EndpointName, LabelFormat, LabelOutput, LabelPosition, Plugin, Settings}
 import {RecursivePartial} from '@myparcel/ts-utils';
 
 export type GetOrdersDefinition = CreateDefinition<{
-  name: EndpointName.GET_ORDERS;
+  name: EndpointName.FETCH_ORDERS;
   parameters: {
     orderIds: string;
   };
@@ -38,7 +38,7 @@ export type DeleteShipmentsDefinition = CreateDefinition<{
 }>;
 
 export type UpdateShipmentsDefinition = CreateDefinition<{
-  name: EndpointName.UPDATE_SHIPMENTS;
+  name: EndpointName.FETCH_SHIPMENTS;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
@@ -74,9 +74,21 @@ export type PrintShipmentsDefinition = CreateDefinition<{
   response: {pdfs: {url: string}[]};
 }>;
 
+export type PrintOrdersDefinition = CreateDefinition<{
+  name: EndpointName.PRINT_ORDERS;
+  parameters: {
+    orderIds: string;
+    format?: LabelFormat;
+    output?: LabelOutput;
+    position?: LabelPosition | string;
+  };
+  response: {pdfs: {url: string}[]};
+}>;
+
 export type PdkEndpointDefinition<N extends EndpointName> = Extract<
   | GetOrdersDefinition
   | ExportOrdersDefinition
+  | PrintOrdersDefinition
   | UpdateOrdersDefinition
   | DeleteShipmentsDefinition
   | UpdateShipmentsDefinition

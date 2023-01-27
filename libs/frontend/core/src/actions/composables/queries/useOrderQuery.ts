@@ -13,16 +13,14 @@ export const useOrderQuery = (externalIdentifier: string) => {
   return useQuery<Plugin.ModelContextOrderDataContext>(
     queryKey,
     () => {
-      const sdk = usePdkApi();
+      const pdk = usePdkApi();
 
-      const options = {
+      return pdk.fetchOrders({
+        // @ts-expect-error custom endpoints are not typed correctly
         parameters: {
           orderIds: encodeArrayParameter(externalIdentifier),
         },
-      };
-
-      // @ts-expect-error custom endpoints are not typed correctly
-      return sdk.getOrders(options);
+      });
     },
     {
       ...queryClient.defaultQueryOptions(),

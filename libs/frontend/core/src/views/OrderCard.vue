@@ -1,7 +1,7 @@
 <template>
   <ConceptCard :order="query.data" />
 
-  <ShipmentsCard
+  <OrderShipmentsCard
     v-if="!orderMode"
     :order="query.data" />
 </template>
@@ -20,10 +20,10 @@ const pluginSettings = usePluginSettings();
 const queryStore = useQueryStore();
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const ShipmentsCard = defineAsyncComponent(() => import('../components/OrderCard/ShipmentsCard.vue'));
+const OrderShipmentsCard = defineAsyncComponent(() => import('../components/OrderCard/OrderShipmentsCard.vue'));
 
 queryStore.registerOrderQueries();
 
-const query = queryStore.get(EndpointName.GET_ORDERS);
+const query = queryStore.get(EndpointName.FETCH_ORDERS);
 const {orderMode} = pluginSettings.general;
 </script>

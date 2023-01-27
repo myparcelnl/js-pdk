@@ -2,7 +2,7 @@ import {ActionContext, ActionParameters, FrontendAction} from '../index';
 import {createShipmentFormName, getOrderId} from '../../utils';
 import {useFormBuilder} from '@myparcel/vue-form-builder';
 
-export const beforeOrderAction = <A extends FrontendAction>({
+export const resolveOrderParameters = <A extends FrontendAction>({
   parameters,
   instance,
 }: ActionContext<A>): Promise<ActionParameters<A>> => {

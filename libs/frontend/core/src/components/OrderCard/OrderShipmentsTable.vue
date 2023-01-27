@@ -48,13 +48,13 @@
 <script lang="ts">
 import {FormInstance, InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {PropType, computed, defineComponent, ref} from 'vue';
-import {useLanguage, usePdkConfig} from '../../composables';
+import {useLanguage, useOrderData, usePdkConfig} from '../../composables';
 import {Plugin} from '@myparcel-pdk/common';
-import ShipmentLabelTableRow from './ShipmentLabelTableRow.vue';
+import ShipmentLabelTableRow from './OrderShipmentsTableRow.vue';
 import {isDef} from '@vueuse/core';
 
 export default defineComponent({
-  name: 'ShipmentLabelsTable',
+  name: 'OrderShipmentsTable',
   components: {
     ShipmentLabelTableRow,
   },
@@ -104,6 +104,8 @@ export default defineComponent({
       } as FormInstance,
     };
 
+    const orderData = useOrderData(props.order);
+
     return {
       bulkCheckbox,
 
@@ -113,7 +115,7 @@ export default defineComponent({
 
       bulkCheckboxElement,
 
-      shipments: computed(() => props.order?.shipments?.filter((shipment) => !shipment.deleted) ?? []),
+      shipments: orderData.shipments,
     };
   },
 });

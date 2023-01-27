@@ -12,7 +12,8 @@
 
 <script lang="ts">
 import {AnchorHTMLAttributes, PropType, computed, defineComponent} from 'vue';
-import {PdkButtonAction, useAction, useLanguage} from '@myparcel/pdk-frontend';
+import {PdkAction, useLanguage} from '@myparcel/pdk-frontend';
+import {createAction} from '@myparcel-pdk/frontend-core';
 
 /**
  * This component is used to render a button. The button can be used to trigger
@@ -23,7 +24,7 @@ export default defineComponent({
   name: 'DefaultLink',
   props: {
     action: {
-      type: Object as PropType<PdkButtonAction>,
+      type: Object as PropType<PdkAction>,
       default: null,
     },
 
@@ -40,13 +41,13 @@ export default defineComponent({
   emits: ['click'],
 
   setup: (props, ctx) => {
-    const resolvedAction = useAction(props.action);
+    const resolvedAction = createAction(props.action);
     const {translate} = useLanguage();
 
     const onClick = async (event: MouseEvent): Promise<void> => {
       event.preventDefault();
       ctx.emit('click', event);
-      await resolvedAction.value?.onClick?.();
+      await resolvedAction?.handler();
     };
 
     return {

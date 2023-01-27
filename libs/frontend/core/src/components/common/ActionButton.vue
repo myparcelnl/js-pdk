@@ -10,17 +10,17 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {FrontendAction} from '../../actions';
-import {PdkButtonAction} from '../../types';
-import {useAction} from '../../services';
+import {PdkAction} from '../../types';
+import {PdkButtonSize} from '@myparcel-pdk/common';
+import {createAction} from '../../services';
 
 export default defineComponent({
   name: 'ActionButton',
 
   props: {
     action: {
-      type: [String, Object] as PropType<PdkButtonAction | FrontendAction>,
-      default: null,
+      type: Object as PropType<PdkAction>,
+      required: true,
     },
 
     disabled: {
@@ -30,11 +30,16 @@ export default defineComponent({
     hideText: {
       type: Boolean,
     },
+
+    size: {
+      type: String as PropType<PdkButtonSize>,
+      default: PdkButtonSize.MEDIUM,
+    },
   },
 
   setup: (props) => {
     return {
-      resolvedAction: useAction(props.action),
+      resolvedAction: createAction(props.action),
     };
   },
 });

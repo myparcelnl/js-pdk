@@ -1,12 +1,12 @@
-import {ActionCallbacks, createAction} from './index';
+import {ActionCallbacks, PdkAction, ResolvedAction} from '../types';
 import {ActionParameters, FrontendAction} from '../actions';
-import {InputPdkButtonAction, PdkButtonAction} from '../types';
 import {OneOrMore, toArray} from '@myparcel/ts-utils';
+import {createAction} from './index';
 
-export const createActions = <A extends FrontendAction = FrontendAction>(
-  actions: OneOrMore<InputPdkButtonAction<A>>,
+export const createActions = <A extends FrontendAction | undefined>(
+  action: OneOrMore<PdkAction<A>>,
   parameters?: ActionParameters<A>,
   callbacks?: ActionCallbacks,
-): PdkButtonAction[] => {
-  return toArray(actions).map((action) => createAction(action, parameters, callbacks));
+): ResolvedAction[] => {
+  return toArray(action).map((action) => createAction(action, parameters, callbacks));
 };

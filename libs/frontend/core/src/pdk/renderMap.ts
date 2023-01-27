@@ -10,7 +10,7 @@ const renderMap = Object.freeze<Record<PdkViewComponent, ComponentImportFunction
   Modals: async () => import('../views/Modals.vue'),
   Notifications: async () => import('../views/Notifications.vue'),
   OrderCard: async () => import('../views/OrderCard.vue'),
-  OrderListColumn: async () => import('../views/OrderListColumn.vue'),
+  OrderListColumn: async () => import('../views/OrderListItem.vue'),
   PluginSettings: async () => import('../views/PluginSettings.vue'),
   ProductSettings: async () => import('../views/ProductSettings.vue'),
 });

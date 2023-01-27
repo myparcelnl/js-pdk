@@ -1,148 +1,72 @@
 import {
-  InputPdkButtonAction,
-  ModalKey,
-  NamedAction,
-  OnClickAction,
-  PdkDropdownAction,
-  PdkIcon,
-  PdkModalContext,
-} from '../types';
+  orderExportAction,
+  orderExportToShipmentsAction,
+  ordersExportPrintShipmentsAction,
+  ordersPrintAction,
+  ordersUpdateAction,
+} from './orderActions';
+import {shipmentsCreateReturnAction, shipmentsFetchAction, shipmentsPrintAction} from './shipmentActions';
+import {EndpointName} from '@myparcel-pdk/common';
 import {FrontendAction} from './consts';
+import {PdkAction, PdkIcon} from '../types';
+import {createMutationExecutor} from './executors';
+import {defineAction} from './defineAction';
 import {useModalStore} from '../stores';
 
-export const deleteAction: PdkDropdownAction = {
-  action: FrontendAction.SHIPMENTS_DELETE,
+const deleteAction = defineAction({
+  name: FrontendAction.SHIPMENTS_DELETE,
   icon: PdkIcon.DELETE,
   label: 'action_delete',
-  variant: 'error',
-};
+  handler: createMutationExecutor(EndpointName.DELETE_SHIPMENTS),
+});
 
-export const modalCancelAction: OnClickAction = {
+export const modalCancelAction = defineAction({
   id: 'cancel',
   label: 'action_cancel',
-  onClick: () => {
+  handler() {
     const modalStore = useModalStore();
     modalStore.close();
   },
-};
+});
 
-export const orderEditAction: OnClickAction = {
-  id: 'open',
-  icon: PdkIcon.EDIT,
-  label: 'action_edit',
-  onClick: <K extends ModalKey>(modalKey: K, context: PdkModalContext<K>) => {
-    const modalStore = useModalStore();
-    modalStore.open(modalKey, context);
-  },
-};
-
-/**
- * Shown in order mode. Exports entire order.
- */
-export const orderExportAction: InputPdkButtonAction = {
-  action: FrontendAction.ORDERS_EXPORT,
-  icon: PdkIcon.EXPORT,
-  label: 'action_export',
-};
-
-/**
- * Shown on orders that have been exported to MyParcel using order mode.
- */
-export const viewOrderInBackofficeAction: OnClickAction = {
-  icon: PdkIcon.EXTERNAL,
-  label: 'order_view_in_backoffice',
-  id: 'show-exported-order',
-  onClick: () => {
-    window.open(`https://backoffice.myparcel.nl/orders`, '_blank');
-  },
-};
-
-/**
- * Shown if not in order mode. Exports shipments.
- */
-export const orderExportShipmentsAction: InputPdkButtonAction = {
-  action: FrontendAction.ORDERS_EXPORT,
-  icon: PdkIcon.EXPORT,
-  label: 'action_export_shipments',
-};
-
-/**
- * Shown if not in order mode. Prints shipment labels.
- */
-export const orderExportPrintShipmentsAction: InputPdkButtonAction = {
-  action: FrontendAction.ORDERS_EXPORT_PRINT,
-  icon: PdkIcon.PRINT,
-  label: 'action_export_print',
-};
-
-/**
- * Shown if not in order mode. Exports all shipment labels.
- */
-export const orderPrintAction: InputPdkButtonAction = {
-  action: FrontendAction.ORDERS_PRINT,
-  icon: PdkIcon.PRINT,
-  label: 'action_print',
-};
-
-export const orderUpdateAction = {
-  action: FrontendAction.ORDERS_UPDATE,
+export const pluginSettingsUpdateAction = defineAction({
+  name: FrontendAction.PLUGIN_SETTINGS_UPDATE,
   icon: PdkIcon.SAVE,
   label: 'action_save',
-};
+  handler: createMutationExecutor(EndpointName.UPDATE_PLUGIN_SETTINGS),
+});
 
-export const shipmentCreateReturnAction: PdkDropdownAction = {
-  action: FrontendAction.SHIPMENTS_CREATE_RETURN,
-  icon: PdkIcon.RETURN,
-  label: 'action_create_return_label',
-};
-
-export const shipmentPrintAction: PdkDropdownAction = {
-  action: FrontendAction.SHIPMENTS_PRINT,
-  icon: PdkIcon.PRINT,
-  label: 'action_print',
-};
-
-export const shipmentRefreshAction: PdkDropdownAction = {
-  action: FrontendAction.SHIPMENTS_UPDATE,
-  icon: PdkIcon.REFRESH,
-  label: 'action_refresh',
-};
-
-export const pluginSettingsUpdateAction: NamedAction = {
-  action: FrontendAction.PLUGIN_SETTINGS_UPDATE,
-  icon: PdkIcon.SAVE,
-  label: 'action_save',
-};
-
-export const webhooksCreateAction: NamedAction = {
-  action: FrontendAction.WEBHOOKS_CREATE,
+export const webhooksCreateAction = defineAction({
+  name: FrontendAction.WEBHOOKS_CREATE,
   icon: PdkIcon.ADD,
   label: 'action_create',
-};
+  handler: createMutationExecutor(EndpointName.CREATE_WEBHOOKS),
+});
 
-export const webhooksDeleteAction: NamedAction = {
-  action: FrontendAction.WEBHOOKS_DELETE,
+export const webhooksDeleteAction = defineAction({
+  name: FrontendAction.WEBHOOKS_DELETE,
   icon: PdkIcon.DELETE,
   label: 'action_delete',
-};
+  handler: createMutationExecutor(EndpointName.DELETE_WEBHOOKS),
+});
 
-export const webhooksRefreshAction: NamedAction = {
-  action: FrontendAction.WEBHOOKS_REFRESH,
+export const webhooksRefreshAction = defineAction({
+  name: FrontendAction.WEBHOOKS_REFRESH,
   icon: PdkIcon.REFRESH,
   label: 'action_refresh',
-};
+  handler: createMutationExecutor(EndpointName.REFRESH_WEBHOOKS),
+});
 
-export const actions: NamedAction[] = [
-  deleteAction,
+export const frontendActions: PdkAction<FrontendAction>[] = [
   orderExportAction,
-  orderExportPrintShipmentsAction,
-  orderExportShipmentsAction,
-  orderPrintAction,
-  orderUpdateAction,
+  orderExportToShipmentsAction,
+  ordersExportPrintShipmentsAction,
+  ordersPrintAction,
+  ordersUpdateAction,
   pluginSettingsUpdateAction,
-  shipmentCreateReturnAction,
-  shipmentPrintAction,
-  shipmentRefreshAction,
+  shipmentsCreateReturnAction,
+  shipmentsFetchAction,
+  shipmentsPrintAction,
   webhooksCreateAction,
   webhooksDeleteAction,
   webhooksRefreshAction,

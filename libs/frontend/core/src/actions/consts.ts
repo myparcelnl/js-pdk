@@ -4,7 +4,13 @@ import {FormInstance} from '@myparcel/vue-form-builder';
 import {OneOrMore} from '@myparcel/ts-utils';
 import {PdkEndpointDefinition} from '../sdk';
 
-export type ActionParameters<A extends FrontendAction> = FrontendActionParameterMap[A];
+export type ActionParameters<A extends FrontendAction | undefined> = A extends FrontendAction
+  ? FrontendActionParameterMap[A]
+  : Record<string, unknown>;
+
+export type ActionResponse<A extends FrontendAction | undefined> = A extends FrontendAction
+  ? PdkEndpointDefinition<FrontendActionEndpointMap[A]>
+  : void;
 
 export interface FrontendActionParameterMap extends Record<FrontendAction, Record<string, unknown>> {
   [FrontendAction.ORDERS_EXPORT]: {orderIds: OneOrMore<string>; form?: FormInstance};
@@ -12,10 +18,10 @@ export interface FrontendActionParameterMap extends Record<FrontendAction, Recor
   [FrontendAction.ORDERS_PRINT]: {orderIds: OneOrMore<string>; form?: FormInstance};
   [FrontendAction.ORDERS_UPDATE]: {orderIds: OneOrMore<string>; form: FormInstance};
 
-  [FrontendAction.SHIPMENTS_DELETE]: {orderIds?: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
-  [FrontendAction.SHIPMENTS_UPDATE]: {orderIds?: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
+  [FrontendAction.SHIPMENTS_DELETE]: {orderIds: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
+  [FrontendAction.SHIPMENTS_FETCH]: {orderIds: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
   [FrontendAction.SHIPMENTS_PRINT]: {
-    orderIds?: OneOrMore<string>;
+    orderIds: OneOrMore<string>;
     shipmentIds?: OneOrMore<number>;
     form?: FormInstance;
   };
@@ -30,25 +36,23 @@ export interface FrontendActionEndpointMap extends Record<FrontendAction, Endpoi
   [FrontendAction.ORDERS_PRINT]: EndpointName.PRINT_ORDERS;
   [FrontendAction.ORDERS_UPDATE]: EndpointName.UPDATE_ORDERS;
   [FrontendAction.SHIPMENTS_DELETE]: EndpointName.DELETE_SHIPMENTS;
-  [FrontendAction.SHIPMENTS_UPDATE]: EndpointName.UPDATE_SHIPMENTS;
+  [FrontendAction.SHIPMENTS_FETCH]: EndpointName.FETCH_SHIPMENTS;
   [FrontendAction.SHIPMENTS_PRINT]: EndpointName.PRINT_SHIPMENTS;
   [FrontendAction.PLUGIN_SETTINGS_UPDATE]: EndpointName.UPDATE_PLUGIN_SETTINGS;
   [FrontendAction.PRODUCT_SETTINGS_UPDATE]: EndpointName.UPDATE_PRODUCT_SETTINGS;
 }
 
-export type ActionResponse<A extends FrontendAction> = PdkEndpointDefinition<FrontendActionEndpointMap[A]>;
-
 export enum FrontendAction {
   ORDERS_EXPORT = 'ordersExport',
   ORDERS_EXPORT_PRINT = 'ordersExportPrint',
   ORDERS_PRINT = 'ordersPrint',
-  ORDERS_REFRESH = 'ordersRefresh',
+  ORDERS_FETCH = 'ordersFetch',
   ORDERS_UPDATE = 'ordersUpdate',
 
   SHIPMENTS_CREATE_RETURN = 'shipmentsReturn',
   SHIPMENTS_DELETE = 'shipmentsDelete',
   SHIPMENTS_PRINT = 'shipmentsPrint',
-  SHIPMENTS_UPDATE = 'shipmentsUpdate',
+  SHIPMENTS_FETCH = 'shipmentsFetch',
 
   PLUGIN_SETTINGS_UPDATE = 'pluginSettingsUpdate',
   PRODUCT_SETTINGS_UPDATE = 'productSettingsUpdate',
@@ -58,36 +62,19 @@ export enum FrontendAction {
   WEBHOOKS_REFRESH = 'webhooksRefresh',
 }
 
-export const formActions = [FrontendAction.PLUGIN_SETTINGS_UPDATE, FrontendAction.PRODUCT_SETTINGS_UPDATE];
+export type PrintAction =
+  | FrontendAction.SHIPMENTS_PRINT
+  | FrontendAction.ORDERS_PRINT
+  | FrontendAction.ORDERS_EXPORT_PRINT;
 
-export const printActions = [
-  FrontendAction.SHIPMENTS_PRINT,
-  FrontendAction.ORDERS_EXPORT_PRINT,
-  FrontendAction.ORDERS_PRINT,
-] as const;
+export type UpdateOrderAction =
+  | FrontendAction.ORDERS_UPDATE
+  | FrontendAction.ORDERS_EXPORT
+  | FrontendAction.ORDERS_EXPORT_PRINT;
 
-export const updateOrderActions = [
-  FrontendAction.ORDERS_UPDATE,
-  FrontendAction.ORDERS_EXPORT,
-  FrontendAction.ORDERS_EXPORT_PRINT,
-] as const;
-
-export const updateShipmentActions = [
-  FrontendAction.SHIPMENTS_DELETE,
-  FrontendAction.SHIPMENTS_UPDATE,
-  FrontendAction.ORDERS_EXPORT,
-  FrontendAction.ORDERS_EXPORT_PRINT,
-  FrontendAction.ORDERS_REFRESH,
-] as const;
-
-export const actionEndpointMap: Partial<Record<FrontendAction, EndpointName>> = {
-  [FrontendAction.ORDERS_EXPORT]: EndpointName.EXPORT_ORDERS,
-  [FrontendAction.ORDERS_EXPORT_PRINT]: EndpointName.EXPORT_ORDERS,
-  [FrontendAction.ORDERS_PRINT]: EndpointName.PRINT_ORDERS,
-  [FrontendAction.ORDERS_UPDATE]: EndpointName.UPDATE_ORDERS,
-  [FrontendAction.PLUGIN_SETTINGS_UPDATE]: EndpointName.UPDATE_PLUGIN_SETTINGS,
-  [FrontendAction.PRODUCT_SETTINGS_UPDATE]: EndpointName.UPDATE_PRODUCT_SETTINGS,
-  [FrontendAction.SHIPMENTS_DELETE]: EndpointName.DELETE_SHIPMENTS,
-  [FrontendAction.SHIPMENTS_PRINT]: EndpointName.PRINT_SHIPMENTS,
-  [FrontendAction.SHIPMENTS_UPDATE]: EndpointName.UPDATE_SHIPMENTS,
-};
+export type UpdateShipmentAction =
+  | FrontendAction.SHIPMENTS_DELETE
+  | FrontendAction.SHIPMENTS_FETCH
+  | FrontendAction.ORDERS_EXPORT
+  | FrontendAction.ORDERS_EXPORT_PRINT
+  | FrontendAction.ORDERS_FETCH;

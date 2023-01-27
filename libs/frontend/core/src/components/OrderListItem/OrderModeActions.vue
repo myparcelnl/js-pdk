@@ -20,15 +20,14 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {createAction, createButtonAction} from '../../services';
-import {orderEditAction, orderExportAction, viewOrderInBackofficeAction} from '../../actions';
+import {orderExportAction, orderViewInBackofficeAction, ordersEditAction} from '../../actions';
 import {ActionButton} from '../common';
-import {ModalKey} from '../../types';
 import {Plugin} from '@myparcel-pdk/common';
+import {createAction} from '../../services';
 import {useLoading} from '../../composables';
 
 export default defineComponent({
-  name: 'OrderActions',
+  name: 'OrderModeActions',
   components: {
     ActionButton,
   },
@@ -45,15 +44,8 @@ export default defineComponent({
 
     return {
       loading,
-      showExportedOrderAction: createButtonAction(viewOrderInBackofficeAction),
-
-      editAction: createButtonAction(
-        orderEditAction,
-        ModalKey.SHIPMENT_OPTIONS,
-        props.order.externalIdentifier,
-        actionCallbacks,
-      ),
-
+      showExportedOrderAction: createAction(orderViewInBackofficeAction),
+      editAction: createAction(ordersEditAction, {orderIds: props.order.externalIdentifier}, actionCallbacks),
       exportAction: createAction(orderExportAction, {orderIds: [props.order.externalIdentifier]}, actionCallbacks),
     };
   },

@@ -1,21 +1,19 @@
 <template>
   <div id="myparcel-pdk-modals">
-    <!--    <PrintOptionsModal v-if="showPrintModal" /> -->
-    <!--    <ReturnsFormModal /> -->
+    <PrintOptionsModal v-if="pluginSettings.label.prompt" />
     <ShipmentOptionsModal />
   </div>
 </template>
 
 <script setup lang="ts">
 import {defineAsyncComponent} from 'vue';
+import {usePluginSettings} from '../composables';
 
 /* eslint-disable @typescript-eslint/naming-convention */
-const ShipmentOptionsModal = defineAsyncComponent(() => import('../components/Modals/ShipmentOptionsModal.vue'));
+const PrintOptionsModal = defineAsyncComponent(() => import('../components/Modals/PrintOptionsModal.vue'));
 // const ReturnsFormModal = defineAsyncComponent(() => import('../components/Modals/ReturnsFormModal.vue'));
-// const PrintOptionsModal = defineAsyncComponent(() => import('../components/Modals/PrintOptionsModal.vue'));
+const ShipmentOptionsModal = defineAsyncComponent(() => import('../components/Modals/ShipmentOptionsModal.vue'));
 /* eslint-enable @typescript-eslint/naming-convention */
 
-// const pluginSettings = usePluginSettings();
-
-// const showPrintModal = pluginSettings.label.prompt;
+const pluginSettings = usePluginSettings();
 </script>

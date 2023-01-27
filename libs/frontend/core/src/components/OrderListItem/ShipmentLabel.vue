@@ -1,41 +1,36 @@
 <template>
-  <PdkOrderCardShipmentsWrapper :loading="loading">
+  <PdkShipmentLabelWrapper :loading="loading">
     <PdkRow collapse-gutters>
       <PdkCol>
         <ShipmentBarcode :shipment="shipment" />
       </PdkCol>
+
+      <PdkCol>
+        <PdkDropdownButton
+          :hide-text="true"
+          :disabled="loading"
+          :actions="actions" />
+      </PdkCol>
     </PdkRow>
 
     <PdkRow collapse-gutters>
-      <PdkCol>
+      <PdkCol span="2">
         <ShipmentStatus :shipment="shipment" />
       </PdkCol>
-
-      <PdkCol>
-        <PdkButtonGroup>
-          <ActionButton
-            v-for="action in actions"
-            :key="`${shipment.id}_${action.id}`"
-            :action="action"
-            hide-text />
-        </PdkButtonGroup>
-      </PdkCol>
     </PdkRow>
-  </PdkOrderCardShipmentsWrapper>
+  </PdkShipmentLabelWrapper>
 </template>
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import ActionButton from '../common/ActionButton.vue';
 import {Shipment} from '@myparcel-pdk/common';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
-import {useShipmentCardData} from '../../composables';
+import {useShipmentData} from '../../composables';
 
 export default defineComponent({
-  name: 'ShipmentCard',
+  name: 'ShipmentLabel',
   components: {
-    ActionButton,
     ShipmentStatus,
     ShipmentBarcode,
   },
@@ -48,7 +43,7 @@ export default defineComponent({
   },
 
   setup: (props) => {
-    return useShipmentCardData(props.shipment);
+    return useShipmentData(props.shipment);
   },
 });
 </script>

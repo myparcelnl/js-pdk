@@ -1,16 +1,16 @@
 <template>
   <PdkCheckboxInput
-    v-for="(option, index) in options"
+    v-for="(option, index) in element.props.options ?? []"
     :key="`${option.value}_${index}`"
     v-model="model"
-    :disabled="option.disabled || disabled"
+    :disabled="option.disabled || element.isDisabled || element.isSuspended"
     :label="option.label"
     :value="option.value" />
 </template>
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {SelectOption} from '@myparcel-pdk/common';
+import {ElementInstance} from '@myparcel/pdk-frontend';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -19,27 +19,14 @@ import {useVModel} from '@vueuse/core';
 export default defineComponent({
   name: 'DefaultMultiCheckbox',
   props: {
-    /**
-     * Controls disabled state.
-     */
-    disabled: {
-      type: Boolean,
+    element: {
+      type: Object as PropType<ElementInstance>,
+      required: true,
     },
 
-    /**
-     * The options of the select.
-     */
-    options: {
-      type: Array as PropType<SelectOption[]>,
-      default: () => [],
-    },
-
-    /**
-     * The value of the model.
-     */
     // eslint-disable-next-line vue/no-unused-properties
     modelValue: {
-      type: String,
+      type: [String, Boolean],
       default: null,
     },
   },
@@ -47,10 +34,8 @@ export default defineComponent({
   emits: ['update:modelValue'],
 
   setup: (props, ctx) => {
-    const model = useVModel(props, 'modelValue', ctx.emit);
-
     return {
-      model,
+      model: useVModel(props, 'modelValue', ctx.emit),
     };
   },
 });

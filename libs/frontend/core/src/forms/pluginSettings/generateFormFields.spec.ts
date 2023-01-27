@@ -34,7 +34,7 @@ describe('generateFieldsFromView', () => {
       title: 'general_settings',
       description: 'general_settings_description',
       children: [],
-      fields: [
+      elements: [
         {
           name: 'generalSettings.name',
           label: 'general_settings_name',
@@ -48,7 +48,7 @@ describe('generateFieldsFromView', () => {
       ],
     };
 
-    const fields = generateFormFields({fields: view.fields, values: {}});
+    const fields = generateFormFields({fields: view.elements, values: {}});
 
     expect(fields.map(removeRef)).toEqual([
       {
@@ -75,7 +75,7 @@ describe('generateFieldsFromView', () => {
           title: 'carrier_settings',
           description: 'carrier_settings_description',
           children: [],
-          fields: [
+          elements: [
             {
               name: 'carrierSettings.name',
               label: 'carrier_settings_name',
@@ -89,10 +89,10 @@ describe('generateFieldsFromView', () => {
           ],
         },
       ],
-      fields: [],
+      elements: [],
     };
 
-    const fields = generateFormFields({fields: view.fields, values: {}});
+    const fields = generateFormFields({fields: view.elements, values: {}});
 
     expect(fields.map(removeRef)).toEqual([
       {

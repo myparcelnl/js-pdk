@@ -1,23 +1,25 @@
-import {OneOrMore} from '@myparcel/ts-utils';
+import {ActionParameters, FrontendAction, PrintAction} from '../actions';
+import {isOfType, toArray} from '@myparcel/ts-utils';
 
-export const generateLabelFilename = (parameters: {
-  orderIds: OneOrMore<string>;
-  shipmentIds?: OneOrMore<number>;
-}): string => {
+export const generateLabelFilename = (parameters: ActionParameters<PrintAction>): string => {
   const prefix = 'myparcel-labels';
 
-  const {orderIds, shipmentIds} = parameters;
+  const orderIds = toArray(parameters.orderIds);
 
-  if (Array.isArray(orderIds) && orderIds.length > 1) {
+  if (orderIds.length > 1) {
     return prefix;
   }
 
-  if (Array.isArray(shipmentIds) && shipmentIds.length > 1) {
-    return `${prefix}-${orderIds[0]}-shipments`;
-  }
+  if (isOfType<ActionParameters<FrontendAction.SHIPMENTS_PRINT>>(parameters, 'shipmentIds')) {
+    const shipmentIds = toArray(parameters.shipmentIds);
 
-  if (Array.isArray(shipmentIds) && shipmentIds.length === 1) {
-    return `${prefix}-${orderIds[0]}-${shipmentIds[0]}`;
+    if (shipmentIds.length > 1) {
+      return `${prefix}-${orderIds[0]}-shipments`;
+    }
+
+    if (shipmentIds.length === 1) {
+      return `${prefix}-${orderIds[0]}-${shipmentIds[0]}`;
+    }
   }
 
   return `${prefix}-${orderIds[0]}`;

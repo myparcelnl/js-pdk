@@ -1,3 +1,4 @@
+import {MutationMode, createLogger} from '../services';
 import {QueryClient, useQueryClient} from '@tanstack/vue-query';
 import {Ref, ref} from 'vue';
 import {
@@ -11,13 +12,12 @@ import {
   useUpdateShipmentsMutation,
 } from '../actions';
 import {EndpointName} from '@myparcel-pdk/common';
-import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
 import {getOrderId} from '../utils';
 
 export type QueryObject<I extends EndpointName = EndpointName> = Record<I, ResolvedQuery<I>>;
 
-export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends EndpointName.GET_ORDERS
+export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends EndpointName.FETCH_ORDERS
   ? ReturnType<typeof useOrderQuery>
   : I extends EndpointName.EXPORT_ORDERS
   ? ReturnType<typeof useExportOrdersMutation>
@@ -27,7 +27,7 @@ export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends End
   ? ReturnType<typeof useUpdateOrdersMutation>
   : I extends EndpointName.PRINT_SHIPMENTS
   ? ReturnType<typeof usePrintShipmentsMutation>
-  : I extends EndpointName.UPDATE_SHIPMENTS
+  : I extends EndpointName.FETCH_SHIPMENTS
   ? ReturnType<typeof useUpdateShipmentsMutation>
   : I extends EndpointName.DELETE_SHIPMENTS
   ? ReturnType<typeof useDeleteShipmentsMutation>
@@ -40,6 +40,8 @@ export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends End
 export const useQueryStore = defineStore('query', () => {
   const queries = ref({} as QueryObject);
   const queryClient: Ref<QueryClient | undefined> = ref<QueryClient>();
+
+  const logger = createLogger('queryStore');
 
   const has = <N extends EndpointName>(key: N): boolean => !!queries.value[key];
 
@@ -80,7 +82,7 @@ export const useQueryStore = defineStore('query', () => {
         throw new Error('No order id found');
       }
 
-      register(EndpointName.GET_ORDERS, useOrderQuery(id));
+      register(EndpointName.FETCH_ORDERS, useOrderQuery(id));
 
       register(EndpointName.EXPORT_ORDERS, useExportOrdersMutation(mode));
       register(EndpointName.PRINT_ORDERS, usePrintOrdersMutation());
@@ -88,7 +90,7 @@ export const useQueryStore = defineStore('query', () => {
 
       register(EndpointName.DELETE_SHIPMENTS, useDeleteShipmentsMutation());
       register(EndpointName.PRINT_SHIPMENTS, usePrintShipmentsMutation());
-      register(EndpointName.UPDATE_SHIPMENTS, useUpdateShipmentsMutation());
+      register(EndpointName.FETCH_SHIPMENTS, useUpdateShipmentsMutation());
     },
 
     queryClient,

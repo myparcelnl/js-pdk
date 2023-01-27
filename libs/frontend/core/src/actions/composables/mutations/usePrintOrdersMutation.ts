@@ -18,11 +18,11 @@ export const usePrintOrdersMutation = () => {
   return useMutation<Plugin.ModelContextOrderDataContext[], ApiException, PrintOrdersInput>(
     [EndpointName.PRINT_ORDERS],
     (input) => {
-      const sdk = usePdkApi();
+      const pdk = usePdkApi();
       const pluginSettings = usePluginSettings();
 
-      return sdk.printOrders({
-        // @ts-expect-error todo
+      return pdk.printOrders({
+        // @ts-expect-error custom endpoints are not typed correctly
         parameters: {
           format: pluginSettings.label.format,
           output: pluginSettings.label.output,

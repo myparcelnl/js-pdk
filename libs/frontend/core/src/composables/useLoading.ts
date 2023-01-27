@@ -1,5 +1,5 @@
 import {Ref, ref} from 'vue';
-import {ActionCallbacks} from '../services';
+import {ActionCallbacks} from '../types';
 import {PromiseOr} from '@myparcel/ts-utils';
 
 type UseLoading = (initialValue?: boolean) => {

@@ -24,17 +24,17 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
+import {createAction, createActions} from '../../services';
 import {
   orderExportAction,
-  orderExportPrintShipmentsAction,
-  orderExportShipmentsAction,
-  orderUpdateAction,
-  viewOrderInBackofficeAction,
+  orderExportToShipmentsAction,
+  orderViewInBackofficeAction,
+  ordersExportPrintShipmentsAction,
+  ordersUpdateAction,
 } from '../../actions';
 import {useLanguage, useLoading, usePluginSettings} from '../../composables';
 import {Plugin} from '@myparcel-pdk/common';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
-import {createActions, createButtonAction} from '../../services';
 
 export default defineComponent({
   name: 'ConceptCard',
@@ -61,15 +61,15 @@ export default defineComponent({
 
       actions: computed(() => {
         if (props.order.exported) {
-          return [createButtonAction(viewOrderInBackofficeAction)];
+          return [createAction(orderViewInBackofficeAction)];
         }
 
         return createActions(
           [
-            orderUpdateAction,
-            ...(orderMode ? [orderExportAction] : [orderExportShipmentsAction, orderExportPrintShipmentsAction]),
+            ordersUpdateAction,
+            ...(orderMode ? [orderExportAction] : [orderExportToShipmentsAction, ordersExportPrintShipmentsAction]),
           ],
-          {},
+          {orderIds: props.order.externalIdentifier},
           actionCallbacks,
         );
       }),

@@ -2,7 +2,7 @@
   <PdkTableRow>
     <PdkTableCol>
       <PdkCheckboxInput
-        v-model="model"
+        v-model="selected"
         :element="checkboxElement"
         :value="shipment.id" />
     </PdkTableCol>
@@ -22,25 +22,22 @@
     </PdkTableCol>
 
     <PdkTableCol align="right">
-      <PdkDropdownButton :actions="dropdownActions" />
+      <PdkDropdownButton :actions="actions" />
     </PdkTableCol>
   </PdkTableRow>
 </template>
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {deleteAction, shipmentCreateReturnAction, shipmentPrintAction, shipmentRefreshAction} from '../../actions';
-import {useAssetUrl, useFormatter, useLanguage, useLoading} from '../../composables';
+import {useFormatter, useLanguage, useShipmentData} from '../../composables';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {Shipment} from '@myparcel-pdk/common';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
-import {createActions} from '../../services';
-import {useCarriers} from '../../sdk';
 import {useVModel} from '@vueuse/core';
 
 export default defineComponent({
-  name: 'ShipmentLabelTableRow',
+  name: 'OrderShipmentsTableRow',
   components: {
     ShipmentStatus,
     ShipmentBarcode,
@@ -62,47 +59,23 @@ export default defineComponent({
   emits: ['update:modelValue'],
 
   setup: (props, ctx) => {
-    const carriersQuery = useCarriers(props.shipment.carrier.name);
     const {translate} = useLanguage();
 
-    const {loading, setLoading} = useLoading();
-
-    const model = useVModel(props, 'modelValue', ctx.emit);
+    const selected = useVModel(props, 'modelValue', ctx.emit);
 
     const checkboxElement = {
       id: `shipment_${props.shipment.id}`,
-      ref: model,
+      ref: selected,
       form: {
         name: `shipment-${props.shipment.id}`,
       },
     } as unknown as InteractiveElementInstance;
 
     return {
-      loading,
-
-      carrier: carriersQuery.data,
-
-      dropdownActions: createActions(
-        [{...shipmentPrintAction, standalone: true}, shipmentRefreshAction, shipmentCreateReturnAction, deleteAction],
-        {
-          orderIds: props.shipment.orderId,
-          shipmentIds: props.shipment.id,
-        },
-        {
-          start() {
-            setLoading(true);
-          },
-          end() {
-            setLoading(false);
-          },
-        },
-      ),
-
+      ...useShipmentData(props.shipment),
       formatter: useFormatter(),
-      model,
+      selected,
       translate,
-      useAssetUrl: useAssetUrl,
-
       checkboxElement,
     };
   },

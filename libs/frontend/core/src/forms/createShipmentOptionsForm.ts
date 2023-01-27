@@ -21,7 +21,7 @@ const largeFormat = `${shipmentOptionsPrefix}.largeFormat`;
 const sameDayDelivery = `${shipmentOptionsPrefix}.sameDayDelivery`;
 const insurance = `${shipmentOptionsPrefix}.insurance`;
 
-const defineFormField = (config: InteractiveElementConfiguration): InteractiveElementConfiguration => {
+export const defineFormField = (config: InteractiveElementConfiguration): InteractiveElementConfiguration => {
   const {label} = config;
 
   return defineField({

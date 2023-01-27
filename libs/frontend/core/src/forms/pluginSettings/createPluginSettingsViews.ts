@@ -1,7 +1,9 @@
 import {FormInstance} from '@myparcel/vue-form-builder';
+import {createActionContext} from '../../services';
 import {createPluginSettingsForm} from './createPluginSettingsForm';
+import {pluginSettingsUpdateAction} from '../../actions';
 import {useContextStore} from '../../stores';
-import {useLogger} from '../../composables/useLogger';
+import {useLogger} from '../../composables';
 
 interface BaseSettingsView {
   title: string;
@@ -19,6 +21,7 @@ export interface ChildrenSettingsView extends BaseSettingsView {
 
 export const createPluginSettingsViews = (): (FormSettingsView | ChildrenSettingsView)[] => {
   const contextStore = useContextStore();
+  const actionContext = createActionContext(pluginSettingsUpdateAction);
 
   if (!contextStore.context.pluginSettingsView) {
     const logger = useLogger();
@@ -33,7 +36,7 @@ export const createPluginSettingsViews = (): (FormSettingsView | ChildrenSetting
         id,
         title: view.title,
         description: view.description,
-        form: createPluginSettingsForm(id, view),
+        form: createPluginSettingsForm(id, view, actionContext),
       };
     }
 
@@ -45,7 +48,7 @@ export const createPluginSettingsViews = (): (FormSettingsView | ChildrenSetting
         id: id + subview.title,
         title: subview.title,
         description: subview.description,
-        form: createPluginSettingsForm(id, subview),
+        form: createPluginSettingsForm(id, subview, actionContext),
       })),
     };
   });

@@ -1,23 +1,25 @@
+import {ActionContext, FrontendAction, executeAction, useUpdatePluginSettingsMutation} from '../../actions';
 import {FormInstance, defineForm} from '@myparcel/vue-form-builder';
 import {usePdkConfig, usePluginSettings} from '../../composables';
 import {Plugin} from '@myparcel-pdk/common';
 import SubmitButton from '../../components/common/SubmitButton.vue';
 import {generateFormFields} from './generateFormFields';
-import {useUpdatePluginSettingsMutation} from '../../actions';
 
-export const createPluginSettingsForm = (id: string, view: Plugin.SettingsView): FormInstance => {
+export const createPluginSettingsForm = (
+  id: string,
+  view: Plugin.SettingsView,
+  actionContext: ActionContext<FrontendAction.PLUGIN_SETTINGS_UPDATE>,
+): FormInstance => {
   const updatePluginSettingsMutation = useUpdatePluginSettingsMutation();
   const pluginSettings = usePluginSettings();
   const pdkConfig = usePdkConfig();
-
-  console.log({id, view});
 
   return defineForm(`PluginSettings${id}`, {
     ...pdkConfig.formConfigPluginSettings,
     fields: [
       ...generateFormFields(
         {
-          fields: view.fields,
+          fields: view.elements,
           values: pluginSettings[id as keyof typeof pluginSettings] as Record<string, unknown>,
         },
         `${id}.`,
@@ -30,8 +32,8 @@ export const createPluginSettingsForm = (id: string, view: Plugin.SettingsView):
       },
     ],
 
-    async afterSubmit(form: FormInstance) {
-      await updatePluginSettingsMutation.mutateAsync(form);
+    async afterSubmit(form) {
+      await executeAction({...actionContext, parameters: {form}});
     },
   });
 };

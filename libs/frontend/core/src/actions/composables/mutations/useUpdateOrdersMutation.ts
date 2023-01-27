@@ -14,7 +14,7 @@ type UpdateOrdersInput = {
 
 export const useUpdateOrdersMutation = () => {
   const queryClient = useQueryClient();
-  const sdk = usePdkApi();
+  const pdk = usePdkApi();
 
   return useMutation<Plugin.ModelContextOrderDataContext[], ApiException, UpdateOrdersInput>(
     [EndpointName.UPDATE_ORDERS],
@@ -27,7 +27,7 @@ export const useUpdateOrdersMutation = () => {
       };
 
       // @ts-expect-error custom endpoints are not typed correctly
-      return sdk.updateOrders(options);
+      return pdk.updateOrders(options);
     },
     queryClient.defaultMutationOptions(),
   );

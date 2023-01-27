@@ -1,4 +1,9 @@
-import {shipmentPrintAction, shipmentRefreshAction} from '../actions';
+import {
+  shipmentsCreateReturnAction,
+  shipmentsDeleteAction,
+  shipmentsFetchAction,
+  shipmentsPrintAction,
+} from '../actions';
 import {Carrier} from '@myparcel/sdk';
 import {Ref} from 'vue';
 import {Shipment} from '@myparcel-pdk/common';
@@ -7,32 +12,25 @@ import {useAssetUrl} from './useAssetUrl';
 import {useCarriers} from '../sdk';
 import {useLoading} from './useLoading';
 
-export type UseShipmentCardData = {
+export type UseShipmentData = {
   actions: ReturnType<typeof createActions>;
   carrier: Ref<Carrier | undefined>;
   loading: Ref<boolean>;
   useAssetUrl: typeof useAssetUrl;
 };
 
-export const useShipmentCardData = (shipment: Shipment.ModelShipment): UseShipmentCardData => {
-  const {loading, setLoading} = useLoading();
+export const useShipmentData = (shipment: Shipment.ModelShipment): UseShipmentData => {
+  const {loading, actionCallbacks} = useLoading();
   const carriersQuery = useCarriers(shipment.carrier?.name);
 
   return {
     actions: createActions(
-      [shipmentPrintAction, shipmentRefreshAction],
+      [shipmentsPrintAction, shipmentsFetchAction, shipmentsCreateReturnAction, shipmentsDeleteAction],
       {
         shipmentIds: shipment.id,
         orderIds: shipment.orderId,
       },
-      {
-        start() {
-          setLoading(true);
-        },
-        end() {
-          setLoading(false);
-        },
-      },
+      actionCallbacks,
     ),
 
     carrier: carriersQuery.data,

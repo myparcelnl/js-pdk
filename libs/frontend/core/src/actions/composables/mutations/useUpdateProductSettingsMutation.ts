@@ -14,7 +14,7 @@ export const useUpdateProductSettingsMutation = () => {
   return useMutation<unknown, ApiException, UpdateProductSettingsInput>(
     [EndpointName.UPDATE_PRODUCT_SETTINGS],
     ({form, productIds}) => {
-      const sdk = usePdkApi();
+      const pdk = usePdkApi();
 
       const options = {
         params: {
@@ -26,7 +26,7 @@ export const useUpdateProductSettingsMutation = () => {
       };
 
       // @ts-expect-error custom endpoints are not typed correctly
-      return sdk.updatePluginSettings(options);
+      return pdk.updateProductSettings(options);
     },
   );
 };

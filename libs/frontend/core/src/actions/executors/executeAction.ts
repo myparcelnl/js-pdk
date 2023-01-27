@@ -1,40 +1,40 @@
-import {ActionResponse, FrontendAction} from '../consts';
+import {ActionResponse, FrontendAction} from '../index';
 import {ActionContext} from './types';
-import {EndpointName} from '@myparcel-pdk/common';
-import {executeMutation} from './executeMutation';
-import {useQueryStore} from '../../stores';
+import {useNotificationStore} from '../../stores';
 
-// eslint-disable-next-line complexity
-export async function executeAction<A extends FrontendAction>({
-  action,
-  instance,
-  parameters,
-}: ActionContext): Promise<ActionResponse<A>> {
-  const queryStore = useQueryStore();
+/**
+ * Execute a PdkAction.
+ */
+export const executeAction = async <A extends FrontendAction | undefined>(
+  context: ActionContext<A>,
+): Promise<ActionResponse<A>> => {
+  // @ts-expect-error todo
+  const resolvedParameters = (await context.action.beforeHandle?.(context)) ?? context.parameters;
+
+  context.instance?.logger?.debug({parameters: context.parameters, resolvedParameters});
+
+  const store = useNotificationStore();
 
   let response;
 
-  switch (action) {
-    case FrontendAction.ORDERS_REFRESH:
-      response = (await queryStore.get(EndpointName.GET_ORDERS).refetch()).data;
-      break;
+  try {
+    // @ts-expect-error todo
+    response = await context.action.handler(context);
 
-    case FrontendAction.ORDERS_EXPORT:
-    case FrontendAction.ORDERS_EXPORT_PRINT:
-    case FrontendAction.ORDERS_PRINT:
-    case FrontendAction.ORDERS_UPDATE:
-    case FrontendAction.PLUGIN_SETTINGS_UPDATE:
-    case FrontendAction.PRODUCT_SETTINGS_UPDATE:
-    case FrontendAction.SHIPMENTS_DELETE:
-    case FrontendAction.SHIPMENTS_PRINT:
-    case FrontendAction.SHIPMENTS_UPDATE:
-      response = await executeMutation({action, parameters, instance});
-      break;
-
-    default:
-      throw new Error(`Action "${action}" is not found.`);
+    if (context.notifications?.success) {
+      store.add(context.notifications.success);
+    }
+  } catch (error) {
+    if (context.notifications?.error) {
+      store.add(context.notifications.error);
+    }
   }
 
   // @ts-expect-error todo
-  return response;
-}
+  const resolvedResponse = (await context.action.afterHandle?.({...context, response})) ?? response;
+
+  context.instance?.logger?.debug({response, resolvedResponse});
+
+  // @ts-expect-error todo
+  return resolvedResponse;
+};

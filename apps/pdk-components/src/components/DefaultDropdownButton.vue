@@ -2,6 +2,7 @@
   <ActionButton
     v-for="action in standaloneActions"
     :key="action.id"
+    :hide-text="hideText"
     :action="action" />
 
   <PdkButton
@@ -44,6 +45,13 @@ export default defineComponent({
      * Controls disabled state.
      */
     disabled: {
+      type: Boolean,
+    },
+
+    /**
+     * To hide the text of the standalone actions.
+     */
+    hideText: {
       type: Boolean,
     },
 

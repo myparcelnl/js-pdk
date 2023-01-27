@@ -362,7 +362,7 @@ export namespace Plugin {
   export type SettingsView = {
     title: string;
     description?: string;
-    fields: Field[];
+    elements: Field[];
     children: SettingsView[];
   };
 

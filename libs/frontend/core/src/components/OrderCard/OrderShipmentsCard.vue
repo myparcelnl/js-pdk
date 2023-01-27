@@ -6,7 +6,7 @@
     </template>
 
     <template #default>
-      <ShipmentLabelsTable
+      <OrderShipmentsTable
         :order="order"
         @select="setSelectedLabels" />
     </template>
@@ -14,12 +14,10 @@
     <template #footer>
       <PdkDropdownButton
         :disabled="!selectedLabels.length"
-        :actions="bulkActionDropdownItems"
-        @click="onAction">
+        :actions="bulkActions">
         {{ translate('bulk_actions') }}
         <span
           v-if="selectedLabels.length"
-          class="badge badge-dark ml-1"
           v-text="selectedLabels.length" />
       </PdkDropdownButton>
     </template>
@@ -28,15 +26,22 @@
 
 <script lang="ts">
 import {PropType, defineComponent, ref} from 'vue';
-import {deleteAction, shipmentPrintAction, shipmentRefreshAction} from '../../actions';
+import {
+  shipmentsCreateReturnAction,
+  shipmentsDeleteAction,
+  shipmentsFetchAction,
+  shipmentsPrintAction,
+} from '../../actions';
 import {useLanguage, useLoading} from '../../composables';
+import OrderShipmentsTable from './OrderShipmentsTable.vue';
 import {Plugin} from '@myparcel-pdk/common';
-import ShipmentLabelsTable from './ShipmentLabelsTable.vue';
 import {createActions} from '../../services';
 
 export default defineComponent({
-  name: 'ShipmentsCard',
-  components: {ShipmentLabelsTable},
+  name: 'OrderShipmentsCard',
+  components: {
+    OrderShipmentsTable,
+  },
 
   props: {
     order: {
@@ -47,39 +52,25 @@ export default defineComponent({
 
   setup: () => {
     const selectedLabels = ref<number[]>([]);
-    const {loading, setLoading} = useLoading();
+    const {loading, actionCallbacks} = useLoading();
     const {translate} = useLanguage();
 
     return {
-      bulkActionDropdownItems: createActions(
-        [shipmentRefreshAction, shipmentPrintAction, deleteAction],
-        {
-          shipmentIds: selectedLabels.value,
-        },
-        {
-          start() {
-            setLoading(true);
-          },
-          end() {
-            setLoading(false);
-          },
-        },
-      ),
-
       loading,
 
       selectedLabels,
+
+      bulkActions: createActions(
+        [shipmentsFetchAction, shipmentsPrintAction, shipmentsDeleteAction, shipmentsCreateReturnAction],
+        {shipmentIds: selectedLabels.value},
+        actionCallbacks,
+      ),
 
       setSelectedLabels(labels: number[]): void {
         selectedLabels.value = labels;
       },
 
       translate,
-
-      onAction(action: string): void {
-        // eslint-disable-next-line no-console
-        console.log(action);
-      },
     };
   },
 });

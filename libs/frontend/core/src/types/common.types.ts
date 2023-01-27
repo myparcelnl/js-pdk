@@ -2,10 +2,18 @@ import {OneOrMore} from '@myparcel/ts-utils';
 import {PdkVariant} from '@myparcel-pdk/common';
 
 export interface PdkNotification {
-  content?: OneOrMore<string>;
-  title?: string;
-  variant: PdkVariant;
+  id?: number;
   category?: NotificationCategory;
+  title?: string;
+  content?: OneOrMore<string>;
+  variant: PdkVariant;
+  timeout?: boolean | number;
+}
+
+export interface ResolvedPdkNotification extends PdkNotification {
+  id: number;
+  timeout: number;
+  title: string;
 }
 
 export enum NotificationCategory {

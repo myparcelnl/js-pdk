@@ -46,7 +46,7 @@ import {
   ActionButton,
   ModalKey,
   NotificationContainer,
-  PdkButtonAction,
+  PdkAction,
   useLanguage,
   useModalStore,
 } from '@myparcel/pdk-frontend';
@@ -78,7 +78,7 @@ export default defineComponent({
      * Available actions in the modal.
      */
     actions: {
-      type: Array as PropType<PdkButtonAction[]>,
+      type: Array as PropType<PdkAction[]>,
       required: true,
     },
   },

@@ -16,11 +16,11 @@ export const useUpdateShipmentsMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation<Plugin.ModelContextOrderDataContext[], ApiException, UpdateShipmentsInput>(
-    [EndpointName.UPDATE_SHIPMENTS],
+    [EndpointName.FETCH_SHIPMENTS],
     (input) => {
-      const sdk = usePdkApi();
+      const pdk = usePdkApi();
 
-      return sdk.updateShipments({
+      return pdk.fetchShipments({
         // @ts-expect-error todo
         parameters: {
           orderIds: encodeArrayParameter(input.orderIds),

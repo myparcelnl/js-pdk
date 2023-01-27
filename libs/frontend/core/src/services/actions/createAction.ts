@@ -1,56 +1,47 @@
-import {ActionParameters, FrontendAction} from '../../actions';
-import {InputPdkButtonAction, OnClickAction, PdkButtonAction, PdkNotification} from '../../types';
-import {PromiseOr, isOfType} from '@myparcel/ts-utils';
-import {createLogger} from '../logger';
-import {doAction} from '../../utils';
-import {usePdkInstance} from '../../composables/usePdkInstance';
+import {ActionCallbacks, PdkAction, PdkDropdownAction, ResolvedAction} from '../../types';
+import {ActionParameters, FrontendAction, executeAction} from '../../actions';
+import {createActionContext} from './createActionContext';
+import {getActionIdentifier} from './getActionIdentifier';
+import {isOfType} from '@myparcel/ts-utils';
+import {useMemoize} from '@vueuse/core';
 
-export type ActionCallbacks = {
-  start?(): PromiseOr<void>;
-  end?(): PromiseOr<void>;
-};
-
-type CreateAction = <A extends FrontendAction = FrontendAction>(
-  action: InputPdkButtonAction<A>,
+type CreateAction = <A extends FrontendAction | undefined = FrontendAction | undefined>(
+  action: PdkAction<A>,
   parameters?: ActionParameters<A>,
   callbacks?: ActionCallbacks,
-) => PdkButtonAction;
+) => ResolvedAction;
 
-export const createAction: CreateAction = (input, parameters, callbacks) => {
-  if (isOfType<OnClickAction>(input, 'onClick')) {
-    return input;
-  }
+const createActionHandler: CreateAction = (action, parameters, callbacks) => {
+  const context = createActionContext(action, parameters);
+  context.instance?.logger?.info('createAction', action);
 
-  const {action, ...rest} = input;
+  const data: ResolvedAction = {
+    id: getActionIdentifier(action),
+    icon: action.icon,
+    label: action.label,
+    variant: action.variant,
+    disabled: action.disabled,
 
-  const instance = usePdkInstance();
-  const logger = createLogger(action);
+    // @ts-expect-error todo
+    parameters: action.parameters ?? {},
 
-  return {
-    ...rest,
-    id: action,
     onClick: async () => {
+      const startTime = Date.now();
       await callbacks?.start?.();
+      context?.instance?.logger?.debug('Context', context);
 
-      const notifications = ['success', 'error'].reduce((acc, type) => {
-        return {
-          ...acc,
-          [type]: {
-            variant: type,
-            title: `notification_${action}_${type}_title`,
-            content: `notification_${action}_${type}_body_`,
-          },
-        };
-      }, {} as Record<'success' | 'error', PdkNotification>);
+      await executeAction(context);
 
-      await doAction({
-        action,
-        parameters: parameters ?? {},
-        instance: {...instance, logger},
-        notifications,
-      });
-
+      context?.instance?.logger?.debug('Done in ', Date.now() - startTime, 'ms');
       await callbacks?.end?.();
     },
   };
+
+  if (isOfType<PdkDropdownAction>(action, 'standalone')) {
+    data.standalone = action.standalone;
+  }
+
+  return data;
 };
+
+export const createAction: CreateAction = useMemoize(createActionHandler);

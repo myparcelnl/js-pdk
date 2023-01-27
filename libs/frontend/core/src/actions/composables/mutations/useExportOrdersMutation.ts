@@ -17,11 +17,11 @@ type ExportOrdersInput = {
 
 export const useExportOrdersMutation = (mode: MutationMode = MutationMode.DEFAULT) => {
   const queryClient = useQueryClient();
-  const sdk = usePdkApi();
 
   return useMutation<Plugin.ModelContextOrderDataContext[], ApiException, ExportOrdersInput>(
     [EndpointName.EXPORT_ORDERS],
     async (input) => {
+      const pdk = usePdkApi();
       getCallbackForMutationMode(mode)?.();
 
       const options: EndpointOptions<EndpointName.EXPORT_ORDERS> = {
@@ -32,7 +32,7 @@ export const useExportOrdersMutation = (mode: MutationMode = MutationMode.DEFAUL
       };
 
       // @ts-expect-error custom endpoints are not typed correctly
-      return sdk.exportOrders(options);
+      return pdk.exportOrders(options);
     },
     {
       ...queryClient.defaultMutationOptions(),

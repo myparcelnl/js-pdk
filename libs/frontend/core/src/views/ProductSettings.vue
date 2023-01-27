@@ -29,7 +29,7 @@ const createProductSettingsForm = (): FormInstance => {
       ...generateFormFields(
         {
           // @ts-expect-error todo
-          fields: productSettingsView.view.fields,
+          fields: productSettingsView.view.elements,
           values: productSettingsView.values,
         },
         'product',

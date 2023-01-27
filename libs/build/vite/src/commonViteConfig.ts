@@ -22,6 +22,7 @@ export const commonViteConfig: UserConfigFn = (env) => ({
       plugins: [visualizer({filename: 'lib/index.html'})],
       external: externalDependencies,
       output: {
+        preserveModules: true,
         globals: {
           vue: 'Vue',
         },

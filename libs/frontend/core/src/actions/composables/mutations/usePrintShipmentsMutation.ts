@@ -19,10 +19,10 @@ export const usePrintShipmentsMutation = () => {
   return useMutation<Plugin.ModelContextOrderDataContext[], ApiException, PrintShipmentsInput>(
     [EndpointName.PRINT_SHIPMENTS],
     (input) => {
-      const sdk = usePdkApi();
+      const pdk = usePdkApi();
       const pluginSettings = usePluginSettings();
 
-      return sdk.printShipments({
+      return pdk.printShipments({
         // @ts-expect-error todo
         parameters: {
           format: pluginSettings.label.format,

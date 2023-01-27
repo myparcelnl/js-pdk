@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import {ActionButton, PdkButtonAction, useLanguage} from '@myparcel/pdk-frontend';
+import {ActionButton, PdkAction, useLanguage} from '@myparcel/pdk-frontend';
 import {PropType, defineComponent} from 'vue';
 
 /**
@@ -64,7 +64,7 @@ export default defineComponent({
      * Available actions on the card.
      */
     actions: {
-      type: Array as PropType<PdkButtonAction[]>,
+      type: Array as PropType<PdkAction[]>,
       default: () => [],
     },
   },

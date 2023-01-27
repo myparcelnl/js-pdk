@@ -10,12 +10,7 @@
 
 <script lang="ts">
 import {defineAsyncComponent, defineComponent} from 'vue';
-import {
-  modalCancelAction,
-  orderExportAction,
-  orderExportPrintShipmentsAction,
-  orderExportShipmentsAction,
-} from '../../actions';
+import {modalCancelAction, orderExportAction, orderExportToShipmentsAction} from '../../actions';
 import {EndpointName} from '@myparcel-pdk/common';
 import {ModalKey} from '../../types';
 import {createActions} from '../../services';
@@ -45,7 +40,7 @@ export default defineComponent({
           ...modalCancelAction,
           disabled: exportOrdersQuery.isLoading,
         },
-        ...(orderMode ? [orderExportAction] : [orderExportShipmentsAction, orderExportPrintShipmentsAction]),
+        ...(orderMode ? [orderExportAction] : [orderExportToShipmentsAction, orderExportToShipmentsAction]),
       ]),
     };
   },

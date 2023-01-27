@@ -4,5 +4,4 @@ export * from './context';
 export * from './createActions';
 export * from './logger';
 export * from './mutations';
-export * from './openPdfInNewWindow';
-export * from './useAction';
+export * from './print';
