@@ -1,4 +1,4 @@
-import {ActionResponse, FrontendAction} from '../index';
+import {ActionResponse, FrontendAction} from '../../types';
 import {ActionContext} from './types';
 import {useNotificationStore} from '../../stores';
 

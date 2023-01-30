@@ -1,7 +1,6 @@
-import {ActionParameters, ActionResponse, FrontendAction} from '../consts';
+import {ActionParameters, ActionResponse, FrontendAction, PdkAction} from '../../types';
 import {createActionContext, getActionIdentifier} from '../../services';
 import {ActionContext} from './types';
-import {PdkAction} from '../../types';
 import {executeAction} from './executeAction';
 
 /**

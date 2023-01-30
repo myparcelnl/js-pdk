@@ -1,25 +1,18 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EndpointName, Plugin} from '@myparcel-pdk/common';
 import {EndpointOptions, usePdkApi} from '../../../sdk';
 import {MutationMode, getCallbackForMutationMode, getModalMutationOptions} from '../../../services';
 import {encodeArrayParameter, formToBody} from '../../../utils';
-import {useMutation, useQueryClient} from '@tanstack/vue-query';
-import {ApiException} from '@myparcel/sdk';
-import {FormInstance} from '@myparcel/vue-form-builder';
-import {OneOrMore} from '@myparcel/ts-utils';
+import {EndpointName} from '@myparcel-pdk/common';
 import {fillOrderQueryData} from '../../../pdk';
 import {useModalStore} from '../../../stores';
-
-type ExportOrdersInput = {
-  orderIds: OneOrMore<string>;
-  form?: FormInstance;
-};
+import {usePdkMutation} from './usePdkMutation';
+import {useQueryClient} from '@tanstack/vue-query';
 
 export const useExportOrdersMutation = (mode: MutationMode = MutationMode.DEFAULT) => {
   const queryClient = useQueryClient();
 
-  return useMutation<Plugin.ModelContextOrderDataContext[], ApiException, ExportOrdersInput>(
-    [EndpointName.EXPORT_ORDERS],
+  return usePdkMutation(
+    EndpointName.EXPORT_ORDERS,
     async (input) => {
       const pdk = usePdkApi();
       getCallbackForMutationMode(mode)?.();

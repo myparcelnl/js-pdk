@@ -1,23 +1,18 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EndpointName, Plugin} from '@myparcel-pdk/common';
-import {usePdkApi} from '../../../sdk';
-import {OneOrMore, toArray} from '@myparcel/ts-utils';
 import {encodeArrayParameter, normalizeOrder} from '../../../utils';
-import {useMutation, useQueryClient} from '@tanstack/vue-query';
-import {ApiException} from '@myparcel/sdk';
+import {EndpointName} from '@myparcel-pdk/common';
+import {toArray} from '@myparcel/ts-utils';
 import {useOrderData} from '../../../composables';
-
-type DeleteShipmentsInput = {
-  orderIds: OneOrMore<string>;
-  shipmentIds: OneOrMore<number>;
-};
+import {usePdkApi} from '../../../sdk';
+import {usePdkMutation} from './usePdkMutation';
+import {useQueryClient} from '@tanstack/vue-query';
 
 export const useDeleteShipmentsMutation = () => {
   const queryClient = useQueryClient();
   const pdk = usePdkApi();
 
-  return useMutation<Plugin.ModelContextOrderDataContext[], ApiException, DeleteShipmentsInput>(
-    [EndpointName.DELETE_SHIPMENTS],
+  return usePdkMutation(
+    EndpointName.DELETE_SHIPMENTS,
     async (input) => {
       const orderIds = toArray(input.orderIds);
       const shipmentIds = toArray(input.shipmentIds);

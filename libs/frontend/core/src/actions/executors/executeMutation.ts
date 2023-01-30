@@ -1,7 +1,7 @@
-import {ActionResponse, FrontendAction} from '../consts';
 import {ActionContext} from './types';
 import {EndpointName} from '@myparcel-pdk/common';
 import {useQueryStore} from '../../stores';
+import {ActionResponse, FrontendAction} from '../../types';
 
 export function executeMutation<A extends FrontendAction>(
   endpoint: EndpointName,

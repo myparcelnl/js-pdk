@@ -1,9 +1,8 @@
-import {ModalKey, PdkIcon, PdkModalContext} from '../types';
+import {FrontendAction, ModalKey, PdkIcon, PdkModalContext} from '../types';
 import {createMutationExecutor, executeNextAction, resolveOrderParameters} from './executors';
 import {openOrPrint, waitForLabelPrompt} from './print';
 import {useModalStore, useQueryStore} from '../stores';
 import {EndpointName} from '@myparcel-pdk/common';
-import {FrontendAction} from './consts';
 import {defineAction} from './defineAction';
 
 /**

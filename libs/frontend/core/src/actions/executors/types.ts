@@ -1,5 +1,11 @@
-import {ActionParameters, ActionResponse, FrontendAction} from '../consts';
-import {MaybeFrontendAction, PdkAction, PdkNotification} from '../../types';
+import {
+  ActionParameters,
+  ActionResponse,
+  FrontendAction,
+  MaybeFrontendAction,
+  PdkAction,
+  PdkNotification,
+} from '../../types';
 import {PdkAppInstance} from '../../data';
 
 type BaseActionContext<A extends MaybeFrontendAction> = {

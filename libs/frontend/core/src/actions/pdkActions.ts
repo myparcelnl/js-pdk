@@ -1,4 +1,4 @@
-import {PdkAction, PdkIcon} from '../types';
+import {FrontendAction, PdkAction, PdkIcon} from '../types';
 import {
   orderExportAction,
   orderExportToShipmentsAction,
@@ -8,7 +8,6 @@ import {
 } from './orderActions';
 import {shipmentsCreateReturnAction, shipmentsFetchAction, shipmentsPrintAction} from './shipmentActions';
 import {EndpointName} from '@myparcel-pdk/common';
-import {FrontendAction} from './consts';
 import {createMutationExecutor} from './executors';
 import {defineAction} from './defineAction';
 import {useModalStore} from '../stores';

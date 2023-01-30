@@ -1,12 +1,14 @@
-import {ActionCallbacks, PdkAction, ResolvedAction} from '../types';
-import {ActionParameters, FrontendAction} from '../actions';
+import {ActionCallbacks, ActionParameters, FrontendAction, PdkAction, ResolvedAction} from '../types';
 import {OneOrMore, toArray} from '@myparcel/ts-utils';
 import {createAction} from './index';
 
-export const createActions = <A extends FrontendAction | undefined>(
-  action: OneOrMore<PdkAction<A>>,
-  parameters?: ActionParameters<A>,
+export const createActions = (
+  actions: OneOrMore<PdkAction>,
+  parameters?: ActionParameters<FrontendAction>,
   callbacks?: ActionCallbacks,
 ): ResolvedAction[] => {
-  return toArray(action).map((action) => createAction(action, parameters, callbacks));
+  return toArray(actions).map((action) => {
+    // @ts-expect-error hard to get types assignable to all different PdkActions passed in actions
+    return createAction(action, parameters, callbacks);
+  });
 };

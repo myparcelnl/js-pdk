@@ -1,5 +1,4 @@
-import {MaybeFrontendAction, PdkAction} from '../../types';
-import {FrontendAction} from '../../actions';
+import {FrontendAction, MaybeFrontendAction, PdkAction} from '../../types';
 import {isOfType} from '@myparcel/ts-utils';
 
 export const getActionIdentifier = <A extends MaybeFrontendAction>(action: PdkAction<A>): string => {

@@ -37,7 +37,6 @@ const createProductSettingsForm = (): FormInstance => {
     ],
 
     afterSubmit: async (form: FormInstance) => {
-      // todo: get product ids
       await updateProductSettingsMutation.mutateAsync({
         form,
         productIds: [productSettingsView.product.externalIdentifier],

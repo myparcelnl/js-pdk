@@ -1,22 +1,16 @@
 /* eslint-disable no-console,@typescript-eslint/explicit-module-boundary-types */
-import {EndpointName, Plugin} from '@myparcel-pdk/common';
-import {useMutation, useQueryClient} from '@tanstack/vue-query';
-import {ApiException} from '@myparcel/sdk';
-import {OneOrMore} from '@myparcel/ts-utils';
+import {EndpointName} from '@myparcel-pdk/common';
 import {encodeArrayParameter} from '../../../utils';
 import {fillOrderQueryData} from '../../../pdk';
 import {usePdkApi} from '../../../sdk';
-
-export interface UpdateShipmentsInput {
-  orderIds: OneOrMore<string>;
-  shipmentIds?: OneOrMore<number>;
-}
+import {usePdkMutation} from './usePdkMutation';
+import {useQueryClient} from '@tanstack/vue-query';
 
 export const useUpdateShipmentsMutation = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<Plugin.ModelContextOrderDataContext[], ApiException, UpdateShipmentsInput>(
-    [EndpointName.FETCH_SHIPMENTS],
+  return usePdkMutation(
+    EndpointName.FETCH_SHIPMENTS,
     (input) => {
       const pdk = usePdkApi();
 

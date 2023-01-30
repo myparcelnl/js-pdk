@@ -1,4 +1,3 @@
-import {MutationMode, createLogger} from '../services';
 import {QueryClient, useQueryClient} from '@tanstack/vue-query';
 import {Ref, ref} from 'vue';
 import {
@@ -12,6 +11,7 @@ import {
   useUpdateShipmentsMutation,
 } from '../actions';
 import {EndpointName} from '@myparcel-pdk/common';
+import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
 import {getOrderId} from '../utils';
 
@@ -40,8 +40,6 @@ export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends End
 export const useQueryStore = defineStore('query', () => {
   const queries = ref({} as QueryObject);
   const queryClient: Ref<QueryClient | undefined> = ref<QueryClient>();
-
-  const logger = createLogger('queryStore');
 
   const has = <N extends EndpointName>(key: N): boolean => !!queries.value[key];
 

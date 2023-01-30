@@ -1,5 +1,4 @@
 export * from './composables';
-export * from './consts';
 export * from './defineAction';
 export * from './executors';
 export * from './orderActions';

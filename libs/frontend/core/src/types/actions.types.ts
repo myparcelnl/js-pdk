@@ -1,4 +1,5 @@
-import {ActionContext, ActionContextWithResponse, ActionParameters, ActionResponse, FrontendAction} from '../actions';
+import {ActionContext, ActionContextWithResponse} from '../actions';
+import {ActionInput, EndpointResponse, FrontendActionEndpointMap} from './endpoints.types';
 import {MaybeRef} from '@vueuse/core';
 import {PdkIcon} from './common.types';
 import {PdkVariant} from '@myparcel-pdk/common';
@@ -47,3 +48,48 @@ export type ResolvedAction = BaseAction & {
   standalone?: boolean;
   onClick(): PromiseOr<void>;
 };
+
+export type ActionParameters<A extends MaybeFrontendAction> = A extends FrontendAction
+  ? ActionInput<FrontendActionEndpointMap[A]>
+  : Record<string, unknown>;
+
+export type ActionResponse<A extends MaybeFrontendAction> = A extends FrontendAction
+  ? EndpointResponse<FrontendActionEndpointMap[A]>
+  : void;
+
+export enum FrontendAction {
+  ORDERS_EXPORT = 'ordersExport',
+  ORDERS_EXPORT_PRINT = 'ordersExportPrint',
+  ORDERS_PRINT = 'ordersPrint',
+  ORDERS_FETCH = 'ordersFetch',
+  ORDERS_UPDATE = 'ordersUpdate',
+
+  SHIPMENTS_CREATE_RETURN = 'shipmentsReturn',
+  SHIPMENTS_DELETE = 'shipmentsDelete',
+  SHIPMENTS_PRINT = 'shipmentsPrint',
+  SHIPMENTS_FETCH = 'shipmentsFetch',
+
+  PLUGIN_SETTINGS_UPDATE = 'pluginSettingsUpdate',
+  PRODUCT_SETTINGS_UPDATE = 'productSettingsUpdate',
+
+  WEBHOOKS_CREATE = 'webhooksCreate',
+  WEBHOOKS_DELETE = 'webhooksDelete',
+  WEBHOOKS_REFRESH = 'webhooksRefresh',
+}
+
+export type PrintAction =
+  | FrontendAction.SHIPMENTS_PRINT
+  | FrontendAction.ORDERS_PRINT
+  | FrontendAction.ORDERS_EXPORT_PRINT;
+
+export type UpdateOrderAction =
+  | FrontendAction.ORDERS_UPDATE
+  | FrontendAction.ORDERS_EXPORT
+  | FrontendAction.ORDERS_EXPORT_PRINT;
+
+export type UpdateShipmentAction =
+  | FrontendAction.SHIPMENTS_DELETE
+  | FrontendAction.SHIPMENTS_FETCH
+  | FrontendAction.ORDERS_EXPORT
+  | FrontendAction.ORDERS_EXPORT_PRINT
+  | FrontendAction.ORDERS_FETCH;

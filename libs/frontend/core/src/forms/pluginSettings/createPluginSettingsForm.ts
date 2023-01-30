@@ -1,6 +1,7 @@
-import {ActionContext, FrontendAction, executeAction, useUpdatePluginSettingsMutation} from '../../actions';
+import {ActionContext, executeAction, useUpdatePluginSettingsMutation} from '../../actions';
 import {FormInstance, defineForm} from '@myparcel/vue-form-builder';
 import {usePdkConfig, usePluginSettings} from '../../composables';
+import {FrontendAction} from '../../types';
 import {Plugin} from '@myparcel-pdk/common';
 import SubmitButton from '../../components/common/SubmitButton.vue';
 import {generateFormFields} from './generateFormFields';
@@ -33,7 +34,14 @@ export const createPluginSettingsForm = (
     ],
 
     async afterSubmit(form) {
-      await executeAction({...actionContext, parameters: {form}});
+      const context: ActionContext<FrontendAction.PLUGIN_SETTINGS_UPDATE> = {
+        ...actionContext,
+        parameters: {
+          form,
+        },
+      };
+
+      await executeAction(context);
     },
   });
 };

@@ -9,7 +9,7 @@
         v-if="!orderMode"
         :order="query.data" />
 
-      <ShipmentActions :order="query.data" />
+      <OrderActions :order="query.data" />
     </template>
   </div>
 </template>
@@ -26,7 +26,7 @@ import {useQueryStore} from '../stores';
 /* eslint-disable @typescript-eslint/naming-convention */
 const ShipmentLabels = defineAsyncComponent(() => import('../components/OrderListItem/ShipmentLabels.vue'));
 const OrderModeActions = defineAsyncComponent(() => import('../components/OrderListItem/OrderModeActions.vue'));
-const ShipmentActions = defineAsyncComponent(() => import('../components/OrderListItem/ShipmentActions.vue'));
+const OrderActions = defineAsyncComponent(() => import('../components/OrderListItem/OrderActions.vue'));
 /* eslint-enable @typescript-eslint/naming-convention */
 
 const queryStore = useQueryStore();

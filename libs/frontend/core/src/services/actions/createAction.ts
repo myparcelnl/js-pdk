@@ -1,6 +1,6 @@
-import {ActionCallbacks, PdkAction, ResolvedAction} from '../../types';
-import {ActionParameters, FrontendAction, executeAction} from '../../actions';
+import {ActionCallbacks, ActionParameters, FrontendAction, PdkAction, ResolvedAction} from '../../types';
 import {createActionContext} from './createActionContext';
+import {executeAction} from '../../actions';
 import {getActionIdentifier} from './getActionIdentifier';
 import {useMemoize} from '@vueuse/core';
 
@@ -12,7 +12,6 @@ type CreateAction = <A extends FrontendAction | undefined = FrontendAction | und
 
 const createActionHandler: CreateAction = (action, parameters, callbacks) => {
   const context = createActionContext(action, parameters);
-  context.instance?.logger?.info('createAction', action);
 
   const data: ResolvedAction = {
     id: getActionIdentifier(action),

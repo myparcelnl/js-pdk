@@ -1,7 +1,6 @@
 import {createMutationExecutor, executeAction} from './executors';
 import {EndpointName} from '@myparcel-pdk/common';
-import {FrontendAction} from './consts';
-import {PdkIcon} from '../types';
+import {FrontendAction, PdkIcon} from '../types';
 import {defineAction} from './defineAction';
 import {waitForLabelPrompt} from './print';
 

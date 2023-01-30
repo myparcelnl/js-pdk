@@ -8,9 +8,10 @@ import {orderExportAction, ordersEditAction, ordersExportPrintShipmentsAction, o
 import {useLoading, useOrderData} from '../../composables';
 import {PdkAction} from '../../types';
 import {Plugin} from '@myparcel-pdk/common';
+import {createActions} from '../../services';
 
 export default defineComponent({
-  name: 'ShipmentActions',
+  name: 'OrderActions',
 
   props: {
     order: {
@@ -39,7 +40,7 @@ export default defineComponent({
 
         actions.push(ordersEditAction);
 
-        return actions;
+        return createActions(actions, {orderIds: props.order.externalIdentifier});
       }),
 
       shipments: orderData.shipments,

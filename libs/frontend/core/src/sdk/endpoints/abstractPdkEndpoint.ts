@@ -1,43 +1,48 @@
-import {AbstractEndpoint, CreateDefinition} from '@myparcel/sdk';
+import {AbstractEndpoint, EndpointDefinition} from '@myparcel/sdk';
 import {EndpointName, LabelFormat, LabelOutput, LabelPosition, Plugin, Settings} from '@myparcel-pdk/common';
 import {RecursivePartial} from '@myparcel/ts-utils';
 
-export type FetchOrdersDefinition = CreateDefinition<{
+interface Definition extends EndpointDefinition {
+  formattedResponse?: unknown;
+}
+
+export interface FetchOrdersDefinition extends Definition {
   name: EndpointName.FETCH_ORDERS;
   parameters: {
     orderIds: string;
   };
   response: Plugin.ModelContextOrderDataContext[];
-}>;
+  formattedResponse: Plugin.ModelContextOrderDataContext;
+}
 
-export type ExportOrdersDefinition = CreateDefinition<{
+export interface ExportOrdersDefinition extends Definition {
   name: EndpointName.EXPORT_ORDERS;
   parameters: {
     orderIds: string;
   };
   body?: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
   response: Plugin.ModelContextOrderDataContext[];
-}>;
+}
 
-export type UpdateOrdersDefinition = CreateDefinition<{
+export interface UpdateOrdersDefinition extends Definition {
   name: EndpointName.UPDATE_ORDERS;
   parameters: {
     orderIds: string;
   };
   body?: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
   response: Plugin.ModelContextOrderDataContext[];
-}>;
+}
 
-export type DeleteShipmentsDefinition = CreateDefinition<{
+export interface DeleteShipmentsDefinition extends Definition {
   name: EndpointName.DELETE_SHIPMENTS;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
   };
   response: Plugin.ModelContextOrderDataContext[];
-}>;
+}
 
-export type UpdateShipmentsDefinition = CreateDefinition<{
+export interface UpdateShipmentsDefinition extends Definition {
   name: EndpointName.FETCH_SHIPMENTS;
   parameters: {
     orderIds: string;
@@ -45,25 +50,25 @@ export type UpdateShipmentsDefinition = CreateDefinition<{
   };
   body: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
   response: Plugin.ModelContextOrderDataContext[];
-}>;
+}
 
-export type UpdatePluginSettingsDefinition = CreateDefinition<{
+export interface UpdatePluginSettingsDefinition extends Definition {
   name: EndpointName.UPDATE_PLUGIN_SETTINGS;
   body: Settings.ModelSettings;
   parameters: undefined;
   response: Settings.ModelSettings[];
-}>;
+}
 
-export type UpdateProductSettingsDefinition = CreateDefinition<{
+export interface UpdateProductSettingsDefinition extends Definition {
   name: EndpointName.UPDATE_PRODUCT_SETTINGS;
   parameters: {
     productIds: string;
   };
   body: Settings.ModelProductSettings;
   response: Settings.ModelProductSettings[];
-}>;
+}
 
-export type PrintShipmentsDefinition = CreateDefinition<{
+export interface PrintShipmentsDefinition extends Definition {
   name: EndpointName.PRINT_SHIPMENTS;
   parameters: {
     orderIds: string;
@@ -73,9 +78,9 @@ export type PrintShipmentsDefinition = CreateDefinition<{
     position?: LabelPosition | string;
   };
   response: {pdfs: {url: string}[]};
-}>;
+}
 
-export type PrintOrdersDefinition = CreateDefinition<{
+export interface PrintOrdersDefinition extends Definition {
   name: EndpointName.PRINT_ORDERS;
   parameters: {
     orderIds: string;
@@ -84,7 +89,7 @@ export type PrintOrdersDefinition = CreateDefinition<{
     position?: LabelPosition | string;
   };
   response: {pdfs: {url: string}[]};
-}>;
+}
 
 export type PdkEndpointDefinition<N extends EndpointName> = Extract<
   | FetchOrdersDefinition
