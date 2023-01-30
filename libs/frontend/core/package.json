@@ -28,7 +28,7 @@
     "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
     "@tanstack/vue-query": "^4.22.4",
     "@types/lodash-es": "^4.17.6",
-    "@vueuse/core": "^9.11.1",
+    "@vueuse/core": "^9.12.0",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3",
