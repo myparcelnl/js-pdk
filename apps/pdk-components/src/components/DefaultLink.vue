@@ -1,5 +1,7 @@
 <template>
-  <a v-bind="linkAttributes">
+  <a
+    v-bind="linkAttributes"
+    :data-test-id="`link${action ? `-${action.id}` : ''}`">
     <PdkIcon
       v-if="action?.icon"
       :icon="action?.icon" />
@@ -12,8 +14,8 @@
 
 <script lang="ts">
 import {AnchorHTMLAttributes, PropType, computed, defineComponent} from 'vue';
-import {useLanguage} from '@myparcel/pdk-frontend';
 import {ResolvedAction} from '@myparcel-pdk/frontend-core';
+import {useLanguage} from '@myparcel/pdk-frontend';
 
 /**
  * This component is used to render a button. The button can be used to trigger
