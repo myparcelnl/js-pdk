@@ -1,5 +1,6 @@
 <template>
   <div
+    v-test
     :class="{
       loading: 'opacity-50',
     }">
