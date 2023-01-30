@@ -1,5 +1,7 @@
 <template>
-  <span :class="config?.cssUtilities?.whitespaceNoWrap">
+  <span
+    v-test="{id: shipment.id}"
+    :class="config?.cssUtilities?.whitespaceNoWrap">
     <PdkImage
       v-if="carrier"
       width="20"
@@ -23,7 +25,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {useLanguage, useShipmentData} from '../../composables';
+import {useLanguage, usePdkConfig, useShipmentData} from '../../composables';
 import {Shipment} from '@myparcel-pdk/common';
 
 export default defineComponent({
@@ -42,6 +44,7 @@ export default defineComponent({
     return {
       ...useShipmentData(props.shipment),
       translate,
+      config: usePdkConfig(),
     };
   },
 });

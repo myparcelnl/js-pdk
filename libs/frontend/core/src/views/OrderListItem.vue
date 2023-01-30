@@ -1,5 +1,7 @@
 <template>
-  <div v-if="!query.isLoading">
+  <div
+    v-if="!query.isLoading"
+    v-test>
     <OrderModeActions
       v-if="orderMode"
       :order="query.data" />

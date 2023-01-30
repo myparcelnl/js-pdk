@@ -1,5 +1,6 @@
 <template>
   <TransitionGroup
+    v-test="{category}"
     appear
     :name="pdkConfig.transitions.notification">
     <PdkNotification

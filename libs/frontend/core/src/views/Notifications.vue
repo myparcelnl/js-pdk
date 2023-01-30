@@ -1,7 +1,5 @@
 <template>
-  <div id="myparcel-pdk-notifications">
-    <NotificationContainer />
-  </div>
+  <NotificationContainer v-test />
 </template>
 
 <script setup lang="ts">

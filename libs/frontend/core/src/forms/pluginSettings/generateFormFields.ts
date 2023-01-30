@@ -17,6 +17,8 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
 
     const component = resolveFormComponent($component);
 
+    console.log('generateFormFields', {name, $component, $slot, label, props});
+
     // Plain element
     if (!label || !name) {
       return defineField({

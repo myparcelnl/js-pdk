@@ -1,5 +1,5 @@
 <template>
-  <PdkTabNavButtonWrapper>
+  <PdkTabNavButtonWrapper v-test>
     <PdkTabNavButton
       v-for="tab in tabs"
       :key="`tab_button_${tab.name}`"
@@ -17,7 +17,8 @@
           <template #default>
             <component
               :is="activeTabContents?.component"
-              :key="`tab_${activeTabContents?.name}`" />
+              :key="`tab_${activeTabContents?.name}`"
+              v-test="`TabNavContent-${activeTabContents?.name}`" />
           </template>
           <template #fallback>{{ translate('loading') }}</template>
         </Suspense>

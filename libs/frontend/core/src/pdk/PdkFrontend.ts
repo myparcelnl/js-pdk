@@ -12,6 +12,7 @@ import {createLogger, getElementContext} from '../services';
 import {PdkAppConfig} from '../data';
 import {PdkViewComponent} from '@myparcel-pdk/common';
 import {renderViewComponent} from './renderMap';
+import {testIdDirective} from './testIdDirective';
 
 export class PdkFrontend {
   public readonly config: PdkConfiguration;
@@ -37,6 +38,8 @@ export class PdkFrontend {
     logger.debug(`Rendering "${view}" in "${selector}"`);
 
     const app = await this.createApp(view, {appName, logger, config, context});
+
+    app.directive('test', testIdDirective);
 
     try {
       app.mount(selector);

@@ -1,6 +1,6 @@
 <template>
   <PdkButton
-    :data-test-id="`button-${action?.id}`"
+    v-test="{action: action?.id}"
     :size="size"
     :disabled="disabled || action?.disabled"
     :icon="action?.icon"

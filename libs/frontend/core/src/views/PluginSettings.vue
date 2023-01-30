@@ -1,5 +1,5 @@
 <template>
-  <PdkPluginSettingsWrapper>
+  <PdkPluginSettingsWrapper v-test>
     <TabNavigation :tabs="tabs" />
   </PdkPluginSettingsWrapper>
 </template>
@@ -10,9 +10,9 @@
  */
 import {EndpointName} from '@myparcel-pdk/common';
 import {TabNavigation} from '../components/common';
+import {createPluginSettingsTabs} from '../forms';
 import {useQueryStore} from '../stores';
 import {useUpdatePluginSettingsMutation} from '../actions';
-import {createPluginSettingsTabs} from '../forms';
 
 const queryStore = useQueryStore();
 
