@@ -699,7 +699,7 @@ __metadata:
     "@myparcel/sdk": ^2.10.1
     "@myparcel/ts-utils": ^1.4.0
     "@myparcel/vue-form-builder": ^1.0.0-alpha.1
-    "@tanstack/vue-query": ^4.22.4
+    "@tanstack/vue-query": ^4.24.2
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.28.3
     autoprefixer: ^10.4.13
@@ -1077,6 +1077,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:4.24.2":
+  version: 4.24.2
+  resolution: "@tanstack/query-core@npm:4.24.2"
+  checksum: ee7edf5c6ecc4a0386ee388541c198f77f070a1b5a2a13ebc1a73470c81315ff2594bf485c70552f7822594733ae94bf77217ca9175dc8a073dc5d4e8d92a8ae
+  languageName: node
+  linkType: hard
+
 "@tanstack/vue-query@npm:^4.22.4":
   version: 4.22.4
   resolution: "@tanstack/vue-query@npm:4.22.4"
@@ -1092,6 +1099,24 @@ __metadata:
     "@vue/composition-api":
       optional: true
   checksum: b1ec5954a3a6ee427657b04702b8d9ac0b8f90c925d2a051793f6f8772185e6d48e90f6f697571a7add3b8349406aeb04e6045bfa7c342c56c1671d922edaabe
+  languageName: node
+  linkType: hard
+
+"@tanstack/vue-query@npm:^4.24.2":
+  version: 4.24.2
+  resolution: "@tanstack/vue-query@npm:4.24.2"
+  dependencies:
+    "@tanstack/match-sorter-utils": ^8.1.1
+    "@tanstack/query-core": 4.24.2
+    "@vue/devtools-api": ^6.4.2
+    vue-demi: ^0.13.11
+  peerDependencies:
+    "@vue/composition-api": ^1.1.2
+    vue: ^2.5.0 || ^3.0.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+  checksum: 7e6db6c9e5e09310b1455209f1f3232776cc5528cacde952bf6a43a125762e43f51f9fbe8fe86009030410ad06d2fe4fb58bc441b3f07f8cfe94fb3f6db596ad
   languageName: node
   linkType: hard
 
