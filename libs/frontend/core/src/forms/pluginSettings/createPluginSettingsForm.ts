@@ -5,6 +5,7 @@ import {FrontendAction} from '../../types';
 import {Plugin} from '@myparcel-pdk/common';
 import SubmitButton from '../../components/common/SubmitButton.vue';
 import {generateFormFields} from './generateFormFields';
+import {get} from 'lodash-unified';
 
 export const createPluginSettingsForm = (
   id: string,
@@ -15,13 +16,13 @@ export const createPluginSettingsForm = (
   const pluginSettings = usePluginSettings();
   const pdkConfig = usePdkConfig();
 
-  return defineForm(`PluginSettings${id}`, {
+  return defineForm(id, {
     ...pdkConfig.formConfigPluginSettings,
     fields: [
       ...generateFormFields(
         {
           fields: view.elements,
-          values: pluginSettings[id as keyof typeof pluginSettings] as Record<string, unknown>,
+          values: get(pluginSettings, id, {}),
         },
         `${id}.`,
       ),

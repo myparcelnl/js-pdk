@@ -360,6 +360,7 @@ export namespace Plugin {
   } & Record<string, unknown>;
 
   export type SettingsView = {
+    id: string;
     title: string;
     description?: string;
     elements: Field[];

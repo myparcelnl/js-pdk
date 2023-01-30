@@ -17,8 +17,6 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
 
     const component = resolveFormComponent($component);
 
-    console.log('generateFormFields', {name, $component, $slot, label, props});
-
     // Plain element
     if (!label || !name) {
       return defineField({
@@ -29,10 +27,9 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
       });
     }
 
-    // Interactive element
     return defineField({
       name: prefix + name,
-      ref: ref(values[name]),
+      ref: ref(values?.[name] ?? undefined),
       label,
       component,
       props,

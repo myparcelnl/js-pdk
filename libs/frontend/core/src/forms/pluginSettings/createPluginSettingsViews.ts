@@ -44,12 +44,14 @@ export const createPluginSettingsViews = (): (FormSettingsView | ChildrenSetting
       id,
       title: view.title,
       description: view.description,
-      children: view.children.map((subview) => ({
-        id: id + subview.title,
-        title: subview.title,
-        description: subview.description,
-        form: createPluginSettingsForm(id, subview, actionContext),
-      })),
+      children: view.children.map((subview) => {
+        return {
+          id: `${id}.${subview.id}`,
+          title: subview.title,
+          description: subview.description,
+          form: createPluginSettingsForm(`${id}.${subview.id}`, subview, actionContext),
+        };
+      }),
     };
   });
 };
