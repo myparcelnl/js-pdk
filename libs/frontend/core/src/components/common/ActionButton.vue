@@ -1,5 +1,6 @@
 <template>
   <PdkButton
+    :data-test-id="`button-${action?.id}`"
     :size="size"
     :disabled="disabled || action?.disabled"
     :icon="action?.icon"
@@ -42,7 +43,6 @@ export default defineComponent({
   setup: (props, ctx) => {
     return {
       async onClick() {
-        console.log(props.action);
         ctx.emit('click');
         await props.action?.onClick();
       },
