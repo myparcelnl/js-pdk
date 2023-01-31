@@ -11,7 +11,10 @@ export const executeNextAction = async <A extends FrontendAction | undefined>(
   nextAction: PdkAction<A>,
   parameters?: ActionParameters<A>,
 ): Promise<ActionResponse<A>> => {
-  context?.instance?.logger.setScope(`> ${getActionIdentifier(nextAction)}`);
+  const nextActionIdentifier = getActionIdentifier(nextAction);
+
+  context.instance?.logger.info(`Executing next action: ${nextActionIdentifier}`);
+  context?.instance?.logger.setScope(`↳ ${nextActionIdentifier}`);
 
   const newContext: ActionContext<A> = {
     ...context,

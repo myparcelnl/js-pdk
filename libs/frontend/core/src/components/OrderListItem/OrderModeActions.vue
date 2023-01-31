@@ -6,24 +6,21 @@
 
     <template v-else>
       <ActionButton
+        v-for="action in orderActions"
+        :key="action.id"
         :loading="loading"
         hide-text
-        :action="editAction" />
-
-      <ActionButton
-        :loading="loading"
-        hide-text
-        :action="exportAction" />
+        :action="action" />
     </template>
   </PdkButtonGroup>
 </template>
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
+import {createAction, createActions} from '../../services';
 import {orderExportAction, orderViewInBackofficeAction, ordersEditAction} from '../../actions';
 import {ActionButton} from '../common';
 import {Plugin} from '@myparcel-pdk/common';
-import {createAction} from '../../services';
 import {useLoading} from '../../composables';
 
 export default defineComponent({
@@ -45,8 +42,11 @@ export default defineComponent({
     return {
       loading,
       showExportedOrderAction: createAction(orderViewInBackofficeAction),
-      editAction: createAction(ordersEditAction, {orderIds: props.order.externalIdentifier}, actionCallbacks),
-      exportAction: createAction(orderExportAction, {orderIds: [props.order.externalIdentifier]}, actionCallbacks),
+      orderActions: createActions(
+        [ordersEditAction, orderExportAction],
+        {orderIds: props.order.externalIdentifier},
+        actionCallbacks,
+      ),
     };
   },
 });

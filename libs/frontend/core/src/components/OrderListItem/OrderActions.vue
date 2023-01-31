@@ -4,7 +4,13 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
-import {orderExportAction, ordersEditAction, ordersExportPrintShipmentsAction, ordersPrintAction} from '../../actions';
+import {
+  orderExportAction,
+  ordersEditAction,
+  ordersExportPrintShipmentsAction,
+  ordersFetchAction,
+  ordersPrintAction,
+} from '../../actions';
 import {useLoading, useOrderData} from '../../composables';
 import {PdkAction} from '../../types';
 import {Plugin} from '@myparcel-pdk/common';
@@ -38,7 +44,7 @@ export default defineComponent({
           actions.push({...ordersExportPrintShipmentsAction});
         }
 
-        actions.push(ordersEditAction);
+        actions.push(ordersEditAction, ordersFetchAction);
 
         return createActions(actions, {orderIds: props.order.externalIdentifier});
       }),
