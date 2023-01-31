@@ -1,4 +1,4 @@
-import {ActionInput, EndpointResponse} from '../../../types';
+import {ActionInput, EndpointResponse} from '../../../../types';
 import {UseMutationReturnType, VueMutationObserverOptions} from '@tanstack/vue-query/build/lib/useMutation';
 import {ApiException} from '@myparcel/sdk';
 import {EndpointName} from '@myparcel-pdk/common';

@@ -7,8 +7,8 @@
 <script setup lang="ts">
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
 import {computed} from 'vue';
+import {useFetchOrdersQuery} from '../../actions';
 import {useModalStore} from '../../stores';
-import {useOrderQuery} from '../../actions';
 
 const modalStore = useModalStore();
 
@@ -17,7 +17,7 @@ const order = computed(() => {
     return null;
   }
 
-  const orderQuery = useOrderQuery(modalStore.context);
+  const orderQuery = useFetchOrdersQuery(modalStore.context);
 
   if (!orderQuery.data.value) {
     return null;

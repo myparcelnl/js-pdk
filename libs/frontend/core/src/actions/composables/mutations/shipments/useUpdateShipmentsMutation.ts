@@ -1,9 +1,9 @@
-/* eslint-disable no-console,@typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {EndpointName} from '@myparcel-pdk/common';
-import {encodeArrayParameter} from '../../../utils';
-import {fillOrderQueryData} from '../../../pdk';
-import {usePdkApi} from '../../../sdk';
-import {usePdkMutation} from './usePdkMutation';
+import {encodeArrayParameter} from '../../../../utils';
+import {fillOrderQueryData} from '../../../../pdk';
+import {usePdkApi} from '../../../../sdk';
+import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';
 
 export const useUpdateShipmentsMutation = () => {

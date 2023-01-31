@@ -1,11 +1,14 @@
 import {QueryClient, useQueryClient} from '@tanstack/vue-query';
 import {Ref, ref} from 'vue';
 import {
+  useCreateWebhooksMutation,
   useDeleteShipmentsMutation,
+  useDeleteWebhooksMutation,
   useExportOrdersMutation,
-  useOrderQuery,
+  useFetchOrdersQuery,
   usePrintOrdersMutation,
   usePrintShipmentsMutation,
+  useRefreshWebhooksMutation,
   useUpdateOrdersMutation,
   useUpdatePluginSettingsMutation,
   useUpdateShipmentsMutation,
@@ -18,7 +21,7 @@ import {getOrderId} from '../utils';
 export type QueryObject<I extends EndpointName = EndpointName> = Record<I, ResolvedQuery<I>>;
 
 export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends EndpointName.FETCH_ORDERS
-  ? ReturnType<typeof useOrderQuery>
+  ? ReturnType<typeof useFetchOrdersQuery>
   : I extends EndpointName.EXPORT_ORDERS
   ? ReturnType<typeof useExportOrdersMutation>
   : I extends EndpointName.PRINT_ORDERS
@@ -35,6 +38,12 @@ export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends End
   ? ReturnType<typeof useUpdatePluginSettingsMutation>
   : I extends EndpointName.UPDATE_PRODUCT_SETTINGS
   ? ReturnType<typeof useUpdatePluginSettingsMutation>
+  : I extends EndpointName.CREATE_WEBHOOKS
+  ? ReturnType<typeof useCreateWebhooksMutation>
+  : I extends EndpointName.DELETE_WEBHOOKS
+  ? ReturnType<typeof useDeleteWebhooksMutation>
+  : I extends EndpointName.REFRESH_WEBHOOKS
+  ? ReturnType<typeof useRefreshWebhooksMutation>
   : unknown;
 
 export const useQueryStore = defineStore('query', () => {
@@ -80,7 +89,7 @@ export const useQueryStore = defineStore('query', () => {
         throw new Error('No order id found');
       }
 
-      register(EndpointName.FETCH_ORDERS, useOrderQuery(id));
+      register(EndpointName.FETCH_ORDERS, useFetchOrdersQuery(id));
 
       register(EndpointName.EXPORT_ORDERS, useExportOrdersMutation(mode));
       register(EndpointName.PRINT_ORDERS, usePrintOrdersMutation());

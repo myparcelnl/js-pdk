@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {encodeArrayParameter, normalizeOrder} from '../../../utils';
+import {encodeArrayParameter, normalizeOrder} from '../../../../utils';
 import {EndpointName} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
-import {useOrderData} from '../../../composables';
-import {usePdkApi} from '../../../sdk';
-import {usePdkMutation} from './usePdkMutation';
+import {useOrderData} from '../../../../composables';
+import {usePdkApi} from '../../../../sdk';
+import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';
 
 export const useDeleteShipmentsMutation = () => {

@@ -13,3 +13,4 @@ export * from './usePdkConfig';
 export * from './usePdkInstance';
 export * from './usePluginSettings';
 export * from './useShipmentData';
+export * from './useStoreQuery';

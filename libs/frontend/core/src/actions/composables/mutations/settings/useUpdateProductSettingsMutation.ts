@@ -1,7 +1,7 @@
-/* eslint-disable no-console,@typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {EndpointName} from '@myparcel-pdk/common';
-import {usePdkApi} from '../../../sdk';
-import {usePdkMutation} from './usePdkMutation';
+import {usePdkApi} from '../../../../sdk';
+import {usePdkMutation} from '../orders';
 
 export const useUpdateProductSettingsMutation = () => {
   return usePdkMutation(EndpointName.UPDATE_PRODUCT_SETTINGS, ({form, productIds}) => {

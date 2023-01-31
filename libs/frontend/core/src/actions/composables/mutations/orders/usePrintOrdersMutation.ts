@@ -1,9 +1,9 @@
-/* eslint-disable no-console,@typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {EndpointName} from '@myparcel-pdk/common';
-import {encodeArrayParameter} from '../../../utils';
-import {usePdkApi} from '../../../sdk';
-import {usePdkMutation} from './usePdkMutation';
-import {usePluginSettings} from '../../../composables';
+import {encodeArrayParameter} from '../../../../utils';
+import {usePdkApi} from '../../../../sdk';
+import {usePdkMutation} from '../orders';
+import {usePluginSettings} from '../../../../composables';
 
 export const usePrintOrdersMutation = () => {
   return usePdkMutation(EndpointName.PRINT_ORDERS, (input) => {

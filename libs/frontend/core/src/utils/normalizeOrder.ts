@@ -1,5 +1,5 @@
 import {Ref, ref} from 'vue';
-import {UseOrderQueryResponse, useOrderQuery} from '../actions';
+import {UseOrderQueryResponse, useFetchOrdersQuery} from '../actions';
 import {Plugin} from '@myparcel-pdk/common';
 import {memoize} from 'lodash-unified';
 
@@ -7,7 +7,7 @@ type NormalizeOrder = (input: string | Plugin.ModelPdkOrder) => Ref<UseOrderQuer
 
 const memoized: NormalizeOrder = memoize((input) => {
   if (typeof input === 'string') {
-    const query = useOrderQuery(input);
+    const query = useFetchOrdersQuery(input);
 
     if (!query.data.value) {
       throw new Error(`Order with id ${input} not found`);
