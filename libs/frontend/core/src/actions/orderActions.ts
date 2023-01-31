@@ -1,9 +1,10 @@
 import {FrontendAction, ModalKey, PdkIcon, PdkModalContext} from '../types';
-import {createMutationExecutor, executeNextAction, resolveOrderParameters} from './executors';
+import {createMutator, createQueryFetcher, executeNextAction, resolveOrderParameters} from './executors';
 import {openOrPrint, waitForLabelPrompt} from './print';
-import {useModalStore, useQueryStore} from '../stores';
 import {EndpointName} from '@myparcel-pdk/common';
 import {defineAction} from './defineAction';
+import {shipmentsFetchAction} from './shipmentActions';
+import {useModalStore} from '../stores';
 
 /**
  * Open modal to edit order shipment options.
@@ -26,7 +27,7 @@ export const orderExportAction = defineAction({
   icon: PdkIcon.EXPORT,
   label: 'action_export',
   beforeHandle: resolveOrderParameters,
-  handler: createMutationExecutor(EndpointName.EXPORT_ORDERS),
+  handler: createMutator(EndpointName.EXPORT_ORDERS),
 });
 
 /**
@@ -37,35 +38,27 @@ export const orderExportToShipmentsAction = defineAction({
   icon: PdkIcon.EXPORT,
   label: 'action_export_shipments',
   beforeHandle: resolveOrderParameters,
-  handler: createMutationExecutor(EndpointName.EXPORT_ORDERS),
+  handler: createMutator(EndpointName.EXPORT_ORDERS),
 });
 
 /**
- * Fetch latest order data from the PDK.
+ * Fetch the latest order data from the PDK.
  */
 export const ordersFetchAction = defineAction({
   name: FrontendAction.ORDERS_FETCH,
   icon: PdkIcon.REFRESH,
   label: 'action_refresh',
-  async handler() {
-    const queryStore = useQueryStore();
-    const query = queryStore.get(EndpointName.FETCH_ORDERS);
-
-    await query.refetch();
-
-    if (!query.data.value) {
-      throw new Error('No data received');
-    }
-
-    return query.data.value;
-  },
+  handler: createQueryFetcher(EndpointName.FETCH_ORDERS),
 });
 
+/**
+ * Update order data.
+ */
 export const ordersUpdateAction = defineAction({
   name: FrontendAction.ORDERS_UPDATE,
   icon: PdkIcon.SAVE,
   label: 'action_save',
-  handler: createMutationExecutor(EndpointName.UPDATE_ORDERS),
+  handler: createMutator(EndpointName.UPDATE_ORDERS),
 });
 
 /**
@@ -75,7 +68,7 @@ export const ordersExportPrintShipmentsAction = defineAction({
   name: FrontendAction.ORDERS_EXPORT_PRINT,
   icon: PdkIcon.PRINT,
   label: 'action_export_print',
-  handler: createMutationExecutor(EndpointName.EXPORT_ORDERS),
+  handler: createMutator(EndpointName.EXPORT_ORDERS),
   beforeHandle: resolveOrderParameters,
   afterHandle(context) {
     void executeNextAction(context, ordersPrintAction, context.parameters);
@@ -91,7 +84,7 @@ export const ordersPrintAction = defineAction({
   name: FrontendAction.ORDERS_PRINT,
   icon: PdkIcon.PRINT,
   label: 'action_print',
-  handler: createMutationExecutor(EndpointName.PRINT_ORDERS),
+  handler: createMutator(EndpointName.PRINT_ORDERS),
 
   async beforeHandle(context) {
     await waitForLabelPrompt(context);
@@ -102,7 +95,7 @@ export const ordersPrintAction = defineAction({
   async afterHandle(context) {
     await openOrPrint(context);
 
-    void executeNextAction(context, ordersFetchAction, context.parameters);
+    void executeNextAction(context, shipmentsFetchAction, context.parameters);
 
     return context.response;
   },

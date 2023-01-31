@@ -6,6 +6,7 @@ import {
   PdkAction,
   PdkNotification,
 } from '../../types';
+import {EndpointName} from '@myparcel-pdk/common';
 import {PdkAppInstance} from '../../data';
 
 type BaseActionContext<A extends MaybeFrontendAction> = {
@@ -38,3 +39,7 @@ export type ActionContext<A extends MaybeFrontendAction = MaybeFrontendAction> =
 export type ActionContextWithResponse<A extends FrontendAction> = ActionContext<A> & {
   response: ActionResponse<A>;
 };
+
+export type QueryExecutor = (
+  endpoint: EndpointName,
+) => <A extends FrontendAction>(context: ActionContext<A>) => Promise<ActionResponse<A>>;

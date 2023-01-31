@@ -8,7 +8,7 @@ import {
 } from './orderActions';
 import {shipmentsCreateReturnAction, shipmentsFetchAction, shipmentsPrintAction} from './shipmentActions';
 import {EndpointName} from '@myparcel-pdk/common';
-import {createMutationExecutor} from './executors';
+import {createMutator} from './executors';
 import {defineAction} from './defineAction';
 import {useModalStore} from '../stores';
 
@@ -25,28 +25,28 @@ export const pluginSettingsUpdateAction = defineAction({
   name: FrontendAction.PLUGIN_SETTINGS_UPDATE,
   icon: PdkIcon.SAVE,
   label: 'action_save',
-  handler: createMutationExecutor(EndpointName.UPDATE_PLUGIN_SETTINGS),
+  handler: createMutator(EndpointName.UPDATE_PLUGIN_SETTINGS),
 });
 
 export const webhooksCreateAction = defineAction({
   name: FrontendAction.WEBHOOKS_CREATE,
   icon: PdkIcon.ADD,
   label: 'action_create',
-  handler: createMutationExecutor(EndpointName.CREATE_WEBHOOKS),
+  handler: createMutator(EndpointName.CREATE_WEBHOOKS),
 });
 
 export const webhooksDeleteAction = defineAction({
   name: FrontendAction.WEBHOOKS_DELETE,
   icon: PdkIcon.DELETE,
   label: 'action_delete',
-  handler: createMutationExecutor(EndpointName.DELETE_WEBHOOKS),
+  handler: createMutator(EndpointName.DELETE_WEBHOOKS),
 });
 
 export const webhooksRefreshAction = defineAction({
   name: FrontendAction.WEBHOOKS_REFRESH,
   icon: PdkIcon.REFRESH,
   label: 'action_refresh',
-  handler: createMutationExecutor(EndpointName.REFRESH_WEBHOOKS),
+  handler: createMutator(EndpointName.REFRESH_WEBHOOKS),
 });
 
 export const frontendActions: PdkAction<FrontendAction>[] = [

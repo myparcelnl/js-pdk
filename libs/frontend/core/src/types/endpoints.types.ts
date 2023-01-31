@@ -18,16 +18,18 @@ export interface FrontendActionEndpointMap extends Record<FrontendAction, Endpoi
   [FrontendAction.ORDERS_UPDATE]: EndpointName.UPDATE_ORDERS;
   [FrontendAction.PLUGIN_SETTINGS_UPDATE]: EndpointName.UPDATE_PLUGIN_SETTINGS;
   [FrontendAction.PRODUCT_SETTINGS_UPDATE]: EndpointName.UPDATE_PRODUCT_SETTINGS;
+  [FrontendAction.SHIPMENTS_CREATE_RETURN]: EndpointName.CREATE_RETURN_SHIPMENTS;
   [FrontendAction.SHIPMENTS_DELETE]: EndpointName.DELETE_SHIPMENTS;
   [FrontendAction.SHIPMENTS_FETCH]: EndpointName.FETCH_SHIPMENTS;
   [FrontendAction.SHIPMENTS_PRINT]: EndpointName.PRINT_SHIPMENTS;
 }
 
 export interface EndpointMutationInputMap extends Record<EndpointName, Record<string, unknown>> {
+  [EndpointName.CREATE_RETURN_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
   [EndpointName.DELETE_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
   [EndpointName.EXPORT_ORDERS]: {orderIds: OneOrMore<string>; form?: FormInstance};
   [EndpointName.FETCH_ORDERS]: {orderIds: OneOrMore<string>};
-  [EndpointName.FETCH_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
+  [EndpointName.FETCH_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
   [EndpointName.PRINT_ORDERS]: {orderIds: OneOrMore<string>; form?: FormInstance};
   [EndpointName.PRINT_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>; form?: FormInstance};
   [EndpointName.UPDATE_ORDERS]: {orderIds: OneOrMore<string>; form: FormInstance};

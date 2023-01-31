@@ -1,6 +1,7 @@
 import {QueryClient, useQueryClient} from '@tanstack/vue-query';
 import {Ref, ref} from 'vue';
 import {
+  useCreateReturnShipmentsMutation,
   useCreateWebhooksMutation,
   useDeleteShipmentsMutation,
   useDeleteWebhooksMutation,
@@ -20,30 +21,32 @@ import {getOrderId} from '../utils';
 
 export type QueryObject<I extends EndpointName = EndpointName> = Record<I, ResolvedQuery<I>>;
 
-export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends EndpointName.FETCH_ORDERS
-  ? ReturnType<typeof useFetchOrdersQuery>
-  : I extends EndpointName.EXPORT_ORDERS
-  ? ReturnType<typeof useExportOrdersMutation>
-  : I extends EndpointName.PRINT_ORDERS
-  ? ReturnType<typeof usePrintOrdersMutation>
-  : I extends EndpointName.UPDATE_ORDERS
-  ? ReturnType<typeof useUpdateOrdersMutation>
-  : I extends EndpointName.PRINT_SHIPMENTS
-  ? ReturnType<typeof usePrintShipmentsMutation>
-  : I extends EndpointName.FETCH_SHIPMENTS
-  ? ReturnType<typeof useUpdateShipmentsMutation>
+export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends EndpointName.CREATE_RETURN_SHIPMENTS
+  ? ReturnType<typeof useCreateReturnShipmentsMutation>
+  : I extends EndpointName.CREATE_WEBHOOKS
+  ? ReturnType<typeof useCreateWebhooksMutation>
   : I extends EndpointName.DELETE_SHIPMENTS
   ? ReturnType<typeof useDeleteShipmentsMutation>
+  : I extends EndpointName.DELETE_WEBHOOKS
+  ? ReturnType<typeof useDeleteWebhooksMutation>
+  : I extends EndpointName.EXPORT_ORDERS
+  ? ReturnType<typeof useExportOrdersMutation>
+  : I extends EndpointName.FETCH_ORDERS
+  ? ReturnType<typeof useFetchOrdersQuery>
+  : I extends EndpointName.FETCH_SHIPMENTS
+  ? ReturnType<typeof useUpdateShipmentsMutation>
+  : I extends EndpointName.PRINT_ORDERS
+  ? ReturnType<typeof usePrintOrdersMutation>
+  : I extends EndpointName.PRINT_SHIPMENTS
+  ? ReturnType<typeof usePrintShipmentsMutation>
+  : I extends EndpointName.REFRESH_WEBHOOKS
+  ? ReturnType<typeof useRefreshWebhooksMutation>
+  : I extends EndpointName.UPDATE_ORDERS
+  ? ReturnType<typeof useUpdateOrdersMutation>
   : I extends EndpointName.UPDATE_PLUGIN_SETTINGS
   ? ReturnType<typeof useUpdatePluginSettingsMutation>
   : I extends EndpointName.UPDATE_PRODUCT_SETTINGS
   ? ReturnType<typeof useUpdatePluginSettingsMutation>
-  : I extends EndpointName.CREATE_WEBHOOKS
-  ? ReturnType<typeof useCreateWebhooksMutation>
-  : I extends EndpointName.DELETE_WEBHOOKS
-  ? ReturnType<typeof useDeleteWebhooksMutation>
-  : I extends EndpointName.REFRESH_WEBHOOKS
-  ? ReturnType<typeof useRefreshWebhooksMutation>
   : unknown;
 
 export const useQueryStore = defineStore('query', () => {
@@ -66,6 +69,7 @@ export const useQueryStore = defineStore('query', () => {
       queryClient.value = useQueryClient();
     }
 
+    // @ts-expect-error todo
     queries.value[key] = query;
   };
 

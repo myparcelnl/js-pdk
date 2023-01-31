@@ -10,13 +10,13 @@ export function fillOrderQueryData(queryClient: QueryClient, orders: OneOrMore<P
   orderArray.forEach((order) => {
     const orderKey: QueryKey = [QUERY_KEY_ORDER, {id: order.externalIdentifier}];
 
-    globalLogger.info('inserting', orderKey);
+    globalLogger.info('inserting', JSON.stringify(orderKey));
     queryClient.setQueryData(orderKey, order);
 
     order.shipments?.forEach((shipment) => {
       const shipmentKey: QueryKey = [QUERY_KEY_SHIPMENT, {id: shipment.id, orderId: order.externalIdentifier}];
 
-      globalLogger.info('inserting', shipmentKey);
+      globalLogger.info('inserting', JSON.stringify(shipmentKey));
       queryClient.setQueryData(shipmentKey, shipment);
     });
   });

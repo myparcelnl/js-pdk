@@ -39,12 +39,11 @@ export default defineComponent({
         if (orderData.shipments.value?.length) {
           actions.push(orderExportAction);
           actions.push({...ordersPrintAction, standalone: true});
+          actions.push(ordersEditAction, ordersFetchAction);
         } else {
           actions.push({...orderExportAction, standalone: true});
           actions.push({...ordersExportPrintShipmentsAction});
         }
-
-        actions.push(ordersEditAction, ordersFetchAction);
 
         return createActions(actions, {orderIds: props.order.externalIdentifier});
       }),

@@ -3,7 +3,7 @@
     appear
     :name="pdkConfig?.transitions?.shipmentCard">
     <ShipmentLabel
-      v-for="shipment in shipments"
+      v-for="shipment in order.shipments.filter((item) => !item.deleted)"
       :key="`${order?.externalIdentifier}_${shipment.id}`"
       :shipment="shipment" />
   </TransitionGroup>
@@ -31,7 +31,6 @@ export default defineComponent({
 
     return {
       pdkConfig: usePdkConfig(),
-      shipments: orderData.shipments,
     };
   },
 });
