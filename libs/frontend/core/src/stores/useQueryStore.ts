@@ -6,10 +6,12 @@ import {
   useDeleteShipmentsMutation,
   useDeleteWebhooksMutation,
   useExportOrdersMutation,
+  useFetchAccountQuery,
   useFetchOrdersQuery,
   usePrintOrdersMutation,
   usePrintShipmentsMutation,
   useRefreshWebhooksMutation,
+  useUpdateAccountMutation,
   useUpdateOrdersMutation,
   useUpdatePluginSettingsMutation,
   useUpdateShipmentsMutation,
@@ -31,6 +33,8 @@ export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends End
   ? ReturnType<typeof useDeleteWebhooksMutation>
   : I extends EndpointName.EXPORT_ORDERS
   ? ReturnType<typeof useExportOrdersMutation>
+  : I extends EndpointName.FETCH_ACCOUNT
+  ? ReturnType<typeof useFetchAccountQuery>
   : I extends EndpointName.FETCH_ORDERS
   ? ReturnType<typeof useFetchOrdersQuery>
   : I extends EndpointName.FETCH_SHIPMENTS
@@ -41,6 +45,8 @@ export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends End
   ? ReturnType<typeof usePrintShipmentsMutation>
   : I extends EndpointName.REFRESH_WEBHOOKS
   ? ReturnType<typeof useRefreshWebhooksMutation>
+  : I extends EndpointName.UPDATE_ACCOUNT
+  ? ReturnType<typeof useUpdateAccountMutation>
   : I extends EndpointName.UPDATE_ORDERS
   ? ReturnType<typeof useUpdateOrdersMutation>
   : I extends EndpointName.UPDATE_PLUGIN_SETTINGS

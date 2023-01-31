@@ -1,14 +1,13 @@
 import {ActionParameters, FrontendAction, PdkAction, PdkNotification} from '../../types';
-import {useLanguage, usePdkInstance} from '../../composables';
 import {ActionContext} from '../../actions';
 import {PdkAppInstance} from '../../data';
 import {PdkVariant} from '@myparcel-pdk/common';
+import {createApiErrorNotification} from '../createApiErrorNotification';
 import {createLogger} from '../logger';
 import {getActionIdentifier} from './getActionIdentifier';
+import {usePdkInstance} from '../../composables';
 
-const VARIANTS: PdkVariant[] = ['success', 'error'];
-
-const PREFIX = 'notification_action_';
+const VARIANTS = [PdkVariant.SUCCESS, PdkVariant.ERROR];
 
 export const createActionContext = <A extends FrontendAction | undefined>(
   action: PdkAction<A>,
@@ -17,7 +16,6 @@ export const createActionContext = <A extends FrontendAction | undefined>(
 ): ActionContext<A> => {
   const identifier = getActionIdentifier(action);
   const logger = createLogger(identifier);
-  const language = useLanguage();
 
   // @ts-expect-error todo
   const context: ActionContext<A> = {
@@ -30,19 +28,15 @@ export const createActionContext = <A extends FrontendAction | undefined>(
       logger,
     },
 
-    notifications: VARIANTS.reduce((acc, type) => {
-      const contentKey = `${PREFIX}${identifier}_${type}_body`;
-
-      return {
+    notifications: VARIANTS.reduce(
+      (acc, type) => ({
         ...acc,
-        [type]: {
-          variant: type,
-          title: `${PREFIX}${type}`,
-          content: language.has(contentKey) ? language.translate(contentKey) : undefined,
-          timeout: true,
-        },
-      };
-    }, {} as Record<'success' | 'error', PdkNotification>),
+        [type]: createApiErrorNotification(type, {
+          identifier: `action_${identifier}`,
+        }),
+      }),
+      {} as Record<'success' | 'error', PdkNotification>,
+    ),
   };
 
   return context;

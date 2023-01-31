@@ -1,31 +1,28 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {EndpointName} from '@myparcel-pdk/common';
-import {encodeArrayParameter} from '../../../../utils';
-import {fillOrderQueryData} from '../../../../pdk';
+import {QUERY_KEY_ACCOUNT} from '../../queries';
+import {formToBody} from '../../../../utils';
 import {usePdkApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';
 
-export const useUpdateShipmentsMutation = () => {
+export const useUpdateAccountMutation = () => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(
-    EndpointName.FETCH_SHIPMENTS,
-    (input) => {
+    EndpointName.UPDATE_ACCOUNT,
+    ({form}) => {
       const pdk = usePdkApi();
 
-      return pdk.fetchShipments({
-        // @ts-expect-error todo
-        parameters: {
-          orderIds: encodeArrayParameter(input.orderIds),
-          shipmentIds: encodeArrayParameter(input.shipmentIds),
-        },
+      return pdk.updateAccount({
+        // @ts-expect-error custom endpoints are not typed correctly
+        body: formToBody(form),
       });
     },
     {
       ...queryClient.defaultMutationOptions(),
       onSuccess: (data) => {
-        fillOrderQueryData(queryClient, data);
+        queryClient.setQueryData([QUERY_KEY_ACCOUNT], data);
       },
     },
   );

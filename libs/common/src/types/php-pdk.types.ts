@@ -19,6 +19,35 @@ export namespace Account {
   export type GetShopRequest = Base.Request;
 
   export type GetShopsRequest = Base.Request;
+
+  export type ModelAccount = {
+    id: number;
+    platformId: number;
+    status: number;
+    contactInfo: Base.ModelContactDetails;
+  };
+
+  export type ModelAccountGeneralSettings = {
+    isTest: boolean;
+    orderMode: boolean;
+    hasCarrierContract: boolean;
+  };
+
+  export type ModelShop = {
+    id: number;
+    accountId: number;
+    platformId: number;
+    name: string;
+    hidden: boolean;
+    billing: unknown[];
+    deliveryAddress: unknown[];
+    generalSettings: unknown[];
+    return: unknown[];
+    shipmentOptions: unknown[];
+    trackTrace: unknown[];
+  };
+
+  export type ShopCollection = ModelShop[];
 }
 
 export namespace Base {
@@ -332,6 +361,14 @@ export namespace Plugin {
   };
 
   export type ModelContextGlobalContext = {
+    account: Account.ModelAccount;
+    appInfo: {
+      name: string;
+      path: string;
+      title: string;
+      url: string;
+      version: string;
+    };
     baseUrl: string;
     bootId: string;
     endpoints: EndpointRequestCollection;
@@ -436,6 +473,15 @@ export namespace Plugin {
 
 export namespace Settings {
   export type CarrierSettingsCollection = ModelCarrierSettings[];
+
+  export type ModelAccountSettings = {
+    id: number;
+    platformId: number;
+    status: number;
+    contactInfo: Base.ModelContactDetails;
+    generalSettings: Account.ModelAccountGeneralSettings;
+    shops: Account.ShopCollection;
+  };
 
   export type ModelCarrierSettings = {
     carrierName: string;
@@ -558,7 +604,6 @@ export namespace Settings {
   };
 
   export type ModelGeneralSettings = {
-    apiKey?: string;
     apiLogging: boolean;
     barcodeInNote: boolean;
     conceptShipments: boolean;
@@ -607,6 +652,7 @@ export namespace Settings {
   };
 
   export type ModelSettings = {
+    account: ModelAccountSettings;
     general: ModelGeneralSettings;
     order: ModelOrderSettings;
     label: ModelLabelSettings;

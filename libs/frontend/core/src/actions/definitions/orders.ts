@@ -1,10 +1,10 @@
-import {FrontendAction, ModalKey, PdkIcon, PdkModalContext} from '../types';
-import {createMutator, createQueryFetcher, executeNextAction, resolveOrderParameters} from './executors';
-import {openOrPrint, waitForLabelPrompt} from './print';
+import {FrontendAction, ModalKey, PdkIcon, PdkModalContext} from '../../types';
+import {createMutator, createQueryFetcher, executeNextAction, resolveOrderParameters} from '../executors';
+import {openOrPrint, waitForLabelPrompt} from '../print';
 import {EndpointName} from '@myparcel-pdk/common';
-import {defineAction} from './defineAction';
-import {shipmentsFetchAction} from './shipmentActions';
-import {useModalStore} from '../stores';
+import {defineAction} from '../defineAction';
+import {shipmentsFetchAction} from './shipments';
+import {useModalStore} from '../../stores';
 
 /**
  * Open modal to edit order shipment options.

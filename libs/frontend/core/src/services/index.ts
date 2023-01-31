@@ -5,3 +5,4 @@ export * from './createActions';
 export * from './logger';
 export * from './mutations';
 export * from './print';
+export {createApiErrorNotification} from './createApiErrorNotification';

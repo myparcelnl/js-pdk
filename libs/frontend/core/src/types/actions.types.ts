@@ -58,6 +58,9 @@ export type ActionResponse<A extends MaybeFrontendAction> = A extends FrontendAc
   : void;
 
 export enum FrontendAction {
+  ACCOUNT_FETCH = 'accountFetch',
+  ACCOUNT_UPDATE = 'accountUpdate',
+
   ORDERS_EXPORT = 'ordersExport',
   ORDERS_EXPORT_PRINT = 'ordersExportPrint',
   ORDERS_PRINT = 'ordersPrint',

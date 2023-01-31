@@ -6,6 +6,16 @@
  */
 export enum EndpointName {
   /**
+   * Get account.
+   */
+  FETCH_ACCOUNT = 'fetchAccount',
+
+  /**
+   * Update account.
+   */
+  UPDATE_ACCOUNT = 'updateAccount',
+
+  /**
    * Get order data from the plugin.
    */
   FETCH_ORDERS = 'fetchOrders',

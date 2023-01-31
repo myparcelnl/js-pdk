@@ -1,8 +1,8 @@
-import {FrontendAction, PdkIcon} from '../types';
-import {createMutator, executeAction} from './executors';
+import {FrontendAction, PdkIcon} from '../../types';
+import {createMutator, executeAction} from '../executors';
 import {EndpointName} from '@myparcel-pdk/common';
-import {defineAction} from './defineAction';
-import {waitForLabelPrompt} from './print';
+import {defineAction} from '../defineAction';
+import {waitForLabelPrompt} from '../print';
 
 export const shipmentsCreateReturnAction = defineAction({
   name: FrontendAction.SHIPMENTS_CREATE_RETURN,
@@ -21,6 +21,9 @@ export const shipmentsFetchAction = defineAction({
   handler: createMutator(EndpointName.FETCH_SHIPMENTS),
 });
 
+/**
+ * Delete shipments.
+ */
 export const shipmentsDeleteAction = defineAction({
   name: FrontendAction.SHIPMENTS_DELETE,
   icon: PdkIcon.DELETE,

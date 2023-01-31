@@ -1,6 +1,8 @@
 <template>
   <PdkPluginSettingsWrapper v-test>
-    <TabNavigation :tabs="tabs" />
+    <AccountConnectForm />
+
+    <PluginSettingsForms />
   </PdkPluginSettingsWrapper>
 </template>
 
@@ -8,15 +10,18 @@
 /**
  * Plugin settings screen.
  */
+import {useFetchAccountQuery, useUpdateAccountMutation, useUpdatePluginSettingsMutation} from '../actions';
+import AccountConnectForm from '../components/PluginSettings/AccountConnectForm.vue';
 import {EndpointName} from '@myparcel-pdk/common';
-import {TabNavigation} from '../components/common';
-import {createPluginSettingsTabs} from '../forms';
+import {defineAsyncComponent} from 'vue';
 import {useQueryStore} from '../stores';
-import {useUpdatePluginSettingsMutation} from '../actions';
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const PluginSettingsForms = defineAsyncComponent(() => import('../components/PluginSettings/PluginSettingsForms.vue'));
 
 const queryStore = useQueryStore();
 
+queryStore.register(EndpointName.FETCH_ACCOUNT, useFetchAccountQuery());
+queryStore.register(EndpointName.UPDATE_ACCOUNT, useUpdateAccountMutation());
 queryStore.register(EndpointName.UPDATE_PLUGIN_SETTINGS, useUpdatePluginSettingsMutation());
-
-const tabs = createPluginSettingsTabs();
 </script>

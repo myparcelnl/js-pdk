@@ -1,9 +1,22 @@
 import {AbstractEndpoint, EndpointDefinition} from '@myparcel/sdk';
-import {EndpointName, LabelFormat, LabelOutput, LabelPosition, Plugin, Settings} from '@myparcel-pdk/common';
+import {Account, EndpointName, LabelFormat, LabelOutput, LabelPosition, Plugin, Settings} from '@myparcel-pdk/common';
 import {RecursivePartial} from '@myparcel/ts-utils';
 
 interface Definition extends EndpointDefinition {
   formattedResponse?: unknown;
+}
+
+export interface FetchAccountDefinition extends Definition {
+  name: EndpointName.FETCH_ACCOUNT;
+  parameters: undefined;
+  response: Account.ModelAccount[];
+}
+
+export interface UpdateAccountDefinition extends Definition {
+  name: EndpointName.UPDATE_ACCOUNT;
+  parameters: undefined;
+  body: Settings.ModelAccountSettings;
+  response: Account.ModelAccount[];
 }
 
 export interface FetchOrdersDefinition extends Definition {
@@ -92,15 +105,17 @@ export interface PrintOrdersDefinition extends Definition {
 }
 
 export type PdkEndpointDefinition<N extends EndpointName> = Extract<
-  | FetchOrdersDefinition
-  | ExportOrdersDefinition
-  | PrintOrdersDefinition
-  | UpdateOrdersDefinition
   | DeleteShipmentsDefinition
-  | UpdateShipmentsDefinition
-  | UpdatePluginSettingsDefinition
+  | ExportOrdersDefinition
+  | FetchAccountDefinition
+  | FetchOrdersDefinition
+  | PrintOrdersDefinition
   | PrintShipmentsDefinition
-  | UpdateProductSettingsDefinition,
+  | UpdateAccountDefinition
+  | UpdateOrdersDefinition
+  | UpdatePluginSettingsDefinition
+  | UpdateProductSettingsDefinition
+  | UpdateShipmentsDefinition,
   {name: N}
 >;
 

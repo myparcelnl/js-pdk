@@ -28,6 +28,7 @@ export const usePrintShipmentsMutation = () => {
       });
     },
     {
+      ...queryClient.defaultMutationOptions(),
       onSuccess: (data) => {
         fillOrderQueryData(queryClient, data);
       },

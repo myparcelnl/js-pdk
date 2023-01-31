@@ -59,7 +59,14 @@ export type PdkComponentMap = Record<RequiredPdkComponentName, Component> &
 
 export type ComponentImportFunction = () => Promise<{default: Component}>;
 
-export type PdkVariant = 'primary' | 'secondary' | 'info' | 'warning' | 'error' | 'success';
+export enum PdkVariant {
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
+  INFO = 'info',
+  WARNING = 'warning',
+  ERROR = 'error',
+  SUCCESS = 'success',
+}
 
 export enum PdkButtonSize {
   SMALL = 'sm',

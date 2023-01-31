@@ -1,4 +1,5 @@
-import {ModalKey, useModalStore} from '../';
+import {ModalKey} from '../../types';
+import {useModalStore} from '../../stores';
 
 export const useModalOrder = (): string | null => {
   const store = useModalStore();
