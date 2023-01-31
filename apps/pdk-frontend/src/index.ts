@@ -31,6 +31,7 @@ export type {
   PdkContextObject,
   PdkInstanceContext,
   PdkNotification,
+  ResolvedAction,
 } from '@myparcel-pdk/frontend-core';
 
 export {
