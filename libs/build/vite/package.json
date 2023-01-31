@@ -25,7 +25,7 @@
     "vite": "^4.0.4",
     "vite-plugin-banner": "^0.7.0",
     "vite-plugin-custom-tsconfig": "^1.0.4",
-    "vite-plugin-dts": "^1.7.1"
+    "vite-plugin-dts": "^1.7.2"
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:^",
