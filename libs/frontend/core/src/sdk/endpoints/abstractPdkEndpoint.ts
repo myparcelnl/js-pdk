@@ -104,11 +104,37 @@ export interface PrintOrdersDefinition extends Definition {
   response: {pdfs: {url: string}[]};
 }
 
+type Webhook = {
+  hook: string;
+  connected: boolean;
+};
+
+export interface FetchWebhooksDefinition extends Definition {
+  name: EndpointName.FETCH_WEBHOOKS;
+  parameters: never;
+  response: Webhook[];
+}
+
+export interface CreateWebhooksDefinition extends Definition {
+  name: EndpointName.CREATE_WEBHOOKS;
+  parameters: {hooks: string};
+  response: Webhook[];
+}
+
+export interface DeleteWebhooksDefinition extends Definition {
+  name: EndpointName.DELETE_WEBHOOKS;
+  parameters: {hooks: string};
+  response: Webhook[];
+}
+
 export type PdkEndpointDefinition<N extends EndpointName> = Extract<
+  | CreateWebhooksDefinition
   | DeleteShipmentsDefinition
+  | DeleteWebhooksDefinition
   | ExportOrdersDefinition
   | FetchAccountDefinition
   | FetchOrdersDefinition
+  | FetchWebhooksDefinition
   | PrintOrdersDefinition
   | PrintShipmentsDefinition
   | UpdateAccountDefinition

@@ -2,13 +2,15 @@
   <PdkCard>
     <template v-if="(accountQuery.isLoading || accountQuery.data) && !editing">
       <PdkCard>
-        {{ translate('notification_account_connected') }}
+        <PdkHeading level="3">{{ translate('notification_account_connected') }}</PdkHeading>
 
         <PdkButton
           variant="primary"
           @click="editing = true">
           {{ translate('button_api_key_edit') }}
         </PdkButton>
+
+        <WebhooksStatus />
       </PdkCard>
     </template>
 
@@ -26,13 +28,14 @@ import {EndpointName} from '@myparcel-pdk/common';
 import {MagicForm} from '@myparcel/vue-form-builder';
 import {NotificationCategory} from '../../types';
 import NotificationContainer from '../common/NotificationContainer.vue';
+import WebhooksStatus from './WebhooksStatus.vue';
 import {createAccountSettingsForm} from '../../forms/createAccountSettingsForm';
 import {useLanguage} from '../../composables';
 import {useQueryStore} from '../../stores';
 
 export default defineComponent({
   name: 'AccountConnectForm',
-  components: {NotificationContainer, MagicForm},
+  components: {WebhooksStatus, NotificationContainer, MagicForm},
 
   setup: () => {
     const queryStore = useQueryStore();

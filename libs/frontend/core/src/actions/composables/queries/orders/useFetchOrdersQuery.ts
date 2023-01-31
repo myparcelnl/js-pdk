@@ -7,13 +7,11 @@ import {encodeArrayParameter} from '../../../../utils';
 import {fillOrderQueryData} from '../../../../pdk';
 import {usePdkApi} from '../../../../sdk';
 
-export type UseOrderQueryResponse = EndpointResponse<EndpointName.FETCH_ORDERS>;
-
 export const useFetchOrdersQuery = (externalIdentifier: string) => {
   const queryKey = [QUERY_KEY_ORDER, {id: externalIdentifier}] as const;
   const queryClient = useQueryClient();
 
-  return useQuery<UseOrderQueryResponse>(
+  return useQuery<EndpointResponse<EndpointName.FETCH_ORDERS>>(
     queryKey,
     () => {
       const pdk = usePdkApi();

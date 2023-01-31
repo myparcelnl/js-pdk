@@ -10,7 +10,14 @@
 /**
  * Plugin settings screen.
  */
-import {useFetchAccountQuery, useUpdateAccountMutation, useUpdatePluginSettingsMutation} from '../actions';
+import {
+  useCreateWebhooksMutation,
+  useDeleteWebhooksMutation,
+  useFetchAccountQuery,
+  useFetchWebhooksQuery,
+  useUpdateAccountMutation,
+  useUpdatePluginSettingsMutation,
+} from '../actions';
 import AccountConnectForm from '../components/PluginSettings/AccountConnectForm.vue';
 import {EndpointName} from '@myparcel-pdk/common';
 import {defineAsyncComponent} from 'vue';
@@ -23,5 +30,10 @@ const queryStore = useQueryStore();
 
 queryStore.register(EndpointName.FETCH_ACCOUNT, useFetchAccountQuery());
 queryStore.register(EndpointName.UPDATE_ACCOUNT, useUpdateAccountMutation());
+
+queryStore.register(EndpointName.CREATE_WEBHOOKS, useCreateWebhooksMutation());
+queryStore.register(EndpointName.DELETE_WEBHOOKS, useDeleteWebhooksMutation());
+queryStore.register(EndpointName.FETCH_WEBHOOKS, useFetchWebhooksQuery());
+
 queryStore.register(EndpointName.UPDATE_PLUGIN_SETTINGS, useUpdatePluginSettingsMutation());
 </script>

@@ -60,10 +60,7 @@ export enum EndpointName {
    */
   UPDATE_PRODUCT_SETTINGS = 'updateProductSettings',
 
-  // todo
   CREATE_WEBHOOKS = 'createWebhooks',
-  // todo
   DELETE_WEBHOOKS = 'deleteWebhooks',
-  // todo
-  REFRESH_WEBHOOKS = 'refreshWebhooks',
+  FETCH_WEBHOOKS = 'fetchWebhooks',
 }

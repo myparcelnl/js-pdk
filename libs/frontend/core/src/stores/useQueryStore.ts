@@ -8,9 +8,9 @@ import {
   useExportOrdersMutation,
   useFetchAccountQuery,
   useFetchOrdersQuery,
+  useFetchWebhooksQuery,
   usePrintOrdersMutation,
   usePrintShipmentsMutation,
-  useRefreshWebhooksMutation,
   useUpdateAccountMutation,
   useUpdateOrdersMutation,
   useUpdatePluginSettingsMutation,
@@ -23,45 +23,45 @@ import {getOrderId} from '../utils';
 
 export type QueryObject<I extends EndpointName = EndpointName> = Record<I, ResolvedQuery<I>>;
 
-export type ResolvedQuery<I extends EndpointName = EndpointName> = I extends EndpointName.CREATE_RETURN_SHIPMENTS
-  ? ReturnType<typeof useCreateReturnShipmentsMutation>
-  : I extends EndpointName.CREATE_WEBHOOKS
-  ? ReturnType<typeof useCreateWebhooksMutation>
-  : I extends EndpointName.DELETE_SHIPMENTS
-  ? ReturnType<typeof useDeleteShipmentsMutation>
-  : I extends EndpointName.DELETE_WEBHOOKS
-  ? ReturnType<typeof useDeleteWebhooksMutation>
-  : I extends EndpointName.EXPORT_ORDERS
-  ? ReturnType<typeof useExportOrdersMutation>
-  : I extends EndpointName.FETCH_ACCOUNT
+export type ResolvedQuery<E extends EndpointName = EndpointName> = E extends EndpointName.FETCH_ACCOUNT
   ? ReturnType<typeof useFetchAccountQuery>
-  : I extends EndpointName.FETCH_ORDERS
-  ? ReturnType<typeof useFetchOrdersQuery>
-  : I extends EndpointName.FETCH_SHIPMENTS
-  ? ReturnType<typeof useUpdateShipmentsMutation>
-  : I extends EndpointName.PRINT_ORDERS
-  ? ReturnType<typeof usePrintOrdersMutation>
-  : I extends EndpointName.PRINT_SHIPMENTS
-  ? ReturnType<typeof usePrintShipmentsMutation>
-  : I extends EndpointName.REFRESH_WEBHOOKS
-  ? ReturnType<typeof useRefreshWebhooksMutation>
-  : I extends EndpointName.UPDATE_ACCOUNT
+  : E extends EndpointName.UPDATE_ACCOUNT
   ? ReturnType<typeof useUpdateAccountMutation>
-  : I extends EndpointName.UPDATE_ORDERS
+  : E extends EndpointName.EXPORT_ORDERS
+  ? ReturnType<typeof useExportOrdersMutation>
+  : E extends EndpointName.FETCH_ORDERS
+  ? ReturnType<typeof useFetchOrdersQuery>
+  : E extends EndpointName.PRINT_ORDERS
+  ? ReturnType<typeof usePrintOrdersMutation>
+  : E extends EndpointName.UPDATE_ORDERS
   ? ReturnType<typeof useUpdateOrdersMutation>
-  : I extends EndpointName.UPDATE_PLUGIN_SETTINGS
+  : E extends EndpointName.CREATE_RETURN_SHIPMENTS
+  ? ReturnType<typeof useCreateReturnShipmentsMutation>
+  : E extends EndpointName.DELETE_SHIPMENTS
+  ? ReturnType<typeof useDeleteShipmentsMutation>
+  : E extends EndpointName.FETCH_SHIPMENTS
+  ? ReturnType<typeof useUpdateShipmentsMutation>
+  : E extends EndpointName.PRINT_SHIPMENTS
+  ? ReturnType<typeof usePrintShipmentsMutation>
+  : E extends EndpointName.UPDATE_PLUGIN_SETTINGS
   ? ReturnType<typeof useUpdatePluginSettingsMutation>
-  : I extends EndpointName.UPDATE_PRODUCT_SETTINGS
+  : E extends EndpointName.UPDATE_PRODUCT_SETTINGS
   ? ReturnType<typeof useUpdatePluginSettingsMutation>
-  : unknown;
+  : E extends EndpointName.CREATE_WEBHOOKS
+  ? ReturnType<typeof useCreateWebhooksMutation>
+  : E extends EndpointName.DELETE_WEBHOOKS
+  ? ReturnType<typeof useDeleteWebhooksMutation>
+  : E extends EndpointName.FETCH_WEBHOOKS
+  ? ReturnType<typeof useFetchWebhooksQuery>
+  : never;
 
 export const useQueryStore = defineStore('query', () => {
   const queries = ref({} as QueryObject);
   const queryClient: Ref<QueryClient | undefined> = ref<QueryClient>();
 
-  const has = <N extends EndpointName>(key: N): boolean => !!queries.value[key];
+  const has = <E extends EndpointName>(key: E): boolean => !!queries.value[key];
 
-  const get = <N extends EndpointName>(key: N): ResolvedQuery<N> => {
+  const get = <E extends EndpointName>(key: E): ResolvedQuery<E> => {
     if (!has(key)) {
       throw new Error(`No query found for key ${key}`);
     }

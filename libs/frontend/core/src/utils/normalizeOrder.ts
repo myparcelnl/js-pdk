@@ -1,9 +1,10 @@
+import {EndpointName, Plugin} from '@myparcel-pdk/common';
 import {Ref, ref} from 'vue';
-import {UseOrderQueryResponse, useFetchOrdersQuery} from '../actions';
-import {Plugin} from '@myparcel-pdk/common';
+import {EndpointResponse} from '../types';
 import {memoize} from 'lodash-unified';
+import {useFetchOrdersQuery} from '../actions';
 
-type NormalizeOrder = (input: string | Plugin.ModelPdkOrder) => Ref<UseOrderQueryResponse>;
+type NormalizeOrder = (input: string | Plugin.ModelPdkOrder) => Ref<EndpointResponse<EndpointName.FETCH_ORDERS>>;
 
 const memoized: NormalizeOrder = memoize((input) => {
   if (typeof input === 'string') {

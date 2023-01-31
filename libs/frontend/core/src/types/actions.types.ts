@@ -24,9 +24,9 @@ export type NamedAction<A extends FrontendAction = FrontendAction> = BaseAction 
 
 export type GenericAction = BaseAction & {
   id: string;
-  handler(...args: unknown[]): PromiseOr<void>;
-  beforeHandle?(...args: unknown[]): PromiseOr<void>;
-  afterHandle?(...args: unknown[]): PromiseOr<void>;
+  handler(context: ActionContext<undefined>): PromiseOr<void>;
+  beforeHandle?(context: ActionContext<undefined>): PromiseOr<void>;
+  afterHandle?(context: ActionContext<undefined>): PromiseOr<void>;
 };
 
 export type PdkAction<A extends MaybeFrontendAction = MaybeFrontendAction> = A extends FrontendAction
@@ -77,7 +77,7 @@ export enum FrontendAction {
 
   WEBHOOKS_CREATE = 'webhooksCreate',
   WEBHOOKS_DELETE = 'webhooksDelete',
-  WEBHOOKS_REFRESH = 'webhooksRefresh',
+  WEBHOOKS_FETCH = 'webhooksFetch',
 }
 
 export type PrintAction =

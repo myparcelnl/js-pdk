@@ -4,9 +4,12 @@ import {FrontendAction} from './actions.types';
 import {OneOrMore} from '@myparcel/ts-utils';
 import {PdkEndpointDefinition} from '../sdk';
 
-export type EndpointResponse<N extends EndpointName> = PdkEndpointDefinition<N>['formattedResponse'] extends undefined
-  ? PdkEndpointDefinition<N>['response']
-  : PdkEndpointDefinition<N>['formattedResponse'];
+export type EndpointResponse<N extends EndpointName> = PdkEndpointDefinition<N>['formattedResponse'] extends Record<
+  string,
+  unknown
+>
+  ? PdkEndpointDefinition<N>['formattedResponse']
+  : PdkEndpointDefinition<N>['response'];
 
 export type EndpointParameters<N extends EndpointName> = PdkEndpointDefinition<N>['parameters'];
 
@@ -24,7 +27,16 @@ export interface FrontendActionEndpointMap extends Record<FrontendAction, Endpoi
   [FrontendAction.SHIPMENTS_DELETE]: EndpointName.DELETE_SHIPMENTS;
   [FrontendAction.SHIPMENTS_FETCH]: EndpointName.FETCH_SHIPMENTS;
   [FrontendAction.SHIPMENTS_PRINT]: EndpointName.PRINT_SHIPMENTS;
+  [FrontendAction.WEBHOOKS_CREATE]: EndpointName.CREATE_WEBHOOKS;
+  [FrontendAction.WEBHOOKS_DELETE]: EndpointName.DELETE_WEBHOOKS;
+  [FrontendAction.WEBHOOKS_FETCH]: EndpointName.FETCH_WEBHOOKS;
 }
+
+export type EndpointFrontendActionMap = {
+  [K in EndpointName]: FrontendActionEndpointMap[keyof FrontendActionEndpointMap] extends K
+    ? FrontendActionEndpointMap[keyof FrontendActionEndpointMap]
+    : never;
+};
 
 export interface EndpointMutationInputMap extends Record<EndpointName, Record<string, unknown>> {
   [EndpointName.FETCH_ACCOUNT]: never;
@@ -42,6 +54,10 @@ export interface EndpointMutationInputMap extends Record<EndpointName, Record<st
 
   [EndpointName.UPDATE_PLUGIN_SETTINGS]: {form: FormInstance};
   [EndpointName.UPDATE_PRODUCT_SETTINGS]: {form: FormInstance; productIds: OneOrMore<string>};
+
+  [EndpointName.CREATE_WEBHOOKS]: {hooks: OneOrMore<string>};
+  [EndpointName.DELETE_WEBHOOKS]: {hooks: OneOrMore<string>};
+  [EndpointName.FETCH_WEBHOOKS]: never;
 }
 
 export type ActionInput<A extends EndpointName> = EndpointMutationInputMap[A];

@@ -14,6 +14,8 @@
       <OrderActions :order="query.data" />
     </template>
   </div>
+
+  <NotificationContainer category="'api'" />
 </template>
 
 <script setup lang="ts">
@@ -21,6 +23,7 @@
  * This is the main entry point for the order list column.
  */
 import {EndpointName} from '@myparcel-pdk/common';
+import NotificationContainer from '../components/common/NotificationContainer.vue';
 import {defineAsyncComponent} from 'vue';
 import {usePluginSettings} from '../composables';
 import {useQueryStore} from '../stores';
