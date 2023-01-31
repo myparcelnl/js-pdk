@@ -12,5 +12,5 @@
     }
   },
   "include": ["apps/**/*", "libs/**/*"],
-  "exclude": []
+  "exclude": ["**/node_modules", "**/lib", "**/dist"]
 }
