@@ -1,12 +1,10 @@
-const parserOptions = {
-  dir: __dirname,
-  project: 'tsconfig.json',
-};
-
 module.exports = {
   root: true,
   extends: ['@myparcel-eslint/eslint-config-esnext', '@myparcel-eslint/eslint-config-prettier'],
-  parserOptions,
+  parserOptions: {
+    dir: __dirname,
+    project: 'tsconfig.json',
+  },
   overrides: [
     {
       files: ['./**/index.ts'],
