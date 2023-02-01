@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import {EndpointName, Plugin} from '@myparcel-pdk/common';
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
-import {EndpointName} from '@myparcel-pdk/common';
 import {EndpointResponse} from '../../../../types';
 import {QUERY_KEY_CONTEXT} from '../queryKeys';
 import {useContextStore} from '../../../../stores';
@@ -14,8 +14,9 @@ export const useFetchContextQuery = () => {
     [QUERY_KEY_CONTEXT],
     async () => {
       const pdk = usePdkApi();
+      const context: [Plugin.ModelContextDynamicContext] = await pdk.fetchContext();
 
-      return pdk.fetchContext();
+      return context[0];
     },
     {
       ...queryClient.defaultQueryOptions(),
@@ -23,9 +24,7 @@ export const useFetchContextQuery = () => {
       onSuccess: (data) => {
         queryClient.setQueryData([QUERY_KEY_CONTEXT], data);
 
-        console.log('data', data);
-
-        contextStore.addContext(data[0]);
+        contextStore.addContext({dynamic: data});
       },
     },
   );

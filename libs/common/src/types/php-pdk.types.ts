@@ -337,6 +337,7 @@ export namespace Plugin {
 
   export type ModelContextContextBag = {
     global: ModelContextGlobalContext;
+    dynamic?: ModelContextDynamicContext;
     orderData?: OrderDataContextCollection;
     pluginSettingsView?: ModelContextPluginSettingsViewContext;
     productSettingsView?: ModelContextProductSettingsViewContext;
@@ -361,7 +362,6 @@ export namespace Plugin {
   };
 
   export type ModelContextGlobalContext = {
-    account: Account.ModelAccount;
     appInfo: {
       name: string;
       path: string;
@@ -375,8 +375,12 @@ export namespace Plugin {
     event: string;
     language: string;
     mode: string;
-    pluginSettings: Settings.ModelSettings;
     translations: Record<string, string>;
+  };
+
+  export type ModelContextDynamicContext = {
+    account: Account.ModelAccount;
+    pluginSettings: Settings.ModelSettings;
   };
 
   export type ModelContextOrderDataContext = ModelPdkOrder & {

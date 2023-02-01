@@ -1,8 +1,8 @@
-import {PdkContextObject} from '../../types';
-import {useGlobalContext} from './useGlobalContext';
+import {Plugin} from '@myparcel-pdk/common';
+import {useDynamicContext} from './useDynamicContext';
 
-export const usePluginSettings = (): PdkContextObject['global']['pluginSettings'] => {
-  const globalContext = useGlobalContext();
+export const usePluginSettings = (): Plugin.ModelContextDynamicContext['pluginSettings'] => {
+  const dynamicContext = useDynamicContext();
 
-  return globalContext.pluginSettings;
+  return dynamicContext.pluginSettings;
 };

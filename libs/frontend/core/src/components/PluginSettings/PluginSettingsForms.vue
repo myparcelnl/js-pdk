@@ -1,6 +1,6 @@
 <template>
   <TabNavigation
-    v-if="contextQuery.data?.global?.account"
+    v-if="contextQuery.data?.account"
     :tabs="tabs" />
 </template>
 

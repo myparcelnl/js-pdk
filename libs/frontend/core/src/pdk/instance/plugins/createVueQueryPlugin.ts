@@ -16,7 +16,7 @@ export const createVueQueryPlugin: PdkAppPlugin = ({context, logger}) => {
 
       queryClient ??= createQueryClient();
 
-      queryClient.setQueryData([QUERY_KEY_CONTEXT], context);
+      queryClient.setQueryData([QUERY_KEY_CONTEXT], context.dynamic);
 
       // Add each order to the query client
       if (context.orderData) {

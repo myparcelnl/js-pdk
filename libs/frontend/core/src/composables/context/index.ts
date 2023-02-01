@@ -1,4 +1,5 @@
 export * from './useAppInfo';
+export * from './useDynamicContext';
 export * from './useGlobalContext';
 export * from './useInstanceContext';
 export * from './useModalContext';
