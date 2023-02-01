@@ -74,8 +74,6 @@ export default defineComponent({
           return PdkStatus.PENDING;
         }
 
-        console.log(webhook);
-
         return webhook.connected ? PdkStatus.SUCCESS : PdkStatus.ERROR;
       },
     };
