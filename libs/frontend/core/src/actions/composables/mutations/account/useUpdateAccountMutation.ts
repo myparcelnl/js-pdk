@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {EndpointName} from '@myparcel-pdk/common';
-import {QUERY_KEY_ACCOUNT} from '../../queries';
 import {formToBody} from '../../../../utils';
 import {usePdkApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
@@ -22,7 +21,7 @@ export const useUpdateAccountMutation = () => {
     {
       ...queryClient.defaultMutationOptions(),
       onSuccess: (data) => {
-        queryClient.setQueryData([QUERY_KEY_ACCOUNT], data);
+        // queryClient.setQueryData([QUERY_KEY_CONTEXT], data);
       },
     },
   );

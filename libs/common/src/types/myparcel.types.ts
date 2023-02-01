@@ -6,9 +6,9 @@
  */
 export enum EndpointName {
   /**
-   * Get account.
+   * Get context.
    */
-  FETCH_ACCOUNT = 'fetchAccount',
+  FETCH_CONTEXT = 'fetchContext',
 
   /**
    * Update account.

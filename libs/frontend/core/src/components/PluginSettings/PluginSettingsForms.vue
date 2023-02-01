@@ -1,6 +1,6 @@
 <template>
   <TabNavigation
-    v-if="accountQuery.data"
+    v-if="contextQuery.data?.global?.account"
     :tabs="tabs" />
 </template>
 
@@ -19,13 +19,13 @@ export default defineComponent({
 
   setup: () => {
     const queryStore = useQueryStore();
-    const accountQuery = queryStore.get(EndpointName.FETCH_ACCOUNT);
+    const contextQuery = queryStore.get(EndpointName.FETCH_CONTEXT);
 
     return {
-      accountQuery,
+      contextQuery,
 
       tabs: computed(() => {
-        if (!accountQuery.data) {
+        if (!contextQuery.data) {
           return [];
         }
 

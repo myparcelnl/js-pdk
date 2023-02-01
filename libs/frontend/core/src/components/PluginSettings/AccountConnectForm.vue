@@ -1,6 +1,6 @@
 <template>
   <PdkCard>
-    <template v-if="(accountQuery.isLoading || accountQuery.data) && !editing">
+    <template v-if="(contextQuery.isLoading || contextQuery.data?.global?.account) && !editing">
       <PdkCard>
         <PdkHeading level="3">{{ translate('notification_account_connected') }}</PdkHeading>
 
@@ -17,6 +17,8 @@
     <template v-else>
       <MagicForm :form="form" />
 
+      <ActionButton :action="fetchContext" />
+
       <NotificationContainer :category="notificationCategory" />
     </template>
   </PdkCard>
@@ -32,19 +34,22 @@ import WebhooksStatus from './WebhooksStatus.vue';
 import {createAccountSettingsForm} from '../../forms/createAccountSettingsForm';
 import {useLanguage} from '../../composables';
 import {useQueryStore} from '../../stores';
+import ActionButton from '../common/ActionButton.vue';
+import {createAction} from '../../services';
+import {fetchContextAction} from '../../actions';
 
 export default defineComponent({
   name: 'AccountConnectForm',
-  components: {WebhooksStatus, NotificationContainer, MagicForm},
+  components: {ActionButton, WebhooksStatus, NotificationContainer, MagicForm},
 
   setup: () => {
     const queryStore = useQueryStore();
-    const accountQuery = queryStore.get(EndpointName.FETCH_ACCOUNT);
+    const contextQuery = queryStore.get(EndpointName.FETCH_CONTEXT);
     const {translate} = useLanguage();
     const editing = ref(false);
 
     return {
-      accountQuery,
+      contextQuery,
       editing,
 
       form: createAccountSettingsForm(() => {
@@ -52,6 +57,8 @@ export default defineComponent({
       }),
 
       notificationCategory: NotificationCategory.API,
+
+      fetchContext: createAction(fetchContextAction),
 
       translate,
     };

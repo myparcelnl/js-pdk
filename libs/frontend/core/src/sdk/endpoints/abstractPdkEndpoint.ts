@@ -1,15 +1,17 @@
 import {AbstractEndpoint, EndpointDefinition} from '@myparcel/sdk';
 import {Account, EndpointName, LabelFormat, LabelOutput, LabelPosition, Plugin, Settings} from '@myparcel-pdk/common';
+import {PdkContextObject} from '../../types';
 import {RecursivePartial} from '@myparcel/ts-utils';
 
 interface Definition extends EndpointDefinition {
   formattedResponse?: unknown;
 }
 
-export interface FetchAccountDefinition extends Definition {
-  name: EndpointName.FETCH_ACCOUNT;
+export interface FetchContextDefinition extends Definition {
+  name: EndpointName.FETCH_CONTEXT;
   parameters: undefined;
-  response: Account.ModelAccount[];
+  response: PdkContextObject[];
+  formattedResponse: PdkContextObject;
 }
 
 export interface UpdateAccountDefinition extends Definition {
@@ -132,7 +134,7 @@ export type PdkEndpointDefinition<N extends EndpointName> = Extract<
   | DeleteShipmentsDefinition
   | DeleteWebhooksDefinition
   | ExportOrdersDefinition
-  | FetchAccountDefinition
+  | FetchContextDefinition
   | FetchOrdersDefinition
   | FetchWebhooksDefinition
   | PrintOrdersDefinition

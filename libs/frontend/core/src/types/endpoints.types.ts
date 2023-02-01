@@ -14,7 +14,7 @@ export type EndpointResponse<N extends EndpointName> = PdkEndpointDefinition<N>[
 export type EndpointParameters<N extends EndpointName> = PdkEndpointDefinition<N>['parameters'];
 
 export interface FrontendActionEndpointMap extends Record<FrontendAction, EndpointName> {
-  [FrontendAction.ACCOUNT_FETCH]: EndpointName.FETCH_ACCOUNT;
+  [FrontendAction.CONTEXT_FETCH]: EndpointName.FETCH_CONTEXT;
   [FrontendAction.ACCOUNT_UPDATE]: EndpointName.UPDATE_ACCOUNT;
   [FrontendAction.ORDERS_EXPORT]: EndpointName.EXPORT_ORDERS;
   [FrontendAction.ORDERS_EXPORT_PRINT]: EndpointName.EXPORT_ORDERS;
@@ -39,7 +39,8 @@ export type EndpointFrontendActionMap = {
 };
 
 export interface EndpointMutationInputMap extends Record<EndpointName, Record<string, unknown>> {
-  [EndpointName.FETCH_ACCOUNT]: never;
+  [EndpointName.FETCH_CONTEXT]: never;
+
   [EndpointName.UPDATE_ACCOUNT]: {form: FormInstance};
 
   [EndpointName.EXPORT_ORDERS]: {orderIds: OneOrMore<string>; form?: FormInstance};

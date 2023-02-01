@@ -1,16 +1,16 @@
 import {FrontendAction, PdkIcon} from '../../types';
-import {createMutator, createQueryFetcher} from '../executors';
+import {createMutator, createQueryFetcher, executeNextAction} from '../executors';
 import {EndpointName} from '@myparcel-pdk/common';
 import {defineAction} from '../defineAction';
 
 /**
- * Retrieve account.
+ * Retrieve context.
  */
-export const fetchAccountAction = defineAction({
-  name: FrontendAction.ACCOUNT_FETCH,
+export const fetchContextAction = defineAction({
+  name: FrontendAction.CONTEXT_FETCH,
   icon: PdkIcon.REFRESH,
   label: 'action_refresh',
-  handler: createQueryFetcher(EndpointName.FETCH_ACCOUNT),
+  handler: createQueryFetcher(EndpointName.FETCH_CONTEXT),
 });
 
 /**
@@ -21,4 +21,9 @@ export const updateAccountAction = defineAction({
   icon: PdkIcon.SAVE,
   label: 'action_save',
   handler: createMutator(EndpointName.UPDATE_ACCOUNT),
+  async afterHandle(context) {
+    await executeNextAction(context, fetchContextAction);
+
+    return context.response;
+  },
 });

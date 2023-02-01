@@ -6,7 +6,7 @@ import {
   useDeleteShipmentsMutation,
   useDeleteWebhooksMutation,
   useExportOrdersMutation,
-  useFetchAccountQuery,
+  useFetchContextQuery,
   useFetchOrdersQuery,
   useFetchWebhooksQuery,
   usePrintOrdersMutation,
@@ -23,8 +23,8 @@ import {getOrderId} from '../utils';
 
 export type QueryObject<I extends EndpointName = EndpointName> = Record<I, ResolvedQuery<I>>;
 
-export type ResolvedQuery<E extends EndpointName = EndpointName> = E extends EndpointName.FETCH_ACCOUNT
-  ? ReturnType<typeof useFetchAccountQuery>
+export type ResolvedQuery<E extends EndpointName = EndpointName> = E extends EndpointName.FETCH_CONTEXT
+  ? ReturnType<typeof useFetchContextQuery>
   : E extends EndpointName.UPDATE_ACCOUNT
   ? ReturnType<typeof useUpdateAccountMutation>
   : E extends EndpointName.EXPORT_ORDERS

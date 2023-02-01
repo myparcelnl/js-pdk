@@ -1,1 +1,1 @@
-export * from './useFetchAccountQuery';
+export * from './useFetchContextQuery';

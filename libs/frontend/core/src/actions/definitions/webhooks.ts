@@ -26,8 +26,6 @@ export const webhooksCreateAllAction = defineAction({
     const queryStore = useQueryStore();
     const webhookQuery = queryStore.get(EndpointName.FETCH_WEBHOOKS);
 
-    console.log(webhookQuery.data);
-
     await Promise.all(
       (get(webhookQuery.data) ?? []).map(({hook}) => {
         return executeAction({...context, parameters: {hooks: [hook]}});

@@ -13,7 +13,7 @@
 import {
   useCreateWebhooksMutation,
   useDeleteWebhooksMutation,
-  useFetchAccountQuery,
+  useFetchContextQuery,
   useFetchWebhooksQuery,
   useUpdateAccountMutation,
   useUpdatePluginSettingsMutation,
@@ -28,7 +28,8 @@ const PluginSettingsForms = defineAsyncComponent(() => import('../components/Plu
 
 const queryStore = useQueryStore();
 
-queryStore.register(EndpointName.FETCH_ACCOUNT, useFetchAccountQuery());
+queryStore.register(EndpointName.FETCH_CONTEXT, useFetchContextQuery());
+
 queryStore.register(EndpointName.UPDATE_ACCOUNT, useUpdateAccountMutation());
 
 queryStore.register(EndpointName.CREATE_WEBHOOKS, useCreateWebhooksMutation());
