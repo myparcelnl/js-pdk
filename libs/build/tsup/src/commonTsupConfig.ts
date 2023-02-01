@@ -26,13 +26,7 @@ export const commonTsupConfig: Options = {
     const timeStart = Date.now();
 
     console.log('\x1b[34m%s\x1b[0m', 'DTS', '\x1b[0m', 'Generating declaration files...');
-    spawnSync(
-      'tsc',
-      ['--project', tsconfig, '--emitDeclarationOnly', '--declarationDir', 'lib', '--declaration', '--allowJs'],
-      {
-        stdio: 'inherit',
-      },
-    );
+    spawnSync('tsc', ['--project', tsconfig, '--emitDeclarationOnly', '--declarationDir', 'lib', '--declaration']);
     console.log('\x1b[34m%s\x1b[0m', 'DTS', '\x1b[0m', `Done in ${Date.now() - timeStart}ms`);
   },
 };
