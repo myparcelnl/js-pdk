@@ -1,5 +1,4 @@
 import {Ref, UnwrapRef, ref} from 'vue';
-import {useContextStore} from '../../stores';
 
 let pdfWindow: Ref<UnwrapRef<Window | null>>;
 
@@ -18,13 +17,6 @@ export const usePdfWindow: UsePdfWindow = () => {
   const open: ReturnType<UsePdfWindow>['open'] = async () => {
     return new Promise((resolve) => {
       pdfWindow ??= ref<Window | null>(null);
-
-      const contextStore = useContextStore();
-      const endpoints = contextStore.context.global?.endpoints;
-
-      if (!endpoints) {
-        return;
-      }
 
       // todo loading window
       const newWindow = window.open('about:blank', '_blank');

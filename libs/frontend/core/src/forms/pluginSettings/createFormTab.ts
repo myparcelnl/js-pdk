@@ -1,20 +1,20 @@
 import {VNode, h} from 'vue';
-import {FormSettingsView} from './createPluginSettingsViews';
+import {FormTab} from './createPluginSettingsTabs';
 import {MagicForm} from '@myparcel/vue-form-builder';
 import {PdkTab} from '@myparcel-pdk/common';
 import {useLanguage} from '../../composables';
 
-export const createFormTab = (view: FormSettingsView): PdkTab => {
+export const createFormTab = (tab: FormTab): PdkTab => {
   const language = useLanguage();
-  const children: VNode[] = [h(MagicForm, {form: view.form})];
+  const children: VNode[] = [h(MagicForm, {form: tab.form})];
 
-  if (view.description && language.has(view.description)) {
-    children.unshift(h('p', language.translate(view.description)));
+  if (tab.description && language.has(tab.description)) {
+    children.unshift(h('p', language.translate(tab.description)));
   }
 
   return {
-    name: view.id,
-    label: view.title,
+    name: tab.name,
+    label: tab.label,
     component: () => h('div', {}, children),
   };
 };

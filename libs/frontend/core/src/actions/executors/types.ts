@@ -43,4 +43,5 @@ export type ActionContextWithResponse<A extends FrontendAction> = ActionContext<
 
 export type QueryExecutor = <E extends EndpointName>(
   endpoint: E,
+  suffix?: string,
 ) => (context: ActionContext<EndpointFrontendActionMap[E]>) => Promise<ActionResponse<EndpointFrontendActionMap[E]>>;

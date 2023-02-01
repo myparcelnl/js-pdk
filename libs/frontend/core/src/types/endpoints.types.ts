@@ -3,6 +3,7 @@ import {FormInstance} from '@myparcel/vue-form-builder';
 import {FrontendAction} from './actions.types';
 import {OneOrMore} from '@myparcel/ts-utils';
 import {PdkEndpointDefinition} from '../sdk';
+import {ContextKey} from './context.types';
 
 export type EndpointResponse<N extends EndpointName> = PdkEndpointDefinition<N>['formattedResponse'] extends Record<
   string,
@@ -39,7 +40,7 @@ export type EndpointFrontendActionMap = {
 };
 
 export interface EndpointMutationInputMap extends Record<EndpointName, Record<string, unknown>> {
-  [EndpointName.FETCH_CONTEXT]: never;
+  [EndpointName.FETCH_CONTEXT]: {contexts?: OneOrMore<ContextKey>};
 
   [EndpointName.UPDATE_ACCOUNT]: {form: FormInstance};
 

@@ -57,8 +57,8 @@ export class PdkFrontend {
     const app = createApp({...component, name: appConfig.appName});
 
     app.use(createStorePlugin(appConfig));
-    app.use(createContextPlugin(appConfig));
     app.use(createVueQueryPlugin(appConfig));
+    app.use(createContextPlugin(appConfig));
     app.use(createRegisterComponentsPlugin(appConfig));
     app.use(createLoggerPlugin(appConfig));
 

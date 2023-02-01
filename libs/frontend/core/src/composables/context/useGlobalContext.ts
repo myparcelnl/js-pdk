@@ -1,8 +1,6 @@
-import {PdkContextObject} from '../../types';
-import {useContextStore} from '../../stores';
+import {ContextKey, PdkContextObject} from '../../types';
+import {useContext} from './useContext';
 
 export const useGlobalContext = (): PdkContextObject['global'] => {
-  const contextStore = useContextStore();
-
-  return contextStore.context.global;
+  return useContext(ContextKey.GLOBAL);
 };

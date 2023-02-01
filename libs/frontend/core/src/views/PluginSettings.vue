@@ -13,22 +13,20 @@
 import {
   useCreateWebhooksMutation,
   useDeleteWebhooksMutation,
-  useFetchContextQuery,
   useFetchWebhooksQuery,
   useUpdateAccountMutation,
   useUpdatePluginSettingsMutation,
 } from '../actions';
 import AccountSettings from '../components/PluginSettings/AccountSettings.vue'; // eslint-disable-next-line @typescript-eslint/naming-convention
+import {ContextKey} from '../types';
 import {EndpointName} from '@myparcel-pdk/common';
-import {defineAsyncComponent} from 'vue';
+import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForms.vue';
 import {useQueryStore} from '../stores';
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-const PluginSettingsForms = defineAsyncComponent(() => import('../components/PluginSettings/PluginSettingsForms.vue'));
 
 const queryStore = useQueryStore();
 
-queryStore.register(EndpointName.FETCH_CONTEXT, useFetchContextQuery());
+queryStore.registerContextQuery(ContextKey.DYNAMIC);
+queryStore.registerContextQuery(ContextKey.PLUGIN_SETTINGS_VIEW);
 
 queryStore.register(EndpointName.UPDATE_ACCOUNT, useUpdateAccountMutation());
 

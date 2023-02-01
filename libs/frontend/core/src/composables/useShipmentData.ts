@@ -21,7 +21,7 @@ export type UseShipmentData = {
 
 export const useShipmentData = (shipment: Shipment.ModelShipment): UseShipmentData => {
   const {loading, actionCallbacks} = useLoading();
-  const carriersQuery = useCarriers(shipment.carrier?.name);
+  const carriersQuery = useCarriers(shipment.carrier?.carrier?.name);
 
   return {
     actions: createActions(

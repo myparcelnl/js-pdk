@@ -1,19 +1,20 @@
-import {ActionContext, executeAction, useUpdatePluginSettingsMutation} from '../../actions';
+import {ActionContext, executeAction} from '../../actions';
+import {ContextKey, FrontendAction} from '../../types';
+import {EndpointName, Plugin} from '@myparcel-pdk/common';
 import {FormInstance, defineForm} from '@myparcel/vue-form-builder';
-import {usePdkConfig, usePluginSettings} from '../../composables';
-import {FrontendAction} from '../../types';
-import {Plugin} from '@myparcel-pdk/common';
+import {ResolvedQuery} from '../../stores';
 import SubmitButton from '../../components/common/SubmitButton.vue';
 import {generateFormFields} from './generateFormFields';
 import {get} from 'lodash-unified';
+import {usePdkConfig} from '../../composables';
 
 export const createPluginSettingsForm = (
   id: string,
   view: Plugin.SettingsView,
   actionContext: ActionContext<FrontendAction.PLUGIN_SETTINGS_UPDATE>,
+  mutation: ResolvedQuery<EndpointName.UPDATE_PLUGIN_SETTINGS>,
+  query: ResolvedQuery<`${EndpointName.FETCH_CONTEXT}.${ContextKey.PLUGIN_SETTINGS_VIEW}`>,
 ): FormInstance => {
-  const updatePluginSettingsMutation = useUpdatePluginSettingsMutation();
-  const pluginSettings = usePluginSettings();
   const pdkConfig = usePdkConfig();
 
   return defineForm(id, {
@@ -22,14 +23,14 @@ export const createPluginSettingsForm = (
       ...generateFormFields(
         {
           fields: view.elements,
-          values: get(pluginSettings, id, {}),
+          values: get(query.data, id, {}),
         },
         `${id}.`,
       ),
       {
         component: SubmitButton,
         props: {
-          loading: updatePluginSettingsMutation.isLoading,
+          loading: mutation.isLoading,
         },
       },
     ],

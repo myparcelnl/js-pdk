@@ -1,8 +1,8 @@
 import {Ref, ref} from 'vue';
 import {decodeHtmlEntities} from '../../utils';
 import {memoize} from 'lodash-unified';
-import {useContextStore} from '../../stores';
 import {useLogger} from '../useLogger';
+import {useGlobalContext} from '../context';
 
 type UseLanguage = {
   /**
@@ -68,8 +68,8 @@ const memoizedTranslate = memoize((key: string) => {
 });
 
 const memoizedGetTranslations = memoize(() => {
-  const contextStore = useContextStore();
-  const translations = contextStore?.context?.global?.translations;
+  const globalContext = useGlobalContext();
+  const {translations} = globalContext;
 
   if (!translations) {
     const logger = useLogger();

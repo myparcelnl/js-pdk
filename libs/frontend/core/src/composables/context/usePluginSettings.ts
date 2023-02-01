@@ -1,8 +1,12 @@
 import {Plugin} from '@myparcel-pdk/common';
-import {useDynamicContext} from './useDynamicContext';
+import {useContext} from './useContext';
 
 export const usePluginSettings = (): Plugin.ModelContextDynamicContext['pluginSettings'] => {
-  const dynamicContext = useDynamicContext();
+  const context = useContext();
 
-  return dynamicContext.pluginSettings;
+  if (!context.pluginSettings) {
+    throw new Error(`No pluginSettings found`);
+  }
+
+  return context.pluginSettings;
 };

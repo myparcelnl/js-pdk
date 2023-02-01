@@ -1,29 +1,34 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EndpointName, Plugin} from '@myparcel-pdk/common';
+import {ContextKey, PdkContext} from '../../../../types';
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
-import {EndpointResponse} from '../../../../types';
-import {useContextStore} from '../../../../stores';
+import {EndpointName} from '@myparcel-pdk/common';
+import {encodeArrayParameter} from '../../../../utils';
 import {usePdkApi} from '../../../../sdk';
 
-export const useFetchContextQuery = () => {
-  const queryClient = useQueryClient();
-  const contextStore = useContextStore();
+type ContextFetchQueryResponse<C extends ContextKey> = PdkContext<C>;
 
-  return useQuery<EndpointResponse<EndpointName.FETCH_CONTEXT>>(
-    [EndpointName.FETCH_CONTEXT],
+// @ts-expect-error typescript being pedantic
+export const useFetchContextQuery = <C extends ContextKey = ContextKey.DYNAMIC>(contextKey: C = ContextKey.DYNAMIC) => {
+  const queryClient = useQueryClient();
+
+  return useQuery<ContextFetchQueryResponse<C>>(
+    [EndpointName.FETCH_CONTEXT, contextKey],
     async () => {
       const pdk = usePdkApi();
-      const context: [Plugin.ModelContextDynamicContext] = await pdk.fetchContext();
+      const context = await pdk.fetchContext({
+        // @ts-expect-error custom endpoints are not typed correctly
+        parameters: {
+          contexts: encodeArrayParameter(contextKey),
+        },
+      });
 
-      return context[0];
+      return context[0][contextKey];
     },
     {
       ...queryClient.defaultQueryOptions(),
       refetchOnWindowFocus: false,
       onSuccess: (data) => {
-        queryClient.setQueryData([EndpointName.FETCH_CONTEXT], data);
-
-        contextStore.addContext({dynamic: data});
+        queryClient.setQueryData([EndpointName.FETCH_CONTEXT, contextKey], data);
       },
     },
   );

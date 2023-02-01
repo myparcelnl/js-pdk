@@ -28,6 +28,8 @@ export enum ContextKey {
   ORDER_DATA = 'orderData',
   PLUGIN_SETTINGS_VIEW = 'pluginSettingsView',
   PRODUCT_SETTINGS_VIEW = 'productSettingsView',
+
+  INSTANCE = 'instance',
 }
 
 export enum InstanceContextKey {

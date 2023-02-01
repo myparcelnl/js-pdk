@@ -8,20 +8,15 @@
       @click="() => handleClick(tab)" />
   </PdkTabNavButtonWrapper>
 
-  <PdkTabNavContentWrapper>
+  <PdkTabNavContentWrapper v-if="activeTabContents">
     <Transition
-      :name="pdkConfig.transitions.tabNavigation"
+      :name="pdkConfig.transitions?.tabNavigation"
       mode="out-in">
       <KeepAlive>
-        <Suspense>
-          <template #default>
-            <component
-              :is="activeTabContents?.component"
-              :key="`tab_${activeTabContents?.name}`"
-              v-test="`TabNavContent-${activeTabContents?.name}`" />
-          </template>
-          <template #fallback>{{ translate('loading') }}</template>
-        </Suspense>
+        <component
+          :is="activeTabContents.component"
+          :key="activeTabContents.name"
+          v-test="`TabNavContent-${activeTabContents.name}`" />
       </KeepAlive>
     </Transition>
   </PdkTabNavContentWrapper>

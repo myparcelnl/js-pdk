@@ -16,14 +16,21 @@ import {
   useUpdatePluginSettingsMutation,
   useUpdateShipmentsMutation,
 } from '../actions';
+import {ContextKey} from '../types';
 import {EndpointName} from '@myparcel-pdk/common';
 import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
 import {getOrderId} from '../utils';
 
-export type QueryObject<I extends EndpointName = EndpointName> = Record<I, ResolvedQuery<I>>;
+export type QueryKey = EndpointName | `${EndpointName.FETCH_CONTEXT}.${ContextKey}`;
 
-export type ResolvedQuery<E extends EndpointName = EndpointName> = E extends EndpointName.FETCH_CONTEXT
+export type ResolvedQuery<E extends QueryKey = EndpointName> = E extends EndpointName
+  ? EndpointQuery<E>
+  : EndpointQuery<EndpointName.FETCH_CONTEXT>;
+
+export type QueryObject<I extends QueryKey = EndpointName> = Record<I, ResolvedQuery<I>>;
+
+type EndpointQuery<E extends EndpointName = EndpointName> = E extends EndpointName.FETCH_CONTEXT
   ? ReturnType<typeof useFetchContextQuery>
   : E extends EndpointName.UPDATE_ACCOUNT
   ? ReturnType<typeof useUpdateAccountMutation>
@@ -55,13 +62,17 @@ export type ResolvedQuery<E extends EndpointName = EndpointName> = E extends End
   ? ReturnType<typeof useFetchWebhooksQuery>
   : never;
 
+// eslint-disable-next-line max-lines-per-function
 export const useQueryStore = defineStore('query', () => {
   const queries = ref({} as QueryObject);
   const queryClient: Ref<QueryClient | undefined> = ref<QueryClient>();
 
-  const has = <E extends EndpointName>(key: E): boolean => !!queries.value[key];
+  const has = <E extends QueryKey>(key: E): boolean => {
+    // @ts-expect-error todo
+    return queries.value[key] !== undefined;
+  };
 
-  const get = <E extends EndpointName>(key: E): ResolvedQuery<E> => {
+  const get = <E extends QueryKey>(key: E): ResolvedQuery<E> => {
     if (!has(key)) {
       throw new Error(`No query found for key ${key}`);
     }
@@ -70,7 +81,7 @@ export const useQueryStore = defineStore('query', () => {
     return queries.value[key];
   };
 
-  const register = <N extends EndpointName>(key: N, query: ResolvedQuery<N>): void => {
+  const register = <E extends QueryKey>(key: E, query: ResolvedQuery<E>): void => {
     if (!queryClient.value) {
       queryClient.value = useQueryClient();
     }
@@ -85,12 +96,11 @@ export const useQueryStore = defineStore('query', () => {
     has,
     register,
 
+    queryClient,
+
     /**
      * Queries must be registered manually, because vue-query hooks can only be
      * called from a component's setup() function.
-     *
-     * @param {string | null} orderId
-     * @param {MutationMode} mode
      */
     registerOrderQueries: (orderId?: string | null, mode: MutationMode = MutationMode.DEFAULT) => {
       const id = orderId ?? getOrderId();
@@ -110,6 +120,13 @@ export const useQueryStore = defineStore('query', () => {
       register(EndpointName.FETCH_SHIPMENTS, useUpdateShipmentsMutation());
     },
 
-    queryClient,
+    registerContextQuery: <C extends ContextKey>(key: C) => {
+      const query = useFetchContextQuery(key) as ResolvedQuery<`${EndpointName.FETCH_CONTEXT}.${C}`>;
+      register(`${EndpointName.FETCH_CONTEXT}.${key}`, query);
+    },
+
+    getContextQuery: <C extends ContextKey>(key: C) => {
+      return get(`${EndpointName.FETCH_CONTEXT}.${key}`);
+    },
   };
 });

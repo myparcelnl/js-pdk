@@ -10,11 +10,11 @@ type DateTimeImmutable = DateTime;
 export namespace Account {
   export type GetAccountsRequest = Base.Request;
 
-  export type GetCarrierOptionsRequest = Base.Request;
-
   export type GetShopCarrierConfigurationRequest = Base.Request;
 
   export type GetShopCarrierConfigurationsRequest = Base.Request;
+
+  export type GetShopCarrierOptionsRequest = Base.Request;
 
   export type GetShopRequest = Base.Request;
 
@@ -25,6 +25,8 @@ export namespace Account {
     platformId: number;
     status: number;
     contactInfo: Base.ModelContactDetails;
+    generalSettings: ModelAccountGeneralSettings;
+    shops: ShopCollection;
   };
 
   export type ModelAccountGeneralSettings = {
@@ -45,7 +47,19 @@ export namespace Account {
     return: unknown[];
     shipmentOptions: unknown[];
     trackTrace: unknown[];
+    carrierConfigurations: ShopCarrierConfigurationCollection;
+    carrierOptions: Carrier.CarrierOptionsCollection;
   };
+
+  export type ModelShopCarrierConfiguration = {
+    carrier?: string;
+    defaultCutoffTime: string;
+    defaultDropOffPoint: string;
+    defaultDropOffPointIdentifier: string;
+    mondayCutoffTime: string;
+  };
+
+  export type ShopCarrierConfigurationCollection = ModelShopCarrierConfiguration[];
 
   export type ShopCollection = ModelShop[];
 }
@@ -113,6 +127,20 @@ export namespace Carrier {
     maxLength: number;
   };
 
+  export type ModelCarrier = {
+    externalIdentifier?: string;
+    id?: number;
+    name?: string;
+    human?: string;
+    subscriptionId?: number;
+    enabled: boolean;
+    primary: boolean;
+    isDefault: boolean;
+    optional: boolean;
+    label?: string;
+    type?: string;
+  };
+
   export type ModelCarrierCapabilities = {
     deliveryTypes: Shipment.DeliveryTypeCollection;
     packageType: Shipment.ModelPackageType;
@@ -120,17 +148,9 @@ export namespace Carrier {
   };
 
   export type ModelCarrierOptions = {
-    id?: number;
-    name?: string;
-    human?: string;
-    subscriptionId?: number;
-    primary?: boolean;
-    isDefault?: boolean;
-    optional?: boolean;
-    label?: string;
-    type?: string;
-    options: CarrierCapabilitiesCollection;
-    returnOptions: CarrierCapabilitiesCollection;
+    carrier: ModelCarrier;
+    capabilities: CarrierCapabilitiesCollection;
+    returnCapabilities: CarrierCapabilitiesCollection;
   };
 
   export type ModelShipmentOptionsCapabilities = {
@@ -381,6 +401,9 @@ export namespace Plugin {
   export type ModelContextDynamicContext = {
     account: Account.ModelAccount;
     pluginSettings: Settings.ModelSettings;
+    productSettings: Settings.ModelSettings;
+    productSettingsView: SettingsView;
+    product: Product.ModelProduct;
   };
 
   export type ModelContextOrderDataContext = ModelPdkOrder & {

@@ -1,18 +1,23 @@
 <template>
-  <MagicForm
-    :form="form"
-    @submit="$emit('submit')" />
+  <div>
+    <MagicForm :form="form" />
 
-  <NotificationContainer :category="NotificationCategory.API" />
+    <NotificationContainer :category="NotificationCategory.API" />
+  </div>
 </template>
 
 <script lang="ts" setup>
-import {MagicForm} from '@myparcel/vue-form-builder';
+import {FormInstance, MagicForm} from '@myparcel/vue-form-builder';
 import {NotificationCategory} from '../../types';
 import {NotificationContainer} from '../common';
 import {createAccountSettingsForm} from '../../forms/createAccountSettingsForm';
 
-defineEmits(['submit']);
+const emit = defineEmits({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  submit: (form: FormInstance) => true,
+});
 
-const form = createAccountSettingsForm();
+const form = createAccountSettingsForm(() => {
+  emit('submit', form);
+});
 </script>

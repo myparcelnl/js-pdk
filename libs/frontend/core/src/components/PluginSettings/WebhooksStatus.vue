@@ -6,24 +6,22 @@
   </PdkButton>
 
   <div v-if="open">
-    <KeepAlive>
-      <PdkHeading level="3">{{ translate('notification_webhooks_connected') }}</PdkHeading>
+    <PdkHeading level="3">{{ translate('notification_webhooks_connected') }}</PdkHeading>
 
-      <ActionButton
-        v-for="action in webhookActions"
-        :key="action.id"
-        :action="action" />
+    <ActionButton
+      v-for="action in webhookActions"
+      :key="action.id"
+      :action="action" />
 
-      <ul>
-        <li
-          v-for="webhook in fetchWebhooks.data"
-          :key="webhook.hook">
-          <StatusIndicator :status="getStatus(webhook)">
-            <code v-text="webhook.hook" />
-          </StatusIndicator>
-        </li>
-      </ul>
-    </KeepAlive>
+    <ul>
+      <li
+        v-for="webhook in fetchWebhooks.data"
+        :key="webhook.hook">
+        <StatusIndicator :status="getStatus(webhook)">
+          <code v-text="webhook.hook" />
+        </StatusIndicator>
+      </li>
+    </ul>
   </div>
 </template>
 

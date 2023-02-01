@@ -1,6 +1,10 @@
 <template>
   <PdkCard>
-    <template v-if="hasAccount && !editing">
+    <template v-if="!hasAccount || editing">
+      <EditApiKeyForm @submit="onSubmit" />
+    </template>
+
+    <template v-else>
       <PdkCard>
         <PdkHeading level="3">{{ translate('notification_account_connected') }}</PdkHeading>
 
@@ -13,19 +17,16 @@
         <WebhooksStatus />
       </PdkCard>
     </template>
-
-    <template v-else>
-      <EditApiKeyForm @submit="editing = false" />
-    </template>
   </PdkCard>
 </template>
 
 <script lang="ts">
 import {computed, defineComponent, ref} from 'vue';
-import {useLanguage, useStoreQuery} from '../../composables';
+import {useAccount, useLanguage} from '../../composables';
 import EditApiKeyForm from './EditApiKeyForm.vue';
-import {EndpointName} from '@myparcel-pdk/common';
+import {FormInstance} from '@myparcel/vue-form-builder';
 import WebhooksStatus from './WebhooksStatus.vue';
+import {useFetchContextQuery} from '../../actions';
 
 export default defineComponent({
   name: 'AccountSettings',
@@ -35,18 +36,25 @@ export default defineComponent({
   },
 
   setup: () => {
-    const contextQuery = useStoreQuery(EndpointName.FETCH_CONTEXT);
+    const contextQuery = useFetchContextQuery();
+    const account = useAccount();
+
     const {translate} = useLanguage();
     const editing = ref(false);
+    const hasApiKey = ref(true);
 
     return {
-      contextQuery,
       editing,
       translate,
 
       hasAccount: computed(() => {
-        return contextQuery.isLoading || Boolean(contextQuery.data?.account);
+        return hasApiKey.value && (contextQuery.isLoading || Boolean(account));
       }),
+
+      onSubmit: (form: FormInstance) => {
+        hasApiKey.value = Boolean(form.model.apiKey);
+        editing.value = hasApiKey.value;
+      },
     };
   },
 });

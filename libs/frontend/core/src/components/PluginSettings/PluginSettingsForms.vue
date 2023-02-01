@@ -5,12 +5,14 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent} from 'vue';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName, PdkTab} from '@myparcel-pdk/common';
+import {computed, defineComponent, ref, watch} from 'vue';
+import {useAccount, useLogger, useStoreQuery} from '../../composables';
+import {ContextKey} from '../../types';
 import TabNavigation from '../common/TabNavigation.vue';
 import {createPluginSettingsTabs} from '../../forms';
 import {get} from '@vueuse/core';
-import {useStoreQuery} from '../../composables';
+import {useFetchContextQuery} from '../../actions';
 
 export default defineComponent({
   name: 'PluginSettingsForms',
@@ -19,21 +21,41 @@ export default defineComponent({
   },
 
   setup: () => {
-    const contextQuery = useStoreQuery(EndpointName.FETCH_CONTEXT);
+    const account = useAccount();
+    const hasAccount = computed(() => Boolean(account));
+    const dynamicContextQuery = useFetchContextQuery();
+    const pluginSettingsContextQuery = useFetchContextQuery(ContextKey.PLUGIN_SETTINGS_VIEW);
+    const updatePluginSettingsMutation = useStoreQuery(EndpointName.UPDATE_PLUGIN_SETTINGS);
 
-    const hasAccount = computed(() => get(contextQuery.data)?.account);
+    const tabs = ref<PdkTab[]>([]);
 
-    return {
-      contextQuery,
-      hasAccount,
-
-      tabs: computed(() => {
-        if (!hasAccount.value) {
-          return [];
+    watch(
+      dynamicContextQuery.data,
+      () => {
+        if (!hasAccount.value || !dynamicContextQuery.isLoading) {
+          return;
         }
 
-        return createPluginSettingsTabs();
-      }),
+        const pluginSettingsView = get(pluginSettingsContextQuery.data);
+
+        if (!pluginSettingsView) {
+          const logger = useLogger();
+          logger.error(`${ContextKey.PLUGIN_SETTINGS_VIEW} not found`);
+          return;
+        }
+
+        tabs.value = createPluginSettingsTabs({
+          view: pluginSettingsView,
+          mutation: updatePluginSettingsMutation,
+          query: dynamicContextQuery,
+        });
+      },
+      {immediate: true},
+    );
+
+    return {
+      hasAccount,
+      tabs,
     };
   },
 });

@@ -1,13 +1,14 @@
 <template>
-  <TransitionGroup
-    v-test="{category}"
-    appear
-    :name="pdkConfig.transitions.notification">
-    <PdkNotification
-      v-for="(notification, index) in notifications"
-      :key="`alert_${index}_${notification.content}`"
-      :notification="notification" />
-  </TransitionGroup>
+  <div v-test="{category}">
+    <TransitionGroup
+      appear
+      :name="pdkConfig.transitions.notification">
+      <PdkNotification
+        v-for="(notification, index) in notifications"
+        :key="`alert_${index}_${notification.content}`"
+        :notification="notification" />
+    </TransitionGroup>
+  </div>
 </template>
 
 <script lang="ts">

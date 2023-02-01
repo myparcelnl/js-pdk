@@ -6,7 +6,7 @@ import {
   createDefaultDateLongFormatter,
   createDefaultDateRelativeFormatter,
 } from './default';
-import {useContextStore} from '../../stores';
+import {useGlobalContext} from '../context';
 import {usePdkConfig} from '../usePdkConfig';
 
 let formats: Ref<LocaleFormatterObject>;
@@ -15,9 +15,9 @@ export const useFormatter = (locale?: string): Formatter => {
   formats ??= ref({});
 
   const config = usePdkConfig();
-  const contextStore = useContextStore();
+  const globalContext = useGlobalContext();
 
-  const resolvedLocale = locale ?? contextStore.context.global.language;
+  const resolvedLocale = locale ?? globalContext.language;
 
   const getFormatters: Formatter['getFormatters'] = (locale) => {
     if (!formats.value[locale]) {

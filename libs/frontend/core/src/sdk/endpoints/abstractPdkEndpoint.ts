@@ -9,6 +9,7 @@ import {
   Plugin,
   Settings,
 } from '@myparcel-pdk/common';
+import {PdkContextObject} from '../../types';
 import {RecursivePartial} from '@myparcel/ts-utils';
 
 interface Definition extends EndpointDefinition {
@@ -18,8 +19,8 @@ interface Definition extends EndpointDefinition {
 export interface FetchContextDefinition extends Definition {
   name: EndpointName.FETCH_CONTEXT;
   parameters: undefined;
-  response: [Plugin.ModelContextDynamicContext];
-  formattedResponse: Plugin.ModelContextDynamicContext;
+  response: [PdkContextObject];
+  formattedResponse: PdkContextObject;
 }
 
 export interface UpdateAccountDefinition extends Definition {

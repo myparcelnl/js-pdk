@@ -1,4 +1,4 @@
-import {FrontendAction, PdkIcon} from '../../types';
+import {ContextKey, FrontendAction, PdkIcon} from '../../types';
 import {createMutator, createQueryFetcher, executeNextAction} from '../executors';
 import {EndpointName} from '@myparcel-pdk/common';
 import {defineAction} from '../defineAction';
@@ -6,11 +6,14 @@ import {defineAction} from '../defineAction';
 /**
  * Retrieve context.
  */
-export const fetchContextAction = defineAction({
+export const fetchDynamicContextAction = defineAction({
   name: FrontendAction.CONTEXT_FETCH,
-  icon: PdkIcon.REFRESH,
-  label: 'action_refresh',
-  handler: createQueryFetcher(EndpointName.FETCH_CONTEXT),
+  handler: createQueryFetcher(EndpointName.FETCH_CONTEXT, ContextKey.DYNAMIC),
+});
+
+export const fetchPluginSettingsViewContextAction = defineAction({
+  name: FrontendAction.CONTEXT_FETCH,
+  handler: createQueryFetcher(EndpointName.FETCH_CONTEXT, ContextKey.PLUGIN_SETTINGS_VIEW),
 });
 
 /**
@@ -22,7 +25,10 @@ export const updateAccountAction = defineAction({
   label: 'action_save',
   handler: createMutator(EndpointName.UPDATE_ACCOUNT),
   async afterHandle(context) {
-    await executeNextAction(context, fetchContextAction);
+    await Promise.all([
+      executeNextAction(context, fetchDynamicContextAction),
+      executeNextAction(context, fetchPluginSettingsViewContextAction),
+    ]);
 
     return context.response;
   },

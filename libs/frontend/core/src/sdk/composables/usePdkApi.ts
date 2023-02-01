@@ -2,7 +2,7 @@
 import {FetchClient, HttpMethod, MyParcelSdk, createMyParcelSdk} from '@myparcel/sdk';
 import {AbstractPdkEndpoint} from '../endpoints';
 import {EndpointName} from '@myparcel-pdk/common';
-import {useContextStore} from '../../stores';
+import {useGlobalContext} from '../../composables';
 
 let sdk: ReturnType<typeof usePdkApi>;
 
@@ -14,13 +14,13 @@ export const usePdkApi = (): MyParcelSdk<AbstractPdkEndpoint> => {
     return sdk;
   }
 
-  const contextStore = useContextStore();
+  const globalContext = useGlobalContext();
 
   const client = new FetchClient({
-    baseUrl: contextStore.context.global.baseUrl,
+    baseUrl: globalContext.baseUrl,
   });
 
-  const pdkEndpoints = Object.entries(contextStore.context.global.endpoints).map(([endpointName, options]) => {
+  const pdkEndpoints = Object.entries(globalContext.endpoints).map(([endpointName, options]) => {
     class PdkEndpoint extends AbstractPdkEndpoint {
       public readonly method = options.method.toUpperCase() as HttpMethod;
       public readonly name = endpointName as EndpointName;
