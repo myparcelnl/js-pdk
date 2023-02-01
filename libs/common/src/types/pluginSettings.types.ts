@@ -19,3 +19,9 @@ export interface PdkTab {
   icon?: string;
   component: string | Component;
 }
+
+export type PdkWebhook = {
+  connected: boolean;
+  hook: string;
+  url: null | string;
+};

@@ -12,6 +12,8 @@ export {default as ShipmentOptionsForm} from './ShipmentOptionsForm.vue';
 
 export {default as ShipmentStatus} from './ShipmentStatus.vue';
 
+export {default as StatusIndicator} from './StatusIndicator.vue';
+
 export {default as SubmitButton} from './SubmitButton.vue';
 
 export {default as TabNavigation} from './TabNavigation.vue';

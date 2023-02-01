@@ -1,5 +1,14 @@
 import {AbstractEndpoint, EndpointDefinition} from '@myparcel/sdk';
-import {Account, EndpointName, LabelFormat, LabelOutput, LabelPosition, Plugin, Settings} from '@myparcel-pdk/common';
+import {
+  Account,
+  EndpointName,
+  LabelFormat,
+  LabelOutput,
+  LabelPosition,
+  PdkWebhook,
+  Plugin,
+  Settings,
+} from '@myparcel-pdk/common';
 import {RecursivePartial} from '@myparcel/ts-utils';
 
 interface Definition extends EndpointDefinition {
@@ -105,27 +114,22 @@ export interface PrintOrdersDefinition extends Definition {
   response: {pdfs: {url: string}[]};
 }
 
-type Webhook = {
-  hook: string;
-  connected: boolean;
-};
-
 export interface FetchWebhooksDefinition extends Definition {
   name: EndpointName.FETCH_WEBHOOKS;
   parameters: never;
-  response: Webhook[];
+  response: PdkWebhook[];
 }
 
 export interface CreateWebhooksDefinition extends Definition {
   name: EndpointName.CREATE_WEBHOOKS;
   parameters: {hooks: string};
-  response: Webhook[];
+  response: PdkWebhook[];
 }
 
 export interface DeleteWebhooksDefinition extends Definition {
   name: EndpointName.DELETE_WEBHOOKS;
   parameters: {hooks: string};
-  response: Webhook[];
+  response: PdkWebhook[];
 }
 
 export type PdkEndpointDefinition<N extends EndpointName> = Extract<

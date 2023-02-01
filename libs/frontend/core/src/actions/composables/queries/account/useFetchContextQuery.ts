@@ -2,7 +2,6 @@
 import {EndpointName, Plugin} from '@myparcel-pdk/common';
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
 import {EndpointResponse} from '../../../../types';
-import {QUERY_KEY_CONTEXT} from '../queryKeys';
 import {useContextStore} from '../../../../stores';
 import {usePdkApi} from '../../../../sdk';
 
@@ -11,7 +10,7 @@ export const useFetchContextQuery = () => {
   const contextStore = useContextStore();
 
   return useQuery<EndpointResponse<EndpointName.FETCH_CONTEXT>>(
-    [QUERY_KEY_CONTEXT],
+    [EndpointName.FETCH_CONTEXT],
     async () => {
       const pdk = usePdkApi();
       const context: [Plugin.ModelContextDynamicContext] = await pdk.fetchContext();
@@ -22,7 +21,7 @@ export const useFetchContextQuery = () => {
       ...queryClient.defaultQueryOptions(),
       refetchOnWindowFocus: false,
       onSuccess: (data) => {
-        queryClient.setQueryData([QUERY_KEY_CONTEXT], data);
+        queryClient.setQueryData([EndpointName.FETCH_CONTEXT], data);
 
         contextStore.addContext({dynamic: data});
       },

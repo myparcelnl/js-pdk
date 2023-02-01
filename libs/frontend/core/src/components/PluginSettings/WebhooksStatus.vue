@@ -1,7 +1,7 @@
 <template>
   <PdkButton
     variant="primary"
-    @click="open = true">
+    @click="open = !open">
     {{ translate('button_webhooks_edit') }}
   </PdkButton>
 
@@ -16,9 +16,11 @@
 
       <ul>
         <li
-          v-for="webhook in webhooksQuery.data"
+          v-for="webhook in fetchWebhooks.data"
           :key="webhook.hook">
-          {{ webhook }}
+          <StatusIndicator :status="getStatus(webhook)">
+            <code v-text="webhook.hook" />
+          </StatusIndicator>
         </li>
       </ul>
     </KeepAlive>
@@ -26,42 +28,56 @@
 </template>
 
 <script lang="ts">
+import {EndpointName, PdkStatus, PdkWebhook} from '@myparcel-pdk/common';
 import {computed, defineComponent, ref} from 'vue';
 import {useLanguage, useStoreQuery} from '../../composables';
-import {webhooksCreateAllAction, webhooksDeleteAction, webhooksFetchAction} from '../../actions';
+import {webhooksCreateAction, webhooksDeleteAction} from '../../actions';
 import ActionButton from '../common/ActionButton.vue';
-import {EndpointName} from '@myparcel-pdk/common';
 import {ResolvedAction} from '../../types';
+import StatusIndicator from '../common/StatusIndicator.vue';
 import {createAction} from '../../services';
+import {get} from '@vueuse/core';
+import {partitionArray} from '@myparcel/ts-utils';
 
 export default defineComponent({
   name: 'WebhooksStatus',
-  components: {ActionButton},
+  components: {StatusIndicator, ActionButton},
 
   setup: () => {
     const {translate} = useLanguage();
 
     const open = ref(false);
 
-    const webhooksQuery = useStoreQuery(EndpointName.FETCH_WEBHOOKS);
+    const fetchWebhooks = useStoreQuery(EndpointName.FETCH_WEBHOOKS);
+    const createWebhooks = useStoreQuery(EndpointName.CREATE_WEBHOOKS);
+    const deleteWebhooks = useStoreQuery(EndpointName.DELETE_WEBHOOKS);
 
     return {
       open,
       translate,
-      webhooksQuery,
+      fetchWebhooks,
       webhookActions: computed(() => {
         const actions: ResolvedAction[] = [];
+        const [connected, disconnected] = partitionArray(get(fetchWebhooks.data) ?? [], (webhook) => webhook.connected);
 
-        console.log(webhooksQuery.data);
+        actions.push(createAction(webhooksCreateAction, {hooks: disconnected.map(({hook}) => hook)}));
 
-        if (webhooksQuery.data) {
-          actions.push(createAction(webhooksCreateAllAction), createAction(webhooksDeleteAction));
-        } else {
-          actions.push(createAction(webhooksFetchAction));
+        if (connected.length) {
+          actions.push(createAction(webhooksDeleteAction, {hooks: connected.map(({hook}) => hook)}));
         }
 
         return actions;
       }),
+
+      getStatus: (webhook: PdkWebhook): PdkStatus => {
+        if (fetchWebhooks.isLoading || createWebhooks.isLoading || deleteWebhooks.isLoading) {
+          return PdkStatus.PENDING;
+        }
+
+        console.log(webhook);
+
+        return webhook.connected ? PdkStatus.SUCCESS : PdkStatus.ERROR;
+      },
     };
   },
 });

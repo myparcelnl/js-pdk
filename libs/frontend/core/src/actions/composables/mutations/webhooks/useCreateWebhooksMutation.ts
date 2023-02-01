@@ -2,11 +2,15 @@
 import {EndpointName} from '@myparcel-pdk/common';
 import {usePdkApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
+import {useQueryClient} from '@tanstack/vue-query';
 
 export const useCreateWebhooksMutation = () => {
-  return usePdkMutation(EndpointName.CREATE_WEBHOOKS, () => {
-    const pdk = usePdkApi();
-    // todo
-    return pdk.createWebhooks();
+  const queryClient = useQueryClient();
+
+  return usePdkMutation(EndpointName.CREATE_WEBHOOKS, (input) => usePdkApi().createWebhooks({parameters: input}), {
+    ...queryClient.defaultMutationOptions(),
+    onSuccess: (data) => {
+      queryClient.setQueryData([EndpointName.FETCH_WEBHOOKS], data);
+    },
   });
 };
