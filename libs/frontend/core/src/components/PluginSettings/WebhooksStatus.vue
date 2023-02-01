@@ -1,39 +1,52 @@
 <template>
-  <div>
-    <PdkHeading level="3">{{ translate('notification_webhooks_connected') }}</PdkHeading>
+  <PdkButton
+    variant="primary"
+    @click="open = true">
+    {{ translate('button_webhooks_edit') }}
+  </PdkButton>
 
-    <ActionButton
-      v-for="action in webhookActions"
-      :key="action.id"
-      :action="action" />
+  <div v-if="open">
+    <KeepAlive>
+      <PdkHeading level="3">{{ translate('notification_webhooks_connected') }}</PdkHeading>
 
-    <ul>
-      <li v-for="webhook in webhooksQuery.data">{{ webhook }}</li>
-    </ul>
+      <ActionButton
+        v-for="action in webhookActions"
+        :key="action.id"
+        :action="action" />
+
+      <ul>
+        <li
+          v-for="webhook in webhooksQuery.data"
+          :key="webhook.hook">
+          {{ webhook }}
+        </li>
+      </ul>
+    </KeepAlive>
   </div>
 </template>
 
 <script lang="ts">
-import {computed, defineComponent} from 'vue';
+import {computed, defineComponent, ref} from 'vue';
+import {useLanguage, useStoreQuery} from '../../composables';
 import {webhooksCreateAllAction, webhooksDeleteAction, webhooksFetchAction} from '../../actions';
 import ActionButton from '../common/ActionButton.vue';
 import {EndpointName} from '@myparcel-pdk/common';
 import {ResolvedAction} from '../../types';
 import {createAction} from '../../services';
-import {useLanguage} from '../../composables';
-import {useQueryStore} from '../../stores';
 
 export default defineComponent({
   name: 'WebhooksStatus',
   components: {ActionButton},
 
   setup: () => {
-    const queryStore = useQueryStore();
     const {translate} = useLanguage();
 
-    const webhooksQuery = queryStore.get(EndpointName.FETCH_WEBHOOKS);
+    const open = ref(false);
+
+    const webhooksQuery = useStoreQuery(EndpointName.FETCH_WEBHOOKS);
 
     return {
+      open,
       translate,
       webhooksQuery,
       webhookActions: computed(() => {

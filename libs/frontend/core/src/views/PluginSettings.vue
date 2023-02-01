@@ -1,6 +1,6 @@
 <template>
   <PdkPluginSettingsWrapper v-test>
-    <AccountConnectForm />
+    <AccountSettings />
 
     <PluginSettingsForms />
   </PdkPluginSettingsWrapper>
@@ -18,7 +18,7 @@ import {
   useUpdateAccountMutation,
   useUpdatePluginSettingsMutation,
 } from '../actions';
-import AccountConnectForm from '../components/PluginSettings/AccountConnectForm.vue';
+import AccountSettings from '../components/PluginSettings/AccountSettings.vue'; // eslint-disable-next-line @typescript-eslint/naming-convention
 import {EndpointName} from '@myparcel-pdk/common';
 import {defineAsyncComponent} from 'vue';
 import {useQueryStore} from '../stores';

@@ -24,6 +24,7 @@ export type PdkModalContext<T extends ModalKey = ModalKey> = T extends ModalKey.
 
 export enum ContextKey {
   GLOBAL = 'global',
+  DYNAMIC = 'dynamic',
   ORDER_DATA = 'orderData',
   PLUGIN_SETTINGS_VIEW = 'pluginSettingsView',
   PRODUCT_SETTINGS_VIEW = 'productSettingsView',

@@ -22,10 +22,10 @@
 /**
  * This is the main entry point for the order list column.
  */
+import {usePluginSettings, useStoreQuery} from '../composables';
 import {EndpointName} from '@myparcel-pdk/common';
 import NotificationContainer from '../components/common/NotificationContainer.vue';
 import {defineAsyncComponent} from 'vue';
-import {usePluginSettings} from '../composables';
 import {useQueryStore} from '../stores';
 
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -40,5 +40,5 @@ queryStore.registerOrderQueries();
 const pluginSettings = usePluginSettings();
 const {orderMode} = pluginSettings.general;
 
-const query = queryStore.get(EndpointName.FETCH_ORDERS);
+const query = useStoreQuery(EndpointName.FETCH_ORDERS);
 </script>

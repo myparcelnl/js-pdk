@@ -10,10 +10,10 @@
 /**
  * The "MyParcel" card in the single order views.
  */
+import {usePluginSettings, useStoreQuery} from '../composables';
 import ConceptCard from '../components/OrderCard/ConceptCard.vue';
 import {EndpointName} from '@myparcel-pdk/common';
 import {defineAsyncComponent} from 'vue';
-import {usePluginSettings} from '../composables';
 import {useQueryStore} from '../stores';
 
 const pluginSettings = usePluginSettings();
@@ -24,6 +24,6 @@ const OrderShipmentsCard = defineAsyncComponent(() => import('../components/Orde
 
 queryStore.registerOrderQueries();
 
-const query = queryStore.get(EndpointName.FETCH_ORDERS);
+const query = useStoreQuery(EndpointName.FETCH_ORDERS);
 const {orderMode} = pluginSettings.general;
 </script>

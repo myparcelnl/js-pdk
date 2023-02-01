@@ -1,12 +1,11 @@
 import {QueryExecutor} from './types';
 import {UseQueryReturnType} from '@tanstack/vue-query';
 import {isOfType} from '@myparcel/ts-utils';
-import {useQueryStore} from '../../stores';
+import {useStoreQuery} from '../../composables';
 
 export const createQueryFetcher: QueryExecutor = (endpoint) => {
   return async () => {
-    const queryStore = useQueryStore();
-    const query = queryStore.get(endpoint);
+    const query = useStoreQuery(endpoint);
 
     if (!query || !isOfType<UseQueryReturnType<unknown, unknown>>(query, 'refetch')) {
       throw new Error(`Query ${endpoint} not found`);

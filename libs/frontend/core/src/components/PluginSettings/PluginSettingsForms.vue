@@ -1,7 +1,7 @@
 <template>
-  <TabNavigation
-    v-if="contextQuery.data?.account"
-    :tabs="tabs" />
+  <div v-if="hasAccount">
+    <TabNavigation :tabs="tabs" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -9,7 +9,8 @@ import {computed, defineComponent} from 'vue';
 import {EndpointName} from '@myparcel-pdk/common';
 import TabNavigation from '../common/TabNavigation.vue';
 import {createPluginSettingsTabs} from '../../forms';
-import {useQueryStore} from '../../stores';
+import {get} from '@vueuse/core';
+import {useStoreQuery} from '../../composables';
 
 export default defineComponent({
   name: 'PluginSettingsForms',
@@ -18,14 +19,16 @@ export default defineComponent({
   },
 
   setup: () => {
-    const queryStore = useQueryStore();
-    const contextQuery = queryStore.get(EndpointName.FETCH_CONTEXT);
+    const contextQuery = useStoreQuery(EndpointName.FETCH_CONTEXT);
+
+    const hasAccount = computed(() => get(contextQuery.data)?.account);
 
     return {
       contextQuery,
+      hasAccount,
 
       tabs: computed(() => {
-        if (!contextQuery.data) {
+        if (!hasAccount.value) {
           return [];
         }
 

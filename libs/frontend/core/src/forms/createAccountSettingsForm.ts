@@ -2,17 +2,15 @@
 import {ActionContext, executeAction, updateAccountAction} from '../actions';
 import {defineField, defineForm} from '@myparcel/vue-form-builder';
 import {ref, resolveComponent} from 'vue';
+import {usePluginSettings, useStoreQuery} from '../composables';
 import {EndpointName} from '@myparcel-pdk/common';
 import {FrontendAction} from '../types';
 import {SubmitButton} from '../components';
 import {createActionContext} from '../services';
 import {defineFormField} from './createShipmentOptionsForm';
-import {usePluginSettings} from '../composables';
-import {useQueryStore} from '../stores';
 
 export const createAccountSettingsForm = (callback?: () => void) => {
-  const queryStore = useQueryStore();
-  const updateAccountMutation = queryStore.get(EndpointName.UPDATE_ACCOUNT);
+  const updateAccountMutation = useStoreQuery(EndpointName.UPDATE_ACCOUNT);
   const actionContext = createActionContext(updateAccountAction);
 
   const pluginSettings = usePluginSettings();

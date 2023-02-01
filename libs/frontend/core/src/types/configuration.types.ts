@@ -51,7 +51,10 @@ export type PdkConfiguration = {
    * Css classes for common utility usage.
    */
   cssUtilities?: {
+    animationSpin?: string;
     textCenter?: string;
+    textColorError?: string;
+    textColorSuccess?: string;
     whitespaceNoWrap?: string;
   };
 

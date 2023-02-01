@@ -73,3 +73,10 @@ export enum PdkButtonSize {
   MEDIUM = 'md',
   LARGE = 'lg',
 }
+
+export enum PdkStatus {
+  ERROR = 'error',
+  PENDING = 'pending',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+}

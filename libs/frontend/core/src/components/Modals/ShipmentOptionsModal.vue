@@ -11,11 +11,10 @@
 <script lang="ts">
 import {defineAsyncComponent, defineComponent} from 'vue';
 import {modalCancelAction, orderExportAction, orderExportToShipmentsAction} from '../../actions';
+import {usePluginSettings, useStoreQuery} from '../../composables';
 import {EndpointName} from '@myparcel-pdk/common';
 import {ModalKey} from '../../types';
 import {createActions} from '../../services';
-import {usePluginSettings} from '../../composables';
-import {useQueryStore} from '../../stores';
 
 /**
  * Shipment options modal. Opened by clicking the "Create" button in the "Labels" column in the orders list.
@@ -30,8 +29,7 @@ export default defineComponent({
     const pluginSettings = usePluginSettings();
     const {orderMode} = pluginSettings.general;
 
-    const queryStore = useQueryStore();
-    const exportOrdersQuery = queryStore.get(EndpointName.EXPORT_ORDERS);
+    const exportOrdersQuery = useStoreQuery(EndpointName.EXPORT_ORDERS);
 
     return {
       modalKey: ModalKey.SHIPMENT_OPTIONS,

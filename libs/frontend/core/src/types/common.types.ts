@@ -10,12 +10,6 @@ export interface PdkNotification {
   timeout?: boolean | number;
 }
 
-export interface ResolvedPdkNotification extends PdkNotification {
-  id: number;
-  timeout: number;
-  title: string;
-}
-
 export enum NotificationCategory {
   API = 'api',
   GENERAL = 'general',
@@ -24,18 +18,17 @@ export enum NotificationCategory {
 
 export enum PdkIcon {
   ADD = 'add',
-  ARROW_DOWN = 'arrow-down',
-  ARROW_LEFT = 'arrow-left',
-  ARROW_RIGHT = 'arrow-right',
-  ARROW_UP = 'arrow-up',
   CLOSE = 'close',
   DELETE = 'delete',
   DOWNLOAD = 'download',
   EDIT = 'edit',
   EXPORT = 'export',
   EXTERNAL = 'external',
+  NO = 'no',
   PRINT = 'print',
   REFRESH = 'refresh',
   RETURN = 'return',
   SAVE = 'save',
+  SPINNER = 'spinner',
+  YES = 'yes',
 }

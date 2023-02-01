@@ -1,9 +1,9 @@
-import {FrontendAction, PdkIcon} from '../../types';
 import {ActionContext, createMutator, createQueryFetcher, executeAction} from '../executors';
+import {FrontendAction, PdkIcon} from '../../types';
 import {EndpointName} from '@myparcel-pdk/common';
 import {defineAction} from '../defineAction';
-import {useQueryStore} from '../../stores';
 import {get} from '@vueuse/core';
+import {useStoreQuery} from '../../composables';
 
 export const webhooksFetchAction = defineAction({
   name: FrontendAction.WEBHOOKS_FETCH,
@@ -23,8 +23,7 @@ export const webhooksCreateAllAction = defineAction({
   icon: PdkIcon.ADD,
   label: 'action_create',
   async handler(context: ActionContext<undefined>) {
-    const queryStore = useQueryStore();
-    const webhookQuery = queryStore.get(EndpointName.FETCH_WEBHOOKS);
+    const webhookQuery = useStoreQuery(EndpointName.FETCH_WEBHOOKS);
 
     await Promise.all(
       (get(webhookQuery.data) ?? []).map(({hook}) => {
