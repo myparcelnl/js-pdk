@@ -9,41 +9,33 @@
     "libsDir": "libs"
   },
   "npmScope": "myparcel-pdk",
-  "namedInputs": {
-    "default": ["!{projectRoot}/lib", "{projectRoot}/**/*"],
-    "production": [
-      "default",
-      "!{projectRoot}/**/*.spec.*",
-      "!{projectRoot}/**/*.test.*",
-      "!{projectRoot}/**/__tests__"
-    ]
-  },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production"],
-      "outputs": ["{projectRoot}/lib", "{projectRoot}/dist"]
+      "outputs": [
+        "{projectRoot}/lib",
+        "{projectRoot}/dist",
+        "tsconfig.build.tsbuildinfo"
+      ]
     },
     "build:dev": {
       "dependsOn": ["^build:dev"],
-      "inputs": ["production"],
-      "outputs": ["{projectRoot}/lib", "{projectRoot}/dist"]
+      "outputs": [
+        "{projectRoot}/lib",
+        "{projectRoot}/dist",
+        "tsconfig.build.tsbuildinfo"
+      ]
     },
     "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.cjs"],
       "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
     },
     "serve": {
       "dependsOn": ["build:dev"],
       "outputs": ["{projectRoot}/lib", "{projectRoot}/dist"]
     },
-    "test:run": {
-      "inputs": ["default"],
-      "outputs": ["{projectRoot}/coverage"]
-    },
+    "test:run": {"outputs": ["{projectRoot}/coverage"]},
     "watch": {
       "dependsOn": ["^build:dev"],
-      "inputs": ["production"],
       "outputs": ["{projectRoot}/lib", "{projectRoot}/dist"]
     }
   },

@@ -53,13 +53,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/android-arm64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/android-arm64@npm:0.17.5"
-  conditions: os=android & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@esbuild/android-arm@npm:0.15.18":
   version: 0.15.18
   resolution: "@esbuild/android-arm@npm:0.15.18"
@@ -74,23 +67,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/android-arm@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/android-arm@npm:0.17.5"
-  conditions: os=android & cpu=arm
-  languageName: node
-  linkType: hard
-
 "@esbuild/android-x64@npm:0.16.17":
   version: 0.16.17
   resolution: "@esbuild/android-x64@npm:0.16.17"
-  conditions: os=android & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@esbuild/android-x64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/android-x64@npm:0.17.5"
   conditions: os=android & cpu=x64
   languageName: node
   linkType: hard
@@ -102,23 +81,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/darwin-arm64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/darwin-arm64@npm:0.17.5"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@esbuild/darwin-x64@npm:0.16.17":
   version: 0.16.17
   resolution: "@esbuild/darwin-x64@npm:0.16.17"
-  conditions: os=darwin & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@esbuild/darwin-x64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/darwin-x64@npm:0.17.5"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
@@ -130,23 +95,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/freebsd-arm64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/freebsd-arm64@npm:0.17.5"
-  conditions: os=freebsd & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@esbuild/freebsd-x64@npm:0.16.17":
   version: 0.16.17
   resolution: "@esbuild/freebsd-x64@npm:0.16.17"
-  conditions: os=freebsd & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@esbuild/freebsd-x64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/freebsd-x64@npm:0.17.5"
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
@@ -158,13 +109,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-arm64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/linux-arm64@npm:0.17.5"
-  conditions: os=linux & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-arm@npm:0.16.17":
   version: 0.16.17
   resolution: "@esbuild/linux-arm@npm:0.16.17"
@@ -172,23 +116,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-arm@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/linux-arm@npm:0.17.5"
-  conditions: os=linux & cpu=arm
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-ia32@npm:0.16.17":
   version: 0.16.17
   resolution: "@esbuild/linux-ia32@npm:0.16.17"
-  conditions: os=linux & cpu=ia32
-  languageName: node
-  linkType: hard
-
-"@esbuild/linux-ia32@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/linux-ia32@npm:0.17.5"
   conditions: os=linux & cpu=ia32
   languageName: node
   linkType: hard
@@ -207,23 +137,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-loong64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/linux-loong64@npm:0.17.5"
-  conditions: os=linux & cpu=loong64
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-mips64el@npm:0.16.17":
   version: 0.16.17
   resolution: "@esbuild/linux-mips64el@npm:0.16.17"
-  conditions: os=linux & cpu=mips64el
-  languageName: node
-  linkType: hard
-
-"@esbuild/linux-mips64el@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/linux-mips64el@npm:0.17.5"
   conditions: os=linux & cpu=mips64el
   languageName: node
   linkType: hard
@@ -235,23 +151,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-ppc64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/linux-ppc64@npm:0.17.5"
-  conditions: os=linux & cpu=ppc64
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-riscv64@npm:0.16.17":
   version: 0.16.17
   resolution: "@esbuild/linux-riscv64@npm:0.16.17"
-  conditions: os=linux & cpu=riscv64
-  languageName: node
-  linkType: hard
-
-"@esbuild/linux-riscv64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/linux-riscv64@npm:0.17.5"
   conditions: os=linux & cpu=riscv64
   languageName: node
   linkType: hard
@@ -263,23 +165,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-s390x@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/linux-s390x@npm:0.17.5"
-  conditions: os=linux & cpu=s390x
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-x64@npm:0.16.17":
   version: 0.16.17
   resolution: "@esbuild/linux-x64@npm:0.16.17"
-  conditions: os=linux & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@esbuild/linux-x64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/linux-x64@npm:0.17.5"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
@@ -291,23 +179,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/netbsd-x64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/netbsd-x64@npm:0.17.5"
-  conditions: os=netbsd & cpu=x64
-  languageName: node
-  linkType: hard
-
 "@esbuild/openbsd-x64@npm:0.16.17":
   version: 0.16.17
   resolution: "@esbuild/openbsd-x64@npm:0.16.17"
-  conditions: os=openbsd & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@esbuild/openbsd-x64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/openbsd-x64@npm:0.17.5"
   conditions: os=openbsd & cpu=x64
   languageName: node
   linkType: hard
@@ -319,23 +193,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/sunos-x64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/sunos-x64@npm:0.17.5"
-  conditions: os=sunos & cpu=x64
-  languageName: node
-  linkType: hard
-
 "@esbuild/win32-arm64@npm:0.16.17":
   version: 0.16.17
   resolution: "@esbuild/win32-arm64@npm:0.16.17"
-  conditions: os=win32 & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@esbuild/win32-arm64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/win32-arm64@npm:0.17.5"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
@@ -347,23 +207,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/win32-ia32@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/win32-ia32@npm:0.17.5"
-  conditions: os=win32 & cpu=ia32
-  languageName: node
-  linkType: hard
-
 "@esbuild/win32-x64@npm:0.16.17":
   version: 0.16.17
   resolution: "@esbuild/win32-x64@npm:0.16.17"
-  conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@esbuild/win32-x64@npm:0.17.5":
-  version: 0.17.5
-  resolution: "@esbuild/win32-x64@npm:0.17.5"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -645,17 +491,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel-pdk/build-esbuild@workspace:libs/build/esbuild":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/build-esbuild@workspace:libs/build/esbuild"
-  dependencies:
-    esbuild: ^0.17.5
-  bin:
-    build-esbuild: bin/build-esbuild.js
-  languageName: unknown
-  linkType: soft
-
-"@myparcel-pdk/build-tsup@workspace:^, @myparcel-pdk/build-tsup@workspace:libs/build/tsup":
+"@myparcel-pdk/build-tsup@workspace:*, @myparcel-pdk/build-tsup@workspace:^, @myparcel-pdk/build-tsup@workspace:libs/build/tsup":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/build-tsup@workspace:libs/build/tsup"
   dependencies:
@@ -714,12 +550,35 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@myparcel-pdk/frontend-actions@workspace:*, @myparcel-pdk/frontend-actions@workspace:libs/frontend/actions":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/frontend-actions@workspace:libs/frontend/actions"
+  dependencies:
+    "@myparcel-pdk/build-tsup": "workspace:*"
+    "@myparcel-pdk/frontend-common": "workspace:*"
+    tsup: ^6.5.0
+  languageName: unknown
+  linkType: soft
+
+"@myparcel-pdk/frontend-common@workspace:*, @myparcel-pdk/frontend-common@workspace:libs/frontend/common":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/frontend-common@workspace:libs/frontend/common"
+  dependencies:
+    "@myparcel-pdk/build-tsup": "workspace:^"
+    "@myparcel/ts-utils": ^1.4.0
+    "@myparcel/vue-form-builder": ^1.0.0-alpha.32
+    tsup: ^6.5.0
+  languageName: unknown
+  linkType: soft
+
 "@myparcel-pdk/frontend-core@workspace:*, @myparcel-pdk/frontend-core@workspace:^, @myparcel-pdk/frontend-core@workspace:libs/frontend/core":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/frontend-core@workspace:libs/frontend/core"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:^"
-    "@myparcel-pdk/common": "workspace:^"
+    "@myparcel-pdk/frontend-actions": "workspace:*"
+    "@myparcel-pdk/frontend-common": "workspace:*"
+    "@myparcel-pdk/frontend-stores": "workspace:*"
     "@myparcel/sdk": ^2.10.1
     "@myparcel/ts-utils": ^1.4.0
     "@myparcel/vue-form-builder": ^1.0.0-alpha.1
@@ -736,6 +595,17 @@ __metadata:
     vite: ^4.0.4
     vitest: ^0.28.3
     vue: ^3.2.45
+  languageName: unknown
+  linkType: soft
+
+"@myparcel-pdk/frontend-stores@workspace:*, @myparcel-pdk/frontend-stores@workspace:libs/frontend/stores":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/frontend-stores@workspace:libs/frontend/stores"
+  dependencies:
+    "@myparcel-pdk/build-tsup": "workspace:*"
+    "@myparcel-pdk/frontend-actions": "workspace:*"
+    "@myparcel-pdk/frontend-common": "workspace:*"
+    tsup: ^6.5.0
   languageName: unknown
   linkType: soft
 
@@ -768,6 +638,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@myparcel-vfb/build-vite@npm:^1.0.0-alpha.13":
+  version: 1.0.0-alpha.13
+  resolution: "@myparcel-vfb/build-vite@npm:1.0.0-alpha.13"
+  checksum: 2f544de1fcbfa5701aa13633e69bee54033729c0b7ed3fb9639ba547681024b875232c64646fb4627fc45ad1c0d74e34abc99bbd5f62c79a75f57307d2abfaa2
+  languageName: node
+  linkType: hard
+
+"@myparcel-vfb/core@npm:^1.0.0-alpha.10":
+  version: 1.0.0-alpha.10
+  resolution: "@myparcel-vfb/core@npm:1.0.0-alpha.10"
+  dependencies:
+    "@myparcel-vfb/build-vite": ^1.0.0-alpha.13
+    "@myparcel-vfb/hook-manager": ^1.0.0-alpha.14
+    "@myparcel-vfb/utils": ^1.0.0-alpha.13
+    "@myparcel/ts-utils": ^1.4.0
+  checksum: 113bae3997d03c00af075e66098901811f74253531e8dc433380a91344e7b9d04ea2ab2f18d3d24d950bfc3b676a8a7bd4d5c59f7bebb78eefe48c3e38116964
+  languageName: node
+  linkType: hard
+
 "@myparcel-vfb/core@npm:^1.0.0-alpha.9":
   version: 1.0.0-alpha.9
   resolution: "@myparcel-vfb/core@npm:1.0.0-alpha.9"
@@ -789,6 +678,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@myparcel-vfb/hook-manager@npm:^1.0.0-alpha.14":
+  version: 1.0.0-alpha.14
+  resolution: "@myparcel-vfb/hook-manager@npm:1.0.0-alpha.14"
+  dependencies:
+    "@myparcel/ts-utils": ^1.4.0
+  checksum: f6966b9644dd806bef7de4546197adf7364b4e9e5f8a8799ad7a75e41542447e3a97dce69caa2614832d22e4b019c79d7ed93fb48ce6f135b7497ca6ecbf282d
+  languageName: node
+  linkType: hard
+
+"@myparcel-vfb/plugin@npm:^1.0.0-alpha.10":
+  version: 1.0.0-alpha.10
+  resolution: "@myparcel-vfb/plugin@npm:1.0.0-alpha.10"
+  dependencies:
+    "@myparcel-vfb/core": ^1.0.0-alpha.10
+    "@myparcel/ts-utils": ^1.4.0
+    "@vue/devtools-api": ^6.5.0
+  checksum: f2b1ec910d150160809f379a563d54b484180836d24b69553fb48ffbe160a6e47ec8c726ca9914a895bea835f032a7d7c4fe54b1351459e9776fddbb42de7e0c
+  languageName: node
+  linkType: hard
+
 "@myparcel-vfb/plugin@npm:^1.0.0-alpha.9":
   version: 1.0.0-alpha.9
   resolution: "@myparcel-vfb/plugin@npm:1.0.0-alpha.9"
@@ -806,6 +715,15 @@ __metadata:
   dependencies:
     "@myparcel/ts-utils": ^1.3.1
   checksum: ed1fb1ce85a81fce5c7fecf7ea2282d3ff7b80d2cd8583d467beb1c8f7381592e43b35fe1100b414a55279c03dc88ba061099b9b09db3961693c57e20c578498
+  languageName: node
+  linkType: hard
+
+"@myparcel-vfb/utils@npm:^1.0.0-alpha.13":
+  version: 1.0.0-alpha.13
+  resolution: "@myparcel-vfb/utils@npm:1.0.0-alpha.13"
+  dependencies:
+    "@myparcel/ts-utils": ^1.4.0
+  checksum: 6a26ed3b145e8e8b4017ab363e98022f5eea7f8a29b7c7ccb15b21d768a334c72318385bc529d4296d7241a7aedd21d2cd0a830c62cc77bf5c4343b45a8833dc
   languageName: node
   linkType: hard
 
@@ -909,6 +827,19 @@ __metadata:
     "@myparcel-vfb/utils": ^1.0.0-alpha.12
     "@myparcel/ts-utils": ^1.3.1
   checksum: aa0c26884e67ec4f6c25dee5dabf54a79fc2c837ef1c5765c344d48608e89a80fed326b7e02839c8a8d6bacbfaf5fe9e166709fd526169f127fa9161a6be927d
+  languageName: node
+  linkType: hard
+
+"@myparcel/vue-form-builder@npm:^1.0.0-alpha.32":
+  version: 1.0.0-alpha.32
+  resolution: "@myparcel/vue-form-builder@npm:1.0.0-alpha.32"
+  dependencies:
+    "@myparcel-vfb/core": ^1.0.0-alpha.10
+    "@myparcel-vfb/hook-manager": ^1.0.0-alpha.14
+    "@myparcel-vfb/plugin": ^1.0.0-alpha.10
+    "@myparcel-vfb/utils": ^1.0.0-alpha.13
+    "@myparcel/ts-utils": ^1.4.0
+  checksum: 7d7cf7dd0787e6016b9db2e8ac7ad03bdcf3155df45f8fd43062fdd9a53ddd47d5c839b16f9df20bf1065576875b85496be6ac7ac8ae985e8ef4eccd2c90b794
   languageName: node
   linkType: hard
 
@@ -2848,83 +2779,6 @@ __metadata:
   bin:
     esbuild: bin/esbuild
   checksum: 4c2cc609ecfb426554bc3f75beb92d89eb2d0c515cfceebaa36c7599d7dcaab7056b70f6d6b51e72b45951ddf9021ee28e356cf205f8e42cc055d522312ea30c
-  languageName: node
-  linkType: hard
-
-"esbuild@npm:^0.17.5":
-  version: 0.17.5
-  resolution: "esbuild@npm:0.17.5"
-  dependencies:
-    "@esbuild/android-arm": 0.17.5
-    "@esbuild/android-arm64": 0.17.5
-    "@esbuild/android-x64": 0.17.5
-    "@esbuild/darwin-arm64": 0.17.5
-    "@esbuild/darwin-x64": 0.17.5
-    "@esbuild/freebsd-arm64": 0.17.5
-    "@esbuild/freebsd-x64": 0.17.5
-    "@esbuild/linux-arm": 0.17.5
-    "@esbuild/linux-arm64": 0.17.5
-    "@esbuild/linux-ia32": 0.17.5
-    "@esbuild/linux-loong64": 0.17.5
-    "@esbuild/linux-mips64el": 0.17.5
-    "@esbuild/linux-ppc64": 0.17.5
-    "@esbuild/linux-riscv64": 0.17.5
-    "@esbuild/linux-s390x": 0.17.5
-    "@esbuild/linux-x64": 0.17.5
-    "@esbuild/netbsd-x64": 0.17.5
-    "@esbuild/openbsd-x64": 0.17.5
-    "@esbuild/sunos-x64": 0.17.5
-    "@esbuild/win32-arm64": 0.17.5
-    "@esbuild/win32-ia32": 0.17.5
-    "@esbuild/win32-x64": 0.17.5
-  dependenciesMeta:
-    "@esbuild/android-arm":
-      optional: true
-    "@esbuild/android-arm64":
-      optional: true
-    "@esbuild/android-x64":
-      optional: true
-    "@esbuild/darwin-arm64":
-      optional: true
-    "@esbuild/darwin-x64":
-      optional: true
-    "@esbuild/freebsd-arm64":
-      optional: true
-    "@esbuild/freebsd-x64":
-      optional: true
-    "@esbuild/linux-arm":
-      optional: true
-    "@esbuild/linux-arm64":
-      optional: true
-    "@esbuild/linux-ia32":
-      optional: true
-    "@esbuild/linux-loong64":
-      optional: true
-    "@esbuild/linux-mips64el":
-      optional: true
-    "@esbuild/linux-ppc64":
-      optional: true
-    "@esbuild/linux-riscv64":
-      optional: true
-    "@esbuild/linux-s390x":
-      optional: true
-    "@esbuild/linux-x64":
-      optional: true
-    "@esbuild/netbsd-x64":
-      optional: true
-    "@esbuild/openbsd-x64":
-      optional: true
-    "@esbuild/sunos-x64":
-      optional: true
-    "@esbuild/win32-arm64":
-      optional: true
-    "@esbuild/win32-ia32":
-      optional: true
-    "@esbuild/win32-x64":
-      optional: true
-  bin:
-    esbuild: bin/esbuild
-  checksum: 31829b46a0cad65f58d90d39b66fd32a2de820539dd8530199975e417aa0ecd63cfc340e402f4f4e9235906a1a05969ddac1d4ad1ba611a3f11c0f62516b9390
   languageName: node
   linkType: hard
 

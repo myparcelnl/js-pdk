@@ -3,11 +3,10 @@ import {UserConfigFn} from 'vitest/config';
 import bannerPlugin from 'vite-plugin-banner';
 import customTsConfigPlugin from 'vite-plugin-custom-tsconfig';
 import dts from 'vite-plugin-dts';
-import {visualizer} from 'rollup-plugin-visualizer';
 
 export const commonViteConfig: UserConfigFn = (env) => ({
   plugins: [
-    dts({entryRoot: 'src', copyDtsFiles: true}),
+    env.mode === 'production' && dts(),
     bannerPlugin({
       content: createBanner(),
     }),
@@ -19,7 +18,6 @@ export const commonViteConfig: UserConfigFn = (env) => ({
     minify: env.mode === 'production',
     sourcemap: env.mode !== 'production',
     rollupOptions: {
-      plugins: [visualizer({filename: 'lib/index.html'})],
       external: externalDependencies,
       output: {
         preserveModules: true,

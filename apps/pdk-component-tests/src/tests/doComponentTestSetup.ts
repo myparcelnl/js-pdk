@@ -6,7 +6,6 @@ import {
 } from '@myparcel-pdk/common';
 import {
   LogLevel,
-  PdkAppConfig,
   PdkContextObject,
   createContextPlugin,
   createLogger,
