@@ -12,6 +12,7 @@ runs:
       shell: bash
       run: |
         nx run-many \
+          --runner=cloud \
           --parallel \
           --target=build \
           --output-style=static

@@ -2,7 +2,7 @@ name: 'Deploy demo to GitHub Pages'
 
 on:
   repository_dispatch:
-    types: [ deploy-demo ]
+    types: [deploy-demo]
 
   workflow_dispatch:
 

@@ -1,6 +1,6 @@
-import {createBanner, externalDependencies} from '@myparcel-pdk/build-tsup';
 import {UserConfigFn} from 'vitest/config';
 import bannerPlugin from 'vite-plugin-banner';
+import {createBanner} from '@myparcel-pdk/build-tsup';
 import customTsConfigPlugin from 'vite-plugin-custom-tsconfig';
 import dts from 'vite-plugin-dts';
 
@@ -18,7 +18,7 @@ export const commonViteConfig: UserConfigFn = (env) => ({
     minify: env.mode === 'production',
     sourcemap: env.mode !== 'production',
     rollupOptions: {
-      external: externalDependencies,
+      external: [/node_modules/],
       output: {
         preserveModules: true,
         globals: {

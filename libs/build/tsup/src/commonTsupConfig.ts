@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import {Options} from 'tsup';
 import {createBanner} from './createBanner';
-import {externalDependencies} from './externalDependencies';
 import glob from 'fast-glob';
 import {spawnSync} from 'child_process';
 
@@ -15,7 +14,6 @@ export const commonTsupConfig: Options = {
     css: banner,
   },
   entry: files,
-  external: externalDependencies,
   format: ['esm'],
   outDir: 'lib',
   target: 'esnext',

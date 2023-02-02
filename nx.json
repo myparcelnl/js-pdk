@@ -33,7 +33,9 @@
       "dependsOn": ["build:dev"],
       "outputs": ["{projectRoot}/lib", "{projectRoot}/dist"]
     },
-    "test:run": {"outputs": ["{projectRoot}/coverage"]},
+    "test:run": {
+      "outputs": ["{projectRoot}/coverage"]
+    },
     "watch": {
       "dependsOn": ["^build:dev"],
       "outputs": ["{projectRoot}/lib", "{projectRoot}/dist"]
@@ -45,6 +47,14 @@
       "options": {
         "parallel": 10,
         "cacheableOperations": ["build", "build:dev", "lint", "test:run"]
+      }
+    },
+    "cloud": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "parallel": 10,
+        "cacheableOperations": ["build"],
+        "accessToken": "ZDk5NTE5ZWItMmYxYy00ZjNmLThjMzItMmM0MjIwZTU1M2Y3fHJlYWQtd3JpdGU="
       }
     }
   }

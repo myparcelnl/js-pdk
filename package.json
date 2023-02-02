@@ -9,12 +9,13 @@
     "libs/**"
   ],
   "scripts": {
-    "build": "nx run-many --target=build",
-    "build:dev": "nx run-many --target=build:dev",
+    "build": "nx run-many --runner=cloud --target=build",
+    "build:dev": "run build:dev:base --runner=cloud",
+    "build:dev:base": "nx run-many --target=build:dev",
     "clean": "nx run-many --target=clean",
     "lint": "nx affected --target=lint",
     "prepare": "is-ci || husky install",
-    "serve": "yarn build:dev && npx concurrently yarn:watch yarn:serve:demo",
+    "serve": "run build:dev:base --output-style=stream npx concurrently yarn:watch yarn:serve:demo",
     "serve:demo": "nx serve demo",
     "test": "nx affected --target=test --output-style=stream",
     "test:run": "nx affected --target=test:run --output-style=stream",
@@ -36,13 +37,13 @@
     "ws:vite:watch": "cd $0 && vite build --mode development --watch"
   },
   "lint-staged": {
-    "*.{json,md}": "prettier --write",
+    "*.{json,md,yml}": "prettier --write",
     "*.{ts,vue}": "eslint --fix --cache",
     "package.json": "npx sort-package-json"
   },
   "nodemonConfig": {
-    "exec": "yarn build:dev --output-style=stream",
-    "ext": "ts,vue,tsx",
+    "exec": "yarn build:dev:base --output-style=stream",
+    "ext": "ts,vue",
     "ignore": [
       "**/lib/**"
     ],
@@ -59,6 +60,7 @@
     "@myparcel-eslint/eslint-config-prettier-typescript": "^1.2.0",
     "@myparcel-eslint/eslint-config-prettier-typescript-vue": "^1.2.0",
     "@myparcel/prettier-config": "^1.1.0",
+    "@nrwl/nx-cloud": "latest",
     "eslint": "^8.33.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-sort-exports": "^0.8.0",
