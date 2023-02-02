@@ -43,7 +43,7 @@ export const createRegisterComponentsPlugin: PdkAppPlugin = ({config, logger}) =
       Object.entries(requiredComponents).forEach(([componentName, component]) => {
         if (!component) {
           logger.error(
-            `Missing component: "${componentName}". You must provide your own, or use the default(s) from @myparcel/pdk-components.`,
+            `Missing component: "${componentName}". You must provide your own, or use the default(s) from @myparcel-pdk/admin-components.`,
           );
           return;
         }
@@ -72,7 +72,7 @@ export const createRegisterComponentsPlugin: PdkAppPlugin = ({config, logger}) =
         ) as FormConfiguration,
       );
 
-      logger.debug(`Installed components plugin.`);
+      logger.debug('Installed components plugin.');
     },
   };
 };

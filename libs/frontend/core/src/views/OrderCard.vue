@@ -7,9 +7,6 @@
 </template>
 
 <script lang="ts" setup>
-/**
- * The "MyParcel" card in the single order views.
- */
 import {usePluginSettings, useStoreQuery} from '../composables';
 import ConceptCard from '../components/OrderCard/ConceptCard.vue';
 import {EndpointName} from '@myparcel-pdk/common';

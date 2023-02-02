@@ -19,14 +19,17 @@ export enum EndpointName {
    * Get order data from the plugin.
    */
   FETCH_ORDERS = 'fetchOrders',
+
   /**
    * Tells the plugin to update the orders by fetching data from MyParcel.
    */
   UPDATE_ORDERS = 'updateOrders',
+
   /**
    * Export orders to MyParcel as shipments or orders, depending on the plugin settings.
    */
   EXPORT_ORDERS = 'exportOrders',
+
   /**
    * Print all shipments belonging to the given orders.
    */
@@ -36,10 +39,12 @@ export enum EndpointName {
    * Delete given shipments.
    */
   DELETE_SHIPMENTS = 'deleteShipments',
+
   /**
    * Print given shipments.
    */
   PRINT_SHIPMENTS = 'printShipments',
+
   /**
    * Tell the plugin to update given shipments by fetching data from MyParcel.
    */

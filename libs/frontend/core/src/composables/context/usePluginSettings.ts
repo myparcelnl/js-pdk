@@ -5,7 +5,7 @@ export const usePluginSettings = (): Plugin.ModelContextDynamicContext['pluginSe
   const context = useContext();
 
   if (!context.pluginSettings) {
-    throw new Error(`No pluginSettings found`);
+    throw new Error('No pluginSettings found');
   }
 
   return context.pluginSettings;

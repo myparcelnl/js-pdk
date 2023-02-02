@@ -22,7 +22,7 @@
     "typecheck": "nx affected --target=typecheck",
     "watch": "nodemon",
     "ws:clean": "cd $0 && rimraf lib dist",
-    "ws:lint": "cd $0 && eslint --fix --cache .",
+    "ws:lint": "eslint --cache $0",
     "ws:test": "cd $0 && vitest",
     "ws:test:run": "cd $0 && vitest run --coverage",
     "ws:tsup:build": "cd $0 && tsup-node --minify",

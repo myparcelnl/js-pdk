@@ -109,6 +109,6 @@ export const orderViewInBackofficeAction = defineAction({
   icon: PdkIcon.EXTERNAL,
   label: 'order_view_in_backoffice',
   handler() {
-    window.open(`https://backoffice.myparcel.nl/orders`, '_blank');
+    window.open('https://backoffice.myparcel.nl/orders', '_blank');
   },
 });

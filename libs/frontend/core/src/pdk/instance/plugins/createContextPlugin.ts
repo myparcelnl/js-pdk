@@ -4,7 +4,7 @@ import {createInstanceContext} from '../createInstanceContext';
 
 export const createContextPlugin: PdkAppPlugin = ({appName, logger, config, context}) => ({
   install(app) {
-    logger.debug(`Installing context plugin`);
+    logger.debug('Installing context plugin');
 
     app.provide(INJECT_PDK_INSTANCE, {
       appName,

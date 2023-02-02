@@ -14,7 +14,7 @@ let queryClient: QueryClient;
 export const createVueQueryPlugin: PdkAppPlugin = ({context, logger}) => {
   return {
     install: (app) => {
-      logger.debug(`Installing vue-query plugin`);
+      logger.debug('Installing vue-query plugin');
 
       queryClient ??= createQueryClient();
 

@@ -1,0 +1,43 @@
+{
+  "name": "@myparcel-pdk/admin-demo",
+  "version": "1.0.0-alpha.0",
+  "private": true,
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "run translations:import && vite build",
+    "lint": "run ws:lint \"$(pwd)\"",
+    "serve": "vite",
+    "test": "run ws:test \"$(pwd)\"",
+    "test:run": "run ws:test:run \"$(pwd)\"",
+    "translations:import": "npx -q @edielemoine/google-docs-importer --documentId 1TPE7gwG2GXtX7vlKIaskwMy0Xr4o_ir-lsedWB86xyc -o src/translations"
+  },
+  "dependencies": {
+    "@myparcel-pdk/admin": "workspace:^",
+    "@myparcel-pdk/admin-components": "workspace:^",
+    "@myparcel/sdk": "^2.10.1",
+    "@myparcel/ts-utils": "^1.4.0",
+    "@tanstack/vue-query": "^4.24.4",
+    "tailwindcss": "^3.2.4",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitest/coverage-c8": "^0.28.3",
+    "autoprefixer": "^10.4.13",
+    "happy-dom": "^8.2.3",
+    "postcss": "^8.4.21",
+    "rollup-plugin-visualizer": "^5.9.0",
+    "vite": "^4.1.0",
+    "vitest": "^0.28.3"
+  }
+}

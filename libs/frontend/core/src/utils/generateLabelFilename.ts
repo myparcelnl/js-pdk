@@ -1,6 +1,6 @@
 import {isOfType, toArray} from '@myparcel/ts-utils';
-import {EndpointName} from '@myparcel-pdk/common';
 import {ActionInput} from '../types';
+import {EndpointName} from '@myparcel-pdk/common';
 
 export const generateLabelFilename = (
   parameters: ActionInput<EndpointName.PRINT_SHIPMENTS | EndpointName.PRINT_ORDERS>,

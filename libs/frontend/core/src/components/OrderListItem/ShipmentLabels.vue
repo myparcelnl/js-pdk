@@ -1,7 +1,7 @@
 <template>
   <TransitionGroup
-    appear
-    :name="pdkConfig?.transitions?.shipmentCard">
+    :name="pdkConfig?.transitions?.shipmentCard"
+    appear>
     <ShipmentLabel
       v-for="shipment in order.shipments.filter((item) => !item.deleted)"
       :key="`${order?.externalIdentifier}_${shipment.id}`"
@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {useOrderData, usePdkConfig} from '../../composables';
 import {Plugin} from '@myparcel-pdk/common';
 import ShipmentLabel from './ShipmentLabel.vue';
+import {usePdkConfig} from '../../composables';
 
 export default defineComponent({
   name: 'ShipmentLabels',
@@ -26,9 +26,7 @@ export default defineComponent({
     },
   },
 
-  setup: (props) => {
-    const orderData = useOrderData(props.order);
-
+  setup: () => {
     return {
       pdkConfig: usePdkConfig(),
     };

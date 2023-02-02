@@ -7,7 +7,7 @@ let initialized = false;
 export const createStorePlugin: PdkAppPlugin = ({config, logger}) => {
   store ??= createPinia();
 
-  logger.debug(`Preparing store plugin`);
+  logger.debug('Preparing store plugin');
 
   store.use((storeContext) => {
     if (initialized || !config.onCreateStore) {
@@ -15,7 +15,7 @@ export const createStorePlugin: PdkAppPlugin = ({config, logger}) => {
     }
 
     initialized = true;
-    logger.debug(`Calling store renderer hook`);
+    logger.debug('Calling store renderer hook');
     config.onCreateStore(storeContext);
   });
 

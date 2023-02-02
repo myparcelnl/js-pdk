@@ -2,9 +2,7 @@
   <NotificationContainer v-test />
 </template>
 
-<script setup lang="ts">
-/**
- * The notification container. Used to display notifications.
- */
+<!-- The notification container. Used to display notifications. -->
+<script lang="ts" setup>
 import {NotificationContainer} from '../components/common';
 </script>

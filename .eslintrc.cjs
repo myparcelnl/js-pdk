@@ -1,9 +1,9 @@
 module.exports = {
   root: true,
-  extends: ['@myparcel-eslint/eslint-config-esnext', '@myparcel-eslint/eslint-config-prettier'],
   parserOptions: {
     dir: __dirname,
     project: 'tsconfig.json',
+    extraFileExtensions: ['.vue'],
   },
   overrides: [
     {
@@ -18,6 +18,7 @@ module.exports = {
       extends: '@myparcel-eslint/eslint-config-prettier-typescript-vue',
       rules: {
         '@typescript-eslint/no-misused-promises': 'off',
+        'vue/html-self-closing': 'off',
         'vue/no-bare-strings-in-template': 'off',
         'vue/no-undef-components': [
           'error',
@@ -38,7 +39,7 @@ module.exports = {
     },
     {
       files: ['./**/*.js', './**/*.cjs', './**/*.mjs'],
-      extends: '@myparcel-eslint/eslint-config-node',
+      extends: ['@myparcel-eslint/eslint-config-node', '@myparcel-eslint/eslint-config-prettier'],
     },
     {
       files: ['./**/*.spec.*', './**/*.test.*', './**/__tests__/**', './**/*Test.*'],
