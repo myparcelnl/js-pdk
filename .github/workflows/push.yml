@@ -28,7 +28,7 @@ jobs:
 
       - name: 'Run tests'
         run: |
-          nx run-many \
+          yarn nx run-many \
             --parallel \
             --target=test:run \
             --output-style=static
@@ -41,6 +41,7 @@ jobs:
 
   coverage:
     name: 'Upload coverage reports 📊'
+    needs: test
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/download-artifact@v2

@@ -4,14 +4,14 @@ description: 'Sets up environment by installing dependencies and creating a buil
 runs:
   using: composite
   steps:
-    - uses: myparcelnl/actions/yarn2-install@v3
+    - uses: myparcelnl/actions/yarn-install@v3
 
     - uses: myparcelnl/actions/cache-nx@v3
 
     - name: 'Build packages'
       shell: bash
       run: |
-        nx run-many \
+        yarn nx run-many \
           --runner=cloud \
           --parallel \
           --target=build \
