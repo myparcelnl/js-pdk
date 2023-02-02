@@ -17,8 +17,8 @@
   "dependencies": {
     "@myparcel-pdk/common": "workspace:*",
     "@myparcel-pdk/frontend-core": "workspace:*",
-    "@vue/test-utils": "^2.2.8",
-    "vue": "^3.2.45"
+    "@vue/test-utils": "^2.2.9",
+    "vue": "^3.2.47"
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:^",

@@ -32,15 +32,15 @@
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3",
-    "pinia": "^2.0.29",
-    "vue": "^3.2.45"
+    "pinia": "^2.0.30",
+    "vue": "^3.2.47"
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:^",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitest/coverage-c8": "^0.28.3",
-    "@vue/test-utils": "^2.2.8",
-    "vite": "^4.0.4",
+    "@vue/test-utils": "^2.2.9",
+    "vite": "^4.1.0",
     "vitest": "^0.28.3"
   },
   "publishConfig": {
