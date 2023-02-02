@@ -1,44 +1,27 @@
 /* eslint-disable no-console,@typescript-eslint/explicit-module-boundary-types */
-import {ApiException, Carrier, CarrierName} from '@myparcel/sdk';
-import {UseQueryReturnType, useQuery, useQueryClient} from '@tanstack/vue-query';
+import {useQuery, useQueryClient} from '@tanstack/vue-query';
 import {useMyParcelApi} from '../useMyParcelApi';
 
-const QUERY_KEY_CARRIERS = 'carriers';
+export const QUERY_KEY_CARRIERS = 'carriers';
 
-type UseCarriers = {
-  <C extends CarrierName | string>(carrier?: C): UseQueryReturnType<Carrier, ApiException>;
-  (carrier?: undefined): UseQueryReturnType<Carrier[], ApiException>;
-};
-
-// @ts-expect-error todo
-export const useCarriers: UseCarriers = (carrier: CarrierName | undefined) => {
+export const useCarriers = () => {
   const queryClient = useQueryClient();
 
-  const queryKey = [QUERY_KEY_CARRIERS];
-
-  if (carrier) {
-    queryKey.push(carrier);
-  }
-
   return useQuery(
-    queryKey,
+    [QUERY_KEY_CARRIERS],
     async () => {
       const sdk = useMyParcelApi();
 
-      if (carrier) {
-        const carriers = await sdk.getCarrier({path: {carrier}});
-
-        return carriers[0];
-      }
-
-      const allCarriers = await sdk.getCarriers();
-
-      allCarriers.forEach((carrier) => {
-        queryClient.setQueryData([QUERY_KEY_CARRIERS, carrier.name], carrier);
-      });
-
-      return allCarriers;
+      return sdk.getCarriers();
     },
-    queryClient.defaultQueryOptions(),
+    {
+      ...queryClient.defaultQueryOptions(),
+      onSuccess(data) {
+        // @ts-expect-error TODO: fix this
+        data.forEach((carrier) => {
+          queryClient.setQueryData([QUERY_KEY_CARRIERS, carrier.name], carrier);
+        });
+      },
+    },
   );
 };
