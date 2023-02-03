@@ -52,7 +52,7 @@ export default defineComponent({
     },
   },
 
-  setup: () => {
+  setup: (props) => {
     const selectedLabels = ref<number[]>([]);
     const {loading, actionCallbacks} = useLoading();
     const {translate} = useLanguage();
@@ -64,7 +64,10 @@ export default defineComponent({
 
       bulkActions: createActions(
         [shipmentsFetchAction, shipmentsPrintAction, shipmentsDeleteAction, shipmentsCreateReturnAction],
-        {shipmentIds: selectedLabels.value},
+        {
+          orderIds: props.order.externalIdentifier,
+          shipmentIds: selectedLabels.value,
+        },
         actionCallbacks,
       ),
 
