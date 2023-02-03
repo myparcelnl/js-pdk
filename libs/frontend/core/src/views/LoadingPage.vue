@@ -11,5 +11,5 @@ import {useQueryStore} from '../stores';
 const queryStore = useQueryStore();
 queryStore.registerContextQueries();
 
-const translate = useLanguage();
+const {translate} = useLanguage();
 </script>
