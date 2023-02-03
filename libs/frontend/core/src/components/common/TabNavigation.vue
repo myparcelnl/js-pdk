@@ -47,7 +47,7 @@ export default defineComponent({
   setup: (props) => {
     const hash = window.location.hash.replace('#', '').replace(props.hashPrefix, '');
     const isValidHash = props.tabs.some((tab) => tab.name === hash);
-    const initialTab = isValidHash ? hash : props.tabs[0].name;
+    const initialTab = isValidHash ? hash : props.tabs[0]?.name;
 
     const activeTab = ref<string>(initialTab);
     const {translate} = useLanguage();
