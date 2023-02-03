@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import {defineComponent, nextTick} from 'vue';
+import {PdkAdminComponent} from '@myparcel-pdk/common';
 import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core';
 
 export default defineComponent({
@@ -12,7 +13,7 @@ export default defineComponent({
   setup: () => {
     const fe = useGlobalPdkAdmin();
 
-    void nextTick().then(() => fe.render('PluginSettings', '#pdk-PluginSettings'));
+    void nextTick().then(() => fe.render(PdkAdminComponent.PLUGIN_SETTINGS, '#pdk-PluginSettings'));
   },
 });
 </script>
