@@ -11,5 +11,5 @@ export * from './useOrderData';
 export * from './usePdkConfig';
 export * from './usePdkInstance';
 export * from './useShipmentData';
+export * from './useStoreContextQuery';
 export * from './useStoreQuery';
-export {useStoreContextQuery} from './useStoreContextQuery';
