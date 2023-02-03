@@ -427,8 +427,8 @@ export namespace Plugin {
     id: string;
     title: string;
     description?: string;
-    elements: Field[];
-    children: SettingsView[];
+    elements: null | Field[];
+    children: null | SettingsView[];
   };
 
   export type ModelContextPluginSettingsViewContext = {

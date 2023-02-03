@@ -38,10 +38,10 @@
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:^",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vitest/coverage-c8": "^0.28.3",
-    "@vue/test-utils": "^2.2.9",
-    "vite": "^4.1.0",
-    "vitest": "^0.28.3"
+    "@vitest/coverage-c8": "^0.28.4",
+    "@vue/test-utils": "^2.2.10",
+    "vite": "^4.1.1",
+    "vitest": "^0.28.4"
   },
   "publishConfig": {
     "access": "public"

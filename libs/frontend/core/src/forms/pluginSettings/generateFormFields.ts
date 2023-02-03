@@ -5,13 +5,17 @@ import {resolveFormComponent} from '../resolveFormComponent';
 
 type GenerateFormFields = (
   config: {
-    fields: Plugin.Field[];
+    fields: null | Plugin.Field[];
     values: Record<string, unknown>;
   },
   prefix?: string,
 ) => AnyElementConfiguration[];
 
 export const generateFormFields: GenerateFormFields = ({fields, values}, prefix = '') => {
+  if (!fields) {
+    return [];
+  }
+
   return fields.map((data) => {
     const {name, $component, $slot, label, ...props} = data;
 

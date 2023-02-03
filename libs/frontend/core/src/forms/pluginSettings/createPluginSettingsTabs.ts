@@ -32,7 +32,7 @@ export const createPluginSettingsTabs: CreatePluginSettingsTabs = ({view, mutati
       label: view.title,
     };
 
-    if (id !== 'carrier' && !view.children.length) {
+    if (!view.children) {
       return createFormTab({
         ...tab,
         form: createPluginSettingsForm(id, view, actionContext, {mutation, query}),
@@ -54,7 +54,7 @@ export const createPluginSettingsTabs: CreatePluginSettingsTabs = ({view, mutati
         return h('div', {}, [
           h(TabNavigation, {
             hashPrefix: `${view.id}-`,
-            tabs: view.children.map((subview) =>
+            tabs: (view.children ?? []).map((subview) =>
               createFormTab({
                 name: `${id}.${subview.id}`,
                 label: subview.title,
