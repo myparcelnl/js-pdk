@@ -30,7 +30,7 @@
     "@myparcel-pdk/admin-component-tests": "workspace:^",
     "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vitest/coverage-c8": "^0.28.3",
+    "@vitest/coverage-c8": "^0.28.4",
     "@vue/test-utils": "^2.2.9",
     "happy-dom": "^8.2.3",
     "pinia": "^2.0.30",
