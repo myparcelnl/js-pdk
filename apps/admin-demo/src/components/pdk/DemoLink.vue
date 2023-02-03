@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import {AnchorHTMLAttributes, PropType, computed, defineComponent} from 'vue';
-import {ResolvedAction, useLanguage} from '@myparcel-pdk/admin';
+import {ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-core';
 
 /**
  * @see import('@myparcel-pdk/admin-components').DefaultLink

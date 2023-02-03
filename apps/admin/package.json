@@ -23,7 +23,6 @@
     "@myparcel-pdk/frontend-core": "workspace:^"
   },
   "devDependencies": {
-    "@myparcel-pdk/admin-component-tests": "workspace:^",
     "@myparcel-pdk/build-tsup": "workspace:^",
     "tsup": "^6.5.0"
   }

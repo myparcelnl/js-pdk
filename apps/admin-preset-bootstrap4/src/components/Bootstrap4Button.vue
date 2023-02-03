@@ -13,7 +13,7 @@
 /* eslint-disable vue/no-unused-properties */
 import {PropType, defineComponent} from 'vue';
 import BaseButton from './common/BaseButton.vue';
-import {PdkIcon} from '@myparcel-pdk/admin';
+import {PdkIcon} from '@myparcel-pdk/frontend-core';
 
 /**
  * @see import('@myparcel-pdk/admin-components').DefaultButton

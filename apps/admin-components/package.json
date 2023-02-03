@@ -21,7 +21,7 @@
     "watch": "run ws:vite:watch \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^",
+    "@myparcel-pdk/frontend-core": "workspace:^",
     "@myparcel/ts-utils": "^1.4.0",
     "@vueuse/core": "^9.12.0",
     "vue": "^3.2.47"

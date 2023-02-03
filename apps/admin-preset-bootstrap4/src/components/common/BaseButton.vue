@@ -15,7 +15,7 @@
 
 <script lang="ts">
 /* eslint-disable vue/no-unused-properties */
-import {PdkIcon, useLanguage} from '@myparcel-pdk/admin';
+import {PdkIcon, useLanguage} from '@myparcel-pdk/frontend-core';
 import {PropType, defineComponent} from 'vue';
 
 export default defineComponent({

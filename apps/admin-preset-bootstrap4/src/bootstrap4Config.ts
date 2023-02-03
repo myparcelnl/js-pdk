@@ -1,7 +1,7 @@
 /// <reference types="jquery" />
 /// <reference types="bootstrap" />
 
-import {ModalKey, PdkConfigurationPreset, useModalStore} from '@myparcel-pdk/admin';
+import {ModalKey, PdkConfigurationPreset, useModalStore} from '@myparcel-pdk/frontend-core';
 
 // noinspection JSUnusedGlobalSymbols
 export const bootstrap4Config: PdkConfigurationPreset = {

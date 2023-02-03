@@ -32,9 +32,8 @@
 </template>
 
 <script lang="ts">
-import {ActionButton, useLanguage} from '@myparcel-pdk/admin';
+import {ActionButton, ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-core';
 import {PropType, defineComponent} from 'vue';
-import {ResolvedAction} from '@myparcel-pdk/frontend-core';
 
 /**
  * A "card" component that can be used to wrap content in a block.

@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-import {usePdkConfig} from '@myparcel-pdk/admin';
+import {usePdkConfig} from '@myparcel-pdk/frontend-core';
 
 /**
  * A table component that can be used to render data via slots.

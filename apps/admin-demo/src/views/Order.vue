@@ -29,7 +29,7 @@
 <script lang="ts">
 import {defineComponent, nextTick} from 'vue';
 import {useDemoOrder} from '../composables/useDemoOrder';
-import {useGlobalPdkAdmin} from '@myparcel-pdk/admin';
+import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core';
 import {useRoute} from 'vue-router';
 
 export default defineComponent({

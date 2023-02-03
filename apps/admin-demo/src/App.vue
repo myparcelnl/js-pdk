@@ -40,7 +40,7 @@
 <script lang="ts">
 import {RouterLink, RouterView, useRouter} from 'vue-router';
 import {defineComponent} from 'vue';
-import {useGlobalPdkAdmin} from '@myparcel-pdk/admin';
+import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core';
 
 export default defineComponent({
   name: 'DemoApp',

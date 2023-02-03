@@ -29,7 +29,7 @@ import {
   DemoTextInput,
   DemoToggleInput,
 } from './components';
-import {LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/admin';
+import {LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-core';
 import App from './App.vue';
 import {DefaultHeading} from '@myparcel-pdk/admin-components';
 import {context} from './context';

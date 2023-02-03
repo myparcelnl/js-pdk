@@ -24,9 +24,8 @@
 </template>
 
 <script lang="ts">
-import {ActionButton, useDropdownData, useLanguage} from '@myparcel-pdk/admin';
+import {ActionButton, ResolvedAction, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-core';
 import {PropType, defineComponent} from 'vue';
-import {ResolvedAction} from '@myparcel-pdk/frontend-core';
 
 /**
  * This component is used to render a dropdown button. The dropdown button is a

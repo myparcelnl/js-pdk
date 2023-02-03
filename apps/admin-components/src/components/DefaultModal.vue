@@ -60,7 +60,7 @@ import {
   useLanguage,
   useModalContext,
   useModalStore,
-} from '@myparcel-pdk/admin';
+} from '@myparcel-pdk/frontend-core';
 import {PropType, computed, defineComponent, ref, toRefs} from 'vue';
 
 /**

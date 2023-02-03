@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
-import {PdkNotification} from '@myparcel-pdk/admin';
+import {PdkNotification} from '@myparcel-pdk/frontend-core';
 import {toArray} from '@myparcel/ts-utils';
 
 /**
