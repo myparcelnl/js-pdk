@@ -24,7 +24,7 @@
  */
 import {usePluginSettings, useStoreQuery} from '../composables';
 import {EndpointName} from '@myparcel-pdk/common';
-import NotificationContainer from '../components/common/NotificationContainer.vue';
+import {NotificationContainer} from '../components';
 import {defineAsyncComponent} from 'vue';
 import {useQueryStore} from '../stores';
 

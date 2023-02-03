@@ -3,7 +3,7 @@ import {AdminAction, ContextKey} from '../../types';
 import {EndpointName, Plugin} from '@myparcel-pdk/common';
 import {FormInstance, defineForm} from '@myparcel/vue-form-builder';
 import {ResolvedQuery} from '../../stores';
-import SubmitButton from '../../components/common/SubmitButton.vue';
+import {SubmitButton} from '../../components';
 import {generateFormFields} from './generateFormFields';
 import {get} from 'lodash-unified';
 import {usePdkConfig} from '../../composables';
