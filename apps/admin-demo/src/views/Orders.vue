@@ -47,8 +47,9 @@
 </template>
 
 <script lang="ts">
-import {ModalKey, PdkAdminComponent, useGlobalPdkAdmin, useModalStore} from '@myparcel-pdk/frontend-core';
+import {ModalKey, useGlobalPdkAdmin, useModalStore} from '@myparcel-pdk/frontend-core';
 import {defineComponent, ref} from 'vue';
+import {PdkAdminComponent} from '@myparcel-pdk/common';
 import {RouterLink} from 'vue-router';
 import {useDemoOrderData} from '../composables';
 

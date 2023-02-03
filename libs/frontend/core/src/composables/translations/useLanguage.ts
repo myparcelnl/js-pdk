@@ -1,8 +1,8 @@
 import {Ref, ref} from 'vue';
 import {decodeHtmlEntities} from '../../utils';
 import {memoize} from 'lodash-unified';
-import {useLogger} from '../useLogger';
 import {useGlobalContext} from '../context';
+import {useLogger} from '../useLogger';
 
 type UseLanguage = {
   /**
@@ -23,7 +23,7 @@ type UseLanguage = {
   /**
    * Translate a string into the current language.
    */
-  translate(key: string): string;
+  translate(key?: string): string;
 };
 
 /**
@@ -42,7 +42,7 @@ const memoizedHas = memoize((key: string) => {
   return translations && key in translations;
 });
 
-const memoizedTranslate = memoize((key: string) => {
+const memoizedTranslate = memoize((key?: string) => {
   if (!key) {
     return '';
   }

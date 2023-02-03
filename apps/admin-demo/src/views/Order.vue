@@ -31,6 +31,7 @@ import {defineComponent, nextTick} from 'vue';
 import {useDemoOrder} from '../composables/useDemoOrder';
 import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core';
 import {useRoute} from 'vue-router';
+import {PdkAdminComponent} from '@myparcel-pdk/common';
 
 export default defineComponent({
   name: 'Order',
@@ -43,7 +44,7 @@ export default defineComponent({
 
     const fe = useGlobalPdkAdmin();
 
-    void nextTick().then(() => fe.render('OrderCard', '#pdk-OrderCard'));
+    void nextTick().then(() => fe.render(PdkAdminComponent.ORDER_CARD, '#pdk-OrderCard'));
 
     return {
       order,

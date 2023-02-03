@@ -9,5 +9,6 @@ export const useStoreQuery = <E extends EndpointName>(endpoint: E, suffix?: stri
     throw new Error(`Query not registered: ${identifier}`);
   }
 
+  console.log('useStoreQuery', identifier);
   return queryStore.get(identifier) as ResolvedQuery<E>;
 };

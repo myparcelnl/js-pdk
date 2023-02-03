@@ -1,4 +1,4 @@
-import {ElementInstance, createFormElement} from '@myparcel-pdk/admin';
+import {ElementInstance, createFormElement} from '@myparcel-pdk/frontend-core';
 import {runCommonComponentTests, runCommonInputTests} from '../common';
 import {MountingOptions} from '@vue/test-utils';
 import {PdkComponentTest} from '../tests';

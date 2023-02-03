@@ -9,8 +9,8 @@ import {
   createVueQueryPlugin,
 } from './instance';
 import {createLogger, getElementContext} from '../services';
-import {PdkAppConfig} from '../data';
 import {PdkAdminComponent} from '@myparcel-pdk/common';
+import {PdkAppConfig} from '../data';
 import {renderViewComponent} from './renderMap';
 import {testIdDirective} from './testIdDirective';
 

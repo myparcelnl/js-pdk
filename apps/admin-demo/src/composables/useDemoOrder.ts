@@ -1,7 +1,8 @@
+import {OneOrMore} from '@myparcel/ts-utils';
 import {Plugin} from '@myparcel-pdk/common';
 import {useDemoOrderData} from './useDemoOrderData';
 
-export const useDemoOrder = (orderId: string): Plugin.ModelContextOrderDataContext => {
+export const useDemoOrder = (orderId: OneOrMore<string>): Plugin.ModelContextOrderDataContext => {
   const order = useDemoOrderData().find((order) => order.externalIdentifier === orderId);
 
   if (!order) {

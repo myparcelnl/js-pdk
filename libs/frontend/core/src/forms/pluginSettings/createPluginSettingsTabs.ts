@@ -14,11 +14,14 @@ export interface FormTab extends Omit<PdkTab, 'component'> {
   form: FormInstance;
 }
 
-type CreatePluginSettingsTabs = (created: {
-  view: Plugin.ModelContextPluginSettingsViewContext;
+export type PluginSettingsTabsContext = {
   mutation: ResolvedQuery<EndpointName.UPDATE_PLUGIN_SETTINGS>;
   query: ResolvedQuery<`${EndpointName.FETCH_CONTEXT}.${ContextKey.PLUGIN_SETTINGS_VIEW}`>;
-}) => PdkTab[];
+};
+
+type CreatePluginSettingsTabs = (
+  data: PluginSettingsTabsContext & {view: Plugin.ModelContextPluginSettingsViewContext},
+) => PdkTab[];
 
 export const createPluginSettingsTabs: CreatePluginSettingsTabs = ({view, mutation, query}) => {
   const actionContext = createActionContext(pluginSettingsUpdateAction);
@@ -32,7 +35,7 @@ export const createPluginSettingsTabs: CreatePluginSettingsTabs = ({view, mutati
     if (id !== 'carrier' && !view.children.length) {
       return createFormTab({
         ...tab,
-        form: createPluginSettingsForm(id, view, actionContext, mutation, query),
+        form: createPluginSettingsForm(id, view, actionContext, {mutation, query}),
       });
     }
 
@@ -56,7 +59,7 @@ export const createPluginSettingsTabs: CreatePluginSettingsTabs = ({view, mutati
                 name: `${id}.${subview.id}`,
                 label: subview.title,
                 description: subview.description,
-                form: createPluginSettingsForm(`${id}.${subview.id}`, subview, actionContext, mutation, query),
+                form: createPluginSettingsForm(`${id}.${subview.id}`, subview, actionContext, {mutation, query}),
               }),
             ),
           }),

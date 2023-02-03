@@ -7,7 +7,7 @@ export const runHasPropTest: PartialComponentTest = (component, options, prop, v
     const wrapper = mount(component, {
       ...options,
       props: {
-        ...options.props,
+        ...options?.props,
         [prop as string]: value,
       },
     });
