@@ -1,9 +1,9 @@
-import {ActionParameters, FrontendAction} from '../../types';
+import {ActionParameters, AdminAction} from '../../types';
 import {createShipmentFormName, getOrderId} from '../../utils';
 import {ActionContext} from './types';
 import {useFormBuilder} from '@myparcel/vue-form-builder';
 
-export const resolveOrderParameters = <A extends FrontendAction>({
+export const resolveOrderParameters = <A extends AdminAction>({
   parameters,
   instance,
 }: ActionContext<A>): Promise<ActionParameters<A>> => {

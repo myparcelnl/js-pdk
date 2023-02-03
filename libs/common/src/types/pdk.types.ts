@@ -45,19 +45,20 @@ export type OptionalPdkComponentName =
 
 export type PdkComponentName = RequiredPdkComponentName | OptionalPdkComponentName;
 
-export type PdkViewComponent =
-  | 'LoadingPage'
-  | 'Modals'
-  | 'Notifications'
-  | 'OrderCard'
-  | 'OrderListColumn'
-  | 'ProductSettings'
-  | 'PluginSettings';
-
 export type PdkComponentMap = Record<RequiredPdkComponentName, Component> &
   Partial<Record<OptionalPdkComponentName, Component>>;
 
 export type ComponentImportFunction = () => Promise<{default: Component}>;
+
+export enum PdkAdminComponent {
+  LOADING_PAGE = 'LoadingPage',
+  MODALS = 'Modals',
+  NOTIFICATIONS = 'Notifications',
+  ORDER_CARD = 'OrderCard',
+  ORDER_LIST_COLUMN = 'OrderListColumn',
+  PRODUCT_SETTINGS = 'ProductSettings',
+  PLUGIN_SETTINGS = 'PluginSettings',
+}
 
 export enum PdkVariant {
   PRIMARY = 'primary',

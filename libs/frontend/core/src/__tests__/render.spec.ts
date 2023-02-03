@@ -1,7 +1,7 @@
 /* eslint-disable no-magic-numbers */
 import {defineComponent, h, inject, onMounted} from 'vue';
 import {describe, expect, it, vi} from 'vitest';
-import {INJECT_GLOBAL_PDK_FRONTEND} from '../data';
+import {INJECT_GLOBAL_PDK_ADMIN} from '../data';
 import {mount} from '@vue/test-utils';
 
 describe.skip('rendering app pieces', () => {
@@ -11,7 +11,7 @@ describe.skip('rendering app pieces', () => {
     const mockComponent2 = defineComponent({
       name: 'MC2',
       render: () => {
-        const instance = inject(INJECT_GLOBAL_PDK_FRONTEND);
+        const instance = inject(INJECT_GLOBAL_PDK_ADMIN);
 
         return h('div');
       },

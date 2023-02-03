@@ -1,4 +1,4 @@
-import {FrontendAction, ModalKey, PdkIcon, PdkModalContext} from '../../types';
+import {AdminAction, ModalKey, PdkIcon, PdkModalContext} from '../../types';
 import {createMutator, createQueryFetcher, executeNextAction, resolveOrderParameters} from '../executors';
 import {openOrPrint, waitForLabelPrompt} from '../print';
 import {EndpointName} from '@myparcel-pdk/common';
@@ -23,7 +23,7 @@ export const ordersEditAction = defineAction({
  * Shown only in order mode. Exports entire order.
  */
 export const orderExportAction = defineAction({
-  name: FrontendAction.ORDERS_EXPORT,
+  name: AdminAction.ORDERS_EXPORT,
   icon: PdkIcon.EXPORT,
   label: 'action_export',
   beforeHandle: resolveOrderParameters,
@@ -34,7 +34,7 @@ export const orderExportAction = defineAction({
  * Shown if not in order mode. Exports shipments.
  */
 export const orderExportToShipmentsAction = defineAction({
-  name: FrontendAction.ORDERS_EXPORT,
+  name: AdminAction.ORDERS_EXPORT,
   icon: PdkIcon.EXPORT,
   label: 'action_export_shipments',
   beforeHandle: resolveOrderParameters,
@@ -45,7 +45,7 @@ export const orderExportToShipmentsAction = defineAction({
  * Fetch the latest order data from the PDK.
  */
 export const ordersFetchAction = defineAction({
-  name: FrontendAction.ORDERS_FETCH,
+  name: AdminAction.ORDERS_FETCH,
   icon: PdkIcon.REFRESH,
   label: 'action_refresh',
   handler: createQueryFetcher(EndpointName.FETCH_ORDERS),
@@ -55,7 +55,7 @@ export const ordersFetchAction = defineAction({
  * Update order data.
  */
 export const ordersUpdateAction = defineAction({
-  name: FrontendAction.ORDERS_UPDATE,
+  name: AdminAction.ORDERS_UPDATE,
   icon: PdkIcon.SAVE,
   label: 'action_save',
   handler: createMutator(EndpointName.UPDATE_ORDERS),
@@ -65,7 +65,7 @@ export const ordersUpdateAction = defineAction({
  * Shown if not in order mode. Exports order and immediately prints shipment labels.
  */
 export const ordersExportPrintShipmentsAction = defineAction({
-  name: FrontendAction.ORDERS_EXPORT_PRINT,
+  name: AdminAction.ORDERS_EXPORT_PRINT,
   icon: PdkIcon.PRINT,
   label: 'action_export_print',
   handler: createMutator(EndpointName.EXPORT_ORDERS),
@@ -81,7 +81,7 @@ export const ordersExportPrintShipmentsAction = defineAction({
  * Shown if not in order mode. Exports all shipment labels.
  */
 export const ordersPrintAction = defineAction({
-  name: FrontendAction.ORDERS_PRINT,
+  name: AdminAction.ORDERS_PRINT,
   icon: PdkIcon.PRINT,
   label: 'action_print',
   handler: createMutator(EndpointName.PRINT_ORDERS),

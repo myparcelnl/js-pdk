@@ -4,7 +4,7 @@ import {defineField, defineForm} from '@myparcel/vue-form-builder';
 import {ref, resolveComponent} from 'vue';
 import {usePluginSettings, useStoreQuery} from '../composables';
 import {EndpointName} from '@myparcel-pdk/common';
-import {FrontendAction} from '../types';
+import {AdminAction} from '../types';
 import {SubmitButton} from '../components';
 import {createActionContext} from '../services';
 import {defineFormField} from './createShipmentOptionsForm';
@@ -33,7 +33,7 @@ export const createAccountSettingsForm = (callback?: () => void) => {
     ],
 
     async afterSubmit(form) {
-      const context: ActionContext<FrontendAction.ACCOUNT_UPDATE> = {
+      const context: ActionContext<AdminAction.ACCOUNT_UPDATE> = {
         ...actionContext,
         parameters: {
           form,

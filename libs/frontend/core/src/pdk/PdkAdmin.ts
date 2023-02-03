@@ -10,11 +10,11 @@ import {
 } from './instance';
 import {createLogger, getElementContext} from '../services';
 import {PdkAppConfig} from '../data';
-import {PdkViewComponent} from '@myparcel-pdk/common';
+import {PdkAdminComponent} from '@myparcel-pdk/common';
 import {renderViewComponent} from './renderMap';
 import {testIdDirective} from './testIdDirective';
 
-export class PdkFrontend {
+export class PdkAdmin {
   public readonly config: PdkConfiguration;
   public readonly context: PdkContextObject;
 
@@ -28,7 +28,7 @@ export class PdkFrontend {
   /**
    * Render a views in given selector.
    */
-  public async render(view: PdkViewComponent, selector: string): Promise<void> {
+  public async render(view: PdkAdminComponent, selector: string): Promise<void> {
     const config: PdkConfiguration = {...this.config};
     const context: PdkContextObject = {...this.context, ...getElementContext(selector)};
 
@@ -50,7 +50,7 @@ export class PdkFrontend {
     }
   }
 
-  protected async createApp(view: PdkViewComponent, appConfig: PdkAppConfig): Promise<App> {
+  protected async createApp(view: PdkAdminComponent, appConfig: PdkAppConfig): Promise<App> {
     appConfig.config?.beforeCreate?.(appConfig.config);
 
     const component = await renderViewComponent(view);
@@ -70,16 +70,16 @@ export class PdkFrontend {
   /**
    * Create a unique app name for components that are rendered multiple times.
    */
-  protected createAppName(componentName: PdkViewComponent, context: PdkContextObject): string {
+  protected createAppName(componentName: PdkAdminComponent, context: PdkContextObject): string {
     if (process.env.NODE_ENV === 'production') {
       return componentName;
     }
 
     const {orderData} = context;
 
-    let appName = componentName;
+    let appName: string = componentName;
 
-    if (componentName === 'OrderListColumn') {
+    if (componentName === PdkAdminComponent.ORDER_LIST_COLUMN) {
       const orderId = orderData?.length === 1 ? orderData[0].externalIdentifier : null;
 
       appName += ` #${orderId}`;

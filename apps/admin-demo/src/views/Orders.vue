@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import {ModalKey, useGlobalPdkFrontend, useModalStore} from '@myparcel-pdk/admin';
+import {ModalKey, PdkAdminComponent, useGlobalPdkAdmin, useModalStore} from '@myparcel-pdk/admin';
 import {defineComponent, ref} from 'vue';
 import {RouterLink} from 'vue-router';
 import {useDemoOrderData} from '../composables';
@@ -60,14 +60,14 @@ export default defineComponent({
   },
 
   setup: () => {
-    const fe = useGlobalPdkFrontend();
+    const fe = useGlobalPdkAdmin();
 
     const orderData = useDemoOrderData();
 
-    void fe.render('Modals', '#mypa-modals');
+    void fe.render(PdkAdminComponent.MODALS, '#mypa-modals');
 
     orderData.forEach((order) => {
-      void fe.render('OrderListColumn', `#mypa-order-${order.externalIdentifier}`);
+      void fe.render(PdkAdminComponent.ORDER_LIST_COLUMN, `#mypa-order-${order.externalIdentifier}`);
     });
 
     const toggled = ref<string | null>(null);

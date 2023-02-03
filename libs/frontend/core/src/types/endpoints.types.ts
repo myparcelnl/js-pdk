@@ -1,9 +1,9 @@
+import {ContextKey} from './context.types';
 import {EndpointName} from '@myparcel-pdk/common';
 import {FormInstance} from '@myparcel/vue-form-builder';
-import {FrontendAction} from './actions.types';
+import {AdminAction} from './actions.types';
 import {OneOrMore} from '@myparcel/ts-utils';
 import {PdkEndpointDefinition} from '../sdk';
-import {ContextKey} from './context.types';
 
 export type EndpointResponse<N extends EndpointName> = PdkEndpointDefinition<N>['formattedResponse'] extends Record<
   string,
@@ -14,28 +14,28 @@ export type EndpointResponse<N extends EndpointName> = PdkEndpointDefinition<N>[
 
 export type EndpointParameters<N extends EndpointName> = PdkEndpointDefinition<N>['parameters'];
 
-export interface FrontendActionEndpointMap extends Record<FrontendAction, EndpointName> {
-  [FrontendAction.CONTEXT_FETCH]: EndpointName.FETCH_CONTEXT;
-  [FrontendAction.ACCOUNT_UPDATE]: EndpointName.UPDATE_ACCOUNT;
-  [FrontendAction.ORDERS_EXPORT]: EndpointName.EXPORT_ORDERS;
-  [FrontendAction.ORDERS_EXPORT_PRINT]: EndpointName.EXPORT_ORDERS;
-  [FrontendAction.ORDERS_FETCH]: EndpointName.FETCH_ORDERS;
-  [FrontendAction.ORDERS_PRINT]: EndpointName.PRINT_ORDERS;
-  [FrontendAction.ORDERS_UPDATE]: EndpointName.UPDATE_ORDERS;
-  [FrontendAction.PLUGIN_SETTINGS_UPDATE]: EndpointName.UPDATE_PLUGIN_SETTINGS;
-  [FrontendAction.PRODUCT_SETTINGS_UPDATE]: EndpointName.UPDATE_PRODUCT_SETTINGS;
-  [FrontendAction.SHIPMENTS_CREATE_RETURN]: EndpointName.CREATE_RETURN_SHIPMENTS;
-  [FrontendAction.SHIPMENTS_DELETE]: EndpointName.DELETE_SHIPMENTS;
-  [FrontendAction.SHIPMENTS_FETCH]: EndpointName.FETCH_SHIPMENTS;
-  [FrontendAction.SHIPMENTS_PRINT]: EndpointName.PRINT_SHIPMENTS;
-  [FrontendAction.WEBHOOKS_CREATE]: EndpointName.CREATE_WEBHOOKS;
-  [FrontendAction.WEBHOOKS_DELETE]: EndpointName.DELETE_WEBHOOKS;
-  [FrontendAction.WEBHOOKS_FETCH]: EndpointName.FETCH_WEBHOOKS;
+export interface AdminActionEndpointMap extends Record<AdminAction, EndpointName> {
+  [AdminAction.CONTEXT_FETCH]: EndpointName.FETCH_CONTEXT;
+  [AdminAction.ACCOUNT_UPDATE]: EndpointName.UPDATE_ACCOUNT;
+  [AdminAction.ORDERS_EXPORT]: EndpointName.EXPORT_ORDERS;
+  [AdminAction.ORDERS_EXPORT_PRINT]: EndpointName.EXPORT_ORDERS;
+  [AdminAction.ORDERS_FETCH]: EndpointName.FETCH_ORDERS;
+  [AdminAction.ORDERS_PRINT]: EndpointName.PRINT_ORDERS;
+  [AdminAction.ORDERS_UPDATE]: EndpointName.UPDATE_ORDERS;
+  [AdminAction.PLUGIN_SETTINGS_UPDATE]: EndpointName.UPDATE_PLUGIN_SETTINGS;
+  [AdminAction.PRODUCT_SETTINGS_UPDATE]: EndpointName.UPDATE_PRODUCT_SETTINGS;
+  [AdminAction.SHIPMENTS_CREATE_RETURN]: EndpointName.CREATE_RETURN_SHIPMENTS;
+  [AdminAction.SHIPMENTS_DELETE]: EndpointName.DELETE_SHIPMENTS;
+  [AdminAction.SHIPMENTS_FETCH]: EndpointName.FETCH_SHIPMENTS;
+  [AdminAction.SHIPMENTS_PRINT]: EndpointName.PRINT_SHIPMENTS;
+  [AdminAction.WEBHOOKS_CREATE]: EndpointName.CREATE_WEBHOOKS;
+  [AdminAction.WEBHOOKS_DELETE]: EndpointName.DELETE_WEBHOOKS;
+  [AdminAction.WEBHOOKS_FETCH]: EndpointName.FETCH_WEBHOOKS;
 }
 
-export type EndpointFrontendActionMap = {
-  [K in EndpointName]: FrontendActionEndpointMap[keyof FrontendActionEndpointMap] extends K
-    ? FrontendActionEndpointMap[keyof FrontendActionEndpointMap]
+export type EndpointAdminActionMap = {
+  [K in EndpointName]: AdminActionEndpointMap[keyof AdminActionEndpointMap] extends K
+    ? AdminActionEndpointMap[keyof AdminActionEndpointMap]
     : never;
 };
 

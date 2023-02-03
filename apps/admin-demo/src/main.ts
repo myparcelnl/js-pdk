@@ -29,7 +29,7 @@ import {
   DemoTextInput,
   DemoToggleInput,
 } from './components';
-import {LogLevel, createPdkFrontendPlugin} from '@myparcel-pdk/admin';
+import {LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/admin';
 import App from './App.vue';
 import {DefaultHeading} from '@myparcel-pdk/admin-components';
 import {context} from './context';
@@ -47,7 +47,7 @@ const app = createApp(App);
 app.use(createRouterInstance());
 
 app.use(
-  createPdkFrontendPlugin({
+  createPdkAdminPlugin({
     logLevel: LogLevel.DEBUG,
     components: {
       PdkButton: DemoButton,

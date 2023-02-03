@@ -4,7 +4,7 @@ export * from './query';
 export * from './translations';
 export * from './useAssetUrl';
 export * from './useDropdownData';
-export * from './useGlobalPdkFrontend';
+export * from './useGlobalPdkAdmin';
 export * from './useLoading';
 export * from './useLogger';
 export * from './useOrderData';

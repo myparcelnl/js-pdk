@@ -4,13 +4,13 @@
 
 <script lang="ts">
 import {defineComponent, nextTick} from 'vue';
-import {useGlobalPdkFrontend} from '@myparcel-pdk/admin';
+import {useGlobalPdkAdmin} from '@myparcel-pdk/admin';
 
 export default defineComponent({
   name: 'Settings',
 
   setup: () => {
-    const fe = useGlobalPdkFrontend();
+    const fe = useGlobalPdkAdmin();
 
     void nextTick().then(() => fe.render('PluginSettings', '#pdk-PluginSettings'));
   },

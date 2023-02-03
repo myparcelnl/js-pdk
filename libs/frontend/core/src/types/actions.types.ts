@@ -1,11 +1,11 @@
 import {ActionContext, ActionContextWithResponse} from '../actions';
-import {ActionInput, EndpointResponse, FrontendActionEndpointMap} from './endpoints.types';
+import {ActionInput, AdminActionEndpointMap, EndpointResponse} from './endpoints.types';
 import {MaybeRef} from '@vueuse/core';
 import {PdkIcon} from './common.types';
 import {PdkVariant} from '@myparcel-pdk/common';
 import {PromiseOr} from '@myparcel/ts-utils';
 
-export type MaybeFrontendAction = FrontendAction | undefined;
+export type MaybeAdminAction = AdminAction | undefined;
 
 type BaseAction = {
   icon?: PdkIcon;
@@ -15,7 +15,7 @@ type BaseAction = {
   standalone?: boolean;
 };
 
-export type NamedAction<A extends FrontendAction = FrontendAction> = BaseAction & {
+export type NamedAction<A extends AdminAction = AdminAction> = BaseAction & {
   name: A;
   handler(context: ActionContext<A>): PromiseOr<ActionResponse<A>>;
   beforeHandle?(context: ActionContext<A>): PromiseOr<ActionParameters<A>>;
@@ -29,7 +29,7 @@ export type GenericAction = BaseAction & {
   afterHandle?(context: ActionContext<undefined>): PromiseOr<void>;
 };
 
-export type PdkAction<A extends MaybeFrontendAction = MaybeFrontendAction> = A extends FrontendAction
+export type PdkAction<A extends MaybeAdminAction = MaybeAdminAction> = A extends AdminAction
   ? NamedAction<A>
   : GenericAction;
 
@@ -49,15 +49,15 @@ export type ResolvedAction = BaseAction & {
   onClick(): PromiseOr<void>;
 };
 
-export type ActionParameters<A extends MaybeFrontendAction> = A extends FrontendAction
-  ? ActionInput<FrontendActionEndpointMap[A]>
+export type ActionParameters<A extends MaybeAdminAction> = A extends AdminAction
+  ? ActionInput<AdminActionEndpointMap[A]>
   : Record<string, unknown>;
 
-export type ActionResponse<A extends MaybeFrontendAction> = A extends FrontendAction
-  ? EndpointResponse<FrontendActionEndpointMap[A]>
+export type ActionResponse<A extends MaybeAdminAction> = A extends AdminAction
+  ? EndpointResponse<AdminActionEndpointMap[A]>
   : void;
 
-export enum FrontendAction {
+export enum AdminAction {
   CONTEXT_FETCH = 'contextFetch',
 
   ACCOUNT_UPDATE = 'accountUpdate',
@@ -81,19 +81,13 @@ export enum FrontendAction {
   WEBHOOKS_FETCH = 'webhooksFetch',
 }
 
-export type PrintAction =
-  | FrontendAction.SHIPMENTS_PRINT
-  | FrontendAction.ORDERS_PRINT
-  | FrontendAction.ORDERS_EXPORT_PRINT;
+export type PrintAction = AdminAction.SHIPMENTS_PRINT | AdminAction.ORDERS_PRINT | AdminAction.ORDERS_EXPORT_PRINT;
 
-export type UpdateOrderAction =
-  | FrontendAction.ORDERS_UPDATE
-  | FrontendAction.ORDERS_EXPORT
-  | FrontendAction.ORDERS_EXPORT_PRINT;
+export type UpdateOrderAction = AdminAction.ORDERS_UPDATE | AdminAction.ORDERS_EXPORT | AdminAction.ORDERS_EXPORT_PRINT;
 
 export type UpdateShipmentAction =
-  | FrontendAction.SHIPMENTS_DELETE
-  | FrontendAction.SHIPMENTS_FETCH
-  | FrontendAction.ORDERS_EXPORT
-  | FrontendAction.ORDERS_EXPORT_PRINT
-  | FrontendAction.ORDERS_FETCH;
+  | AdminAction.SHIPMENTS_DELETE
+  | AdminAction.SHIPMENTS_FETCH
+  | AdminAction.ORDERS_EXPORT
+  | AdminAction.ORDERS_EXPORT_PRINT
+  | AdminAction.ORDERS_FETCH;

@@ -1,10 +1,10 @@
-import {ActionCallbacks, ActionParameters, FrontendAction, PdkAction, ResolvedAction} from '../types';
+import {ActionCallbacks, ActionParameters, AdminAction, PdkAction, ResolvedAction} from '../types';
 import {OneOrMore, toArray} from '@myparcel/ts-utils';
 import {createAction} from './index';
 
 export const createActions = (
   actions: OneOrMore<PdkAction>,
-  parameters?: ActionParameters<FrontendAction>,
+  parameters?: ActionParameters<AdminAction>,
   callbacks?: ActionCallbacks,
 ): ResolvedAction[] => {
   return toArray(actions).map((action) => {

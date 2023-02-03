@@ -1,5 +1,5 @@
 import {ActionContext, executeAction} from '../../actions';
-import {ContextKey, FrontendAction} from '../../types';
+import {AdminAction, ContextKey} from '../../types';
 import {EndpointName, Plugin} from '@myparcel-pdk/common';
 import {FormInstance, defineForm} from '@myparcel/vue-form-builder';
 import {ResolvedQuery} from '../../stores';
@@ -11,7 +11,7 @@ import {usePdkConfig} from '../../composables';
 export const createPluginSettingsForm = (
   id: string,
   view: Plugin.SettingsView,
-  actionContext: ActionContext<FrontendAction.PLUGIN_SETTINGS_UPDATE>,
+  actionContext: ActionContext<AdminAction.PLUGIN_SETTINGS_UPDATE>,
   mutation: ResolvedQuery<EndpointName.UPDATE_PLUGIN_SETTINGS>,
   query: ResolvedQuery<`${EndpointName.FETCH_CONTEXT}.${ContextKey.PLUGIN_SETTINGS_VIEW}`>,
 ): FormInstance => {
@@ -36,7 +36,7 @@ export const createPluginSettingsForm = (
     ],
 
     async afterSubmit(form) {
-      const context: ActionContext<FrontendAction.PLUGIN_SETTINGS_UPDATE> = {
+      const context: ActionContext<AdminAction.PLUGIN_SETTINGS_UPDATE> = {
         ...actionContext,
         parameters: {
           form,

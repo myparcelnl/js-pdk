@@ -40,13 +40,13 @@
 <script lang="ts">
 import {RouterLink, RouterView, useRouter} from 'vue-router';
 import {defineComponent} from 'vue';
-import {useGlobalPdkFrontend} from '@myparcel-pdk/admin';
+import {useGlobalPdkAdmin} from '@myparcel-pdk/admin';
 
 export default defineComponent({
   name: 'DemoApp',
   components: {RouterView, RouterLink},
   setup: () => {
-    const fe = useGlobalPdkFrontend();
+    const fe = useGlobalPdkAdmin();
 
     void fe.render('Notifications', '#mypa-notifications');
 

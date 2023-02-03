@@ -1,10 +1,10 @@
 import {getElementContext, globalLogger} from '../services';
+import {PdkAdmin} from './PdkAdmin';
 import {PdkConfiguration} from '../types';
-import {PdkFrontend} from './PdkFrontend';
 import {createPdkConfig} from './createPdkConfig';
 import {sendBootEvent} from '../utils';
 
-export type CreatePdkFrontend = (configuration?: PdkConfiguration) => undefined | PdkFrontend;
+export type CreatePdkAdmin = (configuration?: PdkConfiguration) => undefined | PdkAdmin;
 
 /**
  * Must match \MyParcelNL\Pdk\Plugin\Service\RenderService::BOOTSTRAP_CONTAINER_ID.
@@ -15,25 +15,25 @@ const BOOTSTRAP_CONTAINER_SELECTOR = '#myparcel-pdk-boot';
 
 /**
  * Initialize the pdk frontend, parse configuration, and send a boot event that triggers the
- * components to render themselves using the PdkFrontend class.
+ * components to render themselves using the PdkAdmin class.
  */
-export const createPdkFrontend: CreatePdkFrontend = (configuration?) => {
+export const createPdkAdmin: CreatePdkAdmin = (configuration?) => {
   try {
     const config = createPdkConfig(configuration);
     const context = getElementContext(BOOTSTRAP_CONTAINER_SELECTOR);
 
-    const pdkFrontend = new PdkFrontend(config, context);
+    const pdkAdmin = new PdkAdmin(config, context);
 
     if (config.logLevel) {
       globalLogger.level = config.logLevel;
     }
 
-    sendBootEvent(pdkFrontend, context);
-    globalLogger.debug('Created PDK core!', {context});
+    sendBootEvent(pdkAdmin, context);
+    globalLogger.debug('Created PDK admin!', {context});
 
-    return pdkFrontend;
+    return pdkAdmin;
   } catch (e) {
-    globalLogger.error('Failed to create PDK core:');
+    globalLogger.error('Failed to create PDK admin:');
 
     // eslint-disable-next-line no-console
     console.error(e);

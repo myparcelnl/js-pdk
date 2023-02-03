@@ -1,4 +1,4 @@
-import {ActionParameters, FrontendAction, PdkAction, PdkNotification} from '../../types';
+import {ActionParameters, AdminAction, PdkAction, PdkNotification} from '../../types';
 import {ActionContext} from '../../actions';
 import {PdkAppInstance} from '../../data';
 import {PdkVariant} from '@myparcel-pdk/common';
@@ -9,7 +9,7 @@ import {usePdkInstance} from '../../composables';
 
 const VARIANTS = [PdkVariant.SUCCESS, PdkVariant.ERROR];
 
-export const createActionContext = <A extends FrontendAction | undefined>(
+export const createActionContext = <A extends AdminAction | undefined>(
   action: PdkAction<A>,
   parameters?: ActionParameters<A>,
   existingInstance?: PdkAppInstance,

@@ -1,11 +1,11 @@
-import {ActionResponse, FrontendAction} from '../../types';
+import {ActionResponse, AdminAction} from '../../types';
 import {ActionContext} from './types';
 import {useNotificationStore} from '../../stores';
 
 /**
  * Execute a PdkAction.
  */
-export const executeAction = async <A extends FrontendAction | undefined>(
+export const executeAction = async <A extends AdminAction | undefined>(
   context: ActionContext<A>,
 ): Promise<ActionResponse<A>> => {
   // @ts-expect-error todo

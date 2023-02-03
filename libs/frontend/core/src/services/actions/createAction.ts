@@ -1,10 +1,10 @@
-import {ActionCallbacks, ActionParameters, FrontendAction, PdkAction, ResolvedAction} from '../../types';
+import {ActionCallbacks, ActionParameters, AdminAction, PdkAction, ResolvedAction} from '../../types';
 import {createActionContext} from './createActionContext';
 import {executeAction} from '../../actions';
 import {getActionIdentifier} from './getActionIdentifier';
 import {useMemoize} from '@vueuse/core';
 
-type CreateAction = <A extends FrontendAction | undefined = FrontendAction | undefined>(
+type CreateAction = <A extends AdminAction | undefined = AdminAction | undefined>(
   action: PdkAction<A>,
   parameters?: ActionParameters<A>,
   callbacks?: ActionCallbacks,

@@ -1,15 +1,3 @@
-# pdk-frontend
+# JS-PDK
 
-This is the frontend for the PDK.
-
-This package requires `@tanstack/vue-query`
-
-```ts
-import {VueQueryPlugin} from '@tanstack/vue-query';
-
-const app = createApp(App);
-
-app.use(VueQueryPlugin);
-
-app.mount('#app');
-```
+This is the JavaScript implementation for the PDK.
