@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 /**
  * Product settings.
  */
@@ -12,7 +12,11 @@ import {FormInstance, MagicForm, defineForm} from '@myparcel/vue-form-builder';
 import {useContext, usePdkConfig} from '../composables';
 import {ContextKey} from '../types';
 import {generateFormFields} from '../forms';
+import {useQueryStore} from '../stores';
 import {useUpdateProductSettingsMutation} from '../actions';
+
+const queryStore = useQueryStore();
+queryStore.registerContextQueries();
 
 const context = useContext(ContextKey.PRODUCT_SETTINGS_VIEW);
 const updateProductSettingsMutation = useUpdateProductSettingsMutation();

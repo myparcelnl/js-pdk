@@ -22,11 +22,10 @@
 
 <script lang="ts">
 import {computed, defineComponent, ref} from 'vue';
-import {useAccount, useLanguage} from '../../composables';
+import {useAccount, useLanguage, useStoreContextQuery} from '../../composables';
 import EditApiKeyForm from './EditApiKeyForm.vue';
 import {FormInstance} from '@myparcel/vue-form-builder';
 import WebhooksStatus from './WebhooksStatus.vue';
-import {useFetchContextQuery} from '../../actions';
 
 export default defineComponent({
   name: 'AccountSettings',
@@ -36,7 +35,7 @@ export default defineComponent({
   },
 
   setup: () => {
-    const contextQuery = useFetchContextQuery();
+    const contextQuery = useStoreContextQuery();
     const account = useAccount();
 
     const {translate} = useLanguage();

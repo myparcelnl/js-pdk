@@ -26,7 +26,7 @@ export type QueryKey = EndpointName | `${EndpointName.FETCH_CONTEXT}.${ContextKe
 
 export type ResolvedQuery<E extends QueryKey = EndpointName> = E extends EndpointName
   ? EndpointQuery<E>
-  : EndpointQuery<EndpointName.FETCH_CONTEXT>;
+  : ReturnType<typeof useFetchContextQuery>;
 
 export type QueryObject<I extends QueryKey = EndpointName> = Record<I, ResolvedQuery<I>>;
 
@@ -94,13 +94,17 @@ export const useQueryStore = defineStore('query', () => {
     queries,
     get,
     has,
+
+    /**
+     * Queries must be registered manually, because vue-query hooks can only be
+     * called from a component's setup() function.
+     */
     register,
 
     queryClient,
 
     /**
-     * Queries must be registered manually, because vue-query hooks can only be
-     * called from a component's setup() function.
+     * Register queries needed to render any order related component.
      */
     registerOrderQueries: (orderId?: string | null, mode: MutationMode = MutationMode.DEFAULT) => {
       const id = orderId ?? getOrderId();
@@ -120,13 +124,14 @@ export const useQueryStore = defineStore('query', () => {
       register(EndpointName.FETCH_SHIPMENTS, useUpdateShipmentsMutation());
     },
 
-    registerContextQuery: <C extends ContextKey>(key: C) => {
-      const query = useFetchContextQuery(key) as ResolvedQuery<`${EndpointName.FETCH_CONTEXT}.${C}`>;
-      register(`${EndpointName.FETCH_CONTEXT}.${key}`, query);
-    },
-
-    getContextQuery: <C extends ContextKey>(key: C) => {
-      return get(`${EndpointName.FETCH_CONTEXT}.${key}`);
+    /**
+     * Register context queries. Always includes global and dynamic context.
+     */
+    registerContextQueries: <C extends Exclude<ContextKey, ContextKey.GLOBAL | ContextKey.DYNAMIC>>(...keys: C[]) => {
+      [ContextKey.GLOBAL, ContextKey.DYNAMIC, ...keys].forEach((key) => {
+        const query = useFetchContextQuery(key) as ResolvedQuery<`${EndpointName.FETCH_CONTEXT}.${C}`>;
+        register(`${EndpointName.FETCH_CONTEXT}.${key}`, query);
+      });
     },
   };
 });

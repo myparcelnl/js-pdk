@@ -4,8 +4,12 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {useLanguage} from '../composables';
+import {useQueryStore} from '../stores';
+
+const queryStore = useQueryStore();
+queryStore.registerContextQueries();
 
 const translate = useLanguage();
 </script>

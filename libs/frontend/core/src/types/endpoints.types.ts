@@ -1,7 +1,7 @@
+import {AdminAction} from './actions.types';
 import {ContextKey} from './context.types';
 import {EndpointName} from '@myparcel-pdk/common';
 import {FormInstance} from '@myparcel/vue-form-builder';
-import {AdminAction} from './actions.types';
 import {OneOrMore} from '@myparcel/ts-utils';
 import {PdkEndpointDefinition} from '../sdk';
 

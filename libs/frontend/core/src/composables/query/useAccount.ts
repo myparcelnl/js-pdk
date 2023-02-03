@@ -1,9 +1,10 @@
 import {Account} from '@myparcel-pdk/common';
+import {ContextKey} from '../../types';
 import {get} from '@vueuse/core';
-import {useFetchContextQuery} from '../../actions';
+import {useStoreContextQuery} from '../useStoreContextQuery';
 
 export const useAccount = (): undefined | Account.ModelAccount => {
-  const contextQuery = useFetchContextQuery();
+  const contextQuery = useStoreContextQuery(ContextKey.DYNAMIC);
 
   return get(contextQuery.data)?.account;
 };

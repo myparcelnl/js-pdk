@@ -19,6 +19,7 @@ const queryStore = useQueryStore();
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const OrderShipmentsCard = defineAsyncComponent(() => import('../components/OrderCard/OrderShipmentsCard.vue'));
 
+queryStore.registerContextQueries();
 queryStore.registerOrderQueries();
 
 const query = useStoreQuery(EndpointName.FETCH_ORDERS);

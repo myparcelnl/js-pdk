@@ -18,7 +18,7 @@
   <NotificationContainer category="'api'" />
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 /**
  * This is the main entry point for the order list column.
  */
@@ -36,7 +36,9 @@ const OrderActions = defineAsyncComponent(() => import('../components/OrderListI
 
 const queryStore = useQueryStore();
 
+queryStore.registerContextQueries();
 queryStore.registerOrderQueries();
+
 const pluginSettings = usePluginSettings();
 const {orderMode} = pluginSettings.general;
 

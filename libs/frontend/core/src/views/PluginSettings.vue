@@ -6,7 +6,7 @@
   </PdkPluginSettingsWrapper>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 /**
  * Plugin settings screen.
  */
@@ -25,8 +25,7 @@ import {useQueryStore} from '../stores';
 
 const queryStore = useQueryStore();
 
-queryStore.registerContextQuery(ContextKey.DYNAMIC);
-queryStore.registerContextQuery(ContextKey.PLUGIN_SETTINGS_VIEW);
+queryStore.registerContextQueries(ContextKey.PLUGIN_SETTINGS_VIEW);
 
 queryStore.register(EndpointName.UPDATE_ACCOUNT, useUpdateAccountMutation());
 

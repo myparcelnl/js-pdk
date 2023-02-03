@@ -1,13 +1,12 @@
 import {ContextKey, PdkContext} from '../../types';
 import {get} from '@vueuse/core';
-import {useFetchContextQuery} from '../../actions';
+import {useStoreContextQuery} from '../useStoreContextQuery';
 
 export const useContext = <C extends ContextKey = ContextKey.DYNAMIC>(
   // @ts-expect-error typescript is being very pedantic here
   contextKey: C = ContextKey.DYNAMIC,
 ): NonNullable<PdkContext<C>> => {
-  const query = useFetchContextQuery(contextKey);
-
+  const query = useStoreContextQuery(contextKey);
   const data = get(query.data);
 
   if (!data) {
