@@ -34,7 +34,7 @@
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitest/coverage-c8": "^0.28.4",
     "autoprefixer": "^10.4.13",
-    "happy-dom": "^8.2.3",
+    "happy-dom": "^8.2.6",
     "postcss": "^8.4.21",
     "rollup-plugin-visualizer": "^5.9.0",
     "vite": "^4.1.1",
