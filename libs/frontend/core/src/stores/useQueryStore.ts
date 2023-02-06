@@ -1,4 +1,5 @@
-import {QueryClient, useQueryClient} from '@tanstack/vue-query';
+import {ContextKey, PdkContext} from '../types';
+import {QueryClient, UseQueryReturnType, useQueryClient} from '@tanstack/vue-query';
 import {Ref, ref} from 'vue';
 import {
   useCreateReturnShipmentsMutation,
@@ -16,7 +17,7 @@ import {
   useUpdatePluginSettingsMutation,
   useUpdateShipmentsMutation,
 } from '../actions';
-import {ContextKey} from '../types';
+import {ApiException} from '@myparcel/sdk';
 import {EndpointName} from '@myparcel-pdk/common';
 import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
@@ -24,9 +25,15 @@ import {getOrderId} from '../utils';
 
 export type QueryKey = EndpointName | `${EndpointName.FETCH_CONTEXT}.${ContextKey}`;
 
+export type ContextQuery<C extends ContextKey = ContextKey.DYNAMIC> = UseQueryReturnType<PdkContext<C>, ApiException>;
+
 export type ResolvedQuery<E extends QueryKey = EndpointName> = E extends EndpointName
   ? EndpointQuery<E>
-  : ReturnType<typeof useFetchContextQuery>;
+  : E extends `${EndpointName.FETCH_CONTEXT}.${infer C}`
+  ? C extends ContextKey
+    ? ContextQuery<C>
+    : never
+  : never;
 
 export type QueryObject<I extends QueryKey = EndpointName> = Record<I, ResolvedQuery<I>>;
 

@@ -1,7 +1,6 @@
+import {ContextQuery, ResolvedQuery} from '../../stores';
 import {EndpointName, PdkTab, Plugin} from '@myparcel-pdk/common';
-import {ContextKey} from '../../types';
 import {FormInstance} from '@myparcel/vue-form-builder';
-import {ResolvedQuery} from '../../stores';
 import {TabNavigation} from '../../components';
 import {createActionContext} from '../../services';
 import {createFormTab} from './createFormTab';
@@ -16,7 +15,7 @@ export interface FormTab extends Omit<PdkTab, 'component'> {
 
 export type PluginSettingsTabsContext = {
   mutation: ResolvedQuery<EndpointName.UPDATE_PLUGIN_SETTINGS>;
-  query: ResolvedQuery<`${EndpointName.FETCH_CONTEXT}.${ContextKey.PLUGIN_SETTINGS_VIEW}`>;
+  query: ContextQuery;
 };
 
 type CreatePluginSettingsTabs = (
@@ -40,11 +39,11 @@ export const createPluginSettingsTabs: CreatePluginSettingsTabs = ({view, mutati
     }
 
     if (!view.children.length) {
-      const language = useLanguage();
+      const {translate} = useLanguage();
 
       return {
         ...tab,
-        component: h('div', {}, language.translate(`view_${id}_empty`)),
+        component: h('div', {}, translate(`view_${id}_empty`)),
       };
     }
 

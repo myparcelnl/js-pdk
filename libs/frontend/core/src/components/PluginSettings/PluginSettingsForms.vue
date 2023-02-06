@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import {EndpointName, PdkTab} from '@myparcel-pdk/common';
-import {computed, defineComponent, ref, watch} from 'vue';
+import {computed, defineComponent, ref, unref, watch} from 'vue';
 import {useAccount, useLogger, useStoreContextQuery, useStoreQuery} from '../../composables';
 import {ContextKey} from '../../types';
 import TabNavigation from '../common/TabNavigation.vue';
@@ -32,7 +32,7 @@ export default defineComponent({
     watch(
       dynamicContextQuery.data,
       () => {
-        if (!hasAccount.value || !dynamicContextQuery.isLoading) {
+        if (!hasAccount.value || dynamicContextQuery.isLoading) {
           return;
         }
 
@@ -45,7 +45,7 @@ export default defineComponent({
         }
 
         tabs.value = createPluginSettingsTabs({
-          view: pluginSettingsView,
+          view: unref(pluginSettingsView),
           mutation: updatePluginSettingsMutation,
           query: dynamicContextQuery,
         });

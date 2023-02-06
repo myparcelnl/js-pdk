@@ -28,10 +28,10 @@
 
 <script lang="ts">
 import {defineComponent, nextTick} from 'vue';
+import {PdkAdminComponent} from '@myparcel-pdk/common';
 import {useDemoOrder} from '../composables/useDemoOrder';
 import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core';
 import {useRoute} from 'vue-router';
-import {PdkAdminComponent} from '@myparcel-pdk/common';
 
 export default defineComponent({
   name: 'Order',

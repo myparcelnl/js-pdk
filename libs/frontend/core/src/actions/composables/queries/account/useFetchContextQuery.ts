@@ -1,17 +1,16 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {ContextKey, PdkContext} from '../../../../types';
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
+import {ContextKey} from '../../../../types';
 import {EndpointName} from '@myparcel-pdk/common';
 import {encodeArrayParameter} from '../../../../utils';
 import {usePdkApi} from '../../../../sdk';
 
-type ContextFetchQueryResponse<C extends ContextKey> = PdkContext<C>;
-
-// @ts-expect-error typescript being pedantic
-export const useFetchContextQuery = <C extends ContextKey = ContextKey.DYNAMIC>(contextKey: C = ContextKey.DYNAMIC) => {
+export const useFetchContextQuery = <C extends ContextKey = ContextKey.DYNAMIC>(contextKey?: C) => {
   const queryClient = useQueryClient();
 
-  return useQuery<ContextFetchQueryResponse<C>>(
+  contextKey ??= ContextKey.DYNAMIC as C;
+
+  return useQuery(
     [EndpointName.FETCH_CONTEXT, contextKey],
     async () => {
       const pdk = usePdkApi();

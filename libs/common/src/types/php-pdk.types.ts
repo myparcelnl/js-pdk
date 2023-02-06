@@ -403,7 +403,7 @@ export namespace Plugin {
     pluginSettings: Settings.ModelSettings;
     productSettings: Settings.ModelSettings;
     productSettingsView: SettingsView;
-    product: Product.ModelProduct;
+    product: ModelPdkProduct;
   };
 
   export type ModelContextOrderDataContext = ModelPdkOrder & {
@@ -776,7 +776,7 @@ export namespace Shipment {
   export type ModelShipment = {
     id?: number;
     shopId?: number;
-    orderId?: string;
+    orderId: string;
     referenceIdentifier?: string;
     externalIdentifier?: string;
     apiKey?: string;

@@ -6,6 +6,7 @@ import {PluginSettingsTabsContext} from './createPluginSettingsTabs';
 import {SubmitButton} from '../../components';
 import {generateFormFields} from './generateFormFields';
 import {get} from 'lodash';
+import {unref} from 'vue';
 import {usePdkConfig} from '../../composables';
 
 export const createPluginSettingsForm = (
@@ -15,17 +16,14 @@ export const createPluginSettingsForm = (
   {mutation, query}: PluginSettingsTabsContext,
 ): FormInstance => {
   const pdkConfig = usePdkConfig();
+  const values = get(unref(query.data), id, {});
+
+  const generatedFields = generateFormFields({fields: view.elements, values}, `${id}.`);
 
   return defineForm(id, {
     ...pdkConfig.formConfigPluginSettings,
     fields: [
-      ...generateFormFields(
-        {
-          fields: view.elements,
-          values: get(query.data.value, id, {}),
-        },
-        `${id}.`,
-      ),
+      ...generatedFields,
       {
         component: SubmitButton,
         props: {
@@ -35,14 +33,10 @@ export const createPluginSettingsForm = (
     ],
 
     async afterSubmit(form) {
-      const context: ActionContext<AdminAction.PLUGIN_SETTINGS_UPDATE> = {
+      await executeAction({
         ...actionContext,
-        parameters: {
-          form,
-        },
-      };
-
-      await executeAction(context);
+        parameters: {form},
+      });
     },
   });
 };
