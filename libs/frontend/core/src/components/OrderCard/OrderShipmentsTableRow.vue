@@ -30,8 +30,8 @@
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
 import {useFormatter, useLanguage, useShipmentData} from '../../composables';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {Shipment} from '@myparcel-pdk/common';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
+import {Shipment} from '@myparcel-pdk/common/src';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
 import {useVModel} from '@vueuse/core';

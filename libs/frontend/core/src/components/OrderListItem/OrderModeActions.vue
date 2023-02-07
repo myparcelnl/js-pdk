@@ -20,7 +20,7 @@ import {PropType, defineComponent} from 'vue';
 import {createAction, createActions} from '../../services';
 import {orderExportAction, orderViewInBackofficeAction, ordersEditAction} from '../../actions';
 import {ActionButton} from '../common';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/common/src';
 import {useLoading} from '../../composables';
 
 export default defineComponent({

@@ -1,6 +1,6 @@
 import {AdminAction, ContextKey, PdkIcon} from '../../types';
 import {createMutator, createQueryFetcher, executeNextAction} from '../executors';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
 
 /**

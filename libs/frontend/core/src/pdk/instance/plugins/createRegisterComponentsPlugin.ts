@@ -1,11 +1,11 @@
 import {App, Component, markRaw} from 'vue';
-import {FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder';
+import {FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder/src';
 import {
   PdkComponentName,
   optionalActionContainerComponentNames,
   optionalPlainWrapperComponentNames,
   requiredComponentNames,
-} from '@myparcel-pdk/common';
+} from '@myparcel-pdk/common/src';
 import {memoize, mergeWith} from 'lodash-unified';
 import {PdkAppPlugin} from './plugins.types';
 import {PlainElement} from '../../../components';

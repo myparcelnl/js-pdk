@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import {EndpointName, PdkTab} from '@myparcel-pdk/common';
+import {EndpointName, PdkTab} from '@myparcel-pdk/common/src';
 import {computed, defineComponent, ref, unref, watch} from 'vue';
 import {useAccount, useLogger, useStoreContextQuery, useStoreQuery} from '../../composables';
 import {ContextKey} from '../../types';

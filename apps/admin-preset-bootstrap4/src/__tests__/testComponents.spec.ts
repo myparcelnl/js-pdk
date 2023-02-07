@@ -16,7 +16,7 @@ import {
   Bootstrap4Table,
   Bootstrap4TextInput,
 } from '../components';
-import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests';
+import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests/src';
 
 executePdkComponentTests({
   PdkButton: Bootstrap4Button,

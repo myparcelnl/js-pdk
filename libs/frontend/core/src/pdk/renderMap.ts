@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {ComponentImportFunction, PdkAdminComponent} from '@myparcel-pdk/common';
+import {ComponentImportFunction, PdkAdminComponent} from '@myparcel-pdk/common/src';
 import {Component} from 'vue';
 
 /**

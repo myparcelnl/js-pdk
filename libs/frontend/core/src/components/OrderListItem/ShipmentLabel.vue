@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {Shipment} from '@myparcel-pdk/common';
+import {Shipment} from '@myparcel-pdk/common/src';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
 import {useShipmentData} from '../../composables';

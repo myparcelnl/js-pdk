@@ -1,7 +1,7 @@
 import {ActionParameters, AdminAction} from '../../types';
 import {createShipmentFormName, getOrderId} from '../../utils';
 import {ActionContext} from './types';
-import {useFormBuilder} from '@myparcel/vue-form-builder';
+import {useFormBuilder} from '@myparcel/vue-form-builder/src';
 
 export const resolveOrderParameters = <A extends AdminAction>({
   parameters,

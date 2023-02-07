@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {Shipment} from '@myparcel-pdk/common';
+import {Shipment} from '@myparcel-pdk/common/src';
 import {useLanguage} from '../../composables';
 
 export default defineComponent({

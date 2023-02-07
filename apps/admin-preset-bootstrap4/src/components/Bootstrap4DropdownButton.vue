@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import {ActionButton, ResolvedAction, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-core';
+import {ActionButton, ResolvedAction, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {PropType, defineComponent} from 'vue';
 import BaseButton from './common/BaseButton.vue';
 

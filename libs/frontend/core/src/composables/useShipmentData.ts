@@ -6,7 +6,7 @@ import {
   shipmentsFetchAction,
   shipmentsPrintAction,
 } from '../actions';
-import {Shipment} from '@myparcel-pdk/common';
+import {Shipment} from '@myparcel-pdk/common/src';
 import {createActions} from '../services';
 import {useAssetUrl} from './useAssetUrl';
 import {useCarrier} from '../sdk';

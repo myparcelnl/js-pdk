@@ -24,7 +24,7 @@
 import {computed, defineComponent, ref} from 'vue';
 import {useAccount, useLanguage, useStoreContextQuery} from '../../composables';
 import EditApiKeyForm from './EditApiKeyForm.vue';
-import {FormInstance} from '@myparcel/vue-form-builder';
+import {FormInstance} from '@myparcel/vue-form-builder/src';
 import WebhooksStatus from './WebhooksStatus.vue';
 
 export default defineComponent({

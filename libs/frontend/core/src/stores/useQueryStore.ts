@@ -18,7 +18,7 @@ import {
   useUpdateShipmentsMutation,
 } from '../actions';
 import {ApiException} from '@myparcel/sdk';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
 import {getOrderId} from '../utils';

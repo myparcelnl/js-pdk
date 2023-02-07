@@ -3,7 +3,7 @@ import {
   PdkComponentMap,
   optionalPlainWrapperComponentNames,
   requiredComponentNames,
-} from '@myparcel-pdk/common';
+} from '@myparcel-pdk/common/src';
 import {
   LogLevel,
   PdkAppConfig,
@@ -12,7 +12,7 @@ import {
   createLogger,
   createStorePlugin,
   globalLogger,
-} from '@myparcel-pdk/frontend-core';
+} from '@myparcel-pdk/frontend-core/src';
 import {config} from '@vue/test-utils';
 
 const context: PdkContextObject = {

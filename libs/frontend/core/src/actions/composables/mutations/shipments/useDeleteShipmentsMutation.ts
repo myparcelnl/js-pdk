@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {encodeArrayParameter, normalizeOrder} from '../../../../utils';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {toArray} from '@myparcel/ts-utils';
 import {useOrderData} from '../../../../composables';
 import {usePdkApi} from '../../../../sdk';

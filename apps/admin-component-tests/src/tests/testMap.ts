@@ -27,7 +27,7 @@ import {
   runToggleInputTest,
 } from '../components';
 import {Component} from 'vue';
-import {PdkComponentName} from '@myparcel-pdk/common';
+import {PdkComponentName} from '@myparcel-pdk/common/src';
 
 export type PdkComponentTest = (component: Omit<Component, 'props'>) => void;
 

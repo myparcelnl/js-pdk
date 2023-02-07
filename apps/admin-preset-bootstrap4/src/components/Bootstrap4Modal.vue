@@ -49,7 +49,7 @@ import {
   ResolvedAction,
   useLanguage,
   useModalStore,
-} from '@myparcel-pdk/frontend-core';
+} from '@myparcel-pdk/frontend-core/src';
 import {PropType, computed, defineComponent, toRefs} from 'vue';
 
 /**

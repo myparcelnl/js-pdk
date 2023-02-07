@@ -1,4 +1,4 @@
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/common/src';
 import {useContext} from './useContext';
 
 export const usePluginSettings = (): Plugin.ModelContextDynamicContext['pluginSettings'] => {

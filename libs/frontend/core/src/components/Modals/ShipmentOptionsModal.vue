@@ -12,7 +12,7 @@
 import {defineAsyncComponent, defineComponent} from 'vue';
 import {modalCancelAction, orderExportAction, orderExportToShipmentsAction} from '../../actions';
 import {usePluginSettings, useStoreQuery} from '../../composables';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {ModalKey} from '../../types';
 import {createActions} from '../../services';
 

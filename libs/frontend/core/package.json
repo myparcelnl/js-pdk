@@ -8,7 +8,8 @@
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "scripts": {
     "build": "run ws:vite:build \"$(pwd)\"",
@@ -24,7 +25,7 @@
   "dependencies": {
     "@myparcel-pdk/common": "workspace:^",
     "@myparcel/sdk": "^2.10.1",
-    "@myparcel/ts-utils": "^1.4.0",
+    "@myparcel/ts-utils": "^1.5.1",
     "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
     "@tanstack/vue-query": "^4.24.4",
     "@types/lodash-es": "^4.17.6",

@@ -1,6 +1,6 @@
-import {AnyElementConfiguration, defineField} from '@myparcel/vue-form-builder';
-import {Plugin} from '@myparcel-pdk/common';
+import {AnyElementConfiguration, defineField} from '@myparcel/vue-form-builder/src';
 import {ref} from 'vue';
+import {Plugin} from '@myparcel-pdk/common/src';
 import {resolveFormComponent} from '../resolveFormComponent';
 
 type GenerateFormFields = (

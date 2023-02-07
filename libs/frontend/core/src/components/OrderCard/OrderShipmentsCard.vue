@@ -36,7 +36,7 @@ import {
 } from '../../actions';
 import {useLanguage, useLoading} from '../../composables';
 import OrderShipmentsTable from './OrderShipmentsTable.vue';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/common/src';
 import {createActions} from '../../services';
 
 export default defineComponent({

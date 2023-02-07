@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/common/src';
 import ShipmentLabel from './ShipmentLabel.vue';
 import {usePdkConfig} from '../../composables';
 

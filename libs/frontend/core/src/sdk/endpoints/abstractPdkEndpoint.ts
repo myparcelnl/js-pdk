@@ -8,7 +8,7 @@ import {
   PdkWebhook,
   Plugin,
   Settings,
-} from '@myparcel-pdk/common';
+} from '@myparcel-pdk/common/src';
 import {PdkContextObject} from '../../types';
 import {RecursivePartial} from '@myparcel/ts-utils';
 

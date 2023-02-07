@@ -39,9 +39,9 @@
 
 <script lang="ts">
 import {RouterLink, RouterView, useRouter} from 'vue-router';
-import {PdkAdminComponent} from '@myparcel-pdk/common';
+import {PdkAdminComponent} from '@myparcel-pdk/common/src';
 import {defineComponent} from 'vue';
-import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core';
+import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core/src';
 
 export default defineComponent({
   name: 'DemoApp',

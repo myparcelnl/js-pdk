@@ -8,7 +8,7 @@
 /**
  * Product settings.
  */
-import {FormInstance, MagicForm, defineForm} from '@myparcel/vue-form-builder';
+import {FormInstance, MagicForm, defineForm} from '@myparcel/vue-form-builder/src';
 import {useContext, usePdkConfig} from '../composables';
 import {ContextKey} from '../types';
 import {generateFormFields} from '../forms';

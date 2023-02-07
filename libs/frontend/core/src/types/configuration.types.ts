@@ -1,6 +1,6 @@
-import {FormConfiguration} from '@myparcel/vue-form-builder';
+import {FormConfiguration} from '@myparcel/vue-form-builder/src';
 import {LogLevel} from '../services';
-import {PdkComponentMap} from '@myparcel-pdk/common';
+import {PdkComponentMap} from '@myparcel-pdk/common/src';
 import {PdkFormatterObject} from '../composables';
 import {PiniaPluginContext} from 'pinia';
 

@@ -1,6 +1,6 @@
 import {QueryClient, VueQueryPlugin} from '@tanstack/vue-query';
 import {ContextKey} from '../../../types';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {PdkAppPlugin} from './plugins.types';
 import {createInstanceContext} from '../createInstanceContext';
 import {createQueryClient} from '../createQueryClient';

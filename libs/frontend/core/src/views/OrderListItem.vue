@@ -23,7 +23,7 @@
  * This is the main entry point for the order list column.
  */
 import {usePluginSettings, useStoreQuery} from '../composables';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {NotificationContainer} from '../components';
 import {defineAsyncComponent} from 'vue';
 import {useQueryStore} from '../stores';

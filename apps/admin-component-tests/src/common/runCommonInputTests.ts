@@ -1,5 +1,5 @@
 import {Component, ref} from 'vue';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
 import {PartialComponentTest} from '../types';
 import {runHasPropTest} from './runHasPropTest';
 

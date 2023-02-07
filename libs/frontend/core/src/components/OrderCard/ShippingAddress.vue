@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/common/src';
 
 export default defineComponent({
   name: 'ShippingAddress',

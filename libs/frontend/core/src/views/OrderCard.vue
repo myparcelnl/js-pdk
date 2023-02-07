@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 import {usePluginSettings, useStoreQuery} from '../composables';
 import ConceptCard from '../components/OrderCard/ConceptCard.vue';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {defineAsyncComponent} from 'vue';
 import {useQueryStore} from '../stores';
 

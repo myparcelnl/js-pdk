@@ -11,7 +11,7 @@ export type {
   SelectOption,
   Settings,
   Shipment,
-} from '@myparcel-pdk/common';
+} from '@myparcel-pdk/common/src';
 
 export type {
   AnyContext,
@@ -29,7 +29,7 @@ export type {
   PdkInstanceContext,
   PdkNotification,
   ResolvedAction,
-} from '@myparcel-pdk/frontend-core';
+} from '@myparcel-pdk/frontend-core/src';
 
 export {
   ActionButton,
@@ -79,6 +79,6 @@ export {
   usePdfWindow,
   usePdkConfig,
   webhooksDeleteAction,
-} from '@myparcel-pdk/frontend-core';
+} from '@myparcel-pdk/frontend-core/src';
 
-export {PdkAdminComponent, PdkButtonSize, PdkStatus, PdkVariant} from '@myparcel-pdk/common';
+export {PdkAdminComponent, PdkButtonSize, PdkStatus, PdkVariant} from '@myparcel-pdk/common/src';

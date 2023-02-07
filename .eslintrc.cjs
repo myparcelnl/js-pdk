@@ -1,10 +1,5 @@
 module.exports = {
   root: true,
-  parserOptions: {
-    dir: __dirname,
-    project: 'tsconfig.json',
-    extraFileExtensions: ['.vue'],
-  },
   overrides: [
     {
       files: ['./**/index.ts'],

@@ -1,5 +1,5 @@
 import {Ref, ref} from 'vue';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/common/src';
 import {memoize} from 'lodash-unified';
 import {useFetchOrdersQuery} from '../actions';
 

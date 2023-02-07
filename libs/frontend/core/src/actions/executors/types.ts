@@ -7,7 +7,7 @@ import {
   PdkAction,
   PdkNotification,
 } from '../../types';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {PdkAppInstance} from '../../data';
 
 type BaseActionContext<A extends MaybeAdminAction> = {

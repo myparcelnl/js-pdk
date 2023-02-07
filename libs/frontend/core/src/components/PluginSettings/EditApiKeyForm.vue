@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import {FormInstance, MagicForm} from '@myparcel/vue-form-builder';
+import {FormInstance, MagicForm} from '@myparcel/vue-form-builder/src';
 import {NotificationCategory} from '../../types';
 import {NotificationContainer} from '../common';
 import {createAccountSettingsForm} from '../../forms/createAccountSettingsForm';

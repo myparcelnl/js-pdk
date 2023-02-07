@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import {EndpointName, PdkStatus, PdkWebhook} from '@myparcel-pdk/common';
+import {EndpointName, PdkStatus, PdkWebhook} from '@myparcel-pdk/common/src';
 import {computed, defineComponent, ref} from 'vue';
 import {useLanguage, useStoreQuery} from '../../composables';
 import {webhooksCreateAction, webhooksDeleteAction} from '../../actions';

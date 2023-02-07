@@ -1,5 +1,5 @@
 import {OneOrMore} from '@myparcel/ts-utils';
-import {PdkVariant} from '@myparcel-pdk/common';
+import {PdkVariant} from '@myparcel-pdk/common/src';
 
 export interface PdkNotification {
   id?: number;

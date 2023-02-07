@@ -4,8 +4,8 @@
 
 <script lang="ts">
 import {defineComponent, nextTick} from 'vue';
-import {PdkAdminComponent} from '@myparcel-pdk/common';
-import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core';
+import {PdkAdminComponent} from '@myparcel-pdk/common/src';
+import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core/src';
 
 export default defineComponent({
   name: 'Settings',

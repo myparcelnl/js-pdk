@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {EndpointName, Plugin} from '@myparcel-pdk/common';
+import {EndpointName, Plugin} from '@myparcel-pdk/common/src';
 import {ModalKey} from './modal.types';
 import {Replace} from '@myparcel/ts-utils';
 

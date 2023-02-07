@@ -1,6 +1,6 @@
 import {ActionParameters, ModalKey, PrintAction} from '../../types';
 import {ActionContext} from '../executors';
-import {useFormBuilder} from '@myparcel/vue-form-builder';
+import {useFormBuilder} from '@myparcel/vue-form-builder/src';
 import {useModalStore} from '../../stores';
 import {usePluginSettings} from '../../composables';
 

@@ -1,4 +1,4 @@
-import {LabelFormat, LabelOutput, LabelPosition, SelectOption} from '@myparcel-pdk/common';
+import {LabelFormat, LabelOutput, LabelPosition, SelectOption} from '@myparcel-pdk/common/src';
 
 // TODO: get this data from backend
 

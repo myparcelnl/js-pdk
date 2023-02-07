@@ -17,9 +17,9 @@ import {
   useUpdateAccountMutation,
   useUpdatePluginSettingsMutation,
 } from '../actions';
-import AccountSettings from '../components/PluginSettings/AccountSettings.vue'; // eslint-disable-next-line @typescript-eslint/naming-convention
+import AccountSettings from '../components/PluginSettings/AccountSettings.vue';
 import {ContextKey} from '../types';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForms.vue';
 import {useQueryStore} from '../stores';
 

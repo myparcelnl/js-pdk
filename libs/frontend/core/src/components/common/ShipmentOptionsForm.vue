@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import {PropType, defineComponent, toRaw} from 'vue';
-import {MagicForm} from '@myparcel/vue-form-builder';
-import {Plugin} from '@myparcel-pdk/common';
+import {MagicForm} from '@myparcel/vue-form-builder/src';
+import {Plugin} from '@myparcel-pdk/common/src';
 import {createShipmentOptionsForm} from '../../forms';
 
 export default defineComponent({

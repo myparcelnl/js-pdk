@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-core';
+import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-core/src';
 import {PropType, defineComponent, onMounted} from 'vue';
 import {useVModel} from '@vueuse/core';
 

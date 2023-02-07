@@ -26,7 +26,7 @@
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
 import {useLanguage, usePdkConfig, useShipmentData} from '../../composables';
-import {Shipment} from '@myparcel-pdk/common';
+import {Shipment} from '@myparcel-pdk/common/src';
 
 export default defineComponent({
   name: 'ShipmentBarcode',

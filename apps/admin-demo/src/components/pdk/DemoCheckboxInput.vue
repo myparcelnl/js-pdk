@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {ElementInstance} from '@myparcel-pdk/frontend-core';
+import {ElementInstance} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
 /**

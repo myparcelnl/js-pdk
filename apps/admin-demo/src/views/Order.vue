@@ -28,9 +28,9 @@
 
 <script lang="ts">
 import {defineComponent, nextTick} from 'vue';
-import {PdkAdminComponent} from '@myparcel-pdk/common';
+import {PdkAdminComponent} from '@myparcel-pdk/common/src';
 import {useDemoOrder} from '../composables/useDemoOrder';
-import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core';
+import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core/src';
 import {useRoute} from 'vue-router';
 
 export default defineComponent({

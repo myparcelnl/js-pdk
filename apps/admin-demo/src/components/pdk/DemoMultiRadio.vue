@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {SelectOption} from '@myparcel-pdk/common';
-import {useLanguage} from '@myparcel-pdk/frontend-core';
+import {SelectOption} from '@myparcel-pdk/common/src';
+import {useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
 /**

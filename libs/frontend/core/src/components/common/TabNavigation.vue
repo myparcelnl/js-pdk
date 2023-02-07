@@ -25,7 +25,7 @@
 <script lang="ts">
 import {PropType, computed, defineComponent, ref} from 'vue';
 import {useLanguage, usePdkConfig} from '../../composables';
-import {PdkTab} from '@myparcel-pdk/common';
+import {PdkTab} from '@myparcel-pdk/common/src';
 
 /**
  * Tab navigation.

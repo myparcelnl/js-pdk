@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import {FormInstance, INJECT_FORM} from '@myparcel/vue-form-builder';
+import {FormInstance, INJECT_FORM} from '@myparcel/vue-form-builder/src';
 import {defineComponent, inject} from 'vue';
 import {PdkIcon} from '../../types';
 import {useLoading} from '../../composables';

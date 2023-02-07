@@ -1,6 +1,6 @@
 import {ContextQuery, ResolvedQuery} from '../../stores';
-import {EndpointName, PdkTab, Plugin} from '@myparcel-pdk/common';
-import {FormInstance} from '@myparcel/vue-form-builder';
+import {EndpointName, PdkTab, Plugin} from '@myparcel-pdk/common/src';
+import {FormInstance} from '@myparcel/vue-form-builder/src';
 import {TabNavigation} from '../../components';
 import {createActionContext} from '../../services';
 import {createFormTab} from './createFormTab';

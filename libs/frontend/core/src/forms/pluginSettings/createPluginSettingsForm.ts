@@ -1,11 +1,11 @@
 import {ActionContext, executeAction} from '../../actions';
-import {FormInstance, defineForm} from '@myparcel/vue-form-builder';
+import {FormInstance, defineForm} from '@myparcel/vue-form-builder/src';
 import {AdminAction} from '../../types';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/common/src';
 import {PluginSettingsTabsContext} from './createPluginSettingsTabs';
 import {SubmitButton} from '../../components';
 import {generateFormFields} from './generateFormFields';
-import {get} from 'lodash';
+import {get} from 'lodash-unified';
 import {unref} from 'vue';
 import {usePdkConfig} from '../../composables';
 

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {EndpointResponse} from '../../../../types';
 import {QUERY_KEY_ORDER} from '../queryKeys';
 import {encodeArrayParameter} from '../../../../utils';

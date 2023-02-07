@@ -24,6 +24,6 @@
     "tsup": "^6.5.0"
   },
   "devDependencies": {
-    "@myparcel/ts-utils": "^1.4.0"
+    "@myparcel/ts-utils": "^1.5.1"
   }
 }

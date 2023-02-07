@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {SelectOption} from '@myparcel-pdk/common';
+import {SelectOption} from '@myparcel-pdk/common/src';
 import {useVModel} from '@vueuse/core';
 
 /**

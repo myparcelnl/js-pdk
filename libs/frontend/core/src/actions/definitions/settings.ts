@@ -1,5 +1,5 @@
 import {AdminAction, PdkIcon} from '../../types';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {createMutator} from '../executors';
 import {defineAction} from '../defineAction';
 

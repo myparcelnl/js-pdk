@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import {CARRIERS, DELIVERY_TYPES} from '@myparcel/sdk';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/common/src';
 
 // eslint-disable-next-line max-lines-per-function
 export const useDemoOrderData = (): Plugin.ModelContextOrderDataContext[] => [

@@ -1,4 +1,4 @@
-import {PdkComponentMap, PdkComponentName} from '@myparcel-pdk/common';
+import {PdkComponentMap, PdkComponentName} from '@myparcel-pdk/common/src';
 import {doComponentTestSetup} from '../tests';
 import {executePdkComponentTest} from './executePdkComponentTest';
 import {vi} from 'vitest';

@@ -1,4 +1,4 @@
-import {FormInstance} from '@myparcel/vue-form-builder';
+import {FormInstance} from '@myparcel/vue-form-builder/src';
 import {convertDotNotationToObject} from '../convertDotNotationToObject';
 
 export const formToBody = <T extends Record<string, unknown> = Record<string, unknown>>(form?: FormInstance): T => {

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import {CARRIERS, CarrierName, PACKAGE_TYPES, PackageTypeName} from '@myparcel/sdk';
-import {InteractiveElementConfiguration, defineField, defineForm} from '@myparcel/vue-form-builder';
+import {InteractiveElementConfiguration, defineField, defineForm} from '@myparcel/vue-form-builder/src';
 import {ref, resolveComponent} from 'vue';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/common/src';
 import {createShipmentFormName} from '../utils';
 import {useCarriers} from '../sdk';
 import {useLanguage} from '../composables';

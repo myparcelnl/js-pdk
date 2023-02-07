@@ -6,6 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.yarn" />
       <excludeFolder url="file://$MODULE_DIR$/lib" />
       <excludeFolder url="file://$MODULE_DIR$/libs/build/esbuild/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/admin-demo/node_modules" />
       <excludePattern pattern="yarn.lock" />
       <excludePattern pattern="lib" />
       <excludePattern pattern="dist" />

@@ -34,7 +34,7 @@ import {
   ordersUpdateAction,
 } from '../../actions';
 import {useLanguage, useLoading, usePluginSettings} from '../../composables';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/common/src';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
 
 export default defineComponent({

@@ -1,8 +1,8 @@
 /* eslint-disable no-magic-numbers */
-import {PdkAppInstance, createLogger, createPdkConfig} from '@myparcel-pdk/frontend-core';
+import {PdkAppInstance, createLogger, createPdkConfig} from '@myparcel-pdk/frontend-core/src';
 import {afterAll, beforeAll, describe, vi} from 'vitest';
 import {Component} from 'vue';
-import {PdkComponentName} from '@myparcel-pdk/common';
+import {PdkComponentName} from '@myparcel-pdk/common/src';
 import {testMap} from './testMap';
 
 export const executePdkComponentTest = (name: PdkComponentName, component: Omit<Component, 'props'>): void => {

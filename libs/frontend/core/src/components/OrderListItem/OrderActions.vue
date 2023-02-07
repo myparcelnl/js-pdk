@@ -13,7 +13,7 @@ import {
 } from '../../actions';
 import {useLoading, useOrderData} from '../../composables';
 import {PdkAction} from '../../types';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/common/src';
 import {createActions} from '../../services';
 
 export default defineComponent({

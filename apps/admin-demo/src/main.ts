@@ -29,9 +29,9 @@ import {
   DemoTextInput,
   DemoToggleInput,
 } from './components';
-import {LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-core';
+import {LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-core/src';
 import App from './App.vue';
-import {DefaultHeading} from '@myparcel-pdk/admin-components';
+import {DefaultHeading} from '@myparcel-pdk/admin-components/src';
 import {context} from './context';
 import {createApp} from 'vue';
 import {createRouterInstance} from './router';

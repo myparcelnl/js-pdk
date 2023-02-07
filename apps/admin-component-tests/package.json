@@ -6,6 +6,10 @@
   "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "build": "run ws:tsup:build \"$(pwd)\"",
     "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
@@ -15,8 +19,8 @@
     "serve": "run ws:tsup:serve \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:*",
-    "@myparcel-pdk/frontend-core": "workspace:*",
+    "@myparcel-pdk/common": "workspace:^",
+    "@myparcel-pdk/frontend-core": "workspace:^",
     "@vue/test-utils": "^2.2.10",
     "vue": "^3.2.47"
   },

@@ -2,7 +2,7 @@
 import {EndpointOptions, usePdkApi} from '../../../../sdk';
 import {MutationMode, getCallbackForMutationMode, getModalMutationOptions} from '../../../../services';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {fillOrderQueryData} from '../../../../pdk';
 import {useModalStore} from '../../../../stores';
 import {usePdkMutation} from '../orders';

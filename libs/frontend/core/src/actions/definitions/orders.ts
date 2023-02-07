@@ -1,7 +1,7 @@
 import {AdminAction, ModalKey, PdkIcon, PdkModalContext} from '../../types';
 import {createMutator, createQueryFetcher, executeNextAction, resolveOrderParameters} from '../executors';
 import {openOrPrint, waitForLabelPrompt} from '../print';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
 import {shipmentsFetchAction} from './shipments';
 import {useModalStore} from '../../stores';

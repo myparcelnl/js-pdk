@@ -46,10 +46,10 @@
 </template>
 
 <script lang="ts">
-import {FormInstance, InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {FormInstance, InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
 import {PropType, computed, defineComponent, ref} from 'vue';
 import {useLanguage, useOrderData, usePdkConfig} from '../../composables';
-import {Plugin} from '@myparcel-pdk/common';
+import {Plugin} from '@myparcel-pdk/common/src';
 import ShipmentLabelTableRow from './OrderShipmentsTableRow.vue';
 import {isDef} from '@vueuse/core';
 

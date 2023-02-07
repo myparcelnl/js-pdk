@@ -15,7 +15,7 @@
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
 import {PdkIcon} from '../../types';
-import {PdkStatus} from '@myparcel-pdk/common';
+import {PdkStatus} from '@myparcel-pdk/common/src';
 import {usePdkConfig} from '../../composables';
 
 export default defineComponent({

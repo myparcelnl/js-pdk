@@ -1,6 +1,6 @@
 import {AdminAction, PdkIcon} from '../../types';
 import {createMutator, executeAction} from '../executors';
-import {EndpointName} from '@myparcel-pdk/common';
+import {EndpointName} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
 import {waitForLabelPrompt} from '../print';
 

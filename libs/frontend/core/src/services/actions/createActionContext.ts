@@ -1,7 +1,7 @@
 import {ActionParameters, AdminAction, PdkAction, PdkNotification} from '../../types';
 import {ActionContext} from '../../actions';
 import {PdkAppInstance} from '../../data';
-import {PdkVariant} from '@myparcel-pdk/common';
+import {PdkVariant} from '@myparcel-pdk/common/src';
 import {createApiErrorNotification} from '../createApiErrorNotification';
 import {createLogger} from '../logger';
 import {getActionIdentifier} from './getActionIdentifier';

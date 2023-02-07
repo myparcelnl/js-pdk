@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core';
+import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {PropType, defineComponent} from 'vue';
 
 /**

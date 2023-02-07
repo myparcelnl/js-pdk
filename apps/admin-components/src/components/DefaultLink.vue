@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import {AnchorHTMLAttributes, PropType, computed, defineComponent} from 'vue';
-import {ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-core';
+import {ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-core/src';
 
 /**
  * This component is used to render a button. The button can be used to trigger
