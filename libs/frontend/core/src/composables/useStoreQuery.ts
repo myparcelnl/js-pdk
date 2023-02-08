@@ -1,9 +1,9 @@
 import {ResolvedQuery, useQueryStore} from '../stores';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 
-export const useStoreQuery = <E extends EndpointName>(endpoint: E, suffix?: string): ResolvedQuery<E> => {
+export const useStoreQuery = <E extends BackendEndpoint>(endpoint: E, suffix?: string): ResolvedQuery<E> => {
   const queryStore = useQueryStore();
-  const identifier = [endpoint, suffix].filter(Boolean).join('.') as EndpointName;
+  const identifier = [endpoint, suffix].filter(Boolean).join('.') as BackendEndpoint;
 
   if (!queryStore.has(identifier)) {
     throw new Error(`Query not registered: ${identifier}`);

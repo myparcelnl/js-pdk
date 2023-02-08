@@ -18,54 +18,54 @@ import {
   useUpdateShipmentsMutation,
 } from '../actions';
 import {ApiException} from '@myparcel/sdk';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
 import {getOrderId} from '../utils';
 
-export type QueryKey = EndpointName | `${EndpointName.FETCH_CONTEXT}.${ContextKey}`;
+export type QueryKey = BackendEndpoint | `${BackendEndpoint.FETCH_CONTEXT}.${ContextKey}`;
 
 export type ContextQuery<C extends ContextKey = ContextKey.DYNAMIC> = UseQueryReturnType<PdkContext<C>, ApiException>;
 
-export type ResolvedQuery<E extends QueryKey = EndpointName> = E extends EndpointName
+export type ResolvedQuery<E extends QueryKey = BackendEndpoint> = E extends BackendEndpoint
   ? EndpointQuery<E>
-  : E extends `${EndpointName.FETCH_CONTEXT}.${infer C}`
+  : E extends `${BackendEndpoint.FETCH_CONTEXT}.${infer C}`
   ? C extends ContextKey
     ? ContextQuery<C>
     : never
   : never;
 
-export type QueryObject<I extends QueryKey = EndpointName> = Record<I, ResolvedQuery<I>>;
+export type QueryObject<I extends QueryKey = BackendEndpoint> = Record<I, ResolvedQuery<I>>;
 
-type EndpointQuery<E extends EndpointName = EndpointName> = E extends EndpointName.FETCH_CONTEXT
+type EndpointQuery<E extends BackendEndpoint = BackendEndpoint> = E extends BackendEndpoint.FETCH_CONTEXT
   ? ReturnType<typeof useFetchContextQuery>
-  : E extends EndpointName.UPDATE_ACCOUNT
+  : E extends BackendEndpoint.UPDATE_ACCOUNT
   ? ReturnType<typeof useUpdateAccountMutation>
-  : E extends EndpointName.EXPORT_ORDERS
+  : E extends BackendEndpoint.EXPORT_ORDERS
   ? ReturnType<typeof useExportOrdersMutation>
-  : E extends EndpointName.FETCH_ORDERS
+  : E extends BackendEndpoint.FETCH_ORDERS
   ? ReturnType<typeof useFetchOrdersQuery>
-  : E extends EndpointName.PRINT_ORDERS
+  : E extends BackendEndpoint.PRINT_ORDERS
   ? ReturnType<typeof usePrintOrdersMutation>
-  : E extends EndpointName.UPDATE_ORDERS
+  : E extends BackendEndpoint.UPDATE_ORDERS
   ? ReturnType<typeof useUpdateOrdersMutation>
-  : E extends EndpointName.CREATE_RETURN_SHIPMENTS
+  : E extends BackendEndpoint.CREATE_RETURN_SHIPMENTS
   ? ReturnType<typeof useCreateReturnShipmentsMutation>
-  : E extends EndpointName.DELETE_SHIPMENTS
+  : E extends BackendEndpoint.DELETE_SHIPMENTS
   ? ReturnType<typeof useDeleteShipmentsMutation>
-  : E extends EndpointName.FETCH_SHIPMENTS
+  : E extends BackendEndpoint.FETCH_SHIPMENTS
   ? ReturnType<typeof useUpdateShipmentsMutation>
-  : E extends EndpointName.PRINT_SHIPMENTS
+  : E extends BackendEndpoint.PRINT_SHIPMENTS
   ? ReturnType<typeof usePrintShipmentsMutation>
-  : E extends EndpointName.UPDATE_PLUGIN_SETTINGS
+  : E extends BackendEndpoint.UPDATE_PLUGIN_SETTINGS
   ? ReturnType<typeof useUpdatePluginSettingsMutation>
-  : E extends EndpointName.UPDATE_PRODUCT_SETTINGS
+  : E extends BackendEndpoint.UPDATE_PRODUCT_SETTINGS
   ? ReturnType<typeof useUpdatePluginSettingsMutation>
-  : E extends EndpointName.CREATE_WEBHOOKS
+  : E extends BackendEndpoint.CREATE_WEBHOOKS
   ? ReturnType<typeof useCreateWebhooksMutation>
-  : E extends EndpointName.DELETE_WEBHOOKS
+  : E extends BackendEndpoint.DELETE_WEBHOOKS
   ? ReturnType<typeof useDeleteWebhooksMutation>
-  : E extends EndpointName.FETCH_WEBHOOKS
+  : E extends BackendEndpoint.FETCH_WEBHOOKS
   ? ReturnType<typeof useFetchWebhooksQuery>
   : never;
 
@@ -120,15 +120,15 @@ export const useQueryStore = defineStore('query', () => {
         throw new Error('No order id found');
       }
 
-      register(EndpointName.FETCH_ORDERS, useFetchOrdersQuery(id));
+      register(BackendEndpoint.FETCH_ORDERS, useFetchOrdersQuery(id));
 
-      register(EndpointName.EXPORT_ORDERS, useExportOrdersMutation(mode));
-      register(EndpointName.PRINT_ORDERS, usePrintOrdersMutation());
-      register(EndpointName.UPDATE_ORDERS, useUpdateOrdersMutation());
+      register(BackendEndpoint.EXPORT_ORDERS, useExportOrdersMutation(mode));
+      register(BackendEndpoint.PRINT_ORDERS, usePrintOrdersMutation());
+      register(BackendEndpoint.UPDATE_ORDERS, useUpdateOrdersMutation());
 
-      register(EndpointName.DELETE_SHIPMENTS, useDeleteShipmentsMutation());
-      register(EndpointName.PRINT_SHIPMENTS, usePrintShipmentsMutation());
-      register(EndpointName.FETCH_SHIPMENTS, useUpdateShipmentsMutation());
+      register(BackendEndpoint.DELETE_SHIPMENTS, useDeleteShipmentsMutation());
+      register(BackendEndpoint.PRINT_SHIPMENTS, usePrintShipmentsMutation());
+      register(BackendEndpoint.FETCH_SHIPMENTS, useUpdateShipmentsMutation());
     },
 
     /**
@@ -136,8 +136,8 @@ export const useQueryStore = defineStore('query', () => {
      */
     registerContextQueries: <C extends Exclude<ContextKey, ContextKey.GLOBAL | ContextKey.DYNAMIC>>(...keys: C[]) => {
       [ContextKey.GLOBAL, ContextKey.DYNAMIC, ...keys].forEach((key) => {
-        const query = useFetchContextQuery(key) as ResolvedQuery<`${EndpointName.FETCH_CONTEXT}.${C}`>;
-        register(`${EndpointName.FETCH_CONTEXT}.${key}`, query);
+        const query = useFetchContextQuery(key) as ResolvedQuery<`${BackendEndpoint.FETCH_CONTEXT}.${C}`>;
+        register(`${BackendEndpoint.FETCH_CONTEXT}.${key}`, query);
       });
     },
   };

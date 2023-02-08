@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import {EndpointName, PdkStatus, PdkWebhook} from '@myparcel-pdk/common/src';
+import {BackendEndpoint, PdkStatus, PdkWebhook} from '@myparcel-pdk/common/src';
 import {computed, defineComponent, ref} from 'vue';
 import {useLanguage, useStoreQuery} from '../../composables';
 import {webhooksCreateAction, webhooksDeleteAction} from '../../actions';
@@ -46,9 +46,9 @@ export default defineComponent({
 
     const open = ref(false);
 
-    const fetchWebhooks = useStoreQuery(EndpointName.FETCH_WEBHOOKS);
-    const createWebhooks = useStoreQuery(EndpointName.CREATE_WEBHOOKS);
-    const deleteWebhooks = useStoreQuery(EndpointName.DELETE_WEBHOOKS);
+    const fetchWebhooks = useStoreQuery(BackendEndpoint.FETCH_WEBHOOKS);
+    const createWebhooks = useStoreQuery(BackendEndpoint.CREATE_WEBHOOKS);
+    const deleteWebhooks = useStoreQuery(BackendEndpoint.DELETE_WEBHOOKS);
 
     return {
       open,

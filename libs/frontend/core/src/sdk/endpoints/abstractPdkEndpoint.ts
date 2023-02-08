@@ -1,7 +1,7 @@
 import {AbstractEndpoint, EndpointDefinition} from '@myparcel/sdk';
 import {
   Account,
-  EndpointName,
+  BackendEndpoint,
   LabelFormat,
   LabelOutput,
   LabelPosition,
@@ -17,21 +17,21 @@ interface Definition extends EndpointDefinition {
 }
 
 export interface FetchContextDefinition extends Definition {
-  name: EndpointName.FETCH_CONTEXT;
+  name: BackendEndpoint.FETCH_CONTEXT;
   parameters: undefined;
   response: [PdkContextObject];
   formattedResponse: PdkContextObject;
 }
 
 export interface UpdateAccountDefinition extends Definition {
-  name: EndpointName.UPDATE_ACCOUNT;
+  name: BackendEndpoint.UPDATE_ACCOUNT;
   parameters: undefined;
   body: Settings.ModelAccountSettings;
   response: Account.ModelAccount[];
 }
 
 export interface FetchOrdersDefinition extends Definition {
-  name: EndpointName.FETCH_ORDERS;
+  name: BackendEndpoint.FETCH_ORDERS;
   parameters: {
     orderIds: string;
   };
@@ -40,7 +40,7 @@ export interface FetchOrdersDefinition extends Definition {
 }
 
 export interface ExportOrdersDefinition extends Definition {
-  name: EndpointName.EXPORT_ORDERS;
+  name: BackendEndpoint.EXPORT_ORDERS;
   parameters: {
     orderIds: string;
   };
@@ -49,7 +49,7 @@ export interface ExportOrdersDefinition extends Definition {
 }
 
 export interface UpdateOrdersDefinition extends Definition {
-  name: EndpointName.UPDATE_ORDERS;
+  name: BackendEndpoint.UPDATE_ORDERS;
   parameters: {
     orderIds: string;
   };
@@ -58,7 +58,7 @@ export interface UpdateOrdersDefinition extends Definition {
 }
 
 export interface DeleteShipmentsDefinition extends Definition {
-  name: EndpointName.DELETE_SHIPMENTS;
+  name: BackendEndpoint.DELETE_SHIPMENTS;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
@@ -67,7 +67,7 @@ export interface DeleteShipmentsDefinition extends Definition {
 }
 
 export interface UpdateShipmentsDefinition extends Definition {
-  name: EndpointName.FETCH_SHIPMENTS;
+  name: BackendEndpoint.FETCH_SHIPMENTS;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
@@ -77,14 +77,14 @@ export interface UpdateShipmentsDefinition extends Definition {
 }
 
 export interface UpdatePluginSettingsDefinition extends Definition {
-  name: EndpointName.UPDATE_PLUGIN_SETTINGS;
+  name: BackendEndpoint.UPDATE_PLUGIN_SETTINGS;
   body: Settings.ModelSettings;
   parameters: undefined;
   response: Settings.ModelSettings[];
 }
 
 export interface UpdateProductSettingsDefinition extends Definition {
-  name: EndpointName.UPDATE_PRODUCT_SETTINGS;
+  name: BackendEndpoint.UPDATE_PRODUCT_SETTINGS;
   parameters: {
     productIds: string;
   };
@@ -93,7 +93,7 @@ export interface UpdateProductSettingsDefinition extends Definition {
 }
 
 export interface PrintShipmentsDefinition extends Definition {
-  name: EndpointName.PRINT_SHIPMENTS;
+  name: BackendEndpoint.PRINT_SHIPMENTS;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
@@ -105,7 +105,7 @@ export interface PrintShipmentsDefinition extends Definition {
 }
 
 export interface PrintOrdersDefinition extends Definition {
-  name: EndpointName.PRINT_ORDERS;
+  name: BackendEndpoint.PRINT_ORDERS;
   parameters: {
     orderIds: string;
     format?: LabelFormat;
@@ -116,24 +116,24 @@ export interface PrintOrdersDefinition extends Definition {
 }
 
 export interface FetchWebhooksDefinition extends Definition {
-  name: EndpointName.FETCH_WEBHOOKS;
+  name: BackendEndpoint.FETCH_WEBHOOKS;
   parameters: never;
   response: PdkWebhook[];
 }
 
 export interface CreateWebhooksDefinition extends Definition {
-  name: EndpointName.CREATE_WEBHOOKS;
+  name: BackendEndpoint.CREATE_WEBHOOKS;
   parameters: {hooks: string};
   response: PdkWebhook[];
 }
 
 export interface DeleteWebhooksDefinition extends Definition {
-  name: EndpointName.DELETE_WEBHOOKS;
+  name: BackendEndpoint.DELETE_WEBHOOKS;
   parameters: {hooks: string};
   response: PdkWebhook[];
 }
 
-export type PdkEndpointDefinition<N extends EndpointName> = Extract<
+export type PdkEndpointDefinition<N extends BackendEndpoint> = Extract<
   | CreateWebhooksDefinition
   | DeleteShipmentsDefinition
   | DeleteWebhooksDefinition
@@ -151,9 +151,9 @@ export type PdkEndpointDefinition<N extends EndpointName> = Extract<
   {name: N}
 >;
 
-export type EndpointOptions<N extends EndpointName> = Omit<PdkEndpointDefinition<N>, 'name' | 'response'>;
+export type EndpointOptions<N extends BackendEndpoint> = Omit<PdkEndpointDefinition<N>, 'name' | 'response'>;
 
-export abstract class AbstractPdkEndpoint<N extends EndpointName = EndpointName> extends AbstractEndpoint<
+export abstract class AbstractPdkEndpoint<N extends BackendEndpoint = BackendEndpoint> extends AbstractEndpoint<
   PdkEndpointDefinition<N>
 > {
   public declare readonly name: N;

@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 import {usePluginSettings, useStoreQuery} from '../composables';
 import ConceptCard from '../components/OrderCard/ConceptCard.vue';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAsyncComponent} from 'vue';
 import {useQueryStore} from '../stores';
 
@@ -22,6 +22,6 @@ const OrderShipmentsCard = defineAsyncComponent(() => import('../components/Orde
 queryStore.registerContextQueries();
 queryStore.registerOrderQueries();
 
-const query = useStoreQuery(EndpointName.FETCH_ORDERS);
+const query = useStoreQuery(BackendEndpoint.FETCH_ORDERS);
 const {orderMode} = pluginSettings.general;
 </script>

@@ -1,65 +1,65 @@
 import {AdminAction} from './actions.types';
 import {ContextKey} from './context.types';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {FormInstance} from '@myparcel/vue-form-builder/src';
 import {OneOrMore} from '@myparcel/ts-utils';
 import {PdkEndpointDefinition} from '../sdk';
 
-export type EndpointResponse<N extends EndpointName> = PdkEndpointDefinition<N>['formattedResponse'] extends Record<
+export type EndpointResponse<N extends BackendEndpoint> = PdkEndpointDefinition<N>['formattedResponse'] extends Record<
   string,
   unknown
 >
   ? PdkEndpointDefinition<N>['formattedResponse']
   : PdkEndpointDefinition<N>['response'];
 
-export type EndpointParameters<N extends EndpointName> = PdkEndpointDefinition<N>['parameters'];
+export type EndpointParameters<N extends BackendEndpoint> = PdkEndpointDefinition<N>['parameters'];
 
-export interface AdminActionEndpointMap extends Record<AdminAction, EndpointName> {
-  [AdminAction.CONTEXT_FETCH]: EndpointName.FETCH_CONTEXT;
-  [AdminAction.ACCOUNT_UPDATE]: EndpointName.UPDATE_ACCOUNT;
-  [AdminAction.ORDERS_EXPORT]: EndpointName.EXPORT_ORDERS;
-  [AdminAction.ORDERS_EXPORT_PRINT]: EndpointName.EXPORT_ORDERS;
-  [AdminAction.ORDERS_FETCH]: EndpointName.FETCH_ORDERS;
-  [AdminAction.ORDERS_PRINT]: EndpointName.PRINT_ORDERS;
-  [AdminAction.ORDERS_UPDATE]: EndpointName.UPDATE_ORDERS;
-  [AdminAction.PLUGIN_SETTINGS_UPDATE]: EndpointName.UPDATE_PLUGIN_SETTINGS;
-  [AdminAction.PRODUCT_SETTINGS_UPDATE]: EndpointName.UPDATE_PRODUCT_SETTINGS;
-  [AdminAction.SHIPMENTS_CREATE_RETURN]: EndpointName.CREATE_RETURN_SHIPMENTS;
-  [AdminAction.SHIPMENTS_DELETE]: EndpointName.DELETE_SHIPMENTS;
-  [AdminAction.SHIPMENTS_FETCH]: EndpointName.FETCH_SHIPMENTS;
-  [AdminAction.SHIPMENTS_PRINT]: EndpointName.PRINT_SHIPMENTS;
-  [AdminAction.WEBHOOKS_CREATE]: EndpointName.CREATE_WEBHOOKS;
-  [AdminAction.WEBHOOKS_DELETE]: EndpointName.DELETE_WEBHOOKS;
-  [AdminAction.WEBHOOKS_FETCH]: EndpointName.FETCH_WEBHOOKS;
+export interface AdminActionEndpointMap extends Record<AdminAction, BackendEndpoint> {
+  [AdminAction.CONTEXT_FETCH]: BackendEndpoint.FETCH_CONTEXT;
+  [AdminAction.ACCOUNT_UPDATE]: BackendEndpoint.UPDATE_ACCOUNT;
+  [AdminAction.ORDERS_EXPORT]: BackendEndpoint.EXPORT_ORDERS;
+  [AdminAction.ORDERS_EXPORT_PRINT]: BackendEndpoint.EXPORT_ORDERS;
+  [AdminAction.ORDERS_FETCH]: BackendEndpoint.FETCH_ORDERS;
+  [AdminAction.ORDERS_PRINT]: BackendEndpoint.PRINT_ORDERS;
+  [AdminAction.ORDERS_UPDATE]: BackendEndpoint.UPDATE_ORDERS;
+  [AdminAction.PLUGIN_SETTINGS_UPDATE]: BackendEndpoint.UPDATE_PLUGIN_SETTINGS;
+  [AdminAction.PRODUCT_SETTINGS_UPDATE]: BackendEndpoint.UPDATE_PRODUCT_SETTINGS;
+  [AdminAction.SHIPMENTS_CREATE_RETURN]: BackendEndpoint.CREATE_RETURN_SHIPMENTS;
+  [AdminAction.SHIPMENTS_DELETE]: BackendEndpoint.DELETE_SHIPMENTS;
+  [AdminAction.SHIPMENTS_FETCH]: BackendEndpoint.FETCH_SHIPMENTS;
+  [AdminAction.SHIPMENTS_PRINT]: BackendEndpoint.PRINT_SHIPMENTS;
+  [AdminAction.WEBHOOKS_CREATE]: BackendEndpoint.CREATE_WEBHOOKS;
+  [AdminAction.WEBHOOKS_DELETE]: BackendEndpoint.DELETE_WEBHOOKS;
+  [AdminAction.WEBHOOKS_FETCH]: BackendEndpoint.FETCH_WEBHOOKS;
 }
 
 export type EndpointAdminActionMap = {
-  [K in EndpointName]: AdminActionEndpointMap[keyof AdminActionEndpointMap] extends K
+  [K in BackendEndpoint]: AdminActionEndpointMap[keyof AdminActionEndpointMap] extends K
     ? AdminActionEndpointMap[keyof AdminActionEndpointMap]
     : never;
 };
 
-export interface EndpointMutationInputMap extends Record<EndpointName, Record<string, unknown>> {
-  [EndpointName.FETCH_CONTEXT]: {contexts?: OneOrMore<ContextKey>};
+export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record<string, unknown>> {
+  [BackendEndpoint.FETCH_CONTEXT]: {contexts?: OneOrMore<ContextKey>};
 
-  [EndpointName.UPDATE_ACCOUNT]: {form: FormInstance};
+  [BackendEndpoint.UPDATE_ACCOUNT]: {form: FormInstance};
 
-  [EndpointName.EXPORT_ORDERS]: {orderIds: OneOrMore<string>; form?: FormInstance};
-  [EndpointName.FETCH_ORDERS]: {orderIds: OneOrMore<string>};
-  [EndpointName.PRINT_ORDERS]: {orderIds: OneOrMore<string>; form?: FormInstance};
-  [EndpointName.UPDATE_ORDERS]: {orderIds: OneOrMore<string>; form: FormInstance};
+  [BackendEndpoint.EXPORT_ORDERS]: {orderIds: OneOrMore<string>; form?: FormInstance};
+  [BackendEndpoint.FETCH_ORDERS]: {orderIds: OneOrMore<string>};
+  [BackendEndpoint.PRINT_ORDERS]: {orderIds: OneOrMore<string>; form?: FormInstance};
+  [BackendEndpoint.UPDATE_ORDERS]: {orderIds: OneOrMore<string>; form: FormInstance};
 
-  [EndpointName.CREATE_RETURN_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
-  [EndpointName.DELETE_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
-  [EndpointName.FETCH_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
-  [EndpointName.PRINT_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>; form?: FormInstance};
+  [BackendEndpoint.CREATE_RETURN_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
+  [BackendEndpoint.DELETE_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
+  [BackendEndpoint.FETCH_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
+  [BackendEndpoint.PRINT_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>; form?: FormInstance};
 
-  [EndpointName.UPDATE_PLUGIN_SETTINGS]: {form: FormInstance};
-  [EndpointName.UPDATE_PRODUCT_SETTINGS]: {form: FormInstance; productIds: OneOrMore<string>};
+  [BackendEndpoint.UPDATE_PLUGIN_SETTINGS]: {form: FormInstance};
+  [BackendEndpoint.UPDATE_PRODUCT_SETTINGS]: {form: FormInstance; productIds: OneOrMore<string>};
 
-  [EndpointName.CREATE_WEBHOOKS]: {hooks: OneOrMore<string>};
-  [EndpointName.DELETE_WEBHOOKS]: {hooks: OneOrMore<string>};
-  [EndpointName.FETCH_WEBHOOKS]: never;
+  [BackendEndpoint.CREATE_WEBHOOKS]: {hooks: OneOrMore<string>};
+  [BackendEndpoint.DELETE_WEBHOOKS]: {hooks: OneOrMore<string>};
+  [BackendEndpoint.FETCH_WEBHOOKS]: never;
 }
 
-export type ActionInput<A extends EndpointName> = EndpointMutationInputMap[A];
+export type ActionInput<A extends BackendEndpoint> = EndpointMutationInputMap[A];

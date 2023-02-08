@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {encodeArrayParameter} from '../../../../utils';
 import {fillOrderQueryData} from '../../../../pdk';
 import {usePdkApi} from '../../../../sdk';
@@ -10,7 +10,7 @@ export const useCreateReturnShipmentsMutation = () => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(
-    EndpointName.CREATE_RETURN_SHIPMENTS,
+    BackendEndpoint.CREATE_RETURN_SHIPMENTS,
     (input) => {
       const pdk = usePdkApi();
 

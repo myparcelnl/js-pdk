@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {encodeArrayParameter, normalizeOrder} from '../../../../utils';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {toArray} from '@myparcel/ts-utils';
 import {useOrderData} from '../../../../composables';
 import {usePdkApi} from '../../../../sdk';
@@ -12,7 +12,7 @@ export const useDeleteShipmentsMutation = () => {
   const pdk = usePdkApi();
 
   return usePdkMutation(
-    EndpointName.DELETE_SHIPMENTS,
+    BackendEndpoint.DELETE_SHIPMENTS,
     async (input) => {
       const orderIds = toArray(input.orderIds);
       const shipmentIds = toArray(input.shipmentIds);

@@ -1,5 +1,5 @@
 import {
-  EndpointName,
+  BackendEndpoint,
   PdkComponentMap,
   optionalPlainWrapperComponentNames,
   requiredComponentNames,
@@ -30,7 +30,7 @@ const context: PdkContextObject = {
     baseUrl: '',
     bootId: '',
     mode: '',
-    endpoints: Object.keys(EndpointName).reduce(
+    endpoints: Object.keys(BackendEndpoint).reduce(
       (acc, key) => ({
         ...acc,
         [key]: {

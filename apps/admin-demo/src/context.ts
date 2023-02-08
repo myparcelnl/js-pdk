@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {PdkContextObject} from '@myparcel-pdk/frontend-core/src';
 import translations from './translations/en.json';
 
@@ -8,7 +8,7 @@ export const context: PdkContextObject = {
   global: {
     baseUrl: 'http://localhost',
     bootId: 'myparcel-pdk-boot',
-    endpoints: Object.keys(EndpointName).reduce(
+    endpoints: Object.keys(BackendEndpoint).reduce(
       (acc, key) => ({
         ...acc,
         [key]: {

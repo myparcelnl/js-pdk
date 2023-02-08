@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import {FetchClient, HttpMethod, MyParcelSdk, createMyParcelSdk} from '@myparcel/sdk';
 import {AbstractPdkEndpoint} from '../endpoints';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {useGlobalContext} from '../../composables';
 
 let sdk: ReturnType<typeof usePdkApi>;
@@ -23,7 +23,7 @@ export const usePdkApi = (): MyParcelSdk<AbstractPdkEndpoint> => {
   const pdkEndpoints = Object.entries(globalContext.endpoints).map(([endpointName, options]) => {
     class PdkEndpoint extends AbstractPdkEndpoint {
       public readonly method = options.method.toUpperCase() as HttpMethod;
-      public readonly name = endpointName as EndpointName;
+      public readonly name = endpointName as BackendEndpoint;
       public readonly path = options.path;
       public readonly property = options.property;
     }

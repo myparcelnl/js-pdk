@@ -1,9 +1,9 @@
 import {isOfType, toArray} from '@myparcel/ts-utils';
 import {ActionInput} from '../types';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 
 export const generateLabelFilename = (
-  parameters: ActionInput<EndpointName.PRINT_SHIPMENTS | EndpointName.PRINT_ORDERS>,
+  parameters: ActionInput<BackendEndpoint.PRINT_SHIPMENTS | BackendEndpoint.PRINT_ORDERS>,
 ): string => {
   const prefix = 'myparcel-labels';
 
@@ -13,7 +13,7 @@ export const generateLabelFilename = (
     return prefix;
   }
 
-  if (isOfType<ActionInput<EndpointName.PRINT_SHIPMENTS>>(parameters, 'shipmentIds')) {
+  if (isOfType<ActionInput<BackendEndpoint.PRINT_SHIPMENTS>>(parameters, 'shipmentIds')) {
     const shipmentIds = toArray(parameters.shipmentIds);
 
     if (shipmentIds.length > 1) {

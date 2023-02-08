@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {EndpointOptions, usePdkApi} from '../../../../sdk';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';
 
@@ -10,9 +10,9 @@ export const useUpdateOrdersMutation = () => {
   const pdk = usePdkApi();
 
   return usePdkMutation(
-    EndpointName.UPDATE_ORDERS,
+    BackendEndpoint.UPDATE_ORDERS,
     async (input) => {
-      const options: EndpointOptions<EndpointName.UPDATE_ORDERS> = {
+      const options: EndpointOptions<BackendEndpoint.UPDATE_ORDERS> = {
         parameters: {
           orderIds: encodeArrayParameter(input.orderIds),
         },

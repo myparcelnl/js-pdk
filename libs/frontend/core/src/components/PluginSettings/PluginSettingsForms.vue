@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import {EndpointName, PdkTab} from '@myparcel-pdk/common/src';
+import {BackendEndpoint, PdkTab} from '@myparcel-pdk/common/src';
 import {computed, defineComponent, ref, unref, watch} from 'vue';
 import {useAccount, useLogger, useStoreContextQuery, useStoreQuery} from '../../composables';
 import {ContextKey} from '../../types';
@@ -25,7 +25,7 @@ export default defineComponent({
 
     const dynamicContextQuery = useStoreContextQuery();
     const pluginSettingsContextQuery = useStoreContextQuery(ContextKey.PLUGIN_SETTINGS_VIEW);
-    const updatePluginSettingsMutation = useStoreQuery(EndpointName.UPDATE_PLUGIN_SETTINGS);
+    const updatePluginSettingsMutation = useStoreQuery(BackendEndpoint.UPDATE_PLUGIN_SETTINGS);
 
     const tabs = ref<PdkTab[]>([]);
 

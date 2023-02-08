@@ -23,7 +23,7 @@
  * This is the main entry point for the order list column.
  */
 import {usePluginSettings, useStoreQuery} from '../composables';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {NotificationContainer} from '../components';
 import {defineAsyncComponent} from 'vue';
 import {useQueryStore} from '../stores';
@@ -42,5 +42,5 @@ queryStore.registerOrderQueries();
 const pluginSettings = usePluginSettings();
 const {orderMode} = pluginSettings.general;
 
-const query = useStoreQuery(EndpointName.FETCH_ORDERS);
+const query = useStoreQuery(BackendEndpoint.FETCH_ORDERS);
 </script>

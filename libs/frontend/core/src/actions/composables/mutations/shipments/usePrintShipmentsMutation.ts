@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {encodeArrayParameter} from '../../../../utils';
 import {fillOrderQueryData} from '../../../../pdk';
 import {usePdkApi} from '../../../../sdk';
@@ -11,7 +11,7 @@ export const usePrintShipmentsMutation = () => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(
-    EndpointName.PRINT_SHIPMENTS,
+    BackendEndpoint.PRINT_SHIPMENTS,
     (input) => {
       const pdk = usePdkApi();
       const pluginSettings = usePluginSettings();

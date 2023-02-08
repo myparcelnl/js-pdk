@@ -1,7 +1,7 @@
 import {AdminAction, ModalKey, PdkIcon, PdkModalContext} from '../../types';
 import {createMutator, createQueryFetcher, executeNextAction, resolveOrderParameters} from '../executors';
 import {openOrPrint, waitForLabelPrompt} from '../print';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
 import {shipmentsFetchAction} from './shipments';
 import {useModalStore} from '../../stores';
@@ -27,7 +27,7 @@ export const orderExportAction = defineAction({
   icon: PdkIcon.EXPORT,
   label: 'action_export',
   beforeHandle: resolveOrderParameters,
-  handler: createMutator(EndpointName.EXPORT_ORDERS),
+  handler: createMutator(BackendEndpoint.EXPORT_ORDERS),
 });
 
 /**
@@ -38,7 +38,7 @@ export const orderExportToShipmentsAction = defineAction({
   icon: PdkIcon.EXPORT,
   label: 'action_export_shipments',
   beforeHandle: resolveOrderParameters,
-  handler: createMutator(EndpointName.EXPORT_ORDERS),
+  handler: createMutator(BackendEndpoint.EXPORT_ORDERS),
 });
 
 /**
@@ -48,7 +48,7 @@ export const ordersFetchAction = defineAction({
   name: AdminAction.ORDERS_FETCH,
   icon: PdkIcon.REFRESH,
   label: 'action_refresh',
-  handler: createQueryFetcher(EndpointName.FETCH_ORDERS),
+  handler: createQueryFetcher(BackendEndpoint.FETCH_ORDERS),
 });
 
 /**
@@ -58,7 +58,7 @@ export const ordersUpdateAction = defineAction({
   name: AdminAction.ORDERS_UPDATE,
   icon: PdkIcon.SAVE,
   label: 'action_save',
-  handler: createMutator(EndpointName.UPDATE_ORDERS),
+  handler: createMutator(BackendEndpoint.UPDATE_ORDERS),
 });
 
 /**
@@ -68,7 +68,7 @@ export const ordersExportPrintShipmentsAction = defineAction({
   name: AdminAction.ORDERS_EXPORT_PRINT,
   icon: PdkIcon.PRINT,
   label: 'action_export_print',
-  handler: createMutator(EndpointName.EXPORT_ORDERS),
+  handler: createMutator(BackendEndpoint.EXPORT_ORDERS),
   beforeHandle: resolveOrderParameters,
   afterHandle(context) {
     void executeNextAction(context, ordersPrintAction, context.parameters);
@@ -84,7 +84,7 @@ export const ordersPrintAction = defineAction({
   name: AdminAction.ORDERS_PRINT,
   icon: PdkIcon.PRINT,
   label: 'action_print',
-  handler: createMutator(EndpointName.PRINT_ORDERS),
+  handler: createMutator(BackendEndpoint.PRINT_ORDERS),
 
   async beforeHandle(context) {
     await waitForLabelPrompt(context);

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {encodeArrayParameter} from '../../../../utils';
 import {usePdkApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
 import {usePluginSettings} from '../../../../composables';
 
 export const usePrintOrdersMutation = () => {
-  return usePdkMutation(EndpointName.PRINT_ORDERS, (input) => {
+  return usePdkMutation(BackendEndpoint.PRINT_ORDERS, (input) => {
     const pdk = usePdkApi();
     const pluginSettings = usePluginSettings();
 

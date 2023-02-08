@@ -1,6 +1,6 @@
 import {AdminAction, PdkIcon} from '../../types';
 import {createMutator, executeAction} from '../executors';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
 import {waitForLabelPrompt} from '../print';
 
@@ -8,7 +8,7 @@ export const shipmentsCreateReturnAction = defineAction({
   name: AdminAction.SHIPMENTS_CREATE_RETURN,
   icon: PdkIcon.RETURN,
   label: 'action_create_return_label',
-  handler: createMutator(EndpointName.CREATE_RETURN_SHIPMENTS),
+  handler: createMutator(BackendEndpoint.CREATE_RETURN_SHIPMENTS),
 });
 
 /**
@@ -18,7 +18,7 @@ export const shipmentsFetchAction = defineAction({
   name: AdminAction.SHIPMENTS_FETCH,
   icon: PdkIcon.REFRESH,
   label: 'action_refresh',
-  handler: createMutator(EndpointName.FETCH_SHIPMENTS),
+  handler: createMutator(BackendEndpoint.FETCH_SHIPMENTS),
 });
 
 /**
@@ -28,7 +28,7 @@ export const shipmentsDeleteAction = defineAction({
   name: AdminAction.SHIPMENTS_DELETE,
   icon: PdkIcon.DELETE,
   label: 'action_delete',
-  handler: createMutator(EndpointName.DELETE_SHIPMENTS),
+  handler: createMutator(BackendEndpoint.DELETE_SHIPMENTS),
 });
 
 /**
@@ -39,7 +39,7 @@ export const shipmentsPrintAction = defineAction({
   icon: PdkIcon.PRINT,
   label: 'action_print',
   beforeHandle: waitForLabelPrompt,
-  handler: createMutator(EndpointName.PRINT_SHIPMENTS),
+  handler: createMutator(BackendEndpoint.PRINT_SHIPMENTS),
   afterHandle(context) {
     void executeAction({
       action: shipmentsFetchAction,

@@ -1,5 +1,5 @@
 import {ContextQuery, ResolvedQuery} from '../../stores';
-import {EndpointName, PdkTab, Plugin} from '@myparcel-pdk/common/src';
+import {BackendEndpoint, PdkTab, Plugin} from '@myparcel-pdk/common/src';
 import {FormInstance} from '@myparcel/vue-form-builder/src';
 import {TabNavigation} from '../../components';
 import {createActionContext} from '../../services';
@@ -14,7 +14,7 @@ export interface FormTab extends Omit<PdkTab, 'component'> {
 }
 
 export type PluginSettingsTabsContext = {
-  mutation: ResolvedQuery<EndpointName.UPDATE_PLUGIN_SETTINGS>;
+  mutation: ResolvedQuery<BackendEndpoint.UPDATE_PLUGIN_SETTINGS>;
   query: ContextQuery;
 };
 

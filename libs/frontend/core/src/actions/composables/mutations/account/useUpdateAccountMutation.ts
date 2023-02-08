@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {formToBody} from '../../../../utils';
 import {usePdkApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
@@ -9,7 +9,7 @@ export const useUpdateAccountMutation = () => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(
-    EndpointName.UPDATE_ACCOUNT,
+    BackendEndpoint.UPDATE_ACCOUNT,
     ({form}) => {
       const pdk = usePdkApi();
 

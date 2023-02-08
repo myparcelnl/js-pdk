@@ -4,7 +4,7 @@
  * @see Plugin.ModelContextGlobalContext.endpoints
  * @see https://github.com/myparcelnl/pdk/blob/main/config/actions.php
  */
-export enum EndpointName {
+export enum BackendEndpoint {
   /**
    * Get context.
    */
@@ -68,4 +68,17 @@ export enum EndpointName {
   CREATE_WEBHOOKS = 'createWebhooks',
   DELETE_WEBHOOKS = 'deleteWebhooks',
   FETCH_WEBHOOKS = 'fetchWebhooks',
+}
+
+/**
+ * Endpoints in checkout context.
+ *
+ * @see Plugin.ModelContextCheckoutContext.endpoints
+ * @see https://github.com/myparcelnl/pdk/blob/main/config/actions.php
+ */
+export enum FrontendEndpoint {
+  /**
+   * Get checkout context.
+   */
+  FETCH_CHECKOUT_CONTEXT = 'fetchCheckoutContext',
 }

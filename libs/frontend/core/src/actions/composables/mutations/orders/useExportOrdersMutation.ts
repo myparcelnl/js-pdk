@@ -2,7 +2,7 @@
 import {EndpointOptions, usePdkApi} from '../../../../sdk';
 import {MutationMode, getCallbackForMutationMode, getModalMutationOptions} from '../../../../services';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {fillOrderQueryData} from '../../../../pdk';
 import {useModalStore} from '../../../../stores';
 import {usePdkMutation} from '../orders';
@@ -12,12 +12,12 @@ export const useExportOrdersMutation = (mode: MutationMode = MutationMode.DEFAUL
   const queryClient = useQueryClient();
 
   return usePdkMutation(
-    EndpointName.EXPORT_ORDERS,
+    BackendEndpoint.EXPORT_ORDERS,
     async (input) => {
       const pdk = usePdkApi();
       getCallbackForMutationMode(mode)?.();
 
-      const options: EndpointOptions<EndpointName.EXPORT_ORDERS> = {
+      const options: EndpointOptions<BackendEndpoint.EXPORT_ORDERS> = {
         parameters: {
           orderIds: encodeArrayParameter(input.orderIds),
         },

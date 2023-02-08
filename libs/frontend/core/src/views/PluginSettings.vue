@@ -19,7 +19,7 @@ import {
 } from '../actions';
 import AccountSettings from '../components/PluginSettings/AccountSettings.vue';
 import {ContextKey} from '../types';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForms.vue';
 import {useQueryStore} from '../stores';
 
@@ -27,11 +27,11 @@ const queryStore = useQueryStore();
 
 queryStore.registerContextQueries(ContextKey.PLUGIN_SETTINGS_VIEW);
 
-queryStore.register(EndpointName.UPDATE_ACCOUNT, useUpdateAccountMutation());
+queryStore.register(BackendEndpoint.UPDATE_ACCOUNT, useUpdateAccountMutation());
 
-queryStore.register(EndpointName.CREATE_WEBHOOKS, useCreateWebhooksMutation());
-queryStore.register(EndpointName.DELETE_WEBHOOKS, useDeleteWebhooksMutation());
-queryStore.register(EndpointName.FETCH_WEBHOOKS, useFetchWebhooksQuery());
+queryStore.register(BackendEndpoint.CREATE_WEBHOOKS, useCreateWebhooksMutation());
+queryStore.register(BackendEndpoint.DELETE_WEBHOOKS, useDeleteWebhooksMutation());
+queryStore.register(BackendEndpoint.FETCH_WEBHOOKS, useFetchWebhooksQuery());
 
-queryStore.register(EndpointName.UPDATE_PLUGIN_SETTINGS, useUpdatePluginSettingsMutation());
+queryStore.register(BackendEndpoint.UPDATE_PLUGIN_SETTINGS, useUpdatePluginSettingsMutation());
 </script>

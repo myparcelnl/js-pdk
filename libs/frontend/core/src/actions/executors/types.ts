@@ -7,7 +7,7 @@ import {
   PdkAction,
   PdkNotification,
 } from '../../types';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {PdkAppInstance} from '../../data';
 
 type BaseActionContext<A extends MaybeAdminAction> = {
@@ -41,7 +41,7 @@ export type ActionContextWithResponse<A extends AdminAction> = ActionContext<A> 
   response: ActionResponse<A>;
 };
 
-export type QueryExecutor = <E extends EndpointName>(
+export type QueryExecutor = <E extends BackendEndpoint>(
   endpoint: E,
   suffix?: string,
 ) => (context: ActionContext<EndpointAdminActionMap[E]>) => Promise<ActionResponse<EndpointAdminActionMap[E]>>;

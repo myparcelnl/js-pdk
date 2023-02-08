@@ -1,4 +1,6 @@
 import {Component} from 'vue';
+import {BackendEndpoint, FrontendEndpoint} from './endpoints';
+import {Plugin} from './php-pdk.types';
 
 export const requiredComponentNames = [
   'PdkButton',
@@ -81,3 +83,9 @@ export enum PdkStatus {
   SUCCESS = 'success',
   WARNING = 'warning',
 }
+
+export type PdkEndpointObject<T extends BackendEndpoint | FrontendEndpoint> = Record<T, Plugin.AbstractEndpointRequest>;
+
+export type BackendPdkEndpointObject = PdkEndpointObject<BackendEndpoint>;
+
+export type FrontendPdkEndpointObject = PdkEndpointObject<FrontendEndpoint>;
