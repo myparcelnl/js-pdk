@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:*",
-    "tsup": "^6.5.0",
+    "tsup": "^6.6.0",
     "vue": "^3.2.47"
   },
   "publishConfig": {
