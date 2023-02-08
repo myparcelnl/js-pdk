@@ -12,7 +12,7 @@
 import {defineAsyncComponent, defineComponent} from 'vue';
 import {modalCancelAction, orderExportAction, orderExportToShipmentsAction} from '../../actions';
 import {usePluginSettings, useStoreQuery} from '../../composables';
-import {EndpointName} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {ModalKey} from '../../types';
 import {createActions} from '../../services';
 
@@ -29,7 +29,7 @@ export default defineComponent({
     const pluginSettings = usePluginSettings();
     const {orderMode} = pluginSettings.general;
 
-    const exportOrdersQuery = useStoreQuery(EndpointName.EXPORT_ORDERS);
+    const exportOrdersQuery = useStoreQuery(BackendEndpoint.EXPORT_ORDERS);
 
     return {
       modalKey: ModalKey.SHIPMENT_OPTIONS,
