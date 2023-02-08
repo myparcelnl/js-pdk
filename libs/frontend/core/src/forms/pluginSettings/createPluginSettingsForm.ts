@@ -5,8 +5,8 @@ import {Plugin} from '@myparcel-pdk/common/src';
 import {PluginSettingsTabsContext} from './createPluginSettingsTabs';
 import {SubmitButton} from '../../components';
 import {generateFormFields} from './generateFormFields';
-import {get} from 'lodash-unified';
-import {unref} from 'vue';
+import {get} from '@vueuse/core';
+import {get as lodashGet} from 'lodash-unified';
 import {usePdkConfig} from '../../composables';
 
 export const createPluginSettingsForm = (
@@ -16,7 +16,7 @@ export const createPluginSettingsForm = (
   {mutation, query}: PluginSettingsTabsContext,
 ): FormInstance => {
   const pdkConfig = usePdkConfig();
-  const values = get(unref(query.data), id, {});
+  const values = lodashGet(get(query.data)?.pluginSettings, id, {});
 
   const generatedFields = generateFormFields({fields: view.elements, values}, `${id}.`);
 
