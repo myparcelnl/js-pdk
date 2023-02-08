@@ -420,6 +420,7 @@ export namespace Plugin {
   export type Field = {
     $component: string;
     $slot?: string;
+    $visibleWhen?: Record<string, unknown>;
     label: string;
     name: string;
   } & Record<string, unknown>;
