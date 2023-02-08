@@ -21,7 +21,7 @@
     "watch": "run ws:tsup:watch \"$(pwd)\""
   },
   "devDependencies": {
-    "@myparcel-pdk/build-tsup": "workspace:^",
+    "@myparcel-pdk/build-tsup": "workspace:*",
     "tsup": "^6.5.0",
     "vue": "^3.2.47"
   },

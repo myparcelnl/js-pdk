@@ -376,9 +376,10 @@ export namespace Plugin {
     carrierSettings: unknown[];
   };
 
-  export type ModelContextDeliveryOptionsContext = {
+  export type ModelContextCheckoutContext = {
     strings: Record<string, string>;
     config?: Shipment.ModelDeliveryOptions;
+    settings: Record<string, unknown>;
   };
 
   export type ModelContextGlobalContext = {

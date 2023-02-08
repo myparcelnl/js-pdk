@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/admin",
+  "name": "@myparcel-pdk/frontend",
   "version": "1.0.0-alpha.0",
   "license": "MIT",
   "sideEffects": false,
@@ -20,11 +20,11 @@
     "serve": "run ws:tsup:serve \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^",
-    "@myparcel-pdk/frontend-core": "workspace:^"
+    "@myparcel-pdk/common": "workspace:*",
+    "@myparcel-pdk/frontend-core": "workspace:*"
   },
   "devDependencies": {
-    "@myparcel-pdk/build-tsup": "workspace:^",
+    "@myparcel-pdk/build-tsup": "workspace:*",
     "tsup": "^6.5.0"
   }
 }

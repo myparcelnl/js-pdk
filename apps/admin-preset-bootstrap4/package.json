@@ -22,12 +22,12 @@
     "watch": "run ws:vite:watch \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-core": "workspace:^",
+    "@myparcel-pdk/frontend-core": "workspace:*",
     "@myparcel/ts-utils": "^1.5.1",
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@myparcel-pdk/admin-component-tests": "workspace:^",
+    "@myparcel-pdk/admin-component-tests": "workspace:*",
     "@types/bootstrap": "^5.2.6",
     "@types/jquery": "^3.5.16",
     "@vitejs/plugin-vue": "^4.0.0",

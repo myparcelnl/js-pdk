@@ -3,14 +3,14 @@ export type {
   Base,
   Carrier,
   Form,
+  Frontend,
   Fulfilment,
   PdkComponentMap,
   PdkComponentName,
   PdkTab,
   Plugin,
   SelectOption,
-  Settings,
-  Shipment,
+  Webhook,
 } from '@myparcel-pdk/common/src';
 
 export type {
