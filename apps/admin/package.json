@@ -25,6 +25,6 @@
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:*",
-    "tsup": "^6.5.0"
+    "tsup": "^6.6.2"
   }
 }
