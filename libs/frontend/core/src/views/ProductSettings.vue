@@ -1,7 +1,7 @@
 <template>
-  <div v-test>
-    <MagicForm :form="form" />
-  </div>
+  <MagicForm
+    v-test="'form--product-settings'"
+    :form="form" />
 </template>
 
 <script lang="ts" setup>

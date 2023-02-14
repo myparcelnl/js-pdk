@@ -1,6 +1,5 @@
 <template>
   <PdkConceptCardWrapper
-    v-test
     :actions="actions"
     :loading="loading">
     <template #header>

@@ -18,6 +18,8 @@ export enum NotificationCategory {
 
 export enum PdkIcon {
   ADD = 'add',
+  ARROW_DOWN = 'arrow_down',
+  ARROW_UP = 'arrow_up',
   CLOSE = 'close',
   DELETE = 'delete',
   DOWNLOAD = 'download',

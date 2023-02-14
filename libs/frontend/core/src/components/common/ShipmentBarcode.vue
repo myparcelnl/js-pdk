@@ -1,6 +1,6 @@
 <template>
   <span
-    v-test="{id: shipment.id}"
+    v-test="`shipment__barcode--${shipment.id}`"
     :class="config?.cssUtilities?.whitespaceNoWrap">
     <PdkImage
       v-if="carrier"
@@ -11,7 +11,7 @@
 
     <PdkLink
       v-if="shipment.barcode && shipment.linkConsumerPortal"
-      :title="translate('shipment_barcode')"
+      :alt="translate('shipment_barcode')"
       :href="shipment.linkConsumerPortal">
       {{ shipment.barcode }}
     </PdkLink>

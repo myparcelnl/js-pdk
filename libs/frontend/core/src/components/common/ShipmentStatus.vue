@@ -1,7 +1,7 @@
 <template>
   <label
     v-if="shipment.status"
-    v-test="{id: shipment.id}"
+    v-test="`shipment__status--${shipment.id}`"
     :title="translate('shipment_status')"
     v-text="translate(`shipment_status_${shipment.status}`)" />
 </template>
