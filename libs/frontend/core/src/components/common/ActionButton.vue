@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {PdkButtonSize} from '@myparcel-pdk/common/src';
+import {Size} from '@myparcel-pdk/common/src';
 import {ResolvedAction} from '../../types';
 
 export default defineComponent({
@@ -33,8 +33,8 @@ export default defineComponent({
     },
 
     size: {
-      type: String as PropType<PdkButtonSize>,
-      default: PdkButtonSize.MEDIUM,
+      type: String as PropType<Size>,
+      default: Size.MEDIUM,
     },
   },
 

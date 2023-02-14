@@ -4,12 +4,12 @@ import {AbstractPdkEndpoint} from '../endpoints';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {useGlobalContext} from '../../composables';
 
-let sdk: ReturnType<typeof usePdkApi>;
+let sdk: ReturnType<typeof usePdkAdminApi>;
 
 /**
- * Do requests to the PDK API.
+ * Do requests to the PDK admin API.
  */
-export const usePdkApi = (): MyParcelSdk<AbstractPdkEndpoint> => {
+export const usePdkAdminApi = (): MyParcelSdk<AbstractPdkEndpoint> => {
   if (sdk) {
     return sdk;
   }

@@ -1,9 +1,9 @@
 import {MountingOptions, mount} from '@vue/test-utils';
 import {expect, it} from 'vitest';
 import {runCommonComponentTests, runHasPropTest} from '../common';
-import {PdkComponentTest} from '../tests';
+import {AdminComponentTest} from '../tests';
 
-export const runIconTest: PdkComponentTest = (component) => {
+export const runIconTest: AdminComponentTest = (component) => {
   const options: MountingOptions<any> = {
     props: {
       icon: 'truck',

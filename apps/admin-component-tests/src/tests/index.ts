@@ -1,4 +1,4 @@
 export * from './doComponentTestSetup';
-export * from './executePdkComponentTest';
+export * from './executeAdminComponentTest';
 export * from './executePdkComponentTests';
 export * from './testMap';

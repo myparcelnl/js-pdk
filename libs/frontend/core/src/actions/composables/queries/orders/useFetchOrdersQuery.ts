@@ -5,7 +5,7 @@ import {EndpointResponse} from '../../../../types';
 import {QUERY_KEY_ORDER} from '../queryKeys';
 import {encodeArrayParameter} from '../../../../utils';
 import {fillOrderQueryData} from '../../../../pdk';
-import {usePdkApi} from '../../../../sdk';
+import {usePdkAdminApi} from '../../../../sdk';
 
 export const useFetchOrdersQuery = (externalIdentifier: string) => {
   const queryKey = [QUERY_KEY_ORDER, {id: externalIdentifier}] as const;
@@ -14,7 +14,7 @@ export const useFetchOrdersQuery = (externalIdentifier: string) => {
   return useQuery<EndpointResponse<BackendEndpoint.FETCH_ORDERS>>(
     queryKey,
     () => {
-      const pdk = usePdkApi();
+      const pdk = usePdkAdminApi();
 
       return pdk.fetchOrders({
         // @ts-expect-error custom endpoints are not typed correctly

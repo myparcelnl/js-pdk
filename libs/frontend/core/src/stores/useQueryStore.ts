@@ -1,4 +1,4 @@
-import {ContextKey, PdkContext} from '../types';
+import {AdminContext, AdminContextKey} from '../types';
 import {QueryClient, UseQueryReturnType, useQueryClient} from '@tanstack/vue-query';
 import {Ref, ref} from 'vue';
 import {
@@ -23,14 +23,17 @@ import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
 import {getOrderId} from '../utils';
 
-export type QueryKey = BackendEndpoint | `${BackendEndpoint.FETCH_CONTEXT}.${ContextKey}`;
+export type QueryKey = BackendEndpoint | `${BackendEndpoint.FETCH_CONTEXT}.${AdminContextKey}`;
 
-export type ContextQuery<C extends ContextKey = ContextKey.DYNAMIC> = UseQueryReturnType<PdkContext<C>, ApiException>;
+export type ContextQuery<C extends AdminContextKey = AdminContextKey.DYNAMIC> = UseQueryReturnType<
+  AdminContext<C>,
+  ApiException
+>;
 
 export type ResolvedQuery<E extends QueryKey = BackendEndpoint> = E extends BackendEndpoint
   ? EndpointQuery<E>
   : E extends `${BackendEndpoint.FETCH_CONTEXT}.${infer C}`
-  ? C extends ContextKey
+  ? C extends AdminContextKey
     ? ContextQuery<C>
     : never
   : never;
@@ -134,8 +137,10 @@ export const useQueryStore = defineStore('query', () => {
     /**
      * Register context queries. Always includes global and dynamic context.
      */
-    registerContextQueries: <C extends Exclude<ContextKey, ContextKey.GLOBAL | ContextKey.DYNAMIC>>(...keys: C[]) => {
-      [ContextKey.GLOBAL, ContextKey.DYNAMIC, ...keys].forEach((key) => {
+    registerContextQueries: <C extends Exclude<AdminContextKey, AdminContextKey.GLOBAL | AdminContextKey.DYNAMIC>>(
+      ...keys: C[]
+    ) => {
+      [AdminContextKey.GLOBAL, AdminContextKey.DYNAMIC, ...keys].forEach((key) => {
         const query = useFetchContextQuery(key) as ResolvedQuery<`${BackendEndpoint.FETCH_CONTEXT}.${C}`>;
         register(`${BackendEndpoint.FETCH_CONTEXT}.${key}`, query);
       });

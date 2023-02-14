@@ -1,5 +1,5 @@
 import {ComputedRef, Ref, computed, ref} from 'vue';
-import {ModalKey} from '../../types';
+import {AdminModalKey} from '../../types';
 import {useLoading} from '../useLoading';
 import {useModalStore} from '../../stores';
 
@@ -11,7 +11,7 @@ export interface ModalCallbackProps {
 }
 
 type UseModalContext = (
-  modalId?: Ref<null | ModalKey>,
+  modalId?: Ref<null | AdminModalKey>,
   onSave?: Ref<null | ModalCallback>,
   onCancel?: Ref<null | ModalCallback>,
 ) => null | {
@@ -24,7 +24,7 @@ type UseModalContext = (
 
 export const useModalContext: UseModalContext = (modalId, onSave, onCancel) => {
   const store = useModalStore();
-  const resolvedId = ref<ModalKey>(modalId?.value as ModalKey);
+  const resolvedId = ref<AdminModalKey>(modalId?.value as AdminModalKey);
 
   if (!modalId?.value) {
     if (!store.opened) {

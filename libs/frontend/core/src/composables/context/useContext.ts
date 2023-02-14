@@ -1,11 +1,11 @@
-import {ContextKey, PdkContext} from '../../types';
+import {AdminContext, AdminContextKey} from '../../types';
 import {get} from '@vueuse/core';
 import {useStoreContextQuery} from '../useStoreContextQuery';
 
-export const useContext = <C extends ContextKey = ContextKey.DYNAMIC>(
+export const useContext = <C extends AdminContextKey = AdminContextKey.DYNAMIC>(
   // @ts-expect-error typescript is being very pedantic here
-  contextKey: C = ContextKey.DYNAMIC,
-): NonNullable<PdkContext<C>> => {
+  contextKey: C = AdminContextKey.DYNAMIC,
+): NonNullable<AdminContext<C>> => {
   const query = useStoreContextQuery(contextKey);
   const data = get(query.data);
 
@@ -13,5 +13,5 @@ export const useContext = <C extends ContextKey = ContextKey.DYNAMIC>(
     throw new Error(`Context ${contextKey} not found`);
   }
 
-  return data as unknown as NonNullable<PdkContext<C>>;
+  return data as unknown as NonNullable<AdminContext<C>>;
 };

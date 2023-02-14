@@ -1,8 +1,8 @@
 import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from '../common';
 import {MountingOptions} from '@vue/test-utils';
-import {PdkComponentTest} from '../tests';
+import {AdminComponentTest} from '../tests';
 
-export const runModalTest: PdkComponentTest = (component) => {
+export const runModalTest: AdminComponentTest = (component) => {
   const options: MountingOptions<any> = {
     props: {
       // todo

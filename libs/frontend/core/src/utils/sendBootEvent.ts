@@ -1,7 +1,7 @@
-import {PdkContextObject} from '../types';
+import {AdminContextObject} from '../types';
 import {PdkAdmin} from '../pdk';
 
-export const sendBootEvent = (pdkAdmin: PdkAdmin, context: PdkContextObject): void => {
+export const sendBootEvent = (pdkAdmin: PdkAdmin, context: AdminContextObject): void => {
   const globalContext = context.global;
 
   if (!globalContext) {

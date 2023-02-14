@@ -52,10 +52,10 @@
 <script lang="ts">
 import {
   ActionButton,
+  AdminModalKey,
+  AnyAdminAction,
   ModalCallbackProps,
-  ModalKey,
   NotificationContainer,
-  PdkAction,
   modalCancelAction,
   useLanguage,
   useModalContext,
@@ -81,7 +81,7 @@ export default defineComponent({
      * Modal k. Must be unique.
      */
     modalKey: {
-      type: String as PropType<ModalKey>,
+      type: String as PropType<AdminModalKey>,
       default: null,
     },
 
@@ -113,7 +113,7 @@ export default defineComponent({
      * Available actions in the modal. Each action needs a unique id and a label.
      */
     actions: {
-      type: Array as PropType<PdkAction[]>,
+      type: Array as PropType<AnyAdminAction[]>,
       default: () => [modalCancelAction],
     },
   },

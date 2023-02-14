@@ -2,7 +2,7 @@
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {encodeArrayParameter} from '../../../../utils';
 import {fillOrderQueryData} from '../../../../pdk';
-import {usePdkApi} from '../../../../sdk';
+import {usePdkAdminApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';
 
@@ -12,7 +12,7 @@ export const useCreateReturnShipmentsMutation = () => {
   return usePdkMutation(
     BackendEndpoint.CREATE_RETURN_SHIPMENTS,
     (input) => {
-      const pdk = usePdkApi();
+      const pdk = usePdkAdminApi();
 
       return pdk.createReturnShipments({
         // @ts-expect-error todo

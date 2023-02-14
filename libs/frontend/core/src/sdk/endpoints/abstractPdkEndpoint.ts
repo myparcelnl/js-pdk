@@ -5,11 +5,11 @@ import {
   LabelFormat,
   LabelOutput,
   LabelPosition,
-  PdkWebhook,
   Plugin,
   Settings,
+  WebhookDefinition,
 } from '@myparcel-pdk/common/src';
-import {PdkContextObject} from '../../types';
+import {AdminContextObject} from '../../types';
 import {RecursivePartial} from '@myparcel/ts-utils';
 
 interface Definition extends EndpointDefinition {
@@ -19,8 +19,8 @@ interface Definition extends EndpointDefinition {
 export interface FetchContextDefinition extends Definition {
   name: BackendEndpoint.FETCH_CONTEXT;
   parameters: undefined;
-  response: [PdkContextObject];
-  formattedResponse: PdkContextObject;
+  response: [AdminContextObject];
+  formattedResponse: AdminContextObject;
 }
 
 export interface UpdateAccountDefinition extends Definition {
@@ -118,19 +118,19 @@ export interface PrintOrdersDefinition extends Definition {
 export interface FetchWebhooksDefinition extends Definition {
   name: BackendEndpoint.FETCH_WEBHOOKS;
   parameters: never;
-  response: PdkWebhook[];
+  response: WebhookDefinition[];
 }
 
 export interface CreateWebhooksDefinition extends Definition {
   name: BackendEndpoint.CREATE_WEBHOOKS;
   parameters: {hooks: string};
-  response: PdkWebhook[];
+  response: WebhookDefinition[];
 }
 
 export interface DeleteWebhooksDefinition extends Definition {
   name: BackendEndpoint.DELETE_WEBHOOKS;
   parameters: {hooks: string};
-  response: PdkWebhook[];
+  response: WebhookDefinition[];
 }
 
 export type PdkEndpointDefinition<N extends BackendEndpoint> = Extract<

@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import {BackendEndpoint, PdkStatus, PdkWebhook} from '@myparcel-pdk/common/src';
+import {BackendEndpoint, Status, WebhookDefinition} from '@myparcel-pdk/common/src';
 import {computed, defineComponent, ref} from 'vue';
 import {useLanguage, useStoreQuery} from '../../composables';
 import {webhooksCreateAction, webhooksDeleteAction} from '../../actions';
@@ -67,12 +67,12 @@ export default defineComponent({
         return actions;
       }),
 
-      getStatus: (webhook: PdkWebhook): PdkStatus => {
+      getStatus: (webhook: WebhookDefinition): Status => {
         if (fetchWebhooks.isLoading || createWebhooks.isLoading || deleteWebhooks.isLoading) {
-          return PdkStatus.PENDING;
+          return Status.PENDING;
         }
 
-        return webhook.connected ? PdkStatus.SUCCESS : PdkStatus.ERROR;
+        return webhook.connected ? Status.SUCCESS : Status.ERROR;
       },
     };
   },

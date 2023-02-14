@@ -1,9 +1,9 @@
 import {MountingOptions, mount} from '@vue/test-utils';
 import {expect, it} from 'vitest';
-import {PdkComponentTest} from '../tests';
+import {AdminComponentTest} from '../tests';
 import {runCommonComponentTests} from '../common';
 
-export const runNotificationTest: PdkComponentTest = (component) => {
+export const runNotificationTest: AdminComponentTest = (component) => {
   const options: MountingOptions<any> = {
     props: {
       notification: {

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EndpointOptions, usePdkApi} from '../../../../sdk';
+import {EndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {MutationMode, getCallbackForMutationMode, getModalMutationOptions} from '../../../../services';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
@@ -14,7 +14,7 @@ export const useExportOrdersMutation = (mode: MutationMode = MutationMode.DEFAUL
   return usePdkMutation(
     BackendEndpoint.EXPORT_ORDERS,
     async (input) => {
-      const pdk = usePdkApi();
+      const pdk = usePdkAdminApi();
       getCallbackForMutationMode(mode)?.();
 
       const options: EndpointOptions<BackendEndpoint.EXPORT_ORDERS> = {

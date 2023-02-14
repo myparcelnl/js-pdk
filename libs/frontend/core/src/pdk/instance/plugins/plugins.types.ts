@@ -1,4 +1,4 @@
-import {PdkAppConfig} from '../../../data';
+import {AdminAppConfig} from '../../../data';
 import {Plugin} from 'vue';
 
-export type PdkAppPlugin = (appConfig: PdkAppConfig) => Plugin;
+export type PdkAppPlugin = (appConfig: AdminAppConfig) => Plugin;

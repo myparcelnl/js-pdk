@@ -12,7 +12,7 @@ import {
   ordersPrintAction,
 } from '../../actions';
 import {useLoading, useOrderData} from '../../composables';
-import {PdkAction} from '../../types';
+import {AnyAdminAction} from '../../types';
 import {Plugin} from '@myparcel-pdk/common/src';
 import {createActions} from '../../services';
 
@@ -34,7 +34,7 @@ export default defineComponent({
       loading,
 
       actions: computed(() => {
-        const actions: PdkAction[] = [];
+        const actions: AnyAdminAction[] = [];
 
         if (orderData.shipments.value?.length) {
           actions.push(orderExportAction);

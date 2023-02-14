@@ -1,11 +1,11 @@
 /* eslint-disable no-magic-numbers */
-import {PdkAppInstance, createLogger, createPdkConfig} from '@myparcel-pdk/frontend-core/src';
+import {AdminInstance, createAdminConfig, createLogger} from '@myparcel-pdk/frontend-core/src';
 import {afterAll, beforeAll, describe, vi} from 'vitest';
+import {AdminComponentName} from '@myparcel-pdk/common/src';
 import {Component} from 'vue';
-import {PdkComponentName} from '@myparcel-pdk/common/src';
 import {testMap} from './testMap';
 
-export const executePdkComponentTest = (name: PdkComponentName, component: Omit<Component, 'props'>): void => {
+export const executeAdminComponentTest = (name: AdminComponentName, component: Omit<Component, 'props'>): void => {
   const test = testMap[name];
 
   if (!test) {
@@ -17,10 +17,10 @@ export const executePdkComponentTest = (name: PdkComponentName, component: Omit<
   describe(name, () => {
     beforeAll(() => {
       vi.mock('../usePdkInstance', () => ({
-        usePdkInstance: (): PdkAppInstance => ({
+        usePdkInstance: (): AdminInstance => ({
           appName: 'test',
           context: {},
-          config: createPdkConfig(),
+          config: createAdminConfig(),
           logger: createLogger('test'),
         }),
       }));

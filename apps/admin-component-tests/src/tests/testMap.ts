@@ -26,12 +26,12 @@ import {
   runTextInputTest,
   runToggleInputTest,
 } from '../components';
+import {AdminComponentName} from '@myparcel-pdk/common/src';
 import {Component} from 'vue';
-import {PdkComponentName} from '@myparcel-pdk/common/src';
 
-export type PdkComponentTest = (component: Omit<Component, 'props'>) => void;
+export type AdminComponentTest = (component: Omit<Component, 'props'>) => void;
 
-export const testMap: Record<PdkComponentName, PdkComponentTest> = {
+export const testMap: Record<AdminComponentName, AdminComponentTest> = {
   PdkBox: runActionContainerTest,
   PdkConceptBoxWrapper: runActionContainerTest,
   PdkShipmentLabelWrapper: runActionContainerTest,

@@ -1,1 +1,1 @@
-export {executePdkComponentTest, executePdkComponentTests} from './tests';
+export {executeAdminComponentTest, executePdkComponentTests} from './tests';

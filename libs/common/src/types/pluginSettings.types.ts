@@ -12,7 +12,7 @@ export interface SelectOption<Value = string | number> {
   value: Value;
 }
 
-export interface PdkTab {
+export interface TabDefinition {
   name: string;
   label: string;
   description?: string;
@@ -20,7 +20,7 @@ export interface PdkTab {
   component: string | Component;
 }
 
-export type PdkWebhook = {
+export type WebhookDefinition = {
   connected: boolean;
   hook: string;
   url: null | string;

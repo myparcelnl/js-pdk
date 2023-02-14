@@ -1,8 +1,8 @@
 import {PdkLogger} from '../services';
-import {usePdkInstance} from './usePdkInstance';
+import {useAdminInstance} from './useAdminInstance';
 
 export const useLogger = (): PdkLogger => {
-  const instance = usePdkInstance();
+  const instance = useAdminInstance();
 
   return instance.logger;
 };

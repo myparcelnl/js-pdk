@@ -6,7 +6,7 @@
       </thead>
 
       <TransitionGroup
-        :name="pdkConfig?.transitions.tableRow"
+        :name="config?.transitions.tableRow"
         tag="tbody">
         <slot />
       </TransitionGroup>
@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-import {usePdkConfig} from '@myparcel-pdk/frontend-core/src';
+import {useAdminConfig} from '@myparcel-pdk/frontend-core/src';
 
 /**
  * @see import('@myparcel-pdk/admin-components').DefaultTable
@@ -28,7 +28,7 @@ import {usePdkConfig} from '@myparcel-pdk/frontend-core/src';
 export default defineComponent({
   name: 'Bootstrap4Table',
   setup: () => ({
-    pdkConfig: usePdkConfig(),
+    config: useAdminConfig(),
   }),
 });
 </script>

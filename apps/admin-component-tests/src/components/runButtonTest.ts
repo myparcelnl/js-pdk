@@ -1,9 +1,9 @@
 import {expect, it} from 'vitest';
-import {PdkComponentTest} from '../tests';
+import {AdminComponentTest} from '../tests';
 import {mount} from '@vue/test-utils';
 import {runCommonComponentTests} from '../common';
 
-export const runButtonTest: PdkComponentTest = (component) => {
+export const runButtonTest: AdminComponentTest = (component) => {
   runCommonComponentTests(component);
 
   it('handles click event', async () => {

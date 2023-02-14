@@ -1,15 +1,15 @@
-import {ModalKey, NotificationCategory, PdkModalContext} from '../types';
+import {AdminModalContext, AdminModalKey, NotificationCategory} from '../types';
 import {defineStore} from 'pinia';
 import {ref} from 'vue';
 import {useNotificationStore} from './useNotificationStore';
 
-type ModalOpenFn = <K extends ModalKey>(modal: K, context?: PdkModalContext<K>) => void;
+type ModalOpenFn = <K extends AdminModalKey>(modal: K, context?: AdminModalContext<K>) => void;
 
-type ModalCloseFn = <K extends ModalKey>(modal: K) => void;
+type ModalCloseFn = <K extends AdminModalKey>(modal: K) => void;
 
 export const useModalStore = defineStore('modal', () => {
-  const opened = ref<ModalKey | null>(null);
-  const context = ref<PdkModalContext | null>(null);
+  const opened = ref<AdminModalKey | null>(null);
+  const context = ref<AdminModalContext | null>(null);
   const loading = ref<boolean>(false);
 
   const openHooks = ref<ModalOpenFn[]>([]);
@@ -29,7 +29,7 @@ export const useModalStore = defineStore('modal', () => {
       closeHooks.value.push(callback);
     },
 
-    open: <K extends ModalKey>(modal: K, newContext?: PdkModalContext<K>) => {
+    open: <K extends AdminModalKey>(modal: K, newContext?: AdminModalContext<K>) => {
       openHooks.value.forEach((hook) => hook(modal, newContext));
       context.value = newContext ?? null;
       opened.value = modal;
@@ -37,7 +37,7 @@ export const useModalStore = defineStore('modal', () => {
 
     close: () => {
       useNotificationStore().remove(NotificationCategory.MODAL);
-      const modal = opened.value as ModalKey;
+      const modal = opened.value as AdminModalKey;
 
       opened.value = null;
       context.value = null;

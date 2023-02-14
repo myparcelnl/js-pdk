@@ -1,6 +1,6 @@
-import {PdkContextObject} from '../../types';
+import {AdminContextObject} from '../../types';
 import {useGlobalContext} from './useGlobalContext';
 
-export const useAppInfo = (): PdkContextObject['global']['appInfo'] => {
+export const useAppInfo = (): AdminContextObject['global']['appInfo'] => {
   return useGlobalContext().appInfo;
 };

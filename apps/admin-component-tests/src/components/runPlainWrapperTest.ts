@@ -1,7 +1,7 @@
 import {runCommonComponentTests, runHasSlotTest} from '../common';
-import {PdkComponentTest} from '../tests';
+import {AdminComponentTest} from '../tests';
 
-export const runPlainWrapperTest: PdkComponentTest = (component) => {
+export const runPlainWrapperTest: AdminComponentTest = (component) => {
   runCommonComponentTests(component);
 
   runHasSlotTest(component);

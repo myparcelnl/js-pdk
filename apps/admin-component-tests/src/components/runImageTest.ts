@@ -1,8 +1,8 @@
 import {runCommonComponentTests, runHasPropTest} from '../common';
 import {MountingOptions} from '@vue/test-utils';
-import {PdkComponentTest} from '../tests';
+import {AdminComponentTest} from '../tests';
 
-export const runImageTest: PdkComponentTest = (component) => {
+export const runImageTest: AdminComponentTest = (component) => {
   const options: MountingOptions<any> = {
     props: {
       src: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',

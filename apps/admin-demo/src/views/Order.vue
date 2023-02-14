@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import {defineComponent, nextTick} from 'vue';
-import {PdkAdminComponent} from '@myparcel-pdk/common/src';
+import {AdminView} from '@myparcel-pdk/common/src';
 import {useDemoOrder} from '../composables/useDemoOrder';
 import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core/src';
 import {useRoute} from 'vue-router';
@@ -44,7 +44,7 @@ export default defineComponent({
 
     const fe = useGlobalPdkAdmin();
 
-    void nextTick().then(() => fe.render(PdkAdminComponent.ORDER_BOX, '#pdk-OrderBox'));
+    void nextTick().then(() => fe.render(AdminView.ORDER_BOX, '#pdk-OrderBox'));
 
     return {
       order,

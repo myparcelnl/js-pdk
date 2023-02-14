@@ -2,7 +2,7 @@
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {encodeArrayParameter} from '../../../../utils';
 import {fillOrderQueryData} from '../../../../pdk';
-import {usePdkApi} from '../../../../sdk';
+import {usePdkAdminApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
 import {usePluginSettings} from '../../../../composables';
 import {useQueryClient} from '@tanstack/vue-query';
@@ -13,7 +13,7 @@ export const usePrintShipmentsMutation = () => {
   return usePdkMutation(
     BackendEndpoint.PRINT_SHIPMENTS,
     (input) => {
-      const pdk = usePdkApi();
+      const pdk = usePdkAdminApi();
       const pluginSettings = usePluginSettings();
 
       return pdk.printShipments({

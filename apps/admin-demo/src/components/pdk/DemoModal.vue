@@ -58,8 +58,8 @@
 <script lang="ts">
 import {
   ActionButton,
+  AdminModalKey,
   ModalCallbackProps,
-  ModalKey,
   NotificationContainer,
   ResolvedAction,
   useLanguage,
@@ -84,7 +84,7 @@ export default defineComponent({
      * Modal k. Must be unique.
      */
     modalKey: {
-      type: String as PropType<ModalKey>,
+      type: String as PropType<AdminModalKey>,
       default: null,
     },
 

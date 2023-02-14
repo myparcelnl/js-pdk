@@ -1,31 +1,31 @@
 import {App, Component, markRaw} from 'vue';
 import {FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder/src';
 import {
-  PdkComponentName,
-  optionalActionContainerComponentNames,
-  optionalPlainWrapperComponentNames,
-  requiredComponentNames,
+  AdminComponentName,
+  optionalAdminActionContainerComponentNames,
+  optionalAdminPlainWrapperComponentNames,
+  requiredAdminComponentNames,
 } from '@myparcel-pdk/common/src';
 import {memoize, mergeWith} from 'lodash-unified';
 import {PdkAppPlugin} from './plugins.types';
 import {PlainElement} from '../../../components';
 import {useLanguage} from '../../../composables';
 
-const memoizedGetOptionalComponents = memoize((app: App): Record<string, Component | PdkComponentName> => {
+const memoizedGetOptionalComponents = memoize((app: App): Record<string, Component | AdminComponentName> => {
   const isNotRegistered = (component: string): boolean => app.component(component) === undefined;
 
   const createComponentMap = (
-    componentNames: readonly PdkComponentName[],
-    fallback: Component | PdkComponentName,
-  ): Record<string, Component | PdkComponentName> => {
+    componentNames: readonly AdminComponentName[],
+    fallback: Component | AdminComponentName,
+  ): Record<string, Component | AdminComponentName> => {
     return componentNames
       .filter(isNotRegistered)
       .reduce((acc, componentName) => ({...acc, [componentName]: fallback}), {});
   };
 
   return {
-    ...createComponentMap(optionalPlainWrapperComponentNames, PlainElement),
-    ...createComponentMap(optionalActionContainerComponentNames, 'PdkBox'),
+    ...createComponentMap(optionalAdminPlainWrapperComponentNames, PlainElement),
+    ...createComponentMap(optionalAdminActionContainerComponentNames, 'PdkBox'),
   };
 });
 
@@ -36,7 +36,7 @@ export const createRegisterComponentsPlugin: PdkAppPlugin = ({config, logger}) =
   return {
     install(app) {
       const requiredComponents: Record<string, Component> = {
-        ...requiredComponentNames.reduce((acc, name) => ({...acc, [name]: null}), {}),
+        ...requiredAdminComponentNames.reduce((acc, name) => ({...acc, [name]: null}), {}),
         ...config.components,
       };
 

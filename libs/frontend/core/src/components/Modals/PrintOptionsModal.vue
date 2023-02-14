@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import {defineAsyncComponent, defineComponent} from 'vue';
-import {ModalKey} from '../../types';
+import {AdminModalKey} from '../../types';
 
 /**
  * Modal with print options. Opened when any print action is executed, if the modal is enabled in the module settings.
@@ -23,7 +23,7 @@ export default defineComponent({
   // eslint-disable-next-line max-lines-per-function
   setup: () => {
     return {
-      modalKey: ModalKey.PRINT_OPTIONS,
+      modalKey: AdminModalKey.PRINT_OPTIONS,
     };
   },
 });

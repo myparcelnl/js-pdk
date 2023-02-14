@@ -1,24 +1,24 @@
 import {FormConfiguration} from '@myparcel/vue-form-builder/src';
 import {LogLevel} from '../services';
-import {PdkComponentMap} from '@myparcel-pdk/common/src';
-import {PdkFormatterObject} from '../composables';
+import {AdminComponentMap} from '@myparcel-pdk/common/src';
+import {FormatterObject} from '../composables';
 import {PiniaPluginContext} from 'pinia';
 
-export type DefaultPdkConfiguration = Omit<PdkConfiguration, 'context' | 'components'> & {
+export type DefaultAdminConfiguration = Omit<AdminConfiguration, 'context' | 'components'> & {
   components?: Record<string, undefined>;
   formatters?: Record<string, undefined>;
 };
 
-export type PdkConfiguration = {
+export type AdminConfiguration = {
   /**
    * Components to use.
    */
-  components: PdkComponentMap;
+  components: AdminComponentMap;
 
   /**
    * Override default formatters.
    */
-  formatters?: PdkFormatterObject;
+  formatters?: FormatterObject;
 
   /**
    * Log level to use. Defaults to 'info' on production and 'debug' on development.
@@ -66,12 +66,12 @@ export type PdkConfiguration = {
   /**
    * Hook that executes before the pdk frontend is booted.
    */
-  beforeCreate?(configuration?: PdkConfiguration): void;
+  beforeCreate?(configuration?: AdminConfiguration): void;
 
   /**
    * Hook that executes after the pdk frontend is booted.
    */
-  onCreated?(configuration?: PdkConfiguration): void;
+  onCreated?(configuration?: AdminConfiguration): void;
 };
 
-export type PdkConfigurationPreset = Omit<Partial<PdkConfiguration>, 'components'>;
+export type AdminConfigurationPreset = Omit<Partial<AdminConfiguration>, 'components'>;

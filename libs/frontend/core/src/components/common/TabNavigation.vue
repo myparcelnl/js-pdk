@@ -10,7 +10,7 @@
 
   <PdkTabNavContentWrapper v-if="activeTabContents">
     <Transition
-      :name="pdkConfig.transitions?.tabNavigation"
+      :name="config.transitions?.tabNavigation"
       mode="out-in">
       <KeepAlive>
         <component
@@ -24,8 +24,8 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent, ref} from 'vue';
-import {useLanguage, usePdkConfig} from '../../composables';
-import {PdkTab} from '@myparcel-pdk/common/src';
+import {useAdminConfig, useLanguage} from '../../composables';
+import {TabDefinition} from '@myparcel-pdk/common/src';
 
 /**
  * Tab navigation.
@@ -39,7 +39,7 @@ export default defineComponent({
     },
 
     tabs: {
-      type: Array as PropType<PdkTab[]>,
+      type: Array as PropType<TabDefinition[]>,
       required: true,
     },
   },
@@ -53,12 +53,12 @@ export default defineComponent({
     const {translate} = useLanguage();
 
     return {
-      handleClick: (tab: PdkTab) => {
+      handleClick: (tab: TabDefinition) => {
         window.location.hash = props.hashPrefix + tab.name;
         activeTab.value = tab.name;
       },
 
-      pdkConfig: usePdkConfig(),
+      config: useAdminConfig(),
       activeTab,
       activeTabContents: computed(() => props.tabs.find((tab) => tab.name === activeTab.value)),
       translate,

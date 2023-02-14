@@ -1,16 +1,16 @@
 import {ActionContext, ActionContextWithResponse} from '../actions';
 import {ActionInput, AdminActionEndpointMap, EndpointResponse} from './endpoints.types';
-import {MaybeRef} from '@vueuse/core';
 import {AdminIcon} from './common.types';
-import {PdkVariant} from '@myparcel-pdk/common/src';
+import {MaybeRef} from '@vueuse/core';
 import {PromiseOr} from '@myparcel/ts-utils';
+import {Variant} from '@myparcel-pdk/common/src';
 
 export type MaybeAdminAction = AdminAction | undefined;
 
 type BaseAction = {
   icon?: AdminIcon;
   label?: string;
-  variant?: MaybeRef<PdkVariant>;
+  variant?: MaybeRef<Variant>;
   disabled?: MaybeRef<boolean>;
   standalone?: boolean;
 };
@@ -29,7 +29,7 @@ export type GenericAction = BaseAction & {
   afterHandle?(context: ActionContext<undefined>): PromiseOr<void>;
 };
 
-export type PdkAction<A extends MaybeAdminAction = MaybeAdminAction> = A extends AdminAction
+export type AnyAdminAction<A extends MaybeAdminAction = MaybeAdminAction> = A extends AdminAction
   ? NamedAction<A>
   : GenericAction;
 
@@ -82,12 +82,3 @@ export enum AdminAction {
 }
 
 export type PrintAction = AdminAction.SHIPMENTS_PRINT | AdminAction.ORDERS_PRINT | AdminAction.ORDERS_EXPORT_PRINT;
-
-export type UpdateOrderAction = AdminAction.ORDERS_UPDATE | AdminAction.ORDERS_EXPORT | AdminAction.ORDERS_EXPORT_PRINT;
-
-export type UpdateShipmentAction =
-  | AdminAction.SHIPMENTS_DELETE
-  | AdminAction.SHIPMENTS_FETCH
-  | AdminAction.ORDERS_EXPORT
-  | AdminAction.ORDERS_EXPORT_PRINT
-  | AdminAction.ORDERS_FETCH;

@@ -7,14 +7,14 @@ import {
   createDefaultDateRelativeFormatter,
 } from './default';
 import {useGlobalContext} from '../context';
-import {usePdkConfig} from '../usePdkConfig';
+import {useAdminConfig} from '../useAdminConfig';
 
 let formats: Ref<LocaleFormatterObject>;
 
 export const useFormatter = (locale?: string): Formatter => {
   formats ??= ref({});
 
-  const config = usePdkConfig();
+  const config = useAdminConfig();
   const globalContext = useGlobalContext();
 
   const resolvedLocale = locale ?? globalContext.language;

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
-import {PdkContextObject} from '@myparcel-pdk/frontend-core/src';
+import {AdminContextObject} from '@myparcel-pdk/frontend-core/src';
 import translations from './translations/en.json';
 
-export const context: PdkContextObject = {
+export const context: AdminContextObject = {
   orderIdentifier: '',
   global: {
     baseUrl: 'http://localhost',
@@ -22,7 +22,7 @@ export const context: PdkContextObject = {
           property: '',
         },
       }),
-      {} as PdkContextObject['global']['endpoints'],
+      {} as AdminContextObject['global']['endpoints'],
     ),
     event: '',
     language: 'en',

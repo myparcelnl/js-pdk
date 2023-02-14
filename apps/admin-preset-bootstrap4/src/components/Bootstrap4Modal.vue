@@ -44,7 +44,7 @@
 <script lang="ts">
 import {
   ActionButton,
-  ModalKey,
+  AdminModalKey,
   NotificationContainer,
   ResolvedAction,
   useLanguage,
@@ -65,7 +65,7 @@ export default defineComponent({
 
   props: {
     modalKey: {
-      type: String as PropType<ModalKey>,
+      type: String as PropType<AdminModalKey>,
       default: null,
     },
 

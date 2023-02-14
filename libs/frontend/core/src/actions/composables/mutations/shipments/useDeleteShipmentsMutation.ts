@@ -3,13 +3,13 @@ import {encodeArrayParameter, normalizeOrder} from '../../../../utils';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {toArray} from '@myparcel/ts-utils';
 import {useOrderData} from '../../../../composables';
-import {usePdkApi} from '../../../../sdk';
+import {usePdkAdminApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';
 
 export const useDeleteShipmentsMutation = () => {
   const queryClient = useQueryClient();
-  const pdk = usePdkApi();
+  const pdk = usePdkAdminApi();
 
   return usePdkMutation(
     BackendEndpoint.DELETE_SHIPMENTS,

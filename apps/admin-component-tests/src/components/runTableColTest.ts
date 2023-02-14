@@ -1,8 +1,8 @@
 import {runCommonComponentTests, runHasSlotTest} from '../common';
 import {MountingOptions} from '@vue/test-utils';
-import {PdkComponentTest} from '../tests';
+import {AdminComponentTest} from '../tests';
 
-export const runTableColTest: PdkComponentTest = (component) => {
+export const runTableColTest: AdminComponentTest = (component) => {
   const options: MountingOptions<any> = {};
 
   runCommonComponentTests(component, options);

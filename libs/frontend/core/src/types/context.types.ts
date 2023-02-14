@@ -1,24 +1,26 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {BackendPdkEndpointObject, Plugin} from '@myparcel-pdk/common/src';
-import {ModalKey} from './modal.types';
+import {AdminModalKey} from './modal.types';
 import {Replace} from '@myparcel/ts-utils';
 
-export type PdkContextObject = Replace<Plugin.ModelContextContextBag, 'global', GlobalContext> &
-  Partial<PdkInstanceContext>;
+export type AdminContextObject = Replace<Plugin.ModelContextContextBag, 'global', GlobalAdminContext> &
+  Partial<AdminInstanceContext>;
 
-type GlobalContext = Replace<Plugin.ModelContextGlobalContext, 'endpoints', BackendPdkEndpointObject>;
+type GlobalAdminContext = Replace<Plugin.ModelContextGlobalContext, 'endpoints', BackendPdkEndpointObject>;
 
-export type AnyContext = PdkContext<ContextKey>;
+export type AnyAdminContext = AdminContext<AdminContextKey>;
 
-export type PdkContext<T> = T extends keyof PdkContextObject ? PdkContextObject[T] : never;
+export type AdminContext<T> = T extends keyof AdminContextObject ? AdminContextObject[T] : never;
 
-export type PdkInstanceContext = {
-  [InstanceContextKey.ORDER_IDENTIFIER]: Plugin.ModelContextOrderDataContext['externalIdentifier'];
+export type AdminInstanceContext = {
+  [AdminInstanceContextKey.ORDER_IDENTIFIER]: Plugin.ModelContextOrderDataContext['externalIdentifier'];
 };
 
-export type PdkModalContext<T extends ModalKey = ModalKey> = T extends ModalKey.SHIPMENT_OPTIONS ? string : never;
+export type AdminModalContext<T extends AdminModalKey = AdminModalKey> = T extends AdminModalKey.SHIPMENT_OPTIONS
+  ? string
+  : never;
 
-export enum ContextKey {
+export enum AdminContextKey {
   GLOBAL = 'global',
   DYNAMIC = 'dynamic',
   ORDER_DATA = 'orderData',
@@ -28,6 +30,6 @@ export enum ContextKey {
   INSTANCE = 'instance',
 }
 
-export enum InstanceContextKey {
+export enum AdminInstanceContextKey {
   ORDER_IDENTIFIER = 'orderIdentifier',
 }

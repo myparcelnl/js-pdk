@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {useLanguage, usePdkConfig, useShipmentData} from '../../composables';
+import {useAdminConfig, useLanguage, useShipmentData} from '../../composables';
 import {Shipment} from '@myparcel-pdk/common/src';
 
 export default defineComponent({
@@ -44,7 +44,7 @@ export default defineComponent({
     return {
       ...useShipmentData(props.shipment),
       translate,
-      config: usePdkConfig(),
+      config: useAdminConfig(),
     };
   },
 });

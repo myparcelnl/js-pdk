@@ -1,10 +1,10 @@
 import {getElementContext, globalLogger} from '../services';
+import {AdminConfiguration} from '../types';
 import {PdkAdmin} from './PdkAdmin';
-import {PdkConfiguration} from '../types';
-import {createPdkConfig} from './createPdkConfig';
+import {createAdminConfig} from './createAdminConfig';
 import {sendBootEvent} from '../utils';
 
-export type CreatePdkAdmin = (configuration?: PdkConfiguration) => undefined | PdkAdmin;
+export type CreatePdkAdmin = (configuration?: AdminConfiguration) => undefined | PdkAdmin;
 
 /**
  * Must match \MyParcelNL\Pdk\Plugin\Service\RenderService::BOOTSTRAP_CONTAINER_ID.
@@ -19,7 +19,7 @@ const BOOTSTRAP_CONTAINER_SELECTOR = '#myparcel-pdk-boot';
  */
 export const createPdkAdmin: CreatePdkAdmin = (configuration?) => {
   try {
-    const config = createPdkConfig(configuration);
+    const config = createAdminConfig(configuration);
     const context = getElementContext(BOOTSTRAP_CONTAINER_SELECTOR);
 
     const pdkAdmin = new PdkAdmin(config, context);

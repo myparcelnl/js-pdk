@@ -1,4 +1,4 @@
-import {ActionParameters, ActionResponse, AdminAction, PdkAction} from '../../types';
+import {ActionParameters, ActionResponse, AdminAction, AnyAdminAction} from '../../types';
 import {createActionContext, getActionIdentifier} from '../../services';
 import {ActionContext} from './types';
 import {executeAction} from './executeAction';
@@ -8,7 +8,7 @@ import {executeAction} from './executeAction';
  */
 export const executeNextAction = async <A extends AdminAction | undefined>(
   context: ActionContext,
-  nextAction: PdkAction<A>,
+  nextAction: AnyAdminAction<A>,
   parameters?: ActionParameters<A>,
 ): Promise<ActionResponse<A>> => {
   const nextActionIdentifier = getActionIdentifier(nextAction);

@@ -1,7 +1,7 @@
 import {ElementInstance, createFormElement} from '@myparcel-pdk/frontend-core/src';
 import {MountingOptions, mount} from '@vue/test-utils';
 import {expect, it} from 'vitest';
-import {PdkComponentTest} from '../tests';
+import {AdminComponentTest} from '../tests';
 import {SelectOption} from '@myparcel-pdk/common/src';
 import {runCommonComponentTests} from '../common';
 
@@ -10,7 +10,7 @@ const selectOptions: SelectOption[] = [
   {value: '2', label: 'Two'},
 ];
 
-export const runSelectInputTest: PdkComponentTest = (component) => {
+export const runSelectInputTest: AdminComponentTest = (component) => {
   const options: MountingOptions<{element: ElementInstance; options: SelectOption[]}> = {
     props: {
       element: createFormElement({}),

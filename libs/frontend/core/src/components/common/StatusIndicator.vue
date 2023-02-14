@@ -15,31 +15,31 @@
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
 import {AdminIcon} from '../../types';
-import {PdkStatus} from '@myparcel-pdk/common/src';
-import {usePdkConfig} from '../../composables';
+import {Status} from '@myparcel-pdk/common/src';
+import {useAdminConfig} from '../../composables';
 
 export default defineComponent({
   name: 'StatusIndicator',
   props: {
     status: {
-      type: String as PropType<PdkStatus>,
-      default: PdkStatus.PENDING,
+      type: String as PropType<Status>,
+      default: Status.PENDING,
     },
   },
 
   setup: (props) => {
     return {
-      PdkStatus,
-      config: usePdkConfig(),
+      PdkStatus: Status,
+      config: useAdminConfig(),
       icon: computed(() => {
         switch (props.status) {
-          case PdkStatus.SUCCESS:
+          case Status.SUCCESS:
             return AdminIcon.YES;
 
-          case PdkStatus.ERROR:
+          case Status.ERROR:
             return AdminIcon.NO;
 
-          case PdkStatus.PENDING:
+          case Status.PENDING:
           default:
             return AdminIcon.SPINNER;
         }

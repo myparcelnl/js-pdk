@@ -1,13 +1,13 @@
 import {
+  AdminComponentMap,
   BackendEndpoint,
-  PdkComponentMap,
-  optionalPlainWrapperComponentNames,
-  requiredComponentNames,
+  optionalAdminPlainWrapperComponentNames,
+  requiredAdminComponentNames,
 } from '@myparcel-pdk/common/src';
 import {
+  AdminAppConfig,
+  AdminContextObject,
   LogLevel,
-  PdkAppConfig,
-  PdkContextObject,
   createContextPlugin,
   createLogger,
   createStorePlugin,
@@ -15,7 +15,7 @@ import {
 } from '@myparcel-pdk/frontend-core/src';
 import {config} from '@vue/test-utils';
 
-const context: PdkContextObject = {
+const context: AdminContextObject = {
   global: {
     event: 'test',
     language: 'en-US',
@@ -26,7 +26,7 @@ const context: PdkContextObject = {
       customs: {},
       general: {},
       order: {},
-    } as PdkContextObject['global']['pluginSettings'],
+    } as AdminContextObject['global']['pluginSettings'],
     baseUrl: '',
     bootId: '',
     mode: '',
@@ -42,16 +42,16 @@ const context: PdkContextObject = {
           property: '',
         },
       }),
-      {} as PdkContextObject['global']['endpoints'],
+      {} as AdminContextObject['global']['endpoints'],
     ),
     translations: {},
   },
 };
 
-const appConfig: PdkAppConfig = {
+const appConfig: AdminAppConfig = {
   appName: 'test',
   logger: createLogger('test'),
-  config: {components: {} as PdkComponentMap, logLevel: LogLevel.OFF},
+  config: {components: {} as AdminComponentMap, logLevel: LogLevel.OFF},
   context,
 };
 
@@ -64,7 +64,7 @@ export const doComponentTestSetup = (): void => {
   // // @ts-expect-error yes we can
   // config.global.provide[INJECT_PDK_INSTANCE] = {...appConfig, context: {}};
 
-  [...requiredComponentNames, ...optionalPlainWrapperComponentNames].forEach((name) => {
+  [...requiredAdminComponentNames, ...optionalAdminPlainWrapperComponentNames].forEach((name) => {
     config.global.stubs[name] = true;
   });
 };

@@ -7,7 +7,7 @@ import {SubmitButton} from '../../components';
 import {generateFormFields} from './generateFormFields';
 import {get} from '@vueuse/core';
 import {get as lodashGet} from 'lodash-unified';
-import {usePdkConfig} from '../../composables';
+import {useAdminConfig} from '../../composables';
 
 export const createPluginSettingsForm = (
   id: string,
@@ -15,13 +15,13 @@ export const createPluginSettingsForm = (
   actionContext: ActionContext<AdminAction.PLUGIN_SETTINGS_UPDATE>,
   {mutation, query}: PluginSettingsTabsContext,
 ): FormInstance => {
-  const pdkConfig = usePdkConfig();
+  const adminConfig = useAdminConfig();
   const values = lodashGet(get(query.data)?.pluginSettings, id, {});
 
   const generatedFields = generateFormFields({fields: view.elements, values}, `${id}.`);
 
   return defineForm(id, {
-    ...pdkConfig.formConfigPluginSettings,
+    ...adminConfig.formConfigPluginSettings,
     fields: [
       ...generatedFields,
       {

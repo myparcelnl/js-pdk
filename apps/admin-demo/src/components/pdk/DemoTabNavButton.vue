@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {PdkTab} from '@myparcel-pdk/common/src';
+import {TabDefinition} from '@myparcel-pdk/common/src';
 import {useLanguage} from '@myparcel-pdk/frontend-core/src';
 
 export default defineComponent({
@@ -30,7 +30,7 @@ export default defineComponent({
     },
 
     tab: {
-      type: Object as PropType<PdkTab>,
+      type: Object as PropType<TabDefinition>,
       required: true,
     },
   },

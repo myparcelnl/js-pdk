@@ -17,7 +17,7 @@ import {
 } from '../../actions';
 import {usePluginSettings, useStoreQuery} from '../../composables';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
-import {ModalKey} from '../../types';
+import {AdminModalKey} from '../../types';
 import {createActions} from '../../services';
 
 /**
@@ -36,7 +36,7 @@ export default defineComponent({
     const exportOrdersQuery = useStoreQuery(BackendEndpoint.EXPORT_ORDERS);
 
     return {
-      modalKey: ModalKey.SHIPMENT_OPTIONS,
+      modalKey: AdminModalKey.SHIPMENT_OPTIONS,
       actions: createActions([
         {
           ...modalCancelAction,

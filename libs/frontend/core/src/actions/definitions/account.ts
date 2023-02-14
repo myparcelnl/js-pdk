@@ -1,4 +1,4 @@
-import {AdminAction, AdminIcon, ContextKey} from '../../types';
+import {AdminAction, AdminContextKey, AdminIcon} from '../../types';
 import {createMutator, createQueryFetcher, executeNextAction} from '../executors';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
@@ -8,12 +8,12 @@ import {defineAction} from '../defineAction';
  */
 export const fetchDynamicContextAction = defineAction({
   name: AdminAction.CONTEXT_FETCH,
-  handler: createQueryFetcher(BackendEndpoint.FETCH_CONTEXT, ContextKey.DYNAMIC),
+  handler: createQueryFetcher(BackendEndpoint.FETCH_CONTEXT, AdminContextKey.DYNAMIC),
 });
 
 export const fetchPluginSettingsViewContextAction = defineAction({
   name: AdminAction.CONTEXT_FETCH,
-  handler: createQueryFetcher(BackendEndpoint.FETCH_CONTEXT, ContextKey.PLUGIN_SETTINGS_VIEW),
+  handler: createQueryFetcher(BackendEndpoint.FETCH_CONTEXT, AdminContextKey.PLUGIN_SETTINGS_VIEW),
 });
 
 /**

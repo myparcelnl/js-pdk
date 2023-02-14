@@ -1,10 +1,10 @@
 /// <reference types="jquery" />
 /// <reference types="bootstrap" />
 
-import {ModalKey, PdkConfigurationPreset, useModalStore} from '@myparcel-pdk/frontend-core/src';
+import {AdminConfigurationPreset, AdminModalKey, useModalStore} from '@myparcel-pdk/frontend-core/src';
 
 // noinspection JSUnusedGlobalSymbols
-export const bootstrap4Config: PdkConfigurationPreset = {
+export const bootstrap4Config: AdminConfigurationPreset = {
   cssUtilities: {
     textCenter: 'text-center',
   },
@@ -15,11 +15,11 @@ export const bootstrap4Config: PdkConfigurationPreset = {
   onCreateStore: () => {
     const modalStore = useModalStore();
 
-    modalStore.onOpen((key: ModalKey) => {
+    modalStore.onOpen((key: AdminModalKey) => {
       jQuery(`#pdk-modal-${key}`).modal('show');
     });
 
-    modalStore.onClose((key: ModalKey) => {
+    modalStore.onClose((key: AdminModalKey) => {
       jQuery(`#pdk-modal-${key}`).modal('hide');
     });
   },

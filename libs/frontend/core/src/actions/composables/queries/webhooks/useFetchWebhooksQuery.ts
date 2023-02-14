@@ -2,7 +2,7 @@
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {EndpointResponse} from '../../../../types';
-import {usePdkApi} from '../../../../sdk';
+import {usePdkAdminApi} from '../../../../sdk';
 
 export const useFetchWebhooksQuery = () => {
   const queryKey = [BackendEndpoint.FETCH_WEBHOOKS] as const;
@@ -11,7 +11,7 @@ export const useFetchWebhooksQuery = () => {
   return useQuery<EndpointResponse<BackendEndpoint.FETCH_WEBHOOKS>>(
     queryKey,
     () => {
-      const pdk = usePdkApi();
+      const pdk = usePdkAdminApi();
 
       return pdk.fetchWebhooks();
     },

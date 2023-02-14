@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts">
-import {BackendEndpoint, PdkTab} from '@myparcel-pdk/common/src';
+import {BackendEndpoint, TabDefinition} from '@myparcel-pdk/common/src';
 import {computed, defineComponent, ref, unref, watch} from 'vue';
 import {useAccount, useLogger, useStoreContextQuery, useStoreQuery} from '../../composables';
-import {ContextKey} from '../../types';
+import {AdminContextKey} from '../../types';
 import TabNavigation from '../common/TabNavigation.vue';
 import {createPluginSettingsTabs} from '../../forms';
 import {get} from '@vueuse/core';
@@ -24,10 +24,10 @@ export default defineComponent({
     const hasAccount = computed(() => Boolean(account));
 
     const dynamicContextQuery = useStoreContextQuery();
-    const pluginSettingsContextQuery = useStoreContextQuery(ContextKey.PLUGIN_SETTINGS_VIEW);
+    const pluginSettingsContextQuery = useStoreContextQuery(AdminContextKey.PLUGIN_SETTINGS_VIEW);
     const updatePluginSettingsMutation = useStoreQuery(BackendEndpoint.UPDATE_PLUGIN_SETTINGS);
 
-    const tabs = ref<PdkTab[]>([]);
+    const tabs = ref<TabDefinition[]>([]);
 
     watch(
       dynamicContextQuery.data,
@@ -40,7 +40,7 @@ export default defineComponent({
 
         if (!pluginSettingsView) {
           const logger = useLogger();
-          logger.error(`${ContextKey.PLUGIN_SETTINGS_VIEW} not found`);
+          logger.error(`${AdminContextKey.PLUGIN_SETTINGS_VIEW} not found`);
           return;
         }
 

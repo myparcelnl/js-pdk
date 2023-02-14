@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {ComponentImportFunction, PdkAdminComponent} from '@myparcel-pdk/common/src';
+import {AdminView, ComponentImportFunction} from '@myparcel-pdk/common/src';
 import {Component} from 'vue';
 
 /**
  * Maps components to render methods.
  */
-const renderMap = Object.freeze<Record<PdkAdminComponent, ComponentImportFunction>>({
+const renderMap = Object.freeze<Record<AdminView, ComponentImportFunction>>({
   LoadingPage: async () => import('../views/LoadingPage.vue'),
   Modals: async () => import('../views/Modals.vue'),
   Notifications: async () => import('../views/Notifications.vue'),
@@ -15,7 +15,7 @@ const renderMap = Object.freeze<Record<PdkAdminComponent, ComponentImportFunctio
   ProductSettings: async () => import('../views/ProductSettings.vue'),
 });
 
-export const renderViewComponent = async (componentName: PdkAdminComponent): Promise<Component> => {
+export const renderViewComponent = async (componentName: AdminView): Promise<Component> => {
   const renderMethod = renderMap[componentName];
 
   if (!renderMethod) {

@@ -1,7 +1,7 @@
-import {PdkContextObject} from '../../types';
+import {AdminContextObject} from '../../types';
 import {globalLogger} from '../logger';
 
-export const getElementContext = (selector: string): PdkContextObject => {
+export const getElementContext = (selector: string): AdminContextObject => {
   const element = document.querySelector(selector);
   const context = element?.getAttribute('data-pdk-context');
   const parsedContext = context ? JSON.parse(context) : null;
@@ -12,5 +12,5 @@ export const getElementContext = (selector: string): PdkContextObject => {
   }
 
   globalLogger.info(`No context found in ${selector}`);
-  return {} as PdkContextObject;
+  return {} as AdminContextObject;
 };

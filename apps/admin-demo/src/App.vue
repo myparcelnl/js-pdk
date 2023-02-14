@@ -39,7 +39,7 @@
 
 <script lang="ts">
 import {RouterLink, RouterView, useRouter} from 'vue-router';
-import {PdkAdminComponent} from '@myparcel-pdk/common/src';
+import {AdminView} from '@myparcel-pdk/common/src';
 import {defineComponent} from 'vue';
 import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core/src';
 
@@ -49,7 +49,7 @@ export default defineComponent({
   setup: () => {
     const fe = useGlobalPdkAdmin();
 
-    void fe.render(PdkAdminComponent.NOTIFICATIONS, '#mypa-notifications');
+    void fe.render(AdminView.NOTIFICATIONS, '#mypa-notifications');
 
     return {
       routes: useRouter()

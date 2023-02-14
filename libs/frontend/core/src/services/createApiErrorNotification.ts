@@ -1,11 +1,11 @@
 import {Notification} from '../types';
-import {PdkVariant} from '@myparcel-pdk/common/src';
+import {Variant} from '@myparcel-pdk/common/src';
 import {useLanguage} from '../composables';
 
 const PREFIX = 'notification_';
 
 export const createApiErrorNotification = (
-  variant: PdkVariant,
+  variant: Variant,
   options?: Partial<Notification> & {identifier?: string},
 ): Notification => {
   const language = useLanguage();

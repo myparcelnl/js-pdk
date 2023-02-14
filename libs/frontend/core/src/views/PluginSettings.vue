@@ -18,14 +18,14 @@ import {
   useUpdatePluginSettingsMutation,
 } from '../actions';
 import AccountSettings from '../components/PluginSettings/AccountSettings.vue';
-import {ContextKey} from '../types';
+import {AdminContextKey} from '../types';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForms.vue';
 import {useQueryStore} from '../stores';
 
 const queryStore = useQueryStore();
 
-queryStore.registerContextQueries(ContextKey.PLUGIN_SETTINGS_VIEW);
+queryStore.registerContextQueries(AdminContextKey.PLUGIN_SETTINGS_VIEW);
 
 queryStore.register(BackendEndpoint.UPDATE_ACCOUNT, useUpdateAccountMutation());
 

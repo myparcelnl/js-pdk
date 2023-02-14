@@ -1,5 +1,5 @@
 import {AdminAction} from './actions.types';
-import {ContextKey} from './context.types';
+import {AdminContextKey} from './context.types';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {FormInstance} from '@myparcel/vue-form-builder/src';
 import {OneOrMore} from '@myparcel/ts-utils';
@@ -40,7 +40,7 @@ export type EndpointAdminActionMap = {
 };
 
 export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record<string, unknown>> {
-  [BackendEndpoint.FETCH_CONTEXT]: {contexts?: OneOrMore<ContextKey>};
+  [BackendEndpoint.FETCH_CONTEXT]: {contexts?: OneOrMore<AdminContextKey>};
 
   [BackendEndpoint.UPDATE_ACCOUNT]: {form: FormInstance};
 

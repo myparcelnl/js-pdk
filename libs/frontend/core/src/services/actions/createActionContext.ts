@@ -1,18 +1,18 @@
-import {ActionParameters, AdminAction, Notification, PdkAction} from '../../types';
+import {ActionParameters, AdminAction, AnyAdminAction, Notification} from '../../types';
 import {ActionContext} from '../../actions';
-import {PdkAppInstance} from '../../data';
-import {PdkVariant} from '@myparcel-pdk/common/src';
+import {AdminInstance} from '../../data';
+import {Variant} from '@myparcel-pdk/common/src';
 import {createApiErrorNotification} from '../createApiErrorNotification';
 import {createLogger} from '../logger';
 import {getActionIdentifier} from './getActionIdentifier';
-import {usePdkInstance} from '../../composables';
+import {useAdminInstance} from '../../composables';
 
-const VARIANTS = [PdkVariant.SUCCESS, PdkVariant.ERROR];
+const VARIANTS = [Variant.SUCCESS, Variant.ERROR];
 
 export const createActionContext = <A extends AdminAction | undefined>(
-  action: PdkAction<A>,
+  action: AnyAdminAction<A>,
   parameters?: ActionParameters<A>,
-  existingInstance?: PdkAppInstance,
+  existingInstance?: AdminInstance,
 ): ActionContext<A> => {
   const identifier = getActionIdentifier(action);
   const logger = createLogger(identifier);
@@ -24,7 +24,7 @@ export const createActionContext = <A extends AdminAction | undefined>(
     parameters: parameters ?? {},
 
     instance: {
-      ...(existingInstance ?? usePdkInstance()),
+      ...(existingInstance ?? useAdminInstance()),
       logger,
     },
 

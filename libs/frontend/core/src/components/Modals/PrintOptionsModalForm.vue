@@ -6,14 +6,14 @@
 import {MagicForm, defineForm} from '@myparcel/vue-form-builder/src';
 import {formatOptions, outputOptions, positionOptions} from '../../data';
 import {ref, resolveComponent} from 'vue';
-import {ModalKey} from '../../types';
+import {AdminModalKey} from '../../types';
 import {defineFormField} from '../../forms';
 import {usePluginSettings} from '../../composables';
 
 const pluginSettings = usePluginSettings();
 
 // noinspection JSUnusedGlobalSymbols
-const form = defineForm(ModalKey.PRINT_OPTIONS, {
+const form = defineForm(AdminModalKey.PRINT_OPTIONS, {
   fields: [
     defineFormField({
       name: 'output',

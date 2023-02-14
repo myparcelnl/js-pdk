@@ -1,7 +1,7 @@
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
-import {INJECT_PDK_INSTANCE} from '../../data';
+import {INJECT_ADMIN_INSTANCE} from '../../data';
+import {createAdminConfig} from '../../pdk';
 import {createLogger} from '../../services';
-import {createPdkConfig} from '../../pdk';
 import {useFormatter} from './useFormatter';
 
 describe('format strings', () => {
@@ -15,11 +15,11 @@ describe('format strings', () => {
         ...realVue,
 
         inject(key: symbol) {
-          if (INJECT_PDK_INSTANCE === key) {
+          if (INJECT_ADMIN_INSTANCE === key) {
             return {
               appName: 'test',
               context: {},
-              config: createPdkConfig(),
+              config: createAdminConfig(),
               logger: createLogger('test'),
             };
           }

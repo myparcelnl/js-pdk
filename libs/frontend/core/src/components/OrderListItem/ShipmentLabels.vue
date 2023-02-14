@@ -1,6 +1,6 @@
 <template>
   <TransitionGroup
-    :name="pdkConfig?.transitions?.shipmentBox"
+    :name="config?.transitions?.shipmentBox"
     appear>
     <ShipmentLabel
       v-for="shipment in order.shipments.filter((item) => !item.deleted)"
@@ -13,7 +13,7 @@
 import {PropType, defineComponent} from 'vue';
 import {Plugin} from '@myparcel-pdk/common/src';
 import ShipmentLabel from './ShipmentLabel.vue';
-import {usePdkConfig} from '../../composables';
+import {useAdminConfig} from '../../composables';
 
 export default defineComponent({
   name: 'ShipmentLabels',
@@ -28,7 +28,7 @@ export default defineComponent({
 
   setup: () => {
     return {
-      pdkConfig: usePdkConfig(),
+      config: useAdminConfig(),
     };
   },
 });

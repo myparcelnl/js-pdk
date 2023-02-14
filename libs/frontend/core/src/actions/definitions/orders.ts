@@ -1,4 +1,4 @@
-import {ActionParameters, AdminAction, AdminIcon, ModalKey} from '../../types';
+import {ActionParameters, AdminAction, AdminIcon, AdminModalKey} from '../../types';
 import {
   ActionContext,
   createMutator,
@@ -23,7 +23,7 @@ export const ordersEditAction = defineAction({
     const modalStore = useModalStore();
     const parameters = context.parameters as ActionParameters<AdminAction.ORDERS_EXPORT>;
 
-    modalStore.open(ModalKey.SHIPMENT_OPTIONS, parameters.orderIds.toString());
+    modalStore.open(AdminModalKey.SHIPMENT_OPTIONS, parameters.orderIds.toString());
   },
 });
 

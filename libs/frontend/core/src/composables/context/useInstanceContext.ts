@@ -1,13 +1,13 @@
-import {AnyContext, INJECT_PDK_INSTANCE, InstanceContextKey, PdkContext} from '../../';
+import {AdminContext, AdminInstanceContextKey, AnyAdminContext, INJECT_ADMIN_INSTANCE} from '../../';
 import {inject} from 'vue';
 
 interface UseInstanceContext {
-  <Key extends InstanceContextKey>(contextKey: Key): PdkContext<Key>;
-  <Ctx extends AnyContext>(context: Ctx): Ctx;
+  <Key extends AdminInstanceContextKey>(contextKey: Key): AdminContext<Key>;
+  <Ctx extends AnyAdminContext>(context: Ctx): Ctx;
 }
 
-export const useInstanceContext: UseInstanceContext = (context: InstanceContextKey) => {
-  const foundInstance = inject(INJECT_PDK_INSTANCE);
+export const useInstanceContext: UseInstanceContext = (context: AdminInstanceContextKey) => {
+  const foundInstance = inject(INJECT_ADMIN_INSTANCE);
 
   return foundInstance?.context?.[context] ?? null;
 };

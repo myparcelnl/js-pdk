@@ -47,9 +47,9 @@
 </template>
 
 <script lang="ts">
-import {ModalKey, useGlobalPdkAdmin, useModalStore} from '@myparcel-pdk/frontend-core/src';
+import {AdminModalKey, useGlobalPdkAdmin, useModalStore} from '@myparcel-pdk/frontend-core/src';
 import {defineComponent, ref} from 'vue';
-import {PdkAdminComponent} from '@myparcel-pdk/common/src';
+import {AdminView} from '@myparcel-pdk/common/src';
 import {RouterLink} from 'vue-router';
 import {useDemoOrderData} from '../composables';
 
@@ -65,10 +65,10 @@ export default defineComponent({
 
     const orderData = useDemoOrderData();
 
-    void fe.render(PdkAdminComponent.MODALS, '#mypa-modals');
+    void fe.render(AdminView.MODALS, '#mypa-modals');
 
     orderData.forEach((order) => {
-      void fe.render(PdkAdminComponent.ORDER_LIST_COLUMN, `#mypa-order-${order.externalIdentifier}`);
+      void fe.render(AdminView.ORDER_LIST_COLUMN, `#mypa-order-${order.externalIdentifier}`);
     });
 
     const toggled = ref<string | null>(null);
@@ -80,7 +80,7 @@ export default defineComponent({
       toggle: (id: string) => {
         const modalStore = useModalStore();
 
-        modalStore.open(ModalKey.SHIPMENT_OPTIONS, id);
+        modalStore.open(AdminModalKey.SHIPMENT_OPTIONS, id);
       },
     };
   },

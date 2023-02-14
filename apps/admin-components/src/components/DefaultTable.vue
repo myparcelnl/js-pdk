@@ -6,7 +6,7 @@
     </thead>
 
     <TransitionGroup
-      :name="pdkConfig?.transitions.tableRow"
+      :name="config?.transitions.tableRow"
       tag="tbody">
       <!-- Table body -->
       <slot />
@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-import {usePdkConfig} from '@myparcel-pdk/frontend-core/src';
+import {useAdminConfig} from '@myparcel-pdk/frontend-core/src';
 
 /**
  * A table component that can be used to render data via slots.
@@ -29,7 +29,7 @@ import {usePdkConfig} from '@myparcel-pdk/frontend-core/src';
 export default defineComponent({
   name: 'DefaultTable',
   setup: () => ({
-    pdkConfig: usePdkConfig(),
+    config: useAdminConfig(),
   }),
 });
 </script>

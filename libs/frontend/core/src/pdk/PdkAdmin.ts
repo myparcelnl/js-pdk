@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import {AdminConfiguration, AdminContextObject} from '../types';
 import {App, createApp} from 'vue';
-import {PdkConfiguration, PdkContextObject} from '../types';
 import {
   createContextPlugin,
   createLoggerPlugin,
@@ -9,18 +9,18 @@ import {
   createVueQueryPlugin,
 } from './instance';
 import {createLogger, getElementContext} from '../services';
-import {PdkAdminComponent} from '@myparcel-pdk/common/src';
-import {PdkAppConfig} from '../data';
+import {AdminAppConfig} from '../data';
+import {AdminView} from '@myparcel-pdk/common/src';
 import {renderViewComponent} from './renderMap';
 import {testIdDirective} from './testIdDirective';
 
 export class PdkAdmin {
-  public readonly config: PdkConfiguration;
-  public readonly context: PdkContextObject;
+  public readonly config: AdminConfiguration;
+  public readonly context: AdminContextObject;
 
   public readonly renderedComponents: string[] = [];
 
-  public constructor(config: PdkConfiguration, context: PdkContextObject) {
+  public constructor(config: AdminConfiguration, context: AdminContextObject) {
     this.config = config;
     this.context = context;
   }
@@ -28,9 +28,9 @@ export class PdkAdmin {
   /**
    * Render a views in given selector.
    */
-  public async render(view: PdkAdminComponent, selector: string): Promise<void> {
-    const config: PdkConfiguration = {...this.config};
-    const context: PdkContextObject = {...this.context, ...getElementContext(selector)};
+  public async render(view: AdminView, selector: string): Promise<void> {
+    const config: AdminConfiguration = {...this.config};
+    const context: AdminContextObject = {...this.context, ...getElementContext(selector)};
 
     const appName = this.createAppName(view, context);
     const logger = createLogger(appName);
@@ -50,7 +50,7 @@ export class PdkAdmin {
     }
   }
 
-  protected async createApp(view: PdkAdminComponent, appConfig: PdkAppConfig): Promise<App> {
+  protected async createApp(view: AdminView, appConfig: AdminAppConfig): Promise<App> {
     appConfig.config?.beforeCreate?.(appConfig.config);
 
     const component = await renderViewComponent(view);
@@ -70,7 +70,7 @@ export class PdkAdmin {
   /**
    * Create a unique app name for components that are rendered multiple times.
    */
-  protected createAppName(componentName: PdkAdminComponent, context: PdkContextObject): string {
+  protected createAppName(componentName: AdminView, context: AdminContextObject): string {
     if (process.env.NODE_ENV === 'production') {
       return componentName;
     }
@@ -79,7 +79,7 @@ export class PdkAdmin {
 
     let appName: string = componentName;
 
-    if (componentName === PdkAdminComponent.ORDER_LIST_COLUMN) {
+    if (componentName === AdminView.ORDER_LIST_COLUMN) {
       const orderId = orderData?.length === 1 ? orderData[0].externalIdentifier : null;
 
       appName += ` #${orderId}`;

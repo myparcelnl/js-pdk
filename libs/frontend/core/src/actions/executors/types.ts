@@ -2,17 +2,17 @@ import {
   ActionParameters,
   ActionResponse,
   AdminAction,
+  AnyAdminAction,
   EndpointAdminActionMap,
   MaybeAdminAction,
   Notification,
-  PdkAction,
 } from '../../types';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
-import {PdkAppInstance} from '../../data';
+import {AdminInstance} from '../../data';
 
 type BaseActionContext<A extends MaybeAdminAction> = {
-  action: PdkAction<A>;
-  instance: PdkAppInstance;
+  action: AnyAdminAction<A>;
+  instance: AdminInstance;
   notifications?: {
     success?: Notification;
     error?: Notification;

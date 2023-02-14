@@ -1,9 +1,9 @@
-import {PdkComponentMap, PdkComponentName} from '@myparcel-pdk/common/src';
+import {AdminComponentMap, AdminComponentName} from '@myparcel-pdk/common/src';
 import {doComponentTestSetup} from '../tests';
-import {executePdkComponentTest} from './executePdkComponentTest';
+import {executeAdminComponentTest} from './executeAdminComponentTest';
 import {vi} from 'vitest';
 
-export const executePdkComponentTests = (components: Partial<PdkComponentMap>): void => {
+export const executePdkComponentTests = (components: Partial<AdminComponentMap>): void => {
   vi.spyOn(console, 'log');
   vi.spyOn(console, 'warn');
   vi.spyOn(console, 'error');
@@ -15,6 +15,6 @@ export const executePdkComponentTests = (components: Partial<PdkComponentMap>): 
       return;
     }
 
-    executePdkComponentTest(name as PdkComponentName, component);
+    executeAdminComponentTest(name as AdminComponentName, component);
   });
 };

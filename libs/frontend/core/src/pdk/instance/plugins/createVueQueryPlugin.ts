@@ -1,5 +1,5 @@
 import {QueryClient, VueQueryPlugin} from '@tanstack/vue-query';
-import {ContextKey} from '../../../types';
+import {AdminContextKey} from '../../../types';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {PdkAppPlugin} from './plugins.types';
 import {createInstanceContext} from '../createInstanceContext';
@@ -28,7 +28,7 @@ export const createVueQueryPlugin: PdkAppPlugin = ({context, logger}) => {
       });
 
       const instanceContext = createInstanceContext(context);
-      queryClient.setQueryData([BackendEndpoint.FETCH_CONTEXT, ContextKey.INSTANCE], instanceContext);
+      queryClient.setQueryData([BackendEndpoint.FETCH_CONTEXT, AdminContextKey.INSTANCE], instanceContext);
 
       // Add each order to the query client
       if (context.orderData) {
