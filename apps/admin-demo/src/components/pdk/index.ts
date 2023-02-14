@@ -52,4 +52,6 @@ export {default as DemoTableRow} from './DemoTableRow.vue';
 
 export {default as DemoTextInput} from './DemoTextInput.vue';
 
+export {default as DemoTimeInput} from './DemoTimeInput.vue';
+
 export {default as DemoToggleInput} from './DemoToggleInput.vue';
