@@ -21,18 +21,19 @@ export type {
   ModalCallback,
   ModalCallbackProps,
   NamedAction,
+  Notification,
   PdkAction,
   PdkConfiguration,
   PdkConfigurationPreset,
   PdkContext,
   PdkContextObject,
   PdkInstanceContext,
-  PdkNotification,
   ResolvedAction,
 } from '@myparcel-pdk/frontend-core/src';
 
 export {
   ActionButton,
+  AdminIcon,
   ContextKey,
   INJECT_GLOBAL_PDK_ADMIN,
   INJECT_PDK_INSTANCE,
@@ -43,7 +44,6 @@ export {
   NotificationCategory,
   NotificationContainer,
   PdkAdmin,
-  PdkIcon,
   PlainElement,
   ReturnsForm,
   ShipmentBarcode,

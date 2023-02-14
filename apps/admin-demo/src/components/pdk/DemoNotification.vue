@@ -23,14 +23,14 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
-import {PdkNotification} from '@myparcel-pdk/frontend-core/src';
+import {Notification} from '@myparcel-pdk/frontend-core/src';
 import {toArray} from '@myparcel/ts-utils';
 
 export default defineComponent({
   name: 'DemoNotification',
   props: {
     notification: {
-      type: Object as PropType<PdkNotification>,
+      type: Object as PropType<Notification>,
       required: true,
     },
   },

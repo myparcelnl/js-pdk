@@ -13,7 +13,7 @@
 /* eslint-disable vue/no-unused-properties */
 import {PropType, defineComponent} from 'vue';
 import BaseButton from './common/BaseButton.vue';
-import {PdkIcon} from '@myparcel-pdk/frontend-core/src';
+import {AdminIcon} from '@myparcel-pdk/frontend-core/src';
 
 /**
  * @see import('@myparcel-pdk/admin-components').DefaultButton
@@ -27,7 +27,7 @@ export default defineComponent({
     },
 
     icon: {
-      type: String as PropType<PdkIcon>,
+      type: String as PropType<AdminIcon>,
       default: null,
     },
 

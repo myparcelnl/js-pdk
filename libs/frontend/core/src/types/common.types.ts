@@ -1,7 +1,7 @@
 import {OneOrMore} from '@myparcel/ts-utils';
 import {PdkVariant} from '@myparcel-pdk/common/src';
 
-export interface PdkNotification {
+export interface Notification {
   id?: number;
   category?: NotificationCategory;
   title?: string;
@@ -16,7 +16,7 @@ export enum NotificationCategory {
   MODAL = 'modal',
 }
 
-export enum PdkIcon {
+export enum AdminIcon {
   ADD = 'add',
   ARROW_DOWN = 'arrow_down',
   ARROW_UP = 'arrow_up',

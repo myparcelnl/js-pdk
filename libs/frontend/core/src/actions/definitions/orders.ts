@@ -1,5 +1,11 @@
-import {AdminAction, ModalKey, PdkIcon, PdkModalContext} from '../../types';
-import {createMutator, createQueryFetcher, executeNextAction, resolveOrderParameters} from '../executors';
+import {ActionParameters, AdminAction, AdminIcon, ModalKey} from '../../types';
+import {
+  ActionContext,
+  createMutator,
+  createQueryFetcher,
+  executeNextAction,
+  resolveOrderParameters,
+} from '../executors';
 import {openOrPrint, waitForLabelPrompt} from '../print';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
@@ -10,12 +16,14 @@ import {useModalStore} from '../../stores';
  * Open modal to edit order shipment options.
  */
 export const ordersEditAction = defineAction({
-  id: 'open',
-  icon: PdkIcon.EDIT,
+  id: 'editOrder',
+  icon: AdminIcon.EDIT,
   label: 'action_edit',
-  handler<K extends ModalKey>(modalKey: K, context: PdkModalContext<K>) {
+  handler(context: ActionContext) {
     const modalStore = useModalStore();
-    modalStore.open(modalKey, context);
+    const parameters = context.parameters as ActionParameters<AdminAction.ORDERS_EXPORT>;
+
+    modalStore.open(ModalKey.SHIPMENT_OPTIONS, parameters.orderIds.toString());
   },
 });
 
@@ -24,7 +32,7 @@ export const ordersEditAction = defineAction({
  */
 export const orderExportAction = defineAction({
   name: AdminAction.ORDERS_EXPORT,
-  icon: PdkIcon.EXPORT,
+  icon: AdminIcon.EXPORT,
   label: 'action_export',
   beforeHandle: resolveOrderParameters,
   handler: createMutator(BackendEndpoint.EXPORT_ORDERS),
@@ -35,7 +43,7 @@ export const orderExportAction = defineAction({
  */
 export const orderExportToShipmentsAction = defineAction({
   name: AdminAction.ORDERS_EXPORT,
-  icon: PdkIcon.EXPORT,
+  icon: AdminIcon.EXPORT,
   label: 'action_export_shipments',
   beforeHandle: resolveOrderParameters,
   handler: createMutator(BackendEndpoint.EXPORT_ORDERS),
@@ -46,7 +54,7 @@ export const orderExportToShipmentsAction = defineAction({
  */
 export const ordersFetchAction = defineAction({
   name: AdminAction.ORDERS_FETCH,
-  icon: PdkIcon.REFRESH,
+  icon: AdminIcon.REFRESH,
   label: 'action_refresh',
   handler: createQueryFetcher(BackendEndpoint.FETCH_ORDERS),
 });
@@ -56,7 +64,7 @@ export const ordersFetchAction = defineAction({
  */
 export const ordersUpdateAction = defineAction({
   name: AdminAction.ORDERS_UPDATE,
-  icon: PdkIcon.SAVE,
+  icon: AdminIcon.SAVE,
   label: 'action_save',
   handler: createMutator(BackendEndpoint.UPDATE_ORDERS),
 });
@@ -66,7 +74,7 @@ export const ordersUpdateAction = defineAction({
  */
 export const ordersExportPrintShipmentsAction = defineAction({
   name: AdminAction.ORDERS_EXPORT_PRINT,
-  icon: PdkIcon.PRINT,
+  icon: AdminIcon.PRINT,
   label: 'action_export_print',
   handler: createMutator(BackendEndpoint.EXPORT_ORDERS),
   beforeHandle: resolveOrderParameters,
@@ -82,7 +90,7 @@ export const ordersExportPrintShipmentsAction = defineAction({
  */
 export const ordersPrintAction = defineAction({
   name: AdminAction.ORDERS_PRINT,
-  icon: PdkIcon.PRINT,
+  icon: AdminIcon.PRINT,
   label: 'action_print',
   handler: createMutator(BackendEndpoint.PRINT_ORDERS),
 
@@ -106,7 +114,7 @@ export const ordersPrintAction = defineAction({
  */
 export const orderViewInBackofficeAction = defineAction({
   id: 'show-exported-order',
-  icon: PdkIcon.EXTERNAL,
+  icon: AdminIcon.EXTERNAL,
   label: 'order_view_in_backoffice',
   handler() {
     window.open('https://backoffice.myparcel.nl/orders', '_blank');

@@ -1,4 +1,4 @@
-import {ActionParameters, AdminAction, PdkAction, PdkNotification} from '../../types';
+import {ActionParameters, AdminAction, Notification, PdkAction} from '../../types';
 import {ActionContext} from '../../actions';
 import {PdkAppInstance} from '../../data';
 import {PdkVariant} from '@myparcel-pdk/common/src';
@@ -35,7 +35,7 @@ export const createActionContext = <A extends AdminAction | undefined>(
           identifier: `action_${identifier}`,
         }),
       }),
-      {} as Record<'success' | 'error', PdkNotification>,
+      {} as Record<'success' | 'error', Notification>,
     ),
   };
 

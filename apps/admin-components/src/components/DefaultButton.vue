@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import {PdkIcon, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {AdminIcon, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {PropType, defineComponent} from 'vue';
 
 /**
@@ -36,7 +36,7 @@ export default defineComponent({
      * Icon.
      */
     icon: {
-      type: String as PropType<PdkIcon>,
+      type: String as PropType<AdminIcon>,
       default: null,
     },
 

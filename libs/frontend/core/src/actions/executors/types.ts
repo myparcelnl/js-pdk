@@ -4,8 +4,8 @@ import {
   AdminAction,
   EndpointAdminActionMap,
   MaybeAdminAction,
+  Notification,
   PdkAction,
-  PdkNotification,
 } from '../../types';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {PdkAppInstance} from '../../data';
@@ -14,8 +14,8 @@ type BaseActionContext<A extends MaybeAdminAction> = {
   action: PdkAction<A>;
   instance: PdkAppInstance;
   notifications?: {
-    success?: PdkNotification;
-    error?: PdkNotification;
+    success?: Notification;
+    error?: Notification;
   };
 };
 

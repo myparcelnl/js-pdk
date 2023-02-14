@@ -1,4 +1,4 @@
-import {AdminAction, ContextKey, PdkIcon} from '../../types';
+import {AdminAction, AdminIcon, ContextKey} from '../../types';
 import {createMutator, createQueryFetcher, executeNextAction} from '../executors';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
@@ -21,7 +21,7 @@ export const fetchPluginSettingsViewContextAction = defineAction({
  */
 export const updateAccountAction = defineAction({
   name: AdminAction.ACCOUNT_UPDATE,
-  icon: PdkIcon.SAVE,
+  icon: AdminIcon.SAVE,
   label: 'action_save',
   handler: createMutator(BackendEndpoint.UPDATE_ACCOUNT),
   async afterHandle(context) {

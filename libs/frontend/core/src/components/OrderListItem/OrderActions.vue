@@ -42,7 +42,7 @@ export default defineComponent({
           actions.push(ordersEditAction, ordersFetchAction);
         } else {
           actions.push({...orderExportAction, standalone: true});
-          actions.push({...ordersExportPrintShipmentsAction});
+          actions.push(ordersExportPrintShipmentsAction, ordersEditAction);
         }
 
         return createActions(actions, {orderIds: props.order.externalIdentifier});

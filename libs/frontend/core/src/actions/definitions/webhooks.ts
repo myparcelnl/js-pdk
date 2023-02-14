@@ -1,4 +1,4 @@
-import {AdminAction, PdkIcon} from '../../types';
+import {AdminAction, AdminIcon} from '../../types';
 import {createMutator, createQueryFetcher} from '../executors';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
@@ -11,14 +11,14 @@ export const webhooksFetchAction = defineAction({
 
 export const webhooksCreateAction = defineAction({
   name: AdminAction.WEBHOOKS_CREATE,
-  icon: PdkIcon.ADD,
+  icon: AdminIcon.ADD,
   label: 'action_create',
   handler: createMutator(BackendEndpoint.CREATE_WEBHOOKS),
 });
 
 export const webhooksDeleteAction = defineAction({
   name: AdminAction.WEBHOOKS_DELETE,
-  icon: PdkIcon.DELETE,
+  icon: AdminIcon.DELETE,
   label: 'action_delete',
   handler: createMutator(BackendEndpoint.DELETE_WEBHOOKS),
 });

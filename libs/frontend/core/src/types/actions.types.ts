@@ -1,14 +1,14 @@
 import {ActionContext, ActionContextWithResponse} from '../actions';
 import {ActionInput, AdminActionEndpointMap, EndpointResponse} from './endpoints.types';
 import {MaybeRef} from '@vueuse/core';
-import {PdkIcon} from './common.types';
+import {AdminIcon} from './common.types';
 import {PdkVariant} from '@myparcel-pdk/common/src';
 import {PromiseOr} from '@myparcel/ts-utils';
 
 export type MaybeAdminAction = AdminAction | undefined;
 
 type BaseAction = {
-  icon?: PdkIcon;
+  icon?: AdminIcon;
   label?: string;
   variant?: MaybeRef<PdkVariant>;
   disabled?: MaybeRef<boolean>;

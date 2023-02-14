@@ -2,7 +2,6 @@
   <PdkModal
     :modal-key="modalKey"
     :actions="actions"
-    save-label="export"
     title="shipment_options_title">
     <ShipmentOptionsModalForm />
   </PdkModal>
@@ -10,7 +9,12 @@
 
 <script lang="ts">
 import {defineAsyncComponent, defineComponent} from 'vue';
-import {modalCancelAction, orderExportAction, orderExportToShipmentsAction} from '../../actions';
+import {
+  modalCancelAction,
+  orderExportAction,
+  orderExportToShipmentsAction,
+  ordersExportPrintShipmentsAction,
+} from '../../actions';
 import {usePluginSettings, useStoreQuery} from '../../composables';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {ModalKey} from '../../types';
@@ -38,7 +42,7 @@ export default defineComponent({
           ...modalCancelAction,
           disabled: exportOrdersQuery.isLoading,
         },
-        ...(orderMode ? [orderExportAction] : [orderExportToShipmentsAction, orderExportToShipmentsAction]),
+        ...(orderMode ? [orderExportAction] : [orderExportToShipmentsAction, ordersExportPrintShipmentsAction]),
       ]),
     };
   },

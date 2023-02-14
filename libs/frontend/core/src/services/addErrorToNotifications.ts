@@ -1,11 +1,11 @@
-import {NotificationCategory, PdkNotification, createApiErrorNotification, useNotificationStore} from '../';
+import {Notification, NotificationCategory, createApiErrorNotification, useNotificationStore} from '../';
 import {ApiException} from '@myparcel/sdk';
 import {PdkVariant} from '@myparcel-pdk/common/src';
 import {isOfType} from '@myparcel/ts-utils';
 
 export const addErrorToNotifications = (error: unknown, category: NotificationCategory): void => {
   const store = useNotificationStore();
-  const options: Partial<PdkNotification> = {category};
+  const options: Partial<Notification> = {category};
 
   if (isOfType<ApiException>(error, 'data')) {
     options.content = error.data.errors.map((error) => `${error.title} (code: ${error.code})`);

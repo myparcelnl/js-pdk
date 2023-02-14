@@ -1,4 +1,4 @@
-import {NotificationCategory, PdkNotification} from '../';
+import {Notification, NotificationCategory} from '../';
 import {defineStore} from 'pinia';
 import {ref} from 'vue';
 
@@ -7,7 +7,7 @@ let id = 0;
 const DEFAULT_TIMEOUT = 5000;
 
 export const useNotificationStore = defineStore('notifications', () => {
-  const notifications = ref<PdkNotification[]>([]);
+  const notifications = ref<Notification[]>([]);
 
   return {
     notifications,
@@ -15,7 +15,7 @@ export const useNotificationStore = defineStore('notifications', () => {
     /**
      * Add a notification to the store.
      */
-    add(notification: PdkNotification) {
+    add(notification: Notification) {
       notification.category ??= NotificationCategory.GENERAL;
       const notificationId = id++;
 
@@ -34,7 +34,7 @@ export const useNotificationStore = defineStore('notifications', () => {
      * Remove one or more notifications from the store by category or id.
      */
     remove(input: number | NotificationCategory) {
-      let filter: (notification: PdkNotification) => boolean;
+      let filter: (notification: Notification) => boolean;
 
       if (typeof input === 'number') {
         filter = (notification) => notification.id !== input;

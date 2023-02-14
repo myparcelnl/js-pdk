@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
-import {PdkIcon} from '../../types';
+import {AdminIcon} from '../../types';
 import {PdkStatus} from '@myparcel-pdk/common/src';
 import {usePdkConfig} from '../../composables';
 
@@ -34,14 +34,14 @@ export default defineComponent({
       icon: computed(() => {
         switch (props.status) {
           case PdkStatus.SUCCESS:
-            return PdkIcon.YES;
+            return AdminIcon.YES;
 
           case PdkStatus.ERROR:
-            return PdkIcon.NO;
+            return AdminIcon.NO;
 
           case PdkStatus.PENDING:
           default:
-            return PdkIcon.SPINNER;
+            return AdminIcon.SPINNER;
         }
       }),
     };
