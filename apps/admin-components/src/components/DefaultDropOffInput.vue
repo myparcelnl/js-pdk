@@ -16,12 +16,8 @@
             :element="element" />
         </div>
 
-        <!--                <PdkTextInput /> -->
       </li>
     </template>
-
-    <pre v-text="toggleRefs"></pre>
-    <pre v-text="cutOffRefs"></pre>
   </ul>
 </template>
 
