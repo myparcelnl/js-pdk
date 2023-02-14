@@ -1,8 +1,8 @@
+export {default as DemoBox} from './DemoBox.vue';
+
 export {default as DemoButton} from './DemoButton.vue';
 
 export {default as DemoButtonGroup} from './DemoButtonGroup';
-
-export {default as DemoCard} from './DemoCard.vue';
 
 export {default as DemoCheckboxInput} from './DemoCheckboxInput.vue';
 

@@ -1,5 +1,5 @@
 <template>
-  <PdkCard
+  <PdkBox
     v-test
     :loading="loading">
     <template #header>
@@ -23,7 +23,7 @@
           v-text="selectedLabels.length" />
       </PdkDropdownButton>
     </template>
-  </PdkCard>
+  </PdkBox>
 </template>
 
 <script lang="ts">
@@ -40,7 +40,7 @@ import {Plugin} from '@myparcel-pdk/common/src';
 import {createActions} from '../../services';
 
 export default defineComponent({
-  name: 'OrderShipmentsCard',
+  name: 'OrderShipmentsBox',
   components: {
     OrderShipmentsTable,
   },

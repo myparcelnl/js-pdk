@@ -1,8 +1,8 @@
+export {default as DefaultBox} from './DefaultBox.vue';
+
 export {default as DefaultButton} from './DefaultButton.vue';
 
 export {default as DefaultButtonGroup} from './DefaultButtonGroup';
-
-export {default as DefaultCard} from './DefaultCard.vue';
 
 export {default as DefaultCheckboxInput} from './DefaultCheckboxInput.vue';
 

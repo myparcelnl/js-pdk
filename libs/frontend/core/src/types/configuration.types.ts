@@ -38,7 +38,7 @@ export type PdkConfiguration = {
    * Transition names.
    */
   transitions?: {
-    shipmentCard?: string;
+    shipmentBox?: string;
     modal?: string;
     modalBackdrop?: string;
     notification?: string;

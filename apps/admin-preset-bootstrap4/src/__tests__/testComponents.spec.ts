@@ -1,7 +1,7 @@
 import {
+  Bootstrap4Box,
   Bootstrap4Button,
   Bootstrap4ButtonGroup,
-  Bootstrap4Card,
   Bootstrap4CheckboxInput,
   Bootstrap4Col,
   Bootstrap4DropdownButton,
@@ -21,7 +21,7 @@ import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests/src'
 executePdkComponentTests({
   PdkButton: Bootstrap4Button,
   PdkButtonGroup: Bootstrap4ButtonGroup,
-  PdkCard: Bootstrap4Card,
+  PdkBox: Bootstrap4Box,
   PdkCheckboxInput: Bootstrap4CheckboxInput,
   PdkCol: Bootstrap4Col,
   PdkDropdownButton: Bootstrap4DropdownButton,

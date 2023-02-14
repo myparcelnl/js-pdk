@@ -4,7 +4,7 @@ import {Plugin} from './php-pdk.types';
 
 export const requiredComponentNames = [
   'PdkButton',
-  'PdkCard',
+  'PdkBox',
   'PdkCheckboxInput',
   'PdkCol',
   'PdkCurrencyInput',
@@ -37,7 +37,7 @@ export const optionalPlainWrapperComponentNames = [
   'PdkTableRow',
 ] as const;
 
-export const optionalActionContainerComponentNames = ['PdkConceptCardWrapper', 'PdkShipmentLabelWrapper'] as const;
+export const optionalActionContainerComponentNames = ['PdkConceptBoxWrapper', 'PdkShipmentLabelWrapper'] as const;
 
 export type RequiredPdkComponentName = (typeof requiredComponentNames)[number];
 
@@ -56,7 +56,7 @@ export enum PdkAdminComponent {
   LOADING_PAGE = 'LoadingPage',
   MODALS = 'Modals',
   NOTIFICATIONS = 'Notifications',
-  ORDER_CARD = 'OrderCard',
+  ORDER_BOX = 'OrderBox',
   ORDER_LIST_COLUMN = 'OrderListColumn',
   PRODUCT_SETTINGS = 'ProductSettings',
   PLUGIN_SETTINGS = 'PluginSettings',

@@ -1,5 +1,5 @@
 <template>
-  <PdkCard :loading="loading">
+  <PdkBox :loading="loading">
     <p>
       <template
         v-for="part in addressParts"
@@ -8,7 +8,7 @@
         <br />
       </template>
     </p>
-  </PdkCard>
+  </PdkBox>
 </template>
 
 <script lang="ts">

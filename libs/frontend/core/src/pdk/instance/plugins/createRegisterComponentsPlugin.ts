@@ -25,7 +25,7 @@ const memoizedGetOptionalComponents = memoize((app: App): Record<string, Compone
 
   return {
     ...createComponentMap(optionalPlainWrapperComponentNames, PlainElement),
-    ...createComponentMap(optionalActionContainerComponentNames, 'PdkCard'),
+    ...createComponentMap(optionalActionContainerComponentNames, 'PdkBox'),
   };
 });
 

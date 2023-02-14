@@ -1,7 +1,7 @@
 import {
+  DemoBox,
   DemoButton,
   DemoButtonGroup,
-  DemoCard,
   DemoCheckboxInput,
   DemoCol,
   DemoCurrencyInput,
@@ -33,7 +33,7 @@ import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests/src'
 executePdkComponentTests({
   PdkButton: DemoButton,
   PdkButtonGroup: DemoButtonGroup,
-  PdkCard: DemoCard,
+  PdkBox: DemoBox,
   PdkCheckboxInput: DemoCheckboxInput,
   PdkCol: DemoCol,
   PdkCurrencyInput: DemoCurrencyInput,

@@ -1,8 +1,8 @@
 import './assets/css/tailwind.css';
 import {
+  DemoBox,
   DemoButton,
   DemoButtonGroup,
-  DemoCard,
   DemoCheckboxInput,
   DemoCol,
   DemoCurrencyInput,
@@ -52,7 +52,7 @@ app.use(
     components: {
       PdkButton: DemoButton,
       PdkButtonGroup: DemoButtonGroup,
-      PdkCard: DemoCard,
+      PdkBox: DemoBox,
       PdkCheckboxInput: DemoCheckboxInput,
       PdkCol: DemoCol,
       PdkCurrencyInput: DemoCurrencyInput,

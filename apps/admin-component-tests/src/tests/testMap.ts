@@ -32,8 +32,8 @@ import {PdkComponentName} from '@myparcel-pdk/common/src';
 export type PdkComponentTest = (component: Omit<Component, 'props'>) => void;
 
 export const testMap: Record<PdkComponentName, PdkComponentTest> = {
-  PdkCard: runActionContainerTest,
-  PdkConceptCardWrapper: runActionContainerTest,
+  PdkBox: runActionContainerTest,
+  PdkConceptBoxWrapper: runActionContainerTest,
   PdkShipmentLabelWrapper: runActionContainerTest,
 
   PdkButtonGroup: runPlainWrapperTest,

@@ -1,11 +1,11 @@
 <template>
-  <PdkCard>
+  <PdkBox>
     <template v-if="!hasAccount || editing">
       <EditApiKeyForm @submit="onSubmit" />
     </template>
 
     <template v-else>
-      <PdkCard>
+      <PdkBox>
         <PdkHeading level="3">{{ translate('notification_account_connected') }}</PdkHeading>
 
         <PdkButton
@@ -15,9 +15,9 @@
         </PdkButton>
 
         <WebhooksStatus />
-      </PdkCard>
+      </PdkBox>
     </template>
-  </PdkCard>
+  </PdkBox>
 </template>
 
 <script lang="ts">

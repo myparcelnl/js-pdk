@@ -1,6 +1,6 @@
 <template>
   <TransitionGroup
-    :name="pdkConfig?.transitions?.shipmentCard"
+    :name="pdkConfig?.transitions?.shipmentBox"
     appear>
     <ShipmentLabel
       v-for="shipment in order.shipments.filter((item) => !item.deleted)"

@@ -1,25 +1,25 @@
 <template>
   <div
+    v-test
     :class="{
-      loading: 'text-muted',
-    }"
-    class="card">
+      loading: 'opacity-50',
+    }">
     <div
-      v-if="$slots.header"
-      class="card-header">
-      <!-- Card header. -->
+      v-if="$slots.header || title"
+      @click="$emit('clickHeader')">
+      <!-- Box header. -->
       <slot name="header">
         {{ translate(title) }}
       </slot>
     </div>
 
-    <div class="card-body">
+    <div>
+      <!-- Box content. -->
       <slot />
     </div>
 
-    <div
-      v-if="$slots.footer || actions.length"
-      class="card-footer">
+    <div v-if="$slots.footer || actions.length">
+      <!-- Box footer. -->
       <slot name="footer">
         <ActionButton
           v-for="(action, index) in actions"
@@ -36,30 +36,41 @@ import {ActionButton, ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-
 import {PropType, defineComponent} from 'vue';
 
 /**
- * @see import('@myparcel-pdk/admin-components').DefaultCard
+ * A "box" component that can be used to wrap content in a block.
  */
 export default defineComponent({
-  name: 'Bootstrap4Card',
+  name: 'DefaultBox',
 
   components: {
     ActionButton,
   },
 
   props: {
+    /**
+     * Used to control loading state.
+     */
     loading: {
       type: Boolean,
     },
 
-    title: {type: String, default: null},
+    /**
+     * Title of the box.
+     */
+    title: {
+      type: String,
+      default: null,
+    },
 
     /**
-     * Available actions on the card.
+     * Available actions on the box.
      */
     actions: {
       type: Array as PropType<ResolvedAction[]>,
       default: () => [],
     },
   },
+
+  emits: ['clickHeader'],
 
   setup: () => {
     const {translate} = useLanguage();

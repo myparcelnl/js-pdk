@@ -8,21 +8,21 @@
       v-if="$slots.header || title"
       class="bg-zinc-50 border-newItem font-bold px-4 py-2 text-lg"
       @click="$emit('clickHeader')">
-      <!-- Card header. -->
+      <!-- Box header. -->
       <slot name="header">
         {{ translate(title) }}
       </slot>
     </div>
 
     <div class="p-4">
-      <!-- Card content. -->
+      <!-- Box content. -->
       <slot />
     </div>
 
     <div
       v-if="$slots.footer || actions.length"
       class="d-flex p-4">
-      <!-- Card footer. -->
+      <!-- Box footer. -->
       <slot name="footer">
         <ActionButton
           v-for="(action, index) in actions"
@@ -39,10 +39,10 @@ import {ActionButton, ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-
 import {PropType, defineComponent} from 'vue';
 
 /**
- * @see import('@myparcel-pdk/admin-components').DefaultCard
+ * @see import('@myparcel-pdk/admin-components').DefaultBox
  */
 export default defineComponent({
-  name: 'DemoCard',
+  name: 'DemoBox',
 
   components: {
     ActionButton,

@@ -1,5 +1,5 @@
 <template>
-  <PdkConceptCardWrapper
+  <PdkConceptBoxWrapper
     :actions="actions"
     :loading="loading">
     <template #header>
@@ -19,7 +19,7 @@
         </PdkCol>
       </PdkRow>
     </template>
-  </PdkConceptCardWrapper>
+  </PdkConceptBoxWrapper>
 </template>
 
 <script lang="ts">
@@ -37,7 +37,7 @@ import {Plugin} from '@myparcel-pdk/common/src';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
 
 export default defineComponent({
-  name: 'ConceptCard',
+  name: 'ConceptBox',
   components: {
     ShipmentOptionsForm,
   },

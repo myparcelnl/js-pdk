@@ -1,15 +1,15 @@
 <template>
-  <ConceptCard :order="query.data" />
+  <ConceptBox :order="query.data" />
 
-  <OrderShipmentsCard
+  <OrderShipmentsBox
     v-if="!orderMode"
     :order="query.data" />
 </template>
 
 <script lang="ts" setup>
 import {usePluginSettings, useStoreQuery} from '../composables';
-import ConceptCard from '../components/OrderCard/ConceptCard.vue';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import ConceptBox from '../components/OrderBox/ConceptBox.vue';
 import {defineAsyncComponent} from 'vue';
 import {useQueryStore} from '../stores';
 
@@ -17,7 +17,7 @@ const pluginSettings = usePluginSettings();
 const queryStore = useQueryStore();
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const OrderShipmentsCard = defineAsyncComponent(() => import('../components/OrderCard/OrderShipmentsCard.vue'));
+const OrderShipmentsBox = defineAsyncComponent(() => import('../components/OrderBox/OrderShipmentsBox.vue'));
 
 queryStore.registerContextQueries();
 queryStore.registerOrderQueries();

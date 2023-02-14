@@ -34,7 +34,7 @@
 
       <tr>
         <div
-          v-for="item in ['mypa-OrderCard']"
+          v-for="item in ['mypa-OrderBox']"
           v-show="toggled"
           :key="item">
           <div :id="item">

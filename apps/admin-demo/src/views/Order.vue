@@ -20,7 +20,7 @@
       <h2>Actions</h2>
 
       <div
-        id="pdk-OrderCard"
+        id="pdk-OrderBox"
         :data-pdk-context="context" />
     </div>
   </div>
@@ -44,7 +44,7 @@ export default defineComponent({
 
     const fe = useGlobalPdkAdmin();
 
-    void nextTick().then(() => fe.render(PdkAdminComponent.ORDER_CARD, '#pdk-OrderCard'));
+    void nextTick().then(() => fe.render(PdkAdminComponent.ORDER_BOX, '#pdk-OrderBox'));
 
     return {
       order,
