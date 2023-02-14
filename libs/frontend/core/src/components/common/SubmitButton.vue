@@ -1,6 +1,5 @@
 <template>
   <PdkButton
-    v-test
     :loading="loading"
     :disabled="disabled"
     :icon="PdkIcon.SAVE"

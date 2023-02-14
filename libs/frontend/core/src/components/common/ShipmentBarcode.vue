@@ -1,6 +1,6 @@
 <template>
   <span
-    v-test="`shipment__barcode--${shipment.id}`"
+    v-test="`ShipmentBarcode--${shipment.id}`"
     :class="config?.cssUtilities?.whitespaceNoWrap">
     <PdkImage
       v-if="carrier"

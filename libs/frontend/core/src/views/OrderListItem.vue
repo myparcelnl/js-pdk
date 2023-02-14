@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="!query.isLoading"
-    v-test>
+    v-test="'OrderListItem'">
     <OrderModeActions
       v-if="orderMode"
       :order="query.data" />

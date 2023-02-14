@@ -1,5 +1,5 @@
 <template>
-  <div v-test="`notificationContainer--${category}`">
+  <div v-test="`NotificationContainer--${category}`">
     <TransitionGroup
       appear
       :name="pdkConfig.transitions.notification">

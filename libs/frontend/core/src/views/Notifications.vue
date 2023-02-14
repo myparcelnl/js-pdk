@@ -1,5 +1,5 @@
 <template>
-  <NotificationContainer v-test />
+  <NotificationContainer />
 </template>
 
 <!-- The notification container. Used to display notifications. -->

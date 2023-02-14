@@ -1,7 +1,5 @@
 <template>
-  <PdkBox
-    v-test
-    :loading="loading">
+  <PdkBox :loading="loading">
     <template #header>
       <PdkIcon icon="local_shipping" />
       {{ translate('order_labels_header') }}

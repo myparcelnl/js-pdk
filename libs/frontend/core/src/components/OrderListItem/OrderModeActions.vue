@@ -1,5 +1,5 @@
 <template>
-  <PdkButtonGroup>
+  <PdkButtonGroup v-test="'OrderModeActions'">
     <template v-if="order.exported">
       <PdkLink :action="showExportedOrderAction" />
     </template>

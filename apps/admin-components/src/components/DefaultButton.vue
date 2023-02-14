@@ -1,6 +1,5 @@
 <template>
   <button
-    v-test
     :disabled="disabled"
     type="button"
     @click="$emit('click')">

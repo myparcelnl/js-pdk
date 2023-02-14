@@ -1,6 +1,6 @@
 <template>
   <MagicForm
-    v-test="'form--product-settings'"
+    v-test="'ProductSettingsForm'"
     :form="form" />
 </template>
 

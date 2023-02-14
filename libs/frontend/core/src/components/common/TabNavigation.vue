@@ -1,5 +1,5 @@
 <template>
-  <PdkTabNavButtonWrapper v-test>
+  <PdkTabNavButtonWrapper>
     <PdkTabNavButton
       v-for="tab in tabs"
       :key="`tab_button_${tab.name}`"

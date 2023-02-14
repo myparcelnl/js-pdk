@@ -1,7 +1,5 @@
 <template>
-  <div
-    id="myparcel-pdk-modals"
-    v-test>
+  <div v-test="'Modals'">
     <PrintOptionsModal v-if="pluginSettings.label.prompt" />
     <ShipmentOptionsModal />
   </div>

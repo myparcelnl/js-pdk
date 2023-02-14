@@ -1,7 +1,5 @@
 <template>
-  <MagicForm
-    v-test
-    :form="returnsForm" />
+  <MagicForm :form="returnsForm" />
 </template>
 
 <script lang="ts">
