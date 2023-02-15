@@ -16,7 +16,7 @@
     "lint": "nx affected --target=lint",
     "prepare": "is-ci || husky install",
     "serve": "run build:dev:base --output-style=stream npx concurrently yarn:watch yarn:serve:demo",
-    "serve:demo": "nx serve demo",
+    "serve:demo": "nx serve admin-demo",
     "test": "nx affected --target=test --output-style=stream",
     "test:run": "nx affected --target=test:run --output-style=stream",
     "typecheck": "nx affected --target=typecheck",

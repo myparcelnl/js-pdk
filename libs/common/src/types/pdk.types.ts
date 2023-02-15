@@ -8,6 +8,7 @@ export const requiredAdminComponentNames = [
   'PdkCheckboxInput',
   'PdkCol',
   'PdkCurrencyInput',
+  'PdkDropOffInput',
   'PdkDropdownButton',
   'PdkFormGroup',
   'PdkHeading',
@@ -25,6 +26,7 @@ export const requiredAdminComponentNames = [
   'PdkTabNavButton',
   'PdkTable',
   'PdkTextInput',
+  'PdkTimeInput',
   'PdkToggleInput',
 ] as const;
 

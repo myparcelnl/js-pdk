@@ -5,9 +5,10 @@ import {
   createDefaultCurrencyFormatter,
   createDefaultDateLongFormatter,
   createDefaultDateRelativeFormatter,
+  createDefaultWeekdayFormatter,
 } from './default';
-import {useGlobalContext} from '../context';
 import {useAdminConfig} from '../useAdminConfig';
+import {useGlobalContext} from '../context';
 
 let formats: Ref<LocaleFormatterObject>;
 
@@ -25,6 +26,7 @@ export const useFormatter = (locale?: string): Formatter => {
         currency: config.formatters?.currency ?? createDefaultCurrencyFormatter(locale),
         dateLong: config.formatters?.dateLong ?? createDefaultDateLongFormatter(locale),
         dateRelative: config.formatters?.dateRelative ?? createDefaultDateRelativeFormatter(locale),
+        weekday: config.formatters?.weekday ?? createDefaultWeekdayFormatter(locale),
       };
     }
 

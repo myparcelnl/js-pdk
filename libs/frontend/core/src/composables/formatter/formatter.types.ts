@@ -1,7 +1,7 @@
 /**
  * Available formatters.
  */
-export type FormatName = 'currency' | 'dateLong' | 'dateRelative' | string;
+export type FormatName = 'currency' | 'dateLong' | 'dateRelative' | 'weekday' | string;
 
 export type FormatterFunction = (input: unknown, ...args: unknown[]) => string;
 

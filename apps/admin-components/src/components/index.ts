@@ -10,6 +10,8 @@ export {default as DefaultCol} from './DefaultCol';
 
 export {default as DefaultCurrencyInput} from './DefaultCurrencyInput.vue';
 
+export {default as DefaultDropOffInput} from './DefaultDropOffInput.vue';
+
 export {default as DefaultDropdownButton} from './DefaultDropdownButton.vue';
 
 export {default as DefaultFormGroup} from './DefaultFormGroup.vue';
@@ -47,5 +49,7 @@ export {default as DefaultTableCol} from './DefaultTableCol.vue';
 export {default as DefaultTableRow} from './DefaultTableRow.vue';
 
 export {default as DefaultTextInput} from './DefaultTextInput.vue';
+
+export {default as DefaultTimeInput} from './DefaultTimeInput.vue';
 
 export {default as DefaultToggleInput} from './DefaultToggleInput.vue';

@@ -27,11 +27,12 @@ import {
   DemoTableCol,
   DemoTableRow,
   DemoTextInput,
+  DemoTimeInput,
   DemoToggleInput,
 } from './components';
 import {LogLevel, createInjectionPlugin} from '@myparcel-pdk/frontend-core/src';
+import {DefaultDropOffInput, DefaultHeading} from '@myparcel-pdk/admin-components/src';
 import App from './App.vue';
-import {DefaultHeading} from '@myparcel-pdk/admin-components/src';
 import {context} from './context';
 import {createApp} from 'vue';
 import {createRouterInstance} from './router';
@@ -56,6 +57,7 @@ app.use(
       PdkCheckboxInput: DemoCheckboxInput,
       PdkCol: DemoCol,
       PdkCurrencyInput: DemoCurrencyInput,
+      PdkDropOffInput: DefaultDropOffInput,
       PdkDropdownButton: DemoDropdownButton,
       PdkFormGroup: DemoFormGroup,
       PdkHeading: DefaultHeading,
@@ -78,6 +80,7 @@ app.use(
       PdkTableCol: DemoTableCol,
       PdkTableRow: DemoTableRow,
       PdkTextInput: DemoTextInput,
+      PdkTimeInput: DemoTimeInput,
       PdkToggleInput: DemoToggleInput,
     },
   }),
