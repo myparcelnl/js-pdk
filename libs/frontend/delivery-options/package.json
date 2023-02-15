@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/checkout",
+  "name": "@myparcel-pdk/frontend-delivery-options",
   "version": "1.0.0-alpha.0",
   "license": "MIT",
   "sideEffects": false,
@@ -17,14 +17,14 @@
     "clean": "run ws:clean \"$(pwd)\"",
     "emit": "run ws:tsup:emit \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
-    "serve": "run ws:tsup:serve \"$(pwd)\""
-  },
-  "dependencies": {
-    "@myparcel-pdk/common": "workspace:*",
-    "@myparcel-pdk/frontend-delivery-options": "workspace:*"
+    "serve": "run ws:tsup:serve \"$(pwd)\"",
+    "watch": "run ws:tsup:watch \"$(pwd)\""
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:*",
     "tsup": "^6.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

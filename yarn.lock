@@ -814,7 +814,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-tsup": "workspace:*"
     "@myparcel-pdk/common": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:*"
+    "@myparcel-pdk/frontend-delivery-options": "workspace:*"
     tsup: ^6.5.0
   languageName: unknown
   linkType: soft
@@ -851,6 +851,15 @@ __metadata:
     vite: ^4.1.1
     vitest: ^0.28.4
     vue: ^3.2.47
+  languageName: unknown
+  linkType: soft
+
+"@myparcel-pdk/frontend-delivery-options@workspace:*, @myparcel-pdk/frontend-delivery-options@workspace:libs/frontend/delivery-options":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/frontend-delivery-options@workspace:libs/frontend/delivery-options"
+  dependencies:
+    "@myparcel-pdk/build-tsup": "workspace:*"
+    tsup: ^6.5.0
   languageName: unknown
   linkType: soft
 
