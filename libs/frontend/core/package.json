@@ -25,9 +25,9 @@
   "dependencies": {
     "@myparcel-pdk/common": "workspace:*",
     "@myparcel/sdk": "^2.10.1",
-    "@myparcel/ts-utils": "^1.5.1",
+    "@myparcel/ts-utils": "^1.6.0",
     "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
-    "@tanstack/vue-query": "^4.24.4",
+    "@tanstack/vue-query": "^4.24.6",
     "@types/lodash-es": "^4.17.6",
     "@vueuse/core": "^9.12.0",
     "lodash": "^4.17.21",
@@ -39,10 +39,10 @@
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vitest/coverage-c8": "^0.28.4",
+    "@vitest/coverage-c8": "^0.28.5",
     "@vue/test-utils": "^2.2.10",
     "vite": "^4.1.1",
-    "vitest": "^0.28.4"
+    "vitest": "^0.28.5"
   },
   "publishConfig": {
     "access": "public"

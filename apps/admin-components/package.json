@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@myparcel-pdk/frontend-core": "workspace:*",
-    "@myparcel/ts-utils": "^1.5.1",
+    "@myparcel/ts-utils": "^1.6.0",
     "@vueuse/core": "^9.12.0",
     "vue": "^3.2.47"
   },
@@ -31,13 +31,13 @@
     "@myparcel-pdk/admin-component-tests": "workspace:*",
     "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vitest/coverage-c8": "^0.28.4",
+    "@vitest/coverage-c8": "^0.28.5",
     "@vue/test-utils": "^2.2.10",
-    "happy-dom": "^8.2.6",
+    "happy-dom": "^8.4.0",
     "pinia": "^2.0.30",
     "typescript": "^4.9.5",
     "vite": "^4.1.1",
-    "vitest": "^0.28.4"
+    "vitest": "^0.28.5"
   },
   "publishConfig": {
     "access": "public"
