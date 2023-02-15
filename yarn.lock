@@ -723,7 +723,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/frontend-core": "workspace:*"
-    "@myparcel/ts-utils": ^1.5.1
+    "@myparcel/ts-utils": ^1.6.0
     "@myparcel/vue-form-builder": ^1.0.0-alpha.1
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.28.4
@@ -745,7 +745,7 @@ __metadata:
     "@myparcel-pdk/admin-components": "workspace:*"
     "@myparcel-pdk/frontend-core": "workspace:*"
     "@myparcel/sdk": ^2.10.1
-    "@myparcel/ts-utils": ^1.5.1
+    "@myparcel/ts-utils": ^1.6.0
     "@myparcel/vue-form-builder": ^1.0.0-alpha.1
     "@tanstack/vue-query": ^4.24.4
     "@vitejs/plugin-vue": ^4.0.0
@@ -768,7 +768,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/frontend-core": "workspace:*"
-    "@myparcel/ts-utils": ^1.5.1
+    "@myparcel/ts-utils": ^1.6.0
     "@types/bootstrap": ^5.2.6
     "@types/jquery": ^3.5.16
     "@vitejs/plugin-vue": ^4.0.0
@@ -968,6 +968,13 @@ __metadata:
   version: 1.5.1
   resolution: "@myparcel/ts-utils@npm:1.5.1"
   checksum: ec593faca247293f355d8068219e1dc1f1d94d4b4f9164df39b1c7f7b5dde042d856c121dcca44e88d05d58cb6b0ba9425d51950146205c8274e749aaf4fb225
+  languageName: node
+  linkType: hard
+
+"@myparcel/ts-utils@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "@myparcel/ts-utils@npm:1.6.0"
+  checksum: 88956c68ca55d5148b8d9a8b2a7baaa17059f7821b0eedb6116c6ee1f04a77ec2cff054e101276595b17f71dc88924a14475313ceae48df2687c0829f6aae1c2
   languageName: node
   linkType: hard
 
