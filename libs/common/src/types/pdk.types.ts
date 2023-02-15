@@ -5,11 +5,10 @@ import {Plugin} from './php-pdk.types';
 export const requiredAdminComponentNames = [
   'PdkBox',
   'PdkButton',
-  'PdkDropOffInput',
-  'PdkCard',
   'PdkCheckboxInput',
   'PdkCol',
   'PdkCurrencyInput',
+  'PdkDropOffInput',
   'PdkDropdownButton',
   'PdkFormGroup',
   'PdkHeading',
@@ -27,6 +26,7 @@ export const requiredAdminComponentNames = [
   'PdkTabNavButton',
   'PdkTable',
   'PdkTextInput',
+  'PdkTimeInput',
   'PdkToggleInput',
 ] as const;
 

@@ -628,8 +628,6 @@ export namespace Settings {
   export type ModelDropOffPossibilities = {
     dropOffDays: Shipment.DropOffDayCollection;
     dropOffDaysDeviations: Shipment.DropOffDayCollection;
-    dropOffDelay: number;
-    deliveryDaysWindow: number;
   };
 
   export type ModelGeneralSettings = {
@@ -687,7 +685,7 @@ export namespace Settings {
     label: ModelLabelSettings;
     customs: ModelCustomsSettings;
     checkout: ModelCheckoutSettings;
-    carrier: CarrierSettingsCollection;
+    carrier: Record<string, ModelCarrierSettings>;
   };
 }
 
@@ -737,7 +735,7 @@ export namespace Shipment {
 
   export type ModelDropOffDay = {
     cutoffTime?: string;
-    date: DateTimeImmutable;
+    date?: DateTimeImmutable;
     dispatch?: boolean;
     sameDayCutoffTime?: string;
     weekday: number;

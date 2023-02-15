@@ -1222,7 +1222,17 @@ export const context: AdminContextObject = {
           digitalStampDefaultWeight: 0,
           dropOffDelay: 0,
           dropOffPoint: null,
-          dropOffPossibilities: {dropOffDays: [], dropOffDaysDeviations: [], dropOffDelay: 1, deliveryDaysWindow: 7},
+          dropOffPossibilities: {
+            dropOffDays: [
+              {
+                weekday: 0,
+                dispatch: true,
+                cutoffTime: '02:00',
+              },
+            ],
+            dropOffDaysDeviations: [],
+          },
+          deliveryDaysWindow: 7,
           exportAgeCheck: false,
           exportInsurance: true,
           exportInsuranceFromAmount: 0,
