@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   overrides: [
     {
-      files: ['./**/index.ts'],
+      files: ['./**/index.js'],
       plugins: ['sort-exports'],
       rules: {
         'sort-exports/sort-exports': ['warn', {sortDir: 'asc', sortExportKindFirst: 'type'}],
@@ -33,8 +33,18 @@ module.exports = {
       },
     },
     {
+      files: ['./**/*.js', './**/*.mjs'],
+      parserOptions: {
+        sourceType: 'module',
+      },
+    },
+    {
       files: ['./**/*.js', './**/*.cjs', './**/*.mjs'],
-      extends: ['@myparcel-eslint/eslint-config-node', '@myparcel-eslint/eslint-config-prettier'],
+      extends: [
+        '@myparcel-eslint/eslint-config-node',
+        '@myparcel-eslint/eslint-config-esnext',
+        '@myparcel-eslint/eslint-config-prettier',
+      ],
     },
     {
       files: ['./**/*.spec.*', './**/*.test.*', './**/__tests__/**', './**/*Test.*'],
