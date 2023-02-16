@@ -1,9 +1,9 @@
-import {ElementInstance, createFormElement} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, createFormElement} from '@myparcel-pdk/frontend-core';
 import {runCommonComponentTests, runCommonInputTests} from '../common';
 import {AdminComponentTest} from '../tests';
 import {MountingOptions} from '@vue/test-utils';
 
-export const runCurrencyInputTest: AdminComponentTest = (component) => {
+export const runDropOffInputTest: AdminComponentTest = (component) => {
   const options: MountingOptions<{element: ElementInstance}> = {
     props: {
       element: createFormElement({}),

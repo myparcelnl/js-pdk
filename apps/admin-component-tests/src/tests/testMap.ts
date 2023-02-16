@@ -5,6 +5,7 @@ import {
   runColTest,
   runCurrencyInputTest,
   runDropDownButtonTest,
+  runDropOffInputTest,
   runFormGroupTest,
   runHeadingTest,
   runIconTest,
@@ -24,6 +25,7 @@ import {
   runTableRowTest,
   runTableTest,
   runTextInputTest,
+  runTimeInputTest,
   runToggleInputTest,
 } from '../components';
 import {AdminComponentName} from '@myparcel-pdk/common/src';
@@ -32,37 +34,63 @@ import {Component} from 'vue';
 export type AdminComponentTest = (component: Omit<Component, 'props'>) => void;
 
 export const testMap: Record<AdminComponentName, AdminComponentTest> = {
+  /**
+   * Inputs
+   */
+  PdkCheckboxInput: runCheckboxInputTest,
+  PdkCurrencyInput: runCurrencyInputTest,
+  PdkDropOffInput: runDropOffInputTest,
+  PdkNumberInput: runNumberInputTest,
+  PdkRadioInput: runRadioInputTest,
+  PdkSelectInput: runSelectInputTest,
+  PdkTextInput: runTextInputTest,
+  PdkTimeInput: runTimeInputTest,
+  PdkToggleInput: runToggleInputTest,
+
+  PdkMultiCheckbox: runMultiCheckboxTest,
+  PdkMultiRadio: runMultiRadioTest,
+
+  /**
+   * Action containers
+   */
   PdkBox: runActionContainerTest,
   PdkConceptBoxWrapper: runActionContainerTest,
   PdkShipmentLabelWrapper: runActionContainerTest,
 
+  /**
+   * Plain wrappers
+   */
   PdkButtonGroup: runPlainWrapperTest,
   PdkPluginSettingsWrapper: runPlainWrapperTest,
   PdkTabNavButtonWrapper: runPlainWrapperTest,
   PdkTabNavContentWrapper: runPlainWrapperTest,
 
-  PdkButton: runButtonTest,
-  PdkCheckboxInput: runCheckboxInputTest,
+  /**
+   * Layout
+   */
   PdkCol: runColTest,
-  PdkCurrencyInput: runCurrencyInputTest,
-  PdkDropdownButton: runDropDownButtonTest,
-  PdkFormGroup: runFormGroupTest,
-  PdkHeading: runHeadingTest,
-  PdkIcon: runIconTest,
-  PdkImage: runImageTest,
-  PdkLink: runLinkTest,
-  PdkModal: runModalTest,
-  PdkMultiCheckbox: runMultiCheckboxTest,
-  PdkMultiRadio: runMultiRadioTest,
-  PdkNotification: runNotificationTest,
-  PdkNumberInput: runNumberInputTest,
-  PdkRadioInput: runRadioInputTest,
   PdkRow: runRowTest,
-  PdkSelectInput: runSelectInputTest,
-  PdkTabNavButton: runTabNavButtonTest,
+
   PdkTable: runTableTest,
   PdkTableCol: runTableColTest,
   PdkTableRow: runTableRowTest,
-  PdkTextInput: runTextInputTest,
-  PdkToggleInput: runToggleInputTest,
+
+  PdkFormGroup: runFormGroupTest,
+
+  /**
+   * Interactive components
+   */
+  PdkButton: runButtonTest,
+  PdkDropdownButton: runDropDownButtonTest,
+  PdkLink: runLinkTest,
+  PdkModal: runModalTest,
+  PdkTabNavButton: runTabNavButtonTest,
+
+  /**
+   * Other
+   */
+  PdkHeading: runHeadingTest,
+  PdkIcon: runIconTest,
+  PdkImage: runImageTest,
+  PdkNotification: runNotificationTest,
 };
