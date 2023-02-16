@@ -3,11 +3,9 @@
     <template #header>
       <PdkTableRow>
         <PdkTableCol component="th">
-          <PdkCheckboxInput
-            v-model="bulkCheckbox"
-            :title="translate('select_all')"
-            :element="bulkCheckboxElement"
-            :disabled="!shipments.length" />
+          <ShipmentBulkSelectCheckbox
+            v-model="bulk"
+            :shipment-count="order.shipments?.length" />
         </PdkTableCol>
 
         <PdkTableCol component="th">{{ translate('order_labels_column_track_trace') }}</PdkTableCol>
@@ -39,23 +37,23 @@
       <ShipmentLabelTableRow
         v-for="shipment in shipments"
         :key="`row_${shipment?.id}_${shipment.updated}`"
-        v-model="selectedRows"
+        v-model="bulk"
         :shipment="shipment" />
     </template>
   </PdkTable>
 </template>
 
 <script lang="ts">
-import {FormInstance, InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
 import {PropType, computed, defineComponent, ref} from 'vue';
 import {useAdminConfig, useLanguage, useOrderData} from '../../composables';
 import {Plugin} from '@myparcel-pdk/common/src';
+import ShipmentBulkSelectCheckbox from './ShipmentBulkSelectCheckbox.vue';
 import ShipmentLabelTableRow from './OrderShipmentsTableRow.vue';
-import {isDef} from '@vueuse/core';
 
 export default defineComponent({
   name: 'OrderShipmentsTable',
   components: {
+    ShipmentBulkSelectCheckbox,
     ShipmentLabelTableRow,
   },
 
@@ -82,40 +80,16 @@ export default defineComponent({
       },
     });
 
-    const bulkCheckbox = computed({
-      get(): boolean {
-        return selectedRows.value.length === props.order?.shipments?.length;
-      },
-
-      set(bulkCheckboxChecked: boolean): void {
-        const hasShipments = props.order && selectedRows.value.length !== props.order?.shipments?.length;
-        const checked = bulkCheckboxChecked || hasShipments;
-        const ids = (props.order?.shipments ?? []).map((shipment) => shipment.id?.toString());
-
-        selectedRows.value = (checked ? ids ?? [] : []).filter(isDef);
-      },
-    });
-
-    const bulkCheckboxElement: InteractiveElementInstance = {
-      name: 'bulk-checkbox',
-      ref: bulkCheckbox,
-      form: {
-        name: 'bulk-checkbox',
-      } as FormInstance,
-    };
-
     const orderData = useOrderData(props.order);
 
-    return {
-      bulkCheckbox,
+    const bulk = ref([]);
 
+    return {
+      bulk,
       config: useAdminConfig(),
       selectedRows,
-      translate,
-
-      bulkCheckboxElement,
-
       shipments: orderData.shipments,
+      translate,
     };
   },
 });

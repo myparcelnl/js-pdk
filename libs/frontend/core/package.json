@@ -22,6 +22,7 @@
     "serve": "run ws:vite:serve \"$(pwd)\"",
     "test": "run ws:test \"$(pwd)\"",
     "test:run": "run ws:test:run \"$(pwd)\"",
+    "typecheck": "run ws:vite:typecheck \"$(pwd)\"",
     "watch": "run ws:vite:watch \"$(pwd)\""
   },
   "prettier": "@myparcel/prettier-config",

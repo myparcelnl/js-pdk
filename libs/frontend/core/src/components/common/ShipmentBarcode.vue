@@ -9,6 +9,8 @@
       :title="carrier?.human"
       :src="useAssetUrl(carrier?.meta.logo_svg)" />
 
+    <template v-if="carrier">&nbsp;</template>
+
     <PdkLink
       v-if="shipment.barcode && shipment.linkConsumerPortal"
       :alt="translate('shipment_barcode')"

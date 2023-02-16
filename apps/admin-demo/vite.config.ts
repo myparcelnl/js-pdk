@@ -14,7 +14,7 @@ export default defineConfig((env) => ({
 
   build: {
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', 'vue-router'],
       plugins: [visualizer({filename: 'dist/stats.html'})],
     },
   },

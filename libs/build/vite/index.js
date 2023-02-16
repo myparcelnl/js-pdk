@@ -1,21 +1,10 @@
 import customTsConfigPlugin from 'vite-plugin-custom-tsconfig';
 import dts from 'vite-plugin-dts';
 import {mergeConfig} from 'vite';
-import {visualizer} from 'rollup-plugin-visualizer';
 
 const external = [
-  '@myparcel-pdk/build-tsup',
-  '@myparcel-pdk/build-vite',
-  '@myparcel-pdk/common',
-  '@myparcel-pdk/admin-demo',
-  '@myparcel-pdk/frontend-core',
-  '@myparcel-pdk/admin-component-tests',
-  '@myparcel-pdk/admin-components',
-  '@myparcel-pdk/admin',
-  '@myparcel-pdk/admin-preset-bootstrap4',
-  '@myparcel/sdk',
-  '@myparcel/ts-utils',
-  '@myparcel/vue-form-builder',
+  /^@myparcel-pdk\//,
+  /^@myparcel\//,
   '@tanstack/vue-query',
   '@types/lodash-es',
   '@vue/test-utils',
@@ -35,12 +24,14 @@ const createCommonViteConfig = (env) => {
   const isProd = env.mode === 'production';
 
   return {
-    plugins: [isProd && dts({entryRoot: 'src'}), customTsConfigPlugin()],
+    plugins: [
+      isProd && dts({skipDiagnostics: true, entryRoot: 'src', compilerOptions: {incremental: true}}),
+      customTsConfigPlugin(),
+    ],
 
     build: {
       outDir: 'lib',
       minify: isProd,
-      sourcemap: !isProd,
       rollupOptions: {
         external,
         output: {
@@ -49,7 +40,6 @@ const createCommonViteConfig = (env) => {
             vue: 'Vue',
           },
         },
-        plugins: [visualizer()],
       },
       lib: {
         entry: 'src/index.ts',
