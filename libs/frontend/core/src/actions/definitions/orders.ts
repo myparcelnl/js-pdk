@@ -1,4 +1,3 @@
-import {ActionParameters, AdminAction, AdminIcon, AdminModalKey} from '../../types';
 import {
   ActionContext,
   createMutator,
@@ -6,6 +5,7 @@ import {
   executeNextAction,
   resolveOrderParameters,
 } from '../executors';
+import {ActionParameters, AdminAction, AdminIcon, AdminModalKey} from '../../types';
 import {openOrPrint, waitForLabelPrompt} from '../print';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
@@ -66,6 +66,7 @@ export const ordersUpdateAction = defineAction({
   name: AdminAction.ORDERS_UPDATE,
   icon: AdminIcon.SAVE,
   label: 'action_save',
+  beforeHandle: resolveOrderParameters,
   handler: createMutator(BackendEndpoint.UPDATE_ORDERS),
 });
 
@@ -76,8 +77,8 @@ export const ordersExportPrintShipmentsAction = defineAction({
   name: AdminAction.ORDERS_EXPORT_PRINT,
   icon: AdminIcon.PRINT,
   label: 'action_export_print',
-  handler: createMutator(BackendEndpoint.EXPORT_ORDERS),
   beforeHandle: resolveOrderParameters,
+  handler: createMutator(BackendEndpoint.EXPORT_ORDERS),
   afterHandle(context) {
     void executeNextAction(context, ordersPrintAction, context.parameters);
 
@@ -92,17 +93,16 @@ export const ordersPrintAction = defineAction({
   name: AdminAction.ORDERS_PRINT,
   icon: AdminIcon.PRINT,
   label: 'action_print',
-  handler: createMutator(BackendEndpoint.PRINT_ORDERS),
-
   async beforeHandle(context) {
     await waitForLabelPrompt(context);
 
     return context.parameters;
   },
 
-  async afterHandle(context) {
-    await openOrPrint(context);
+  handler: createMutator(BackendEndpoint.PRINT_ORDERS),
 
+  afterHandle(context) {
+    void openOrPrint(context);
     void executeNextAction(context, shipmentsFetchAction, context.parameters);
 
     return context.response;

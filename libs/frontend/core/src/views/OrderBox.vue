@@ -13,14 +13,15 @@ import ConceptBox from '../components/OrderBox/ConceptBox.vue';
 import {defineAsyncComponent} from 'vue';
 import {useQueryStore} from '../stores';
 
-const pluginSettings = usePluginSettings();
-const queryStore = useQueryStore();
-
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const OrderShipmentsBox = defineAsyncComponent(() => import('../components/OrderBox/OrderShipmentsBox.vue'));
 
+const queryStore = useQueryStore();
+
 queryStore.registerContextQueries();
 queryStore.registerOrderQueries();
+
+const pluginSettings = usePluginSettings();
 
 const query = useStoreQuery(BackendEndpoint.FETCH_ORDERS);
 const {orderMode} = pluginSettings.general;

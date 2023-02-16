@@ -1,6 +1,6 @@
 import {useInstanceContext, useModalOrder} from '../composables';
-import {AdminInstanceContextKey} from '../types';
 import {AdminInstance} from '../data';
+import {AdminInstanceContextKey} from '../types';
 
 export const getOrderId = (instance?: AdminInstance): undefined | string => {
   return (
