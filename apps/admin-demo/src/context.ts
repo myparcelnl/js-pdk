@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {AdminContextObject} from '@myparcel-pdk/frontend-core/src';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import translations from './translations/en.json';
 
 export const context: AdminContextObject = {

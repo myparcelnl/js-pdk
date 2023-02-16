@@ -16,8 +16,8 @@
 </template>
 
 <script lang="ts">
+import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {defineComponent} from 'vue';
-import {useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -48,13 +48,13 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:modelValue'],
+  emits: [DEFAULT_VALUE_EMIT],
 
   setup: (props, ctx) => {
     const {translate} = useLanguage();
 
     return {
-      model: useVModel(props, 'modelValue', ctx.emit),
+      model: useVModel(props, DEFAULT_VALUE_PROP, ctx.emit),
       translate,
     };
   },

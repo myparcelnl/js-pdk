@@ -1,53 +1,35 @@
 <template>
   <input
+    :id="id"
     v-model="model"
-    :disabled="disabled"
-    :type="type" />
+    :disabled="element.isDisabled || element.isSuspended" />
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue';
+<script setup lang="ts">
+import {
+  DEFAULT_VALUE_EMIT,
+  DEFAULT_VALUE_PROP,
+  ElementInstance,
+  generateFieldId,
+} from '@myparcel-pdk/frontend-core/src';
+import {PropType, defineEmits, defineProps} from 'vue';
 import {useVModel} from '@vueuse/core';
 
-/**
- * A text input.
- */
-export default defineComponent({
-  name: 'DefaultTextInput',
-  props: {
-    /**
-     * Controls disabled state.
-     */
-    disabled: {
-      type: Boolean,
-    },
-
-    /**
-     * ExportOrdersInput type.
-     */
-    type: {
-      type: String,
-      default: 'text',
-    },
-
-    /**
-     * The value of the model.
-     */
-    // eslint-disable-next-line vue/no-unused-properties
-    modelValue: {
-      type: [String, Number],
-      default: null,
-    },
+const props = defineProps({
+  element: {
+    type: Object as PropType<ElementInstance>,
+    required: true,
   },
 
-  emits: ['update:modelValue'],
-
-  setup: (props, ctx) => {
-    const model = useVModel(props, 'modelValue', ctx.emit);
-
-    return {
-      model,
-    };
+  // eslint-disable-next-line vue/no-unused-properties
+  modelValue: {
+    type: [String, Number],
+    default: null,
   },
 });
+
+const emit = defineEmits([DEFAULT_VALUE_EMIT]);
+
+const model = useVModel(props, DEFAULT_VALUE_PROP, emit);
+const id = generateFieldId(props.element);
 </script>

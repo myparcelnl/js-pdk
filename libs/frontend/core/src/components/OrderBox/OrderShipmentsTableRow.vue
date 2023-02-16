@@ -28,6 +28,7 @@
 </template>
 
 <script lang="ts">
+import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP} from '../../data';
 import {PropType, defineComponent} from 'vue';
 import {useFormatter, useLanguage, useShipmentData} from '../../composables';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
@@ -56,12 +57,12 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:modelValue'],
+  emits: [DEFAULT_VALUE_EMIT],
 
   setup: (props, ctx) => {
     const {translate} = useLanguage();
 
-    const selected = useVModel(props, 'modelValue', ctx.emit);
+    const selected = useVModel(props, DEFAULT_VALUE_PROP, ctx.emit);
 
     const checkboxElement = {
       id: `shipment_${props.shipment.id}`,

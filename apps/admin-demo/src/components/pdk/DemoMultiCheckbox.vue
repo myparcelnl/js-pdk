@@ -9,6 +9,7 @@
 </template>
 
 <script lang="ts">
+import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP} from '@myparcel-pdk/frontend-core';
 import {PropType, defineComponent} from 'vue';
 import {SelectOption} from '@myparcel-pdk/common/src';
 import {useVModel} from '@vueuse/core';
@@ -47,10 +48,10 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:modelValue'],
+  emits: [DEFAULT_VALUE_EMIT],
 
   setup: (props, ctx) => {
-    const model = useVModel(props, 'modelValue', ctx.emit);
+    const model = useVModel(props, DEFAULT_VALUE_PROP, ctx.emit);
 
     return {
       model,

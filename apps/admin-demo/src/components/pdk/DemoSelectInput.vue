@@ -14,7 +14,12 @@
 </template>
 
 <script lang="ts">
-import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-core/src';
+import {
+  DEFAULT_VALUE_EMIT,
+  DEFAULT_VALUE_PROP,
+  ElementInstance,
+  generateFieldId,
+} from '@myparcel-pdk/frontend-core/src';
 import {PropType, defineComponent, onMounted} from 'vue';
 import {useVModel} from '@vueuse/core';
 
@@ -37,10 +42,10 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:modelValue'],
+  emits: [DEFAULT_VALUE_EMIT],
 
   setup: (props, ctx) => {
-    const model = useVModel(props, 'modelValue', ctx.emit);
+    const model = useVModel(props, DEFAULT_VALUE_PROP, ctx.emit);
 
     onMounted(() => {
       if (props.element.props?.options?.length === 1 || !props.modelValue) {

@@ -13,7 +13,7 @@
 
           <div v-if="toggleRefs[day]">
             <PdkTimeInput
-              v-model="cutOffRefs[day]"
+              v-model="cutoffRefs[day]"
               :element="cutoffElements[day]" />
           </div>
         </li>
@@ -23,7 +23,12 @@
 </template>
 
 <script lang="ts">
-import {ElementInstance, useDropOffInputContext, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {
+  DEFAULT_VALUE_EMIT,
+  ElementInstance,
+  useDropOffInputContext,
+  useLanguage,
+} from '@myparcel-pdk/frontend-core/src';
 import {PropType, defineComponent} from 'vue';
 import {Settings} from '@myparcel-pdk/common/src';
 
@@ -47,11 +52,11 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:modelValue'],
+  emits: [DEFAULT_VALUE_EMIT],
 
   setup: (props, ctx) => {
     const {translate} = useLanguage();
-    const {weekdaysObject, cutoffElements, toggleElements, toggleRefs, cutOffRefs} = useDropOffInputContext(
+    const {weekdaysObject, cutoffElements, toggleElements, toggleRefs, cutoffRefs} = useDropOffInputContext(
       props.modelValue,
       ctx.emit,
     );
@@ -60,7 +65,7 @@ export default defineComponent({
       translate,
       weekdaysObject,
       toggleRefs,
-      cutOffRefs,
+      cutoffRefs,
       toggleElements: toggleElements,
       cutoffElements: cutoffElements,
     };

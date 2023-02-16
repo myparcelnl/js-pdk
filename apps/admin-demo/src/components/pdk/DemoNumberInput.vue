@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
+import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP, ElementInstance} from '@myparcel-pdk/frontend-core/src';
 import {PropType, defineComponent} from 'vue';
-import {ElementInstance} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
 /**
@@ -32,10 +32,10 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:modelValue'],
+  emits: [DEFAULT_VALUE_EMIT],
 
   setup: (props, {emit}) => ({
-    model: useVModel(props, 'modelValue', emit),
+    model: useVModel(props, DEFAULT_VALUE_PROP, emit),
   }),
 });
 </script>

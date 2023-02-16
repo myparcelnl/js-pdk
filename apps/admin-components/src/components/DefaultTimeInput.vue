@@ -1,42 +1,36 @@
 <template>
-  <input
+  <PdkTextInput
     :id="id"
     v-model="model"
     :disabled="element.isDisabled || element.isSuspended"
-    :type="'time'" />
+    type="time" />
 </template>
 
-<script lang="ts">
-import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-core/src';
-import {PropType, defineComponent} from 'vue';
+<script setup lang="ts">
+import {
+  DEFAULT_VALUE_EMIT,
+  DEFAULT_VALUE_PROP,
+  ElementInstance,
+  generateFieldId,
+} from '@myparcel-pdk/frontend-core/src';
+import {PropType} from 'vue';
 import {useVModel} from '@vueuse/core';
 
-/**
- * A text input.
- * @see import('@myparcel-pdk/admin-components').DefaultTextInput
- */
-export default defineComponent({
-  name: 'DefaultTimeInput',
-  props: {
-    element: {
-      type: Object as PropType<ElementInstance>,
-      required: true,
-    },
-
-    // eslint-disable-next-line vue/no-unused-properties
-    modelValue: {
-      type: [String, Number],
-      default: null,
-    },
+const props = defineProps({
+  element: {
+    type: Object as PropType<ElementInstance>,
+    required: true,
   },
 
-  emits: ['update:modelValue'],
-
-  setup: (props, ctx) => {
-    return {
-      model: useVModel(props, 'modelValue', ctx.emit),
-      id: generateFieldId(props.element),
-    };
+  // eslint-disable-next-line vue/no-unused-properties
+  modelValue: {
+    type: [String, Number],
+    default: null,
   },
 });
+
+const emit = defineEmits([DEFAULT_VALUE_EMIT]);
+
+const model = useVModel(props, DEFAULT_VALUE_PROP, emit);
+const id = generateFieldId(props.element);
 </script>

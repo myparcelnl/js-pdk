@@ -1,4 +1,4 @@
-import {ElementInstance, createFormElement} from '@myparcel-pdk/frontend-core/src';
+import {DEFAULT_VALUE_EMIT, ElementInstance, createFormElement} from '@myparcel-pdk/frontend-core/src';
 import {MountingOptions, mount} from '@vue/test-utils';
 import {expect, it} from 'vitest';
 import {AdminComponentTest} from '../tests';
@@ -30,6 +30,6 @@ export const runTextInputTest: AdminComponentTest = (component) => {
     const input = wrapper.find('input');
     await input.setValue('new text');
 
-    expect(Object.keys(wrapper.emitted())).toEqual(['update:modelValue', 'input', 'change']);
+    expect(Object.keys(wrapper.emitted())).toEqual([DEFAULT_VALUE_EMIT, 'input', 'change']);
   });
 };

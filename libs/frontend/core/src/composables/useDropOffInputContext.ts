@@ -1,5 +1,6 @@
 import {Settings, Shipment} from '@myparcel-pdk/common/src';
 import {reactive, watch} from 'vue';
+import {DEFAULT_VALUE_EMIT} from '../data';
 import {createFormElement} from '../utils';
 import {useWeekdays} from './useWeekdays';
 
@@ -7,7 +8,7 @@ type Weekdays = ReturnType<typeof useWeekdays>['weekdays'];
 
 type UseDropOffInputContext = (
   possibilities: Settings.ModelDropOffPossibilities,
-  emit?: (name: 'update:modelValue', ...args: unknown[]) => void,
+  emit?: (name: typeof DEFAULT_VALUE_EMIT, ...args: unknown[]) => void,
 ) => {
   weekdaysObject: Record<keyof Weekdays, string>;
   weekdays: Weekdays;
@@ -57,7 +58,7 @@ export const useDropOffInputContext: UseDropOffInputContext = (possibilities, em
       dropOffDaysDeviations: [],
     };
 
-    emit?.('update:modelValue', value);
+    emit?.(DEFAULT_VALUE_EMIT, value);
   });
 
   return {
