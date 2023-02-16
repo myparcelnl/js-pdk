@@ -34,7 +34,7 @@ const createCommonViteConfig = (env) => {
   const isProd = env.mode === 'production';
 
   return {
-    plugins: [isProd && dts(), customTsConfigPlugin()],
+    plugins: [isProd && dts({entryRoot: 'src'}), customTsConfigPlugin()],
 
     build: {
       outDir: 'lib',
