@@ -3,6 +3,7 @@
     v-for="action in dropdownActions.standalone"
     :key="action.id"
     :action="action"
+    :size="size"
     :hide-text="hideText" />
 
   <PdkButton
@@ -10,6 +11,7 @@
     :aria-label="translate('toggle_dropdown')"
     :disabled="disabled"
     aria-haspopup="true"
+    :size="size"
     @focus="toggled = true"
     @focusout="toggled = false"
     @mouseout="toggled = false"
@@ -19,6 +21,7 @@
     <ActionButton
       v-for="(action, index) in dropdownActions.hidden"
       :key="`${index}_${action.id}`"
+      :size="size"
       :action="action" />
   </div>
 </template>
@@ -26,6 +29,7 @@
 <script lang="ts">
 import {ActionButton, ResolvedAction, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {PropType, defineComponent} from 'vue';
+import {Size} from '@myparcel-pdk/common';
 
 /**
  * This component is used to render a dropdown button. The dropdown button is a
@@ -41,6 +45,14 @@ export default defineComponent({
 
   props: {
     /**
+     * List of actions.
+     */
+    actions: {
+      type: Array as PropType<ResolvedAction[]>,
+      default: (): never[] => [],
+    },
+
+    /**
      * Controls disabled state.
      */
     disabled: {
@@ -55,11 +67,11 @@ export default defineComponent({
     },
 
     /**
-     * List of actions.
+     * Size of the button.
      */
-    actions: {
-      type: Array as PropType<ResolvedAction[]>,
-      default: (): never[] => [],
+    size: {
+      type: String as PropType<Size>,
+      default: Size.SMALL,
     },
   },
 

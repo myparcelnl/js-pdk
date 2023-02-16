@@ -31,6 +31,7 @@ export enum AdminIcon {
   REFRESH = 'refresh',
   RETURN = 'return',
   SAVE = 'save',
+  SHIPMENT = 'shipment',
   SPINNER = 'spinner',
   YES = 'yes',
 }

@@ -1,7 +1,7 @@
 <template>
-  <ConceptBox :order="query.data" />
+  <ShipmentOptionsBox :order="query.data" />
 
-  <OrderShipmentsBox
+  <ShipmentTableBox
     v-if="!orderMode"
     :order="query.data" />
 </template>
@@ -9,12 +9,12 @@
 <script lang="ts" setup>
 import {usePluginSettings, useStoreQuery} from '../composables';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
-import ConceptBox from '../components/OrderBox/ConceptBox.vue';
+import ShipmentOptionsBox from '../components/OrderBox/ShipmentOptionsBox.vue';
 import {defineAsyncComponent} from 'vue';
 import {useQueryStore} from '../stores';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const OrderShipmentsBox = defineAsyncComponent(() => import('../components/OrderBox/OrderShipmentsBox.vue'));
+const ShipmentTableBox = defineAsyncComponent(() => import('../components/OrderBox/ShipmentTableBox.vue'));
 
 const queryStore = useQueryStore();
 

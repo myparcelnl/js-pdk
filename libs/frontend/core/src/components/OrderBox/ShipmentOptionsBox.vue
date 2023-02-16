@@ -3,7 +3,8 @@
     :actions="actions"
     :loading="loading">
     <template #header>
-      <span v-text="`${translate('concept')} #${order?.externalIdentifier}`" />
+      <PdkIcon icon="config" />
+      <span>{{ translate('shipment_options') }} #{{ order?.externalIdentifier }}</span>
     </template>
 
     <template #default>
@@ -37,7 +38,7 @@ import {Plugin} from '@myparcel-pdk/common/src';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
 
 export default defineComponent({
-  name: 'ConceptBox',
+  name: 'ShipmentOptionsBox',
   components: {
     ShipmentOptionsForm,
   },

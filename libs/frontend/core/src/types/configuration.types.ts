@@ -52,6 +52,9 @@ export type AdminConfiguration = {
    */
   cssUtilities?: {
     animationSpin?: string;
+    displayFlex?: string;
+    marginYAuto?: string;
+    marginLAuto?: string;
     textCenter?: string;
     textColorError?: string;
     textColorSuccess?: string;

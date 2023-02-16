@@ -11,10 +11,10 @@ import {
   ordersFetchAction,
   ordersPrintAction,
 } from '../../actions';
-import {useLoading, useOrderData} from '../../composables';
 import {AnyAdminAction} from '../../types';
 import {Plugin} from '@myparcel-pdk/common/src';
 import {createActions} from '../../services';
+import {useLoading} from '../../composables';
 
 export default defineComponent({
   name: 'OrderActions',
@@ -27,8 +27,8 @@ export default defineComponent({
   },
 
   setup: (props) => {
-    const orderData = useOrderData(props.order);
     const {loading} = useLoading();
+    const shipments = computed(() => props.order.shipments?.filter((item) => !item.deleted));
 
     return {
       loading,
@@ -36,7 +36,7 @@ export default defineComponent({
       actions: computed(() => {
         const actions: AnyAdminAction[] = [];
 
-        if (orderData.shipments.value?.length) {
+        if (shipments.value?.length) {
           actions.push(orderExportAction);
           actions.push({...ordersPrintAction, standalone: true});
           actions.push(ordersEditAction, ordersFetchAction);
@@ -47,8 +47,6 @@ export default defineComponent({
 
         return createActions(actions, {orderIds: props.order.externalIdentifier});
       }),
-
-      shipments: orderData.shipments,
     };
   },
 });

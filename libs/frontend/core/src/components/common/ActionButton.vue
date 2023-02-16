@@ -12,8 +12,8 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {Size} from '@myparcel-pdk/common/src';
 import {ResolvedAction} from '../../types';
+import {Size} from '@myparcel-pdk/common/src';
 
 export default defineComponent({
   name: 'ActionButton',

@@ -1,7 +1,7 @@
 <template>
   <PdkBox :loading="loading">
     <template #header>
-      <PdkIcon icon="local_shipping" />
+      <PdkIcon icon="shipment" />
       {{ translate('order_labels_header') }}
     </template>
 
@@ -38,7 +38,7 @@ import {Plugin} from '@myparcel-pdk/common/src';
 import {createActions} from '../../services';
 
 export default defineComponent({
-  name: 'OrderShipmentsBox',
+  name: 'ShipmentTableBox',
   components: {
     OrderShipmentsTable,
   },

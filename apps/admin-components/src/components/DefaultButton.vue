@@ -14,12 +14,14 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable vue/no-unused-properties */
 import {AdminIcon, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {PropType, defineComponent} from 'vue';
+import {Size} from '@myparcel-pdk/common';
 
 /**
  * This component is used to render a button. The button can be used to trigger
- * an action. The button can have multiple icons and a label. The button can be
+ * an action. The button can have multiple icons, a label and various sizes. The button can be
  * disabled.
  */
 export default defineComponent({
@@ -46,6 +48,14 @@ export default defineComponent({
     label: {
       type: String,
       default: 'action_save',
+    },
+
+    /**
+     * Size of the button.
+     */
+    size: {
+      type: String as PropType<Size>,
+      default: Size.MEDIUM,
     },
   },
 

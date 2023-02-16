@@ -1,32 +1,26 @@
 <template>
   <PdkShipmentLabelWrapper :loading="loading">
-    <PdkRow collapse-gutters>
-      <PdkCol>
-        <ShipmentBarcode :shipment="shipment" />
-      </PdkCol>
+    <div :class="config?.cssUtilities?.displayFlex">
+      <ShipmentBarcode :shipment="shipment" />
 
-      <PdkCol>
-        <PdkDropdownButton
-          :hide-text="true"
-          :disabled="loading"
-          :actions="actions" />
-      </PdkCol>
-    </PdkRow>
+      <PdkDropdownButton
+        :hide-text="true"
+        size="xs"
+        :class="config?.cssUtilities?.marginLAuto"
+        :disabled="loading"
+        :actions="actions" />
+    </div>
 
-    <PdkRow collapse-gutters>
-      <PdkCol span="2">
-        <ShipmentStatus :shipment="shipment" />
-      </PdkCol>
-    </PdkRow>
+    <ShipmentStatus :shipment="shipment" />
   </PdkShipmentLabelWrapper>
 </template>
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
+import {useAdminConfig, useShipmentData} from '../../composables';
 import {Shipment} from '@myparcel-pdk/common/src';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
-import {useShipmentData} from '../../composables';
 
 export default defineComponent({
   name: 'ShipmentLabel',
@@ -43,7 +37,10 @@ export default defineComponent({
   },
 
   setup: (props) => {
-    return useShipmentData(props.shipment);
+    return {
+      ...useShipmentData(props.shipment),
+      config: useAdminConfig(),
+    };
   },
 });
 </script>

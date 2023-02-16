@@ -74,9 +74,11 @@ export enum Variant {
 }
 
 export enum Size {
+  EXTRA_SMALL = 'xs',
   SMALL = 'sm',
   MEDIUM = 'md',
   LARGE = 'lg',
+  EXTRA_LARGE = 'xl',
 }
 
 export enum Status {
