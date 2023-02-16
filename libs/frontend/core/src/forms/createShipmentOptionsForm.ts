@@ -2,10 +2,11 @@
 import {CARRIERS, CarrierName, PACKAGE_TYPES, PackageTypeName} from '@myparcel/sdk';
 import {InteractiveElementConfiguration, defineField, defineForm} from '@myparcel/vue-form-builder/src';
 import {ref, resolveComponent} from 'vue';
+import {useContext, useLanguage} from '../composables';
+import {AdminContextKey} from '../types';
 import {Plugin} from '@myparcel-pdk/common/src';
 import {createShipmentFormName} from '../utils';
 import {useCarriers} from '../sdk';
-import {useLanguage} from '../composables';
 
 const deliveryOptionsPrefix = 'deliveryOptions';
 const shipmentOptionsPrefix = `${deliveryOptionsPrefix}.shipmentOptions`;
@@ -50,15 +51,19 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
 
         // @ts-expect-error todo
         onBeforeMount: async (field) => {
+          const dynamicContext = useContext(AdminContextKey.DYNAMIC);
+          const carrierNames = dynamicContext.carrierOptions.map((options) => options.carrier.name);
+
           const carriers = useCarriers();
           await carriers.suspense();
 
           field.props.options =
-            // @ts-expect-error todo
-            carriers.data.value?.map((carrier) => ({
-              label: carrier.human,
-              value: carrier.name,
-            })) ?? [];
+            carriers.data.value
+              ?.filter((carrier) => carrierNames.includes(carrier.name))
+              .map((carrier) => ({
+                label: carrier.human,
+                value: carrier.name,
+              })) ?? [];
         },
       }),
 
