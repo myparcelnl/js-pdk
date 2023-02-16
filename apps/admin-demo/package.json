@@ -5,11 +5,15 @@
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "main": "lib/index.js",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./src": "./src/index.ts"
+  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "build": "run translations:import && vite build",
+    "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "serve": "vite",
     "test": "run ws:test \"$(pwd)\"",
