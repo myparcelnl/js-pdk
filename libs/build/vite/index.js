@@ -1,6 +1,7 @@
 import customTsConfigPlugin from 'vite-plugin-custom-tsconfig';
 import dts from 'vite-plugin-dts';
 import {mergeConfig} from 'vite';
+import {visualizer} from 'rollup-plugin-visualizer';
 
 const external = [
   '@myparcel-pdk/build-tsup',
@@ -48,6 +49,7 @@ const createCommonViteConfig = (env) => {
             vue: 'Vue',
           },
         },
+        plugins: [visualizer()],
       },
       lib: {
         entry: 'src/index.ts',

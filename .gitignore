@@ -11,6 +11,7 @@ libs/**/tsconfig.json
 .DS_Store
 .eslintcache
 .vitest-result.json
+stats.html
 node_modules
 
 # Temporary build files
@@ -25,10 +26,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
-# Cypress
-/cypress/videos/
-/cypress/screenshots/
 
 # Editor directories and files
 .vscode/*
