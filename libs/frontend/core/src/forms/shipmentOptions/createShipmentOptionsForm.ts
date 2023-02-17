@@ -90,7 +90,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         ref: ref<PackageTypeName>((order.deliveryOptions?.packageType as PackageTypeName) ?? PACKAGE_TYPES.PACKAGE),
         component: resolveComponent('PdkSelectInput'),
         props: {
-          options: getPackageTypes,
+          options: getPackageTypes(),
         },
       }),
 
