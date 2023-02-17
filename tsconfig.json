@@ -9,6 +9,5 @@
       "@myparcel-pdk/*": ["./apps/*/src"]
     }
   },
-  "include": ["./*", "apps/**/*", "libs/**/*"],
-  "exclude": ["**/node_modules", "**/lib", "**/dist"]
+  "include": ["./*", "apps/**/*", "libs/**/*"]
 }
