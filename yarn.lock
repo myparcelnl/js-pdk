@@ -884,7 +884,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/admin-components": "workspace:*"
     "@myparcel-pdk/frontend-core": "workspace:*"
-    "@myparcel/sdk": ^2.10.1
+    "@myparcel/sdk": ^2.11.0
     "@myparcel/ts-utils": ^1.6.0
     "@myparcel/vue-form-builder": ^1.0.0-alpha.1
     "@tanstack/vue-query": ^4.24.6
@@ -1099,6 +1099,15 @@ __metadata:
   dependencies:
     "@myparcel/ts-utils": ^1.3.1
   checksum: f278ed7f0813ca43f09dafc6bf6fb71b43016a558dba32e052e0a1ee68b74d68591ec1361ca9e655823f774be82c50cd73584bebbde6e6a649ef8be5cfdd790e
+  languageName: node
+  linkType: hard
+
+"@myparcel/sdk@npm:^2.11.0":
+  version: 2.11.0
+  resolution: "@myparcel/sdk@npm:2.11.0"
+  dependencies:
+    "@myparcel/ts-utils": ^1.6.0
+  checksum: cb5786cd9a03bd35aa27ba57375b096ed87d5fb3aa4733f8f614b721ce7affe3b9d155b425e1515b9ef5ae0ca0c459a679ebf988e2387ecd6d9f5b31940d47f4
   languageName: node
   linkType: hard
 
