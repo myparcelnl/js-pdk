@@ -864,7 +864,7 @@ __metadata:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/frontend-core": "workspace:*"
     "@myparcel/ts-utils": ^1.6.0
-    "@myparcel/vue-form-builder": ^1.0.0-alpha.1
+    "@myparcel/vue-form-builder": ^1.0.0-alpha.34
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.28.5
     "@vue/test-utils": ^2.2.10
@@ -886,7 +886,7 @@ __metadata:
     "@myparcel-pdk/frontend-core": "workspace:*"
     "@myparcel/sdk": ^2.10.1
     "@myparcel/ts-utils": ^1.6.0
-    "@myparcel/vue-form-builder": ^1.0.0-alpha.1
+    "@myparcel/vue-form-builder": ^1.0.0-alpha.34
     "@tanstack/vue-query": ^4.24.6
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.28.5
@@ -1045,6 +1045,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@myparcel-vfb/build-vite@npm:^1.0.0-alpha.15":
+  version: 1.0.0-alpha.15
+  resolution: "@myparcel-vfb/build-vite@npm:1.0.0-alpha.15"
+  checksum: 8271d9ec4ef2c8dfee18586f0db4c97914d7f729b99bd03cf024b830ab24d3eb8f08345e5c3f83d15f38292425cebd1f7d192c971188d4ff9553e54efeef04e2
+  languageName: node
+  linkType: hard
+
 "@myparcel-vfb/core@npm:^1.0.0-alpha.11":
   version: 1.0.0-alpha.11
   resolution: "@myparcel-vfb/core@npm:1.0.0-alpha.11"
@@ -1054,6 +1061,18 @@ __metadata:
     "@myparcel-vfb/utils": ^1.0.0-alpha.14
     "@myparcel/ts-utils": ^1.5.1
   checksum: 23e1c15d201d1900021f72365b613499beebb3b32ac9d3d17ce3eb698e057a21c6671cb6685d132e13b72d5bcaf80108711303ce594b697bf086e650106db14e
+  languageName: node
+  linkType: hard
+
+"@myparcel-vfb/core@npm:^1.0.0-alpha.12":
+  version: 1.0.0-alpha.12
+  resolution: "@myparcel-vfb/core@npm:1.0.0-alpha.12"
+  dependencies:
+    "@myparcel-vfb/build-vite": ^1.0.0-alpha.15
+    "@myparcel-vfb/hook-manager": ^1.0.0-alpha.15
+    "@myparcel-vfb/utils": ^1.0.0-alpha.15
+    "@myparcel/ts-utils": ^1.5.1
+  checksum: 61ff4659ebc0511c594d68b325f5342289c01e943bee19c9f6addb15d5af16fa10527f60c7fd778665b73b50432758e80970a98eb69f8bc046f30788f9aa1424
   languageName: node
   linkType: hard
 
@@ -1077,12 +1096,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@myparcel-vfb/plugin@npm:^1.0.0-alpha.12":
+  version: 1.0.0-alpha.12
+  resolution: "@myparcel-vfb/plugin@npm:1.0.0-alpha.12"
+  dependencies:
+    "@myparcel-vfb/core": ^1.0.0-alpha.12
+    "@myparcel/ts-utils": ^1.5.1
+    "@vue/devtools-api": ^6.5.0
+  checksum: ad1172de567fb1d3c7a7553131a0e7f81b29f4fe9abb2cdae22448c2ad03e80fe488b9080d7101d2578a4d962469e0fb3f0eb779525ebe8071b1d96ee2ed13e0
+  languageName: node
+  linkType: hard
+
 "@myparcel-vfb/utils@npm:^1.0.0-alpha.14":
   version: 1.0.0-alpha.14
   resolution: "@myparcel-vfb/utils@npm:1.0.0-alpha.14"
   dependencies:
     "@myparcel/ts-utils": ^1.5.1
   checksum: 1b839131fb74fe4a416c47fef9732f9b175fca1635671453e14aaa49bd2c29f8c9f7bb0667012c8a74a3ed3d89030a3afeb2f5decf5b86aa355f5d2582160889
+  languageName: node
+  linkType: hard
+
+"@myparcel-vfb/utils@npm:^1.0.0-alpha.15":
+  version: 1.0.0-alpha.15
+  resolution: "@myparcel-vfb/utils@npm:1.0.0-alpha.15"
+  dependencies:
+    "@myparcel/ts-utils": ^1.5.1
+  checksum: c5c32191a8259ea46d5ebeb22779cc7ba0f67c295d32703ec282df02506bd04c8096dc805caeb5c4bedfc4b128dcad8be77088da086936b13870dd07dc415f2b
   languageName: node
   linkType: hard
 
@@ -1119,6 +1158,19 @@ __metadata:
     "@myparcel-vfb/utils": ^1.0.0-alpha.14
     "@myparcel/ts-utils": ^1.5.1
   checksum: ab7f72cc517184aeb40afce544ce237ddc2a19a8998610c99622c179fc242be2bb71fbf03b272449bf3a9596187c64442962fc6b5060da78dfa8b6705a708a4d
+  languageName: node
+  linkType: hard
+
+"@myparcel/vue-form-builder@npm:^1.0.0-alpha.34":
+  version: 1.0.0-alpha.34
+  resolution: "@myparcel/vue-form-builder@npm:1.0.0-alpha.34"
+  dependencies:
+    "@myparcel-vfb/core": ^1.0.0-alpha.12
+    "@myparcel-vfb/hook-manager": ^1.0.0-alpha.15
+    "@myparcel-vfb/plugin": ^1.0.0-alpha.12
+    "@myparcel-vfb/utils": ^1.0.0-alpha.15
+    "@myparcel/ts-utils": ^1.5.1
+  checksum: b4309856cc1d2e9afc8a0ef6e9de5d137c08a5282c234f12d86c9ea507281da0753cda61a5e7b563ba82ddafc47b82f45f1c2c7f0bbc845402fccab135c2a56d
   languageName: node
   linkType: hard
 
