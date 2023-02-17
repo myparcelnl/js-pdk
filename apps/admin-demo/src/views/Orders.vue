@@ -73,7 +73,7 @@ export default defineComponent({
     void fe.render(AdminView.MODALS, '#mypa-modals');
 
     orderData.forEach((order) => {
-      void fe.render(AdminView.ORDER_LIST_COLUMN, `#mypa-order-${order.externalIdentifier}`);
+      void fe.render(AdminView.ORDER_LIST_ITEM, `#mypa-order-${order.externalIdentifier}`);
     });
 
     const toggled = ref<string | null>(null);

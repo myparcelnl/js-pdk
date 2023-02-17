@@ -59,7 +59,7 @@ export enum AdminView {
   MODALS = 'Modals',
   NOTIFICATIONS = 'Notifications',
   ORDER_BOX = 'OrderBox',
-  ORDER_LIST_COLUMN = 'OrderListColumn',
+  ORDER_LIST_ITEM = 'OrderListItem',
   PRODUCT_SETTINGS = 'ProductSettings',
   PLUGIN_SETTINGS = 'PluginSettings',
 }

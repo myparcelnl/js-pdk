@@ -79,7 +79,7 @@ export class PdkAdmin {
 
     let appName: string = componentName;
 
-    if (componentName === AdminView.ORDER_LIST_COLUMN) {
+    if (componentName === AdminView.ORDER_LIST_ITEM) {
       const orderId = orderData?.length === 1 ? orderData[0].externalIdentifier : null;
 
       appName += ` #${orderId}`;

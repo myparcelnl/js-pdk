@@ -10,7 +10,7 @@ const renderMap = Object.freeze<Record<AdminView, ComponentImportFunction>>({
   Modals: async () => import('../views/Modals.vue'),
   Notifications: async () => import('../views/Notifications.vue'),
   OrderBox: async () => import('../views/OrderBox.vue'),
-  OrderListColumn: async () => import('../views/OrderListItem.vue'),
+  OrderListItem: async () => import('../views/OrderListItem.vue'),
   PluginSettings: async () => import('../views/PluginSettings.vue'),
   ProductSettings: async () => import('../views/ProductSettings.vue'),
 });
