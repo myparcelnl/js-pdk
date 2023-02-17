@@ -8,17 +8,13 @@ import {
   createDefaultWeekdayFormatter,
 } from './default';
 import {useAdminConfig} from '../useAdminConfig';
-import {useGlobalContext} from '../context';
 
 let formats: Ref<LocaleFormatterObject>;
 
-export const useFormatter = (locale?: string): Formatter => {
+export const useFormatter = (locale: string): Formatter => {
   formats ??= ref({});
 
   const config = useAdminConfig();
-  const globalContext = useGlobalContext();
-
-  const resolvedLocale = locale ?? globalContext.language;
 
   const getFormatters: Formatter['getFormatters'] = (locale) => {
     if (!formats.value[locale]) {
@@ -37,7 +33,7 @@ export const useFormatter = (locale?: string): Formatter => {
     getFormatters,
 
     format: (format, input) => {
-      const formatters = getFormatters(resolvedLocale);
+      const formatters = getFormatters(locale);
       const formatter = formatters[format];
 
       if (!formatter) {

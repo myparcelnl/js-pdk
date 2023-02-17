@@ -30,7 +30,7 @@
 <script lang="ts">
 import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP} from '../../data';
 import {PropType, defineComponent} from 'vue';
-import {useFormatter, useLanguage, useShipmentData} from '../../composables';
+import {useLanguage, useLocalizedFormatter, useShipmentData} from '../../composables';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
 import {Shipment} from '@myparcel-pdk/common/src';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
@@ -74,7 +74,7 @@ export default defineComponent({
 
     return {
       ...useShipmentData(props.shipment),
-      formatter: useFormatter(),
+      formatter: useLocalizedFormatter(),
       selected,
       translate,
       checkboxElement,

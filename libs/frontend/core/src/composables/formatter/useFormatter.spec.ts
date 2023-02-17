@@ -19,7 +19,8 @@ describe('format strings', () => {
             return {
               appName: 'test',
               context: {},
-              config: createAdminConfig(),
+              // @ts-expect-error no need for components
+              config: createAdminConfig({components: {}}),
               logger: createLogger('test'),
             };
           }

@@ -12,6 +12,8 @@ import {
   SIGNATURE,
 } from './field';
 import {CarrierName, PACKAGE_TYPES, PackageTypeName} from '@myparcel/sdk';
+import {Formatter, useContext, useLocalizedFormatter} from '../../composables';
+import {InteractiveElementInstance, defineForm} from '@myparcel/vue-form-builder/src';
 import {
   defineFormField,
   getInsurancePossibilities,
@@ -20,13 +22,11 @@ import {
   isPackageTypePackage,
 } from './helpers';
 import {ref, resolveComponent} from 'vue';
-import {Formatter, useContext, useFormatter} from '../../composables';
 import {AdminContextKey} from '../../types';
 import {Plugin} from '@myparcel-pdk/common/src';
-import {createShipmentFormName} from '../../utils';
-import {InteractiveElementInstance, defineForm} from '@myparcel/vue-form-builder/src';
-import {useCarrier} from '../../sdk';
 import {SelectOption} from '@myparcel/vue-form-builder';
+import {createShipmentFormName} from '../../utils';
+import {useCarrier} from '../../sdk';
 
 const getFormattedInsurancePossibilities = (
   field: InteractiveElementInstance,
@@ -45,7 +45,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
   const dynamicContext = useContext(AdminContextKey.DYNAMIC);
 
   const carrierNames = dynamicContext.carrierOptions.map((options) => options.carrier.name);
-  const formatter = useFormatter();
+  const formatter = useLocalizedFormatter();
 
   return defineForm(createShipmentFormName(order.externalIdentifier), {
     fields: [
