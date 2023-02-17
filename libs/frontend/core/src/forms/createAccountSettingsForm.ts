@@ -7,7 +7,7 @@ import {AdminAction} from '../types';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {SubmitButton} from '../components';
 import {createActionContext} from '../services';
-import {defineFormField} from './createShipmentOptionsForm';
+import {defineFormField} from './helpers/helpers';
 
 export const createAccountSettingsForm = (callback?: () => void) => {
   const updateAccountMutation = useStoreQuery(BackendEndpoint.UPDATE_ACCOUNT);
