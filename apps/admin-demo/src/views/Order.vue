@@ -9,9 +9,9 @@
       <div class="flex flex-col md:flex-row">
         <div class="flex-1">
           <h2 class="font-bold text-xl">Shipping address</h2>
-          <p>{{ order.recipient.fullStreet }}</p>
-          <p>{{ order.recipient.city }}</p>
-          <p>{{ order.recipient.cc }}</p>
+          <p v-text="order.recipient.fullStreet" />
+          <p v-text="order.recipient.city" />
+          <p v-text="order.recipient.cc" />
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
 
       <div
         id="pdk-OrderBox"
-        :data-pdk-context="context" />
+        :data-pdk-context="JSON.stringify({orderIdentifier: order.externalIdentifier, orderData: order})" />
     </div>
   </div>
 </template>
@@ -46,10 +46,7 @@ export default defineComponent({
 
     void nextTick().then(() => fe.render(AdminView.ORDER_BOX, '#pdk-OrderBox'));
 
-    return {
-      order,
-      context: JSON.stringify({orderIdentifier: order.externalIdentifier, ...order}),
-    };
+    return {order};
   },
 });
 </script>

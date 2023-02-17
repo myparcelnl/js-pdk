@@ -12,7 +12,7 @@ import {
   ElementInstance,
   generateFieldId,
 } from '@myparcel-pdk/frontend-core/src';
-import {PropType, defineEmits, defineProps} from 'vue';
+import {PropType} from 'vue';
 import {useVModel} from '@vueuse/core';
 
 const props = defineProps({

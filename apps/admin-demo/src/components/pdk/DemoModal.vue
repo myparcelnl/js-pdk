@@ -132,7 +132,7 @@ export default defineComponent({
       modalContext,
 
       isOpen: computed(() => {
-        return propRefs.modalKey.value === modalStore.opened;
+        return propRefs.modalKey.value && propRefs.modalKey.value === modalStore.opened;
       }),
 
       modalStore,

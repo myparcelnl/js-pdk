@@ -20,7 +20,12 @@
         <td class="p-4">
           <div
             :id="`mypa-order-${order.externalIdentifier}`"
-            :data-pdk-context="JSON.stringify({orderIdentifier: order.externalIdentifier, ...order})" />
+            :data-pdk-context="
+              JSON.stringify({
+                orderIdentifier: order.externalIdentifier,
+                orderData: order,
+              })
+            " />
         </td>
 
         <td class="p-4">
