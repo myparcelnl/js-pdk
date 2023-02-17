@@ -20,19 +20,31 @@ import {
   isPackageTypePackage,
 } from './helpers';
 import {ref, resolveComponent} from 'vue';
-import {useContext, useFormatter} from '../../composables';
+import {Formatter, useContext, useFormatter} from '../../composables';
 import {AdminContextKey} from '../../types';
 import {Plugin} from '@myparcel-pdk/common/src';
 import {createShipmentFormName} from '../../utils';
-import {defineForm} from '@myparcel/vue-form-builder/src';
+import {InteractiveElementInstance, defineForm} from '@myparcel/vue-form-builder/src';
 import {useCarrier} from '../../sdk';
+import {SelectOption} from '@myparcel/vue-form-builder';
+
+const getFormattedInsurancePossibilities = (
+  field: InteractiveElementInstance,
+  formatter: Formatter,
+): SelectOption[] => {
+  const insurancePossibilities = getInsurancePossibilities(field.form);
+
+  return insurancePossibilities.map((amount) => ({
+    label: formatter.format('currency', amount / 100),
+    value: amount.toString(),
+  }));
+};
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,max-lines-per-function
 export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
   const dynamicContext = useContext(AdminContextKey.DYNAMIC);
 
   const carrierNames = dynamicContext.carrierOptions.map((options) => options.carrier.name);
-
   const formatter = useFormatter();
 
   return defineForm(createShipmentFormName(order.externalIdentifier), {
@@ -61,15 +73,15 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
           }));
         },
 
-        afterUpdate: ({form}) => {
+        afterUpdate: (field) => {
           // @ts-expect-error options exists
-          form.model[INSURANCE].props.options = getInsurancePossibilities(form).map((amount) => ({
-            label: formatter.format('currency', amount),
-            value: amount,
-          }));
+          field.form.fields.value.find((field) => field.name === INSURANCE).props.options =
+            getFormattedInsurancePossibilities(field, formatter);
 
           // @ts-expect-error options exists
-          form.model[PACKAGE_TYPE].props.options = getPackageTypes(form);
+          field.form.fields.value.find((field) => field.name === PACKAGE_TYPE).props.options = getPackageTypes(
+            field.form,
+          );
         },
       }),
 
@@ -159,13 +171,18 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         component: resolveComponent('PdkSelectInput'),
         ref: ref(order.deliveryOptions?.shipmentOptions.insurance ?? 0),
         label: 'shipment_options_insurance',
-
         props: {
           options: [],
         },
 
         visibleWhen: ({form}) => {
           return isPackageTypePackage(form) && hasShipmentOption(form, 'insurance');
+        },
+
+        onBeforeMount: (field) => {
+          const formattedInsurancePossibilities = getFormattedInsurancePossibilities(field, formatter);
+
+          field.props.options = formattedInsurancePossibilities;
         },
       }),
     ],
