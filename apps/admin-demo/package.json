@@ -31,7 +31,7 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
+    "@myparcel/vue-form-builder": "^1.0.0-alpha.35",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitest/coverage-c8": "^0.28.5",
     "autoprefixer": "^10.4.13",
