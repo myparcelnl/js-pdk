@@ -6,7 +6,7 @@
       </thead>
 
       <TransitionGroup
-        :name="config?.transitions.tableRow"
+        :name="config?.transitions?.tableRow"
         tag="tbody">
         <slot />
       </TransitionGroup>
