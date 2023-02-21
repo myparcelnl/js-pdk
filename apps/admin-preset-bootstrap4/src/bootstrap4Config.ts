@@ -6,7 +6,13 @@ import {AdminConfigurationPreset, AdminModalKey, useModalStore} from '@myparcel-
 // noinspection JSUnusedGlobalSymbols
 export const bootstrap4Config: AdminConfigurationPreset = {
   cssUtilities: {
+    displayFlex: 'd-flex',
+    marginLAuto: 'ml-auto',
+    marginYAuto: 'my-auto',
     textCenter: 'text-center',
+    textColorError: 'text-danger',
+    textColorSuccess: 'text-success',
+    whitespaceNoWrap: 'whitespace-nowrap',
   },
 
   /**

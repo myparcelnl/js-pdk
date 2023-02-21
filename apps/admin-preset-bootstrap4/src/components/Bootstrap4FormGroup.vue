@@ -16,7 +16,6 @@
 
       <small
         v-if="element.props?.description"
-        :id="helpId"
         class="form-text text-muted">
         {{ translate(element.props?.description) }}
       </small>
@@ -36,31 +35,13 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {PropType, defineComponent} from 'vue';
 
-/**
- * @see import('@myparcel-pdk/admin-components').DefaultFormGroup
- */
-export default defineComponent({
-  name: 'Bootstrap4FormGroup',
-  props: {
-    element: {
-      type: Object as PropType<ElementInstance>,
-      required: true,
-    },
-  },
+const props = defineProps<{
+  element: ElementInstance;
+}>();
 
-  setup: (props) => {
-    const {translate} = useLanguage();
-    const id = generateFieldId(props.element);
-
-    return {
-      id,
-      helpId: `fgHelp${id}`,
-      translate,
-    };
-  },
-});
+const {translate} = useLanguage();
+const id = generateFieldId(props.element);
 </script>

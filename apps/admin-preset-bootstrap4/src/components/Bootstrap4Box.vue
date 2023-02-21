@@ -31,42 +31,14 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import {ActionButton, ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {PropType, defineComponent} from 'vue';
 
-/**
- * @see import('@myparcel-pdk/admin-components').DefaultBox
- */
-export default defineComponent({
-  name: 'Bootstrap4Box',
+defineProps<{
+  loading: boolean;
+  title: string;
+  actions: ResolvedAction[];
+}>();
 
-  components: {
-    ActionButton,
-  },
-
-  props: {
-    loading: {
-      type: Boolean,
-    },
-
-    title: {type: String, default: null},
-
-    /**
-     * Available actions on the box.
-     */
-    actions: {
-      type: Array as PropType<ResolvedAction[]>,
-      default: () => [],
-    },
-  },
-
-  setup: () => {
-    const {translate} = useLanguage();
-
-    return {
-      translate,
-    };
-  },
-});
+const {translate} = useLanguage();
 </script>

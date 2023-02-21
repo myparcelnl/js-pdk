@@ -9,34 +9,16 @@
   </BaseButton>
 </template>
 
-<script lang="ts">
-/* eslint-disable vue/no-unused-properties */
-import {PropType, defineComponent} from 'vue';
-import BaseButton from './common/BaseButton.vue';
+<script setup lang="ts">
 import {AdminIcon} from '@myparcel-pdk/frontend-core/src';
+import BaseButton from './common/BaseButton.vue';
+import {defineProps} from 'vue';
 
-/**
- * @see import('@myparcel-pdk/admin-components').DefaultButton
- */
-export default defineComponent({
-  name: 'Bootstrap4Button',
-  components: {BaseButton},
-  props: {
-    disabled: {
-      type: Boolean,
-    },
+defineProps<{
+  disabled?: boolean;
+  icon?: AdminIcon;
+  label?: string;
+}>();
 
-    icon: {
-      type: String as PropType<AdminIcon>,
-      default: null,
-    },
-
-    label: {
-      type: String,
-      default: null,
-    },
-  },
-
-  emits: ['click'],
-});
+defineEmits<(event: 'click') => void>();
 </script>

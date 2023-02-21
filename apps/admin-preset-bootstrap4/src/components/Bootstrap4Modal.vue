@@ -41,60 +41,28 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import {
   ActionButton,
-  AdminModalKey,
   NotificationContainer,
   ResolvedAction,
   useLanguage,
   useModalStore,
 } from '@myparcel-pdk/frontend-core/src';
-import {PropType, computed, defineComponent, toRefs} from 'vue';
+import {computed, defineProps} from 'vue';
+import {AdminModalKey} from '@myparcel-pdk/frontend-core';
 
-/**
- * @see import('@myparcel-pdk/admin-components').DefaultModal
- */
-export default defineComponent({
-  name: 'Bootstrap4Modal',
+const props = defineProps<{
+  actions: ResolvedAction[];
+  modalKey: AdminModalKey;
+  title: string;
+}>();
 
-  components: {
-    NotificationContainer,
-    ActionButton,
-  },
+const {translate} = useLanguage();
 
-  props: {
-    modalKey: {
-      type: String as PropType<AdminModalKey>,
-      default: null,
-    },
+const modalStore = useModalStore();
 
-    title: {
-      type: String,
-      required: true,
-    },
-
-    /**
-     * Available actions in the modal.
-     */
-    actions: {
-      type: Array as PropType<ResolvedAction[]>,
-      required: true,
-    },
-  },
-
-  setup: (props) => {
-    const propRefs = toRefs(props);
-    const modalStore = useModalStore();
-    const {translate} = useLanguage();
-
-    return {
-      translate,
-
-      context: computed(() => {
-        return propRefs.modalKey.value === modalStore.opened ? modalStore.context : null;
-      }),
-    };
-  },
+const context = computed(() => {
+  return props.modalKey && props.modalKey === modalStore.opened ? modalStore.context : null;
 });
 </script>

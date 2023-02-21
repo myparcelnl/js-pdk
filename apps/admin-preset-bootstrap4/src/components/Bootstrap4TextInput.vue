@@ -1,52 +1,23 @@
 <template>
   <input
+    :id="id"
     v-model="model"
-    :disabled="disabled"
-    :type="type"
+    :disabled="element.isDisabled || element.isSuspended"
     class="form-control" />
 </template>
 
-<script lang="ts">
-import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP} from '@myparcel-pdk/frontend-core/src';
-import {defineComponent} from 'vue';
+<script setup lang="ts">
+import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
-/**
- * @see import('@myparcel-pdk/admin-components').DefaultTextInput
- */
-export default defineComponent({
-  name: 'Bootstrap4TextInput',
+const props = defineProps<{
+  element: ElementInstance;
+  // eslint-disable-next-line vue/no-unused-properties
+  modelValue: string | number | null;
+}>();
 
-  props: {
-    /**
-     * Controls disabled state.
-     */
-    disabled: {
-      type: Boolean,
-    },
+const emit = defineEmits<(event: 'update:modelValue', value: string | number) => void>();
 
-    /**
-     * The value of the model.
-     */
-    // eslint-disable-next-line vue/no-unused-properties
-    modelValue: {
-      type: [String, Number],
-      default: null,
-    },
-
-    /**
-     * Input type.
-     */
-    type: {
-      type: String,
-      default: 'text',
-    },
-  },
-
-  emits: [DEFAULT_VALUE_EMIT],
-
-  setup: (props, ctx) => ({
-    model: useVModel(props, DEFAULT_VALUE_PROP, ctx.emit),
-  }),
-});
+const model = useVModel(props, undefined, emit);
+const id = generateFieldId(props.element);
 </script>

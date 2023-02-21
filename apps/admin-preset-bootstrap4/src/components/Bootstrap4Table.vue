@@ -18,17 +18,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue';
+<script setup lang="ts">
 import {useAdminConfig} from '@myparcel-pdk/frontend-core/src';
 
-/**
- * @see import('@myparcel-pdk/admin-components').DefaultTable
- */
-export default defineComponent({
-  name: 'Bootstrap4Table',
-  setup: () => ({
-    config: useAdminConfig(),
-  }),
-});
+const config = useAdminConfig();
 </script>

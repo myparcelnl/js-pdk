@@ -26,38 +26,18 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import {ActionButton, ResolvedAction, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {PropType, defineComponent} from 'vue';
 import BaseButton from './common/BaseButton.vue';
 
-/**
- * @see import('@myparcel-pdk/admin-components').DefaultDropdownButton
- */
-export default defineComponent({
-  name: 'Bootstrap4DropdownButton',
-  components: {BaseButton, ActionButton},
-  props: {
-    disabled: {
-      type: Boolean,
-    },
+const props = defineProps<{
+  disabled?: boolean;
+  actions: ResolvedAction[];
+}>();
 
-    actions: {
-      type: Array as PropType<ResolvedAction[]>,
-      required: true,
-    },
-  },
+defineEmits<(event: 'click') => void>();
 
-  emits: ['click'],
+const {translate} = useLanguage();
 
-  setup: (props) => {
-    const {translate} = useLanguage();
-    const dropdownData = useDropdownData(props.actions);
-
-    return {
-      translate,
-      ...dropdownData,
-    };
-  },
-});
+const {dropdownActions} = useDropdownData(props.actions);
 </script>

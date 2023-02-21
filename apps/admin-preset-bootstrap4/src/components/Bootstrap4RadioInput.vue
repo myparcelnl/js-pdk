@@ -1,62 +1,34 @@
 <template>
   <div class="form-check">
     <input
-      :id="`radio_${value}`"
+      :id="id"
       v-model="model"
-      :disabled="disabled"
-      :value="value"
+      :disabled="element.isDisabled || element.isSuspended"
+      :value="element.props.value"
       class="form-check-input"
       type="radio" />
     <label
-      :for="`radio_${value}`"
-      class="form-check-label"
-      v-text="translate(label)">
+      :for="id"
+      class="form-check-label">
+      {{ translate(`toggle_${model ? 'yes' : 'no'}`) }}
     </label>
   </div>
 </template>
 
-<script lang="ts">
-import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {defineComponent} from 'vue';
+<script setup lang="ts">
+import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
-/**
- * @see import('@myparcel-pdk/admin-components').DefaultRadioInput
- */
-export default defineComponent({
-  name: 'Bootstrap4RadioInput',
+const props = defineProps<{
+  element: ElementInstance;
+  // eslint-disable-next-line vue/no-unused-properties
+  modelValue: string | number | null;
+}>();
 
-  props: {
-    disabled: {
-      type: Boolean,
-    },
+const emit = defineEmits<(event: 'update:modelValue', value: string | number) => void>();
 
-    label: {
-      type: String,
-      default: '',
-    },
+const model = useVModel(props, undefined, emit);
+const id = generateFieldId(props.element);
 
-    // eslint-disable-next-line vue/no-unused-properties
-    modelValue: {
-      type: [String, Number],
-      default: null,
-    },
-
-    value: {
-      type: [String, Number],
-      required: true,
-    },
-  },
-
-  emits: [DEFAULT_VALUE_EMIT],
-
-  setup: (props, ctx) => {
-    const {translate} = useLanguage();
-
-    return {
-      model: useVModel(props, DEFAULT_VALUE_PROP, ctx.emit),
-      translate,
-    };
-  },
-});
+const {translate} = useLanguage();
 </script>

@@ -20,29 +20,16 @@
   </Transition>
 </template>
 
-<script lang="ts">
-import {PropType, computed, defineComponent} from 'vue';
+<script setup lang="ts">
 import {Notification} from '@myparcel-pdk/frontend-core/src';
+import {computed} from 'vue';
 import {toArray} from '@myparcel/ts-utils';
 
-/**
- * @see import('@myparcel-pdk/admin-components').DefaultNotification
- */
-export default defineComponent({
-  name: 'Bootstrap4Notification',
-  props: {
-    notification: {
-      type: Object as PropType<Notification>,
-      required: true,
-    },
-  },
+const props = defineProps<{
+  notification: Notification;
+}>();
 
-  setup: (props) => {
-    return {
-      contentArray: computed(() => {
-        return toArray(props.notification.content);
-      }),
-    };
-  },
+const contentArray = computed(() => {
+  return toArray(props.notification.content);
 });
 </script>
