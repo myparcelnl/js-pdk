@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/frontend",
+  "name": "@myparcel-pdk/admin",
   "version": "1.0.0-alpha.0",
   "license": "MIT",
   "sideEffects": false,
