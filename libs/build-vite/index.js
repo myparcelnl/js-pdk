@@ -30,7 +30,6 @@ const createCommonViteConfig = (env) => {
     ],
 
     build: {
-      outDir: 'lib',
       minify: isProd,
       rollupOptions: {
         external,

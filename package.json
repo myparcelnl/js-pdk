@@ -45,7 +45,7 @@
     "exec": "yarn build:dev:base --output-style=stream",
     "ext": "ts,vue",
     "ignore": [
-      "**/lib/**"
+      "**/dist/**"
     ],
     "watch": [
       "apps",

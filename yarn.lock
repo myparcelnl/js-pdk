@@ -934,9 +934,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/build-tsup@workspace:*, @myparcel-pdk/build-tsup@workspace:libs/build/tsup":
+"@myparcel-pdk/build-tsup@workspace:*, @myparcel-pdk/build-tsup@workspace:libs/build-tsup":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/build-tsup@workspace:libs/build/tsup"
+  resolution: "@myparcel-pdk/build-tsup@workspace:libs/build-tsup"
   dependencies:
     "@myparcel/ts-utils": ^1.6.0
     fast-glob: ^3.2.12
@@ -944,9 +944,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/build-vite@workspace:*, @myparcel-pdk/build-vite@workspace:libs/build/vite":
+"@myparcel-pdk/build-vite@workspace:*, @myparcel-pdk/build-vite@workspace:libs/build-vite":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/build-vite@workspace:libs/build/vite"
+  resolution: "@myparcel-pdk/build-vite@workspace:libs/build-vite"
   dependencies:
     "@myparcel/ts-utils": ^1.6.0
     rollup-plugin-visualizer: ^5.9.0

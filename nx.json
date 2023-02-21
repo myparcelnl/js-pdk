@@ -4,16 +4,11 @@
   "affected": {
     "defaultBase": "alpha"
   },
-  "workspaceLayout": {
-    "appsDir": "apps",
-    "libsDir": "libs"
-  },
   "npmScope": "myparcel-pdk",
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": [
-        "{projectRoot}/lib",
         "{projectRoot}/dist",
         "{projectRoot}/tsconfig.build.tsbuildinfo"
       ]
@@ -21,7 +16,6 @@
     "build:dev": {
       "dependsOn": ["^build:dev"],
       "outputs": [
-        "{projectRoot}/lib",
         "{projectRoot}/dist",
         "{projectRoot}/tsconfig.build.tsbuildinfo"
       ]
@@ -31,14 +25,14 @@
     },
     "serve": {
       "dependsOn": ["build:dev"],
-      "outputs": ["{projectRoot}/lib", "{projectRoot}/dist"]
+      "outputs": ["{projectRoot}/dist"]
     },
     "test:run": {
       "outputs": ["{projectRoot}/coverage"]
     },
     "watch": {
       "dependsOn": ["^build:dev"],
-      "outputs": ["{projectRoot}/lib", "{projectRoot}/dist"]
+      "outputs": ["{projectRoot}/dist"]
     }
   },
   "tasksRunnerOptions": {

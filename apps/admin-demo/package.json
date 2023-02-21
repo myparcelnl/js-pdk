@@ -6,11 +6,11 @@
   "sideEffects": false,
   "type": "module",
   "exports": {
-    ".": "./lib/index.js",
+    ".": "./dist/index.js",
     "./src": "./src/index.ts"
   },
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "run translations:import && vite build",
     "clean": "run ws:clean \"$(pwd)\"",
