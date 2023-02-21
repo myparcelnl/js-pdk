@@ -869,7 +869,7 @@ __metadata:
     "@vitest/coverage-c8": ^0.28.5
     "@vue/test-utils": ^2.2.10
     "@vueuse/core": ^9.12.0
-    happy-dom: ^8.4.0
+    happy-dom: ^8.7.0
     pinia: ^2.0.30
     typescript: ^4.9.5
     vite: ^4.1.1
@@ -891,7 +891,7 @@ __metadata:
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.28.5
     autoprefixer: ^10.4.13
-    happy-dom: ^8.4.0
+    happy-dom: ^8.7.0
     postcss: ^8.4.21
     rollup-plugin-visualizer: ^5.9.0
     tailwindcss: ^3.2.6
@@ -914,7 +914,7 @@ __metadata:
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.28.5
     "@vue/test-utils": ^2.2.10
-    happy-dom: ^8.4.0
+    happy-dom: ^8.7.0
     pinia: ^2.0.30
     typescript: ^4.9.5
     vite: ^4.1.1
@@ -4826,9 +4826,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:^8.4.0":
-  version: 8.4.0
-  resolution: "happy-dom@npm:8.4.0"
+"happy-dom@npm:^8.7.0":
+  version: 8.7.0
+  resolution: "happy-dom@npm:8.7.0"
   dependencies:
     css.escape: ^1.5.1
     he: ^1.2.0
@@ -4836,7 +4836,7 @@ __metadata:
     webidl-conversions: ^7.0.0
     whatwg-encoding: ^2.0.0
     whatwg-mimetype: ^3.0.0
-  checksum: 39518a878b24d40c3d041ba8aec38acbebae7f6fa2a0a92d8c295260dd6349a959878eadfb3137cfe6727585caf3915df80bf999e77f34ce146bb83411f4ff0f
+  checksum: ee8f171ba0345a5f979b25037d3e85392878b9b0040c7df76787adcc19170806fd94b7b8afceec2f7525cafcc24756d766e9ef97954fa2a08af2856b8e2d4797
   languageName: node
   linkType: hard
 
