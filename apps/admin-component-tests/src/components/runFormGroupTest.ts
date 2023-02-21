@@ -1,7 +1,7 @@
 import {ElementInstance, createFormElement} from '@myparcel-pdk/frontend-core/src';
 import {runCommonComponentTests, runHasSlotTest} from '../common';
-import {MountingOptions} from '@vue/test-utils';
 import {AdminComponentTest} from '../tests';
+import {MountingOptions} from '@vue/test-utils';
 
 export const runFormGroupTest: AdminComponentTest = (component) => {
   const options: MountingOptions<{element: ElementInstance}> = {

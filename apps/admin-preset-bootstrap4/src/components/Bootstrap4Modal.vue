@@ -21,6 +21,7 @@
             <PdkIcon icon="close" />
           </button>
         </div>
+
         <div
           v-if="context"
           class="modal-body">
@@ -28,6 +29,7 @@
 
           <slot :context="context" />
         </div>
+
         <div class="modal-footer">
           <div class="btn-group">
             <ActionButton
@@ -44,13 +46,13 @@
 <script setup lang="ts">
 import {
   ActionButton,
+  AdminModalKey,
   NotificationContainer,
   ResolvedAction,
   useLanguage,
   useModalStore,
 } from '@myparcel-pdk/frontend-core/src';
 import {computed, defineProps} from 'vue';
-import {AdminModalKey} from '@myparcel-pdk/frontend-core';
 
 const props = defineProps<{
   actions: ResolvedAction[];

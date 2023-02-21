@@ -5,7 +5,7 @@
         :for="id"
         v-text="element.label" />
 
-      <ul v-if="element.errors.length">
+      <ul v-if="element.errors?.length">
         <li
           v-for="error in element.errors"
           :key="error"

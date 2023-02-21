@@ -49,7 +49,7 @@ export default defineComponent({
 
     onMounted(() => {
       if (props.element.props?.options?.length === 1 || !props.modelValue) {
-        model.value = props.element.props.options[0]?.value;
+        model.value = props.element.props.options?.[0]?.value;
       }
     });
 

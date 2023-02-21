@@ -1,6 +1,6 @@
 <template>
   <PdkCheckboxInput
-    v-for="(option, index) in element.props.options ?? []"
+    v-for="(option, index) in element.props?.options ?? []"
     :key="`${option.value}_${index}`"
     v-model="model"
     :disabled="option.disabled || element.isDisabled || element.isSuspended"

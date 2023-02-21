@@ -17,32 +17,16 @@
   </button>
 </template>
 
-<script lang="ts">
-import {PropType, defineComponent} from 'vue';
+<script setup lang="ts">
 import {TabDefinition} from '@myparcel-pdk/common/src';
 import {useLanguage} from '@myparcel-pdk/frontend-core/src';
 
-export default defineComponent({
-  name: 'DemoTabNavButton',
-  props: {
-    active: {
-      type: Boolean,
-    },
+defineProps<{
+  active?: boolean;
+  tab: TabDefinition;
+}>();
 
-    tab: {
-      type: Object as PropType<TabDefinition>,
-      required: true,
-    },
-  },
+defineEmits<(event: 'click') => void>();
 
-  emits: ['click'],
-
-  setup: () => {
-    const {translate} = useLanguage();
-
-    return {
-      translate,
-    };
-  },
-});
+const {translate} = useLanguage();
 </script>

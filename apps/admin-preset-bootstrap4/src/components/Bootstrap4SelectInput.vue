@@ -3,11 +3,11 @@
     :id="id"
     v-model="model"
     :class="{
-      disabled: element.props.options.length === 1 || element.isDisabled || element.isSuspended,
+      disabled: element.props?.options?.length === 1 || element.isDisabled || element.isSuspended,
     }"
     class="custom-select form-control">
     <option
-      v-for="(item, index) in element.props.options"
+      v-for="(item, index) in element.props?.options"
       :key="index"
       :value="item.value"
       v-text="item.label" />

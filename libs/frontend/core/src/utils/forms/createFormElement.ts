@@ -3,7 +3,7 @@ import {ElementInstance} from '../../types';
 import {ref} from 'vue';
 
 export const createFormElement = (
-  config: Partial<InteractiveElementConfiguration>,
+  config?: Partial<InteractiveElementConfiguration>,
   formName?: string,
 ): ElementInstance => {
   const form = {

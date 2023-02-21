@@ -4,7 +4,7 @@
       :id="id"
       v-model="model"
       :disabled="element.isDisabled || element.isSuspended"
-      :value="element.props.value"
+      :value="element.props?.value"
       class="form-check-input"
       type="radio" />
     <label

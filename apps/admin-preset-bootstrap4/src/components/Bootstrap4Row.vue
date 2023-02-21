@@ -8,8 +8,8 @@
 import {computed} from 'vue';
 
 const props = defineProps<{
-  columns: number | string;
-  collapseGutters: boolean;
+  columns?: number | string;
+  collapseGutters?: boolean;
 }>();
 
 const classes = computed(() => {

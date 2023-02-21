@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP} from '@myparcel-pdk/frontend-core';
+import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP} from '@myparcel-pdk/frontend-core/src';
 import {PropType, defineComponent} from 'vue';
 import {SelectOption} from '@myparcel-pdk/common/src';
 import {useVModel} from '@vueuse/core';

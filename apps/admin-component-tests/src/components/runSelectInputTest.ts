@@ -1,9 +1,9 @@
-import {DEFAULT_VALUE_EMIT, ElementInstance, createFormElement} from '@myparcel-pdk/frontend-core/src';
-import {MountingOptions, mount} from '@vue/test-utils';
 import {expect, it} from 'vitest';
+import {runCommonComponentTests, runCommonInputTests} from '../common';
 import {AdminComponentTest} from '../tests';
 import {SelectOption} from '@myparcel-pdk/common/src';
-import {runCommonComponentTests} from '../common';
+import {createInputOptions} from '../helpers';
+import {mount} from '@vue/test-utils';
 
 const selectOptions: SelectOption[] = [
   {value: '1', label: 'One'},
@@ -11,19 +11,10 @@ const selectOptions: SelectOption[] = [
 ];
 
 export const runSelectInputTest: AdminComponentTest = (component) => {
-  const options: MountingOptions<{element: ElementInstance; options: SelectOption[]}> = {
-    props: {
-      element: createFormElement({}),
-      options: selectOptions,
-    },
-  };
+  const options = createInputOptions('2', {options: selectOptions});
 
   runCommonComponentTests(component, options);
-
-  it('can be disabled', () => {
-    const wrapper = mount(component, {props: {disabled: true}});
-    expect(wrapper.find('select').attributes('disabled')).toBeDefined();
-  });
+  runCommonInputTests(component, options);
 
   it('sets options from props', () => {
     const wrapper = mount(component, {props: {options}});
@@ -34,20 +25,5 @@ export const runSelectInputTest: AdminComponentTest = (component) => {
         .findAll('option')
         .map((wrapper) => wrapper.element.value),
     ).toEqual(['1', '2']);
-  });
-
-  it('sets selected value from modelValue prop', () => {
-    const wrapper = mount(component, {props: {modelValue: '2'}});
-    expect(wrapper.find('select').element.value).toBe('2');
-  });
-
-  it('emits update:modelValue event', async () => {
-    expect.assertions(1);
-    const wrapper = mount(component, {props: {options}});
-
-    const select = wrapper.find('select');
-    await select.setValue('2');
-
-    expect(Object.keys(wrapper.emitted())).toEqual([DEFAULT_VALUE_EMIT]);
   });
 };

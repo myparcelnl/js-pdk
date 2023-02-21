@@ -15,8 +15,7 @@
 
 <script setup lang="ts">
 import {useVModel} from '@vueuse/core';
-import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-core/src';
-import {useLanguage} from '@myparcel-pdk/frontend-core';
+import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
 
 const props = defineProps<{
   element: ElementInstance;

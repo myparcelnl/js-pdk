@@ -9,28 +9,17 @@
   </button>
 </template>
 
-<script lang="ts">
-import {PropType, defineComponent} from 'vue';
+<script setup lang="ts">
 import {TabDefinition} from '@myparcel-pdk/common/src';
 import {useLanguage} from '@myparcel-pdk/frontend-core/src';
 
-export default defineComponent({
-  name: 'DefaultTabNavButton',
-  props: {
-    tab: {
-      type: Object as PropType<TabDefinition>,
-      required: true,
-    },
-  },
+defineProps<{
+  // eslint-disable-next-line vue/no-unused-properties
+  active?: boolean;
+  tab: TabDefinition;
+}>();
 
-  emits: ['click'],
+defineEmits<(event: 'click') => void>();
 
-  setup: () => {
-    const {translate} = useLanguage();
-
-    return {
-      translate,
-    };
-  },
-});
+const {translate} = useLanguage();
 </script>

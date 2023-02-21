@@ -9,7 +9,6 @@ import {
   Bootstrap4Image,
   Bootstrap4Modal,
   Bootstrap4Notification,
-  Bootstrap4NumberInput,
   Bootstrap4RadioInput,
   Bootstrap4Row,
   Bootstrap4SelectInput,
@@ -19,9 +18,9 @@ import {
 import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests/src';
 
 executePdkComponentTests({
+  PdkBox: Bootstrap4Box,
   PdkButton: Bootstrap4Button,
   PdkButtonGroup: Bootstrap4ButtonGroup,
-  PdkBox: Bootstrap4Box,
   PdkCheckboxInput: Bootstrap4CheckboxInput,
   PdkCol: Bootstrap4Col,
   PdkDropdownButton: Bootstrap4DropdownButton,
@@ -29,7 +28,6 @@ executePdkComponentTests({
   PdkImage: Bootstrap4Image,
   PdkModal: Bootstrap4Modal,
   PdkNotification: Bootstrap4Notification,
-  PdkNumberInput: Bootstrap4NumberInput,
   PdkRadioInput: Bootstrap4RadioInput,
   PdkRow: Bootstrap4Row,
   PdkSelectInput: Bootstrap4SelectInput,

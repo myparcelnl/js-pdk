@@ -4,6 +4,7 @@ import {afterAll, beforeAll, describe, vi} from 'vitest';
 import {AdminComponentName} from '@myparcel-pdk/common/src';
 import {Component} from 'vue';
 import {testMap} from './testMap';
+import {QueryKey} from '@tanstack/vue-query';
 
 export const executeAdminComponentTest = (name: AdminComponentName, component: Omit<Component, 'props'>): void => {
   const test = testMap[name];
@@ -16,6 +17,17 @@ export const executeAdminComponentTest = (name: AdminComponentName, component: O
 
   describe(name, () => {
     beforeAll(() => {
+      vi.mock('@myparcel-pdk/frontend-core/src', async () => ({
+        // @ts-expect-error this works
+        ...(await vi.importActual('@myparcel-pdk/frontend-core/src')),
+        useQueryStore: () => ({
+          get(queryKey: QueryKey) {
+            return vi.fn(() => queryKey);
+          },
+          has: () => true,
+        }),
+      }));
+
       vi.mock('../usePdkInstance', () => ({
         usePdkInstance: (): AdminInstance => ({
           appName: 'test',
