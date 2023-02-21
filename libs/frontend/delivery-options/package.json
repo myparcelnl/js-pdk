@@ -25,7 +25,7 @@
     "watch": "run ws:tsup:watch \"$(pwd)\""
   },
   "devDependencies": {
-    "@myparcel-pdk/build-tsup": "workspace:*",
+    "@myparcel-pdk/build-tsup": "workspace:^",
     "tsup": "^6.6.3"
   },
   "publishConfig": {
