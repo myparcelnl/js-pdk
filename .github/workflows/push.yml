@@ -29,6 +29,7 @@ jobs:
 
       - uses: myparcelnl/actions/bundlewatch@v3
         with:
+          config: bundlewatch.config.js
           token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
 
       - name: 'Run tests'
