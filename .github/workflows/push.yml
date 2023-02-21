@@ -27,6 +27,10 @@ jobs:
 
       - uses: ./.github/actions/setup
 
+      - uses: myparcelnl/actions/bundlewatch@v3
+        with:
+          token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+
       - name: 'Run tests'
         run: |
           yarn nx run-many \
@@ -38,7 +42,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: coverage
-          path: coverage
+          path: |
+            apps/**/coverage/clover.xml
+            libs/**/coverage/clover.xml
 
   coverage:
     name: 'Upload coverage reports 📊'
@@ -61,8 +67,6 @@ jobs:
     name: 'Publish new release 🚀'
     runs-on: ubuntu-22.04
     needs: test
-    # TODO: remove this when tests are mandatory
-    if: always()
     steps:
       - uses: myparcelnl/actions/setup-git-credentials@v3
         id: credentials
