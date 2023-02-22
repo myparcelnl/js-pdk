@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.6](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.5...@myparcel-pdk/app-builder@1.0.0-alpha.6) "@myparcel-pdk/app-builder" (2023-02-22)
+
+
+### Bug Fixes
+
+* **app-builder:** move dependencies to production ([cf7840d](https://github/myparcelnl/js-pdk/commit/cf7840dc646fdaf01256b444100060947113421d))
+
+
+
+
 ## [1.0.0-alpha.5](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.4...@myparcel-pdk/app-builder@1.0.0-alpha.5) "@myparcel-pdk/app-builder" (2023-02-22)
 
 
