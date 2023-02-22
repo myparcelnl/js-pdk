@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.8](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.7...@myparcel-pdk/app-builder@1.0.0-alpha.8) "@myparcel-pdk/app-builder" (2023-02-22)
+
+
+### Bug Fixes
+
+* **app-builder:** correctly resolve config file ([b9b02fd](https://github/myparcelnl/js-pdk/commit/b9b02fd872571b9f92e0c3cff61192963f39d8b6))
+* **app-builder:** don't try to compress when dry run is enabled ([58086aa](https://github/myparcelnl/js-pdk/commit/58086aaedc75f33337894b70eb065e47ad4d3550))
+
+
+
+
 ## [1.0.0-alpha.7](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.6...@myparcel-pdk/app-builder@1.0.0-alpha.7) "@myparcel-pdk/app-builder" (2023-02-22)
 
 
