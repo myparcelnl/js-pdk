@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.7](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.6...@myparcel-pdk/app-builder@1.0.0-alpha.7) "@myparcel-pdk/app-builder" (2023-02-22)
+
+
+### Bug Fixes
+
+* **app-builder:** correct npm package files ([af66b63](https://github/myparcelnl/js-pdk/commit/af66b633f2aca1599d8a8780f70e7911677a457a))
+
+
+
+
 ## [1.0.0-alpha.6](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.5...@myparcel-pdk/app-builder@1.0.0-alpha.6) "@myparcel-pdk/app-builder" (2023-02-22)
 
 
