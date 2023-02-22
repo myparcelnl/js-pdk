@@ -25,7 +25,7 @@
     "@myparcel-pdk/frontend-core": "workspace:*",
     "@myparcel/sdk": "^2.11.0",
     "@myparcel/ts-utils": "^1.6.0",
-    "@tanstack/vue-query": "^4.24.9",
+    "@tanstack/vue-query": "^4.24.10",
     "tailwindcss": "^3.2.7",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"

@@ -887,7 +887,7 @@ __metadata:
     "@myparcel/sdk": ^2.11.0
     "@myparcel/ts-utils": ^1.6.0
     "@myparcel/vue-form-builder": ^1.0.0-alpha.1
-    "@tanstack/vue-query": ^4.24.9
+    "@tanstack/vue-query": ^4.24.10
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.28.5
     autoprefixer: ^10.4.13
@@ -970,8 +970,8 @@ __metadata:
     typescript: ^4.9.5
     vite: ^4.1.4
     vite-plugin-custom-tsconfig: ^1.0.4
-    vite-plugin-dts: 1.7.3
-    vue-tsc: ^1.1.5
+    vite-plugin-dts: ^1.7.1
+    vue-tsc: ^1.1.7
   languageName: unknown
   linkType: soft
 
@@ -1005,7 +1005,7 @@ __metadata:
     "@myparcel/sdk": ^2.11.0
     "@myparcel/ts-utils": ^1.6.0
     "@myparcel/vue-form-builder": ^1.0.0-alpha.1
-    "@tanstack/vue-query": ^4.24.9
+    "@tanstack/vue-query": ^4.24.10
     "@types/lodash-es": ^4.17.6
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.28.5
@@ -1058,53 +1058,53 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-vfb/build-vite@portal:/Users/edie/Sites/myparcel/vue-form-builder/libs/build-vite::locator=%40myparcel-pdk%2Fmonorepo%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-vfb/build-vite@portal:/Users/edie/Sites/myparcel/vue-form-builder/libs/build-vite::locator=%40myparcel-pdk%2Fmonorepo%40workspace%3A."
-  dependencies:
-    rollup-plugin-visualizer: ^5.9.0
-    vite: ^4.1.4
-    vite-plugin-custom-tsconfig: ^1.0.4
-    vite-plugin-dts: 1.7.3
+"@myparcel-vfb/build-vite@npm:1.0.0-alpha.15":
+  version: 1.0.0-alpha.15
+  resolution: "@myparcel-vfb/build-vite@npm:1.0.0-alpha.15"
+  checksum: 8271d9ec4ef2c8dfee18586f0db4c97914d7f729b99bd03cf024b830ab24d3eb8f08345e5c3f83d15f38292425cebd1f7d192c971188d4ff9553e54efeef04e2
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@myparcel-vfb/core@portal:/Users/edie/Sites/myparcel/vue-form-builder/libs/core::locator=%40myparcel-pdk%2Fmonorepo%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-vfb/core@portal:/Users/edie/Sites/myparcel/vue-form-builder/libs/core::locator=%40myparcel-pdk%2Fmonorepo%40workspace%3A."
+"@myparcel-vfb/core@npm:^1.0.0-alpha.16":
+  version: 1.0.0-alpha.16
+  resolution: "@myparcel-vfb/core@npm:1.0.0-alpha.16"
   dependencies:
-    "@myparcel-vfb/build-vite": "workspace:*"
-    "@myparcel-vfb/hook-manager": "workspace:^1.0.0-alpha.16"
-    "@myparcel-vfb/utils": "workspace:^1.0.0-alpha.16"
+    "@myparcel-vfb/build-vite": 1.0.0-alpha.15
+    "@myparcel-vfb/hook-manager": ^1.0.0-alpha.17
+    "@myparcel-vfb/utils": ^1.0.0-alpha.17
     "@myparcel/ts-utils": ^1.6.0
+  checksum: 4455bb09c6c99b60cea347032c13876b898cb1086a5edd55fb778af054ca79ff9f755da9a837c0a502ac10d19a4a1357e7843648f3cf842815310e0710a36028
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@myparcel-vfb/hook-manager@portal:/Users/edie/Sites/myparcel/vue-form-builder/libs/hook-manager::locator=%40myparcel-pdk%2Fmonorepo%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-vfb/hook-manager@portal:/Users/edie/Sites/myparcel/vue-form-builder/libs/hook-manager::locator=%40myparcel-pdk%2Fmonorepo%40workspace%3A."
+"@myparcel-vfb/hook-manager@npm:^1.0.0-alpha.17":
+  version: 1.0.0-alpha.17
+  resolution: "@myparcel-vfb/hook-manager@npm:1.0.0-alpha.17"
   dependencies:
     "@myparcel/ts-utils": ^1.6.0
+  checksum: 040d37ba4e93e1ca8dcba4c13f31f004699b4a024a669da1aa0ff554a869cb16cce9c6a53f72ad22bfa6f8023e6d9c30864c86c77f571a99aeddc3ae1bad4bf3
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@myparcel-vfb/plugin@portal:/Users/edie/Sites/myparcel/vue-form-builder/libs/plugin::locator=%40myparcel-pdk%2Fmonorepo%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-vfb/plugin@portal:/Users/edie/Sites/myparcel/vue-form-builder/libs/plugin::locator=%40myparcel-pdk%2Fmonorepo%40workspace%3A."
+"@myparcel-vfb/plugin@npm:^1.0.0-alpha.16":
+  version: 1.0.0-alpha.16
+  resolution: "@myparcel-vfb/plugin@npm:1.0.0-alpha.16"
   dependencies:
-    "@myparcel-vfb/core": "workspace:^1.0.0-alpha.14"
+    "@myparcel-vfb/core": ^1.0.0-alpha.16
     "@myparcel/ts-utils": ^1.6.0
     "@vue/devtools-api": ^6.5.0
+  checksum: 72de4ae388c4293d76e24b8a8724704ba377dd5a2c71b3c25f8497c4f07b9df321d2e41b63ab81d3585a2a9f1e15b3ba50e8d778cdcff972f2e2cd487e1adfa8
   languageName: node
-  linkType: soft
+  linkType: hard
 
-"@myparcel-vfb/utils@portal:/Users/edie/Sites/myparcel/vue-form-builder/libs/utils::locator=%40myparcel-pdk%2Fmonorepo%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-vfb/utils@portal:/Users/edie/Sites/myparcel/vue-form-builder/libs/utils::locator=%40myparcel-pdk%2Fmonorepo%40workspace%3A."
+"@myparcel-vfb/utils@npm:^1.0.0-alpha.17":
+  version: 1.0.0-alpha.17
+  resolution: "@myparcel-vfb/utils@npm:1.0.0-alpha.17"
   dependencies:
     "@myparcel/ts-utils": ^1.6.0
+  checksum: d523ff3059755c7adeaeb41417341f4be5523bf6a998076280e0702004cefdeccd173c36958b579c333774c00b7b7ee08135b7d8603dd2a4da786a758b553c81
   languageName: node
-  linkType: soft
+  linkType: hard
 
 "@myparcel/prettier-config@npm:*, @myparcel/prettier-config@npm:^1.1.0":
   version: 1.1.0
@@ -1129,17 +1129,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel/vue-form-builder@portal:/Users/edie/Sites/myparcel/vue-form-builder/apps/vue-form-builder::locator=%40myparcel-pdk%2Fmonorepo%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@myparcel/vue-form-builder@portal:/Users/edie/Sites/myparcel/vue-form-builder/apps/vue-form-builder::locator=%40myparcel-pdk%2Fmonorepo%40workspace%3A."
+"@myparcel/vue-form-builder@npm:^1.0.0-alpha.1":
+  version: 1.0.0-alpha.38
+  resolution: "@myparcel/vue-form-builder@npm:1.0.0-alpha.38"
   dependencies:
-    "@myparcel-vfb/core": "workspace:^1.0.0-alpha.14"
-    "@myparcel-vfb/hook-manager": "workspace:^1.0.0-alpha.16"
-    "@myparcel-vfb/plugin": "workspace:^1.0.0-alpha.14"
-    "@myparcel-vfb/utils": "workspace:^1.0.0-alpha.16"
+    "@myparcel-vfb/core": ^1.0.0-alpha.16
+    "@myparcel-vfb/hook-manager": ^1.0.0-alpha.17
+    "@myparcel-vfb/plugin": ^1.0.0-alpha.16
+    "@myparcel-vfb/utils": ^1.0.0-alpha.17
     "@myparcel/ts-utils": ^1.6.0
+  checksum: 226ab17a5eb297756d2da3ac6896678396c95101e68d07c30601b22b942dcbd1011323cde7f97a61e3cc23e82db50b40cf7a750093e6a69b702f570ea6d1edb4
   languageName: node
-  linkType: soft
+  linkType: hard
 
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
@@ -1505,19 +1506,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:4.24.9":
-  version: 4.24.9
-  resolution: "@tanstack/query-core@npm:4.24.9"
-  checksum: 7b84e960d82c046c9eef6083cbc13b21c2ed8552fe8a5f092a66ca2586af66b770ca71ad838135ef49ac8b990e5f85d34a1d8b8de13fffb3abb0fb780a64a532
+"@tanstack/query-core@npm:4.24.10":
+  version: 4.24.10
+  resolution: "@tanstack/query-core@npm:4.24.10"
+  checksum: 8268b9dca4a2ed39f8575976d8a3e2f839bb6f4fb821dc00ba8e2aeffffe2f73e23344bcc24b9cb6dae9dbfe3ba2b14c76a1e0a38b4064c83beb9aa607fd94bc
   languageName: node
   linkType: hard
 
-"@tanstack/vue-query@npm:^4.24.9":
-  version: 4.24.9
-  resolution: "@tanstack/vue-query@npm:4.24.9"
+"@tanstack/vue-query@npm:^4.24.10":
+  version: 4.24.10
+  resolution: "@tanstack/vue-query@npm:4.24.10"
   dependencies:
     "@tanstack/match-sorter-utils": ^8.1.1
-    "@tanstack/query-core": 4.24.9
+    "@tanstack/query-core": 4.24.10
     "@vue/devtools-api": ^6.4.2
     vue-demi: ^0.13.11
   peerDependencies:
@@ -1526,7 +1527,7 @@ __metadata:
   peerDependenciesMeta:
     "@vue/composition-api":
       optional: true
-  checksum: 9c8916038598299487a568c399499e0c6b775cdd46cc90a89979554fb4443beca1e8a7781ed2dda52ce613691891aba307ff3552ad7ac9475817b98a0a60ff8d
+  checksum: 8213b9b331914e7662d8a9df17350fe3124b235e22a17ce91a69e497f1614da5e0cfa26e13c61a0177f0d25ac0fab01a4e72d50081444a7ea6ab330ab200bd6c
   languageName: node
   linkType: hard
 
@@ -1537,15 +1538,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ts-morph/common@npm:~0.18.0":
-  version: 0.18.1
-  resolution: "@ts-morph/common@npm:0.18.1"
+"@ts-morph/common@npm:~0.17.0":
+  version: 0.17.0
+  resolution: "@ts-morph/common@npm:0.17.0"
   dependencies:
-    fast-glob: ^3.2.12
+    fast-glob: ^3.2.11
     minimatch: ^5.1.0
     mkdirp: ^1.0.4
     path-browserify: ^1.0.1
-  checksum: 848fff5f7a6428d7c2f055de20cf8df864a967aac0cc03adc558d853442085a8fd9dec70429da24d67d263794b315edb0791c46d23ad9ae513251a7702df8031
+  checksum: f588c0acabcc6ca9463ac09b343d67a73f6e7bf47f674aaff11542b95b58342556b05241610b9e6dffc2966db529e7261b6860577786f919a835c22488ec9260
   languageName: node
   linkType: hard
 
@@ -1984,39 +1985,39 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@volar/language-core@npm:1.2.0-alpha.17":
-  version: 1.2.0-alpha.17
-  resolution: "@volar/language-core@npm:1.2.0-alpha.17"
+"@volar/language-core@npm:1.2.0-alpha.19":
+  version: 1.2.0-alpha.19
+  resolution: "@volar/language-core@npm:1.2.0-alpha.19"
   dependencies:
-    "@volar/source-map": 1.2.0-alpha.17
-  checksum: ab7d968f7865130c70fee9d9da0ee412ba3d39d52a999fa5bd998b4050d2c29f953073d029bd228867835401b229c68c031c77e7d521d32eaab8b8cb8d198c34
+    "@volar/source-map": 1.2.0-alpha.19
+  checksum: 1fcc9d4c34ccdf556487f64990afaeb7a6fe9a89040d6262621d7ff322850da8d0a78627a99651088afd134ac5f987c262244b6216b45ffd31e58c93784ceee1
   languageName: node
   linkType: hard
 
-"@volar/source-map@npm:1.2.0-alpha.17":
-  version: 1.2.0-alpha.17
-  resolution: "@volar/source-map@npm:1.2.0-alpha.17"
+"@volar/source-map@npm:1.2.0-alpha.19":
+  version: 1.2.0-alpha.19
+  resolution: "@volar/source-map@npm:1.2.0-alpha.19"
   dependencies:
     muggle-string: ^0.2.2
-  checksum: 813da20a7d2179d7ab4d9083bb839da17ed6f120aa3b6a54830524fcebe6cb797b51c32472849856cb895d2857ec45b3caf6252d5914b4e6c46713499db16817
+  checksum: 56f96bfaef2f2ef67c2ecc3681e3deca66d41bc9256607fb0156147b0a5de598890d9fc532c2d824815e92e59500f5c6bcd30f18b900fa606c3ebc06dcb7cec9
   languageName: node
   linkType: hard
 
-"@volar/typescript@npm:1.2.0-alpha.17":
-  version: 1.2.0-alpha.17
-  resolution: "@volar/typescript@npm:1.2.0-alpha.17"
+"@volar/typescript@npm:1.2.0-alpha.19":
+  version: 1.2.0-alpha.19
+  resolution: "@volar/typescript@npm:1.2.0-alpha.19"
   dependencies:
-    "@volar/language-core": 1.2.0-alpha.17
-  checksum: 98dd78b6fb4520b8fb298010df8caba6eb9c8b3809594df790917abb9c42f3173935ca09affde96ba56584e80e32beea8cc4157ebc118c5969bf3d2ae6b7e069
+    "@volar/language-core": 1.2.0-alpha.19
+  checksum: 26e025d300883f30792b25069aaaec84a40b2f12f3c240c48c4071f92d77ed6bcdd4c3a06e4927c827d78ea3fffe783786a87ed54e3a7dbdb8b5b7b9f1f552bd
   languageName: node
   linkType: hard
 
-"@volar/vue-language-core@npm:1.1.5":
-  version: 1.1.5
-  resolution: "@volar/vue-language-core@npm:1.1.5"
+"@volar/vue-language-core@npm:1.1.7":
+  version: 1.1.7
+  resolution: "@volar/vue-language-core@npm:1.1.7"
   dependencies:
-    "@volar/language-core": 1.2.0-alpha.17
-    "@volar/source-map": 1.2.0-alpha.17
+    "@volar/language-core": 1.2.0-alpha.19
+    "@volar/source-map": 1.2.0-alpha.19
     "@vue/compiler-dom": ^3.2.47
     "@vue/compiler-sfc": ^3.2.47
     "@vue/reactivity": ^3.2.47
@@ -2024,17 +2025,17 @@ __metadata:
     minimatch: ^6.1.6
     muggle-string: ^0.2.2
     vue-template-compiler: ^2.7.14
-  checksum: 3b35e1e267e5776dec3d06330e762aca7865f9efa300b22e657c89507cbe01837b7156993d333461de5ba96b96907dc770c94a16516afa14bbd21aa2e50fa255
+  checksum: d6813e37d0acb448431a4a5dfebb32caae9e087b464fc527fe3bfd8cede7ab201dd8663cc501c69edfba4dc5c78ed117296f1f983c1ceb4c0fa1141727ca7a37
   languageName: node
   linkType: hard
 
-"@volar/vue-typescript@npm:1.1.5":
-  version: 1.1.5
-  resolution: "@volar/vue-typescript@npm:1.1.5"
+"@volar/vue-typescript@npm:1.1.7":
+  version: 1.1.7
+  resolution: "@volar/vue-typescript@npm:1.1.7"
   dependencies:
-    "@volar/typescript": 1.2.0-alpha.17
-    "@volar/vue-language-core": 1.1.5
-  checksum: ae7c748cc2c994b3f1c76fc8edbb55da3740fe2a1f41dcac05d513d79ee940bc3b031168ee441ee28c571e503648861d8ddd5909b4acfbf2a6653aac38c60743
+    "@volar/typescript": 1.2.0-alpha.19
+    "@volar/vue-language-core": 1.1.7
+  checksum: 78fd2e42dc3b6beb27134b34a6f5e85849f7b84a65758ea15bd2cf5bbd99419e75724bd2a02941e025f496e18718875a215f1a6f5c9234b9c0b7af159bf13d96
   languageName: node
   linkType: hard
 
@@ -4692,7 +4693,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.12, fast-glob@npm:^3.2.2, fast-glob@npm:^3.2.9":
+"fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.12, fast-glob@npm:^3.2.2, fast-glob@npm:^3.2.9":
   version: 3.2.12
   resolution: "fast-glob@npm:3.2.12"
   dependencies:
@@ -6251,9 +6252,9 @@ __metadata:
   linkType: hard
 
 "lru-cache@npm:^7.7.1":
-  version: 7.16.2
-  resolution: "lru-cache@npm:7.16.2"
-  checksum: 8246535671a1e84ff964d31c5b81b36b60253d492dd46ef799bb6c3994db2812aa7563a595ea5fba6bf2ac8264da93f41fbd0231c40e8d55b0fbef1e8f04684a
+  version: 7.17.0
+  resolution: "lru-cache@npm:7.17.0"
+  checksum: 28c2a98ad313b8d61beac1f08257b6f0ca990e39d24a9bc831030b6e209447cfb11c6d9d1a774282189bfc9609d1dfd17ebe485228dd68f7b96b6b9b7740894e
   languageName: node
   linkType: hard
 
@@ -6538,9 +6539,9 @@ __metadata:
   linkType: hard
 
 "minipass@npm:^4.0.0":
-  version: 4.0.3
-  resolution: "minipass@npm:4.0.3"
-  checksum: a09f405e2f380ae7f6ee0cbb53b45c1fcc1b6c70fc3896f4d20649d92a10e61892c57bd9960a64cedf6c90b50022cb6c195905b515039c335b423202f99e6f18
+  version: 4.2.0
+  resolution: "minipass@npm:4.2.0"
+  checksum: 3c3ce269eacdcecb56b5dfe4bb4ab905d60fea1af4c967c7ed54baadfdd4af03e4d926567fb655957504fb4c9e2e7adbb2dc636927dfb56c829f2b25f1b2b3dd
   languageName: node
   linkType: hard
 
@@ -8770,13 +8771,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-morph@npm:17.0.1":
-  version: 17.0.1
-  resolution: "ts-morph@npm:17.0.1"
+"ts-morph@npm:^16.0.0":
+  version: 16.0.0
+  resolution: "ts-morph@npm:16.0.0"
   dependencies:
-    "@ts-morph/common": ~0.18.0
+    "@ts-morph/common": ~0.17.0
     code-block-writer: ^11.0.3
-  checksum: 4748ab45d0fb0be235f69399ea217cf1c5984ad2ef3ff9eba5a417571f73098c6f1f765fc011eaadc48179471b977f1e44f72eb993932e5c74c5031ab6c60f3a
+  checksum: a45ee1a2da09b06ac45a468c1cb9b00cc1b335224afddb22c30e4ad8a747b71c8a7c6cea29a6309ebf68d69f5dc8d3650d381891b77da5e2ad3e301dc3de40d5
   languageName: node
   linkType: hard
 
@@ -9123,9 +9124,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-dts@npm:1.7.3":
-  version: 1.7.3
-  resolution: "vite-plugin-dts@npm:1.7.3"
+"vite-plugin-dts@npm:1.7.1":
+  version: 1.7.1
+  resolution: "vite-plugin-dts@npm:1.7.1"
   dependencies:
     "@microsoft/api-extractor": ^7.33.5
     "@rollup/pluginutils": ^5.0.2
@@ -9134,10 +9135,10 @@ __metadata:
     fast-glob: ^3.2.12
     fs-extra: ^10.1.0
     kolorist: ^1.6.0
-    ts-morph: 17.0.1
+    ts-morph: ^16.0.0
   peerDependencies:
     vite: ">=2.9.0"
-  checksum: 8bc41400a4b29d0c178e7c0acc23f5e839637725d3a4e909defc820308f654280bde59901d5a287b84501d71fa4129abafa05fb83756fda328916e423af2d2a7
+  checksum: e2714a9e1727860cb217308b000d7306f98ba626998893a72d8b0e5db577d989457827033c76125a87491ace453325726da3795f17c3fea3e8af0d5e81820e89
   languageName: node
   linkType: hard
 
@@ -9284,17 +9285,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-tsc@npm:^1.1.5":
-  version: 1.1.5
-  resolution: "vue-tsc@npm:1.1.5"
+"vue-tsc@npm:^1.1.7":
+  version: 1.1.7
+  resolution: "vue-tsc@npm:1.1.7"
   dependencies:
-    "@volar/vue-language-core": 1.1.5
-    "@volar/vue-typescript": 1.1.5
+    "@volar/vue-language-core": 1.1.7
+    "@volar/vue-typescript": 1.1.7
   peerDependencies:
     typescript: "*"
   bin:
     vue-tsc: bin/vue-tsc.js
-  checksum: b051f64aff5b3ec41eeef32a7c3e99d8afeb124261882f598a325f29e628a42d001ccd968cdffd848943f71f01d013713bd5c2109c6d3e81df25775085b8645c
+  checksum: 3e8055a5109d9a5cb5dcbe2ba270e29f55a709c5b198d0bacf7596827c26867e35c41338df28f82d786861b469b836b8bebe7d710c2b5936116291c1ba2765cb
   languageName: node
   linkType: hard
 

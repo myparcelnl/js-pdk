@@ -15,7 +15,7 @@
     "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
     "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
-    "start": "ts-node --project ./tsconfig.build.json src/main.ts",
+    "start": "ts-node --project ./tsconfig.build.json src/index.ts",
     "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
   },
   "devDependencies": {
