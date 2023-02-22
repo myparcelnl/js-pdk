@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@myparcel-pdk/app-builder",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "node": "./dist/index.js"
+    },
+    "./src": {
+      "node": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "run ws:tsup:build \"$(pwd)\"",
+    "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "lint": "run ws:lint \"$(pwd)\"",
+    "start": "ts-node --project ./tsconfig.build.json src/main.ts",
+    "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/debug": "^4.1.7",
+    "@types/inquirer": "^9.0.3",
+    "@types/interpret": "^1.1.1",
+    "@types/liftoff": "^4.0.0",
+    "commander": "^10.0.0",
+    "debug": "^4.3.4",
+    "inquirer": "^9.1.4",
+    "interpret": "^3.1.1",
+    "liftoff": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
