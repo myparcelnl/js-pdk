@@ -79,5 +79,43 @@
     "prettier": "^2.8.4",
     "rimraf": "^4.1.2"
   },
-  "packageManager": "yarn@3.4.1"
+  "packageManager": "yarn@3.4.1",
+  "bundlewatch": {
+    "ci": {
+      "trackBranches": [
+        "main",
+        "alpha",
+        "beta"
+      ]
+    },
+    "files": [
+      {
+        "path": "./apps/admin/dist/**/*.js"
+      },
+      {
+        "path": "./apps/admin-component-tests/dist/**/*.js"
+      },
+      {
+        "path": "./apps/admin-components/dist/**/*.js"
+      },
+      {
+        "path": "./apps/admin-preset-bootstrap4/dist/**/*.js"
+      },
+      {
+        "path": "./apps/app-builder/dist/**/*.js"
+      },
+      {
+        "path": "./apps/checkout/dist/**/*.js"
+      },
+      {
+        "path": "./libs/common/dist/**/*.js"
+      },
+      {
+        "path": "./libs/frontend/core/dist/**/*.js"
+      },
+      {
+        "path": "./libs/frontend/delivery-options/dist/**/*.js"
+      }
+    ]
+  }
 }
