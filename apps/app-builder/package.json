@@ -12,9 +12,10 @@
   },
   "types": "./dist/index.d.ts",
   "bin": {
-    "pdk-builder": "./dist/index.js"
+    "pdk-builder": "./bin/index.js"
   },
   "files": [
+    "bin",
     "dist",
     "src"
   ],
