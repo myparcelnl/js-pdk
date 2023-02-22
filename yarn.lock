@@ -98,6 +98,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@edielemoine/google-docs-importer@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@edielemoine/google-docs-importer@npm:1.0.2"
+  dependencies:
+    "@types/mock-fs": ^4.13.1
+    "@types/node": ^16.11.45
+    csv-parse: ^5.3.0
+    dotenv: ^16.0.1
+    eslint: ^8.20.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-prettier: ^4.2.1
+    prettier: ^2.7.1
+    typescript: ^4.7.4
+    yargs: ^17.5.1
+  bin:
+    google-docs-importer: dist/index.js
+  checksum: 1df103e360aeba9a1e691ea21bcb1c31a29c5652e793e43a0ab93abed45b2042f55fe74e59b5e923b7ee884bec67f09b6f828e5ec54ef494c207c2ae3de8a2c1
+  languageName: node
+  linkType: hard
+
 "@esbuild/android-arm64@npm:0.16.17":
   version: 0.16.17
   resolution: "@esbuild/android-arm64@npm:0.16.17"
@@ -882,6 +902,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-demo@workspace:apps/admin-demo"
   dependencies:
+    "@edielemoine/google-docs-importer": ^1.0.2
     "@myparcel-pdk/admin-components": "workspace:*"
     "@myparcel-pdk/frontend-core": "workspace:*"
     "@myparcel/sdk": ^2.11.0
@@ -1758,6 +1779,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/mock-fs@npm:^4.13.1":
+  version: 4.13.1
+  resolution: "@types/mock-fs@npm:4.13.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: a5fcf8212daa270e6aa560019a4bd28a66e6fa49c55c1373746d5894f4aa1aafa5588335194953cf014de3c77df6be67a041fb6638ead7124307370985880b6c
+  languageName: node
+  linkType: hard
+
 "@types/ms@npm:*":
   version: 0.7.31
   resolution: "@types/ms@npm:0.7.31"
@@ -1776,6 +1806,13 @@ __metadata:
   version: 13.13.52
   resolution: "@types/node@npm:13.13.52"
   checksum: 8f1afff497ebeba209e2dc340d823284e087a47632afe99a7daa30eaff80893e520f222ad400cd1f2d3b8288e93cf3eaded52a8e64eaefb8aacfe6c35de98f42
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^16.11.45":
+  version: 16.18.12
+  resolution: "@types/node@npm:16.18.12"
+  checksum: fc3271182414f8593018ef8f00b4718116a92f463f619081bd399d9460e7861e1dd7eebc7cf94c23567e418ff397babed077011711aae8d47171b5a81c5bd71d
   languageName: node
   linkType: hard
 
@@ -4001,6 +4038,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"csv-parse@npm:^5.3.0":
+  version: 5.3.5
+  resolution: "csv-parse@npm:5.3.5"
+  checksum: 077e010db2ebbc9db708b719f2f650577c5ec8d176cd4363235d6644c36c642811d05ef1b6907390dd7466bde20a8dbb0f34994bc0e101521eb09e6691a02206
+  languageName: node
+  linkType: hard
+
 "dateformat@npm:^3.0.0":
   version: 3.0.3
   resolution: "dateformat@npm:3.0.3"
@@ -4211,6 +4255,13 @@ __metadata:
   dependencies:
     is-obj: ^2.0.0
   checksum: d5775790093c234ef4bfd5fbe40884ff7e6c87573e5339432870616331189f7f5d86575c5b5af2dcf0f61172990f4f734d07844b1f23482fff09e3c4bead05ea
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.0.1":
+  version: 16.0.3
+  resolution: "dotenv@npm:16.0.3"
+  checksum: afcf03f373d7a6d62c7e9afea6328e62851d627a4e73f2e12d0a8deae1cd375892004f3021883f8aec85932cd2834b091f568ced92b4774625b321db83b827f8
   languageName: node
   linkType: hard
 
@@ -4511,7 +4562,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:*, eslint-config-prettier@npm:^8.3.0":
+"eslint-config-prettier@npm:*, eslint-config-prettier@npm:^8.3.0, eslint-config-prettier@npm:^8.5.0":
   version: 8.6.0
   resolution: "eslint-config-prettier@npm:8.6.0"
   peerDependencies:
@@ -4608,7 +4659,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:*, eslint@npm:^8.34.0":
+"eslint@npm:*, eslint@npm:^8.20.0, eslint@npm:^8.34.0":
   version: 8.34.0
   resolution: "eslint@npm:8.34.0"
   dependencies:
@@ -7681,7 +7732,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:*, prettier@npm:^2.8.4":
+"prettier@npm:*, prettier@npm:^2.7.1, prettier@npm:^2.8.4":
   version: 2.8.4
   resolution: "prettier@npm:2.8.4"
   bin:
@@ -9149,7 +9200,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.9.5":
+"typescript@npm:^4.7.4, typescript@npm:^4.9.5":
   version: 4.9.5
   resolution: "typescript@npm:4.9.5"
   bin:
@@ -9169,7 +9220,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.9.5#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.7.4#~builtin<compat/typescript>, typescript@patch:typescript@^4.9.5#~builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
   bin:
