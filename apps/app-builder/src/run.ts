@@ -1,19 +1,26 @@
 import {copy, rename, zip} from './commands';
+import {createWithConfig, createWithContext} from './utils/hooks';
 import {LiftoffEnv} from 'liftoff';
 import {init} from './commands/init';
 import packageJson from '../package.json' assert {type: 'json'};
 import {program} from 'commander';
-import {withConfig} from './utils/withConfig';
 
 const OPTION_DEBUG = ['--debug', 'Enable debug mode'] as const;
 const OPTION_DRY_RUN = ['--dry-run', 'Dry run'] as const;
 
 const ARGUMENT_PROJECT = ['[project]', 'Project name', 'all'] as const;
 
-export const run = async (env: LiftoffEnv, argv: string[]): Promise<void> => {
+export const run = (env: LiftoffEnv, argv: string[]): void => {
+  const withContext = createWithContext(env, argv);
+  const withConfig = createWithConfig(env, argv);
+
   program.name('PDK Builder').description('Builds a plugin.').version(packageJson.version);
 
-  program.command('init').description('Create a new config file').action(init);
+  program
+    .command('init')
+    .description('Create a new config file')
+    .option(...OPTION_DEBUG)
+    .action(withContext(init));
 
   program
     .command('all')
