@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.4](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.3...@myparcel-pdk/app-builder@1.0.0-alpha.4) "@myparcel-pdk/app-builder" (2023-02-22)
+
+
+### Bug Fixes
+
+* **app-builder:** update copy command ([b983220](https://github/myparcelnl/js-pdk/commit/b9832202577af80fcac94e9e18446884e110931a))
+
+
+
+
 ## [1.0.0-alpha.3](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.2...@myparcel-pdk/app-builder@1.0.0-alpha.3) "@myparcel-pdk/app-builder" (2023-02-22)
 
 
