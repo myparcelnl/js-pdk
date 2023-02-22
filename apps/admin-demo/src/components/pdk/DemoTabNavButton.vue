@@ -10,7 +10,6 @@
     <PdkIcon
       v-if="tab.icon"
       :icon="tab.icon" />
-    <!-- Button content. Can be used instead of `label` prop. -->
     <slot>
       {{ translate(tab.name) }}
     </slot>
@@ -18,15 +17,22 @@
 </template>
 
 <script setup lang="ts">
+import {PropType} from 'vue';
 import {TabDefinition} from '@myparcel-pdk/common/src';
 import {useLanguage} from '@myparcel-pdk/frontend-core/src';
 
-defineProps<{
-  active?: boolean;
-  tab: TabDefinition;
-}>();
+defineProps({
+  active: {
+    type: Boolean,
+  },
 
-defineEmits<(event: 'click') => void>();
+  tab: {
+    type: Object as PropType<TabDefinition>,
+    required: true,
+  },
+});
+
+defineEmits(['click']);
 
 const {translate} = useLanguage();
 </script>

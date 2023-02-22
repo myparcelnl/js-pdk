@@ -1,6 +1,5 @@
-import {AnyElementConfiguration, defineField} from '@myparcel/vue-form-builder/src';
+import {AnyElementConfiguration, InteractiveElementConfiguration, defineField} from '@myparcel/vue-form-builder/src';
 import {Ref, ref} from 'vue';
-import {InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {Plugin} from '@myparcel-pdk/common/src';
 import {resolveFormComponent} from '@myparcel-pdk/frontend-core/src';
 

@@ -12,62 +12,53 @@
   </a>
 </template>
 
-<script lang="ts">
-import {AnchorHTMLAttributes, PropType, computed, defineComponent} from 'vue';
-import {ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-core/src';
-
+<script lang="ts" setup>
 /**
  * This component is used to render a button. The button can be used to trigger
  * an action. The button can have multiple icons and a label. The button can be
  * disabled.
  */
-export default defineComponent({
-  name: 'DefaultLink',
-  props: {
-    action: {
-      type: Object as PropType<ResolvedAction>,
-      default: null,
-    },
+import {AnchorHTMLAttributes, PropType, computed} from 'vue';
+import {ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-core/src';
 
-    hideText: {
-      type: Boolean,
-    },
-
-    href: {
-      type: String,
-      default: '#',
-    },
+const props = defineProps({
+  action: {
+    type: Object as PropType<ResolvedAction>,
+    default: null,
   },
 
-  emits: ['click'],
-
-  setup: (props, ctx) => {
-    const {translate} = useLanguage();
-
-    const onClick = async (event: MouseEvent): Promise<void> => {
-      event.preventDefault();
-      ctx.emit('click', event);
-      await props.action?.onClick();
-    };
-
-    return {
-      translate,
-
-      linkAttributes: computed(() => {
-        const attributes: AnchorHTMLAttributes = {
-          href: props.href,
-        };
-
-        if (attributes.href?.startsWith('http')) {
-          attributes.rel = 'noopener noreferrer';
-          attributes.target = '_blank';
-        } else {
-          attributes.onClick = onClick;
-        }
-
-        return attributes;
-      }),
-    };
+  hideText: {
+    type: Boolean,
   },
+
+  href: {
+    type: String,
+    default: '#',
+  },
+});
+
+const emit = defineEmits(['click']);
+
+const {translate} = useLanguage();
+
+const onClick = async (event: MouseEvent): Promise<void> => {
+  event.preventDefault();
+  emit('click', event);
+  await props.action?.onClick();
+};
+
+const linkAttributes = computed(() => {
+  const attributes: AnchorHTMLAttributes = {
+    href: props.href,
+  };
+
+  if (attributes.href?.startsWith('http')) {
+    attributes.rel = 'noopener noreferrer';
+    attributes.target = '_blank';
+  } else {
+    attributes.onClick = onClick;
+  }
+
+  return attributes;
 });
 </script>

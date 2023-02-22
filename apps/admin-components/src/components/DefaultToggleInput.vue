@@ -13,48 +13,19 @@
   </label>
 </template>
 
-<script lang="ts">
-import {
-  DEFAULT_VALUE_EMIT,
-  DEFAULT_VALUE_PROP,
-  ElementInstance,
-  generateFieldId,
-  useLanguage,
-} from '@myparcel-pdk/frontend-core/src';
-import {PropType, defineComponent} from 'vue';
+<script lang="ts" setup>
+import {generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {useElement} from '@myparcel/vue-form-builder/src';
 import {useVModel} from '@vueuse/core';
 
-/**
- * A checkbox. Needs an unique value.
- */
-export default defineComponent({
-  name: 'DefaultToggleInput',
-  props: {
-    element: {
-      type: Object as PropType<ElementInstance>,
-      required: true,
-    },
+// eslint-disable-next-line vue/no-unused-properties
+const props = defineProps({modelValue: {type: Boolean}});
+const emit = defineEmits(['update:modelValue']);
 
-    /**
-     * The value of the model.
-     */
-    // eslint-disable-next-line vue/no-unused-properties
-    modelValue: {
-      type: [String, Boolean],
-      default: false,
-    },
-  },
+const model = useVModel(props, undefined, emit);
 
-  emits: [DEFAULT_VALUE_EMIT],
+const element = useElement();
+const id = generateFieldId();
 
-  setup: (props, ctx) => {
-    const {translate} = useLanguage();
-
-    return {
-      id: generateFieldId(props.element),
-      model: useVModel(props, DEFAULT_VALUE_PROP, ctx.emit),
-      translate,
-    };
-  },
-});
+const {translate} = useLanguage();
 </script>

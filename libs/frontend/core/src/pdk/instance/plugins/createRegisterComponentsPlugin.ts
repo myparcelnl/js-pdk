@@ -59,18 +59,15 @@ export const createRegisterComponentsPlugin: PdkAppPlugin = ({config, logger}) =
 
       const {translate} = useLanguage();
 
-      app.use(
-        MyParcelFormBuilderPlugin,
-        mergeWith(
-          {
-            renderLabel: translate,
-            field: {
-              wrapper: config.components.PdkFormGroup,
-            },
-          },
-          config.formConfig,
-        ) as FormConfiguration,
-      );
+      const defaultConfig: Partial<FormConfiguration> = {
+        renderLabel: translate,
+        field: {
+          elementProp: false,
+          wrapper: config.components.PdkFormGroup,
+        },
+      };
+
+      app.use(MyParcelFormBuilderPlugin, mergeWith(defaultConfig, config.formConfig));
 
       logger.debug('Installed components plugin.');
     },

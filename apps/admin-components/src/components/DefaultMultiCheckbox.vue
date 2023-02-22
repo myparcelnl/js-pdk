@@ -8,35 +8,15 @@
     :value="option.value" />
 </template>
 
-<script lang="ts">
-import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP, ElementInstance} from '@myparcel-pdk/frontend-core/src';
-import {PropType, defineComponent} from 'vue';
+<script lang="ts" setup>
+import {useElement} from '@myparcel/vue-form-builder/src';
 import {useVModel} from '@vueuse/core';
 
-/**
- * A checkbox group. Renders a list of checkboxes which each have their own value.
- */
-export default defineComponent({
-  name: 'DefaultMultiCheckbox',
-  props: {
-    element: {
-      type: Object as PropType<ElementInstance>,
-      required: true,
-    },
+// eslint-disable-next-line vue/no-unused-properties
+const props = defineProps<{modelValue: string | boolean}>();
+const emit = defineEmits(['update:modelValue']);
 
-    // eslint-disable-next-line vue/no-unused-properties
-    modelValue: {
-      type: [String, Boolean],
-      default: null,
-    },
-  },
+const model = useVModel(props, undefined, emit);
 
-  emits: [DEFAULT_VALUE_EMIT],
-
-  setup: (props, ctx) => {
-    return {
-      model: useVModel(props, DEFAULT_VALUE_PROP, ctx.emit),
-    };
-  },
-});
+const element = useElement();
 </script>

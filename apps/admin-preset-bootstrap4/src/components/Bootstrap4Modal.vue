@@ -52,13 +52,24 @@ import {
   useLanguage,
   useModalStore,
 } from '@myparcel-pdk/frontend-core/src';
-import {computed, defineProps} from 'vue';
+import {PropType, computed} from 'vue';
 
-const props = defineProps<{
-  actions: ResolvedAction[];
-  modalKey: AdminModalKey;
-  title: string;
-}>();
+const props = defineProps({
+  modalKey: {
+    type: String as PropType<AdminModalKey>,
+    default: null,
+  },
+
+  title: {
+    type: String,
+    default: null,
+  },
+
+  actions: {
+    type: Array as PropType<ResolvedAction[]>,
+    default: (): never[] => [],
+  },
+});
 
 const {translate} = useLanguage();
 

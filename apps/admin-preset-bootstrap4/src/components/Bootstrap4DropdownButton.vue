@@ -29,11 +29,24 @@
 <script setup lang="ts">
 import {ActionButton, ResolvedAction, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import BaseButton from './common/BaseButton.vue';
+import {PropType} from 'vue';
 
-const props = defineProps<{
-  disabled?: boolean;
-  actions: ResolvedAction[];
-}>();
+const props = defineProps({
+  /**
+   * List of actions.
+   */
+  actions: {
+    type: Array as PropType<ResolvedAction[]>,
+    default: (): never[] => [],
+  },
+
+  /**
+   * Controls disabled state.
+   */
+  disabled: {
+    type: Boolean,
+  },
+});
 
 defineEmits<(event: 'click') => void>();
 

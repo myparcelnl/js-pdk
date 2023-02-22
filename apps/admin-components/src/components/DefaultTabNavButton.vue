@@ -10,16 +10,23 @@
 </template>
 
 <script setup lang="ts">
+import {PropType} from 'vue';
 import {TabDefinition} from '@myparcel-pdk/common/src';
 import {useLanguage} from '@myparcel-pdk/frontend-core/src';
 
-defineProps<{
+defineProps({
   // eslint-disable-next-line vue/no-unused-properties
-  active?: boolean;
-  tab: TabDefinition;
-}>();
+  active: {
+    type: Boolean,
+  },
 
-defineEmits<(event: 'click') => void>();
+  tab: {
+    type: Object as PropType<TabDefinition>,
+    required: true,
+  },
+});
+
+defineEmits(['click']);
 
 const {translate} = useLanguage();
 </script>

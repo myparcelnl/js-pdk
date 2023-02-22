@@ -7,37 +7,31 @@
     :width="width" />
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue';
+<script lang="ts" setup>
+defineProps<{
+  /**
+   * The source of the image.
+   */
+  src: string;
 
-export default defineComponent({
-  name: 'DefaultImage',
+  /**
+   * The alternative text of the image.
+   */
+  alt: string;
 
-  props: {
-    src: {
-      type: String,
-      required: true,
-    },
+  /**
+   * The title of the image.
+   */
+  title: string | null;
 
-    alt: {
-      type: String,
-      required: true,
-    },
+  /**
+   * The width of the image.
+   */
+  width: number | string | null;
 
-    title: {
-      type: String,
-      default: null,
-    },
-
-    width: {
-      type: [Number, String],
-      default: null,
-    },
-
-    height: {
-      type: [Number, String],
-      default: null,
-    },
-  },
-});
+  /**
+   * The height of the image.
+   */
+  height: number | string | null;
+}>();
 </script>

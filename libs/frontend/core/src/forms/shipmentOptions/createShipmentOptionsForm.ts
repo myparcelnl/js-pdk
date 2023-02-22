@@ -13,7 +13,7 @@ import {
 } from './field';
 import {CarrierName, PACKAGE_TYPES, PackageTypeName} from '@myparcel/sdk';
 import {Formatter, useContext, useLocalizedFormatter} from '../../composables';
-import {InteractiveElementInstance, defineForm} from '@myparcel/vue-form-builder/src';
+import {InteractiveElementInstance, SelectOption, defineForm} from '@myparcel/vue-form-builder/src';
 import {
   defineFormField,
   getInsurancePossibilities,
@@ -24,7 +24,6 @@ import {
 import {ref, resolveComponent} from 'vue';
 import {AdminContextKey} from '../../types';
 import {Plugin} from '@myparcel-pdk/common/src';
-import {SelectOption} from '@myparcel/vue-form-builder';
 import {createShipmentFormName} from '../../utils';
 import {useCarrier} from '../../sdk';
 

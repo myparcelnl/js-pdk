@@ -1,4 +1,4 @@
-import {FormInstance} from '@myparcel/vue-form-builder';
+import {FormInstance} from '@myparcel/vue-form-builder/src';
 import {Shipment} from '@myparcel-pdk/common/src';
 import {getCarrierOptions} from './getCarrierOptions';
 

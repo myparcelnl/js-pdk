@@ -5,22 +5,18 @@
   </component>
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue';
-
+<script lang="ts" setup>
 /**
  * The component that is used to render a table row in a PdkTable.
  */
-export default defineComponent({
-  name: 'DefaultTableRow',
-  props: {
-    /**
-     * Component to use as the table row.
-     */
-    component: {
-      type: String,
-      default: 'tr',
-    },
+
+defineProps({
+  /**
+   * Component to use as the table row.
+   */
+  component: {
+    type: String,
+    default: 'tr',
   },
 });
 </script>

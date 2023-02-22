@@ -12,13 +12,23 @@
 <script setup lang="ts">
 import {AdminIcon} from '@myparcel-pdk/frontend-core/src';
 import BaseButton from './common/BaseButton.vue';
-import {defineProps} from 'vue';
+import {PropType} from 'vue';
 
-defineProps<{
-  disabled?: boolean;
-  icon?: AdminIcon;
-  label?: string;
-}>();
+defineProps({
+  disabled: {
+    type: Boolean,
+  },
 
-defineEmits<(event: 'click') => void>();
+  icon: {
+    type: String as PropType<AdminIcon>,
+    default: null,
+  },
+
+  label: {
+    type: String,
+    default: 'action_save',
+  },
+});
+
+defineEmits(['click']);
 </script>

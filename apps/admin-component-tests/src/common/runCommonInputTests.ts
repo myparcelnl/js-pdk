@@ -1,5 +1,4 @@
 import {expect, it} from 'vitest';
-import {DEFAULT_VALUE_EMIT} from '@myparcel-pdk/frontend-core/src';
 import {PartialComponentTest} from '../types';
 import {merge} from 'lodash-unified';
 import {mount} from '@vue/test-utils';
@@ -57,6 +56,6 @@ export const runCommonInputTests: PartialComponentTest = (component, options) =>
       await input.setValue('new text');
     }
 
-    expect(Object.keys(wrapper.emitted())).toContain([DEFAULT_VALUE_EMIT]);
+    expect(Object.keys(wrapper.emitted())).toContain(['update:modelValue']);
   });
 };

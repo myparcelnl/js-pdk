@@ -1,3 +1,5 @@
+export {useElement, useForm} from '@myparcel/vue-form-builder/src';
+
 export type {
   Account,
   AdminComponentMap,

@@ -15,13 +15,23 @@
 
 <script setup lang="ts">
 import {AdminIcon, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {defineProps} from 'vue';
+import {PropType} from 'vue';
 
-defineProps<{
-  disabled?: boolean;
-  icon?: AdminIcon;
-  label?: string;
-}>();
+defineProps({
+  disabled: {
+    type: Boolean,
+  },
+
+  icon: {
+    type: String as PropType<AdminIcon>,
+    default: null,
+  },
+
+  label: {
+    type: String,
+    default: 'action_save',
+  },
+});
 
 defineEmits<(event: 'click') => void>();
 

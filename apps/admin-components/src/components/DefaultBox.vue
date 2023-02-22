@@ -17,66 +17,34 @@
       <slot />
     </div>
 
-    <div v-if="$slots.footer || actions.length">
+    <div v-if="$slots.footer">
       <!-- Box footer. -->
-      <slot name="footer">
-        <ActionButton
-          v-for="(action, index) in actions"
-          :key="`${index}_${action.id}`"
-          :action="action"
-          :disabled="loading" />
-      </slot>
+      <slot name="footer" />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import {ActionButton, ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {PropType, defineComponent} from 'vue';
-
+<script lang="ts" setup>
 /**
  * A "box" component that can be used to wrap content in a block.
  */
-export default defineComponent({
-  name: 'DefaultBox',
 
-  components: {
-    ActionButton,
-  },
+import {useLanguage} from '@myparcel-pdk/frontend-core/src';
 
-  props: {
-    /**
-     * Used to control loading state.
-     */
-    loading: {
-      type: Boolean,
-    },
+defineProps<{
+  /**
+   * Used to control loading state.
+   */
+  // eslint-disable-next-line vue/no-unused-properties
+  loading?: boolean;
 
-    /**
-     * Title of the box.
-     */
-    title: {
-      type: String,
-      default: null,
-    },
+  /**
+   * Title of the box.
+   */
+  title?: string;
+}>();
 
-    /**
-     * Available actions on the box.
-     */
-    actions: {
-      type: Array as PropType<ResolvedAction[]>,
-      default: () => [],
-    },
-  },
+defineEmits<(event: 'clickHeader') => void>();
 
-  emits: ['clickHeader'],
-
-  setup: () => {
-    const {translate} = useLanguage();
-
-    return {
-      translate,
-    };
-  },
-});
+const {translate} = useLanguage();
 </script>

@@ -12,7 +12,7 @@
     </label>
 
     <div class="col-sm-8">
-      <slot></slot>
+      <slot />
 
       <small
         v-if="element.props?.description"
@@ -37,10 +37,14 @@
 
 <script setup lang="ts">
 import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {PropType} from 'vue';
 
-const props = defineProps<{
-  element: ElementInstance;
-}>();
+const props = defineProps({
+  element: {
+    type: Object as PropType<ElementInstance>,
+    required: true,
+  },
+});
 
 const {translate} = useLanguage();
 const id = generateFieldId(props.element);

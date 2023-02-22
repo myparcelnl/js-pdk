@@ -21,13 +21,19 @@
 </template>
 
 <script setup lang="ts">
+import {PropType, computed} from 'vue';
 import {Notification} from '@myparcel-pdk/frontend-core/src';
-import {computed} from 'vue';
 import {toArray} from '@myparcel/ts-utils';
 
-const props = defineProps<{
-  notification: Notification;
-}>();
+const props = defineProps({
+  /**
+   * The notification to display.
+   */
+  notification: {
+    type: Object as PropType<Notification>,
+    required: true,
+  },
+});
 
 const contentArray = computed(() => {
   return toArray(props.notification.content);

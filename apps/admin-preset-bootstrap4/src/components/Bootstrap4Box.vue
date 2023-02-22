@@ -33,12 +33,23 @@
 
 <script setup lang="ts">
 import {ActionButton, ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {PropType} from 'vue';
 
-defineProps<{
-  loading: boolean;
-  title: string;
-  actions: ResolvedAction[];
-}>();
+defineProps({
+  actions: {
+    type: Array as PropType<ResolvedAction[]>,
+    default: (): never[] => [],
+  },
+
+  loading: {
+    type: Boolean,
+  },
+
+  title: {
+    type: String,
+    default: null,
+  },
+});
 
 const {translate} = useLanguage();
 </script>

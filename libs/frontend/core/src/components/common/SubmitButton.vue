@@ -2,40 +2,28 @@
   <PdkButton
     :loading="loading"
     :disabled="disabled"
-    :icon="PdkIcon.SAVE"
+    :icon="icon"
     label="action_save"
     @click="submit" />
 </template>
 
-<script lang="ts">
-import {FormInstance, INJECT_FORM} from '@myparcel/vue-form-builder/src';
-import {defineComponent, inject} from 'vue';
+<script lang="ts" setup>
 import {AdminIcon} from '../../types';
+import {useForm} from '@myparcel/vue-form-builder/src';
 import {useLoading} from '../../composables';
 
-export default defineComponent({
-  name: 'SubmitButton',
+defineProps<{
+  disabled?: boolean;
+}>();
 
-  props: {
-    disabled: {
-      type: Boolean,
-    },
-  },
+const form = useForm();
+const {loading, setLoading} = useLoading();
 
-  setup: () => {
-    const form = inject(INJECT_FORM) as FormInstance;
-    const {loading, setLoading} = useLoading();
+async function submit() {
+  setLoading(true);
+  await form.submit();
+  setLoading(false);
+}
 
-    return {
-      form,
-      PdkIcon: AdminIcon,
-      loading,
-      async submit() {
-        setLoading(true);
-        await form.submit();
-        setLoading(false);
-      },
-    };
-  },
-});
+const icon = AdminIcon.SAVE;
 </script>

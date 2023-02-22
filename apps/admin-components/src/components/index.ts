@@ -2,11 +2,11 @@ export {default as DefaultBox} from './DefaultBox.vue';
 
 export {default as DefaultButton} from './DefaultButton.vue';
 
-export {default as DefaultButtonGroup} from './DefaultButtonGroup';
+export {default as DefaultButtonGroup} from './DefaultButtonGroup.vue';
 
 export {default as DefaultCheckboxInput} from './DefaultCheckboxInput.vue';
 
-export {default as DefaultCol} from './DefaultCol';
+export {default as DefaultCol} from './DefaultCol.vue';
 
 export {default as DefaultCurrencyInput} from './DefaultCurrencyInput.vue';
 
@@ -16,7 +16,7 @@ export {default as DefaultDropdownButton} from './DefaultDropdownButton.vue';
 
 export {default as DefaultFormGroup} from './DefaultFormGroup.vue';
 
-export {default as DefaultHeading} from './DefaultHeading';
+export {default as DefaultHeading} from './DefaultHeading.vue';
 
 export {default as DefaultIcon} from './DefaultIcon.vue';
 
@@ -36,7 +36,7 @@ export {default as DefaultNumberInput} from './DefaultNumberInput.vue';
 
 export {default as DefaultRadioInput} from './DefaultRadioInput.vue';
 
-export {default as DefaultRow} from './DefaultRow';
+export {default as DefaultRow} from './DefaultRow.vue';
 
 export {default as DefaultSelectInput} from './DefaultSelectInput.vue';
 

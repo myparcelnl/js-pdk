@@ -1,70 +1,30 @@
 <template>
   <div>
     <input
-      :id="`radio_${value}`"
+      :id="id"
       v-model="model"
-      :disabled="disabled"
-      :value="value"
+      :disabled="element.isDisabled || element.isSuspended"
+      :value="element.props?.value"
       type="radio" />
-    <label
-      :for="`radio_${value}`"
-      v-text="translate(label)" />
+    <label :for="id">
+      {{ translate(`toggle_${model ? 'yes' : 'no'}`) }}
+    </label>
   </div>
 </template>
 
-<script lang="ts">
-import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {defineComponent} from 'vue';
+<script lang="ts" setup>
+import {generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {useElement} from '@myparcel/vue-form-builder/src';
 import {useVModel} from '@vueuse/core';
 
-/**
- * A single radio button.
- */
-export default defineComponent({
-  name: 'DefaultMultiRadio',
-  props: {
-    /**
-     * Controls the disabled state.
-     */
-    disabled: {
-      type: Boolean,
-    },
+// eslint-disable-next-line vue/no-unused-properties
+const props = defineProps<{modelValue: boolean}>();
+const emit = defineEmits(['update:modelValue']);
 
-    /**
-     * The label of the radio button.
-     */
-    label: {
-      type: String,
-      default: null,
-    },
+const model = useVModel(props, undefined, emit);
 
-    /**
-     * The value of the radio button.
-     */
-    value: {
-      type: String,
-      default: '1',
-    },
+const id = generateFieldId();
+const element = useElement();
 
-    /**
-     * The value of the model.
-     */
-    // eslint-disable-next-line vue/no-unused-properties
-    modelValue: {
-      type: String,
-      default: null,
-    },
-  },
-
-  emits: [DEFAULT_VALUE_EMIT],
-
-  setup(props, ctx) {
-    const {translate} = useLanguage();
-
-    return {
-      model: useVModel(props, DEFAULT_VALUE_PROP, ctx.emit),
-      translate,
-    };
-  },
-});
+const {translate} = useLanguage();
 </script>

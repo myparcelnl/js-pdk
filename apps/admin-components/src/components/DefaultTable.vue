@@ -19,17 +19,11 @@
   </table>
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue';
-import {useAdminConfig} from '@myparcel-pdk/frontend-core/src';
-
+<script lang="ts" setup>
 /**
  * A table component that can be used to render data via slots.
  */
-export default defineComponent({
-  name: 'DefaultTable',
-  setup: () => ({
-    config: useAdminConfig(),
-  }),
-});
+import {useAdminConfig} from '@myparcel-pdk/frontend-core/src';
+
+const config = useAdminConfig();
 </script>

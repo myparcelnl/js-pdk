@@ -1,43 +1,23 @@
 <template>
   <PdkNumberInput
-    v-model="model"
-    :disabled="disabled"
+    :id="id"
+    v-model.number="model"
+    :disabled="element.isDisabled || element.isSuspended"
     :min="0"
     :step="0.01" />
 </template>
 
-<script lang="ts">
-import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP} from '@myparcel-pdk/frontend-core/src';
-import {defineComponent} from 'vue';
+<script lang="ts" setup>
+import {generateFieldId} from '@myparcel-pdk/frontend-core/src';
+import {useElement} from '@myparcel/vue-form-builder/src';
 import {useVModel} from '@vueuse/core';
 
-/**
- * The component that is used to render a table row in a PdkTable.
- */
-export default defineComponent({
-  name: 'DefaultCurrencyInput',
-  props: {
-    /**
-     * Controls disabled state.
-     */
-    disabled: {
-      type: Boolean,
-    },
+// eslint-disable-next-line vue/no-unused-properties
+const props = defineProps({modelValue: {type: [String, Number], default: null}});
+const emit = defineEmits(['update:modelValue']);
 
-    /**
-     * The value of the model.
-     */
-    // eslint-disable-next-line vue/no-unused-properties
-    modelValue: {
-      type: Number,
-      default: null,
-    },
-  },
+const model = useVModel(props, undefined, emit);
 
-  emits: [DEFAULT_VALUE_EMIT],
-
-  setup: (props, {emit}) => ({
-    model: useVModel(props, DEFAULT_VALUE_PROP, emit),
-  }),
-});
+const element = useElement();
+const id = generateFieldId();
 </script>

@@ -1,59 +1,32 @@
 <template>
   <select
+    :id="id"
     v-model="model"
-    :disabled="disabled">
+    :disabled="element.isDisabled || element.isSuspended">
     <option
-      v-for="(item, index) in options"
+      v-for="(item, index) in element.props?.options ?? []"
       :key="index"
-      :disabled="item.disabled || disabled"
+      :disabled="item.disabled || element.isDisabled || element.isSuspended"
       :value="item.value"
       v-text="item.label" />
   </select>
 </template>
 
-<script lang="ts">
-import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP} from '@myparcel-pdk/frontend-core/src';
-import {PropType, defineComponent} from 'vue';
-import {SelectOption} from '@myparcel-pdk/common/src';
-import {useVModel} from '@vueuse/core';
-
+<script lang="ts" setup>
 /**
  * A select box. Renders a list of options which each have their own value.
  */
-export default defineComponent({
-  name: 'DefaultSelectInput',
-  props: {
-    /**
-     * Controls disabled state.
-     */
-    disabled: {
-      type: Boolean,
-    },
 
-    /**
-     * The options of the select.
-     */
-    options: {
-      type: Array as PropType<SelectOption[]>,
-      default: (): SelectOption[] => [],
-    },
+import {generateFieldId} from '@myparcel-pdk/frontend-core/src';
+import {useElement} from '@myparcel/vue-form-builder/src';
+import {useVModel} from '@vueuse/core';
 
-    /**
-     * The value of the model.
-     */
-    // eslint-disable-next-line vue/no-unused-properties
-    modelValue: {
-      type: [String, Number],
-      default: null,
-    },
-  },
+// eslint-disable-next-line vue/no-unused-properties
+const props = defineProps({modelValue: {type: [String, Number], default: null}});
+const emit = defineEmits(['update:modelValue']);
 
-  emits: [DEFAULT_VALUE_EMIT],
+const model = useVModel(props, undefined, emit);
 
-  setup: (props, ctx) => {
-    const model = useVModel(props, DEFAULT_VALUE_PROP, ctx.emit);
-
-    return {model};
-  },
-});
+const element = useElement();
+const id = generateFieldId();
 </script>

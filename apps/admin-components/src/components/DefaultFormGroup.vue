@@ -32,29 +32,15 @@
   </PdkRow>
 </template>
 
-<script lang="ts">
-import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {PropType, defineComponent} from 'vue';
-
+<script lang="ts" setup>
 /**
  * A form group is used to render a label and a form element.
  */
-export default defineComponent({
-  name: 'DefaultFormGroup',
-  props: {
-    element: {
-      type: Object as PropType<ElementInstance>,
-      required: true,
-    },
-  },
+import {generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {useElement} from '@myparcel/vue-form-builder/src';
 
-  setup: (props) => {
-    const {translate} = useLanguage();
+const {translate} = useLanguage();
 
-    return {
-      id: generateFieldId(props.element),
-      translate,
-    };
-  },
-});
+const id = generateFieldId();
+const element = useElement();
 </script>

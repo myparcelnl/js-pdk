@@ -49,7 +49,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import {
   ActionButton,
   AdminModalKey,
@@ -57,103 +57,75 @@ import {
   ModalCallbackProps,
   NotificationContainer,
   modalCancelAction,
-  useLanguage,
   useModalContext,
   useModalStore,
 } from '@myparcel-pdk/frontend-core/src';
-import {PropType, computed, defineComponent, ref, toRefs} from 'vue';
+import {PropType, computed, ref, toRefs} from 'vue';
 
-/**
- * A modal that can be used to render content.
- *
- * The modalStore is used to control the modal state. The modalContext is used to control the modal data.
- */
-export default defineComponent({
-  name: 'DefaultModal',
-
-  components: {
-    NotificationContainer,
-    ActionButton: ActionButton,
+const props = defineProps({
+  /**
+   * Modal key. Must be unique.
+   */
+  modalKey: {
+    type: String as PropType<AdminModalKey>,
+    default: null,
   },
 
-  props: {
-    /**
-     * Modal k. Must be unique.
-     */
-    modalKey: {
-      type: String as PropType<AdminModalKey>,
-      default: null,
-    },
-
-    /**
-     * Callback to change behavior of the save button. Note: You need to manually close the modal when using this.
-     */
-    onSave: {
-      type: Function as PropType<ModalCallbackProps['onSave']>,
-      default: null,
-    },
-
-    /**
-     * Callback to change behavior of the cancel button. Note: You need to manually close the modal when using this.
-     */
-    onCancel: {
-      type: Function as PropType<ModalCallbackProps['onCancel']>,
-      default: null,
-    },
-
-    /**
-     * Modal title.
-     */
-    title: {
-      type: String,
-      required: true,
-    },
-
-    /**
-     * Available actions in the modal. Each action needs a unique id and a label.
-     */
-    actions: {
-      type: Array as PropType<AnyAdminAction[]>,
-      default: () => [modalCancelAction],
-    },
+  /**
+   * Callback to change behavior of the save button. Note: You need to manually close the modal when using this.
+   */
+  onSave: {
+    type: Function as PropType<ModalCallbackProps['onSave']>,
+    default: null,
   },
 
-  setup: (props) => {
-    const {translate} = useLanguage();
-    const wrapper = ref<HTMLElement | null>(null);
-    const modalStore = useModalStore();
-    const propRefs = toRefs(props);
-    const modalContext = useModalContext(propRefs.modalKey, propRefs.onSave, propRefs.onCancel);
+  /**
+   * Callback to change behavior of the cancel button. Note: You need to manually close the modal when using this.
+   */
+  onCancel: {
+    type: Function as PropType<ModalCallbackProps['onCancel']>,
+    default: null,
+  },
+
+  /**
+   * Modal title.
+   */
+  title: {
+    type: String,
+    required: true,
+  },
+
+  /**
+   * Available actions in the modal. Each action needs a unique id and a label.
+   */
+  actions: {
+    type: Array as PropType<AnyAdminAction[]>,
+    default: () => [modalCancelAction],
+  },
+});
+
+const wrapper = ref<HTMLElement | null>(null);
+const modalStore = useModalStore();
+const propRefs = toRefs(props);
+const modalContext = useModalContext(propRefs.modalKey, propRefs.onSave, propRefs.onCancel);
+const isOpen = computed(() => {
+  return propRefs.modalKey.value && propRefs.modalKey.value === modalStore.opened;
+});
+
+const resolvedActions = computed(() => {
+  return props.actions.map((action) => {
+    // @ts-expect-error todo
+    const {onClick, ...data} = action;
 
     return {
-      modalContext,
+      ...data,
+      onClick() {
+        onClick?.();
 
-      isOpen: computed(() => {
-        return propRefs.modalKey.value === modalStore.opened;
-      }),
-
-      modalStore,
-      translate,
-
-      resolvedActions: computed(() => {
-        return props.actions.map((action) => {
-          // @ts-expect-error todo
-          const {onClick, ...data} = action;
-
-          return {
-            ...data,
-            onClick() {
-              onClick?.();
-
-              // @ts-expect-error todo
-              return modalContext?.onButtonClick(action.id);
-            },
-          };
-        });
-      }),
-
-      wrapper,
+        // @ts-expect-error todo
+        return modalContext?.onButtonClick(action.id);
+      },
     };
-  },
+  });
 });
 </script>

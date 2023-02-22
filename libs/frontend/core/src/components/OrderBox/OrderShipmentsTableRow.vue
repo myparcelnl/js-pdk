@@ -27,58 +27,41 @@
   </PdkTableRow>
 </template>
 
-<script lang="ts">
-import {DEFAULT_VALUE_EMIT, DEFAULT_VALUE_PROP} from '../../data';
-import {PropType, defineComponent} from 'vue';
-import {useLanguage, useLocalizedFormatter, useShipmentData} from '../../composables';
+<script setup lang="ts">
+import {useLocalizedFormatter, useShipmentData} from '../../composables';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
+import {PropType} from 'vue';
 import {Shipment} from '@myparcel-pdk/common/src';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
 import {useVModel} from '@vueuse/core';
 
-export default defineComponent({
-  name: 'OrderShipmentsTableRow',
-  components: {
-    ShipmentStatus,
-    ShipmentBarcode,
+const props = defineProps({
+  shipment: {
+    type: Object as PropType<Required<Shipment.ModelShipment>>,
+    required: true,
   },
 
-  props: {
-    shipment: {
-      type: Object as PropType<Required<Shipment.ModelShipment>>,
-      required: true,
-    },
-
-    // eslint-disable-next-line vue/no-unused-properties
-    modelValue: {
-      type: Array as PropType<number[]>,
-      default: null,
-    },
-  },
-
-  emits: [DEFAULT_VALUE_EMIT],
-
-  setup: (props, ctx) => {
-    const {translate} = useLanguage();
-
-    const selected = useVModel(props, DEFAULT_VALUE_PROP, ctx.emit);
-
-    const checkboxElement = {
-      id: `shipment_${props.shipment.id}`,
-      ref: selected,
-      form: {
-        name: `shipment-${props.shipment.id}`,
-      },
-    } as unknown as InteractiveElementInstance;
-
-    return {
-      ...useShipmentData(props.shipment),
-      formatter: useLocalizedFormatter(),
-      selected,
-      translate,
-      checkboxElement,
-    };
+  // eslint-disable-next-line vue/no-unused-properties
+  modelValue: {
+    type: Array as PropType<number[]>,
+    default: null,
   },
 });
+
+const emit = defineEmits(['update:modelValue']);
+
+const selected = useVModel(props, undefined, emit);
+
+const checkboxElement = {
+  id: `shipment_${props.shipment.id}`,
+  ref: selected,
+  form: {
+    name: `shipment-${props.shipment.id}`,
+  },
+} as unknown as InteractiveElementInstance;
+
+const formatter = useLocalizedFormatter();
+
+const {actions} = useShipmentData(props.shipment);
 </script>

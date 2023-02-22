@@ -1,36 +1,19 @@
 <template>
   <PdkTextInput
-    :id="id"
     v-model="model"
-    :disabled="element.isDisabled || element.isSuspended"
+    :element="element"
     type="time" />
 </template>
 
-<script setup lang="ts">
-import {
-  DEFAULT_VALUE_EMIT,
-  DEFAULT_VALUE_PROP,
-  ElementInstance,
-  generateFieldId,
-} from '@myparcel-pdk/frontend-core/src';
-import {PropType} from 'vue';
+<script lang="ts" setup>
+import {useElement} from '@myparcel/vue-form-builder/src';
 import {useVModel} from '@vueuse/core';
 
-const props = defineProps({
-  element: {
-    type: Object as PropType<ElementInstance>,
-    required: true,
-  },
+// eslint-disable-next-line vue/no-unused-properties
+const props = defineProps({modelValue: {type: String, default: null}});
+const emit = defineEmits(['update:modelValue']);
 
-  // eslint-disable-next-line vue/no-unused-properties
-  modelValue: {
-    type: [String, Number],
-    default: null,
-  },
-});
+const model = useVModel(props, undefined, emit);
 
-const emit = defineEmits([DEFAULT_VALUE_EMIT]);
-
-const model = useVModel(props, DEFAULT_VALUE_PROP, emit);
-const id = generateFieldId(props.element);
+const element = useElement();
 </script>

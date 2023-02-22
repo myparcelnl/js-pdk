@@ -2,6 +2,7 @@
   <ActionButton
     v-for="action in dropdownActions.standalone"
     :key="action.id"
+    :disabled="disabled"
     :action="action"
     :size="size"
     :hide-text="hideText" />
@@ -21,69 +22,58 @@
     <ActionButton
       v-for="(action, index) in dropdownActions.hidden"
       :key="`${index}_${action.id}`"
+      :disabled="disabled"
       :size="size"
       :action="action" />
   </div>
 </template>
 
-<script lang="ts">
-import {ActionButton, ResolvedAction, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {PropType, defineComponent} from 'vue';
-import {Size} from '@myparcel-pdk/common';
-
+<script lang="ts" setup>
 /**
  * This component is used to render a dropdown button. The dropdown button is a
  * button that can be clicked to open a dropdown menu. The dropdown menu can
  * contain multiple items.
  */
-export default defineComponent({
-  name: 'DefaultDropdownButton',
 
-  components: {
-    ActionButton: ActionButton,
+import {ActionButton, ResolvedAction, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {PropType} from 'vue';
+import {Size} from '@myparcel-pdk/common/src';
+
+const props = defineProps({
+  /**
+   * List of actions.
+   */
+  actions: {
+    type: Array as PropType<ResolvedAction[]>,
+    default: (): never[] => [],
   },
 
-  props: {
-    /**
-     * List of actions.
-     */
-    actions: {
-      type: Array as PropType<ResolvedAction[]>,
-      default: (): never[] => [],
-    },
-
-    /**
-     * Controls disabled state.
-     */
-    disabled: {
-      type: Boolean,
-    },
-
-    /**
-     * To hide the text of the standalone actions.
-     */
-    hideText: {
-      type: Boolean,
-    },
-
-    /**
-     * Size of the button.
-     */
-    size: {
-      type: String as PropType<Size>,
-      default: Size.SMALL,
-    },
+  /**
+   * Controls disabled state.
+   */
+  disabled: {
+    type: Boolean,
   },
 
-  emits: ['click'],
+  /**
+   * To hide the text of the standalone actions.
+   */
+  hideText: {
+    type: Boolean,
+  },
 
-  setup: (props) => {
-    const {translate} = useLanguage();
-
-    return {
-      translate,
-      ...useDropdownData(props.actions),
-    };
+  /**
+   * Size of the button.
+   */
+  size: {
+    type: String as PropType<Size>,
+    default: Size.SMALL,
   },
 });
+
+defineEmits(['click']);
+
+const {translate} = useLanguage();
+
+const {dropdownActions, toggled} = useDropdownData(props.actions);
 </script>
