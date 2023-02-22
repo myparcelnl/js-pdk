@@ -938,6 +938,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/app-builder@workspace:apps/app-builder"
   dependencies:
+    "@myparcel-pdk/build-tsup": "workspace:*"
     "@types/commander": ^2.12.2
     "@types/debug": ^4.1.7
     "@types/inquirer": ^9.0.3
@@ -948,6 +949,7 @@ __metadata:
     inquirer: ^9.1.4
     interpret: ^3.1.1
     liftoff: ^4.0.0
+    tsup: ^6.6.3
   languageName: unknown
   linkType: soft
 

@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/app-builder",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "type": "module",
   "exports": {
     ".": {
@@ -19,6 +19,7 @@
     "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
   },
   "devDependencies": {
+    "@myparcel-pdk/build-tsup": "workspace:*",
     "@types/commander": "^2.12.2",
     "@types/debug": "^4.1.7",
     "@types/inquirer": "^9.0.3",
@@ -28,7 +29,8 @@
     "debug": "^4.3.4",
     "inquirer": "^9.1.4",
     "interpret": "^3.1.1",
-    "liftoff": "^4.0.0"
+    "liftoff": "^4.0.0",
+    "tsup": "^6.6.3"
   },
   "engines": {
     "node": ">=18.0.0"
