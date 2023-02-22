@@ -5,7 +5,10 @@ import {init} from './commands/init';
 import packageJson from '../package.json' assert {type: 'json'};
 import {program} from 'commander';
 
-const OPTION_DEBUG = ['--debug', 'Enable debug mode'] as const;
+const OPTION_VERBOSE = ['-v', 'Enable verbose mode'] as const;
+const OPTION_VERY_VERBOSE = ['-vv', 'Enable very verbose mode'] as const;
+const OPTION_VERY_VERY_VERBOSE = ['-vvv', 'Enable very very verbose mode'] as const;
+
 const OPTION_DRY_RUN = ['--dry-run', 'Dry run'] as const;
 
 const ARGUMENT_PROJECT = ['[project]', 'Project name', 'all'] as const;
@@ -19,7 +22,9 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
   program
     .command('init')
     .description('Create a new config file')
-    .option(...OPTION_DEBUG)
+    .option(...OPTION_VERBOSE)
+    .option(...OPTION_VERY_VERBOSE)
+    .option(...OPTION_VERY_VERY_VERBOSE)
     .action(withContext(init));
 
   program
@@ -27,7 +32,9 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .description('Run all commands in sequence')
     .argument(...ARGUMENT_PROJECT)
     .option(...OPTION_DRY_RUN)
-    .option(...OPTION_DEBUG)
+    .option(...OPTION_VERBOSE)
+    .option(...OPTION_VERY_VERBOSE)
+    .option(...OPTION_VERY_VERY_VERBOSE)
     .action(
       withConfig(async (context) => {
         await Promise.all([copy(context), rename(context), zip(context)]);
@@ -39,7 +46,9 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .description('Copy files')
     .argument(...ARGUMENT_PROJECT)
     .option(...OPTION_DRY_RUN)
-    .option(...OPTION_DEBUG)
+    .option(...OPTION_VERBOSE)
+    .option(...OPTION_VERY_VERBOSE)
+    .option(...OPTION_VERY_VERY_VERBOSE)
     .action(withConfig(copy));
 
   program
@@ -47,7 +56,9 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .description('Rename files')
     .argument(...ARGUMENT_PROJECT)
     .option(...OPTION_DRY_RUN)
-    .option(...OPTION_DEBUG)
+    .option(...OPTION_VERBOSE)
+    .option(...OPTION_VERY_VERBOSE)
+    .option(...OPTION_VERY_VERY_VERBOSE)
     .action(withConfig(rename));
 
   program
@@ -55,7 +66,9 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .description('Zip dist files')
     .argument(...ARGUMENT_PROJECT)
     .option(...OPTION_DRY_RUN)
-    .option(...OPTION_DEBUG)
+    .option(...OPTION_VERBOSE)
+    .option(...OPTION_VERY_VERBOSE)
+    .option(...OPTION_VERY_VERY_VERBOSE)
     .action(withConfig(zip));
 
   program.parse(argv);

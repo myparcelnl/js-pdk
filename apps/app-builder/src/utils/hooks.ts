@@ -23,8 +23,9 @@ export const createWithContext: CreateHook<WithContextParams> = (env) => {
 export const createWithConfig: CreateHook<WithConfigParams, CommandArgs> = (env) => {
   return (callback) => {
     return async (args) => {
-      const config = mergeDefaultConfig(await resolveConfig(env));
-      return callback({config: config, env, args});
+      const config = await resolveConfig(env);
+
+      return callback({config: mergeDefaultConfig(config), env, args});
     };
   };
 };

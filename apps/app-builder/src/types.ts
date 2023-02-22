@@ -1,5 +1,4 @@
 import {LiftoffEnv} from 'liftoff';
-import {PlatformName} from '@myparcel/sdk';
 import {PromiseOr} from '@myparcel/ts-utils';
 
 export type PdkBuilderConfig = {
@@ -7,6 +6,14 @@ export type PdkBuilderConfig = {
   version: string;
   description: string;
 
+  /**
+   * Filename for the final zip file. Defaults to `:platform-:name-:version`.
+   */
+  zipFileName?: string;
+
+  /**
+   * Enable debug logging.
+   */
   debug?: boolean;
 
   /**
@@ -17,7 +24,7 @@ export type PdkBuilderConfig = {
   /**
    * Platforms to include.
    */
-  platforms: PlatformName[];
+  platforms: string[];
 
   /**
    * Glob patterns to include in final folder.

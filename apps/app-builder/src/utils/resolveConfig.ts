@@ -6,5 +6,7 @@ export async function resolveConfig(env: LiftoffEnv): Promise<PdkBuilderConfig> 
     throw new Error('No config file found.');
   }
 
-  return (await import(env.configPath)).default;
+  const imported = await import(env.configPath);
+
+  return imported.default.default;
 }
