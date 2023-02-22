@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.9](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.8...@myparcel-pdk/app-builder@1.0.0-alpha.9) "@myparcel-pdk/app-builder" (2023-02-22)
+
+
+### Bug Fixes
+
+* **app-builder:** remove obsolete argument ([ccf90e3](https://github/myparcelnl/js-pdk/commit/ccf90e382fc889f0ee6d678a26c353a263e18d51))
+* **app-builder:** remove unnecessary description variable ([e6fe58b](https://github/myparcelnl/js-pdk/commit/e6fe58b0223d7b0ba7f9fe46ce7e66e59af6ed71))
+
+
+
+
 ## [1.0.0-alpha.8](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.7...@myparcel-pdk/app-builder@1.0.0-alpha.8) "@myparcel-pdk/app-builder" (2023-02-22)
 
 
