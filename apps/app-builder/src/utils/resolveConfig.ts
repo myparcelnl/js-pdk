@@ -8,5 +8,5 @@ export async function resolveConfig(env: LiftoffEnv): Promise<PdkBuilderConfig> 
 
   const imported = await import(env.configPath);
 
-  return imported.default.default;
+  return imported.default;
 }
