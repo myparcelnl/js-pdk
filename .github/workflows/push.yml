@@ -82,6 +82,10 @@ jobs:
 
       - uses: ./.github/actions/setup
 
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./apps/admin-demo/dist
+
       - name: 'Run monodeploy'
         run: |
           yarn monodeploy \
@@ -91,8 +95,15 @@ jobs:
           GH_TOKEN: ${{ steps.credentials.outputs.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: 'Dispatch deploy demo command'
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ steps.credentials.outputs.token }}
-          event-type: deploy-demo
+  deploy:
+    needs: release
+    runs-on: ubuntu-22.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v1
