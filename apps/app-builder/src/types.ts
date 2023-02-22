@@ -11,10 +11,6 @@ export type PdkBuilderConfig = {
    * Version of the plugin.
    */
   version: string;
-  /**
-   * Description of the plugin.
-   */
-  description: string;
 
   /**
    * Filename for the final compress file. Must include file extension.

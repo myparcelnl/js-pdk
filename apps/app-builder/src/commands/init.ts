@@ -4,11 +4,11 @@ import fs from 'fs';
 import path from 'path';
 
 const TEMPLATE = `import type {PdkBuilderConfig} from '@myparcel-pdk/app-builder/src';
+import {name, version} from './package.json' assert {type: 'json'};
 
 const config:configType = {
-  name: ':name',
-  description: ':description',
-  version: ':version',
+  name,
+  version,
   source: [],
   outputs: ['myparcelnl', 'myparcelbe'],
 };
@@ -39,7 +39,6 @@ export const init = async <A extends CommandArgs>(context: Omit<PdkBuilderContex
 
   const parameters = {
     name: packageJson.name ?? '',
-    description: packageJson.description ?? '',
     version: packageJson.version ?? '',
   };
 
@@ -47,9 +46,6 @@ export const init = async <A extends CommandArgs>(context: Omit<PdkBuilderContex
 
   fs.writeFileSync(
     filename,
-    TEMPLATE.replace(':name', parameters.name)
-      .replace(':description', parameters.description)
-      .replace(':version', parameters.version)
-      .replace(':configType', tsType),
+    TEMPLATE.replace(':name', parameters.name).replace(':version', parameters.version).replace(':configType', tsType),
   );
 };
