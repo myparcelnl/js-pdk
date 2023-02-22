@@ -4,6 +4,10 @@
   "affected": {
     "defaultBase": "alpha"
   },
+  "workspaceLayout": {
+    "appsDir": "apps",
+    "libsDir": "libs"
+  },
   "npmScope": "myparcel-pdk",
   "targetDefaults": {
     "build": {
