@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.5](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.4...@myparcel-pdk/app-builder@1.0.0-alpha.5) "@myparcel-pdk/app-builder" (2023-02-22)
+
+
+### Features
+
+* **app-builder:** finalize clean, copy and zip scripts ([e9be04f](https://github/myparcelnl/js-pdk/commit/e9be04f9b2330df8f8530538582d8155b0a33b7a))
+
+
+
+
 ## [1.0.0-alpha.4](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.3...@myparcel-pdk/app-builder@1.0.0-alpha.4) "@myparcel-pdk/app-builder" (2023-02-22)
 
 
