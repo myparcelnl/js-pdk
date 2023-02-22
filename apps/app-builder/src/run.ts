@@ -9,25 +9,24 @@ const OPTION_VERBOSITY = ['-v, --verbose', 'Verbosity', (dummy: string, prev: nu
 
 const OPTION_DRY_RUN = ['--dry-run', 'Dry run'] as const;
 
-const ARGUMENT_PROJECT = ['[project]', 'Project name', 'all'] as const;
+const REQUIRES_CONFIG_FILE = 'Requires a config file.';
 
 // eslint-disable-next-line max-lines-per-function
 export const run = (env: LiftoffEnv, argv: string[]): void => {
   const withContext = createWithContext(env, argv);
   const withConfig = createWithConfig(env, argv);
 
-  program.name('PDK Builder').description('Builds a plugin.');
+  program.name('pdk-builder').description('Builds a plugin for MyParcel.');
 
   program
     .command('init')
-    .description('Create a new config file')
+    .description(`Generate a config file in the current directory. Necessary for all other commands.`)
     .option(...OPTION_VERBOSITY)
     .action(withContext(init));
 
   program
-    .command('all')
-    .description('Run all commands in sequence')
-    .argument(...ARGUMENT_PROJECT)
+    .command('build')
+    .description(`Run clean, copy, rename and compress in sequence. ${REQUIRES_CONFIG_FILE}`)
     .option(...OPTION_DRY_RUN)
     .option(...OPTION_VERBOSITY)
     .action(
@@ -41,32 +40,28 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
 
   program
     .command('clean')
-    .description('Clean dist files')
-    .argument(...ARGUMENT_PROJECT)
+    .description(`Clear output directory. ${REQUIRES_CONFIG_FILE}`)
     .option(...OPTION_DRY_RUN)
     .option(...OPTION_VERBOSITY)
     .action(withConfig(clean));
 
   program
     .command('copy')
-    .description('Copy files')
-    .argument(...ARGUMENT_PROJECT)
+    .description(`Copy source files to output directory. ${REQUIRES_CONFIG_FILE}`)
     .option(...OPTION_DRY_RUN)
     .option(...OPTION_VERBOSITY)
     .action(withConfig(copy));
 
   program
     .command('rename')
-    .description('Rename files')
-    .argument(...ARGUMENT_PROJECT)
+    .description(`Rename output files. ${REQUIRES_CONFIG_FILE}`)
     .option(...OPTION_DRY_RUN)
     .option(...OPTION_VERBOSITY)
     .action(withConfig(rename));
 
   program
-    .command('zip')
-    .description('Zip dist files')
-    .argument(...ARGUMENT_PROJECT)
+    .command('compress')
+    .description(`Compress output files into an archive. ${REQUIRES_CONFIG_FILE}`)
     .option(...OPTION_DRY_RUN)
     .option(...OPTION_VERBOSITY)
     .action(withConfig(compress));
