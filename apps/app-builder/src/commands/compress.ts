@@ -22,6 +22,11 @@ export const compress: PdkBuilderCommand = async ({env, config, args}) => {
       const platformDistPath = path.resolve(env.cwd, config.outDir, platformFolderName);
 
       if (!(await exists(platformDistPath))) {
+        if (args.dryRun) {
+          debug('Skipping because %s does not exist.', chalk.greenBright(path.relative(env.cwd, platformDistPath)));
+          return;
+        }
+
         throw new Error(`Platform dist folder ${platformDistPath} does not exist. Run the "copy" command first.`);
       }
 
@@ -29,15 +34,21 @@ export const compress: PdkBuilderCommand = async ({env, config, args}) => {
 
       if (await exists(archivePath)) {
         debug('Removing existing file %s...', chalk.greenBright(path.relative(env.cwd, archivePath)));
-        await fs.promises.rm(archivePath);
+
+        if (!args.dryRun) {
+          await fs.promises.rm(archivePath);
+        }
       }
 
-      const archive = createArchive(archivePath, debug);
-
       debug('Compressing %s...', chalk.greenBright(path.relative(env.cwd, platformDistPath)));
-      archive.directory(platformDistPath, platformFolderName);
 
-      await archive.finalize();
+      if (!args.dryRun) {
+        const archive = createArchive(archivePath, debug);
+
+        archive.directory(platformDistPath, platformFolderName);
+
+        await archive.finalize();
+      }
     }),
   );
 
