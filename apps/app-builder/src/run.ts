@@ -1,30 +1,27 @@
-import {copy, rename, zip} from './commands';
+import {compress, copy, rename} from './commands';
 import {createWithConfig, createWithContext} from './utils/hooks';
 import {LiftoffEnv} from 'liftoff';
+import {clean} from './commands/clean';
 import {init} from './commands/init';
-import packageJson from '../package.json' assert {type: 'json'};
 import {program} from 'commander';
 
-const OPTION_VERBOSE = ['-v', 'Enable verbose mode'] as const;
-const OPTION_VERY_VERBOSE = ['-vv', 'Enable very verbose mode'] as const;
-const OPTION_VERY_VERY_VERBOSE = ['-vvv', 'Enable very very verbose mode'] as const;
+const OPTION_VERBOSITY = ['-v, --verbose', 'Verbosity', (dummy: string, prev: number) => prev + 1, 0] as const;
 
 const OPTION_DRY_RUN = ['--dry-run', 'Dry run'] as const;
 
 const ARGUMENT_PROJECT = ['[project]', 'Project name', 'all'] as const;
 
+// eslint-disable-next-line max-lines-per-function
 export const run = (env: LiftoffEnv, argv: string[]): void => {
   const withContext = createWithContext(env, argv);
   const withConfig = createWithConfig(env, argv);
 
-  program.name('PDK Builder').description('Builds a plugin.').version(packageJson.version);
+  program.name('PDK Builder').description('Builds a plugin.');
 
   program
     .command('init')
     .description('Create a new config file')
-    .option(...OPTION_VERBOSE)
-    .option(...OPTION_VERY_VERBOSE)
-    .option(...OPTION_VERY_VERY_VERBOSE)
+    .option(...OPTION_VERBOSITY)
     .action(withContext(init));
 
   program
@@ -32,23 +29,30 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .description('Run all commands in sequence')
     .argument(...ARGUMENT_PROJECT)
     .option(...OPTION_DRY_RUN)
-    .option(...OPTION_VERBOSE)
-    .option(...OPTION_VERY_VERBOSE)
-    .option(...OPTION_VERY_VERY_VERBOSE)
+    .option(...OPTION_VERBOSITY)
     .action(
       withConfig(async (context) => {
-        await Promise.all([copy(context), rename(context), zip(context)]);
+        await clean(context);
+        await copy(context);
+        await rename(context);
+        await compress(context);
       }),
     );
+
+  program
+    .command('clean')
+    .description('Clean dist files')
+    .argument(...ARGUMENT_PROJECT)
+    .option(...OPTION_DRY_RUN)
+    .option(...OPTION_VERBOSITY)
+    .action(withConfig(clean));
 
   program
     .command('copy')
     .description('Copy files')
     .argument(...ARGUMENT_PROJECT)
     .option(...OPTION_DRY_RUN)
-    .option(...OPTION_VERBOSE)
-    .option(...OPTION_VERY_VERBOSE)
-    .option(...OPTION_VERY_VERY_VERBOSE)
+    .option(...OPTION_VERBOSITY)
     .action(withConfig(copy));
 
   program
@@ -56,9 +60,7 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .description('Rename files')
     .argument(...ARGUMENT_PROJECT)
     .option(...OPTION_DRY_RUN)
-    .option(...OPTION_VERBOSE)
-    .option(...OPTION_VERY_VERBOSE)
-    .option(...OPTION_VERY_VERY_VERBOSE)
+    .option(...OPTION_VERBOSITY)
     .action(withConfig(rename));
 
   program
@@ -66,10 +68,8 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .description('Zip dist files')
     .argument(...ARGUMENT_PROJECT)
     .option(...OPTION_DRY_RUN)
-    .option(...OPTION_VERBOSE)
-    .option(...OPTION_VERY_VERBOSE)
-    .option(...OPTION_VERY_VERY_VERBOSE)
-    .action(withConfig(zip));
+    .option(...OPTION_VERBOSITY)
+    .action(withConfig(compress));
 
   program.parse(argv);
 };

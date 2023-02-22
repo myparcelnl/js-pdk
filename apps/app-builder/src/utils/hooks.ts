@@ -7,25 +7,25 @@ type WithContextParams = <A extends CommandArgs>(context: Omit<PdkBuilderContext
 
 type WithConfigParams = <A extends CommandArgs>(context: PdkBuilderContext<A>) => Promise<void> | void;
 
-type CommandCb<A = Record<string, unknown>> = (args: A) => void | Promise<void>;
+type CommandCb<A = Record<string, unknown>> = (cmd: string, args: A) => void | Promise<void>;
 
 type CreateHook<T, A = Record<string, unknown>> = (
   env: Liftoff.LiftoffEnv,
   argv: string[],
 ) => (callback: T) => CommandCb<A>;
 
-export const createWithContext: CreateHook<WithContextParams> = (env) => {
+export const createWithContext: CreateHook<WithContextParams, CommandArgs> = (env) => {
   return (callback) => {
-    return async (args) => callback({env, args});
+    return async (_, args) => callback({env: env, args});
   };
 };
 
 export const createWithConfig: CreateHook<WithConfigParams, CommandArgs> = (env) => {
   return (callback) => {
-    return async (args) => {
+    return async (_, args) => {
       const config = await resolveConfig(env);
 
-      return callback({config: mergeDefaultConfig(config), env, args});
+      return callback({config: mergeDefaultConfig(config), env: env, args});
     };
   };
 };

@@ -1,5 +1,3 @@
-import {start} from './start';
+export type {PdkBuilderConfig, PdkBuilderContext} from './types';
 
-export type {PdkBuilderConfig} from './types';
-
-start();
+export {start as pdkBuilder} from './start';

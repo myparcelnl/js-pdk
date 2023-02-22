@@ -2,14 +2,26 @@ import {LiftoffEnv} from 'liftoff';
 import {PromiseOr} from '@myparcel/ts-utils';
 
 export type PdkBuilderConfig = {
+  /**
+   * Name of the plugin.
+   */
   name: string;
+
+  /**
+   * Version of the plugin.
+   */
   version: string;
+  /**
+   * Description of the plugin.
+   */
   description: string;
 
   /**
-   * Filename for the final zip file. Defaults to `:platform-:name-:version`.
+   * Filename for the final compress file. Must include file extension.
+   *
+   * @default `{{platform}}-{{name}}-{{version}}.zip`
    */
-  zipFileName?: string;
+  archiveFilename?: string;
 
   /**
    * Enable debug logging.
@@ -17,12 +29,21 @@ export type PdkBuilderConfig = {
   debug?: boolean;
 
   /**
-   * Dist folder. Defaults to `./dist`.
+   * Output directory for the created folders and archives.
+   *
+   * @default `dist`
    */
-  distFolder?: string;
+  outDir?: string;
 
   /**
-   * Platforms to include.
+   * Filename for the final folder that will end up in the archive.
+   *
+   * @default `{{name}}-{{version}}`
+   */
+  platformFolderName?: string;
+
+  /**
+   * Platforms to build for.
    */
   platforms: string[];
 
@@ -44,5 +65,12 @@ export type PdkBuilderCommand = (context: PdkBuilderContext) => PromiseOr<void>;
 
 export type CommandArgs = {
   dryRun?: boolean;
-  debug?: boolean;
+  quiet?: boolean;
+  verbose: number;
 };
+
+export enum Verbosity {
+  VERBOSE = 1,
+  VERY_VERBOSE = 2,
+  VERY_VERY_VERBOSE = 3,
+}
