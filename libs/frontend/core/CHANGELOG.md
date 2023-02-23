@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.3](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.2...@myparcel-pdk/frontend-core@1.0.0-alpha.3) "@myparcel-pdk/frontend-core" (2023-02-23)
+
+
+### Features
+
+* allow admin to be integrated directly into a vue 3 app ([733c079](https://github/myparcelnl/js-pdk/commit/733c07944278b9591af73067e67a688214500e59))
+
+
+### Bug Fixes
+
+* **core:** fix type errors in components ([cc8dc3f](https://github/myparcelnl/js-pdk/commit/cc8dc3f6b23a7ddc4c62708e1c0066f1ce45b542))
+
+
+
+
 ## [1.0.0-alpha.2](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.1...@myparcel-pdk/frontend-core@1.0.0-alpha.2) "@myparcel-pdk/frontend-core" (2023-02-22)
 
 

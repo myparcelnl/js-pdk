@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.2](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.1...@myparcel-pdk/admin@1.0.0-alpha.2) "@myparcel-pdk/admin" (2023-02-23)
+
+
+### Features
+
+* allow admin to be integrated directly into a vue 3 app ([733c079](https://github/myparcelnl/js-pdk/commit/733c07944278b9591af73067e67a688214500e59))
+
+
+
+
 ## [1.0.0-alpha.1](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.0...@myparcel-pdk/admin@1.0.0-alpha.1) "@myparcel-pdk/admin" (2023-02-22)
 
 
