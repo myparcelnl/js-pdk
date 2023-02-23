@@ -18,14 +18,7 @@
         <td class="p-4">{{ order.recipient.fullStreet }}, {{ order.recipient.city }}</td>
 
         <td class="p-4">
-          <div
-            :id="`mypa-order-${order.externalIdentifier}`"
-            :data-pdk-context="
-              JSON.stringify({
-                orderIdentifier: order.externalIdentifier,
-                orderData: order,
-              })
-            " />
+          <OrderListItemView :order-identifier="order.externalIdentifier" />
         </td>
 
         <td class="p-4">
@@ -51,43 +44,19 @@
   </table>
 </template>
 
-<script lang="ts">
-import {AdminModalKey, useGlobalPdkAdmin, useModalStore} from '@myparcel-pdk/frontend-core/src';
-import {defineComponent, ref} from 'vue';
-import {AdminView} from '@myparcel-pdk/common/src';
+<script setup lang="ts">
+import {AdminModalKey, OrderListItemView, useModalStore} from '@myparcel-pdk/frontend-core/src';
 import {RouterLink} from 'vue-router';
+import {ref} from 'vue';
 import {useDemoOrderData} from '../composables';
 
-export default defineComponent({
-  name: 'Orders',
+const toggled = ref<string | null>(null);
 
-  components: {
-    RouterLink,
-  },
+const toggle = (id: string) => {
+  const modalStore = useModalStore();
 
-  setup: () => {
-    const fe = useGlobalPdkAdmin();
+  modalStore.open(AdminModalKey.SHIPMENT_OPTIONS, id);
+};
 
-    const orderData = useDemoOrderData();
-
-    void fe.render(AdminView.MODALS, '#mypa-modals');
-
-    orderData.forEach((order) => {
-      void fe.render(AdminView.ORDER_LIST_ITEM, `#mypa-order-${order.externalIdentifier}`);
-    });
-
-    const toggled = ref<string | null>(null);
-
-    return {
-      orderData,
-      toggled,
-
-      toggle: (id: string) => {
-        const modalStore = useModalStore();
-
-        modalStore.open(AdminModalKey.SHIPMENT_OPTIONS, id);
-      },
-    };
-  },
-});
+const orderData = useDemoOrderData();
 </script>

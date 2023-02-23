@@ -32,11 +32,12 @@ import {
   DemoTabNavButton,
   DemoTextInput,
 } from './components';
-import {LogLevel, createInjectionPlugin} from '@myparcel-pdk/frontend-core/src';
+import {LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-core/src';
 import App from './App.vue';
 import {context} from './context';
 import {createApp} from 'vue';
 import {createRouterInstance} from './router';
+import {useDemoOrderData} from './composables';
 
 const div = document.createElement('div');
 
@@ -49,40 +50,43 @@ const app = createApp(App);
 app.use(createRouterInstance());
 
 app.use(
-  createInjectionPlugin({
-    logLevel: LogLevel.DEBUG,
-    components: {
-      PdkBox: DemoBox,
-      PdkButton: DemoButton,
-      PdkButtonGroup: DefaultButtonGroup,
-      PdkCheckboxInput: DefaultCheckboxInput,
-      PdkCol: DefaultCol,
-      PdkCurrencyInput: DefaultCurrencyInput,
-      PdkDropOffInput: DefaultDropOffInput,
-      PdkDropdownButton: DefaultDropdownButton,
-      PdkFormGroup: DemoFormGroup,
-      PdkHeading: DefaultHeading,
-      PdkIcon: DemoIcon,
-      PdkImage: DemoImage,
-      PdkLink: DefaultLink,
-      PdkModal: DemoModal,
-      PdkMultiCheckbox: DefaultMultiCheckbox,
-      PdkMultiRadio: DefaultMultiRadio,
-      PdkNotification: DemoNotification,
-      PdkNumberInput: DefaultNumberInput,
-      PdkPluginSettingsWrapper: DemoPluginSettingsWrapper,
-      PdkRadioInput: DefaultRadioInput,
-      PdkRow: DemoRow,
-      PdkSelectInput: DemoSelectInput,
-      PdkTabNavButton: DemoTabNavButton,
-      PdkTable: DefaultTable,
-      PdkTableCol: DefaultTableCol,
-      PdkTableRow: DefaultTableRow,
-      PdkTextInput: DemoTextInput,
-      PdkTimeInput: DefaultTimeInput,
-      PdkToggleInput: DefaultToggleInput,
+  createPdkAdminPlugin(
+    {
+      logLevel: LogLevel.DEBUG,
+      components: {
+        PdkBox: DemoBox,
+        PdkButton: DemoButton,
+        PdkButtonGroup: DefaultButtonGroup,
+        PdkCheckboxInput: DefaultCheckboxInput,
+        PdkCol: DefaultCol,
+        PdkCurrencyInput: DefaultCurrencyInput,
+        PdkDropOffInput: DefaultDropOffInput,
+        PdkDropdownButton: DefaultDropdownButton,
+        PdkFormGroup: DemoFormGroup,
+        PdkHeading: DefaultHeading,
+        PdkIcon: DemoIcon,
+        PdkImage: DemoImage,
+        PdkLink: DefaultLink,
+        PdkModal: DemoModal,
+        PdkMultiCheckbox: DefaultMultiCheckbox,
+        PdkMultiRadio: DefaultMultiRadio,
+        PdkNotification: DemoNotification,
+        PdkNumberInput: DefaultNumberInput,
+        PdkPluginSettingsWrapper: DemoPluginSettingsWrapper,
+        PdkRadioInput: DefaultRadioInput,
+        PdkRow: DemoRow,
+        PdkSelectInput: DemoSelectInput,
+        PdkTabNavButton: DemoTabNavButton,
+        PdkTable: DefaultTable,
+        PdkTableCol: DefaultTableCol,
+        PdkTableRow: DefaultTableRow,
+        PdkTextInput: DemoTextInput,
+        PdkTimeInput: DefaultTimeInput,
+        PdkToggleInput: DefaultToggleInput,
+      },
     },
-  }),
+    {...context, orderData: useDemoOrderData()},
+  ),
 );
 
 app.mount('#app');

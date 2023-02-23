@@ -2,11 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-.slide-up-enter-active, .slide-up-leave-active {
+.slide-up-enter-active,
+.slide-up-leave-active {
   transition: all 0.3s ease;
 }
 
-.slide-up-enter, .slide-up-leave-to {
+.slide-up-enter,
+.slide-up-leave-to {
   transform: translateY(100%);
   opacity: 0;
 }

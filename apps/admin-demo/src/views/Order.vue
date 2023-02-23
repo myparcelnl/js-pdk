@@ -19,34 +19,18 @@
     <div class="border border-zinc-800 p-5 rounded-lg">
       <h2>Actions</h2>
 
-      <div
-        id="pdk-OrderBox"
-        :data-pdk-context="JSON.stringify({orderIdentifier: order.externalIdentifier, orderData: order})" />
+      <OrderBoxView :order-identifier="order.externalIdentifier" />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent, nextTick} from 'vue';
-import {AdminView} from '@myparcel-pdk/common/src';
+<script setup lang="ts">
+import {OrderBoxView} from '@myparcel-pdk/frontend-core/src';
 import {useDemoOrder} from '../composables/useDemoOrder';
-import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core/src';
 import {useRoute} from 'vue-router';
 
-export default defineComponent({
-  name: 'Order',
+const route = useRoute();
+const {id} = route.params;
 
-  setup: () => {
-    const route = useRoute();
-    const {id} = route.params;
-
-    const order = useDemoOrder(id);
-
-    const fe = useGlobalPdkAdmin();
-
-    void nextTick().then(() => fe.render(AdminView.ORDER_BOX, '#pdk-OrderBox'));
-
-    return {order};
-  },
-});
+const order = useDemoOrder(id);
 </script>

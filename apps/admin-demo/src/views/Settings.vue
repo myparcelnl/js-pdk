@@ -1,19 +1,9 @@
 <template>
-  <div id="pdk-PluginSettings" />
+  <div>
+    <PluginSettingsView />
+  </div>
 </template>
 
-<script lang="ts">
-import {defineComponent, nextTick} from 'vue';
-import {AdminView} from '@myparcel-pdk/common/src';
-import {useGlobalPdkAdmin} from '@myparcel-pdk/frontend-core/src';
-
-export default defineComponent({
-  name: 'Settings',
-
-  setup: () => {
-    const fe = useGlobalPdkAdmin();
-
-    void nextTick().then(() => fe.render(AdminView.PLUGIN_SETTINGS, '#pdk-PluginSettings'));
-  },
-});
+<script setup lang="ts">
+import {PluginSettingsView} from '@myparcel-pdk/frontend-core/src';
 </script>

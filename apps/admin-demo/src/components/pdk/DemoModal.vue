@@ -117,7 +117,7 @@ export default defineComponent({
      */
     actions: {
       type: Array as PropType<ResolvedAction[]>,
-      required: true,
+      default: () => [],
     },
   },
 

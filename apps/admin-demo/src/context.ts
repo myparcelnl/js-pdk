@@ -6,6 +6,13 @@ import translations from './translations/en.json';
 export const context: AdminContextObject = {
   orderIdentifier: '',
   global: {
+    appInfo: {
+      title: 'Admin Demo',
+      version: '1.0.0',
+      name: 'admin-demo',
+      path: '/admin-demo/',
+      url: 'https://admin-demo.dev.myparcel.nl',
+    },
     baseUrl: 'http://localhost',
     bootId: 'myparcel-pdk-boot',
     endpoints: Object.keys(BackendEndpoint).reduce(
@@ -1153,7 +1160,9 @@ export const context: AdminContextObject = {
       ],
     },
     pluginSettings: {
-      account: {id: 'account', apiKey: '696c39290ef16fc2644bb9d88ab80b49318e739a'},
+      account: {
+        apiKey: '696c39290ef16fc2644bb9d88ab80b49318e739a',
+      },
       general: {
         apiLogging: true,
         barcodeInNote: false,
@@ -1193,8 +1202,7 @@ export const context: AdminContextObject = {
       },
       carrier: {
         postnl: {
-          id: 'postnl',
-          carrierName: undefined,
+          carrierName: 'postnl',
           allowDeliveryOptions: true,
           allowEveningDelivery: false,
           allowMondayDelivery: true,
@@ -1207,11 +1215,11 @@ export const context: AdminContextObject = {
           cutoffTime: '16:00',
           cutoffTimeSameDay: '10:00',
           defaultPackageType: 'digital_stamp',
-          deliveryOptionsDisplay: undefined,
+          deliveryOptionsDisplay: '',
           deliveryOptionsEnabledForBackorders: false,
           digitalStampDefaultWeight: 0,
           dropOffDelay: 0,
-          dropOffPoint: undefined,
+          dropOffPoint: '',
           dropOffPossibilities: {
             dropOffDays: [
               {
