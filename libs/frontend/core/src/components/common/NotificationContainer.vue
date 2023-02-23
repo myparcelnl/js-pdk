@@ -2,7 +2,7 @@
   <div v-test="`NotificationContainer--${category}`">
     <TransitionGroup
       appear
-      :name="adminConfig.transitions.notification">
+      :name="config?.transitions?.notification">
       <PdkNotification
         v-for="(notification, index) in notifications"
         :key="`alert_${index}_${notification.content}`"
@@ -28,10 +28,9 @@ export default defineComponent({
   },
 
   setup: (props) => {
-    const adminConfig = useAdminConfig();
-
     return {
-      adminConfig,
+      config: useAdminConfig(),
+
       notifications: computed(() => {
         const {notifications} = useNotificationStore();
 

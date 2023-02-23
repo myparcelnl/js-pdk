@@ -1,30 +1,21 @@
 <template>
   <PdkModal
     :modal-key="modalKey"
-    save-label="print"
     title="print_options_title">
     <PrintOptionsModalForm />
   </PdkModal>
 </template>
 
-<script lang="ts">
-import {defineAsyncComponent, defineComponent} from 'vue';
-import {AdminModalKey} from '../../types';
-
+<script setup lang="ts">
 /**
  * Modal with print options. Opened when any print action is executed, if the modal is enabled in the module settings.
  */
-export default defineComponent({
-  name: 'PrintOptionsModal',
-  components: {
-    PrintOptionsModalForm: defineAsyncComponent(() => import('./PrintOptionsModalForm.vue')),
-  },
 
-  // eslint-disable-next-line max-lines-per-function
-  setup: () => {
-    return {
-      modalKey: AdminModalKey.PRINT_OPTIONS,
-    };
-  },
-});
+import {AdminModalKey} from '../../types';
+import {defineAsyncComponent} from 'vue';
+
+const modalKey = AdminModalKey.PRINT_OPTIONS;
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const PrintOptionsModalForm = defineAsyncComponent(() => import('./PrintOptionsModalForm.vue'));
 </script>
