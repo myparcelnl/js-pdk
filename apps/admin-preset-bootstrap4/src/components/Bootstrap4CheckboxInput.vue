@@ -14,8 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import {generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {useElement} from '@myparcel/vue-form-builder/src';
+import {generateFieldId, useElement} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties
@@ -26,6 +25,4 @@ const model = useVModel(props, undefined, emit);
 
 const element = useElement();
 const id = generateFieldId();
-
-const {translate} = useLanguage();
 </script>

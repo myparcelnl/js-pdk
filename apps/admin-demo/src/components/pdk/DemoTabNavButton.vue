@@ -2,7 +2,7 @@
   <button
     :class="{
       'text-zinc-600 border-t border-l border-r border-': active,
-      'text-zinc-500 border-b mx-px': !active,
+      'text-zinc-500 border-b': !active,
     }"
     class="border-zinc-500 duration-150 ease-in-out focus:text-zinc-700 font-medium hover:text-zinc-700 leading-5 px-3 py-2 rounded-tl-lg rounded-tr-lg text-sm transition"
     type="button"

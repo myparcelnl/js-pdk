@@ -36,11 +36,10 @@
 /**
  * A form group is used to render a label and a form element.
  */
-import {generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {useElement} from '@myparcel/vue-form-builder/src';
+import {generateFieldId, useElement, useLanguage} from '@myparcel-pdk/frontend-core/src';
 
 const {translate} = useLanguage();
 
-const id = generateFieldId();
 const element = useElement();
+const id = generateFieldId();
 </script>

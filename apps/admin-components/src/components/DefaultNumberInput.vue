@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import {useElement} from '@myparcel/vue-form-builder/src';
+import {useElement} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties

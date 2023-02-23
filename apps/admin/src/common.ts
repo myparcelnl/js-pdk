@@ -1,5 +1,3 @@
-export {useElement, useForm} from '@myparcel/vue-form-builder/src';
-
 export type {
   Account,
   AdminComponentMap,
@@ -68,6 +66,8 @@ export {
   useAppInfo,
   useDropOffInputContext,
   useDropdownData,
+  useElement,
+  useForm,
   useFormatter,
   useGlobalContext,
   useLanguage,

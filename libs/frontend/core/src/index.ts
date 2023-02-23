@@ -10,3 +10,5 @@ export * from './stores';
 export * from './types';
 export * from './utils';
 export * from './views/integrated';
+
+export {useElement, useForm} from '@myparcel/vue-form-builder/src';

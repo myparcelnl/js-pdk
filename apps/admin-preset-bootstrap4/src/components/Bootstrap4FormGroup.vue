@@ -47,5 +47,6 @@ const props = defineProps({
 });
 
 const {translate} = useLanguage();
+
 const id = generateFieldId(props.element);
 </script>

@@ -23,13 +23,11 @@
         </ul>
       </aside>
 
-      <div class="">
-        <main class="p-5">
-          <div class="max-w-screen-2xl mx-auto w-full">
-            <RouterView />
-          </div>
-        </main>
-      </div>
+      <main class="flex-grow p-5">
+        <div class="max-w-screen-2xl mx-auto w-full">
+          <RouterView />
+        </div>
+      </main>
     </div>
 
     <footer class="bg-zinc-900 px-5 py-2">
@@ -44,8 +42,8 @@
 </template>
 
 <script setup lang="ts">
-import {RouterLink, RouterView, useRouter} from 'vue-router';
 import {ModalsView, NotificationsView} from '@myparcel-pdk/frontend-core/src';
+import {RouterLink, RouterView, useRouter} from 'vue-router';
 
 const routes = useRouter()
   .getRoutes()

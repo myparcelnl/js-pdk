@@ -14,8 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import {generateFieldId} from '@myparcel-pdk/frontend-core/src';
-import {useElement} from '@myparcel/vue-form-builder/src';
+import {generateFieldId, useElement} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties

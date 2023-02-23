@@ -1,5 +1,5 @@
 import {ElementInstance} from '../../types';
-import {useElement} from '@myparcel/vue-form-builder/src';
+import {useElement} from '../../index';
 
 export const generateFieldId = (element?: ElementInstance): string => {
   const resolvedElement = element ?? useElement();

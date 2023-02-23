@@ -17,8 +17,7 @@
  * A select box. Renders a list of options which each have their own value.
  */
 
-import {generateFieldId} from '@myparcel-pdk/frontend-core/src';
-import {useElement} from '@myparcel/vue-form-builder/src';
+import {generateFieldId, useElement} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties
