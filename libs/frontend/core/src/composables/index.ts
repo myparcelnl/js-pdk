@@ -1,4 +1,5 @@
 export * from './context';
+export * from './extendAdminInstance';
 export * from './formatter';
 export * from './query';
 export * from './translations';

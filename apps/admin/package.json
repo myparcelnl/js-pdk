@@ -6,7 +6,8 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
-    "./src": "./src/index.ts"
+    "./src": "./src/index.ts",
+    "./integrated": "./dist/integrated.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

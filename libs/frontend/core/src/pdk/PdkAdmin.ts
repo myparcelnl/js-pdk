@@ -1,18 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {AdminConfiguration, AdminContextObject} from '../types';
 import {App, createApp} from 'vue';
-import {
-  createContextPlugin,
-  createLoggerPlugin,
-  createRegisterComponentsPlugin,
-  createStorePlugin,
-  createVueQueryPlugin,
-} from './instance';
 import {createLogger, getElementContext} from '../services';
 import {AdminAppConfig} from '../data';
 import {AdminView} from '@myparcel-pdk/common/src';
 import {renderViewComponent} from './renderMap';
-import {testIdDirective} from './testIdDirective';
+import {setupAdminApp} from './setupAdminApp';
 
 export class PdkAdmin {
   public readonly config: AdminConfiguration;
@@ -39,8 +32,6 @@ export class PdkAdmin {
 
     const app = await this.createApp(view, {appName, logger, config, context});
 
-    app.directive('test', testIdDirective);
-
     try {
       app.mount(selector);
       this.renderedComponents.push(view);
@@ -56,11 +47,7 @@ export class PdkAdmin {
     const component = await renderViewComponent(view);
     const app = createApp({...component, name: appConfig.appName});
 
-    app.use(createStorePlugin(appConfig));
-    app.use(createVueQueryPlugin(appConfig));
-    app.use(createContextPlugin(appConfig));
-    app.use(createRegisterComponentsPlugin(appConfig));
-    app.use(createLoggerPlugin(appConfig));
+    setupAdminApp(app, appConfig);
 
     appConfig.config?.onCreated?.(appConfig.config);
 
