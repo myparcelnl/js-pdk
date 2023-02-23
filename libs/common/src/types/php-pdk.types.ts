@@ -504,12 +504,7 @@ export namespace Settings {
   export type CarrierSettingsCollection = ModelCarrierSettings[];
 
   export type ModelAccountSettings = {
-    id: number;
-    platformId: number;
-    status: number;
-    contactInfo: Base.ModelContactDetails;
-    generalSettings: Account.ModelAccountGeneralSettings;
-    shops: Account.ShopCollection;
+    apiKey: string;
   };
 
   export type ModelCarrierSettings = {
