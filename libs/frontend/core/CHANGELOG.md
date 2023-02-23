@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.4](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.3...@myparcel-pdk/frontend-core@1.0.0-alpha.4) "@myparcel-pdk/frontend-core" (2023-02-23)
+
+
+### Bug Fixes
+
+* update exports ([8fed69a](https://github/myparcelnl/js-pdk/commit/8fed69a29e8c994e7755e47e53258ba2f3c2a23c))
+
+
+
+
 ## [1.0.0-alpha.3](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.2...@myparcel-pdk/frontend-core@1.0.0-alpha.3) "@myparcel-pdk/frontend-core" (2023-02-23)
 
 
