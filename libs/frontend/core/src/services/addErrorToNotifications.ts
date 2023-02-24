@@ -1,4 +1,4 @@
-import {Notification, NotificationCategory, createApiErrorNotification, useNotificationStore} from '../';
+import {Notification, NotificationCategory, createApiNotification, useNotificationStore} from '../';
 import {ApiException} from '@myparcel/sdk';
 import {Variant} from '@myparcel-pdk/common/src';
 import {isOfType} from '@myparcel/ts-utils';
@@ -16,5 +16,11 @@ export const addErrorToNotifications = (error: unknown, category: NotificationCa
     options.content = error.stack;
   }
 
-  return store.add(createApiErrorNotification(Variant.ERROR, options));
+  const notification = createApiNotification(Variant.ERROR, options);
+
+  if (!notification) {
+    return;
+  }
+
+  store.add(notification);
 };

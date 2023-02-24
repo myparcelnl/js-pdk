@@ -2,7 +2,7 @@ import {ActionParameters, AdminAction, AnyAdminAction, Notification} from '../..
 import {ActionContext} from '../../actions';
 import {AdminInstance} from '../../data';
 import {Variant} from '@myparcel-pdk/common/src';
-import {createApiErrorNotification} from '../createApiErrorNotification';
+import {createApiNotification} from '../createApiNotification';
 import {createLogger} from '../logger';
 import {getActionIdentifier} from './getActionIdentifier';
 import {useAdminInstance} from '../../composables';
@@ -18,7 +18,7 @@ export const createActionContext = <A extends AdminAction | undefined>(
   const logger = createLogger(identifier);
 
   // @ts-expect-error todo
-  const context: ActionContext<A> = {
+  return {
     action,
 
     parameters: parameters ?? {},
@@ -28,16 +28,14 @@ export const createActionContext = <A extends AdminAction | undefined>(
       logger,
     },
 
-    notifications: VARIANTS.reduce(
-      (acc, type) => ({
-        ...acc,
-        [type]: createApiErrorNotification(type, {
-          identifier: `action_${identifier}`,
-        }),
-      }),
-      {} as Record<'success' | 'error', Notification>,
-    ),
-  };
+    notifications: VARIANTS.reduce((acc, type) => {
+      const notification = createApiNotification(type, {identifier: `action_${identifier}`});
 
-  return context;
+      if (!notification) {
+        return acc;
+      }
+
+      return {...acc, [type]: notification};
+    }, {} as Record<'success' | 'error', Notification>),
+  };
 };
