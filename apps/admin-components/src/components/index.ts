@@ -1,8 +1,8 @@
 export {default as DefaultBox} from './DefaultBox.vue';
 
-export {default as DefaultButton} from './DefaultButton.vue';
-
 export {default as DefaultButtonGroup} from './DefaultButtonGroup.vue';
+
+export {default as DefaultButton} from './DefaultButton.vue';
 
 export {default as DefaultCheckboxInput} from './DefaultCheckboxInput.vue';
 
@@ -24,6 +24,8 @@ export {default as DefaultImage} from './DefaultImage.vue';
 
 export {default as DefaultLink} from './DefaultLink.vue';
 
+export {default as DefaultLoader} from './DefaultLoader.vue';
+
 export {default as DefaultModal} from './DefaultModal.vue';
 
 export {default as DefaultMultiCheckbox} from './DefaultMultiCheckbox.vue';
@@ -42,11 +44,11 @@ export {default as DefaultSelectInput} from './DefaultSelectInput.vue';
 
 export {default as DefaultTabNavButton} from './DefaultTabNavButton.vue';
 
-export {default as DefaultTable} from './DefaultTable.vue';
-
 export {default as DefaultTableCol} from './DefaultTableCol.vue';
 
 export {default as DefaultTableRow} from './DefaultTableRow.vue';
+
+export {default as DefaultTable} from './DefaultTable.vue';
 
 export {default as DefaultTextInput} from './DefaultTextInput.vue';
 

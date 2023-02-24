@@ -1,8 +1,7 @@
 <template>
-  <div
-    :class="{
-      loading: 'opacity-50',
-    }">
+  <PdkLoader v-if="loading" />
+
+  <div v-else>
     <div
       v-if="$slots.header || title"
       @click="$emit('clickHeader')">
@@ -29,14 +28,20 @@
  * A "box" component that can be used to wrap content in a block.
  */
 
+import {Size} from '@myparcel-pdk/common/src';
 import {useLanguage} from '@myparcel-pdk/frontend-core/src';
 
 defineProps<{
   /**
    * Used to control loading state.
    */
-  // eslint-disable-next-line vue/no-unused-properties
   loading?: boolean;
+
+  /**
+   * Size of the box.
+   */
+  // eslint-disable-next-line vue/no-unused-properties
+  size?: Size;
 
   /**
    * Title of the box.
