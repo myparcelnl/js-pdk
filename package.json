@@ -64,7 +64,7 @@
     "@myparcel-eslint/eslint-config-prettier-typescript": "^1.2.0",
     "@myparcel-eslint/eslint-config-prettier-typescript-vue": "^1.2.0",
     "@myparcel/prettier-config": "^1.1.0",
-    "@nrwl/nx-cloud": "^15.1.0",
+    "@nrwl/nx-cloud": "^15.1.1",
     "@vue/tsconfig": "^0.1.3",
     "bundlewatch": "^0.3.3",
     "conventional-changelog-conventionalcommits": "^5.0.0",
