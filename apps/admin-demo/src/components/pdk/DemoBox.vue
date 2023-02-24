@@ -5,35 +5,43 @@
     }"
     class="border mb-4 overflow-hidden rounded-xl">
     <div
-      v-if="$slots.header || title"
-      class="bg-zinc-50 border-newItem font-bold px-4 py-2 text-lg"
-      @click="$emit('clickHeader')">
-      <slot name="header">
-        {{ translate(title) }}
-      </slot>
+      v-if="$slots.header"
+      class="bg-zinc-50 border-newItem font-bold text-lg"
+      :class="paddingClasses">
+      <slot name="header" />
     </div>
 
-    <div class="p-4">
+    <div :class="paddingClasses">
       <slot />
     </div>
 
     <div
       v-if="$slots.footer"
-      class="d-flex p-4">
+      class="d-flex"
+      :class="paddingClasses">
       <slot name="footer" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import {useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {PropType, computed} from 'vue';
+import {Size} from '@myparcel-pdk/common';
 
-defineProps<{
-  loading?: boolean;
-  title?: string;
-}>();
+const props = defineProps({
+  loading: {
+    type: Boolean,
+  },
 
-defineEmits<(event: 'clickHeader') => void>();
+  size: {
+    type: String as PropType<Size>,
+    default: Size.MEDIUM,
+  },
+});
 
-const {translate} = useLanguage();
+const paddingClasses = computed(() => ({
+  'p-2': [Size.SMALL, Size.EXTRA_SMALL].includes(props.size),
+  'p-4': [Size.MEDIUM].includes(props.size),
+  'p-5': [Size.LARGE, Size.EXTRA_LARGE].includes(props.size),
+}));
 </script>

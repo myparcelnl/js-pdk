@@ -1,7 +1,7 @@
 <template>
   <input
     :id="id"
-    v-model="model"
+    v-model.trim="model"
     :disabled="element.isDisabled || element.isSuspended"
     class="border px-3 py-2 rounded" />
 </template>
