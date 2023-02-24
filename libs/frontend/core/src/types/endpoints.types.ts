@@ -40,7 +40,7 @@ export type EndpointAdminActionMap = {
 };
 
 export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record<string, unknown>> {
-  [BackendEndpoint.FETCH_CONTEXT]: {contexts?: OneOrMore<AdminContextKey>};
+  [BackendEndpoint.FETCH_CONTEXT]: {context?: OneOrMore<AdminContextKey>};
 
   [BackendEndpoint.UPDATE_ACCOUNT]: {form: FormInstance};
 

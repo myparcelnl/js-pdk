@@ -1,62 +1,56 @@
 <template>
-  <div v-if="hasAccount">
+  <div v-show="hasAccount">
     <TabNavigation :tabs="tabs" />
   </div>
 </template>
 
-<script lang="ts">
-import {BackendEndpoint, TabDefinition} from '@myparcel-pdk/common/src';
-import {computed, defineComponent, ref, unref, watch} from 'vue';
-import {useAccount, useLogger, useStoreContextQuery, useStoreQuery} from '../../composables';
+<script setup lang="ts">
+import {computed, ref, watch} from 'vue';
+import {useAccount, useAdminConfig, useLogger, useStoreContextQuery} from '../../composables';
 import {AdminContextKey} from '../../types';
+import {TabDefinition} from '@myparcel-pdk/common/src';
 import TabNavigation from '../common/TabNavigation.vue';
+import {createActionContext} from '../../services';
 import {createPluginSettingsTabs} from '../../forms';
 import {get} from '@vueuse/core';
+import {pluginSettingsUpdateAction} from '../../actions';
 
-export default defineComponent({
-  name: 'PluginSettingsForms',
-  components: {
-    TabNavigation,
+const dynamicContextQuery = useStoreContextQuery();
+const pluginSettingsContextQuery = useStoreContextQuery(AdminContextKey.PLUGIN_SETTINGS_VIEW);
+
+const tabs = ref<TabDefinition[]>([]);
+const hasAccount = computed(() => !!get(dynamicContextQuery.data)?.account);
+const logger = useLogger();
+
+const config = useAdminConfig();
+const actionContext = createActionContext(pluginSettingsUpdateAction);
+
+watch(
+  () => dynamicContextQuery.dataUpdatedAt,
+  () => {
+    if (pluginSettingsContextQuery.isLoading || dynamicContextQuery.isLoading || !useAccount()) {
+      return;
+    }
+
+    const pluginSettingsView = get(pluginSettingsContextQuery.data);
+    const dynamicContext = get(dynamicContextQuery.data);
+
+    if (!dynamicContext?.pluginSettings) {
+      logger.error('Plugin settings not found');
+      return;
+    }
+
+    if (!pluginSettingsView) {
+      logger.error(`${AdminContextKey.PLUGIN_SETTINGS_VIEW} not found`);
+      return;
+    }
+
+    tabs.value = createPluginSettingsTabs(pluginSettingsView, {
+      pluginSettings: dynamicContext.pluginSettings,
+      actionContext,
+      config,
+    });
   },
-
-  setup: () => {
-    const account = useAccount();
-    const hasAccount = computed(() => Boolean(account));
-
-    const dynamicContextQuery = useStoreContextQuery();
-    const pluginSettingsContextQuery = useStoreContextQuery(AdminContextKey.PLUGIN_SETTINGS_VIEW);
-    const updatePluginSettingsMutation = useStoreQuery(BackendEndpoint.UPDATE_PLUGIN_SETTINGS);
-
-    const tabs = ref<TabDefinition[]>([]);
-
-    watch(
-      dynamicContextQuery.data,
-      () => {
-        if (!hasAccount.value || dynamicContextQuery.isLoading) {
-          return;
-        }
-
-        const pluginSettingsView = get(pluginSettingsContextQuery.data);
-
-        if (!pluginSettingsView) {
-          const logger = useLogger();
-          logger.error(`${AdminContextKey.PLUGIN_SETTINGS_VIEW} not found`);
-          return;
-        }
-
-        tabs.value = createPluginSettingsTabs({
-          view: unref(pluginSettingsView),
-          mutation: updatePluginSettingsMutation,
-          query: dynamicContextQuery,
-        });
-      },
-      {immediate: true},
-    );
-
-    return {
-      hasAccount,
-      tabs,
-    };
-  },
-});
+  {immediate: true},
+);
 </script>

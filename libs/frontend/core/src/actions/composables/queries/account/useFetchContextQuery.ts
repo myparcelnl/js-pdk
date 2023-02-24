@@ -17,11 +17,12 @@ export const useFetchContextQuery = <C extends AdminContextKey = AdminContextKey
       const context = await pdk.fetchContext({
         // @ts-expect-error custom endpoints are not typed correctly
         parameters: {
-          contexts: encodeArrayParameter(contextKey),
+          context: encodeArrayParameter(contextKey),
         },
       });
 
-      return context[0][contextKey];
+      // @ts-expect-error get first context item that matches requested context.
+      return context[0][contextKey] ?? {};
     },
     {
       ...queryClient.defaultQueryOptions(),

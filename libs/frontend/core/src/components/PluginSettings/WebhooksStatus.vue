@@ -1,80 +1,77 @@
 <template>
-  <PdkButton
-    variant="primary"
-    @click="open = !open">
-    {{ translate('button_webhooks_edit') }}
-  </PdkButton>
+  <PdkBox>
+    <h2>{{ translate('settings_webhook_title') }}</h2>
 
-  <div v-if="open">
-    <PdkHeading level="3">{{ translate('notification_webhooks_connected') }}</PdkHeading>
+    <PdkButtonGroup>
+      <ActionButton
+        v-for="action in webhookActions"
+        :key="action.id"
+        :action="action" />
+    </PdkButtonGroup>
 
-    <ActionButton
-      v-for="action in webhookActions"
-      :key="action.id"
-      :action="action" />
-
-    <ul>
+    <ul v-if="webhooks.length">
       <li
-        v-for="webhook in fetchWebhooks.data"
+        v-for="webhook in webhooks"
         :key="webhook.hook">
-        <StatusIndicator :status="getStatus(webhook)">
+        <StatusIndicator :status="webhook.status">
           <code v-text="webhook.hook" />
         </StatusIndicator>
       </li>
     </ul>
-  </div>
+
+    <PdkLoader v-else />
+  </PdkBox>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import {BackendEndpoint, Status, WebhookDefinition} from '@myparcel-pdk/common/src';
-import {computed, defineComponent, ref} from 'vue';
-import {useLanguage, useStoreQuery} from '../../composables';
-import {webhooksCreateAction, webhooksDeleteAction} from '../../actions';
+import {
+  useCreateWebhooksMutation,
+  useDeleteWebhooksMutation,
+  useFetchWebhooksQuery,
+  webhooksCreateAction,
+  webhooksDeleteAction,
+} from '../../actions';
 import ActionButton from '../common/ActionButton.vue';
 import {ResolvedAction} from '../../types';
 import StatusIndicator from '../common/StatusIndicator.vue';
+import {computed} from 'vue';
 import {createAction} from '../../services';
 import {get} from '@vueuse/core';
 import {partitionArray} from '@myparcel/ts-utils';
+import {useLanguage} from '../../composables';
+import {useQueryStore} from '../../stores';
 
-export default defineComponent({
-  name: 'WebhooksStatus',
-  components: {StatusIndicator, ActionButton},
+const queryStore = useQueryStore();
 
-  setup: () => {
-    const {translate} = useLanguage();
+const fetchWebhooks = queryStore.register(BackendEndpoint.FETCH_WEBHOOKS, useFetchWebhooksQuery());
+const createWebhooks = queryStore.register(BackendEndpoint.CREATE_WEBHOOKS, useCreateWebhooksMutation());
+const deleteWebhooks = queryStore.register(BackendEndpoint.DELETE_WEBHOOKS, useDeleteWebhooksMutation());
 
-    const open = ref(false);
+const webhooks = computed<(WebhookDefinition & {status: Status})[]>(() => {
+  return (get(fetchWebhooks.data) ?? []).map((webhook) => {
+    let status = Status.PENDING;
 
-    const fetchWebhooks = useStoreQuery(BackendEndpoint.FETCH_WEBHOOKS);
-    const createWebhooks = useStoreQuery(BackendEndpoint.CREATE_WEBHOOKS);
-    const deleteWebhooks = useStoreQuery(BackendEndpoint.DELETE_WEBHOOKS);
+    if (!get(fetchWebhooks.isLoading) && !get(createWebhooks.isLoading) && !get(deleteWebhooks.isLoading)) {
+      status = webhook.connected ? Status.SUCCESS : Status.ERROR;
+    }
 
-    return {
-      open,
-      translate,
-      fetchWebhooks,
-      webhookActions: computed(() => {
-        const actions: ResolvedAction[] = [];
-        const [connected, disconnected] = partitionArray(get(fetchWebhooks.data) ?? [], (webhook) => webhook.connected);
-
-        actions.push(createAction(webhooksCreateAction, {hooks: disconnected.map(({hook}) => hook)}));
-
-        if (connected.length) {
-          actions.push(createAction(webhooksDeleteAction, {hooks: connected.map(({hook}) => hook)}));
-        }
-
-        return actions;
-      }),
-
-      getStatus: (webhook: WebhookDefinition): Status => {
-        if (fetchWebhooks.isLoading || createWebhooks.isLoading || deleteWebhooks.isLoading) {
-          return Status.PENDING;
-        }
-
-        return webhook.connected ? Status.SUCCESS : Status.ERROR;
-      },
-    };
-  },
+    return {...webhook, status};
+  });
 });
+
+const webhookActions = computed(() => {
+  const actions: ResolvedAction[] = [];
+  const [connected, disconnected] = partitionArray(get(fetchWebhooks.data) ?? [], (webhook) => webhook.connected);
+
+  actions.push(createAction(webhooksCreateAction, {hooks: disconnected.map(({hook}) => hook)}));
+
+  if (connected.length) {
+    actions.push(createAction(webhooksDeleteAction, {hooks: connected.map(({hook}) => hook)}));
+  }
+
+  return actions;
+});
+
+const {translate} = useLanguage();
 </script>

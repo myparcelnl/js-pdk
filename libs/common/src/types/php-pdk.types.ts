@@ -112,6 +112,7 @@ export namespace Base {
     parameters: Record<string, string>;
     path: string;
     property: string;
+    responseProperty?: string;
   };
 }
 

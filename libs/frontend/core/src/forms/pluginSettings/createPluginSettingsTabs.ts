@@ -1,12 +1,11 @@
-import {ContextQuery, ResolvedQuery} from '../../stores';
-import {BackendEndpoint, Plugin, TabDefinition} from '@myparcel-pdk/common/src';
+import {AdminAction, AdminConfiguration} from '../../types';
+import {Plugin, TabDefinition} from '@myparcel-pdk/common/src';
+import {ActionContext} from '../../actions';
 import {FormInstance} from '@myparcel/vue-form-builder/src';
-import {TabNavigation} from '../../components';
-import {createActionContext} from '../../services';
 import {createFormTab} from './createFormTab';
 import {createPluginSettingsForm} from './createPluginSettingsForm';
+import {createSettingsTabsComponent} from './createSettingsTabsComponent';
 import {h} from 'vue';
-import {pluginSettingsUpdateAction} from '../../actions';
 import {useLanguage} from '../../composables';
 
 export interface FormTab extends Omit<TabDefinition, 'component'> {
@@ -14,56 +13,34 @@ export interface FormTab extends Omit<TabDefinition, 'component'> {
 }
 
 export type PluginSettingsTabsContext = {
-  mutation: ResolvedQuery<BackendEndpoint.UPDATE_PLUGIN_SETTINGS>;
-  query: ContextQuery;
+  pluginSettings: Plugin.ModelContextDynamicContext['pluginSettings'];
+  actionContext: ActionContext<AdminAction.PLUGIN_SETTINGS_UPDATE>;
+  config: AdminConfiguration;
 };
 
-type CreatePluginSettingsTabs = (
-  data: PluginSettingsTabsContext & {view: Plugin.ModelContextPluginSettingsViewContext},
-) => TabDefinition[];
-
-export const createPluginSettingsTabs: CreatePluginSettingsTabs = ({view, mutation, query}) => {
-  const actionContext = createActionContext(pluginSettingsUpdateAction);
-
+export const createPluginSettingsTabs = (
+  view: Plugin.ModelContextPluginSettingsViewContext,
+  context: PluginSettingsTabsContext,
+): TabDefinition[] => {
   return Object.entries(view).map(([id, view]) => {
     const tab = {
       name: id,
       label: view.title,
     };
 
+    // If children is null, it's a single form
     if (!view.children) {
-      return createFormTab({
-        ...tab,
-        form: createPluginSettingsForm(id, view, actionContext, {mutation, query}),
-      });
+      return createFormTab({...tab, form: createPluginSettingsForm(id, view, context)});
     }
 
+    // If children is an empty array, it's an empty view
     if (!view.children.length) {
       const {translate} = useLanguage();
 
-      return {
-        ...tab,
-        component: h('div', {}, translate(`view_${id}_empty`)),
-      };
+      return {...tab, component: h('div', {}, translate(`view_${id}_empty`))};
     }
 
-    return {
-      ...tab,
-      component: () => {
-        return h('div', {}, [
-          h(TabNavigation, {
-            hashPrefix: `${view.id}-`,
-            tabs: (view.children ?? []).map((subview) =>
-              createFormTab({
-                name: `${id}.${subview.id}`,
-                label: subview.title,
-                description: subview.description,
-                form: createPluginSettingsForm(`${id}.${subview.id}`, subview, actionContext, {mutation, query}),
-              }),
-            ),
-          }),
-        ]);
-      },
-    };
+    // If children is an array, it's a tabbed view
+    return {...tab, component: () => createSettingsTabsComponent(id, view, context)};
   });
 };

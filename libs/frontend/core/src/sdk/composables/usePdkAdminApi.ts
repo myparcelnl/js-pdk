@@ -26,6 +26,7 @@ export const usePdkAdminApi = (): MyParcelSdk<AbstractPdkEndpoint> => {
       public readonly name = endpointName as BackendEndpoint;
       public readonly path = options.path;
       public readonly property = options.property;
+      public readonly responseProperty = options.responseProperty ?? options.property;
     }
 
     return new PdkEndpoint({

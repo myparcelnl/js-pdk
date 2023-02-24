@@ -91,13 +91,15 @@ export const useQueryStore = defineStore('query', () => {
     return queries.value[key];
   };
 
-  const register = <E extends QueryKey>(key: E, query: ResolvedQuery<E>): void => {
+  const register = <E extends QueryKey>(key: E, query: ResolvedQuery<E>): ResolvedQuery<E> => {
     if (!queryClient.value) {
       queryClient.value = useQueryClient();
     }
 
     // @ts-expect-error todo
     queries.value[key] = query;
+
+    return query;
   };
 
   return {

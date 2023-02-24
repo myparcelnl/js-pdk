@@ -25,6 +25,11 @@ export const updateAccountAction = defineAction({
   label: 'action_save',
   handler: createMutator(BackendEndpoint.UPDATE_ACCOUNT),
   async afterHandle(context) {
+    if (context.response === undefined) {
+      context.instance.logger.error('Account not found');
+      return context.response;
+    }
+
     await Promise.all([
       executeNextAction(context, fetchDynamicContextAction),
       executeNextAction(context, fetchPluginSettingsViewContextAction),

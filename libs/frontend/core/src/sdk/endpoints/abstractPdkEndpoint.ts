@@ -18,7 +18,9 @@ interface Definition extends EndpointDefinition {
 
 export interface FetchContextDefinition extends Definition {
   name: BackendEndpoint.FETCH_CONTEXT;
-  parameters: undefined;
+  parameters: {
+    context: string;
+  };
   response: [AdminContextObject];
   formattedResponse: AdminContextObject;
 }

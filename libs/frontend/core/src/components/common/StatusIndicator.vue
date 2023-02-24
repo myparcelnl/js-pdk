@@ -1,50 +1,43 @@
 <template>
-  <span :class="config.cssUtilities.whitespaceNoWrap">
+  <span :class="config?.cssUtilities?.whitespaceNoWrap">
     <PdkIcon
       :icon="icon"
-      :class="{
-        [config.cssUtilities.textColorSuccess]: status === PdkStatus.SUCCESS,
-        [config.cssUtilities.textColorError]: status === PdkStatus.ERROR,
-        [config.cssUtilities.animationSpin]: status === PdkStatus.PENDING,
-      }" />
-
+      :class="cssClasses" />
     <slot />
   </span>
 </template>
 
-<script lang="ts">
-import {PropType, computed, defineComponent} from 'vue';
+<script setup lang="ts">
+import {PropType, computed} from 'vue';
 import {AdminIcon} from '../../types';
 import {Status} from '@myparcel-pdk/common/src';
 import {useAdminConfig} from '../../composables';
 
-export default defineComponent({
-  name: 'StatusIndicator',
-  props: {
-    status: {
-      type: String as PropType<Status>,
-      default: Status.PENDING,
-    },
-  },
-
-  setup: (props) => {
-    return {
-      PdkStatus: Status,
-      config: useAdminConfig(),
-      icon: computed(() => {
-        switch (props.status) {
-          case Status.SUCCESS:
-            return AdminIcon.YES;
-
-          case Status.ERROR:
-            return AdminIcon.NO;
-
-          case Status.PENDING:
-          default:
-            return AdminIcon.SPINNER;
-        }
-      }),
-    };
+const props = defineProps({
+  status: {
+    type: String as PropType<Status>,
+    default: Status.PENDING,
   },
 });
+
+const config = useAdminConfig();
+
+const icon = computed(() => {
+  switch (props.status) {
+    case Status.SUCCESS:
+      return AdminIcon.YES;
+
+    case Status.ERROR:
+      return AdminIcon.NO;
+
+    default:
+      return AdminIcon.SPINNER;
+  }
+});
+
+const cssClasses = computed(() => ({
+  [config?.cssUtilities?.textColorSuccess ?? '']: props.status === Status.SUCCESS,
+  [config?.cssUtilities?.textColorError ?? '']: props.status === Status.ERROR,
+  [config?.cssUtilities?.animationSpin ?? '']: props.status === Status.PENDING,
+}));
 </script>

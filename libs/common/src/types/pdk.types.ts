@@ -15,6 +15,7 @@ export const requiredAdminComponentNames = [
   'PdkIcon',
   'PdkImage',
   'PdkLink',
+  'PdkLoader',
   'PdkModal',
   'PdkMultiCheckbox',
   'PdkMultiRadio',
