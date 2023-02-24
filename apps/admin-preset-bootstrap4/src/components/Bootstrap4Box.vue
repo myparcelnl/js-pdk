@@ -1,55 +1,44 @@
 <template>
   <div
     :class="{
-      loading: 'text-muted',
+      'text-muted': loading,
     }"
-    class="box">
+    class="card">
     <div
       v-if="$slots.header"
-      class="box-header">
+      class="card-header">
       <!-- Box header. -->
-      <slot name="header">
-        {{ translate(title) }}
-      </slot>
+      <slot name="header" />
     </div>
 
-    <div class="box-body">
+    <div :class="bodyClass">
       <slot />
     </div>
 
     <div
-      v-if="$slots.footer || actions.length"
-      class="box-footer">
-      <slot name="footer">
-        <ActionButton
-          v-for="(action, index) in actions"
-          :key="`${index}_${action.id}`"
-          :action="action"
-          :disabled="loading" />
-      </slot>
+      v-if="$slots.footer"
+      class="card-footer">
+      <slot name="footer" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {ActionButton, ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {PropType} from 'vue';
+import {PropType, computed} from 'vue';
+import {Size} from '@myparcel-pdk/common/src';
 
-defineProps({
-  actions: {
-    type: Array as PropType<ResolvedAction[]>,
-    default: (): never[] => [],
-  },
-
+const props = defineProps({
   loading: {
     type: Boolean,
   },
 
-  title: {
-    type: String,
-    default: null,
+  size: {
+    type: String as PropType<Size>,
+    default: Size.MEDIUM,
   },
 });
 
-const {translate} = useLanguage();
+const bodyClass = computed(() => ({
+  'card-body': [Size.MEDIUM, Size.LARGE, Size.EXTRA_LARGE].includes(props.size),
+}));
 </script>
