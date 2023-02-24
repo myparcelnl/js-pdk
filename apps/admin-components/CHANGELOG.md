@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.5](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-components@1.0.0-alpha.4...@myparcel-pdk/admin-components@1.0.0-alpha.5) "@myparcel-pdk/admin-components" (2023-02-24)
+
+
+### Features
+
+* **components:** update components ([3e5ce7e](https://github/myparcelnl/js-pdk/commit/3e5ce7e14fc699f70921bb737ab7ddc20deb4c3b))
+
+
+
+
 ## [1.0.0-alpha.4](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-components@1.0.0-alpha.3...@myparcel-pdk/admin-components@1.0.0-alpha.4) "@myparcel-pdk/admin-components" (2023-02-23)
 
 

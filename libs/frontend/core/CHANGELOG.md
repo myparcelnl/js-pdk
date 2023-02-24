@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.5](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.4...@myparcel-pdk/frontend-core@1.0.0-alpha.5) "@myparcel-pdk/frontend-core" (2023-02-24)
+
+
+### Features
+
+* improve settings view ([3e23462](https://github/myparcelnl/js-pdk/commit/3e234624173e403b9aa72605734f41e73139e1ff))
+
+
+### Bug Fixes
+
+* **core:** don't show notifications without translatable content ([860795a](https://github/myparcelnl/js-pdk/commit/860795ab9aca3e3f82fc648f167e02d9975f6484))
+
+
+
+
 ## [1.0.0-alpha.4](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.3...@myparcel-pdk/frontend-core@1.0.0-alpha.4) "@myparcel-pdk/frontend-core" (2023-02-23)
 
 
