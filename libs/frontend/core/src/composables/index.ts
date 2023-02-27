@@ -12,6 +12,7 @@ export * from './useGlobalPdkAdmin';
 export * from './useLoading';
 export * from './useLogger';
 export * from './useOrderData';
+export * from './useSelectInputContext';
 export * from './useShipmentData';
 export * from './useStoreContextQuery';
 export * from './useStoreQuery';

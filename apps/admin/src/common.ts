@@ -75,6 +75,7 @@ export {
   useModalStore,
   useNotificationStore,
   usePdfWindow,
+  useSelectInputContext,
   useWeekdays,
   webhooksDeleteAction,
 } from '@myparcel-pdk/frontend-core/src';
