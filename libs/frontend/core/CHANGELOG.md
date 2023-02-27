@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.7](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.6...@myparcel-pdk/frontend-core@1.0.0-alpha.7) "@myparcel-pdk/frontend-core" (2023-02-27)
+
+
+### Bug Fixes
+
+* fix refresh bug in settings ([97818ae](https://github/myparcelnl/js-pdk/commit/97818ae75f3f1c88ed238e84a4ae65856dd1e393))
+
+
+
+
 ## [1.0.0-alpha.6](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.5...@myparcel-pdk/frontend-core@1.0.0-alpha.6) "@myparcel-pdk/frontend-core" (2023-02-27)
 
 
