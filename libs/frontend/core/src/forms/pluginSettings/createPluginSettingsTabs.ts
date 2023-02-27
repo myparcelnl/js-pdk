@@ -1,11 +1,11 @@
 import {AdminAction, AdminConfiguration} from '../../types';
 import {Plugin, TabDefinition} from '@myparcel-pdk/common/src';
+import {h, markRaw} from 'vue';
 import {ActionContext} from '../../actions';
 import {FormInstance} from '@myparcel/vue-form-builder/src';
 import {createFormTab} from './createFormTab';
 import {createPluginSettingsForm} from './createPluginSettingsForm';
-import {createSettingsTabsComponent} from './createSettingsTabsComponent';
-import {h} from 'vue';
+import {createPluginSettingsTabsComponent} from './createPluginSettingsTabsComponent';
 import {useLanguage} from '../../composables';
 
 export interface FormTab extends Omit<TabDefinition, 'component'> {
@@ -41,6 +41,6 @@ export const createPluginSettingsTabs = (
     }
 
     // If children is an array, it's a tabbed view
-    return {...tab, component: () => createSettingsTabsComponent(id, view, context)};
+    return {...tab, component: markRaw(createPluginSettingsTabsComponent(id, view, context))};
   });
 };

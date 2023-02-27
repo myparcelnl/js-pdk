@@ -1,6 +1,6 @@
 import {AnyElementConfiguration, InteractiveElementConfiguration, defineField} from '@myparcel/vue-form-builder/src';
-import {Ref, ref} from 'vue';
 import {Plugin} from '@myparcel-pdk/common/src';
+import {ref} from 'vue';
 import {resolveFormComponent} from '@myparcel-pdk/frontend-core/src';
 
 type GenerateFormFields = (
@@ -10,8 +10,6 @@ type GenerateFormFields = (
   },
   prefix?: string,
 ) => AnyElementConfiguration[];
-
-const refs: Record<string, Ref> = {};
 
 export const generateFormFields: GenerateFormFields = ({fields, values}, prefix = '') => {
   if (!fields) {
@@ -44,12 +42,10 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
       });
     }
 
-    refs[name] ??= ref(values?.[name]);
-
     return defineField({
       ...common,
       name: prefix + name,
-      ref: refs[name],
+      ref: ref(values?.[name]),
       label,
     } as InteractiveElementConfiguration);
   });
