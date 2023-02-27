@@ -33,7 +33,7 @@
   "devDependencies": {
     "@edielemoine/google-docs-importer": "^1.0.2",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vitest/coverage-c8": "^0.28.5",
+    "@vitest/coverage-c8": "^0.29.1",
     "autoprefixer": "^10.4.13",
     "happy-dom": "^8.7.2",
     "postcss": "^8.4.21",
