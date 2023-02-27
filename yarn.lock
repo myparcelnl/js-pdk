@@ -870,7 +870,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-tsup": "workspace:*"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.4"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.5"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.6"
     "@vue/test-utils": ^2.3.0
     tsup: ^6.6.3
     vue: ^3.2.47
@@ -882,7 +882,7 @@ __metadata:
   resolution: "@myparcel-pdk/admin-components@workspace:apps/admin-components"
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.5"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.6"
     "@myparcel/ts-utils": ^1.6.0
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.28.5
@@ -925,7 +925,7 @@ __metadata:
   resolution: "@myparcel-pdk/admin-preset-bootstrap4@workspace:apps/admin-preset-bootstrap4"
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.5"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.6"
     "@myparcel/ts-utils": ^1.6.0
     "@types/bootstrap": ^5.2.6
     "@types/jquery": ^3.5.16
@@ -947,7 +947,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-tsup": "workspace:*"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.4"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.5"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.6"
     tsup: ^6.6.3
   languageName: unknown
   linkType: soft
@@ -1022,7 +1022,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/frontend-core@workspace:*, @myparcel-pdk/frontend-core@workspace:^1.0.0-alpha.5, @myparcel-pdk/frontend-core@workspace:libs/frontend/core":
+"@myparcel-pdk/frontend-core@workspace:*, @myparcel-pdk/frontend-core@workspace:^1.0.0-alpha.6, @myparcel-pdk/frontend-core@workspace:libs/frontend/core":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/frontend-core@workspace:libs/frontend/core"
   dependencies:

@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.4",
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.5"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.6"
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:*",

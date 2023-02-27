@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.6](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.5...@myparcel-pdk/frontend-core@1.0.0-alpha.6) "@myparcel-pdk/frontend-core" (2023-02-27)
+
+
+### Features
+
+* add composable for select input context ([c1bb84f](https://github/myparcelnl/js-pdk/commit/c1bb84f5a9c64da866a6cbc917efc2effdb05536))
+
+
+
+
 ## [1.0.0-alpha.5](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.4...@myparcel-pdk/frontend-core@1.0.0-alpha.5) "@myparcel-pdk/frontend-core" (2023-02-24)
 
 

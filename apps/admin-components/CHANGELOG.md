@@ -2,6 +2,22 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.6](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-components@1.0.0-alpha.5...@myparcel-pdk/admin-components@1.0.0-alpha.6) "@myparcel-pdk/admin-components" (2023-02-27)
+
+
+### Features
+
+* add composable for select input context ([c1bb84f](https://github/myparcelnl/js-pdk/commit/c1bb84f5a9c64da866a6cbc917efc2effdb05536))
+
+
+### Bug Fixes
+
+* **components:** allow number and null as values on text input ([0b3876f](https://github/myparcelnl/js-pdk/commit/0b3876f44ee29a1e2b3765cfb109fd1f6324ead0))
+* don't translate labels twice ([acc0fce](https://github/myparcelnl/js-pdk/commit/acc0fced82f43bbfdf3570b3ed7089f4a1816048))
+
+
+
+
 ## [1.0.0-alpha.5](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-components@1.0.0-alpha.4...@myparcel-pdk/admin-components@1.0.0-alpha.5) "@myparcel-pdk/admin-components" (2023-02-24)
 
 
