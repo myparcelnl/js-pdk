@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.8](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.7...@myparcel-pdk/frontend-core@1.0.0-alpha.8) "@myparcel-pdk/frontend-core" (2023-02-27)
+
+
+### Bug Fixes
+
+* get form builder element properly ([e4edba2](https://github/myparcelnl/js-pdk/commit/e4edba250f2823613b84c7165b87739ae1ea718d))
+
+
+
+
 ## [1.0.0-alpha.7](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.6...@myparcel-pdk/frontend-core@1.0.0-alpha.7) "@myparcel-pdk/frontend-core" (2023-02-27)
 
 
