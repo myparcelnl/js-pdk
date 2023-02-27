@@ -1,3 +1,8 @@
-import {ComponentOrHtmlElement, InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
+import type {ComponentOrHtmlElement, InteractiveElementInstance} from '@myparcel-vfb/core/src';
+import {Replace} from '@myparcel/ts-utils';
 
-export type ElementInstance = InteractiveElementInstance<ComponentOrHtmlElement, string>;
+export type ElementInstance<Props extends Record<string, unknown> = Record<string, unknown>> = Replace<
+  InteractiveElementInstance<ComponentOrHtmlElement, string>,
+  'props',
+  Props
+>;

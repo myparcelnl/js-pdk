@@ -62,7 +62,6 @@ export const createRegisterComponentsPlugin: PdkAppPlugin = ({config, logger}) =
       const defaultConfig: Partial<FormConfiguration> = {
         renderLabel: translate,
         field: {
-          elementProp: false,
           wrapper: config.components.PdkFormGroup,
         },
       };

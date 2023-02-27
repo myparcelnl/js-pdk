@@ -1,9 +1,9 @@
-import {ComputedRef, WritableComputedRef, computed, onMounted, watch} from 'vue';
+import {ComputedRef, Ref, computed, onMounted, watch} from 'vue';
 import {SelectOption} from '@myparcel-pdk/common/src';
 import {useLanguage} from './translations';
 
 type UseSelectInputContext = (
-  model: WritableComputedRef<string | number>,
+  model: Ref<unknown>,
   options: SelectOption[],
 ) => {
   options: ComputedRef<SelectOption[]>;

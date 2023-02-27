@@ -11,8 +11,8 @@
         </slot>
       </label>
 
-      <small v-if="element.props?.description">
-        {{ translate(element.props?.description) }}
+      <small v-if="element.props.description">
+        {{ translate(element.props.description) }}
       </small>
     </PdkCol>
 
@@ -36,10 +36,12 @@
 /**
  * A form group is used to render a label and a form element.
  */
-import {generateFieldId, useElement, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
+
+// eslint-disable-next-line vue/no-unused-properties
+const props = defineProps<{element: ElementInstance<{description: string}>}>();
+
+const id = generateFieldId(props.element);
 
 const {translate} = useLanguage();
-
-const element = useElement();
-const id = generateFieldId();
 </script>

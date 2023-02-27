@@ -16,18 +16,17 @@
 </template>
 
 <script setup lang="ts">
-import {generateFieldId, useElement, useSelectInputContext} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, generateFieldId, useSelectInputContext} from '@myparcel-pdk/frontend-core/src';
+import {SelectOption} from '@myparcel-pdk/common/src';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: string | number | null}>();
-const emit = defineEmits(['update:modelValue']);
+const props = defineProps<{modelValue: string | boolean; element: ElementInstance<{options?: SelectOption[]}>}>();
+const emit = defineEmits<(e: 'update:modelValue', value: string) => void>();
 
 const model = useVModel(props, undefined, emit);
 
-const element = useElement();
-const id = generateFieldId();
+const id = generateFieldId(props.element);
 
-// @ts-expect-error props are not typed
-const {options} = useSelectInputContext(model, element.props?.options ?? []);
+const {options} = useSelectInputContext(model, props.element.props.options ?? []);
 </script>

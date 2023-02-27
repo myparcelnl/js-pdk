@@ -14,17 +14,16 @@
 </template>
 
 <script lang="ts" setup>
-import {generateFieldId, useElement, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps({modelValue: {type: Boolean}});
-const emit = defineEmits(['update:modelValue']);
+const props = defineProps<{modelValue: boolean; element: ElementInstance}>();
+const emit = defineEmits<(e: 'update:modelValue', value: boolean) => void>();
 
 const model = useVModel(props, undefined, emit);
 
-const {translate} = useLanguage();
+const id = generateFieldId(props.element);
 
-const element = useElement();
-const id = generateFieldId();
+const {translate} = useLanguage();
 </script>

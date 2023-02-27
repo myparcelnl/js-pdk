@@ -6,15 +6,14 @@
 </template>
 
 <script setup lang="ts">
-import {generateFieldId, useElement} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: string | number | null}>();
-const emit = defineEmits(['update:modelValue']);
+const props = defineProps<{modelValue: string | number | null; element: ElementInstance}>();
+const emit = defineEmits<(e: 'update:modelValue', value: string) => void>();
 
 const model = useVModel(props, undefined, emit);
 
-const element = useElement();
-const id = generateFieldId();
+const id = generateFieldId(props.element);
 </script>

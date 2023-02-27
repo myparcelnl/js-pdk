@@ -15,9 +15,9 @@
       <slot />
 
       <small
-        v-if="element.props?.description"
+        v-if="element.props.description"
         class="form-text text-muted">
-        {{ translate(element.props?.description) }}
+        {{ translate(element.props.description) }}
       </small>
 
       <div
@@ -37,14 +37,8 @@
 
 <script setup lang="ts">
 import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {PropType} from 'vue';
 
-const props = defineProps({
-  element: {
-    type: Object as PropType<ElementInstance>,
-    required: true,
-  },
-});
+const props = defineProps<{element: ElementInstance<{description: string}>}>();
 
 const {translate} = useLanguage();
 

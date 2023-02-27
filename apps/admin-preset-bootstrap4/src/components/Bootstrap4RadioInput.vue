@@ -16,17 +16,16 @@
 </template>
 
 <script setup lang="ts">
-import {generateFieldId, useElement, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: string | number | null}>();
-const emit = defineEmits(['update:modelValue']);
+const props = defineProps<{modelValue: string | number | null; element: ElementInstance}>();
+const emit = defineEmits<(e: 'update:modelValue', value: string | number) => void>();
 
 const model = useVModel(props, undefined, emit);
 
-const {translate} = useLanguage();
+const id = generateFieldId(props.element);
 
-const element = useElement();
-const id = generateFieldId();
+const {translate} = useLanguage();
 </script>

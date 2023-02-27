@@ -1091,15 +1091,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel-vfb/core@npm:^1.0.0-alpha.17":
-  version: 1.0.0-alpha.17
-  resolution: "@myparcel-vfb/core@npm:1.0.0-alpha.17"
+"@myparcel-vfb/core@npm:^1.0.0-alpha.18":
+  version: 1.0.0-alpha.18
+  resolution: "@myparcel-vfb/core@npm:1.0.0-alpha.18"
   dependencies:
     "@myparcel-vfb/build-vite": 1.0.0-alpha.15
     "@myparcel-vfb/hook-manager": ^1.0.0-alpha.18
     "@myparcel-vfb/utils": ^1.0.0-alpha.17
     "@myparcel/ts-utils": ^1.6.0
-  checksum: 9239c77f2fc8d3fbc5b884f184a90ab3419033e632013347331d12c128cad1dc401a870c4f34f2869b9bbc9fe9028582cdef547d41b79974807c542d5f1601a1
+  checksum: ebd05cdd4bbf3002c9a59b4b3ed74d75472ef44339c976d090e0385df7b2b0e2d26b946881021f9fac77e9c7de16a64fef33a313c5b84003741c2472618cda3a
   languageName: node
   linkType: hard
 
@@ -1112,14 +1112,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel-vfb/plugin@npm:^1.0.0-alpha.17":
-  version: 1.0.0-alpha.17
-  resolution: "@myparcel-vfb/plugin@npm:1.0.0-alpha.17"
+"@myparcel-vfb/plugin@npm:^1.0.0-alpha.18":
+  version: 1.0.0-alpha.18
+  resolution: "@myparcel-vfb/plugin@npm:1.0.0-alpha.18"
   dependencies:
-    "@myparcel-vfb/core": ^1.0.0-alpha.17
+    "@myparcel-vfb/core": ^1.0.0-alpha.18
     "@myparcel/ts-utils": ^1.6.0
     "@vue/devtools-api": ^6.5.0
-  checksum: a11f72c8f8e71a9adc2c1e0505812575e822d61f0ef8c7ab0e4fb821fdcf25d1f9894c6fa484589296a610d465ab8f9c7782366d893f952d2377b84d41ca3994
+  checksum: 494f5144e7a20b9159b2bdca118cfef102260a7dba345f7656f5f5b574af5f16686e9675c7063023fd450bd413d7bf3d8d0052093ddf59f90c0b0c369c88ea42
   languageName: node
   linkType: hard
 
@@ -1156,15 +1156,15 @@ __metadata:
   linkType: hard
 
 "@myparcel/vue-form-builder@npm:^1.0.0-alpha.1":
-  version: 1.0.0-alpha.39
-  resolution: "@myparcel/vue-form-builder@npm:1.0.0-alpha.39"
+  version: 1.0.0-alpha.40
+  resolution: "@myparcel/vue-form-builder@npm:1.0.0-alpha.40"
   dependencies:
-    "@myparcel-vfb/core": ^1.0.0-alpha.17
+    "@myparcel-vfb/core": ^1.0.0-alpha.18
     "@myparcel-vfb/hook-manager": ^1.0.0-alpha.18
-    "@myparcel-vfb/plugin": ^1.0.0-alpha.17
+    "@myparcel-vfb/plugin": ^1.0.0-alpha.18
     "@myparcel-vfb/utils": ^1.0.0-alpha.17
     "@myparcel/ts-utils": ^1.6.0
-  checksum: afb8adde3a24f83b58ab4d6270a62d26b53a92aeec17caeb841f1a4534c72d824430920879a7c475701ab73a2c17f75b6a17e17e477f30b5e8b9382d75d92c66
+  checksum: 2eb04d47755fff0b61e67a672501f7d64a2c9e8020afc9821251d60214aaf9e694aa1acbe530d2f5154aaf07eccd587a40ce43034bb184a98281e9acf2e964d6
   languageName: node
   linkType: hard
 

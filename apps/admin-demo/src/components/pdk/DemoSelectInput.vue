@@ -2,27 +2,29 @@
   <select
     :id="id"
     v-model="model"
-    :disabled="element.isDisabled || element.isSuspended"
+    :disabled="options.length === 1 || element.isDisabled || element.isSuspended"
     class="border flex-grow px-2 py-1 rounded">
     <option
-      v-for="(item, index) in element.props?.options ?? []"
+      v-for="(item, index) in options"
       :key="index"
-      :disabled="item.disabled || element.isDisabled || element.isSuspended"
+      :disabled="item.disabled"
       :value="item.value"
       v-text="item.label" />
   </select>
 </template>
 
 <script lang="ts" setup>
-import {generateFieldId, useElement} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, generateFieldId, useSelectInputContext} from '@myparcel-pdk/frontend-core/src';
+import {SelectOption} from '@myparcel-pdk/common/src';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps({modelValue: {type: [String, Number], default: null}});
-const emit = defineEmits(['update:modelValue']);
+const props = defineProps<{modelValue: string | number; element: ElementInstance<{options?: SelectOption[]}>}>();
+const emit = defineEmits<(e: 'update:modelValue', value: string) => void>();
 
 const model = useVModel(props, undefined, emit);
 
-const element = useElement();
-const id = generateFieldId();
+const id = generateFieldId(props.element);
+
+const {options} = useSelectInputContext(model, props.element.props.options ?? []);
 </script>
