@@ -4,7 +4,7 @@
       <label :for="id">
         <!-- Can be used instead of the label prop. -->
         <slot name="label">
-          {{ translate(element.label) }}
+          {{ element.label }}
           <span
             v-if="element.isOptional"
             v-text="translate('form_optional_tip')" />

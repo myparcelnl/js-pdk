@@ -7,7 +7,7 @@
       :for="id"
       class="col-sm-4 form-control-label">
       <slot name="label">
-        {{ translate(element.label) }}
+        {{ element.label }}
       </slot>
     </label>
 
