@@ -7,14 +7,13 @@
 </template>
 
 <script lang="ts" setup>
-import {FormInstance, MagicForm, defineForm} from '@myparcel/vue-form-builder/src';
+import {FormInstance, MagicForm, defineField, defineForm} from '@myparcel/vue-form-builder/src';
 import {markRaw, ref, resolveComponent, watch} from 'vue';
 import {updateAccountAction, useUpdateAccountMutation} from '../../actions';
 import {usePluginSettings, useStoreContextQuery} from '../../composables';
 import {SubmitButton} from '../common';
 import {createActionContext} from '../../services';
 import {createUpdateAccountSettingsValidator} from './createUpdateAccountSettingsValidator';
-import {defineField} from '@myparcel/vue-form-builder';
 import {defineFormField} from '../../forms';
 
 defineEmits<(e: 'afterSubmit', form: FormInstance) => void>();
