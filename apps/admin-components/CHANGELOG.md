@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.9](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-components@1.0.0-alpha.8...@myparcel-pdk/admin-components@1.0.0-alpha.9) "@myparcel-pdk/admin-components" (2023-02-28)
+
+
+### Bug Fixes
+
+* props can be undefined ([e764e98](https://github/myparcelnl/js-pdk/commit/e764e9835fdf86aaceb543862fadd4dcd3247926))
+
+
+
+
 ## [1.0.0-alpha.8](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-components@1.0.0-alpha.7...@myparcel-pdk/admin-components@1.0.0-alpha.8) "@myparcel-pdk/admin-components" (2023-02-27)
 
 
