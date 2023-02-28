@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.9](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.8...@myparcel-pdk/frontend-core@1.0.0-alpha.9) "@myparcel-pdk/frontend-core" (2023-02-28)
+
+
+### Bug Fixes
+
+* keep "none" option at the top of options arrays ([d01cc19](https://github/myparcelnl/js-pdk/commit/d01cc19b3d04b782b6ce6bf3c469b41f0c36370f))
+
+
+
+
 ## [1.0.0-alpha.8](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.7...@myparcel-pdk/frontend-core@1.0.0-alpha.8) "@myparcel-pdk/frontend-core" (2023-02-27)
 
 
