@@ -15,7 +15,14 @@ export const useSelectInputContext: UseSelectInputContext = (model, options) => 
   const computedOptions = computed<SelectOption[]>(() => {
     return options
       .map((item) => ({...item, label: translate(item.label)}))
-      .sort((itemA, itemB) => String(itemA.label).localeCompare(itemB.label));
+      .sort((itemA, itemB) => {
+        // Keep "none" option at the top
+        if (itemB.value === -1) {
+          return 1;
+        }
+
+        return String(itemA.label).localeCompare(String(itemB.label));
+      });
   });
 
   onMounted(() => {
