@@ -4,7 +4,7 @@
       :id="id"
       v-model="model"
       :disabled="element.isDisabled || element.isSuspended"
-      :value="element.props.value"
+      :value="element.props?.value"
       type="radio" />
     <label :for="id">
       {{ translate(`toggle_${model ? 'yes' : 'no'}`) }}

@@ -26,5 +26,5 @@ const model = useVModel(props, undefined, emit);
 
 const id = generateFieldId(props.element);
 
-const {options} = useSelectInputContext(model, props.element.props.options ?? []);
+const {options} = useSelectInputContext(model, props.element.props?.options ?? []);
 </script>

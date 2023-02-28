@@ -15,7 +15,7 @@
       <slot />
 
       <small
-        v-if="element.props.description"
+        v-if="element.props?.description"
         class="form-text text-muted">
         {{ translate(element.props.description) }}
       </small>
