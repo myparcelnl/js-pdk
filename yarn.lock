@@ -903,7 +903,7 @@ __metadata:
     "@edielemoine/google-docs-importer": ^1.0.2
     "@myparcel-pdk/admin-components": "workspace:*"
     "@myparcel-pdk/frontend-core": "workspace:*"
-    "@myparcel/sdk": ^2.11.0
+    "@myparcel/constants": ^1.0.0
     "@myparcel/ts-utils": ^1.6.0
     "@tanstack/vue-query": ^4.24.10
     "@vitejs/plugin-vue": ^4.0.0
@@ -1028,6 +1028,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:^"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.4"
+    "@myparcel/constants": ^1.0.0
     "@myparcel/sdk": ^2.11.0
     "@myparcel/ts-utils": ^1.6.0
     "@myparcel/vue-form-builder": ^1.0.0-alpha.1
@@ -1132,6 +1133,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@myparcel/constants@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@myparcel/constants@npm:1.0.0"
+  dependencies:
+    "@myparcel/ts-utils": ^1.7.0
+  checksum: 46ca436ee2306e283078cb87009038c4131b6447efae727234575353ea47d52d0535904283d964927d5048597177737b00787c0d383ff000036ae60d9a4c407a
+  languageName: node
+  linkType: hard
+
 "@myparcel/prettier-config@npm:*, @myparcel/prettier-config@npm:^1.1.0":
   version: 1.1.0
   resolution: "@myparcel/prettier-config@npm:1.1.0"
@@ -1148,10 +1158,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel/ts-utils@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "@myparcel/ts-utils@npm:1.6.0"
-  checksum: 88956c68ca55d5148b8d9a8b2a7baaa17059f7821b0eedb6116c6ee1f04a77ec2cff054e101276595b17f71dc88924a14475313ceae48df2687c0829f6aae1c2
+"@myparcel/ts-utils@npm:^1.6.0, @myparcel/ts-utils@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "@myparcel/ts-utils@npm:1.7.0"
+  checksum: 8cad8c20cf039de196113febe2ed430e695866cd851ee3cd827118e5f6ca29315ce8b626ad7583a7d64fdc5353a2430f2729d195b2ffd6e90dfc620a9a35e114
   languageName: node
   linkType: hard
 

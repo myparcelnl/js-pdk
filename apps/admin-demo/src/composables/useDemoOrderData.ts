@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {CARRIERS, DELIVERY_TYPES} from '@myparcel/sdk';
+import {CarrierId, CarrierName, DeliveryTypeName} from '@myparcel/constants';
 import {Plugin} from '@myparcel-pdk/common/src';
 
 // eslint-disable-next-line max-lines-per-function
@@ -224,9 +224,9 @@ export const useDemoOrderData = (): Plugin.ModelContextOrderDataContext[] => [
         apiKey: 'undefined',
         barcode: 'undefined',
         carrier: {
-          id: CARRIERS.POSTNL.ID,
-          human: CARRIERS.POSTNL.HUMAN,
-          name: CARRIERS.POSTNL.NAME,
+          id: CarrierId.PostNl,
+          human: 'PostNL',
+          name: CarrierName.PostNl,
           label: 'PostNl MyPa',
           isDefault: true,
           primary: true,
@@ -245,11 +245,11 @@ export const useDemoOrderData = (): Plugin.ModelContextOrderDataContext[] => [
         delayed: false,
         delivered: false,
         deliveryOptions: {
-          carrier: CARRIERS.POSTNL.NAME,
+          carrier: CarrierName.PostNl,
           date: {
             date: '2021-09-15 14:00:00.000000',
           },
-          deliveryType: DELIVERY_TYPES.STANDARD.NAME,
+          deliveryType: DeliveryTypeName.Standard,
           labelAmount: 1,
           packageType: 'package',
           pickupLocation: undefined,

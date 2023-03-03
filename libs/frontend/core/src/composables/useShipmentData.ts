@@ -1,4 +1,3 @@
-import {Carrier, CarrierName} from '@myparcel/sdk';
 import {Ref, ref} from 'vue';
 import {
   shipmentsCreateReturnAction,
@@ -6,6 +5,7 @@ import {
   shipmentsFetchAction,
   shipmentsPrintAction,
 } from '../actions';
+import {Carrier} from '@myparcel/sdk';
 import {Shipment} from '@myparcel-pdk/common/src';
 import {createActions} from '../services';
 import {useAssetUrl} from './useAssetUrl';
@@ -22,7 +22,7 @@ export type UseShipmentData = {
 export const useShipmentData = (shipment: Shipment.ModelShipment): UseShipmentData => {
   const {loading, actionCallbacks} = useLoading();
 
-  const carrierName = shipment.carrier?.carrier?.name as CarrierName | undefined;
+  const carrierName = shipment.carrier?.carrier?.name;
   const carriersQuery = carrierName ? useCarrier(carrierName) : undefined;
 
   return {

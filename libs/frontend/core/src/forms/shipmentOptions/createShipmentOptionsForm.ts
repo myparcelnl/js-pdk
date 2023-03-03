@@ -11,7 +11,7 @@ import {
   SAME_DAY_DELIVERY,
   SIGNATURE,
 } from './field';
-import {CarrierName, PACKAGE_TYPES, PackageTypeName} from '@myparcel/sdk';
+import {CarrierName, PackageTypeName} from '@myparcel/constants';
 import {Formatter, useContext, useLocalizedFormatter} from '../../composables';
 import {InteractiveElementInstance, SelectOption, defineForm} from '@myparcel/vue-form-builder/src';
 import {
@@ -98,7 +98,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
       defineFormField({
         name: PACKAGE_TYPE,
         label: 'shipment_options_package_type',
-        ref: ref<PackageTypeName>((order.deliveryOptions?.packageType as PackageTypeName) ?? PACKAGE_TYPES.PACKAGE),
+        ref: ref<PackageTypeName>((order.deliveryOptions?.packageType as PackageTypeName) ?? PackageTypeName.Package),
         component: resolveComponent('PdkSelectInput'),
         props: {
           options: getPackageTypes(),

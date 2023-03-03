@@ -28,6 +28,7 @@
   "prettier": "@myparcel/prettier-config",
   "dependencies": {
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.4",
+    "@myparcel/constants": "^1.0.0",
     "@myparcel/sdk": "^2.11.0",
     "@myparcel/ts-utils": "^1.6.0",
     "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
