@@ -7,6 +7,7 @@
     :label="!hideText ? action?.label : null"
     :title="hideText ? action?.label : null"
     :aria-label="hideText ? action?.label : null"
+    :loading="action?.loading"
     @click="onClick" />
 </template>
 
@@ -44,6 +45,7 @@ export default defineComponent({
     return {
       async onClick() {
         ctx.emit('click');
+        console.log(props.action);
         await props.action?.onClick();
       },
     };

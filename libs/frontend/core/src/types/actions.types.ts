@@ -3,6 +3,7 @@ import {ActionInput, AdminActionEndpointMap, EndpointResponse} from './endpoints
 import {AdminIcon} from './common.types';
 import {MaybeRef} from '@vueuse/core';
 import {PromiseOr} from '@myparcel/ts-utils';
+import {Ref} from 'vue';
 import {Variant} from '@myparcel-pdk/common/src';
 
 export type MaybeAdminAction = AdminAction | undefined;
@@ -47,6 +48,7 @@ export type ResolvedAction = BaseAction & {
   id: string;
   standalone?: boolean;
   onClick(): PromiseOr<void>;
+  loading: Ref<boolean>;
 };
 
 export type ActionParameters<A extends MaybeAdminAction> = A extends AdminAction
