@@ -21,7 +21,9 @@
     "translations:import": "npx -q @edielemoine/google-docs-importer --documentId 1TPE7gwG2GXtX7vlKIaskwMy0Xr4o_ir-lsedWB86xyc -o src/translations"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.3.0",
     "@myparcel-pdk/admin-components": "workspace:*",
+    "@myparcel-pdk/admin-preset-fontawesome": "workspace:*",
     "@myparcel-pdk/frontend-core": "workspace:*",
     "@myparcel/constants": "^1.0.0",
     "@myparcel/ts-utils": "^1.6.0",

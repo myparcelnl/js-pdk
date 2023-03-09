@@ -1,3 +1,4 @@
+import './assets/css/icons.css';
 import './assets/css/tailwind.css';
 import {AdminContextKey, LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-core/src';
 import {
@@ -24,7 +25,6 @@ import {
   DemoButton,
   DemoDropdownButton,
   DemoFormGroup,
-  DemoIcon,
   DemoImage,
   DemoModal,
   DemoNotification,
@@ -35,6 +35,7 @@ import {
   DemoTextInput,
 } from './components';
 import App from './App.vue';
+import {FontAwesomeIcon} from '@myparcel-pdk/admin-preset-fontawesome/src';
 import {createApp} from 'vue';
 import {createRouterInstance} from './router';
 
@@ -72,7 +73,7 @@ void (async () => {
         PdkDropdownButton: DemoDropdownButton,
         PdkFormGroup: DemoFormGroup,
         PdkHeading: DefaultHeading,
-        PdkIcon: DemoIcon,
+        PdkIcon: FontAwesomeIcon,
         PdkImage: DemoImage,
         PdkLink: DefaultLink,
         PdkLoader: DefaultLoader,

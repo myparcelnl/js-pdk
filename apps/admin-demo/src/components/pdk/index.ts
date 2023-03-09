@@ -4,8 +4,6 @@ export {default as DemoButton} from './DemoButton.vue';
 
 export {default as DemoFormGroup} from './DemoFormGroup.vue';
 
-export {default as DemoIcon} from './DemoIcon.vue';
-
 export {default as DemoImage} from './DemoImage.vue';
 
 export {default as DemoModal} from './DemoModal.vue';

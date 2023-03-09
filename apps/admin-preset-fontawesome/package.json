@@ -1,0 +1,45 @@
+{
+  "name": "@myparcel-pdk/admin-preset-fontawesome",
+  "version": "1.0.0-alpha.11",
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./src": "./src/index.ts"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist",
+    "./src"
+  ],
+  "scripts": {
+    "build": "run ws:vite:build \"$(pwd)\"",
+    "build:dev": "run ws:vite:build:dev \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "lint": "run ws:lint \"$(pwd)\"",
+    "serve": "run ws:vite:serve \"$(pwd)\"",
+    "test": "run ws:test \"$(pwd)\"",
+    "test:run": "run ws:test:run \"$(pwd)\"",
+    "typecheck": "run ws:vite:typecheck \"$(pwd)\"",
+    "watch": "run ws:vite:watch \"$(pwd)\""
+  },
+  "dependencies": {
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.11",
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@myparcel-pdk/admin-component-tests": "workspace:*",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitest/coverage-c8": "^0.28.5",
+    "@vue/test-utils": "^2.3.0",
+    "happy-dom": "^8.7.2",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.4",
+    "vitest": "^0.28.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

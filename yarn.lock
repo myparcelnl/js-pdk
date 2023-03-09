@@ -1000,6 +1000,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fortawesome/fontawesome-free@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "@fortawesome/fontawesome-free@npm:6.3.0"
+  checksum: 5c62c2a836079e84b86cea1ab9934f7118ded2b93799a0439b947d5fa821d2df9707dc5f1a6e1e2c85dafb78ad3167597310a526a6ad41ae17aa340f989eec3d
+  languageName: node
+  linkType: hard
+
 "@gar/promisify@npm:^1.1.3":
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
@@ -1596,7 +1603,9 @@ __metadata:
   resolution: "@myparcel-pdk/admin-demo@workspace:apps/admin-demo"
   dependencies:
     "@edielemoine/google-docs-importer": ^1.0.2
+    "@fortawesome/fontawesome-free": ^6.3.0
     "@myparcel-pdk/admin-components": "workspace:*"
+    "@myparcel-pdk/admin-preset-fontawesome": "workspace:*"
     "@myparcel-pdk/frontend-core": "workspace:*"
     "@myparcel/constants": ^1.0.0
     "@myparcel/ts-utils": ^1.6.0
@@ -1639,6 +1648,23 @@ __metadata:
 "@myparcel-pdk/admin-preset-dashicons@workspace:apps/admin-preset-dashicons":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-dashicons@workspace:apps/admin-preset-dashicons"
+  dependencies:
+    "@myparcel-pdk/admin-component-tests": "workspace:*"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.11"
+    "@vitejs/plugin-vue": ^4.0.0
+    "@vitest/coverage-c8": ^0.28.5
+    "@vue/test-utils": ^2.3.0
+    happy-dom: ^8.7.2
+    typescript: ^4.9.5
+    vite: ^4.1.4
+    vitest: ^0.28.5
+    vue: ^3.2.47
+  languageName: unknown
+  linkType: soft
+
+"@myparcel-pdk/admin-preset-fontawesome@workspace:*, @myparcel-pdk/admin-preset-fontawesome@workspace:apps/admin-preset-fontawesome":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/admin-preset-fontawesome@workspace:apps/admin-preset-fontawesome"
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.11"
