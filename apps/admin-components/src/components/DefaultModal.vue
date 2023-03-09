@@ -40,7 +40,7 @@
           </div>
 
           <ActionButton
-            v-for="(action, index) in resolvedActions"
+            v-for="(action, index) in actions"
             :key="`action_${action.id}_${index}`"
             :action="action" />
         </div>
@@ -54,36 +54,33 @@ import {
   ActionButton,
   AdminModalKey,
   AnyAdminAction,
-  ModalCallbackProps,
   NotificationContainer,
   modalCancelAction,
-  useModalContext,
   useModalStore,
 } from '@myparcel-pdk/frontend-core/src';
 import {PropType, computed, ref, toRefs} from 'vue';
 
 const props = defineProps({
   /**
+   * Available actions in the modal. Each action needs a unique id and a label.
+   */
+  actions: {
+    type: Array as PropType<AnyAdminAction[]>,
+    default: () => [modalCancelAction],
+  },
+
+  /**
+   * Controls loading state.
+   */
+  loading: {
+    type: Boolean,
+  },
+
+  /**
    * Modal key. Must be unique.
    */
   modalKey: {
     type: String as PropType<AdminModalKey>,
-    default: null,
-  },
-
-  /**
-   * Callback to change behavior of the save button. Note: You need to manually close the modal when using this.
-   */
-  onSave: {
-    type: Function as PropType<ModalCallbackProps['onSave']>,
-    default: null,
-  },
-
-  /**
-   * Callback to change behavior of the cancel button. Note: You need to manually close the modal when using this.
-   */
-  onCancel: {
-    type: Function as PropType<ModalCallbackProps['onCancel']>,
     default: null,
   },
 
@@ -94,38 +91,12 @@ const props = defineProps({
     type: String,
     required: true,
   },
-
-  /**
-   * Available actions in the modal. Each action needs a unique id and a label.
-   */
-  actions: {
-    type: Array as PropType<AnyAdminAction[]>,
-    default: () => [modalCancelAction],
-  },
 });
 
 const wrapper = ref<HTMLElement | null>(null);
 const modalStore = useModalStore();
 const propRefs = toRefs(props);
-const modalContext = useModalContext(propRefs.modalKey, propRefs.onSave, propRefs.onCancel);
 const isOpen = computed(() => {
   return propRefs.modalKey.value && propRefs.modalKey.value === modalStore.opened;
-});
-
-const resolvedActions = computed(() => {
-  return props.actions.map((action) => {
-    // @ts-expect-error todo
-    const {onClick, ...data} = action;
-
-    return {
-      ...data,
-      onClick() {
-        onClick?.();
-
-        // @ts-expect-error todo
-        return modalContext?.onButtonClick(action.id);
-      },
-    };
-  });
 });
 </script>
