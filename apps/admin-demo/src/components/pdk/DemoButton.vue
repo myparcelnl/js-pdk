@@ -9,8 +9,12 @@
       'rounded-full',
       'text-white',
       'transition-colors',
+      {
+        'cursor-not-allowed': disabled,
+        'cursor-loading animate-pulse': loading,
+      },
     ]"
-    :disabled="disabled"
+    :disabled="disabled || loading"
     :size="size"
     @click="$emit('click')">
     <PdkIcon
@@ -41,12 +45,16 @@ defineProps({
 
   label: {
     type: String,
-    default: 'action_save',
+    default: null,
+  },
+
+  loading: {
+    type: Boolean,
   },
 
   size: {
     type: String as PropType<Size>,
-    default: Size.MEDIUM,
+    default: 'md',
   },
 });
 
