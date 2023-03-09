@@ -3,6 +3,14 @@ import {QueryClient} from '@tanstack/vue-query';
 import {addErrorToNotifications} from '../../services';
 import {useNotificationStore} from '../../stores';
 
+const clearApiNotifications = () => {
+  useNotificationStore().remove(NotificationCategory.API);
+};
+
+const addApiErrorNotification = (error: unknown) => {
+  addErrorToNotifications(error, NotificationCategory.API);
+};
+
 export const createQueryClient = (): QueryClient =>
   new QueryClient({
     defaultOptions: {
@@ -13,25 +21,15 @@ export const createQueryClient = (): QueryClient =>
         refetchOnWindowFocus: true,
         staleTime: Infinity,
         behavior: {
-          onFetch() {
-            useNotificationStore().remove(NotificationCategory.API);
-          },
+          onFetch: clearApiNotifications,
         },
-
-        onError(error) {
-          addErrorToNotifications(error, NotificationCategory.API);
-        },
+        onError: addApiErrorNotification,
       },
 
       mutations: {
         retry: false,
-        onMutate() {
-          useNotificationStore().remove(NotificationCategory.API);
-        },
-
-        onError(error) {
-          addErrorToNotifications(error, NotificationCategory.API);
-        },
+        onMutate: clearApiNotifications,
+        onError: addApiErrorNotification,
       },
     },
   });
