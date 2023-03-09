@@ -1,11 +1,11 @@
 import './assets/css/tailwind.css';
+import {AdminContextKey, LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-core/src';
 import {
   DefaultButtonGroup,
   DefaultCheckboxInput,
   DefaultCol,
   DefaultCurrencyInput,
   DefaultDropOffInput,
-  DefaultDropdownButton,
   DefaultHeading,
   DefaultLink,
   DefaultLoader,
@@ -22,6 +22,7 @@ import {
 import {
   DemoBox,
   DemoButton,
+  DemoDropdownButton,
   DemoFormGroup,
   DemoIcon,
   DemoImage,
@@ -33,25 +34,31 @@ import {
   DemoTabNavButton,
   DemoTextInput,
 } from './components';
-import {LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-core/src';
 import App from './App.vue';
-import {context} from './context';
 import {createApp} from 'vue';
 import {createRouterInstance} from './router';
-import {useDemoOrderData} from './composables';
 
-const div = document.createElement('div');
+void (async () => {
+  // todo allow global context to be loaded dynamically
+  const globalContextPromise = fetch(`http://localhost:3059/pdk?action=fetchContext&context=global`);
+  // todo allow dynamic context to be loaded dynamically (hehe)
+  const dynamicContextPromise = fetch(`http://localhost:3059/pdk?action=fetchContext&context=dynamic`);
+  // todo allow plugin settings view context to be loaded dynamically
+  const pluginSettingsViewContextPromise = fetch(
+    `http://localhost:3059/pdk?action=fetchContext&context=pluginSettingsView`,
+  );
 
-div.setAttribute('id', 'myparcel-pdk-boot');
-div.setAttribute('data-pdk-context', JSON.stringify(context));
-document.body.appendChild(div);
+  const app = createApp(App);
 
-const app = createApp(App);
+  app.use(createRouterInstance());
 
-app.use(createRouterInstance());
+  const [globalContext, dynamicContext, pluginSettingsViewContext] = await Promise.all(
+    [globalContextPromise, dynamicContextPromise, pluginSettingsViewContextPromise].map(async (promise) =>
+      (await promise).json(),
+    ),
+  );
 
-app.use(
-  createPdkAdminPlugin(
+  const pdkAdminPlugin = createPdkAdminPlugin(
     {
       logLevel: LogLevel.DEBUG,
       components: {
@@ -62,7 +69,7 @@ app.use(
         PdkCol: DefaultCol,
         PdkCurrencyInput: DefaultCurrencyInput,
         PdkDropOffInput: DefaultDropOffInput,
-        PdkDropdownButton: DefaultDropdownButton,
+        PdkDropdownButton: DemoDropdownButton,
         PdkFormGroup: DemoFormGroup,
         PdkHeading: DefaultHeading,
         PdkIcon: DemoIcon,
@@ -87,8 +94,15 @@ app.use(
         PdkToggleInput: DefaultToggleInput,
       },
     },
-    {...context, orderData: useDemoOrderData()},
-  ),
-);
+    {
+      [AdminContextKey.GLOBAL]: globalContext.data.context[0][AdminContextKey.GLOBAL],
+      [AdminContextKey.DYNAMIC]: dynamicContext.data.context[0][AdminContextKey.DYNAMIC],
+      [AdminContextKey.PLUGIN_SETTINGS_VIEW]:
+        pluginSettingsViewContext.data.context[0][AdminContextKey.PLUGIN_SETTINGS_VIEW],
+    },
+  );
 
-app.mount('#app');
+  app.use(pdkAdminPlugin);
+
+  app.mount('#app');
+})();

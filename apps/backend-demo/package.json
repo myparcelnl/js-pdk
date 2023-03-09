@@ -1,0 +1,21 @@
+{
+  "name": "@myparcel-pdk/backend-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "nitropack build",
+    "postinstall": "npx nitropack prepare",
+    "serve": "nitropack dev"
+  },
+  "devDependencies": {
+    "@apollo/server": "^4.4.1",
+    "@myparcel-pdk/common": "workspace:^",
+    "@myparcel/ts-utils": "^1.7.0",
+    "@types/node": "^18.14.6",
+    "h3": "^1.5.0",
+    "nitropack": "^2.2.3",
+    "serverless": "^3.28.1",
+    "serverless-plugin-typescript": "^2.1.4",
+    "typescript": "^4.9.5"
+  }
+}

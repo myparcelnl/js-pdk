@@ -1,0 +1,90 @@
+{
+  "externalIdentifier": "4",
+  "customsDeclaration": {
+    "contents": 1,
+    "items": [],
+    "weight": 0
+  },
+  "deliveryOptions": {
+    "labelAmount": 1,
+    "packageType": "package",
+    "shipmentOptions": {}
+  },
+  "recipient": {
+    "cc": "US",
+    "city": "Miami",
+    "fullStreet": "16, Main street 2nd floor",
+    "postalCode": "33133",
+    "region": "Florida",
+    "street": "16, Main street 2nd floor",
+    "email": "admin@prestashop.dev.myparcel.nl",
+    "phone": "0102030405",
+    "person": "John DOE",
+    "company": "My Company"
+  },
+  "sender": {},
+  "shipments": [
+    {
+      "apiKey": "undefined",
+      "barcode": "undefined",
+      "carrier": {
+        "id": 1,
+        "human": "PostNL",
+        "name": "postnl",
+        "label": "PostNl MyPa",
+        "isDefault": true,
+        "primary": true,
+        "subscriptionId": 12345,
+        "options": [],
+        "returnOptions": [],
+        "type": "carrier",
+        "optional": false
+      },
+      "collectionContact": "undefined",
+      "created": {
+        "date": "2021-09-15 14:00:00.000000"
+      },
+      "delayed": false,
+      "delivered": false,
+      "deliveryOptions": {
+        "carrier": "postnl",
+        "date": {
+          "date": "2021-09-15 14:00:00.000000"
+        },
+        "deliveryType": "standard",
+        "labelAmount": 1,
+        "packageType": "package",
+        "shipmentOptions": {
+          "ageCheck": false,
+          "labelDescription": "text",
+          "largeFormat": false,
+          "onlyRecipient": false,
+          "return": false,
+          "sameDayDelivery": false,
+          "signature": false
+        }
+      },
+      "id": 4,
+      "isReturn": false,
+      "multiCollo": false,
+      "partnerTrackTraces": [],
+      "physicalProperties": {
+        "weight": 0
+      },
+      "recipient": {
+        "cc": "US",
+        "city": "Miami",
+        "fullStreet": "16, Main street 2nd floor",
+        "postalCode": "33133",
+        "region": "Florida",
+        "street": "16, Main street 2nd floor",
+        "email": "admin@prestashop.dev.myparcel.nl",
+        "phone": "0102030405",
+        "person": "John DOE",
+        "company": "My Company"
+      },
+      "referenceIdentifier": "4",
+      "sender": {}
+    }
+  ]
+}

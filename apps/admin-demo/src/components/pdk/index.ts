@@ -12,6 +12,8 @@ export {default as DemoModal} from './DemoModal.vue';
 
 export {default as DemoNotification} from './DemoNotification.vue';
 
+export {default as DemoDropdownButton} from './DemoDropdownButton.vue';
+
 export {default as DemoPluginSettingsWrapper} from './DemoPluginSettingsWrapper.vue';
 
 export {default as DemoRow} from './DemoRow.vue';

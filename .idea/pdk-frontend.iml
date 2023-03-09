@@ -8,6 +8,8 @@
       <excludeFolder url="file://$MODULE_DIR$/libs/build/esbuild/bin" />
       <excludeFolder url="file://$MODULE_DIR$/apps/admin-demo/node_modules" />
       <excludeFolder url="file://$MODULE_DIR$/.husky" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/backend-demo/.nitro/dev" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/backend-demo/.output" />
       <excludePattern pattern="yarn.lock" />
       <excludePattern pattern="lib" />
       <excludePattern pattern="dist" />

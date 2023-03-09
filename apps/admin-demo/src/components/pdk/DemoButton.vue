@@ -1,21 +1,17 @@
 <template>
-  <button
-    :class="
-      ([
-        'active:bg-orange-800',
-        'bg-orange-600',
-        'duration-75',
-        'focus:bg-orange-700',
-        'hover:bg-orange-700',
-        'rounded-full',
-        'text-white',
-        'transition-colors',
-        'select-none',
-      ],
-      sizeClasses)
-    "
+  <BaseButton
+    :class="[
+      'active:bg-orange-800',
+      'bg-orange-600',
+      'duration-75',
+      'focus:bg-orange-700',
+      'hover:bg-orange-700',
+      'rounded-full',
+      'text-white',
+      'transition-colors',
+    ]"
     :disabled="disabled"
-    type="button"
+    :size="size"
     @click="$emit('click')">
     <PdkIcon
       v-if="icon"
@@ -24,15 +20,16 @@
     <slot>
       {{ translate(label) }}
     </slot>
-  </button>
+  </BaseButton>
 </template>
 
 <script lang="ts" setup>
 import {AdminIcon, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {PropType, computed} from 'vue';
+import BaseButton from './BaseButton.vue';
+import {PropType} from 'vue';
 import {Size} from '@myparcel-pdk/common/src';
 
-const props = defineProps({
+defineProps({
   disabled: {
     type: Boolean,
   },
@@ -56,17 +53,4 @@ const props = defineProps({
 defineEmits(['click']);
 
 const {translate} = useLanguage();
-
-const sizeClasses = computed(() => {
-  switch (props.size) {
-    case Size.SMALL:
-      return 'px-2 py-1 text-sm';
-
-    case Size.LARGE:
-      return 'px-4 py-2 text-lg';
-
-    default:
-      return 'px-3 py-1';
-  }
-});
 </script>

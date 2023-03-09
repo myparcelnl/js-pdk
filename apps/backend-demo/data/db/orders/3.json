@@ -1,0 +1,56 @@
+{
+  "externalIdentifier": "3",
+  "customsDeclaration": {
+    "contents": 1,
+    "items": [],
+    "weight": 0
+  },
+  "deliveryOptions": {
+    "labelAmount": 1,
+    "packageType": "package",
+    "shipmentOptions": {}
+  },
+  "recipient": {
+    "cc": "US",
+    "city": "Miami",
+    "fullStreet": "16, Main street 2nd floor",
+    "postalCode": "33133",
+    "region": "Florida",
+    "street": "16, Main street 2nd floor",
+    "email": "admin@prestashop.dev.myparcel.nl",
+    "phone": "0102030405",
+    "person": "John DOE",
+    "company": "My Company"
+  },
+  "sender": {},
+  "shipments": [
+    {
+      "deliveryOptions": {
+        "labelAmount": 1,
+        "packageType": "package",
+        "shipmentOptions": {}
+      },
+      "id": 4,
+      "isReturn": false,
+      "multiCollo": false,
+      "partnerTrackTraces": [],
+      "physicalProperties": {
+        "weight": 0
+      },
+      "recipient": {
+        "cc": "US",
+        "city": "Miami",
+        "fullStreet": "16, Main street 2nd floor",
+        "postalCode": "33133",
+        "region": "Florida",
+        "street": "16, Main street 2nd floor",
+        "email": "admin@prestashop.dev.myparcel.nl",
+        "phone": "0102030405",
+        "person": "John DOE",
+        "company": "My Company"
+      },
+      "referenceIdentifier": "4",
+      "sender": {}
+    }
+  ]
+}

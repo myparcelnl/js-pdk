@@ -3,7 +3,7 @@
     :class="{
       'opacity-50': loading,
     }"
-    class="border mb-4 overflow-hidden rounded-xl">
+    class="border mb-4 rounded-xl">
     <div
       v-if="$slots.header"
       class="bg-zinc-50 border-newItem font-bold text-lg"
