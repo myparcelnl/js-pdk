@@ -941,6 +941,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@myparcel-pdk/admin-preset-dashicons@workspace:apps/admin-preset-dashicons":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/admin-preset-dashicons@workspace:apps/admin-preset-dashicons"
+  dependencies:
+    "@myparcel-pdk/admin-component-tests": "workspace:*"
+    "@myparcel-pdk/frontend-core": "workspace:*"
+    "@vitejs/plugin-vue": ^4.0.0
+    "@vitest/coverage-c8": ^0.28.5
+    "@vue/test-utils": ^2.3.0
+    happy-dom: ^8.7.2
+    typescript: ^4.9.5
+    vite: ^4.1.4
+    vitest: ^0.28.5
+    vue: ^3.2.47
+  languageName: unknown
+  linkType: soft
+
 "@myparcel-pdk/admin@workspace:apps/admin":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin@workspace:apps/admin"
