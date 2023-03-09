@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.12](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-components@1.0.0-alpha.11...@myparcel-pdk/admin-components@1.0.0-alpha.12) "@myparcel-pdk/admin-components" (2023-03-09)
+
+
+### Bug Fixes
+
+* **components:** fix actions in modal ([85c5604](https://github/myparcelnl/js-pdk/commit/85c560413266bf37b9b4859a79e476e1b447dcfa))
+
+
+
+
 ## [1.0.0-alpha.9](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-components@1.0.0-alpha.8...@myparcel-pdk/admin-components@1.0.0-alpha.9) "@myparcel-pdk/admin-components" (2023-02-28)
 
 

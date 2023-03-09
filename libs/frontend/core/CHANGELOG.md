@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.11](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.10...@myparcel-pdk/frontend-core@1.0.0-alpha.11) "@myparcel-pdk/frontend-core" (2023-03-09)
+
+
+### Bug Fixes
+
+* update query defaults ([764f0ba](https://github/myparcelnl/js-pdk/commit/764f0baa2dd4b133c86dec9685a8598bb4e8bd11))
+
+
+
+
 ## [1.0.0-alpha.10](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.9...@myparcel-pdk/frontend-core@1.0.0-alpha.10) "@myparcel-pdk/frontend-core" (2023-03-03)
 
 
