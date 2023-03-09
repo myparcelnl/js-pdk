@@ -26,7 +26,6 @@ export const useFetchContextQuery = <C extends AdminContextKey = AdminContextKey
     },
     {
       ...queryClient.defaultQueryOptions(),
-      refetchOnWindowFocus: false,
       onSuccess: (data) => {
         queryClient.setQueryData([BackendEndpoint.FETCH_CONTEXT, contextKey], data);
       },
