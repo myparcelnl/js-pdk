@@ -16,8 +16,8 @@ import {
   ordersExportPrintShipmentsAction,
 } from '../../actions';
 import {usePluginSettings, useStoreQuery} from '../../composables';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {AdminModalKey} from '../../types';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {createActions} from '../../services';
 
 /**
