@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.12](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.11...@myparcel-pdk/frontend-core@1.0.0-alpha.12) "@myparcel-pdk/frontend-core" (2023-03-09)
+
+
+### Features
+
+* add loading state to resolved actions ([88c3f38](https://github/myparcelnl/js-pdk/commit/88c3f38be55d3f059079b5edaaab5561969d9c90))
+
+
+
+
 ## [1.0.0-alpha.11](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.10...@myparcel-pdk/frontend-core@1.0.0-alpha.11) "@myparcel-pdk/frontend-core" (2023-03-09)
 
 
