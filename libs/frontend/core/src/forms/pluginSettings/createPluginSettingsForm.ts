@@ -33,10 +33,7 @@ export const createPluginSettingsForm = (
     ],
 
     async afterSubmit(form) {
-      await executeAction({
-        ...actionContext,
-        parameters: {form},
-      });
+      await executeAction({...actionContext, parameters: {form}});
     },
   });
 };

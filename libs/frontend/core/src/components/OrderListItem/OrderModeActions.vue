@@ -8,7 +8,6 @@
       <ActionButton
         v-for="action in orderActions"
         :key="action.id"
-        :loading="loading"
         hide-text
         :action="action" />
     </template>
@@ -17,11 +16,10 @@
 
 <script lang="ts">
 import {PropType, defineComponent} from 'vue';
-import {createAction, createActions} from '../../services';
 import {orderExportAction, orderViewInBackofficeAction, ordersEditAction} from '../../actions';
 import {ActionButton} from '../common';
 import {Plugin} from '@myparcel-pdk/common/src';
-import {useLoading} from '../../composables';
+import {defineActions} from '../../services';
 
 export default defineComponent({
   name: 'OrderModeActions',
@@ -37,16 +35,9 @@ export default defineComponent({
   },
 
   setup: (props) => {
-    const {loading, actionCallbacks} = useLoading();
-
     return {
-      loading,
-      showExportedOrderAction: createAction(orderViewInBackofficeAction),
-      orderActions: createActions(
-        [ordersEditAction, orderExportAction],
-        {orderIds: props.order.externalIdentifier},
-        actionCallbacks,
-      ),
+      showExportedOrderAction: defineActions(orderViewInBackofficeAction),
+      orderActions: defineActions([ordersEditAction, orderExportAction], {orderIds: props.order.externalIdentifier}),
     };
   },
 });

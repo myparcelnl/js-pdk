@@ -52,10 +52,9 @@
 <script lang="ts" setup>
 import {
   ActionButton,
+  ActionDefinition,
   AdminModalKey,
-  AnyAdminAction,
   NotificationContainer,
-  modalCancelAction,
   useModalStore,
 } from '@myparcel-pdk/frontend-core/src';
 import {PropType, computed, ref, toRefs} from 'vue';
@@ -65,8 +64,8 @@ const props = defineProps({
    * Available actions in the modal. Each action needs a unique id and a label.
    */
   actions: {
-    type: Array as PropType<AnyAdminAction[]>,
-    default: () => [modalCancelAction],
+    type: Array as PropType<ActionDefinition[]>,
+    default: () => [],
   },
 
   /**

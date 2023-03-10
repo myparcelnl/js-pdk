@@ -13,7 +13,7 @@ import {
 } from '../../actions';
 import {AnyAdminAction} from '../../types';
 import {Plugin} from '@myparcel-pdk/common/src';
-import {createActions} from '../../services';
+import {defineActions} from '../../services';
 import {useLoading} from '../../composables';
 
 export default defineComponent({
@@ -45,7 +45,7 @@ export default defineComponent({
           actions.push(ordersExportPrintShipmentsAction, ordersEditAction);
         }
 
-        return createActions(actions, {orderIds: props.order.externalIdentifier});
+        return defineActions(actions, {orderIds: props.order.externalIdentifier});
       }),
     };
   },

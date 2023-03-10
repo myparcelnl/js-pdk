@@ -1,4 +1,4 @@
-import {ActionParameters, AdminAction, AnyAdminAction, Notification} from '../../types';
+import {ActionParameters, AnyAdminAction, MaybeAdminAction} from '../../types';
 import {ActionContext} from '../../actions';
 import {AdminInstance} from '../../data';
 import {Variant} from '@myparcel-pdk/common/src';
@@ -7,17 +7,19 @@ import {createLogger} from '../logger';
 import {getActionIdentifier} from './getActionIdentifier';
 import {useAdminInstance} from '../../composables';
 
-const VARIANTS = [Variant.SUCCESS, Variant.ERROR];
+const VARIANTS = [Variant.SUCCESS, Variant.ERROR] as const;
 
-export const createActionContext = <A extends AdminAction | undefined>(
+type CreateActionContext = <A extends MaybeAdminAction>(
   action: AnyAdminAction<A>,
   parameters?: ActionParameters<A>,
   existingInstance?: AdminInstance,
-): ActionContext<A> => {
+) => ActionContext<A>;
+
+// @ts-expect-error todo
+export const createActionContext: CreateActionContext = (action, parameters, existingInstance) => {
   const identifier = getActionIdentifier(action);
   const logger = createLogger(identifier);
 
-  // @ts-expect-error todo
   return {
     action,
 
@@ -36,6 +38,6 @@ export const createActionContext = <A extends AdminAction | undefined>(
       }
 
       return {...acc, [type]: notification};
-    }, {} as Record<'success' | 'error', Notification>),
+    }, {} as Record<keyof typeof VARIANTS, Notification>),
   };
 };

@@ -126,7 +126,6 @@ export const useQueryStore = defineStore('query', () => {
       }
 
       register(BackendEndpoint.FETCH_ORDERS, useFetchOrdersQuery(id));
-
       register(BackendEndpoint.EXPORT_ORDERS, useExportOrdersMutation(mode));
       register(BackendEndpoint.PRINT_ORDERS, usePrintOrdersMutation());
       register(BackendEndpoint.UPDATE_ORDERS, useUpdateOrdersMutation());

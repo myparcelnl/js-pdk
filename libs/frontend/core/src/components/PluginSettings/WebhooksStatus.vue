@@ -33,10 +33,10 @@ import {
   webhooksDeleteAction,
 } from '../../actions';
 import ActionButton from '../common/ActionButton.vue';
-import {ResolvedAction} from '../../types';
+import {ActionDefinition} from '../../types';
 import StatusIndicator from '../common/StatusIndicator.vue';
 import {computed} from 'vue';
-import {createAction} from '../../services';
+import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
 import {partitionArray} from '@myparcel/ts-utils';
 import {useLanguage} from '../../composables';
@@ -61,13 +61,13 @@ const webhooks = computed<(WebhookDefinition & {status: Status})[]>(() => {
 });
 
 const webhookActions = computed(() => {
-  const actions: ResolvedAction[] = [];
+  const actions: ActionDefinition[] = [];
   const [connected, disconnected] = partitionArray(get(fetchWebhooks.data) ?? [], (webhook) => webhook.connected);
 
-  actions.push(createAction(webhooksCreateAction, {hooks: disconnected.map(({hook}) => hook)}));
+  actions.push(...defineActions(webhooksCreateAction, {hooks: disconnected.map(({hook}) => hook)}));
 
   if (connected.length) {
-    actions.push(createAction(webhooksDeleteAction, {hooks: connected.map(({hook}) => hook)}));
+    actions.push(...defineActions(webhooksDeleteAction, {hooks: connected.map(({hook}) => hook)}));
   }
 
   return actions;

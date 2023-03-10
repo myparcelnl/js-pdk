@@ -82,3 +82,22 @@ export enum FrontendEndpoint {
    */
   FETCH_CHECKOUT_CONTEXT = 'fetchCheckoutContext',
 }
+
+export const BACKEND_ENDPOINTS_ORDERS = [
+  BackendEndpoint.FETCH_ORDERS,
+  BackendEndpoint.UPDATE_ORDERS,
+  BackendEndpoint.EXPORT_ORDERS,
+  BackendEndpoint.PRINT_ORDERS,
+] as const;
+
+export const BACKEND_ENDPOINTS_SHIPMENTS = [
+  BackendEndpoint.DELETE_SHIPMENTS,
+  BackendEndpoint.PRINT_SHIPMENTS,
+  BackendEndpoint.FETCH_SHIPMENTS,
+] as const;
+
+export const BACKEND_ENDPOINTS_WEBHOOKS = [
+  BackendEndpoint.CREATE_WEBHOOKS,
+  BackendEndpoint.DELETE_WEBHOOKS,
+  BackendEndpoint.FETCH_WEBHOOKS,
+] as const;

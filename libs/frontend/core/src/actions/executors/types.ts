@@ -7,16 +7,13 @@ import {
   MaybeAdminAction,
   Notification,
 } from '../../types';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import {BackendEndpoint, Variant} from '@myparcel-pdk/common/src';
 import {AdminInstance} from '../../data';
 
 type BaseActionContext<A extends MaybeAdminAction> = {
   action: AnyAdminAction<A>;
   instance: AdminInstance;
-  notifications?: {
-    success?: Notification;
-    error?: Notification;
-  };
+  notifications?: Record<Variant, Notification>;
 };
 
 /**

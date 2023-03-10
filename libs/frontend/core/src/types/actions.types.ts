@@ -34,20 +34,18 @@ export type AnyAdminAction<A extends MaybeAdminAction = MaybeAdminAction> = A ex
   ? NamedAction<A>
   : GenericAction;
 
-export type ActionCallbacks = {
-  start?(): PromiseOr<void>;
-  end?(): PromiseOr<void>;
+export type ActionDefinition = AnyAdminAction & {
+  id: string;
+  parameters: ActionParameters<MaybeAdminAction>;
 };
 
 /**
  * The final action type that can be executed.
- * @see createAction
- * @see createActions
  */
 export type ResolvedAction = BaseAction & {
   id: string;
   standalone?: boolean;
-  onClick(): PromiseOr<void>;
+  handler(parameters?: ActionParameters<AdminAction> | Record<string, unknown>): PromiseOr<void>;
   loading: Ref<boolean>;
 };
 
@@ -69,6 +67,7 @@ export enum AdminAction {
   ORDERS_PRINT = 'ordersPrint',
   ORDERS_FETCH = 'ordersFetch',
   ORDERS_UPDATE = 'ordersUpdate',
+  ORDERS_EDIT = 'ordersEdit',
 
   SHIPMENTS_CREATE_RETURN = 'shipmentsReturn',
   SHIPMENTS_DELETE = 'shipmentsDelete',

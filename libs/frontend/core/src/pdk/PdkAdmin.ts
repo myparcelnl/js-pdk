@@ -14,8 +14,12 @@ export class PdkAdmin {
   public readonly renderedComponents: string[] = [];
 
   public constructor(config: AdminConfiguration, context: AdminContextObject) {
+    config.beforeInitialize?.(config, context);
+
     this.config = config;
     this.context = context;
+
+    config.onInitialized?.(config, context);
   }
 
   /**
@@ -42,14 +46,14 @@ export class PdkAdmin {
   }
 
   protected async createApp(view: AdminView, appConfig: AdminAppConfig): Promise<App> {
-    appConfig.config?.beforeCreate?.(appConfig.config);
+    appConfig.config?.beforeRender?.(appConfig.config);
 
     const component = await renderViewComponent(view);
     const app = createApp({...component, name: appConfig.appName});
 
     setupAdminApp(app, appConfig);
 
-    appConfig.config?.onCreated?.(appConfig.config);
+    appConfig.config?.onRendered?.(appConfig.config);
 
     return app;
   }

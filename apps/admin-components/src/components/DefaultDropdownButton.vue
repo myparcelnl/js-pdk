@@ -35,7 +35,7 @@
  * contain multiple items.
  */
 
-import {ActionButton, ResolvedAction, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {ActionButton, ActionDefinition, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {PropType} from 'vue';
 import {Size} from '@myparcel-pdk/common/src';
 
@@ -44,8 +44,8 @@ const props = defineProps({
    * List of actions.
    */
   actions: {
-    type: Array as PropType<ResolvedAction[]>,
-    default: (): never[] => [],
+    type: Array as PropType<ActionDefinition[]>,
+    default: () => [],
   },
 
   /**

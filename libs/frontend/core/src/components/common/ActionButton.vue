@@ -7,48 +7,46 @@
     :label="!hideText ? action?.label : null"
     :title="hideText ? action?.label : null"
     :aria-label="hideText ? action?.label : null"
-    :loading="action?.loading"
+    :loading="resolvedAction?.loading"
     @click="onClick" />
 </template>
 
-<script lang="ts">
-import {PropType, defineComponent} from 'vue';
-import {ResolvedAction} from '../../types';
+<script setup lang="ts">
+import {PropType, computed} from 'vue';
+import {ActionDefinition} from '../../types';
 import {Size} from '@myparcel-pdk/common/src';
+import {useActionStore} from '../../stores';
 
-export default defineComponent({
-  name: 'ActionButton',
-
-  props: {
-    action: {
-      type: Object as PropType<ResolvedAction>,
-      required: true,
-    },
-
-    disabled: {
-      type: Boolean,
-    },
-
-    hideText: {
-      type: Boolean,
-    },
-
-    size: {
-      type: String as PropType<Size>,
-      default: Size.MEDIUM,
-    },
+const props = defineProps({
+  action: {
+    type: Object as PropType<ActionDefinition>,
+    required: true,
   },
 
-  emits: ['click'],
+  disabled: {
+    type: Boolean,
+  },
 
-  setup: (props, ctx) => {
-    return {
-      async onClick() {
-        ctx.emit('click');
-        console.log(props.action);
-        await props.action?.onClick();
-      },
-    };
+  hideText: {
+    type: Boolean,
+  },
+
+  size: {
+    type: String as PropType<Size>,
+    default: Size.MEDIUM,
   },
 });
+
+const emit = defineEmits(['click']);
+
+const actionStore = useActionStore();
+
+const resolvedAction = computed(() => actionStore.get(props.action.id));
+
+const onClick = () => {
+  emit('click');
+
+  console.log('action', props.action);
+  actionStore.dispatch(props.action.id, props.action.parameters);
+};
 </script>

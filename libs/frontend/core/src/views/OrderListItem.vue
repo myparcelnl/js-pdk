@@ -22,11 +22,11 @@
 /**
  * This is the main entry point for the order list column.
  */
+import {useActionStore, useQueryStore} from '../stores';
 import {usePluginSettings, useStoreQuery} from '../composables';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {NotificationContainer} from '../components';
 import {defineAsyncComponent} from 'vue';
-import {useQueryStore} from '../stores';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 const ShipmentLabels = defineAsyncComponent(() => import('../components/OrderListItem/ShipmentLabels.vue'));
@@ -38,6 +38,10 @@ const queryStore = useQueryStore();
 
 queryStore.registerContextQueries();
 queryStore.registerOrderQueries();
+
+const actionStore = useActionStore();
+
+actionStore.registerOrderActions();
 
 const pluginSettings = usePluginSettings();
 const {orderMode} = pluginSettings.general;

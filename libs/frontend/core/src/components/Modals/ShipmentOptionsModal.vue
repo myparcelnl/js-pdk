@@ -14,11 +14,12 @@ import {
   orderExportAction,
   orderExportToShipmentsAction,
   ordersExportPrintShipmentsAction,
+  ordersUpdateAction,
 } from '../../actions';
 import {usePluginSettings, useStoreQuery} from '../../composables';
 import {AdminModalKey} from '../../types';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
-import {createActions} from '../../services';
+import {defineActions} from '../../services';
 
 /**
  * Shipment options modal. Opened by clicking the "Create" button in the "Labels" column in the orders list.
@@ -37,9 +38,13 @@ export default defineComponent({
 
     return {
       modalKey: AdminModalKey.SHIPMENT_OPTIONS,
-      actions: createActions([
+      actions: defineActions([
         {
           ...modalCancelAction,
+          disabled: exportOrdersQuery.isLoading,
+        },
+        {
+          ...ordersUpdateAction,
           disabled: exportOrdersQuery.isLoading,
         },
         ...(orderMode ? [orderExportAction] : [orderExportToShipmentsAction, ordersExportPrintShipmentsAction]),

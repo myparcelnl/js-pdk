@@ -25,7 +25,6 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
-import {createAction, createActions} from '../../services';
 import {
   orderExportAction,
   orderExportToShipmentsAction,
@@ -33,9 +32,11 @@ import {
   ordersExportPrintShipmentsAction,
   ordersUpdateAction,
 } from '../../actions';
-import {useLanguage, useLoading, usePluginSettings} from '../../composables';
-import {Plugin} from '@myparcel-pdk/common/src';
+import {useLanguage, usePluginSettings, useStoreQuery} from '../../composables';
+import {BACKEND_ENDPOINTS_ORDERS, Plugin} from '@myparcel-pdk/common/src';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
+import {defineActions} from '../../services';
+import {get} from '@vueuse/core';
 
 export default defineComponent({
   name: 'ShipmentOptionsBox',
@@ -52,30 +53,31 @@ export default defineComponent({
 
   setup: (props) => {
     const {translate} = useLanguage();
-    const {loading, actionCallbacks} = useLoading();
     const pluginSettings = usePluginSettings();
+
     const {orderMode} = pluginSettings.general;
 
     const isExported = computed(() => orderMode && props.order.exported);
 
+    const orderQueries = BACKEND_ENDPOINTS_ORDERS.map((endpoint) => useStoreQuery(endpoint));
+
     return {
       actions: computed(() => {
         if (isExported.value) {
-          return [createAction(orderViewInBackofficeAction)];
+          return defineActions(orderViewInBackofficeAction);
         }
 
-        return createActions(
+        return defineActions(
           [
             ordersUpdateAction,
             ...(orderMode ? [orderExportAction] : [orderExportToShipmentsAction, ordersExportPrintShipmentsAction]),
           ],
           {orderIds: props.order.externalIdentifier},
-          actionCallbacks,
         );
       }),
 
       isExported,
-      loading,
+      loading: computed(() => orderQueries.some((query) => get(query.isLoading))),
       translate,
     };
   },

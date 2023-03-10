@@ -16,9 +16,16 @@
       <slot />
     </div>
 
-    <div v-if="$slots.footer">
+    <div v-if="$slots.footer || actions?.length">
       <!-- Box footer. -->
-      <slot name="footer" />
+      <slot name="footer">
+        <PdkButtonGroup v-if="actions?.length">
+          <ActionButton
+            v-for="action in actions"
+            :key="action.id"
+            :action="action" />
+        </PdkButtonGroup>
+      </slot>
     </div>
   </div>
 </template>
@@ -28,26 +35,43 @@
  * A "box" component that can be used to wrap content in a block.
  */
 
+import {ActionButton, ActionDefinition, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {PropType} from 'vue';
 import {Size} from '@myparcel-pdk/common/src';
-import {useLanguage} from '@myparcel-pdk/frontend-core/src';
 
-defineProps<{
+defineProps({
+  /**
+   * Actions that can be performed on the box.
+   */
+  actions: {
+    type: Array as PropType<ActionDefinition[]>,
+    default: () => [],
+  },
+
   /**
    * Used to control loading state.
    */
-  loading?: boolean;
+  loading: {
+    type: Boolean,
+  },
 
   /**
    * Size of the box.
    */
   // eslint-disable-next-line vue/no-unused-properties
-  size?: Size;
+  size: {
+    type: String as PropType<Size>,
+    default: Size.MEDIUM,
+  },
 
   /**
    * Title of the box.
    */
-  title?: string;
-}>();
+  title: {
+    type: String,
+    default: null,
+  },
+});
 
 defineEmits<(event: 'clickHeader') => void>();
 

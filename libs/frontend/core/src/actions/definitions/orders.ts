@@ -16,7 +16,7 @@ import {useModalStore} from '../../stores';
  * Open modal to edit order shipment options.
  */
 export const ordersEditAction = defineAction({
-  id: 'editOrder',
+  id: AdminAction.ORDERS_EDIT,
   icon: AdminIcon.EDIT,
   label: 'action_edit',
   handler(context: ActionContext) {

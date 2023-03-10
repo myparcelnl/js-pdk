@@ -14,16 +14,14 @@
 
 <script lang="ts" setup>
 /**
- * This component is used to render a button. The button can be used to trigger
- * an action. The button can have multiple icons and a label. The button can be
- * disabled.
+ * This component is used to render a link. The link can be used to trigger an action.
  */
+import {ActionDefinition, getActionIdentifier, useActionStore, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {AnchorHTMLAttributes, PropType, computed} from 'vue';
-import {ResolvedAction, useLanguage} from '@myparcel-pdk/frontend-core/src';
 
 const props = defineProps({
   action: {
-    type: Object as PropType<ResolvedAction>,
+    type: Object as PropType<ActionDefinition>,
     default: null,
   },
 
@@ -39,12 +37,19 @@ const props = defineProps({
 
 const emit = defineEmits(['click']);
 
-const {translate} = useLanguage();
+const actionStore = useActionStore();
 
-const onClick = async (event: MouseEvent): Promise<void> => {
+const actionIdentifier = computed<string>(() => getActionIdentifier(props.action));
+
+const onClick = (event: MouseEvent): void => {
   event.preventDefault();
   emit('click', event);
-  await props.action?.onClick();
+
+  if (!actionIdentifier.value) {
+    return;
+  }
+
+  actionStore.dispatch(actionIdentifier.value, props.action?.parameters);
 };
 
 const linkAttributes = computed(() => {
@@ -61,4 +66,6 @@ const linkAttributes = computed(() => {
 
   return attributes;
 });
+
+const {translate} = useLanguage();
 </script>

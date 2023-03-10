@@ -1,5 +1,5 @@
 <template>
-  <PdkBox :loading="loading">
+  <PdkBox>
     <template #header>
       <PdkIcon icon="shipment" />
       {{ translate('order_labels_header') }}
@@ -32,10 +32,10 @@ import {
   shipmentsFetchAction,
   shipmentsPrintAction,
 } from '../../actions';
-import {useLanguage, useLoading} from '../../composables';
 import OrderShipmentsTable from './OrderShipmentsTable.vue';
 import {Plugin} from '@myparcel-pdk/common/src';
-import {createActions} from '../../services';
+import {defineActions} from '../../services';
+import {useLanguage} from '../../composables';
 
 export default defineComponent({
   name: 'ShipmentTableBox',
@@ -52,21 +52,17 @@ export default defineComponent({
 
   setup: (props) => {
     const selectedLabels = ref<number[]>([]);
-    const {loading, actionCallbacks} = useLoading();
     const {translate} = useLanguage();
 
     return {
-      loading,
-
       selectedLabels,
 
-      bulkActions: createActions(
+      bulkActions: defineActions(
         [shipmentsFetchAction, shipmentsPrintAction, shipmentsDeleteAction, shipmentsCreateReturnAction],
         {
           orderIds: props.order.externalIdentifier,
           shipmentIds: selectedLabels.value,
         },
-        actionCallbacks,
       ),
 
       setSelectedLabels(labels: number[]): void {

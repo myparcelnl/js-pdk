@@ -3,6 +3,7 @@ import {LogLevel} from '../services';
 import {AdminComponentMap} from '@myparcel-pdk/common/src';
 import {FormatterObject} from '../composables';
 import {PiniaPluginContext} from 'pinia';
+import {AdminContextObject} from './context.types';
 
 export type DefaultAdminConfiguration = Omit<AdminConfiguration, 'context' | 'components'> & {
   components?: Record<string, undefined>;
@@ -67,14 +68,24 @@ export type AdminConfiguration = {
   onCreateStore?(piniaContext: PiniaPluginContext): void;
 
   /**
-   * Hook that executes before the pdk frontend is booted.
+   * Hook that executes before an app is created.
    */
-  beforeCreate?(configuration?: AdminConfiguration): void;
+  beforeRender?(configuration: AdminConfiguration): void;
 
   /**
-   * Hook that executes after the pdk frontend is booted.
+   * Hook that executes after an app is created.
    */
-  onCreated?(configuration?: AdminConfiguration): void;
+  onRendered?(configuration: AdminConfiguration): void;
+
+  /**
+   * Hook that executes before the pdk admin is created.
+   */
+  beforeInitialize?(configuration: AdminConfiguration, context: AdminContextObject): void;
+
+  /**
+   * Hook that executes after the pdk admin is created.
+   */
+  onInitialized?(configuration: AdminConfiguration, context: AdminContextObject): void;
 };
 
 export type AdminConfigurationPreset = Omit<Partial<AdminConfiguration>, 'components'>;

@@ -1,18 +1,13 @@
-import {ActionCallbacks, ActionParameters, AdminAction, AnyAdminAction, ResolvedAction} from '../../types';
+import {ActionContext, executeAction} from '../../actions';
+import {ActionParameters, AdminAction, AnyAdminAction, ResolvedAction} from '../../types';
 import {createActionContext} from './createActionContext';
-import {executeAction} from '../../actions';
 import {getActionIdentifier} from './getActionIdentifier';
 import {useLoading} from '../../composables';
-import {useMemoize} from '@vueuse/core';
 
-type CreateAction = <A extends AdminAction | undefined = AdminAction | undefined>(
-  action: AnyAdminAction<A>,
-  parameters?: ActionParameters<A>,
-  callbacks?: ActionCallbacks,
-) => ResolvedAction;
+type CreateAction = (action: AnyAdminAction) => ResolvedAction;
 
-const createActionHandler: CreateAction = (action, parameters, callbacks) => {
-  const context = createActionContext(action, parameters);
+export const createAction: CreateAction = (action) => {
+  const context = createActionContext(action as AnyAdminAction<AdminAction>);
 
   const {loading, setLoading} = useLoading();
 
@@ -26,20 +21,17 @@ const createActionHandler: CreateAction = (action, parameters, callbacks) => {
 
     loading,
 
-    // @ts-expect-error todo
-    parameters: action.parameters ?? {},
-
-    onClick: async () => {
+    handler: async <A extends AdminAction | undefined>(parameters: ActionParameters<A>) => {
       setLoading(true);
 
       const startTime = Date.now();
-      await callbacks?.start?.();
-      context?.instance?.logger?.debug('Context', context);
+      // await callbacks?.start?.();
+      context?.instance?.logger?.debug('Context', {...context, parameters});
 
-      await executeAction(context);
+      await executeAction({...context, parameters} as unknown as ActionContext<A>);
 
       context?.instance?.logger?.debug('Done in ', Date.now() - startTime, 'ms');
-      await callbacks?.end?.();
+      // await callbacks?.end?.();
 
       setLoading(false);
     },
@@ -47,5 +39,3 @@ const createActionHandler: CreateAction = (action, parameters, callbacks) => {
 
   return data;
 };
-
-export const createAction: CreateAction = useMemoize(createActionHandler);

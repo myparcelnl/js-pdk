@@ -15,6 +15,7 @@ export type {
 } from '@myparcel-pdk/common/src';
 
 export type {
+  ActionDefinition,
   AdminConfiguration,
   AdminConfigurationPreset,
   AdminContext,
@@ -62,6 +63,7 @@ export {
   shipmentsCreateReturnAction,
   shipmentsFetchAction,
   shipmentsPrintAction,
+  useActionStore,
   useAdminConfig,
   useAppInfo,
   useDropOffInputContext,

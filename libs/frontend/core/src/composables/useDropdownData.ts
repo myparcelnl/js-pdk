@@ -1,15 +1,15 @@
 import {ComputedRef, Ref, computed, ref} from 'vue';
-import {ResolvedAction} from '../types';
+import {ActionDefinition} from '../types';
 import {partitionArray} from '@myparcel/ts-utils';
 
-type UseDropdownData = (actions: ResolvedAction[]) => {
+type UseDropdownData = (actions: ActionDefinition[]) => {
   toggle(value?: boolean): void;
 
   toggled: Ref<boolean>;
 
   dropdownActions: ComputedRef<{
-    standalone: ResolvedAction[];
-    hidden: ResolvedAction[];
+    standalone: ActionDefinition[];
+    hidden: ActionDefinition[];
   }>;
 };
 
