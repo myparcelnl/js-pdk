@@ -24,11 +24,11 @@ export const createVueQueryPlugin: PdkAppPlugin = ({context, logger}) => {
           return;
         }
 
-        queryClient.setQueryData([BackendEndpoint.FETCH_CONTEXT, contextKey], value);
+        queryClient.setQueryData([BackendEndpoint.FetchContext, contextKey], value);
       });
 
       const instanceContext = createInstanceContext(context);
-      queryClient.setQueryData([BackendEndpoint.FETCH_CONTEXT, AdminContextKey.INSTANCE], instanceContext);
+      queryClient.setQueryData([BackendEndpoint.FetchContext, AdminContextKey.Instance], instanceContext);
 
       // Add each order to the query client
       if (context.orderData) {

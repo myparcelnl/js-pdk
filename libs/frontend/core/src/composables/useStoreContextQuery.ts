@@ -3,8 +3,8 @@ import {ContextQuery} from '../stores';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {useStoreQuery} from './useStoreQuery';
 
-export const useStoreContextQuery = <C extends AdminContextKey = AdminContextKey.DYNAMIC>(
+export const useStoreContextQuery = <C extends AdminContextKey = AdminContextKey.Dynamic>(
   contextKey?: C,
 ): ContextQuery<C> => {
-  return useStoreQuery(BackendEndpoint.FETCH_CONTEXT, contextKey ?? AdminContextKey.DYNAMIC) as ContextQuery<C>;
+  return useStoreQuery(BackendEndpoint.FetchContext, contextKey ?? AdminContextKey.Dynamic) as ContextQuery<C>;
 };

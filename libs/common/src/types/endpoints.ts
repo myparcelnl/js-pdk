@@ -8,66 +8,66 @@ export enum BackendEndpoint {
   /**
    * Get context.
    */
-  FETCH_CONTEXT = 'fetchContext',
+  FetchContext = 'fetchContext',
 
   /**
    * Update account.
    */
-  UPDATE_ACCOUNT = 'updateAccount',
+  UpdateAccount = 'updateAccount',
 
   /**
    * Get order data from the plugin.
    */
-  FETCH_ORDERS = 'fetchOrders',
+  FetchOrders = 'fetchOrders',
 
   /**
    * Tells the plugin to update the orders by fetching data from MyParcel.
    */
-  UPDATE_ORDERS = 'updateOrders',
+  UpdateOrders = 'updateOrders',
 
   /**
    * Export orders to MyParcel as shipments or orders, depending on the plugin settings.
    */
-  EXPORT_ORDERS = 'exportOrders',
+  ExportOrders = 'exportOrders',
 
   /**
    * Print all shipments belonging to the given orders.
    */
-  PRINT_ORDERS = 'printOrders',
+  PrintOrders = 'printOrders',
 
   /**
    * Delete given shipments.
    */
-  DELETE_SHIPMENTS = 'deleteShipments',
+  DeleteShipments = 'deleteShipments',
 
   /**
    * Print given shipments.
    */
-  PRINT_SHIPMENTS = 'printShipments',
+  PrintShipments = 'printShipments',
 
   /**
    * Tell the plugin to update given shipments by fetching data from MyParcel.
    */
-  FETCH_SHIPMENTS = 'fetchShipments',
+  FetchShipments = 'fetchShipments',
 
   /**
    * Create return shipments
    */
-  CREATE_RETURN_SHIPMENTS = 'createReturnShipments',
+  CreateReturnShipments = 'createReturnShipments',
 
   /**
    * Update plugin settings.
    */
-  UPDATE_PLUGIN_SETTINGS = 'updatePluginSettings',
+  UpdatePluginSettings = 'updatePluginSettings',
 
   /**
    * Update product settings
    */
-  UPDATE_PRODUCT_SETTINGS = 'updateProductSettings',
+  UpdateProductSettings = 'updateProductSettings',
 
-  CREATE_WEBHOOKS = 'createWebhooks',
-  DELETE_WEBHOOKS = 'deleteWebhooks',
-  FETCH_WEBHOOKS = 'fetchWebhooks',
+  CreateWebhooks = 'createWebhooks',
+  DeleteWebhooks = 'deleteWebhooks',
+  FetchWebhooks = 'fetchWebhooks',
 }
 
 /**
@@ -80,24 +80,24 @@ export enum FrontendEndpoint {
   /**
    * Get checkout context.
    */
-  FETCH_CHECKOUT_CONTEXT = 'fetchCheckoutContext',
+  FetchCheckoutContext = 'fetchCheckoutContext',
 }
 
 export const BACKEND_ENDPOINTS_ORDERS = [
-  BackendEndpoint.FETCH_ORDERS,
-  BackendEndpoint.UPDATE_ORDERS,
-  BackendEndpoint.EXPORT_ORDERS,
-  BackendEndpoint.PRINT_ORDERS,
+  BackendEndpoint.FetchOrders,
+  BackendEndpoint.UpdateOrders,
+  BackendEndpoint.ExportOrders,
+  BackendEndpoint.PrintOrders,
 ] as const;
 
 export const BACKEND_ENDPOINTS_SHIPMENTS = [
-  BackendEndpoint.DELETE_SHIPMENTS,
-  BackendEndpoint.PRINT_SHIPMENTS,
-  BackendEndpoint.FETCH_SHIPMENTS,
+  BackendEndpoint.DeleteShipments,
+  BackendEndpoint.PrintShipments,
+  BackendEndpoint.FetchShipments,
 ] as const;
 
 export const BACKEND_ENDPOINTS_WEBHOOKS = [
-  BackendEndpoint.CREATE_WEBHOOKS,
-  BackendEndpoint.DELETE_WEBHOOKS,
-  BackendEndpoint.FETCH_WEBHOOKS,
+  BackendEndpoint.CreateWebhooks,
+  BackendEndpoint.DeleteWebhooks,
+  BackendEndpoint.FetchWebhooks,
 ] as const;

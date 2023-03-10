@@ -16,7 +16,7 @@ export const addErrorToNotifications = (error: unknown, category: NotificationCa
     options.content = error.stack;
   }
 
-  const notification = createApiNotification(Variant.ERROR, options);
+  const notification = createApiNotification(Variant.Error, options);
 
   if (!notification) {
     return;

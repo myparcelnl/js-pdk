@@ -58,28 +58,28 @@ export type ActionResponse<A extends MaybeAdminAction> = A extends AdminAction
   : void;
 
 export enum AdminAction {
-  CONTEXT_FETCH = 'contextFetch',
+  ContextFetch = 'contextFetch',
 
-  ACCOUNT_UPDATE = 'accountUpdate',
+  AccountUpdate = 'accountUpdate',
 
-  ORDERS_EXPORT = 'ordersExport',
-  ORDERS_EXPORT_PRINT = 'ordersExportPrint',
-  ORDERS_PRINT = 'ordersPrint',
-  ORDERS_FETCH = 'ordersFetch',
-  ORDERS_UPDATE = 'ordersUpdate',
-  ORDERS_EDIT = 'ordersEdit',
+  OrdersExport = 'ordersExport',
+  OrdersExportPrint = 'ordersExportPrint',
+  OrdersPrint = 'ordersPrint',
+  OrdersFetch = 'ordersFetch',
+  OrdersUpdate = 'ordersUpdate',
+  OrdersEdit = 'ordersEdit',
 
-  SHIPMENTS_CREATE_RETURN = 'shipmentsReturn',
-  SHIPMENTS_DELETE = 'shipmentsDelete',
-  SHIPMENTS_PRINT = 'shipmentsPrint',
-  SHIPMENTS_FETCH = 'shipmentsFetch',
+  ShipmentsCreateReturn = 'shipmentsReturn',
+  ShipmentsDelete = 'shipmentsDelete',
+  ShipmentsPrint = 'shipmentsPrint',
+  ShipmentsFetch = 'shipmentsFetch',
 
-  PLUGIN_SETTINGS_UPDATE = 'pluginSettingsUpdate',
-  PRODUCT_SETTINGS_UPDATE = 'productSettingsUpdate',
+  PluginSettingsUpdate = 'pluginSettingsUpdate',
+  ProductSettingsUpdate = 'productSettingsUpdate',
 
-  WEBHOOKS_CREATE = 'webhooksCreate',
-  WEBHOOKS_DELETE = 'webhooksDelete',
-  WEBHOOKS_FETCH = 'webhooksFetch',
+  WebhooksCreate = 'webhooksCreate',
+  WebhooksDelete = 'webhooksDelete',
+  WebhooksFetch = 'webhooksFetch',
 }
 
-export type PrintAction = AdminAction.SHIPMENTS_PRINT | AdminAction.ORDERS_PRINT | AdminAction.ORDERS_EXPORT_PRINT;
+export type PrintAction = AdminAction.ShipmentsPrint | AdminAction.OrdersPrint | AdminAction.OrdersExportPrint;

@@ -61,7 +61,7 @@ void (async () => {
 
   const pdkAdminPlugin = createPdkAdminPlugin(
     {
-      logLevel: LogLevel.DEBUG,
+      logLevel: LogLevel.Debug,
       components: {
         PdkBox: DemoBox,
         PdkButton: DemoButton,
@@ -96,10 +96,10 @@ void (async () => {
       },
     },
     {
-      [AdminContextKey.GLOBAL]: globalContext.data.context[0][AdminContextKey.GLOBAL],
-      [AdminContextKey.DYNAMIC]: dynamicContext.data.context[0][AdminContextKey.DYNAMIC],
-      [AdminContextKey.PLUGIN_SETTINGS_VIEW]:
-        pluginSettingsViewContext.data.context[0][AdminContextKey.PLUGIN_SETTINGS_VIEW],
+      [AdminContextKey.Global]: globalContext.data.context[0][AdminContextKey.Global],
+      [AdminContextKey.Dynamic]: dynamicContext.data.context[0][AdminContextKey.Dynamic],
+      [AdminContextKey.PluginSettingsView]:
+        pluginSettingsViewContext.data.context[0][AdminContextKey.PluginSettingsView],
     },
   );
 

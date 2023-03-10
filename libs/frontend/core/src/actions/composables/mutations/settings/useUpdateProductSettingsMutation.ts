@@ -4,7 +4,7 @@ import {usePdkAdminApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
 
 export const useUpdateProductSettingsMutation = () => {
-  return usePdkMutation(BackendEndpoint.UPDATE_PRODUCT_SETTINGS, ({form, productIds}) => {
+  return usePdkMutation(BackendEndpoint.UpdateProductSettings, ({form, productIds}) => {
     const pdk = usePdkAdminApi();
 
     const options = {

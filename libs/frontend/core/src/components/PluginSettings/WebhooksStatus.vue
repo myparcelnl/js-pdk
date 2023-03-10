@@ -44,16 +44,16 @@ import {useQueryStore} from '../../stores';
 
 const queryStore = useQueryStore();
 
-const fetchWebhooks = queryStore.register(BackendEndpoint.FETCH_WEBHOOKS, useFetchWebhooksQuery());
-const createWebhooks = queryStore.register(BackendEndpoint.CREATE_WEBHOOKS, useCreateWebhooksMutation());
-const deleteWebhooks = queryStore.register(BackendEndpoint.DELETE_WEBHOOKS, useDeleteWebhooksMutation());
+const fetchWebhooks = queryStore.register(BackendEndpoint.FetchWebhooks, useFetchWebhooksQuery());
+const createWebhooks = queryStore.register(BackendEndpoint.CreateWebhooks, useCreateWebhooksMutation());
+const deleteWebhooks = queryStore.register(BackendEndpoint.DeleteWebhooks, useDeleteWebhooksMutation());
 
 const webhooks = computed<(WebhookDefinition & {status: Status})[]>(() => {
   return (get(fetchWebhooks.data) ?? []).map((webhook) => {
-    let status = Status.PENDING;
+    let status = Status.Pending;
 
     if (!get(fetchWebhooks.isLoading) && !get(createWebhooks.isLoading) && !get(deleteWebhooks.isLoading)) {
-      status = webhook.connected ? Status.SUCCESS : Status.ERROR;
+      status = webhook.connected ? Status.Success : Status.Error;
     }
 
     return {...webhook, status};

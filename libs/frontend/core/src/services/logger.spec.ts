@@ -35,11 +35,11 @@ describe('logger', () => {
   });
 
   it.each([
-    {logLevel: LogLevel.OFF, logs: 0, warns: 0, errors: 0},
-    {logLevel: LogLevel.ERROR, logs: 0, warns: 0, errors: 1},
-    {logLevel: LogLevel.WARN, logs: 0, warns: 1, errors: 1},
-    {logLevel: LogLevel.INFO, logs: 1, warns: 1, errors: 1},
-    {logLevel: LogLevel.DEBUG, logs: 2, warns: 1, errors: 1},
+    {logLevel: LogLevel.Off, logs: 0, warns: 0, errors: 0},
+    {logLevel: LogLevel.Error, logs: 0, warns: 0, errors: 1},
+    {logLevel: LogLevel.Warn, logs: 0, warns: 1, errors: 1},
+    {logLevel: LogLevel.Info, logs: 1, warns: 1, errors: 1},
+    {logLevel: LogLevel.Debug, logs: 2, warns: 1, errors: 1},
   ])('honors log level $logLevel', ({logLevel, logs, warns, errors}) => {
     const logger = createLogger('test', logLevel);
 

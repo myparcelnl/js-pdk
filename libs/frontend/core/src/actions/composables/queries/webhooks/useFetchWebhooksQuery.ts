@@ -5,10 +5,10 @@ import {EndpointResponse} from '../../../../types';
 import {usePdkAdminApi} from '../../../../sdk';
 
 export const useFetchWebhooksQuery = () => {
-  const queryKey = [BackendEndpoint.FETCH_WEBHOOKS] as const;
+  const queryKey = [BackendEndpoint.FetchWebhooks] as const;
   const queryClient = useQueryClient();
 
-  return useQuery<EndpointResponse<BackendEndpoint.FETCH_WEBHOOKS>>(
+  return useQuery<EndpointResponse<BackendEndpoint.FetchWebhooks>>(
     queryKey,
     () => {
       const pdk = usePdkAdminApi();

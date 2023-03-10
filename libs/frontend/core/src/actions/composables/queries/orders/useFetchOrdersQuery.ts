@@ -11,7 +11,7 @@ export const useFetchOrdersQuery = (externalIdentifier: string) => {
   const queryKey = [QUERY_KEY_ORDER, {id: externalIdentifier}] as const;
   const queryClient = useQueryClient();
 
-  return useQuery<EndpointResponse<BackendEndpoint.FETCH_ORDERS>>(
+  return useQuery<EndpointResponse<BackendEndpoint.FetchOrders>>(
     queryKey,
     () => {
       const pdk = usePdkAdminApi();

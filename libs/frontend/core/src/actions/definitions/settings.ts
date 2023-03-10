@@ -4,8 +4,8 @@ import {createMutator} from '../executors';
 import {defineAction} from '../defineAction';
 
 export const pluginSettingsUpdateAction = defineAction({
-  name: AdminAction.PLUGIN_SETTINGS_UPDATE,
-  icon: AdminIcon.SAVE,
+  name: AdminAction.PluginSettingsUpdate,
+  icon: AdminIcon.Save,
   label: 'action_save',
-  handler: createMutator(BackendEndpoint.UPDATE_PLUGIN_SETTINGS),
+  handler: createMutator(BackendEndpoint.UpdatePluginSettings),
 });

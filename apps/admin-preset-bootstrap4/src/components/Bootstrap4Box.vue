@@ -34,11 +34,11 @@ const props = defineProps({
 
   size: {
     type: String as PropType<Size>,
-    default: Size.MEDIUM,
+    default: Size.Medium,
   },
 });
 
 const bodyClass = computed(() => ({
-  'card-body': [Size.MEDIUM, Size.LARGE, Size.EXTRA_LARGE].includes(props.size),
+  'card-body': [Size.Medium, Size.Large, Size.ExtraLarge].includes(props.size),
 }));
 </script>

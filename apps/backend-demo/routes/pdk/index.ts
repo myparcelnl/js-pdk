@@ -9,13 +9,13 @@ const resolveAction = async (
   }
 
   switch (query.action) {
-    case BackendEndpoint.FETCH_ORDERS:
+    case BackendEndpoint.FetchOrders:
       return {
         key: 'orders',
         response: await getItemsByParameter('orders', query.orderId),
       };
 
-    case BackendEndpoint.FETCH_CONTEXT:
+    case BackendEndpoint.FetchContext:
       return {
         key: 'context',
         response: await getItemsByParameter('context', query.context),

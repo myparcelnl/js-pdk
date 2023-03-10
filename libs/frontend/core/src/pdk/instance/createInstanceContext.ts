@@ -9,7 +9,7 @@ export const createInstanceContext = (context: AdminContextObject): Partial<Admi
   if (context.orderData?.length === 1) {
     const [order] = context.orderData;
 
-    instanceContext[AdminInstanceContextKey.ORDER_IDENTIFIER] = order.externalIdentifier;
+    instanceContext[AdminInstanceContextKey.OrderIdentifier] = order.externalIdentifier;
   }
 
   return instanceContext;

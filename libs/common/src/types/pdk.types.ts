@@ -56,37 +56,37 @@ export type AdminComponentMap = Record<RequiredAdminComponentName, Component> &
 export type ComponentImportFunction = () => Promise<{default: Component}>;
 
 export enum AdminView {
-  LOADING_PAGE = 'LoadingPage',
-  MODALS = 'Modals',
-  NOTIFICATIONS = 'Notifications',
-  ORDER_BOX = 'OrderBox',
-  ORDER_LIST_ITEM = 'OrderListItem',
-  PRODUCT_SETTINGS = 'ProductSettings',
-  PLUGIN_SETTINGS = 'PluginSettings',
+  LoadingPage = 'LoadingPage',
+  Modals = 'Modals',
+  Notifications = 'Notifications',
+  OrderBox = 'OrderBox',
+  OrderListItem = 'OrderListItem',
+  ProductSettings = 'ProductSettings',
+  PluginSettings = 'PluginSettings',
 }
 
 export enum Variant {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-  INFO = 'info',
-  WARNING = 'warning',
-  ERROR = 'error',
-  SUCCESS = 'success',
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Info = 'info',
+  Warning = 'warning',
+  Error = 'error',
+  Success = 'success',
 }
 
 export enum Size {
-  EXTRA_SMALL = 'xs',
-  SMALL = 'sm',
-  MEDIUM = 'md',
-  LARGE = 'lg',
-  EXTRA_LARGE = 'xl',
+  ExtraSmall = 'xs',
+  Small = 'sm',
+  Medium = 'md',
+  Large = 'lg',
+  ExtraLarge = 'xl',
 }
 
 export enum Status {
-  ERROR = 'error',
-  PENDING = 'pending',
-  SUCCESS = 'success',
-  WARNING = 'warning',
+  Error = 'error',
+  Pending = 'pending',
+  Success = 'success',
+  Warning = 'warning',
 }
 
 export type EndpointObject<T extends BackendEndpoint | FrontendEndpoint> = Record<T, Plugin.AbstractEndpointRequest>;

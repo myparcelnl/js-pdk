@@ -17,7 +17,7 @@ interface Definition extends EndpointDefinition {
 }
 
 export interface FetchContextDefinition extends Definition {
-  name: BackendEndpoint.FETCH_CONTEXT;
+  name: BackendEndpoint.FetchContext;
   parameters: {
     context: string;
   };
@@ -26,14 +26,14 @@ export interface FetchContextDefinition extends Definition {
 }
 
 export interface UpdateAccountDefinition extends Definition {
-  name: BackendEndpoint.UPDATE_ACCOUNT;
+  name: BackendEndpoint.UpdateAccount;
   parameters: undefined;
   body: Settings.ModelAccountSettings;
   response: Account.ModelAccount[];
 }
 
 export interface FetchOrdersDefinition extends Definition {
-  name: BackendEndpoint.FETCH_ORDERS;
+  name: BackendEndpoint.FetchOrders;
   parameters: {
     orderIds: string;
   };
@@ -42,7 +42,7 @@ export interface FetchOrdersDefinition extends Definition {
 }
 
 export interface ExportOrdersDefinition extends Definition {
-  name: BackendEndpoint.EXPORT_ORDERS;
+  name: BackendEndpoint.ExportOrders;
   parameters: {
     orderIds: string;
   };
@@ -51,7 +51,7 @@ export interface ExportOrdersDefinition extends Definition {
 }
 
 export interface UpdateOrdersDefinition extends Definition {
-  name: BackendEndpoint.UPDATE_ORDERS;
+  name: BackendEndpoint.UpdateOrders;
   parameters: {
     orderIds: string;
   };
@@ -60,7 +60,7 @@ export interface UpdateOrdersDefinition extends Definition {
 }
 
 export interface DeleteShipmentsDefinition extends Definition {
-  name: BackendEndpoint.DELETE_SHIPMENTS;
+  name: BackendEndpoint.DeleteShipments;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
@@ -69,7 +69,7 @@ export interface DeleteShipmentsDefinition extends Definition {
 }
 
 export interface UpdateShipmentsDefinition extends Definition {
-  name: BackendEndpoint.FETCH_SHIPMENTS;
+  name: BackendEndpoint.FetchShipments;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
@@ -79,14 +79,14 @@ export interface UpdateShipmentsDefinition extends Definition {
 }
 
 export interface UpdatePluginSettingsDefinition extends Definition {
-  name: BackendEndpoint.UPDATE_PLUGIN_SETTINGS;
+  name: BackendEndpoint.UpdatePluginSettings;
   body: Settings.ModelSettings;
   parameters: undefined;
   response: Settings.ModelSettings[];
 }
 
 export interface UpdateProductSettingsDefinition extends Definition {
-  name: BackendEndpoint.UPDATE_PRODUCT_SETTINGS;
+  name: BackendEndpoint.UpdateProductSettings;
   parameters: {
     productIds: string;
   };
@@ -95,7 +95,7 @@ export interface UpdateProductSettingsDefinition extends Definition {
 }
 
 export interface PrintShipmentsDefinition extends Definition {
-  name: BackendEndpoint.PRINT_SHIPMENTS;
+  name: BackendEndpoint.PrintShipments;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
@@ -107,7 +107,7 @@ export interface PrintShipmentsDefinition extends Definition {
 }
 
 export interface PrintOrdersDefinition extends Definition {
-  name: BackendEndpoint.PRINT_ORDERS;
+  name: BackendEndpoint.PrintOrders;
   parameters: {
     orderIds: string;
     format?: LabelFormat;
@@ -118,19 +118,19 @@ export interface PrintOrdersDefinition extends Definition {
 }
 
 export interface FetchWebhooksDefinition extends Definition {
-  name: BackendEndpoint.FETCH_WEBHOOKS;
+  name: BackendEndpoint.FetchWebhooks;
   parameters: never;
   response: WebhookDefinition[];
 }
 
 export interface CreateWebhooksDefinition extends Definition {
-  name: BackendEndpoint.CREATE_WEBHOOKS;
+  name: BackendEndpoint.CreateWebhooks;
   parameters: {hooks: string};
   response: WebhookDefinition[];
 }
 
 export interface DeleteWebhooksDefinition extends Definition {
-  name: BackendEndpoint.DELETE_WEBHOOKS;
+  name: BackendEndpoint.DeleteWebhooks;
   parameters: {hooks: string};
   response: WebhookDefinition[];
 }

@@ -16,7 +16,7 @@ import {get} from '@vueuse/core';
 import {pluginSettingsUpdateAction} from '../../actions';
 
 const dynamicContextQuery = useStoreContextQuery();
-const pluginSettingsContextQuery = useStoreContextQuery(AdminContextKey.PLUGIN_SETTINGS_VIEW);
+const pluginSettingsContextQuery = useStoreContextQuery(AdminContextKey.PluginSettingsView);
 
 const tabs = ref<TabDefinition[]>([]);
 const hasAccount = computed(() => !!get(dynamicContextQuery.data)?.account);
@@ -41,7 +41,7 @@ watch(
     }
 
     if (!pluginSettingsView) {
-      logger.error(`${AdminContextKey.PLUGIN_SETTINGS_VIEW} not found`);
+      logger.error(`${AdminContextKey.PluginSettingsView} not found`);
       return;
     }
 

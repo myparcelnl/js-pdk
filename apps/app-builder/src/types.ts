@@ -64,9 +64,3 @@ export type CommandArgs = {
   quiet?: boolean;
   verbose: number;
 };
-
-export enum Verbosity {
-  VERBOSE = 1,
-  VERY_VERBOSE = 2,
-  VERY_VERY_VERBOSE = 3,
-}

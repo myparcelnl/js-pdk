@@ -7,7 +7,7 @@ import {useGlobalContext} from '../../composables';
 let sdk: ReturnType<typeof usePdkAdminApi>;
 
 /**
- * Do requests to the PDK admin API.
+ * Do requests to the PDK admin Api.
  */
 export const usePdkAdminApi = (): MyParcelSdk<AbstractPdkEndpoint> => {
   if (sdk) {

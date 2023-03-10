@@ -31,11 +31,11 @@ describe.skip('rendering app pieces', () => {
         onMounted(() => {
           /* eslint-disable @typescript-eslint/ban-ts-comment */
           // @ts-ignore
-          cb1('#el1', {[ContextKey.ORDER_DATA]: {orderId: 1}});
+          cb1('#el1', {[ContextKey.OrderData]: {orderId: 1}});
           // @ts-ignore
-          cb1('#el2', {[ContextKey.ORDER_DATA]: {orderId: 2}});
+          cb1('#el2', {[ContextKey.OrderData]: {orderId: 2}});
           // @ts-ignore
-          cb1('#el3', {[ContextKey.ORDER_DATA]: {orderId: 3}});
+          cb1('#el3', {[ContextKey.OrderData]: {orderId: 3}});
           /* eslint-enable @typescript-eslint/ban-ts-comment */
         });
 

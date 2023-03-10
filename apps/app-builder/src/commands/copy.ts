@@ -1,4 +1,4 @@
-import {PdkBuilderCommand, Verbosity} from '../types';
+import {PdkBuilderCommand} from '../types';
 import chalk from 'chalk';
 import {createDebugger} from '../utils/createDebugger';
 import fs from 'fs';
@@ -34,7 +34,7 @@ export const copy: PdkBuilderCommand = async ({env, config, args}) => {
           const source = path.resolve(env.cwd, file);
           const target = path.resolve(env.cwd, platformFolderPath, file);
 
-          if (args.verbose >= Verbosity.VERY_VERY_VERBOSE) {
+          if (args.verbose >= 3) {
             debug(
               '%s -> %s',
               chalk.yellow(path.relative(env.cwd, file)),

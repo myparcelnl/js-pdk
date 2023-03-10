@@ -14,14 +14,14 @@ export const waitForLabelPrompt = <A extends PrintAction>({
   }
 
   const modalStore = useModalStore();
-  modalStore.open(AdminModalKey.PRINT_OPTIONS);
+  modalStore.open(AdminModalKey.PrintOptions);
 
   return new Promise((resolve) => {
     modalStore.onClose(() => {
       const formBuilder = useFormBuilder();
 
       // @ts-expect-error this works
-      const form = formBuilder.forms?.[AdminModalKey.PRINT_OPTIONS];
+      const form = formBuilder.forms?.[AdminModalKey.PrintOptions];
 
       resolve({
         ...parameters,

@@ -13,23 +13,23 @@ export type AnyAdminContext = AdminContext<AdminContextKey>;
 export type AdminContext<T> = T extends keyof AdminContextObject ? AdminContextObject[T] : never;
 
 export type AdminInstanceContext = {
-  [AdminInstanceContextKey.ORDER_IDENTIFIER]: Plugin.ModelContextOrderDataContext['externalIdentifier'];
+  [AdminInstanceContextKey.OrderIdentifier]: Plugin.ModelContextOrderDataContext['externalIdentifier'];
 };
 
-export type AdminModalContext<T extends AdminModalKey = AdminModalKey> = T extends AdminModalKey.SHIPMENT_OPTIONS
+export type AdminModalContext<T extends AdminModalKey = AdminModalKey> = T extends AdminModalKey.ShipmentOptions
   ? string
   : never;
 
 export enum AdminContextKey {
-  GLOBAL = 'global',
-  DYNAMIC = 'dynamic',
-  ORDER_DATA = 'orderData',
-  PLUGIN_SETTINGS_VIEW = 'pluginSettingsView',
-  PRODUCT_SETTINGS_VIEW = 'productSettingsView',
+  Global = 'global',
+  Dynamic = 'dynamic',
+  OrderData = 'orderData',
+  PluginSettingsView = 'pluginSettingsView',
+  ProductSettingsView = 'productSettingsView',
 
-  INSTANCE = 'instance',
+  Instance = 'instance',
 }
 
 export enum AdminInstanceContextKey {
-  ORDER_IDENTIFIER = 'orderIdentifier',
+  OrderIdentifier = 'orderIdentifier',
 }

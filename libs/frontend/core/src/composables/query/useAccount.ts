@@ -4,7 +4,7 @@ import {get} from '@vueuse/core';
 import {useStoreContextQuery} from '../useStoreContextQuery';
 
 export const useAccount = (): undefined | Account.ModelAccount => {
-  const contextQuery = useStoreContextQuery(AdminContextKey.DYNAMIC);
+  const contextQuery = useStoreContextQuery(AdminContextKey.Dynamic);
 
   return get(contextQuery.data)?.account;
 };

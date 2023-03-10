@@ -13,7 +13,7 @@ import {usePluginSettings} from '../../composables';
 const pluginSettings = usePluginSettings();
 
 // noinspection JSUnusedGlobalSymbols
-const form = defineForm(AdminModalKey.PRINT_OPTIONS, {
+const form = defineForm(AdminModalKey.PrintOptions, {
   fields: [
     defineFormField({
       name: 'output',

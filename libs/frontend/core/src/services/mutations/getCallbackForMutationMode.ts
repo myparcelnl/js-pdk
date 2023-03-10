@@ -4,10 +4,10 @@ type Callback = (() => void) | undefined;
 
 export const getCallbackForMutationMode = (mode: MutationMode): Callback => {
   switch (mode) {
-    case MutationMode.MODAL:
+    case MutationMode.Modal:
       return () => {
         useModalStore().loading = true;
-        useNotificationStore().remove(NotificationCategory.MODAL);
+        useNotificationStore().remove(NotificationCategory.Modal);
       };
 
     default:

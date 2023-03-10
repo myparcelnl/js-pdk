@@ -16,7 +16,7 @@ export const useNotificationStore = defineStore('notifications', () => {
      * Add a notification to the store.
      */
     add(notification: Notification) {
-      notification.category ??= NotificationCategory.GENERAL;
+      notification.category ??= NotificationCategory.General;
       const notificationId = id++;
 
       if (notification.timeout) {

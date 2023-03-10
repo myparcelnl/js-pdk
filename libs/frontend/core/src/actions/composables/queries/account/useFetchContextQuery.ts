@@ -5,13 +5,13 @@ import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {encodeArrayParameter} from '../../../../utils';
 import {usePdkAdminApi} from '../../../../sdk';
 
-export const useFetchContextQuery = <C extends AdminContextKey = AdminContextKey.DYNAMIC>(contextKey?: C) => {
+export const useFetchContextQuery = <C extends AdminContextKey = AdminContextKey.Dynamic>(contextKey?: C) => {
   const queryClient = useQueryClient();
 
-  contextKey ??= AdminContextKey.DYNAMIC as C;
+  contextKey ??= AdminContextKey.Dynamic as C;
 
   return useQuery(
-    [BackendEndpoint.FETCH_CONTEXT, contextKey],
+    [BackendEndpoint.FetchContext, contextKey],
     async () => {
       const pdk = usePdkAdminApi();
       const context = await pdk.fetchContext({
@@ -27,7 +27,7 @@ export const useFetchContextQuery = <C extends AdminContextKey = AdminContextKey
     {
       ...queryClient.defaultQueryOptions(),
       onSuccess: (data) => {
-        queryClient.setQueryData([BackendEndpoint.FETCH_CONTEXT, contextKey], data);
+        queryClient.setQueryData([BackendEndpoint.FetchContext, contextKey], data);
       },
     },
   );

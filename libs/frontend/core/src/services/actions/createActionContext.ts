@@ -7,7 +7,7 @@ import {createLogger} from '../logger';
 import {getActionIdentifier} from './getActionIdentifier';
 import {useAdminInstance} from '../../composables';
 
-const VARIANTS = [Variant.SUCCESS, Variant.ERROR] as const;
+const VARIANTS = [Variant.Success, Variant.Error] as const;
 
 type CreateActionContext = <A extends MaybeAdminAction>(
   action: AnyAdminAction<A>,

@@ -15,22 +15,22 @@ export type EndpointResponse<N extends BackendEndpoint> = PdkEndpointDefinition<
 export type EndpointParameters<N extends BackendEndpoint> = PdkEndpointDefinition<N>['parameters'];
 
 export interface AdminActionEndpointMap extends Record<AdminAction, BackendEndpoint> {
-  [AdminAction.CONTEXT_FETCH]: BackendEndpoint.FETCH_CONTEXT;
-  [AdminAction.ACCOUNT_UPDATE]: BackendEndpoint.UPDATE_ACCOUNT;
-  [AdminAction.ORDERS_EXPORT]: BackendEndpoint.EXPORT_ORDERS;
-  [AdminAction.ORDERS_EXPORT_PRINT]: BackendEndpoint.EXPORT_ORDERS;
-  [AdminAction.ORDERS_FETCH]: BackendEndpoint.FETCH_ORDERS;
-  [AdminAction.ORDERS_PRINT]: BackendEndpoint.PRINT_ORDERS;
-  [AdminAction.ORDERS_UPDATE]: BackendEndpoint.UPDATE_ORDERS;
-  [AdminAction.PLUGIN_SETTINGS_UPDATE]: BackendEndpoint.UPDATE_PLUGIN_SETTINGS;
-  [AdminAction.PRODUCT_SETTINGS_UPDATE]: BackendEndpoint.UPDATE_PRODUCT_SETTINGS;
-  [AdminAction.SHIPMENTS_CREATE_RETURN]: BackendEndpoint.CREATE_RETURN_SHIPMENTS;
-  [AdminAction.SHIPMENTS_DELETE]: BackendEndpoint.DELETE_SHIPMENTS;
-  [AdminAction.SHIPMENTS_FETCH]: BackendEndpoint.FETCH_SHIPMENTS;
-  [AdminAction.SHIPMENTS_PRINT]: BackendEndpoint.PRINT_SHIPMENTS;
-  [AdminAction.WEBHOOKS_CREATE]: BackendEndpoint.CREATE_WEBHOOKS;
-  [AdminAction.WEBHOOKS_DELETE]: BackendEndpoint.DELETE_WEBHOOKS;
-  [AdminAction.WEBHOOKS_FETCH]: BackendEndpoint.FETCH_WEBHOOKS;
+  [AdminAction.ContextFetch]: BackendEndpoint.FetchContext;
+  [AdminAction.AccountUpdate]: BackendEndpoint.UpdateAccount;
+  [AdminAction.OrdersExport]: BackendEndpoint.ExportOrders;
+  [AdminAction.OrdersExportPrint]: BackendEndpoint.ExportOrders;
+  [AdminAction.OrdersFetch]: BackendEndpoint.FetchOrders;
+  [AdminAction.OrdersPrint]: BackendEndpoint.PrintOrders;
+  [AdminAction.OrdersUpdate]: BackendEndpoint.UpdateOrders;
+  [AdminAction.PluginSettingsUpdate]: BackendEndpoint.UpdatePluginSettings;
+  [AdminAction.ProductSettingsUpdate]: BackendEndpoint.UpdateProductSettings;
+  [AdminAction.ShipmentsCreateReturn]: BackendEndpoint.CreateReturnShipments;
+  [AdminAction.ShipmentsDelete]: BackendEndpoint.DeleteShipments;
+  [AdminAction.ShipmentsFetch]: BackendEndpoint.FetchShipments;
+  [AdminAction.ShipmentsPrint]: BackendEndpoint.PrintShipments;
+  [AdminAction.WebhooksCreate]: BackendEndpoint.CreateWebhooks;
+  [AdminAction.WebhooksDelete]: BackendEndpoint.DeleteWebhooks;
+  [AdminAction.WebhooksFetch]: BackendEndpoint.FetchWebhooks;
 }
 
 export type EndpointAdminActionMap = {
@@ -40,26 +40,26 @@ export type EndpointAdminActionMap = {
 };
 
 export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record<string, unknown>> {
-  [BackendEndpoint.FETCH_CONTEXT]: {context?: OneOrMore<AdminContextKey>};
+  [BackendEndpoint.FetchContext]: {context?: OneOrMore<AdminContextKey>};
 
-  [BackendEndpoint.UPDATE_ACCOUNT]: {form: FormInstance};
+  [BackendEndpoint.UpdateAccount]: {form: FormInstance};
 
-  [BackendEndpoint.EXPORT_ORDERS]: {orderIds: OneOrMore<string>; form?: FormInstance};
-  [BackendEndpoint.FETCH_ORDERS]: {orderIds: OneOrMore<string>};
-  [BackendEndpoint.PRINT_ORDERS]: {orderIds: OneOrMore<string>; form?: FormInstance};
-  [BackendEndpoint.UPDATE_ORDERS]: {orderIds: OneOrMore<string>; form: FormInstance};
+  [BackendEndpoint.ExportOrders]: {orderIds: OneOrMore<string>; form?: FormInstance};
+  [BackendEndpoint.FetchOrders]: {orderIds: OneOrMore<string>};
+  [BackendEndpoint.PrintOrders]: {orderIds: OneOrMore<string>; form?: FormInstance};
+  [BackendEndpoint.UpdateOrders]: {orderIds: OneOrMore<string>; form: FormInstance};
 
-  [BackendEndpoint.CREATE_RETURN_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
-  [BackendEndpoint.DELETE_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
-  [BackendEndpoint.FETCH_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
-  [BackendEndpoint.PRINT_SHIPMENTS]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>; form?: FormInstance};
+  [BackendEndpoint.CreateReturnShipments]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
+  [BackendEndpoint.DeleteShipments]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
+  [BackendEndpoint.FetchShipments]: {orderIds: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
+  [BackendEndpoint.PrintShipments]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>; form?: FormInstance};
 
-  [BackendEndpoint.UPDATE_PLUGIN_SETTINGS]: {form: FormInstance};
-  [BackendEndpoint.UPDATE_PRODUCT_SETTINGS]: {form: FormInstance; productIds: OneOrMore<string>};
+  [BackendEndpoint.UpdatePluginSettings]: {form: FormInstance};
+  [BackendEndpoint.UpdateProductSettings]: {form: FormInstance; productIds: OneOrMore<string>};
 
-  [BackendEndpoint.CREATE_WEBHOOKS]: {hooks: OneOrMore<string>};
-  [BackendEndpoint.DELETE_WEBHOOKS]: {hooks: OneOrMore<string>};
-  [BackendEndpoint.FETCH_WEBHOOKS]: never;
+  [BackendEndpoint.CreateWebhooks]: {hooks: OneOrMore<string>};
+  [BackendEndpoint.DeleteWebhooks]: {hooks: OneOrMore<string>};
+  [BackendEndpoint.FetchWebhooks]: never;
 }
 
 export type ActionInput<A extends BackendEndpoint> = EndpointMutationInputMap[A];

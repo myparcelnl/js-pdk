@@ -5,41 +5,41 @@ import {defineAction} from '../defineAction';
 import {waitForLabelPrompt} from '../print';
 
 export const shipmentsCreateReturnAction = defineAction({
-  name: AdminAction.SHIPMENTS_CREATE_RETURN,
-  icon: AdminIcon.RETURN,
+  name: AdminAction.ShipmentsCreateReturn,
+  icon: AdminIcon.Return,
   label: 'action_create_return_label',
-  handler: createMutator(BackendEndpoint.CREATE_RETURN_SHIPMENTS),
+  handler: createMutator(BackendEndpoint.CreateReturnShipments),
 });
 
 /**
- * Fetch shipments from the MyParcel API.
+ * Fetch shipments from the MyParcel Api.
  */
 export const shipmentsFetchAction = defineAction({
-  name: AdminAction.SHIPMENTS_FETCH,
-  icon: AdminIcon.REFRESH,
+  name: AdminAction.ShipmentsFetch,
+  icon: AdminIcon.Refresh,
   label: 'action_refresh',
-  handler: createMutator(BackendEndpoint.FETCH_SHIPMENTS),
+  handler: createMutator(BackendEndpoint.FetchShipments),
 });
 
 /**
  * Delete shipments.
  */
 export const shipmentsDeleteAction = defineAction({
-  name: AdminAction.SHIPMENTS_DELETE,
-  icon: AdminIcon.DELETE,
+  name: AdminAction.ShipmentsDelete,
+  icon: AdminIcon.Delete,
   label: 'action_delete',
-  handler: createMutator(BackendEndpoint.DELETE_SHIPMENTS),
+  handler: createMutator(BackendEndpoint.DeleteShipments),
 });
 
 /**
  * Print specific shipments.
  */
 export const shipmentsPrintAction = defineAction({
-  name: AdminAction.SHIPMENTS_PRINT,
-  icon: AdminIcon.PRINT,
+  name: AdminAction.ShipmentsPrint,
+  icon: AdminIcon.Print,
   label: 'action_print',
   beforeHandle: waitForLabelPrompt,
-  handler: createMutator(BackendEndpoint.PRINT_SHIPMENTS),
+  handler: createMutator(BackendEndpoint.PrintShipments),
   afterHandle(context) {
     void executeAction({
       action: shipmentsFetchAction,

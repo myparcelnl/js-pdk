@@ -1,25 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any,no-console */
 
 export enum LogLevel {
-  DEBUG = 1,
-  INFO = 2,
-  WARN = 3,
-  ERROR = 4,
-  OFF = 5,
+  Debug = 1,
+  Info = 2,
+  Warn = 3,
+  Error = 4,
+  Off = 5,
 }
 
 const logLevelNameMap: Partial<Record<LogLevel, string>> = {
-  [LogLevel.ERROR]: 'error',
-  [LogLevel.WARN]: 'warn',
-  [LogLevel.INFO]: 'info',
-  [LogLevel.DEBUG]: 'debug',
+  [LogLevel.Error]: 'error',
+  [LogLevel.Warn]: 'warn',
+  [LogLevel.Info]: 'info',
+  [LogLevel.Debug]: 'debug',
 };
 
 const backgroundColors: Partial<Record<LogLevel, string>> = {
-  [LogLevel.DEBUG]: '#9E9E9E',
-  [LogLevel.INFO]: '#2196F3',
-  [LogLevel.WARN]: '#FFB562',
-  [LogLevel.ERROR]: '#F87474',
+  [LogLevel.Debug]: '#9E9E9E',
+  [LogLevel.Info]: '#2196F3',
+  [LogLevel.Warn]: '#FFB562',
+  [LogLevel.Error]: '#F87474',
 };
 
 export interface PdkLogger {
@@ -37,7 +37,7 @@ export interface PdkLogger {
 }
 
 export const globalLogger: PdkLogger = {
-  level: LogLevel.DEBUG,
+  level: LogLevel.Debug,
 
   scope: null,
 
@@ -57,11 +57,11 @@ export const globalLogger: PdkLogger = {
 
       // define console method based on level
       switch (level) {
-        case LogLevel.ERROR:
+        case LogLevel.Error:
           method = console.error;
           break;
 
-        case LogLevel.WARN:
+        case LogLevel.Warn:
           method = console.warn;
           break;
 
@@ -86,19 +86,19 @@ export const globalLogger: PdkLogger = {
   },
 
   debug(...messages: any[]): void {
-    this.log(LogLevel.DEBUG, ...messages);
+    this.log(LogLevel.Debug, ...messages);
   },
 
   info(...messages: any[]): void {
-    this.log(LogLevel.INFO, ...messages);
+    this.log(LogLevel.Info, ...messages);
   },
 
   warn(...messages: any[]): void {
-    this.log(LogLevel.WARN, ...messages);
+    this.log(LogLevel.Warn, ...messages);
   },
 
   error(...messages: any[]): void {
-    this.log(LogLevel.ERROR, ...messages);
+    this.log(LogLevel.Error, ...messages);
   },
 
   setScope(scope: string | null): void {

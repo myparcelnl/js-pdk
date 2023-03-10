@@ -4,21 +4,21 @@ import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
 
 export const webhooksFetchAction = defineAction({
-  name: AdminAction.WEBHOOKS_FETCH,
+  name: AdminAction.WebhooksFetch,
   label: 'action_fetch_webhooks',
-  handler: createQueryFetcher(BackendEndpoint.FETCH_WEBHOOKS),
+  handler: createQueryFetcher(BackendEndpoint.FetchWebhooks),
 });
 
 export const webhooksCreateAction = defineAction({
-  name: AdminAction.WEBHOOKS_CREATE,
-  icon: AdminIcon.ADD,
+  name: AdminAction.WebhooksCreate,
+  icon: AdminIcon.Add,
   label: 'action_create',
-  handler: createMutator(BackendEndpoint.CREATE_WEBHOOKS),
+  handler: createMutator(BackendEndpoint.CreateWebhooks),
 });
 
 export const webhooksDeleteAction = defineAction({
-  name: AdminAction.WEBHOOKS_DELETE,
-  icon: AdminIcon.DELETE,
+  name: AdminAction.WebhooksDelete,
+  icon: AdminIcon.Delete,
   label: 'action_delete',
-  handler: createMutator(BackendEndpoint.DELETE_WEBHOOKS),
+  handler: createMutator(BackendEndpoint.DeleteWebhooks),
 });

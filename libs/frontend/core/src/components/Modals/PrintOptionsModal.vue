@@ -14,7 +14,7 @@
 import {AdminModalKey} from '../../types';
 import {defineAsyncComponent} from 'vue';
 
-const modalKey = AdminModalKey.PRINT_OPTIONS;
+const modalKey = AdminModalKey.PrintOptions;
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const PrintOptionsModalForm = defineAsyncComponent(() => import('./PrintOptionsModalForm.vue'));

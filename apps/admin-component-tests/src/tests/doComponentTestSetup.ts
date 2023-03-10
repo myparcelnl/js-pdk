@@ -51,12 +51,12 @@ const context: AdminContextObject = {
 const appConfig: AdminAppConfig = {
   appName: 'test',
   logger: createLogger('test'),
-  config: {components: {} as AdminComponentMap, logLevel: LogLevel.OFF},
+  config: {components: {} as AdminComponentMap, logLevel: LogLevel.Off},
   context,
 };
 
 export const doComponentTestSetup = (): void => {
-  globalLogger.level = LogLevel.OFF;
+  globalLogger.level = LogLevel.Off;
 
   config.global.plugins = [createStorePlugin(appConfig), createContextPlugin(appConfig)];
 

@@ -33,7 +33,7 @@ const props = defineProps({
 
   size: {
     type: String as PropType<Size>,
-    default: Size.MEDIUM,
+    default: Size.Medium,
   },
 });
 

@@ -41,7 +41,7 @@ const getFormattedInsurancePossibilities = (
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,max-lines-per-function
 export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
-  const dynamicContext = useContext(AdminContextKey.DYNAMIC);
+  const dynamicContext = useContext(AdminContextKey.Dynamic);
 
   const carrierNames = dynamicContext.carrierOptions.map((options) => options.carrier.name);
   const formatter = useLocalizedFormatter();

@@ -14,7 +14,7 @@ export const useUpdateAccountMutation = () => {
   const defaultMutationOptions = queryClient.defaultMutationOptions();
 
   return usePdkMutation(
-    BackendEndpoint.UPDATE_ACCOUNT,
+    BackendEndpoint.UpdateAccount,
     async ({form}) => {
       const pdk = usePdkAdminApi();
 
@@ -35,11 +35,11 @@ export const useUpdateAccountMutation = () => {
         const translation = 'error_invalid_api_key';
 
         notificationStore.add({
-          category: NotificationCategory.API,
+          category: NotificationCategory.Api,
           content: `${translation}_content`,
           title: translation,
           timeout: false,
-          variant: Variant.ERROR,
+          variant: Variant.Error,
         });
       },
     },

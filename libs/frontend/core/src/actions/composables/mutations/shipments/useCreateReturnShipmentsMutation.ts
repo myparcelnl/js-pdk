@@ -10,7 +10,7 @@ export const useCreateReturnShipmentsMutation = () => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(
-    BackendEndpoint.CREATE_RETURN_SHIPMENTS,
+    BackendEndpoint.CreateReturnShipments,
     (input) => {
       const pdk = usePdkAdminApi();
 

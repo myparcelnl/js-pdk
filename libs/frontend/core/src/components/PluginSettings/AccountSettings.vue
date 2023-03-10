@@ -8,7 +8,7 @@
           v-if="!hasAccount || editingApiKey"
           @afterSubmit="onSubmit" />
         <div v-else>
-          <p><StatusIndicator :status="Status.SUCCESS" />&nbsp;{{ translate('notification_account_connected') }}</p>
+          <p><StatusIndicator :status="Status.Success" />&nbsp;{{ translate('notification_account_connected') }}</p>
 
           <PdkButtonGroup>
             <PdkButton

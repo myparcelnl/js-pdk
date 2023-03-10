@@ -14,7 +14,7 @@ export const createPluginSettingsForm = (
 ): FormInstance => {
   const {pluginSettings, actionContext} = context;
 
-  const mutation = useStoreQuery(BackendEndpoint.UPDATE_PLUGIN_SETTINGS);
+  const mutation = useStoreQuery(BackendEndpoint.UpdatePluginSettings);
 
   const values = lodashGet(pluginSettings, id, {});
 

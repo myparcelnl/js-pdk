@@ -36,7 +36,7 @@ export const useModalStore = defineStore('modal', () => {
     },
 
     close: () => {
-      useNotificationStore().remove(NotificationCategory.MODAL);
+      useNotificationStore().remove(NotificationCategory.Modal);
       const modal = opened.value as AdminModalKey;
 
       opened.value = null;

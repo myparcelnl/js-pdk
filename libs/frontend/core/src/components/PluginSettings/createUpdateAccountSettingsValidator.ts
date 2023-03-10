@@ -11,7 +11,7 @@ const memoizedActionValidator = memoize(async (context: ActionContext<AdminActio
 
 export const createUpdateAccountSettingsValidator =
   (
-    actionContext: ActionContext<AdminAction.ACCOUNT_UPDATE>,
+    actionContext: ActionContext<AdminAction.AccountUpdate>,
   ): ((field: InteractiveElementInstance) => Promise<boolean>) =>
   async (field: InteractiveElementInstance) => {
     if (!field.ref.value) {

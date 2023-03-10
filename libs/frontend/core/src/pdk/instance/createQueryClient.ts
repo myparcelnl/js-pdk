@@ -4,11 +4,11 @@ import {addErrorToNotifications} from '../../services';
 import {useNotificationStore} from '../../stores';
 
 const clearApiNotifications = () => {
-  useNotificationStore().remove(NotificationCategory.API);
+  useNotificationStore().remove(NotificationCategory.Api);
 };
 
 const addApiErrorNotification = (error: unknown) => {
-  addErrorToNotifications(error, NotificationCategory.API);
+  addErrorToNotifications(error, NotificationCategory.Api);
 };
 
 export const createQueryClient = (): QueryClient =>

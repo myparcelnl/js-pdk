@@ -25,5 +25,5 @@ async function submit() {
   setLoading(false);
 }
 
-const icon = AdminIcon.SAVE;
+const icon = AdminIcon.Save;
 </script>

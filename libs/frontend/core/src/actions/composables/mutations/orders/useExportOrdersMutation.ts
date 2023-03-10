@@ -8,16 +8,16 @@ import {useModalStore} from '../../../../stores';
 import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';
 
-export const useExportOrdersMutation = (mode: MutationMode = MutationMode.DEFAULT) => {
+export const useExportOrdersMutation = (mode: MutationMode = MutationMode.Default) => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(
-    BackendEndpoint.EXPORT_ORDERS,
+    BackendEndpoint.ExportOrders,
     async (input) => {
       const pdk = usePdkAdminApi();
       getCallbackForMutationMode(mode)?.();
 
-      const options: EndpointOptions<BackendEndpoint.EXPORT_ORDERS> = {
+      const options: EndpointOptions<BackendEndpoint.ExportOrders> = {
         parameters: {
           orderIds: encodeArrayParameter(input.orderIds),
         },
@@ -29,7 +29,7 @@ export const useExportOrdersMutation = (mode: MutationMode = MutationMode.DEFAUL
     },
     {
       ...queryClient.defaultMutationOptions(),
-      ...(mode === MutationMode.MODAL ? getModalMutationOptions() : {}),
+      ...(mode === MutationMode.Modal ? getModalMutationOptions() : {}),
 
       async onSuccess(data, input) {
         useModalStore().close();

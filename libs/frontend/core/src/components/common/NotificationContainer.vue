@@ -23,7 +23,7 @@ export default defineComponent({
   props: {
     category: {
       type: String as PropType<NotificationCategory>,
-      default: () => NotificationCategory.GENERAL,
+      default: () => NotificationCategory.General,
     },
   },
 

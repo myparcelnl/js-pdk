@@ -16,7 +16,7 @@ import {useAdminConfig} from '../../composables';
 const props = defineProps({
   status: {
     type: String as PropType<Status>,
-    default: Status.PENDING,
+    default: Status.Pending,
   },
 });
 
@@ -24,20 +24,20 @@ const config = useAdminConfig();
 
 const icon = computed(() => {
   switch (props.status) {
-    case Status.SUCCESS:
-      return AdminIcon.YES;
+    case Status.Success:
+      return AdminIcon.Yes;
 
-    case Status.ERROR:
-      return AdminIcon.NO;
+    case Status.Error:
+      return AdminIcon.No;
 
     default:
-      return AdminIcon.SPINNER;
+      return AdminIcon.Spinner;
   }
 });
 
 const cssClasses = computed(() => ({
-  [config?.cssUtilities?.textColorSuccess ?? '']: props.status === Status.SUCCESS,
-  [config?.cssUtilities?.textColorError ?? '']: props.status === Status.ERROR,
-  [config?.cssUtilities?.animationSpin ?? '']: props.status === Status.PENDING,
+  [config?.cssUtilities?.textColorSuccess ?? '']: props.status === Status.Success,
+  [config?.cssUtilities?.textColorError ?? '']: props.status === Status.Error,
+  [config?.cssUtilities?.animationSpin ?? '']: props.status === Status.Pending,
 }));
 </script>

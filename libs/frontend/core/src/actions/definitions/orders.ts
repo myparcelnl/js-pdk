@@ -16,14 +16,14 @@ import {useModalStore} from '../../stores';
  * Open modal to edit order shipment options.
  */
 export const ordersEditAction = defineAction({
-  id: AdminAction.ORDERS_EDIT,
-  icon: AdminIcon.EDIT,
+  id: AdminAction.OrdersEdit,
+  icon: AdminIcon.Edit,
   label: 'action_edit',
   handler(context: ActionContext) {
     const modalStore = useModalStore();
-    const parameters = context.parameters as ActionParameters<AdminAction.ORDERS_EXPORT>;
+    const parameters = context.parameters as ActionParameters<AdminAction.OrdersExport>;
 
-    modalStore.open(AdminModalKey.SHIPMENT_OPTIONS, parameters.orderIds.toString());
+    modalStore.open(AdminModalKey.ShipmentOptions, parameters.orderIds.toString());
   },
 });
 
@@ -31,54 +31,54 @@ export const ordersEditAction = defineAction({
  * Shown only in order mode. Exports entire order.
  */
 export const orderExportAction = defineAction({
-  name: AdminAction.ORDERS_EXPORT,
-  icon: AdminIcon.EXPORT,
+  name: AdminAction.OrdersExport,
+  icon: AdminIcon.Export,
   label: 'action_export',
   beforeHandle: resolveOrderParameters,
-  handler: createMutator(BackendEndpoint.EXPORT_ORDERS),
+  handler: createMutator(BackendEndpoint.ExportOrders),
 });
 
 /**
  * Shown if not in order mode. Exports shipments.
  */
 export const orderExportToShipmentsAction = defineAction({
-  name: AdminAction.ORDERS_EXPORT,
-  icon: AdminIcon.EXPORT,
+  name: AdminAction.OrdersExport,
+  icon: AdminIcon.Export,
   label: 'action_export_shipments',
   beforeHandle: resolveOrderParameters,
-  handler: createMutator(BackendEndpoint.EXPORT_ORDERS),
+  handler: createMutator(BackendEndpoint.ExportOrders),
 });
 
 /**
  * Fetch the latest order data from the PDK.
  */
 export const ordersFetchAction = defineAction({
-  name: AdminAction.ORDERS_FETCH,
-  icon: AdminIcon.REFRESH,
+  name: AdminAction.OrdersFetch,
+  icon: AdminIcon.Refresh,
   label: 'action_refresh',
-  handler: createQueryFetcher(BackendEndpoint.FETCH_ORDERS),
+  handler: createQueryFetcher(BackendEndpoint.FetchOrders),
 });
 
 /**
  * Update order data.
  */
 export const ordersUpdateAction = defineAction({
-  name: AdminAction.ORDERS_UPDATE,
-  icon: AdminIcon.SAVE,
+  name: AdminAction.OrdersUpdate,
+  icon: AdminIcon.Save,
   label: 'action_save',
   beforeHandle: resolveOrderParameters,
-  handler: createMutator(BackendEndpoint.UPDATE_ORDERS),
+  handler: createMutator(BackendEndpoint.UpdateOrders),
 });
 
 /**
  * Shown if not in order mode. Exports order and immediately prints shipment labels.
  */
 export const ordersExportPrintShipmentsAction = defineAction({
-  name: AdminAction.ORDERS_EXPORT_PRINT,
-  icon: AdminIcon.PRINT,
+  name: AdminAction.OrdersExportPrint,
+  icon: AdminIcon.Print,
   label: 'action_export_print',
   beforeHandle: resolveOrderParameters,
-  handler: createMutator(BackendEndpoint.EXPORT_ORDERS),
+  handler: createMutator(BackendEndpoint.ExportOrders),
   afterHandle(context) {
     void executeNextAction(context, ordersPrintAction, context.parameters);
 
@@ -90,8 +90,8 @@ export const ordersExportPrintShipmentsAction = defineAction({
  * Shown if not in order mode. Exports all shipment labels.
  */
 export const ordersPrintAction = defineAction({
-  name: AdminAction.ORDERS_PRINT,
-  icon: AdminIcon.PRINT,
+  name: AdminAction.OrdersPrint,
+  icon: AdminIcon.Print,
   label: 'action_print',
   async beforeHandle(context) {
     await waitForLabelPrompt(context);
@@ -99,7 +99,7 @@ export const ordersPrintAction = defineAction({
     return context.parameters;
   },
 
-  handler: createMutator(BackendEndpoint.PRINT_ORDERS),
+  handler: createMutator(BackendEndpoint.PrintOrders),
 
   afterHandle(context) {
     void openOrPrint(context);
@@ -114,7 +114,7 @@ export const ordersPrintAction = defineAction({
  */
 export const orderViewInBackofficeAction = defineAction({
   id: 'show-exported-order',
-  icon: AdminIcon.EXTERNAL,
+  icon: AdminIcon.External,
   label: 'order_view_in_backoffice',
   handler() {
     window.open('https://backoffice.myparcel.nl/orders', '_blank');

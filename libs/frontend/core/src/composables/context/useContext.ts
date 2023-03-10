@@ -2,9 +2,9 @@ import {AdminContext, AdminContextKey} from '../../types';
 import {get} from '@vueuse/core';
 import {useStoreContextQuery} from '../useStoreContextQuery';
 
-export const useContext = <C extends AdminContextKey = AdminContextKey.DYNAMIC>(
+export const useContext = <C extends AdminContextKey = AdminContextKey.Dynamic>(
   // @ts-expect-error typescript is being very pedantic here
-  contextKey: C = AdminContextKey.DYNAMIC,
+  contextKey: C = AdminContextKey.Dynamic,
 ): NonNullable<AdminContext<C>> => {
   const query = useStoreContextQuery(contextKey);
   const data = get(query.data);

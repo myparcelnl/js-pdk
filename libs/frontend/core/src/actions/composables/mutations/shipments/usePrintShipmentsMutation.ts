@@ -11,7 +11,7 @@ export const usePrintShipmentsMutation = () => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(
-    BackendEndpoint.PRINT_SHIPMENTS,
+    BackendEndpoint.PrintShipments,
     (input) => {
       const pdk = usePdkAdminApi();
       const pluginSettings = usePluginSettings();

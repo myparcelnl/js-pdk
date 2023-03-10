@@ -1,4 +1,4 @@
 export enum MutationMode {
-  MODAL = 'modal',
-  DEFAULT = 'default',
+  Modal = 'modal',
+  Default = 'default',
 }

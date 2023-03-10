@@ -34,10 +34,10 @@ export default defineComponent({
     const pluginSettings = usePluginSettings();
     const {orderMode} = pluginSettings.general;
 
-    const exportOrdersQuery = useStoreQuery(BackendEndpoint.EXPORT_ORDERS);
+    const exportOrdersQuery = useStoreQuery(BackendEndpoint.ExportOrders);
 
     return {
-      modalKey: AdminModalKey.SHIPMENT_OPTIONS,
+      modalKey: AdminModalKey.ShipmentOptions,
       actions: defineActions([
         {
           ...modalCancelAction,

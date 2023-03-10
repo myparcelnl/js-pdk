@@ -26,7 +26,7 @@ const props = defineProps({
 
   size: {
     type: String as PropType<Size>,
-    default: Size.MEDIUM,
+    default: Size.Medium,
   },
 });
 
@@ -34,10 +34,10 @@ defineEmits(['click']);
 
 const sizeClasses = computed(() => {
   switch (props.size) {
-    case Size.SMALL:
+    case Size.Small:
       return 'px-2 py-1 text-sm';
 
-    case Size.LARGE:
+    case Size.Large:
       return 'px-4 py-2 text-lg';
 
     default:

@@ -46,5 +46,5 @@ actionStore.registerOrderActions();
 const pluginSettings = usePluginSettings();
 const {orderMode} = pluginSettings.general;
 
-const query = useStoreQuery(BackendEndpoint.FETCH_ORDERS);
+const query = useStoreQuery(BackendEndpoint.FetchOrders);
 </script>

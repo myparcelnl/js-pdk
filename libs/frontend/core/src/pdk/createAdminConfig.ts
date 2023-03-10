@@ -5,7 +5,7 @@ import {mergeWith} from 'lodash-unified';
 const defaultConfig = Object.freeze<DefaultAdminConfiguration>({
   components: undefined,
   formatters: {},
-  logLevel: import.meta.env.PROD ? LogLevel.INFO : LogLevel.DEBUG,
+  logLevel: import.meta.env.PROD ? LogLevel.Info : LogLevel.Debug,
   transitions: {},
 });
 

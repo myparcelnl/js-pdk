@@ -8,12 +8,12 @@ export const useCreateWebhooksMutation = () => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(
-    BackendEndpoint.CREATE_WEBHOOKS,
+    BackendEndpoint.CreateWebhooks,
     (input) => usePdkAdminApi().createWebhooks({parameters: input}),
     {
       ...queryClient.defaultMutationOptions(),
       onSuccess: (data) => {
-        queryClient.setQueryData([BackendEndpoint.FETCH_WEBHOOKS], data);
+        queryClient.setQueryData([BackendEndpoint.FetchWebhooks], data);
       },
     },
   );

@@ -5,7 +5,7 @@ import {AdminInstanceContextKey} from '../types';
 export const getOrderId = (instance?: AdminInstance): undefined | string => {
   return (
     useModalOrder() ??
-    instance?.context?.[AdminInstanceContextKey.ORDER_IDENTIFIER] ??
-    useInstanceContext(AdminInstanceContextKey.ORDER_IDENTIFIER)
+    instance?.context?.[AdminInstanceContextKey.OrderIdentifier] ??
+    useInstanceContext(AdminInstanceContextKey.OrderIdentifier)
   );
 };

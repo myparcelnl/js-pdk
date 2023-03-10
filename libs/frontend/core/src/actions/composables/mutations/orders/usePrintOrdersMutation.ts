@@ -6,7 +6,7 @@ import {usePdkMutation} from '../orders';
 import {usePluginSettings} from '../../../../composables';
 
 export const usePrintOrdersMutation = () => {
-  return usePdkMutation(BackendEndpoint.PRINT_ORDERS, (input) => {
+  return usePdkMutation(BackendEndpoint.PrintOrders, (input) => {
     const pdk = usePdkAdminApi();
     const pluginSettings = usePluginSettings();
 

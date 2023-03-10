@@ -8,12 +8,12 @@ export const useDeleteWebhooksMutation = () => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(
-    BackendEndpoint.DELETE_WEBHOOKS,
+    BackendEndpoint.DeleteWebhooks,
     (input) => usePdkAdminApi().deleteWebhooks({parameters: input}),
     {
       ...queryClient.defaultMutationOptions(),
       onSuccess: (data) => {
-        queryClient.setQueryData([BackendEndpoint.FETCH_WEBHOOKS], data);
+        queryClient.setQueryData([BackendEndpoint.FetchWebhooks], data);
       },
     },
   );

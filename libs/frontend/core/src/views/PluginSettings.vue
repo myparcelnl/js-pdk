@@ -25,11 +25,11 @@ import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForm
 
 const queryStore = useQueryStore();
 
-queryStore.registerContextQueries(AdminContextKey.PLUGIN_SETTINGS_VIEW);
+queryStore.registerContextQueries(AdminContextKey.PluginSettingsView);
 
-queryStore.register(BackendEndpoint.UPDATE_ACCOUNT, useUpdateAccountMutation());
+queryStore.register(BackendEndpoint.UpdateAccount, useUpdateAccountMutation());
 
-queryStore.register(BackendEndpoint.UPDATE_PLUGIN_SETTINGS, useUpdatePluginSettingsMutation());
+queryStore.register(BackendEndpoint.UpdatePluginSettings, useUpdatePluginSettingsMutation());
 
 const actionStore = useActionStore();
 

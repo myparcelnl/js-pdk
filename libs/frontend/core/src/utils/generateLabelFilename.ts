@@ -3,7 +3,7 @@ import {ActionInput} from '../types';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 
 export const generateLabelFilename = (
-  parameters: ActionInput<BackendEndpoint.PRINT_SHIPMENTS | BackendEndpoint.PRINT_ORDERS>,
+  parameters: ActionInput<BackendEndpoint.PrintShipments | BackendEndpoint.PrintOrders>,
 ): string => {
   const prefix = 'myparcel-labels';
 
@@ -13,7 +13,7 @@ export const generateLabelFilename = (
     return prefix;
   }
 
-  if (isOfType<ActionInput<BackendEndpoint.PRINT_SHIPMENTS>>(parameters, 'shipmentIds')) {
+  if (isOfType<ActionInput<BackendEndpoint.PrintShipments>>(parameters, 'shipmentIds')) {
     const shipmentIds = toArray(parameters.shipmentIds);
 
     if (shipmentIds.length > 1) {

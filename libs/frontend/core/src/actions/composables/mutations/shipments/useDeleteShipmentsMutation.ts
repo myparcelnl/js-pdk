@@ -12,7 +12,7 @@ export const useDeleteShipmentsMutation = () => {
   const pdk = usePdkAdminApi();
 
   return usePdkMutation(
-    BackendEndpoint.DELETE_SHIPMENTS,
+    BackendEndpoint.DeleteShipments,
     async (input) => {
       const orderIds = toArray(input.orderIds);
       const shipmentIds = toArray(input.shipmentIds);

@@ -67,7 +67,7 @@ const props = defineProps({
    */
   size: {
     type: String as PropType<Size>,
-    default: Size.SMALL,
+    default: Size.Small,
   },
 });
 

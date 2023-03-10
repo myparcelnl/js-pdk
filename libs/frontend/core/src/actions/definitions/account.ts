@@ -7,23 +7,23 @@ import {defineAction} from '../defineAction';
  * Retrieve context.
  */
 export const fetchDynamicContextAction = defineAction({
-  name: AdminAction.CONTEXT_FETCH,
-  handler: createQueryFetcher(BackendEndpoint.FETCH_CONTEXT, AdminContextKey.DYNAMIC),
+  name: AdminAction.ContextFetch,
+  handler: createQueryFetcher(BackendEndpoint.FetchContext, AdminContextKey.Dynamic),
 });
 
 export const fetchPluginSettingsViewContextAction = defineAction({
-  name: AdminAction.CONTEXT_FETCH,
-  handler: createQueryFetcher(BackendEndpoint.FETCH_CONTEXT, AdminContextKey.PLUGIN_SETTINGS_VIEW),
+  name: AdminAction.ContextFetch,
+  handler: createQueryFetcher(BackendEndpoint.FetchContext, AdminContextKey.PluginSettingsView),
 });
 
 /**
  * Update account.
  */
 export const updateAccountAction = defineAction({
-  name: AdminAction.ACCOUNT_UPDATE,
-  icon: AdminIcon.SAVE,
+  name: AdminAction.AccountUpdate,
+  icon: AdminIcon.Save,
   label: 'action_save',
-  handler: createMutator(BackendEndpoint.UPDATE_ACCOUNT),
+  handler: createMutator(BackendEndpoint.UpdateAccount),
   async afterHandle(context) {
     if (context.response === undefined) {
       context.instance.logger.error('Account not found');

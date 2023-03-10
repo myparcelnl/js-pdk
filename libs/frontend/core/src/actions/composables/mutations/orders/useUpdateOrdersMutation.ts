@@ -10,9 +10,9 @@ export const useUpdateOrdersMutation = () => {
   const pdk = usePdkAdminApi();
 
   return usePdkMutation(
-    BackendEndpoint.UPDATE_ORDERS,
+    BackendEndpoint.UpdateOrders,
     async (input) => {
-      const options: EndpointOptions<BackendEndpoint.UPDATE_ORDERS> = {
+      const options: EndpointOptions<BackendEndpoint.UpdateOrders> = {
         parameters: {
           orderIds: encodeArrayParameter(input.orderIds),
         },

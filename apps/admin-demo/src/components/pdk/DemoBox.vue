@@ -35,13 +35,13 @@ const props = defineProps({
 
   size: {
     type: String as PropType<Size>,
-    default: Size.MEDIUM,
+    default: Size.Medium,
   },
 });
 
 const paddingClasses = computed(() => ({
-  'p-2': [Size.SMALL, Size.EXTRA_SMALL].includes(props.size),
-  'p-4': [Size.MEDIUM].includes(props.size),
-  'p-5': [Size.LARGE, Size.EXTRA_LARGE].includes(props.size),
+  'p-2': [Size.Small, Size.ExtraSmall].includes(props.size),
+  'p-4': [Size.Medium].includes(props.size),
+  'p-5': [Size.Large, Size.ExtraLarge].includes(props.size),
 }));
 </script>

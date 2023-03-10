@@ -16,7 +16,7 @@ export const getModalMutationOptions = <
       useModalStore().loading = false;
     },
     onError(error) {
-      addErrorToNotifications(error, NotificationCategory.MODAL);
+      addErrorToNotifications(error, NotificationCategory.Modal);
     },
   };
 };

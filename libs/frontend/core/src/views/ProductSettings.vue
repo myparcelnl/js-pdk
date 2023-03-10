@@ -18,7 +18,7 @@ import {useUpdateProductSettingsMutation} from '../actions';
 const queryStore = useQueryStore();
 queryStore.registerContextQueries();
 
-const context = useContext(AdminContextKey.PRODUCT_SETTINGS_VIEW);
+const context = useContext(AdminContextKey.ProductSettingsView);
 const updateProductSettingsMutation = useUpdateProductSettingsMutation();
 const adminConfig = useAdminConfig();
 

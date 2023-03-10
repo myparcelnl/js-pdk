@@ -14,7 +14,7 @@ export interface FormTab extends Omit<TabDefinition, 'component'> {
 
 export type PluginSettingsTabsContext = {
   pluginSettings: Plugin.ModelContextDynamicContext['pluginSettings'];
-  actionContext: ActionContext<AdminAction.PLUGIN_SETTINGS_UPDATE>;
+  actionContext: ActionContext<AdminAction.PluginSettingsUpdate>;
   config: AdminConfiguration;
 };
 
