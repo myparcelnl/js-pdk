@@ -36,7 +36,7 @@
     "@edielemoine/google-docs-importer": "^1.0.2",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitest/coverage-c8": "^0.28.5",
-    "autoprefixer": "^10.4.13",
+    "autoprefixer": "^10.4.14",
     "happy-dom": "^8.7.2",
     "postcss": "^8.4.21",
     "rollup-plugin-visualizer": "^5.9.0",
