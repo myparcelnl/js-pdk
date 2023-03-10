@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.10](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.9...@myparcel-pdk/app-builder@1.0.0-alpha.10) "@myparcel-pdk/app-builder" (2023-03-10)
+
+
+
+
 ## [1.0.0-alpha.9](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.8...@myparcel-pdk/app-builder@1.0.0-alpha.9) "@myparcel-pdk/app-builder" (2023-02-22)
 
 

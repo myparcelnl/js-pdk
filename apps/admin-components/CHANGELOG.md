@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.15](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-components@1.0.0-alpha.14...@myparcel-pdk/admin-components@1.0.0-alpha.15) "@myparcel-pdk/admin-components" (2023-03-10)
+
+
+### Features
+
+* allow actions to be called from the outside ([da03e99](https://github/myparcelnl/js-pdk/commit/da03e994c6f3ee41bb9819bedc1aab9bbea21beb))
+
+
+
+
 ## [1.0.0-alpha.12](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-components@1.0.0-alpha.11...@myparcel-pdk/admin-components@1.0.0-alpha.12) "@myparcel-pdk/admin-components" (2023-03-09)
 
 
