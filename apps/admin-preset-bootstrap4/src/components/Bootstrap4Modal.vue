@@ -46,15 +46,20 @@
 <script setup lang="ts">
 import {
   ActionButton,
+  ActionDefinition,
   AdminModalKey,
   NotificationContainer,
-  ResolvedAction,
   useLanguage,
   useModalStore,
 } from '@myparcel-pdk/frontend-core/src';
 import {PropType, computed} from 'vue';
 
 const props = defineProps({
+  actions: {
+    type: Array as PropType<ActionDefinition[]>,
+    default: () => [],
+  },
+
   modalKey: {
     type: String as PropType<AdminModalKey>,
     default: null,
@@ -63,11 +68,6 @@ const props = defineProps({
   title: {
     type: String,
     default: null,
-  },
-
-  actions: {
-    type: Array as PropType<ResolvedAction[]>,
-    default: (): never[] => [],
   },
 });
 

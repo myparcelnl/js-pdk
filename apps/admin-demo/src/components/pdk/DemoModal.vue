@@ -58,10 +58,10 @@
 <script lang="ts">
 import {
   ActionButton,
+  ActionDefinition,
   AdminModalKey,
   ModalCallbackProps,
   NotificationContainer,
-  ResolvedAction,
   useLanguage,
   useModalContext,
   useModalStore,
@@ -73,26 +73,25 @@ import {PropType, computed, defineComponent, ref, toRefs} from 'vue';
  */
 export default defineComponent({
   name: 'DemoModal',
-
   components: {
     NotificationContainer,
-    ActionButton: ActionButton,
+    ActionButton,
   },
 
   props: {
+    /**
+     * Available actions in the modal. Each action needs a unique id and a label.
+     */
+    actions: {
+      type: Array as PropType<ActionDefinition[]>,
+      default: () => [],
+    },
+
     /**
      * Modal k. Must be unique.
      */
     modalKey: {
       type: String as PropType<AdminModalKey>,
-      default: null,
-    },
-
-    /**
-     * Callback to change behavior of the save button. Note: You need to manually close the modal when using this.
-     */
-    onSave: {
-      type: Function as PropType<ModalCallbackProps['onSave']>,
       default: null,
     },
 
@@ -105,19 +104,19 @@ export default defineComponent({
     },
 
     /**
+     * Callback to change behavior of the save button. Note: You need to manually close the modal when using this.
+     */
+    onSave: {
+      type: Function as PropType<ModalCallbackProps['onSave']>,
+      default: null,
+    },
+
+    /**
      * Modal title.
      */
     title: {
       type: String,
       required: true,
-    },
-
-    /**
-     * Available actions in the modal. Each action needs a unique id and a label.
-     */
-    actions: {
-      type: Array as PropType<ResolvedAction[]>,
-      default: () => [],
     },
   },
 

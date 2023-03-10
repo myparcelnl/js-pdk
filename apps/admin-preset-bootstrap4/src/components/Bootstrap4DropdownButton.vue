@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import {ActionButton, ResolvedAction, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {ActionButton, ActionDefinition, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import BaseButton from './common/BaseButton.vue';
 import {PropType} from 'vue';
 
@@ -36,8 +36,8 @@ const props = defineProps({
    * List of actions.
    */
   actions: {
-    type: Array as PropType<ResolvedAction[]>,
-    default: (): never[] => [],
+    type: Array as PropType<ActionDefinition[]>,
+    default: () => [],
   },
 
   /**

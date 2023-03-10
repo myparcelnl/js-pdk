@@ -45,8 +45,6 @@ const resolvedAction = computed(() => actionStore.get(props.action.id));
 
 const onClick = () => {
   emit('click');
-
-  console.log('action', props.action);
   actionStore.dispatch(props.action.id, props.action.parameters);
 };
 </script>
