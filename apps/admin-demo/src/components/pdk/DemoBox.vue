@@ -26,7 +26,7 @@
 
 <script lang="ts" setup>
 import {PropType, computed} from 'vue';
-import {Size} from '@myparcel-pdk/common';
+import {Size} from '@myparcel-pdk/common/src';
 
 const props = defineProps({
   loading: {
