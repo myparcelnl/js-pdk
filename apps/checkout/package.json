@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/checkout",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -24,7 +24,7 @@
     "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.5",
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.6",
     "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.2"
   },
   "devDependencies": {

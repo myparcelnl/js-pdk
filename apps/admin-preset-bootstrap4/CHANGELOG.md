@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.14](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.13...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.14) "@myparcel-pdk/admin-preset-bootstrap4" (2023-03-10)
+
+
+### Features
+
+* allow actions to be called from the outside ([b8a08de](https://github/myparcelnl/js-pdk/commit/b8a08deb286cac2e4bf3b7c7fbd6f25e4fa5b84b))
+
+
+
+
 ## [1.0.0-alpha.9](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.8...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.9) "@myparcel-pdk/admin-preset-bootstrap4" (2023-02-28)
 
 

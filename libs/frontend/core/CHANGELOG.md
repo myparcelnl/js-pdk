@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.13](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.12...@myparcel-pdk/frontend-core@1.0.0-alpha.13) "@myparcel-pdk/frontend-core" (2023-03-10)
+
+
+### Features
+
+* allow actions to be called from the outside ([da03e99](https://github/myparcelnl/js-pdk/commit/da03e994c6f3ee41bb9819bedc1aab9bbea21beb))
+* allow actions to be called from the outside ([b8a08de](https://github/myparcelnl/js-pdk/commit/b8a08deb286cac2e4bf3b7c7fbd6f25e4fa5b84b))
+
+
+
+
 ## [1.0.0-alpha.12](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.11...@myparcel-pdk/frontend-core@1.0.0-alpha.12) "@myparcel-pdk/frontend-core" (2023-03-09)
 
 
