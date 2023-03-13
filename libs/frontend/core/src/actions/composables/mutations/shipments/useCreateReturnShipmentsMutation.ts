@@ -14,7 +14,7 @@ export const useCreateReturnShipmentsMutation = () => {
     (input) => {
       const pdk = usePdkAdminApi();
 
-      return pdk.createReturnShipments({
+      return pdk.exportReturn({
         // @ts-expect-error todo
         parameters: {
           orderIds: encodeArrayParameter(input.orderIds),
