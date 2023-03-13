@@ -50,6 +50,15 @@ export interface ExportOrdersDefinition extends Definition {
   response: Plugin.ModelContextOrderDataContext[];
 }
 
+export interface ExportReturnDefinition extends Definition {
+  name: BackendEndpoint.CreateReturnShipments;
+  parameters: {
+    orderIds: string;
+  };
+  body?: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
+  response: Plugin.ModelContextOrderDataContext[];
+}
+
 export interface UpdateOrdersDefinition extends Definition {
   name: BackendEndpoint.UpdateOrders;
   parameters: {
@@ -140,6 +149,7 @@ export type PdkEndpointDefinition<N extends BackendEndpoint> = Extract<
   | DeleteShipmentsDefinition
   | DeleteWebhooksDefinition
   | ExportOrdersDefinition
+  | ExportReturnDefinition
   | FetchContextDefinition
   | FetchOrdersDefinition
   | FetchWebhooksDefinition

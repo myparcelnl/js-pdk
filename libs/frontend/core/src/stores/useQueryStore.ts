@@ -141,6 +141,7 @@ export const useQueryStore = defineStore('query', () => {
       register(BackendEndpoint.DeleteShipments, useDeleteShipmentsMutation());
       register(BackendEndpoint.PrintShipments, usePrintShipmentsMutation());
       register(BackendEndpoint.FetchShipments, useUpdateShipmentsMutation());
+      register(BackendEndpoint.CreateReturnShipments, useCreateReturnShipmentsMutation());
     },
 
     /**
