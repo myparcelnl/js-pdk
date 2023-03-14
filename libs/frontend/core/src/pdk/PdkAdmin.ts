@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import {AdminAppConfig, INJECT_GLOBAL_PDK_ADMIN} from '../data';
 import {AdminConfiguration, AdminContextObject} from '../types';
 import {App, createApp} from 'vue';
 import {createLogger, getElementContext} from '../services';
-import {AdminAppConfig} from '../data';
 import {AdminView} from '@myparcel-pdk/common/src';
 import {renderViewComponent} from './renderMap';
 import {setupAdminApp} from './setupAdminApp';
@@ -34,7 +34,7 @@ export class PdkAdmin {
 
     logger.debug(`Rendering "${view}" in "${selector}"`);
 
-    const app = await this.createApp(view, {appName, logger, config, context});
+    const app = await this.createApp(view, {appName, config, context, logger, view});
 
     try {
       app.mount(selector);
@@ -49,7 +49,7 @@ export class PdkAdmin {
     appConfig.config?.beforeRender?.(appConfig.config);
 
     const component = await renderViewComponent(view);
-    const app = createApp({...component, name: appConfig.appName});
+    const app = createApp({...component, name: appConfig.appName}).provide(INJECT_GLOBAL_PDK_ADMIN, this);
 
     setupAdminApp(app, appConfig);
 
