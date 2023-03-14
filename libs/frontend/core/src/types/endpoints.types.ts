@@ -45,22 +45,22 @@ export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record
 
   [BackendEndpoint.UpdateAccount]: {form: FormInstance};
 
-  [BackendEndpoint.ExportOrders]: {orderIds: OneOrMore<string>; form?: FormInstance};
-  [BackendEndpoint.FetchOrders]: {orderIds: OneOrMore<string>};
+  [BackendEndpoint.ExportOrders]: {orderIds?: OneOrMore<string>; form?: FormInstance};
+  [BackendEndpoint.FetchOrders]: {orderIds?: OneOrMore<string>};
   [BackendEndpoint.PrintOrders]: {
-    orderIds: OneOrMore<string>;
+    orderIds?: OneOrMore<string>;
     form?: FormInstance;
     output?: LabelOutput;
     format?: LabelFormat;
     position?: LabelPosition;
   };
-  [BackendEndpoint.UpdateOrders]: {orderIds: OneOrMore<string>; form: FormInstance};
+  [BackendEndpoint.UpdateOrders]: {orderIds?: OneOrMore<string>; form: FormInstance};
 
-  [BackendEndpoint.CreateReturnShipments]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
-  [BackendEndpoint.DeleteShipments]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
-  [BackendEndpoint.FetchShipments]: {orderIds: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
+  [BackendEndpoint.CreateReturnShipments]: {orderIds?: OneOrMore<string>; shipmentIds: OneOrMore<number>};
+  [BackendEndpoint.DeleteShipments]: {orderIds?: OneOrMore<string>; shipmentIds: OneOrMore<number>};
+  [BackendEndpoint.FetchShipments]: {orderIds?: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
   [BackendEndpoint.PrintShipments]: {
-    orderIds: OneOrMore<string>;
+    orderIds?: OneOrMore<string>;
     shipmentIds: OneOrMore<number>;
     form?: FormInstance;
     output?: LabelOutput;

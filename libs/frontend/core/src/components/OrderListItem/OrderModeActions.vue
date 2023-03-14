@@ -15,11 +15,12 @@
 </template>
 
 <script lang="ts">
-import {PropType, defineComponent} from 'vue';
 import {orderExportAction, orderViewInBackofficeAction, ordersEditAction} from '../../actions';
 import {ActionButton} from '../common';
-import {Plugin} from '@myparcel-pdk/common/src';
 import {defineActions} from '../../services';
+import {defineComponent} from 'vue';
+import {get} from '@vueuse/core';
+import {useOrder} from '../../composables/useOrder';
 
 export default defineComponent({
   name: 'OrderModeActions',
@@ -27,17 +28,15 @@ export default defineComponent({
     ActionButton,
   },
 
-  props: {
-    order: {
-      type: Object as PropType<Plugin.ModelPdkOrder>,
-      required: true,
-    },
-  },
+  setup: () => {
+    const query = useOrder();
 
-  setup: (props) => {
     return {
+      order: query.data,
       showExportedOrderAction: defineActions(orderViewInBackofficeAction),
-      orderActions: defineActions([ordersEditAction, orderExportAction], {orderIds: props.order.externalIdentifier}),
+      orderActions: defineActions([ordersEditAction, orderExportAction], {
+        orderIds: get(query.data)?.externalIdentifier,
+      }),
     };
   },
 });

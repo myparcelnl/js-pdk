@@ -2,8 +2,7 @@
   <PdkDropdownButton :actions="actions" />
 </template>
 
-<script lang="ts">
-import {PropType, computed, defineComponent} from 'vue';
+<script setup lang="ts">
 import {
   orderExportAction,
   ordersEditAction,
@@ -12,42 +11,25 @@ import {
   ordersPrintAction,
 } from '../../actions';
 import {AnyAdminAction} from '../../types';
-import {Plugin} from '@myparcel-pdk/common/src';
+import {computed} from 'vue';
 import {defineActions} from '../../services';
-import {useLoading} from '../../composables';
+import {get} from '@vueuse/core';
+import {useOrder} from '../../composables/useOrder';
 
-export default defineComponent({
-  name: 'OrderActions',
+const query = useOrder();
 
-  props: {
-    order: {
-      type: Object as PropType<Plugin.ModelPdkOrder>,
-      required: true,
-    },
-  },
+const actions = computed(() => {
+  const actions: AnyAdminAction[] = [];
 
-  setup: (props) => {
-    const {loading} = useLoading();
-    const shipments = computed(() => props.order.shipments?.filter((item) => !item.deleted));
+  if (get(query.data)?.shipments?.some((item) => !item.deleted)) {
+    actions.push(orderExportAction);
+    actions.push({...ordersPrintAction, standalone: true});
+    actions.push(ordersEditAction, ordersFetchAction);
+  } else {
+    actions.push({...orderExportAction, standalone: true});
+    actions.push(ordersExportPrintShipmentsAction, ordersEditAction);
+  }
 
-    return {
-      loading,
-
-      actions: computed(() => {
-        const actions: AnyAdminAction[] = [];
-
-        if (shipments.value?.length) {
-          actions.push(orderExportAction);
-          actions.push({...ordersPrintAction, standalone: true});
-          actions.push(ordersEditAction, ordersFetchAction);
-        } else {
-          actions.push({...orderExportAction, standalone: true});
-          actions.push(ordersExportPrintShipmentsAction, ordersEditAction);
-        }
-
-        return defineActions(actions, {orderIds: props.order.externalIdentifier});
-      }),
-    };
-  },
+  return defineActions(actions, {orderIds: get(query.data)?.externalIdentifier});
 });
 </script>

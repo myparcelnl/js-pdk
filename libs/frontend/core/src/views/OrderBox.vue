@@ -1,15 +1,15 @@
 <template>
-  <ShipmentOptionsBox :order="query.data" />
+  <ShipmentOptionsBox />
 
   <ShipmentTableBox v-if="!orderMode && query.data?.shipments.some((item) => !item.deleted)" />
 </template>
 
 <script lang="ts" setup>
 import {useActionStore, useQueryStore} from '../stores';
-import {usePluginSettings, useStoreQuery} from '../composables';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import {usePluginSettings} from '../composables';
 import ShipmentOptionsBox from '../components/OrderBox/ShipmentOptionsBox.vue';
 import {defineAsyncComponent} from 'vue';
+import {useOrder} from '../composables/useOrder';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const ShipmentTableBox = defineAsyncComponent(() => import('../components/OrderBox/ShipmentTableBox.vue'));
@@ -25,6 +25,6 @@ actionStore.registerOrderActions();
 
 const pluginSettings = usePluginSettings();
 
-const query = useStoreQuery(BackendEndpoint.FetchOrders);
+const query = useOrder();
 const {orderMode} = pluginSettings.general;
 </script>

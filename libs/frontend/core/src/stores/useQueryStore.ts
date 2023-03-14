@@ -23,7 +23,10 @@ import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
 import {getOrderId} from '../utils';
 
-export type QueryKey = BackendEndpoint | `${BackendEndpoint.FetchContext}.${AdminContextKey}`;
+export type QueryKey =
+  | BackendEndpoint
+  | `${BackendEndpoint.FetchContext}.${AdminContextKey}`
+  | `${BackendEndpoint.FetchOrders}.${string}`;
 
 export type ContextQuery<C extends AdminContextKey = AdminContextKey.Dynamic> = UseQueryReturnType<
   AdminContext<C>,
@@ -32,6 +35,10 @@ export type ContextQuery<C extends AdminContextKey = AdminContextKey.Dynamic> = 
 
 export type ResolvedQuery<E extends QueryKey = BackendEndpoint> = E extends BackendEndpoint
   ? EndpointQuery<E>
+  : E extends `${BackendEndpoint.FetchOrders}.${infer C}`
+  ? C extends string
+    ? ReturnType<typeof useFetchOrdersQuery>
+    : never
   : E extends `${BackendEndpoint.FetchContext}.${infer C}`
   ? C extends AdminContextKey
     ? ContextQuery<C>
@@ -125,7 +132,8 @@ export const useQueryStore = defineStore('query', () => {
         throw new Error('No order id found');
       }
 
-      register(BackendEndpoint.FetchOrders, useFetchOrdersQuery(id));
+      register(`${BackendEndpoint.FetchOrders}.${id}`, useFetchOrdersQuery(id));
+
       register(BackendEndpoint.ExportOrders, useExportOrdersMutation(mode));
       register(BackendEndpoint.PrintOrders, usePrintOrdersMutation());
       register(BackendEndpoint.UpdateOrders, useUpdateOrdersMutation());

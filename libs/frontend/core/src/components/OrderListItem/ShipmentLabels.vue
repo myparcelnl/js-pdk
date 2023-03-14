@@ -3,33 +3,17 @@
     :name="config?.transitions?.shipmentBox"
     appear>
     <ShipmentLabel
-      v-for="shipment in order.shipments.filter((item) => !item.deleted)"
-      :key="`${order?.externalIdentifier}_${shipment.id}`"
+      v-for="shipment in query.data?.shipments.filter((item) => !item.deleted)"
+      :key="`${query.data?.externalIdentifier}_${shipment.id}`"
       :shipment="shipment" />
   </TransitionGroup>
 </template>
 
-<script lang="ts">
-import {PropType, defineComponent} from 'vue';
-import {Plugin} from '@myparcel-pdk/common/src';
+<script setup lang="ts">
 import ShipmentLabel from './ShipmentLabel.vue';
 import {useAdminConfig} from '../../composables';
+import {useOrder} from '../../composables/useOrder';
 
-export default defineComponent({
-  name: 'ShipmentLabels',
-  components: {ShipmentLabel},
-
-  props: {
-    order: {
-      type: Object as PropType<Plugin.ModelPdkOrder>,
-      required: true,
-    },
-  },
-
-  setup: () => {
-    return {
-      config: useAdminConfig(),
-    };
-  },
-});
+const query = useOrder();
+const config = useAdminConfig();
 </script>

@@ -2,16 +2,12 @@
   <div
     v-if="!query.isLoading"
     v-test="'OrderListItem'">
-    <OrderModeActions
-      v-if="orderMode"
-      :order="query.data" />
+    <OrderModeActions v-if="orderMode" />
 
     <template v-else>
-      <ShipmentLabels
-        v-if="!orderMode"
-        :order="query.data" />
+      <ShipmentLabels v-if="!orderMode" />
 
-      <OrderActions :order="query.data" />
+      <OrderActions />
     </template>
   </div>
 
@@ -23,10 +19,10 @@
  * This is the main entry point for the order list column.
  */
 import {useActionStore, useQueryStore} from '../stores';
-import {usePluginSettings, useStoreQuery} from '../composables';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {NotificationContainer} from '../components';
 import {defineAsyncComponent} from 'vue';
+import {useOrder} from '../composables/useOrder';
+import {usePluginSettings} from '../composables';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 const ShipmentLabels = defineAsyncComponent(() => import('../components/OrderListItem/ShipmentLabels.vue'));
@@ -46,5 +42,5 @@ actionStore.registerOrderActions();
 const pluginSettings = usePluginSettings();
 const {orderMode} = pluginSettings.general;
 
-const query = useStoreQuery(BackendEndpoint.FetchOrders);
+const query = useOrder();
 </script>

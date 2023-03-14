@@ -2,29 +2,15 @@
   <MagicForm :form="shipmentOptionsForm" />
 </template>
 
-<script lang="ts">
-import {PropType, defineComponent, toRaw} from 'vue';
+<script setup lang="ts">
 import {MagicForm} from '@myparcel/vue-form-builder/src';
-import {Plugin} from '@myparcel-pdk/common/src';
 import {createShipmentOptionsForm} from '../../forms';
+import {get} from '@vueuse/core';
+import {markRaw} from 'vue';
+import {useOrder} from '../../composables/useOrder';
 
-export default defineComponent({
-  name: 'ShipmentOptionsForm',
-  components: {
-    MagicForm,
-  },
+const query = useOrder();
 
-  props: {
-    order: {
-      type: Object as PropType<Plugin.ModelPdkOrder>,
-      required: true,
-    },
-  },
-
-  setup(props) {
-    return {
-      shipmentOptionsForm: createShipmentOptionsForm(toRaw(props.order)),
-    };
-  },
-});
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const shipmentOptionsForm = createShipmentOptionsForm(markRaw(get(query.data)!));
 </script>

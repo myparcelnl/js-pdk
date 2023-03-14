@@ -83,3 +83,11 @@ export enum AdminAction {
 }
 
 export type PrintAction = AdminAction.ShipmentsPrint | AdminAction.OrdersPrint | AdminAction.OrdersExportPrint;
+
+export type OrderAction =
+  | AdminAction.OrdersExport
+  | AdminAction.OrdersExportPrint
+  | AdminAction.OrdersPrint
+  | AdminAction.OrdersFetch
+  | AdminAction.OrdersUpdate
+  | AdminAction.OrdersEdit;

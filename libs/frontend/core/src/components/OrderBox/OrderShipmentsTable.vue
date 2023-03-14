@@ -45,10 +45,10 @@
 
 <script lang="ts">
 import {computed, defineComponent, ref} from 'vue';
-import {useAdminConfig, useLanguage, useStoreQuery} from '../../composables';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import {useAdminConfig, useLanguage} from '../../composables';
 import ShipmentBulkSelectCheckbox from './ShipmentBulkSelectCheckbox.vue';
 import ShipmentLabelTableRow from './OrderShipmentsTableRow.vue';
+import {useOrder} from '../../composables/useOrder';
 
 export default defineComponent({
   name: 'OrderShipmentsTable',
@@ -60,7 +60,7 @@ export default defineComponent({
   emits: ['select'],
 
   setup: (props, ctx) => {
-    const query = useStoreQuery(BackendEndpoint.FetchOrders);
+    const query = useOrder();
 
     const mutableSelectedRows = ref<string[]>([]);
     const {translate} = useLanguage();

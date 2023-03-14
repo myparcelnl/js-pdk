@@ -30,10 +30,11 @@ import {
   shipmentsFetchAction,
   shipmentsPrintAction,
 } from '../../actions';
-import {useLanguage, useStoreQuery} from '../../composables';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import OrderShipmentsTable from './OrderShipmentsTable.vue';
 import {defineActions} from '../../services';
+import {get} from '@vueuse/core';
+import {useLanguage} from '../../composables';
+import {useOrder} from '../../composables/useOrder';
 
 export default defineComponent({
   name: 'ShipmentTableBox',
@@ -42,7 +43,7 @@ export default defineComponent({
   },
 
   setup: () => {
-    const query = useStoreQuery(BackendEndpoint.FetchOrders);
+    const query = useOrder();
 
     const selectedLabels = ref<number[]>([]);
     const {translate} = useLanguage();
@@ -54,7 +55,7 @@ export default defineComponent({
       bulkActions: defineActions(
         [shipmentsFetchAction, shipmentsPrintAction, shipmentsDeleteAction, shipmentsCreateReturnAction],
         {
-          orderIds: query.data?.externalIdentifier,
+          orderIds: get(query.data)?.externalIdentifier,
           shipmentIds: selectedLabels.value,
         },
       ),
