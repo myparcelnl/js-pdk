@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.16](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.15...@myparcel-pdk/frontend-core@1.0.0-alpha.16) "@myparcel-pdk/frontend-core" (2023-03-14)
+
+
+### Bug Fixes
+
+* use resolved parameters in actions ([c485fc2](https://github/myparcelnl/js-pdk/commit/c485fc2a1434629402a935bc773f5abad04b92ea))
+
+
+
+
 ## [1.0.0-alpha.15](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.14...@myparcel-pdk/frontend-core@1.0.0-alpha.15) "@myparcel-pdk/frontend-core" (2023-03-14)
 
 
