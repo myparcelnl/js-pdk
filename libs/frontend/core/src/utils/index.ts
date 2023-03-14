@@ -5,5 +5,4 @@ export * from './forms';
 export * from './forms';
 export * from './generateLabelFilename';
 export * from './getOrderId';
-export * from './normalizeOrder';
 export * from './sendBootEvent';

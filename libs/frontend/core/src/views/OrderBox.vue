@@ -1,9 +1,7 @@
 <template>
   <ShipmentOptionsBox :order="query.data" />
 
-  <ShipmentTableBox
-    v-if="!orderMode"
-    :order="query.data" />
+  <ShipmentTableBox v-if="!orderMode && query.data?.shipments.some((item) => !item.deleted)" />
 </template>
 
 <script lang="ts" setup>

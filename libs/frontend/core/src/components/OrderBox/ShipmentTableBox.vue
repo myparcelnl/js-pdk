@@ -6,9 +6,7 @@
     </template>
 
     <template #default>
-      <OrderShipmentsTable
-        :order="order"
-        @select="setSelectedLabels" />
+      <OrderShipmentsTable @select="setSelectedLabels" />
     </template>
 
     <template #footer>
@@ -25,17 +23,17 @@
 </template>
 
 <script lang="ts">
-import {PropType, defineComponent, ref} from 'vue';
+import {defineComponent, ref} from 'vue';
 import {
   shipmentsCreateReturnAction,
   shipmentsDeleteAction,
   shipmentsFetchAction,
   shipmentsPrintAction,
 } from '../../actions';
+import {useLanguage, useStoreQuery} from '../../composables';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import OrderShipmentsTable from './OrderShipmentsTable.vue';
-import {Plugin} from '@myparcel-pdk/common/src';
 import {defineActions} from '../../services';
-import {useLanguage} from '../../composables';
 
 export default defineComponent({
   name: 'ShipmentTableBox',
@@ -43,24 +41,20 @@ export default defineComponent({
     OrderShipmentsTable,
   },
 
-  props: {
-    order: {
-      type: Object as PropType<Plugin.ModelPdkOrder>,
-      required: true,
-    },
-  },
+  setup: () => {
+    const query = useStoreQuery(BackendEndpoint.FetchOrders);
 
-  setup: (props) => {
     const selectedLabels = ref<number[]>([]);
     const {translate} = useLanguage();
 
     return {
+      query,
       selectedLabels,
 
       bulkActions: defineActions(
         [shipmentsFetchAction, shipmentsPrintAction, shipmentsDeleteAction, shipmentsCreateReturnAction],
         {
-          orderIds: props.order.externalIdentifier,
+          orderIds: query.data?.externalIdentifier,
           shipmentIds: selectedLabels.value,
         },
       ),

@@ -5,7 +5,7 @@
         <PdkTableCol component="th">
           <ShipmentBulkSelectCheckbox
             v-model="bulk"
-            :shipment-count="order.shipments?.length" />
+            :shipment-count="query.data?.shipments.filter((item) => !item.deleted)?.length" />
         </PdkTableCol>
 
         <PdkTableCol component="th">{{ translate('order_labels_column_track_trace') }}</PdkTableCol>
@@ -24,7 +24,7 @@
 
     <template #default>
       <PdkTableRow
-        v-if="!shipments.length"
+        v-if="!query.data?.shipments.filter((item) => !item.deleted)"
         key="row_no_shipments">
         <PdkTableCol colspan="6">
           <div :class="config?.cssUtilities?.textCenter">
@@ -35,7 +35,7 @@
       </PdkTableRow>
 
       <ShipmentLabelTableRow
-        v-for="shipment in shipments"
+        v-for="shipment in query.data?.shipments.filter((item) => !item.deleted)"
         :key="`row_${shipment?.id}_${shipment.updated}`"
         v-model="bulk"
         :shipment="shipment" />
@@ -44,9 +44,9 @@
 </template>
 
 <script lang="ts">
-import {PropType, computed, defineComponent, ref} from 'vue';
-import {useAdminConfig, useLanguage, useOrderData} from '../../composables';
-import {Plugin} from '@myparcel-pdk/common/src';
+import {computed, defineComponent, ref} from 'vue';
+import {useAdminConfig, useLanguage, useStoreQuery} from '../../composables';
+import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import ShipmentBulkSelectCheckbox from './ShipmentBulkSelectCheckbox.vue';
 import ShipmentLabelTableRow from './OrderShipmentsTableRow.vue';
 
@@ -57,16 +57,11 @@ export default defineComponent({
     ShipmentLabelTableRow,
   },
 
-  props: {
-    order: {
-      type: Object as PropType<Plugin.ModelPdkOrder>,
-      required: true,
-    },
-  },
-
   emits: ['select'],
 
   setup: (props, ctx) => {
+    const query = useStoreQuery(BackendEndpoint.FetchOrders);
+
     const mutableSelectedRows = ref<string[]>([]);
     const {translate} = useLanguage();
 
@@ -80,15 +75,13 @@ export default defineComponent({
       },
     });
 
-    const orderData = useOrderData(props.order);
-
     const bulk = ref([]);
 
     return {
+      query,
       bulk,
       config: useAdminConfig(),
       selectedRows,
-      shipments: orderData.shipments,
       translate,
     };
   },
