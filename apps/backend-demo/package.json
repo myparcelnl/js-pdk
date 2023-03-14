@@ -17,5 +17,22 @@
     "serverless": "^3.28.1",
     "serverless-plugin-typescript": "^2.1.4",
     "typescript": "^4.9.5"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "inputs": [
+          "{projectRoot}/nitro.config.ts",
+          "{projectRoot}/routes/**/*",
+          "{projectRoot}/src/**/*"
+        ],
+        "outputs": [
+          "{projectRoot}/dist",
+          "{projectRoot}/.netlify/functions-internal",
+          "{projectRoot}/.output",
+          "{projectRoot}/.nitro"
+        ]
+      }
+    }
   }
 }
