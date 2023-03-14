@@ -2,6 +2,23 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.17](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.16...@myparcel-pdk/frontend-core@1.0.0-alpha.17) "@myparcel-pdk/frontend-core" (2023-03-14)
+
+
+### Features
+
+* improve overriding form configs ([a3296e9](https://github/myparcelnl/js-pdk/commit/a3296e9da3af7e07aa25a175fa4aab74f5ea7121))
+* refetch dynamic context on window fetch ([398e840](https://github/myparcelnl/js-pdk/commit/398e8404425eefc6d9717858f403ef30a6036eed))
+
+
+### Bug Fixes
+
+* fix deleting shipments ([2506b05](https://github/myparcelnl/js-pdk/commit/2506b05e4d7e08907e704d38e1283dea9361f00b))
+* fix print options modal ([c81a852](https://github/myparcelnl/js-pdk/commit/c81a85299d11090edd0b53f2a894cee72ca84164))
+
+
+
+
 ## [1.0.0-alpha.16](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.15...@myparcel-pdk/frontend-core@1.0.0-alpha.16) "@myparcel-pdk/frontend-core" (2023-03-14)
 
 
