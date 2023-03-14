@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.8](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.7...@myparcel-pdk/common@1.0.0-alpha.8) "@myparcel-pdk/common" (2023-03-14)
+
+
+### Bug Fixes
+
+* start on open or print action ([b7763a9](https://github/myparcelnl/js-pdk/commit/b7763a92d25d3e171530d8335397a15dbea656e2))
+
+
+
+
 ## [1.0.0-alpha.7](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.6...@myparcel-pdk/common@1.0.0-alpha.7) "@myparcel-pdk/common" (2023-03-10)
 
 

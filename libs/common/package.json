@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/common",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-alpha.8",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",

@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.15](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.14...@myparcel-pdk/frontend-core@1.0.0-alpha.15) "@myparcel-pdk/frontend-core" (2023-03-14)
+
+
+### Bug Fixes
+
+* start on open or print action ([b7763a9](https://github/myparcelnl/js-pdk/commit/b7763a92d25d3e171530d8335397a15dbea656e2))
+* start on open or print action ([ba61df2](https://github/myparcelnl/js-pdk/commit/ba61df2069b2d12c09df21d246e8798983024c14))
+
+
+
+
 ## [1.0.0-alpha.14](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.13...@myparcel-pdk/frontend-core@1.0.0-alpha.14) "@myparcel-pdk/frontend-core" (2023-03-10)
 
 
