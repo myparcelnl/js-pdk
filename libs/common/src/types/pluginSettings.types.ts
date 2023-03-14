@@ -1,6 +1,6 @@
 import {Component} from 'vue';
 
-export type LabelFormat = 'A4' | 'A6';
+export type LabelFormat = 'a4' | 'a6';
 
 export type LabelOutput = 'open' | 'download';
 

@@ -1,3 +1,4 @@
+import {LabelFormat, LabelOutput, LabelPosition} from '@myparcel-pdk/common';
 import {AdminAction} from './actions.types';
 import {AdminContextKey} from './context.types';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
@@ -46,13 +47,26 @@ export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record
 
   [BackendEndpoint.ExportOrders]: {orderIds: OneOrMore<string>; form?: FormInstance};
   [BackendEndpoint.FetchOrders]: {orderIds: OneOrMore<string>};
-  [BackendEndpoint.PrintOrders]: {orderIds: OneOrMore<string>; form?: FormInstance};
+  [BackendEndpoint.PrintOrders]: {
+    orderIds: OneOrMore<string>;
+    form?: FormInstance;
+    output?: LabelOutput;
+    format?: LabelFormat;
+    position?: LabelPosition;
+  };
   [BackendEndpoint.UpdateOrders]: {orderIds: OneOrMore<string>; form: FormInstance};
 
   [BackendEndpoint.CreateReturnShipments]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
   [BackendEndpoint.DeleteShipments]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>};
   [BackendEndpoint.FetchShipments]: {orderIds: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
-  [BackendEndpoint.PrintShipments]: {orderIds: OneOrMore<string>; shipmentIds: OneOrMore<number>; form?: FormInstance};
+  [BackendEndpoint.PrintShipments]: {
+    orderIds: OneOrMore<string>;
+    shipmentIds: OneOrMore<number>;
+    form?: FormInstance;
+    output?: LabelOutput;
+    format?: LabelFormat;
+    position?: LabelPosition;
+  };
 
   [BackendEndpoint.UpdatePluginSettings]: {form: FormInstance};
   [BackendEndpoint.UpdateProductSettings]: {form: FormInstance; productIds: OneOrMore<string>};
