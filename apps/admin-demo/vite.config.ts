@@ -9,10 +9,10 @@ export default defineConfig((env) => {
 
   return {
     plugins: [vue()],
+    base: isProd ? '/js-pdk/' : '/',
 
     server: {
       port: PORT,
-      base: isProd ? '/js-pdk/' : '/',
     },
 
     build: {
@@ -25,11 +25,6 @@ export default defineConfig((env) => {
     optimizeDeps: {
       // Optimizing this dependency causes the element and form injection keys to be mismatched.
       exclude: ['@myparcel/vue-form-builder'],
-    },
-
-    define: {
-      'process.env': {},
-      'process.argv': [],
     },
 
     test: {
