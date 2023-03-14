@@ -7,7 +7,7 @@
       "path": "/tmp/plugins/myparcel/",
       "url": "https://plugin.dev.myparcel.nl/"
     },
-    "baseUrl": "http://localhost:3059/pdk",
+    "baseUrl": "__API_URL__/pdk",
     "bootstrapId": "myparcel-pdk-boot",
     "endpoints": {
       "updateAccount": {

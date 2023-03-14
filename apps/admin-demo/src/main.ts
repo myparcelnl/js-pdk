@@ -40,14 +40,14 @@ import {createApp} from 'vue';
 import {createRouterInstance} from './router';
 
 void (async () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   // todo allow global context to be loaded dynamically
-  const globalContextPromise = fetch(`http://localhost:3059/pdk?action=fetchContext&context=global`);
+  const globalContextPromise = fetch(`${apiUrl}/pdk?action=fetchContext&context=global`);
   // todo allow dynamic context to be loaded dynamically (hehe)
-  const dynamicContextPromise = fetch(`http://localhost:3059/pdk?action=fetchContext&context=dynamic`);
+  const dynamicContextPromise = fetch(`${apiUrl}/pdk?action=fetchContext&context=dynamic`);
   // todo allow plugin settings view context to be loaded dynamically
-  const pluginSettingsViewContextPromise = fetch(
-    `http://localhost:3059/pdk?action=fetchContext&context=pluginSettingsView`,
-  );
+  const pluginSettingsViewContextPromise = fetch(`${apiUrl}/pdk?action=fetchContext&context=pluginSettingsView`);
 
   const app = createApp(App);
 
