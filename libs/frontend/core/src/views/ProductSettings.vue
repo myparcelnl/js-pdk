@@ -11,6 +11,7 @@
 import {FormInstance, MagicForm, defineForm} from '@myparcel/vue-form-builder/src';
 import {useAdminConfig, useContext} from '../composables';
 import {AdminContextKey} from '../types';
+import {FORM_KEY_PRODUCT_SETTINGS} from '../forms/formKeys';
 import {generateFormFields} from '../forms';
 import {useQueryStore} from '../stores';
 import {useUpdateProductSettingsMutation} from '../actions';
@@ -27,8 +28,8 @@ const createProductSettingsForm = (): FormInstance => {
     throw new Error('Product settings not loaded');
   }
 
-  return defineForm('productSettings', {
-    ...adminConfig.formConfigProductSettings,
+  return defineForm(FORM_KEY_PRODUCT_SETTINGS, {
+    ...adminConfig.formConfigOverrides?.[FORM_KEY_PRODUCT_SETTINGS],
     fields: [
       ...generateFormFields(
         {

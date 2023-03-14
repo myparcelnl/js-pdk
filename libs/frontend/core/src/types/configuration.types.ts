@@ -1,9 +1,10 @@
-import {FormConfiguration} from '@myparcel/vue-form-builder/src';
-import {LogLevel} from '../services';
 import {AdminComponentMap} from '@myparcel-pdk/common/src';
-import {FormatterObject} from '../composables';
-import {PiniaPluginContext} from 'pinia';
 import {AdminContextObject} from './context.types';
+import {FORM_KEYS} from '../forms/formKeys';
+import {FormConfiguration} from '@myparcel/vue-form-builder/src';
+import {FormatterObject} from '../composables';
+import {LogLevel} from '../services';
+import {PiniaPluginContext} from 'pinia';
 
 export type DefaultAdminConfiguration = Omit<AdminConfiguration, 'context' | 'components'> & {
   components?: Record<string, undefined>;
@@ -31,9 +32,10 @@ export type AdminConfiguration = {
    */
   formConfig?: Omit<FormConfiguration, 'fields'>;
 
-  formConfigPluginSettings?: Omit<FormConfiguration, 'fields'>;
-
-  formConfigProductSettings?: Omit<FormConfiguration, 'fields'>;
+  /**
+   * Overrides per form.
+   */
+  formConfigOverrides?: Partial<Record<(typeof FORM_KEYS)[number], Omit<FormConfiguration, 'fields'>>>;
 
   /**
    * Transition names.

@@ -21,7 +21,7 @@ export const createPluginSettingsForm = (
   const generatedFields = generateFormFields({fields: view.elements, values}, `${id}.`);
 
   return defineForm(id, {
-    ...context.config.formConfigPluginSettings,
+    ...context.config.formConfigOverrides?.pluginSettings,
     fields: [
       ...generatedFields,
       {

@@ -11,9 +11,10 @@ import {
   SAME_DAY_DELIVERY,
   SIGNATURE,
 } from './field';
+import {AdminContextKey, AdminModalKey} from '../../types';
 import {CarrierName, PackageTypeName} from '@myparcel/constants';
-import {Formatter, useContext, useLocalizedFormatter} from '../../composables';
-import {InteractiveElementInstance, SelectOption, defineForm} from '@myparcel/vue-form-builder/src';
+import {Formatter, useAdminConfig, useContext, useLocalizedFormatter} from '../../composables';
+import {SelectOption, defineForm} from '@myparcel/vue-form-builder/src';
 import {
   defineFormField,
   getInsurancePossibilities,
@@ -22,10 +23,11 @@ import {
   isPackageTypePackage,
 } from './helpers';
 import {ref, resolveComponent} from 'vue';
-import {AdminContextKey} from '../../types';
+import {InteractiveElementInstance} from '@myparcel-vfb/core/src';
 import {Plugin} from '@myparcel-pdk/common/src';
 import {createShipmentFormName} from '../../utils';
 import {useCarrier} from '../../sdk';
+import {useModalStore} from '../../stores';
 
 const getFormattedInsurancePossibilities = (
   field: InteractiveElementInstance,
@@ -42,11 +44,15 @@ const getFormattedInsurancePossibilities = (
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,max-lines-per-function
 export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
   const dynamicContext = useContext(AdminContextKey.Dynamic);
+  const config = useAdminConfig();
+  const modalStore = useModalStore();
 
   const carrierNames = dynamicContext.carrierOptions.map((options) => options.carrier.name);
   const formatter = useLocalizedFormatter();
 
   return defineForm(createShipmentFormName(order.externalIdentifier), {
+    ...(modalStore.opened === AdminModalKey.ShipmentOptions ? config.formConfigOverrides?.modal : null),
+    ...config.formConfigOverrides?.shipmentOptions,
     fields: [
       defineFormField({
         name: CARRIER,
