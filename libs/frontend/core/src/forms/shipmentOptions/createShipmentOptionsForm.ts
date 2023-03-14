@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
+// noinspection JSUnusedGlobalSymbols
+
 import {
   AGE_CHECK,
   CARRIER,
@@ -11,7 +13,7 @@ import {
   SAME_DAY_DELIVERY,
   SIGNATURE,
 } from './field';
-import {AdminContextKey, AdminModalKey} from '../../types';
+import {AdminContextKey, AdminModalKey, ElementInstance} from '../../types';
 import {CarrierName, PackageTypeName} from '@myparcel/constants';
 import {Formatter, useAdminConfig, useContext, useLocalizedFormatter} from '../../composables';
 import {SelectOption, defineForm} from '@myparcel/vue-form-builder/src';
@@ -23,16 +25,12 @@ import {
   isPackageTypePackage,
 } from './helpers';
 import {ref, resolveComponent} from 'vue';
-import {InteractiveElementInstance} from '@myparcel-vfb/core/src';
 import {Plugin} from '@myparcel-pdk/common/src';
 import {createShipmentFormName} from '../../utils';
 import {useCarrier} from '../../sdk';
 import {useModalStore} from '../../stores';
 
-const getFormattedInsurancePossibilities = (
-  field: InteractiveElementInstance,
-  formatter: Formatter,
-): SelectOption[] => {
+const getFormattedInsurancePossibilities = (field: ElementInstance, formatter: Formatter): SelectOption[] => {
   const insurancePossibilities = getInsurancePossibilities(field.form);
 
   return insurancePossibilities.map((amount) => ({
@@ -41,7 +39,7 @@ const getFormattedInsurancePossibilities = (
   }));
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,max-lines-per-function
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,max-lines-per-function,complexity
 export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
   const dynamicContext = useContext(AdminContextKey.Dynamic);
   const config = useAdminConfig();
@@ -184,10 +182,8 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
           return isPackageTypePackage(form) && hasShipmentOption(form, 'insurance');
         },
 
-        onBeforeMount: (field) => {
-          const formattedInsurancePossibilities = getFormattedInsurancePossibilities(field, formatter);
-
-          field.props.options = formattedInsurancePossibilities;
+        onBeforeMount: (field: ElementInstance) => {
+          field.props.options = getFormattedInsurancePossibilities(field, formatter);
         },
       }),
     ],
