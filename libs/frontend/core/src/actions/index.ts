@@ -3,3 +3,4 @@ export * from './defineAction';
 export * from './definitions';
 export * from './executors';
 export * from './print';
+export * from './stopActionHandler';

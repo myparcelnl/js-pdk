@@ -10,7 +10,7 @@ export const executeNextAction = async <A extends AdminAction | undefined>(
   context: ActionContext,
   nextAction: AnyAdminAction<A>,
   parameters?: ActionParameters<A>,
-): Promise<ActionResponse<A>> => {
+): Promise<ActionResponse<A> | undefined> => {
   const nextActionIdentifier = getActionIdentifier(nextAction);
 
   context.instance?.logger.info(`Executing next action: ${nextActionIdentifier}`);

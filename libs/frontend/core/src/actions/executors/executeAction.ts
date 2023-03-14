@@ -1,5 +1,6 @@
 import {ActionResponse, AdminAction} from '../../types';
 import {ActionContext} from './types';
+import {StopActionHandler} from '../stopActionHandler';
 import {useNotificationStore} from '../../stores';
 
 /**
@@ -7,15 +8,24 @@ import {useNotificationStore} from '../../stores';
  */
 export const executeAction = async <A extends AdminAction | undefined>(
   context: ActionContext<A>,
-): Promise<ActionResponse<A>> => {
-  // @ts-expect-error todo
-  const resolvedParameters = (await context.action.beforeHandle?.(context)) ?? context.parameters;
-
-  context.instance?.logger?.debug({parameters: context.parameters, resolvedParameters});
-
+): Promise<ActionResponse<A> | undefined> => {
   const store = useNotificationStore();
-
   let response;
+
+  try {
+    // @ts-expect-error todo
+    const resolvedParameters = (await context.action.beforeHandle?.(context)) ?? context.parameters;
+
+    context.instance?.logger?.debug({parameters: context.parameters, resolvedParameters});
+
+    context.parameters = resolvedParameters;
+  } catch (error) {
+    if (error instanceof StopActionHandler) {
+      return;
+    }
+
+    context.instance?.logger.error(error);
+  }
 
   try {
     // @ts-expect-error todo
