@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.18](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.17...@myparcel-pdk/frontend-core@1.0.0-alpha.18) "@myparcel-pdk/frontend-core" (2023-03-14)
+
+
+### Bug Fixes
+
+* **admin:** fix downloading labels ([c08519d](https://github/myparcelnl/js-pdk/commit/c08519da4de680e2346b793e9d4a005a60f52fc9))
+* **admin:** fix exporting orders in order list ([1bab1fc](https://github/myparcelnl/js-pdk/commit/1bab1fc283c9b0d5ba58b074703a938515683cc7))
+
+
+
+
 ## [1.0.0-alpha.17](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.16...@myparcel-pdk/frontend-core@1.0.0-alpha.17) "@myparcel-pdk/frontend-core" (2023-03-14)
 
 
