@@ -1,5 +1,7 @@
 import {ActionParameters, AdminModalKey, PrintAction} from '../../types';
 import {ActionContext} from '../executors';
+import {StopActionHandler} from '../stopActionHandler';
+import {markRaw} from 'vue';
 import {useFormBuilder} from '@myparcel/vue-form-builder/src';
 import {useModalStore} from '../../stores';
 import {usePluginSettings} from '../../composables';
@@ -13,20 +15,31 @@ export const waitForLabelPrompt = <A extends PrintAction>({
     return Promise.resolve(parameters as ActionParameters<A>);
   }
 
+  const formBuilder = useFormBuilder();
   const modalStore = useModalStore();
-  modalStore.open(AdminModalKey.PrintOptions);
 
-  return new Promise((resolve) => {
-    modalStore.onClose(() => {
-      const formBuilder = useFormBuilder();
+  return new Promise((resolve, reject) => {
+    formBuilder.on('afterRegister', (form) => {
+      modalStore.context ??= {};
+      // @ts-expect-error infinitely deep instantiation
+      modalStore.context.form = markRaw(form);
 
-      // @ts-expect-error this works
-      const form = formBuilder.forms?.[AdminModalKey.PrintOptions];
+      if (form.name !== AdminModalKey.PrintOptions) {
+        return;
+      }
 
-      resolve({
-        ...parameters,
-        ...(form?.getValues() ?? {}),
-      } as ActionParameters<A>);
+      form.on('afterSubmit', (instance) => {
+        resolve({
+          ...parameters,
+          ...instance.getValues(),
+        } as ActionParameters<A>);
+      });
     });
+
+    modalStore.onClose(() => {
+      reject(new StopActionHandler());
+    });
+
+    modalStore.open(AdminModalKey.PrintOptions);
   });
 };

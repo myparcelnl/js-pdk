@@ -1,5 +1,5 @@
 export * from './account';
-export * from './miscellaneous';
+export * from './modal';
 export * from './orders';
 export * from './settings';
 export * from './shipments';

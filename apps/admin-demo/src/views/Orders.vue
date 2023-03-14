@@ -55,7 +55,7 @@ const toggled = ref<string | null>(null);
 const toggle = (id: string) => {
   const modalStore = useModalStore();
 
-  modalStore.open(AdminModalKey.ShipmentOptions, id);
+  modalStore.open(AdminModalKey.ShipmentOptions, {orderIds: id});
 };
 
 const orderData = useDemoOrderData();

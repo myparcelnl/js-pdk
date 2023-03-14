@@ -1,6 +1,7 @@
 import {AdminModalContext, AdminModalKey, NotificationCategory} from '../types';
 import {defineStore} from 'pinia';
 import {ref} from 'vue';
+import {useLoading} from '../composables';
 import {useNotificationStore} from './useNotificationStore';
 
 type ModalOpenFn = <K extends AdminModalKey>(modal: K, context?: AdminModalContext<K>) => void;
@@ -8,9 +9,10 @@ type ModalOpenFn = <K extends AdminModalKey>(modal: K, context?: AdminModalConte
 type ModalCloseFn = <K extends AdminModalKey>(modal: K) => void;
 
 export const useModalStore = defineStore('modal', () => {
+  const {loading} = useLoading();
+
   const opened = ref<AdminModalKey | null>(null);
-  const context = ref<AdminModalContext | null>(null);
-  const loading = ref<boolean>(false);
+  const context = ref<AdminModalContext>(null);
 
   const openHooks = ref<ModalOpenFn[]>([]);
   const closeHooks = ref<ModalCloseFn[]>([]);
@@ -29,9 +31,10 @@ export const useModalStore = defineStore('modal', () => {
       closeHooks.value.push(callback);
     },
 
-    open: <K extends AdminModalKey>(modal: K, newContext?: AdminModalContext<K>) => {
+    open: <K extends AdminModalKey>(modal: K, newContext: AdminModalContext<K> = null) => {
       openHooks.value.forEach((hook) => hook(modal, newContext));
-      context.value = newContext ?? null;
+      // @ts-expect-error excessive depth
+      context.value = newContext;
       opened.value = modal;
     },
 

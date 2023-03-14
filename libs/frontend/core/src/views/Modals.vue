@@ -6,9 +6,9 @@
 </template>
 
 <script lang="ts" setup>
+import {useActionStore, useQueryStore} from '../stores';
 import {defineAsyncComponent} from 'vue';
 import {usePluginSettings} from '../composables';
-import {useActionStore, useQueryStore} from '../stores';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 const PrintOptionsModal = defineAsyncComponent(() => import('../components/Modals/PrintOptionsModal.vue'));

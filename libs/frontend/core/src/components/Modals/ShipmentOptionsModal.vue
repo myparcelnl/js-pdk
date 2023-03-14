@@ -10,7 +10,7 @@
 <script lang="ts">
 import {defineAsyncComponent, defineComponent} from 'vue';
 import {
-  modalCancelAction,
+  modalCloseAction,
   orderExportAction,
   orderExportToShipmentsAction,
   ordersExportPrintShipmentsAction,
@@ -40,7 +40,7 @@ export default defineComponent({
       modalKey: AdminModalKey.ShipmentOptions,
       actions: defineActions([
         {
-          ...modalCancelAction,
+          ...modalCloseAction,
           disabled: exportOrdersQuery.isLoading,
         },
         {

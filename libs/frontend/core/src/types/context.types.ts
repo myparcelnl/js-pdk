@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {BackendPdkEndpointObject, Plugin} from '@myparcel-pdk/common/src';
+import {OneOrMore, Replace} from '@myparcel/ts-utils';
 import {AdminModalKey} from './modal.types';
-import {Replace} from '@myparcel/ts-utils';
+import {FormInstance} from '@myparcel/vue-form-builder/src';
 
 export type AdminContextObject = Replace<Plugin.ModelContextContextBag, 'global', GlobalAdminContext> &
   Partial<AdminInstanceContext>;
@@ -16,9 +17,11 @@ export type AdminInstanceContext = {
   [AdminInstanceContextKey.OrderIdentifier]: Plugin.ModelContextOrderDataContext['externalIdentifier'];
 };
 
-export type AdminModalContext<T extends AdminModalKey = AdminModalKey> = T extends AdminModalKey.ShipmentOptions
-  ? string
-  : never;
+type BaseModalContext = {form?: FormInstance};
+
+export type AdminModalContext<T extends AdminModalKey = AdminModalKey> =
+  | (BaseModalContext & (T extends AdminModalKey.ShipmentOptions ? {orderIds?: OneOrMore<string>} : unknown))
+  | null;
 
 export enum AdminContextKey {
   Global = 'global',

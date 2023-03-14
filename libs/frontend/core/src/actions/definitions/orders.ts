@@ -16,14 +16,14 @@ import {useModalStore} from '../../stores';
  * Open modal to edit order shipment options.
  */
 export const ordersEditAction = defineAction({
-  id: AdminAction.OrdersEdit,
+  name: AdminAction.OrdersEdit,
   icon: AdminIcon.Edit,
   label: 'action_edit',
   handler(context: ActionContext) {
     const modalStore = useModalStore();
     const parameters = context.parameters as ActionParameters<AdminAction.OrdersExport>;
 
-    modalStore.open(AdminModalKey.ShipmentOptions, parameters.orderIds.toString());
+    modalStore.open(AdminModalKey.ShipmentOptions, {orderIds: parameters.orderIds});
   },
 });
 
@@ -93,16 +93,11 @@ export const ordersPrintAction = defineAction({
   name: AdminAction.OrdersPrint,
   icon: AdminIcon.Print,
   label: 'action_print',
-  async beforeHandle(context) {
-    await waitForLabelPrompt(context);
-
-    return context.parameters;
-  },
-
+  beforeHandle: waitForLabelPrompt,
   handler: createMutator(BackendEndpoint.PrintOrders),
+  async afterHandle(context) {
+    await openOrPrint(context);
 
-  afterHandle(context) {
-    void openOrPrint(context);
     void executeNextAction(context, shipmentsFetchAction, context.parameters);
 
     return context.response;

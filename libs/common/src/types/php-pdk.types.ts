@@ -405,6 +405,7 @@ export namespace Plugin {
     account: Account.ModelAccount;
     carrierOptions: Carrier.CarrierOptionsCollection;
     pluginSettings: Settings.ModelSettings;
+    printOptionsView: SettingsView;
     shop: Account.ModelShop;
   };
 

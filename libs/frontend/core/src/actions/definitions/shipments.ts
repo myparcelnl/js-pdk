@@ -1,8 +1,8 @@
 import {AdminAction, AdminIcon} from '../../types';
-import {createMutator, executeAction} from '../executors';
+import {createMutator, executeNextAction} from '../executors';
+import {openOrPrint, waitForLabelPrompt} from '../print';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
-import {waitForLabelPrompt} from '../print';
 
 export const shipmentsCreateReturnAction = defineAction({
   name: AdminAction.ShipmentsCreateReturn,
@@ -40,14 +40,12 @@ export const shipmentsPrintAction = defineAction({
   label: 'action_print',
   beforeHandle: waitForLabelPrompt,
   handler: createMutator(BackendEndpoint.PrintShipments),
-  afterHandle(context) {
-    void executeAction({
-      action: shipmentsFetchAction,
-      parameters: {
-        orderIds: context.parameters?.orderIds,
-        shipmentIds: context.parameters?.shipmentIds,
-      },
-      instance: context.instance,
+  async afterHandle(context) {
+    await openOrPrint(context);
+
+    void executeNextAction(context, shipmentsFetchAction, {
+      orderIds: context.parameters?.orderIds,
+      shipmentIds: context.parameters?.shipmentIds,
     });
 
     return context.response;

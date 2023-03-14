@@ -51,7 +51,7 @@ export {
   SubmitButton,
   TabNavigation,
   generateFieldId,
-  modalCancelAction,
+  modalCloseAction,
   orderExportAction,
   orderExportToShipmentsAction,
   orderViewInBackofficeAction,

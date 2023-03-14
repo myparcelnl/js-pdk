@@ -3,7 +3,8 @@ import {OneOrMore, toArray} from '@myparcel/ts-utils';
 import {UnwrapNestedRefs, ref} from 'vue';
 import {createAction, getActionIdentifier} from '../services';
 import {
-  modalCancelAction,
+  modalCloseAction,
+  modalSubmitFormAction,
   orderExportAction,
   orderExportToShipmentsAction,
   orderViewInBackofficeAction,
@@ -81,7 +82,7 @@ export const useActionStore = defineStore('actions', () => {
     },
 
     registerModalActions: () => {
-      register([modalCancelAction]);
+      register([modalCloseAction, modalSubmitFormAction]);
     },
   };
 });
