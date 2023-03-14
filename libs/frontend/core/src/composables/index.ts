@@ -11,6 +11,7 @@ export * from './useDropdownData';
 export * from './useGlobalPdkAdmin';
 export * from './useLoading';
 export * from './useLogger';
+export * from './useModalElementContext';
 export * from './useOrderData';
 export * from './useSelectInputContext';
 export * from './useShipmentData';

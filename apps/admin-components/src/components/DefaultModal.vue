@@ -1,11 +1,6 @@
 <template>
   <div
-    :id="`pdk-modal-${modalKey}`"
-    ref="wrapper"
-    :aria-hidden="isOpen ? 'false' : 'true'"
-    :class="{
-      hidden: !isOpen,
-    }"
+    :aria-hidden="!isOpen"
     tabindex="-1"
     @keydown.esc="close">
     <div
@@ -34,9 +29,9 @@
           </button>
 
           <div>
-            <h3 v-text="title" />
+            <PdkHeading level="2">{{ translate(title) }}</PdkHeading>
 
-            <slot :state="modalStore.$state" />
+            <slot :context="context" />
           </div>
 
           <ActionButton
@@ -55,13 +50,14 @@ import {
   ActionDefinition,
   AdminModalKey,
   NotificationContainer,
-  useModalStore,
+  useModalElementContext,
 } from '@myparcel-pdk/frontend-core/src';
-import {PropType, computed, ref, toRefs} from 'vue';
+import {PropType} from 'vue';
+import {useLanguage} from '@myparcel-pdk/frontend-core';
 
 const props = defineProps({
   /**
-   * Available actions in the modal. Each action needs a unique id and a label.
+   * Available actions in the modal.
    */
   actions: {
     type: Array as PropType<ActionDefinition[]>,
@@ -69,14 +65,7 @@ const props = defineProps({
   },
 
   /**
-   * Controls loading state.
-   */
-  loading: {
-    type: Boolean,
-  },
-
-  /**
-   * Modal key. Must be unique.
+   * Modal key.
    */
   modalKey: {
     type: String as PropType<AdminModalKey>,
@@ -92,10 +81,6 @@ const props = defineProps({
   },
 });
 
-const wrapper = ref<HTMLElement | null>(null);
-const modalStore = useModalStore();
-const propRefs = toRefs(props);
-const isOpen = computed(() => {
-  return propRefs.modalKey.value && propRefs.modalKey.value === modalStore.opened;
-});
+const {isOpen, context, close} = useModalElementContext(props.modalKey);
+const {translate} = useLanguage();
 </script>

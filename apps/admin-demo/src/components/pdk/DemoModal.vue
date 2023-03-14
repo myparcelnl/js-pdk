@@ -1,8 +1,6 @@
 <template>
   <div
-    :id="`pdk-modal-${modalKey}`"
-    ref="wrapper"
-    :aria-hidden="isOpen ? 'false' : 'true'"
+    :aria-hidden="!isOpen"
     :class="{
       hidden: !isOpen,
     }"
@@ -12,7 +10,7 @@
     <div
       v-show="isOpen"
       class="absolute bg-black/50 h-full w-full"
-      @click.self="modalStore.close" />
+      @click.self="close" />
 
     <Transition name="slide-up">
       <div
@@ -24,7 +22,7 @@
           <button
             class="absolute bg-transparent dark:hover:bg-zinc-900 dark:hover:text-white hover:bg-zinc-200 hover:text-zinc-900 inline-flex items-center ml-auto p-1.5 right-2.5 rounded-lg text-sm text-zinc-400 top-3"
             type="button"
-            @click="modalStore.close">
+            @click="close">
             <svg
               aria-hidden="true"
               class="h-5 w-5"
@@ -40,13 +38,13 @@
           </button>
 
           <div class="lg:px-8 px-6 py-6">
-            <h3 v-text="title" />
+            <PdkHeading level="2">{{ translate(title) }}</PdkHeading>
 
-            <slot :state="modalStore.$state" />
+            <slot :context="context" />
           </div>
 
           <ActionButton
-            v-for="(action, index) in resolvedActions"
+            v-for="(action, index) in actions"
             :key="`action_${action.id}_${index}`"
             :action="action" />
         </div>
@@ -55,105 +53,34 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import {
   ActionButton,
   ActionDefinition,
   AdminModalKey,
-  ModalCallbackProps,
   NotificationContainer,
   useLanguage,
-  useModalContext,
-  useModalStore,
+  useModalElementContext,
 } from '@myparcel-pdk/frontend-core/src';
-import {PropType, computed, defineComponent, ref, toRefs} from 'vue';
+import {PropType} from 'vue';
 
-/**
- * @see import('@myparcel-pdk/admin-components').DefaultModal
- */
-export default defineComponent({
-  name: 'DemoModal',
-  components: {
-    NotificationContainer,
-    ActionButton,
+const props = defineProps({
+  actions: {
+    type: Array as PropType<ActionDefinition[]>,
+    default: () => [],
   },
 
-  props: {
-    /**
-     * Available actions in the modal. Each action needs a unique id and a label.
-     */
-    actions: {
-      type: Array as PropType<ActionDefinition[]>,
-      default: () => [],
-    },
-
-    /**
-     * Modal k. Must be unique.
-     */
-    modalKey: {
-      type: String as PropType<AdminModalKey>,
-      default: null,
-    },
-
-    /**
-     * Callback to change behavior of the cancel button. Note: You need to manually close the modal when using this.
-     */
-    onCancel: {
-      type: Function as PropType<ModalCallbackProps['onCancel']>,
-      default: null,
-    },
-
-    /**
-     * Callback to change behavior of the save button. Note: You need to manually close the modal when using this.
-     */
-    onSave: {
-      type: Function as PropType<ModalCallbackProps['onSave']>,
-      default: null,
-    },
-
-    /**
-     * Modal title.
-     */
-    title: {
-      type: String,
-      required: true,
-    },
+  modalKey: {
+    type: String as PropType<AdminModalKey>,
+    default: null,
   },
 
-  setup: (props) => {
-    const {translate} = useLanguage();
-    const wrapper = ref<HTMLElement | null>(null);
-    const modalStore = useModalStore();
-    const propRefs = toRefs(props);
-    const modalContext = useModalContext(propRefs.modalKey, propRefs.onSave, propRefs.onCancel);
-
-    return {
-      modalContext,
-
-      isOpen: computed(() => {
-        return propRefs.modalKey.value && propRefs.modalKey.value === modalStore.opened;
-      }),
-
-      modalStore,
-      translate,
-
-      resolvedActions: computed(() => {
-        return props.actions.map((action) => {
-          const {onClick, ...data} = action;
-
-          return {
-            ...data,
-            async onClick() {
-              await onClick?.();
-
-              return modalContext?.onButtonClick(action.id);
-            },
-          };
-        });
-      }),
-
-      wrapper,
-    };
+  title: {
+    type: String,
+    required: true,
   },
 });
+
+const {isOpen, context, close} = useModalElementContext(props.modalKey);
+const {translate} = useLanguage();
 </script>
