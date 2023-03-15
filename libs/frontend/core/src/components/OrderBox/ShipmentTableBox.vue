@@ -25,7 +25,7 @@
 <script lang="ts">
 import {defineComponent, ref} from 'vue';
 import {
-  shipmentsCreateReturnAction,
+  shipmentsExportReturnAction,
   shipmentsDeleteAction,
   shipmentsFetchAction,
   shipmentsPrintAction,
@@ -53,7 +53,7 @@ export default defineComponent({
       selectedLabels,
 
       bulkActions: defineActions(
-        [shipmentsFetchAction, shipmentsPrintAction, shipmentsDeleteAction, shipmentsCreateReturnAction],
+        [shipmentsFetchAction, shipmentsPrintAction, shipmentsDeleteAction, shipmentsExportReturnAction],
         {
           orderIds: get(query.data)?.externalIdentifier,
           shipmentIds: selectedLabels.value,

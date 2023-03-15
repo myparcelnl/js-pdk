@@ -60,7 +60,7 @@ export {
   ordersFetchAction,
   ordersPrintAction,
   ordersUpdateAction,
-  shipmentsCreateReturnAction,
+  shipmentsExportReturnAction,
   shipmentsFetchAction,
   shipmentsPrintAction,
   useActionStore,

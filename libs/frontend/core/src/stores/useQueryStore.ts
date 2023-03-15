@@ -2,11 +2,11 @@ import {AdminContext, AdminContextKey} from '../types';
 import {QueryClient, UseQueryReturnType, useQueryClient} from '@tanstack/vue-query';
 import {Ref, ref} from 'vue';
 import {
-  useCreateReturnShipmentsMutation,
   useCreateWebhooksMutation,
   useDeleteShipmentsMutation,
   useDeleteWebhooksMutation,
   useExportOrdersMutation,
+  useExportReturnMutation,
   useFetchContextQuery,
   useFetchOrdersQuery,
   useFetchWebhooksQuery,
@@ -59,8 +59,8 @@ type EndpointQuery<E extends BackendEndpoint = BackendEndpoint> = E extends Back
   ? ReturnType<typeof usePrintOrdersMutation>
   : E extends BackendEndpoint.UpdateOrders
   ? ReturnType<typeof useUpdateOrdersMutation>
-  : E extends BackendEndpoint.CreateReturnShipments
-  ? ReturnType<typeof useCreateReturnShipmentsMutation>
+  : E extends BackendEndpoint.ExportReturn
+  ? ReturnType<typeof useExportReturnMutation>
   : E extends BackendEndpoint.DeleteShipments
   ? ReturnType<typeof useDeleteShipmentsMutation>
   : E extends BackendEndpoint.FetchShipments
@@ -141,7 +141,8 @@ export const useQueryStore = defineStore('query', () => {
       register(BackendEndpoint.DeleteShipments, useDeleteShipmentsMutation());
       register(BackendEndpoint.PrintShipments, usePrintShipmentsMutation());
       register(BackendEndpoint.FetchShipments, useUpdateShipmentsMutation());
-      register(BackendEndpoint.CreateReturnShipments, useCreateReturnShipmentsMutation());
+
+      register(BackendEndpoint.ExportReturn, useExportReturnMutation());
     },
 
     /**

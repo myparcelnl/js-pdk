@@ -25,7 +25,7 @@ export interface AdminActionEndpointMap extends Record<AdminAction, BackendEndpo
   [AdminAction.OrdersUpdate]: BackendEndpoint.UpdateOrders;
   [AdminAction.PluginSettingsUpdate]: BackendEndpoint.UpdatePluginSettings;
   [AdminAction.ProductSettingsUpdate]: BackendEndpoint.UpdateProductSettings;
-  [AdminAction.ShipmentsCreateReturn]: BackendEndpoint.CreateReturnShipments;
+  [AdminAction.ShipmentsExportReturn]: BackendEndpoint.ExportReturn;
   [AdminAction.ShipmentsDelete]: BackendEndpoint.DeleteShipments;
   [AdminAction.ShipmentsFetch]: BackendEndpoint.FetchShipments;
   [AdminAction.ShipmentsPrint]: BackendEndpoint.PrintShipments;
@@ -56,7 +56,7 @@ export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record
   };
   [BackendEndpoint.UpdateOrders]: {orderIds?: OneOrMore<string>; form: FormInstance};
 
-  [BackendEndpoint.CreateReturnShipments]: {orderIds?: OneOrMore<string>; shipmentIds: OneOrMore<number>};
+  [BackendEndpoint.ExportReturn]: {orderIds?: OneOrMore<string>; shipmentIds: OneOrMore<number>};
   [BackendEndpoint.DeleteShipments]: {orderIds?: OneOrMore<string>; shipmentIds: OneOrMore<number>};
   [BackendEndpoint.FetchShipments]: {orderIds?: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
   [BackendEndpoint.PrintShipments]: {
