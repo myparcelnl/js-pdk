@@ -7,8 +7,9 @@
   </PdkModal>
 </template>
 
-<script lang="ts">
-import {defineAsyncComponent, defineComponent} from 'vue';
+<script setup lang="ts">
+import {BACKEND_ENDPOINTS_ORDERS, BackendEndpoint} from '@myparcel-pdk/common/src';
+import {computed, defineAsyncComponent} from 'vue';
 import {
   modalCloseAction,
   orderExportAction,
@@ -18,38 +19,33 @@ import {
 } from '../../actions';
 import {usePluginSettings, useStoreQuery} from '../../composables';
 import {AdminModalKey} from '../../types';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineActions} from '../../services';
+import {get} from '@vueuse/core';
 
 /**
  * Shipment options modal. Opened by clicking the "Create" button in the "Labels" column in the orders list.
  */
-export default defineComponent({
-  name: 'ShipmentOptionsModal',
-  components: {
-    ShipmentOptionsModalForm: defineAsyncComponent(() => import('./ShipmentOptionsModalForm.vue')),
-  },
 
-  setup: () => {
-    const pluginSettings = usePluginSettings();
-    const {orderMode} = pluginSettings.general;
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const ShipmentOptionsModalForm = defineAsyncComponent(() => import('./ShipmentOptionsModalForm.vue'));
 
-    const exportOrdersQuery = useStoreQuery(BackendEndpoint.ExportOrders);
+const pluginSettings = usePluginSettings();
 
-    return {
-      modalKey: AdminModalKey.ShipmentOptions,
-      actions: defineActions([
-        {
-          ...modalCloseAction,
-          disabled: exportOrdersQuery.isLoading,
-        },
-        {
-          ...ordersUpdateAction,
-          disabled: exportOrdersQuery.isLoading,
-        },
-        ...(orderMode ? [orderExportAction] : [orderExportToShipmentsAction, ordersExportPrintShipmentsAction]),
-      ]),
-    };
-  },
+const {orderMode} = pluginSettings.general;
+
+const orderQueries = BACKEND_ENDPOINTS_ORDERS.map((endpoint: BackendEndpoint) => useStoreQuery(endpoint));
+
+const modalKey = AdminModalKey.ShipmentOptions;
+
+const actions = computed(() => {
+  const disabled = orderQueries.some((query) => get(query.isLoading));
+
+  const actions = [
+    modalCloseAction,
+    ordersUpdateAction,
+    ...(orderMode ? [orderExportAction] : [orderExportToShipmentsAction, ordersExportPrintShipmentsAction]),
+  ];
+
+  return defineActions(actions.map((action) => ({...action, disabled})));
 });
 </script>

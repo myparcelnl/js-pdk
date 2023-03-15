@@ -1,28 +1,10 @@
 <template>
-  <ShipmentOptionsForm
-    v-if="order"
-    :order="order" />
+  <ShipmentOptionsForm v-if="queries.some((query) => query.data)" />
 </template>
 
 <script setup lang="ts">
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
-import {computed} from 'vue';
-import {useFetchOrdersQuery} from '../../actions';
-import {useModalStore} from '../../stores';
+import {useOrders} from '../../composables/useOrder';
 
-const modalStore = useModalStore();
-
-const order = computed(() => {
-  if (!modalStore.context) {
-    return null;
-  }
-
-  const orderQuery = useFetchOrdersQuery(modalStore.context);
-
-  if (!orderQuery.data.value) {
-    return null;
-  }
-
-  return orderQuery.data.value;
-});
+const queries = useOrders();
 </script>

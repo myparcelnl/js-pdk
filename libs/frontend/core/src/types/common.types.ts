@@ -1,8 +1,16 @@
 import {OneOrMore} from '@myparcel/ts-utils';
 import {Variant} from '@myparcel-pdk/common/src';
 
+export type NotificationId = number | string;
+
 export interface Notification {
-  id?: number;
+  /**
+   * ID of a notification. If not provided, a unique id will be generated. It may be a string, but make sure this string
+   * does not exist in NotificationCategory.
+   *
+   * @see NotificationCategory
+   */
+  id?: NotificationId;
   category?: NotificationCategory;
   title?: string;
   content?: OneOrMore<string>;

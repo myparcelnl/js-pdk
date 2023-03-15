@@ -6,11 +6,10 @@
 import {MagicForm} from '@myparcel/vue-form-builder/src';
 import {createShipmentOptionsForm} from '../../forms';
 import {get} from '@vueuse/core';
-import {markRaw} from 'vue';
-import {useOrder} from '../../composables/useOrder';
+import {useOrders} from '../../composables/useOrder';
 
-const query = useOrder();
+const queries = useOrders();
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const shipmentOptionsForm = createShipmentOptionsForm(markRaw(get(query.data)!));
+const shipmentOptionsForm = createShipmentOptionsForm(queries.map((query) => get(query.data)!));
 </script>

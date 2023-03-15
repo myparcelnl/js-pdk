@@ -23,5 +23,5 @@ import {ElementInstance, OptionsProp, useSelectInputContext} from '@myparcel-pdk
 const props = defineProps<{element: ElementInstance<OptionsProp>; modelValue: string | number}>();
 const emit = defineEmits<(e: 'update:modelValue', value: string | number) => void>();
 
-const {options} = useSelectInputContext(props, emit);
+const {options, id, model} = useSelectInputContext(props, emit);
 </script>

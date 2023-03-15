@@ -22,6 +22,7 @@ import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
 import {getOrderId} from '../utils';
+import {toArray} from '@myparcel/ts-utils';
 
 export type QueryKey =
   | BackendEndpoint
@@ -132,8 +133,11 @@ export const useQueryStore = defineStore('query', () => {
         throw new Error('No order id found');
       }
 
-      register(`${BackendEndpoint.FetchOrders}.${id}`, useFetchOrdersQuery(id));
+      toArray(id).forEach((orderId) => {
+        register(`${BackendEndpoint.FetchOrders}.${orderId}`, useFetchOrdersQuery(orderId));
+      });
 
+      register(BackendEndpoint.FetchOrders, useFetchOrdersQuery());
       register(BackendEndpoint.ExportOrders, useExportOrdersMutation(mode));
       register(BackendEndpoint.PrintOrders, usePrintOrdersMutation());
       register(BackendEndpoint.UpdateOrders, useUpdateOrdersMutation());

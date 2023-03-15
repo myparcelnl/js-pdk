@@ -1,5 +1,5 @@
 <template>
-  <PdkTableRow :loading="loading">
+  <PdkTableRow>
     <PdkTableCol>
       <PdkCheckboxInput
         v-model="selected"

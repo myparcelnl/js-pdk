@@ -1,10 +1,10 @@
 import {ComputedRef, Ref, WritableComputedRef, computed, onMounted, watch} from 'vue';
 import {ElementInstance, OptionsProp} from '../types';
+import {get, useVModel} from '@vueuse/core';
 import {SelectOptionWithLabel} from '@myparcel-pdk/common';
 import {generateFieldId} from '../utils';
 import {translateSelectOption} from '../helpers';
 import {useLanguage} from './translations';
-import {useVModel} from '@vueuse/core';
 
 export type SelectInputProps<T = unknown> = {
   modelValue: T;
@@ -55,7 +55,7 @@ export const useInputWithOptionsContext: UseInputWithOptionsContext = (props, em
     watch(
       options,
       (newOptions) => {
-        const hasExistingValue = model.value && newOptions.some((option) => option.value === model.value);
+        const hasExistingValue = get(model) && newOptions.some((option) => option.value === get(model));
 
         if (hasExistingValue || newOptions.length === 0) {
           return;
@@ -63,7 +63,7 @@ export const useInputWithOptionsContext: UseInputWithOptionsContext = (props, em
 
         model.value = newOptions[0].value;
       },
-      {immediate: Number(options.value?.length) > 0},
+      {immediate: Number(get(options)?.length) > 0},
     );
   });
 

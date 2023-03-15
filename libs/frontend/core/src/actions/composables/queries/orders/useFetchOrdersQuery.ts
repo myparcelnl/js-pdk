@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {useQuery, useQueryClient} from '@tanstack/vue-query';
+import {QueryKey, useQuery, useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {EndpointResponse} from '../../../../types';
 import {QUERY_KEY_ORDER} from '../queryKeys';
@@ -7,8 +7,8 @@ import {encodeArrayParameter} from '../../../../utils';
 import {fillOrderQueryData} from '../../../../pdk';
 import {usePdkAdminApi} from '../../../../sdk';
 
-export const useFetchOrdersQuery = (externalIdentifier: string) => {
-  const queryKey = [QUERY_KEY_ORDER, {id: externalIdentifier}] as const;
+export const useFetchOrdersQuery = (externalIdentifier?: string) => {
+  const queryKey: QueryKey = [QUERY_KEY_ORDER, ...(externalIdentifier ? [{id: externalIdentifier}] : [])] as const;
   const queryClient = useQueryClient();
 
   return useQuery<EndpointResponse<BackendEndpoint.FetchOrders>>(

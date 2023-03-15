@@ -1,7 +1,6 @@
 export type {
   Account,
   AdminComponentMap,
-  AdminComponent,
   Base,
   Carrier,
   Form,
@@ -84,4 +83,4 @@ export {
   webhooksDeleteAction,
 } from '@myparcel-pdk/frontend-core/src';
 
-export {AdminView, Size, Status, Variant} from '@myparcel-pdk/common/src';
+export {AdminComponent, AdminView, Size, Status, Variant} from '@myparcel-pdk/common/src';
