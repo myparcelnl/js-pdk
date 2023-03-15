@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.25](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.24...@myparcel-pdk/frontend-core@1.0.0-alpha.25) "@myparcel-pdk/frontend-core" (2023-03-15)
+
+
+### Bug Fixes
+
+* **core:** translate relative date output ([b41eefb](https://github/myparcelnl/js-pdk/commit/b41eefb7fdc0bad93739f8dce46d6baf532dd17b))
+
+
+
+
 ## [1.0.0-alpha.24](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.23...@myparcel-pdk/frontend-core@1.0.0-alpha.24) "@myparcel-pdk/frontend-core" (2023-03-15)
 
 
