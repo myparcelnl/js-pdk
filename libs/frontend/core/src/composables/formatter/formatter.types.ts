@@ -1,7 +1,11 @@
-/**
- * Available formatters.
- */
-export type FormatName = 'currency' | 'dateLong' | 'dateRelative' | 'weekday' | string;
+export enum Format {
+  Currency = 'currency',
+  DateLong = 'dateLong',
+  DateRelative = 'dateRelative',
+  Weekday = 'weekday',
+}
+
+export type FormatName = Format | string;
 
 export type FormatterFunction = (input: unknown, ...args: unknown[]) => string;
 

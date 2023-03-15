@@ -1,4 +1,5 @@
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
+import {Format} from './formatter.types';
 import {INJECT_ADMIN_INSTANCE} from '../../data';
 import {createAdminConfig} from '../../pdk';
 import {createLogger} from '../../services';
@@ -104,7 +105,7 @@ describe('format strings', () => {
 
     const formatter = useFormatter('nl-NL');
 
-    expect(formatter.format('dateRelative', date)).toBe(expectation);
+    expect(formatter.format(Format.DateRelative, date)).toBe(expectation);
 
     dateSpy.mockRestore();
   });
@@ -112,6 +113,6 @@ describe('format strings', () => {
   it('formats date', () => {
     const formatter = useFormatter('nl-NL');
 
-    expect(formatter.format('dateLong', fakeDate)).toBe('5 december 2022');
+    expect(formatter.format(Format.DateLong, fakeDate)).toBe('5 december 2022');
   });
 });

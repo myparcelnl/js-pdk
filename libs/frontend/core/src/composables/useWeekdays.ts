@@ -1,4 +1,4 @@
-import {useLocalizedFormatter} from './formatter';
+import {Format, useLocalizedFormatter} from './formatter';
 
 // eslint-disable-next-line no-magic-numbers,@typescript-eslint/no-magic-numbers
 const WEEKDAYS = [0, 1, 2, 3, 4, 5, 6] as const;
@@ -17,7 +17,7 @@ export const useWeekdays = (): Weekdays => {
     return WEEKDAYS.reduce((acc, day) => ({...acc, [day]: callback(day)}), {});
   };
 
-  const weekdaysObject = createObjectFromWeekdays((day) => formatter.format('weekday', day));
+  const weekdaysObject = createObjectFromWeekdays((day) => formatter.format(Format.Weekday, day));
 
   return {
     createObjectFromWeekdays,

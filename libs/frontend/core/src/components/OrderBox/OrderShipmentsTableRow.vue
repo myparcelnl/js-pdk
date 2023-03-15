@@ -18,7 +18,7 @@
     <PdkTableCol>
       <span
         :title="shipment.updated"
-        v-text="shipment.updated ? formatter.format('dateRelative', shipment.updated) : '—'" />
+        v-text="shipmentUpdatedAt" />
     </PdkTableCol>
 
     <PdkTableCol align="right">
@@ -28,9 +28,9 @@
 </template>
 
 <script setup lang="ts">
-import {useLocalizedFormatter, useShipmentData} from '../../composables';
+import {Format, useLocalizedFormatter, useShipmentData} from '../../composables';
+import {PropType, computed} from 'vue';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
-import {PropType} from 'vue';
 import {Shipment} from '@myparcel-pdk/common/src';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
@@ -64,4 +64,8 @@ const checkboxElement = {
 const formatter = useLocalizedFormatter();
 
 const {actions} = useShipmentData(props.shipment);
+
+const shipmentUpdatedAt = computed(() => {
+  return props.shipment.updated ? formatter.format(Format.DateRelative, props.shipment.updated) : '–';
+});
 </script>
