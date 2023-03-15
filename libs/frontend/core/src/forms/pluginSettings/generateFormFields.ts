@@ -18,10 +18,9 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
 
   return fields.map((data) => {
     const {name, $component, $visibleWhen, $slot, label, ...props} = data;
-    const component = resolveFormComponent($component);
 
     const common: AnyElementConfiguration = {
-      component,
+      component: resolveFormComponent($component),
       props: {...props},
     };
 

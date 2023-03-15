@@ -1,7 +1,6 @@
-import {LabelFormat, LabelOutput, LabelPosition} from '@myparcel-pdk/common';
+import {BackendEndpoint, LabelFormat, LabelOutput, LabelPosition} from '@myparcel-pdk/common/src';
 import {AdminAction} from './actions.types';
 import {AdminContextKey} from './context.types';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {FormInstance} from '@myparcel/vue-form-builder/src';
 import {OneOrMore} from '@myparcel/ts-utils';
 import {PdkEndpointDefinition} from '../sdk';

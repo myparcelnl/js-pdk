@@ -13,20 +13,15 @@ import {
   SAME_DAY_DELIVERY,
   SIGNATURE,
 } from './field';
+import {AdminComponent, Plugin} from '@myparcel-pdk/common/src';
 import {AdminContextKey, AdminModalKey, ElementInstance} from '../../types';
 import {CarrierName, PackageTypeName} from '@myparcel/constants';
 import {Formatter, useAdminConfig, useContext, useLocalizedFormatter} from '../../composables';
 import {SelectOption, defineForm} from '@myparcel/vue-form-builder/src';
-import {
-  defineFormField,
-  getInsurancePossibilities,
-  getPackageTypes,
-  hasShipmentOption,
-  isPackageTypePackage,
-} from './helpers';
-import {ref, resolveComponent} from 'vue';
-import {Plugin} from '@myparcel-pdk/common/src';
+import {defineFormField, resolveFormComponent} from '../helpers';
+import {getInsurancePossibilities, getPackageTypes, hasShipmentOption, isPackageTypePackage} from './helpers';
 import {createShipmentFormName} from '../../utils';
+import {ref} from 'vue';
 import {useCarrier} from '../../sdk';
 import {useModalStore} from '../../stores';
 
@@ -56,7 +51,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         name: CARRIER,
         label: 'carrier',
         ref: ref<CarrierName>(order.deliveryOptions?.carrier as CarrierName),
-        component: resolveComponent('PdkSelectInput'),
+        component: resolveFormComponent(AdminComponent.SelectInput),
         props: {
           options: [],
         },
@@ -92,7 +87,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         name: LABEL_AMOUNT,
         label: 'label_amount',
         ref: ref(order.deliveryOptions?.labelAmount ?? 1),
-        component: resolveComponent('PdkNumberInput'),
+        component: resolveFormComponent(AdminComponent.NumberInput),
         props: {
           min: 1,
           max: 10,
@@ -103,7 +98,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         name: PACKAGE_TYPE,
         label: 'shipment_options_package_type',
         ref: ref<PackageTypeName>((order.deliveryOptions?.packageType as PackageTypeName) ?? PackageTypeName.Package),
-        component: resolveComponent('PdkSelectInput'),
+        component: resolveFormComponent(AdminComponent.SelectInput),
         props: {
           options: getPackageTypes(),
         },
@@ -113,7 +108,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         name: SIGNATURE,
         label: 'shipment_options_signature',
         ref: ref(order.deliveryOptions?.shipmentOptions.signature ?? false),
-        component: resolveComponent('PdkToggleInput'),
+        component: resolveFormComponent(AdminComponent.ToggleInput),
         visibleWhen: ({form}) => {
           return isPackageTypePackage(form) && hasShipmentOption(form, 'signature');
         },
@@ -123,7 +118,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
         name: ONLY_RECIPIENT,
         label: 'shipment_options_only_recipient',
         ref: ref(order.deliveryOptions?.shipmentOptions.onlyRecipient ?? false),
-        component: resolveComponent('PdkToggleInput'),
+        component: resolveFormComponent(AdminComponent.ToggleInput),
         visibleWhen: ({form}) => {
           return isPackageTypePackage(form) && hasShipmentOption(form, 'onlyRecipient');
         },
@@ -131,7 +126,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
 
       defineFormField({
         name: AGE_CHECK,
-        component: resolveComponent('PdkToggleInput'),
+        component: resolveFormComponent(AdminComponent.ToggleInput),
         ref: ref(order.deliveryOptions?.shipmentOptions.ageCheck ?? false),
         label: 'shipment_options_age_check',
         visibleWhen: ({form}) => {
@@ -141,7 +136,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
 
       defineFormField({
         name: DIRECT_RETURN,
-        component: resolveComponent('PdkToggleInput'),
+        component: resolveFormComponent(AdminComponent.ToggleInput),
         ref: ref(order.deliveryOptions?.shipmentOptions.return ?? false),
         label: 'shipment_options_return',
         visibleWhen: ({form}) => {
@@ -151,7 +146,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
 
       defineFormField({
         name: LARGE_FORMAT,
-        component: resolveComponent('PdkToggleInput'),
+        component: resolveFormComponent(AdminComponent.ToggleInput),
         ref: ref(order.deliveryOptions?.shipmentOptions.largeFormat ?? false),
         label: 'shipment_options_large_format',
         visibleWhen: ({form}) => {
@@ -161,7 +156,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
 
       defineFormField({
         name: SAME_DAY_DELIVERY,
-        component: resolveComponent('PdkToggleInput'),
+        component: resolveFormComponent(AdminComponent.ToggleInput),
         ref: ref(order.deliveryOptions?.shipmentOptions.sameDayDelivery ?? false),
         label: 'shipment_options_same_day_delivery',
         visibleWhen: ({form}) => {
@@ -171,7 +166,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
 
       defineFormField({
         name: INSURANCE,
-        component: resolveComponent('PdkSelectInput'),
+        component: resolveFormComponent(AdminComponent.SelectInput),
         ref: ref(order.deliveryOptions?.shipmentOptions.insurance ?? 0),
         label: 'shipment_options_insurance',
         props: {

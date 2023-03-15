@@ -1,7 +1,7 @@
 export type {
   Account,
   AdminComponentMap,
-  AdminComponentName,
+  AdminComponent,
   Base,
   Carrier,
   Form,

@@ -28,12 +28,12 @@ import {
   runTimeInputTest,
   runToggleInputTest,
 } from '../components';
-import {AdminComponentName} from '@myparcel-pdk/common/src';
+import {AdminComponent} from '@myparcel-pdk/common/src';
 import {Component} from 'vue';
 
 export type AdminComponentTest = (component: Omit<Component, 'props'>) => void;
 
-export const testMap: Record<AdminComponentName, AdminComponentTest> = {
+export const testMap: Record<AdminComponent, AdminComponentTest> = {
   /**
    * Inputs
    */

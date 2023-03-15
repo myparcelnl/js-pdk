@@ -1,4 +1,4 @@
-import {AdminComponentMap, AdminComponentName} from '@myparcel-pdk/common/src';
+import {AdminComponent, AdminComponentMap} from '@myparcel-pdk/common/src';
 import {afterEach, beforeEach, vi} from 'vitest';
 import {doComponentTestSetup} from '../tests';
 import {executeAdminComponentTest} from './executeAdminComponentTest';
@@ -21,6 +21,6 @@ export const executePdkComponentTests = (components: Partial<AdminComponentMap>)
       return;
     }
 
-    executeAdminComponentTest(name as AdminComponentName, component);
+    executeAdminComponentTest(name as AdminComponent, component);
   });
 };

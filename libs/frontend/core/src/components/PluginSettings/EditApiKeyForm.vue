@@ -8,13 +8,14 @@
 
 <script lang="ts" setup>
 import {FormInstance, MagicForm, defineField, defineForm} from '@myparcel/vue-form-builder/src';
-import {markRaw, ref, resolveComponent, watch} from 'vue';
+import {defineFormField, resolveFormComponent} from '../../forms';
+import {markRaw, ref, watch} from 'vue';
 import {useAdminConfig, usePluginSettings, useStoreContextQuery} from '../../composables';
+import {AdminComponent} from '@myparcel-pdk/common/src';
 import {FORM_KEY_ACCOUNT_SETTINGS} from '../../forms/formKeys';
 import {SubmitButton} from '../common';
 import {createActionContext} from '../../services';
 import {createUpdateAccountSettingsValidator} from './createUpdateAccountSettingsValidator';
-import {defineFormField} from '../../forms';
 import {updateAccountAction} from '../../actions';
 
 defineEmits<(e: 'afterSubmit', form: FormInstance) => void>();
@@ -28,7 +29,7 @@ const createForm = (): FormInstance => {
     ...config.formConfigOverrides?.[FORM_KEY_ACCOUNT_SETTINGS],
     fields: [
       defineFormField({
-        component: resolveComponent('PdkTextInput'),
+        component: resolveFormComponent(AdminComponent.TextInput),
         label: 'settings_account_api_key',
         name: 'apiKey',
         validators: [

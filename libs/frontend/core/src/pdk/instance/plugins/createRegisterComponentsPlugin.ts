@@ -1,5 +1,6 @@
 import {
-  AdminComponentName,
+  AdminComponent,
+  PrefixedAdminComponent,
   optionalAdminActionContainerComponentNames,
   optionalAdminPlainWrapperComponentNames,
   requiredAdminComponentNames,
@@ -9,23 +10,25 @@ import {FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-b
 import {memoize, mergeWith} from 'lodash-unified';
 import {PdkAppPlugin} from './plugins.types';
 import {PlainElement} from '../../../components';
+import {prefixComponent} from '../../../helpers';
 import {useLanguage} from '../../../composables';
 
-const memoizedGetOptionalComponents = memoize((app: App): Record<string, Component | AdminComponentName> => {
-  const isNotRegistered = (component: string): boolean => app.component(component) === undefined;
+const memoizedGetOptionalComponents = memoize((app: App): Record<string, Component | AdminComponent> => {
+  const isNotRegistered = (component: PrefixedAdminComponent): boolean => app.component(component) === undefined;
 
   const createComponentMap = (
-    componentNames: readonly AdminComponentName[],
-    fallback: Component | AdminComponentName,
-  ): Record<string, Component | AdminComponentName> => {
+    componentNames: readonly AdminComponent[],
+    fallback: Component | PrefixedAdminComponent,
+  ): Record<string, Component | AdminComponent> => {
     return componentNames
+      .map(prefixComponent)
       .filter(isNotRegistered)
       .reduce((acc, componentName) => ({...acc, [componentName]: fallback}), {});
   };
 
   return {
     ...createComponentMap(optionalAdminPlainWrapperComponentNames, PlainElement),
-    ...createComponentMap(optionalAdminActionContainerComponentNames, 'PdkBox'),
+    ...createComponentMap(optionalAdminActionContainerComponentNames, prefixComponent(AdminComponent.Box)),
   };
 });
 
@@ -36,14 +39,14 @@ export const createRegisterComponentsPlugin: PdkAppPlugin = ({config, logger}) =
   return {
     install(app) {
       const requiredComponents: Record<string, Component> = {
-        ...requiredAdminComponentNames.reduce((acc, name) => ({...acc, [name]: null}), {}),
+        ...requiredAdminComponentNames.reduce((acc, name) => ({...acc, [prefixComponent(name)]: null}), {}),
         ...config.components,
       };
 
       Object.entries(requiredComponents).forEach(([componentName, component]) => {
         if (!component) {
           logger.error(
-            `Missing component: "${componentName}". You must provide your own, or use the default(s) from @myparcel-pdk/admin-components.`,
+            `Missing component: "${componentName}". You must provide your own, or use one provided by one of the @myparcel-pdk/admin-preset-* packages.`,
           );
           return;
         }
