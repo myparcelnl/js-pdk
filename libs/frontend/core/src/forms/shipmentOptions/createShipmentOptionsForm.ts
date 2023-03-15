@@ -79,10 +79,6 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
 
           setFieldProp(field, PROP_OPTIONS, carrierSelectOptions);
 
-          // if (!get(field.ref)) {
-          //   field.ref = carrierSelectOptions[0].value;
-          // }
-
           field.afterUpdate(field);
         },
 

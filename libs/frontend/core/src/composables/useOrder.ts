@@ -18,7 +18,6 @@ export const useOrders = (
   externalIdentifiers?: string[],
 ): ResolvedQuery<`${BackendEndpoint.FetchOrders}.${string}`>[] => {
   return toArray(externalIdentifiers ?? getOrderId()).map((externalIdentifier) => {
-    console.log(externalIdentifier);
     return useOrder(externalIdentifier);
   });
 };
