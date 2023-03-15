@@ -16,7 +16,7 @@ type CreateHook<T, A = Record<string, unknown>> = (
 
 export const createWithContext: CreateHook<WithContextParams, CommandArgs> = (env) => {
   return (callback) => {
-    return async (args) => callback({env: env, args});
+    return async (args) => callback({env, args});
   };
 };
 
@@ -25,7 +25,7 @@ export const createWithConfig: CreateHook<WithConfigParams, CommandArgs> = (env)
     return async (args) => {
       const config = await resolveConfig(env);
 
-      return callback({config: mergeDefaultConfig(config), env: env, args});
+      return callback({config: mergeDefaultConfig(config), env, args});
     };
   };
 };

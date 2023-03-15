@@ -1,8 +1,8 @@
 export {default as Bootstrap4Box} from './Bootstrap4Box.vue';
 
-export {default as Bootstrap4ButtonGroup} from './Bootstrap4ButtonGroup.vue';
-
 export {default as Bootstrap4Button} from './Bootstrap4Button.vue';
+
+export {default as Bootstrap4ButtonGroup} from './Bootstrap4ButtonGroup.vue';
 
 export {default as Bootstrap4CheckboxInput} from './Bootstrap4CheckboxInput.vue';
 

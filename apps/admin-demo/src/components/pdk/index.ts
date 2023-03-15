@@ -2,6 +2,8 @@ export {default as DemoBox} from './DemoBox.vue';
 
 export {default as DemoButton} from './DemoButton.vue';
 
+export {default as DemoDropdownButton} from './DemoDropdownButton.vue';
+
 export {default as DemoFormGroup} from './DemoFormGroup.vue';
 
 export {default as DemoImage} from './DemoImage.vue';
@@ -9,8 +11,6 @@ export {default as DemoImage} from './DemoImage.vue';
 export {default as DemoModal} from './DemoModal.vue';
 
 export {default as DemoNotification} from './DemoNotification.vue';
-
-export {default as DemoDropdownButton} from './DemoDropdownButton.vue';
 
 export {default as DemoPluginSettingsWrapper} from './DemoPluginSettingsWrapper.vue';
 
