@@ -17,10 +17,12 @@ export type Formatter = {
   /**
    * Get all registered formatters
    */
-  getFormatters: (locale: string) => FormatterObject;
+  getFormatters(locale: string): FormatterObject;
 
   /**
    * Format a value into a string using the given format.
    */
-  format: (format: FormatName, input: unknown) => string;
+  format(format: FormatName, input: unknown): string;
 };
+
+export type FormatterTranslateFunction = (string?: string) => string;

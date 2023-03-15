@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {Formatter, LocaleFormatterObject} from './formatter.types';
+import {Formatter, FormatterTranslateFunction, LocaleFormatterObject} from './formatter.types';
 import {Ref, ref} from 'vue';
 import {
   createDefaultCurrencyFormatter,
@@ -11,7 +11,10 @@ import {useAdminConfig} from '../useAdminConfig';
 
 let formats: Ref<LocaleFormatterObject>;
 
-export const useFormatter = (locale: string): Formatter => {
+export const useFormatter = (
+  locale: string,
+  translate: FormatterTranslateFunction = (string) => string ?? '',
+): Formatter => {
   formats ??= ref({});
 
   const config = useAdminConfig();
@@ -21,7 +24,7 @@ export const useFormatter = (locale: string): Formatter => {
       formats.value[locale] = {
         currency: config.formatters?.currency ?? createDefaultCurrencyFormatter(locale),
         dateLong: config.formatters?.dateLong ?? createDefaultDateLongFormatter(locale),
-        dateRelative: config.formatters?.dateRelative ?? createDefaultDateRelativeFormatter(locale),
+        dateRelative: config.formatters?.dateRelative ?? createDefaultDateRelativeFormatter(locale, translate),
         weekday: config.formatters?.weekday ?? createDefaultWeekdayFormatter(locale),
       };
     }

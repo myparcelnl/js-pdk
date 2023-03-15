@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {FormatterFunction} from '../formatter.types';
+import {FormatterFunction, FormatterTranslateFunction} from '../formatter.types';
 import {createLongDateFormat} from './createLongDateFormat';
 import {createRelativeTimeFormat} from './createRelativeTimeFormat';
 import {parseDate} from './parseDate';
@@ -15,7 +15,10 @@ export const createDefaultDateLongFormatter = (locale: string): FormatterFunctio
   };
 };
 
-export const createDefaultDateRelativeFormatter = (locale: string): FormatterFunction => {
+export const createDefaultDateRelativeFormatter = (
+  locale: string,
+  translate: FormatterTranslateFunction,
+): FormatterFunction => {
   formatDateLong ??= createLongDateFormat(locale);
   formatDateRelative ??= createRelativeTimeFormat(locale);
 
@@ -43,7 +46,7 @@ export const createDefaultDateRelativeFormatter = (locale: string): FormatterFun
       return formatDateRelative.format(minutes, 'minute');
     }
 
-    return diff > 0 ? 'time_seconds_future' : 'time_seconds_past';
+    return translate(`time_seconds_${diff > 0 ? 'future' : 'past'}`);
   };
 };
 
