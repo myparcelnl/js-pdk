@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.26](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.25...@myparcel-pdk/frontend-core@1.0.0-alpha.26) "@myparcel-pdk/frontend-core" (2023-03-15)
+
+
+### Features
+
+* make bulk edit/export/print work ([24503a1](https://github/myparcelnl/js-pdk/commit/24503a190a5ec159ee170395cecfba6e3c21f285))
+
+
+### Bug Fixes
+
+* **core:** update query client defaults ([92017fc](https://github/myparcelnl/js-pdk/commit/92017fc3738a4cea65148c293b3df32296ddb18f))
+
+
+
+
 ## [1.0.0-alpha.25](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.24...@myparcel-pdk/frontend-core@1.0.0-alpha.25) "@myparcel-pdk/frontend-core" (2023-03-15)
 
 
