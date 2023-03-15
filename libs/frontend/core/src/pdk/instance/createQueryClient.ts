@@ -14,23 +14,24 @@ const addApiErrorNotification = (error: unknown) => {
 export const createQueryClient = (): QueryClient =>
   new QueryClient({
     defaultOptions: {
+      mutations: {
+        onError: addApiErrorNotification,
+        onMutate: clearApiNotifications,
+        retry: false,
+      },
+
       queries: {
+        behavior: {
+          onFetch: clearApiNotifications,
+        },
+        onError: addApiErrorNotification,
         refetchInterval: false,
         refetchOnMount: false,
         refetchOnReconnect: false,
         refetchOnWindowFocus: false,
         retry: false,
+        retryOnMount: false,
         staleTime: Infinity,
-        behavior: {
-          onFetch: clearApiNotifications,
-        },
-        onError: addApiErrorNotification,
-      },
-
-      mutations: {
-        retry: false,
-        onMutate: clearApiNotifications,
-        onError: addApiErrorNotification,
       },
     },
   });
