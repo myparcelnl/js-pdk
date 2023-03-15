@@ -30,6 +30,7 @@ export type {
   ModalCallbackProps,
   NamedAction,
   Notification,
+  OptionsProp,
   ResolvedAction,
 } from '@myparcel-pdk/frontend-core/src';
 

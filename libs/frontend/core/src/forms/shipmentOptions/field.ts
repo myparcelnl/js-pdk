@@ -21,3 +21,5 @@ export const LARGE_FORMAT = `${SHIPMENT_OPTIONS_PREFIX}.largeFormat`;
 export const SAME_DAY_DELIVERY = `${SHIPMENT_OPTIONS_PREFIX}.sameDayDelivery`;
 
 export const INSURANCE = `${SHIPMENT_OPTIONS_PREFIX}.insurance`;
+
+export const PROP_OPTIONS = 'options';

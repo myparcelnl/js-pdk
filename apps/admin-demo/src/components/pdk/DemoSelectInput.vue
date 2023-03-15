@@ -14,17 +14,11 @@
 </template>
 
 <script lang="ts" setup>
-import {ElementInstance, generateFieldId, useSelectInputContext} from '@myparcel-pdk/frontend-core/src';
-import {SelectOption} from '@myparcel-pdk/common/src';
-import {useVModel} from '@vueuse/core';
+import {ElementInstance, OptionsProp, useSelectInputContext} from '@myparcel-pdk/frontend-core/src';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: string | number; element: ElementInstance<{options?: SelectOption[]}>}>();
-const emit = defineEmits<(e: 'update:modelValue', value: string) => void>();
+const props = defineProps<{element: ElementInstance<OptionsProp>; modelValue: string | number}>();
+const emit = defineEmits<(e: 'update:modelValue', value: string | number) => void>();
 
-const model = useVModel(props, undefined, emit);
-
-const id = generateFieldId(props.element);
-
-const {options} = useSelectInputContext(model, props.element.props?.options ?? []);
+const {id, model, options} = useSelectInputContext(props, emit);
 </script>
