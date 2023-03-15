@@ -132,6 +132,7 @@ export const useQueryStore = defineStore('query', () => {
         throw new Error('No order id found');
       }
 
+      register(BackendEndpoint.FetchOrders, useFetchOrdersQuery(id));
       register(`${BackendEndpoint.FetchOrders}.${id}`, useFetchOrdersQuery(id));
 
       register(BackendEndpoint.ExportOrders, useExportOrdersMutation(mode));
