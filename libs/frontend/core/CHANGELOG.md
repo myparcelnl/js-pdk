@@ -2,6 +2,26 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.24](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.23...@myparcel-pdk/frontend-core@1.0.0-alpha.24) "@myparcel-pdk/frontend-core" (2023-03-15)
+
+
+### Features
+
+* simplify select components ([07715f5](https://github/myparcelnl/js-pdk/commit/07715f5c4cd619e7c4ee35bccc53acb9cfcea72a))
+
+
+### Bug Fixes
+
+* **admin:** fix error on single order ([411b10e](https://github/myparcelnl/js-pdk/commit/411b10e16d22ba7041ecfc4fba27e70909ecfd4e))
+* allow selects to have untranslated labels ([6df9761](https://github/myparcelnl/js-pdk/commit/6df9761f819bff82d1855912dabb529ffc7d094d))
+* **core:** allow useLanguage to be used everywhere ([26a1280](https://github/myparcelnl/js-pdk/commit/26a1280cd30cf1f6dffe8e18e9629430f38e721e))
+* **core:** disable retrying queries ([efd5007](https://github/myparcelnl/js-pdk/commit/efd50079a898e49f1bcc4eef334196e5ab7080f2))
+* improve shipment options form ([b9bf198](https://github/myparcelnl/js-pdk/commit/b9bf19822ebc929ad08e666e7d5d2732496a0f50))
+* register return shipments query ([#113](https://github/myparcelnl/js-pdk/issues/113)) ([db5709c](https://github/myparcelnl/js-pdk/commit/db5709c3a9072e9b745b32625c2211756c0bac70))
+
+
+
+
 ## [1.0.0-alpha.18](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.17...@myparcel-pdk/frontend-core@1.0.0-alpha.18) "@myparcel-pdk/frontend-core" (2023-03-14)
 
 

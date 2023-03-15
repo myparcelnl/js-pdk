@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.25](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-components@1.0.0-alpha.24...@myparcel-pdk/admin-components@1.0.0-alpha.25) "@myparcel-pdk/admin-components" (2023-03-15)
+
+
+### Features
+
+* simplify select components ([07715f5](https://github/myparcelnl/js-pdk/commit/07715f5c4cd619e7c4ee35bccc53acb9cfcea72a))
+
+
+### Bug Fixes
+
+* allow selects to have untranslated labels ([6df9761](https://github/myparcelnl/js-pdk/commit/6df9761f819bff82d1855912dabb529ffc7d094d))
+
+
+
+
 ## [1.0.0-alpha.18](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-components@1.0.0-alpha.17...@myparcel-pdk/admin-components@1.0.0-alpha.18) "@myparcel-pdk/admin-components" (2023-03-14)
 
 

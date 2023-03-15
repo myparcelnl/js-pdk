@@ -2,6 +2,18 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.15](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.14...@myparcel-pdk/common@1.0.0-alpha.15) "@myparcel-pdk/common" (2023-03-15)
+
+
+### Bug Fixes
+
+* **admin:** fix error on single order ([411b10e](https://github/myparcelnl/js-pdk/commit/411b10e16d22ba7041ecfc4fba27e70909ecfd4e))
+* allow selects to have untranslated labels ([6df9761](https://github/myparcelnl/js-pdk/commit/6df9761f819bff82d1855912dabb529ffc7d094d))
+* register return shipments query ([#113](https://github/myparcelnl/js-pdk/issues/113)) ([db5709c](https://github/myparcelnl/js-pdk/commit/db5709c3a9072e9b745b32625c2211756c0bac70))
+
+
+
+
 ## [1.0.0-alpha.9](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.8...@myparcel-pdk/common@1.0.0-alpha.9) "@myparcel-pdk/common" (2023-03-14)
 
 

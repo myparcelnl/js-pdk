@@ -2,6 +2,22 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.23](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.22...@myparcel-pdk/admin@1.0.0-alpha.23) "@myparcel-pdk/admin" (2023-03-15)
+
+
+### Features
+
+* simplify select components ([07715f5](https://github/myparcelnl/js-pdk/commit/07715f5c4cd619e7c4ee35bccc53acb9cfcea72a))
+
+
+### Bug Fixes
+
+* allow selects to have untranslated labels ([6df9761](https://github/myparcelnl/js-pdk/commit/6df9761f819bff82d1855912dabb529ffc7d094d))
+* register return shipments query ([#113](https://github/myparcelnl/js-pdk/issues/113)) ([db5709c](https://github/myparcelnl/js-pdk/commit/db5709c3a9072e9b745b32625c2211756c0bac70))
+
+
+
+
 ## [1.0.0-alpha.16](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.15...@myparcel-pdk/admin@1.0.0-alpha.16) "@myparcel-pdk/admin" (2023-03-14)
 
 

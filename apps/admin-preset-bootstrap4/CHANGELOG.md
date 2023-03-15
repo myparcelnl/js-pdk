@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.25](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.24...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.25) "@myparcel-pdk/admin-preset-bootstrap4" (2023-03-15)
+
+
+### Features
+
+* simplify select components ([07715f5](https://github/myparcelnl/js-pdk/commit/07715f5c4cd619e7c4ee35bccc53acb9cfcea72a))
+
+
+
+
 ## [1.0.0-alpha.15](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.14...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.15) "@myparcel-pdk/admin-preset-bootstrap4" (2023-03-10)
 
 
