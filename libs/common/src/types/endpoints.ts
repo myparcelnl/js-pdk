@@ -84,7 +84,6 @@ export enum FrontendEndpoint {
 }
 
 export const BACKEND_ENDPOINTS_ORDERS = [
-  BackendEndpoint.FetchOrders,
   BackendEndpoint.UpdateOrders,
   BackendEndpoint.ExportOrders,
   BackendEndpoint.PrintOrders,

@@ -46,7 +46,7 @@ const {orderMode} = pluginSettings.general;
 
 const isExported = computed(() => orderMode && get(query.data)?.exported);
 
-const orderQueries = BACKEND_ENDPOINTS_ORDERS.map((endpoint) => useStoreQuery(endpoint));
+const orderQueries = [...BACKEND_ENDPOINTS_ORDERS.map((endpoint) => useStoreQuery(endpoint)), query];
 
 const actions = computed(() => {
   if (isExported.value) {
