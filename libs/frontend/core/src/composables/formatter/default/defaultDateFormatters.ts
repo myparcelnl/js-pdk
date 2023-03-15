@@ -23,7 +23,8 @@ export const createDefaultDateRelativeFormatter = (locale: string): FormatterFun
     const parsedDate = parseDate(input);
     const diff = parsedDate.getTime() - Date.now();
 
-    const minutes = Math.round(diff / 1000 / 60);
+    const seconds = Math.round(diff / 1000 / 60 / 60);
+    const minutes = Math.round(seconds / 60);
     const hours = Math.round(minutes / 60);
     const days = Math.round(hours / 24);
 
@@ -41,6 +42,10 @@ export const createDefaultDateRelativeFormatter = (locale: string): FormatterFun
 
     if (Math.abs(minutes) >= 1) {
       return formatDateRelative.format(minutes, 'minute');
+    }
+
+    if (Math.abs(seconds) >= 0) {
+      return formatDateRelative.format(seconds, 'second');
     }
 
     return diff > 0 ? 'time_seconds_future' : 'time_seconds_past';
