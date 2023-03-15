@@ -6,15 +6,15 @@ import {usePdkAdminApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';
 
-export const useCreateReturnShipmentsMutation = () => {
+export const useExportReturnMutation = () => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(
-    BackendEndpoint.CreateReturnShipments,
+    BackendEndpoint.ExportReturn,
     (input) => {
       const pdk = usePdkAdminApi();
 
-      return pdk.createReturnShipments({
+      return pdk.exportReturn({
         // @ts-expect-error todo
         parameters: {
           orderIds: encodeArrayParameter(input.orderIds),

@@ -13,8 +13,8 @@ import {
   ordersFetchAction,
   ordersPrintAction,
   ordersUpdateAction,
-  shipmentsCreateReturnAction,
   shipmentsDeleteAction,
+  shipmentsExportReturnAction,
   shipmentsFetchAction,
   shipmentsPrintAction,
 } from '../actions';
@@ -72,8 +72,8 @@ export const useActionStore = defineStore('actions', () => {
           : [
               orderExportToShipmentsAction,
               ordersExportPrintShipmentsAction,
-              shipmentsCreateReturnAction,
-              shipmentsCreateReturnAction,
+              shipmentsExportReturnAction,
+              shipmentsExportReturnAction,
               shipmentsDeleteAction,
               shipmentsFetchAction,
               shipmentsPrintAction,

@@ -1,7 +1,7 @@
 import {Ref, ref} from 'vue';
 import {
-  shipmentsCreateReturnAction,
   shipmentsDeleteAction,
+  shipmentsExportReturnAction,
   shipmentsFetchAction,
   shipmentsPrintAction,
 } from '../actions';
@@ -28,7 +28,7 @@ export const useShipmentData = (shipment: Shipment.ModelShipment): UseShipmentDa
 
   return {
     actions: defineActions(
-      [shipmentsPrintAction, shipmentsFetchAction, shipmentsCreateReturnAction, shipmentsDeleteAction],
+      [shipmentsPrintAction, shipmentsFetchAction, shipmentsExportReturnAction, shipmentsDeleteAction],
       {
         shipmentIds: shipment.id,
         orderIds: shipment.orderId,

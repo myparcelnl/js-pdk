@@ -69,10 +69,10 @@ export enum AdminAction {
   OrdersUpdate = 'ordersUpdate',
   OrdersEdit = 'ordersEdit',
 
-  ShipmentsCreateReturn = 'shipmentsReturn',
   ShipmentsDelete = 'shipmentsDelete',
   ShipmentsPrint = 'shipmentsPrint',
   ShipmentsFetch = 'shipmentsFetch',
+  ShipmentsExportReturn = 'shipmentsExportReturn',
 
   PluginSettingsUpdate = 'pluginSettingsUpdate',
   ProductSettingsUpdate = 'productSettingsUpdate',

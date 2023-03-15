@@ -4,11 +4,11 @@ import {openOrPrint, waitForLabelPrompt} from '../print';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
 
-export const shipmentsCreateReturnAction = defineAction({
-  name: AdminAction.ShipmentsCreateReturn,
+export const shipmentsExportReturnAction = defineAction({
+  name: AdminAction.ShipmentsExportReturn,
   icon: AdminIcon.Return,
-  label: 'action_create_return_label',
-  handler: createMutator(BackendEndpoint.CreateReturnShipments),
+  label: 'action_export_return',
+  handler: createMutator(BackendEndpoint.ExportReturn),
 });
 
 /**

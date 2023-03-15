@@ -53,7 +53,7 @@ export enum BackendEndpoint {
   /**
    * Create return shipments
    */
-  CreateReturnShipments = 'createReturnShipments',
+  ExportReturn = 'exportReturn',
 
   /**
    * Update plugin settings.
