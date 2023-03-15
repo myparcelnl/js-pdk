@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   overrides: [
     {
-      files: ['./**/index.js'],
+      files: ['./**/index.ts'],
       plugins: ['sort-exports'],
       rules: {
         'sort-exports/sort-exports': ['warn', {sortDir: 'asc', sortExportKindFirst: 'type'}],
