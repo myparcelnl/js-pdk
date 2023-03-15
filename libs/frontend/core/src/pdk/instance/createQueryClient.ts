@@ -19,6 +19,7 @@ export const createQueryClient = (): QueryClient =>
         refetchOnMount: false,
         refetchOnReconnect: false,
         refetchOnWindowFocus: false,
+        retry: false,
         staleTime: Infinity,
         behavior: {
           onFetch: clearApiNotifications,
