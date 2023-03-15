@@ -6,11 +6,20 @@ export type LabelOutput = 'open' | 'download';
 
 export type LabelPosition = '1' | '2' | '3' | '4';
 
-export interface SelectOption<Value = string | number> {
+interface BaseSelectOption<Value = string | number> {
   disabled?: boolean;
-  label: string;
   value: Value;
 }
+
+export interface SelectOptionWithLabel<Value = string | number> extends BaseSelectOption<Value> {
+  label: string;
+}
+
+export interface SelectOptionWithPlainLabel<Value = string | number> extends BaseSelectOption<Value> {
+  plainLabel: string;
+}
+
+export type SelectOption<Value = string | number> = SelectOptionWithLabel<Value> | SelectOptionWithPlainLabel<Value>;
 
 export interface TabDefinition {
   name: string;

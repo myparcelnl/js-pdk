@@ -59,7 +59,7 @@ export const createShipmentOptionsForm = (order: Plugin.ModelPdkOrder) => {
             field,
             PROP_OPTIONS,
             carriers.map((carrier) => ({
-              label: carrier.data?.human,
+              plainLabel: carrier.data?.human,
               value: carrier.data?.name,
             })),
           );
