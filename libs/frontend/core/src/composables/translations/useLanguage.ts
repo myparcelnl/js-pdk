@@ -1,8 +1,8 @@
 import {Ref, ref} from 'vue';
 import {decodeHtmlEntities} from '../../utils';
+import {globalLogger} from '../../services';
 import {memoize} from 'lodash-unified';
 import {useGlobalContext} from '../context';
-import {useLogger} from '../useLogger';
 
 type UseLanguage = {
   /**
@@ -58,9 +58,8 @@ const memoizedTranslate = memoize((key?: string) => {
 
     translated = cache[key];
   } else {
-    const logger = useLogger();
     // eslint-disable-next-line no-console
-    logger.warn(`Missing translation: ${key}`);
+    globalLogger.warn(`Missing translation: ${key}`);
     missingKeys.value.push(key);
   }
 
@@ -72,9 +71,7 @@ const memoizedGetTranslations = memoize(() => {
   const {translations} = globalContext;
 
   if (!translations) {
-    const logger = useLogger();
-
-    logger.warn('GlobalContext.translations is missing.');
+    globalLogger.warn('GlobalContext.translations is missing.');
   }
 
   return translations;

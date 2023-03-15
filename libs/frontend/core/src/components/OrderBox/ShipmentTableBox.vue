@@ -25,8 +25,8 @@
 <script lang="ts">
 import {defineComponent, ref} from 'vue';
 import {
-  shipmentsExportReturnAction,
   shipmentsDeleteAction,
+  shipmentsExportReturnAction,
   shipmentsFetchAction,
   shipmentsPrintAction,
 } from '../../actions';
