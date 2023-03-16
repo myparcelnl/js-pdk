@@ -16,8 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import {ElementInstance, OptionsProp} from '@myparcel-pdk/frontend-core/src';
-import {useSelectInputContext} from '@myparcel-pdk/frontend-core';
+import {ElementInstance, OptionsProp, useSelectInputContext} from '@myparcel-pdk/frontend-core/src';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{element: ElementInstance<OptionsProp>; modelValue: string | number}>();

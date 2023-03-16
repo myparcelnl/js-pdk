@@ -50,10 +50,10 @@ import {
   ActionDefinition,
   AdminModalKey,
   NotificationContainer,
+  useLanguage,
   useModalElementContext,
 } from '@myparcel-pdk/frontend-core/src';
 import {PropType} from 'vue';
-import {useLanguage} from '@myparcel-pdk/frontend-core';
 
 const props = defineProps({
   /**

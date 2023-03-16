@@ -1,7 +1,7 @@
 import {ComputedRef, Ref, WritableComputedRef, computed, onMounted, watch} from 'vue';
 import {ElementInstance, OptionsProp} from '../types';
 import {get, useVModel} from '@vueuse/core';
-import {SelectOptionWithLabel} from '@myparcel-pdk/common';
+import {SelectOptionWithLabel} from '@myparcel-pdk/common/src';
 import {generateFieldId} from '../utils';
 import {translateSelectOption} from '../helpers';
 import {useLanguage} from './translations';
