@@ -2,6 +2,7 @@ import {FormInstance} from '@myparcel/vue-form-builder/src';
 import {PackageTypeName} from '@myparcel/constants';
 import {SelectOption} from '@myparcel-pdk/common/src';
 import {getCarrierOptions} from './getCarrierOptions';
+import {getPackageTypeTranslation} from '../../../helpers';
 
 export const getPackageTypes = (form?: FormInstance): SelectOption[] => {
   let array = Object.values(PackageTypeName);
@@ -13,7 +14,7 @@ export const getPackageTypes = (form?: FormInstance): SelectOption[] => {
   }
 
   return array.map((name) => ({
-    label: `package_type_${name}`,
+    label: getPackageTypeTranslation(name),
     value: name,
   }));
 };

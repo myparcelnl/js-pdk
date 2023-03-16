@@ -1,2 +1,3 @@
+export * from './getPackageTypeTranslation';
 export * from './prefixComponent';
-export {translateSelectOption} from './translateSelectOption';
+export * from './translateSelectOption';

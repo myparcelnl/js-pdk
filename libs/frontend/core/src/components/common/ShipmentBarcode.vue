@@ -21,33 +21,18 @@
     <span
       v-else
       :title="translate('shipment_barcode')"
-      v-text="shipment.barcode ?? translate('shipment_no_barcode')"></span>
+      v-text="shipment.barcode || translate('shipment_no_barcode')"></span>
   </span>
 </template>
 
-<script lang="ts">
-import {PropType, defineComponent} from 'vue';
+<script setup lang="ts">
 import {useAdminConfig, useLanguage, useShipmentData} from '../../composables';
 import {Shipment} from '@myparcel-pdk/common/src';
 
-export default defineComponent({
-  name: 'ShipmentBarcode',
+const props = defineProps<{shipment: Shipment.ModelShipment}>();
 
-  props: {
-    shipment: {
-      type: Object as PropType<Shipment.ModelShipment>,
-      required: true,
-    },
-  },
+const {translate} = useLanguage();
 
-  setup: (props) => {
-    const {translate} = useLanguage();
-
-    return {
-      ...useShipmentData(props.shipment),
-      translate,
-      config: useAdminConfig(),
-    };
-  },
-});
+const {useAssetUrl, carrier} = useShipmentData(props.shipment);
+const config = useAdminConfig();
 </script>

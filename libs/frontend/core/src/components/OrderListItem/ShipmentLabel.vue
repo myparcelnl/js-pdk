@@ -1,5 +1,8 @@
 <template>
-  <PdkShipmentLabelWrapper :loading="loading">
+  <PdkShipmentLabelWrapper
+    :loading="loading"
+    :class="config?.cssUtilities?.cursorDefault"
+    @click.stop>
     <div :class="config?.cssUtilities?.displayFlex">
       <ShipmentBarcode :shipment="shipment" />
 
@@ -11,36 +14,27 @@
         :actions="actions" />
     </div>
 
-    <ShipmentStatus :shipment="shipment" />
+    <div :class="config?.cssUtilities?.displayFlex">
+      <ShipmentPackageType
+        :shipment="shipment"
+        :class="config?.cssUtilities?.flexGrow" />
+
+      <div :class="config?.cssUtilities?.flexGrow">
+        <ShipmentStatus :shipment="shipment" />
+      </div>
+    </div>
   </PdkShipmentLabelWrapper>
 </template>
 
-<script lang="ts">
-import {PropType, defineComponent} from 'vue';
+<script setup lang="ts">
 import {useAdminConfig, useShipmentData} from '../../composables';
-import {Shipment} from '@myparcel-pdk/common/src';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
+import {Shipment as ShipmentNamespace} from '@myparcel-pdk/common/src';
+import ShipmentPackageType from '../common/ShipmentPackageType.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
 
-export default defineComponent({
-  name: 'ShipmentLabel',
-  components: {
-    ShipmentStatus,
-    ShipmentBarcode,
-  },
+const props = defineProps<{shipment: ShipmentNamespace.ModelShipment}>();
 
-  props: {
-    shipment: {
-      type: Object as PropType<Shipment.ModelShipment>,
-      required: true,
-    },
-  },
-
-  setup: (props) => {
-    return {
-      ...useShipmentData(props.shipment),
-      config: useAdminConfig(),
-    };
-  },
-});
+const {loading, actions} = useShipmentData(props.shipment);
+const config = useAdminConfig();
 </script>
