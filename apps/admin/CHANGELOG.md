@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.27](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.26...@myparcel-pdk/admin@1.0.0-alpha.27) "@myparcel-pdk/admin" (2023-03-16)
+
+
+### Bug Fixes
+
+* **core:** fix opening labels in a new window ([6a5163a](https://github/myparcelnl/js-pdk/commit/6a5163a00c74be221931fcf76223dc5c2b1fe537))
+
+
+
+
 ## [1.0.0-alpha.25](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.24...@myparcel-pdk/admin@1.0.0-alpha.25) "@myparcel-pdk/admin" (2023-03-15)
 
 

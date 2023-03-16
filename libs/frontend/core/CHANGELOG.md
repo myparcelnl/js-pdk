@@ -2,6 +2,19 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.28](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.27...@myparcel-pdk/frontend-core@1.0.0-alpha.28) "@myparcel-pdk/frontend-core" (2023-03-16)
+
+
+### Bug Fixes
+
+* **core:** catch errors in afterHandle as well ([9d7ab67](https://github/myparcelnl/js-pdk/commit/9d7ab670745539af27eecebfb24461ee5cdaa39e))
+* **core:** fix opening labels in a new window ([6a5163a](https://github/myparcelnl/js-pdk/commit/6a5163a00c74be221931fcf76223dc5c2b1fe537))
+* **core:** make relative date transform first letter to uppercase ([4588f7a](https://github/myparcelnl/js-pdk/commit/4588f7a737ba4d5e86a1be4e24c857c10287d4f0))
+* update shipment labels in order list ([0b1e0ad](https://github/myparcelnl/js-pdk/commit/0b1e0ad0701b9950d387e54cd2e6750a640d7a91))
+
+
+
+
 ## [1.0.0-alpha.27](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.26...@myparcel-pdk/frontend-core@1.0.0-alpha.27) "@myparcel-pdk/frontend-core" (2023-03-16)
 
 

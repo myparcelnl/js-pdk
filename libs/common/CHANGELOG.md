@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.16](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.15...@myparcel-pdk/common@1.0.0-alpha.16) "@myparcel-pdk/common" (2023-03-16)
+
+
+### Bug Fixes
+
+* **core:** fix opening labels in a new window ([6a5163a](https://github/myparcelnl/js-pdk/commit/6a5163a00c74be221931fcf76223dc5c2b1fe537))
+* update shipment labels in order list ([0b1e0ad](https://github/myparcelnl/js-pdk/commit/0b1e0ad0701b9950d387e54cd2e6750a640d7a91))
+
+
+
+
 ## [1.0.0-alpha.15](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.14...@myparcel-pdk/common@1.0.0-alpha.15) "@myparcel-pdk/common" (2023-03-15)
 
 
