@@ -33,8 +33,6 @@ export const useFormatter = (
   };
 
   return {
-    getFormatters,
-
     format: (format, input) => {
       const formatters = getFormatters(locale);
       const formatter = formatters[format];
@@ -45,5 +43,9 @@ export const useFormatter = (
 
       return formatter(input);
     },
+
+    formats,
+
+    getFormatters,
   };
 };

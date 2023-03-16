@@ -3,6 +3,7 @@ import {FormatterFunction, FormatterTranslateFunction} from '../formatter.types'
 import {createLongDateFormat} from './createLongDateFormat';
 import {createRelativeTimeFormat} from './createRelativeTimeFormat';
 import {parseDate} from './parseDate';
+import {upperFirst} from 'lodash-unified';
 
 let formatDateLong: Intl.DateTimeFormat;
 
@@ -22,7 +23,7 @@ export const createDefaultDateRelativeFormatter = (
   formatDateLong ??= createLongDateFormat(locale);
   formatDateRelative ??= createRelativeTimeFormat(locale);
 
-  return (input) => {
+  const getFormattedDate: FormatterFunction = (input) => {
     const parsedDate = parseDate(input);
     const diff = parsedDate.getTime() - Date.now();
 
@@ -47,6 +48,10 @@ export const createDefaultDateRelativeFormatter = (
     }
 
     return translate(`time_seconds_${diff > 0 ? 'future' : 'past'}`);
+  };
+
+  return (input) => {
+    return upperFirst(getFormattedDate(input));
   };
 };
 

@@ -1,5 +1,5 @@
+import {Format, FormatterTranslateFunction} from './formatter.types';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
-import {Format} from './formatter.types';
 import {INJECT_ADMIN_INSTANCE} from '../../data';
 import {createAdminConfig} from '../../pdk';
 import {createLogger} from '../../services';
@@ -31,6 +31,8 @@ describe('format strings', () => {
   });
 
   afterEach(() => {
+    const formatter = useFormatter('');
+    formatter.formats.value = {};
     vi.restoreAllMocks();
   });
 
@@ -49,7 +51,7 @@ describe('format strings', () => {
     },
     {
       date: new Date('2022-12-04T12:00:00.000Z'),
-      expectation: 'gisteren',
+      expectation: 'Gisteren',
     },
     {
       date: new Date('2022-12-05T09:00:00.000Z'),
@@ -69,31 +71,31 @@ describe('format strings', () => {
     },
     {
       date: new Date('2022-12-05T11:59:30.000Z'),
-      expectation: 'time_seconds_past',
+      expectation: 'Time_seconds_past',
     },
     {
       date: new Date('2022-12-05T12:00:00.001Z'),
-      expectation: 'time_seconds_future',
+      expectation: 'Time_seconds_future',
     },
     {
       date: new Date('2022-12-05T12:01:00.000Z'),
-      expectation: 'over 1 minuut',
+      expectation: 'Over 1 minuut',
     },
     {
       date: new Date('2022-12-05T12:30:00.000Z'),
-      expectation: 'over 30 minuten',
+      expectation: 'Over 30 minuten',
     },
     {
       date: new Date('2022-12-05T13:00:00.000Z'),
-      expectation: 'over 1 uur',
+      expectation: 'Over 1 uur',
     },
     {
       date: new Date('2022-12-11T12:00:00.000Z'),
-      expectation: 'over 6 dagen',
+      expectation: 'Over 6 dagen',
     },
     {
       date: new Date('2022-12-12T12:00:00.000Z'),
-      expectation: 'over 7 dagen',
+      expectation: 'Over 7 dagen',
     },
     {
       date: new Date('2022-12-19T12:00:00.000Z'),
@@ -104,6 +106,33 @@ describe('format strings', () => {
     dateSpy.mockImplementation(() => fakeDate.getTime());
 
     const formatter = useFormatter('nl-NL');
+
+    expect(formatter.format(Format.DateRelative, date)).toBe(expectation);
+
+    dateSpy.mockRestore();
+  });
+
+  it.each([
+    {
+      date: new Date('2022-12-05T11:59:30.000Z'),
+      expectation: 'A few seconds ago',
+    },
+    {
+      date: new Date('2022-12-05T12:00:00.001Z'),
+      expectation: 'In a few seconds',
+    },
+  ])('can translate strings', ({date, expectation}) => {
+    const dateSpy = vi.spyOn(global.Date, 'now');
+    dateSpy.mockImplementation(() => fakeDate.getTime());
+
+    const translations: Record<string, string> = {
+      time_seconds_past: 'A few seconds ago',
+      time_seconds_future: 'In a few seconds',
+    };
+
+    const translateFunction: FormatterTranslateFunction = (string) => (string ? translations[string] : '');
+
+    const formatter = useFormatter('nl-NL', translateFunction);
 
     expect(formatter.format(Format.DateRelative, date)).toBe(expectation);
 
