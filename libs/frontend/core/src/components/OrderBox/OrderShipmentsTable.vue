@@ -5,7 +5,7 @@
         <PdkTableCol component="th">
           <ShipmentBulkSelectCheckbox
             v-model="bulk"
-            :shipment-count="shipments?.length" />
+            :shipment-count="query.data.shipments?.length" />
         </PdkTableCol>
 
         <PdkTableCol component="th">{{ translate('order_labels_column_track_trace') }}</PdkTableCol>
@@ -24,7 +24,7 @@
 
     <template #default>
       <OrderShipmentsTableRow
-        v-for="shipment in shipments"
+        v-for="shipment in query.data.shipments"
         :key="`row_${shipment.id}_${shipment.updated}`"
         v-model="bulk"
         :shipment-id="shipment.id" />
@@ -34,10 +34,9 @@
 
 <script setup lang="ts">
 import {computed, ref} from 'vue';
-import {useAdminConfig, useLanguage, useOrder, useOrderShipments} from '../../composables';
+import {useLanguage, useOrder} from '../../composables';
 import OrderShipmentsTableRow from './OrderShipmentsTableRow.vue';
 import ShipmentBulkSelectCheckbox from './ShipmentBulkSelectCheckbox.vue';
-import {get} from '@vueuse/core';
 
 const emit = defineEmits(['select']);
 
@@ -57,9 +56,4 @@ const selectedRows = computed({
 });
 
 const bulk = ref([]);
-
-const shipmentsQueries = computed(() => useOrderShipments(query));
-const shipments = computed(() => shipmentsQueries.value.map((query) => get(query.data)));
-
-const config = useAdminConfig();
 </script>

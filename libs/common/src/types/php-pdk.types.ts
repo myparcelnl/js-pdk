@@ -410,15 +410,7 @@ export namespace Plugin {
     shop: Account.ModelShop;
   };
 
-  export type ModelContextOrderDataContext = ModelPdkOrder & {
-    externalIdentifier?: string;
-    customsDeclaration?: Shipment.ModelCustomsDeclaration;
-    deliveryOptions?: Shipment.ModelDeliveryOptions;
-    recipient?: Base.ModelContactDetails;
-    sender?: Base.ModelContactDetails;
-    shipments?: Shipment.ShipmentCollection;
-    label?: Shipment.ModelLabel;
-  };
+  export type ModelContextOrderDataContext = ModelPdkOrder;
 
   export type Field = {
     $component: AdminComponent;
@@ -456,7 +448,6 @@ export namespace Plugin {
     deliveryOptions?: Shipment.ModelDeliveryOptions;
     exported: boolean;
     externalIdentifier: string;
-    label?: Shipment.ModelLabel;
     lines?: PdkOrderLineCollection;
     orderPrice: number;
     orderPriceAfterVat: number;
@@ -466,7 +457,7 @@ export namespace Plugin {
     shipmentPrice: number;
     shipmentPriceAfterVat: number;
     shipmentVat: number;
-    shipments?: Shipment.ShipmentCollection;
+    shipments: Shipment.ShipmentCollection;
     totalPrice: number;
     totalPriceAfterVat: number;
     totalVat: number;
@@ -739,11 +730,6 @@ export namespace Shipment {
     weekday: number;
   };
 
-  export type ModelLabel = {
-    link: string;
-    pdf: string;
-  };
-
   export type ModelPackageType = {
     id?: number;
     name?: string;
@@ -794,12 +780,12 @@ export namespace Shipment {
     partnerTrackTraces: unknown[];
     physicalProperties?: ModelPhysicalProperties;
     price: Base.ModelCurrency;
-    recipient?: Base.ModelContactDetails;
+    recipient: Base.ModelContactDetails;
     sender?: Base.ModelContactDetails;
     shipmentType?: number;
     status?: number;
     deleted?: DateTime;
-    updated?: DateTime;
+    updated: null | DateTime;
     created?: DateTime;
     createdBy?: number;
     modified?: DateTime;

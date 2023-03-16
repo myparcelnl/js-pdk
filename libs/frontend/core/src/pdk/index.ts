@@ -3,7 +3,7 @@ export * from './createAdminConfig';
 export * from './createInjectionPlugin';
 export * from './createPdkAdmin';
 export * from './createPdkAdminPlugin';
-export * from './fillOrderQueryData';
+export * from './fillShipmentsQueryData';
 export * from './instance';
 export * from './renderMap';
 export * from './setupAdminApp';

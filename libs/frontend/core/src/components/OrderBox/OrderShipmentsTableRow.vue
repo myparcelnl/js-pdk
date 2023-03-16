@@ -36,8 +36,8 @@ import {PropType, computed} from 'vue';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
-import {useVModel} from '@vueuse/core';
 import {useQueryStore} from '../../stores';
+import {useVModel} from '@vueuse/core';
 
 const props = defineProps({
   shipmentId: {

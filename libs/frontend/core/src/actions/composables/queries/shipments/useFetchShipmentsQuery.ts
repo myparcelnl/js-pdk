@@ -27,7 +27,7 @@ export const useFetchShipmentsQuery = (id?: number) => {
     },
     {
       ...queryClient.defaultQueryOptions(),
-      onSuccess: (data) => {
+      onSuccess(data) {
         fillShipmentsQueryData(queryClient, data);
       },
     },

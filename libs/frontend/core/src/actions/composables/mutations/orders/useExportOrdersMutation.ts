@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import {BackendEndpoint, Plugin} from '@myparcel-pdk/common/src';
 import {EndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {MutationMode, getCallbackForMutationMode, getModalMutationOptions} from '../../../../services';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
-import {fillOrderQueryData} from '../../../../pdk';
+import {fillShipmentsQueryData} from '../../../../pdk';
+import {toArray} from '@myparcel/ts-utils';
 import {useModalStore} from '../../../../stores';
 import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';
@@ -33,7 +34,10 @@ export const useExportOrdersMutation = (mode: MutationMode = MutationMode.Defaul
 
       async onSuccess(data, input) {
         useModalStore().close();
-        fillOrderQueryData(queryClient, data);
+
+        (toArray(data) as Plugin.ModelContextOrderDataContext[]).forEach((order) => {
+          fillShipmentsQueryData(queryClient, order.shipments.slice(-1), order);
+        });
 
         if (input.form) {
           await input.form?.reset();

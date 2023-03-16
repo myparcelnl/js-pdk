@@ -2,7 +2,8 @@
 import {EndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
-import {fillOrderQueryData} from '../../../../pdk';
+import {setQueryOrder} from '../../../../helpers';
+import {toArray} from '@myparcel/ts-utils';
 import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';
 
@@ -26,7 +27,9 @@ export const useUpdateOrdersMutation = () => {
     {
       ...queryClient.defaultMutationOptions(),
       onSuccess(orders) {
-        fillOrderQueryData(queryClient, orders);
+        toArray(orders).forEach((order) => {
+          setQueryOrder(queryClient, order);
+        });
       },
     },
   );

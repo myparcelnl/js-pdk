@@ -4,7 +4,7 @@ import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {PdkAppPlugin} from './plugins.types';
 import {createInstanceContext} from '../createInstanceContext';
 import {createQueryClient} from '../createQueryClient';
-import {fillOrderQueryData} from '../../fillOrderQueryData';
+import {fillShipmentsQueryData} from '../../fillShipmentsQueryData';
 
 let queryClient: QueryClient;
 
@@ -30,9 +30,11 @@ export const createVueQueryPlugin: PdkAppPlugin = ({context, logger}) => {
       const instanceContext = createInstanceContext(context);
       queryClient.setQueryData([BackendEndpoint.FetchContext, AdminContextKey.Instance], instanceContext);
 
-      // Add each order to the query client
+      // Add each order and its shipments to the query client
       if (context.orderData) {
-        fillOrderQueryData(queryClient, context.orderData);
+        context.orderData.forEach((order) => {
+          fillShipmentsQueryData(queryClient, order.shipments, order);
+        });
       }
 
       app.use(VueQueryPlugin, {queryClient});
