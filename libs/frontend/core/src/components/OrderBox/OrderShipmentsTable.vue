@@ -23,19 +23,8 @@
     </template>
 
     <template #default>
-      <PdkTableRow
-        v-if="!shipments"
-        key="row_no_shipments">
-        <PdkTableCol colspan="6">
-          <div :class="config?.cssUtilities?.textCenter">
-            <PdkIcon icon="warn" />
-            {{ translate('no_shipments') }}
-          </div>
-        </PdkTableCol>
-      </PdkTableRow>
-
       <OrderShipmentsTableRow
-        v-for="shipment in query.data?.shipments.map((item) => item.id)"
+        v-for="shipment in shipments"
         :key="`row_${shipment.id}_${shipment.updated}`"
         v-model="bulk"
         :shipment-id="shipment.id" />
