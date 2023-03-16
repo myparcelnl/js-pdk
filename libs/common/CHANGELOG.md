@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.17](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.16...@myparcel-pdk/common@1.0.0-alpha.17) "@myparcel-pdk/common" (2023-03-16)
+
+
+### Bug Fixes
+
+* **core:** detach shipments from orders ([ec61d47](https://github/myparcelnl/js-pdk/commit/ec61d47651c0a3ab6687146ec35559191f82ba3f))
+
+
+
+
 ## [1.0.0-alpha.16](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.15...@myparcel-pdk/common@1.0.0-alpha.16) "@myparcel-pdk/common" (2023-03-16)
 
 
