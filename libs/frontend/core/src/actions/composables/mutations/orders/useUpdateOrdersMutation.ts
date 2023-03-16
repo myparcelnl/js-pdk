@@ -2,6 +2,7 @@
 import {EndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import {fillOrderQueryData} from '../../../../pdk';
 import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';
 
@@ -22,6 +23,11 @@ export const useUpdateOrdersMutation = () => {
       // @ts-expect-error custom endpoints are not typed correctly
       return pdk.updateOrders(options);
     },
-    queryClient.defaultMutationOptions(),
+    {
+      ...queryClient.defaultMutationOptions(),
+      onSuccess(orders) {
+        fillOrderQueryData(queryClient, orders);
+      },
+    },
   );
 };
