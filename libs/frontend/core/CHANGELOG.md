@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.27](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.26...@myparcel-pdk/frontend-core@1.0.0-alpha.27) "@myparcel-pdk/frontend-core" (2023-03-16)
+
+
+### Bug Fixes
+
+* do not pass form when exporting from order list ([b4d1094](https://github/myparcelnl/js-pdk/commit/b4d10945663f652fa5edd8a10a39bb560a2eb7c8))
+* update query client after updating orders ([cfab9c7](https://github/myparcelnl/js-pdk/commit/cfab9c7666c4348f8323900f226793e8ded32661))
+
+
+
+
 ## [1.0.0-alpha.26](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.25...@myparcel-pdk/frontend-core@1.0.0-alpha.26) "@myparcel-pdk/frontend-core" (2023-03-15)
 
 
