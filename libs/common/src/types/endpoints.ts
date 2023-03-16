@@ -48,6 +48,11 @@ export enum BackendEndpoint {
   /**
    * Tell the plugin to update given shipments by fetching data from MyParcel.
    */
+  UpdateShipments = 'updateShipments',
+
+  /**
+   * Get shipment data from the plugin.
+   */
   FetchShipments = 'fetchShipments',
 
   /**
@@ -92,7 +97,7 @@ export const BACKEND_ENDPOINTS_ORDERS = [
 export const BACKEND_ENDPOINTS_SHIPMENTS = [
   BackendEndpoint.DeleteShipments,
   BackendEndpoint.PrintShipments,
-  BackendEndpoint.FetchShipments,
+  BackendEndpoint.UpdateShipments,
 ] as const;
 
 export const BACKEND_ENDPOINTS_WEBHOOKS = [

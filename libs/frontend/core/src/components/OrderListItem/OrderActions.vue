@@ -14,7 +14,7 @@ import {AnyAdminAction} from '../../types';
 import {computed} from 'vue';
 import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
-import {useOrder} from '../../composables/useOrder';
+import {useOrder} from '../../composables';
 
 const query = useOrder();
 

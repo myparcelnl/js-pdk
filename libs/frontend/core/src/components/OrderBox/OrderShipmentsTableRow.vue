@@ -1,18 +1,21 @@
 <template>
-  <PdkTableRow>
+  <PdkTableRow
+    :class="{
+      [config?.cssUtilities?.animationLoading]: query.isLoading,
+    }">
     <PdkTableCol>
       <PdkCheckboxInput
         v-model="selected"
         :element="checkboxElement"
-        :value="shipment.id" />
+        :value="shipmentId" />
     </PdkTableCol>
 
     <PdkTableCol>
-      <ShipmentBarcode :shipment="shipment" />
+      <ShipmentBarcode :shipment-id="shipmentId" />
     </PdkTableCol>
 
     <PdkTableCol>
-      <ShipmentStatus :shipment="shipment" />
+      <ShipmentStatus :shipment-id="shipmentId" />
     </PdkTableCol>
 
     <PdkTableCol>
@@ -28,17 +31,16 @@
 </template>
 
 <script setup lang="ts">
-import {Format, useLocalizedFormatter, useShipmentData} from '../../composables';
+import {Format, useAdminConfig, useLocalizedFormatter, useShipmentData} from '../../composables';
 import {PropType, computed} from 'vue';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
-import {Shipment} from '@myparcel-pdk/common/src';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
 import {useVModel} from '@vueuse/core';
 
 const props = defineProps({
-  shipment: {
-    type: Object as PropType<Required<Shipment.ModelShipment>>,
+  shipmentId: {
+    type: Number,
     required: true,
   },
 
@@ -54,18 +56,20 @@ const emit = defineEmits(['update:modelValue']);
 const selected = useVModel(props, undefined, emit);
 
 const checkboxElement = {
-  id: `shipment_${props.shipment.id}`,
+  id: `shipment_${props.shipmentId}`,
   ref: selected,
   form: {
-    name: `shipment-${props.shipment.id}`,
+    name: `shipment-${props.shipmentId}`,
   },
 } as unknown as InteractiveElementInstance;
 
 const formatter = useLocalizedFormatter();
 
-const {actions} = useShipmentData(props.shipment);
+const {actions, shipment, query} = useShipmentData(props.shipmentId);
 
 const shipmentUpdatedAt = computed(() => {
-  return props.shipment.updated ? formatter.format(Format.DateRelative, props.shipment.updated) : '–';
+  return shipment.value.updated ? formatter.format(Format.DateRelative, shipment.value.updated) : '–';
 });
+
+const config = useAdminConfig();
 </script>

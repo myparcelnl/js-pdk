@@ -54,6 +54,7 @@ export type AdminConfiguration = {
    * Css classes for common utility usage.
    */
   cssUtilities?: {
+    animationLoading?: string;
     animationSpin?: string;
     cursorDefault?: string;
     cursorPointer?: string;

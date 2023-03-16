@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
-import {useOrders} from '../../composables/useOrder';
+import {useOrders} from '../../composables';
 
 const queries = useOrders();
 </script>

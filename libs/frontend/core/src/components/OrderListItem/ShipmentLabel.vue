@@ -4,7 +4,7 @@
     :class="config?.cssUtilities?.cursorDefault"
     @click.stop>
     <div :class="config?.cssUtilities?.displayFlex">
-      <ShipmentBarcode :shipment="shipment" />
+      <ShipmentBarcode :shipment-id="shipmentId" />
 
       <PdkDropdownButton
         :hide-text="true"
@@ -16,11 +16,11 @@
 
     <div :class="config?.cssUtilities?.displayFlex">
       <ShipmentPackageType
-        :shipment="shipment"
+        :shipment-id="shipmentId"
         :class="config?.cssUtilities?.flexGrow" />
 
       <div :class="config?.cssUtilities?.flexGrow">
-        <ShipmentStatus :shipment="shipment" />
+        <ShipmentStatus :shipment-id="shipmentId" />
       </div>
     </div>
   </PdkShipmentLabelWrapper>
@@ -29,12 +29,11 @@
 <script setup lang="ts">
 import {useAdminConfig, useShipmentData} from '../../composables';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
-import {Shipment as ShipmentNamespace} from '@myparcel-pdk/common/src';
 import ShipmentPackageType from '../common/ShipmentPackageType.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
 
-const props = defineProps<{shipment: ShipmentNamespace.ModelShipment}>();
+const props = defineProps<{shipmentId: number}>();
 
-const {loading, actions} = useShipmentData(props.shipment);
+const {loading, actions} = useShipmentData(props.shipmentId);
 const config = useAdminConfig();
 </script>

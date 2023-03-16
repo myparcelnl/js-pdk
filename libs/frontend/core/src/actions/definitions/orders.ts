@@ -9,7 +9,7 @@ import {ActionParameters, AdminAction, AdminIcon, AdminModalKey} from '../../typ
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
-import {shipmentsFetchAction} from './shipments';
+import {shipmentsUpdateAction} from './shipments';
 import {useModalStore} from '../../stores';
 
 /**
@@ -98,7 +98,7 @@ export const ordersPrintAction = defineAction({
   async afterHandle(context) {
     await openOrPrintPdf(context);
 
-    void executeNextAction(context, shipmentsFetchAction, context.parameters);
+    void executeNextAction(context, shipmentsUpdateAction, context.parameters);
 
     return context.response;
   },

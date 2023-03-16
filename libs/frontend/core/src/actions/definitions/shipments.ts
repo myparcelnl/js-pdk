@@ -14,11 +14,11 @@ export const shipmentsExportReturnAction = defineAction({
 /**
  * Fetch shipments from the MyParcel Api.
  */
-export const shipmentsFetchAction = defineAction({
-  name: AdminAction.ShipmentsFetch,
+export const shipmentsUpdateAction = defineAction({
+  name: AdminAction.ShipmentsUpdate,
   icon: AdminIcon.Refresh,
   label: 'action_refresh',
-  handler: createMutator(BackendEndpoint.FetchShipments),
+  handler: createMutator(BackendEndpoint.UpdateShipments),
 });
 
 /**
@@ -43,7 +43,7 @@ export const shipmentsPrintAction = defineAction({
   async afterHandle(context) {
     await openOrPrintPdf(context);
 
-    void executeNextAction(context, shipmentsFetchAction, {
+    void executeNextAction(context, shipmentsUpdateAction, {
       orderIds: context.parameters?.orderIds,
       shipmentIds: context.parameters?.shipmentIds,
     });

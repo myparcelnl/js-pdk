@@ -30,13 +30,12 @@ import {
   ordersPrintAction,
   ordersUpdateAction,
 } from '../../actions';
-import {useLanguage, usePluginSettings, useStoreQuery} from '../../composables';
+import {useLanguage, useOrder, usePluginSettings, useStoreQuery} from '../../composables';
 import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common/src';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
 import {computed} from 'vue';
 import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
-import {useOrder} from '../../composables/useOrder';
 
 const query = useOrder();
 

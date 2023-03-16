@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {encodeArrayParameter} from '../../../../utils';
-import {fillOrderQueryData} from '../../../../pdk';
+import {fillShipmentsQueryData} from '../../../../pdk';
 import {usePdkAdminApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';
@@ -10,11 +10,11 @@ export const useUpdateShipmentsMutation = () => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(
-    BackendEndpoint.FetchShipments,
+    BackendEndpoint.UpdateShipments,
     (input) => {
       const pdk = usePdkAdminApi();
 
-      return pdk.fetchShipments({
+      return pdk.updateShipments({
         // @ts-expect-error todo
         parameters: {
           orderIds: encodeArrayParameter(input.orderIds),
@@ -25,7 +25,7 @@ export const useUpdateShipmentsMutation = () => {
     {
       ...queryClient.defaultMutationOptions(),
       onSuccess: (data) => {
-        fillOrderQueryData(queryClient, data);
+        fillShipmentsQueryData(queryClient, data);
       },
     },
   );

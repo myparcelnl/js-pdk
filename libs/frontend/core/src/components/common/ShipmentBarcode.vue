@@ -27,12 +27,11 @@
 
 <script setup lang="ts">
 import {useAdminConfig, useLanguage, useShipmentData} from '../../composables';
-import {Shipment} from '@myparcel-pdk/common/src';
 
-const props = defineProps<{shipment: Shipment.ModelShipment}>();
+const props = defineProps<{shipmentId: number}>();
 
 const {translate} = useLanguage();
 
-const {useAssetUrl, carrier} = useShipmentData(props.shipment);
+const {useAssetUrl, carrier, shipment} = useShipmentData(props.shipmentId);
 const config = useAdminConfig();
 </script>

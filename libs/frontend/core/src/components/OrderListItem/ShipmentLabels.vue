@@ -3,17 +3,18 @@
     :name="config?.transitions?.shipmentBox"
     appear>
     <ShipmentLabel
-      v-for="shipment in query.data?.shipments.filter((item) => !item.deleted)"
+      v-for="shipment in shipments"
       :key="`${query.data?.externalIdentifier}_${shipment.id}`"
-      :shipment="shipment" />
+      :shipment-id="shipment.id" />
   </TransitionGroup>
 </template>
 
 <script setup lang="ts">
+import {useAdminConfig, useOrder, useOrderShipments} from '../../composables';
 import ShipmentLabel from './ShipmentLabel.vue';
-import {useAdminConfig} from '../../composables';
-import {useOrder} from '../../composables/useOrder';
 
 const query = useOrder();
 const config = useAdminConfig();
+
+const shipments = useOrderShipments(query);
 </script>

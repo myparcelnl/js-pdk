@@ -9,6 +9,7 @@ import {
   useExportReturnMutation,
   useFetchContextQuery,
   useFetchOrdersQuery,
+  useFetchShipmentsQuery,
   useFetchWebhooksQuery,
   usePrintOrdersMutation,
   usePrintShipmentsMutation,
@@ -23,11 +24,13 @@ import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
 import {getOrderId} from '../utils';
 import {toArray} from '@myparcel/ts-utils';
+import {get as vuGet} from '@vueuse/core';
 
 export type QueryKey =
   | BackendEndpoint
   | `${BackendEndpoint.FetchContext}.${AdminContextKey}`
-  | `${BackendEndpoint.FetchOrders}.${string}`;
+  | `${BackendEndpoint.FetchOrders}.${string}`
+  | `${BackendEndpoint.FetchShipments}.${string}`;
 
 export type ContextQuery<C extends AdminContextKey = AdminContextKey.Dynamic> = UseQueryReturnType<
   AdminContext<C>,
@@ -40,6 +43,10 @@ export type ResolvedQuery<E extends QueryKey = BackendEndpoint> = E extends Back
   ? C extends string
     ? ReturnType<typeof useFetchOrdersQuery>
     : never
+  : E extends `${BackendEndpoint.FetchShipments}.${infer C}`
+  ? C extends string
+    ? ReturnType<typeof useFetchShipmentsQuery>
+    : never
   : E extends `${BackendEndpoint.FetchContext}.${infer C}`
   ? C extends AdminContextKey
     ? ContextQuery<C>
@@ -48,36 +55,38 @@ export type ResolvedQuery<E extends QueryKey = BackendEndpoint> = E extends Back
 
 export type QueryObject<I extends QueryKey = BackendEndpoint> = Record<I, ResolvedQuery<I>>;
 
-type EndpointQuery<E extends BackendEndpoint = BackendEndpoint> = E extends BackendEndpoint.FetchContext
-  ? ReturnType<typeof useFetchContextQuery>
-  : E extends BackendEndpoint.UpdateAccount
-  ? ReturnType<typeof useUpdateAccountMutation>
-  : E extends BackendEndpoint.ExportOrders
-  ? ReturnType<typeof useExportOrdersMutation>
-  : E extends BackendEndpoint.FetchOrders
-  ? ReturnType<typeof useFetchOrdersQuery>
-  : E extends BackendEndpoint.PrintOrders
-  ? ReturnType<typeof usePrintOrdersMutation>
-  : E extends BackendEndpoint.UpdateOrders
-  ? ReturnType<typeof useUpdateOrdersMutation>
-  : E extends BackendEndpoint.ExportReturn
-  ? ReturnType<typeof useExportReturnMutation>
+type EndpointQuery<E extends BackendEndpoint = BackendEndpoint> = E extends BackendEndpoint.CreateWebhooks
+  ? ReturnType<typeof useCreateWebhooksMutation>
   : E extends BackendEndpoint.DeleteShipments
   ? ReturnType<typeof useDeleteShipmentsMutation>
+  : E extends BackendEndpoint.DeleteWebhooks
+  ? ReturnType<typeof useDeleteWebhooksMutation>
+  : E extends BackendEndpoint.ExportOrders
+  ? ReturnType<typeof useExportOrdersMutation>
+  : E extends BackendEndpoint.ExportReturn
+  ? ReturnType<typeof useExportReturnMutation>
+  : E extends BackendEndpoint.FetchContext
+  ? ReturnType<typeof useFetchContextQuery>
+  : E extends BackendEndpoint.FetchOrders
+  ? ReturnType<typeof useFetchOrdersQuery>
   : E extends BackendEndpoint.FetchShipments
-  ? ReturnType<typeof useUpdateShipmentsMutation>
+  ? ReturnType<typeof useFetchShipmentsQuery>
+  : E extends BackendEndpoint.FetchWebhooks
+  ? ReturnType<typeof useFetchWebhooksQuery>
+  : E extends BackendEndpoint.PrintOrders
+  ? ReturnType<typeof usePrintOrdersMutation>
   : E extends BackendEndpoint.PrintShipments
   ? ReturnType<typeof usePrintShipmentsMutation>
+  : E extends BackendEndpoint.UpdateAccount
+  ? ReturnType<typeof useUpdateAccountMutation>
+  : E extends BackendEndpoint.UpdateOrders
+  ? ReturnType<typeof useUpdateOrdersMutation>
   : E extends BackendEndpoint.UpdatePluginSettings
   ? ReturnType<typeof useUpdatePluginSettingsMutation>
   : E extends BackendEndpoint.UpdateProductSettings
   ? ReturnType<typeof useUpdatePluginSettingsMutation>
-  : E extends BackendEndpoint.CreateWebhooks
-  ? ReturnType<typeof useCreateWebhooksMutation>
-  : E extends BackendEndpoint.DeleteWebhooks
-  ? ReturnType<typeof useDeleteWebhooksMutation>
-  : E extends BackendEndpoint.FetchWebhooks
-  ? ReturnType<typeof useFetchWebhooksQuery>
+  : E extends BackendEndpoint.UpdateShipments
+  ? ReturnType<typeof useUpdateShipmentsMutation>
   : never;
 
 // eslint-disable-next-line max-lines-per-function
@@ -134,7 +143,13 @@ export const useQueryStore = defineStore('query', () => {
       }
 
       toArray(id).forEach((orderId) => {
-        register(`${BackendEndpoint.FetchOrders}.${orderId}`, useFetchOrdersQuery(orderId));
+        const ordersQuery = useFetchOrdersQuery(orderId);
+
+        register(`${BackendEndpoint.FetchOrders}.${orderId}`, ordersQuery);
+
+        vuGet(ordersQuery.data)?.shipments?.forEach((shipment) => {
+          register(`${BackendEndpoint.FetchShipments}.${shipment.id}`, useFetchShipmentsQuery(shipment.id));
+        });
       });
 
       register(BackendEndpoint.FetchOrders, useFetchOrdersQuery());
@@ -144,7 +159,7 @@ export const useQueryStore = defineStore('query', () => {
 
       register(BackendEndpoint.DeleteShipments, useDeleteShipmentsMutation());
       register(BackendEndpoint.PrintShipments, usePrintShipmentsMutation());
-      register(BackendEndpoint.FetchShipments, useUpdateShipmentsMutation());
+      register(BackendEndpoint.UpdateShipments, useUpdateShipmentsMutation());
 
       register(BackendEndpoint.ExportReturn, useExportReturnMutation());
     },

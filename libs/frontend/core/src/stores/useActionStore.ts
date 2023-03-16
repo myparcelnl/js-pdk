@@ -15,8 +15,8 @@ import {
   ordersUpdateAction,
   shipmentsDeleteAction,
   shipmentsExportReturnAction,
-  shipmentsFetchAction,
   shipmentsPrintAction,
+  shipmentsUpdateAction,
 } from '../actions';
 import {defineStore} from 'pinia';
 import {usePluginSettings} from '../composables';
@@ -75,7 +75,7 @@ export const useActionStore = defineStore('actions', () => {
               shipmentsExportReturnAction,
               shipmentsExportReturnAction,
               shipmentsDeleteAction,
-              shipmentsFetchAction,
+              shipmentsUpdateAction,
               shipmentsPrintAction,
             ]),
       ]);

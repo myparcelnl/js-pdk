@@ -27,14 +27,13 @@ import {defineComponent, ref} from 'vue';
 import {
   shipmentsDeleteAction,
   shipmentsExportReturnAction,
-  shipmentsFetchAction,
   shipmentsPrintAction,
+  shipmentsUpdateAction,
 } from '../../actions';
 import OrderShipmentsTable from './OrderShipmentsTable.vue';
 import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
-import {useLanguage} from '../../composables';
-import {useOrder} from '../../composables/useOrder';
+import {useLanguage, useOrder} from '../../composables';
 
 export default defineComponent({
   name: 'ShipmentTableBox',
@@ -53,7 +52,7 @@ export default defineComponent({
       selectedLabels,
 
       bulkActions: defineActions(
-        [shipmentsFetchAction, shipmentsPrintAction, shipmentsDeleteAction, shipmentsExportReturnAction],
+        [shipmentsUpdateAction, shipmentsPrintAction, shipmentsDeleteAction, shipmentsExportReturnAction],
         {
           orderIds: get(query.data)?.externalIdentifier,
           shipmentIds: selectedLabels.value,

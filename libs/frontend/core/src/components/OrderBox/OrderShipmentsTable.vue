@@ -5,7 +5,7 @@
         <PdkTableCol component="th">
           <ShipmentBulkSelectCheckbox
             v-model="bulk"
-            :shipment-count="query.data?.shipments.filter((item) => !item.deleted)?.length" />
+            :shipment-count="shipments?.length" />
         </PdkTableCol>
 
         <PdkTableCol component="th">{{ translate('order_labels_column_track_trace') }}</PdkTableCol>
@@ -24,7 +24,7 @@
 
     <template #default>
       <PdkTableRow
-        v-if="!query.data?.shipments.filter((item) => !item.deleted)"
+        v-if="!shipments"
         key="row_no_shipments">
         <PdkTableCol colspan="6">
           <div :class="config?.cssUtilities?.textCenter">
@@ -34,56 +34,42 @@
         </PdkTableCol>
       </PdkTableRow>
 
-      <ShipmentLabelTableRow
-        v-for="shipment in query.data?.shipments.filter((item) => !item.deleted)"
-        :key="`row_${shipment?.id}_${shipment.updated}`"
+      <OrderShipmentsTableRow
+        v-for="shipment in shipments"
+        :key="`row_${shipment.id}_${shipment.updated}`"
         v-model="bulk"
-        :shipment="shipment" />
+        :shipment-id="shipment.id" />
     </template>
   </PdkTable>
 </template>
 
-<script lang="ts">
-import {computed, defineComponent, ref} from 'vue';
-import {useAdminConfig, useLanguage} from '../../composables';
+<script setup lang="ts">
+import {computed, ref} from 'vue';
+import {useAdminConfig, useLanguage, useOrder, useOrderShipments} from '../../composables';
+import OrderShipmentsTableRow from './OrderShipmentsTableRow.vue';
 import ShipmentBulkSelectCheckbox from './ShipmentBulkSelectCheckbox.vue';
-import ShipmentLabelTableRow from './OrderShipmentsTableRow.vue';
-import {useOrder} from '../../composables/useOrder';
+import {get} from '@vueuse/core';
 
-export default defineComponent({
-  name: 'OrderShipmentsTable',
-  components: {
-    ShipmentBulkSelectCheckbox,
-    ShipmentLabelTableRow,
+const emit = defineEmits(['select']);
+
+const query = useOrder();
+const shipmentsQueries = useOrderShipments(query);
+
+const mutableSelectedRows = ref<string[]>([]);
+const {translate} = useLanguage();
+
+const selectedRows = computed({
+  get(): string[] {
+    return mutableSelectedRows.value;
   },
-
-  emits: ['select'],
-
-  setup: (props, ctx) => {
-    const query = useOrder();
-
-    const mutableSelectedRows = ref<string[]>([]);
-    const {translate} = useLanguage();
-
-    const selectedRows = computed({
-      get(): string[] {
-        return mutableSelectedRows.value;
-      },
-      set(rows: string[]): void {
-        mutableSelectedRows.value = rows;
-        ctx.emit('select', rows.map(Number));
-      },
-    });
-
-    const bulk = ref([]);
-
-    return {
-      query,
-      bulk,
-      config: useAdminConfig(),
-      selectedRows,
-      translate,
-    };
+  set(rows: string[]): void {
+    mutableSelectedRows.value = rows;
+    emit('select', rows.map(Number));
   },
 });
+
+const bulk = ref([]);
+
+const shipments = computed(() => shipmentsQueries.map((query) => get(query.data)));
+const config = useAdminConfig();
 </script>

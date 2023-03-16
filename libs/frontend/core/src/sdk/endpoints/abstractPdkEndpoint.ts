@@ -7,6 +7,7 @@ import {
   LabelPosition,
   Plugin,
   Settings,
+  Shipment,
   WebhookDefinition,
 } from '@myparcel-pdk/common/src';
 import {AdminContextObject} from '../../types';
@@ -85,13 +86,23 @@ export interface DeleteShipmentsDefinition extends Definition {
 }
 
 export interface UpdateShipmentsDefinition extends Definition {
-  name: BackendEndpoint.FetchShipments;
+  name: BackendEndpoint.UpdateShipments;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
   };
   body: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
-  response: Plugin.ModelContextOrderDataContext[];
+  response: Plugin.ModelContextOrderDataContext['shipments'];
+}
+
+export interface FetchShipmentsDefinition extends Definition {
+  name: BackendEndpoint.FetchShipments;
+  parameters: {
+    orderIds: string;
+    shipmentIds?: string;
+  };
+  response: Shipment.ModelShipment[];
+  formattedResponse: Shipment.ModelShipment;
 }
 
 export interface UpdatePluginSettingsDefinition extends Definition {
@@ -143,6 +154,7 @@ export type PdkEndpointDefinition<N extends BackendEndpoint> = Extract<
   | ExportOrdersDefinition
   | FetchContextDefinition
   | FetchOrdersDefinition
+  | FetchShipmentsDefinition
   | FetchWebhooksDefinition
   | PrintOrdersDefinition
   | PrintShipmentsDefinition

@@ -20,7 +20,7 @@ import {ActionButton} from '../common';
 import {defineActions} from '../../services';
 import {defineComponent} from 'vue';
 import {get} from '@vueuse/core';
-import {useOrder} from '../../composables/useOrder';
+import {useOrder} from '../../composables';
 
 export default defineComponent({
   name: 'OrderModeActions',

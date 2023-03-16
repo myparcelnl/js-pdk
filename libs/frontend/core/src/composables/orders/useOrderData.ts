@@ -19,8 +19,6 @@ export function useOrderData<O extends Plugin.ModelPdkOrder>(
     deletedShipments,
 
     shipments: computed(() => {
-      console.log(order.shipments);
-
       return (
         order.shipments?.filter((shipment) => {
           return !shipment.deleted && shipment.id && !deletedShipments.value.includes(shipment.id);

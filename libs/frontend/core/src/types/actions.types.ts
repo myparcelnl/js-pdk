@@ -71,6 +71,7 @@ export enum AdminAction {
 
   ShipmentsDelete = 'shipmentsDelete',
   ShipmentsPrint = 'shipmentsPrint',
+  ShipmentsUpdate = 'shipmentsUpdate',
   ShipmentsFetch = 'shipmentsFetch',
   ShipmentsExportReturn = 'shipmentsExportReturn',
 
