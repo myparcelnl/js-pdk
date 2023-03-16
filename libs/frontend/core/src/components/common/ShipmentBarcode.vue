@@ -27,8 +27,11 @@
 
 <script setup lang="ts">
 import {useAdminConfig, useLanguage, useShipmentData} from '../../composables';
+import {useQueryStore} from '../../stores';
 
 const props = defineProps<{shipmentId: number}>();
+
+useQueryStore().registerShipmentQuery(props.shipmentId);
 
 const {translate} = useLanguage();
 

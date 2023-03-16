@@ -31,8 +31,11 @@ import {useAdminConfig, useShipmentData} from '../../composables';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentPackageType from '../common/ShipmentPackageType.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
+import {useQueryStore} from '../../stores';
 
 const props = defineProps<{shipmentId: number}>();
+
+useQueryStore().registerShipmentQuery(props.shipmentId);
 
 const {loading, actions} = useShipmentData(props.shipmentId);
 const config = useAdminConfig();

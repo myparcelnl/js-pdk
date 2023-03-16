@@ -35,7 +35,7 @@
       </PdkTableRow>
 
       <OrderShipmentsTableRow
-        v-for="shipment in shipments"
+        v-for="shipment in query.data?.shipments.map((item) => item.id)"
         :key="`row_${shipment.id}_${shipment.updated}`"
         v-model="bulk"
         :shipment-id="shipment.id" />
@@ -53,7 +53,6 @@ import {get} from '@vueuse/core';
 const emit = defineEmits(['select']);
 
 const query = useOrder();
-const shipmentsQueries = useOrderShipments(query);
 
 const mutableSelectedRows = ref<string[]>([]);
 const {translate} = useLanguage();
@@ -70,6 +69,8 @@ const selectedRows = computed({
 
 const bulk = ref([]);
 
-const shipments = computed(() => shipmentsQueries.map((query) => get(query.data)));
+const shipmentsQueries = computed(() => useOrderShipments(query));
+const shipments = computed(() => shipmentsQueries.value.map((query) => get(query.data)));
+
 const config = useAdminConfig();
 </script>

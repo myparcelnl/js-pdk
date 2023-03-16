@@ -37,6 +37,7 @@ import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
 import {useVModel} from '@vueuse/core';
+import {useQueryStore} from '../../stores';
 
 const props = defineProps({
   shipmentId: {
@@ -53,6 +54,9 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue']);
 
+const query = useQueryStore().registerShipmentQuery(props.shipmentId);
+const {actions, shipment} = useShipmentData(props.shipmentId);
+
 const selected = useVModel(props, undefined, emit);
 
 const checkboxElement = {
@@ -64,8 +68,6 @@ const checkboxElement = {
 } as unknown as InteractiveElementInstance;
 
 const formatter = useLocalizedFormatter();
-
-const {actions, shipment, query} = useShipmentData(props.shipmentId);
 
 const shipmentUpdatedAt = computed(() => {
   return shipment.value.updated ? formatter.format(Format.DateRelative, shipment.value.updated) : '–';

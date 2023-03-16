@@ -9,12 +9,13 @@
 </template>
 
 <script setup lang="ts">
-import {useLanguage, useShipment} from '../../composables';
+import {useLanguage} from '../../composables';
 import {getPackageTypeTranslation} from '../../helpers';
+import {useQueryStore} from '../../stores';
 
 const props = defineProps<{shipmentId: number}>();
 
-const {translate} = useLanguage();
+const query = useQueryStore().registerShipmentQuery(props.shipmentId);
 
-const query = useShipment(props.shipmentId);
+const {translate} = useLanguage();
 </script>

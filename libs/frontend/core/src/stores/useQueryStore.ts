@@ -37,23 +37,23 @@ export type ContextQuery<C extends AdminContextKey = AdminContextKey.Dynamic> = 
   ApiException
 >;
 
-export type ResolvedQuery<E extends QueryKey = BackendEndpoint> = E extends BackendEndpoint
-  ? EndpointQuery<E>
-  : E extends `${BackendEndpoint.FetchOrders}.${infer C}`
+export type ResolvedQuery<K extends QueryKey = QueryKey> = K extends BackendEndpoint
+  ? EndpointQuery<K>
+  : K extends `${BackendEndpoint.FetchOrders}.${infer C}`
   ? C extends string
     ? ReturnType<typeof useFetchOrdersQuery>
     : never
-  : E extends `${BackendEndpoint.FetchShipments}.${infer C}`
+  : K extends `${BackendEndpoint.FetchShipments}.${infer C}`
   ? C extends string
     ? ReturnType<typeof useFetchShipmentsQuery>
     : never
-  : E extends `${BackendEndpoint.FetchContext}.${infer C}`
+  : K extends `${BackendEndpoint.FetchContext}.${infer C}`
   ? C extends AdminContextKey
     ? ContextQuery<C>
     : never
   : never;
 
-export type QueryObject<I extends QueryKey = BackendEndpoint> = Record<I, ResolvedQuery<I>>;
+export type QueryObject<K extends QueryKey = QueryKey> = Record<K, ResolvedQuery<K>>;
 
 type EndpointQuery<E extends BackendEndpoint = BackendEndpoint> = E extends BackendEndpoint.CreateWebhooks
   ? ReturnType<typeof useCreateWebhooksMutation>
@@ -94,12 +94,11 @@ export const useQueryStore = defineStore('query', () => {
   const queries = ref({} as QueryObject);
   const queryClient: Ref<QueryClient | undefined> = ref<QueryClient>();
 
-  const has = <E extends QueryKey>(key: E): boolean => {
-    // @ts-expect-error todo
+  const has = <K extends QueryKey>(key: K): boolean => {
     return queries.value[key] !== undefined;
   };
 
-  const get = <E extends QueryKey>(key: E): ResolvedQuery<E> => {
+  const get = <K extends QueryKey>(key: K): ResolvedQuery<K> => {
     if (!has(key)) {
       throw new Error(`No query found for key ${key}`);
     }
@@ -108,9 +107,18 @@ export const useQueryStore = defineStore('query', () => {
     return queries.value[key];
   };
 
-  const register = <E extends QueryKey>(key: E, query: ResolvedQuery<E>): ResolvedQuery<E> => {
+  /**
+   * Queries must be registered manually, because vue-query hooks can only be
+   * called from a component's setup() function.
+   */
+  const register = <K extends QueryKey>(key: K, query: ResolvedQuery<K>): ResolvedQuery<K> => {
     if (!queryClient.value) {
       queryClient.value = useQueryClient();
+    }
+
+    if (has(key)) {
+      // @ts-expect-error todo
+      return queries.value[key];
     }
 
     // @ts-expect-error todo
@@ -119,18 +127,19 @@ export const useQueryStore = defineStore('query', () => {
     return query;
   };
 
+  const registerShipmentQuery = (id: number) => {
+    return register(`${BackendEndpoint.FetchShipments}.${id}`, useFetchShipmentsQuery(id));
+  };
+
   return {
     queries,
     get,
     has,
-
-    /**
-     * Queries must be registered manually, because vue-query hooks can only be
-     * called from a component's setup() function.
-     */
     register,
 
     queryClient,
+
+    registerShipmentQuery,
 
     /**
      * Register queries needed to render any order related component.
@@ -143,13 +152,9 @@ export const useQueryStore = defineStore('query', () => {
       }
 
       toArray(id).forEach((orderId) => {
-        const ordersQuery = useFetchOrdersQuery(orderId);
+        const ordersQuery = register(`${BackendEndpoint.FetchOrders}.${orderId}`, useFetchOrdersQuery(orderId));
 
-        register(`${BackendEndpoint.FetchOrders}.${orderId}`, ordersQuery);
-
-        vuGet(ordersQuery.data)?.shipments?.forEach((shipment) => {
-          register(`${BackendEndpoint.FetchShipments}.${shipment.id}`, useFetchShipmentsQuery(shipment.id));
-        });
+        vuGet(ordersQuery.data)?.shipments?.forEach((shipment) => registerShipmentQuery(shipment.id));
       });
 
       register(BackendEndpoint.FetchOrders, useFetchOrdersQuery());

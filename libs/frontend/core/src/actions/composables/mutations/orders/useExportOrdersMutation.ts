@@ -35,7 +35,9 @@ export const useExportOrdersMutation = (mode: MutationMode = MutationMode.Defaul
         useModalStore().close();
         fillOrderQueryData(queryClient, data);
 
-        await input.form?.reset();
+        if (input.form) {
+          await input.form?.reset();
+        }
       },
     },
   );

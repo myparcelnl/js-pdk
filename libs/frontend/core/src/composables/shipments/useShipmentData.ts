@@ -8,7 +8,6 @@ import {
 import {ActionDefinition} from '../../types';
 import {Carrier} from '@myparcel/sdk';
 import {Shipment} from '@myparcel-pdk/common/src';
-import {UseQueryReturnType} from '@tanstack/vue-query';
 import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
 import {useAssetUrl} from '../useAssetUrl';
@@ -20,7 +19,6 @@ export type UseShipmentData = {
   actions: ActionDefinition[];
   carrier: Ref<Carrier | undefined>;
   loading: Ref<boolean>;
-  query: UseQueryReturnType<Shipment.ModelShipment, unknown>;
   shipment: ComputedRef<Shipment.ModelShipment>;
   useAssetUrl: typeof useAssetUrl;
 };
@@ -44,8 +42,6 @@ export const useShipmentData = (id: number): UseShipmentData => {
         orderIds: shipment.value?.orderId,
       },
     ),
-
-    query,
 
     carrier: carriersQuery?.data ?? ref(),
     loading,
