@@ -2,6 +2,19 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.30](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.29...@myparcel-pdk/frontend-core@1.0.0-alpha.30) "@myparcel-pdk/frontend-core" (2023-03-16)
+
+
+### Bug Fixes
+
+* **core:** do not show deleted shipments ([a7fb2d5](https://github/myparcelnl/js-pdk/commit/a7fb2d54746db4d3b1cc37505440e02ea7c9c61d))
+* **core:** fix single order shipments ([02a7df5](https://github/myparcelnl/js-pdk/commit/02a7df5bde1e7cb6d78a5f02021a2b4cccbc57be))
+* **core:** improve query logic ([8cefda3](https://github/myparcelnl/js-pdk/commit/8cefda35a5e0540d82e5508425f11fbc8e6acdf7))
+* **core:** show new shipment on export ([2f21f21](https://github/myparcelnl/js-pdk/commit/2f21f21aaa4a2bf28b9f106211fd14fe2ef48707))
+
+
+
+
 ## [1.0.0-alpha.29](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.28...@myparcel-pdk/frontend-core@1.0.0-alpha.29) "@myparcel-pdk/frontend-core" (2023-03-16)
 
 

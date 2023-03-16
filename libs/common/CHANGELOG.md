@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.18](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.17...@myparcel-pdk/common@1.0.0-alpha.18) "@myparcel-pdk/common" (2023-03-16)
+
+
+### Bug Fixes
+
+* **core:** improve query logic ([8cefda3](https://github/myparcelnl/js-pdk/commit/8cefda35a5e0540d82e5508425f11fbc8e6acdf7))
+
+
+
+
 ## [1.0.0-alpha.17](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.16...@myparcel-pdk/common@1.0.0-alpha.17) "@myparcel-pdk/common" (2023-03-16)
 
 
