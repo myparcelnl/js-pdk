@@ -9,14 +9,16 @@ import {useNotificationStore} from '../../stores';
 export const executeAction = async <A extends AdminAction | undefined>(
   context: ActionContext<A>,
 ): Promise<ActionResponse<A> | undefined> => {
+  const {action, notifications, instance, parameters} = context;
+
   const store = useNotificationStore();
   let response;
 
   try {
     // @ts-expect-error todo
-    const resolvedParameters = (await context.action.beforeHandle?.(context)) ?? context.parameters;
+    const resolvedParameters = (await action.beforeHandle?.(context)) ?? parameters;
 
-    context.instance?.logger?.debug({parameters: context.parameters, resolvedParameters});
+    instance?.logger?.debug({parameters, resolvedParameters});
 
     context.parameters = resolvedParameters;
   } catch (error) {
@@ -24,29 +26,41 @@ export const executeAction = async <A extends AdminAction | undefined>(
       return;
     }
 
-    context.instance?.logger.error(error);
+    instance?.logger.error(error);
   }
 
   try {
     // @ts-expect-error todo
-    response = await context.action.handler(context);
+    response = await action.handler(context);
 
-    if (context.notifications?.success) {
-      store.add(context.notifications.success);
+    if (notifications?.success) {
+      store.add(notifications.success);
     }
   } catch (error) {
-    if (context.notifications?.error) {
-      store.add(context.notifications.error);
+    if (error instanceof StopActionHandler) {
+      return;
     }
 
-    context.instance?.logger.error(error);
+    if (notifications?.error) {
+      store.add(notifications.error);
+    }
+
+    instance?.logger.error(error);
   }
 
-  // @ts-expect-error todo
-  const resolvedResponse = (await context.action.afterHandle?.({...context, response})) ?? response;
+  try {
+    // @ts-expect-error todo
+    const resolvedResponse = (await action.afterHandle?.({...context, response})) ?? response;
 
-  context.instance?.logger?.debug({response, resolvedResponse});
+    instance?.logger?.debug({response, resolvedResponse});
 
-  // @ts-expect-error todo
-  return resolvedResponse;
+    // @ts-expect-error todo
+    return resolvedResponse;
+  } catch (error) {
+    if (error instanceof StopActionHandler) {
+      return;
+    }
+
+    instance?.logger.error(error);
+  }
 };
