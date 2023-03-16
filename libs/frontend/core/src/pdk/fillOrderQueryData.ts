@@ -19,7 +19,7 @@ export function fillOrderQueryData(
 
     const newOrder: Replace<Plugin.ModelContextOrderDataContext, 'shipments', {id?: number}[]> = {
       ...order,
-      shipments: order.shipments?.map((shipment) => ({id: shipment.id})) ?? [],
+      shipments: (order.shipments ?? []).filter((shipment) => !shipment.deleted).map((shipment) => ({id: shipment.id})),
     };
 
     queryClient.setQueryData(orderKey, newOrder);
