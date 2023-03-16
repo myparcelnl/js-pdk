@@ -772,7 +772,7 @@ export namespace Shipment {
   };
 
   export type ModelShipment = {
-    id?: number;
+    id: number;
     shopId?: number;
     orderId: string;
     referenceIdentifier?: string;
