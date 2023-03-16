@@ -6,7 +6,6 @@ import {Component} from 'vue';
  * Maps components to render methods.
  */
 const renderMap = Object.freeze<Record<AdminView, ComponentImportFunction>>({
-  LoadingPage: async () => import('../views/LoadingPage.vue'),
   Modals: async () => import('../views/Modals.vue'),
   Notifications: async () => import('../views/Notifications.vue'),
   OrderBox: async () => import('../views/OrderBox.vue'),

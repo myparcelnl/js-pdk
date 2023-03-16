@@ -1,5 +1,3 @@
-export {default as LoadingPageView} from '../LoadingPage.vue';
-
 export {default as ModalsView} from '../Modals.vue';
 
 export {default as NotificationsView} from '../Notifications.vue';

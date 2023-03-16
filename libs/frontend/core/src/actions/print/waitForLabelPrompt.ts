@@ -4,17 +4,10 @@ import {StopActionHandler} from '../stopActionHandler';
 import {markRaw} from 'vue';
 import {useFormBuilder} from '@myparcel/vue-form-builder/src';
 import {useModalStore} from '../../stores';
-import {usePluginSettings} from '../../composables';
 
 export const waitForLabelPrompt = <A extends PrintAction>({
   parameters,
 }: ActionContext<A>): Promise<ActionParameters<A>> => {
-  const pluginSettings = usePluginSettings();
-
-  if (!pluginSettings.label.prompt) {
-    return Promise.resolve(parameters as ActionParameters<A>);
-  }
-
   const formBuilder = useFormBuilder();
   const modalStore = useModalStore();
 

@@ -5,12 +5,10 @@ import {FormInstance} from '@myparcel/vue-form-builder/src';
 import {OneOrMore} from '@myparcel/ts-utils';
 import {PdkEndpointDefinition} from '../sdk';
 
-export type EndpointResponse<N extends BackendEndpoint> = PdkEndpointDefinition<N>['formattedResponse'] extends Record<
-  string,
-  unknown
->
-  ? PdkEndpointDefinition<N>['formattedResponse']
-  : PdkEndpointDefinition<N>['response'];
+export type EndpointResponse<N extends BackendEndpoint> =
+  PdkEndpointDefinition<N>['formattedResponse'] extends undefined
+    ? PdkEndpointDefinition<N>['response']
+    : PdkEndpointDefinition<N>['formattedResponse'];
 
 export type EndpointParameters<N extends BackendEndpoint> = PdkEndpointDefinition<N>['parameters'];
 
@@ -39,6 +37,12 @@ export type EndpointAdminActionMap = {
     : never;
 };
 
+type LabelOptions = {
+  output?: LabelOutput;
+  format?: LabelFormat;
+  position?: OneOrMore<LabelPosition>;
+};
+
 export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record<string, unknown>> {
   [BackendEndpoint.FetchContext]: {context?: OneOrMore<AdminContextKey>};
 
@@ -46,25 +50,19 @@ export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record
 
   [BackendEndpoint.ExportOrders]: {orderIds?: OneOrMore<string>; form?: false | FormInstance};
   [BackendEndpoint.FetchOrders]: {orderIds?: OneOrMore<string>};
-  [BackendEndpoint.PrintOrders]: {
+  [BackendEndpoint.PrintOrders]: LabelOptions & {
     orderIds?: OneOrMore<string>;
     form?: false | FormInstance;
-    output?: LabelOutput;
-    format?: LabelFormat;
-    position?: LabelPosition;
   };
   [BackendEndpoint.UpdateOrders]: {orderIds?: OneOrMore<string>; form: FormInstance};
 
   [BackendEndpoint.ExportReturn]: {orderIds?: OneOrMore<string>; shipmentIds: OneOrMore<number>};
   [BackendEndpoint.DeleteShipments]: {orderIds?: OneOrMore<string>; shipmentIds: OneOrMore<number>};
   [BackendEndpoint.FetchShipments]: {orderIds?: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
-  [BackendEndpoint.PrintShipments]: {
+  [BackendEndpoint.PrintShipments]: LabelOptions & {
     orderIds?: OneOrMore<string>;
-    shipmentIds: OneOrMore<number>;
+    shipmentIds?: OneOrMore<number>;
     form?: false | FormInstance;
-    output?: LabelOutput;
-    format?: LabelFormat;
-    position?: LabelPosition;
   };
 
   [BackendEndpoint.UpdatePluginSettings]: {form: FormInstance};

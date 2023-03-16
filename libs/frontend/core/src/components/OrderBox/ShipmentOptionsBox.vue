@@ -27,6 +27,7 @@ import {
   orderExportToShipmentsAction,
   orderViewInBackofficeAction,
   ordersExportPrintShipmentsAction,
+  ordersPrintAction,
   ordersUpdateAction,
 } from '../../actions';
 import {useLanguage, usePluginSettings, useStoreQuery} from '../../composables';
@@ -56,7 +57,9 @@ const actions = computed(() => {
   return defineActions(
     [
       ordersUpdateAction,
-      ...(orderMode ? [orderExportAction] : [orderExportToShipmentsAction, ordersExportPrintShipmentsAction]),
+      ...(orderMode
+        ? [orderExportAction]
+        : [orderExportToShipmentsAction, ordersPrintAction, ordersExportPrintShipmentsAction]),
     ],
     {orderIds: get(query.data)?.externalIdentifier},
   );

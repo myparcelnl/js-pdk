@@ -1,7 +1,6 @@
 export * from './common';
 
 export {
-  LoadingPageView,
   ModalsView,
   NotificationsView,
   OrderBoxView,

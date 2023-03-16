@@ -82,7 +82,7 @@ export enum AdminAction {
   WebhooksFetch = 'webhooksFetch',
 }
 
-export type PrintAction = AdminAction.ShipmentsPrint | AdminAction.OrdersPrint | AdminAction.OrdersExportPrint;
+export type PrintAction = AdminAction.ShipmentsPrint | AdminAction.OrdersPrint;
 
 export type OrderAction =
   | AdminAction.OrdersExport

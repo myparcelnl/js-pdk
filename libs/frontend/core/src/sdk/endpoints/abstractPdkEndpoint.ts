@@ -16,6 +16,22 @@ interface Definition extends EndpointDefinition {
   formattedResponse?: unknown;
 }
 
+export type PdfUrlResponse = {url: string};
+
+export type PdfDataResponse = {data: string};
+
+interface BasePrintDefinition extends Definition {
+  parameters: {
+    orderIds: string;
+    shipmentIds?: string;
+    format?: LabelFormat;
+    output?: LabelOutput;
+    position?: LabelPosition;
+  };
+  response: (PdfUrlResponse | PdfDataResponse)[];
+  formattedResponse: PdfUrlResponse | PdfDataResponse;
+}
+
 export interface FetchContextDefinition extends Definition {
   name: BackendEndpoint.FetchContext;
   parameters: {
@@ -94,27 +110,12 @@ export interface UpdateProductSettingsDefinition extends Definition {
   response: Settings.ModelProductSettings[];
 }
 
-export interface PrintShipmentsDefinition extends Definition {
+export interface PrintShipmentsDefinition extends BasePrintDefinition {
   name: BackendEndpoint.PrintShipments;
-  parameters: {
-    orderIds: string;
-    shipmentIds?: string;
-    format?: LabelFormat;
-    output?: LabelOutput;
-    position?: LabelPosition | string;
-  };
-  response: {pdfs: {url: string}[]};
 }
 
-export interface PrintOrdersDefinition extends Definition {
+export interface PrintOrdersDefinition extends BasePrintDefinition {
   name: BackendEndpoint.PrintOrders;
-  parameters: {
-    orderIds: string;
-    format?: LabelFormat;
-    output?: LabelOutput;
-    position?: LabelPosition | string;
-  };
-  response: {pdfs: {url: string}[]};
 }
 
 export interface FetchWebhooksDefinition extends Definition {
