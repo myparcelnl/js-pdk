@@ -10,10 +10,10 @@ export const resolveOrderParameters = <A extends OrderAction>({
   const formBuilder = useFormBuilder();
 
   // @ts-expect-error todo
-  parameters.orderIds = parameters.orderIds ?? getOrderId(instance);
+  parameters.orderIds ??= getOrderId(instance);
 
   // @ts-expect-error todo
-  parameters.form = parameters.form ?? formBuilder.forms.value[createShipmentFormName(parameters.orderIds)];
+  parameters.form ??= formBuilder.forms.value[createShipmentFormName(parameters.orderIds)];
 
   return Promise.resolve(parameters as ActionParameters<A>);
 };

@@ -44,11 +44,11 @@ export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record
 
   [BackendEndpoint.UpdateAccount]: {form: FormInstance};
 
-  [BackendEndpoint.ExportOrders]: {orderIds?: OneOrMore<string>; form?: FormInstance};
+  [BackendEndpoint.ExportOrders]: {orderIds?: OneOrMore<string>; form?: false | FormInstance};
   [BackendEndpoint.FetchOrders]: {orderIds?: OneOrMore<string>};
   [BackendEndpoint.PrintOrders]: {
     orderIds?: OneOrMore<string>;
-    form?: FormInstance;
+    form?: false | FormInstance;
     output?: LabelOutput;
     format?: LabelFormat;
     position?: LabelPosition;
@@ -61,7 +61,7 @@ export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record
   [BackendEndpoint.PrintShipments]: {
     orderIds?: OneOrMore<string>;
     shipmentIds: OneOrMore<number>;
-    form?: FormInstance;
+    form?: false | FormInstance;
     output?: LabelOutput;
     format?: LabelFormat;
     position?: LabelPosition;

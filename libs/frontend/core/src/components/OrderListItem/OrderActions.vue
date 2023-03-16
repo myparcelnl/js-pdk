@@ -30,6 +30,6 @@ const actions = computed(() => {
     actions.push(ordersExportPrintShipmentsAction, ordersEditAction);
   }
 
-  return defineActions(actions, {orderIds: get(query.data)?.externalIdentifier});
+  return defineActions(actions, {orderIds: get(query.data)?.externalIdentifier, form: false});
 });
 </script>
