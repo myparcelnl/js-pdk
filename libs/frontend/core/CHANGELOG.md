@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.31](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.30...@myparcel-pdk/frontend-core@1.0.0-alpha.31) "@myparcel-pdk/frontend-core" (2023-03-17)
+
+
+### Bug Fixes
+
+* **actions:** fix print action not using modal values ([af8b0ae](https://github/myparcelnl/js-pdk/commit/af8b0ae07f4e0346946c14bf947111c461442824))
+
+
+
+
 ## [1.0.0-alpha.30](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.29...@myparcel-pdk/frontend-core@1.0.0-alpha.30) "@myparcel-pdk/frontend-core" (2023-03-16)
 
 
