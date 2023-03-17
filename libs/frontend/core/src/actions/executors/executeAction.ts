@@ -1,66 +1,34 @@
-import {ActionResponse, AdminAction} from '../../types';
+import {MaybeActionResponse, MaybeAdminAction} from '../../types';
 import {ActionContext} from './types';
-import {StopActionHandler} from '../stopActionHandler';
-import {useNotificationStore} from '../../stores';
+import {executeAfterHandle} from './executeAfterHandle';
+import {executeBeforeHandle} from './executeBeforeHandle';
+import {executeHandler} from './executeHandler';
 
 /**
- * Execute a PdkAction.
+ * Execute an AdminAction.
  */
-export const executeAction = async <A extends AdminAction | undefined>(
+// eslint-disable-next-line complexity,max-lines-per-function
+export const executeAction = async <A extends MaybeAdminAction>(
   context: ActionContext<A>,
-): Promise<ActionResponse<A> | undefined> => {
-  const {action, notifications, instance, parameters} = context;
+): Promise<MaybeActionResponse<A>> => {
+  const {instance} = context;
+  const startTime = Date.now();
 
-  const store = useNotificationStore();
-  let response;
+  instance.logger.debug('Start', context);
 
-  try {
-    // @ts-expect-error todo
-    const resolvedParameters = (await action.beforeHandle?.(context)) ?? parameters;
+  const resolvedParameters = await executeBeforeHandle(context);
 
-    instance?.logger?.debug({parameters, resolvedParameters});
-
-    context.parameters = resolvedParameters;
-  } catch (error) {
-    if (error instanceof StopActionHandler) {
-      return;
-    }
-
-    instance?.logger.error(error);
+  // If the action was stopped, return early.
+  if (!resolvedParameters) {
+    instance.logger.debug('Action canceled');
+    return;
   }
 
-  try {
-    // @ts-expect-error todo
-    response = await action.handler(context);
+  const response = await executeHandler({...context, parameters: resolvedParameters} as ActionContext<A>);
 
-    if (notifications?.success) {
-      store.add(notifications.success);
-    }
-  } catch (error) {
-    if (error instanceof StopActionHandler) {
-      return;
-    }
+  const resolvedResponse = await executeAfterHandle(context, response);
 
-    if (notifications?.error) {
-      store.add(notifications.error);
-    }
+  instance.logger.debug('Took', Date.now() - startTime, 'ms');
 
-    instance?.logger.error(error);
-  }
-
-  try {
-    // @ts-expect-error todo
-    const resolvedResponse = (await action.afterHandle?.({...context, response})) ?? response;
-
-    instance?.logger?.debug({response, resolvedResponse});
-
-    // @ts-expect-error todo
-    return resolvedResponse;
-  } catch (error) {
-    if (error instanceof StopActionHandler) {
-      return;
-    }
-
-    instance?.logger.error(error);
-  }
+  return resolvedResponse;
 };

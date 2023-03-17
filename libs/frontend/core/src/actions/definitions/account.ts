@@ -1,5 +1,5 @@
 import {AdminAction, AdminContextKey, AdminIcon} from '../../types';
-import {createMutator, createQueryFetcher, executeNextAction} from '../executors';
+import {createMutationHandler, createQueryHandler, executeNextAction} from '../executors';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
 
@@ -8,12 +8,12 @@ import {defineAction} from '../defineAction';
  */
 export const fetchDynamicContextAction = defineAction({
   name: AdminAction.ContextFetch,
-  handler: createQueryFetcher(BackendEndpoint.FetchContext, AdminContextKey.Dynamic),
+  handler: createQueryHandler(BackendEndpoint.FetchContext, AdminContextKey.Dynamic),
 });
 
 export const fetchPluginSettingsViewContextAction = defineAction({
   name: AdminAction.ContextFetch,
-  handler: createQueryFetcher(BackendEndpoint.FetchContext, AdminContextKey.PluginSettingsView),
+  handler: createQueryHandler(BackendEndpoint.FetchContext, AdminContextKey.PluginSettingsView),
 });
 
 /**
@@ -23,7 +23,7 @@ export const updateAccountAction = defineAction({
   name: AdminAction.AccountUpdate,
   icon: AdminIcon.Save,
   label: 'action_save',
-  handler: createMutator(BackendEndpoint.UpdateAccount),
+  handler: createMutationHandler(BackendEndpoint.UpdateAccount),
   async afterHandle(context) {
     if (context.response === undefined) {
       context.instance.logger.error('Account not found');

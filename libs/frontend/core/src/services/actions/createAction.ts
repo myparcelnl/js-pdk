@@ -1,5 +1,5 @@
 import {ActionContext, executeAction} from '../../actions';
-import {ActionParameters, AdminAction, AnyAdminAction, ResolvedAction} from '../../types';
+import {ActionParameters, AdminAction, AnyAdminAction, MaybeAdminAction, ResolvedAction} from '../../types';
 import {createActionContext} from './createActionContext';
 import {getActionIdentifier} from './getActionIdentifier';
 import {useLoading} from '../../composables';
@@ -21,17 +21,10 @@ export const createAction: CreateAction = (action) => {
 
     loading,
 
-    handler: async <A extends AdminAction | undefined>(parameters: ActionParameters<A>) => {
+    handler: async <A extends MaybeAdminAction>(parameters: ActionParameters<A>) => {
       setLoading(true);
 
-      const startTime = Date.now();
-      // await callbacks?.start?.();
-      context?.instance?.logger?.debug('Context', {...context, parameters});
-
-      await executeAction({...context, parameters} as unknown as ActionContext<A>);
-
-      context?.instance?.logger?.debug('Done in ', Date.now() - startTime, 'ms');
-      // await callbacks?.end?.();
+      await executeAction({...context, parameters} as ActionContext<A>);
 
       setLoading(false);
     },

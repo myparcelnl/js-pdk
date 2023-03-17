@@ -1,7 +1,7 @@
 import {
   ActionContext,
-  createMutator,
-  createQueryFetcher,
+  createMutationHandler,
+  createQueryHandler,
   executeNextAction,
   resolveOrderParameters,
 } from '../executors';
@@ -35,7 +35,7 @@ export const orderExportAction = defineAction({
   icon: AdminIcon.Export,
   label: 'action_export',
   beforeHandle: resolveOrderParameters,
-  handler: createMutator(BackendEndpoint.ExportOrders),
+  handler: createMutationHandler(BackendEndpoint.ExportOrders),
 });
 
 /**
@@ -46,7 +46,7 @@ export const orderExportToShipmentsAction = defineAction({
   icon: AdminIcon.Export,
   label: 'action_export_shipments',
   beforeHandle: resolveOrderParameters,
-  handler: createMutator(BackendEndpoint.ExportOrders),
+  handler: createMutationHandler(BackendEndpoint.ExportOrders),
 });
 
 /**
@@ -56,7 +56,7 @@ export const ordersFetchAction = defineAction({
   name: AdminAction.OrdersFetch,
   icon: AdminIcon.Refresh,
   label: 'action_refresh',
-  handler: createQueryFetcher(BackendEndpoint.FetchOrders),
+  handler: createQueryHandler(BackendEndpoint.FetchOrders),
 });
 
 /**
@@ -67,7 +67,7 @@ export const ordersUpdateAction = defineAction({
   icon: AdminIcon.Save,
   label: 'action_save',
   beforeHandle: resolveOrderParameters,
-  handler: createMutator(BackendEndpoint.UpdateOrders),
+  handler: createMutationHandler(BackendEndpoint.UpdateOrders),
 });
 
 /**
@@ -78,7 +78,7 @@ export const ordersExportPrintShipmentsAction = defineAction({
   icon: AdminIcon.Print,
   label: 'action_export_print',
   beforeHandle: resolveOrderParameters,
-  handler: createMutator(BackendEndpoint.ExportOrders),
+  handler: createMutationHandler(BackendEndpoint.ExportOrders),
   afterHandle(context) {
     void executeNextAction(context, ordersPrintAction, context.parameters);
 
@@ -94,7 +94,7 @@ export const ordersPrintAction = defineAction({
   icon: AdminIcon.Print,
   label: 'action_print',
   beforeHandle: resolvePrintParameters,
-  handler: createMutator(BackendEndpoint.PrintOrders),
+  handler: createMutationHandler(BackendEndpoint.PrintOrders),
   async afterHandle(context) {
     await openOrPrintPdf(context);
 

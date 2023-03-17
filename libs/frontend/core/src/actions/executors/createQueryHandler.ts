@@ -3,7 +3,7 @@ import {UseQueryReturnType} from '@tanstack/vue-query';
 import {isOfType} from '@myparcel/ts-utils';
 import {useStoreQuery} from '../../composables';
 
-export const createQueryFetcher: QueryExecutor = (endpoint, suffix) => {
+export const createQueryHandler: QueryExecutor = (endpoint, suffix) => {
   return async () => {
     const query = useStoreQuery(endpoint, suffix);
 

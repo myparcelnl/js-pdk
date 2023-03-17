@@ -53,9 +53,13 @@ export type ActionParameters<A extends MaybeAdminAction> = A extends AdminAction
   ? ActionInput<AdminActionEndpointMap[A]>
   : Record<string, unknown>;
 
+export type MaybeActionParameters<A extends MaybeAdminAction> = ActionParameters<A> | void;
+
 export type ActionResponse<A extends MaybeAdminAction> = A extends AdminAction
   ? EndpointResponse<AdminActionEndpointMap[A]>
   : void;
+
+export type MaybeActionResponse<A extends MaybeAdminAction> = ActionResponse<A> | void;
 
 export enum AdminAction {
   ContextFetch = 'contextFetch',
