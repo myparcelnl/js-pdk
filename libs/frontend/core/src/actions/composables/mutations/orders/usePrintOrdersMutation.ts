@@ -3,19 +3,17 @@ import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {encodeArrayParameter} from '../../../../utils';
 import {usePdkAdminApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
-import {usePluginSettings} from '../../../../composables';
 
 export const usePrintOrdersMutation = () => {
   return usePdkMutation(BackendEndpoint.PrintOrders, (input) => {
     const pdk = usePdkAdminApi();
-    const pluginSettings = usePluginSettings();
 
     return pdk.printOrders({
       // @ts-expect-error custom endpoints are not typed correctly
       parameters: {
-        format: pluginSettings.label.format,
-        output: pluginSettings.label.output,
-        position: pluginSettings.label.position,
+        format: input.format,
+        output: input.output,
+        position: input.position,
         orderIds: encodeArrayParameter(input.orderIds),
       },
     });
