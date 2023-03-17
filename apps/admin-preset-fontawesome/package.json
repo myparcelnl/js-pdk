@@ -32,7 +32,7 @@
   "devDependencies": {
     "@myparcel-pdk/admin-component-tests": "workspace:*",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vitest/coverage-c8": "^0.28.5",
+    "@vitest/coverage-c8": "^0.29.3",
     "@vue/test-utils": "^2.3.0",
     "happy-dom": "^8.7.2",
     "typescript": "^4.9.5",
