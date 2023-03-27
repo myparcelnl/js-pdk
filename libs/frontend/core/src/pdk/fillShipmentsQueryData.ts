@@ -12,6 +12,10 @@ export const fillShipmentsQueryData = (
   const shipmentsArray = toArray(shipments);
   const orderIds = new Set(shipmentsArray.map((shipment) => shipment.orderId));
 
+  if (order) {
+    orderIds.add(order.externalIdentifier);
+  }
+
   orderIds.forEach((orderId) => {
     let newOrder = order;
 
@@ -33,6 +37,7 @@ export const fillShipmentsQueryData = (
 
     setQueryOrder(queryClient, newOrder);
   });
+
   shipmentsArray.forEach((shipment) => {
     setQueryShipment(queryClient, shipment);
   });
