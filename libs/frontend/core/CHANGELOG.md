@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.32](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.31...@myparcel-pdk/frontend-core@1.0.0-alpha.32) "@myparcel-pdk/frontend-core" (2023-03-27)
+
+
+### Bug Fixes
+
+* fix orders without shipments not loading ([48cc2f8](https://github/myparcelnl/js-pdk/commit/48cc2f8141db3692dcf8655b117427cf99cc5697))
+
+
+
+
 ## [1.0.0-alpha.31](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.30...@myparcel-pdk/frontend-core@1.0.0-alpha.31) "@myparcel-pdk/frontend-core" (2023-03-17)
 
 
