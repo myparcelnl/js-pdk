@@ -1258,7 +1258,7 @@ __metadata:
     "@myparcel-pdk/common": "workspace:^"
     "@myparcel/ts-utils": ^1.7.0
     "@types/node": ^18.14.6
-    h3: ^1.5.0
+    h3: ^1.6.4
     nitropack: ^2.2.3
     serverless: ^3.28.1
     serverless-plugin-typescript: ^2.1.4
@@ -7181,6 +7181,21 @@ __metadata:
     ufo: ^1.1.1
     uncrypto: ^0.1.2
   checksum: 90d8b27826d19723e2582f647160215d4b6d2182862f030263e170fd12d38ef97df9eee07bb5c6112a2708f2f787f42088baed99b770e3432c80f962ef164e5e
+  languageName: node
+  linkType: hard
+
+"h3@npm:^1.6.4":
+  version: 1.6.4
+  resolution: "h3@npm:1.6.4"
+  dependencies:
+    cookie-es: ^0.5.0
+    defu: ^6.1.2
+    destr: ^1.2.2
+    iron-webcrypto: ^0.6.0
+    radix3: ^1.0.1
+    ufo: ^1.1.1
+    uncrypto: ^0.1.2
+  checksum: 2a9ed16fdca191207441ba347b92f6005b8ffd27a49975c5d2244877fb6659e7c532f3ca229602b910faf6266808002112fb83302fa02dd8186dd9c6252fef63
   languageName: node
   linkType: hard
 
