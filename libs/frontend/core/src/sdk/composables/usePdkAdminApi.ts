@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import {FetchClient, HttpMethod, MyParcelSdk, createMyParcelSdk} from '@myparcel/sdk';
+import {HttpMethod, MyParcelSdk, createMyParcelSdk} from '@myparcel/sdk';
 import {AbstractPdkEndpoint} from '../endpoints';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {useGlobalContext} from '../../composables';
+import {PdkFetchClient} from '@myparcel-pdk/frontend-core';
 
 let sdk: ReturnType<typeof usePdkAdminApi>;
 
@@ -16,7 +17,7 @@ export const usePdkAdminApi = (): MyParcelSdk<AbstractPdkEndpoint> => {
 
   const globalContext = useGlobalContext();
 
-  const client = new FetchClient({
+  const client = new PdkFetchClient({
     baseUrl: globalContext.baseUrl,
   });
 
