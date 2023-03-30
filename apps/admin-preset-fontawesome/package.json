@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-preset-fontawesome",
-  "version": "1.0.0-alpha.32",
+  "version": "1.0.0-alpha.33",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -26,7 +26,7 @@
     "watch": "run ws:vite:watch \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.32",
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.33",
     "vue": "^3.2.47"
   },
   "devDependencies": {

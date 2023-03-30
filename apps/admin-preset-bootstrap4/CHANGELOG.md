@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.34](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.33...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.34) "@myparcel-pdk/admin-preset-bootstrap4" (2023-03-30)
+
+
+### Bug Fixes
+
+* show notifications from json response ([#134](https://github/myparcelnl/js-pdk/issues/134)) ([476352f](https://github/myparcelnl/js-pdk/commit/476352f9f9954e93a1527a73f629be3c4ea5738d))
+
+
+
+
 ## [1.0.0-alpha.30](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.29...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.30) "@myparcel-pdk/admin-preset-bootstrap4" (2023-03-16)
 
 
