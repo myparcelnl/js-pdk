@@ -3,7 +3,8 @@
     appear
     name="fade">
     <div
-      :class="`alert alert-${notification.variant}`"
+      :class="alertClasses"
+      class="alert"
       role="alert">
       <div class="alert-text">
         <strong
@@ -20,7 +21,7 @@
   </Transition>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {PropType, computed} from 'vue';
 import {Notification} from '@myparcel-pdk/frontend-core/src';
 import {toArray} from '@myparcel/ts-utils';
@@ -37,5 +38,18 @@ const props = defineProps({
 
 const contentArray = computed(() => {
   return toArray(props.notification.content);
+});
+
+const alertClasses = computed(() => {
+  switch (props.notification?.variant) {
+    case 'success':
+      return 'alert-success';
+    case 'warning':
+      return 'alert-warning';
+    case 'error':
+      return 'alert-danger';
+    default:
+      return 'alert-info';
+  }
 });
 </script>

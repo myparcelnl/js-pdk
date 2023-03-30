@@ -1,6 +1,6 @@
 <template>
   <button
-    :disabled="disabled"
+    :disabled="disabled || loading"
     type="button"
     @click="$emit('click')">
     <PdkIcon
@@ -13,9 +13,10 @@
   </button>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {AdminIcon, useLanguage} from '@myparcel-pdk/frontend-core/src';
 import {PropType} from 'vue';
+import {Size} from '@myparcel-pdk/common/src';
 
 defineProps({
   disabled: {
@@ -29,7 +30,16 @@ defineProps({
 
   label: {
     type: String,
-    default: 'action_save',
+    default: null,
+  },
+
+  loading: {
+    type: Boolean,
+  },
+
+  size: {
+    type: String as PropType<Size>,
+    default: 'md',
   },
 });
 
