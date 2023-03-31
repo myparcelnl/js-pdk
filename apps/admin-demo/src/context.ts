@@ -579,6 +579,11 @@ export const context: AdminContextObject = {
           label: 'settings_checkout_delivery_options_header',
         },
         {
+          name: 'deliveryOptionsCustomCss',
+          $component: 'CodeEditor',
+          label: 'settings_checkout_delivery_options_custom_css',
+        },
+        {
           name: 'deliveryOptionsPosition',
           $component: 'SelectInput',
           options: [

@@ -6,6 +6,8 @@ export {default as DefaultButtonGroup} from './DefaultButtonGroup.vue';
 
 export {default as DefaultCheckboxInput} from './DefaultCheckboxInput.vue';
 
+export {default as DefaultCodeEditor} from './DefaultCodeEditor.vue';
+
 export {default as DefaultCol} from './DefaultCol.vue';
 
 export {default as DefaultCurrencyInput} from './DefaultCurrencyInput.vue';
@@ -49,6 +51,8 @@ export {default as DefaultTable} from './DefaultTable.vue';
 export {default as DefaultTableCol} from './DefaultTableCol.vue';
 
 export {default as DefaultTableRow} from './DefaultTableRow.vue';
+
+export {default as DefaultTextArea} from './DefaultTextArea.vue';
 
 export {default as DefaultTextInput} from './DefaultTextInput.vue';
 

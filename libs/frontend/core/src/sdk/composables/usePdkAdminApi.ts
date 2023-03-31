@@ -2,8 +2,8 @@
 import {HttpMethod, MyParcelSdk, createMyParcelSdk} from '@myparcel/sdk';
 import {AbstractPdkEndpoint} from '../endpoints';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
-import {PdkFetchClient} from '@myparcel-pdk/frontend-core/src';
 import {useGlobalContext} from '../../composables';
+import {PdkFetchClient} from '@myparcel-pdk/frontend-core/src';
 
 let sdk: ReturnType<typeof usePdkAdminApi>;
 

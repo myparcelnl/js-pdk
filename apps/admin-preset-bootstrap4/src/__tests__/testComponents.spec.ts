@@ -3,6 +3,7 @@ import {
   Bootstrap4Button,
   Bootstrap4ButtonGroup,
   Bootstrap4CheckboxInput,
+  Bootstrap4CodeEditor,
   Bootstrap4Col,
   Bootstrap4DropdownButton,
   Bootstrap4FormGroup,
@@ -13,6 +14,7 @@ import {
   Bootstrap4Row,
   Bootstrap4SelectInput,
   Bootstrap4Table,
+  Bootstrap4TextArea,
   Bootstrap4TextInput,
 } from '../components';
 import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests/src';
@@ -23,6 +25,7 @@ executePdkComponentTests({
   PdkButtonGroup: Bootstrap4ButtonGroup,
   PdkCheckboxInput: Bootstrap4CheckboxInput,
   PdkCol: Bootstrap4Col,
+  PdkCodeEditor: Bootstrap4CodeEditor,
   PdkDropdownButton: Bootstrap4DropdownButton,
   PdkFormGroup: Bootstrap4FormGroup,
   PdkImage: Bootstrap4Image,
@@ -33,4 +36,5 @@ executePdkComponentTests({
   PdkSelectInput: Bootstrap4SelectInput,
   PdkTable: Bootstrap4Table,
   PdkTextInput: Bootstrap4TextInput,
+  PdkTextArea: Bootstrap4TextArea,
 });
