@@ -24,7 +24,8 @@
     "typecheck": "nx run-many --target=typecheck",
     "watch": "nodemon",
     "ws:clean": "cd $0 && rimraf lib dist coverage .eslintcache tsconfig.build.tsbuildinfo tsconfig.json node_modules",
-    "ws:lint": "eslint --cache $0",
+    "ws:lint": "eslint_d --cache $0 || eslint --cache $0",
+    "ws:lint:fix": "eslint_d --cache --fix $0 || eslint --cache --fix $0",
     "ws:test": "cd $0 && vitest",
     "ws:test:run": "cd $0 && (vitest run --coverage --dangerouslyIgnoreUnhandledErrors || true)",
     "ws:tsup:build": "cd $0 && tsup-node --minify",
@@ -40,7 +41,7 @@
   },
   "lint-staged": {
     "*.{json,md,yml}": "prettier --write",
-    "*.{ts,vue,js,cjs,mjs}": "eslint --fix --cache",
+    "*.{ts,vue,js,cjs,mjs}": "yarn run ws:lint:fix",
     "package.json": "npx sort-package-json"
   },
   "nodemonConfig": {
