@@ -3,6 +3,7 @@ import {
   DefaultButton,
   DefaultButtonGroup,
   DefaultCheckboxInput,
+  DefaultCodeEditor,
   DefaultCol,
   DefaultCurrencyInput,
   DefaultDropdownButton,
@@ -22,6 +23,7 @@ import {
   DefaultTable,
   DefaultTableCol,
   DefaultTableRow,
+  DefaultTextArea,
   DefaultTextInput,
   DefaultToggleInput,
 } from '../components';
@@ -33,6 +35,7 @@ executePdkComponentTests({
   PdkBox: DefaultBox,
   PdkCheckboxInput: DefaultCheckboxInput,
   PdkCol: DefaultCol,
+  PdkCodeEditor: DefaultCodeEditor,
   PdkCurrencyInput: DefaultCurrencyInput,
   PdkDropdownButton: DefaultDropdownButton,
   PdkFormGroup: DefaultFormGroup,
@@ -51,6 +54,7 @@ executePdkComponentTests({
   PdkTable: DefaultTable,
   PdkTableCol: DefaultTableCol,
   PdkTableRow: DefaultTableRow,
+  PdkTextArea: DefaultTextArea,
   PdkTextInput: DefaultTextInput,
   PdkToggleInput: DefaultToggleInput,
 });

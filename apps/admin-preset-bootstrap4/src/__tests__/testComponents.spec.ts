@@ -13,6 +13,7 @@ import {
   Bootstrap4Row,
   Bootstrap4SelectInput,
   Bootstrap4Table,
+  Bootstrap4TextArea,
   Bootstrap4TextInput,
 } from '../components';
 import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests/src';
@@ -33,4 +34,5 @@ executePdkComponentTests({
   PdkSelectInput: Bootstrap4SelectInput,
   PdkTable: Bootstrap4Table,
   PdkTextInput: Bootstrap4TextInput,
+  PdkTextArea: Bootstrap4TextArea,
 });

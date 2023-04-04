@@ -26,4 +26,6 @@ export {default as Bootstrap4SelectInput} from './Bootstrap4SelectInput.vue';
 
 export {default as Bootstrap4Table} from './Bootstrap4Table.vue';
 
+export {default as Bootstrap4TextArea} from './Bootstrap4TextArea.vue';
+
 export {default as Bootstrap4TextInput} from './Bootstrap4TextInput.vue';
