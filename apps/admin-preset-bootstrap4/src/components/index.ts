@@ -6,8 +6,6 @@ export {default as Bootstrap4ButtonGroup} from './Bootstrap4ButtonGroup.vue';
 
 export {default as Bootstrap4CheckboxInput} from './Bootstrap4CheckboxInput.vue';
 
-export {default as Bootstrap4CodeEditor} from 'Bootstrap4CodeEditor.vue';
-
 export {default as Bootstrap4Col} from './Bootstrap4Col.vue';
 
 export {default as Bootstrap4DropdownButton} from './Bootstrap4DropdownButton.vue';
