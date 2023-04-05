@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.44](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.43...@myparcel-pdk/frontend-core@1.0.0-alpha.44) "@myparcel-pdk/frontend-core" (2023-04-05)
+
+
+### Bug Fixes
+
+* **core:** fix readonly error when translating select options ([7e6e906](https://github/myparcelnl/js-pdk/commit/7e6e9066ae5e66ca63100367f7cbddacb9d41c3d))
+
+
+
+
 ## [1.0.0-alpha.43](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.42...@myparcel-pdk/frontend-core@1.0.0-alpha.43) "@myparcel-pdk/frontend-core" (2023-04-05)
 
 
