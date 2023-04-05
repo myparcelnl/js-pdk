@@ -15,6 +15,10 @@ runs:
   steps:
     - uses: ./.github/actions/setup
 
+    - name: 'Fetch base branch'
+      shell: bash
+      run: git fetch --no-tags --prune --depth=1 origin ${{ github.base_ref }}
+
     - uses: myparcelnl/actions/bundlewatch@v3
       with:
         token: ${{ inputs.bundlewatch-token }}
