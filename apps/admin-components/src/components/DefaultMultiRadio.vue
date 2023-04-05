@@ -1,28 +1,21 @@
 <template>
   <div>
-    <input
-      :id="id"
+    <PdkRadioInput
+      v-for="option in options"
+      :key="option.value"
       v-model="model"
-      :disabled="element.isDisabled || element.isSuspended"
-      :value="element.props?.value"
-      type="radio" />
-    <label :for="id">
-      {{ translate(`toggle_${model ? 'yes' : 'no'}`) }}
-    </label>
+      :name="id"
+      :element="elements[option.value]" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
-import {useVModel} from '@vueuse/core';
+import {ElementInstance, OptionsProp, useMultiRadioInputContext} from '@myparcel-pdk/frontend-core/src';
+import {Keyable} from '@myparcel-pdk/common/src';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: boolean; element: ElementInstance}>();
-const emit = defineEmits<(e: 'update:modelValue', value: boolean) => void>();
+const props = defineProps<{modelValue: string; element: ElementInstance<OptionsProp<Keyable>>}>();
+const emit = defineEmits<(e: 'update:modelValue', value: string) => void>();
 
-const model = useVModel(props, undefined, emit);
-
-const id = generateFieldId(props.element);
-
-const {translate} = useLanguage();
+const {options, id, model, elements} = useMultiRadioInputContext(props, emit);
 </script>

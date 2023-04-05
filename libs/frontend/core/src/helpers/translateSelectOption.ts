@@ -1,8 +1,8 @@
-import {SelectOption, SelectOptionWithLabel, SelectOptionWithPlainLabel} from '@myparcel-pdk/common/src';
+import {SelectOption, SelectOptionValue, SelectOptionWithLabel} from '@myparcel-pdk/common/src';
 import {isOfType} from '@myparcel/ts-utils';
 import {useLanguage} from '../composables';
 
-export const translateSelectOption = <T = string | number>(
+export const translateSelectOption = <T extends SelectOptionValue = SelectOptionValue>(
   option: SelectOption<T>,
   translate: ReturnType<typeof useLanguage>['translate'],
 ): SelectOptionWithLabel<T> => {
@@ -10,6 +10,6 @@ export const translateSelectOption = <T = string | number>(
 
   return {
     value: option.value,
-    label: hasLabel ? translate(option.label) : (option as SelectOptionWithPlainLabel<T>).plainLabel,
+    label: hasLabel ? translate(option.label) : option.plainLabel,
   };
 };

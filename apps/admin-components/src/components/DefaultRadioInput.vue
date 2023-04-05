@@ -1,28 +1,35 @@
 <template>
-  <div>
+  <div v-test="'RadioInput'">
     <input
       :id="id"
       v-model="model"
+      :class="{
+        'form-required': !element.isValid,
+      }"
       :disabled="element.isDisabled || element.isSuspended"
       :value="element.props?.value"
-      type="radio" />
-    <label :for="id">
-      {{ translate(`toggle_${model ? 'yes' : 'no'}`) }}
-    </label>
+      type="radio"
+      v-bind="$attrs" />
+    <label
+      :for="id"
+      v-text="element.label" />
   </div>
 </template>
 
+<script lang="ts">
+export default {inheritAttrs: false};
+</script>
+
 <script lang="ts" setup>
-import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-core/src';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: string | number; element: ElementInstance}>();
-const emit = defineEmits<(e: 'update:modelValue', value: string | number) => void>();
+const props = defineProps<{modelValue: string | number; element: InteractiveElementInstance}>();
+const emit = defineEmits<(e: 'update:modelValue', value: string) => void>();
 
 const model = useVModel(props, undefined, emit);
 
-const id = generateFieldId(props.element);
-
-const {translate} = useLanguage();
+const id = generateFieldId(props.element as ElementInstance);
 </script>

@@ -1,32 +1,30 @@
 import {Settings, Shipment} from '@myparcel-pdk/common/src';
+import {Weekday, Weekdays, useWeekdays} from './useWeekdays';
+import {createFormElement, createObjectWithKeys} from '../utils';
 import {reactive, watch} from 'vue';
-import {createFormElement} from '../utils';
-import {useWeekdays} from './useWeekdays';
-
-type Weekdays = ReturnType<typeof useWeekdays>['weekdays'];
 
 type UseDropOffInputContext = (
   possibilities: Settings.ModelDropOffPossibilities,
   emit?: (name: 'update:modelValue', ...args: unknown[]) => void,
 ) => {
-  weekdaysObject: Record<keyof Weekdays, string>;
+  weekdaysObject: Record<Weekday, string>;
   weekdays: Weekdays;
-  toggleRefs: Record<keyof Weekdays, boolean>;
-  cutoffRefs: Record<keyof Weekdays, string>;
-  cutoffElements: Record<keyof Weekdays, ReturnType<typeof createFormElement>>;
-  toggleElements: Record<keyof Weekdays, ReturnType<typeof createFormElement>>;
+  toggleRefs: Record<Weekday, boolean>;
+  cutoffRefs: Record<Weekday, string>;
+  cutoffElements: Record<Weekday, ReturnType<typeof createFormElement>>;
+  toggleElements: Record<Weekday, ReturnType<typeof createFormElement>>;
 };
 
 // eslint-disable-next-line max-lines-per-function
 export const useDropOffInputContext: UseDropOffInputContext = (possibilities, emit) => {
-  const {weekdaysObject, weekdays, createObjectFromWeekdays} = useWeekdays();
+  const {weekdaysObject, weekdays} = useWeekdays();
 
   const createReactiveObject = <K extends keyof Required<Shipment.ModelDropOffDay>>(
     property: K,
     defaultValue: Required<Shipment.ModelDropOffDay>[K],
   ) => {
     return reactive(
-      createObjectFromWeekdays((day) => {
+      createObjectWithKeys(weekdays, (day) => {
         return possibilities.dropOffDays.find(({weekday}) => weekday === day)?.[property] ?? defaultValue;
       }),
     );
@@ -35,8 +33,8 @@ export const useDropOffInputContext: UseDropOffInputContext = (possibilities, em
   const toggleRefs = createReactiveObject('dispatch', false);
   const cutoffRefs = createReactiveObject('cutoffTime', '00:00');
 
-  const createElements = (reactiveObject: Record<keyof Weekdays, unknown>, name: string) =>
-    createObjectFromWeekdays((day) =>
+  const createElements = (reactiveObject: Record<Weekday, unknown>, name: string) =>
+    createObjectWithKeys(weekdays, (day) =>
       createFormElement({
         // @ts-expect-error Not worth the effort
         ref: reactiveObject[day],

@@ -1,4 +1,5 @@
 import {Component} from 'vue';
+import {Keyable} from './generic.types';
 
 export type LabelFormat = 'a4' | 'a6';
 
@@ -8,20 +9,26 @@ type LabelPositionNumber = 1 | 2 | 3 | 4;
 
 export type LabelPosition = LabelPositionNumber | `${LabelPositionNumber}`;
 
-interface BaseSelectOption<Value = string | number> {
+interface BaseSelectOption<Value extends SelectOptionValue = SelectOptionValue> {
   disabled?: boolean;
   value: Value;
 }
 
-export interface SelectOptionWithLabel<Value = string | number> extends BaseSelectOption<Value> {
+export interface SelectOptionWithLabel<Value extends SelectOptionValue = SelectOptionValue>
+  extends BaseSelectOption<Value> {
   label: string;
 }
 
-export interface SelectOptionWithPlainLabel<Value = string | number> extends BaseSelectOption<Value> {
+export interface SelectOptionWithPlainLabel<Value extends SelectOptionValue = SelectOptionValue>
+  extends BaseSelectOption<Value> {
   plainLabel: string;
 }
 
-export type SelectOption<Value = string | number> = SelectOptionWithLabel<Value> | SelectOptionWithPlainLabel<Value>;
+export type SelectOptionValue = Keyable | boolean;
+
+export type SelectOption<Value extends SelectOptionValue = SelectOptionValue> =
+  | SelectOptionWithLabel<Value>
+  | SelectOptionWithPlainLabel<Value>;
 
 export interface TabDefinition {
   name: string;
