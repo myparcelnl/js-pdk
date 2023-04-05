@@ -96,7 +96,7 @@
         "path": "./apps/admin-component-tests/dist/**/*.js"
       },
       {
-        "path": "./apps/admin-components/dist/**/*.js"
+        "path": "./apps/admin-preset-default/dist/**/*.js"
       },
       {
         "path": "./apps/admin-preset-bootstrap4/dist/**/*.js"

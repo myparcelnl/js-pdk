@@ -19,7 +19,7 @@ import {
   DefaultTableRow,
   DefaultTimeInput,
   DefaultToggleInput,
-} from '@myparcel-pdk/admin-components/src';
+} from '@myparcel-pdk/admin-preset-default/src';
 import {
   DemoBox,
   DemoButton,

@@ -12,8 +12,8 @@
 import {defineComponent} from 'vue';
 
 /**
- * @see import('@myparcel-pdk/admin-components').DefaultImage
- * @see import('@myparcel-pdk/admin-components').DefaultImage
+ * @see import('@myparcel-pdk/admin-preset-default').DefaultImage
+ * @see import('@myparcel-pdk/admin-preset-default').DefaultImage
  */
 export default defineComponent({
   name: 'DemoImage',

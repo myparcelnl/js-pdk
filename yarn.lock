@@ -1116,32 +1116,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/admin-components@workspace:*, @myparcel-pdk/admin-components@workspace:apps/admin-components":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/admin-components@workspace:apps/admin-components"
-  dependencies:
-    "@myparcel-pdk/admin-component-tests": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.34"
-    "@myparcel/ts-utils": ^1.6.0
-    "@vitejs/plugin-vue": ^4.0.0
-    "@vitest/coverage-c8": ^0.29.8
-    "@vue/test-utils": ^2.3.0
-    "@vueuse/core": ^9.13.0
-    happy-dom: ^9.1.7
-    typescript: ^4.9.5
-    vite: ^4.1.4
-    vitest: ^0.29.8
-    vue: ^3.2.47
-  languageName: unknown
-  linkType: soft
-
 "@myparcel-pdk/admin-demo@workspace:apps/admin-demo":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-demo@workspace:apps/admin-demo"
   dependencies:
     "@edielemoine/google-docs-importer": ^1.0.2
     "@fortawesome/fontawesome-free": ^6.3.0
-    "@myparcel-pdk/admin-components": "workspace:*"
+    "@myparcel-pdk/admin-preset-default": "workspace:*"
     "@myparcel-pdk/admin-preset-fontawesome": "workspace:*"
     "@myparcel-pdk/frontend-core": "workspace:*"
     "@myparcel/constants": ^1.0.0
@@ -1191,6 +1172,25 @@ __metadata:
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.29.8
     "@vue/test-utils": ^2.3.0
+    happy-dom: ^9.1.7
+    typescript: ^4.9.5
+    vite: ^4.1.4
+    vitest: ^0.29.8
+    vue: ^3.2.47
+  languageName: unknown
+  linkType: soft
+
+"@myparcel-pdk/admin-preset-default@workspace:*, @myparcel-pdk/admin-preset-default@workspace:apps/admin-preset-default":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/admin-preset-default@workspace:apps/admin-preset-default"
+  dependencies:
+    "@myparcel-pdk/admin-component-tests": "workspace:*"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.34"
+    "@myparcel/ts-utils": ^1.6.0
+    "@vitejs/plugin-vue": ^4.0.0
+    "@vitest/coverage-c8": ^0.29.8
+    "@vue/test-utils": ^2.3.0
+    "@vueuse/core": ^9.13.0
     happy-dom: ^9.1.7
     typescript: ^4.9.5
     vite: ^4.1.4

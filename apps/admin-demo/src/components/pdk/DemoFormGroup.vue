@@ -26,7 +26,7 @@ import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/front
 import {PropType, defineComponent} from 'vue';
 
 /**
- * @see import('@myparcel-pdk/admin-components').DefaultFormGroup
+ * @see import('@myparcel-pdk/admin-preset-default').DefaultFormGroup
  */
 export default defineComponent({
   name: 'DemoFormGroup',

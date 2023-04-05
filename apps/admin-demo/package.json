@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.3.0",
-    "@myparcel-pdk/admin-components": "workspace:*",
+    "@myparcel-pdk/admin-preset-default": "workspace:*",
     "@myparcel-pdk/admin-preset-fontawesome": "workspace:*",
     "@myparcel-pdk/frontend-core": "workspace:*",
     "@myparcel/constants": "^1.0.0",
