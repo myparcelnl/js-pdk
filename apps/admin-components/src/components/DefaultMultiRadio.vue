@@ -5,6 +5,7 @@
       :key="option.value"
       v-model="model"
       :name="id"
+      :disabled="element.isDisabled || element.isSuspended || options.length <= 1"
       :element="elements[option.value]" />
   </div>
 </template>
