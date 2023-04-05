@@ -1109,7 +1109,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-tsup": "workspace:*"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.25"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.41"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.42"
     "@vue/test-utils": ^2.3.0
     tsup: ^6.6.3
     vue: ^3.2.47
@@ -1147,7 +1147,7 @@ __metadata:
   resolution: "@myparcel-pdk/admin-preset-bootstrap4@workspace:apps/admin-preset-bootstrap4"
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.41"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.42"
     "@myparcel/ts-utils": ^1.6.0
     "@types/bootstrap": ^5.2.6
     "@types/jquery": ^3.5.16
@@ -1168,7 +1168,7 @@ __metadata:
   resolution: "@myparcel-pdk/admin-preset-dashicons@workspace:apps/admin-preset-dashicons"
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.41"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.42"
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.29.8
     "@vue/test-utils": ^2.3.0
@@ -1185,7 +1185,7 @@ __metadata:
   resolution: "@myparcel-pdk/admin-preset-default@workspace:apps/admin-preset-default"
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.41"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.42"
     "@myparcel/ts-utils": ^1.6.0
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.29.8
@@ -1204,7 +1204,7 @@ __metadata:
   resolution: "@myparcel-pdk/admin-preset-fontawesome@workspace:apps/admin-preset-fontawesome"
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.41"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.42"
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.29.8
     "@vue/test-utils": ^2.3.0
@@ -1222,7 +1222,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-tsup": "workspace:*"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.25"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.41"
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.42"
     tsup: ^6.6.3
   languageName: unknown
   linkType: soft
@@ -1313,7 +1313,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/frontend-core@workspace:*, @myparcel-pdk/frontend-core@workspace:^1.0.0-alpha.41, @myparcel-pdk/frontend-core@workspace:libs/frontend/core":
+"@myparcel-pdk/frontend-core@workspace:*, @myparcel-pdk/frontend-core@workspace:^1.0.0-alpha.42, @myparcel-pdk/frontend-core@workspace:libs/frontend/core":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/frontend-core@workspace:libs/frontend/core"
   dependencies:

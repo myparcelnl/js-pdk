@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.42](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.41...@myparcel-pdk/frontend-core@1.0.0-alpha.42) "@myparcel-pdk/frontend-core" (2023-04-05)
+
+
+### Bug Fixes
+
+* **core:** remove built-in sorting of select options ([274be59](https://github/myparcelnl/js-pdk/commit/274be5953205f43016e1caaea5de6d737f89c587))
+
+
+
+
 ## [1.0.0-alpha.41](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.40...@myparcel-pdk/frontend-core@1.0.0-alpha.41) "@myparcel-pdk/frontend-core" (2023-04-05)
 
 
