@@ -57,7 +57,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
         name: CARRIER,
         label: 'carrier',
         ref: ref<CarrierName>(values.deliveryOptions?.carrier as CarrierName),
-        component: resolveFormComponent(AdminComponent.SelectInput),
+        component: resolveFormComponent(AdminComponent.MultiRadio),
         props: {
           options: [],
         },
@@ -103,7 +103,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
         name: PACKAGE_TYPE,
         label: 'shipment_options_package_type',
         ref: ref<PackageTypeName>((values.deliveryOptions?.packageType as PackageTypeName) ?? PackageTypeName.Package),
-        component: resolveFormComponent(AdminComponent.SelectInput),
+        component: resolveFormComponent(AdminComponent.MultiRadio),
       }),
 
       defineFormField({
