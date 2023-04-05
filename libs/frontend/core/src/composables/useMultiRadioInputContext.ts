@@ -28,7 +28,6 @@ type UseMultiRadioInputContext<
   props: P,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   emit: (e: 'update:modelValue', value: T | any) => void,
-  sortOptions?: boolean,
 ) => {
   id: string;
   model: Ref<P[K]> | WritableComputedRef<P[K]>;
@@ -36,10 +35,8 @@ type UseMultiRadioInputContext<
   elements: ComputedRef<Record<T, ElementInstance>>;
 };
 
-export const useMultiRadioInputContext: UseMultiRadioInputContext = (props, emit, sortOptions) => {
-  const selectInputContext = useSelectInputContext(props, emit, sortOptions) as ReturnType<
-    UseInputWithOptionsContext<Keyable>
-  >;
+export const useMultiRadioInputContext: UseMultiRadioInputContext = (props, emit) => {
+  const selectInputContext = useSelectInputContext(props, emit) as ReturnType<UseInputWithOptionsContext<Keyable>>;
 
   const elements = computed(() => {
     const optionValues = (get(selectInputContext.options) ?? []).map((option) => option.value);

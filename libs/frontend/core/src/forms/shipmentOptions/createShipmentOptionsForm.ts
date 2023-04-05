@@ -160,10 +160,6 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
         component: resolveFormComponent(AdminComponent.SelectInput),
         ref: ref(values.deliveryOptions?.shipmentOptions.insurance ?? 0),
         label: 'shipment_options_insurance',
-        props: {
-          options: [],
-        },
-
         visibleWhen: ({form}) => isPackageTypePackage(form) && hasShipmentOption(form, 'insurance'),
 
         onBeforeMount: (field: ElementInstance) => {

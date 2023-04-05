@@ -19,36 +19,20 @@ export type UseInputWithOptionsContext<
   props: P,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   emit: (e: 'update:modelValue', value: T | any) => void,
-  sortOptions?: boolean,
 ) => {
   id: string;
   model: Ref<P[K]> | WritableComputedRef<P[K]>;
   options: ComputedRef<SelectOptionWithLabel<T>[]>;
 };
 
-export const useInputWithOptionsContext: UseInputWithOptionsContext = (props, emit, sortOptions = false) => {
+export const useInputWithOptionsContext: UseInputWithOptionsContext = (props, emit) => {
   const {translate} = useLanguage();
 
   const id = generateFieldId(props.element);
   const model = useVModel(props, undefined, emit);
 
   const options = computed(() => {
-    let translatedOptions = (props.element.props.options ?? []).map((option) =>
-      translateSelectOption(option, translate),
-    );
-
-    if (sortOptions) {
-      translatedOptions = translatedOptions.sort((itemA, itemB) => {
-        // Keep "none" option at the top
-        if (itemB.value === -1) {
-          return 1;
-        }
-
-        return String(itemA.label).localeCompare(String(itemB.label));
-      });
-    }
-
-    return translatedOptions;
+    return (props.element.props.options ?? []).map((option) => translateSelectOption(option, translate));
   });
 
   onMounted(() => {
