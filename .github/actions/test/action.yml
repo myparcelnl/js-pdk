@@ -1,0 +1,36 @@
+name: 'Run tests'
+description: 'Run tests and upload coverage'
+
+inputs:
+  bundlewatch-token:
+    description: 'Bundlewatch token'
+    required: true
+
+  codacy-token:
+    description: 'Codacy token'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - uses: ./.github/actions/setup
+
+    - uses: myparcelnl/actions/bundlewatch@v3
+      with:
+        token: ${{ inputs.bundlewatch-token }}
+
+    - name: 'Run tests'
+      shell: bash
+      run: |
+        yarn nx run-many \
+          --parallel \
+          --target=test:run \
+          --output-style=static
+
+    - uses: codecov/codecov-action@v3
+      continue-on-error: true
+
+    - uses: codacy/codacy-coverage-reporter-action@v1
+      continue-on-error: true
+      with:
+        project-token: ${{ inputs.codacy-token }}
