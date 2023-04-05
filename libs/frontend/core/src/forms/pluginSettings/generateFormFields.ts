@@ -22,6 +22,7 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
     const common: AnyElementConfiguration = {
       component: resolveFormComponent($component),
       props: {...props},
+      slots: $slot ? {default: () => $slot} : undefined,
     };
 
     if ($visibleWhen) {
@@ -36,7 +37,6 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
     if (!label || !name) {
       return defineField({
         ...common,
-        slots: $slot ? {default: $slot} : undefined,
         wrapper: false,
       });
     }
