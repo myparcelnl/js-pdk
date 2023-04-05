@@ -5,7 +5,19 @@
 </template>
 
 <script lang="ts" setup>
-defineProps<{
-  level: number;
-}>();
+import {ElementInstance} from '@myparcel-pdk/frontend-core/src';
+import {PropType} from 'vue';
+
+defineProps({
+  // eslint-disable-next-line vue/no-unused-properties
+  element: {
+    type: Object as PropType<ElementInstance>,
+    default: null,
+  },
+
+  level: {
+    type: Number,
+    default: 1,
+  },
+});
 </script>
