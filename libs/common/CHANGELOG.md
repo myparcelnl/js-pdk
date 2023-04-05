@@ -2,6 +2,22 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.25](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.24...@myparcel-pdk/common@1.0.0-alpha.25) "@myparcel-pdk/common" (2023-04-05)
+
+
+### Features
+
+* add TextArea and CodeEditor components ([#137](https://github/myparcelnl/js-pdk/issues/137)) ([84fca1b](https://github/myparcelnl/js-pdk/commit/84fca1bbb18517f4a393dc2a2d228112ed164987))
+* **core:** allow adding image or icon to multi radio option ([68e056a](https://github/myparcelnl/js-pdk/commit/68e056a0391fb5de4ec727cf8df9fc2fdf72193c))
+
+
+### Bug Fixes
+
+* **core:** fix multi radio input ([37e823d](https://github/myparcelnl/js-pdk/commit/37e823d50242b50e8c6782b949e8ad0e3ad8e952))
+
+
+
+
 ## [1.0.0-alpha.18](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.17...@myparcel-pdk/common@1.0.0-alpha.18) "@myparcel-pdk/common" (2023-03-16)
 
 

@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.42](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.41...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.42) "@myparcel-pdk/admin-preset-bootstrap4" (2023-04-05)
+
+
+### Features
+
+* add TextArea and CodeEditor components ([#137](https://github/myparcelnl/js-pdk/issues/137)) ([84fca1b](https://github/myparcelnl/js-pdk/commit/84fca1bbb18517f4a393dc2a2d228112ed164987))
+
+
+### Bug Fixes
+
+* **core:** fix multi radio input ([37e823d](https://github/myparcelnl/js-pdk/commit/37e823d50242b50e8c6782b949e8ad0e3ad8e952))
+
+
+
+
 ## [1.0.0-alpha.34](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.33...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.34) "@myparcel-pdk/admin-preset-bootstrap4" (2023-03-30)
 
 

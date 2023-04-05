@@ -2,6 +2,25 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.41](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.40...@myparcel-pdk/frontend-core@1.0.0-alpha.41) "@myparcel-pdk/frontend-core" (2023-04-05)
+
+
+### Features
+
+* add TextArea and CodeEditor components ([#137](https://github/myparcelnl/js-pdk/issues/137)) ([84fca1b](https://github/myparcelnl/js-pdk/commit/84fca1bbb18517f4a393dc2a2d228112ed164987))
+* **core:** allow adding image or icon to multi radio option ([68e056a](https://github/myparcelnl/js-pdk/commit/68e056a0391fb5de4ec727cf8df9fc2fdf72193c))
+* **core:** change carrier and package type fields to multi radio ([4e03ece](https://github/myparcelnl/js-pdk/commit/4e03ece0a60b4e7906f83aa85f1544ea0afeb600))
+
+
+### Bug Fixes
+
+* **core:** fix multi radio input ([37e823d](https://github/myparcelnl/js-pdk/commit/37e823d50242b50e8c6782b949e8ad0e3ad8e952))
+* **core:** fix webhooks component ([560478e](https://github/myparcelnl/js-pdk/commit/560478ee2f4589a4c1bb197218906615d7711853))
+* **core:** move onRendered hook to correct place ([f28c0ac](https://github/myparcelnl/js-pdk/commit/f28c0ac55763b2d3cc76b926db7640f74a4dd39f))
+
+
+
+
 ## [1.0.0-alpha.34](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.33...@myparcel-pdk/frontend-core@1.0.0-alpha.34) "@myparcel-pdk/frontend-core" (2023-04-03)
 
 

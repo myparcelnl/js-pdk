@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-preset-default",
-  "version": "1.0.0-alpha.35",
+  "version": "1.0.0-alpha.38",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -26,7 +26,7 @@
     "watch": "run ws:vite:watch \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.34",
+    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.41",
     "@myparcel/ts-utils": "^1.6.0",
     "@vueuse/core": "^9.13.0",
     "vue": "^3.2.47"
