@@ -180,5 +180,13 @@ export const useQueryStore = defineStore('query', () => {
         register(`${BackendEndpoint.FetchContext}.${key}`, query);
       });
     },
+
+    registerWebhookQueries: () => {
+      const fetchWebhooks = register(BackendEndpoint.FetchWebhooks, useFetchWebhooksQuery());
+      const createWebhooks = register(BackendEndpoint.CreateWebhooks, useCreateWebhooksMutation());
+      const deleteWebhooks = register(BackendEndpoint.DeleteWebhooks, useDeleteWebhooksMutation());
+
+      return {fetchWebhooks, createWebhooks, deleteWebhooks};
+    },
   };
 });

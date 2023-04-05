@@ -24,14 +24,9 @@
 </template>
 
 <script setup lang="ts">
-import {BackendEndpoint, Status, WebhookDefinition} from '@myparcel-pdk/common/src';
-import {
-  useCreateWebhooksMutation,
-  useDeleteWebhooksMutation,
-  useFetchWebhooksQuery,
-  webhooksCreateAction,
-  webhooksDeleteAction,
-} from '../../actions';
+import {Status, WebhookDefinition} from '@myparcel-pdk/common/src';
+import {useActionStore, useQueryStore} from '../../stores';
+import {webhooksCreateAction, webhooksDeleteAction} from '../../actions';
 import ActionButton from '../common/ActionButton.vue';
 import {ActionDefinition} from '../../types';
 import StatusIndicator from '../common/StatusIndicator.vue';
@@ -40,13 +35,10 @@ import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
 import {partitionArray} from '@myparcel/ts-utils';
 import {useLanguage} from '../../composables';
-import {useQueryStore} from '../../stores';
 
-const queryStore = useQueryStore();
+const {fetchWebhooks, createWebhooks, deleteWebhooks} = useQueryStore().registerWebhookQueries();
 
-const fetchWebhooks = queryStore.register(BackendEndpoint.FetchWebhooks, useFetchWebhooksQuery());
-const createWebhooks = queryStore.register(BackendEndpoint.CreateWebhooks, useCreateWebhooksMutation());
-const deleteWebhooks = queryStore.register(BackendEndpoint.DeleteWebhooks, useDeleteWebhooksMutation());
+useActionStore().registerWebhookActions();
 
 const webhooks = computed<(WebhookDefinition & {status: Status})[]>(() => {
   return (get(fetchWebhooks.data) ?? []).map((webhook) => {

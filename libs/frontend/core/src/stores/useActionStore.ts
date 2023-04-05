@@ -17,6 +17,9 @@ import {
   shipmentsExportReturnAction,
   shipmentsPrintAction,
   shipmentsUpdateAction,
+  webhooksCreateAction,
+  webhooksDeleteAction,
+  webhooksFetchAction,
 } from '../actions';
 import {defineStore} from 'pinia';
 import {usePluginSettings} from '../composables';
@@ -83,6 +86,10 @@ export const useActionStore = defineStore('actions', () => {
 
     registerModalActions: () => {
       register([modalCloseAction, modalSubmitFormAction]);
+    },
+
+    registerWebhookActions: () => {
+      register([webhooksCreateAction, webhooksDeleteAction, webhooksFetchAction]);
     },
   };
 });
