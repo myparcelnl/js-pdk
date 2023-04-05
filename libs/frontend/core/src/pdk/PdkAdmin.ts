@@ -39,6 +39,7 @@ export class PdkAdmin {
     try {
       app.mount(selector);
       this.renderedComponents.push(view);
+      config?.onRendered?.(config);
       logger.debug(`Rendered in ${selector}`);
     } catch (e) {
       logger.error('Error mounting app', e);
@@ -52,8 +53,6 @@ export class PdkAdmin {
     const app = createApp({...component, name: appConfig.appName}).provide(INJECT_GLOBAL_PDK_ADMIN, this);
 
     setupAdminApp(app, appConfig);
-
-    appConfig.config?.onRendered?.(appConfig.config);
 
     return app;
   }
