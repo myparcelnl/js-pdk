@@ -1,3 +1,4 @@
+import {AdminIcon} from '@myparcel-pdk/frontend-core/src';
 import {Component} from 'vue';
 import {Keyable} from './generic.types';
 
@@ -29,6 +30,11 @@ export type SelectOptionValue = Keyable | boolean;
 export type SelectOption<Value extends SelectOptionValue = SelectOptionValue> =
   | SelectOptionWithLabel<Value>
   | SelectOptionWithPlainLabel<Value>;
+
+export type MultiRadioOption<Value extends Keyable = Keyable> = SelectOption<Value> & {
+  image?: string;
+  icon?: AdminIcon;
+};
 
 export interface TabDefinition {
   name: string;

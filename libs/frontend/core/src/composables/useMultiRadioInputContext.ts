@@ -1,9 +1,16 @@
 import {AdminIcon, ElementInstance} from '../types';
 import {ComputedRef, Ref, WritableComputedRef, computed} from 'vue';
-import {Keyable, SelectOption, SelectOptionValue, SelectOptionWithLabel} from '@myparcel-pdk/common/src';
+import {
+  Keyable,
+  MultiRadioOption,
+  SelectOption,
+  SelectOptionValue,
+  SelectOptionWithLabel,
+} from '@myparcel-pdk/common/src';
 import {createFormElement, createObjectWithKeys} from '../utils';
 import {UseInputWithOptionsContext} from './useInputWithOptionsContext';
 import {get} from '@vueuse/core';
+import {isOfType} from '@myparcel/ts-utils';
 import {useSelectInputContext} from './useSelectInputContext';
 
 export type MultiRadioInputProps<T extends SelectOptionValue = SelectOptionValue> = {
@@ -25,7 +32,7 @@ type UseMultiRadioInputContext<
 ) => {
   id: string;
   model: Ref<P[K]> | WritableComputedRef<P[K]>;
-  options: ComputedRef<SelectOptionWithLabel<T>[]>;
+  options: ComputedRef<MultiRadioOption<T>[]>;
   elements: ComputedRef<Record<T, ElementInstance>>;
 };
 
@@ -38,13 +45,19 @@ export const useMultiRadioInputContext: UseMultiRadioInputContext = (props, emit
     const optionValues = (get(selectInputContext.options) ?? []).map((option) => option.value);
 
     return createObjectWithKeys(optionValues, (value) => {
-      const option = (get(selectInputContext.options) ?? []).find((option) => option.value === value);
+      const option = (get(selectInputContext.options) ?? []).find(
+        (option) => option.value === value,
+      ) as MultiRadioOption;
 
       return createFormElement({
         ref: selectInputContext.model,
         name: `${props.element.name}${value.toString()}`,
-        label: option?.label,
-        props: {value},
+        label: isOfType<SelectOptionWithLabel>(option, 'label') ? option.label : option.plainLabel,
+        props: {
+          value: option.value,
+          image: option.image,
+          icon: option.icon,
+        },
       });
     });
   });

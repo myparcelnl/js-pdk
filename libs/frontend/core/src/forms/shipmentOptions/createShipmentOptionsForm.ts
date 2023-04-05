@@ -14,14 +14,14 @@ import {
   SAME_DAY_DELIVERY,
   SIGNATURE,
 } from './field';
-import {AdminComponent, Plugin, SelectOptionWithPlainLabel} from '@myparcel-pdk/common/src';
+import {AdminComponent, MultiRadioOption, Plugin} from '@myparcel-pdk/common/src';
 import {AdminContextKey, AdminModalKey, ElementInstance} from '../../types';
 import {CarrierName, PackageTypeName} from '@myparcel/constants';
 import {OneOrMore, toArray} from '@myparcel/ts-utils';
 import {addBulkEditNotification, getPackageTypes, hasShipmentOption, isPackageTypePackage} from './helpers';
 import {defineFormField, resolveFormComponent, setFieldProp} from '../helpers';
 import {markRaw, ref} from 'vue';
-import {useAdminConfig, useContext, useLocalizedFormatter} from '../../composables';
+import {useAdminConfig, useAssetUrl, useContext, useLocalizedFormatter} from '../../composables';
 import {createShipmentFormName} from '../../utils';
 import {defineForm} from '@myparcel/vue-form-builder/src';
 import {get} from '@vueuse/core';
@@ -65,7 +65,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
         // @ts-expect-error todo
         onBeforeMount: async (field) => {
           const carrierSelectOptions = await Promise.all(
-            dynamicContext.carrierOptions.map(async (options): Promise<SelectOptionWithPlainLabel> => {
+            dynamicContext.carrierOptions.map(async (options): Promise<MultiRadioOption> => {
               const query = useCarrier(options.carrier.name);
               await query.suspense();
               const data = get(query.data);
@@ -73,6 +73,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
               return {
                 plainLabel: data?.human ?? '',
                 value: data?.name ?? '',
+                image: useAssetUrl(data?.meta.logo_svg ?? ''),
               };
             }),
           );
