@@ -4,6 +4,8 @@ export {default as DefaultButton} from './DefaultButton.vue';
 
 export {default as DefaultButtonGroup} from './DefaultButtonGroup.vue';
 
+export {default as DefaultCheckboxGroup} from './DefaultCheckboxGroup.vue';
+
 export {default as DefaultCheckboxInput} from './DefaultCheckboxInput.vue';
 
 export {default as DefaultCodeEditor} from './DefaultCodeEditor.vue';
@@ -30,13 +32,11 @@ export {default as DefaultLoader} from './DefaultLoader.vue';
 
 export {default as DefaultModal} from './DefaultModal.vue';
 
-export {default as DefaultMultiCheckbox} from './DefaultMultiCheckbox.vue';
-
-export {default as DefaultMultiRadio} from './DefaultMultiRadio.vue';
-
 export {default as DefaultNotification} from './DefaultNotification.vue';
 
 export {default as DefaultNumberInput} from './DefaultNumberInput.vue';
+
+export {default as DefaultRadioGroup} from './DefaultRadioGroup.vue';
 
 export {default as DefaultRadioInput} from './DefaultRadioInput.vue';
 

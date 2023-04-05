@@ -12,11 +12,11 @@
 </template>
 
 <script lang="ts" setup>
-import {ElementInstance, OptionsProp, useMultiCheckboxInputContext} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, OptionsProp, useCheckboxGroupContext} from '@myparcel-pdk/frontend-core/src';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{modelValue: string | boolean; element: ElementInstance<OptionsProp<string | boolean>>}>();
 const emit = defineEmits<(e: 'update:modelValue', value: string | boolean) => void>();
 
-const {options, model} = useMultiCheckboxInputContext(props, emit);
+const {options, model} = useCheckboxGroupContext(props, emit);
 </script>

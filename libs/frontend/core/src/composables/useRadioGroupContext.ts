@@ -2,7 +2,7 @@ import {AdminIcon, ElementInstance} from '../types';
 import {ComputedRef, Ref, WritableComputedRef, computed} from 'vue';
 import {
   Keyable,
-  MultiRadioOption,
+  RadioGroupOption,
   SelectOption,
   SelectOptionValue,
   SelectOptionWithLabel,
@@ -13,16 +13,16 @@ import {get} from '@vueuse/core';
 import {isOfType} from '@myparcel/ts-utils';
 import {useSelectInputContext} from './useSelectInputContext';
 
-export type MultiRadioInputProps<T extends SelectOptionValue = SelectOptionValue> = {
+export type RadioGroupProps<T extends SelectOptionValue = SelectOptionValue> = {
   modelValue: T;
   element: ElementInstance<{
     options?: (SelectOption<T> & {icon?: AdminIcon})[];
   }>;
 };
 
-type UseMultiRadioInputContext<
+type UseRadioGroupContext<
   T extends Keyable = Keyable,
-  P extends MultiRadioInputProps<T> = MultiRadioInputProps<T>,
+  P extends RadioGroupProps<T> = RadioGroupProps<T>,
   K extends keyof P = keyof P,
 > = (
   props: P,
@@ -31,11 +31,11 @@ type UseMultiRadioInputContext<
 ) => {
   id: string;
   model: Ref<P[K]> | WritableComputedRef<P[K]>;
-  options: ComputedRef<MultiRadioOption<T>[]>;
+  options: ComputedRef<RadioGroupOption<T>[]>;
   elements: ComputedRef<Record<T, ElementInstance>>;
 };
 
-export const useMultiRadioInputContext: UseMultiRadioInputContext = (props, emit) => {
+export const useRadioGroupContext: UseRadioGroupContext = (props, emit) => {
   const selectInputContext = useSelectInputContext(props, emit) as ReturnType<UseInputWithOptionsContext<Keyable>>;
 
   const elements = computed(() => {
@@ -44,7 +44,7 @@ export const useMultiRadioInputContext: UseMultiRadioInputContext = (props, emit
     return createObjectWithKeys(optionValues, (value) => {
       const option = (get(selectInputContext.options) ?? []).find(
         (option) => option.value === value,
-      ) as MultiRadioOption;
+      ) as RadioGroupOption;
 
       return createFormElement({
         ref: selectInputContext.model,

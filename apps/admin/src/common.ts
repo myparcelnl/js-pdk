@@ -75,7 +75,7 @@ export {
   useLanguage,
   useModalContext,
   useModalStore,
-  useMultiCheckboxInputContext,
+  useCheckboxGroupContext,
   useNotificationStore,
   usePdfWindow,
   useSelectInputContext,

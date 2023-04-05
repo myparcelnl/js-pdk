@@ -14,7 +14,7 @@ import {
   SAME_DAY_DELIVERY,
   SIGNATURE,
 } from './field';
-import {AdminComponent, MultiRadioOption, Plugin} from '@myparcel-pdk/common/src';
+import {AdminComponent, Plugin, RadioGroupOption} from '@myparcel-pdk/common/src';
 import {AdminContextKey, AdminModalKey, ElementInstance} from '../../types';
 import {CarrierName, PackageTypeName} from '@myparcel/constants';
 import {OneOrMore, toArray} from '@myparcel/ts-utils';
@@ -57,7 +57,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
         name: CARRIER,
         label: 'carrier',
         ref: ref<CarrierName>(values.deliveryOptions?.carrier as CarrierName),
-        component: resolveFormComponent(AdminComponent.MultiRadio),
+        component: resolveFormComponent(AdminComponent.RadioGroup),
         props: {
           options: [],
         },
@@ -65,7 +65,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
         // @ts-expect-error todo
         onBeforeMount: async (field) => {
           const carrierSelectOptions = await Promise.all(
-            dynamicContext.carrierOptions.map(async (options): Promise<MultiRadioOption> => {
+            dynamicContext.carrierOptions.map(async (options): Promise<RadioGroupOption> => {
               const query = useCarrier(options.carrier.name);
               await query.suspense();
               const data = get(query.data);
@@ -104,7 +104,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
         name: PACKAGE_TYPE,
         label: 'shipment_options_package_type',
         ref: ref<PackageTypeName>((values.deliveryOptions?.packageType as PackageTypeName) ?? PackageTypeName.Package),
-        component: resolveFormComponent(AdminComponent.MultiRadio),
+        component: resolveFormComponent(AdminComponent.RadioGroup),
       }),
 
       defineFormField({

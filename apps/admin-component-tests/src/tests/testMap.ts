@@ -1,6 +1,7 @@
 import {
   runActionContainerTest,
   runButtonTest,
+  runCheckboxGroupTest,
   runCheckboxInputTest,
   runColTest,
   runCurrencyInputTest,
@@ -12,11 +13,10 @@ import {
   runImageTest,
   runLinkTest,
   runModalTest,
-  runMultiCheckboxTest,
-  runMultiRadioTest,
   runNotificationTest,
   runNumberInputTest,
   runPlainWrapperTest,
+  runRadioGroupTest,
   runRadioInputTest,
   runRowTest,
   runSelectInputTest,
@@ -47,8 +47,8 @@ export const testMap: Record<AdminComponent, AdminComponentTest> = {
   PdkTimeInput: runTimeInputTest,
   PdkToggleInput: runToggleInputTest,
 
-  PdkMultiCheckbox: runMultiCheckboxTest,
-  PdkMultiRadio: runMultiRadioTest,
+  PdkCheckboxGroup: runCheckboxGroupTest,
+  PdkRadioGroup: runRadioGroupTest,
 
   /**
    * Action containers

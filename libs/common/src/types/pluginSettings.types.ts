@@ -31,7 +31,7 @@ export type SelectOption<Value extends SelectOptionValue = SelectOptionValue> =
   | SelectOptionWithLabel<Value>
   | SelectOptionWithPlainLabel<Value>;
 
-export type MultiRadioOption<Value extends Keyable = Keyable> = SelectOption<Value> & {
+export type RadioGroupOption<Value extends Keyable = Keyable> = SelectOption<Value> & {
   image?: string;
   icon?: AdminIcon;
 };

@@ -11,12 +11,12 @@
 </template>
 
 <script lang="ts" setup>
-import {ElementInstance, OptionsProp, useMultiRadioInputContext} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, OptionsProp, useRadioGroupContext} from '@myparcel-pdk/frontend-core/src';
 import {Keyable} from '@myparcel-pdk/common/src';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{modelValue: string; element: ElementInstance<OptionsProp<Keyable>>}>();
 const emit = defineEmits<(e: 'update:modelValue', value: string) => void>();
 
-const {options, id, model, elements} = useMultiRadioInputContext(props, emit);
+const {options, id, model, elements} = useRadioGroupContext(props, emit);
 </script>
