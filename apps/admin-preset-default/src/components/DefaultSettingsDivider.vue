@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import {ElementInstance, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, useLanguage} from '@myparcel-pdk/frontend-admin-core/src';
 
 defineProps<{
   element: ElementInstance<{

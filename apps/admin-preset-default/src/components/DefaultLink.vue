@@ -16,7 +16,12 @@
 /**
  * This component is used to render a link. The link can be used to trigger an action.
  */
-import {ActionDefinition, getActionIdentifier, useActionStore, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {
+  ActionDefinition,
+  getActionIdentifier,
+  useActionStore,
+  useLanguage,
+} from '@myparcel-pdk/frontend-admin-core/src';
 import {AnchorHTMLAttributes, PropType, computed} from 'vue';
 
 const props = defineProps({

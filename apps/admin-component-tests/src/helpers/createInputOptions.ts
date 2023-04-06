@@ -1,4 +1,4 @@
-import {ElementInstance, createFormElement} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, createFormElement} from '@myparcel-pdk/frontend-admin-core/src';
 import {InteractiveElementConfiguration} from '@myparcel/vue-form-builder/src';
 import {MountingOptions} from '@vue/test-utils';
 

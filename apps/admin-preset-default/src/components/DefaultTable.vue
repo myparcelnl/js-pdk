@@ -23,7 +23,7 @@
 /**
  * A table component that can be used to render data via slots.
  */
-import {useAdminConfig} from '@myparcel-pdk/frontend-core/src';
+import {useAdminConfig} from '@myparcel-pdk/frontend-admin-core/src';
 
 const config = useAdminConfig();
 </script>

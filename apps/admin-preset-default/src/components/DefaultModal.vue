@@ -52,7 +52,7 @@ import {
   NotificationContainer,
   useLanguage,
   useModalElementContext,
-} from '@myparcel-pdk/frontend-core/src';
+} from '@myparcel-pdk/frontend-admin-core/src';
 import {PropType} from 'vue';
 
 const props = defineProps({

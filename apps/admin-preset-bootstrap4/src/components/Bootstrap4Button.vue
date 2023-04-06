@@ -11,7 +11,7 @@
 <script lang="ts" setup>
 /* eslint-disable vue/no-unused-properties */
 import {PropType, computed} from 'vue';
-import {AdminIcon} from '@myparcel-pdk/frontend-core/src';
+import {AdminIcon} from '@myparcel-pdk/frontend-admin-core/src';
 import BaseButton from './common/BaseButton.vue';
 import {Size} from '@myparcel-pdk/common/src';
 

@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import {PropType} from 'vue';
 import {TabDefinition} from '@myparcel-pdk/common/src';
-import {useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {useLanguage} from '@myparcel-pdk/frontend-admin-core/src';
 
 defineProps({
   // eslint-disable-next-line vue/no-unused-properties

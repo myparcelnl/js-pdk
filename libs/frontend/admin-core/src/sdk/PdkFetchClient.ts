@@ -1,4 +1,4 @@
-import {Notification, useNotificationStore} from '@myparcel-pdk/frontend-core/src';
+import {Notification, useNotificationStore} from '@myparcel-pdk/frontend-admin-core/src';
 import {
   AbstractEndpoint,
   ApiException,

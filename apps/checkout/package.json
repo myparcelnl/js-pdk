@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.26",
-    "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.2"
+    "@myparcel-pdk/frontend-checkout-core": "workspace:*"
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:*",
