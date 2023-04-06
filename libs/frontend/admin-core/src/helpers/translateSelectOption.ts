@@ -9,7 +9,7 @@ export const translateSelectOption = <T extends SelectOptionValue = SelectOption
   const hasLabel = isOfType<SelectOptionWithLabel>(option, 'label');
   const translatedOption = {...option} as SelectOptionWithLabel<T>;
 
-  translatedOption.label = hasLabel ? translate(option.label) : translate(option.plainLabel);
+  translatedOption.label = hasLabel ? translate(option.label) : option.plainLabel;
 
   return Object.freeze(translatedOption);
 };
