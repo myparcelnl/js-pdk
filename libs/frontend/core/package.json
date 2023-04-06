@@ -31,7 +31,7 @@
     "@myparcel/constants": "^1.0.0",
     "@myparcel/sdk": "^2.11.0",
     "@myparcel/ts-utils": "^1.6.0",
-    "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
+    "@myparcel/vue-form-builder": "^1.0.0-alpha.46",
     "@tanstack/vue-query": "^4.24.10",
     "@vueuse/core": "^9.13.0",
     "lodash": "^4.17.21",
