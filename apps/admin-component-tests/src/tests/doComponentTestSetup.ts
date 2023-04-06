@@ -12,7 +12,7 @@ import {
   createLogger,
   createStorePlugin,
   globalLogger,
-} from '@myparcel-pdk/frontend-core/src';
+} from '@myparcel-pdk/frontend-admin-core/src';
 import {config} from '@vue/test-utils';
 
 const context: AdminContextObject = {

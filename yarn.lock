@@ -1109,7 +1109,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-tsup": "workspace:*"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.26"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.44"
+    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.44"
     "@vue/test-utils": ^2.3.0
     tsup: ^6.6.3
     vue: ^3.2.47
@@ -1124,7 +1124,7 @@ __metadata:
     "@fortawesome/fontawesome-free": ^6.3.0
     "@myparcel-pdk/admin-preset-default": "workspace:*"
     "@myparcel-pdk/admin-preset-fontawesome": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:*"
+    "@myparcel-pdk/frontend-admin-core": "workspace:*"
     "@myparcel/constants": ^1.0.0
     "@myparcel/ts-utils": ^1.6.0
     "@tanstack/vue-query": ^4.24.10
@@ -1147,7 +1147,7 @@ __metadata:
   resolution: "@myparcel-pdk/admin-preset-bootstrap4@workspace:apps/admin-preset-bootstrap4"
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.44"
+    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.44"
     "@myparcel/ts-utils": ^1.6.0
     "@types/bootstrap": ^5.2.6
     "@types/jquery": ^3.5.16
@@ -1168,7 +1168,7 @@ __metadata:
   resolution: "@myparcel-pdk/admin-preset-dashicons@workspace:apps/admin-preset-dashicons"
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.44"
+    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.44"
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.29.8
     "@vue/test-utils": ^2.3.0
@@ -1185,7 +1185,7 @@ __metadata:
   resolution: "@myparcel-pdk/admin-preset-default@workspace:apps/admin-preset-default"
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.44"
+    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.44"
     "@myparcel/ts-utils": ^1.6.0
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.29.8
@@ -1204,7 +1204,7 @@ __metadata:
   resolution: "@myparcel-pdk/admin-preset-fontawesome@workspace:apps/admin-preset-fontawesome"
   dependencies:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.44"
+    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.44"
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.29.8
     "@vue/test-utils": ^2.3.0
@@ -1222,7 +1222,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-tsup": "workspace:*"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.26"
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.44"
+    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.44"
     tsup: ^6.6.3
   languageName: unknown
   linkType: soft
@@ -1298,7 +1298,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-tsup": "workspace:*"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.26"
-    "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.2"
+    "@myparcel-pdk/frontend-checkout-core": "workspace:*"
     tsup: ^6.6.3
   languageName: unknown
   linkType: soft
@@ -1313,9 +1313,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/frontend-core@workspace:*, @myparcel-pdk/frontend-core@workspace:^1.0.0-alpha.44, @myparcel-pdk/frontend-core@workspace:libs/frontend/core":
+"@myparcel-pdk/frontend-admin-core@workspace:*, @myparcel-pdk/frontend-admin-core@workspace:^1.0.0-alpha.44, @myparcel-pdk/frontend-admin-core@workspace:libs/frontend/admin-core":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/frontend-core@workspace:libs/frontend/core"
+  resolution: "@myparcel-pdk/frontend-admin-core@workspace:libs/frontend/admin-core"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:^"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.26"
@@ -1339,7 +1339,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/frontend-delivery-options@workspace:^1.0.0-alpha.2, @myparcel-pdk/frontend-delivery-options@workspace:libs/frontend/delivery-options":
+"@myparcel-pdk/frontend-checkout-core@workspace:*, @myparcel-pdk/frontend-checkout-core@workspace:libs/frontend/checkout-core":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/frontend-checkout-core@workspace:libs/frontend/checkout-core"
+  dependencies:
+    "@myparcel-pdk/build-tsup": "workspace:^"
+    "@myparcel-pdk/frontend-delivery-options": "workspace:*"
+    tsup: ^6.6.3
+  languageName: unknown
+  linkType: soft
+
+"@myparcel-pdk/frontend-common@workspace:libs/frontend/common":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/frontend-common@workspace:libs/frontend/common"
+  dependencies:
+    "@myparcel-pdk/build-tsup": "workspace:^"
+    tsup: ^6.6.3
+  languageName: unknown
+  linkType: soft
+
+"@myparcel-pdk/frontend-delivery-options@workspace:*, @myparcel-pdk/frontend-delivery-options@workspace:libs/frontend/delivery-options":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/frontend-delivery-options@workspace:libs/frontend/delivery-options"
   dependencies:

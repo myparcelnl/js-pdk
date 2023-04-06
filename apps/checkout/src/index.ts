@@ -7,4 +7,4 @@ export {
   EVENT_UPDATED_DELIVERY_OPTIONS,
   EVENT_UPDATE_CONFIG,
   EVENT_UPDATE_DELIVERY_OPTIONS,
-} from '@myparcel-pdk/frontend-delivery-options/src';
+} from '@myparcel-pdk/frontend-checkout-core/src';

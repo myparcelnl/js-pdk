@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminIcon} from '@myparcel-pdk/frontend-core/src';
+import {AdminIcon} from '@myparcel-pdk/frontend-admin-core/src';
 import {PropType} from 'vue';
 
 defineProps({

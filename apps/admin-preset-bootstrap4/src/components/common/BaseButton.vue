@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminIcon, useLanguage} from '@myparcel-pdk/frontend-core/src';
+import {AdminIcon, useLanguage} from '@myparcel-pdk/frontend-admin-core/src';
 import {PropType} from 'vue';
 import {Size} from '@myparcel-pdk/common/src';
 

@@ -31,7 +31,7 @@ export type {
   Notification,
   OptionsProp,
   ResolvedAction,
-} from '@myparcel-pdk/frontend-core/src';
+} from '@myparcel-pdk/frontend-admin-core/src';
 
 export {
   ActionButton,
@@ -81,6 +81,6 @@ export {
   useSelectInputContext,
   useWeekdays,
   webhooksDeleteAction,
-} from '@myparcel-pdk/frontend-core/src';
+} from '@myparcel-pdk/frontend-admin-core/src';
 
 export {AdminComponent, AdminView, Size, Status, Variant} from '@myparcel-pdk/common/src';

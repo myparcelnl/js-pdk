@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.26",
-    "@myparcel-pdk/frontend-core": "workspace:^1.0.0-alpha.44"
+    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.44"
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:*",

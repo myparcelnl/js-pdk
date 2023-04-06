@@ -1,0 +1,34 @@
+{
+  "name": "@myparcel-pdk/frontend-common",
+  "version": "1.0.0-alpha.0",
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./src": "./src/index.ts"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist",
+    "./src"
+  ],
+  "scripts": {
+    "build": "run ws:tsup:build \"$(pwd)\"",
+    "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "emit": "run ws:tsup:emit \"$(pwd)\"",
+    "lint": "run ws:lint \"$(pwd)\"",
+    "serve": "run ws:tsup:serve \"$(pwd)\"",
+    "typecheck": "run ws:tsup:typecheck \"$(pwd)\"",
+    "watch": "run ws:tsup:watch \"$(pwd)\""
+  },
+  "devDependencies": {
+    "@myparcel-pdk/build-tsup": "workspace:^",
+    "tsup": "^6.6.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
