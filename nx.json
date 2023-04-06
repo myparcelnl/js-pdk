@@ -1,12 +1,13 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "defaultBase": "alpha",
   "affected": {
     "defaultBase": "alpha"
   },
-  "workspaceLayout": {
-    "appsDir": "apps",
-    "libsDir": "libs"
+  "defaultBase": "alpha",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [],
+    "production": ["default"]
   },
   "npmScope": "myparcel-pdk",
   "targetDefaults": {
@@ -56,9 +57,8 @@
       }
     }
   },
-  "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "sharedGlobals": [],
-    "production": ["default"]
+  "workspaceLayout": {
+    "appsDir": "apps",
+    "libsDir": "libs"
   }
 }
