@@ -810,7 +810,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@monodeploy/git@npm:^3.7.5, @monodeploy/git@npm:^3.9.0":
+"@monodeploy/git@npm:^3.9.0":
   version: 3.9.0
   resolution: "@monodeploy/git@npm:3.9.0"
   dependencies:
@@ -825,7 +825,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@monodeploy/io@npm:^3.7.5, @monodeploy/io@npm:^3.9.0":
+"@monodeploy/io@npm:^3.9.0":
   version: 3.9.0
   resolution: "@monodeploy/io@npm:3.9.0"
   dependencies:
@@ -840,7 +840,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@monodeploy/logging@npm:^3.7.4, @monodeploy/logging@npm:^3.8.0":
+"@monodeploy/logging@npm:^3.8.0":
   version: 3.8.0
   resolution: "@monodeploy/logging@npm:3.8.0"
   peerDependencies:
@@ -872,20 +872,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@monodeploy/plugin-github@npm:^0.9.0":
-  version: 0.9.5
-  resolution: "@monodeploy/plugin-github@npm:0.9.5"
+"@monodeploy/plugin-github@npm:^0.10.1":
+  version: 0.10.1
+  resolution: "@monodeploy/plugin-github@npm:0.10.1"
   dependencies:
-    "@monodeploy/git": ^3.7.5
-    "@monodeploy/io": ^3.7.5
-    "@monodeploy/logging": ^3.7.4
-    "@monodeploy/types": ^3.7.5
-    "@octokit/core": ^4.1.0
-    "@octokit/plugin-throttling": ^4.3.2
-    "@yarnpkg/core": ^3.4.0
-    "@yarnpkg/fslib": ^2.10.1
+    "@monodeploy/git": ^3.9.0
+    "@monodeploy/io": ^3.9.0
+    "@monodeploy/logging": ^3.8.0
+    "@monodeploy/types": ^3.9.0
+    "@octokit/core": ^4.2.0
+    "@octokit/plugin-throttling": ^5.0.1
+    "@yarnpkg/core": ^3.5.0
+    "@yarnpkg/fslib": ^2.10.2
     "@yarnpkg/shell": ^3.2.5
-  checksum: c2880cdd13ca067a80dc437677bac25821527bb4a7b3a8486c7811cdea538bb0409db7e5daf637aefad55eb9eb2a5fa95e3681508c70627a76d0b07c84567fae
+  checksum: ba7dab33d5adbc316ae679f9def56bd38a44e926a66ce9ba57c94fc1460db03ae721b429b0ad92cddf10172ab2d76913d4061962697d537da95abf6f53bff2cb
   languageName: node
   linkType: hard
 
@@ -909,7 +909,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@monodeploy/types@npm:^3.7.5, @monodeploy/types@npm:^3.9.0":
+"@monodeploy/types@npm:^3.9.0":
   version: 3.9.0
   resolution: "@monodeploy/types@npm:3.9.0"
   dependencies:
@@ -1371,7 +1371,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/monorepo@workspace:."
   dependencies:
-    "@monodeploy/plugin-github": ^0.9.0
+    "@monodeploy/plugin-github": ^0.10.1
     "@myparcel-eslint/eslint-config-esnext": ^1.2.0
     "@myparcel-eslint/eslint-config-node": ^1.2.0
     "@myparcel-eslint/eslint-config-prettier": ^1.2.0
@@ -1654,7 +1654,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/core@npm:^4.1.0":
+"@octokit/core@npm:^4.2.0":
   version: 4.2.0
   resolution: "@octokit/core@npm:4.2.0"
   dependencies:
@@ -1691,13 +1691,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/openapi-types@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "@octokit/openapi-types@npm:14.0.0"
-  checksum: 0a1f8f3be998cd82c5a640e9166d43fd183b33d5d36f5e1a9b81608e94d0da87c01ec46c9988f69cd26585d4e2ffc4d3ec99ee4f75e5fe997fc86dad0aa8293c
-  languageName: node
-  linkType: hard
-
 "@octokit/openapi-types@npm:^16.0.0":
   version: 16.0.0
   resolution: "@octokit/openapi-types@npm:16.0.0"
@@ -1705,15 +1698,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/plugin-throttling@npm:^4.3.2":
-  version: 4.3.2
-  resolution: "@octokit/plugin-throttling@npm:4.3.2"
+"@octokit/plugin-throttling@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "@octokit/plugin-throttling@npm:5.0.1"
   dependencies:
-    "@octokit/types": ^8.0.0
+    "@octokit/types": ^9.0.0
     bottleneck: ^2.15.3
   peerDependencies:
     "@octokit/core": ^4.0.0
-  checksum: 2c9ef9be2cc1b9cb01d4d9f04e82246ccaa41ab05a4dc315f926b11abf5a99e3a38a98756fbb7f9e8d4c4f5e43f052c1dbd11c062017096dd943b8896c9e414c
+  checksum: 11f54c4791ae75055df22184687788c754914da33b383bb908127f59556012874776e6a597b97d9af2102c5e3b19d13287e8c0b030b5bc42d672c15f383b0132
   languageName: node
   linkType: hard
 
@@ -1739,15 +1732,6 @@ __metadata:
     node-fetch: ^2.6.7
     universal-user-agent: ^6.0.0
   checksum: fef4097be8375d20bb0b3276d8a3adf866ec628f2b0664d334f3c29b92157da847899497abdc7a5be540053819b55564990543175ad48f04e9e6f25f0395d4d3
-  languageName: node
-  linkType: hard
-
-"@octokit/types@npm:^8.0.0":
-  version: 8.2.1
-  resolution: "@octokit/types@npm:8.2.1"
-  dependencies:
-    "@octokit/openapi-types": ^14.0.0
-  checksum: 92f2fe5ea8c4c6ddbb2363c74cd865c64e5753eaa4895bc925b5064390890b1441c5406015d8a92285f386cc7e6fe714c47fe4beda370fcda9177153299c9e37
   languageName: node
   linkType: hard
 
@@ -3214,7 +3198,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/core@npm:^3.3.0, @yarnpkg/core@npm:^3.4.0, @yarnpkg/core@npm:^3.5.0":
+"@yarnpkg/core@npm:^3.3.0, @yarnpkg/core@npm:^3.5.0":
   version: 3.5.0
   resolution: "@yarnpkg/core@npm:3.5.0"
   dependencies:
