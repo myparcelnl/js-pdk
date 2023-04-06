@@ -1,4 +1,4 @@
-import {AdminIcon} from '@myparcel-pdk/frontend-core/src';
+import {AdminIcon} from '@myparcel-pdk/frontend-admin-core/src';
 import {memoize} from 'lodash-unified';
 
 const PDK_FONT_AWESOME_ICON_MAP: Partial<Record<AdminIcon, string>> = {

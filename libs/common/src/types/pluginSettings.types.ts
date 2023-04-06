@@ -1,4 +1,4 @@
-import {AdminIcon} from '@myparcel-pdk/frontend-core/src';
+import {AdminIcon} from '@myparcel-pdk/frontend-admin-core/src';
 import {Component} from 'vue';
 import {Keyable} from './generic.types';
 

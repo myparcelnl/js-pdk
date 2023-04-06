@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import {ElementInstance, OptionsProp, useRadioGroupContext} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, OptionsProp, useRadioGroupContext} from '@myparcel-pdk/frontend-admin-core/src';
 import {Keyable} from '@myparcel-pdk/common/src';
 
 // eslint-disable-next-line vue/no-unused-properties

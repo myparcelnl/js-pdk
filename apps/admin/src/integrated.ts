@@ -8,4 +8,4 @@ export {
   PluginSettingsView,
   ProductSettingsView,
   createPdkAdminPlugin,
-} from '@myparcel-pdk/frontend-core/src';
+} from '@myparcel-pdk/frontend-admin-core/src';

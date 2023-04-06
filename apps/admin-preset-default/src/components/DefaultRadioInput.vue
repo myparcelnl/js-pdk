@@ -21,7 +21,7 @@ export default {inheritAttrs: false};
 </script>
 
 <script lang="ts" setup>
-import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-core/src';
+import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-admin-core/src';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
 import {useVModel} from '@vueuse/core';
 

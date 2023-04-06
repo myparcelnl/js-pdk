@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {AdminContextObject} from '@myparcel-pdk/frontend-core/src';
+import {AdminContextObject} from '@myparcel-pdk/frontend-admin-core/src';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {CarrierName} from '@myparcel/constants';
 import translations from './translations/en.json';

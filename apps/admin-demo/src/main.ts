@@ -1,6 +1,6 @@
 import './assets/css/icons.css';
 import './assets/css/tailwind.css';
-import {AdminContextKey, LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-core/src';
+import {AdminContextKey, LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-admin-core/src';
 import {
   DefaultButtonGroup,
   DefaultCheckboxGroup,
