@@ -26,7 +26,7 @@ runs:
     - name: 'Run tests'
       shell: bash
       run: |
-        yarn nx run-many \
+        NX_BRANCH=production yarn nx run-many \
           --parallel \
           --target=test:run \
           --output-style=static

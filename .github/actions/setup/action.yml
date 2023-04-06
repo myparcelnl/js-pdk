@@ -11,7 +11,7 @@ runs:
     - name: 'Build packages'
       shell: bash
       run: |
-        yarn nx run-many \
+        NX_BRANCH=production yarn nx run-many \
           --runner=cloud \
           --parallel \
           --target=build \
