@@ -1322,7 +1322,7 @@ __metadata:
     "@myparcel/constants": ^1.0.0
     "@myparcel/sdk": ^2.11.0
     "@myparcel/ts-utils": ^1.6.0
-    "@myparcel/vue-form-builder": ^1.0.0-alpha.1
+    "@myparcel/vue-form-builder": ^1.0.0-beta.0
     "@tanstack/vue-query": ^4.24.10
     "@types/lodash-es": ^4.17.6
     "@vitejs/plugin-vue": ^4.0.0
@@ -1402,44 +1402,44 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel-vfb/core@npm:^1.0.0-alpha.22":
-  version: 1.0.0-alpha.22
-  resolution: "@myparcel-vfb/core@npm:1.0.0-alpha.22"
+"@myparcel-vfb/core@npm:^1.0.0-beta.0":
+  version: 1.0.0-beta.0
+  resolution: "@myparcel-vfb/core@npm:1.0.0-beta.0"
   dependencies:
     "@myparcel-vfb/build-vite": 1.0.0-alpha.15
-    "@myparcel-vfb/hook-manager": ^1.0.0-alpha.19
-    "@myparcel-vfb/utils": ^1.0.0-alpha.17
+    "@myparcel-vfb/hook-manager": ^1.0.0-beta.0
+    "@myparcel-vfb/utils": ^1.0.0-beta.0
     "@myparcel/ts-utils": ^1.6.0
-  checksum: 4e6e4749f6a260142a5535f009f1d4894867c9f6d8e4318d8767c00b7f29a446b11c524c8a75eb40e2e7d9ab540ca7e10873d64f2ee1dccfc4baf3217a29bba8
+  checksum: 2425f5e62f479c9d252a0c5974a9e020f0ee82b069f0f2c02c170efea25252bc3901be361875ea94532c1dd228799d6c9cab9c3d807c3c5a45f92aecd7aaa070
   languageName: node
   linkType: hard
 
-"@myparcel-vfb/hook-manager@npm:^1.0.0-alpha.19":
-  version: 1.0.0-alpha.19
-  resolution: "@myparcel-vfb/hook-manager@npm:1.0.0-alpha.19"
+"@myparcel-vfb/hook-manager@npm:^1.0.0-beta.0":
+  version: 1.0.0-beta.0
+  resolution: "@myparcel-vfb/hook-manager@npm:1.0.0-beta.0"
   dependencies:
     "@myparcel/ts-utils": ^1.6.0
-  checksum: cdfe888fe89f64e04a77b4119f4f3960efddf6ac1c90c3ec6d658f14fe730ac4004582d25c840fb0d634da53162b590e0d08d1138bb59814523ba03607d8731b
+  checksum: 0792067b74569c6f755d5565d4d3e5a42d54908de5b73229d7f647e4bdfca45b5780aa974ee710b613ff5fe5b21b6c7037197f0bbd087d5a0aba03e3a06582ba
   languageName: node
   linkType: hard
 
-"@myparcel-vfb/plugin@npm:^1.0.0-alpha.22":
-  version: 1.0.0-alpha.22
-  resolution: "@myparcel-vfb/plugin@npm:1.0.0-alpha.22"
+"@myparcel-vfb/plugin@npm:^1.0.0-beta.0":
+  version: 1.0.0-beta.0
+  resolution: "@myparcel-vfb/plugin@npm:1.0.0-beta.0"
   dependencies:
-    "@myparcel-vfb/core": ^1.0.0-alpha.22
+    "@myparcel-vfb/core": ^1.0.0-beta.0
     "@myparcel/ts-utils": ^1.6.0
     "@vue/devtools-api": ^6.5.0
-  checksum: f4680df1f4fe4e38bbd952fb95c784ca32b33df58e3d7d05411e19a8cd3767331915ffa4f979156c21ab7ee12e124024c0cef2899ab2e6d8a1006eb29f29ceab
+  checksum: e7eace580351aea6666b7cbac5cb7ac05f490cf5e30786ead0276107f92b4ac4d39a6c8d042a70349f4184afb7acc94305bf6e9386952e977d308d41a0d176dc
   languageName: node
   linkType: hard
 
-"@myparcel-vfb/utils@npm:^1.0.0-alpha.17":
-  version: 1.0.0-alpha.17
-  resolution: "@myparcel-vfb/utils@npm:1.0.0-alpha.17"
+"@myparcel-vfb/utils@npm:^1.0.0-beta.0":
+  version: 1.0.0-beta.0
+  resolution: "@myparcel-vfb/utils@npm:1.0.0-beta.0"
   dependencies:
     "@myparcel/ts-utils": ^1.6.0
-  checksum: d523ff3059755c7adeaeb41417341f4be5523bf6a998076280e0702004cefdeccd173c36958b579c333774c00b7b7ee08135b7d8603dd2a4da786a758b553c81
+  checksum: e0783ea277adc59e023eeaac8b50215b13f7cb7e403fa4e83e57bccd5c5417aec48a4f816fa5468a9f6864cd6af50a41f5dcebf24341aa4870b1c1163fbe1e40
   languageName: node
   linkType: hard
 
@@ -1475,16 +1475,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel/vue-form-builder@npm:^1.0.0-alpha.1":
-  version: 1.0.0-alpha.44
-  resolution: "@myparcel/vue-form-builder@npm:1.0.0-alpha.44"
+"@myparcel/vue-form-builder@npm:^1.0.0-beta.0":
+  version: 1.0.0-beta.0
+  resolution: "@myparcel/vue-form-builder@npm:1.0.0-beta.0"
   dependencies:
-    "@myparcel-vfb/core": ^1.0.0-alpha.22
-    "@myparcel-vfb/hook-manager": ^1.0.0-alpha.19
-    "@myparcel-vfb/plugin": ^1.0.0-alpha.22
-    "@myparcel-vfb/utils": ^1.0.0-alpha.17
+    "@myparcel-vfb/core": ^1.0.0-beta.0
+    "@myparcel-vfb/hook-manager": ^1.0.0-beta.0
+    "@myparcel-vfb/plugin": ^1.0.0-beta.0
+    "@myparcel-vfb/utils": ^1.0.0-beta.0
     "@myparcel/ts-utils": ^1.6.0
-  checksum: 899cb1516adcaa93019de65deff656f8174f0498c570072bcfbf960540973b6c25aec159a5d2b520c56060f625602102b63df942bd2998db74d8413278b9cd3c
+  checksum: d47d556dfc4f07553d1a1ac57dd4d3f11b083804ed8a8bf76d7ac220409525e7f86b94cc47393539df2acdd2c6d9ae9a22feefefacf065db625d9c5c55395c11
   languageName: node
   linkType: hard
 
