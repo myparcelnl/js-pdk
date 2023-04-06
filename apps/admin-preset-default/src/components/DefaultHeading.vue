@@ -16,7 +16,7 @@ defineProps({
   },
 
   level: {
-    type: Number,
+    type: [Number, String],
     default: 1,
   },
 });

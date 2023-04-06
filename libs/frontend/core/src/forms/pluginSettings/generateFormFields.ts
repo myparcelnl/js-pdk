@@ -17,12 +17,13 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
   }
 
   return fields.map((data) => {
-    const {name, $component, $visibleWhen, $slot, label, ...props} = data;
+    const {name, $component, $visibleWhen, $slot, $wrapper, label, ...props} = data;
 
     const common: AnyElementConfiguration = {
       component: resolveFormComponent($component),
       props: {...props},
-      slots: $slot ? {default: () => $slot} : undefined,
+      slots: $slot ? {default: $slot} : undefined,
+      wrapper: $wrapper && typeof $wrapper === 'string' ? resolveFormComponent($wrapper) : undefined,
     };
 
     if ($visibleWhen) {
@@ -35,10 +36,7 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
 
     // Plain element
     if (!label || !name) {
-      return defineField({
-        ...common,
-        wrapper: false,
-      });
+      return defineField(common);
     }
 
     return defineField({

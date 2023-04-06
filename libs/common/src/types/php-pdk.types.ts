@@ -416,6 +416,7 @@ export namespace Plugin {
     $component: AdminComponent;
     $slot?: string;
     $visibleWhen?: Record<string, unknown>;
+    $wrapper?: AdminComponent | boolean;
     label?: string;
     name?: string;
   } & Record<string, unknown>;

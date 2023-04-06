@@ -44,6 +44,8 @@ export {default as DefaultRow} from './DefaultRow.vue';
 
 export {default as DefaultSelectInput} from './DefaultSelectInput.vue';
 
+export {default as DefaultSettingsDivider} from './DefaultSettingsDivider.vue';
+
 export {default as DefaultTabNavButton} from './DefaultTabNavButton.vue';
 
 export {default as DefaultTable} from './DefaultTable.vue';
