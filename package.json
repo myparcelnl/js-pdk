@@ -33,7 +33,7 @@
     "ws:tsup:buildOnly": "cd $0 && tsup-node",
     "ws:tsup:typecheck": "cd $0 && tsc --noEmit",
     "ws:tsup:watch": "cd $0 && tsup-node --sourcemap --watch",
-    "ws:vite:build": "cd $0 && vite build",
+    "ws:vite:build": "cd $0 && vite build --debug",
     "ws:vite:build:dev": "cd $0 && vite build --mode development",
     "ws:vite:buildOnly": "cd $0 && vite build",
     "ws:vite:typecheck": "cd $0 && vue-tsc --noEmit",
