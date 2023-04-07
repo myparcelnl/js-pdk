@@ -14,7 +14,7 @@
     "@types/node": "^18.14.6",
     "h3": "^1.5.0",
     "nitropack": "^2.2.3",
-    "serverless": "^3.28.1",
+    "serverless": "^3.30.1",
     "serverless-plugin-typescript": "^2.1.4",
     "typescript": "^5.0.3"
   },
