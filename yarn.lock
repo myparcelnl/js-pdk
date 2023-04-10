@@ -1155,7 +1155,7 @@ __metadata:
     "@vitest/coverage-c8": ^0.29.8
     "@vue/test-utils": ^2.3.0
     happy-dom: ^9.1.7
-    pinia: ^2.0.32
+    pinia: ^2.0.34
     typescript: ^5.0.3
     vite: ^4.1.4
     vitest: ^0.29.8
@@ -1332,7 +1332,7 @@ __metadata:
     lodash: ^4.17.21
     lodash-es: ^4.17.21
     lodash-unified: ^1.0.3
-    pinia: ^2.0.32
+    pinia: ^2.0.34
     vite: ^4.1.4
     vitest: ^0.29.8
     vue: ^3.2.47
@@ -10332,9 +10332,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinia@npm:^2.0.32":
-  version: 2.0.33
-  resolution: "pinia@npm:2.0.33"
+"pinia@npm:^2.0.34":
+  version: 2.0.34
+  resolution: "pinia@npm:2.0.34"
   dependencies:
     "@vue/devtools-api": ^6.5.0
     vue-demi: "*"
@@ -10347,7 +10347,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: efd9cf1d61521ab2a4549f93ada6e2c1b9feeb6c8f2f482281a53c0079e0008f02adaebb07a782865ccfe896876ac60447ef4586fc6eeaeaf17d634767e22638
+  checksum: f31333f481b53b500341e43a6dd7d16a494963b9e0473f4e621439342bcc9eac529bd0aeb2574ca4e60596e1d96d32d23ef3e166425a842fa41fe927e26457de
   languageName: node
   linkType: hard
 

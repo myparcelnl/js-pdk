@@ -38,7 +38,7 @@
     "@vitest/coverage-c8": "^0.29.8",
     "@vue/test-utils": "^2.3.0",
     "happy-dom": "^9.1.7",
-    "pinia": "^2.0.32",
+    "pinia": "^2.0.34",
     "typescript": "^5.0.3",
     "vite": "^4.1.4",
     "vitest": "^0.29.8"
