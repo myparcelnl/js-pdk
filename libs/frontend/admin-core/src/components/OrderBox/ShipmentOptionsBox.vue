@@ -4,14 +4,14 @@
     :loading="loading">
     <template #header>
       <PdkIcon icon="config" />
-      <span>{{ translate('shipment_options') }} #{{ query.data?.externalIdentifier }}</span>
+      <span>{{ translate('shipment_options_title') }} #{{ query.data?.externalIdentifier }}</span>
     </template>
 
     <template #default>
       <PdkRow>
         <PdkCol>
           <template v-if="isExported">
-            {{ translate('order_exported') }}
+            {{ translate('notification_order_exported') }}
           </template>
 
           <ShipmentOptionsForm v-else />
