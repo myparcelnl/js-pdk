@@ -7,14 +7,9 @@
 
 <script lang="ts" setup>
 import {useActionStore, useQueryStore} from '../stores';
-import {defineAsyncComponent} from 'vue';
+import PrintOptionsModal from '../components/modals/PrintOptionsModal.vue';
+import ShipmentOptionsModal from '../components/modals/ShipmentOptionsModal.vue';
 import {usePluginSettings} from '../composables';
-
-/* eslint-disable @typescript-eslint/naming-convention */
-const PrintOptionsModal = defineAsyncComponent(() => import('../components/Modals/PrintOptionsModal.vue'));
-// const ReturnsFormModal = defineAsyncComponent(() => import('../components/Modals/ReturnsFormModal.vue'));
-const ShipmentOptionsModal = defineAsyncComponent(() => import('../components/Modals/ShipmentOptionsModal.vue'));
-/* eslint-enable @typescript-eslint/naming-convention */
 
 useQueryStore().registerContextQueries();
 
