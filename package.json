@@ -90,16 +90,16 @@
     },
     "files": [
       {
-        "path": "./apps/admin/dist/**/*.js"
+        "path": "./apps/admin-component-tests/dist/**/*.js"
       },
       {
-        "path": "./apps/admin-component-tests/dist/**/*.js"
+        "path": "./apps/admin-preset-bootstrap4/dist/**/*.js"
       },
       {
         "path": "./apps/admin-preset-default/dist/**/*.js"
       },
       {
-        "path": "./apps/admin-preset-bootstrap4/dist/**/*.js"
+        "path": "./apps/admin/dist/**/*.js"
       },
       {
         "path": "./apps/app-builder/dist/**/*.js"
@@ -111,7 +111,13 @@
         "path": "./libs/common/dist/**/*.js"
       },
       {
-        "path": "./libs/frontend/core/dist/**/*.js"
+        "path": "./libs/frontend/admin-core/dist/**/*.js"
+      },
+      {
+        "path": "./libs/frontend/checkout-core/dist/**/*.js"
+      },
+      {
+        "path": "./libs/frontend/common/dist/**/*.js"
       },
       {
         "path": "./libs/frontend/delivery-options/dist/**/*.js"
