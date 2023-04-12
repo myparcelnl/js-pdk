@@ -10,12 +10,11 @@
   ],
   "scripts": {
     "build": "nx run-many --runner=cloud --target=build",
-    "build:dev": "run build:dev:base --runner=cloud",
-    "build:dev:base": "nx run-many --target=build:dev",
+    "build:dev": "nx run-many --target=build:dev",
     "clean": "nx run-many --target=clean",
     "lint": "nx affected --target=lint",
     "prepare": "is-ci || husky install",
-    "serve": "run build:dev:base --output-style=stream npx concurrently yarn:watch yarn:serve:demo",
+    "serve": "run build:dev --output-style=stream npx concurrently yarn:watch yarn:serve:demo",
     "serve:demo": "npx concurrently yarn:serve:demo:frontend yarn:serve:demo:backend",
     "serve:demo:backend": "nx serve backend-demo",
     "serve:demo:frontend": "nx serve admin-demo",
@@ -45,7 +44,7 @@
     "package.json": "npx sort-package-json"
   },
   "nodemonConfig": {
-    "exec": "yarn build:dev:base --output-style=stream",
+    "exec": "yarn build:dev --output-style=stream",
     "ext": "ts,vue",
     "ignore": [
       "**/dist/**"

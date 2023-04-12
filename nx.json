@@ -28,16 +28,8 @@
     "lint": {
       "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
     },
-    "serve": {
-      "dependsOn": ["build:dev"],
-      "outputs": ["{projectRoot}/dist"]
-    },
     "test:run": {
       "outputs": ["{projectRoot}/coverage"]
-    },
-    "watch": {
-      "dependsOn": ["^build:dev"],
-      "outputs": ["{projectRoot}/dist"]
     }
   },
   "tasksRunnerOptions": {
