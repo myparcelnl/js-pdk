@@ -1,12 +1,12 @@
 <template>
   <div>
     <PdkHeading
-      v-if="element.props.heading"
+      v-if="element.props.heading && has(element.props.heading)"
       :level="element.props.level">
       {{ translate(element.props.heading) }}
     </PdkHeading>
 
-    <p v-if="element.props.content">
+    <p v-if="element.props.content && has(element.props.content)">
       {{ translate(element.props.content) }}
     </p>
   </div>
@@ -25,5 +25,5 @@ defineProps<{
   modelValue: string | number;
 }>();
 
-const {translate} = useLanguage();
+const {translate, has} = useLanguage();
 </script>
