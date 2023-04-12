@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.27](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.26...@myparcel-pdk/common@1.0.0-alpha.27) "@myparcel-pdk/common" (2023-04-12)
+
+
+### Features
+
+* **core:** add dividers to settings ([5d198c3](https://github/myparcelnl/js-pdk/commit/5d198c328a2ed1b47ed210e6f6b012a873b9679e))
+* **core:** add multi select input ([f441a74](https://github/myparcelnl/js-pdk/commit/f441a74e1171354563bb0779a2b1cd556d7e3109))
+
+
+
+
 ## [1.0.0-alpha.26](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.25...@myparcel-pdk/common@1.0.0-alpha.26) "@myparcel-pdk/common" (2023-04-05)
 
 

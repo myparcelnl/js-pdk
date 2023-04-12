@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.44](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.43...@myparcel-pdk/admin@1.0.0-alpha.44) "@myparcel-pdk/admin" (2023-04-12)
+
+
+### Features
+
+* **admin:** add more exports ([a28b93c](https://github/myparcelnl/js-pdk/commit/a28b93caf26e681104ea8f35a3eb05656999f075))
+
+
+
+
 ## [1.0.0-alpha.42](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.41...@myparcel-pdk/admin@1.0.0-alpha.42) "@myparcel-pdk/admin" (2023-04-05)
 
 

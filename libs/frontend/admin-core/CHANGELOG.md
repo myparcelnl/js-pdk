@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.45](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.44...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.45) "@myparcel-pdk/frontend-admin-core" (2023-04-12)
+
+
+### Bug Fixes
+
+* **admin-core:** fix plain labels being translated ([05df0c6](https://github/myparcelnl/js-pdk/commit/05df0c68a6ff6a28dbed00809354afafa2c5aee3))
+* **admin:** fix some translation keys ([03ef3be](https://github/myparcelnl/js-pdk/commit/03ef3be96dd34d80aa3a9eb8455b593ce9734a0a))
+
+
+
+
 ## [1.0.0-alpha.44](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-core@1.0.0-alpha.43...@myparcel-pdk/frontend-core@1.0.0-alpha.44) "@myparcel-pdk/frontend-core" (2023-04-05)
 
 

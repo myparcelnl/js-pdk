@@ -2,6 +2,23 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.42](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.41...@myparcel-pdk/admin-preset-default@1.0.0-alpha.42) "@myparcel-pdk/admin-preset-default" (2023-04-12)
+
+
+### Features
+
+* **core:** add dividers to settings ([5d198c3](https://github/myparcelnl/js-pdk/commit/5d198c328a2ed1b47ed210e6f6b012a873b9679e))
+* **core:** add multi select input ([f441a74](https://github/myparcelnl/js-pdk/commit/f441a74e1171354563bb0779a2b1cd556d7e3109))
+* **preset-default:** allow not rendering parts of settings divider ([b7ee676](https://github/myparcelnl/js-pdk/commit/b7ee6766258b943d556005f93f822ae88e9c9f16))
+
+
+### Bug Fixes
+
+* **preset-default:** fix heading component props ([6999d99](https://github/myparcelnl/js-pdk/commit/6999d99a85ff73f892bee4a925907c8eb1aedb18))
+
+
+
+
 ## [1.0.0-alpha.40](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.39...@myparcel-pdk/admin-preset-default@1.0.0-alpha.40) "@myparcel-pdk/admin-preset-default" (2023-04-05)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin",
-  "version": "1.0.0-alpha.43",
+  "version": "1.0.0-alpha.44",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -25,8 +25,8 @@
     "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.26",
-    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.44"
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.27",
+    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.45"
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:*",
