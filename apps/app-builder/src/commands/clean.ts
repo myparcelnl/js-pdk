@@ -1,30 +1,25 @@
+import {exists, initializeCommand, logTargetPath, logTimeTaken, reportDryRun} from '../utils';
 import {PdkBuilderCommand} from '../types';
-import chalk from 'chalk';
-import {createDebugger} from '../utils/createDebugger';
-import {exists} from '../utils/exists';
 import fs from 'fs';
 import path from 'path';
-import {reportDryRun} from '../utils/reportDryRun';
 
 export const clean: PdkBuilderCommand = async ({env, config, args}) => {
-  const debug = createDebugger('clean');
+  const {debug, time} = initializeCommand(clean.name);
 
   if (args.dryRun) reportDryRun(debug, 'No files will be deleted.');
 
   const dist = path.resolve(env.cwd, config.outDir);
 
-  const relativePath = path.relative(env.cwd, config.outDir);
-
   if (!(await exists(dist))) {
-    debug('Dist folder %s does not exist, skipping...', chalk.greenBright(relativePath));
+    debug('Folder %s does not exist, skipping...', logTargetPath(env, config.outDir));
     return;
   }
 
-  debug('Deleting %s folder', chalk.cyan(path.relative(env.cwd, config.outDir)));
+  debug('Deleting folder %s', logTargetPath(env, config.outDir));
 
   if (!args.dryRun) {
     await fs.promises.rm(dist, {recursive: true, force: true});
   }
 
-  debug('Done');
+  logTimeTaken(debug, time);
 };

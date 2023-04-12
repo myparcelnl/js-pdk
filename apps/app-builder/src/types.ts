@@ -61,6 +61,7 @@ export type PdkBuilderCommand = (context: PdkBuilderContext) => PromiseOr<void>;
 
 export type CommandArgs = {
   dryRun?: boolean;
+  parallel?: boolean;
   quiet?: boolean;
   verbose: number;
 };

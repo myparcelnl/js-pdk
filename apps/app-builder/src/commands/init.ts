@@ -1,5 +1,5 @@
 import {CommandArgs, PdkBuilderContext} from '../types';
-import {createDebugger} from '../utils/createDebugger';
+import {initializeCommand, logTimeTaken} from '../utils';
 import fs from 'fs';
 import path from 'path';
 
@@ -17,7 +17,7 @@ export default config;
 `;
 
 export const init = async <A extends CommandArgs>(context: Omit<PdkBuilderContext, 'config'>): Promise<void> => {
-  const debug = createDebugger('init');
+  const {debug, time} = initializeCommand(init.name);
 
   const packageJsonPath = `${context.env.cwd}/package.json`;
 
@@ -48,4 +48,6 @@ export const init = async <A extends CommandArgs>(context: Omit<PdkBuilderContex
     filename,
     TEMPLATE.replace(':name', parameters.name).replace(':version', parameters.version).replace(':configType', tsType),
   );
+
+  logTimeTaken(debug, time);
 };
