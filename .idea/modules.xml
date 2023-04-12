@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/pdk-frontend.iml" filepath="$PROJECT_DIR$/.idea/pdk-frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/js-pdk.iml" filepath="$PROJECT_DIR$/.idea/js-pdk.iml" />
     </modules>
   </component>
 </project>
