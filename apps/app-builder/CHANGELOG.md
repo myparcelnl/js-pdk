@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.16](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.15...@myparcel-pdk/app-builder@1.0.0-alpha.16) "@myparcel-pdk/app-builder" (2023-04-12)
+
+
+### Features
+
+* **app-builder:** add rename and transform functionality ([17e6401](https://github/myparcelnl/js-pdk/commit/17e6401bd6ce2306a76a3c320fbaeec4319823e0))
+
+
+
+
 ## [1.0.0-alpha.15](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.14...@myparcel-pdk/app-builder@1.0.0-alpha.15) "@myparcel-pdk/app-builder" (2023-03-15)
 
 
