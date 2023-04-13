@@ -1,14 +1,12 @@
 /* eslint-disable no-console */
-import glob from 'fast-glob';
 import {spawnSync} from 'child_process';
 
 /** @type {CreateCommonTsupConfig} */
 const createCommonTsupConfig = () => {
-  const files = glob.sync('src/**/*.ts');
   const tsconfig = 'tsconfig.build.json';
 
   return {
-    entry: files,
+    entry: ['src/index.ts'],
     format: ['esm'],
     target: 'esnext',
     tsconfig,
