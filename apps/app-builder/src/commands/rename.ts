@@ -1,4 +1,5 @@
 /* eslint-disable max-lines-per-function */
+import {COMMAND_RENAME_NAME, VerbosityLevel} from '../constants';
 import {
   executePromises,
   getPlatformDistPath,
@@ -20,7 +21,7 @@ import {replaceCaseSensitive} from '../utils/transformer';
 const STRING_TO_REPLACE = 'myparcelnl';
 
 export const rename: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(rename.name);
+  const {debug, time} = initializeCommand(COMMAND_RENAME_NAME);
 
   if (args.dryRun) reportDryRun(debug, 'No files will be renamed.');
 
@@ -55,7 +56,7 @@ export const rename: PdkBuilderCommand = async ({env, config, args}) => {
 
           const targetFileName = replaceCaseSensitive(filename, STRING_TO_REPLACE, platform);
 
-          if (args.verbose >= 3) {
+          if (args.verbose > VerbosityLevel.VeryVeryVerbose) {
             debug(
               '%s -> %s',
               logSourcePath(env, file),

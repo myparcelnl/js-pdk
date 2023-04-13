@@ -1,5 +1,3 @@
-import {PdkBuilderCommand} from '../types';
-import chalk from 'chalk';
 import {
   executePromises,
   getPlatformDistPath,
@@ -10,12 +8,15 @@ import {
   logTimeTaken,
   reportDryRun,
 } from '../utils';
+import {COMMAND_COPY_NAME, VerbosityLevel} from '../constants';
+import {PdkBuilderCommand} from '../types';
+import chalk from 'chalk';
 import fs from 'fs';
 import glob from 'fast-glob';
 import path from 'path';
 
 export const copy: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(copy.name);
+  const {debug, time} = initializeCommand(COMMAND_COPY_NAME);
 
   if (args.dryRun) reportDryRun(debug, 'No files will be copied.');
 
@@ -41,7 +42,7 @@ export const copy: PdkBuilderCommand = async ({env, config, args}) => {
           const source = path.resolve(env.cwd, file);
           const target = path.resolve(env.cwd, platformDistPath, file);
 
-          if (args.verbose >= 3) {
+          if (args.verbose > VerbosityLevel.VeryVeryVerbose) {
             debug('%s -> %s', logSourcePath(env, file), logTargetPath(env, [platformDistPath, file].join(path.sep)));
           }
 

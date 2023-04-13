@@ -12,6 +12,7 @@ import {
   validateDistPath,
 } from '../utils';
 import {getOccurrences, replaceCaseSensitive} from '../utils/transformer';
+import {COMMAND_TRANSFORM_NAME, VerbosityLevel} from '../constants';
 import {PdkBuilderCommand} from '../types';
 import chalk from 'chalk';
 import fs from 'fs';
@@ -21,7 +22,7 @@ import path from 'path';
 const SOURCE_PLATFORM = 'myparcelnl';
 
 export const transform: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(transform.name);
+  const {debug, time} = initializeCommand(COMMAND_TRANSFORM_NAME);
 
   if (args.dryRun) reportDryRun(debug, 'No files will be transformed.');
 
@@ -70,7 +71,7 @@ export const transform: PdkBuilderCommand = async ({env, config, args}) => {
           const occurrences = getOccurrences(contents, SOURCE_PLATFORM);
 
           if (occurrences.length > 0) {
-            if (args.verbose >= 3) {
+            if (args.verbose >= VerbosityLevel.VeryVeryVerbose) {
               debug(
                 'Replacing %s occurrences of "%s" with "%s" in %s',
                 chalk.greenBright(occurrences.length),

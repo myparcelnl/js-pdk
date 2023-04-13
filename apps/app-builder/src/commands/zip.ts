@@ -12,13 +12,14 @@ import {
   resolveFileName,
   validateDistPath,
 } from '../utils';
+import {COMMAND_ZIP_NAME, VerbosityLevel} from '../constants';
 import {PdkBuilderCommand} from '../types';
 import chalk from 'chalk';
 import fs from 'fs';
 import path from 'path';
 
 export const zip: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(zip.name);
+  const {debug, time} = initializeCommand(COMMAND_ZIP_NAME);
 
   if (args.dryRun) reportDryRun(debug, 'No archive will be created.');
 
@@ -45,7 +46,7 @@ export const zip: PdkBuilderCommand = async ({env, config, args}) => {
         }
       }
 
-      if (args.verbose > 1) {
+      if (args.verbose > VerbosityLevel.Verbose) {
         debug('Compressing %s...', logTargetPath(env, archivePath));
       }
 
@@ -57,7 +58,7 @@ export const zip: PdkBuilderCommand = async ({env, config, args}) => {
         await archive.finalize();
       }
 
-      if (args.verbose > 1) {
+      if (args.verbose > VerbosityLevel.Verbose) {
         debug('Compressed %s', logTargetPath(env, archivePath));
       }
     }),

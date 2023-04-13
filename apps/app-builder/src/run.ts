@@ -1,3 +1,13 @@
+import {
+  COMMAND_BUILD_NAME,
+  COMMAND_CLEAN_NAME,
+  COMMAND_COPY_NAME,
+  COMMAND_INIT_NAME,
+  COMMAND_RENAME_NAME,
+  COMMAND_TRANSFORM_NAME,
+  COMMAND_ZIP_NAME,
+  TITLE,
+} from './constants';
 import {clean, copy, init, rename, transform, zip} from './commands';
 import {createWithConfig, createWithContext} from './utils';
 import {LiftoffEnv} from 'liftoff';
@@ -16,16 +26,16 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
   const withContext = createWithContext(env, argv);
   const withConfig = createWithConfig(env, argv);
 
-  program.name('pdk-builder').description('Builds a plugin for MyParcel.');
+  program.name(TITLE).description('Builds a plugin for MyParcel.');
 
   program
-    .command('init')
+    .command(COMMAND_INIT_NAME)
     .description(`Generate a config file in the current directory. Necessary for all other commands.`)
     .option(...OPTION_VERBOSITY)
     .action(withContext(init));
 
   program
-    .command('build')
+    .command(COMMAND_BUILD_NAME)
     .description(`Run clean, copy, rename and compress in sequence. ${REQUIRES_CONFIG_FILE}`)
     .option(...OPTION_PARALLEL)
     .option(...OPTION_DRY_RUN)
@@ -39,14 +49,14 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     );
 
   program
-    .command(clean.name)
+    .command(COMMAND_CLEAN_NAME)
     .description(`Clear output directory. ${REQUIRES_CONFIG_FILE}`)
     .option(...OPTION_DRY_RUN)
     .option(...OPTION_VERBOSITY)
     .action(withConfig(clean));
 
   program
-    .command(copy.name)
+    .command(COMMAND_COPY_NAME)
     .description(`Copy source files to output directory. ${REQUIRES_CONFIG_FILE}`)
     .option(...OPTION_PARALLEL)
     .option(...OPTION_DRY_RUN)
@@ -54,14 +64,14 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .action(withConfig(copy));
 
   program
-    .command(rename.name)
+    .command(COMMAND_RENAME_NAME)
     .description(`Rename output files. ${REQUIRES_CONFIG_FILE}`)
     .option(...OPTION_PARALLEL)
     .option(...OPTION_DRY_RUN)
     .option(...OPTION_VERBOSITY)
     .action(withConfig(rename));
   program
-    .command(transform.name)
+    .command(COMMAND_TRANSFORM_NAME)
     .description(`Replace content in output files. ${REQUIRES_CONFIG_FILE}`)
     .option(...OPTION_PARALLEL)
     .option(...OPTION_DRY_RUN)
@@ -69,7 +79,7 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .action(withConfig(transform));
 
   program
-    .command(zip.name)
+    .command(COMMAND_ZIP_NAME)
     .description(`Compress output files into an archive. ${REQUIRES_CONFIG_FILE}`)
     .option(...OPTION_PARALLEL)
     .option(...OPTION_DRY_RUN)

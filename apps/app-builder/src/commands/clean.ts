@@ -1,10 +1,11 @@
 import {exists, initializeCommand, logTargetPath, logTimeTaken, reportDryRun} from '../utils';
+import {COMMAND_CLEAN_NAME} from '../constants';
 import {PdkBuilderCommand} from '../types';
 import fs from 'fs';
 import path from 'path';
 
 export const clean: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(clean.name);
+  const {debug, time} = initializeCommand(COMMAND_CLEAN_NAME);
 
   if (args.dryRun) reportDryRun(debug, 'No files will be deleted.');
 

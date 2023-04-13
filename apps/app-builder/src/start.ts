@@ -1,4 +1,5 @@
 import Liftoff from 'liftoff';
+import {TITLE} from './constants';
 import {jsVariants} from 'interpret';
 import {run} from './run';
 
@@ -9,9 +10,9 @@ export function start(): void {
   };
 
   const pdkBuilder = new Liftoff({
-    name: 'pdk-builder',
+    name: TITLE,
     configName: 'pdk',
-    processTitle: 'pdk-builder',
+    processTitle: TITLE,
     extensions,
   });
 
