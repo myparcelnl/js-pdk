@@ -1,14 +1,13 @@
 <template>
   <PdkModal
-    :modal-key="modalKey"
     :actions="actions"
+    :modal-key="modalKey"
     title="shipment_options_title">
     <ShipmentOptionsModalForm />
   </PdkModal>
 </template>
 
-<script setup lang="ts">
-import {BACKEND_ENDPOINTS_ORDERS, BackendEndpoint} from '@myparcel-pdk/common/src';
+<script lang="ts" setup>
 import {computed, defineAsyncComponent} from 'vue';
 import {
   modalCloseAction,
@@ -19,6 +18,7 @@ import {
 } from '../../actions';
 import {usePluginSettings, useStoreQuery} from '../../composables';
 import {AdminModalKey} from '../../types';
+import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common/src';
 import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
 
@@ -33,7 +33,7 @@ const pluginSettings = usePluginSettings();
 
 const {orderMode} = pluginSettings.general;
 
-const orderQueries = BACKEND_ENDPOINTS_ORDERS.map((endpoint: BackendEndpoint) => useStoreQuery(endpoint));
+const orderQueries = BACKEND_ENDPOINTS_ORDERS.map((endpoint) => useStoreQuery(endpoint));
 
 const modalKey = AdminModalKey.ShipmentOptions;
 
@@ -46,6 +46,6 @@ const actions = computed(() => {
     ...(orderMode ? [orderExportAction] : [orderExportToShipmentsAction, ordersExportPrintShipmentsAction]),
   ];
 
-  return defineActions(actions.map((action) => ({...action, disabled})));
+  return defineActions(actions, {disabled});
 });
 </script>

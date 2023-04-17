@@ -47,9 +47,15 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
     addBulkEditNotification(isModal);
   }
 
-  const values: Partial<Plugin.ModelPdkOrder> = isBulk ? {} : ordersArray[0];
+  const values: Partial<Plugin.ModelPdkOrder> = (isBulk ? undefined : ordersArray[0]) ?? {};
 
-  return defineForm(createShipmentFormName(values.externalIdentifier), {
+  const name = createShipmentFormName(values.externalIdentifier);
+
+  if (!name) {
+    throw new Error('No form name found');
+  }
+
+  return defineForm(name, {
     ...(isModal ? config.formConfigOverrides?.modal : null),
     ...config.formConfigOverrides?.shipmentOptions,
     fields: [

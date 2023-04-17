@@ -1,7 +1,7 @@
 <template>
   <ShipmentOptionsBox />
 
-  <ShipmentTableBox v-if="!orderMode && query.data?.shipments.some((item) => !item.deleted)" />
+  <ShipmentTableBox v-if="!orderMode && query.data?.shipments?.some((item) => !item.deleted)" />
 </template>
 
 <script lang="ts" setup>
