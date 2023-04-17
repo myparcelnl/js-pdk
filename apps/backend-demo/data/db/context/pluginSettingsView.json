@@ -1462,7 +1462,7 @@
           "name": "deliveryOptionsCustomCss",
           "$component": "CodeEditor",
           "label": "settings_checkout_delivery_options_custom_css"
-        },
+        }
       ],
       "children": null
     },
