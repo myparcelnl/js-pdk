@@ -1,24 +1,22 @@
 <template>
-  <Transition
-    appear
-    name="fade">
-    <div :class="variantClass">
-      <h1
-        v-if="notification.title"
-        v-text="notification.title" />
+  <div
+    :class="variantClass"
+    class="border mb-4 overflow-hidden p-4 rounded-lg">
+    <h1
+      v-if="notification.title"
+      v-text="notification.title" />
 
-      <ul v-if="contentArray.length > 1">
-        <li
-          v-for="item in contentArray"
-          :key="item"
-          v-text="item" />
-      </ul>
+    <ul v-if="contentArray.length > 1">
+      <li
+        v-for="item in contentArray"
+        :key="item"
+        v-text="item" />
+    </ul>
 
-      <p
-        v-else
-        v-text="contentArray[0]" />
-    </div>
-  </Transition>
+    <p
+      v-else
+      v-text="contentArray[0]" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -37,7 +35,7 @@ export default defineComponent({
 
   setup: (props) => {
     const variantClass = computed(() => {
-      const classes = ['border'];
+      const classes = [];
 
       switch (props.notification.variant) {
         case 'primary':

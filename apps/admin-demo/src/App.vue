@@ -34,7 +34,7 @@
       <strong>© MyParcel</strong>
     </footer>
 
-    <div class="absolute bottom-0 right-0">
+    <div class="absolute bottom-0 max-w-md px-4 right-0">
       <NotificationsView />
     </div>
     <ModalsView />
