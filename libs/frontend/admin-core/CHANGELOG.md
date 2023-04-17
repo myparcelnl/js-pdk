@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.46](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.45...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.46) "@myparcel-pdk/frontend-admin-core" (2023-04-17)
+
+
+### Bug Fixes
+
+* **admin-core:** catch some possible errors ([d40be6d](https://github/myparcelnl/js-pdk/commit/d40be6d82a497851e1ba799014536ad645e4a69d))
+
+
+
+
 ## [1.0.0-alpha.45](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.44...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.45) "@myparcel-pdk/frontend-admin-core" (2023-04-12)
 
 
