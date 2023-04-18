@@ -11,29 +11,31 @@
 
     <template #footer>
       <PdkDropdownButton
-        :disabled="!selectedLabels.length"
-        :actions="bulkActions">
+        :actions="bulkActions"
+        :disabled="!selectedLabels.length">
         {{ translate('bulk_actions') }}
-        <span
-          v-if="selectedLabels.length"
-          v-text="selectedLabels.length" />
+
+        <PdkBadge v-if="selectedLabels.length">
+          {{ selectedLabels.length }}
+        </PdkBadge>
       </PdkDropdownButton>
     </template>
   </PdkBox>
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from 'vue';
+import {computed, defineComponent, ref, toRaw} from 'vue';
 import {
   shipmentsDeleteAction,
   shipmentsExportReturnAction,
   shipmentsPrintAction,
   shipmentsUpdateAction,
 } from '../../actions';
+import {useLanguage, useOrder} from '../../composables';
+import {Keyable} from '@myparcel-pdk/common/src';
 import OrderShipmentsTable from './OrderShipmentsTable.vue';
 import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
-import {useLanguage, useOrder} from '../../composables';
 
 export default defineComponent({
   name: 'ShipmentTableBox',
@@ -44,23 +46,25 @@ export default defineComponent({
   setup: () => {
     const query = useOrder();
 
-    const selectedLabels = ref<number[]>([]);
+    const selectedLabels = ref<Keyable[]>([]);
     const {translate} = useLanguage();
 
     return {
       query,
       selectedLabels,
 
-      bulkActions: defineActions(
-        [shipmentsUpdateAction, shipmentsPrintAction, shipmentsDeleteAction, shipmentsExportReturnAction],
-        {
-          orderIds: get(query.data)?.externalIdentifier,
-          shipmentIds: selectedLabels.value,
-        },
-      ),
+      bulkActions: computed(() => {
+        return defineActions(
+          [shipmentsUpdateAction, shipmentsPrintAction, shipmentsDeleteAction, shipmentsExportReturnAction],
+          {
+            orderIds: get(query.data)?.externalIdentifier,
+            shipmentIds: toRaw(selectedLabels.value),
+          },
+        );
+      }),
 
-      setSelectedLabels(labels: number[]): void {
-        selectedLabels.value = labels;
+      setSelectedLabels(labels: Record<Keyable, boolean>): void {
+        selectedLabels.value = Object.keys(labels).filter((id) => Boolean(labels[id]));
       },
 
       translate,

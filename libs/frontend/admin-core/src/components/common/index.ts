@@ -1,5 +1,7 @@
 export {default as ActionButton} from './ActionButton.vue';
 
+export {default as BulkSelectCheckbox} from './BulkSelectCheckbox.vue';
+
 export {default as NotificationContainer} from './NotificationContainer.vue';
 
 export {default as PlainElement} from './PlainElement';

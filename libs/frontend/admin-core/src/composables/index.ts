@@ -8,6 +8,7 @@ export * from './translations';
 export * from './useAdminConfig';
 export * from './useAdminInstance';
 export * from './useAssetUrl';
+export * from './useBulkSelectCheckbox';
 export * from './useCheckboxGroupContext';
 export * from './useDropOffInputContext';
 export * from './useDropdownData';

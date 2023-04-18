@@ -2,29 +2,33 @@
   <ActionButton
     v-for="action in dropdownActions.standalone"
     :key="action.id"
-    :disabled="disabled"
     :action="action"
-    :size="size"
-    :hide-text="hideText" />
+    :disabled="disabled"
+    :hide-text="hideText"
+    :size="size" />
 
   <PdkButton
     :aria-expanded="toggled"
     :aria-label="translate('toggle_dropdown')"
     :disabled="disabled"
-    aria-haspopup="true"
+    :icon="dropdownIcon"
     :size="size"
+    aria-haspopup="true"
     @focus="toggled = true"
     @focusout="toggled = false"
     @mouseout="toggled = false"
-    @mouseover="toggled = true" />
+    @mouseover="toggled = true">
+    <slot />
+  </PdkButton>
 
   <div v-show="toggled">
     <ActionButton
       v-for="(action, index) in dropdownActions.hidden"
       :key="`${index}_${action.id}`"
+      :action="action"
       :disabled="disabled"
-      :size="size"
-      :action="action" />
+      :icon="action.icon"
+      :size="size" />
   </div>
 </template>
 
@@ -36,44 +40,32 @@
  */
 
 import {ActionButton, ActionDefinition, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-admin-core/src';
-import {PropType} from 'vue';
 import {Size} from '@myparcel-pdk/common/src';
 
-const props = defineProps({
+const props = defineProps<{
   /**
    * List of actions.
    */
-  actions: {
-    type: Array as PropType<ActionDefinition[]>,
-    default: () => [],
-  },
+  // eslint-disable-next-line vue/no-unused-properties
+  actions: ActionDefinition[];
 
   /**
    * Controls disabled state.
    */
-  disabled: {
-    type: Boolean,
-  },
+  disabled: boolean;
 
   /**
    * To hide the text of the standalone actions.
    */
-  hideText: {
-    type: Boolean,
-  },
+  hideText: boolean;
 
   /**
    * Size of the button.
    */
-  size: {
-    type: String as PropType<Size>,
-    default: Size.Small,
-  },
-});
+  size?: Size;
+}>();
 
-defineEmits(['click']);
+const {toggled, dropdownActions, dropdownIcon} = useDropdownData(props);
 
 const {translate} = useLanguage();
-
-const {dropdownActions, toggled} = useDropdownData(props.actions);
 </script>

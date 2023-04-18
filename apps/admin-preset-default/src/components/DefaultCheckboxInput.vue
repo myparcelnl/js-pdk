@@ -16,8 +16,8 @@ import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-admin-cor
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: string | boolean; element: ElementInstance}>();
-const emit = defineEmits<(e: 'update:modelValue', value: string | boolean) => void>();
+const props = defineProps<{modelValue?: string | number | symbol | boolean; element: ElementInstance}>();
+const emit = defineEmits<(e: 'update:modelValue', value: string | number | symbol | boolean) => void>();
 
 const model = useVModel(props, undefined, emit);
 

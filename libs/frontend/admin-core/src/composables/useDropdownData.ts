@@ -1,24 +1,34 @@
-import {ComputedRef, Ref, computed, ref} from 'vue';
-import {ActionDefinition} from '../types';
+import {ActionDefinition, AdminIcon} from '../types';
+import {ComputedRef, Ref, computed, ref, toRefs} from 'vue';
+import {get} from '@vueuse/core';
 import {partitionArray} from '@myparcel/ts-utils';
 
-type UseDropdownData = (actions: ActionDefinition[]) => {
-  toggle(value?: boolean): void;
+type DropdownProps = {
+  actions: ActionDefinition[];
+};
 
-  toggled: Ref<boolean>;
-
+type DropdownData = {
   dropdownActions: ComputedRef<{
     standalone: ActionDefinition[];
     hidden: ActionDefinition[];
   }>;
+
+  dropdownIcon: ComputedRef<AdminIcon>;
+
+  toggle(value?: boolean): void;
+
+  toggled: Ref<boolean>;
 };
 
-export const useDropdownData: UseDropdownData = (actions) => {
+type UseDropdownData = (props: DropdownProps) => DropdownData;
+
+export const useDropdownData: UseDropdownData = (props) => {
   const toggled = ref(false);
+  const propRefs = toRefs(props);
 
   return {
     dropdownActions: computed(() => {
-      const [standalone, hidden] = partitionArray(actions, (action) => action.standalone === true);
+      const [standalone, hidden] = partitionArray(get(propRefs.actions), (action) => action.standalone === true);
 
       return {
         standalone,
@@ -26,10 +36,12 @@ export const useDropdownData: UseDropdownData = (actions) => {
       };
     }),
 
-    toggled,
+    dropdownIcon: computed(() => (toggled.value ? AdminIcon.ArrowUp : AdminIcon.ArrowDown)),
 
     toggle(value) {
       toggled.value = value ?? !toggled.value;
     },
+
+    toggled,
   };
 };

@@ -32,25 +32,18 @@
 
 <script setup lang="ts">
 import {Format, useAdminConfig, useLocalizedFormatter, useShipmentData} from '../../composables';
-import {PropType, computed} from 'vue';
 import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
+import {computed} from 'vue';
 import {useQueryStore} from '../../stores';
 import {useVModel} from '@vueuse/core';
 
-const props = defineProps({
-  shipmentId: {
-    type: Number,
-    required: true,
-  },
-
+const props = defineProps<{
+  shipmentId: number;
   // eslint-disable-next-line vue/no-unused-properties
-  modelValue: {
-    type: Array as PropType<number[]>,
-    default: null,
-  },
-});
+  modelValue?: boolean;
+}>();
 
 const emit = defineEmits(['update:modelValue']);
 

@@ -3,9 +3,9 @@
     <template #header>
       <PdkTableRow>
         <PdkTableCol component="th">
-          <ShipmentBulkSelectCheckbox
-            v-model="bulk"
-            :shipment-count="query.data.shipments?.length" />
+          <BulkSelectCheckbox
+            v-model="bulkModel"
+            :options="bulkOptions" />
         </PdkTableCol>
 
         <PdkTableCol component="th">{{ translate('order_labels_column_track_trace') }}</PdkTableCol>
@@ -26,34 +26,23 @@
       <OrderShipmentsTableRow
         v-for="shipment in query.data.shipments"
         :key="`row_${shipment.id}_${shipment.updated}`"
-        v-model="bulk"
+        v-model="bulkModel[shipment.id]"
         :shipment-id="shipment.id" />
     </template>
   </PdkTable>
 </template>
 
 <script setup lang="ts">
-import {computed, ref} from 'vue';
-import {useLanguage, useOrder} from '../../composables';
+import {useBulkSelectCheckbox, useLanguage, useOrder} from '../../composables';
+import {BulkSelectCheckbox} from '../common';
+import {Keyable} from '@myparcel-pdk/common/src';
 import OrderShipmentsTableRow from './OrderShipmentsTableRow.vue';
-import ShipmentBulkSelectCheckbox from './ShipmentBulkSelectCheckbox.vue';
 
-const emit = defineEmits(['select']);
+const emit = defineEmits<(event: 'select', value: Record<Keyable, boolean>) => void>();
 
 const query = useOrder();
 
-const mutableSelectedRows = ref<string[]>([]);
+const {bulkModel, bulkOptions} = useBulkSelectCheckbox(query?.data?.shipments?.map(({id}) => id) ?? [], emit);
+
 const {translate} = useLanguage();
-
-const selectedRows = computed({
-  get(): string[] {
-    return mutableSelectedRows.value;
-  },
-  set(rows: string[]): void {
-    mutableSelectedRows.value = rows;
-    emit('select', rows.map(Number));
-  },
-});
-
-const bulk = ref([]);
 </script>
