@@ -1,8 +1,7 @@
+import {Plugin, Shipment} from '@myparcel-pdk/common/src';
 import {Replace, isOfType} from '@myparcel/ts-utils';
-import {Plugin} from '@myparcel-pdk/common/src';
 import {QUERY_KEY_ORDER} from '../../actions';
 import {QueryClient} from '@tanstack/vue-query';
-import {Shipment} from '@myparcel-pdk/common';
 import {setQueryData} from './setQueryData';
 
 type FilteredShipment = {id: number; updated: unknown};
