@@ -12,7 +12,7 @@ const resolveAction = async (
     case BackendEndpoint.FetchOrders:
       return {
         key: 'orders',
-        response: await getItemsByParameter('orders', query.orderId),
+        response: await getItemsByParameter('orders', query.orderIds),
       };
 
     case BackendEndpoint.FetchContext:
