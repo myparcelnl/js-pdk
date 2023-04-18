@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.48](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.47...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.48) "@myparcel-pdk/admin-preset-bootstrap4" (2023-04-18)
+
+
+### Features
+
+* add badge component ([918dc38](https://github/myparcelnl/js-pdk/commit/918dc38036cc392d055ee47b3c80e512815ac836))
+* make the single order bulk select checkbox work ([3a49999](https://github/myparcelnl/js-pdk/commit/3a49999a442d78ae9f6ea6c776a964464bca6e93))
+
+
+
+
 ## [1.0.0-alpha.46](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.45...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.46) "@myparcel-pdk/admin-preset-bootstrap4" (2023-04-12)
 
 

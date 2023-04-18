@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.28](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.27...@myparcel-pdk/common@1.0.0-alpha.28) "@myparcel-pdk/common" (2023-04-18)
+
+
+### Features
+
+* add badge component ([918dc38](https://github/myparcelnl/js-pdk/commit/918dc38036cc392d055ee47b3c80e512815ac836))
+
+
+
+
 ## [1.0.0-alpha.27](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.26...@myparcel-pdk/common@1.0.0-alpha.27) "@myparcel-pdk/common" (2023-04-12)
 
 

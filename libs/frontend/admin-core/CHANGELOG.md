@@ -2,6 +2,22 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.47](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.46...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.47) "@myparcel-pdk/frontend-admin-core" (2023-04-18)
+
+
+### Features
+
+* make the single order bulk select checkbox work ([3a49999](https://github/myparcelnl/js-pdk/commit/3a49999a442d78ae9f6ea6c776a964464bca6e93))
+
+
+### Bug Fixes
+
+* **admin-core:** fix optimistic deletion of shipments in bulk actions ([6594239](https://github/myparcelnl/js-pdk/commit/65942394348a51631fd20393687bf8faf6ccbd35))
+* **admin-core:** fix retrieving and saving shipments ([16e7bc5](https://github/myparcelnl/js-pdk/commit/16e7bc5ec30541d962870daafb97375e9935307e))
+
+
+
+
 ## [1.0.0-alpha.46](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.45...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.46) "@myparcel-pdk/frontend-admin-core" (2023-04-17)
 
 

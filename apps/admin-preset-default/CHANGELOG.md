@@ -2,6 +2,23 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.44](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.43...@myparcel-pdk/admin-preset-default@1.0.0-alpha.44) "@myparcel-pdk/admin-preset-default" (2023-04-18)
+
+
+### Features
+
+* add badge component ([918dc38](https://github/myparcelnl/js-pdk/commit/918dc38036cc392d055ee47b3c80e512815ac836))
+* make the single order bulk select checkbox work ([3a49999](https://github/myparcelnl/js-pdk/commit/3a49999a442d78ae9f6ea6c776a964464bca6e93))
+
+
+### Bug Fixes
+
+* **admin-preset-default:** make span prop optional on col ([32b79ba](https://github/myparcelnl/js-pdk/commit/32b79ba50d3597e174c99b130c0704d884c9e64a))
+* **admin-preset-default:** remove invalid prop from row ([072f744](https://github/myparcelnl/js-pdk/commit/072f744e4004efd0f4e90af247424cd5e790d303))
+
+
+
+
 ## [1.0.0-alpha.42](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.41...@myparcel-pdk/admin-preset-default@1.0.0-alpha.42) "@myparcel-pdk/admin-preset-default" (2023-04-12)
 
 
