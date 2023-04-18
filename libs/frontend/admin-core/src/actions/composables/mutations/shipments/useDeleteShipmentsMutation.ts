@@ -32,21 +32,21 @@ export const useDeleteShipmentsMutation = () => {
 
       async onMutate(input: ActionInput<BackendEndpoint.DeleteShipments>) {
         const previousValues: {queryKey: QueryKey; value: unknown}[] = [];
-        const orderIds = toArray(input.orderIds);
-        const shipmentIds = toArray(input.shipmentIds);
+        const orderIds = toArray(input.orderIds).map(String);
+        const shipmentIds = toArray(input.shipmentIds).map(Number);
 
         await Promise.all(
           orderIds.map(async (orderId) => {
             const queryKey = [QUERY_KEY_ORDER, {id: orderId}] as const;
             await queryClient.cancelQueries({queryKey});
 
-            const previous = queryClient.getQueryData(queryKey) as EndpointResponse<BackendEndpoint.FetchOrders>;
+            const previousOrder = queryClient.getQueryData(queryKey) as EndpointResponse<BackendEndpoint.FetchOrders>;
 
-            previousValues.push({queryKey, value: previous});
+            previousValues.push({queryKey, value: previousOrder});
 
             setQueryOrder(queryClient, {
-              ...previous,
-              shipments: previous.shipments.filter((shipment) => !shipmentIds.includes(shipment.id)),
+              ...previousOrder,
+              shipments: previousOrder.shipments.filter((shipment) => !shipmentIds.includes(shipment.id)),
             });
           }),
         );
