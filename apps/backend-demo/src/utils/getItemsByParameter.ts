@@ -1,7 +1,16 @@
+import {promises} from 'fs';
+import {resolve} from 'path';
 import {toArray} from '@myparcel/ts-utils';
 
 export const getItemsByParameter = async (key: string, parameter: unknown): Promise<Record<string, unknown>[]> => {
   const storage = await useStorage();
+
+  if (!parameter) {
+    const all = await promises.readdir(resolve(process.cwd(), 'data/db', key));
+
+    parameter = all.map((item) => item.replace('.json', ''));
+  }
+
   const items = toArray(parameter);
 
   const data = await Promise.all(items.map((item) => storage.getItem(`db:${key}/${item}.json`)));
