@@ -4,7 +4,7 @@ import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {EndpointResponse} from '../../../../types';
 import {QUERY_KEY_ORDER} from '../queryKeys';
 import {encodeArrayParameter} from '../../../../utils';
-import {setQueryOrder} from '../../../../helpers';
+import {fillShipmentsQueryData} from '../../../../pdk';
 import {toArray} from '@myparcel/ts-utils';
 import {usePdkAdminApi} from '../../../../sdk';
 
@@ -28,7 +28,7 @@ export const useFetchOrdersQuery = (externalIdentifier?: string) => {
       ...queryClient.defaultQueryOptions(),
       onSuccess: (data) => {
         toArray(data).forEach((order) => {
-          setQueryOrder(queryClient, order);
+          fillShipmentsQueryData(queryClient, order.shipments, order);
         });
       },
     },

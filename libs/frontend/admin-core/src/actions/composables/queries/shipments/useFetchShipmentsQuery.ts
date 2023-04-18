@@ -5,9 +5,10 @@ import {EndpointResponse} from '../../../../types';
 import {QUERY_KEY_SHIPMENT} from '../queryKeys';
 import {encodeArrayParameter} from '../../../../utils';
 import {fillShipmentsQueryData} from '../../../../pdk';
+import {toArray} from '@myparcel/ts-utils';
 import {usePdkAdminApi} from '../../../../sdk';
 
-export const useFetchShipmentsQuery = (id?: number) => {
+export const useFetchShipmentsQuery = (id?: number, orderId?: number) => {
   const queryKey: QueryKey = [QUERY_KEY_SHIPMENT, ...(id ? [{id}] : [])] as const;
   const queryClient = useQueryClient();
 
@@ -16,14 +17,20 @@ export const useFetchShipmentsQuery = (id?: number) => {
     async () => {
       const pdk = usePdkAdminApi();
 
-      const order = (await pdk.fetchOrders({
+      const orders = (await pdk.fetchOrders({
         // @ts-expect-error custom endpoints are not typed correctly
         parameters: {
-          orderIds: encodeArrayParameter(id),
+          orderIds: encodeArrayParameter(orderId),
         },
       })) as EndpointResponse<BackendEndpoint.FetchOrders>;
 
-      return order.shipments?.find((shipment) => shipment.id === id) ?? ({} as Shipment.ModelShipment);
+      const foundShipment = toArray(orders).reduce((acc, order) => {
+        const shipment = order.shipments?.find((shipment) => shipment.id === id);
+
+        return shipment ?? acc;
+      }, undefined as Shipment.ModelShipment | undefined);
+
+      return foundShipment as Shipment.ModelShipment;
     },
     {
       ...queryClient.defaultQueryOptions(),
