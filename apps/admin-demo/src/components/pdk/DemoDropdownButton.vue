@@ -51,7 +51,6 @@
 <script lang="ts" setup>
 import {ActionButton, ActionDefinition, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-admin-core/src';
 import {Size} from '@myparcel-pdk/common/src';
-import {Size} from '@myparcel-pdk/common/src';
 
 const props = defineProps<{
   // eslint-disable-next-line vue/no-unused-properties
