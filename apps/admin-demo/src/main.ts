@@ -1,5 +1,8 @@
 import './assets/css/icons.css';
 import './assets/css/tailwind.css';
+import './assets/css/global.css';
+import './assets/css/transitions.css';
+import './assets/css/forms.css';
 import {AdminContextKey, LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-admin-core/src';
 import {
   DefaultButtonGroup,
@@ -12,10 +15,10 @@ import {
   DefaultHeading,
   DefaultLink,
   DefaultLoader,
+  DefaultMultiSelectInput,
   DefaultNumberInput,
   DefaultRadioGroup,
   DefaultRadioInput,
-  DefaultTable,
   DefaultTableCol,
   DefaultTableRow,
   DefaultTextArea,
@@ -35,6 +38,7 @@ import {
   DemoRow,
   DemoSelectInput,
   DemoTabNavButton,
+  DemoTable,
   DemoTextInput,
 } from './components';
 import App from './App.vue';
@@ -65,6 +69,20 @@ void (async () => {
   const pdkAdminPlugin = createPdkAdminPlugin(
     {
       logLevel: LogLevel.Debug,
+      cssUtilities: {
+        animationLoading: 'animate-pulse',
+        animationSpin: 'animate-spin',
+        cursorDefault: 'cursor-default',
+        cursorPointer: 'cursor-pointer',
+        displayFlex: 'flex',
+        flexGrow: 'flex-grow',
+        marginLAuto: 'ml-auto',
+        marginYAuto: 'my-auto',
+        textCenter: 'text-center',
+        textColorError: 'text-red-600',
+        textColorSuccess: 'text-green-600',
+        whitespaceNoWrap: 'whitespace-nowrap',
+      },
       components: {
         PdkBadge: DemoBadge,
         PdkBox: DemoBox,
@@ -84,6 +102,7 @@ void (async () => {
         PdkLink: DefaultLink,
         PdkLoader: DefaultLoader,
         PdkModal: DemoModal,
+        PdkMultiSelectInput: DefaultMultiSelectInput,
         PdkNotification: DemoNotification,
         PdkNumberInput: DefaultNumberInput,
         PdkPluginSettingsWrapper: DemoPluginSettingsWrapper,
@@ -92,13 +111,22 @@ void (async () => {
         PdkRow: DemoRow,
         PdkSelectInput: DemoSelectInput,
         PdkTabNavButton: DemoTabNavButton,
-        PdkTable: DefaultTable,
+        PdkTable: DemoTable,
         PdkTableCol: DefaultTableCol,
         PdkTableRow: DefaultTableRow,
         PdkTextArea: DefaultTextArea,
         PdkTextInput: DemoTextInput,
         PdkTimeInput: DefaultTimeInput,
         PdkToggleInput: DefaultToggleInput,
+      },
+      transitions: {
+        modal: 'slide-up',
+        modalBackdrop: 'fade',
+        notification: 'slide-up',
+        shipmentBox: 'slide-up',
+        shipmentRow: 'slide-up',
+        tabNavigation: 'slide-up',
+        tableRow: 'slide-up',
       },
     },
     {

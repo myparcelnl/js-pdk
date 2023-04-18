@@ -9,6 +9,7 @@
       'rounded-full',
       'text-white',
       'transition-colors',
+      'whitespace-nowrap',
       {
         'cursor-not-allowed': disabled,
         'cursor-loading animate-pulse': loading,

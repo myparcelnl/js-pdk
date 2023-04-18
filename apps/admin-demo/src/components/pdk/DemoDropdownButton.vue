@@ -28,15 +28,19 @@
       @focusout="toggled = false"
       @mouseout="toggled = false"
       @mouseover="toggled = true">
+      <slot />
+
       <div
         v-show="toggled"
-        class="absolute bg-white border border-solid flex flex-col right-0 rounded top-full z-50">
+        class="absolute bg-white border border-solid dark:bg-gray-900 flex flex-col right-0 rounded top-full z-50">
         <ActionButton
           v-for="(action, index) in dropdownActions.hidden"
           :key="`${index}_${action.id}`"
           v-test="'HiddenDropdownAction'"
           :action="action"
-          class="bg-transparent border-none text-left">
+          :disabled="disabled"
+          :icon="action.icon"
+          class="!rounded-none bg-transparent border-none text-left">
           {{ translate(action.label) }}
         </ActionButton>
       </div>
@@ -45,41 +49,19 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  ActionButton,
-  ActionDefinition,
-  AdminIcon,
-  useDropdownData,
-  useLanguage,
-} from '@myparcel-pdk/frontend-admin-core/src';
-import {PropType, computed} from 'vue';
+import {ActionButton, ActionDefinition, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-admin-core/src';
+import {Size} from '@myparcel-pdk/common/src';
 import {Size} from '@myparcel-pdk/common/src';
 
-const props = defineProps({
-  actions: {
-    type: Array as PropType<ActionDefinition[]>,
-    default: () => [],
-  },
+const props = defineProps<{
+  // eslint-disable-next-line vue/no-unused-properties
+  actions: ActionDefinition[];
+  disabled: boolean;
+  hideText: boolean;
+  size: Size;
+}>();
 
-  size: {
-    type: String as PropType<Size>,
-    default: 'sm',
-  },
-
-  disabled: {
-    type: Boolean,
-  },
-
-  hideText: {
-    type: Boolean,
-  },
-});
-
-defineEmits(['click']);
-
-const {dropdownActions, toggled} = useDropdownData(props.actions);
-
-const dropdownIcon = computed(() => (toggled.value ? AdminIcon.ArrowUp : AdminIcon.ArrowDown));
+const {toggled, dropdownActions, dropdownIcon} = useDropdownData(props);
 
 const {translate} = useLanguage();
 </script>

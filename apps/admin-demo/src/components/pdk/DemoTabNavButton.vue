@@ -1,10 +1,10 @@
 <template>
   <button
     :class="{
-      'text-zinc-600 border-t border-l border-r border-': active,
-      'text-zinc-500 border-b': !active,
+      'text-gray-600 border-t border-l border-r border-': active,
+      'text-gray-500 border-b': !active,
     }"
-    class="border-zinc-500 duration-150 ease-in-out focus:text-zinc-700 font-medium hover:text-zinc-700 leading-5 px-3 py-2 rounded-tl-lg rounded-tr-lg text-sm transition"
+    class="duration-150 ease-in-out focus:text-gray-700 font-medium hover:text-gray-700 leading-5 px-3 py-2 rounded-tl-lg rounded-tr-lg text-sm transition"
     type="button"
     @click="$emit('click')">
     <PdkIcon
@@ -16,7 +16,7 @@
   </button>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {PropType} from 'vue';
 import {TabDefinition} from '@myparcel-pdk/common/src';
 import {useLanguage} from '@myparcel-pdk/frontend-admin-core/src';

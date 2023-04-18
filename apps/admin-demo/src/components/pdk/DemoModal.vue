@@ -18,9 +18,9 @@
         class="m-auto max-w-md p-8 w-full">
         <NotificationContainer category="modal" />
 
-        <div class="bg-white dark:bg-zinc-800 relative rounded-lg shadow">
+        <div class="bg-white dark:bg-gray-800 relative rounded-lg shadow">
           <button
-            class="absolute bg-transparent dark:hover:bg-zinc-900 dark:hover:text-white hover:bg-zinc-200 hover:text-zinc-900 inline-flex items-center ml-auto p-1.5 right-2.5 rounded-lg text-sm text-zinc-400 top-3"
+            class="absolute bg-transparent dark:hover:bg-gray-900 dark:hover:text-white hover:bg-gray-200 hover:text-gray-900 inline-flex items-center ml-auto p-1.5 right-2.5 rounded-lg text-gray-400 text-sm top-3"
             type="button"
             @click="close">
             <svg
@@ -53,7 +53,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {
   ActionButton,
   ActionDefinition,

@@ -3,30 +3,34 @@
     :class="{
       'opacity-50': loading,
     }"
-    class="border mb-4 rounded-xl">
+    class="mb-4">
     <div
       v-if="$slots.header"
-      class="bg-zinc-50 border-newItem font-bold text-lg"
-      :class="paddingClasses">
+      :class="paddingClasses"
+      class="bg-gray-50 border border-1 border-b-0 dark:bg-gray-700 font-bold overflow-hidden rounded-t-xl text-lg">
       <slot name="header" />
     </div>
 
-    <div :class="paddingClasses">
+    <div
+      :class="[paddingClasses, bodyClasses]"
+      class="border-l border-r">
       <slot />
     </div>
 
     <div
       v-if="$slots.footer"
-      class="d-flex"
-      :class="paddingClasses">
+      :class="paddingClasses"
+      class="border border-t-0 d-flex rounded-b-xl">
       <slot name="footer" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import {PropType, computed} from 'vue';
+import {PropType, computed, useSlots} from 'vue';
 import {Size} from '@myparcel-pdk/common/src';
+
+const slots = useSlots();
 
 const props = defineProps({
   loading: {
@@ -43,5 +47,10 @@ const paddingClasses = computed(() => ({
   'p-2': [Size.Small, Size.ExtraSmall].includes(props.size),
   'p-4': [Size.Medium].includes(props.size),
   'p-5': [Size.Large, Size.ExtraLarge].includes(props.size),
+}));
+
+const bodyClasses = computed(() => ({
+  'border-b rounded-b-xl': !slots.footer,
+  'border-t rounded-t-xl': !slots.header,
 }));
 </script>

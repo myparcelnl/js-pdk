@@ -10,7 +10,7 @@
     <template
       v-for="(order, index) in orderData"
       :key="`order_${order.externalIdentifier}`">
-      <tr :class="{'bg-zinc-900': index % 2 !== 0}">
+      <tr :class="{'bg-gray-900': index % 2 !== 0}">
         <td class="p-4">
           <RouterLink :to="`/orders/${order.externalIdentifier}`"> #{{ order.externalIdentifier }} </RouterLink>
         </td>
@@ -44,7 +44,7 @@
   </table>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {AdminModalKey, OrderListItemView, useModalStore} from '@myparcel-pdk/frontend-admin-core/src';
 import {RouterLink} from 'vue-router';
 import {ref} from 'vue';
