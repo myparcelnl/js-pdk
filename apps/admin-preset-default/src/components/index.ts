@@ -1,3 +1,5 @@
+export {default as DefaultBadge} from './DefaultBadge.vue';
+
 export {default as DefaultBox} from './DefaultBox.vue';
 
 export {default as DefaultButton} from './DefaultButton.vue';

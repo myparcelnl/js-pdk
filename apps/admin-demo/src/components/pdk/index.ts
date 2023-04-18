@@ -1,3 +1,5 @@
+export {default as DemoBadge} from './DemoBadge.vue';
+
 export {default as DemoBox} from './DemoBox.vue';
 
 export {default as DemoButton} from './DemoButton.vue';

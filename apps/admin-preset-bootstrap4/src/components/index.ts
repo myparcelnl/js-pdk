@@ -1,3 +1,5 @@
+export {default as Bootstrap4Badge} from './Bootstrap4Badge.vue';
+
 export {default as Bootstrap4Box} from './Bootstrap4Box.vue';
 
 export {default as Bootstrap4Button} from './Bootstrap4Button.vue';

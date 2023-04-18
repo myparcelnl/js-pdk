@@ -23,6 +23,7 @@ import {
   DefaultToggleInput,
 } from '@myparcel-pdk/admin-preset-default/src';
 import {
+  DemoBadge,
   DemoBox,
   DemoButton,
   DemoDropdownButton,
@@ -65,6 +66,7 @@ void (async () => {
     {
       logLevel: LogLevel.Debug,
       components: {
+        PdkBadge: DemoBadge,
         PdkBox: DemoBox,
         PdkButton: DemoButton,
         PdkButtonGroup: DefaultButtonGroup,

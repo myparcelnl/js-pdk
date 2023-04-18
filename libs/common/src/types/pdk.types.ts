@@ -5,6 +5,7 @@ import {Plugin} from './php-pdk.types';
 export const ADMIN_COMPONENT_PREFIX = 'Pdk';
 
 export enum AdminComponent {
+  Badge = 'Badge',
   Box = 'Box',
   Button = 'Button',
   ButtonGroup = 'ButtonGroup',
@@ -78,6 +79,7 @@ export const requiredAdminComponentNames = [
 ] as const;
 
 export const optionalAdminPlainWrapperComponentNames = [
+  AdminComponent.Badge,
   AdminComponent.ButtonGroup,
   AdminComponent.PluginSettingsWrapper,
   AdminComponent.SettingsDivider,
