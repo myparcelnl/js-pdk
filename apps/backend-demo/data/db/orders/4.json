@@ -25,8 +25,9 @@
   "sender": {},
   "shipments": [
     {
-      "apiKey": "undefined",
-      "barcode": "undefined",
+      "orderId": "4",
+      "referenceIdentifier": null,
+      "barcode": "3SMYPA123456789",
       "carrier": {
         "id": 1,
         "human": "PostNL",
@@ -40,7 +41,6 @@
         "type": "carrier",
         "optional": false
       },
-      "collectionContact": "undefined",
       "created": {
         "date": "2021-09-15 14:00:00.000000"
       },
@@ -53,18 +53,9 @@
         },
         "deliveryType": "standard",
         "labelAmount": 1,
-        "packageType": "package",
-        "shipmentOptions": {
-          "ageCheck": false,
-          "labelDescription": "text",
-          "largeFormat": false,
-          "onlyRecipient": false,
-          "return": false,
-          "sameDayDelivery": false,
-          "signature": false
-        }
+        "packageType": "mailbox"
       },
-      "id": 4,
+      "id": 203,
       "isReturn": false,
       "multiCollo": false,
       "partnerTrackTraces": [],
@@ -72,18 +63,118 @@
         "weight": 0
       },
       "recipient": {
-        "cc": "US",
-        "city": "Miami",
-        "fullStreet": "16, Main street 2nd floor",
-        "postalCode": "33133",
-        "region": "Florida",
-        "street": "16, Main street 2nd floor",
-        "email": "admin@prestashop.dev.myparcel.nl",
-        "phone": "0102030405",
-        "person": "John DOE",
-        "company": "My Company"
+        "cc": "NL",
+        "city": "Hoofddorp",
+        "fullStreet": "Antareslaan 31",
+        "postalCode": "2132JE",
+        "street": "Antareslaan 31",
+        "email": "test@myparcel.nl",
+        "phone": "0201234567",
+        "person": "Felicia Parcel",
+        "company": "MyParcel"
       },
-      "referenceIdentifier": "4",
+      "sender": {}
+    },
+    {
+      "id": 204,
+      "orderId": "4",
+      "referenceIdentifier": null,
+      "barcode": "3SMYPA123456789",
+      "carrier": {
+        "id": 1,
+        "human": "PostNL",
+        "name": "postnl",
+        "label": "PostNl MyPa",
+        "isDefault": true,
+        "primary": true,
+        "subscriptionId": 12345,
+        "options": [],
+        "returnOptions": [],
+        "type": "carrier",
+        "optional": false
+      },
+      "created": {
+        "date": "2021-09-15 14:00:00.000000"
+      },
+      "delayed": false,
+      "delivered": false,
+      "deliveryOptions": {
+        "carrier": "postnl",
+        "date": {
+          "date": "2021-09-15 14:00:00.000000"
+        },
+        "deliveryType": "standard",
+        "labelAmount": 1,
+        "packageType": "mailbox"
+      },
+      "isReturn": false,
+      "multiCollo": false,
+      "partnerTrackTraces": [],
+      "physicalProperties": {
+        "weight": 0
+      },
+      "recipient": {
+        "cc": "NL",
+        "city": "Hoofddorp",
+        "fullStreet": "Antareslaan 31",
+        "postalCode": "2132JE",
+        "street": "Antareslaan 31",
+        "email": "test@myparcel.nl",
+        "phone": "0201234567",
+        "person": "Felicia Parcel",
+        "company": "MyParcel"
+      },
+      "sender": {}
+    },
+    {
+      "id": 205,
+      "orderId": "4",
+      "referenceIdentifier": null,
+      "barcode": "3SMYPA123456789",
+      "carrier": {
+        "id": 1,
+        "human": "PostNL",
+        "name": "postnl",
+        "label": "PostNl MyPa",
+        "isDefault": true,
+        "primary": true,
+        "subscriptionId": 12345,
+        "options": [],
+        "returnOptions": [],
+        "type": "carrier",
+        "optional": false
+      },
+      "created": {
+        "date": "2021-09-15 14:00:00.000000"
+      },
+      "delayed": false,
+      "delivered": false,
+      "deliveryOptions": {
+        "carrier": "postnl",
+        "date": {
+          "date": "2021-09-15 14:00:00.000000"
+        },
+        "deliveryType": "standard",
+        "labelAmount": 1,
+        "packageType": "mailbox"
+      },
+      "isReturn": false,
+      "multiCollo": false,
+      "partnerTrackTraces": [],
+      "physicalProperties": {
+        "weight": 0
+      },
+      "recipient": {
+        "cc": "NL",
+        "city": "Hoofddorp",
+        "fullStreet": "Antareslaan 31",
+        "postalCode": "2132JE",
+        "street": "Antareslaan 31",
+        "email": "test@myparcel.nl",
+        "phone": "0201234567",
+        "person": "Felicia Parcel",
+        "company": "MyParcel"
+      },
       "sender": {}
     }
   ]

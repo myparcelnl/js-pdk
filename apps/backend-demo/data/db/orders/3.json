@@ -25,10 +25,13 @@
   "sender": {},
   "shipments": [
     {
+      "orderId": "3",
       "deliveryOptions": {
         "labelAmount": 1,
         "packageType": "package",
-        "shipmentOptions": {}
+        "shipmentOptions": {
+          "onlyRecipient": true
+        }
       },
       "id": 4,
       "isReturn": false,
@@ -38,17 +41,17 @@
         "weight": 0
       },
       "recipient": {
-        "cc": "US",
-        "city": "Miami",
-        "fullStreet": "16, Main street 2nd floor",
-        "postalCode": "33133",
-        "region": "Florida",
-        "street": "16, Main street 2nd floor",
-        "email": "admin@prestashop.dev.myparcel.nl",
-        "phone": "0102030405",
-        "person": "John DOE",
-        "company": "My Company"
+        "cc": "NL",
+        "city": "Hoofddorp",
+        "fullStreet": "Antareslaan 31",
+        "postalCode": "2132JE",
+        "street": "Antareslaan 31",
+        "email": "test@myparcel.nl",
+        "phone": "0201234567",
+        "person": "Felicia Parcel",
+        "company": "MyParcel"
       },
+      "barcode": "3SMYPA123456789",
       "referenceIdentifier": "4",
       "sender": {}
     }
