@@ -5,6 +5,6 @@
 <script lang="ts" setup>
 defineProps<{
   // eslint-disable-next-line vue/no-unused-properties
-  span: number;
+  span?: number;
 }>();
 </script>
