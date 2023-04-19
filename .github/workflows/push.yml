@@ -12,37 +12,27 @@ concurrency:
 
 jobs:
   test:
-    name: 'Run unit tests 🧪'
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: ./.github/actions/test
-        with:
-          bundlewatch-token: ${{ secrets.GH_REPO_TOKEN }}
-          codacy-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
 
   release:
-    name: 'Publish new release 🚀'
     runs-on: ubuntu-22.04
     needs: test
     steps:
-      - uses: actions/checkout@v3
+      - uses: myparcelnl/actions/setup-git-credentials@v3
+        id: credentials
         with:
-          persist-credentials: false
-          token: ${{ secrets.GH_REPO_TOKEN }}
-
-      # TODO: Switch to v3 with app credentials when GitHub apps are allowed to bypass status checks. https://github.com/orgs/community/discussions/43460
-      - uses: myparcelnl/actions/setup-git-credentials@v2
-        with:
-          token: ${{ secrets.GH_REPO_TOKEN }}
+          app-id: ${{ secrets.MYPARCEL_APP_ID }}
+          private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
 
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          token: ${{ secrets.GH_REPO_TOKEN }}
+          token: ${{ steps.credentials.outputs.token }}
 
-      - uses: ./.github/actions/setup
+      - uses: ./.github/actions/install
+
+      - uses: ./.github/actions/build
 
       - uses: actions/upload-pages-artifact@v1
         with:
@@ -54,7 +44,7 @@ jobs:
             --config-file monodeploy.config.cjs \
             --log-level 0
         env:
-          GH_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
+          GH_TOKEN: ${{ steps.credentials.outputs.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   rebase-prs:

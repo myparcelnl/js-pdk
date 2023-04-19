@@ -15,15 +15,28 @@ concurrency:
 
 jobs:
   test:
-    name: 'Run unit tests 🧪'
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
+
+  bundlewatch:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
 
+      - uses: ./.github/actions/install
+
+      - uses: ./.github/actions/build
+
+      - uses: myparcelnl/actions/setup-git-credentials@v3
+        id: credentials
+        with:
+          app-id: ${{ inputs.app-id }}
+          private-key: ${{ inputs.private-key }}
+
       - name: 'Fetch base branch'
+        shell: bash
         run: git fetch --no-tags --prune --depth=1 origin ${{ github.base_ref }}
 
-      - uses: ./.github/actions/test
+      - uses: myparcelnl/actions/bundlewatch@v3
         with:
-          bundlewatch-token: ${{ secrets.GH_REPO_TOKEN }}
-          codacy-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          token: ${{ inputs.bundlewatch-token }}

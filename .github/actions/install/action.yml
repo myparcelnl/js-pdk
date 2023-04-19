@@ -1,0 +1,9 @@
+name: 'Install dependencies'
+description: 'Installs dependencies'
+
+runs:
+  using: composite
+  steps:
+    - uses: myparcelnl/actions/yarn-install@v3
+      with:
+        node-version: 18

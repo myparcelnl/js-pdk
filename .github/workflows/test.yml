@@ -1,0 +1,28 @@
+name: 'Run tests'
+
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: ./.github/actions/install
+
+      - name: 'Run tests'
+        shell: bash
+        run: |
+          NX_BRANCH=production yarn nx run-many \
+            --parallel \
+            --target=test:run \
+            --output-style=static
+
+      - uses: codecov/codecov-action@v3
+        continue-on-error: true
+
+      - uses: codacy/codacy-coverage-reporter-action@v1
+        continue-on-error: true
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
