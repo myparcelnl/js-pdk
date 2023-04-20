@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.30](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout@1.0.0-alpha.29...@myparcel-pdk/checkout@1.0.0-alpha.30) "@myparcel-pdk/checkout" (2023-04-20)
+
+
+### Features
+
+* add checkout packages ([ad1d9e1](https://github/myparcelnl/js-pdk/commit/ad1d9e1f027af9e6124f8266f64edc0509e22a9d))
+
+
+
+
 ## [1.0.0-alpha.27](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout@1.0.0-alpha.26...@myparcel-pdk/checkout@1.0.0-alpha.27) "@myparcel-pdk/checkout" (2023-04-12)
 
 
