@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.5](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-tax-fields@1.0.0-alpha.4...@myparcel-pdk/frontend-checkout-tax-fields@1.0.0-alpha.5) "@myparcel-pdk/frontend-checkout-tax-fields" (2023-04-20)
+
+
+### Features
+
+* **checkout:** move showing/hiding logic to app config ([c5a9dea](https://github/myparcelnl/js-pdk/commit/c5a9dea4463efb3d293406e05fa010312faca76a))
+
+
+
+
 ## [1.0.0-alpha.4](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-tax-fields@1.0.0-alpha.3...@myparcel-pdk/frontend-checkout-tax-fields@1.0.0-alpha.4) "@myparcel-pdk/frontend-checkout-tax-fields" (2023-04-20)
 
 
