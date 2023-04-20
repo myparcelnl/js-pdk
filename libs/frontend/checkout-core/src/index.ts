@@ -1,4 +1,6 @@
 export * from './config';
+export * from './data';
+export * from './events';
 export * from './init';
 export * from './listeners';
 export * from './store';

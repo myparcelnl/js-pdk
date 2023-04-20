@@ -7,7 +7,7 @@ import {
   EVENT_TYPE_UPDATE,
   EVENT_TYPE_UPDATED,
   createEventName,
-} from './data/eventNames';
+} from './data';
 
 export const eventCheckoutUpdate = createEventName(EVENT_CHECKOUT, EVENT_TYPE_UPDATE);
 
