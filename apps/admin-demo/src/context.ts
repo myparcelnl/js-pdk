@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
+import {AdminComponent, BackendEndpoint} from '@myparcel-pdk/common/src';
+import {CarrierName, DeliveryTypeName, PackageTypeName} from '@myparcel/constants';
 import {AdminContextObject} from '@myparcel-pdk/frontend-admin-core/src';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
-import {CarrierName} from '@myparcel/constants';
 import translations from './translations/en.json';
 
 export const context: AdminContextObject = {
@@ -46,49 +46,49 @@ export const context: AdminContextObject = {
       elements: [
         {
           name: 'apiLogging',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_general_api_logging',
           description: 'settings_general_api_logging_description',
         },
         {
           name: 'shareCustomerInformation',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_general_share_customer_information',
           description: 'settings_general_share_customer_information_description',
         },
         {
           name: 'conceptShipments',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_general_concept_shipments',
           description: 'settings_general_concept_shipments_description',
         },
         {
           name: 'orderMode',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_general_order_mode',
           description: 'settings_general_order_mode_description',
         },
         {
           name: 'trackTraceInEmail',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_general_track_trace_in_email',
           description: 'settings_general_track_trace_in_email_description',
         },
         {
           name: 'trackTraceInAccount',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_general_track_trace_in_account',
           description: 'settings_general_track_trace_in_account_description',
         },
         {
           name: 'barcodeInNote',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_general_barcode_in_note',
           description: 'settings_general_barcode_in_note_description',
         },
         {
           name: 'processDirectly',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_general_process_directly',
           description: 'settings_general_process_directly_description',
         },
@@ -102,7 +102,7 @@ export const context: AdminContextObject = {
       elements: [
         {
           name: 'statusOnLabelCreate',
-          $component: 'SelectInput',
+          $component: AdminComponent.SelectInput,
           options: [
             {value: -1, label: 'settings_none'},
             {value: 'wc-pending', label: 'Wachtend op betaling'},
@@ -118,7 +118,7 @@ export const context: AdminContextObject = {
         },
         {
           name: 'statusWhenLabelScanned',
-          $component: 'SelectInput',
+          $component: AdminComponent.SelectInput,
           options: [
             {value: -1, label: 'settings_none'},
             {value: 'wc-pending', label: 'Wachtend op betaling'},
@@ -134,7 +134,7 @@ export const context: AdminContextObject = {
         },
         {
           name: 'statusWhenDelivered',
-          $component: 'SelectInput',
+          $component: AdminComponent.SelectInput,
           options: [
             {value: -1, label: 'settings_none'},
             {value: 'wc-pending', label: 'Wachtend op betaling'},
@@ -150,7 +150,7 @@ export const context: AdminContextObject = {
         },
         {
           name: 'ignoreOrderStatuses',
-          $component: 'CheckboxInput',
+          $component: AdminComponent.CheckboxInput,
           options: [
             {value: -1, label: 'settings_none'},
             {value: 'wc-pending', label: 'Wachtend op betaling'},
@@ -166,32 +166,32 @@ export const context: AdminContextObject = {
         },
         {
           name: 'orderStatusMail',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_order_order_status_mail',
           description: 'settings_order_order_status_mail_description',
         },
         {
           name: 'sendNotificationAfter',
-          $component: 'SelectInput',
+          $component: AdminComponent.SelectInput,
           options: [],
           label: 'settings_order_send_notification_after',
           description: 'settings_order_send_notification_after_description',
         },
         {
           name: 'sendOrderStateForDigitalStamp',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_order_send_order_state_for_digital_stamp',
           description: 'settings_order_send_order_state_for_digital_stamp_description',
         },
         {
           name: 'saveCustomerAddress',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_order_save_customer_address',
           description: 'settings_order_save_customer_address_description',
         },
         {
           name: 'emptyParcelWeight',
-          $component: 'NumberInput',
+          $component: AdminComponent.NumberInput,
           label: 'settings_order_empty_parcel_weight',
           description: 'settings_order_empty_parcel_weight_description',
         },
@@ -205,13 +205,13 @@ export const context: AdminContextObject = {
       elements: [
         {
           name: 'description',
-          $component: 'TextInput',
+          $component: AdminComponent.TextInput,
           label: 'settings_label_description',
           description: 'settings_label_description_description',
         },
         {
           name: 'format',
-          $component: 'SelectInput',
+          $component: AdminComponent.SelectInput,
           options: [
             {value: 'A4', label: 'settings_label_format_option_a4'},
             {value: 'A6', label: 'settings_label_format_option_a6'},
@@ -221,7 +221,7 @@ export const context: AdminContextObject = {
         },
         {
           name: 'position',
-          $component: 'SelectInput',
+          $component: AdminComponent.SelectInput,
           options: [
             {value: 1, label: 'settings_label_position_option_1'},
             {value: 2, label: 'settings_label_position_option_2'},
@@ -233,7 +233,7 @@ export const context: AdminContextObject = {
         },
         {
           name: 'output',
-          $component: 'SelectInput',
+          $component: AdminComponent.SelectInput,
           options: [
             {value: 'open', label: 'settings_label_output_option_open'},
             {value: 'download', label: 'settings_label_output_option_download'},
@@ -243,7 +243,7 @@ export const context: AdminContextObject = {
         },
         {
           name: 'prompt',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_label_prompt',
           description: 'settings_label_prompt_description',
         },
@@ -257,7 +257,7 @@ export const context: AdminContextObject = {
       elements: [
         {
           name: 'packageContents',
-          $component: 'SelectInput',
+          $component: AdminComponent.SelectInput,
           options: [
             {value: 1, label: 'customs_package_contents_commercial_goods'},
             {value: 2, label: 'customs_package_contents_commercial_samples'},
@@ -270,13 +270,13 @@ export const context: AdminContextObject = {
         },
         {
           name: 'customsCode',
-          $component: 'TextInput',
+          $component: AdminComponent.TextInput,
           label: 'settings_customs_customs_code',
           description: 'settings_customs_customs_code_description',
         },
         {
           name: 'countryOfOrigin',
-          $component: 'SelectInput',
+          $component: AdminComponent.SelectInput,
           options: [
             {value: 'AC', label: 'AC'},
             {value: 'AD', label: 'AD'},
@@ -552,12 +552,12 @@ export const context: AdminContextObject = {
       elements: [
         {
           name: 'useSeparateAddressFields',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_checkout_use_separate_address_fields',
         },
         {
           name: 'priceType',
-          $component: 'SelectInput',
+          $component: AdminComponent.SelectInput,
           options: [
             {value: 'included', label: 'settings_checkout_price_type_option_included'},
             {value: 'excluded', label: 'settings_checkout_price_type_option_excluded'},
@@ -565,27 +565,35 @@ export const context: AdminContextObject = {
           label: 'settings_checkout_price_type',
           description: 'settings_checkout_price_type_description',
         },
-        {name: 'emptyWeightMailbox', $component: 'NumberInput', label: 'settings_checkout_empty_weight_mailbox'},
-        {name: 'emptyWeightPackage', $component: 'NumberInput', label: 'settings_checkout_empty_weight_package'},
+        {
+          name: 'emptyWeightMailbox',
+          $component: AdminComponent.NumberInput,
+          label: 'settings_checkout_empty_weight_mailbox',
+        },
+        {
+          name: 'emptyWeightPackage',
+          $component: AdminComponent.NumberInput,
+          label: 'settings_checkout_empty_weight_package',
+        },
         {
           name: 'showDeliveryDay',
-          $component: 'ToggleInput',
+          $component: AdminComponent.ToggleInput,
           label: 'settings_checkout_show_delivery_day',
           description: 'settings_checkout_show_delivery_day_description',
         },
         {
           name: 'deliveryOptionsHeader',
-          $component: 'TextInput',
+          $component: AdminComponent.TextInput,
           label: 'settings_checkout_delivery_options_header',
         },
         {
           name: 'deliveryOptionsCustomCss',
-          $component: 'CodeEditor',
+          $component: AdminComponent.CodeEditor,
           label: 'settings_checkout_delivery_options_custom_css',
         },
         {
           name: 'deliveryOptionsPosition',
-          $component: 'SelectInput',
+          $component: AdminComponent.SelectInput,
           options: [
             {value: 'woocommerce_after_cart', label: 'wc_hook_woocommerce_after_cart'},
             {value: 'woocommerce_after_cart_contents', label: 'wc_hook_woocommerce_after_cart_contents'},
@@ -637,17 +645,21 @@ export const context: AdminContextObject = {
           description: 'settings_view_carrier_postnl_description',
           children: null,
           elements: [
-            {$component: 'Heading', $slot: 'settings_carrier_export'},
-            {name: 'exportInsurance', $component: 'ToggleInput', label: 'settings_carrier_export_insurance'},
+            {$component: AdminComponent.Heading, $slot: 'settings_carrier_export'},
+            {
+              name: 'exportInsurance',
+              $component: AdminComponent.ToggleInput,
+              label: 'settings_carrier_export_insurance',
+            },
             {
               name: 'exportInsuranceFromAmount',
-              $component: 'NumberInput',
+              $component: AdminComponent.NumberInput,
               $visibleWhen: {exportInsurance: true},
               label: 'settings_carrier_export_insurance_from_amount',
             },
             {
               name: 'exportInsuranceUpTo',
-              $component: 'SelectInput',
+              $component: AdminComponent.SelectInput,
               options: [
                 {value: 0, label: 0},
                 {value: 100, label: 100},
@@ -668,7 +680,7 @@ export const context: AdminContextObject = {
             },
             {
               name: 'exportInsuranceUpToBe',
-              $component: 'SelectInput',
+              $component: AdminComponent.SelectInput,
               options: [
                 {value: 0, label: 0},
                 {value: 100, label: 100},
@@ -689,7 +701,7 @@ export const context: AdminContextObject = {
             },
             {
               name: 'exportInsuranceUpToEu',
-              $component: 'SelectInput',
+              $component: AdminComponent.SelectInput,
               options: [
                 {value: 0, label: 0},
                 {value: 100, label: 100},
@@ -708,137 +720,149 @@ export const context: AdminContextObject = {
               $visibleWhen: {exportInsurance: true},
               label: 'settings_carrier_export_insurance_up_to_eu',
             },
-            {name: 'exportAgeCheck', $component: 'ToggleInput', label: 'settings_carrier_export_age_check'},
+            {
+              name: 'exportAgeCheck',
+              $component: AdminComponent.ToggleInput,
+              label: 'settings_carrier_export_age_check',
+            },
             {
               name: 'exportOnlyRecipient',
-              $component: 'ToggleInput',
+              $component: AdminComponent.ToggleInput,
               label: 'settings_carrier_export_only_recipient',
             },
-            {name: 'exportSignature', $component: 'ToggleInput', label: 'settings_carrier_export_signature'},
-            {name: 'exportLargeFormat', $component: 'ToggleInput', label: 'settings_carrier_export_large_format'},
+            {
+              name: 'exportSignature',
+              $component: AdminComponent.ToggleInput,
+              label: 'settings_carrier_export_signature',
+            },
+            {
+              name: 'exportLargeFormat',
+              $component: AdminComponent.ToggleInput,
+              label: 'settings_carrier_export_large_format',
+            },
             {
               name: 'exportReturnShipments',
-              $component: 'ToggleInput',
+              $component: AdminComponent.ToggleInput,
               label: 'settings_carrier_export_return_shipments',
             },
-            {$component: 'Heading', $slot: 'settings_carrier_delivery_options'},
+            {$component: AdminComponent.Heading, $slot: 'settings_carrier_delivery_options'},
             {
               name: 'allowDeliveryOptions',
-              $component: 'ToggleInput',
+              $component: AdminComponent.ToggleInput,
               label: 'settings_carrier_allow_delivery_options',
             },
             {
               name: 'allowMondayDelivery',
-              $component: 'ToggleInput',
+              $component: AdminComponent.ToggleInput,
               $visibleWhen: {allowDeliveryOptions: true},
               label: 'settings_carrier_allow_monday_delivery',
             },
             {
               name: 'allowSaturdayDelivery',
-              $component: 'ToggleInput',
+              $component: AdminComponent.ToggleInput,
               $visibleWhen: {allowDeliveryOptions: true},
               label: 'settings_carrier_allow_saturday_delivery',
             },
             {
               name: 'showDeliveryDay',
-              $component: 'ToggleInput',
+              $component: AdminComponent.ToggleInput,
               $visibleWhen: {allowDeliveryOptions: true},
               label: 'settings_carrier_show_delivery_day',
             },
             {
               name: 'dropOffPossibilities',
-              $component: 'DropOffInput',
+              $component: AdminComponent.DropOffInput,
               $visibleWhen: {allowDeliveryOptions: true},
               label: 'settings_carrier_drop_off_possibilities',
             },
             {
               name: 'defaultPackageType',
-              $component: 'SelectInput',
+              $component: AdminComponent.SelectInput,
               $visibleWhen: {allowDeliveryOptions: true},
-              options: ['package', 'mailbox', 'letter', 'digital_stamp'],
+              options: [PackageTypeName.Package, PackageTypeName.Mailbox, 'letter', 'digital_stamp'],
               label: 'settings_carrier_default_package_type',
             },
             {
               name: 'pricePackageTypeMailbox',
-              $component: 'CurrencyInput',
+              $component: AdminComponent.CurrencyInput,
               $visibleWhen: {allowDeliveryOptions: true},
               label: 'settings_carrier_price_package_type_mailbox',
             },
             {
               name: 'pricePackageTypeDigitalStamp',
-              $component: 'CurrencyInput',
+              $component: AdminComponent.CurrencyInput,
               $visibleWhen: {allowDeliveryOptions: true},
               label: 'settings_carrier_price_package_type_digital_stamp',
             },
             {
               name: 'allowPickupLocations',
-              $component: 'ToggleInput',
+              $component: AdminComponent.ToggleInput,
               $visibleWhen: {allowDeliveryOptions: true},
               label: 'settings_carrier_allow_pickup_locations',
             },
             {
               name: 'priceDeliveryTypePickup',
-              $component: 'CurrencyInput',
+              $component: AdminComponent.CurrencyInput,
               $visibleWhen: {allowDeliveryOptions: true, allowPickupLocations: true},
               label: 'settings_carrier_price_delivery_type_pickup',
             },
             {
               name: 'allowSignature',
-              $component: 'ToggleInput',
+              $component: AdminComponent.ToggleInput,
               $visibleWhen: {allowDeliveryOptions: true},
               label: 'settings_carrier_allow_signature',
             },
             {
               name: 'priceSignature',
-              $component: 'CurrencyInput',
+              $component: AdminComponent.CurrencyInput,
               $visibleWhen: {allowDeliveryOptions: true, allowSignature: true},
               label: 'settings_carrier_price_signature',
             },
             {
               name: 'allowOnlyRecipient',
-              $component: 'ToggleInput',
+              $component: AdminComponent.ToggleInput,
               $visibleWhen: {allowDeliveryOptions: true},
               label: 'settings_carrier_allow_only_recipient',
             },
             {
               name: 'priceOnlyRecipient',
-              $component: 'CurrencyInput',
+              $component: AdminComponent.CurrencyInput,
               $visibleWhen: {allowDeliveryOptions: true, allowOnlyRecipient: true},
               label: 'settings_carrier_price_only_recipient',
             },
             {
               name: 'allowMorningDelivery',
-              $component: 'ToggleInput',
+              $component: AdminComponent.ToggleInput,
               $visibleWhen: {allowDeliveryOptions: true},
               label: 'settings_carrier_allow_morning_delivery',
             },
             {
               name: 'priceDeliveryTypeMorning',
-              $component: 'CurrencyInput',
+              $component: AdminComponent.CurrencyInput,
               $visibleWhen: {allowDeliveryOptions: true, allowMorningDelivery: true},
               label: 'settings_carrier_price_delivery_type_morning',
             },
             {
               name: 'allowEveningDelivery',
-              $component: 'ToggleInput',
+              $component: AdminComponent.ToggleInput,
               $visibleWhen: {allowDeliveryOptions: true},
               label: 'settings_carrier_allow_evening_delivery',
             },
             {
               name: 'priceDeliveryTypeEvening',
-              $component: 'CurrencyInput',
+              $component: AdminComponent.CurrencyInput,
               $visibleWhen: {allowDeliveryOptions: true, allowEveningDelivery: true},
               label: 'settings_carrier_price_delivery_type_evening',
             },
             {
               name: 'allowSameDayDelivery',
-              $component: 'ToggleInput',
+              $component: AdminComponent.ToggleInput,
               $visibleWhen: {allowDeliveryOptions: true},
               label: 'settings_carrier_allow_same_day_delivery',
             },
             {
               name: 'priceDeliveryTypeSameDay',
-              $component: 'CurrencyInput',
+              $component: AdminComponent.CurrencyInput,
               $visibleWhen: {allowDeliveryOptions: true, allowSameDayDelivery: true},
               label: 'settings_carrier_price_delivery_type_same_day',
             },
@@ -979,7 +1003,7 @@ export const context: AdminContextObject = {
               carrier: {
                 externalIdentifier: 'postnl',
                 id: 1,
-                name: 'postnl',
+                name: CarrierName.PostNl,
                 human: undefined,
                 subscriptionId: undefined,
                 enabled: true,
@@ -990,9 +1014,16 @@ export const context: AdminContextObject = {
                 type: 'main',
               },
               capabilities: {
-                deliveryTypes: ['morning', 'standard', 'evening', 'pickup'],
-                features: {labelDescriptionLength: 45},
-                packageTypes: ['package', 'mailbox', 'letter', 'digital_stamp'],
+                deliveryTypes: [
+                  DeliveryTypeName.Morning,
+                  DeliveryTypeName.Standard,
+                  DeliveryTypeName.Evening,
+                  DeliveryTypeName.Pickup,
+                ],
+                features: {
+                  labelDescriptionLength: 45,
+                },
+                packageTypes: [PackageTypeName.Package, PackageTypeName.Mailbox, 'letter', 'digital_stamp'],
                 shipmentOptions: {
                   ageCheck: true,
                   largeFormat: true,
@@ -1006,9 +1037,11 @@ export const context: AdminContextObject = {
                 },
               },
               returnCapabilities: {
-                deliveryTypes: ['standard'],
-                features: {labelDescriptionLength: 45},
-                packageTypes: ['package'],
+                deliveryTypes: [DeliveryTypeName.Standard],
+                features: {
+                  labelDescriptionLength: 45,
+                },
+                packageTypes: [PackageTypeName.Package],
                 shipmentOptions: {
                   signature: true,
                   insurance: [
@@ -1026,7 +1059,7 @@ export const context: AdminContextObject = {
               carrier: {
                 externalIdentifier: 'cheapcargo',
                 id: 3,
-                name: 'cheapcargo',
+                name: CarrierName.CheapCargo,
                 human: undefined,
                 subscriptionId: undefined,
                 enabled: true,
@@ -1043,7 +1076,7 @@ export const context: AdminContextObject = {
               carrier: {
                 externalIdentifier: 'dhl',
                 id: 6,
-                name: 'dhl',
+                name: CarrierName.Dhl,
                 human: undefined,
                 subscriptionId: undefined,
                 enabled: true,
@@ -1060,7 +1093,7 @@ export const context: AdminContextObject = {
               carrier: {
                 externalIdentifier: 'bol.com',
                 id: 7,
-                name: 'bol.com',
+                name: CarrierName.BolCom,
                 human: undefined,
                 subscriptionId: undefined,
                 enabled: true,
@@ -1077,7 +1110,7 @@ export const context: AdminContextObject = {
               carrier: {
                 externalIdentifier: 'ups',
                 id: 8,
-                name: 'ups',
+                name: CarrierName.Ups,
                 human: undefined,
                 subscriptionId: undefined,
                 enabled: true,
@@ -1094,7 +1127,7 @@ export const context: AdminContextObject = {
               carrier: {
                 externalIdentifier: 'dhlforyou',
                 id: 9,
-                name: 'dhlforyou',
+                name: CarrierName.DhlForYou,
                 human: undefined,
                 subscriptionId: undefined,
                 enabled: true,
@@ -1105,9 +1138,11 @@ export const context: AdminContextObject = {
                 type: 'main',
               },
               capabilities: {
-                deliveryTypes: ['standard', 'pickup'],
-                features: {labelDescriptionLength: 45},
-                packageTypes: ['package', 'mailbox'],
+                deliveryTypes: [DeliveryTypeName.Standard, DeliveryTypeName.Pickup],
+                features: {
+                  labelDescriptionLength: 45,
+                },
+                packageTypes: [PackageTypeName.Package, PackageTypeName.Mailbox],
                 shipmentOptions: {
                   ageCheck: true,
                   largeFormat: false,
@@ -1121,9 +1156,11 @@ export const context: AdminContextObject = {
                 },
               },
               returnCapabilities: {
-                deliveryTypes: ['standard'],
-                features: {labelDescriptionLength: 45},
-                packageTypes: ['package'],
+                deliveryTypes: [DeliveryTypeName.Standard],
+                features: {
+                  labelDescriptionLength: 45,
+                },
+                packageTypes: [PackageTypeName.Package],
                 shipmentOptions: {
                   signature: true,
                   insurance: [0],
@@ -1139,7 +1176,7 @@ export const context: AdminContextObject = {
               carrier: {
                 externalIdentifier: 'dhlparcelconnect',
                 id: 10,
-                name: 'dhlparcelconnect',
+                name: CarrierName.DhlParcelConnect,
                 human: undefined,
                 subscriptionId: undefined,
                 enabled: true,
@@ -1150,9 +1187,11 @@ export const context: AdminContextObject = {
                 type: 'main',
               },
               capabilities: {
-                deliveryTypes: ['standard', 'pickup'],
-                features: {labelDescriptionLength: 45},
-                packageTypes: ['package'],
+                deliveryTypes: [DeliveryTypeName.Standard, DeliveryTypeName.Pickup],
+                features: {
+                  labelDescriptionLength: 45,
+                },
+                packageTypes: [PackageTypeName.Package],
                 shipmentOptions: {
                   ageCheck: false,
                   onlyRecipient: false,
@@ -1165,9 +1204,11 @@ export const context: AdminContextObject = {
                 },
               },
               returnCapabilities: {
-                deliveryTypes: ['standard'],
-                features: {labelDescriptionLength: 45},
-                packageTypes: ['package'],
+                deliveryTypes: [DeliveryTypeName.Standard],
+                features: {
+                  labelDescriptionLength: 45,
+                },
+                packageTypes: [PackageTypeName.Package],
                 shipmentOptions: {
                   signature: false,
                   insurance: [50000],
@@ -1183,7 +1224,7 @@ export const context: AdminContextObject = {
               carrier: {
                 externalIdentifier: 'dhleuroplus',
                 id: 11,
-                name: 'dhleuroplus',
+                name: CarrierName.DhlEuroPlus,
                 human: undefined,
                 subscriptionId: undefined,
                 enabled: true,
@@ -1194,9 +1235,11 @@ export const context: AdminContextObject = {
                 type: 'main',
               },
               capabilities: {
-                deliveryTypes: ['standard'],
-                features: {labelDescriptionLength: 45},
-                packageTypes: ['package', 'mailbox'],
+                deliveryTypes: [DeliveryTypeName.Standard],
+                features: {
+                  labelDescriptionLength: 45,
+                },
+                packageTypes: [PackageTypeName.Package, PackageTypeName.Mailbox],
                 shipmentOptions: {signature: true, insurance: [0, 50000]},
               },
               returnCapabilities: {deliveryTypes: [], features: {}, packageTypes: [], shipmentOptions: {}},
@@ -1207,9 +1250,8 @@ export const context: AdminContextObject = {
     },
     carriers: undefined,
     pluginSettings: {
-      account: {id: 'account', apiKey: '64c0afe6463444b1b5ec217f33fe227f3d2215ae'},
+      account: {apiKey: '64c0afe6463444b1b5ec217f33fe227f3d2215ae'},
       general: {
-        id: 'general',
         apiLogging: false,
         barcodeInNote: false,
         barcodeInNoteTitle: undefined,
@@ -1222,7 +1264,6 @@ export const context: AdminContextObject = {
         trackTraceInEmail: false,
       },
       order: {
-        id: 'order',
         emptyDigitalStampWeight: undefined,
         emptyMailboxWeight: undefined,
         emptyParcelWeight: undefined,
@@ -1235,14 +1276,13 @@ export const context: AdminContextObject = {
         statusWhenDelivered: '-1',
         statusWhenLabelScanned: '-1',
       },
-      label: {id: 'label', description: undefined, format: 'A4', output: 'open', position: 1, prompt: false},
-      customs: {id: 'customs', countryOfOrigin: undefined, customsCode: '0', packageContents: '1'},
+      label: {description: undefined, format: 'A4', output: 'open', position: 1, prompt: false},
+      customs: {countryOfOrigin: undefined, customsCode: '0', packageContents: '1'},
       checkout: {
-        id: 'checkout',
-        deliveryOptionsCustomCss: undefined,
+        deliveryOptionsCustomCss: '',
         deliveryOptionsDisplay: false,
-        deliveryOptionsHeader: undefined,
-        deliveryOptionsPosition: undefined,
+        deliveryOptionsHeader: '',
+        deliveryOptionsPosition: '',
         pickupLocationsDefaultView: 'list',
         priceType: 'included',
         enableDeliveryOptions: true,
@@ -1252,7 +1292,7 @@ export const context: AdminContextObject = {
       carrier: {
         dhleuroplus: {
           id: 'dhleuroplus',
-          carrierName: undefined,
+          carrierName: 'dhleuroplus',
           allowDeliveryOptions: true,
           allowEveningDelivery: true,
           allowMondayDelivery: false,
@@ -1264,7 +1304,7 @@ export const context: AdminContextObject = {
           allowSignature: true,
           cutoffTime: undefined,
           cutoffTimeSameDay: undefined,
-          defaultPackageType: 'package',
+          defaultPackageType: PackageTypeName.Package,
           deliveryDaysWindow: 7,
           deliveryOptionsDisplay: undefined,
           deliveryOptionsEnabledForBackorders: false,
@@ -1281,7 +1321,7 @@ export const context: AdminContextObject = {
           exportLargeFormat: false,
           exportOnlyRecipient: true,
           exportReturnLargeFormat: false,
-          exportReturnPackageType: 'package',
+          exportReturnPackageType: PackageTypeName.Package,
           exportReturn: false,
           exportSignature: false,
           priceDeliveryTypeEvening: 0,
@@ -1299,7 +1339,7 @@ export const context: AdminContextObject = {
         },
         postnl: {
           id: 'postnl',
-          carrierName: undefined,
+          carrierName: 'postnl',
           allowDeliveryOptions: true,
           allowEveningDelivery: true,
           allowMondayDelivery: false,
@@ -1311,7 +1351,7 @@ export const context: AdminContextObject = {
           allowSignature: true,
           cutoffTime: undefined,
           cutoffTimeSameDay: undefined,
-          defaultPackageType: 'package',
+          defaultPackageType: PackageTypeName.Package,
           deliveryDaysWindow: 7,
           deliveryOptionsDisplay: undefined,
           deliveryOptionsEnabledForBackorders: false,
@@ -1328,7 +1368,7 @@ export const context: AdminContextObject = {
           exportLargeFormat: true,
           exportOnlyRecipient: true,
           exportReturnLargeFormat: false,
-          exportReturnPackageType: 'package',
+          exportReturnPackageType: PackageTypeName.Package,
           exportReturn: false,
           exportSignature: true,
           priceDeliveryTypeEvening: 0,
@@ -1346,7 +1386,7 @@ export const context: AdminContextObject = {
         },
         dhlforyou: {
           id: 'dhlforyou',
-          carrierName: undefined,
+          carrierName: 'dhlforyou',
           allowDeliveryOptions: true,
           allowEveningDelivery: true,
           allowMondayDelivery: false,
@@ -1358,7 +1398,7 @@ export const context: AdminContextObject = {
           allowSignature: true,
           cutoffTime: undefined,
           cutoffTimeSameDay: undefined,
-          defaultPackageType: 'package',
+          defaultPackageType: PackageTypeName.Package,
           deliveryDaysWindow: 7,
           deliveryOptionsDisplay: undefined,
           deliveryOptionsEnabledForBackorders: false,
@@ -1375,7 +1415,7 @@ export const context: AdminContextObject = {
           exportLargeFormat: false,
           exportOnlyRecipient: true,
           exportReturnLargeFormat: false,
-          exportReturnPackageType: 'package',
+          exportReturnPackageType: PackageTypeName.Package,
           exportReturn: false,
           exportSignature: false,
           priceDeliveryTypeEvening: 0,
@@ -1393,7 +1433,7 @@ export const context: AdminContextObject = {
         },
         dhlparcelconnect: {
           id: 'dhlparcelconnect',
-          carrierName: undefined,
+          carrierName: 'dhlparcelconnect',
           allowDeliveryOptions: true,
           allowEveningDelivery: true,
           allowMondayDelivery: false,
@@ -1405,7 +1445,7 @@ export const context: AdminContextObject = {
           allowSignature: true,
           cutoffTime: undefined,
           cutoffTimeSameDay: undefined,
-          defaultPackageType: 'package',
+          defaultPackageType: PackageTypeName.Package,
           deliveryDaysWindow: 7,
           deliveryOptionsDisplay: undefined,
           deliveryOptionsEnabledForBackorders: false,
@@ -1422,7 +1462,7 @@ export const context: AdminContextObject = {
           exportLargeFormat: false,
           exportOnlyRecipient: true,
           exportReturnLargeFormat: false,
-          exportReturnPackageType: 'package',
+          exportReturnPackageType: PackageTypeName.Package,
           exportReturn: false,
           exportSignature: false,
           priceDeliveryTypeEvening: 0,
@@ -1567,9 +1607,16 @@ export const context: AdminContextObject = {
             type: 'main',
           },
           capabilities: {
-            deliveryTypes: ['morning', 'standard', 'evening', 'pickup'],
-            features: {labelDescriptionLength: 45},
-            packageTypes: ['package', 'mailbox', 'letter', 'digital_stamp'],
+            deliveryTypes: [
+              DeliveryTypeName.Morning,
+              DeliveryTypeName.Standard,
+              DeliveryTypeName.Evening,
+              DeliveryTypeName.Pickup,
+            ],
+            features: {
+              labelDescriptionLength: 45,
+            },
+            packageTypes: [PackageTypeName.Package, PackageTypeName.Mailbox, 'letter', 'digital_stamp'],
             shipmentOptions: {
               ageCheck: true,
               largeFormat: true,
@@ -1583,9 +1630,11 @@ export const context: AdminContextObject = {
             },
           },
           returnCapabilities: {
-            deliveryTypes: ['standard'],
-            features: {labelDescriptionLength: 45},
-            packageTypes: ['package'],
+            deliveryTypes: [DeliveryTypeName.Standard],
+            features: {
+              labelDescriptionLength: 45,
+            },
+            packageTypes: [PackageTypeName.Package],
             shipmentOptions: {
               signature: true,
               insurance: [
@@ -1682,9 +1731,11 @@ export const context: AdminContextObject = {
             type: 'main',
           },
           capabilities: {
-            deliveryTypes: ['standard', 'pickup'],
-            features: {labelDescriptionLength: 45},
-            packageTypes: ['package', 'mailbox'],
+            deliveryTypes: [DeliveryTypeName.Standard, DeliveryTypeName.Pickup],
+            features: {
+              labelDescriptionLength: 45,
+            },
+            packageTypes: [PackageTypeName.Package, PackageTypeName.Mailbox],
             shipmentOptions: {
               ageCheck: true,
               largeFormat: false,
@@ -1698,9 +1749,11 @@ export const context: AdminContextObject = {
             },
           },
           returnCapabilities: {
-            deliveryTypes: ['standard'],
-            features: {labelDescriptionLength: 45},
-            packageTypes: ['package'],
+            deliveryTypes: [DeliveryTypeName.Standard],
+            features: {
+              labelDescriptionLength: 45,
+            },
+            packageTypes: [PackageTypeName.Package],
             shipmentOptions: {
               signature: true,
               insurance: [0],
@@ -1727,9 +1780,11 @@ export const context: AdminContextObject = {
             type: 'main',
           },
           capabilities: {
-            deliveryTypes: ['standard', 'pickup'],
-            features: {labelDescriptionLength: 45},
-            packageTypes: ['package'],
+            deliveryTypes: [DeliveryTypeName.Standard, DeliveryTypeName.Pickup],
+            features: {
+              labelDescriptionLength: 45,
+            },
+            packageTypes: [PackageTypeName.Package],
             shipmentOptions: {
               ageCheck: false,
               onlyRecipient: false,
@@ -1742,9 +1797,11 @@ export const context: AdminContextObject = {
             },
           },
           returnCapabilities: {
-            deliveryTypes: ['standard'],
-            features: {labelDescriptionLength: 45},
-            packageTypes: ['package'],
+            deliveryTypes: [DeliveryTypeName.Standard],
+            features: {
+              labelDescriptionLength: 45,
+            },
+            packageTypes: [PackageTypeName.Package],
             shipmentOptions: {
               signature: false,
               insurance: [50000],
@@ -1771,9 +1828,11 @@ export const context: AdminContextObject = {
             type: 'main',
           },
           capabilities: {
-            deliveryTypes: ['standard'],
-            features: {labelDescriptionLength: 45},
-            packageTypes: ['package', 'mailbox'],
+            deliveryTypes: [DeliveryTypeName.Standard],
+            features: {
+              labelDescriptionLength: 45,
+            },
+            packageTypes: [PackageTypeName.Package, PackageTypeName.Mailbox],
             shipmentOptions: {signature: true, insurance: [0, 50000]},
           },
           returnCapabilities: {deliveryTypes: [], features: {}, packageTypes: [], shipmentOptions: {}},
@@ -1796,9 +1855,16 @@ export const context: AdminContextObject = {
           type: 'main',
         },
         capabilities: {
-          deliveryTypes: ['morning', 'standard', 'evening', 'pickup'],
-          features: {labelDescriptionLength: 45},
-          packageTypes: ['package', 'mailbox', 'letter', 'digital_stamp'],
+          deliveryTypes: [
+            DeliveryTypeName.Morning,
+            DeliveryTypeName.Standard,
+            DeliveryTypeName.Evening,
+            DeliveryTypeName.Pickup,
+          ],
+          features: {
+            labelDescriptionLength: 45,
+          },
+          packageTypes: [PackageTypeName.Package, PackageTypeName.Mailbox, 'letter', 'digital_stamp'],
           shipmentOptions: {
             ageCheck: true,
             largeFormat: true,
@@ -1810,9 +1876,11 @@ export const context: AdminContextObject = {
           },
         },
         returnCapabilities: {
-          deliveryTypes: ['standard'],
-          features: {labelDescriptionLength: 45},
-          packageTypes: ['package'],
+          deliveryTypes: [DeliveryTypeName.Standard],
+          features: {
+            labelDescriptionLength: 45,
+          },
+          packageTypes: [PackageTypeName.Package],
           shipmentOptions: {
             signature: true,
             insurance: [0, 10000, 25000, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000],
@@ -1839,9 +1907,11 @@ export const context: AdminContextObject = {
           type: 'main',
         },
         capabilities: {
-          deliveryTypes: ['standard', 'pickup'],
-          features: {labelDescriptionLength: 45},
-          packageTypes: ['package', 'mailbox'],
+          deliveryTypes: [DeliveryTypeName.Standard, DeliveryTypeName.Pickup],
+          features: {
+            labelDescriptionLength: 45,
+          },
+          packageTypes: [PackageTypeName.Package, PackageTypeName.Mailbox],
           shipmentOptions: {
             ageCheck: true,
             largeFormat: false,
@@ -1855,9 +1925,11 @@ export const context: AdminContextObject = {
           },
         },
         returnCapabilities: {
-          deliveryTypes: ['standard'],
-          features: {labelDescriptionLength: 45},
-          packageTypes: ['package'],
+          deliveryTypes: [DeliveryTypeName.Standard],
+          features: {
+            labelDescriptionLength: 45,
+          },
+          packageTypes: [PackageTypeName.Package],
           shipmentOptions: {
             signature: true,
             insurance: [0],
@@ -1884,9 +1956,11 @@ export const context: AdminContextObject = {
           type: 'main',
         },
         capabilities: {
-          deliveryTypes: ['standard', 'pickup'],
-          features: {labelDescriptionLength: 45},
-          packageTypes: ['package'],
+          deliveryTypes: [DeliveryTypeName.Standard, DeliveryTypeName.Pickup],
+          features: {
+            labelDescriptionLength: 45,
+          },
+          packageTypes: [PackageTypeName.Package],
           shipmentOptions: {
             ageCheck: false,
             onlyRecipient: false,
@@ -1899,9 +1973,11 @@ export const context: AdminContextObject = {
           },
         },
         returnCapabilities: {
-          deliveryTypes: ['standard'],
-          features: {labelDescriptionLength: 45},
-          packageTypes: ['package'],
+          deliveryTypes: [DeliveryTypeName.Standard],
+          features: {
+            labelDescriptionLength: 45,
+          },
+          packageTypes: [PackageTypeName.Package],
           shipmentOptions: {
             signature: false,
             insurance: [50000],
@@ -1928,9 +2004,11 @@ export const context: AdminContextObject = {
           type: 'main',
         },
         capabilities: {
-          deliveryTypes: ['standard'],
-          features: {labelDescriptionLength: 45},
-          packageTypes: ['package', 'mailbox'],
+          deliveryTypes: [DeliveryTypeName.Standard],
+          features: {
+            labelDescriptionLength: 45,
+          },
+          packageTypes: [PackageTypeName.Package, PackageTypeName.Mailbox],
           shipmentOptions: {signature: true, insurance: [0, 50000]},
         },
         returnCapabilities: {deliveryTypes: [], features: {}, packageTypes: [], shipmentOptions: {}},
