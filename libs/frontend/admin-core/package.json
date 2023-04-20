@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/frontend-admin-core",
-  "version": "1.0.0-alpha.47",
+  "version": "1.0.0-alpha.48",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
