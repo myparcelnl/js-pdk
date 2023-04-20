@@ -1,6 +1,6 @@
 {
-  "name": "@myparcel-pdk/checkout",
-  "version": "1.0.0-alpha.28",
+  "name": "@myparcel-pdk/frontend-checkout-separate-address-fields",
+  "version": "1.0.0-alpha.1",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -21,17 +21,14 @@
     "emit": "run ws:tsup:emit \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "serve": "run ws:tsup:serve \"$(pwd)\"",
-    "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
+    "typecheck": "run ws:tsup:typecheck \"$(pwd)\"",
+    "watch": "run ws:tsup:watch \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.28",
-    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.1",
-    "@myparcel-pdk/frontend-checkout-delivery-options": "workspace:^1.0.0-alpha.1",
-    "@myparcel-pdk/frontend-checkout-separate-address-fields": "workspace:^1.0.0-alpha.1",
-    "@myparcel-pdk/frontend-checkout-tax-fields": "workspace:^1.0.0-alpha.1"
+    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.1"
   },
   "devDependencies": {
-    "@myparcel-pdk/build-tsup": "workspace:*",
+    "@myparcel-pdk/build-tsup": "workspace:^",
     "tsup": "^6.6.3"
   },
   "publishConfig": {

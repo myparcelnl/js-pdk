@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/frontend-common",
+  "name": "@myparcel-pdk/frontend-checkout-delivery-options",
   "version": "1.0.0-alpha.1",
   "license": "MIT",
   "sideEffects": false,
@@ -23,6 +23,10 @@
     "serve": "run ws:tsup:serve \"$(pwd)\"",
     "typecheck": "run ws:tsup:typecheck \"$(pwd)\"",
     "watch": "run ws:tsup:watch \"$(pwd)\""
+  },
+  "dependencies": {
+    "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.2",
+    "@myparcel/ts-utils": "^1.8.0"
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:^",

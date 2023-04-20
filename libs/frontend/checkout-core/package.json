@@ -25,7 +25,8 @@
     "watch": "run ws:tsup:watch \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.2"
+    "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.2",
+    "@myparcel/delivery-options": "^5.7.2"
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:^",

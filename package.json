@@ -95,13 +95,25 @@
         "path": "./apps/admin-preset-bootstrap4/dist/**/*.js"
       },
       {
+        "path": "./apps/admin-preset-dashicons/dist/**/*.js"
+      },
+      {
         "path": "./apps/admin-preset-default/dist/**/*.js"
+      },
+      {
+        "path": "./apps/admin-preset-default/dist/**/*.js"
+      },
+      {
+        "path": "./apps/admin-preset-fontawesome/dist/**/*.js"
       },
       {
         "path": "./apps/admin/dist/**/*.js"
       },
       {
         "path": "./apps/app-builder/dist/**/*.js"
+      },
+      {
+        "path": "./apps/checkout/dist/**/*.js"
       },
       {
         "path": "./apps/checkout/dist/**/*.js"
@@ -116,7 +128,13 @@
         "path": "./libs/frontend/checkout-core/dist/**/*.js"
       },
       {
-        "path": "./libs/frontend/common/dist/**/*.js"
+        "path": "./libs/frontend/checkout-delivery-options/dist/**/*.js"
+      },
+      {
+        "path": "./libs/frontend/checkout-separate-address-fields/dist/**/*.js"
+      },
+      {
+        "path": "./libs/frontend/checkout-tax-fields/dist/**/*.js"
       },
       {
         "path": "./libs/frontend/delivery-options/dist/**/*.js"
