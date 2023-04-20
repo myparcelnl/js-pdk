@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import {CheckoutSettings, Util, useUtil} from '../index';
 import {EndpointObject, FrontendEndpoint} from '@myparcel-pdk/common';
-import {Util, useUtil} from '../index';
-import {FrontendSettings} from '../checkout.types';
 
 export const createSettingsStore = () => {
   const createStore = useUtil(Util.CreateStore);
 
-  return createStore<FrontendSettings>(Symbol('settings'), () => {
+  return createStore<CheckoutSettings>(Symbol('settings'), () => {
     return {
       state: {
         actions: {
@@ -15,11 +14,10 @@ export const createSettingsStore = () => {
         },
         allowedShippingMethods: [],
         carriersWithTaxFields: [],
+        countriesWithSeparateAddressFields: [],
         disallowedShippingMethods: [],
         hasDeliveryOptions: false,
         hiddenInputName: '',
-        separateAddressFieldsCountries: [],
-        separateAddressFieldsEnabled: false,
       },
     };
   })();

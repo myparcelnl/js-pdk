@@ -1,12 +1,10 @@
-import {Util, useUtil} from '../useUtil';
-import {FrontendAppContext} from '../../types';
+import {CheckoutAppContext} from '../../types';
+import {getElement} from './getElement';
 import {useConfig} from '../../config';
 
 const ATTRIBUTE_CONTEXT = 'data-context';
 
-export const getFrontendContext = (): FrontendAppContext['checkout'] => {
-  const getElement = useUtil(Util.GetElement);
-
+export const getFrontendContext = (): CheckoutAppContext['checkout'] => {
   const config = useConfig();
 
   const wrapper = getElement(config.selectors.deliveryOptionsWrapper);
@@ -16,7 +14,7 @@ export const getFrontendContext = (): FrontendAppContext['checkout'] => {
     throw new Error('No delivery options wrapper or context found.');
   }
 
-  const {checkout} = JSON.parse(context) as FrontendAppContext;
+  const {checkout} = JSON.parse(context) as CheckoutAppContext;
 
   return checkout;
 };

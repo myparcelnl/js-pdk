@@ -66,23 +66,28 @@ export interface PdkCheckout {
   onInitialize(callback: InitializeCallback): void;
 }
 
-export interface FrontendAppContext {
+export interface CheckoutAppContext {
   checkout: {
     config: MyParcelDeliveryOptions.Config;
     strings: MyParcelDeliveryOptions.Strings;
-    settings: FrontendSettings;
+    settings: CheckoutSettings;
   };
 }
 
-export type FrontendSettings = {
+export type CheckoutSettings = {
   actions: {
     baseUrl: string;
     endpoints: FrontendPdkEndpointObject;
   };
+
+  // Delivery options
   allowedShippingMethods: string[];
-  carriersWithTaxFields: string[];
   hasDeliveryOptions: boolean;
   hiddenInputName: string;
-  separateAddressFieldsCountries: string[];
-  separateAddressFieldsEnabled: boolean;
+
+  // Separate address fields
+  countriesWithSeparateAddressFields: string[];
+
+  // Tax fields
+  carriersWithTaxFields: string[];
 };

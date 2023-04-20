@@ -24,6 +24,7 @@ import {initializeStores} from '../store/initializeStores';
 import {isOfType} from '@myparcel/ts-utils';
 import {realCreateStore} from '../store';
 
+// eslint-disable-next-line max-lines-per-function
 export const setupGlobals = (config: PdkCheckoutConfig): void => {
   window.MyParcelPdk ??= {
     config,
