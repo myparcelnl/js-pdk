@@ -1,4 +1,4 @@
-import {FrontendPdkEndpointObject} from '@myparcel-pdk/common';
+import {FrontendPdkEndpointObject} from '@myparcel-pdk/common/src';
 import {MyParcelDeliveryOptions} from '@myparcel/delivery-options';
 
 export enum AddressType {
@@ -56,8 +56,8 @@ export interface PdkCheckoutConfig {
   };
 
   getForm(): HTMLFormElement;
-
   initialize(): Promise<void>;
+  toggleField(field: HTMLInputElement, show: boolean): void;
 }
 
 export type InitializeCallback = () => void;

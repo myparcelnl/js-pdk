@@ -1,26 +1,20 @@
-import {ADDRESS_TYPES, AddressField, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {ADDRESS_TYPES, AddressField, Util, useConfig, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
 import {hasTaxFields} from './hasTaxFields';
 
 export const toggleTaxFields = (): void => {
   const showTaxFields = hasTaxFields();
   const getAddressField = useUtil(Util.GetAddressField);
+  const config = useConfig();
 
   ADDRESS_TYPES.forEach((addressType) => {
     [AddressField.EoriNumber, AddressField.VatNumber].forEach((fieldName) => {
-      const wrapper = getAddressField(fieldName, addressType, false);
+      const field = getAddressField(fieldName, addressType, false);
 
-      if (!wrapper) {
+      if (!field) {
         return;
       }
 
-      const $wrapper = jQuery(wrapper);
-
-      if (showTaxFields) {
-        $wrapper.show();
-        return;
-      }
-
-      $wrapper.hide();
+      config.toggleField(field, showTaxFields);
     });
   });
 };
