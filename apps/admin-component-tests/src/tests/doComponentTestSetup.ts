@@ -1,10 +1,4 @@
 import {
-  AdminComponentMap,
-  BackendEndpoint,
-  optionalAdminPlainWrapperComponentNames,
-  requiredAdminComponentNames,
-} from '@myparcel-pdk/common/src';
-import {
   AdminAppConfig,
   AdminContextObject,
   LogLevel,
@@ -13,6 +7,12 @@ import {
   createStorePlugin,
   globalLogger,
 } from '@myparcel-pdk/frontend-admin-core/src';
+import {
+  AdminComponentMap,
+  BackendEndpoint,
+  optionalAdminPlainWrapperComponentNames,
+  requiredAdminComponentNames,
+} from '@myparcel-pdk/common/src';
 import {config} from '@vue/test-utils';
 
 const context: AdminContextObject = {
