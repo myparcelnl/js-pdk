@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.49](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.48...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.49) "@myparcel-pdk/frontend-admin-core" (2023-04-21)
+
+
+### Bug Fixes
+
+* **admin:** fix shipment options modal not rendering reactively ([bc6a46e](https://github/myparcelnl/js-pdk/commit/bc6a46ed87af05940c593055edebdc5b61630a5f))
+
+
+
+
 ## [1.0.0-alpha.48](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.47...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.48) "@myparcel-pdk/frontend-admin-core" (2023-04-20)
 
 
