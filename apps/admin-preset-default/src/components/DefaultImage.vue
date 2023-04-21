@@ -1,13 +1,12 @@
 <template>
-  <img
-    :alt="alt"
-    :height="height"
-    :src="src"
-    :title="title"
-    :width="width" />
+  <img v-bind="$props" />
 </template>
 
 <script lang="ts" setup>
+/* eslint-disable vue/no-unused-properties */
+/**
+ * Image component.
+ */
 defineProps<{
   /**
    * The source of the image.
