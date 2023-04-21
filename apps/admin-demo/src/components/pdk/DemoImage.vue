@@ -1,48 +1,19 @@
 <template>
   <img
-    :alt="alt"
-    :height="height"
-    :src="src"
-    :title="title"
-    :width="width"
-    class="w-full" />
+    class="inline"
+    v-bind="$props" />
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue';
-
+<script lang="ts" setup>
+/* eslint-disable vue/no-unused-properties */
 /**
  * @see import('@myparcel-pdk/admin-preset-default').DefaultImage
- * @see import('@myparcel-pdk/admin-preset-default').DefaultImage
  */
-export default defineComponent({
-  name: 'DemoImage',
-
-  props: {
-    src: {
-      type: String,
-      required: true,
-    },
-
-    alt: {
-      type: String,
-      required: true,
-    },
-
-    title: {
-      type: String,
-      default: null,
-    },
-
-    width: {
-      type: [Number, String],
-      default: null,
-    },
-
-    height: {
-      type: [Number, String],
-      default: null,
-    },
-  },
-});
+defineProps<{
+  src: string;
+  alt: string;
+  title: string | null;
+  width: number | string | null;
+  height: number | string | null;
+}>();
 </script>
