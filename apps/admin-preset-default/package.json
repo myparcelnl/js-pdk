@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-preset-default",
-  "version": "1.0.0-alpha.46",
+  "version": "1.0.0-alpha.47",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",

@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.47](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.46...@myparcel-pdk/admin-preset-default@1.0.0-alpha.47) "@myparcel-pdk/admin-preset-default" (2023-04-21)
+
+
+### Features
+
+* **admin-preset-default:** add icon and image to radio input ([af46dd3](https://github/myparcelnl/js-pdk/commit/af46dd3c9687da6479e7ccc16c4eeca018a28bbb))
+
+
+
+
 ## [1.0.0-alpha.44](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.43...@myparcel-pdk/admin-preset-default@1.0.0-alpha.44) "@myparcel-pdk/admin-preset-default" (2023-04-18)
 
 
