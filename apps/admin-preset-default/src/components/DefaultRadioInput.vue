@@ -10,9 +10,20 @@
       :value="element.props?.value"
       type="radio"
       v-bind="$attrs" />
-    <label
-      :for="id"
-      v-text="element.label" />
+
+    <label :for="id">
+      <PdkIcon
+        v-if="element.props?.icon"
+        :icon="element.props?.icon" />
+
+      <PdkImage
+        v-if="element.props?.image"
+        :alt="element.label"
+        :src="element.props?.image"
+        width="24" />
+
+      {{ element.label }}
+    </label>
   </div>
 </template>
 
