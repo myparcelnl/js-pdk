@@ -1,3 +1,4 @@
+import {COMMAND_ZIP_NAME, VerbosityLevel} from '../constants';
 import {
   createArchive,
   executePromises,
@@ -12,7 +13,6 @@ import {
   resolveFileName,
   validateDistPath,
 } from '../utils';
-import {COMMAND_ZIP_NAME, VerbosityLevel} from '../constants';
 import {PdkBuilderCommand} from '../types';
 import chalk from 'chalk';
 import fs from 'fs';
@@ -35,7 +35,7 @@ export const zip: PdkBuilderCommand = async ({env, config, args}) => {
         return;
       }
 
-      const archiveFilename = resolveFileName(config.archiveFilename, config, platform);
+      const archiveFilename = resolveFileName(config.archiveFilename, {config, platform, args});
       const archivePath = path.resolve(env.cwd, config.outDir, archiveFilename);
 
       if (await exists(archivePath)) {

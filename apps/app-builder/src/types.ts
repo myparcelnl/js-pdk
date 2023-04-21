@@ -1,17 +1,8 @@
 import {LiftoffEnv} from 'liftoff';
 import {PromiseOr} from '@myparcel/ts-utils';
+import {VersionSource} from './increment';
 
 export type PdkBuilderConfig = {
-  /**
-   * Name of the plugin.
-   */
-  name: string;
-
-  /**
-   * Version of the plugin.
-   */
-  version: string;
-
   /**
    * Filename for the final compress file. Must include file extension.
    *
@@ -23,6 +14,16 @@ export type PdkBuilderConfig = {
    * Enable debug logging.
    */
   debug?: boolean;
+
+  /**
+   * Number of spaces to use for JSON formatting.
+   */
+  jsonSpaces?: number;
+
+  /**
+   * Name of the plugin.
+   */
+  name: string;
 
   /**
    * Output directory for the created folders and archives.
@@ -47,6 +48,16 @@ export type PdkBuilderConfig = {
    * Glob patterns to include in final folder.
    */
   source: string[];
+
+  /**
+   * Version of the plugin.
+   */
+  version: string;
+
+  /**
+   * Glob patterns to replace version numbers in. Optionally pass a regex to match only a part of the file.
+   */
+  versionSource: VersionSource[];
 };
 
 export type ResolvedPdkBuilderConfig = Required<PdkBuilderConfig>;
@@ -64,4 +75,5 @@ export type CommandArgs = {
   parallel?: boolean;
   quiet?: boolean;
   verbose: number;
+  version?: string;
 };

@@ -8,5 +8,5 @@ export const getPlatformFolderName = ({
   config: ResolvedPdkBuilderConfig;
   platform: string;
 }): string => {
-  return resolveFileName(config.platformFolderName, config, platform);
+  return resolveFileName(config.platformFolderName, {config, platform});
 };

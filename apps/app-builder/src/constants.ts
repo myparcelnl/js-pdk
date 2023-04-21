@@ -2,9 +2,13 @@ export const TITLE = 'pdk-builder';
 
 export const COMMAND_BUILD_NAME = 'build';
 
+export const COMMAND_RELEASE_NAME = 'release';
+
 export const COMMAND_CLEAN_NAME = 'clean';
 
 export const COMMAND_COPY_NAME = 'copy';
+
+export const COMMAND_INCREMENT_NAME = 'increment';
 
 export const COMMAND_INIT_NAME = 'init';
 
@@ -19,3 +23,5 @@ export enum VerbosityLevel {
   VeryVerbose = 2,
   VeryVeryVerbose = 3,
 }
+
+export const REGEX_VERSION = /(v?\d+\.\d+\.\d+(?:-\w+\.\d+)?)/;

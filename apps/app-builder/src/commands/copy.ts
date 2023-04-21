@@ -1,3 +1,4 @@
+import {COMMAND_COPY_NAME, VerbosityLevel} from '../constants';
 import {
   executePromises,
   getPlatformDistPath,
@@ -8,7 +9,6 @@ import {
   logTimeTaken,
   reportDryRun,
 } from '../utils';
-import {COMMAND_COPY_NAME, VerbosityLevel} from '../constants';
 import {PdkBuilderCommand} from '../types';
 import chalk from 'chalk';
 import fs from 'fs';

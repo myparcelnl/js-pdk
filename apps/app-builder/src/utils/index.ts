@@ -2,6 +2,7 @@ export * from './createArchive';
 export * from './createDebugger';
 export * from './executePromises';
 export * from './exists';
+export * from './getFileContents';
 export * from './getPlatformDistPath';
 export * from './getPlatformFolderName';
 export * from './getRelativePath';

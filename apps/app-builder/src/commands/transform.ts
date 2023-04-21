@@ -1,4 +1,5 @@
 /* eslint-disable max-lines-per-function */
+import {COMMAND_TRANSFORM_NAME, VerbosityLevel} from '../constants';
 import {
   executePromises,
   getPlatformDistPath,
@@ -12,7 +13,6 @@ import {
   validateDistPath,
 } from '../utils';
 import {getOccurrences, replaceCaseSensitive} from '../utils/transformer';
-import {COMMAND_TRANSFORM_NAME, VerbosityLevel} from '../constants';
 import {PdkBuilderCommand} from '../types';
 import chalk from 'chalk';
 import fs from 'fs';
@@ -38,7 +38,7 @@ export const transform: PdkBuilderCommand = async ({env, config, args}) => {
   await executePromises(
     args,
     filteredPlatforms.map(async (platform) => {
-      const platformFolderPath = `${config.outDir}/${resolveFileName(config.platformFolderName, config, platform)}`;
+      const platformFolderPath = `${config.outDir}/${resolveFileName(config.platformFolderName, {config, platform})}`;
       const relativeDistFolderPath = path.relative(env.cwd, platformFolderPath);
 
       debug('Renaming files in %s', chalk.greenBright(relativeDistFolderPath));
