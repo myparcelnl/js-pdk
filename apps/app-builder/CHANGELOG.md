@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.18](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.17...@myparcel-pdk/app-builder@1.0.0-alpha.18) "@myparcel-pdk/app-builder" (2023-04-21)
+
+
+### Features
+
+* **app-builder:** add increment command ([a626eac](https://github/myparcelnl/js-pdk/commit/a626eacff40515780077eecdb046e13c773771eb))
+
+
+
+
 ## [1.0.0-alpha.17](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.16...@myparcel-pdk/app-builder@1.0.0-alpha.17) "@myparcel-pdk/app-builder" (2023-04-13)
 
 
