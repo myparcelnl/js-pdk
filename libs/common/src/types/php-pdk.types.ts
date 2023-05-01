@@ -425,6 +425,7 @@ export namespace Plugin {
     id: string;
     title: string;
     description?: string;
+    subtext?: string;
     elements: null | Field[];
     children: null | SettingsView[];
   };

@@ -37,11 +37,12 @@ export type RadioGroupOption<Value extends Keyable = Keyable> = SelectOption<Val
 };
 
 export interface TabDefinition {
-  name: string;
-  label: string;
+  component: string | Component;
   description?: string;
   icon?: string;
-  component: string | Component;
+  label: string;
+  name: string;
+  subtext?: string;
 }
 
 export type WebhookDefinition = {

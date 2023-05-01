@@ -4,6 +4,7 @@ import {PluginSettingsTabsContext} from './createPluginSettingsTabs';
 import {TabNavigation} from '../../components';
 import {createFormTab} from './createFormTab';
 import {createPluginSettingsForm} from './createPluginSettingsForm';
+import {useLanguage} from '../../composables';
 
 export const createPluginSettingsTabsComponent = (
   id: string,
@@ -14,12 +15,15 @@ export const createPluginSettingsTabsComponent = (
     name: `PluginSettings-${id}`,
 
     setup: () => {
+      const {translate} = useLanguage();
+
       return {
         tabs: (view.children ?? []).map((subview) => {
           return createFormTab({
             name: `${id}.${subview.id}`,
             label: subview.title,
-            description: subview.description,
+            description: translate(subview.description),
+            subtext: translate(subview.subtext),
             form: createPluginSettingsForm(`${id}.${subview.id}`, subview, context),
           });
         }),
