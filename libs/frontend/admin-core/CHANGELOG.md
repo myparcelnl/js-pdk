@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.50](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.49...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.50) "@myparcel-pdk/frontend-admin-core" (2023-05-01)
+
+
+### Features
+
+* **admin:** add subtext option to field ([0a4bc2c](https://github/myparcelnl/js-pdk/commit/0a4bc2c50d9e8636638478a76007974797ec593a))
+
+
+
+
 ## [1.0.0-alpha.49](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.48...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.49) "@myparcel-pdk/frontend-admin-core" (2023-04-21)
 
 

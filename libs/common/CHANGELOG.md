@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.29](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.28...@myparcel-pdk/common@1.0.0-alpha.29) "@myparcel-pdk/common" (2023-05-01)
+
+
+### Features
+
+* **admin:** add platform data to global context ([3a227d1](https://github/myparcelnl/js-pdk/commit/3a227d117da0473eb47a31f5c81a65634c60ae15))
+* **admin:** add subtext option to field ([0a4bc2c](https://github/myparcelnl/js-pdk/commit/0a4bc2c50d9e8636638478a76007974797ec593a))
+
+
+
+
 ## [1.0.0-alpha.28](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.27...@myparcel-pdk/common@1.0.0-alpha.28) "@myparcel-pdk/common" (2023-04-18)
 
 
