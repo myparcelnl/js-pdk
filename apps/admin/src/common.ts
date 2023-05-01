@@ -80,7 +80,6 @@ export {
   useModalElementContext,
   useModalStore,
   useNotificationStore,
-  usePdfWindow,
   useRadioGroupContext,
   useSelectInputContext,
   useWeekdays,

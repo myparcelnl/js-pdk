@@ -3,18 +3,13 @@ import {HttpMethod, MyParcelSdk, createMyParcelSdk} from '@myparcel/sdk';
 import {AbstractPdkEndpoint} from '../endpoints';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {PdkFetchClient} from '@myparcel-pdk/frontend-admin-core/src';
+import {createGlobalState} from '@vueuse/core';
 import {useGlobalContext} from '../../composables';
-
-let sdk: ReturnType<typeof usePdkAdminApi>;
 
 /**
  * Do requests to the PDK admin Api.
  */
-export const usePdkAdminApi = (): MyParcelSdk<AbstractPdkEndpoint> => {
-  if (sdk) {
-    return sdk;
-  }
-
+export const usePdkAdminApi = createGlobalState<MyParcelSdk<AbstractPdkEndpoint>>(() => {
   const globalContext = useGlobalContext();
 
   const client = new PdkFetchClient({
@@ -36,7 +31,5 @@ export const usePdkAdminApi = (): MyParcelSdk<AbstractPdkEndpoint> => {
     });
   });
 
-  sdk = createMyParcelSdk(client, pdkEndpoints);
-
-  return sdk;
-};
+  return createMyParcelSdk(client, pdkEndpoints);
+});
