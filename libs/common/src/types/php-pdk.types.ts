@@ -399,6 +399,14 @@ export namespace Plugin {
     event: string;
     language: string;
     mode: string;
+    platform: {
+      backofficeUrl: string;
+      defaultCarrier: string;
+      defaultCarrierId: number;
+      human: string;
+      localCountry: string;
+      name: string;
+    };
     translations: Record<string, string>;
   };
 
