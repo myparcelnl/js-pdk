@@ -1,10 +1,9 @@
+import {AdminView, Plugin} from '@myparcel-pdk/common/src';
 import {Component, defineComponent, h} from 'vue';
-import {Plugin} from '@myparcel-pdk/common/src';
 import {PluginSettingsTabsContext} from './createPluginSettingsTabs';
 import {TabNavigation} from '../../components';
 import {createFormTab} from './createFormTab';
 import {createPluginSettingsForm} from './createPluginSettingsForm';
-import {useLanguage} from '../../composables';
 
 export const createPluginSettingsTabsComponent = (
   id: string,
@@ -12,19 +11,19 @@ export const createPluginSettingsTabsComponent = (
   context: PluginSettingsTabsContext,
 ): Component =>
   defineComponent({
-    name: `PluginSettings-${id}`,
+    name: `${AdminView.PluginSettings}-${id}`,
 
     setup: () => {
-      const {translate} = useLanguage();
-
       return {
         tabs: (view.children ?? []).map((subview) => {
+          const {subtext, description, id: subviewId, title} = subview;
+
           return createFormTab({
-            name: `${id}.${subview.id}`,
-            label: subview.title,
-            description: translate(subview.description),
-            subtext: translate(subview.subtext),
-            form: createPluginSettingsForm(`${id}.${subview.id}`, subview, context),
+            name: `${id}.${subviewId}`,
+            label: title,
+            form: createPluginSettingsForm(`${id}.${subviewId}`, subview, context),
+            description,
+            subtext,
           });
         }),
       };
