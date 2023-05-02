@@ -1,7 +1,7 @@
 import {AdminAction, AdminIcon} from '../../types';
+import {BackendEndpoint, Variant} from '@myparcel-pdk/common/src';
 import {createMutationHandler, executeNextAction} from '../executors';
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
 
 export const shipmentsExportReturnAction = defineAction({
@@ -29,6 +29,7 @@ export const shipmentsDeleteAction = defineAction({
   icon: AdminIcon.Delete,
   label: 'action_delete',
   handler: createMutationHandler(BackendEndpoint.DeleteShipments),
+  variant: Variant.Error,
 });
 
 /**

@@ -1,20 +1,22 @@
 <template>
   <PdkButton
     v-test="`actionButton--${action?.id}`"
-    :size="size"
+    :aria-label="hideText ? action?.label : null"
     :disabled="disabled || action?.disabled"
     :icon="action?.icon"
     :label="!hideText ? action?.label : null"
-    :title="hideText ? action?.label : null"
-    :aria-label="hideText ? action?.label : null"
     :loading="resolvedAction?.loading"
+    :size="size"
+    :title="hideText ? action?.label : null"
+    :variant="variant"
     @click="onClick" />
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {PropType, computed} from 'vue';
 import {ActionDefinition} from '../../types';
 import {Size} from '@myparcel-pdk/common/src';
+import {Variant} from '@myparcel-pdk/common';
 import {useActionStore} from '../../stores';
 
 const props = defineProps({
@@ -34,6 +36,11 @@ const props = defineProps({
   size: {
     type: String as PropType<Size>,
     default: Size.Medium,
+  },
+
+  variant: {
+    type: String as PropType<Variant>,
+    default: Variant.Primary,
   },
 });
 

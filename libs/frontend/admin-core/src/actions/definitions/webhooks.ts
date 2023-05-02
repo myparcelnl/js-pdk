@@ -1,6 +1,6 @@
 import {AdminAction, AdminIcon} from '../../types';
+import {BackendEndpoint, Variant} from '@myparcel-pdk/common/src';
 import {createMutationHandler, createQueryHandler} from '../executors';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
 
 export const webhooksFetchAction = defineAction({
@@ -21,4 +21,5 @@ export const webhooksDeleteAction = defineAction({
   icon: AdminIcon.Delete,
   label: 'action_delete',
   handler: createMutationHandler(BackendEndpoint.DeleteWebhooks),
+  variant: Variant.Error,
 });

@@ -11,7 +11,7 @@ export type MaybeAdminAction = AdminAction | undefined;
 type BaseAction = {
   icon?: AdminIcon;
   label?: string;
-  variant?: MaybeRef<Variant>;
+  variant?: MaybeRef<Variant | undefined>;
   disabled?: MaybeRef<boolean>;
   standalone?: boolean;
 };
