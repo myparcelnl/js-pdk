@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.54](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.53...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.54) "@myparcel-pdk/frontend-admin-core" (2023-05-02)
+
+
+### Bug Fixes
+
+* **admin-core:** make hash navigation work with nested tabs ([8ece253](https://github/myparcelnl/js-pdk/commit/8ece253a5d232fefddc8a24100be262b9e101ef3))
+
+
+
+
 ## [1.0.0-alpha.53](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.52...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.53) "@myparcel-pdk/frontend-admin-core" (2023-05-02)
 
 
