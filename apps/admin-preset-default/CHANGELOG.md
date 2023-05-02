@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.51](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.50...@myparcel-pdk/admin-preset-default@1.0.0-alpha.51) "@myparcel-pdk/admin-preset-default" (2023-05-02)
+
+
+### Bug Fixes
+
+* normalize element instance type ([50b0ae0](https://github/myparcelnl/js-pdk/commit/50b0ae0ec659e5f7485f33a5e21d2067a6bfe785))
+
+
+
+
 ## [1.0.0-alpha.47](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.46...@myparcel-pdk/admin-preset-default@1.0.0-alpha.47) "@myparcel-pdk/admin-preset-default" (2023-04-21)
 
 
