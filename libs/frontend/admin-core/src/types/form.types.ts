@@ -5,12 +5,13 @@ import type {Replace} from '@myparcel/ts-utils';
 type FieldProps = {
   description?: string;
   subtext?: string;
+  value?: unknown;
 };
 
-export type ElementInstance<Props extends Record<string, unknown> = FieldProps> = Replace<
+export type ElementInstance<Props extends Record<string, unknown> = Record<string, unknown>> = Replace<
   InteractiveElementInstance<ComponentOrHtmlElement, string>,
   'props',
-  Props
+  Props & FieldProps & Record<string, unknown>
 >;
 
 export type OptionsProp<T extends SelectOptionValue = SelectOptionValue> = {
