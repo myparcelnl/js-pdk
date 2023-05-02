@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.55](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.54...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.55) "@myparcel-pdk/frontend-admin-core" (2023-05-02)
+
+
+### Bug Fixes
+
+* **admin-core:** allow passing undefined to has() ([7ba4c08](https://github/myparcelnl/js-pdk/commit/7ba4c08f071a133a174a7f1e0f3103cd04b5eaf4))
+
+
+
+
 ## [1.0.0-alpha.54](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.53...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.54) "@myparcel-pdk/frontend-admin-core" (2023-05-02)
 
 
