@@ -1,15 +1,10 @@
 import {ComputedRef, Ref, computed, ref} from 'vue';
-import {
-  shipmentsDeleteAction,
-  shipmentsExportReturnAction,
-  shipmentsPrintAction,
-  shipmentsUpdateAction,
-} from '../../actions';
 import {ActionDefinition} from '../../types';
 import {Carrier} from '@myparcel/sdk';
 import {Shipment} from '@myparcel-pdk/common/src';
 import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
+import {shipmentActions} from '../../actions';
 import {useAssetUrl} from '../useAssetUrl';
 import {useCarrier} from '../../sdk';
 import {useLoading} from '../useLoading';
@@ -35,13 +30,10 @@ export const useShipmentData = (id: number): UseShipmentData => {
   const carriersQuery = carrierName ? useCarrier(carrierName) : undefined;
 
   return {
-    actions: defineActions(
-      [shipmentsPrintAction, shipmentsUpdateAction, shipmentsExportReturnAction, shipmentsDeleteAction],
-      {
-        shipmentIds: shipment.value?.id,
-        orderIds: shipment.value?.orderId,
-      },
-    ),
+    actions: defineActions(shipmentActions, {
+      shipmentIds: shipment.value?.id,
+      orderIds: shipment.value?.orderId,
+    }),
 
     carrier: carriersQuery?.data ?? ref(),
     loading,

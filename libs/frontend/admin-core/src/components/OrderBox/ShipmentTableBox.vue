@@ -25,17 +25,12 @@
 
 <script lang="ts">
 import {computed, defineComponent, ref, toRaw} from 'vue';
-import {
-  shipmentsDeleteAction,
-  shipmentsExportReturnAction,
-  shipmentsPrintAction,
-  shipmentsUpdateAction,
-} from '../../actions';
 import {useLanguage, useOrder} from '../../composables';
 import {Keyable} from '@myparcel-pdk/common/src';
 import OrderShipmentsTable from './OrderShipmentsTable.vue';
 import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
+import {shipmentActions} from '../../actions';
 
 export default defineComponent({
   name: 'ShipmentTableBox',
@@ -54,13 +49,10 @@ export default defineComponent({
       selectedLabels,
 
       bulkActions: computed(() => {
-        return defineActions(
-          [shipmentsUpdateAction, shipmentsPrintAction, shipmentsDeleteAction, shipmentsExportReturnAction],
-          {
-            orderIds: get(query.data)?.externalIdentifier,
-            shipmentIds: toRaw(selectedLabels.value),
-          },
-        );
+        return defineActions(shipmentActions, {
+          orderIds: get(query.data)?.externalIdentifier,
+          shipmentIds: toRaw(selectedLabels.value),
+        });
       }),
 
       setSelectedLabels(labels: Record<Keyable, boolean>): void {

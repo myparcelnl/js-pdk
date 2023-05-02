@@ -52,3 +52,10 @@ export const shipmentsPrintAction = defineAction({
     return context.response;
   },
 });
+
+export const shipmentActions = [
+  shipmentsPrintAction,
+  shipmentsUpdateAction,
+  shipmentsExportReturnAction,
+  shipmentsDeleteAction,
+];
