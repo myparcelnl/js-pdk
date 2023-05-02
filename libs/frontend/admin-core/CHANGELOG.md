@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.56](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.55...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.56) "@myparcel-pdk/frontend-admin-core" (2023-05-02)
+
+
+### Features
+
+* **admin-core:** allow using variant in buttons ([a70df42](https://github/myparcelnl/js-pdk/commit/a70df42a0755ebe640ee74829676422b3d0ed3b9))
+
+
+### Bug Fixes
+
+* **admin-core:** make shipment actions consistent ([ae53265](https://github/myparcelnl/js-pdk/commit/ae532652edd774933cfa89357d9e5c9cfeb61f73))
+
+
+
+
 ## [1.0.0-alpha.55](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.54...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.55) "@myparcel-pdk/frontend-admin-core" (2023-05-02)
 
 

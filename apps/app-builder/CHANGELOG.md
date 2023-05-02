@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.19](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.18...@myparcel-pdk/app-builder@1.0.0-alpha.19) "@myparcel-pdk/app-builder" (2023-05-02)
+
+
+### Features
+
+* **app-builder:** improve logging on increment ([c8a3e36](https://github/myparcelnl/js-pdk/commit/c8a3e36d76d93e5673f66109c52b28f2a8eea37f))
+
+
+
+
 ## [1.0.0-alpha.18](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.17...@myparcel-pdk/app-builder@1.0.0-alpha.18) "@myparcel-pdk/app-builder" (2023-04-21)
 
 
