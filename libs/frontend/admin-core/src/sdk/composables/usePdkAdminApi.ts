@@ -9,7 +9,7 @@ import {useGlobalContext} from '../../composables';
 /**
  * Do requests to the PDK admin Api.
  */
-export const usePdkAdminApi = createGlobalState<MyParcelSdk<AbstractPdkEndpoint>>(() => {
+export const usePdkAdminApi = createGlobalState((): MyParcelSdk<AbstractPdkEndpoint> => {
   const globalContext = useGlobalContext();
 
   const client = new PdkFetchClient({
