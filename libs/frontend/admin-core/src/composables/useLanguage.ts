@@ -21,7 +21,7 @@ type UseLanguage = {
   /**
    * Check if a given translation key exists.
    */
-  has(key: string): boolean;
+  has(key: string | undefined): boolean;
 
   /**
    * Translate a string into the current language.
@@ -52,7 +52,7 @@ const all: UseLanguage['all'] = () => {
 const has: UseLanguage['has'] = (key) => {
   const translations = memoizedAll();
 
-  return translations && key in translations;
+  return Boolean(key && translations && key in translations);
 };
 
 const translate: UseLanguage['translate'] = (key, replacers) => {
