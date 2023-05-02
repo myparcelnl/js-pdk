@@ -1,18 +1,36 @@
 import {JsonVersionSource, VersionReplacer} from './types';
+import {VerbosityLevel} from '../constants';
+import chalk from 'chalk';
 
 const JSON_SPACES_DEFAULT = 2;
 
-export const replaceVersionInJson: VersionReplacer<JsonVersionSource> = ({match, contents, newVersion}, context) => {
+export const replaceVersionInJson: VersionReplacer<JsonVersionSource> = (
+  {match, contents, newVersion},
+  {config, debug, args},
+) => {
   const key = match?.key ?? 'version';
   const json = JSON.parse(contents) ?? {};
   const existingVersion = json[key];
 
+  if (args.verbose >= VerbosityLevel.VeryVerbose) {
+    if (existingVersion) {
+      debug(
+        '– Setting JSON key %s to %s (was %s)',
+        chalk.yellowBright(key),
+        chalk.greenBright(newVersion),
+        chalk.redBright(existingVersion),
+      );
+    } else {
+      debug(
+        chalk.redBright('– No version found in %s for key %s'),
+        chalk.cyanBright(match.path),
+        chalk.cyanBright(key),
+      );
+    }
+  }
+
   return {
     existingVersion,
-    newContents: `${JSON.stringify(
-      {...json, [key]: newVersion},
-      null,
-      context?.config.jsonSpaces ?? JSON_SPACES_DEFAULT,
-    )}\n`,
+    newContents: `${JSON.stringify({...json, [key]: newVersion}, null, config.jsonSpaces ?? JSON_SPACES_DEFAULT)}\n`,
   };
 };

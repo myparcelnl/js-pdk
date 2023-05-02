@@ -1,4 +1,5 @@
 import {CommandArgs, PdkBuilderConfig} from '../types';
+import {Debugger} from 'debug';
 
 export interface BaseVersionSource<P extends string = string> {
   /**
@@ -34,8 +35,9 @@ export type VersionReplacer<T extends VersionSource = VersionSource> = (
     contents: string;
     newVersion: string;
   },
-  context?: {
+  context: {
     config: PdkBuilderConfig;
     args: CommandArgs;
+    debug: Debugger;
   },
 ) => VersionReplacerOutput;
