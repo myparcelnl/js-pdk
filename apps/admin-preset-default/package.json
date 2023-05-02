@@ -28,18 +28,18 @@
   "dependencies": {
     "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.55",
     "@myparcel/ts-utils": "^1.6.0",
-    "@vueuse/core": "^9.13.0",
+    "@vueuse/core": "^10.1.2",
     "vue": "^3.2.47"
   },
   "devDependencies": {
     "@myparcel-pdk/admin-component-tests": "workspace:*",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vitest/coverage-c8": "^0.29.8",
+    "@vitest/coverage-c8": "^0.30.1",
     "@vue/test-utils": "^2.3.0",
-    "happy-dom": "^9.1.7",
+    "happy-dom": "^9.10.2",
     "typescript": "^5.0.3",
-    "vite": "^4.1.4",
-    "vitest": "^0.29.8"
+    "vite": "^4.3.4",
+    "vitest": "^0.30.1"
   },
   "publishConfig": {
     "access": "public"

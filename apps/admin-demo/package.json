@@ -35,12 +35,12 @@
   "devDependencies": {
     "@edielemoine/google-docs-importer": "^1.0.2",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vitest/coverage-c8": "^0.29.8",
+    "@vitest/coverage-c8": "^0.30.1",
     "autoprefixer": "^10.4.13",
-    "happy-dom": "^9.1.7",
+    "happy-dom": "^9.10.2",
     "postcss": "^8.4.21",
     "rollup-plugin-visualizer": "^5.9.0",
-    "vite": "^4.1.4",
-    "vitest": "^0.29.8"
+    "vite": "^4.3.4",
+    "vitest": "^0.30.1"
   }
 }
