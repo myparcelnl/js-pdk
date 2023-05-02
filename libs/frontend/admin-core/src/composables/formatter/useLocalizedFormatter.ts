@@ -1,7 +1,7 @@
 import {Formatter} from './formatter.types';
 import {useFormatter} from './useFormatter';
 import {useGlobalContext} from '../context';
-import {useLanguage} from '../translations';
+import {useLanguage} from '../useLanguage';
 
 export const useLocalizedFormatter = (): Formatter => {
   const globalContext = useGlobalContext();

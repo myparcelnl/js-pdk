@@ -1,1 +1,6 @@
-export {executeAdminComponentTest, executePdkComponentTests} from './tests';
+export {
+  doComponentTestSetup,
+  doComponentTestTeardown,
+  executeAdminComponentTest,
+  executePdkComponentTests,
+} from './tests';

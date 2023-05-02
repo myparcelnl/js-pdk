@@ -4,7 +4,7 @@ import {SelectOptionValue, SelectOptionWithLabel} from '@myparcel-pdk/common/src
 import {get, useVModel} from '@vueuse/core';
 import {generateFieldId} from '../utils';
 import {translateSelectOption} from '../helpers';
-import {useLanguage} from './translations';
+import {useLanguage} from './useLanguage';
 
 export type SelectInputProps<T extends SelectOptionValue = SelectOptionValue> = {
   modelValue: T;
