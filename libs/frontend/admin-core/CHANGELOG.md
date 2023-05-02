@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.52](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.51...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.52) "@myparcel-pdk/frontend-admin-core" (2023-05-02)
+
+
+### Bug Fixes
+
+* add defaults to element instance props ([3c4e4ea](https://github/myparcelnl/js-pdk/commit/3c4e4ead2cb18f6ebc7ed96874d9ba9e443bfb20))
+* leave translating to implementing form group ([9c63a7d](https://github/myparcelnl/js-pdk/commit/9c63a7df2029741489392a5761f27bc74af5c568))
+
+
+
+
 ## [1.0.0-alpha.51](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.50...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.51) "@myparcel-pdk/frontend-admin-core" (2023-05-02)
 
 
