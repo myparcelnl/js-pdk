@@ -2,7 +2,12 @@ import type {ComponentOrHtmlElement, InteractiveElementInstance} from '@myparcel
 import type {SelectOption, SelectOptionValue} from '@myparcel-pdk/common/src';
 import type {Replace} from '@myparcel/ts-utils';
 
-export type ElementInstance<Props extends Record<string, unknown> = Record<string, unknown>> = Replace<
+type FieldProps = {
+  description?: string;
+  subtext?: string;
+};
+
+export type ElementInstance<Props extends Record<string, unknown> = FieldProps> = Replace<
   InteractiveElementInstance<ComponentOrHtmlElement, string>,
   'props',
   Props
