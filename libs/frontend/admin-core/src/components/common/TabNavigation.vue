@@ -3,8 +3,8 @@
     <PdkTabNavButton
       v-for="tab in tabs"
       :key="`tab_button_${tab.name}`"
-      :tab="tab"
       :active="tab.name === activeTab"
+      :tab="tab"
       @click="() => handleClick(tab)" />
   </PdkTabNavButtonWrapper>
 
@@ -25,6 +25,7 @@
 <script lang="ts">
 import {PropType, computed, defineComponent, ref} from 'vue';
 import {useAdminConfig, useLanguage} from '../../composables';
+import {HASH_SEPARATOR} from '../../data';
 import {TabDefinition} from '@myparcel-pdk/common/src';
 
 /**
@@ -46,10 +47,13 @@ export default defineComponent({
 
   setup: (props) => {
     const hash = window.location.hash.replace('#', '').replace(props.hashPrefix, '');
-    const isValidHash = props.tabs.some((tab) => tab.name === hash);
-    const initialTab = isValidHash ? hash : props.tabs[0]?.name;
+    const tabName = hash.split(HASH_SEPARATOR)[0];
 
-    const activeTab = ref<string>(initialTab);
+    const isValidHash = props.tabs.some((tab) => tab.name === tabName);
+    const initialTab = isValidHash ? tabName : props.tabs[0]?.name;
+
+    const activeTab = ref(initialTab);
+
     const {translate} = useLanguage();
 
     return {

@@ -1,5 +1,6 @@
 import {AdminView, Plugin} from '@myparcel-pdk/common/src';
 import {Component, defineComponent, h} from 'vue';
+import {HASH_SEPARATOR} from '../../data';
 import {PluginSettingsTabsContext} from './createPluginSettingsTabs';
 import {TabNavigation} from '../../components';
 import {createFormTab} from './createFormTab';
@@ -32,7 +33,7 @@ export const createPluginSettingsTabsComponent = (
     render() {
       return h('div', [
         h(TabNavigation, {
-          hashPrefix: `${view.id}-`,
+          hashPrefix: `${view.id}${HASH_SEPARATOR}`,
           tabs: this.tabs,
         }),
       ]);
