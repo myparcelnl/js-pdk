@@ -2,7 +2,7 @@ import {AdminConfiguration, DefaultAdminConfiguration} from '../types';
 import {LogLevel} from '../services';
 import {mergeWith} from 'lodash-unified';
 
-const defaultConfig = Object.freeze<DefaultAdminConfiguration>({
+const createDefaultConfig = (): DefaultAdminConfiguration => ({
   components: undefined,
   formatters: {},
   logLevel: import.meta.env.PROD ? LogLevel.Info : LogLevel.Debug,
@@ -10,6 +10,8 @@ const defaultConfig = Object.freeze<DefaultAdminConfiguration>({
 });
 
 export const createAdminConfig = (customConfig?: AdminConfiguration | undefined): AdminConfiguration => {
+  const defaultConfig = createDefaultConfig();
+
   const merged = mergeWith({}, defaultConfig, customConfig, (obj, src, key) => {
     if (key === 'components') {
       return src ?? obj;
