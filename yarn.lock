@@ -1133,6 +1133,7 @@ __metadata:
     "@myparcel-pdk/build-tsup": "workspace:*"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.29"
     "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.51"
+    "@pinia/testing": ^0.0.16
     "@vue/test-utils": ^2.3.0
     tsup: ^6.6.3
     vue: ^3.2.47
@@ -1848,6 +1849,17 @@ __metadata:
     node-gyp: latest
     node-gyp-build: ^4.3.0
   checksum: 890bdc69a52942791b276caa2cd65ef816576d6b5ada91aa28cf302b35d567c801dafe167f2525dcb313f5b420986ea11bd56228dd7ddde1116944d8f924a0a1
+  languageName: node
+  linkType: hard
+
+"@pinia/testing@npm:^0.0.16":
+  version: 0.0.16
+  resolution: "@pinia/testing@npm:0.0.16"
+  dependencies:
+    vue-demi: "*"
+  peerDependencies:
+    pinia: ">=2.0.34"
+  checksum: d1157624d1b9f6c45b947b03e583068d44fe3e46fd43cb2414d663c2436a5b28716217bb021cecadb1402d9658db7cb2a57c0b2bd54fb7db70158e43863da035
   languageName: node
   linkType: hard
 

@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:*",
+    "@pinia/testing": "^0.0.16",
     "tsup": "^6.6.3"
   },
   "publishConfig": {
