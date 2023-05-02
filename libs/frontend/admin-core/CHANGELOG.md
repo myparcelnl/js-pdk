@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.51](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.50...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.51) "@myparcel-pdk/frontend-admin-core" (2023-05-02)
+
+
+### Bug Fixes
+
+* **admin-core:** improve translate function ([506bcf6](https://github/myparcelnl/js-pdk/commit/506bcf60562027a69be8994ac9cf0081b9bcdd52))
+
+
+
+
 ## [1.0.0-alpha.50](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.49...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.50) "@myparcel-pdk/frontend-admin-core" (2023-05-01)
 
 
