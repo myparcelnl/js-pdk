@@ -15,8 +15,7 @@
 <script lang="ts" setup>
 import {PropType, computed} from 'vue';
 import {ActionDefinition} from '../../types';
-import {Size} from '@myparcel-pdk/common/src';
-import {Variant} from '@myparcel-pdk/common';
+import {Size, Variant} from '@myparcel-pdk/common/src';
 import {useActionStore} from '../../stores';
 
 const props = defineProps({
