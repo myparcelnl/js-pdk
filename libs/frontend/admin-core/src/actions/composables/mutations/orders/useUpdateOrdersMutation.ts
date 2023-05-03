@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EndpointOptions, usePdkAdminApi} from '../../../../sdk';
+import {BackendEndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {setQueryOrder} from '../../../../helpers';
@@ -14,7 +14,7 @@ export const useUpdateOrdersMutation = () => {
   return usePdkMutation(
     BackendEndpoint.UpdateOrders,
     async (input) => {
-      const options: EndpointOptions<BackendEndpoint.UpdateOrders> = {
+      const options: BackendEndpointOptions<BackendEndpoint.UpdateOrders> = {
         parameters: {
           orderIds: encodeArrayParameter(input.orderIds),
         },

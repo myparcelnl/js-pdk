@@ -1,6 +1,6 @@
-import {CheckoutAppContext} from '../../types';
-import {getElement} from './getElement';
-import {useConfig} from '../../config';
+import {CheckoutAppContext} from '../types';
+import {getElement} from './global/getElement';
+import {useConfig} from '../config';
 
 const ATTRIBUTE_CONTEXT = 'data-context';
 
@@ -13,6 +13,8 @@ export const getFrontendContext = (): CheckoutAppContext['checkout'] => {
   if (!wrapper || !context) {
     throw new Error('No delivery options wrapper or context found.');
   }
+
+  wrapper.removeAttribute(ATTRIBUTE_CONTEXT);
 
   const {checkout} = JSON.parse(context) as CheckoutAppContext;
 

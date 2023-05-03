@@ -6,9 +6,10 @@ export type PartialAddressFields = Pick<
   AddressField.Street | AddressField.Number | AddressField.NumberSuffix
 >;
 
-export const getAddressParts = (type?: AddressType): PartialAddressFields => {
+export const splitAddress1 = (addressType: AddressType): PartialAddressFields => {
   const getAddressFieldValue = useUtil(Util.GetAddressFieldValue);
-  const address = getAddressFieldValue(AddressField.Address1, type);
+
+  const address = getAddressFieldValue(AddressField.Address1, addressType);
 
   return splitAddress(address);
 };

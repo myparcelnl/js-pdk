@@ -1,6 +1,19 @@
+export type {AddressFields} from '@myparcel-pdk/frontend-checkout-core/src';
+
 export type {FrontendEndpoint, FrontendPdkEndpointObject} from '@myparcel-pdk/common/src';
 
-export * from '@myparcel-pdk/frontend-checkout-core/src';
+export {
+  AddressField,
+  AddressType,
+  PdkEvent,
+  PdkField,
+  Util,
+  createPdkCheckout,
+  useEvent,
+  usePdkCheckout,
+  useSettings,
+  useUtil,
+} from '@myparcel-pdk/frontend-checkout-core/src';
 
 export {
   PdkDeliveryOptionsEvent,

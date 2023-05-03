@@ -1,4 +1,4 @@
-import {useSettingsStore} from '@myparcel-pdk/frontend-checkout-core/src';
+import {useSettings} from '@myparcel-pdk/frontend-checkout-core/src';
 
 /**
  * Check if the given shipping method is allowed to have delivery options by checking if the name starts with any
@@ -8,7 +8,7 @@ import {useSettingsStore} from '@myparcel-pdk/frontend-checkout-core/src';
  * That's the reason we're checking if it starts with this value instead of whether it's equal.
  */
 export const shippingMethodHasDeliveryOptions = (shippingMethod: string): boolean => {
-  const settings = useSettingsStore();
+  const settings = useSettings();
 
-  return settings.state.allowedShippingMethods.some((method) => shippingMethod?.includes(method));
+  return settings.allowedShippingMethods.some((method) => shippingMethod?.includes(method));
 };

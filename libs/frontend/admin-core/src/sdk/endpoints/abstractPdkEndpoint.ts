@@ -1,27 +1,26 @@
-import {AbstractEndpoint, EndpointDefinition} from '@myparcel/sdk';
 import {
   Account,
   BackendEndpoint,
+  ExtractEndpointDefinition,
   LabelFormat,
   LabelOutput,
   LabelPosition,
+  PdkEndpointDefinition,
   Plugin,
   Settings,
   Shipment,
   WebhookDefinition,
 } from '@myparcel-pdk/common/src';
+import {AbstractEndpoint} from '@myparcel/sdk';
 import {AdminContextObject} from '../../types';
 import {RecursivePartial} from '@myparcel/ts-utils';
-
-interface Definition extends EndpointDefinition {
-  formattedResponse?: unknown;
-}
 
 export type PdfUrlResponse = {url: string};
 
 export type PdfDataResponse = {data: string};
 
-interface BasePrintDefinition extends Definition {
+interface BasePrintDefinition extends PdkEndpointDefinition {
+  formattedResponse: PdfUrlResponse | PdfDataResponse;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
@@ -30,53 +29,52 @@ interface BasePrintDefinition extends Definition {
     position?: LabelPosition;
   };
   response: (PdfUrlResponse | PdfDataResponse)[];
-  formattedResponse: PdfUrlResponse | PdfDataResponse;
 }
 
-export interface FetchContextDefinition extends Definition {
+interface FetchContextDefinition extends PdkEndpointDefinition {
+  formattedResponse: AdminContextObject;
   name: BackendEndpoint.FetchContext;
   parameters: {
     context: string;
   };
   response: [AdminContextObject];
-  formattedResponse: AdminContextObject;
 }
 
-export interface UpdateAccountDefinition extends Definition {
+interface UpdateAccountDefinition extends PdkEndpointDefinition {
+  body: Settings.ModelAccountSettings;
   name: BackendEndpoint.UpdateAccount;
   parameters: undefined;
-  body: Settings.ModelAccountSettings;
   response: Account.ModelAccount[];
 }
 
-export interface FetchOrdersDefinition extends Definition {
+interface FetchOrdersDefinition extends PdkEndpointDefinition {
+  formattedResponse: Plugin.ModelContextOrderDataContext;
   name: BackendEndpoint.FetchOrders;
   parameters: {
     orderIds: string;
   };
   response: [Plugin.ModelContextOrderDataContext];
-  formattedResponse: Plugin.ModelContextOrderDataContext;
 }
 
-export interface ExportOrdersDefinition extends Definition {
+interface ExportOrdersDefinition extends PdkEndpointDefinition {
+  body?: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
   name: BackendEndpoint.ExportOrders;
   parameters: {
     orderIds: string;
   };
-  body?: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
   response: Plugin.ModelContextOrderDataContext[];
 }
 
-export interface UpdateOrdersDefinition extends Definition {
+interface UpdateOrdersDefinition extends PdkEndpointDefinition {
+  body?: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
   name: BackendEndpoint.UpdateOrders;
   parameters: {
     orderIds: string;
   };
-  body?: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
   response: Plugin.ModelContextOrderDataContext[];
 }
 
-export interface DeleteShipmentsDefinition extends Definition {
+interface DeleteShipmentsDefinition extends PdkEndpointDefinition {
   name: BackendEndpoint.DeleteShipments;
   parameters: {
     orderIds: string;
@@ -85,69 +83,69 @@ export interface DeleteShipmentsDefinition extends Definition {
   response: Plugin.ModelContextOrderDataContext[];
 }
 
-export interface UpdateShipmentsDefinition extends Definition {
+interface UpdateShipmentsDefinition extends PdkEndpointDefinition {
+  body: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
   name: BackendEndpoint.UpdateShipments;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
   };
-  body: RecursivePartial<Plugin.ModelContextOrderDataContext>[];
   response: Plugin.ModelContextOrderDataContext['shipments'];
 }
 
-export interface FetchShipmentsDefinition extends Definition {
+interface FetchShipmentsDefinition extends PdkEndpointDefinition {
+  formattedResponse: Shipment.ModelShipment;
   name: BackendEndpoint.FetchShipments;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
   };
   response: Shipment.ModelShipment[];
-  formattedResponse: Shipment.ModelShipment;
 }
 
-export interface UpdatePluginSettingsDefinition extends Definition {
-  name: BackendEndpoint.UpdatePluginSettings;
+interface UpdatePluginSettingsDefinition extends PdkEndpointDefinition {
   body: Settings.ModelSettings;
+  name: BackendEndpoint.UpdatePluginSettings;
   parameters: undefined;
   response: Settings.ModelSettings[];
 }
 
-export interface UpdateProductSettingsDefinition extends Definition {
+interface UpdateProductSettingsDefinition extends PdkEndpointDefinition {
+  body: Settings.ModelProductSettings;
   name: BackendEndpoint.UpdateProductSettings;
   parameters: {
     productIds: string;
   };
-  body: Settings.ModelProductSettings;
   response: Settings.ModelProductSettings[];
 }
 
-export interface PrintShipmentsDefinition extends BasePrintDefinition {
+interface PrintShipmentsDefinition extends BasePrintDefinition {
   name: BackendEndpoint.PrintShipments;
 }
 
-export interface PrintOrdersDefinition extends BasePrintDefinition {
+interface PrintOrdersDefinition extends BasePrintDefinition {
   name: BackendEndpoint.PrintOrders;
 }
 
-export interface FetchWebhooksDefinition extends Definition {
+interface FetchWebhooksDefinition extends PdkEndpointDefinition {
   name: BackendEndpoint.FetchWebhooks;
   parameters: never;
   response: WebhookDefinition[];
 }
 
-export interface CreateWebhooksDefinition extends Definition {
+interface CreateWebhooksDefinition extends PdkEndpointDefinition {
   name: BackendEndpoint.CreateWebhooks;
   parameters: {hooks: string};
   response: WebhookDefinition[];
 }
 
-export interface DeleteWebhooksDefinition extends Definition {
+interface DeleteWebhooksDefinition extends PdkEndpointDefinition {
   name: BackendEndpoint.DeleteWebhooks;
   parameters: {hooks: string};
   response: WebhookDefinition[];
 }
 
-export type PdkEndpointDefinition<N extends BackendEndpoint> = Extract<
+export type BackendEndpointDefinition =
   | CreateWebhooksDefinition
   | DeleteShipmentsDefinition
   | DeleteWebhooksDefinition
@@ -162,14 +160,15 @@ export type PdkEndpointDefinition<N extends BackendEndpoint> = Extract<
   | UpdateOrdersDefinition
   | UpdatePluginSettingsDefinition
   | UpdateProductSettingsDefinition
-  | UpdateShipmentsDefinition,
-  {name: N}
+  | UpdateShipmentsDefinition;
+
+export type BackendEndpointOptions<N extends BackendEndpoint> = Omit<
+  ExtractEndpointDefinition<N, BackendEndpointDefinition>,
+  'name' | 'response'
 >;
 
-export type EndpointOptions<N extends BackendEndpoint> = Omit<PdkEndpointDefinition<N>, 'name' | 'response'>;
-
 export abstract class AbstractPdkEndpoint<N extends BackendEndpoint = BackendEndpoint> extends AbstractEndpoint<
-  PdkEndpointDefinition<N>
+  ExtractEndpointDefinition<N, BackendEndpointDefinition>
 > {
   public declare readonly name: N;
   public declare readonly path: string;

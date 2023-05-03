@@ -9,19 +9,20 @@ import {
 } from '../data';
 import {PdkCheckoutConfig, PdkEvent} from '../types';
 import {
+  doRequest,
   fieldsEqual,
   getAddressField,
   getAddressFieldValue,
   getElement,
   getFieldValue,
-  getFrontendContext,
-  hasAddressType,
+  realUseUtil,
   setFieldValue,
   triggerEvent,
 } from '../utils';
-import {initializeStores, realCreateStore} from '../store';
 import {addFormListeners} from './addFormListeners';
+import {initializeCheckoutStore} from './initializeCheckoutStore';
 import {isOfType} from '@myparcel/ts-utils';
+import {realCreateStore} from '../store';
 
 // eslint-disable-next-line max-lines-per-function
 export const setupGlobals = (config: PdkCheckoutConfig): void => {
@@ -36,7 +37,7 @@ export const setupGlobals = (config: PdkCheckoutConfig): void => {
       [PdkEvent.StoreInitialized]: createEventName(EVENT_STORE, EVENT_TYPE_INITIALIZED),
     },
 
-    initializeCallbacks: [initializeStores, addFormListeners],
+    initializeCallbacks: [initializeCheckoutStore, addFormListeners],
     initialized: false,
 
     // @ts-expect-error todo
@@ -49,19 +50,18 @@ export const setupGlobals = (config: PdkCheckoutConfig): void => {
       checkout: null,
       // @ts-expect-error todo
       deliveryOptions: null,
-      // @ts-expect-error todo
-      settings: null,
     },
+
+    useUtil: realUseUtil,
 
     utils: {
       createStore: realCreateStore,
+      doRequest,
       fieldsEqual,
       getAddressField,
       getAddressFieldValue,
       getElement,
       getFieldValue,
-      getFrontendContext,
-      hasAddressType,
       isOfType,
       setFieldValue,
       triggerEvent,

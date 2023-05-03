@@ -1,4 +1,7 @@
-import {ADDRESS_TYPES, AddressField, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {AddressField, Util, useCheckoutStore, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {ATTRIBUTE_AUTOCOMPLETE} from '../constants';
+import {fillAddressFields} from './fillAddressFields';
+import {getFullStreet} from './getFullStreet';
 import {setAddress} from './setAddress';
 
 /**
@@ -6,26 +9,18 @@ import {setAddress} from './setAddress';
  */
 export function prepareFields(): void {
   const getAddressField = useUtil(Util.GetAddressField);
+  const setFieldValue = useUtil(Util.SetFieldValue);
 
-  const ATTRIBUTE_AUTOCOMPLETE = 'autocomplete';
+  const checkout = useCheckoutStore();
 
-  ADDRESS_TYPES.forEach((addressType) => {
-    const address1Field = getAddressField(AddressField.Address1, addressType);
+  checkout.state.addressTypes.forEach((addressType) => {
     const streetField = getAddressField(AddressField.Street, addressType);
 
     if (!streetField) {
       return;
     }
 
-    // streetField?.addEventListener('change', () => {
-    //   console.log('streetField change');
-    //   setFieldValue(FIELD_ADDRESS_1, getFullStreet(addressType), addressType);
-    // });
-    //
-    // numberField?.addEventListener('change', () => {
-    //   console.log('numberField change');
-    //   setFieldValue(FIELD_ADDRESS_1, getFullStreet(addressType), addressType);
-    // });
+    const address1Field = getAddressField(AddressField.Address1, addressType);
 
     if (!streetField?.getAttribute(ATTRIBUTE_AUTOCOMPLETE)) {
       streetField?.setAttribute(ATTRIBUTE_AUTOCOMPLETE, 'street-address');
@@ -34,6 +29,8 @@ export function prepareFields(): void {
     address1Field?.addEventListener('load', setAddress);
     address1Field?.addEventListener('animationend', setAddress);
 
-    setAddress({target: address1Field} as Event & {target: HTMLInputElement});
+    setFieldValue(AddressField.Address1, getFullStreet(addressType), addressType, false);
   });
+
+  fillAddressFields();
 }

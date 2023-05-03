@@ -1,6 +1,6 @@
-import {AddressType} from '../../types';
-import {getElement} from './getElement';
-import {useConfig} from '../../config';
+import {AddressType} from '../types';
+import {getElement} from './global/getElement';
+import {useConfig} from '../config';
 
 /**
  * Checks if the inner wrapper of an address type form exists to determine if the address type is available.

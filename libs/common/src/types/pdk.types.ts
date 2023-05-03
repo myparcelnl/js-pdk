@@ -1,6 +1,4 @@
-import {BackendEndpoint, FrontendEndpoint} from './endpoints';
 import {Component} from 'vue';
-import {Plugin} from './php-pdk.types';
 
 export const ADMIN_COMPONENT_PREFIX = 'Pdk';
 
@@ -139,9 +137,3 @@ export enum Status {
   Success = 'success',
   Warning = 'warning',
 }
-
-export type EndpointObject<T extends BackendEndpoint | FrontendEndpoint> = Record<T, Plugin.AbstractEndpointRequest>;
-
-export type BackendPdkEndpointObject = EndpointObject<BackendEndpoint>;
-
-export type FrontendPdkEndpointObject = EndpointObject<FrontendEndpoint>;

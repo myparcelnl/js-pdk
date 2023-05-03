@@ -1,4 +1,5 @@
-import {useCheckoutStore, useConfig, useSettingsStore} from '@myparcel-pdk/frontend-checkout-core/src';
+import {useConfig, useSettings} from '@myparcel-pdk/frontend-checkout-core/src';
+import {useDeliveryOptionsStore} from './useDeliveryOptionsStore';
 
 /**
  * Create an input field in the checkout form to be able to pass the checkout data to the $_POST variable when
@@ -6,16 +7,16 @@ import {useCheckoutStore, useConfig, useSettingsStore} from '@myparcel-pdk/front
  */
 export const injectHiddenInput = (): void => {
   const config = useConfig();
-  const checkout = useCheckoutStore();
-  const settings = useSettingsStore();
+  const settings = useSettings();
+
   const hiddenInput = document.createElement('input');
 
   hiddenInput.setAttribute('type', 'hidden');
-  hiddenInput.setAttribute('name', settings.state.hiddenInputName);
+  hiddenInput.setAttribute('name', settings.hiddenInputName);
 
-  const form = config.getForm();
+  config.getForm().appendChild(hiddenInput);
 
-  form.appendChild(hiddenInput);
+  const deliveryOptions = useDeliveryOptionsStore();
 
-  checkout.set({hiddenInput});
+  void deliveryOptions.set({hiddenInput});
 };

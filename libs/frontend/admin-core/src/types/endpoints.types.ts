@@ -1,17 +1,20 @@
-import {BackendEndpoint, LabelFormat, LabelOutput, LabelPosition} from '@myparcel-pdk/common/src';
+import {
+  BackendEndpoint,
+  LabelFormat,
+  LabelOutput,
+  LabelPosition,
+  PdkEndpointParameters,
+  PdkEndpointResponse,
+} from '@myparcel-pdk/common/src';
 import {AdminAction} from './actions.types';
 import {AdminContextKey} from './context.types';
+import {BackendEndpointDefinition} from '@myparcel-pdk/frontend-admin-core/src';
 import {FormInstance} from '@myparcel/vue-form-builder/src';
 import {OneOrMore} from '@myparcel/ts-utils';
-import {PdkEndpointDefinition} from '../sdk';
 
-export type EndpointResponse<N extends BackendEndpoint> = PdkEndpointDefinition<N> extends {
-  formattedResponse: infer R;
-}
-  ? R
-  : PdkEndpointDefinition<N>['response'];
+export type BackendEndpointResponse<E extends BackendEndpoint> = PdkEndpointResponse<E, BackendEndpointDefinition>;
 
-export type EndpointParameters<N extends BackendEndpoint> = PdkEndpointDefinition<N>['parameters'];
+export type BackendEndpointParameters<E extends BackendEndpoint> = PdkEndpointParameters<E, BackendEndpointDefinition>;
 
 export interface AdminActionEndpointMap extends Record<AdminAction, BackendEndpoint> {
   [AdminAction.AccountUpdate]: BackendEndpoint.UpdateAccount;
@@ -76,4 +79,4 @@ export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record
   [BackendEndpoint.FetchWebhooks]: never;
 }
 
-export type ActionInput<A extends BackendEndpoint> = EndpointMutationInputMap[A];
+export type ActionInput<E extends BackendEndpoint> = EndpointMutationInputMap[E];

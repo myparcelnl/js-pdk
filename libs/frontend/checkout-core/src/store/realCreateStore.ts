@@ -1,14 +1,16 @@
-import {Keyable} from '@myparcel-pdk/common';
+import {PromiseOr, objectIsEqual} from '@myparcel/ts-utils';
+import {Keyable} from '@myparcel-pdk/common/src';
+import {logStoreDebugInfo} from './logStoreDebugInfo';
 
 export enum StoreListener {
   Update = 'update',
 }
 
 type Store<S extends StoreState = StoreState> = {
-  set: (newState: Partial<S>) => void;
-  state: S;
-  listeners: StoreListenerObject<S>;
-  on: <L extends StoreListener>(listener: L, callback: StoreListeners<S>[L]) => void;
+  readonly set: (newState: Partial<S>) => PromiseOr<void>;
+  readonly state: S;
+  readonly listeners: StoreListenerObject<S>;
+  readonly on: <L extends StoreListener>(listener: L, callback: StoreListeners<S>[L]) => void;
 };
 
 export type StoreState = Record<string, unknown>;
@@ -17,7 +19,7 @@ type StoreListenerObject<S extends StoreState> = {
   [L in StoreListener]?: StoreListeners<S>[L][];
 };
 
-export type StoreCallbackUpdate<T extends StoreState = StoreState> = (newState: T, oldState: T) => void | T;
+export type StoreCallbackUpdate<T extends StoreState = StoreState> = (newState: T, oldState: T) => PromiseOr<void | T>;
 
 type StoreListeners<T extends StoreState> = {
   [StoreListener.Update]: StoreCallbackUpdate<T>;
@@ -30,6 +32,7 @@ export type InitialStoreData<S extends StoreState = StoreState> = {
   listeners?: StoreListenerObject<S>;
 };
 
+// eslint-disable-next-line max-lines-per-function
 export const realCreateStore = <S extends StoreState = StoreState, N extends Keyable = Keyable>(
   name: N,
   initialData: () => InitialStoreData<S>,
@@ -37,32 +40,39 @@ export const realCreateStore = <S extends StoreState = StoreState, N extends Key
   const {storedState} = window.MyParcelPdk;
 
   if (!storedState[name]) {
-    const resolvedData: InitialStoreData<S> = initialData();
+    const {state, ...rest}: InitialStoreData<S> = initialData();
 
     storedState[name] = {
-      ...resolvedData,
+      state: {},
 
-      listeners: (resolvedData.listeners ?? {}) as StoreListenerObject<StoreState>,
+      listeners: (rest.listeners ?? {}) as StoreListenerObject<StoreState>,
 
-      on: (listener, callback) => {
+      on(listener, callback) {
         storedState[name].listeners[listener] ??= [];
         storedState[name].listeners[listener]?.push(callback);
       },
 
-      set: (newState) => {
+      async set(newState) {
         const oldState = {...storedState[name].state};
-        const state = Object.assign(storedState[name].state, newState);
+        const state = {...oldState, ...newState};
 
-        // eslint-disable-next-line no-console
-        console.log('%cSET', 'color: #0f0', name, {newState, oldState});
+        if (objectIsEqual(state, oldState)) {
+          return;
+        }
+
+        logStoreDebugInfo(name, state, oldState);
+
+        Object.assign(storedState[name].state, newState);
 
         const updateListeners = storedState[name].listeners?.[StoreListener.Update];
 
-        const updates = updateListeners?.map((listener) => {
-          return listener({...state}, oldState);
-        });
+        const updates = await Promise.all(
+          updateListeners?.map(async (listener) => {
+            return listener({...state}, oldState);
+          }) ?? [],
+        );
 
-        if (updates?.length) {
+        if (updates.length) {
           const additionalUpdate = updates.reduce((state, update) => {
             return {...state, ...update};
           }, {});
@@ -71,6 +81,9 @@ export const realCreateStore = <S extends StoreState = StoreState, N extends Key
         }
       },
     };
+
+    // Trigger the update listeners on initialisation.
+    void storedState[name].set(state);
   }
 
   return () => {

@@ -1,19 +1,13 @@
 import {AddressField, AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {DeliveryOptionsConfiguration} from '../types';
 
-type DeliveryOptionsAddress = {
-  cc?: string;
-  postalCode?: string;
-  street?: string;
-  city?: string;
-};
-
-export const getDeliveryOptionsAddress = (type?: AddressType): DeliveryOptionsAddress => {
+export const getDeliveryOptionsAddress = (type?: AddressType): DeliveryOptionsConfiguration['address'] => {
   const getAddressFieldValue = useUtil(Util.GetAddressFieldValue);
 
   return {
-    cc: getAddressFieldValue(AddressField.Country, type),
-    postalCode: getAddressFieldValue(AddressField.PostalCode, type),
-    street: getAddressFieldValue(AddressField.Address1, type),
-    city: getAddressFieldValue(AddressField.City, type),
+    cc: getAddressFieldValue(AddressField.Country, type) ?? '',
+    postalCode: getAddressFieldValue(AddressField.PostalCode, type) ?? '',
+    street: getAddressFieldValue(AddressField.Address1, type) ?? '',
+    city: getAddressFieldValue(AddressField.City, type) ?? '',
   };
 };

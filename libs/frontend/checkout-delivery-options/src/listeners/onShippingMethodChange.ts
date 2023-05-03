@@ -1,5 +1,5 @@
 import {CheckoutStoreState, PdkField, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
-import {fetchContext, shippingMethodHasDeliveryOptions, toggleDeliveryOptions} from '../utils';
+import {shippingMethodHasDeliveryOptions, toggleDeliveryOptions, updateContext} from '../utils';
 
 export const onShippingMethodChange = (
   newState: CheckoutStoreState,
@@ -11,10 +11,11 @@ export const onShippingMethodChange = (
     return;
   }
 
-  newState.hasDeliveryOptions = shippingMethodHasDeliveryOptions(newState.form.shippingMethod);
+  newState.hasDeliveryOptions = shippingMethodHasDeliveryOptions(newState.form[PdkField.ShippingMethod]);
 
   toggleDeliveryOptions(newState.hasDeliveryOptions);
-  fetchContext();
+
+  void updateContext();
 
   return newState;
 };

@@ -1,15 +1,14 @@
 import {PdkCheckout, PdkCheckoutConfig, PdkEvent} from './types';
 import {PromiseOr, isOfType} from '@myparcel/ts-utils';
-import {StoreData, createCheckoutStore, createSettingsStore, realCreateStore} from './store';
+import {StoreData, createCheckoutStore, realCreateStore} from './store';
 import {
   Util,
+  doRequest,
   fieldsEqual,
   getAddressField,
   getAddressFieldValue,
   getElement,
   getFieldValue,
-  getFrontendContext,
-  hasAddressType,
   setFieldValue,
   triggerEvent,
 } from './utils';
@@ -17,13 +16,12 @@ import {
 declare global {
   interface MyParcelPdkUtils {
     [Util.CreateStore]: typeof realCreateStore;
+    [Util.DoRequest]: typeof doRequest;
     [Util.FieldsEqual]: typeof fieldsEqual;
     [Util.GetAddressFieldValue]: typeof getAddressFieldValue;
     [Util.GetAddressField]: typeof getAddressField;
     [Util.GetElement]: typeof getElement;
     [Util.GetFieldValue]: typeof getFieldValue;
-    [Util.GetFrontendContext]: typeof getFrontendContext;
-    [Util.HasAddressType]: typeof hasAddressType;
     [Util.IsOfType]: typeof isOfType;
     [Util.SetFieldValue]: typeof setFieldValue;
     [Util.TriggerEvent]: typeof triggerEvent;
@@ -31,7 +29,6 @@ declare global {
 
   interface MyParcelPdkStores {
     checkout: ReturnType<typeof createCheckoutStore>;
-    settings: ReturnType<typeof createSettingsStore>;
   }
 
   interface MyParcelPdkEvents {
@@ -50,6 +47,11 @@ declare global {
     storedState: StoreData;
     stores: MyParcelPdkStores;
     utils: MyParcelPdkUtils;
+
+    /**
+     * Pull in a util from the window object.
+     */
+    useUtil<N extends Util>(name: N): MyParcelPdkUtils[N];
   }
 
   interface Window {

@@ -3,9 +3,8 @@ import {useConfig} from '../config';
 
 export const addFormListeners = (): void => {
   const config = useConfig();
-  const form = config.getForm();
 
-  updateCheckoutForm({currentTarget: form} as unknown as Event);
+  config.onFormChange(updateCheckoutForm);
 
-  form?.addEventListener('change', updateCheckoutForm);
+  updateCheckoutForm();
 };

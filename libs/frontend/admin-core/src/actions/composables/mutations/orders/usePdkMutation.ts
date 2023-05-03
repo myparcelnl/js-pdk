@@ -1,4 +1,4 @@
-import {ActionInput, EndpointResponse} from '../../../../types';
+import {ActionInput, BackendEndpointResponse} from '../../../../types';
 import {UseMutationReturnType, VueMutationObserverOptions} from '@tanstack/vue-query/build/lib/useMutation';
 import {ApiException} from '@myparcel/sdk';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
@@ -7,13 +7,13 @@ import {MutationFunction} from '@tanstack/query-core';
 import {useMutation} from '@tanstack/vue-query';
 
 type UsePdkMutation = <
-  E extends BackendEndpoint,
-  TData = EndpointResponse<E>,
+  N extends BackendEndpoint,
+  TData = BackendEndpointResponse<N>,
   TError = ApiException,
-  TVariables = ActionInput<E>,
+  TVariables = ActionInput<N>,
   TContext = unknown,
 >(
-  endpoint: E,
+  endpoint: N,
   mutationFn?: MaybeRef<MutationFunction<TData, TVariables>>,
   options?: MaybeRef<
     Omit<VueMutationObserverOptions<TData, TError, TVariables, TContext>, 'mutationKey' | 'mutationFn'>

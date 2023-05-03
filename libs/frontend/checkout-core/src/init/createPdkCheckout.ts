@@ -13,6 +13,11 @@ const execute = (callback: InitializeCallback): void => {
 // noinspection JSUnusedGlobalSymbols
 export const createPdkCheckout = (config: PdkCheckoutConfigInput): void => {
   setupGlobals({
+    onFormChange(callback) {
+      const config = useConfig();
+
+      config.getForm().addEventListener('change', callback);
+    },
     ...config,
     selectors: {
       deliveryOptions: '#myparcel-delivery-options',

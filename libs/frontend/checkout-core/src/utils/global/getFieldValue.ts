@@ -10,8 +10,8 @@ type GetFieldValue = {
 export const getFieldValue: GetFieldValue = (name, arg2, arg3) => {
   const checkout = useCheckoutStore();
 
-  if (isEnumValue(name, PdkField) && typeof arg2 === 'object') {
-    const object = arg2 ?? checkout.state.form;
+  if (isEnumValue(name, PdkField)) {
+    const object = (arg2 as PdkCheckoutForm | undefined) ?? checkout.state.form;
 
     return object[name]?.trim();
   }

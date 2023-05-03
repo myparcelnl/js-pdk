@@ -1,4 +1,7 @@
 export * from './createCheckoutStore';
-export * from './createSettingsStore';
-export * from './initializeStores';
 export * from './realCreateStore';
+export {logStoreDebugInfo} from './logStoreDebugInfo';
+
+export {updateAddressType} from '../listeners/updateAddressType';
+
+export {updateShippingMethod} from '../listeners/updateShippingMethod';

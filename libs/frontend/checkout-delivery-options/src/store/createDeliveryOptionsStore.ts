@@ -1,62 +1,47 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {EVENT_UPDATE_CONFIG, EVENT_UPDATE_DELIVERY_OPTIONS} from '@myparcel-pdk/frontend-delivery-options/src';
-import {StoreListener, Util, useConfig, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
-import {MyParcelDeliveryOptions} from '@myparcel/delivery-options';
-import {objectIsEqual} from '@myparcel/ts-utils';
+import {StoreListener, Util, useCheckoutStore, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {DeliveryOptionsConfiguration} from '../types';
+import {getDeliveryOptionsAddress} from '../utils';
+import {triggerDeliveryOptionsEvents} from '../listeners';
 
-type ToRecord<T, k extends keyof T = keyof T> = Record<k, T[k]>;
-
-export type DeliveryOptionsStoreState = ToRecord<MyParcelDeliveryOptions.Configuration> & {
+export type DeliveryOptionsStoreState = {
+  configuration: DeliveryOptionsConfiguration;
+  hiddenInput?: HTMLInputElement;
   output: Record<string, unknown>;
 };
 
 export const createDeliveryOptionsStore = () => {
   const createStore = useUtil(Util.CreateStore);
 
+  const checkout = useCheckoutStore();
+
+  const {config, strings} = checkout.state.context;
+
   return createStore<DeliveryOptionsStoreState>(Symbol('deliveryOptions'), () => {
     return {
       state: {
         /**
-         * Input config
+         * Configuration that is passed to the delivery options library.
          */
-        config: {},
-
-        /**
-         * Input strings
-         */
-        strings: {},
-
-        /**
-         * Input address
-         */
-        address: {},
+        configuration: {
+          address: getDeliveryOptionsAddress(),
+          config,
+          strings,
+        },
 
         /**
          * Output data
          */
         output: {},
+
+        /**
+         * Hidden input that is used to pass the output data to the backend.
+         */
+        hiddenInput: undefined,
       },
 
       listeners: {
-        [StoreListener.Update]: [
-          (newState, oldState) => {
-            const getElement = useUtil(Util.GetElement);
-            const config = useConfig();
-
-            const triggerEvent = useUtil(Util.TriggerEvent);
-
-            if (getElement(config.selectors.deliveryOptions, false)) {
-              triggerEvent(EVENT_UPDATE_DELIVERY_OPTIONS, newState);
-              return;
-            }
-
-            if (!objectIsEqual(newState.config, oldState.config)) {
-              triggerEvent(EVENT_UPDATE_CONFIG, newState);
-            } else if (!objectIsEqual(newState.address, oldState.address)) {
-              triggerEvent(EVENT_UPDATE_DELIVERY_OPTIONS, newState);
-            }
-          },
-        ],
+        [StoreListener.Update]: [triggerDeliveryOptionsEvents],
       },
     };
   })();

@@ -2,7 +2,7 @@
   <PdkDropdownButton :actions="actions" />
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {
   orderExportAction,
   ordersEditAction,
@@ -20,16 +20,19 @@ const query = useOrder();
 
 const actions = computed(() => {
   const actions: AnyAdminAction[] = [];
+  const order = get(query.data);
 
-  if (get(query.data)?.shipments?.some((item) => !item.deleted)) {
+  if (order?.shipments?.some((item) => !item.deleted)) {
     actions.push(orderExportAction);
     actions.push({...ordersPrintAction, standalone: true});
-    actions.push(ordersEditAction, ordersFetchAction);
+    actions.push(ordersFetchAction);
   } else {
     actions.push({...orderExportAction, standalone: true});
-    actions.push(ordersExportPrintShipmentsAction, ordersEditAction);
+    actions.push(ordersExportPrintShipmentsAction);
   }
 
-  return defineActions(actions, {orderIds: get(query.data)?.externalIdentifier, form: false});
+  actions.push(ordersEditAction);
+
+  return defineActions(actions, {orderIds: order?.externalIdentifier, form: false});
 });
 </script>

@@ -1,5 +1,7 @@
-import {FrontendPdkEndpointObject} from '@myparcel-pdk/common/src';
+import {FrontendEndpoint, FrontendPdkEndpointObject} from '@myparcel-pdk/common/src';
+import {FrontendEndpointResponse} from './types/endpoints.types';
 import {MyParcelDeliveryOptions} from '@myparcel/delivery-options';
+import {CarrierName} from '@myparcel/constants';
 
 export enum AddressType {
   Billing = 'billing',
@@ -13,8 +15,6 @@ export enum PdkEvent {
   StoreInitialized = 'storeInitialized',
 }
 
-export const ADDRESS_TYPES = [AddressType.Billing, AddressType.Shipping] as const;
-
 export enum AddressField {
   Address1 = 'address1',
   City = 'city',
@@ -27,6 +27,10 @@ export enum AddressField {
   VatNumber = 'vatNumber',
 }
 
+export const SEPARATE_ADDRESS_FIELDS = [AddressField.Street, AddressField.Number, AddressField.NumberSuffix] as const;
+
+export const SEPARATE_ADDRESS_FIELDS_WITHOUT_SUFFIX = [AddressField.Street, AddressField.Number] as const;
+
 export enum PdkField {
   ShippingMethod = 'shippingMethod',
   ToggleAddressType = 'toggleAddressType',
@@ -34,7 +38,8 @@ export enum PdkField {
 
 export type AddressFields = Record<AddressField, string>;
 
-export type PdkCheckoutConfigInput = Omit<PdkCheckoutConfig, 'selectors'> & {
+export type PdkCheckoutConfigInput = Omit<PdkCheckoutConfig, 'selectors' | 'onFormChange'> & {
+  onFormChange?(callback: () => void): void;
   selectors: Omit<PdkCheckoutConfig['selectors'], 'deliveryOptions'> & {
     deliveryOptions?: string;
   };
@@ -55,8 +60,16 @@ export interface PdkCheckoutConfig {
     hasAddressType: string;
   };
 
+  doRequest<E extends FrontendEndpoint>(
+    endpoint: FrontendPdkEndpointObject[E] & {baseUrl: string},
+  ): Promise<FrontendEndpointResponse<E>>;
+
   getForm(): HTMLFormElement;
+
   initialize(): Promise<void>;
+
+  onFormChange(callback: () => void): void;
+
   toggleField(field: HTMLInputElement, show: boolean): void;
 }
 
@@ -89,5 +102,5 @@ export type CheckoutSettings = {
   countriesWithSeparateAddressFields: string[];
 
   // Tax fields
-  carriersWithTaxFields: string[];
+  carriersWithTaxFields: CarrierName[];
 };

@@ -1,3 +1,4 @@
 export * from './onShippingMethodChange';
-export * from './onUpdateForm';
+export * from './triggerDeliveryOptionsEvents';
+export * from './updateDeliveryOptions';
 export * from './updateDeliveryOptionsOutput';

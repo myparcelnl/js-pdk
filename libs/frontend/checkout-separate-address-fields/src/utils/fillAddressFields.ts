@@ -7,11 +7,11 @@ import {
   useUtil,
 } from '@myparcel-pdk/frontend-checkout-core/src';
 
-export const fillAddressFields = (address: Partial<AddressFields>, addressType?: AddressType): void => {
+export const fillAddressFields = (address?: Partial<AddressFields>, addressType?: AddressType): void => {
   const setFieldValue = useUtil(Util.SetFieldValue);
   const triggerEvent = useUtil(Util.TriggerEvent);
 
-  Object.entries(address).forEach(([fieldName, value]) => {
+  Object.entries(address ?? {}).forEach(([fieldName, value]) => {
     if (!value) {
       return;
     }

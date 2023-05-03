@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {BackendEndpoint, Shipment} from '@myparcel-pdk/common/src';
 import {QueryKey, useQuery, useQueryClient} from '@tanstack/vue-query';
-import {EndpointResponse} from '../../../../types';
+import {BackendEndpointResponse} from '../../../../types';
 import {QUERY_KEY_SHIPMENT} from '../queryKeys';
 import {encodeArrayParameter} from '../../../../utils';
 import {fillShipmentsQueryData} from '../../../../pdk';
@@ -12,7 +12,7 @@ export const useFetchShipmentsQuery = (id?: number, orderId?: number) => {
   const queryKey: QueryKey = [QUERY_KEY_SHIPMENT, ...(id ? [{id}] : [])] as const;
   const queryClient = useQueryClient();
 
-  return useQuery<EndpointResponse<BackendEndpoint.FetchShipments>>(
+  return useQuery<BackendEndpointResponse<BackendEndpoint.FetchShipments>>(
     queryKey,
     async () => {
       const pdk = usePdkAdminApi();
@@ -22,7 +22,7 @@ export const useFetchShipmentsQuery = (id?: number, orderId?: number) => {
         parameters: {
           orderIds: encodeArrayParameter(orderId),
         },
-      })) as EndpointResponse<BackendEndpoint.FetchOrders>;
+      })) as BackendEndpointResponse<BackendEndpoint.FetchOrders>;
 
       const foundShipment = toArray(orders).reduce((acc, order) => {
         const shipment = order.shipments?.find((shipment) => shipment.id === id);

@@ -1,11 +1,14 @@
-import {AddressType, PdkCheckoutForm, PdkField} from '../types';
-import {Util, useUtil} from '../utils';
+import {AddressType, CheckoutAppContext, PdkCheckoutForm} from '../types';
+import {Util, getAddressType, getFrontendContext, hasAddressType, useUtil} from '../utils';
+import {updateAddressType, updateShippingMethod} from '../listeners';
+import {StoreListener} from '@myparcel-pdk/frontend-checkout-core/src';
 
 export type CheckoutStoreState = {
   addressType: AddressType;
+  addressTypes: AddressType[];
+  context: CheckoutAppContext['checkout'];
   form: PdkCheckoutForm;
   hasDeliveryOptions: boolean;
-  hiddenInput?: HTMLInputElement;
   shippingMethod?: string;
 };
 
@@ -16,7 +19,9 @@ export const createCheckoutStore = () => {
   return createStore<CheckoutStoreState>(Symbol('checkout'), () => {
     return {
       state: {
-        addressType: AddressType.Billing,
+        addressType: getAddressType(),
+        addressTypes: ([AddressType.Billing, AddressType.Shipping] as const).filter(hasAddressType),
+        context: getFrontendContext(),
         form: {
           [AddressType.Billing]: {},
           [AddressType.Shipping]: {},
@@ -25,31 +30,7 @@ export const createCheckoutStore = () => {
       },
 
       listeners: {
-        update: [
-          (newState, oldState) => {
-            const fieldsEqual = useUtil(Util.FieldsEqual);
-
-            if (fieldsEqual(newState.form, oldState.form, PdkField.ToggleAddressType)) {
-              return;
-            }
-
-            const shipToDifferentAddress = newState.form[PdkField.ToggleAddressType] === '1';
-
-            newState.addressType = shipToDifferentAddress ? AddressType.Billing : AddressType.Shipping;
-          },
-
-          (newState, oldState) => {
-            const fieldsEqual = useUtil(Util.FieldsEqual);
-
-            if (fieldsEqual(newState.form, oldState.form, PdkField.ShippingMethod)) {
-              return;
-            }
-
-            newState.shippingMethod = newState.form[PdkField.ShippingMethod];
-
-            return newState;
-          },
-        ],
+        [StoreListener.Update]: [updateAddressType, updateShippingMethod],
       },
     };
   })();

@@ -1,5 +1,5 @@
 import {ActionContext, ActionContextWithResponse} from '../actions';
-import {ActionInput, AdminActionEndpointMap, EndpointResponse} from './endpoints.types';
+import {ActionInput, AdminActionEndpointMap, BackendEndpointResponse} from './endpoints.types';
 import {AdminIcon} from './common.types';
 import {MaybeRef} from '@vueuse/core';
 import {PromiseOr} from '@myparcel/ts-utils';
@@ -56,7 +56,7 @@ export type ActionParameters<A extends MaybeAdminAction> = A extends AdminAction
 export type MaybeActionParameters<A extends MaybeAdminAction> = ActionParameters<A> | void;
 
 export type ActionResponse<A extends MaybeAdminAction> = A extends AdminAction
-  ? EndpointResponse<AdminActionEndpointMap[A]>
+  ? BackendEndpointResponse<AdminActionEndpointMap[A]>
   : void;
 
 export type MaybeActionResponse<A extends MaybeAdminAction> = ActionResponse<A> | void;

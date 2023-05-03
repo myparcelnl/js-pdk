@@ -1,17 +1,17 @@
-import {Util, useSettingsStore, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {CarrierName} from '@myparcel/constants';
+import {useSettings} from '@myparcel-pdk/frontend-checkout-core/src';
 
 export const hasTaxFields = (): boolean => {
-  const settings = useSettingsStore();
+  const settings = useSettings();
 
   let hasTaxFields = true;
 
-  if (settings.state.hasDeliveryOptions) {
-    const getFieldValue = useUtil(Util.GetFieldValue);
+  if (settings.hasDeliveryOptions) {
+    const {deliveryOptions} = window.MyParcelPdk.stores;
 
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-    const {carrier} = JSON.parse(getFieldValue(settings.state.hiddenInputName) || '{}');
+    const carrier = deliveryOptions.state.output.carrier ?? null;
 
-    hasTaxFields = settings.state.carriersWithTaxFields.includes(carrier);
+    hasTaxFields = Boolean(carrier && settings.carriersWithTaxFields.includes(carrier as CarrierName));
   }
 
   return hasTaxFields;

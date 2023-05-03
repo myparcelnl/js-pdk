@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {BackendEndpoint, Plugin} from '@myparcel-pdk/common/src';
-import {EndpointOptions, usePdkAdminApi} from '../../../../sdk';
+import {BackendEndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {MutationMode, getCallbackForMutationMode, getModalMutationOptions} from '../../../../services';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
 import {fillShipmentsQueryData} from '../../../../pdk';
@@ -18,7 +18,7 @@ export const useExportOrdersMutation = (mode: MutationMode = MutationMode.Defaul
       const pdk = usePdkAdminApi();
       getCallbackForMutationMode(mode)?.();
 
-      const options: EndpointOptions<BackendEndpoint.ExportOrders> = {
+      const options: BackendEndpointOptions<BackendEndpoint.ExportOrders> = {
         parameters: {
           orderIds: encodeArrayParameter(input.orderIds),
         },

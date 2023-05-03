@@ -1,18 +1,24 @@
-import {AddressField, AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {
+  AddressField,
+  AddressType,
+  SEPARATE_ADDRESS_FIELDS,
+  SEPARATE_ADDRESS_FIELDS_WITHOUT_SUFFIX,
+  Util,
+  useUtil,
+} from '@myparcel-pdk/frontend-checkout-core/src';
+import {hasSeparateAddressFields} from './hasSeparateAddressFields';
 
-export const getFullStreet = (addressType: AddressType): string => {
-  const getAddressField = useUtil(Util.GetAddressField);
+export const getFullStreet = (addressType: AddressType, withSuffix = false): string => {
+  const getAddressFieldValue = useUtil(Util.GetAddressFieldValue);
 
-  return [AddressField.Street, AddressField.Number]
-    .reduce((acc, fieldName) => {
-      const field = getAddressField(fieldName, addressType);
+  if (!hasSeparateAddressFields(addressType)) {
+    return getAddressFieldValue(AddressField.Address1, addressType) ?? '';
+  }
 
-      if (field) {
-        acc.push(field.value);
-      }
+  const fields = withSuffix ? SEPARATE_ADDRESS_FIELDS : SEPARATE_ADDRESS_FIELDS_WITHOUT_SUFFIX;
 
-      return acc;
-    }, [] as string[])
+  return fields
+    .map((field) => getAddressFieldValue(field, addressType) ?? '')
     .join(' ')
     .trim();
 };

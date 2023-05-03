@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {ActionInput, EndpointResponse} from '../../../../types';
+import {ActionInput, BackendEndpointResponse} from '../../../../types';
 import {QueryKey, useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {QUERY_KEY_ORDER} from '../../queries';
@@ -9,6 +9,7 @@ import {toArray} from '@myparcel/ts-utils';
 import {usePdkAdminApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
 
+// eslint-disable-next-line max-lines-per-function
 export const useDeleteShipmentsMutation = () => {
   const queryClient = useQueryClient();
   const pdk = usePdkAdminApi();
@@ -40,7 +41,9 @@ export const useDeleteShipmentsMutation = () => {
             const queryKey = [QUERY_KEY_ORDER, {id: orderId}] as const;
             await queryClient.cancelQueries({queryKey});
 
-            const previousOrder = queryClient.getQueryData(queryKey) as EndpointResponse<BackendEndpoint.FetchOrders>;
+            const previousOrder = queryClient.getQueryData(
+              queryKey,
+            ) as BackendEndpointResponse<BackendEndpoint.FetchOrders>;
 
             previousValues.push({queryKey, value: previousOrder});
 
