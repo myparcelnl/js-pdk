@@ -8,7 +8,7 @@
     "serve": "nitropack dev"
   },
   "devDependencies": {
-    "@apollo/server": "^4.4.1",
+    "@apollo/server": "^4.7.1",
     "@myparcel-pdk/common": "workspace:^",
     "@myparcel/ts-utils": "^1.7.0",
     "@types/node": "^18.14.6",
