@@ -1176,7 +1176,7 @@ __metadata:
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.30.1
     autoprefixer: ^10.4.13
-    happy-dom: ^9.10.2
+    happy-dom: ^9.10.6
     postcss: ^8.4.21
     rollup-plugin-visualizer: ^5.9.0
     tailwindcss: ^3.2.7
@@ -1199,7 +1199,7 @@ __metadata:
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.30.1
     "@vue/test-utils": ^2.3.0
-    happy-dom: ^9.10.2
+    happy-dom: ^9.10.6
     pinia: ^2.0.32
     typescript: ^5.0.3
     vite: ^4.3.4
@@ -1217,7 +1217,7 @@ __metadata:
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.30.1
     "@vue/test-utils": ^2.3.0
-    happy-dom: ^9.10.2
+    happy-dom: ^9.10.6
     typescript: ^5.0.3
     vite: ^4.3.4
     vitest: ^0.30.1
@@ -1236,7 +1236,7 @@ __metadata:
     "@vitest/coverage-c8": ^0.30.1
     "@vue/test-utils": ^2.3.0
     "@vueuse/core": ^10.1.2
-    happy-dom: ^9.10.2
+    happy-dom: ^9.10.6
     typescript: ^5.0.3
     vite: ^4.3.4
     vitest: ^0.30.1
@@ -1253,7 +1253,7 @@ __metadata:
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.30.1
     "@vue/test-utils": ^2.3.0
-    happy-dom: ^9.10.2
+    happy-dom: ^9.10.6
     typescript: ^5.0.3
     vite: ^4.3.4
     vitest: ^0.30.1
@@ -7467,9 +7467,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:^9.10.2":
-  version: 9.10.2
-  resolution: "happy-dom@npm:9.10.2"
+"happy-dom@npm:^9.10.6":
+  version: 9.10.6
+  resolution: "happy-dom@npm:9.10.6"
   dependencies:
     css.escape: ^1.5.1
     he: ^1.2.0
@@ -7477,7 +7477,7 @@ __metadata:
     webidl-conversions: ^7.0.0
     whatwg-encoding: ^2.0.0
     whatwg-mimetype: ^3.0.0
-  checksum: c196f558e901c1474f2bfe7908e4df0254198a1edb525afee1feb4e099d4d1da9f4ead1e1b4fa07cc71fb5f74982053d433387d0015fa210a665e2fff1cdde9b
+  checksum: 5bd68a10f5020f4a0e4fae4c61da14cc4c06cd2238a68f6fc6ac99620b83901fda605863d3c68406efb5262798e241511a03e3fb1455246a0beef89375ccc655
   languageName: node
   linkType: hard
 
@@ -13021,21 +13021,21 @@ __metadata:
 
 "typescript@patch:typescript@^4.7.4#~builtin<compat/typescript>":
   version: 4.9.5
-  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"
+  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 1f8f3b6aaea19f0f67cba79057674ba580438a7db55057eb89cc06950483c5d632115c14077f6663ea76fd09fce3c190e6414bb98582ec80aa5a4eaf345d5b68
+  checksum: ab417a2f398380c90a6cf5a5f74badd17866adf57f1165617d6a551f059c3ba0a3e4da0d147b3ac5681db9ac76a303c5876394b13b3de75fdd5b1eaa06181c9d
   languageName: node
   linkType: hard
 
 "typescript@patch:typescript@^5.0.3#~builtin<compat/typescript>":
   version: 5.0.4
-  resolution: "typescript@patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"
+  resolution: "typescript@patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: d26b6ba97b6d163c55dbdffd9bbb4c211667ebebc743accfeb2c8c0154aace7afd097b51165a72a5bad2cf65a4612259344ff60f8e642362aa1695c760d303ac
+  checksum: bb309d320c59a26565fb3793dba550576ab861018ff3fd1b7fccabbe46ae4a35546bc45f342c0a0b6f265c801ccdf64ffd68f548f117ceb7f0eac4b805cd52a9
   languageName: node
   linkType: hard
 
