@@ -1368,7 +1368,7 @@ __metadata:
     "@myparcel-pdk/build-vite": "workspace:^"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.30"
     "@myparcel/constants": ^1.0.0
-    "@myparcel/sdk": ^2.11.0
+    "@myparcel/sdk": ^3.0.0
     "@myparcel/ts-utils": ^1.6.0
     "@myparcel/vue-form-builder": ^1.0.0-beta.0
     "@tanstack/vue-query": ^4.24.10
@@ -1561,12 +1561,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel/sdk@npm:^2.11.0":
-  version: 2.11.0
-  resolution: "@myparcel/sdk@npm:2.11.0"
+"@myparcel/sdk@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@myparcel/sdk@npm:3.0.0"
   dependencies:
+    "@myparcel/constants": ^1.0.0
     "@myparcel/ts-utils": ^1.6.0
-  checksum: cb5786cd9a03bd35aa27ba57375b096ed87d5fb3aa4733f8f614b721ce7affe3b9d155b425e1515b9ef5ae0ca0c459a679ebf988e2387ecd6d9f5b31940d47f4
+  checksum: 6a84c8f6fb21a1b9dab4016b3ce10e502c21d4ce38cc8b4c8c62035007467433fd27acd8722bb03a22ae53443b48d6c731cc054a40e49ddc6833d0018e27dbcd
   languageName: node
   linkType: hard
 
@@ -13021,21 +13022,21 @@ __metadata:
 
 "typescript@patch:typescript@^4.7.4#~builtin<compat/typescript>":
   version: 4.9.5
-  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"
+  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 1f8f3b6aaea19f0f67cba79057674ba580438a7db55057eb89cc06950483c5d632115c14077f6663ea76fd09fce3c190e6414bb98582ec80aa5a4eaf345d5b68
+  checksum: ab417a2f398380c90a6cf5a5f74badd17866adf57f1165617d6a551f059c3ba0a3e4da0d147b3ac5681db9ac76a303c5876394b13b3de75fdd5b1eaa06181c9d
   languageName: node
   linkType: hard
 
 "typescript@patch:typescript@^5.0.3#~builtin<compat/typescript>":
   version: 5.0.4
-  resolution: "typescript@patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"
+  resolution: "typescript@patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: d26b6ba97b6d163c55dbdffd9bbb4c211667ebebc743accfeb2c8c0154aace7afd097b51165a72a5bad2cf65a4612259344ff60f8e642362aa1695c760d303ac
+  checksum: bb309d320c59a26565fb3793dba550576ab861018ff3fd1b7fccabbe46ae4a35546bc45f342c0a0b6f265c801ccdf64ffd68f548f117ceb7f0eac4b805cd52a9
   languageName: node
   linkType: hard
 

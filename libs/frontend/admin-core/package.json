@@ -29,7 +29,7 @@
   "dependencies": {
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.30",
     "@myparcel/constants": "^1.0.0",
-    "@myparcel/sdk": "^2.11.0",
+    "@myparcel/sdk": "^3.0.0",
     "@myparcel/ts-utils": "^1.6.0",
     "@myparcel/vue-form-builder": "^1.0.0-beta.0",
     "@tanstack/vue-query": "^4.24.10",
