@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.30](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.29...@myparcel-pdk/common@1.0.0-alpha.30) "@myparcel-pdk/common" (2023-05-04)
+
+
+### Features
+
+* **checkout:** improve checkout logic ([fb2a8bd](https://github/myparcelnl/js-pdk/commit/fb2a8bd4b9404cac0fe600526d85465e3a1ee5f9))
+
+
+
+
 ## [1.0.0-alpha.29](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.28...@myparcel-pdk/common@1.0.0-alpha.29) "@myparcel-pdk/common" (2023-05-01)
 
 

@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.6](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-tax-fields@1.0.0-alpha.5...@myparcel-pdk/frontend-checkout-tax-fields@1.0.0-alpha.6) "@myparcel-pdk/frontend-checkout-tax-fields" (2023-05-04)
+
+
+### Features
+
+* **checkout:** improve checkout logic ([fb2a8bd](https://github/myparcelnl/js-pdk/commit/fb2a8bd4b9404cac0fe600526d85465e3a1ee5f9))
+
+
+
+
 ## [1.0.0-alpha.5](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-tax-fields@1.0.0-alpha.4...@myparcel-pdk/frontend-checkout-tax-fields@1.0.0-alpha.5) "@myparcel-pdk/frontend-checkout-tax-fields" (2023-04-20)
 
 

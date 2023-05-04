@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.57](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.56...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.57) "@myparcel-pdk/frontend-admin-core" (2023-05-04)
+
+
+### Features
+
+* **checkout:** improve checkout logic ([fb2a8bd](https://github/myparcelnl/js-pdk/commit/fb2a8bd4b9404cac0fe600526d85465e3a1ee5f9))
+
+
+
+
 ## [1.0.0-alpha.56](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.55...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.56) "@myparcel-pdk/frontend-admin-core" (2023-05-02)
 
 
