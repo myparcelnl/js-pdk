@@ -10,6 +10,8 @@ export {default as Bootstrap4CheckboxInput} from './Bootstrap4CheckboxInput.vue'
 
 export {default as Bootstrap4Col} from './Bootstrap4Col.vue';
 
+export {default as Bootstrap4DropOffInput} from './Bootstrap4DropOffInput.vue';
+
 export {default as Bootstrap4DropdownButton} from './Bootstrap4DropdownButton.vue';
 
 export {default as Bootstrap4FormGroup} from './Bootstrap4FormGroup.vue';
