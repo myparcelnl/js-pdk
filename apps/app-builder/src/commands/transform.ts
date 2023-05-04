@@ -24,7 +24,9 @@ const SOURCE_PLATFORM = 'myparcelnl';
 export const transform: PdkBuilderCommand = async ({env, config, args}) => {
   const {debug, time} = initializeCommand(COMMAND_TRANSFORM_NAME);
 
-  if (args.dryRun) reportDryRun(debug, 'No files will be transformed.');
+  if (args.dryRun) {
+    reportDryRun(debug, 'No files will be transformed.');
+  }
 
   const filteredPlatforms = config.platforms.filter((platform) => platform !== SOURCE_PLATFORM);
 
@@ -46,7 +48,6 @@ export const transform: PdkBuilderCommand = async ({env, config, args}) => {
       const files = glob.sync(`${platformFolderPath}/**/*`, {
         ignore: [
           `${platformFolderPath}/node_modules/**/*`,
-          `${platformFolderPath}/vendor/**/*`,
           `${platformFolderPath}/package.json`,
           `${platformFolderPath}/yarn.lock`,
           `${platformFolderPath}/**/*.log`,
