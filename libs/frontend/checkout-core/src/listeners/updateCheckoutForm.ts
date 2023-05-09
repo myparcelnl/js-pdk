@@ -9,8 +9,9 @@ export const updateCheckoutForm = (): void => {
   const checkout = useCheckoutStore();
   const config = useConfig();
 
-  const formData = new FormData(config.getForm());
-  const data = Object.fromEntries(formData.entries());
+  const data = config.getFormData();
+
+  console.log('Form data:', data);
 
   const transformedData = {
     [AddressType.Billing]: {},
