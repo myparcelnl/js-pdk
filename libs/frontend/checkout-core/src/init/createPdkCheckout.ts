@@ -18,6 +18,12 @@ export const createPdkCheckout = (config: PdkCheckoutConfigInput): void => {
 
       config.getForm().addEventListener('change', callback);
     },
+    getFormData() {
+      const config = useConfig();
+      const formData = new FormData(config.getForm());
+
+      return Object.fromEntries(formData.entries());
+    },
     ...config,
     selectors: {
       deliveryOptions: '#myparcel-delivery-options',

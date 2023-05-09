@@ -38,8 +38,9 @@ export enum PdkField {
 
 export type AddressFields = Record<AddressField, string>;
 
-export type PdkCheckoutConfigInput = Omit<PdkCheckoutConfig, 'selectors' | 'onFormChange'> & {
+export type PdkCheckoutConfigInput = Omit<PdkCheckoutConfig, 'selectors' | 'onFormChange' | 'getFormData'> & {
   onFormChange?(callback: () => void): void;
+  getFormData?(): Record<string, FormDataEntryValue>;
   selectors: Omit<PdkCheckoutConfig['selectors'], 'deliveryOptions'> & {
     deliveryOptions?: string;
   };
@@ -71,6 +72,8 @@ export interface PdkCheckoutConfig {
   onFormChange(callback: () => void): void;
 
   toggleField(field: HTMLInputElement, show: boolean): void;
+
+  getFormData(): Record<string, FormDataEntryValue>;
 }
 
 export type InitializeCallback = () => void;
