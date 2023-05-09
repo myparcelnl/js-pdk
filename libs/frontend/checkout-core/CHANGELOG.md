@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.7](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.6...@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.7) "@myparcel-pdk/frontend-checkout-core" (2023-05-09)
+
+
+### Features
+
+* **checkout:** move getFormData to config ([c86595f](https://github/myparcelnl/js-pdk/commit/c86595f1384bd7c06bb6c8b40ec47f679a388ed4))
+* **checkout:** move hasAddressType to config ([e09c0e0](https://github/myparcelnl/js-pdk/commit/e09c0e050219d477a0b3a325027479de0a48a6de))
+
+
+
+
 ## [1.0.0-alpha.6](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.5...@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.6) "@myparcel-pdk/frontend-checkout-core" (2023-05-04)
 
 

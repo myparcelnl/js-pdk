@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/frontend-checkout-delivery-options",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
