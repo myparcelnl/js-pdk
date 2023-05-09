@@ -8,4 +8,6 @@ export const initializeCheckoutTaxFields = (): void => {
   const checkout = useCheckoutStore();
 
   checkout.on(StoreListener.Update, toggleTaxFields);
+
+  toggleTaxFields();
 };

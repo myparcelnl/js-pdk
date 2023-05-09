@@ -1,6 +1,6 @@
 import {Util, useConfig, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
 import {EVENT_UPDATE_DELIVERY_OPTIONS} from '@myparcel-pdk/frontend-delivery-options/src';
-import {useDeliveryOptionsStore} from './useDeliveryOptionsStore';
+import {useDeliveryOptionsStore} from '../store';
 
 export const bootDeliveryOptions = (): void => {
   const deliveryOptions = useDeliveryOptionsStore();

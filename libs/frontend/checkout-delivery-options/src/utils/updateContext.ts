@@ -1,6 +1,6 @@
 import {PdkField, Util, useCheckoutStore, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
 import {FrontendEndpoint} from '@myparcel-pdk/common/src';
-import {useDeliveryOptionsStore} from './useDeliveryOptionsStore';
+import {useDeliveryOptionsStore} from '../store';
 
 /**
  * Fetch and update the delivery options config. For use with changing shipping methods, for example, as doing so
@@ -8,7 +8,6 @@ import {useDeliveryOptionsStore} from './useDeliveryOptionsStore';
  */
 export const updateContext = async (): Promise<void> => {
   const doRequest = useUtil(Util.DoRequest);
-
   const getFieldValue = useUtil(Util.GetFieldValue);
 
   const context = await doRequest(FrontendEndpoint.FetchCheckoutContext, {

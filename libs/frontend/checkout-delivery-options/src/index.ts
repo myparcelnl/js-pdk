@@ -1,5 +1,10 @@
 import {StoreListener, useCheckoutStore} from '@myparcel-pdk/frontend-checkout-core/src';
-import {onShippingMethodChange, updateDeliveryOptions, updateDeliveryOptionsOutput} from './listeners';
+import {
+  showOrHideDeliveryOptions,
+  updateDeliveryOptions,
+  updateDeliveryOptionsOutput,
+  updateHasDeliveryOptions,
+} from './listeners';
 import {EVENT_UPDATED_DELIVERY_OPTIONS} from '@myparcel-pdk/frontend-delivery-options/src';
 import {bootDeliveryOptions} from './utils/bootDeliveryOptions';
 import {createDeliveryOptionsStore} from './store';
@@ -19,7 +24,10 @@ export const initializeCheckoutDeliveryOptions = (): void => {
   const checkout = useCheckoutStore();
 
   checkout.on(StoreListener.Update, updateDeliveryOptions);
-  checkout.on(StoreListener.Update, onShippingMethodChange);
+  checkout.on(StoreListener.Update, updateHasDeliveryOptions);
+  checkout.on(StoreListener.Update, showOrHideDeliveryOptions);
 
   document.addEventListener(EVENT_UPDATED_DELIVERY_OPTIONS, updateDeliveryOptionsOutput);
 };
+
+export {useDeliveryOptionsStore} from './store';

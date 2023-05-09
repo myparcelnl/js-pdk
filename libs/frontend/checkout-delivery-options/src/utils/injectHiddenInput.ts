@@ -1,5 +1,5 @@
 import {useConfig, useSettings} from '@myparcel-pdk/frontend-checkout-core/src';
-import {useDeliveryOptionsStore} from './useDeliveryOptionsStore';
+import {useDeliveryOptionsStore} from '../store';
 
 /**
  * Create an input field in the checkout form to be able to pass the checkout data to the $_POST variable when

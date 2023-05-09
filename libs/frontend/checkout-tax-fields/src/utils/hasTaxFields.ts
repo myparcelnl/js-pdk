@@ -1,4 +1,5 @@
 import {CarrierName} from '@myparcel/constants';
+import {useDeliveryOptionsStore} from '@myparcel-pdk/frontend-checkout-delivery-options/src';
 import {useSettings} from '@myparcel-pdk/frontend-checkout-core/src';
 
 export const hasTaxFields = (): boolean => {
@@ -7,9 +8,8 @@ export const hasTaxFields = (): boolean => {
   let hasTaxFields = true;
 
   if (settings.hasDeliveryOptions) {
-    const {deliveryOptions} = window.MyParcelPdk.stores;
-
-    const carrier = deliveryOptions.state.output.carrier ?? null;
+    const deliveryOptions = useDeliveryOptionsStore();
+    const carrier = deliveryOptions.state?.output?.carrier ?? null;
 
     hasTaxFields = Boolean(carrier && settings.carriersWithTaxFields.includes(carrier as CarrierName));
   }

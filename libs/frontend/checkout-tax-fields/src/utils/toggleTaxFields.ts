@@ -1,15 +1,7 @@
-import {
-  AddressField,
-  CheckoutStoreState,
-  StoreCallbackUpdate,
-  Util,
-  useCheckoutStore,
-  useConfig,
-  useUtil,
-} from '@myparcel-pdk/frontend-checkout-core/src';
+import {AddressField, Util, useCheckoutStore, useConfig, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
 import {hasTaxFields} from './hasTaxFields';
 
-export const toggleTaxFields: StoreCallbackUpdate<CheckoutStoreState> = (newState, oldState): void => {
+export const toggleTaxFields = (): void => {
   const getAddressField = useUtil(Util.GetAddressField);
 
   const checkout = useCheckoutStore();
@@ -24,6 +16,7 @@ export const toggleTaxFields: StoreCallbackUpdate<CheckoutStoreState> = (newStat
         return;
       }
 
+      console.log('toggleTaxFields', field, showTaxFields);
       config.toggleField(field, showTaxFields);
     });
   });
