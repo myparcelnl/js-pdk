@@ -4,7 +4,9 @@
       v-for="[day, human] in Object.entries(weekdaysObject)"
       :key="day">
       <div class="row">
-        <span class="col-12" v-text="human"></span>
+        <span
+          class="col-12"
+          v-text="human"></span>
       </div>
       <div class="row">
         <span class="col-3">
@@ -14,9 +16,8 @@
         </span>
 
         <span class="col-9">
-          <div :class="
-            {invisible: !toggleRefs[day]}
-          ">
+          <div
+            :class="{invisible: !toggleRefs[day]}">
             <PdkTimeInput
               v-model="cutoffRefs[day]"
               :element="cutoffElements[day]" />
@@ -27,10 +28,11 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import {PropType} from 'vue';
-import {Settings} from '@myparcel-pdk/common/src';
-import {useDropOffInputContext} from '@myparcel-pdk/frontend-admin-core/src';
+<script
+  lang="ts"
+  setup>
+import { Settings } from '@myparcel-pdk/common/src';
+import { useDropOffInputContext } from '@myparcel-pdk/frontend-admin-core/src';
 
 const props = defineProps<{
   modelValue: Settings.ModelDropOffPossibilities;
@@ -38,7 +40,7 @@ const props = defineProps<{
 
 const emit = defineEmits<(event: 'update:modelValue', value: Settings.ModelDropOffPossibilities) => void>();
 
-const {weekdaysObject, cutoffElements, toggleElements, toggleRefs, cutoffRefs} = useDropOffInputContext(
+const { weekdaysObject, cutoffElements, toggleElements, toggleRefs, cutoffRefs } = useDropOffInputContext(
   props.modelValue,
   emit,
 );
