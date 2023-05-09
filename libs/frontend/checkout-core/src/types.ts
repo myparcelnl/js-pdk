@@ -58,7 +58,6 @@ export interface PdkCheckoutConfig {
   selectors: {
     deliveryOptions: string;
     deliveryOptionsWrapper: string;
-    hasAddressType: string;
   };
 
   doRequest<E extends FrontendEndpoint>(
@@ -67,13 +66,15 @@ export interface PdkCheckoutConfig {
 
   getForm(): HTMLFormElement;
 
+  getFormData(): Record<string, FormDataEntryValue>;
+
+  hasAddressType(addressType: AddressType): boolean;
+
   initialize(): Promise<void>;
 
   onFormChange(callback: () => void): void;
 
   toggleField(field: HTMLInputElement, show: boolean): void;
-
-  getFormData(): Record<string, FormDataEntryValue>;
 }
 
 export type InitializeCallback = () => void;
