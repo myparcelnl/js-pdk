@@ -1460,7 +1460,7 @@ __metadata:
     lint-staged: ^13.1.2
     monodeploy: ^4.0.0
     nodemon: ^2.0.20
-    nx: ^16.0.1
+    nx: ^16.1.4
     prettier: ^2.8.4
     rimraf: ^5.0.0
   languageName: unknown
@@ -1655,76 +1655,76 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nrwl/tao@npm:16.0.1":
-  version: 16.0.1
-  resolution: "@nrwl/tao@npm:16.0.1"
+"@nrwl/tao@npm:16.1.4":
+  version: 16.1.4
+  resolution: "@nrwl/tao@npm:16.1.4"
   dependencies:
-    nx: 16.0.1
+    nx: 16.1.4
   bin:
     tao: index.js
-  checksum: 03d01d976e7c0b139046a19de899ba9419224b63efdcfc1e57e84eec90b3a7c61c6c99c09535c94d6320b1aa2a1b671d97faf445d5279f7ffb1fc58fa4ef137c
+  checksum: c0c4a7b04a708fedae1c51caa1927921b7ea9df5164339130dc1060334bf8f56d189f0e93fedfb273ee9b0072bec3b79a5606f7aaabc1321c5e916b0579c6313
   languageName: node
   linkType: hard
 
-"@nx/nx-darwin-arm64@npm:16.0.1":
-  version: 16.0.1
-  resolution: "@nx/nx-darwin-arm64@npm:16.0.1"
+"@nx/nx-darwin-arm64@npm:16.1.4":
+  version: 16.1.4
+  resolution: "@nx/nx-darwin-arm64@npm:16.1.4"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@nx/nx-darwin-x64@npm:16.0.1":
-  version: 16.0.1
-  resolution: "@nx/nx-darwin-x64@npm:16.0.1"
+"@nx/nx-darwin-x64@npm:16.1.4":
+  version: 16.1.4
+  resolution: "@nx/nx-darwin-x64@npm:16.1.4"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@nx/nx-linux-arm-gnueabihf@npm:16.0.1":
-  version: 16.0.1
-  resolution: "@nx/nx-linux-arm-gnueabihf@npm:16.0.1"
+"@nx/nx-linux-arm-gnueabihf@npm:16.1.4":
+  version: 16.1.4
+  resolution: "@nx/nx-linux-arm-gnueabihf@npm:16.1.4"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@nx/nx-linux-arm64-gnu@npm:16.0.1":
-  version: 16.0.1
-  resolution: "@nx/nx-linux-arm64-gnu@npm:16.0.1"
+"@nx/nx-linux-arm64-gnu@npm:16.1.4":
+  version: 16.1.4
+  resolution: "@nx/nx-linux-arm64-gnu@npm:16.1.4"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@nx/nx-linux-arm64-musl@npm:16.0.1":
-  version: 16.0.1
-  resolution: "@nx/nx-linux-arm64-musl@npm:16.0.1"
+"@nx/nx-linux-arm64-musl@npm:16.1.4":
+  version: 16.1.4
+  resolution: "@nx/nx-linux-arm64-musl@npm:16.1.4"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@nx/nx-linux-x64-gnu@npm:16.0.1":
-  version: 16.0.1
-  resolution: "@nx/nx-linux-x64-gnu@npm:16.0.1"
+"@nx/nx-linux-x64-gnu@npm:16.1.4":
+  version: 16.1.4
+  resolution: "@nx/nx-linux-x64-gnu@npm:16.1.4"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@nx/nx-linux-x64-musl@npm:16.0.1":
-  version: 16.0.1
-  resolution: "@nx/nx-linux-x64-musl@npm:16.0.1"
+"@nx/nx-linux-x64-musl@npm:16.1.4":
+  version: 16.1.4
+  resolution: "@nx/nx-linux-x64-musl@npm:16.1.4"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@nx/nx-win32-arm64-msvc@npm:16.0.1":
-  version: 16.0.1
-  resolution: "@nx/nx-win32-arm64-msvc@npm:16.0.1"
+"@nx/nx-win32-arm64-msvc@npm:16.1.4":
+  version: 16.1.4
+  resolution: "@nx/nx-win32-arm64-msvc@npm:16.1.4"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@nx/nx-win32-x64-msvc@npm:16.0.1":
-  version: 16.0.1
-  resolution: "@nx/nx-win32-x64-msvc@npm:16.0.1"
+"@nx/nx-win32-x64-msvc@npm:16.1.4":
+  version: 16.1.4
+  resolution: "@nx/nx-win32-x64-msvc@npm:16.1.4"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -10005,20 +10005,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nx@npm:16.0.1, nx@npm:^16.0.1":
-  version: 16.0.1
-  resolution: "nx@npm:16.0.1"
+"nx@npm:16.1.4, nx@npm:^16.1.4":
+  version: 16.1.4
+  resolution: "nx@npm:16.1.4"
   dependencies:
-    "@nrwl/tao": 16.0.1
-    "@nx/nx-darwin-arm64": 16.0.1
-    "@nx/nx-darwin-x64": 16.0.1
-    "@nx/nx-linux-arm-gnueabihf": 16.0.1
-    "@nx/nx-linux-arm64-gnu": 16.0.1
-    "@nx/nx-linux-arm64-musl": 16.0.1
-    "@nx/nx-linux-x64-gnu": 16.0.1
-    "@nx/nx-linux-x64-musl": 16.0.1
-    "@nx/nx-win32-arm64-msvc": 16.0.1
-    "@nx/nx-win32-x64-msvc": 16.0.1
+    "@nrwl/tao": 16.1.4
+    "@nx/nx-darwin-arm64": 16.1.4
+    "@nx/nx-darwin-x64": 16.1.4
+    "@nx/nx-linux-arm-gnueabihf": 16.1.4
+    "@nx/nx-linux-arm64-gnu": 16.1.4
+    "@nx/nx-linux-arm64-musl": 16.1.4
+    "@nx/nx-linux-x64-gnu": 16.1.4
+    "@nx/nx-linux-x64-musl": 16.1.4
+    "@nx/nx-win32-arm64-msvc": 16.1.4
+    "@nx/nx-win32-x64-msvc": 16.1.4
     "@parcel/watcher": 2.0.4
     "@yarnpkg/lockfile": ^1.1.0
     "@yarnpkg/parsers": ^3.0.0-rc.18
@@ -10081,7 +10081,7 @@ __metadata:
       optional: true
   bin:
     nx: bin/nx.js
-  checksum: fab869bf1e859ba25712252eca31d9af4c0141b1b571fcec9dc703bb08d76606add92c1f0d062c0b877967e9c2151089c1dffb389c0eb6136e0bc42f9f27a731
+  checksum: c15a28da773280a6e2c881540d74fafe688460c763c6dab29e8639b69cc6bcd3989619ea1487fb1ae59c299e9e1ac9e54b1a8703162fd6c50acb7a21cfde08b0
   languageName: node
   linkType: hard
 
@@ -13021,21 +13021,21 @@ __metadata:
 
 "typescript@patch:typescript@^4.7.4#~builtin<compat/typescript>":
   version: 4.9.5
-  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"
+  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 1f8f3b6aaea19f0f67cba79057674ba580438a7db55057eb89cc06950483c5d632115c14077f6663ea76fd09fce3c190e6414bb98582ec80aa5a4eaf345d5b68
+  checksum: ab417a2f398380c90a6cf5a5f74badd17866adf57f1165617d6a551f059c3ba0a3e4da0d147b3ac5681db9ac76a303c5876394b13b3de75fdd5b1eaa06181c9d
   languageName: node
   linkType: hard
 
 "typescript@patch:typescript@^5.0.3#~builtin<compat/typescript>":
   version: 5.0.4
-  resolution: "typescript@patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"
+  resolution: "typescript@patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: d26b6ba97b6d163c55dbdffd9bbb4c211667ebebc743accfeb2c8c0154aace7afd097b51165a72a5bad2cf65a4612259344ff60f8e642362aa1695c760d303ac
+  checksum: bb309d320c59a26565fb3793dba550576ab861018ff3fd1b7fccabbe46ae4a35546bc45f342c0a0b6f265c801ccdf64ffd68f548f117ceb7f0eac4b805cd52a9
   languageName: node
   linkType: hard
 
