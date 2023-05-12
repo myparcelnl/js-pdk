@@ -30,8 +30,8 @@ jobs:
       - uses: myparcelnl/actions/setup-git-credentials@v3
         id: credentials
         with:
-          app-id: ${{ inputs.app-id }}
-          private-key: ${{ inputs.private-key }}
+          app-id: ${{ secrets.MYPARCEL_APP_ID }}
+          private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
 
       - name: 'Fetch base branch'
         shell: bash
