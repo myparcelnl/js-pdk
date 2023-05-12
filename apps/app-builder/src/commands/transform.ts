@@ -48,6 +48,7 @@ export const transform: PdkBuilderCommand = async ({env, config, args}) => {
       const files = glob.sync(`${platformFolderPath}/**/*`, {
         ignore: [
           `${platformFolderPath}/node_modules/**/*`,
+          `${platformFolderPath}/vendor/!(composer)**/*`,
           `${platformFolderPath}/package.json`,
           `${platformFolderPath}/yarn.lock`,
           `${platformFolderPath}/**/*.log`,
