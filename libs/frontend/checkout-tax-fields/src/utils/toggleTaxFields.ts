@@ -16,7 +16,6 @@ export const toggleTaxFields = (): void => {
         return;
       }
 
-      console.log('toggleTaxFields', field, showTaxFields);
       config.toggleField(field, showTaxFields);
     });
   });
