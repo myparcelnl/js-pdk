@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.8](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-tax-fields@1.0.0-alpha.7...@myparcel-pdk/frontend-checkout-tax-fields@1.0.0-alpha.8) "@myparcel-pdk/frontend-checkout-tax-fields" (2023-05-15)
+
+
+
+
 ## [1.0.0-alpha.7](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-tax-fields@1.0.0-alpha.6...@myparcel-pdk/frontend-checkout-tax-fields@1.0.0-alpha.7) "@myparcel-pdk/frontend-checkout-tax-fields" (2023-05-09)
 
 

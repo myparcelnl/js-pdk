@@ -2,6 +2,20 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.8](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.7...@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.8) "@myparcel-pdk/frontend-checkout-core" (2023-05-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **checkout-core:** rename config.onFormChange to config.formChange
+
+### Bug Fixes
+
+* **checkout-core:** improve address type logic ([aed47ee](https://github/myparcelnl/js-pdk/commit/aed47ee6083c7122a8231f63467ba956ea349fb5))
+
+
+
+
 ## [1.0.0-alpha.7](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.6...@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.7) "@myparcel-pdk/frontend-checkout-core" (2023-05-09)
 
 

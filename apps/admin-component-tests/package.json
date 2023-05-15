@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-component-tests",
-  "version": "1.0.0-alpha.59",
+  "version": "1.0.0-alpha.60",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.30",
-    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.57",
+    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.58",
     "@vue/test-utils": "^2.3.0",
     "vue": "^3.2.47"
   },
