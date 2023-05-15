@@ -32,14 +32,18 @@ export const SEPARATE_ADDRESS_FIELDS = [AddressField.Street, AddressField.Number
 export const SEPARATE_ADDRESS_FIELDS_WITHOUT_SUFFIX = [AddressField.Street, AddressField.Number] as const;
 
 export enum PdkField {
+  AddressType = 'addressType',
   ShippingMethod = 'shippingMethod',
-  ToggleAddressType = 'toggleAddressType',
 }
 
 export type AddressFields = Record<AddressField, string>;
 
-export type PdkCheckoutConfigInput = Omit<PdkCheckoutConfig, 'selectors' | 'onFormChange' | 'getFormData'> & {
-  onFormChange?(callback: () => void): void;
+export type PdkCheckoutConfigInput = Omit<
+  PdkCheckoutConfig,
+  'selectors' | 'formChange' | 'getFormData' | 'getAddressType'
+> & {
+  formChange?(callback: () => void): void;
+  getAddressType?(value: unknown): AddressType;
   getFormData?(): Record<string, FormDataEntryValue>;
   selectors: Omit<PdkCheckoutConfig['selectors'], 'deliveryOptions'> & {
     deliveryOptions?: string;
@@ -60,20 +64,46 @@ export interface PdkCheckoutConfig {
     deliveryOptionsWrapper: string;
   };
 
+  /**
+   * Do a request to the backend.
+   */
   doRequest<E extends FrontendEndpoint>(
     endpoint: FrontendPdkEndpointObject[E] & {baseUrl: string},
   ): Promise<FrontendEndpointResponse<E>>;
 
+  /**
+   * The handler for the form change event.
+   */
+  formChange(callback: () => void): void;
+
+  /**
+   * Get the address type that is currently active.
+   */
+  getAddressType(value: unknown): AddressType;
+
+  /**
+   * Get the form element.
+   */
   getForm(): HTMLFormElement;
 
+  /**
+   * Get the form data.
+   */
   getFormData(): Record<string, FormDataEntryValue>;
 
+  /**
+   * Check if the address type is available.
+   */
   hasAddressType(addressType: AddressType): boolean;
 
+  /**
+   * Callback that is called when the checkout is initialized.
+   */
   initialize(): Promise<void>;
 
-  onFormChange(callback: () => void): void;
-
+  /**
+   * Toggle showing/hiding a field.
+   */
   toggleField(field: HTMLInputElement, show: boolean): void;
 }
 

@@ -1,4 +1,4 @@
-import {InitializeCallback, PdkCheckoutConfigInput} from '../types';
+import {AddressType, InitializeCallback, PdkCheckoutConfigInput} from '../types';
 import {setupGlobals} from './setupGlobals';
 import {useConfig} from '../config';
 
@@ -13,17 +13,22 @@ const execute = (callback: InitializeCallback): void => {
 // noinspection JSUnusedGlobalSymbols
 export const createPdkCheckout = (config: PdkCheckoutConfigInput): void => {
   setupGlobals({
-    onFormChange(callback) {
-      const config = useConfig();
-
-      config.getForm().addEventListener('change', callback);
+    formChange(callback) {
+      const form = useConfig().getForm();
+      form.addEventListener('change', callback);
     },
+
+    getAddressType(value) {
+      return value as AddressType;
+    },
+
     getFormData() {
-      const config = useConfig();
-      const formData = new FormData(config.getForm());
+      const form = useConfig().getForm();
+      const formData = new FormData(form);
 
       return Object.fromEntries(formData.entries());
     },
+
     ...config,
     selectors: {
       deliveryOptions: '#myparcel-delivery-options',

@@ -4,7 +4,7 @@ import {useConfig} from '../config';
 export const addFormListeners = (): void => {
   const config = useConfig();
 
-  config.onFormChange(updateCheckoutForm);
+  config.formChange(updateCheckoutForm);
 
   updateCheckoutForm();
 };

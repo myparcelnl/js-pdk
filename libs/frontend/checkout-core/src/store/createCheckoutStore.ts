@@ -1,7 +1,7 @@
 import {AddressType, CheckoutAppContext, PdkCheckoutForm} from '../types';
-import {Util, getAddressType, getFrontendContext, hasAddressType, useUtil} from '../utils';
-import {updateAddressType, updateShippingMethod} from '../listeners';
+import {Util, getFrontendContext, hasAddressType, useUtil} from '../utils';
 import {StoreListener} from '@myparcel-pdk/frontend-checkout-core/src';
+import {updateAddressType} from '../listeners';
 
 export type CheckoutStoreState = {
   addressType: AddressType;
@@ -9,7 +9,6 @@ export type CheckoutStoreState = {
   context: CheckoutAppContext['checkout'];
   form: PdkCheckoutForm;
   hasDeliveryOptions: boolean;
-  shippingMethod?: string;
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -19,7 +18,7 @@ export const createCheckoutStore = () => {
   return createStore<CheckoutStoreState>(Symbol('checkout'), () => {
     return {
       state: {
-        addressType: getAddressType(),
+        addressType: AddressType.Shipping,
         addressTypes: ([AddressType.Billing, AddressType.Shipping] as const).filter(hasAddressType),
         context: getFrontendContext(),
         form: {
@@ -30,7 +29,7 @@ export const createCheckoutStore = () => {
       },
 
       listeners: {
-        [StoreListener.Update]: [updateAddressType, updateShippingMethod],
+        [StoreListener.Update]: [updateAddressType],
       },
     };
   })();
