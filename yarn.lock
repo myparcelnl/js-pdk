@@ -1176,7 +1176,7 @@ __metadata:
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.30.1
     autoprefixer: ^10.4.13
-    happy-dom: ^9.10.2
+    happy-dom: ^9.18.3
     postcss: ^8.4.21
     rollup-plugin-visualizer: ^5.9.0
     tailwindcss: ^3.2.7
@@ -1199,7 +1199,7 @@ __metadata:
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.30.1
     "@vue/test-utils": ^2.3.0
-    happy-dom: ^9.10.2
+    happy-dom: ^9.18.3
     pinia: ^2.0.32
     typescript: ^5.0.3
     vite: ^4.3.4
@@ -1217,7 +1217,7 @@ __metadata:
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.30.1
     "@vue/test-utils": ^2.3.0
-    happy-dom: ^9.10.2
+    happy-dom: ^9.18.3
     typescript: ^5.0.3
     vite: ^4.3.4
     vitest: ^0.30.1
@@ -1236,7 +1236,7 @@ __metadata:
     "@vitest/coverage-c8": ^0.30.1
     "@vue/test-utils": ^2.3.0
     "@vueuse/core": ^10.1.2
-    happy-dom: ^9.10.2
+    happy-dom: ^9.18.3
     typescript: ^5.0.3
     vite: ^4.3.4
     vitest: ^0.30.1
@@ -1253,7 +1253,7 @@ __metadata:
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.30.1
     "@vue/test-utils": ^2.3.0
-    happy-dom: ^9.10.2
+    happy-dom: ^9.18.3
     typescript: ^5.0.3
     vite: ^4.3.4
     vitest: ^0.30.1
@@ -5975,6 +5975,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"entities@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "entities@npm:4.5.0"
+  checksum: 853f8ebd5b425d350bffa97dd6958143179a5938352ccae092c62d1267c4e392a039be1bae7d51b6e4ffad25f51f9617531fedf5237f15df302ccfb452cbf2d7
+  languageName: node
+  linkType: hard
+
 "env-paths@npm:^2.2.0":
   version: 2.2.1
   resolution: "env-paths@npm:2.2.1"
@@ -7467,17 +7474,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:^9.10.2":
-  version: 9.10.2
-  resolution: "happy-dom@npm:9.10.2"
+"happy-dom@npm:^9.18.3":
+  version: 9.18.3
+  resolution: "happy-dom@npm:9.18.3"
   dependencies:
     css.escape: ^1.5.1
-    he: ^1.2.0
+    entities: ^4.5.0
     iconv-lite: ^0.6.3
     webidl-conversions: ^7.0.0
     whatwg-encoding: ^2.0.0
     whatwg-mimetype: ^3.0.0
-  checksum: c196f558e901c1474f2bfe7908e4df0254198a1edb525afee1feb4e099d4d1da9f4ead1e1b4fa07cc71fb5f74982053d433387d0015fa210a665e2fff1cdde9b
+  checksum: 0709a046ce170cfb0186786a7daa8f2656df179f9a482ec3de4b75e50935c914e6aef40fa50f6ee12daa4ca45b514ff8c5a192ed7cb47c02f677e5e48cf8f881
   languageName: node
   linkType: hard
 
