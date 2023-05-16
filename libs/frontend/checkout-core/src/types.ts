@@ -1,7 +1,8 @@
 import {FrontendEndpoint, FrontendPdkEndpointObject} from '@myparcel-pdk/common/src';
+import {CarrierName} from '@myparcel/constants';
 import {FrontendEndpointResponse} from './types/endpoints.types';
 import {MyParcelDeliveryOptions} from '@myparcel/delivery-options';
-import {CarrierName} from '@myparcel/constants';
+import {PromiseOr} from '@myparcel/ts-utils';
 
 export enum AddressType {
   Billing = 'billing',
@@ -40,11 +41,12 @@ export type AddressFields = Record<AddressField, string>;
 
 export type PdkCheckoutConfigInput = Omit<
   PdkCheckoutConfig,
-  'selectors' | 'formChange' | 'getFormData' | 'getAddressType'
+  'selectors' | 'formChange' | 'getFormData' | 'getAddressType' | 'hasDeliveryOptions'
 > & {
   formChange?(callback: () => void): void;
   getAddressType?(value: unknown): AddressType;
   getFormData?(): Record<string, FormDataEntryValue>;
+  hasDeliveryOptions?(shippingMethod: string): PromiseOr<boolean>;
   selectors: Omit<PdkCheckoutConfig['selectors'], 'deliveryOptions'> & {
     deliveryOptions?: string;
   };
@@ -95,6 +97,11 @@ export interface PdkCheckoutConfig {
    * Check if the address type is available.
    */
   hasAddressType(addressType: AddressType): boolean;
+
+  /**
+   * Check if the delivery options are available for the shipping method.
+   */
+  hasDeliveryOptions(shippingMethod: string): PromiseOr<boolean>;
 
   /**
    * Callback that is called when the checkout is initialized.

@@ -1,2 +1,4 @@
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useSettings = () => window.MyParcelPdk.stores.checkout.state.context.settings;
+import {CheckoutSettings} from '@myparcel-pdk/frontend-checkout-core/src';
+
+export const useSettings = (): CheckoutSettings => window.MyParcelPdk.stores.checkout.state.context.settings;

@@ -19,7 +19,7 @@ type StoreListenerObject<S extends StoreState> = {
   [L in StoreListener]?: StoreListeners<S>[L][];
 };
 
-export type StoreCallbackUpdate<T extends StoreState = StoreState> = (newState: T, oldState: T) => PromiseOr<void | T>;
+export type StoreCallbackUpdate<T extends StoreState = StoreState> = (newState: T, oldState?: T) => PromiseOr<void | T>;
 
 type StoreListeners<T extends StoreState> = {
   [StoreListener.Update]: StoreCallbackUpdate<T>;

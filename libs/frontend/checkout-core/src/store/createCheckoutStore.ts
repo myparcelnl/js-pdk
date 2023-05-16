@@ -8,7 +8,6 @@ export type CheckoutStoreState = {
   addressTypes: AddressType[];
   context: CheckoutAppContext['checkout'];
   form: PdkCheckoutForm;
-  hasDeliveryOptions: boolean;
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -25,7 +24,6 @@ export const createCheckoutStore = () => {
           [AddressType.Billing]: {},
           [AddressType.Shipping]: {},
         } as PdkCheckoutForm,
-        hasDeliveryOptions: false,
       },
 
       listeners: {
