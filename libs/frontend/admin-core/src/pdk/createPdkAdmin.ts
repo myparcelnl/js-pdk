@@ -7,9 +7,9 @@ import {sendBootEvent} from '../utils';
 export type CreatePdkAdmin = (configuration?: AdminConfiguration) => undefined | PdkAdmin;
 
 /**
- * Must match \MyParcelNL\Pdk\Plugin\Service\RenderService::BOOTSTRAP_CONTAINER_ID.
+ * Must match \MyParcelNL\Pdk\Plugin\Service\Frontend::BOOTSTRAP_CONTAINER_ID.
  *
- * @see https://github.com/myparcelnl/pdk/blob/main/src/Plugin/Service/RenderService.php
+ * @see https://github.com/myparcelnl/pdk/blob/main/src/Frontend/Service/FrontendRenderService.php
  */
 const BOOTSTRAP_CONTAINER_SELECTOR = '#myparcel-pdk-boot';
 
