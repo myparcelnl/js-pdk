@@ -6,11 +6,11 @@ import {
   PdkEndpointParameters,
   PdkEndpointResponse,
 } from '@myparcel-pdk/common/src';
+import {OneOrMore, ReverseMap} from '@myparcel/ts-utils';
 import {AdminAction} from './actions.types';
 import {AdminContextKey} from './context.types';
 import {BackendEndpointDefinition} from '@myparcel-pdk/frontend-admin-core/src';
 import {FormInstance} from '@myparcel/vue-form-builder/src';
-import {OneOrMore} from '@myparcel/ts-utils';
 
 export type BackendEndpointResponse<E extends BackendEndpoint> = PdkEndpointResponse<E, BackendEndpointDefinition>;
 
@@ -36,11 +36,7 @@ export interface AdminActionEndpointMap extends Record<AdminAction, BackendEndpo
   [AdminAction.WebhooksFetch]: BackendEndpoint.FetchWebhooks;
 }
 
-export type EndpointAdminActionMap = {
-  [K in BackendEndpoint]: AdminActionEndpointMap[keyof AdminActionEndpointMap] extends K
-    ? AdminActionEndpointMap[keyof AdminActionEndpointMap]
-    : never;
-};
+export type EndpointAdminActionMap = ReverseMap<AdminActionEndpointMap>;
 
 type LabelOptions = {
   output?: LabelOutput;

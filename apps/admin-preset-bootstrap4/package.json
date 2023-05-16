@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.58",
-    "@myparcel/ts-utils": "^1.6.0",
+    "@myparcel/ts-utils": "^1.9.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {

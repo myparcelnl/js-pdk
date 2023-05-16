@@ -1,15 +1,10 @@
-import {
-  ActionContext,
-  createMutationHandler,
-  createQueryHandler,
-  executeNextAction,
-  resolveOrderParameters,
-} from '../executors';
 import {ActionParameters, AdminAction, AdminIcon, AdminModalKey} from '../../types';
+import {createMutationHandler, createQueryHandler, executeNextAction, resolveOrderParameters} from '../executors';
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
 import {BackendEndpoint} from '@myparcel-pdk/common/src';
 import {defineAction} from '../defineAction';
 import {shipmentsUpdateAction} from './shipments';
+import {toArray} from '@myparcel/ts-utils';
 import {useModalStore} from '../../stores';
 
 /**
@@ -19,7 +14,7 @@ export const ordersEditAction = defineAction({
   name: AdminAction.OrdersEdit,
   icon: AdminIcon.Edit,
   label: 'action_edit',
-  handler(context: ActionContext) {
+  handler(context) {
     const modalStore = useModalStore();
     const parameters = context.parameters as ActionParameters<AdminAction.OrdersExport>;
 
@@ -56,7 +51,11 @@ export const ordersFetchAction = defineAction({
   name: AdminAction.OrdersFetch,
   icon: AdminIcon.Refresh,
   label: 'action_refresh',
-  handler: createQueryHandler(BackendEndpoint.FetchOrders),
+  handler: createQueryHandler(BackendEndpoint.FetchOrders, (context) => {
+    const orderIds = toArray(context.parameters.orderIds ?? []);
+
+    return orderIds.length === 1 ? orderIds[0] : undefined;
+  }),
 });
 
 /**

@@ -38,7 +38,13 @@ export type ActionContextWithResponse<A extends AdminAction> = ActionContext<A> 
   response: ActionResponse<A>;
 };
 
+type EndpointSuffix = string | undefined;
+
+export type QueryExecutorSuffixCallback<E extends BackendEndpoint> = (
+  context: ActionContext<EndpointAdminActionMap[E]>,
+) => EndpointSuffix;
+
 export type QueryExecutor = <E extends BackendEndpoint>(
   endpoint: E,
-  suffix?: string,
+  suffix?: EndpointSuffix | QueryExecutorSuffixCallback<E>,
 ) => (context: ActionContext<EndpointAdminActionMap[E]>) => Promise<ActionResponse<EndpointAdminActionMap[E]>>;

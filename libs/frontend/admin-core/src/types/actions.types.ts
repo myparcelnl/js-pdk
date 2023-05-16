@@ -18,7 +18,7 @@ type BaseAction = {
 
 export type NamedAction<A extends AdminAction = AdminAction> = BaseAction & {
   name: A;
-  handler(context: ActionContext<A>): PromiseOr<ActionResponse<A>>;
+  handler(context: ActionContext<A>): PromiseOr<ActionResponse<A> | void>;
   beforeHandle?(context: ActionContext<A>): PromiseOr<ActionParameters<A>>;
   afterHandle?(context: ActionContextWithResponse<A>): PromiseOr<ActionResponse<A>>;
 };

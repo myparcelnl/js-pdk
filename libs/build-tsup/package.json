@@ -11,6 +11,6 @@
     "typescript": "^5.0.3"
   },
   "devDependencies": {
-    "@myparcel/ts-utils": "^1.6.0"
+    "@myparcel/ts-utils": "^1.9.0"
   }
 }

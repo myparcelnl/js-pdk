@@ -4,8 +4,10 @@ import {isOfType} from '@myparcel/ts-utils';
 import {useStoreQuery} from '../../composables';
 
 export const createQueryHandler: QueryExecutor = (endpoint, suffix) => {
-  return async () => {
-    const query = useStoreQuery(endpoint, suffix);
+  return async (context) => {
+    const resolvedSuffix = typeof suffix === 'function' ? suffix(context) : suffix;
+
+    const query = useStoreQuery(endpoint, resolvedSuffix);
 
     if (!query || !isOfType<UseQueryReturnType<unknown, unknown>>(query, 'refetch')) {
       throw new Error(`Query ${endpoint} not found`);
