@@ -6,6 +6,7 @@ import {triggerDeliveryOptionsEvents} from '../listeners';
 
 export type DeliveryOptionsStoreState = {
   configuration: DeliveryOptionsConfiguration;
+  enabled: boolean;
   hiddenInput?: HTMLInputElement;
   output: Record<string, unknown>;
 };
@@ -30,14 +31,19 @@ export const createDeliveryOptionsStore = () => {
         },
 
         /**
-         * Output data
+         * Whether the delivery options are enabled.
          */
-        output: {},
+        enabled: false,
 
         /**
          * Hidden input that is used to pass the output data to the backend.
          */
         hiddenInput: undefined,
+
+        /**
+         * Output data
+         */
+        output: {},
       },
 
       listeners: {

@@ -1,27 +1,32 @@
 import {
   AddressField,
   CheckoutStoreState,
+  PdkField,
   StoreCallbackUpdate,
-  fieldsEqual,
+  Util,
+  useUtil,
 } from '@myparcel-pdk/frontend-checkout-core/src';
-import {getDeliveryOptionsAddress, toggleDeliveryOptions, updateContext} from '../utils';
+import {getDeliveryOptionsAddress, shippingMethodHasDeliveryOptions, updateContext} from '../utils';
 import {objectIsEqual} from '@myparcel/ts-utils';
 import {useDeliveryOptionsStore} from '../store';
 
 export const updateDeliveryOptions: StoreCallbackUpdate<CheckoutStoreState> = async (newState, oldState) => {
-  if (objectIsEqual(newState.form, oldState.form)) {
+  const fieldsEqual = useUtil(Util.FieldsEqual);
+
+  if (oldState && objectIsEqual(newState.form, oldState.form)) {
     return;
   }
 
   const deliveryOptions = useDeliveryOptionsStore();
 
-  if (!fieldsEqual(newState.form, oldState.form, AddressField.Country)) {
-    toggleDeliveryOptions(false);
+  if (oldState && !fieldsEqual(newState.form, oldState.form, AddressField.Country)) {
+    console.log('Country changed, resetting delivery options');
+    await deliveryOptions.set({enabled: false});
     await updateContext();
-    toggleDeliveryOptions(newState.hasDeliveryOptions);
   }
 
   await deliveryOptions.set({
+    enabled: await shippingMethodHasDeliveryOptions(newState.form[PdkField.ShippingMethod]),
     configuration: {
       ...deliveryOptions.state.configuration,
       address: getDeliveryOptionsAddress(),
