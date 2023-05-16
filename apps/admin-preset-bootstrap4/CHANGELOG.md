@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.60](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.59...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.60) "@myparcel-pdk/admin-preset-bootstrap4" (2023-05-16)
+
+
+### Bug Fixes
+
+* **admin-core:** fix order ids not being passed to refresh orders action ([76f3a43](https://github/myparcelnl/js-pdk/commit/76f3a43130312fb25e72c95f2bfb3f04a96bd46a))
+
+
+
+
 ## [1.0.0-alpha.57](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.56...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.57) "@myparcel-pdk/admin-preset-bootstrap4" (2023-05-02)
 
 

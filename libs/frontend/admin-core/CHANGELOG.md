@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.59](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.58...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.59) "@myparcel-pdk/frontend-admin-core" (2023-05-16)
+
+
+### Bug Fixes
+
+* **admin-core:** fix order ids not being passed to refresh orders action ([76f3a43](https://github/myparcelnl/js-pdk/commit/76f3a43130312fb25e72c95f2bfb3f04a96bd46a))
+
+
+
+
 ## [1.0.0-alpha.58](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.57...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.58) "@myparcel-pdk/frontend-admin-core" (2023-05-15)
 
 
