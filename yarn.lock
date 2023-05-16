@@ -1304,7 +1304,7 @@ __metadata:
     "@apollo/server": ^4.4.1
     "@myparcel-pdk/common": "workspace:^"
     "@myparcel/ts-utils": ^1.9.0
-    "@types/node": ^18.14.6
+    "@types/node": ^20.1.5
     h3: ^1.5.0
     nitropack: ^2.2.3
     serverless: ^3.28.1
@@ -2634,10 +2634,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.14.6":
-  version: 18.16.9
-  resolution: "@types/node@npm:18.16.9"
-  checksum: 7fe0ef372ba8b157bd646efe29b0ece92ccb9f455171a7ceb4c92d6b490789ff0f14411b1dc6ad203351a0efa2b435072dfab5566fb6eaaaa5cd549e1fb22afa
+"@types/node@npm:^20.1.5":
+  version: 20.1.5
+  resolution: "@types/node@npm:20.1.5"
+  checksum: 0d073ed7b9cc51e2354dcf3a8ccca84d08c7d513fa8fac9462cabc164435b30f2ad296e9f2f911e6ce72da837b704f1075379be84a93bb24f76d328a2d9e8561
   languageName: node
   linkType: hard
 
