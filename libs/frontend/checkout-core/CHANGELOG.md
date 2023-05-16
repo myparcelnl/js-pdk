@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.9](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.8...@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.9) "@myparcel-pdk/frontend-checkout-core" (2023-05-16)
+
+
+### Features
+
+* **checkout-core:** allow overriding hasDeliveryOptions via config ([d29cc78](https://github/myparcelnl/js-pdk/commit/d29cc78b1bada9a3e479aa53d04dbb48fa49b0ef))
+
+
+
+
 ## [1.0.0-alpha.8](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.7...@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.8) "@myparcel-pdk/frontend-checkout-core" (2023-05-15)
 
 

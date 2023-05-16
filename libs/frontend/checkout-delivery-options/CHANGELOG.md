@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.8](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-delivery-options@1.0.0-alpha.7...@myparcel-pdk/frontend-checkout-delivery-options@1.0.0-alpha.8) "@myparcel-pdk/frontend-checkout-delivery-options" (2023-05-16)
+
+
+### Bug Fixes
+
+* **checkout-delivery-options:** fix hiding/showing based on shipping method ([03a07bf](https://github/myparcelnl/js-pdk/commit/03a07bfa77e8972a85938739b33cfc01c6b0cf2a))
+
+
+
+
 ## [1.0.0-alpha.7](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-delivery-options@1.0.0-alpha.6...@myparcel-pdk/frontend-checkout-delivery-options@1.0.0-alpha.7) "@myparcel-pdk/frontend-checkout-delivery-options" (2023-05-16)
 
 
