@@ -18,14 +18,19 @@ import {AdminComponent, Plugin, RadioGroupOption} from '@myparcel-pdk/common/src
 import {AdminContextKey, AdminModalKey, ElementInstance} from '../../types';
 import {CarrierName, PackageTypeName} from '@myparcel/constants';
 import {OneOrMore, toArray} from '@myparcel/ts-utils';
-import {addBulkEditNotification, getPackageTypes, hasShipmentOption, isPackageTypePackage} from './helpers';
+import {
+  addBulkEditNotification,
+  getFormattedInsurancePossibilities,
+  getPackageTypes,
+  hasShipmentOption,
+  isPackageTypePackage,
+} from './helpers';
 import {defineFormField, resolveFormComponent, setFieldProp} from '../helpers';
 import {markRaw, ref} from 'vue';
 import {useAdminConfig, useAssetUrl, useContext, useLocalizedFormatter} from '../../composables';
 import {createShipmentFormName} from '../../utils';
 import {defineForm} from '@myparcel/vue-form-builder/src';
 import {get} from '@vueuse/core';
-import {getFormattedInsurancePossibilities} from './helpers/getFormattedInsurancePossibilities';
 import {useCarrier} from '../../sdk';
 import {useModalStore} from '../../stores';
 

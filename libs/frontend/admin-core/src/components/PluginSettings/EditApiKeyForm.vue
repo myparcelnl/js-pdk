@@ -7,12 +7,11 @@
 </template>
 
 <script lang="ts" setup>
+import {FORM_KEY_ACCOUNT_SETTINGS, defineFormField, resolveFormComponent} from '../../forms';
 import {FormInstance, MagicForm, defineField, defineForm} from '@myparcel/vue-form-builder/src';
-import {defineFormField, resolveFormComponent} from '../../forms';
 import {markRaw, ref, watch} from 'vue';
 import {useAdminConfig, usePluginSettings, useStoreContextQuery} from '../../composables';
 import {AdminComponent} from '@myparcel-pdk/common/src';
-import {FORM_KEY_ACCOUNT_SETTINGS} from '../../forms/formKeys';
 import {SubmitButton} from '../common';
 import {createActionContext} from '../../services';
 import {createUpdateAccountSettingsValidator} from './createUpdateAccountSettingsValidator';
@@ -25,6 +24,7 @@ const createForm = (): FormInstance => {
   const pluginSettings = usePluginSettings();
 
   const config = useAdminConfig();
+
   return defineForm(FORM_KEY_ACCOUNT_SETTINGS, {
     ...config.formConfigOverrides?.[FORM_KEY_ACCOUNT_SETTINGS],
     fields: [

@@ -8,11 +8,10 @@
 /**
  * Product settings.
  */
+import {FORM_KEY_PRODUCT_SETTINGS, generateFormFields} from '../forms';
 import {FormInstance, MagicForm, defineForm} from '@myparcel/vue-form-builder/src';
 import {useAdminConfig, useContext} from '../composables';
 import {AdminContextKey} from '../types';
-import {FORM_KEY_PRODUCT_SETTINGS} from '../forms/formKeys';
-import {generateFormFields} from '../forms';
 import {useQueryStore} from '../stores';
 import {useUpdateProductSettingsMutation} from '../actions';
 
