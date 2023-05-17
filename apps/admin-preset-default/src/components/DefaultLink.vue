@@ -54,7 +54,7 @@ const onClick = (event: MouseEvent): void => {
     return;
   }
 
-  actionStore.dispatch(actionIdentifier.value, props.action?.parameters);
+  void actionStore.dispatch(actionIdentifier.value, props.action?.parameters);
 };
 
 const linkAttributes = computed(() => {

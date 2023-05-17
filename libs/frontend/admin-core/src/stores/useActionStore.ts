@@ -1,5 +1,5 @@
 import {ActionParameters, AdminAction, AnyAdminAction, ResolvedAction} from '../types';
-import {OneOrMore, toArray} from '@myparcel/ts-utils';
+import {OneOrMore, PromiseOr, toArray} from '@myparcel/ts-utils';
 import {UnwrapNestedRefs, ref} from 'vue';
 import {createAction, getActionIdentifier} from '../services';
 import {
@@ -24,6 +24,7 @@ import {
 import {defineStore} from 'pinia';
 import {usePluginSettings} from '../composables';
 
+// eslint-disable-next-line max-lines-per-function
 export const useActionStore = defineStore('actions', () => {
   const actions = ref<ResolvedAction[]>([]);
 
@@ -45,14 +46,14 @@ export const useActionStore = defineStore('actions', () => {
   const dispatch = <A extends string | AdminAction>(
     action: A,
     parameters?: A extends AdminAction ? ActionParameters<A> : Record<string, unknown>,
-  ): void => {
+  ): PromiseOr<void> => {
     const resolvedAction = get(action);
 
     if (!resolvedAction) {
       throw new Error(`Action ${action} is not registered.`);
     }
 
-    void resolvedAction.handler(parameters);
+    return resolvedAction.handler(parameters);
   };
 
   return {

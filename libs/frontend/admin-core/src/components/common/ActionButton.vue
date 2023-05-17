@@ -5,7 +5,7 @@
     :disabled="disabled || action?.disabled"
     :icon="action?.icon"
     :label="!hideText ? action?.label : null"
-    :loading="resolvedAction?.loading"
+    :loading="loading"
     :size="size"
     :title="hideText ? action?.label : null"
     :variant="variant"
@@ -13,10 +13,11 @@
 </template>
 
 <script lang="ts" setup>
-import {PropType, computed} from 'vue';
-import {ActionDefinition} from '../../types';
 import {Size, Variant} from '@myparcel-pdk/common/src';
+import {ActionDefinition} from '../../types';
+import {PropType} from 'vue';
 import {useActionStore} from '../../stores';
+import {useLoading} from '../../composables';
 
 const props = defineProps({
   action: {
@@ -45,12 +46,14 @@ const props = defineProps({
 
 const emit = defineEmits(['click']);
 
+const {loading, setLoading} = useLoading();
+
 const actionStore = useActionStore();
 
-const resolvedAction = computed(() => actionStore.get(props.action.id));
-
-const onClick = () => {
+const onClick = async () => {
   emit('click');
-  actionStore.dispatch(props.action.id, props.action.parameters);
+  setLoading(true);
+  await actionStore.dispatch(props.action.id, props.action.parameters);
+  setLoading(false);
 };
 </script>
