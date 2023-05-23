@@ -23,8 +23,8 @@
     "typecheck": "nx run-many --target=typecheck",
     "watch": "nodemon",
     "ws:clean": "cd $0 && rimraf lib dist coverage .eslintcache tsconfig.build.tsbuildinfo tsconfig.json node_modules",
-    "ws:lint": "eslint_d --cache $0 || eslint --cache $0",
-    "ws:lint:fix": "eslint_d --cache --fix $0 || eslint --cache --fix $0",
+    "ws:lint": "eslint --cache $0",
+    "ws:lint:fix": "eslint --cache --fix $0",
     "ws:test": "cd $0 && vitest",
     "ws:test:run": "cd $0 && (vitest run --coverage --dangerouslyIgnoreUnhandledErrors || true)",
     "ws:tsup:build": "cd $0 && tsup-node --minify",
@@ -79,6 +79,9 @@
     "rimraf": "^5.0.0"
   },
   "packageManager": "yarn@3.5.1",
+  "volta": {
+    "node": "18.16.0"
+  },
   "bundlewatch": {
     "ci": {
       "trackBranches": [
