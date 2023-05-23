@@ -1,21 +1,20 @@
 <template>
   <PdkSelectInput
     v-model="model"
-    multiple
-    :element="element">
-  </PdkSelectInput>
+    :element="element"
+    multiple />
 </template>
 
-<script lang="ts" setup>
+<script generic="T extends (string | number)[]" lang="ts" setup>
 /**
  * A multi-select box. Renders a list of options which each have their own value. Allows multiple options to be selected.
  */
-
-import {ElementInstance, OptionsProp, useSelectInputContext} from '@myparcel-pdk/frontend-admin-core/src';
+import {PdkElementEmits, SelectInputProps, useSelectInputContext} from '@myparcel-pdk/frontend-admin-core/src';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{element: ElementInstance<OptionsProp>; modelValue: string | number}>();
-const emit = defineEmits<(e: 'update:modelValue', value: string | number) => void>();
+const props = defineProps<SelectInputProps<T>>();
+const emit = defineEmits<PdkElementEmits<T>>();
 
-const {model} = useSelectInputContext(props, emit);
+// @ts-expect-error Errors on emit, types need to be fixed
+const {model} = useSelectInputContext(props, emit, true);
 </script>
