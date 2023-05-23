@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.59](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.58...@myparcel-pdk/admin-preset-default@1.0.0-alpha.59) "@myparcel-pdk/admin-preset-default" (2023-05-23)
+
+
+### Bug Fixes
+
+* **actions:** fix loading state showing on all buttons with the same action ([434dbc4](https://github/myparcelnl/js-pdk/commit/434dbc4737956566ee85a9808be9098b0163c07b))
+
+
+
+
 ## [1.0.0-alpha.57](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.56...@myparcel-pdk/admin-preset-default@1.0.0-alpha.57) "@myparcel-pdk/admin-preset-default" (2023-05-16)
 
 
