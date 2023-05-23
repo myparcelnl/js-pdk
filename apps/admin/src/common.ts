@@ -30,7 +30,11 @@ export type {
   NamedAction,
   Notification,
   OptionsProp,
+  PdkElementEmits,
+  PdkElementProps,
+  RadioGroupProps,
   ResolvedAction,
+  SelectInputProps,
 } from '@myparcel-pdk/frontend-admin-core/src';
 
 export {
