@@ -1,6 +1,7 @@
 import {AnyElementConfiguration, InteractiveElementConfiguration, defineField} from '@myparcel/vue-form-builder/src';
+import {ref, toRaw} from 'vue';
 import {Plugin} from '@myparcel-pdk/common/src';
-import {ref} from 'vue';
+import {get} from '@vueuse/core';
 import {resolveFormComponent} from '../helpers';
 
 type GenerateFormFields = (
@@ -29,7 +30,7 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
     if ($visibleWhen) {
       common.visibleWhen = (field) => {
         return Object.entries($visibleWhen).every(([fieldName, value]) => {
-          return field.form.model[prefix + fieldName]?.ref.value === value;
+          return get(field.form.model[prefix + fieldName]?.ref) === value;
         });
       };
     }
@@ -42,7 +43,7 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
     return defineField({
       ...common,
       name: prefix + name,
-      ref: ref(values?.[name]),
+      ref: ref(toRaw(values?.[name])),
       label,
     } as InteractiveElementConfiguration);
   });
