@@ -9,7 +9,6 @@ export const useUpdatePluginSettingsMutation = () => {
     const pdk = usePdkAdminApi();
 
     return pdk.updatePluginSettings({
-      // @ts-expect-error todo
       body: formToBody(form),
     });
   });
