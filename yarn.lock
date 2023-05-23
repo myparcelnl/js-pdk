@@ -1180,7 +1180,7 @@ __metadata:
     postcss: ^8.4.21
     rollup-plugin-visualizer: ^5.9.0
     tailwindcss: ^3.2.7
-    vite: ^4.3.4
+    vite: ^4.3.8
     vitest: ^0.30.1
     vue: ^3.2.47
     vue-router: ^4.1.6
@@ -1202,7 +1202,7 @@ __metadata:
     happy-dom: ^9.10.2
     pinia: ^2.0.32
     typescript: ^5.0.3
-    vite: ^4.3.4
+    vite: ^4.3.8
     vitest: ^0.30.1
     vue: ^3.2.47
   languageName: unknown
@@ -1219,7 +1219,7 @@ __metadata:
     "@vue/test-utils": ^2.3.0
     happy-dom: ^9.10.2
     typescript: ^5.0.3
-    vite: ^4.3.4
+    vite: ^4.3.8
     vitest: ^0.30.1
     vue: ^3.2.47
   languageName: unknown
@@ -1238,7 +1238,7 @@ __metadata:
     "@vueuse/core": ^10.1.2
     happy-dom: ^9.10.2
     typescript: ^5.0.3
-    vite: ^4.3.4
+    vite: ^4.3.8
     vitest: ^0.30.1
     vue: ^3.2.47
   languageName: unknown
@@ -1255,7 +1255,7 @@ __metadata:
     "@vue/test-utils": ^2.3.0
     happy-dom: ^9.10.2
     typescript: ^5.0.3
-    vite: ^4.3.4
+    vite: ^4.3.8
     vitest: ^0.30.1
     vue: ^3.2.47
   languageName: unknown
@@ -1330,7 +1330,7 @@ __metadata:
     "@myparcel/ts-utils": ^1.9.0
     rollup-plugin-visualizer: ^5.9.0
     typescript: ^5.0.3
-    vite: ^4.3.4
+    vite: ^4.3.8
     vite-plugin-custom-tsconfig: ^1.0.4
     vite-plugin-dts: ^2.0.2
     vue-tsc: ^1.1.7
@@ -1381,7 +1381,7 @@ __metadata:
     lodash-es: ^4.17.21
     lodash-unified: ^1.0.3
     pinia: ^2.0.32
-    vite: ^4.3.4
+    vite: ^4.3.8
     vitest: ^0.30.1
     vue: ^3.2.47
   languageName: unknown
@@ -13341,7 +13341,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^3.0.0 || ^4.0.0, vite@npm:^4.3.4":
+"vite@npm:^3.0.0 || ^4.0.0":
   version: 4.3.5
   resolution: "vite@npm:4.3.5"
   dependencies:
@@ -13375,6 +13375,43 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 6b7f2189f097110846e49a3f1d463bd620dfe9e4f433b1967e5b99f0789610ff4475e85e3e71476e6fa40be25449bb6f1c45edb95c79deba6f3f173699bff948
+  languageName: node
+  linkType: hard
+
+"vite@npm:^4.3.8":
+  version: 4.3.8
+  resolution: "vite@npm:4.3.8"
+  dependencies:
+    esbuild: ^0.17.5
+    fsevents: ~2.3.2
+    postcss: ^8.4.23
+    rollup: ^3.21.0
+  peerDependencies:
+    "@types/node": ">= 14"
+    less: "*"
+    sass: "*"
+    stylus: "*"
+    sugarss: "*"
+    terser: ^5.4.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  peerDependenciesMeta:
+    "@types/node":
+      optional: true
+    less:
+      optional: true
+    sass:
+      optional: true
+    stylus:
+      optional: true
+    sugarss:
+      optional: true
+    terser:
+      optional: true
+  bin:
+    vite: bin/vite.js
+  checksum: 454a7c0c1bd1fd5611c9df28c62e3adbe75f48e87fc787179c5af60c4ab9a87aa0eda44be446d898851a135766d36f65f8e7d56317556aa807d30e561de369c4
   languageName: node
   linkType: hard
 
