@@ -20,7 +20,6 @@ export const updateDeliveryOptions: StoreCallbackUpdate<CheckoutStoreState> = as
   const deliveryOptions = useDeliveryOptionsStore();
 
   if (oldState && !fieldsEqual(newState.form, oldState.form, AddressField.Country)) {
-    console.log('Country changed, resetting delivery options');
     await deliveryOptions.set({enabled: false});
     await updateContext();
   }

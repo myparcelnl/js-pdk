@@ -1,4 +1,4 @@
 export * from './showOrHideDeliveryOptions';
-export * from './triggerDeliveryOptionsEvents';
+export * from './updateConfigOrAddress';
 export * from './updateDeliveryOptions';
 export * from './updateDeliveryOptionsOutput';

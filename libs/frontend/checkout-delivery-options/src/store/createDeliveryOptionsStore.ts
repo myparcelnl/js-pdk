@@ -2,7 +2,7 @@
 import {StoreListener, Util, useCheckoutStore, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
 import {DeliveryOptionsConfiguration} from '../types';
 import {getDeliveryOptionsAddress} from '../utils';
-import {triggerDeliveryOptionsEvents} from '../listeners';
+import {showOrHideDeliveryOptions, updateConfigOrAddress} from '../listeners';
 
 export type DeliveryOptionsStoreState = {
   configuration: DeliveryOptionsConfiguration;
@@ -47,7 +47,7 @@ export const createDeliveryOptionsStore = () => {
       },
 
       listeners: {
-        [StoreListener.Update]: [triggerDeliveryOptionsEvents],
+        [StoreListener.Update]: [updateConfigOrAddress, showOrHideDeliveryOptions],
       },
     };
   })();
