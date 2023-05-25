@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/frontend-checkout-separate-address-fields",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.11",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -15,7 +15,7 @@
     "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.10"
+    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.11"
   },
   "devDependencies": {
     "@myparcel-pdk/build-tsup": "workspace:^",
