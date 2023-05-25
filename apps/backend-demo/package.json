@@ -18,7 +18,7 @@
     "@apollo/server": "^4.4.1",
     "@myparcel-pdk/common": "workspace:*",
     "@myparcel/ts-utils": "^1.9.0",
-    "@types/node": "^18.14.6",
+    "@types/node": "^20.2.3",
     "h3": "^1.5.0",
     "nitropack": "^2.2.3",
     "serverless": "^3.28.1",
