@@ -2,6 +2,20 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.31](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.30...@myparcel-pdk/common@1.0.0-alpha.31) "@myparcel-pdk/common" (2023-05-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* change all packages so imports don't need /src anymore
+
+### Code Refactoring
+
+* change all packages so imports don't need /src anymore ([892306b](https://github/myparcelnl/js-pdk/commit/892306bd3307fe8d5d011bbf6eb7654f7365347a))
+
+
+
+
 ## [1.0.0-alpha.30](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.29...@myparcel-pdk/common@1.0.0-alpha.30) "@myparcel-pdk/common" (2023-05-04)
 
 

@@ -2,6 +2,20 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.64](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.63...@myparcel-pdk/admin-component-tests@1.0.0-alpha.64) "@myparcel-pdk/admin-component-tests" (2023-05-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* change all packages so imports don't need /src anymore
+
+### Code Refactoring
+
+* change all packages so imports don't need /src anymore ([892306b](https://github/myparcelnl/js-pdk/commit/892306bd3307fe8d5d011bbf6eb7654f7365347a))
+
+
+
+
 ## [1.0.0-alpha.54](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.53...@myparcel-pdk/admin-component-tests@1.0.0-alpha.54) "@myparcel-pdk/admin-component-tests" (2023-05-02)
 
 

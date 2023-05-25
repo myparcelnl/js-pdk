@@ -2,6 +2,25 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.10](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-separate-address-fields@1.0.0-alpha.9...@myparcel-pdk/frontend-checkout-separate-address-fields@1.0.0-alpha.10) "@myparcel-pdk/frontend-checkout-separate-address-fields" (2023-05-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* change all packages so imports don't need /src anymore
+
+### Bug Fixes
+
+* **checkout-separate-address-fields:** improve fields logic ([9f5f044](https://github/myparcelnl/js-pdk/commit/9f5f0440ee4a95fb92f5b7f76915c6a49b496d11))
+
+
+### Code Refactoring
+
+* change all packages so imports don't need /src anymore ([892306b](https://github/myparcelnl/js-pdk/commit/892306bd3307fe8d5d011bbf6eb7654f7365347a))
+
+
+
+
 ## [1.0.0-alpha.6](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-separate-address-fields@1.0.0-alpha.5...@myparcel-pdk/frontend-checkout-separate-address-fields@1.0.0-alpha.6) "@myparcel-pdk/frontend-checkout-separate-address-fields" (2023-05-04)
 
 

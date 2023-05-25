@@ -2,6 +2,24 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.10](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.9...@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.10) "@myparcel-pdk/frontend-checkout-core" (2023-05-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **checkout-core:** remove separate address fields types
+* **checkout-core:** remove tax fields types
+* change all packages so imports don't need /src anymore
+
+### Code Refactoring
+
+* change all packages so imports don't need /src anymore ([892306b](https://github/myparcelnl/js-pdk/commit/892306bd3307fe8d5d011bbf6eb7654f7365347a))
+* **checkout-core:** remove separate address fields types ([0a5f267](https://github/myparcelnl/js-pdk/commit/0a5f2678764e0608d46385e4dd60a1f346b7f12a))
+* **checkout-core:** remove tax fields types ([e49950b](https://github/myparcelnl/js-pdk/commit/e49950bfb5831f4a2583127c59c6e28cb39859d3))
+
+
+
+
 ## [1.0.0-alpha.9](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.8...@myparcel-pdk/frontend-checkout-core@1.0.0-alpha.9) "@myparcel-pdk/frontend-checkout-core" (2023-05-16)
 
 

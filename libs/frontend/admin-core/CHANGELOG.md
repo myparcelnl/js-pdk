@@ -2,6 +2,25 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.62](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.61...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.62) "@myparcel-pdk/frontend-admin-core" (2023-05-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* change all packages so imports don't need /src anymore
+
+### Bug Fixes
+
+* **admin-core:** fix selects being reset to default value ([9639f7c](https://github/myparcelnl/js-pdk/commit/9639f7c1ba5d4f0374d1c357a4c3adb566201bbb))
+
+
+### Code Refactoring
+
+* change all packages so imports don't need /src anymore ([892306b](https://github/myparcelnl/js-pdk/commit/892306bd3307fe8d5d011bbf6eb7654f7365347a))
+
+
+
+
 ## [1.0.0-alpha.61](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.60...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.61) "@myparcel-pdk/frontend-admin-core" (2023-05-23)
 
 
