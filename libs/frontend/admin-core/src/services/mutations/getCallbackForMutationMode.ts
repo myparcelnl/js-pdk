@@ -1,4 +1,4 @@
-import {MutationMode, NotificationCategory, useModalStore, useNotificationStore} from '../../';
+import {MutationMode, NotificationCategory, useModalStore, useNotificationStore} from '../..';
 
 type Callback = (() => void) | undefined;
 

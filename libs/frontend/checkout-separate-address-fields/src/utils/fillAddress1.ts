@@ -1,7 +1,7 @@
 import {AddressType, useCheckoutStore} from '@myparcel-pdk/frontend-checkout-core';
-import {hasSeparateAddressFields} from './hasSeparateAddressFields';
-import {setFullStreet} from './setFullStreet';
 import {triggerFormChange} from './triggerFormChange';
+import {setFullStreet} from './setFullStreet';
+import {hasSeparateAddressFields} from './hasSeparateAddressFields';
 
 export const fillAddress1 = (addressType?: AddressType): void => {
   const checkout = useCheckoutStore();

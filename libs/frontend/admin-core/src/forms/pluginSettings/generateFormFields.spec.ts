@@ -1,6 +1,6 @@
 import {describe, expect, it} from 'vitest';
-import {InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {Plugin} from '@myparcel-pdk/common';
+import {InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {generateFormFields} from './generateFormFields';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

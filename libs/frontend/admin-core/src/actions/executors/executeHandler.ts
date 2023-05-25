@@ -1,6 +1,6 @@
 import {ActionResponse, MaybeAdminAction} from '../../types';
-import {ActionContext} from './types';
 import {useNotificationStore} from '../../stores';
+import {ActionContext} from './types';
 
 const HANDLER = 'handler';
 

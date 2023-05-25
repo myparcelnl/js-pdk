@@ -1,8 +1,8 @@
-import {AdminContextKey} from '../../../types';
-import {CARRIER} from '../field';
+import {get} from '@vueuse/core';
 import {Carrier} from '@myparcel-pdk/common';
 import {FormInstance} from '@myparcel/vue-form-builder';
-import {get} from '@vueuse/core';
+import {CARRIER} from '../field';
+import {AdminContextKey} from '../../../types';
 import {useContext} from '../../../composables';
 
 export const getCarrierOptions = (form: FormInstance): Carrier.ModelCarrierOptions | undefined => {

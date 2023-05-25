@@ -1,6 +1,6 @@
 import {CheckoutAppContext} from '../types';
-import {getElement} from './global/getElement';
 import {useConfig} from '../config';
+import {getElement} from './global/getElement';
 
 const ATTRIBUTE_CONTEXT = 'data-context';
 

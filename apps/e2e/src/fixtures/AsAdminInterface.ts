@@ -1,6 +1,6 @@
+import {PromiseOr} from '@myparcel/ts-utils';
 import {OrderIdentifier, ProductIdentifier} from '../types.ts';
 import {AsLoggedInUserInterface} from './AsLoggedInUserInterface.ts';
-import {PromiseOr} from '@myparcel/ts-utils';
 
 export interface AsAdminInterface extends AsLoggedInUserInterface {
   createOrder(): PromiseOr<OrderIdentifier>;

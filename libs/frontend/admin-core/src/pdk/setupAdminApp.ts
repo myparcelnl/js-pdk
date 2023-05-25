@@ -1,3 +1,6 @@
+import {App} from 'vue';
+import {AdminAppConfig} from '../data';
+import {testIdDirective} from './testIdDirective';
 import {
   createContextPlugin,
   createLoggerPlugin,
@@ -5,9 +8,6 @@ import {
   createStorePlugin,
   createVueQueryPlugin,
 } from './instance';
-import {AdminAppConfig} from '../data';
-import {App} from 'vue';
-import {testIdDirective} from './testIdDirective';
 
 export const setupAdminApp = (app: App<Element>, appConfig: AdminAppConfig): void => {
   app.use(createStorePlugin(appConfig));

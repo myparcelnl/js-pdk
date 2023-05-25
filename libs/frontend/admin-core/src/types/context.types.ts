@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {BackendPdkEndpointObject, Plugin} from '@myparcel-pdk/common';
+import {FormInstance} from '@myparcel/vue-form-builder';
 import {OneOrMore, Replace} from '@myparcel/ts-utils';
 import {AdminModalKey} from './modal.types';
-import {FormInstance} from '@myparcel/vue-form-builder';
 
 export type AdminContextObject = Replace<Plugin.ModelContextContextBag, 'global', GlobalAdminContext> &
   Partial<AdminInstanceContext>;

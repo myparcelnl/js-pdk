@@ -4,9 +4,9 @@
 
 <script lang="ts" setup>
 import {MagicForm, defineForm} from '@myparcel/vue-form-builder';
-import {useAdminConfig, useContext, usePluginSettings} from '../../composables';
 import {AdminModalKey} from '../../types';
 import {generateFormFields} from '../../forms';
+import {useAdminConfig, useContext, usePluginSettings} from '../../composables';
 
 const context = useContext();
 const pluginSettings = usePluginSettings();

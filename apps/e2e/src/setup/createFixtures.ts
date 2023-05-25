@@ -1,5 +1,4 @@
 /* eslint-disable new-cap */
-import {Config, ExtendedCmsFixtures} from './types.ts';
 import {
   Fixtures,
   PlaywrightTestArgs,
@@ -7,6 +6,7 @@ import {
   PlaywrightWorkerArgs,
   PlaywrightWorkerOptions,
 } from '@playwright/test/types/test';
+import {Config, ExtendedCmsFixtures} from './types.ts';
 import {parseConfiguration} from './parseConfiguration.ts';
 
 export const registerFixtures = (

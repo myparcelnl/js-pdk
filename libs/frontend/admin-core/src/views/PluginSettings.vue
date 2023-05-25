@@ -10,6 +10,11 @@
 /**
  * Plugin settings screen.
  */
+import {BackendEndpoint} from '@myparcel-pdk/common';
+import {AdminContextKey} from '../types';
+import {useActionStore, useQueryStore} from '../stores';
+import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForms.vue';
+import AccountSettings from '../components/PluginSettings/AccountSettings.vue';
 import {
   fetchDynamicContextAction,
   fetchPluginSettingsViewContextAction,
@@ -17,11 +22,6 @@ import {
   useUpdateAccountMutation,
   useUpdatePluginSettingsMutation,
 } from '../actions';
-import {useActionStore, useQueryStore} from '../stores';
-import AccountSettings from '../components/PluginSettings/AccountSettings.vue';
-import {AdminContextKey} from '../types';
-import {BackendEndpoint} from '@myparcel-pdk/common';
-import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForms.vue';
 
 const queryStore = useQueryStore();
 

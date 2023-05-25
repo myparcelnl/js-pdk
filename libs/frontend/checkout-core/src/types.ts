@@ -1,8 +1,8 @@
 import {FrontendEndpoint, FrontendPdkEndpointObject} from '@myparcel-pdk/common';
+import {PromiseOr} from '@myparcel/ts-utils';
+import {MyParcelDeliveryOptions} from '@myparcel/delivery-options';
 import {CarrierName} from '@myparcel/constants';
 import {FrontendEndpointResponse} from './types/endpoints.types';
-import {MyParcelDeliveryOptions} from '@myparcel/delivery-options';
-import {PromiseOr} from '@myparcel/ts-utils';
 
 export enum AddressType {
   Billing = 'billing',

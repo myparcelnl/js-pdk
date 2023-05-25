@@ -1,7 +1,7 @@
-import {AnyElementConfiguration, InteractiveElementConfiguration, defineField} from '@myparcel/vue-form-builder';
 import {ref, toRaw} from 'vue';
-import {Plugin} from '@myparcel-pdk/common';
 import {get} from '@vueuse/core';
+import {Plugin} from '@myparcel-pdk/common';
+import {AnyElementConfiguration, InteractiveElementConfiguration, defineField} from '@myparcel/vue-form-builder';
 import {resolveFormComponent} from '../helpers';
 
 type GenerateFormFields = (

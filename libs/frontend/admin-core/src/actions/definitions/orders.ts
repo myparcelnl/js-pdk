@@ -1,11 +1,11 @@
-import {ActionParameters, AdminAction, AdminIcon, AdminModalKey} from '../../types';
-import {createMutationHandler, createQueryHandler, executeNextAction, resolveOrderParameters} from '../executors';
-import {openOrPrintPdf, resolvePrintParameters} from '../print';
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {defineAction} from '../defineAction';
-import {shipmentsUpdateAction} from './shipments';
 import {toArray} from '@myparcel/ts-utils';
+import {openOrPrintPdf, resolvePrintParameters} from '../print';
+import {createMutationHandler, createQueryHandler, executeNextAction, resolveOrderParameters} from '../executors';
+import {defineAction} from '../defineAction';
+import {ActionParameters, AdminAction, AdminIcon, AdminModalKey} from '../../types';
 import {useModalStore} from '../../stores';
+import {shipmentsUpdateAction} from './shipments';
 
 /**
  * Open modal to edit order shipment options.

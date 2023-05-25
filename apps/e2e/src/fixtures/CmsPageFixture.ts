@@ -1,4 +1,4 @@
-import type {Locator, Page} from '@playwright/test/types/test';
+import {type Locator, type Page} from '@playwright/test/types/test';
 
 export abstract class CmsPageFixture {
   protected page: Page;

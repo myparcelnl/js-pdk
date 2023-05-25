@@ -1,22 +1,22 @@
 <template>
   <PdkModal
+    :actions="actions"
     :modal-key="modalKey"
-    title="print_options_title"
-    :actions="actions">
+    title="print_options_title">
     <PrintOptionsModalForm />
   </PdkModal>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 /**
  * Modal with print options. Opened when any print action is executed, if the modal is enabled in the module settings.
  */
 
-import {modalCloseAction, modalSubmitFormAction} from '../../actions';
-import {AdminModalKey} from '../../types';
-import {defineActions} from '../../services';
 import {defineAsyncComponent} from 'vue';
+import {AdminModalKey} from '../../types';
 import {useActionStore} from '../../stores';
+import {defineActions} from '../../services';
+import {modalCloseAction, modalSubmitFormAction} from '../../actions';
 
 const modalKey = AdminModalKey.PrintOptions;
 

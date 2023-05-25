@@ -1,3 +1,5 @@
+import {Component} from 'vue';
+import {AdminComponent} from '@myparcel-pdk/common';
 import {
   runActionContainerTest,
   runButtonTest,
@@ -28,8 +30,6 @@ import {
   runTimeInputTest,
   runToggleInputTest,
 } from '../components';
-import {AdminComponent} from '@myparcel-pdk/common';
-import {Component} from 'vue';
 
 export type AdminComponentTest = (component: Omit<Component, 'props'>) => void;
 

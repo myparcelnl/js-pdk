@@ -1,7 +1,7 @@
 import {expect, it} from 'vitest';
-import {PartialComponentTest} from '../types';
 import {merge} from 'lodash-unified';
 import {mount} from '@vue/test-utils';
+import {PartialComponentTest} from '../types';
 import {runHasPropTest} from './runHasPropTest';
 
 // eslint-disable-next-line max-lines-per-function

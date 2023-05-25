@@ -1,3 +1,4 @@
+import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests';
 import {
   Bootstrap4Box,
   Bootstrap4Button,
@@ -16,7 +17,6 @@ import {
   Bootstrap4TextArea,
   Bootstrap4TextInput,
 } from '../components';
-import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests';
 
 executePdkComponentTests({
   PdkBox: Bootstrap4Box,

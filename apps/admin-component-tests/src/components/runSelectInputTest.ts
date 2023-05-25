@@ -1,9 +1,9 @@
 import {expect, it} from 'vitest';
-import {runCommonComponentTests, runCommonInputTests} from '../common';
-import {AdminComponentTest} from '../tests';
-import {SelectOption} from '@myparcel-pdk/common';
-import {createInputOptions} from '../helpers';
 import {mount} from '@vue/test-utils';
+import {SelectOption} from '@myparcel-pdk/common';
+import {AdminComponentTest} from '../tests';
+import {createInputOptions} from '../helpers';
+import {runCommonComponentTests, runCommonInputTests} from '../common';
 
 const selectOptions: SelectOption[] = [
   {value: '1', label: 'One'},

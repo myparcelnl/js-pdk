@@ -1,6 +1,6 @@
-import {runCommonComponentTests, runCommonInputTests} from '../common';
 import {AdminComponentTest} from '../tests';
 import {createInputOptions} from '../helpers';
+import {runCommonComponentTests, runCommonInputTests} from '../common';
 
 export const runDropOffInputTest: AdminComponentTest = (component) => {
   const options = createInputOptions(true);

@@ -3,7 +3,9 @@ import './assets/css/tailwind.css';
 import './assets/css/global.css';
 import './assets/css/transitions.css';
 import './assets/css/forms.css';
+import {createApp} from 'vue';
 import {AdminContextKey, LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-admin-core';
+import {FontAwesomeIcon} from '@myparcel-pdk/admin-preset-fontawesome';
 import {
   DefaultButtonGroup,
   DefaultCheckboxGroup,
@@ -25,6 +27,7 @@ import {
   DefaultTimeInput,
   DefaultToggleInput,
 } from '@myparcel-pdk/admin-preset-default';
+import {createRouterInstance} from './router';
 import {
   DemoBadge,
   DemoBox,
@@ -42,9 +45,6 @@ import {
   DemoTextInput,
 } from './components';
 import App from './App.vue';
-import {FontAwesomeIcon} from '@myparcel-pdk/admin-preset-fontawesome';
-import {createApp} from 'vue';
-import {createRouterInstance} from './router';
 
 void (async () => {
   const apiUrl = import.meta.env.VITE_API_URL;

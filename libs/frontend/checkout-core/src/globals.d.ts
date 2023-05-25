@@ -1,6 +1,4 @@
-import {PdkCheckout, PdkCheckoutConfig, PdkEvent} from './types';
 import {PromiseOr, isOfType} from '@myparcel/ts-utils';
-import {StoreData, createCheckoutStore, realCreateStore} from './store';
 import {
   Util,
   doRequest,
@@ -12,6 +10,8 @@ import {
   setFieldValue,
   triggerEvent,
 } from './utils';
+import {PdkCheckout, PdkCheckoutConfig, PdkEvent} from './types';
+import {StoreData, createCheckoutStore, realCreateStore} from './store';
 
 declare global {
   interface MyParcelPdkUtils {

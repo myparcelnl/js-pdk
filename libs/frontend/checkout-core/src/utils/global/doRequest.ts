@@ -1,6 +1,6 @@
-import {FrontendEndpointParameters, FrontendEndpointResponse} from '../../types/endpoints.types';
 import {useConfig, useSettings} from '@myparcel-pdk/frontend-checkout-core';
 import {FrontendEndpoint} from '@myparcel-pdk/common';
+import {FrontendEndpointParameters, FrontendEndpointResponse} from '../../types/endpoints.types';
 
 type DoRequest = <E extends FrontendEndpoint>(
   endpoint: E,

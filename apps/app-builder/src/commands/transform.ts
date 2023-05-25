@@ -1,5 +1,9 @@
 /* eslint-disable max-lines-per-function */
-import {COMMAND_TRANSFORM_NAME, VerbosityLevel} from '../constants';
+import path from 'path';
+import fs from 'fs';
+import glob from 'fast-glob';
+import chalk from 'chalk';
+import {getOccurrences, replaceCaseSensitive} from '../utils/transformer';
 import {
   executePromises,
   getPlatformDistPath,
@@ -12,12 +16,8 @@ import {
   resolveFileName,
   validateDistPath,
 } from '../utils';
-import {getOccurrences, replaceCaseSensitive} from '../utils/transformer';
 import {PdkBuilderCommand} from '../types';
-import chalk from 'chalk';
-import fs from 'fs';
-import glob from 'fast-glob';
-import path from 'path';
+import {COMMAND_TRANSFORM_NAME, VerbosityLevel} from '../constants';
 
 const SOURCE_PLATFORM = 'myparcelnl';
 

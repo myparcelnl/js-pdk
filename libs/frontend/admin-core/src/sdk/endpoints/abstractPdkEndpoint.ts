@@ -11,9 +11,9 @@ import {
   Shipment,
   WebhookDefinition,
 } from '@myparcel-pdk/common';
+import {RecursivePartial} from '@myparcel/ts-utils';
 import {AbstractEndpoint} from '@myparcel/sdk';
 import {AdminContextObject} from '../../types';
-import {RecursivePartial} from '@myparcel/ts-utils';
 
 export type PdfUrlResponse = {url: string};
 

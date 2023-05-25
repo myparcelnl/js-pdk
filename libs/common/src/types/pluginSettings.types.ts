@@ -1,5 +1,5 @@
-import {AdminIcon} from '@myparcel-pdk/frontend-admin-core';
 import {Component} from 'vue';
+import {AdminIcon} from '@myparcel-pdk/frontend-admin-core';
 import {Keyable} from './generic.types';
 
 export type LabelFormat = 'a4' | 'a6';

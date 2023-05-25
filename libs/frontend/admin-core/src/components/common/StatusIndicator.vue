@@ -9,8 +9,8 @@
 
 <script lang="ts" setup>
 import {PropType, computed} from 'vue';
-import {AdminIcon} from '../../types';
 import {Status} from '@myparcel-pdk/common';
+import {AdminIcon} from '../../types';
 import {useAdminConfig} from '../../composables';
 
 const props = defineProps({

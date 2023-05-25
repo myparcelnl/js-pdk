@@ -1,6 +1,6 @@
+import {mergeWith} from 'lodash-unified';
 import {AdminConfiguration, DefaultAdminConfiguration} from '../types';
 import {LogLevel} from '../services';
-import {mergeWith} from 'lodash-unified';
 
 const createDefaultConfig = (): DefaultAdminConfiguration => ({
   components: undefined,

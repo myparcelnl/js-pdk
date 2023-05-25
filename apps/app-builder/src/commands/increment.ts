@@ -1,12 +1,12 @@
-import {COMMAND_INCREMENT_NAME, REGEX_VERSION, VerbosityLevel} from '../constants';
-import {RegexVersionSource, VersionReplacerOutput, replaceVersionByRegex, replaceVersionInJson} from '../increment';
-import {executePromises, getFileContents, initializeCommand, logSourcePath, logTimeTaken, reportDryRun} from '../utils';
-import {PdkBuilderCommand} from '../types';
-import chalk from 'chalk';
+import path from 'path';
 import fs from 'fs';
 import glob from 'fast-glob';
+import chalk from 'chalk';
 import {isOfType} from '@myparcel/ts-utils';
-import path from 'path';
+import {executePromises, getFileContents, initializeCommand, logSourcePath, logTimeTaken, reportDryRun} from '../utils';
+import {PdkBuilderCommand} from '../types';
+import {RegexVersionSource, VersionReplacerOutput, replaceVersionByRegex, replaceVersionInJson} from '../increment';
+import {COMMAND_INCREMENT_NAME, REGEX_VERSION, VerbosityLevel} from '../constants';
 
 export const increment: PdkBuilderCommand = async ({env, config, args}) => {
   const {debug, time} = initializeCommand(COMMAND_INCREMENT_NAME);

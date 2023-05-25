@@ -6,8 +6,8 @@
 </template>
 
 <script lang="ts" setup>
-import {Keyable} from '@myparcel-pdk/common';
 import {computed} from 'vue';
+import {Keyable} from '@myparcel-pdk/common';
 import {createFormElement} from '../../utils';
 import {useLanguage} from '../../composables';
 

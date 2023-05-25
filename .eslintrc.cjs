@@ -10,9 +10,10 @@ module.exports = {
     },
     {
       files: ['./**/*.vue'],
-      extends: '@myparcel-eslint/eslint-config-prettier-typescript-vue',
+      extends: ['@myparcel-eslint/eslint-config-prettier-typescript-vue', '@myparcel-eslint/eslint-config-import'],
       rules: {
         '@typescript-eslint/no-misused-promises': 'off',
+        'import/first': 'off',
         'vue/html-self-closing': 'off',
         'vue/no-bare-strings-in-template': 'off',
         'vue/no-undef-components': [
@@ -25,7 +26,7 @@ module.exports = {
     },
     {
       files: ['./**/*.ts', './**/*.tsx'],
-      extends: '@myparcel-eslint/eslint-config-prettier-typescript',
+      extends: ['@myparcel-eslint/eslint-config-prettier-typescript', '@myparcel-eslint/eslint-config-import'],
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-misused-promises': 'off',
@@ -44,6 +45,7 @@ module.exports = {
         '@myparcel-eslint/eslint-config-node',
         '@myparcel-eslint/eslint-config-esnext',
         '@myparcel-eslint/eslint-config-prettier',
+        '@myparcel-eslint/eslint-config-import',
       ],
     },
     {

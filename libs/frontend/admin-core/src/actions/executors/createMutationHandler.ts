@@ -1,5 +1,5 @@
-import {QueryExecutor} from './types';
 import {useStoreQuery} from '../../composables';
+import {QueryExecutor} from './types';
 
 export const createMutationHandler: QueryExecutor = (endpoint) => {
   return (context) => {

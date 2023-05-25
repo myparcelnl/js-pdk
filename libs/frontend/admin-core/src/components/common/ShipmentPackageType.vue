@@ -8,10 +8,10 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import {useLanguage} from '../../composables';
-import {getPackageTypeTranslation} from '../../helpers';
+<script lang="ts" setup>
 import {useQueryStore} from '../../stores';
+import {getPackageTypeTranslation} from '../../helpers';
+import {useLanguage} from '../../composables';
 
 const props = defineProps<{shipmentId: number}>();
 

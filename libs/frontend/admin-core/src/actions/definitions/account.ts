@@ -1,7 +1,7 @@
-import {AdminAction, AdminContextKey, AdminIcon} from '../../types';
-import {createMutationHandler, createQueryHandler, executeNextAction} from '../executors';
 import {BackendEndpoint} from '@myparcel-pdk/common';
+import {createMutationHandler, createQueryHandler, executeNextAction} from '../executors';
 import {defineAction} from '../defineAction';
+import {AdminAction, AdminContextKey, AdminIcon} from '../../types';
 
 /**
  * Retrieve context.

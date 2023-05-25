@@ -1,7 +1,7 @@
-import {CommandArgs, PdkBuilderContext} from '../types';
 import Liftoff from 'liftoff';
-import {mergeDefaultConfig} from './mergeDefaultConfig';
+import {CommandArgs, PdkBuilderContext} from '../types';
 import {resolveConfig} from './resolveConfig';
+import {mergeDefaultConfig} from './mergeDefaultConfig';
 
 type WithContextParams = <A extends CommandArgs>(context: Omit<PdkBuilderContext<A>, 'config'>) => Promise<void> | void;
 

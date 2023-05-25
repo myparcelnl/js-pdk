@@ -6,9 +6,9 @@
     v-text="translate(`shipment_status_${query.data.status}`)" />
 </template>
 
-<script setup lang="ts">
-import {useLanguage} from '../../composables';
+<script lang="ts" setup>
 import {useQueryStore} from '../../stores';
+import {useLanguage} from '../../composables';
 
 const props = defineProps<{shipmentId: number}>();
 

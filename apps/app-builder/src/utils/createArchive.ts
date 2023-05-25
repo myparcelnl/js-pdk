@@ -1,8 +1,8 @@
-import archiver, {Archiver} from 'archiver';
+import path from 'path';
+import fs from 'fs';
 import {Debugger} from 'debug';
 import chalk from 'chalk';
-import fs from 'fs';
-import path from 'path';
+import archiver, {Archiver} from 'archiver';
 
 const ZLIB_COMPRESSION_MAX = 9;
 

@@ -1,5 +1,5 @@
-import {MyParcelDeliveryOptions} from '@myparcel/delivery-options';
 import {Replace} from '@myparcel/ts-utils';
+import {MyParcelDeliveryOptions} from '@myparcel/delivery-options';
 
 export enum PdkDeliveryOptionsEvent {
   DeliveryOptionsUpdated = 'deliveryOptionsUpdated',

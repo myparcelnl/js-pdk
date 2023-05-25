@@ -1,8 +1,8 @@
-import {AdminConfiguration, AdminContextObject, AdminInstanceContext} from '../types';
-import {AdminView} from '@myparcel-pdk/common';
 import {InjectionKey} from 'vue';
-import {PdkAdmin} from '../pdk';
+import {AdminView} from '@myparcel-pdk/common';
+import {AdminConfiguration, AdminContextObject, AdminInstanceContext} from '../types';
 import {PdkLogger} from '../services';
+import {PdkAdmin} from '../pdk';
 
 export interface AdminAppConfig {
   appName: string;

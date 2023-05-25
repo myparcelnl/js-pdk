@@ -7,15 +7,15 @@
 </template>
 
 <script lang="ts" setup>
-import {FORM_KEY_ACCOUNT_SETTINGS, defineFormField, resolveFormComponent} from '../../forms';
-import {FormInstance, MagicForm, defineField, defineForm} from '@myparcel/vue-form-builder';
 import {markRaw, ref, watch} from 'vue';
-import {useAdminConfig, usePluginSettings, useStoreContextQuery} from '../../composables';
 import {AdminComponent} from '@myparcel-pdk/common';
+import {FormInstance, MagicForm, defineField, defineForm} from '@myparcel/vue-form-builder';
 import {SubmitButton} from '../common';
 import {createActionContext} from '../../services';
-import {createUpdateAccountSettingsValidator} from './createUpdateAccountSettingsValidator';
+import {FORM_KEY_ACCOUNT_SETTINGS, defineFormField, resolveFormComponent} from '../../forms';
+import {useAdminConfig, usePluginSettings, useStoreContextQuery} from '../../composables';
 import {updateAccountAction} from '../../actions';
+import {createUpdateAccountSettingsValidator} from './createUpdateAccountSettingsValidator';
 
 defineEmits<(e: 'afterSubmit', form: FormInstance) => void>();
 

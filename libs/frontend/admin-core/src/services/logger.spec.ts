@@ -1,5 +1,5 @@
-import {LogLevel, createLogger, globalLogger} from './logger';
 import {afterAll, afterEach, describe, expect, it, vi} from 'vitest';
+import {LogLevel, createLogger, globalLogger} from './logger';
 
 describe('logger', () => {
   const spies = {

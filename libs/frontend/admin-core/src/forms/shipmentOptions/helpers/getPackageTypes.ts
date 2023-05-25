@@ -1,8 +1,8 @@
+import {SelectOption} from '@myparcel-pdk/common';
 import {FormInstance} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
-import {SelectOption} from '@myparcel-pdk/common';
-import {getCarrierOptions} from './getCarrierOptions';
 import {getPackageTypeTranslation} from '../../../helpers';
+import {getCarrierOptions} from './getCarrierOptions';
 
 export const getPackageTypes = (form?: FormInstance): SelectOption[] => {
   let array = Object.values(PackageTypeName);

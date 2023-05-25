@@ -1,6 +1,6 @@
 import {expect, it} from 'vitest';
-import {PartialComponentTest} from '../types';
 import {mount} from '@vue/test-utils';
+import {PartialComponentTest} from '../types';
 
 export const runHasPropTest: PartialComponentTest = (component, options, prop, value = 'value') => {
   it(`has prop ${prop}`, () => {

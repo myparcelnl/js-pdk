@@ -1,7 +1,7 @@
 import Liftoff from 'liftoff';
-import {TITLE} from './constants';
 import {jsVariants} from 'interpret';
 import {run} from './run';
+import {TITLE} from './constants';
 
 export function start(): void {
   const extensions = {

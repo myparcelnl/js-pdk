@@ -1,4 +1,6 @@
-import {COMMAND_ZIP_NAME, VerbosityLevel} from '../constants';
+import path from 'path';
+import fs from 'fs';
+import chalk from 'chalk';
 import {
   createArchive,
   executePromises,
@@ -14,9 +16,7 @@ import {
   validateDistPath,
 } from '../utils';
 import {PdkBuilderCommand} from '../types';
-import chalk from 'chalk';
-import fs from 'fs';
-import path from 'path';
+import {COMMAND_ZIP_NAME, VerbosityLevel} from '../constants';
 
 export const zip: PdkBuilderCommand = async ({env, config, args}) => {
   const {debug, time} = initializeCommand(COMMAND_ZIP_NAME);

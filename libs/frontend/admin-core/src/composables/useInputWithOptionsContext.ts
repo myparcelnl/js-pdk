@@ -1,9 +1,9 @@
-import {ArrayItem, OptionsProp, PdkElementEmits, PdkElementProps} from '../types';
 import {ComputedRef, Ref, WritableComputedRef, computed, onMounted, watch} from 'vue';
-import {SelectOptionValue, SelectOptionWithLabel} from '@myparcel-pdk/common';
 import {get, useVModel} from '@vueuse/core';
+import {SelectOptionValue, SelectOptionWithLabel} from '@myparcel-pdk/common';
 import {OneOrMore} from '@myparcel/ts-utils';
 import {generateFieldId} from '../utils';
+import {ArrayItem, OptionsProp, PdkElementEmits, PdkElementProps} from '../types';
 import {translateSelectOption} from '../helpers';
 import {useLanguage} from './useLanguage';
 

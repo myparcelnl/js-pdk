@@ -1,5 +1,5 @@
-import customTsConfigPlugin from 'vite-plugin-custom-tsconfig';
 import dts from 'vite-plugin-dts';
+import customTsConfigPlugin from 'vite-plugin-custom-tsconfig';
 import {mergeConfig} from 'vite';
 
 const external = [

@@ -1,5 +1,5 @@
-import {ResolvedQuery, useQueryStore} from '../stores';
 import {BackendEndpoint} from '@myparcel-pdk/common';
+import {ResolvedQuery, useQueryStore} from '../stores';
 
 export const useStoreQuery = <E extends BackendEndpoint>(endpoint: E, suffix?: string): ResolvedQuery<E> => {
   const queryStore = useQueryStore();

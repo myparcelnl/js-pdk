@@ -6,13 +6,13 @@
 
 <script lang="ts" setup>
 import {computed, ref, watch} from 'vue';
-import {useAccount, useAdminConfig, useLogger, useStoreContextQuery} from '../../composables';
-import {AdminContextKey} from '../../types';
+import {get} from '@vueuse/core';
 import {TabDefinition} from '@myparcel-pdk/common';
 import TabNavigation from '../common/TabNavigation.vue';
+import {AdminContextKey} from '../../types';
 import {createActionContext} from '../../services';
 import {createPluginSettingsTabs} from '../../forms';
-import {get} from '@vueuse/core';
+import {useAccount, useAdminConfig, useLogger, useStoreContextQuery} from '../../composables';
 import {pluginSettingsUpdateAction} from '../../actions';
 
 const dynamicContextQuery = useStoreContextQuery();

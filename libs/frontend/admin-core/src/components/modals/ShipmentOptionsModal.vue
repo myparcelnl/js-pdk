@@ -9,6 +9,11 @@
 
 <script lang="ts" setup>
 import {computed, defineAsyncComponent} from 'vue';
+import {get} from '@vueuse/core';
+import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common';
+import {AdminModalKey} from '../../types';
+import {defineActions} from '../../services';
+import {usePluginSettings, useStoreQuery} from '../../composables';
 import {
   modalCloseAction,
   orderExportAction,
@@ -16,11 +21,6 @@ import {
   ordersExportPrintShipmentsAction,
   ordersUpdateAction,
 } from '../../actions';
-import {usePluginSettings, useStoreQuery} from '../../composables';
-import {AdminModalKey} from '../../types';
-import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common';
-import {defineActions} from '../../services';
-import {get} from '@vueuse/core';
 
 /**
  * Shipment options modal. Opened by clicking the "Create" button in the "Labels" column in the orders list.

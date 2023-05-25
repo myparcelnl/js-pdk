@@ -1,6 +1,6 @@
-import {REPLACEMENT_EXCEPTIONS} from './consts';
-import {createRegExp} from './createRegExp';
 import {getOccurrences} from './getOccurrences';
+import {createRegExp} from './createRegExp';
+import {REPLACEMENT_EXCEPTIONS} from './consts';
 
 const caseSensitiveMatcher = (input: string, output: string) =>
   [...output]

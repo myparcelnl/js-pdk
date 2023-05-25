@@ -1,6 +1,6 @@
 import {ComputedRef, Ref, computed, ref} from 'vue';
-import {AdminModalKey} from '../../types';
 import {useLoading} from '../useLoading';
+import {AdminModalKey} from '../../types';
 import {useModalStore} from '../../stores';
 
 export type ModalCallback = (id: string) => Promise<void> | void;

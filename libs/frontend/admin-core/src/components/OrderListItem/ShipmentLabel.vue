@@ -1,23 +1,23 @@
 <template>
   <PdkShipmentLabelWrapper
-    :loading="loading"
     :class="config?.cssUtilities?.cursorDefault"
+    :loading="loading"
     @click.stop>
     <div :class="config?.cssUtilities?.displayFlex">
       <ShipmentBarcode :shipment-id="shipmentId" />
 
       <PdkDropdownButton
-        :hide-text="true"
-        size="xs"
+        :actions="actions"
         :class="config?.cssUtilities?.marginLAuto"
         :disabled="loading"
-        :actions="actions" />
+        :hide-text="true"
+        size="xs" />
     </div>
 
     <div :class="config?.cssUtilities?.displayFlex">
       <ShipmentPackageType
-        :shipment-id="shipmentId"
-        :class="config?.cssUtilities?.flexGrow" />
+        :class="config?.cssUtilities?.flexGrow"
+        :shipment-id="shipmentId" />
 
       <div :class="config?.cssUtilities?.flexGrow">
         <ShipmentStatus :shipment-id="shipmentId" />
@@ -26,12 +26,12 @@
   </PdkShipmentLabelWrapper>
 </template>
 
-<script setup lang="ts">
-import {useAdminConfig, useShipmentData} from '../../composables';
-import ShipmentBarcode from '../common/ShipmentBarcode.vue';
-import ShipmentPackageType from '../common/ShipmentPackageType.vue';
+<script lang="ts" setup>
 import ShipmentStatus from '../common/ShipmentStatus.vue';
+import ShipmentPackageType from '../common/ShipmentPackageType.vue';
+import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import {useQueryStore} from '../../stores';
+import {useAdminConfig, useShipmentData} from '../../composables';
 
 const props = defineProps<{shipmentId: number}>();
 

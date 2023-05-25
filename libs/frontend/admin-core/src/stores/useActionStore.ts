@@ -1,7 +1,9 @@
-import {ActionParameters, AdminAction, AnyAdminAction, ResolvedAction} from '../types';
-import {OneOrMore, PromiseOr, toArray} from '@myparcel/ts-utils';
 import {UnwrapNestedRefs, ref} from 'vue';
+import {defineStore} from 'pinia';
+import {OneOrMore, PromiseOr, toArray} from '@myparcel/ts-utils';
+import {ActionParameters, AdminAction, AnyAdminAction, ResolvedAction} from '../types';
 import {createAction, getActionIdentifier} from '../services';
+import {usePluginSettings} from '../composables';
 import {
   modalCloseAction,
   modalSubmitFormAction,
@@ -21,8 +23,6 @@ import {
   webhooksDeleteAction,
   webhooksFetchAction,
 } from '../actions';
-import {defineStore} from 'pinia';
-import {usePluginSettings} from '../composables';
 
 // eslint-disable-next-line max-lines-per-function
 export const useActionStore = defineStore('actions', () => {

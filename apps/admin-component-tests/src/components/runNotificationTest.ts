@@ -1,5 +1,5 @@
-import {MountingOptions, mount} from '@vue/test-utils';
 import {expect, it} from 'vitest';
+import {MountingOptions, mount} from '@vue/test-utils';
 import {AdminComponentTest} from '../tests';
 import {runCommonComponentTests} from '../common';
 

@@ -1,6 +1,6 @@
-import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from '../common';
-import {AdminComponentTest} from '../tests';
 import {MountingOptions} from '@vue/test-utils';
+import {AdminComponentTest} from '../tests';
+import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from '../common';
 
 export const runModalTest: AdminComponentTest = (component) => {
   const options: MountingOptions<any> = {

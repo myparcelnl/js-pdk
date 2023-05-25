@@ -37,14 +37,14 @@
 
 <script lang="ts" setup>
 import {computed, ref} from 'vue';
-import {useAdminConfig, useLanguage, useStoreContextQuery} from '../../composables';
-import EditApiKeyForm from './EditApiKeyForm.vue';
-import {FormInstance} from '@myparcel/vue-form-builder';
-import {Status} from '@myparcel-pdk/common';
-import StatusIndicator from '../common/StatusIndicator.vue';
-import WebhooksStatus from './WebhooksStatus.vue';
 import {get} from '@vueuse/core';
+import {Status} from '@myparcel-pdk/common';
+import {FormInstance} from '@myparcel/vue-form-builder';
+import StatusIndicator from '../common/StatusIndicator.vue';
+import {useAdminConfig, useLanguage, useStoreContextQuery} from '../../composables';
 import {useUpdateAccountMutation} from '../../actions';
+import WebhooksStatus from './WebhooksStatus.vue';
+import EditApiKeyForm from './EditApiKeyForm.vue';
 
 const contextQuery = useStoreContextQuery();
 

@@ -1,6 +1,6 @@
-import {AddressField, Util, useConfig, useUtil} from '../../index';
-import {AddressType} from '../../types';
 import {useCheckoutStore} from '../useCheckoutStore';
+import {AddressType} from '../../types';
+import {AddressField, Util, useConfig, useUtil} from '../../index';
 
 /**
  * Get field by name. Will return element with selector: "#<billing|shipping>_<name>".

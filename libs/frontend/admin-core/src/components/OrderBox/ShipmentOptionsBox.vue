@@ -22,6 +22,12 @@
 </template>
 
 <script lang="ts" setup>
+import {computed} from 'vue';
+import {get} from '@vueuse/core';
+import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common';
+import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
+import {defineActions} from '../../services';
+import {useLanguage, useOrder, usePluginSettings, useStoreQuery} from '../../composables';
 import {
   orderExportAction,
   orderExportToShipmentsAction,
@@ -30,12 +36,6 @@ import {
   ordersPrintAction,
   ordersUpdateAction,
 } from '../../actions';
-import {useLanguage, useOrder, usePluginSettings, useStoreQuery} from '../../composables';
-import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common';
-import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
-import {computed} from 'vue';
-import {defineActions} from '../../services';
-import {get} from '@vueuse/core';
 
 const query = useOrder();
 

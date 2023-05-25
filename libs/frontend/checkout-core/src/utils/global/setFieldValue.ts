@@ -1,7 +1,7 @@
-import {AddressField, AddressType} from '../../types';
 import {Util, useUtil} from '../useUtil';
-import {getAddressField} from './getAddressField';
+import {AddressField, AddressType} from '../../types';
 import {useConfig} from '../../config';
+import {getAddressField} from './getAddressField';
 
 export const setFieldValue = (
   name: AddressField,

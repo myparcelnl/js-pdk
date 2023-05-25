@@ -14,8 +14,8 @@
 </template>
 
 <script lang="ts" setup>
-import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-admin-core';
 import {useVModel} from '@vueuse/core';
+import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-admin-core';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{modelValue: boolean; element: ElementInstance}>();

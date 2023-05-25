@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts" setup>
+import {defineAsyncComponent} from 'vue';
 import {useActionStore, useQueryStore} from '../stores';
 import {useOrder, usePluginSettings} from '../composables';
 import ShipmentOptionsBox from '../components/OrderBox/ShipmentOptionsBox.vue';
-import {defineAsyncComponent} from 'vue';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const ShipmentTableBox = defineAsyncComponent(() => import('../components/OrderBox/ShipmentTableBox.vue'));

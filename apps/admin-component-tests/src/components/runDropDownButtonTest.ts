@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import {MountingOptions, mount} from '@vue/test-utils';
 import {expect, it} from 'vitest';
-import {runCommonComponentTests, runHasPropTest} from '../common';
+import {MountingOptions, mount} from '@vue/test-utils';
 import {AdminComponentTest} from '../tests';
+import {runCommonComponentTests, runHasPropTest} from '../common';
 
 const DEFAULT_OPTIONS = {
   props: {

@@ -24,9 +24,9 @@
 
 <script lang="ts">
 import {PropType, computed, defineComponent, ref} from 'vue';
-import {useAdminConfig, useLanguage} from '../../composables';
-import {HASH_SEPARATOR} from '../../data';
 import {TabDefinition} from '@myparcel-pdk/common';
+import {HASH_SEPARATOR} from '../../data';
+import {useAdminConfig, useLanguage} from '../../composables';
 
 /**
  * Tab navigation.

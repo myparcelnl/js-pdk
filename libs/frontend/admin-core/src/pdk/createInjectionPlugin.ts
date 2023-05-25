@@ -1,7 +1,7 @@
+import {createPdkAdmin} from './index';
+import {Plugin} from 'vue';
 import {AdminConfiguration} from '../types';
 import {INJECT_GLOBAL_PDK_ADMIN} from '../data';
-import {Plugin} from 'vue';
-import {createPdkAdmin} from './index';
 
 export const createInjectionPlugin = (options: AdminConfiguration): Plugin => {
   return {

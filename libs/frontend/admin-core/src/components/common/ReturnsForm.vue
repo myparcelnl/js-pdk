@@ -3,9 +3,9 @@
 </template>
 
 <script lang="ts">
+import {defineComponent} from 'vue';
 import {MagicForm} from '@myparcel/vue-form-builder';
 import {createReturnsForm} from '../../forms';
-import {defineComponent} from 'vue';
 
 export default defineComponent({
   name: 'ReturnsForm',

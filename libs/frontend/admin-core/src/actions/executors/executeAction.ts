@@ -1,8 +1,8 @@
 import {MaybeActionResponse, MaybeAdminAction} from '../../types';
 import {ActionContext} from './types';
-import {executeAfterHandle} from './executeAfterHandle';
-import {executeBeforeHandle} from './executeBeforeHandle';
 import {executeHandler} from './executeHandler';
+import {executeBeforeHandle} from './executeBeforeHandle';
+import {executeAfterHandle} from './executeAfterHandle';
 
 /**
  * Execute an AdminAction.

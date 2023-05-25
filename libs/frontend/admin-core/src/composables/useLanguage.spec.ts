@@ -1,10 +1,10 @@
 import {SpyInstance, afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
-import {doComponentTestSetup, doComponentTestTeardown} from '@myparcel-pdk/admin-component-tests';
-import {createTestingPinia} from '@pinia/testing';
-import {mount} from '@vue/test-utils';
 import {setActivePinia} from 'pinia';
-import {useLanguage} from './useLanguage';
+import {mount} from '@vue/test-utils';
+import {createTestingPinia} from '@pinia/testing';
+import {doComponentTestSetup, doComponentTestTeardown} from '@myparcel-pdk/admin-component-tests';
 import {useQueryStore} from '../stores';
+import {useLanguage} from './useLanguage';
 
 let consoleSpy: SpyInstance;
 

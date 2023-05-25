@@ -1,13 +1,4 @@
-import {
-  EVENT_CHECKOUT,
-  EVENT_STORE,
-  EVENT_TYPE_INITIALIZE,
-  EVENT_TYPE_INITIALIZED,
-  EVENT_TYPE_UPDATE,
-  EVENT_TYPE_UPDATED,
-  createEventName,
-} from '../data';
-import {PdkCheckoutConfig, PdkEvent} from '../types';
+import {isOfType} from '@myparcel/ts-utils';
 import {
   doRequest,
   fieldsEqual,
@@ -19,10 +10,19 @@ import {
   setFieldValue,
   triggerEvent,
 } from '../utils';
-import {addFormListeners} from './addFormListeners';
-import {initializeCheckoutStore} from './initializeCheckoutStore';
-import {isOfType} from '@myparcel/ts-utils';
+import {PdkCheckoutConfig, PdkEvent} from '../types';
 import {realCreateStore} from '../store';
+import {
+  EVENT_CHECKOUT,
+  EVENT_STORE,
+  EVENT_TYPE_INITIALIZE,
+  EVENT_TYPE_INITIALIZED,
+  EVENT_TYPE_UPDATE,
+  EVENT_TYPE_UPDATED,
+  createEventName,
+} from '../data';
+import {initializeCheckoutStore} from './initializeCheckoutStore';
+import {addFormListeners} from './addFormListeners';
 
 // eslint-disable-next-line max-lines-per-function
 export const setupGlobals = (config: PdkCheckoutConfig): void => {

@@ -1,3 +1,4 @@
+import {config} from '@vue/test-utils';
 import {
   AdminAppConfig,
   AdminContextObject,
@@ -14,7 +15,6 @@ import {
   optionalAdminPlainWrapperComponentNames,
   requiredAdminComponentNames,
 } from '@myparcel-pdk/common';
-import {config} from '@vue/test-utils';
 
 // eslint-disable-next-line max-lines-per-function
 const createDefaultAppConfig = (): AdminAppConfig => {

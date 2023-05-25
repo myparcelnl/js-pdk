@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import {useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint, Variant} from '@myparcel-pdk/common';
-import {ApiException} from '@myparcel/sdk';
-import {NotificationCategory} from '../../../../types';
-import {formToBody} from '../../../../utils';
 import {isOfType} from '@myparcel/ts-utils';
+import {ApiException} from '@myparcel/sdk';
+import {usePdkMutation} from '../orders';
+import {formToBody} from '../../../../utils';
+import {NotificationCategory} from '../../../../types';
 import {useNotificationStore} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
-import {usePdkMutation} from '../orders';
-import {useQueryClient} from '@tanstack/vue-query';
 
 export const useUpdateAccountMutation = () => {
   const queryClient = useQueryClient();

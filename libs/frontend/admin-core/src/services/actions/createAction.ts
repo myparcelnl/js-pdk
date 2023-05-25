@@ -1,7 +1,7 @@
-import {ActionContext, executeAction} from '../../actions';
 import {ActionParameters, AdminAction, AnyAdminAction, MaybeAdminAction, ResolvedAction} from '../../types';
-import {createActionContext} from './createActionContext';
+import {ActionContext, executeAction} from '../../actions';
 import {getActionIdentifier} from './getActionIdentifier';
+import {createActionContext} from './createActionContext';
 
 type CreateAction = (action: AnyAdminAction) => ResolvedAction;
 

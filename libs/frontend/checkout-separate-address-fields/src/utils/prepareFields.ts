@@ -1,9 +1,9 @@
 import {AddressField, Util, useCheckoutStore, useUtil} from '@myparcel-pdk/frontend-checkout-core';
-import {ATTRIBUTE_AUTOCOMPLETE} from '../constants';
 import {SeparateAddressField} from '../types';
 import {fillSeparateAddressFields} from '../listeners/fillSeparateAddressFields';
-import {setFullStreet} from './setFullStreet';
+import {ATTRIBUTE_AUTOCOMPLETE} from '../constants';
 import {triggerFormChange} from './triggerFormChange';
+import {setFullStreet} from './setFullStreet';
 
 /**
  * Set the correct autocomplete attribute on the street fields if none is present.

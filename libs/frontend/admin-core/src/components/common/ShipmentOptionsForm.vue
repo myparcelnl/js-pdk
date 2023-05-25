@@ -3,9 +3,9 @@
 </template>
 
 <script lang="ts" setup>
+import {get} from '@vueuse/core';
 import {MagicForm} from '@myparcel/vue-form-builder';
 import {createShipmentOptionsForm} from '../../forms';
-import {get} from '@vueuse/core';
 import {useOrders} from '../../composables';
 
 const queries = useOrders();

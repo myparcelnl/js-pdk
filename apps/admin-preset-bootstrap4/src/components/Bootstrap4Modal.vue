@@ -44,6 +44,7 @@
 </template>
 
 <script lang="ts" setup>
+import {PropType, computed} from 'vue';
 import {
   ActionButton,
   ActionDefinition,
@@ -52,7 +53,6 @@ import {
   useLanguage,
   useModalStore,
 } from '@myparcel-pdk/frontend-admin-core';
-import {PropType, computed} from 'vue';
 
 const props = defineProps({
   actions: {

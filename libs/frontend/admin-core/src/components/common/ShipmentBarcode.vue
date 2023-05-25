@@ -4,10 +4,10 @@
     :class="[config?.cssUtilities?.whitespaceNoWrap, config?.cssUtilities?.displayFlex]">
     <PdkImage
       v-if="carrier"
-      width="20"
       :alt="carrier?.human"
+      :src="useAssetUrl(carrier?.meta.logo_svg)"
       :title="carrier?.human"
-      :src="useAssetUrl(carrier?.meta.logo_svg)" />
+      width="20" />
 
     <template v-if="carrier">&nbsp;</template>
 
@@ -25,9 +25,9 @@
   </span>
 </template>
 
-<script setup lang="ts">
-import {useAdminConfig, useLanguage, useShipmentData} from '../../composables';
+<script lang="ts" setup>
 import {useQueryStore} from '../../stores';
+import {useAdminConfig, useLanguage, useShipmentData} from '../../composables';
 
 const props = defineProps<{shipmentId: number}>();
 

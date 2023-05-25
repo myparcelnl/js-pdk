@@ -1,5 +1,5 @@
-import {AdminComponentTest} from '../tests';
 import {MountingOptions} from '@vue/test-utils';
+import {AdminComponentTest} from '../tests';
 import {runCommonComponentTests} from '../common';
 
 export const runRadioGroupTest: AdminComponentTest = (component) => {

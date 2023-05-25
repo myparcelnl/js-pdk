@@ -1,7 +1,7 @@
-import {Settings, Shipment} from '@myparcel-pdk/common';
-import {Weekday, Weekdays, useWeekdays} from './useWeekdays';
-import {createFormElement, createObjectWithKeys} from '../utils';
 import {reactive, watch} from 'vue';
+import {Settings, Shipment} from '@myparcel-pdk/common';
+import {createFormElement, createObjectWithKeys} from '../utils';
+import {Weekday, Weekdays, useWeekdays} from './useWeekdays';
 
 type UseDropOffInputContext = (
   possibilities: Settings.ModelDropOffPossibilities,

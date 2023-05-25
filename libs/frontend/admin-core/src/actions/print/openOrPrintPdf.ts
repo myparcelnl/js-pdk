@@ -1,9 +1,9 @@
-import {downloadPdf, openPdfInNewWindow} from '../../services';
-import {ActionContextWithResponse} from '../executors';
-import {PdfDataResponse} from '../../sdk';
-import {PrintAction} from '../../types';
-import {generateLabelFilename} from '../../utils';
 import {isOfType} from '@myparcel/ts-utils';
+import {ActionContextWithResponse} from '../executors';
+import {generateLabelFilename} from '../../utils';
+import {PrintAction} from '../../types';
+import {downloadPdf, openPdfInNewWindow} from '../../services';
+import {PdfDataResponse} from '../../sdk';
 
 export const openOrPrintPdf = async <A extends PrintAction>({
   response,

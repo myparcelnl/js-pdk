@@ -18,10 +18,10 @@
 /**
  * This is the main entry point for the order list column.
  */
+import {defineAsyncComponent} from 'vue';
 import {useActionStore, useQueryStore} from '../stores';
 import {useOrder, usePluginSettings} from '../composables';
 import {NotificationContainer} from '../components';
-import {defineAsyncComponent} from 'vue';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 const ShipmentLabels = defineAsyncComponent(() => import('../components/OrderListItem/ShipmentLabels.vue'));

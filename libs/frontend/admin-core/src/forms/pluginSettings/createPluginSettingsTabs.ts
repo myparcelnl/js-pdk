@@ -1,12 +1,12 @@
-import {AdminAction, AdminConfiguration} from '../../types';
-import {Plugin, TabDefinition} from '@myparcel-pdk/common';
 import {h, markRaw} from 'vue';
-import {ActionContext} from '../../actions';
+import {Plugin, TabDefinition} from '@myparcel-pdk/common';
 import {FormInstance} from '@myparcel/vue-form-builder';
-import {createFormTab} from './createFormTab';
-import {createPluginSettingsForm} from './createPluginSettingsForm';
-import {createPluginSettingsTabsComponent} from './createPluginSettingsTabsComponent';
+import {AdminAction, AdminConfiguration} from '../../types';
 import {useLanguage} from '../../composables';
+import {ActionContext} from '../../actions';
+import {createPluginSettingsTabsComponent} from './createPluginSettingsTabsComponent';
+import {createPluginSettingsForm} from './createPluginSettingsForm';
+import {createFormTab} from './createFormTab';
 
 export interface FormTab extends Omit<TabDefinition, 'component'> {
   form: FormInstance;

@@ -1,5 +1,5 @@
-import {promises} from 'fs';
 import {resolve} from 'path';
+import {promises} from 'fs';
 import {toArray} from '@myparcel/ts-utils';
 
 export const getItemsByParameter = async (key: string, parameter: unknown): Promise<Record<string, unknown>[]> => {

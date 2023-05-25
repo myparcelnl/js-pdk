@@ -1,8 +1,8 @@
 /* eslint-disable no-magic-numbers */
 import {defineComponent, h, inject, onMounted} from 'vue';
 import {describe, expect, it, vi} from 'vitest';
-import {INJECT_GLOBAL_PDK_ADMIN} from '../data';
 import {mount} from '@vue/test-utils';
+import {INJECT_GLOBAL_PDK_ADMIN} from '../data';
 
 describe.skip('rendering app pieces', () => {
   it('has unique context per piece', () => {

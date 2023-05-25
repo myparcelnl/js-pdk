@@ -1,6 +1,6 @@
 import {expect, it} from 'vitest';
-import {PartialComponentTest} from '../types';
 import {mount} from '@vue/test-utils';
+import {PartialComponentTest} from '../types';
 
 /**
  * Checks if the html content passed to the slot exists anywhere in the component.

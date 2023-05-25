@@ -6,8 +6,8 @@ import {
   Util,
   useUtil,
 } from '@myparcel-pdk/frontend-checkout-core';
-import {getDeliveryOptionsAddress, shippingMethodHasDeliveryOptions, updateContext} from '../utils';
 import {objectIsEqual} from '@myparcel/ts-utils';
+import {getDeliveryOptionsAddress, shippingMethodHasDeliveryOptions, updateContext} from '../utils';
 import {useDeliveryOptionsStore} from '../store';
 
 export const updateDeliveryOptions: StoreCallbackUpdate<CheckoutStoreState> = async (newState, oldState) => {

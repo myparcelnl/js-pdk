@@ -35,8 +35,8 @@
  * A "box" component that can be used to wrap content in a block.
  */
 
-import {ActionButton, ActionDefinition, useLanguage} from '@myparcel-pdk/frontend-admin-core';
 import {PropType} from 'vue';
+import {ActionButton, ActionDefinition, useLanguage} from '@myparcel-pdk/frontend-admin-core';
 import {Size} from '@myparcel-pdk/common';
 
 defineProps({

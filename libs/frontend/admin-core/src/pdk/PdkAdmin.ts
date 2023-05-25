@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {AdminAppConfig, INJECT_GLOBAL_PDK_ADMIN} from '../data';
-import {AdminConfiguration, AdminContextObject} from '../types';
 import {App, createApp} from 'vue';
-import {createLogger, getElementContext} from '../services';
 import {AdminView} from '@myparcel-pdk/common';
-import {renderViewComponent} from './renderMap';
+import {AdminConfiguration, AdminContextObject} from '../types';
+import {createLogger, getElementContext} from '../services';
+import {AdminAppConfig, INJECT_GLOBAL_PDK_ADMIN} from '../data';
 import {setupAdminApp} from './setupAdminApp';
+import {renderViewComponent} from './renderMap';
 
 export class PdkAdmin {
   public readonly config: AdminConfiguration;

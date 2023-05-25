@@ -1,4 +1,4 @@
-import {AdminConfiguration} from '../';
+import {AdminConfiguration} from '..';
 import {useAdminInstance} from './useAdminInstance';
 
 export const useAdminConfig = (): AdminConfiguration => {

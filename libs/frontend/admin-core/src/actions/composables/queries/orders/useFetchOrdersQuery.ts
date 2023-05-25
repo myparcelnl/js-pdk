@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {QueryKey, useQuery, useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {BackendEndpointResponse} from '../../../../types';
+import {toArray} from '@myparcel/ts-utils';
 import {QUERY_KEY_ORDER} from '../queryKeys';
 import {encodeArrayParameter} from '../../../../utils';
-import {fillShipmentsQueryData} from '../../../../pdk';
-import {toArray} from '@myparcel/ts-utils';
+import {BackendEndpointResponse} from '../../../../types';
 import {usePdkAdminApi} from '../../../../sdk';
+import {fillShipmentsQueryData} from '../../../../pdk';
 
 export const useFetchOrdersQuery = (externalIdentifier?: string) => {
   const queryKey: QueryKey = [QUERY_KEY_ORDER, ...(externalIdentifier ? [{id: externalIdentifier}] : [])] as const;

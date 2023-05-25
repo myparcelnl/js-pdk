@@ -1,6 +1,6 @@
-import {ActionParameters, PrintAction} from '../../types';
-import {ActionContext} from '../executors';
 import {toArray} from '@myparcel/ts-utils';
+import {ActionContext} from '../executors';
+import {ActionParameters, PrintAction} from '../../types';
 import {usePluginSettings} from '../../composables';
 import {waitForLabelPrompt} from './waitForLabelPrompt';
 

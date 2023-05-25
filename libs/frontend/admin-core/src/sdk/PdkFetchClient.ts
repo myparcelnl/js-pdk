@@ -1,3 +1,5 @@
+import {Notification, useNotificationStore} from '@myparcel-pdk/frontend-admin-core';
+import {isOfType} from '@myparcel/ts-utils';
 import {
   AbstractEndpoint,
   ApiException,
@@ -9,8 +11,6 @@ import {
   Options,
   ResponseWrapper,
 } from '@myparcel/sdk';
-import {Notification, useNotificationStore} from '@myparcel-pdk/frontend-admin-core';
-import {isOfType} from '@myparcel/ts-utils';
 
 type EndpointResponseBodyWithNotifications = {
   notifications: Notification[];

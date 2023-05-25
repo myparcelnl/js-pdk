@@ -1,10 +1,10 @@
-import {AdminComponentMap} from '@myparcel-pdk/common';
-import {AdminContextObject} from './context.types';
-import {FORM_KEYS} from '../forms/formKeys';
-import {FormConfiguration} from '@myparcel/vue-form-builder';
-import {FormatterObject} from '../composables';
-import {LogLevel} from '../services';
 import {PiniaPluginContext} from 'pinia';
+import {AdminComponentMap} from '@myparcel-pdk/common';
+import {FormConfiguration} from '@myparcel/vue-form-builder';
+import {LogLevel} from '../services';
+import {FORM_KEYS} from '../forms/formKeys';
+import {FormatterObject} from '../composables';
+import {AdminContextObject} from './context.types';
 
 export type DefaultAdminConfiguration = Omit<AdminConfiguration, 'context' | 'components'> & {
   components?: Record<string, undefined>;

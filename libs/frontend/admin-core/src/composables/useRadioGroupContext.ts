@@ -1,11 +1,11 @@
-import {AdminIcon, ElementInstance} from '../types';
 import {ComputedRef, Ref, WritableComputedRef, computed} from 'vue';
-import {Keyable, RadioGroupOption, SelectOption, SelectOptionValue, SelectOptionWithLabel} from '@myparcel-pdk/common';
-import {createFormElement, createObjectWithKeys} from '../utils';
-import {UseInputWithOptionsContext} from './useInputWithOptionsContext';
 import {get} from '@vueuse/core';
+import {Keyable, RadioGroupOption, SelectOption, SelectOptionValue, SelectOptionWithLabel} from '@myparcel-pdk/common';
 import {isOfType} from '@myparcel/ts-utils';
+import {createFormElement, createObjectWithKeys} from '../utils';
+import {AdminIcon, ElementInstance} from '../types';
 import {useSelectInputContext} from './useSelectInputContext';
+import {UseInputWithOptionsContext} from './useInputWithOptionsContext';
 
 export type RadioGroupProps<T extends SelectOptionValue = SelectOptionValue> = {
   modelValue: T;

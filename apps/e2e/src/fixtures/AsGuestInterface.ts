@@ -1,5 +1,5 @@
-import {Address, OrderIdentifier} from '../types.ts';
 import {PromiseOr} from '@myparcel/ts-utils';
+import {Address, OrderIdentifier} from '../types.ts';
 
 export interface AsGuestInterface {
   addToCart(productId: number, quantity?: number): PromiseOr<this>;

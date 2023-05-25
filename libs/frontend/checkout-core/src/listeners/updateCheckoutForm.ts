@@ -1,5 +1,5 @@
-import {AddressField, AddressType, PdkCheckoutForm, PdkField, getAddressType, useConfig} from '../index';
 import {useCheckoutStore} from '../utils';
+import {AddressField, AddressType, PdkCheckoutForm, PdkField, getAddressType, useConfig} from '../index';
 
 function getEntry(data: Record<string, FormDataEntryValue>, value: undefined | string): string {
   return (data[value as string] as string | undefined) ?? '';

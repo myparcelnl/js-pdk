@@ -13,9 +13,9 @@
 </template>
 
 <script lang="ts" setup>
+import {PropType} from 'vue';
 import {Size, Variant} from '@myparcel-pdk/common';
 import {ActionDefinition} from '../../types';
-import {PropType} from 'vue';
 import {useActionStore} from '../../stores';
 import {useLoading} from '../../composables';
 

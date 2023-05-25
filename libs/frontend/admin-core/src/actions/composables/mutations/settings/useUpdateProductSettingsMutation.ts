@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {usePdkAdminApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
+import {usePdkAdminApi} from '../../../../sdk';
 
 export const useUpdateProductSettingsMutation = () => {
   return usePdkMutation(BackendEndpoint.UpdateProductSettings, ({form, productIds}) => {

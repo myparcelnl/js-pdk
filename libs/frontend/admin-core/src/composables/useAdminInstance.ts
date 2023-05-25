@@ -1,5 +1,5 @@
-import {AdminInstance, INJECT_ADMIN_INSTANCE} from '../data';
 import {inject} from 'vue';
+import {AdminInstance, INJECT_ADMIN_INSTANCE} from '../data';
 
 export const useAdminInstance = (): AdminInstance => {
   const instance = inject(INJECT_ADMIN_INSTANCE);

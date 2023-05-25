@@ -1,8 +1,8 @@
-import {CommandArgs, ResolvedPdkBuilderConfig} from '../types';
 import {LiftoffEnv} from 'liftoff';
+import {CommandArgs, ResolvedPdkBuilderConfig} from '../types';
 import {copy} from '../commands';
-import {exists} from './exists';
 import {getPlatformDistPath} from './getPlatformDistPath';
+import {exists} from './exists';
 
 export const validateDistPath = async (context: {
   config: ResolvedPdkBuilderConfig;

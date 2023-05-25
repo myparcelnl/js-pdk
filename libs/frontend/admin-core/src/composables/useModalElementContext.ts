@@ -1,5 +1,5 @@
-import {AdminModalContext, AdminModalKey} from '../types';
 import {ComputedRef, computed} from 'vue';
+import {AdminModalContext, AdminModalKey} from '../types';
 import {useModalStore} from '../stores';
 
 type UseModalElementContext = <K extends AdminModalKey>(

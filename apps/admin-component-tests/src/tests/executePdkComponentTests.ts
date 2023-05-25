@@ -1,5 +1,5 @@
-import {AdminComponent, AdminComponentMap} from '@myparcel-pdk/common';
 import {afterEach, beforeEach, vi} from 'vitest';
+import {AdminComponent, AdminComponentMap} from '@myparcel-pdk/common';
 import {doComponentTestSetup} from '../tests';
 import {executeAdminComponentTest} from './executeAdminComponentTest';
 

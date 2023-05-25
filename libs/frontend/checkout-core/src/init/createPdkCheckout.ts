@@ -1,7 +1,7 @@
 import {InitializeCallback, PdkCheckoutConfigInput} from '../types';
-import {createConfig} from './createConfig';
-import {setupGlobals} from './setupGlobals';
 import {useConfig} from '../config';
+import {setupGlobals} from './setupGlobals';
+import {createConfig} from './createConfig';
 
 const execute = (callback: InitializeCallback): void => {
   if (window.MyParcelPdk.initialized) {

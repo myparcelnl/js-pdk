@@ -1,8 +1,8 @@
-import {getElementContext, globalLogger} from '../services';
-import {AdminConfiguration} from '../types';
-import {PdkAdmin} from './PdkAdmin';
-import {createAdminConfig} from './createAdminConfig';
 import {sendBootEvent} from '../utils';
+import {AdminConfiguration} from '../types';
+import {getElementContext, globalLogger} from '../services';
+import {createAdminConfig} from './createAdminConfig';
+import {PdkAdmin} from './PdkAdmin';
 
 export type CreatePdkAdmin = (configuration?: AdminConfiguration) => undefined | PdkAdmin;
 

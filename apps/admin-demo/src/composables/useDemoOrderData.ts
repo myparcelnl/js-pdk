@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {CarrierId, CarrierName, DeliveryTypeName} from '@myparcel/constants';
 import {Plugin} from '@myparcel-pdk/common';
+import {CarrierId, CarrierName, DeliveryTypeName} from '@myparcel/constants';
 
 // eslint-disable-next-line max-lines-per-function
 export const useDemoOrderData = (): Plugin.ModelContextOrderDataContext[] => [

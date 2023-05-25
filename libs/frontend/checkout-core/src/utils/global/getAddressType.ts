@@ -1,6 +1,6 @@
 import {PdkField, useConfig, useUtil} from '@myparcel-pdk/frontend-checkout-core';
-import {AddressType} from '../../types';
 import {Util} from '../../utils';
+import {AddressType} from '../../types';
 
 export const getAddressType = (): AddressType => {
   const getFieldValue = useUtil(Util.GetFieldValue);

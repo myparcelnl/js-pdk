@@ -1,4 +1,7 @@
-import {COMMAND_COPY_NAME, VerbosityLevel} from '../constants';
+import path from 'path';
+import fs from 'fs';
+import glob from 'fast-glob';
+import chalk from 'chalk';
 import {
   executePromises,
   getPlatformDistPath,
@@ -10,10 +13,7 @@ import {
   reportDryRun,
 } from '../utils';
 import {PdkBuilderCommand} from '../types';
-import chalk from 'chalk';
-import fs from 'fs';
-import glob from 'fast-glob';
-import path from 'path';
+import {COMMAND_COPY_NAME, VerbosityLevel} from '../constants';
 
 export const copy: PdkBuilderCommand = async ({env, config, args}) => {
   const {debug, time} = initializeCommand(COMMAND_COPY_NAME);

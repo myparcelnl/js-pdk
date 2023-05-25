@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import {ElementInstance} from '@myparcel-pdk/frontend-admin-core';
 import {PropType} from 'vue';
+import {ElementInstance} from '@myparcel-pdk/frontend-admin-core';
 
 defineProps({
   // eslint-disable-next-line vue/no-unused-properties

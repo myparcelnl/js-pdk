@@ -1,10 +1,10 @@
-import {AdminView, Plugin} from '@myparcel-pdk/common';
 import {Component, defineComponent, h} from 'vue';
+import {AdminView, Plugin} from '@myparcel-pdk/common';
 import {HASH_SEPARATOR} from '../../data';
-import {PluginSettingsTabsContext} from './createPluginSettingsTabs';
 import {TabNavigation} from '../../components';
-import {createFormTab} from './createFormTab';
+import {PluginSettingsTabsContext} from './createPluginSettingsTabs';
 import {createPluginSettingsForm} from './createPluginSettingsForm';
+import {createFormTab} from './createFormTab';
 
 export const createPluginSettingsTabsComponent = (
   id: string,

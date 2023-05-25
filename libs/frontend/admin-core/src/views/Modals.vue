@@ -11,11 +11,11 @@
 </template>
 
 <script lang="ts" setup>
+import {computed} from 'vue';
 import {useActionStore, useQueryStore} from '../stores';
 import {useModalOrder, usePluginSettings} from '../composables';
-import PrintOptionsModal from '../components/modals/PrintOptionsModal.vue';
 import ShipmentOptionsModal from '../components/modals/ShipmentOptionsModal.vue';
-import {computed} from 'vue';
+import PrintOptionsModal from '../components/modals/PrintOptionsModal.vue';
 
 useQueryStore().registerContextQueries();
 

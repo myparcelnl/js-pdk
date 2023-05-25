@@ -1,8 +1,8 @@
-import {exists, initializeCommand, logTargetPath, logTimeTaken, reportDryRun} from '../utils';
-import {COMMAND_CLEAN_NAME} from '../constants';
-import {PdkBuilderCommand} from '../types';
-import fs from 'fs';
 import path from 'path';
+import fs from 'fs';
+import {exists, initializeCommand, logTargetPath, logTimeTaken, reportDryRun} from '../utils';
+import {PdkBuilderCommand} from '../types';
+import {COMMAND_CLEAN_NAME} from '../constants';
 
 export const clean: PdkBuilderCommand = async ({env, config, args}) => {
   const {debug, time} = initializeCommand(COMMAND_CLEAN_NAME);

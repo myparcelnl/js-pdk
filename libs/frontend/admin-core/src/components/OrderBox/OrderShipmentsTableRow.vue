@@ -31,13 +31,13 @@
 </template>
 
 <script lang="ts" setup>
-import {Format, useAdminConfig, useLocalizedFormatter, useShipmentData} from '../../composables';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import ShipmentBarcode from '../common/ShipmentBarcode.vue';
-import ShipmentStatus from '../common/ShipmentStatus.vue';
 import {computed} from 'vue';
-import {useQueryStore} from '../../stores';
 import {useVModel} from '@vueuse/core';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import ShipmentStatus from '../common/ShipmentStatus.vue';
+import ShipmentBarcode from '../common/ShipmentBarcode.vue';
+import {useQueryStore} from '../../stores';
+import {Format, useAdminConfig, useLocalizedFormatter, useShipmentData} from '../../composables';
 
 const props = defineProps<{
   shipmentId: number;

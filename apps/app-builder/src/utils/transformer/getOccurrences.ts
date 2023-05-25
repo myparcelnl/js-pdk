@@ -1,5 +1,5 @@
-import {REPLACEMENT_EXCEPTIONS} from './consts';
 import {createRegExp} from './createRegExp';
+import {REPLACEMENT_EXCEPTIONS} from './consts';
 
 const occurrencesCache: Record<string, RegExpMatchArray | never[]> = {};
 

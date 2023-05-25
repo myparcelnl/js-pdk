@@ -1,5 +1,9 @@
 /* eslint-disable max-lines-per-function */
-import {COMMAND_RENAME_NAME, VerbosityLevel} from '../constants';
+import path from 'path';
+import fs from 'fs';
+import glob from 'fast-glob';
+import chalk from 'chalk';
+import {replaceCaseSensitive} from '../utils/transformer';
 import {
   executePromises,
   getPlatformDistPath,
@@ -12,11 +16,7 @@ import {
   validateDistPath,
 } from '../utils';
 import {PdkBuilderCommand} from '../types';
-import chalk from 'chalk';
-import fs from 'fs';
-import glob from 'fast-glob';
-import path from 'path';
-import {replaceCaseSensitive} from '../utils/transformer';
+import {COMMAND_RENAME_NAME, VerbosityLevel} from '../constants';
 
 const STRING_TO_REPLACE = 'myparcelnl';
 

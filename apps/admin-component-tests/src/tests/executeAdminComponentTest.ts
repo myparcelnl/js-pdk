@@ -1,9 +1,9 @@
 /* eslint-disable no-magic-numbers */
-import {AdminComponent, AdminView} from '@myparcel-pdk/common';
-import {AdminInstance, createAdminConfig, createLogger} from '@myparcel-pdk/frontend-admin-core';
-import {afterAll, beforeAll, describe, vi} from 'vitest';
 import {Component} from 'vue';
+import {afterAll, beforeAll, describe, vi} from 'vitest';
 import {QueryKey} from '@tanstack/vue-query';
+import {AdminInstance, createAdminConfig, createLogger} from '@myparcel-pdk/frontend-admin-core';
+import {AdminComponent, AdminView} from '@myparcel-pdk/common';
 import {testMap} from './testMap';
 
 export const executeAdminComponentTest = (name: AdminComponent, component: Omit<Component, 'props'>): void => {

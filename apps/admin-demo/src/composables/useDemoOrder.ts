@@ -1,5 +1,5 @@
-import {OneOrMore} from '@myparcel/ts-utils';
 import {Plugin} from '@myparcel-pdk/common';
+import {OneOrMore} from '@myparcel/ts-utils';
 import {useDemoOrderData} from './useDemoOrderData';
 
 export const useDemoOrder = (orderId: OneOrMore<string>): Plugin.ModelContextOrderDataContext => {

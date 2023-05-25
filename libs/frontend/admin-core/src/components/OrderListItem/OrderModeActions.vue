@@ -8,19 +8,19 @@
       <ActionButton
         v-for="action in orderActions"
         :key="action.id"
-        hide-text
-        :action="action" />
+        :action="action"
+        hide-text />
     </template>
   </PdkButtonGroup>
 </template>
 
 <script lang="ts">
-import {orderExportAction, orderViewInBackofficeAction, ordersEditAction} from '../../actions';
-import {ActionButton} from '../common';
-import {defineActions} from '../../services';
 import {defineComponent} from 'vue';
 import {get} from '@vueuse/core';
+import {ActionButton} from '../common';
+import {defineActions} from '../../services';
 import {useOrder} from '../../composables';
+import {orderExportAction, orderViewInBackofficeAction, ordersEditAction} from '../../actions';
 
 export default defineComponent({
   name: 'OrderModeActions',

@@ -1,8 +1,8 @@
 <template>
   <div v-test="`NotificationContainer--${category}`">
     <TransitionGroup
-      appear
-      :name="config?.transitions?.notification">
+      :name="config?.transitions?.notification"
+      appear>
       <PdkNotification
         v-for="(notification, index) in notifications"
         :key="`alert_${index}_${notification.content}`"
@@ -14,8 +14,8 @@
 <script lang="ts">
 import {PropType, computed, defineComponent} from 'vue';
 import {NotificationCategory} from '../../types';
-import {useAdminConfig} from '../../composables';
 import {useNotificationStore} from '../../stores';
+import {useAdminConfig} from '../../composables';
 
 export default defineComponent({
   name: 'NotificationContainer',

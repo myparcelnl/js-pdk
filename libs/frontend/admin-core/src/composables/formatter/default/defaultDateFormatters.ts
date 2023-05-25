@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {FormatterFunction, FormatterTranslateFunction} from '../formatter.types';
-import {createLongDateFormat} from './createLongDateFormat';
-import {createRelativeTimeFormat} from './createRelativeTimeFormat';
-import {parseDate} from './parseDate';
 import {upperFirst} from 'lodash-unified';
+import {FormatterFunction, FormatterTranslateFunction} from '../formatter.types';
+import {parseDate} from './parseDate';
+import {createRelativeTimeFormat} from './createRelativeTimeFormat';
+import {createLongDateFormat} from './createLongDateFormat';
 
 let formatDateLong: Intl.DateTimeFormat;
 

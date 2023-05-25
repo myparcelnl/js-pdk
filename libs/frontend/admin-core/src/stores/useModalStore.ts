@@ -1,6 +1,6 @@
-import {AdminModalContext, AdminModalKey, NotificationCategory} from '../types';
-import {defineStore} from 'pinia';
 import {ref} from 'vue';
+import {defineStore} from 'pinia';
+import {AdminModalContext, AdminModalKey, NotificationCategory} from '../types';
 import {useLoading} from '../composables';
 import {useNotificationStore} from './useNotificationStore';
 

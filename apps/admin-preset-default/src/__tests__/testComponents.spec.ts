@@ -1,3 +1,4 @@
+import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests';
 import {
   DefaultBox,
   DefaultButton,
@@ -29,7 +30,6 @@ import {
   DefaultTextInput,
   DefaultToggleInput,
 } from '../components';
-import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests';
 
 executePdkComponentTests({
   PdkBox: DefaultBox,

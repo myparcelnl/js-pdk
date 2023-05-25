@@ -24,17 +24,17 @@
 </template>
 
 <script lang="ts" setup>
+import {computed} from 'vue';
+import {get} from '@vueuse/core';
 import {Status, WebhookDefinition} from '@myparcel-pdk/common';
-import {useActionStore, useQueryStore} from '../../stores';
-import {webhooksCreateAction, webhooksDeleteAction} from '../../actions';
+import {partitionArray} from '@myparcel/ts-utils';
+import StatusIndicator from '../common/StatusIndicator.vue';
 import ActionButton from '../common/ActionButton.vue';
 import {ActionDefinition} from '../../types';
-import StatusIndicator from '../common/StatusIndicator.vue';
-import {computed} from 'vue';
+import {useActionStore, useQueryStore} from '../../stores';
 import {defineActions} from '../../services';
-import {get} from '@vueuse/core';
-import {partitionArray} from '@myparcel/ts-utils';
 import {useLanguage} from '../../composables';
+import {webhooksCreateAction, webhooksDeleteAction} from '../../actions';
 
 const {fetchWebhooks, createWebhooks, deleteWebhooks} = useQueryStore().registerWebhookQueries();
 

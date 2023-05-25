@@ -25,12 +25,12 @@
 
 <script lang="ts">
 import {computed, defineComponent, ref, toRaw} from 'vue';
-import {useLanguage, useOrder} from '../../composables';
-import {Keyable} from '@myparcel-pdk/common';
-import OrderShipmentsTable from './OrderShipmentsTable.vue';
-import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
+import {Keyable} from '@myparcel-pdk/common';
+import {defineActions} from '../../services';
+import {useLanguage, useOrder} from '../../composables';
 import {shipmentActions} from '../../actions';
+import OrderShipmentsTable from './OrderShipmentsTable.vue';
 
 export default defineComponent({
   name: 'ShipmentTableBox',
