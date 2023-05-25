@@ -1,20 +1,20 @@
 import {AddressField, Util, useCheckoutStore, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
 import {ATTRIBUTE_AUTOCOMPLETE} from '../constants';
-import {fillAddressFields} from './fillAddressFields';
-import {getFullStreet} from './getFullStreet';
-import {setAddress} from './setAddress';
+import {SeparateAddressField} from '../types';
+import {fillSeparateAddressFields} from '../listeners/fillSeparateAddressFields';
+import {setFullStreet} from './setFullStreet';
+import {triggerFormChange} from './triggerFormChange';
 
 /**
  * Set the correct autocomplete attribute on the street fields if none is present.
  */
 export function prepareFields(): void {
   const getAddressField = useUtil(Util.GetAddressField);
-  const setFieldValue = useUtil(Util.SetFieldValue);
 
   const checkout = useCheckoutStore();
 
   checkout.state.addressTypes.forEach((addressType) => {
-    const streetField = getAddressField(AddressField.Street, addressType);
+    const streetField = getAddressField(SeparateAddressField.Street, addressType);
 
     if (!streetField) {
       return;
@@ -26,11 +26,11 @@ export function prepareFields(): void {
       streetField?.setAttribute(ATTRIBUTE_AUTOCOMPLETE, 'street-address');
     }
 
-    address1Field?.addEventListener('load', setAddress);
-    address1Field?.addEventListener('animationend', setAddress);
+    address1Field?.addEventListener('load', fillSeparateAddressFields);
+    address1Field?.addEventListener('animationend', fillSeparateAddressFields);
 
-    setFieldValue(AddressField.Address1, getFullStreet(addressType), addressType, false);
+    setFullStreet(addressType, false);
   });
 
-  fillAddressFields();
+  triggerFormChange();
 }

@@ -1,15 +1,11 @@
-import {AddressField, AddressFields, AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
-import {splitAddress} from './splitAddress';
+import {AddressField, AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {SeparateAddressFields} from '../types';
+import {splitFullStreet} from './splitFullStreet';
 
-export type PartialAddressFields = Pick<
-  AddressFields,
-  AddressField.Street | AddressField.Number | AddressField.NumberSuffix
->;
-
-export const splitAddress1 = (addressType: AddressType): PartialAddressFields => {
+export const splitAddress1 = (addressType: AddressType): SeparateAddressFields => {
   const getAddressFieldValue = useUtil(Util.GetAddressFieldValue);
 
   const address = getAddressFieldValue(AddressField.Address1, addressType);
 
-  return splitAddress(address);
+  return splitFullStreet(address);
 };

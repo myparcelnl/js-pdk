@@ -1,2 +1,2 @@
+export * from './fillSeparateAddressFields';
 export * from './synchronizeAddress1';
-export * from './synchronizeSeparateAddressFields';

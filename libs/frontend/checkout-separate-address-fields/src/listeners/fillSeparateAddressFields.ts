@@ -1,6 +1,5 @@
-import {fillAddressFields} from './fillAddressFields';
+import {fillAddressFields, splitFullStreet} from '../utils';
 import {isOfType} from '@myparcel/ts-utils';
-import {splitAddress} from './splitAddress';
 
 /**
  * Autofill helper for layout with separate number field.
@@ -8,10 +7,10 @@ import {splitAddress} from './splitAddress';
  *
  * @param {Event} event
  */
-export const setAddress = (event: Event): void => {
+export const fillSeparateAddressFields = (event: Event): void => {
   if (!isOfType<HTMLInputElement>(event.target, 'value')) {
     return;
   }
 
-  fillAddressFields(splitAddress(event.target.value));
+  fillAddressFields(splitFullStreet(event.target.value));
 };
