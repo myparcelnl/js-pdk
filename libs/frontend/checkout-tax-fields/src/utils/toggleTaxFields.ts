@@ -1,4 +1,5 @@
-import {AddressField, Util, useCheckoutStore, useConfig, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {Util, useCheckoutStore, useConfig, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {TaxField} from '../types';
 import {hasTaxFields} from './hasTaxFields';
 
 export const toggleTaxFields = (): void => {
@@ -9,7 +10,7 @@ export const toggleTaxFields = (): void => {
   const config = useConfig();
 
   checkout.state.addressTypes.forEach((addressType) => {
-    [AddressField.EoriNumber, AddressField.VatNumber].forEach((fieldName) => {
+    [TaxField.EoriNumber, TaxField.VatNumber].forEach((fieldName) => {
       const field = getAddressField(fieldName, addressType, false);
 
       if (!field) {
