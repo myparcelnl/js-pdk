@@ -1,6 +1,6 @@
 import {AdminAction, AdminContextKey, AdminIcon} from '../../types';
 import {createMutationHandler, createQueryHandler, executeNextAction} from '../executors';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {defineAction} from '../defineAction';
 
 /**

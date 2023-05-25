@@ -5,12 +5,12 @@ import {
   LabelPosition,
   PdkEndpointParameters,
   PdkEndpointResponse,
-} from '@myparcel-pdk/common/src';
+} from '@myparcel-pdk/common';
 import {OneOrMore, ReverseMap} from '@myparcel/ts-utils';
 import {AdminAction} from './actions.types';
 import {AdminContextKey} from './context.types';
-import {BackendEndpointDefinition} from '@myparcel-pdk/frontend-admin-core/src';
-import {FormInstance} from '@myparcel/vue-form-builder/src';
+import {BackendEndpointDefinition} from '@myparcel-pdk/frontend-admin-core';
+import {FormInstance} from '@myparcel/vue-form-builder';
 
 export type BackendEndpointResponse<E extends BackendEndpoint> = PdkEndpointResponse<E, BackendEndpointDefinition>;
 

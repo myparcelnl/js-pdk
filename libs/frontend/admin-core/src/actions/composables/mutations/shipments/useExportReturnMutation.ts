@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {encodeArrayParameter} from '../../../../utils';
 import {setQueryOrder} from '../../../../helpers';
 import {toArray} from '@myparcel/ts-utils';

@@ -5,12 +5,10 @@
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "exports": {
-    ".": "./dist/index.js",
-    "./src": "./src/index.ts"
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "exports": "./src/index.ts",
+  "files": [
+    "./src"
+  ],
   "scripts": {
     "build": "run translations:import && vite build",
     "clean": "run ws:clean \"$(pwd)\"",

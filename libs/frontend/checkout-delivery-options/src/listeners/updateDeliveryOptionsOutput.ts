@@ -1,4 +1,4 @@
-import {Util, useEvent, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {Util, useEvent, useUtil} from '@myparcel-pdk/frontend-checkout-core';
 import {PdkDeliveryOptionsEvent} from '../types';
 import {useDeliveryOptionsStore} from '../store';
 

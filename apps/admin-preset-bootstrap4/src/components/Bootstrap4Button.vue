@@ -11,9 +11,9 @@
 <script lang="ts" setup>
 /* eslint-disable vue/no-unused-properties */
 import {PropType, computed} from 'vue';
-import {AdminIcon} from '@myparcel-pdk/frontend-admin-core/src';
+import {AdminIcon} from '@myparcel-pdk/frontend-admin-core';
 import BaseButton from './common/BaseButton.vue';
-import {Size} from '@myparcel-pdk/common/src';
+import {Size} from '@myparcel-pdk/common';
 
 const props = defineProps({
   disabled: {

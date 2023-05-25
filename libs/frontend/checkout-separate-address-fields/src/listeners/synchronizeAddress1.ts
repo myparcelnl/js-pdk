@@ -5,7 +5,7 @@ import {
   Util,
   useCheckoutStore,
   useUtil,
-} from '@myparcel-pdk/frontend-checkout-core/src';
+} from '@myparcel-pdk/frontend-checkout-core';
 import {getAddressFields, getFullStreet, triggerFormChange} from '../utils';
 import {SEPARATE_ADDRESS_FIELDS} from '../constants';
 

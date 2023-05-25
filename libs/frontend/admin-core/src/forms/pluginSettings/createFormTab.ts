@@ -1,7 +1,7 @@
 import {VNode, h} from 'vue';
 import {FormTab} from './createPluginSettingsTabs';
-import {MagicForm} from '@myparcel/vue-form-builder/src';
-import {TabDefinition} from '@myparcel-pdk/common/src';
+import {MagicForm} from '@myparcel/vue-form-builder';
+import {TabDefinition} from '@myparcel-pdk/common';
 import {useLanguage} from '../../composables';
 
 export const createFormTab = (tab: FormTab): TabDefinition => {

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {AdminView, ComponentImportFunction} from '@myparcel-pdk/common/src';
+import {AdminView, ComponentImportFunction} from '@myparcel-pdk/common';
 import {Component} from 'vue';
 
 /**

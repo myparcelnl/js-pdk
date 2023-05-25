@@ -1,5 +1,5 @@
-import {ComponentOrHtmlElement, InteractiveElementInstance} from '@myparcel-vfb/core/src';
-import {Keyable, SelectOption, SelectOptionValue} from '@myparcel-pdk/common/src';
+import {ComponentOrHtmlElement, InteractiveElementInstance} from '@myparcel-vfb/core';
+import {Keyable, SelectOption, SelectOptionValue} from '@myparcel-pdk/common';
 import {Replace} from '@myparcel/ts-utils';
 
 export type ArrayItem<T> = T extends (infer U)[] ? U : T;

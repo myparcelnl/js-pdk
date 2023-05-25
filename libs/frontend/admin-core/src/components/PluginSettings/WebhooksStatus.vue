@@ -23,8 +23,8 @@
   </PdkBox>
 </template>
 
-<script setup lang="ts">
-import {Status, WebhookDefinition} from '@myparcel-pdk/common/src';
+<script lang="ts" setup>
+import {Status, WebhookDefinition} from '@myparcel-pdk/common';
 import {useActionStore, useQueryStore} from '../../stores';
 import {webhooksCreateAction, webhooksDeleteAction} from '../../actions';
 import ActionButton from '../common/ActionButton.vue';

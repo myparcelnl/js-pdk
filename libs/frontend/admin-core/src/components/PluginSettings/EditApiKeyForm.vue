@@ -8,10 +8,10 @@
 
 <script lang="ts" setup>
 import {FORM_KEY_ACCOUNT_SETTINGS, defineFormField, resolveFormComponent} from '../../forms';
-import {FormInstance, MagicForm, defineField, defineForm} from '@myparcel/vue-form-builder/src';
+import {FormInstance, MagicForm, defineField, defineForm} from '@myparcel/vue-form-builder';
 import {markRaw, ref, watch} from 'vue';
 import {useAdminConfig, usePluginSettings, useStoreContextQuery} from '../../composables';
-import {AdminComponent} from '@myparcel-pdk/common/src';
+import {AdminComponent} from '@myparcel-pdk/common';
 import {SubmitButton} from '../common';
 import {createActionContext} from '../../services';
 import {createUpdateAccountSettingsValidator} from './createUpdateAccountSettingsValidator';

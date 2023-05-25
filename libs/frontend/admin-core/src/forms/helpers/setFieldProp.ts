@@ -1,5 +1,5 @@
 import {ElementInstance} from '../../types';
-import {FormInstance} from '@myparcel/vue-form-builder/src';
+import {FormInstance} from '@myparcel/vue-form-builder';
 import {get} from '@vueuse/core';
 import {isOfType} from '@myparcel/ts-utils';
 

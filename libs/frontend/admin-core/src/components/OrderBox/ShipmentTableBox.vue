@@ -26,7 +26,7 @@
 <script lang="ts">
 import {computed, defineComponent, ref, toRaw} from 'vue';
 import {useLanguage, useOrder} from '../../composables';
-import {Keyable} from '@myparcel-pdk/common/src';
+import {Keyable} from '@myparcel-pdk/common';
 import OrderShipmentsTable from './OrderShipmentsTable.vue';
 import {defineActions} from '../../services';
 import {get} from '@vueuse/core';

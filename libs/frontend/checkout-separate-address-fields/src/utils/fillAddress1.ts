@@ -1,4 +1,4 @@
-import {AddressType, useCheckoutStore} from '@myparcel-pdk/frontend-checkout-core/src';
+import {AddressType, useCheckoutStore} from '@myparcel-pdk/frontend-checkout-core';
 import {hasSeparateAddressFields} from './hasSeparateAddressFields';
 import {setFullStreet} from './setFullStreet';
 import {triggerFormChange} from './triggerFormChange';

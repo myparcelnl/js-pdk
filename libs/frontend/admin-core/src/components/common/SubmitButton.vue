@@ -1,15 +1,15 @@
 <template>
   <PdkButton
-    :loading="loading"
     :disabled="disabled"
     :icon="icon"
+    :loading="loading"
     label="action_save"
     @click="submit" />
 </template>
 
 <script lang="ts" setup>
 import {AdminIcon} from '../../types';
-import {useForm} from '@myparcel/vue-form-builder/src';
+import {useForm} from '@myparcel/vue-form-builder';
 import {useLoading} from '../../composables';
 
 defineProps<{

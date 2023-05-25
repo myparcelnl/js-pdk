@@ -36,7 +36,7 @@
 /**
  * A form group is used to render a label and a form element.
  */
-import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-admin-core/src';
+import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-admin-core';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{element: ElementInstance<{description: string}>}>();

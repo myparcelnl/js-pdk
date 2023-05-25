@@ -1,7 +1,7 @@
 import {ActionParameters, AnyAdminAction, MaybeAdminAction} from '../../types';
 import {ActionContext} from '../../actions';
 import {AdminInstance} from '../../data';
-import {Variant} from '@myparcel-pdk/common/src';
+import {Variant} from '@myparcel-pdk/common';
 import {createApiNotification} from '../createApiNotification';
 import {createLogger} from '../logger';
 import {getActionIdentifier} from './getActionIdentifier';

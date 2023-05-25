@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import {MagicForm} from '@myparcel/vue-form-builder/src';
+import {MagicForm} from '@myparcel/vue-form-builder';
 import {createShipmentOptionsForm} from '../../forms';
 import {get} from '@vueuse/core';
 import {useOrders} from '../../composables';

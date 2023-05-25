@@ -33,9 +33,9 @@
 </template>
 
 <script lang="ts" setup>
-import {ActionButton, ActionDefinition, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-admin-core/src';
+import {ActionButton, ActionDefinition, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-admin-core';
 import BaseButton from './common/BaseButton.vue';
-import {Size} from '@myparcel-pdk/common/src';
+import {Size} from '@myparcel-pdk/common';
 
 const props = defineProps<{
   // eslint-disable-next-line vue/no-unused-properties

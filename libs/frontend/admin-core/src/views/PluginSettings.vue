@@ -20,7 +20,7 @@ import {
 import {useActionStore, useQueryStore} from '../stores';
 import AccountSettings from '../components/PluginSettings/AccountSettings.vue';
 import {AdminContextKey} from '../types';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForms.vue';
 
 const queryStore = useQueryStore();

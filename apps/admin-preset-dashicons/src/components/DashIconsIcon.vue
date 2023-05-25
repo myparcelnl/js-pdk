@@ -9,7 +9,7 @@
 
 <script lang="ts" setup>
 import {PropType, computed} from 'vue';
-import {AdminIcon} from '@myparcel-pdk/frontend-admin-core/src';
+import {AdminIcon} from '@myparcel-pdk/frontend-admin-core';
 import {convertToDashIcon} from '../convertToDashIcon';
 
 const props = defineProps({

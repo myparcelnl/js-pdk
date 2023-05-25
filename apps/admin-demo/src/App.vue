@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts" setup>
-import {ModalsView, NotificationsView} from '@myparcel-pdk/frontend-admin-core/src';
+import {ModalsView, NotificationsView} from '@myparcel-pdk/frontend-admin-core';
 import {RouterLink, RouterView, useRouter} from 'vue-router';
 
 const routes = useRouter()

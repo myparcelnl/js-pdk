@@ -5,8 +5,8 @@
     :disabled="element.isDisabled || element.isSuspended" />
 </template>
 
-<script setup lang="ts">
-import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-admin-core/src';
+<script lang="ts" setup>
+import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-admin-core';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties

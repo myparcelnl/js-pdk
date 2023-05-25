@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {usePdkAdminApi} from '../../../../sdk';
 import {usePdkMutation} from '../orders';
 import {useQueryClient} from '@tanstack/vue-query';

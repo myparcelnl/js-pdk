@@ -1,5 +1,5 @@
 import {PromiseOr} from '@myparcel/ts-utils';
-import {useConfig} from '@myparcel-pdk/frontend-checkout-core/src';
+import {useConfig} from '@myparcel-pdk/frontend-checkout-core';
 
 /**
  * Check if the given shipping method is allowed to have delivery options by checking if the name starts with any

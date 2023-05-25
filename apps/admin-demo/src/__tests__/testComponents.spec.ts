@@ -11,7 +11,7 @@ import {
   DemoTabNavButton,
   DemoTextInput,
 } from '../components';
-import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests/src';
+import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests';
 
 executePdkComponentTests({
   PdkBox: DemoBox,

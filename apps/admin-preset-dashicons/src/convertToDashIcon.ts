@@ -1,4 +1,4 @@
-import {AdminIcon} from '@myparcel-pdk/frontend-admin-core/src';
+import {AdminIcon} from '@myparcel-pdk/frontend-admin-core';
 import {memoize} from 'lodash-unified';
 
 const PDK_DASH_ICON_MAP: Partial<Record<AdminIcon, string>> = {

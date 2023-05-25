@@ -39,8 +39,8 @@
  * contain multiple items.
  */
 
-import {ActionButton, ActionDefinition, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-admin-core/src';
-import {Size} from '@myparcel-pdk/common/src';
+import {ActionButton, ActionDefinition, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-admin-core';
+import {Size} from '@myparcel-pdk/common';
 
 const props = defineProps<{
   /**

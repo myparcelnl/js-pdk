@@ -1,16 +1,16 @@
 <template>
   <span :class="config?.cssUtilities?.whitespaceNoWrap">
     <PdkIcon
-      :icon="icon"
-      :class="cssClasses" />
+      :class="cssClasses"
+      :icon="icon" />
     <slot />
   </span>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {PropType, computed} from 'vue';
 import {AdminIcon} from '../../types';
-import {Status} from '@myparcel-pdk/common/src';
+import {Status} from '@myparcel-pdk/common';
 import {useAdminConfig} from '../../composables';
 
 const props = defineProps({

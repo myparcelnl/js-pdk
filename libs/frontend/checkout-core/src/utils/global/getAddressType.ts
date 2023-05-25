@@ -1,4 +1,4 @@
-import {PdkField, useConfig, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {PdkField, useConfig, useUtil} from '@myparcel-pdk/frontend-checkout-core';
 import {AddressType} from '../../types';
 import {Util} from '../../utils';
 

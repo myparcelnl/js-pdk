@@ -3,7 +3,7 @@ import {AdminAppConfig, INJECT_GLOBAL_PDK_ADMIN} from '../data';
 import {AdminConfiguration, AdminContextObject} from '../types';
 import {App, createApp} from 'vue';
 import {createLogger, getElementContext} from '../services';
-import {AdminView} from '@myparcel-pdk/common/src';
+import {AdminView} from '@myparcel-pdk/common';
 import {renderViewComponent} from './renderMap';
 import {setupAdminApp} from './setupAdminApp';
 

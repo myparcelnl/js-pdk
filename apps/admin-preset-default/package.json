@@ -4,27 +4,16 @@
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "exports": {
-    ".": "./dist/index.js",
-    "./src": "./src/index.ts"
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "exports": "./src/index.ts",
   "files": [
-    "./dist",
     "./src"
   ],
   "scripts": {
-    "build": "run ws:vite:build \"$(pwd)\"",
-    "build:dev": "run ws:vite:build:dev \"$(pwd)\"",
-    "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
-    "serve": "run ws:vite:serve \"$(pwd)\"",
     "test": "run ws:test \"$(pwd)\"",
     "test:run": "run ws:test:run \"$(pwd)\"",
-    "typecheck": "run ws:vite:typecheck \"$(pwd)\"",
-    "watch": "run ws:vite:watch \"$(pwd)\""
+    "typecheck": "run ws:vite:typecheck \"$(pwd)\""
   },
   "dependencies": {
     "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.61",

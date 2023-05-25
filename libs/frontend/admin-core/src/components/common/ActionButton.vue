@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import {Size, Variant} from '@myparcel-pdk/common/src';
+import {Size, Variant} from '@myparcel-pdk/common';
 import {ActionDefinition} from '../../types';
 import {PropType} from 'vue';
 import {useActionStore} from '../../stores';

@@ -4,8 +4,8 @@
     :element="element" />
 </template>
 
-<script setup lang="ts">
-import {ElementInstance} from '@myparcel-pdk/frontend-admin-core/src';
+<script lang="ts" setup>
+import {ElementInstance} from '@myparcel-pdk/frontend-admin-core';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties

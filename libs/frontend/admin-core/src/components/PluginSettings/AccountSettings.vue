@@ -12,15 +12,15 @@
 
           <PdkButtonGroup>
             <PdkButton
-              variant="primary"
               size="small"
+              variant="primary"
               @click="editingApiKey = true">
               {{ translate('button_api_key_edit') }}
             </PdkButton>
 
             <PdkButton
-              variant="primary"
               size="small"
+              variant="primary"
               @click="editingWebhooks = !editingWebhooks">
               {{ translate('button_webhooks_edit') }}
             </PdkButton>
@@ -35,12 +35,12 @@
   </PdkBox>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {computed, ref} from 'vue';
 import {useAdminConfig, useLanguage, useStoreContextQuery} from '../../composables';
 import EditApiKeyForm from './EditApiKeyForm.vue';
-import {FormInstance} from '@myparcel/vue-form-builder/src';
-import {Status} from '@myparcel-pdk/common/src';
+import {FormInstance} from '@myparcel/vue-form-builder';
+import {Status} from '@myparcel-pdk/common';
 import StatusIndicator from '../common/StatusIndicator.vue';
 import WebhooksStatus from './WebhooksStatus.vue';
 import {get} from '@vueuse/core';

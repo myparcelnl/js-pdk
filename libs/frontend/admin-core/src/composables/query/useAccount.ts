@@ -1,4 +1,4 @@
-import {Account} from '@myparcel-pdk/common/src';
+import {Account} from '@myparcel-pdk/common';
 import {AdminContextKey} from '../../types';
 import {get} from '@vueuse/core';
 import {useStoreContextQuery} from '../useStoreContextQuery';

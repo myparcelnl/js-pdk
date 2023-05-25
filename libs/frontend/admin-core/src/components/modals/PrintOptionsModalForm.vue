@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import {MagicForm, defineForm} from '@myparcel/vue-form-builder/src';
+import {MagicForm, defineForm} from '@myparcel/vue-form-builder';
 import {useAdminConfig, useContext, usePluginSettings} from '../../composables';
 import {AdminModalKey} from '../../types';
 import {generateFormFields} from '../../forms';

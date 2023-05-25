@@ -30,9 +30,9 @@
   </PdkTableRow>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {Format, useAdminConfig, useLocalizedFormatter, useShipmentData} from '../../composables';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
 import {computed} from 'vue';

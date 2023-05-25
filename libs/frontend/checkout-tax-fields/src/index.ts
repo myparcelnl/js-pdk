@@ -1,4 +1,4 @@
-import {StoreListener, useCheckoutStore} from '@myparcel-pdk/frontend-checkout-core/src';
+import {StoreListener, useCheckoutStore} from '@myparcel-pdk/frontend-checkout-core';
 import {toggleTaxFields} from './utils';
 
 /**

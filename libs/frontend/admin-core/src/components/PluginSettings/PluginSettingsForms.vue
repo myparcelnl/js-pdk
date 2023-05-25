@@ -4,11 +4,11 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {computed, ref, watch} from 'vue';
 import {useAccount, useAdminConfig, useLogger, useStoreContextQuery} from '../../composables';
 import {AdminContextKey} from '../../types';
-import {TabDefinition} from '@myparcel-pdk/common/src';
+import {TabDefinition} from '@myparcel-pdk/common';
 import TabNavigation from '../common/TabNavigation.vue';
 import {createActionContext} from '../../services';
 import {createPluginSettingsTabs} from '../../forms';

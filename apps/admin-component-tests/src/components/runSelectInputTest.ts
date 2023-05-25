@@ -1,7 +1,7 @@
 import {expect, it} from 'vitest';
 import {runCommonComponentTests, runCommonInputTests} from '../common';
 import {AdminComponentTest} from '../tests';
-import {SelectOption} from '@myparcel-pdk/common/src';
+import {SelectOption} from '@myparcel-pdk/common';
 import {createInputOptions} from '../helpers';
 import {mount} from '@vue/test-utils';
 

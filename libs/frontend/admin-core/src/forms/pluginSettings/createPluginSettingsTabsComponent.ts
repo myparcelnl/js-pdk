@@ -1,4 +1,4 @@
-import {AdminView, Plugin} from '@myparcel-pdk/common/src';
+import {AdminView, Plugin} from '@myparcel-pdk/common';
 import {Component, defineComponent, h} from 'vue';
 import {HASH_SEPARATOR} from '../../data';
 import {PluginSettingsTabsContext} from './createPluginSettingsTabs';

@@ -1,4 +1,4 @@
-import {AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core';
 import {AllAddressFields, AnyAddressField} from '../types';
 import {triggerFormChange} from './triggerFormChange';
 

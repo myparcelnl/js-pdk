@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {BackendEndpoint, Plugin} from '@myparcel-pdk/common/src';
+import {BackendEndpoint, Plugin} from '@myparcel-pdk/common';
 import {BackendEndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {MutationMode, getCallbackForMutationMode, getModalMutationOptions} from '../../../../services';
 import {encodeArrayParameter, formToBody} from '../../../../utils';

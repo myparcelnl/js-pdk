@@ -5,7 +5,7 @@ import {
   Util,
   useConfig,
   useUtil,
-} from '@myparcel-pdk/frontend-checkout-core/src';
+} from '@myparcel-pdk/frontend-checkout-core';
 
 export const updateAddressType: StoreCallbackUpdate<CheckoutStoreState> = (newState, oldState) => {
   const fieldsEqual = useUtil(Util.FieldsEqual);

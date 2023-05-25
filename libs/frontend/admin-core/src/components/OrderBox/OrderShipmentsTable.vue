@@ -32,10 +32,10 @@
   </PdkTable>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {useBulkSelectCheckbox, useLanguage, useOrder} from '../../composables';
 import {BulkSelectCheckbox} from '../common';
-import {Keyable} from '@myparcel-pdk/common/src';
+import {Keyable} from '@myparcel-pdk/common';
 import OrderShipmentsTableRow from './OrderShipmentsTableRow.vue';
 
 const emit = defineEmits<(event: 'select', value: Record<Keyable, boolean>) => void>();

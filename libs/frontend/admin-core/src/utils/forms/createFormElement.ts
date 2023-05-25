@@ -1,4 +1,4 @@
-import {FormInstance, InteractiveElementConfiguration} from '@myparcel/vue-form-builder/src';
+import {FormInstance, InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {ElementInstance} from '../../types';
 import {ref} from 'vue';
 

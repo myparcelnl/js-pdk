@@ -1,6 +1,6 @@
 import {Format, Formatter} from '../../../composables';
 import {ElementInstance} from '../../../types';
-import {SelectOption} from '@myparcel-pdk/common/src';
+import {SelectOption} from '@myparcel-pdk/common';
 import {getInsurancePossibilities} from './getInsurancePossibilities';
 
 export const getFormattedInsurancePossibilities = (field: ElementInstance, formatter: Formatter): SelectOption[] => {

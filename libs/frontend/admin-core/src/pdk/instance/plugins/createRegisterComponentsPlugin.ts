@@ -4,9 +4,9 @@ import {
   optionalAdminActionContainerComponentNames,
   optionalAdminPlainWrapperComponentNames,
   requiredAdminComponentNames,
-} from '@myparcel-pdk/common/src';
+} from '@myparcel-pdk/common';
 import {App, Component, markRaw} from 'vue';
-import {FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder/src';
+import {FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder';
 import {memoize, mergeWith} from 'lodash-unified';
 import {PdkAppPlugin} from './plugins.types';
 import {PlainElement} from '../../../components';

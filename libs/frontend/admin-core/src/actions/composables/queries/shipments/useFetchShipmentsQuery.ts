@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {BackendEndpoint, Shipment} from '@myparcel-pdk/common/src';
+import {BackendEndpoint, Shipment} from '@myparcel-pdk/common';
 import {QueryKey, useQuery, useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpointResponse} from '../../../../types';
 import {QUERY_KEY_SHIPMENT} from '../queryKeys';

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {AdminView, BackendEndpoint} from '@myparcel-pdk/common/src';
+import {AdminView, BackendEndpoint} from '@myparcel-pdk/common';
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
 import {AdminContextKey} from '../../../../types';
 import {encodeArrayParameter} from '../../../../utils';

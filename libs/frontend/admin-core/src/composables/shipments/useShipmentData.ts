@@ -1,7 +1,7 @@
 import {ComputedRef, Ref, computed, ref} from 'vue';
 import {ActionDefinition} from '../../types';
 import {Carrier} from '@myparcel/sdk';
-import {Shipment} from '@myparcel-pdk/common/src';
+import {Shipment} from '@myparcel-pdk/common';
 import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
 import {shipmentActions} from '../../actions';

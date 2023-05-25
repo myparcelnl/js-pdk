@@ -1,4 +1,4 @@
-import {Settings, Shipment} from '@myparcel-pdk/common/src';
+import {Settings, Shipment} from '@myparcel-pdk/common';
 import {Weekday, Weekdays, useWeekdays} from './useWeekdays';
 import {createFormElement, createObjectWithKeys} from '../utils';
 import {reactive, watch} from 'vue';

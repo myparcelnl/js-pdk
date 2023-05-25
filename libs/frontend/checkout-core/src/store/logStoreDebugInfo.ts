@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import {Keyable} from '@myparcel-pdk/common/src';
-import {StoreState} from '@myparcel-pdk/frontend-checkout-core/src';
+import {Keyable} from '@myparcel-pdk/common';
+import {StoreState} from '@myparcel-pdk/frontend-checkout-core';
 
 export const logStoreDebugInfo = (
   name: Keyable,

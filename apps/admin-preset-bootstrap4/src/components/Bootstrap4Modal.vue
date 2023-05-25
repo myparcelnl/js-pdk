@@ -43,7 +43,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {
   ActionButton,
   ActionDefinition,
@@ -51,7 +51,7 @@ import {
   NotificationContainer,
   useLanguage,
   useModalStore,
-} from '@myparcel-pdk/frontend-admin-core/src';
+} from '@myparcel-pdk/frontend-admin-core';
 import {PropType, computed} from 'vue';
 
 const props = defineProps({

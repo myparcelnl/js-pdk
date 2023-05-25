@@ -4,15 +4,15 @@
       v-for="option in options"
       :key="option.value"
       v-model="model"
-      :name="id"
       :disabled="element.isDisabled || element.isSuspended || options.length <= 1"
-      :element="elements[option.value]" />
+      :element="elements[option.value]"
+      :name="id" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import {ElementInstance, OptionsProp, useRadioGroupContext} from '@myparcel-pdk/frontend-admin-core/src';
-import {Keyable} from '@myparcel-pdk/common/src';
+import {ElementInstance, OptionsProp, useRadioGroupContext} from '@myparcel-pdk/frontend-admin-core';
+import {Keyable} from '@myparcel-pdk/common';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{modelValue: string; element: ElementInstance<OptionsProp<Keyable>>}>();

@@ -28,7 +28,7 @@ import {
   runTimeInputTest,
   runToggleInputTest,
 } from '../components';
-import {AdminComponent} from '@myparcel-pdk/common/src';
+import {AdminComponent} from '@myparcel-pdk/common';
 import {Component} from 'vue';
 
 export type AdminComponentTest = (component: Omit<Component, 'props'>) => void;

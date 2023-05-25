@@ -1,4 +1,4 @@
-import {AddressField, AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {AddressField, AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core';
 import {SeparateAddressFields} from '../types';
 import {splitFullStreet} from './splitFullStreet';
 

@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import {ElementInstance} from '@myparcel-pdk/frontend-admin-core/src';
+import {ElementInstance} from '@myparcel-pdk/frontend-admin-core';
 import {useVModel} from '@vueuse/core';
 
 // eslint-disable-next-line vue/no-unused-properties

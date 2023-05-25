@@ -20,9 +20,9 @@
  * disabled.
  */
 
-import {AdminIcon, useLanguage} from '@myparcel-pdk/frontend-admin-core/src';
+import {AdminIcon, useLanguage} from '@myparcel-pdk/frontend-admin-core';
 import {PropType} from 'vue';
-import {Size} from '@myparcel-pdk/common/src';
+import {Size} from '@myparcel-pdk/common';
 
 defineProps({
   /**

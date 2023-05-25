@@ -1,7 +1,7 @@
 import {ActionInput, BackendEndpointResponse} from '../../../../types';
 import {UseMutationReturnType, VueMutationObserverOptions} from '@tanstack/vue-query/build/lib/useMutation';
 import {ApiException} from '@myparcel/sdk';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {MaybeRef} from '@tanstack/vue-query/build/lib/types';
 import {MutationFunction} from '@tanstack/query-core';
 import {useMutation} from '@tanstack/vue-query';

@@ -1,4 +1,4 @@
-import {AddressField, Util, useCheckoutStore, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {AddressField, Util, useCheckoutStore, useUtil} from '@myparcel-pdk/frontend-checkout-core';
 import {ATTRIBUTE_AUTOCOMPLETE} from '../constants';
 import {SeparateAddressField} from '../types';
 import {fillSeparateAddressFields} from '../listeners/fillSeparateAddressFields';

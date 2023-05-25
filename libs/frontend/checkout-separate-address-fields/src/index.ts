@@ -1,4 +1,4 @@
-import {StoreListener, useCheckoutStore} from '@myparcel-pdk/frontend-checkout-core/src';
+import {StoreListener, useCheckoutStore} from '@myparcel-pdk/frontend-checkout-core';
 import {fillAddress1, prepareFields, synchronizeAddressOnCountryChange} from './utils';
 import {synchronizeAddress1} from './listeners';
 

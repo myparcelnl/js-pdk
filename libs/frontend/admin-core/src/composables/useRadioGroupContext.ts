@@ -1,12 +1,6 @@
 import {AdminIcon, ElementInstance} from '../types';
 import {ComputedRef, Ref, WritableComputedRef, computed} from 'vue';
-import {
-  Keyable,
-  RadioGroupOption,
-  SelectOption,
-  SelectOptionValue,
-  SelectOptionWithLabel,
-} from '@myparcel-pdk/common/src';
+import {Keyable, RadioGroupOption, SelectOption, SelectOptionValue, SelectOptionWithLabel} from '@myparcel-pdk/common';
 import {createFormElement, createObjectWithKeys} from '../utils';
 import {UseInputWithOptionsContext} from './useInputWithOptionsContext';
 import {get} from '@vueuse/core';

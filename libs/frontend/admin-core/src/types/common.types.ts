@@ -1,9 +1,11 @@
 import {OneOrMore} from '@myparcel/ts-utils';
-import {Variant} from '@myparcel-pdk/common/src';
+import {Variant} from '@myparcel-pdk/common';
 
 export type NotificationId = number | string;
 
 export interface Notification {
+  category?: NotificationCategory;
+  content?: OneOrMore<string>;
   /**
    * ID of a notification. If not provided, a unique id will be generated. It may be a string, but make sure this string
    * does not exist in NotificationCategory.
@@ -11,11 +13,9 @@ export interface Notification {
    * @see NotificationCategory
    */
   id?: NotificationId;
-  category?: NotificationCategory;
-  title?: string;
-  content?: OneOrMore<string>;
-  variant: Variant;
   timeout?: boolean | number;
+  title?: string;
+  variant: Variant;
 }
 
 export enum NotificationCategory {

@@ -7,7 +7,7 @@ import {
   MaybeAdminAction,
   Notification,
 } from '../../types';
-import {BackendEndpoint, Variant} from '@myparcel-pdk/common/src';
+import {BackendEndpoint, Variant} from '@myparcel-pdk/common';
 import {AdminInstance} from '../../data';
 
 type BaseActionContext<A extends MaybeAdminAction> = {

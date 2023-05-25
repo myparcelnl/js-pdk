@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
-import {AdminComponent, AdminView} from '@myparcel-pdk/common/src';
-import {AdminInstance, createAdminConfig, createLogger} from '@myparcel-pdk/frontend-admin-core/src';
+import {AdminComponent, AdminView} from '@myparcel-pdk/common';
+import {AdminInstance, createAdminConfig, createLogger} from '@myparcel-pdk/frontend-admin-core';
 import {afterAll, beforeAll, describe, vi} from 'vitest';
 import {Component} from 'vue';
 import {QueryKey} from '@tanstack/vue-query';

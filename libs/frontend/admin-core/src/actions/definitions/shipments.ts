@@ -1,5 +1,5 @@
 import {AdminAction, AdminIcon} from '../../types';
-import {BackendEndpoint, Variant} from '@myparcel-pdk/common/src';
+import {BackendEndpoint, Variant} from '@myparcel-pdk/common';
 import {createMutationHandler, executeNextAction} from '../executors';
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
 import {defineAction} from '../defineAction';

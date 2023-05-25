@@ -14,7 +14,7 @@ import {
   SAME_DAY_DELIVERY,
   SIGNATURE,
 } from './field';
-import {AdminComponent, Plugin, RadioGroupOption} from '@myparcel-pdk/common/src';
+import {AdminComponent, Plugin, RadioGroupOption} from '@myparcel-pdk/common';
 import {AdminContextKey, AdminModalKey, ElementInstance} from '../../types';
 import {CarrierName, PackageTypeName} from '@myparcel/constants';
 import {OneOrMore, toArray} from '@myparcel/ts-utils';
@@ -29,7 +29,7 @@ import {defineFormField, resolveFormComponent, setFieldProp} from '../helpers';
 import {markRaw, ref} from 'vue';
 import {useAdminConfig, useAssetUrl, useContext, useLocalizedFormatter} from '../../composables';
 import {createShipmentFormName} from '../../utils';
-import {defineForm} from '@myparcel/vue-form-builder/src';
+import {defineForm} from '@myparcel/vue-form-builder';
 import {get} from '@vueuse/core';
 import {useCarrier} from '../../sdk';
 import {useModalStore} from '../../stores';

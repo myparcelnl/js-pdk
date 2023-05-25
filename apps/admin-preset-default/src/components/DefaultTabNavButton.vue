@@ -9,10 +9,10 @@
   </button>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {PropType} from 'vue';
-import {TabDefinition} from '@myparcel-pdk/common/src';
-import {useLanguage} from '@myparcel-pdk/frontend-admin-core/src';
+import {TabDefinition} from '@myparcel-pdk/common';
+import {useLanguage} from '@myparcel-pdk/frontend-admin-core';
 
 defineProps({
   // eslint-disable-next-line vue/no-unused-properties

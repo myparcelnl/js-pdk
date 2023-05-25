@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import {OrderBoxView} from '@myparcel-pdk/frontend-admin-core/src';
+import {OrderBoxView} from '@myparcel-pdk/frontend-admin-core';
 import {useDemoOrder} from '../composables/useDemoOrder';
 import {useRoute} from 'vue-router';
 

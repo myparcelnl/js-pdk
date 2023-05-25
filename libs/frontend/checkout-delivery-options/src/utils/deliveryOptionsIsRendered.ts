@@ -1,4 +1,4 @@
-import {Util, useConfig, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {Util, useConfig, useUtil} from '@myparcel-pdk/frontend-checkout-core';
 
 export const deliveryOptionsIsRendered = (): boolean => {
   const config = useConfig();

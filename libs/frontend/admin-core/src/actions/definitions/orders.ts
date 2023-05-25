@@ -1,7 +1,7 @@
 import {ActionParameters, AdminAction, AdminIcon, AdminModalKey} from '../../types';
 import {createMutationHandler, createQueryHandler, executeNextAction, resolveOrderParameters} from '../executors';
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {defineAction} from '../defineAction';
 import {shipmentsUpdateAction} from './shipments';
 import {toArray} from '@myparcel/ts-utils';

@@ -1,5 +1,5 @@
 import {Component, resolveComponent} from 'vue';
-import {AdminComponent} from '@myparcel-pdk/common/src';
+import {AdminComponent} from '@myparcel-pdk/common';
 import {memoize} from 'lodash-unified';
 import {prefixComponent} from '../../helpers';
 

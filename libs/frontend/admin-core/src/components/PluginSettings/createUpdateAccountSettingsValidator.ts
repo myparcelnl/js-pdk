@@ -1,6 +1,6 @@
 import {ActionContext, executeAction} from '../../actions';
 import {AdminAction} from '../../types';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder/src';
+import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {memoize} from 'lodash-unified';
 
 const memoizedActionValidator = memoize(async (context: ActionContext<AdminAction>) => {

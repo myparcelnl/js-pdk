@@ -1,6 +1,6 @@
-import {StoreListener, useCheckoutStore} from '@myparcel-pdk/frontend-checkout-core/src';
+import {StoreListener, useCheckoutStore} from '@myparcel-pdk/frontend-checkout-core';
 import {updateDeliveryOptions, updateDeliveryOptionsOutput} from './listeners';
-import {EVENT_UPDATED_DELIVERY_OPTIONS} from '@myparcel-pdk/frontend-delivery-options/src';
+import {EVENT_UPDATED_DELIVERY_OPTIONS} from '@myparcel-pdk/frontend-delivery-options';
 import {createDeliveryOptionsStore} from './store';
 import {injectHiddenInput} from './utils';
 

@@ -1,4 +1,4 @@
-import {AddressField, AddressType, Util, useSettings, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {AddressField, AddressType, Util, useSettings, useUtil} from '@myparcel-pdk/frontend-checkout-core';
 
 export const hasSeparateAddressFields = (addressType?: AddressType): boolean => {
   const getAddressFieldValue = useUtil(Util.GetAddressFieldValue);

@@ -1,4 +1,4 @@
-import {FrontendEndpoint, FrontendPdkEndpointObject} from '@myparcel-pdk/common/src';
+import {FrontendEndpoint, FrontendPdkEndpointObject} from '@myparcel-pdk/common';
 import {CarrierName} from '@myparcel/constants';
 import {FrontendEndpointResponse} from './types/endpoints.types';
 import {MyParcelDeliveryOptions} from '@myparcel/delivery-options';

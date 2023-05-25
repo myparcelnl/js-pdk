@@ -4,7 +4,7 @@ import {COMMAND_INIT_NAME} from '../constants';
 import fs from 'fs';
 import path from 'path';
 
-const TEMPLATE = `import type {PdkBuilderConfig} from '@myparcel-pdk/app-builder/src';
+const TEMPLATE = `import type {PdkBuilderConfig} from '@myparcel-pdk/app-builder';
 import {name, version} from './package.json' assert {type: 'json'};
 
 const config:configType = {

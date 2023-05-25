@@ -1,5 +1,5 @@
 import {Notification} from '../types';
-import {Variant} from '@myparcel-pdk/common/src';
+import {Variant} from '@myparcel-pdk/common';
 import {useLanguage} from '../composables';
 
 const PREFIX = 'notification_';

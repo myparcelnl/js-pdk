@@ -1,6 +1,6 @@
 import {AddressType, CheckoutAppContext, PdkCheckoutForm} from '../types';
 import {Util, getFrontendContext, hasAddressType, useUtil} from '../utils';
-import {StoreListener} from '@myparcel-pdk/frontend-checkout-core/src';
+import {StoreListener} from '@myparcel-pdk/frontend-checkout-core';
 import {updateAddressType} from '../listeners';
 
 export type CheckoutStoreState = {

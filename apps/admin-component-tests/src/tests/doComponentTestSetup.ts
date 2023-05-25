@@ -6,14 +6,14 @@ import {
   createLogger,
   createVueQueryPlugin,
   globalLogger,
-} from '@myparcel-pdk/frontend-admin-core/src';
+} from '@myparcel-pdk/frontend-admin-core';
 import {
   AdminComponentMap,
   AdminView,
   BackendEndpoint,
   optionalAdminPlainWrapperComponentNames,
   requiredAdminComponentNames,
-} from '@myparcel-pdk/common/src';
+} from '@myparcel-pdk/common';
 import {config} from '@vue/test-utils';
 
 // eslint-disable-next-line max-lines-per-function

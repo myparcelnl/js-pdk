@@ -3,7 +3,7 @@ import './assets/css/tailwind.css';
 import './assets/css/global.css';
 import './assets/css/transitions.css';
 import './assets/css/forms.css';
-import {AdminContextKey, LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-admin-core/src';
+import {AdminContextKey, LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-admin-core';
 import {
   DefaultButtonGroup,
   DefaultCheckboxGroup,
@@ -24,7 +24,7 @@ import {
   DefaultTextArea,
   DefaultTimeInput,
   DefaultToggleInput,
-} from '@myparcel-pdk/admin-preset-default/src';
+} from '@myparcel-pdk/admin-preset-default';
 import {
   DemoBadge,
   DemoBox,
@@ -42,7 +42,7 @@ import {
   DemoTextInput,
 } from './components';
 import App from './App.vue';
-import {FontAwesomeIcon} from '@myparcel-pdk/admin-preset-fontawesome/src';
+import {FontAwesomeIcon} from '@myparcel-pdk/admin-preset-fontawesome';
 import {createApp} from 'vue';
 import {createRouterInstance} from './router';
 

@@ -29,10 +29,10 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminIcon, useLanguage} from '@myparcel-pdk/frontend-admin-core/src';
+import {AdminIcon, useLanguage} from '@myparcel-pdk/frontend-admin-core';
 import BaseButton from './BaseButton.vue';
 import {PropType} from 'vue';
-import {Size} from '@myparcel-pdk/common/src';
+import {Size} from '@myparcel-pdk/common';
 
 defineProps({
   disabled: {

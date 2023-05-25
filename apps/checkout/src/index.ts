@@ -1,6 +1,6 @@
-export type {AddressFields} from '@myparcel-pdk/frontend-checkout-core/src';
+export type {AddressFields} from '@myparcel-pdk/frontend-checkout-core';
 
-export type {FrontendEndpoint, FrontendPdkEndpointObject} from '@myparcel-pdk/common/src';
+export type {FrontendEndpoint, FrontendPdkEndpointObject} from '@myparcel-pdk/common';
 
 export {
   AddressField,
@@ -13,13 +13,13 @@ export {
   usePdkCheckout,
   useSettings,
   useUtil,
-} from '@myparcel-pdk/frontend-checkout-core/src';
+} from '@myparcel-pdk/frontend-checkout-core';
 
 export {
   PdkDeliveryOptionsEvent,
   initializeCheckoutDeliveryOptions,
-} from '@myparcel-pdk/frontend-checkout-delivery-options/src';
+} from '@myparcel-pdk/frontend-checkout-delivery-options';
 
-export {initializeCheckoutSeparateAddressFields} from '@myparcel-pdk/frontend-checkout-separate-address-fields/src';
+export {initializeCheckoutSeparateAddressFields} from '@myparcel-pdk/frontend-checkout-separate-address-fields';
 
-export {initializeCheckoutTaxFields} from '@myparcel-pdk/frontend-checkout-tax-fields/src';
+export {initializeCheckoutTaxFields} from '@myparcel-pdk/frontend-checkout-tax-fields';

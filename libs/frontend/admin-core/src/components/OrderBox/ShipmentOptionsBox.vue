@@ -21,7 +21,7 @@
   </PdkConceptBoxWrapper>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {
   orderExportAction,
   orderExportToShipmentsAction,
@@ -31,7 +31,7 @@ import {
   ordersUpdateAction,
 } from '../../actions';
 import {useLanguage, useOrder, usePluginSettings, useStoreQuery} from '../../composables';
-import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common/src';
+import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
 import {computed} from 'vue';
 import {defineActions} from '../../services';

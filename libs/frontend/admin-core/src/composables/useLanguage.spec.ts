@@ -1,5 +1,5 @@
 import {SpyInstance, afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
-import {doComponentTestSetup, doComponentTestTeardown} from '@myparcel-pdk/admin-component-tests/src';
+import {doComponentTestSetup, doComponentTestTeardown} from '@myparcel-pdk/admin-component-tests';
 import {createTestingPinia} from '@pinia/testing';
 import {mount} from '@vue/test-utils';
 import {setActivePinia} from 'pinia';

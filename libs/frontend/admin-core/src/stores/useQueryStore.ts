@@ -19,7 +19,7 @@ import {
   useUpdateShipmentsMutation,
 } from '../actions';
 import {ApiException} from '@myparcel/sdk';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {MutationMode} from '../services';
 import {defineStore} from 'pinia';
 import {getOrderId} from '../utils';

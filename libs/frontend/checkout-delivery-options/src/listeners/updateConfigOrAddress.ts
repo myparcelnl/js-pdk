@@ -1,5 +1,5 @@
-import {EVENT_UPDATE_CONFIG, EVENT_UPDATE_DELIVERY_OPTIONS} from '@myparcel-pdk/frontend-delivery-options/src';
-import {StoreCallbackUpdate, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {EVENT_UPDATE_CONFIG, EVENT_UPDATE_DELIVERY_OPTIONS} from '@myparcel-pdk/frontend-delivery-options';
+import {StoreCallbackUpdate, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core';
 import {DeliveryOptionsStoreState} from '../store';
 import {deliveryOptionsIsRendered} from '../utils';
 import {objectIsEqual} from '@myparcel/ts-utils';

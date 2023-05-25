@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {BackendEndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
-import {BackendEndpoint} from '@myparcel-pdk/common/src';
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {setQueryOrder} from '../../../../helpers';
 import {toArray} from '@myparcel/ts-utils';
 import {usePdkMutation} from '../orders';

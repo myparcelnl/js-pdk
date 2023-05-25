@@ -10,7 +10,7 @@ import {
   Settings,
   Shipment,
   WebhookDefinition,
-} from '@myparcel-pdk/common/src';
+} from '@myparcel-pdk/common';
 import {AbstractEndpoint} from '@myparcel/sdk';
 import {AdminContextObject} from '../../types';
 import {RecursivePartial} from '@myparcel/ts-utils';

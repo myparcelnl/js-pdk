@@ -18,7 +18,7 @@ import {
 } from '../../actions';
 import {usePluginSettings, useStoreQuery} from '../../composables';
 import {AdminModalKey} from '../../types';
-import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common/src';
+import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common';
 import {defineActions} from '../../services';
 import {get} from '@vueuse/core';
 

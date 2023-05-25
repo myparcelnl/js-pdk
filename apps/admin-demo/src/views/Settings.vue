@@ -4,6 +4,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import {PluginSettingsView} from '@myparcel-pdk/frontend-admin-core/src';
+<script lang="ts" setup>
+import {PluginSettingsView} from '@myparcel-pdk/frontend-admin-core';
 </script>

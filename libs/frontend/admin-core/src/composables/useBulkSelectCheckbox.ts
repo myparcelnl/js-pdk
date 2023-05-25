@@ -1,5 +1,5 @@
 import {WritableComputedRef, computed, ref, watch} from 'vue';
-import {Keyable} from '@myparcel-pdk/common/src';
+import {Keyable} from '@myparcel-pdk/common';
 
 export const useBulkSelectCheckbox = <K extends Keyable = Keyable, KS extends K[] = K[]>(
   options: KS,

@@ -1,4 +1,4 @@
-import {useConfig, useSettings} from '@myparcel-pdk/frontend-checkout-core/src';
+import {useConfig, useSettings} from '@myparcel-pdk/frontend-checkout-core';
 import {useDeliveryOptionsStore} from '../store';
 
 /**

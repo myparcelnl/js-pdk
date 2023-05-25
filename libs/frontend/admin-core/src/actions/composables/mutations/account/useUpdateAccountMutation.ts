@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {BackendEndpoint, Variant} from '@myparcel-pdk/common/src';
+import {BackendEndpoint, Variant} from '@myparcel-pdk/common';
 import {ApiException} from '@myparcel/sdk';
 import {NotificationCategory} from '../../../../types';
 import {formToBody} from '../../../../utils';

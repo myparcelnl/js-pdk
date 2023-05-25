@@ -24,8 +24,8 @@
 
 <script lang="ts" setup>
 import {PropType} from 'vue';
-import {Settings} from '@myparcel-pdk/common/src';
-import {useDropOffInputContext} from '@myparcel-pdk/frontend-admin-core/src';
+import {Settings} from '@myparcel-pdk/common';
+import {useDropOffInputContext} from '@myparcel-pdk/frontend-admin-core';
 
 const props = defineProps({
   modelValue: {

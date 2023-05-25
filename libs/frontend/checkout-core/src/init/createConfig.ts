@@ -4,7 +4,7 @@ import {
   PdkCheckoutConfigInput,
   useConfig,
   useSettings,
-} from '@myparcel-pdk/frontend-checkout-core/src';
+} from '@myparcel-pdk/frontend-checkout-core';
 
 export const createConfig = (config: PdkCheckoutConfigInput): PdkCheckoutConfig => ({
   formChange(callback) {

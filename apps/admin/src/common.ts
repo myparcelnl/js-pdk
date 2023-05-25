@@ -11,7 +11,7 @@ export type {
   Settings,
   TabDefinition,
   Webhook,
-} from '@myparcel-pdk/common/src';
+} from '@myparcel-pdk/common';
 
 export type {
   ActionDefinition,
@@ -35,7 +35,7 @@ export type {
   RadioGroupProps,
   ResolvedAction,
   SelectInputProps,
-} from '@myparcel-pdk/frontend-admin-core/src';
+} from '@myparcel-pdk/frontend-admin-core';
 
 export {
   ActionButton,
@@ -88,6 +88,6 @@ export {
   useSelectInputContext,
   useWeekdays,
   webhooksDeleteAction,
-} from '@myparcel-pdk/frontend-admin-core/src';
+} from '@myparcel-pdk/frontend-admin-core';
 
-export {AdminComponent, AdminView, Size, Status, Variant} from '@myparcel-pdk/common/src';
+export {AdminComponent, AdminView, Size, Status, Variant} from '@myparcel-pdk/common';

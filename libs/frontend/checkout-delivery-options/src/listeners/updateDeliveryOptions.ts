@@ -5,7 +5,7 @@ import {
   StoreCallbackUpdate,
   Util,
   useUtil,
-} from '@myparcel-pdk/frontend-checkout-core/src';
+} from '@myparcel-pdk/frontend-checkout-core';
 import {getDeliveryOptionsAddress, shippingMethodHasDeliveryOptions, updateContext} from '../utils';
 import {objectIsEqual} from '@myparcel/ts-utils';
 import {useDeliveryOptionsStore} from '../store';

@@ -9,7 +9,7 @@ import {
   Options,
   ResponseWrapper,
 } from '@myparcel/sdk';
-import {Notification, useNotificationStore} from '@myparcel-pdk/frontend-admin-core/src';
+import {Notification, useNotificationStore} from '@myparcel-pdk/frontend-admin-core';
 import {isOfType} from '@myparcel/ts-utils';
 
 type EndpointResponseBodyWithNotifications = {

@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminModalKey, OrderListItemView, useModalStore} from '@myparcel-pdk/frontend-admin-core/src';
+import {AdminModalKey, OrderListItemView, useModalStore} from '@myparcel-pdk/frontend-admin-core';
 import {RouterLink} from 'vue-router';
 import {ref} from 'vue';
 import {useDemoOrderData} from '../composables';

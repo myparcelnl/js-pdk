@@ -1,5 +1,5 @@
-import {BackendEndpoint, Plugin} from '@myparcel-pdk/common/src';
-import {FormInstance, defineForm} from '@myparcel/vue-form-builder/src';
+import {BackendEndpoint, Plugin} from '@myparcel-pdk/common';
+import {FormInstance, defineForm} from '@myparcel/vue-form-builder';
 import {PluginSettingsTabsContext} from './createPluginSettingsTabs';
 import {SubmitButton} from '../../components';
 import {executeAction} from '../../actions';

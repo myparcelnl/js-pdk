@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {StoreListener, Util, useCheckoutStore, useUtil} from '@myparcel-pdk/frontend-checkout-core/src';
+import {StoreListener, Util, useCheckoutStore, useUtil} from '@myparcel-pdk/frontend-checkout-core';
 import {DeliveryOptionsConfiguration} from '../types';
 import {getDeliveryOptionsAddress} from '../utils';
 import {showOrHideDeliveryOptions, updateConfigOrAddress} from '../listeners';

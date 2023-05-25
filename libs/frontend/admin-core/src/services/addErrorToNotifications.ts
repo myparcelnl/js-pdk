@@ -1,6 +1,6 @@
 import {Notification, NotificationCategory, createApiNotification, useNotificationStore} from '../';
 import {ApiException} from '@myparcel/sdk';
-import {Variant} from '@myparcel-pdk/common/src';
+import {Variant} from '@myparcel-pdk/common';
 import {isOfType} from '@myparcel/ts-utils';
 
 export const addErrorToNotifications = (error: unknown, category: NotificationCategory): void => {

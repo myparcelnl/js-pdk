@@ -4,6 +4,7 @@
   "private": true,
   "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
+  "type": "module",
   "workspaces": [
     "apps/**",
     "libs/**"

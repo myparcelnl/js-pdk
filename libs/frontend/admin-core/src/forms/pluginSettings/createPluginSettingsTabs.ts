@@ -1,8 +1,8 @@
 import {AdminAction, AdminConfiguration} from '../../types';
-import {Plugin, TabDefinition} from '@myparcel-pdk/common/src';
+import {Plugin, TabDefinition} from '@myparcel-pdk/common';
 import {h, markRaw} from 'vue';
 import {ActionContext} from '../../actions';
-import {FormInstance} from '@myparcel/vue-form-builder/src';
+import {FormInstance} from '@myparcel/vue-form-builder';
 import {createFormTab} from './createFormTab';
 import {createPluginSettingsForm} from './createPluginSettingsForm';
 import {createPluginSettingsTabsComponent} from './createPluginSettingsTabsComponent';

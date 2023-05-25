@@ -4,25 +4,14 @@
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "exports": {
-    ".": "./dist/index.js",
-    "./src": "./src/index.ts",
-    "./integrated": "./dist/integrated.js"
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "exports": "./src/index.ts",
   "files": [
-    "./dist",
     "./src"
   ],
   "scripts": {
-    "build": "run ws:tsup:build \"$(pwd)\"",
-    "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
-    "clean": "run ws:clean \"$(pwd)\"",
     "emit": "run ws:tsup:emit \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
-    "serve": "run ws:tsup:serve \"$(pwd)\"",
     "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
   },
   "dependencies": {

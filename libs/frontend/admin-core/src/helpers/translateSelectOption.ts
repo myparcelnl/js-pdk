@@ -1,4 +1,4 @@
-import {SelectOption, SelectOptionValue, SelectOptionWithLabel} from '@myparcel-pdk/common/src';
+import {SelectOption, SelectOptionValue, SelectOptionWithLabel} from '@myparcel-pdk/common';
 import {isOfType} from '@myparcel/ts-utils';
 import {useLanguage} from '../composables';
 
