@@ -1,13 +1,5 @@
 {
-  "extends": "./tsconfig.build.json",
-  "compilerOptions": {
-    "paths": {
-      "@myparcel-pdk/common": ["./libs/common/src"],
-      "@myparcel-pdk/frontend-*": ["./libs/frontend/*/src"],
-      "@myparcel-pdk/backend-*": ["./libs/backend/*/src"],
-      "@myparcel-pdk/*": ["./apps/*/src", "./libs/*/src"]
-    }
-  },
+  "extends": ["./tsconfig.paths.json", "./tsconfig.build.json"],
   "include": ["./*", "apps/**/*", "libs/**/*"],
   "exclude": []
 }

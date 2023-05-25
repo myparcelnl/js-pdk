@@ -1,4 +1,4 @@
 .nitro/
 .output/
 
-!./tsconfig.json
+!tsconfig.json

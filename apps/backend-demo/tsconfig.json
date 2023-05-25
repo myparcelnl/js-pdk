@@ -1,0 +1,4 @@
+{
+  "extends": ["./.nitro/types/tsconfig.json", "../../tsconfig.paths.json"],
+  "compilerOptions": {}
+}
