@@ -20,9 +20,7 @@ export enum AddressField {
   Address1 = 'address1',
   City = 'city',
   Country = 'country',
-  EoriNumber = 'eoriNumber',
   PostalCode = 'postalCode',
-  VatNumber = 'vatNumber',
 }
 
 export enum PdkField {
