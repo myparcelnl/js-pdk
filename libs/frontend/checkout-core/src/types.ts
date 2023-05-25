@@ -21,16 +21,9 @@ export enum AddressField {
   City = 'city',
   Country = 'country',
   EoriNumber = 'eoriNumber',
-  Number = 'number',
-  NumberSuffix = 'numberSuffix',
   PostalCode = 'postalCode',
-  Street = 'street',
   VatNumber = 'vatNumber',
 }
-
-export const SEPARATE_ADDRESS_FIELDS = [AddressField.Street, AddressField.Number, AddressField.NumberSuffix] as const;
-
-export const SEPARATE_ADDRESS_FIELDS_WITHOUT_SUFFIX = [AddressField.Street, AddressField.Number] as const;
 
 export enum PdkField {
   AddressType = 'addressType',
