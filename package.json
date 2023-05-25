@@ -67,7 +67,6 @@
     "@myparcel/prettier-config": "^1.1.0",
     "@nrwl/nx-cloud": "^16.0.5",
     "@vue/tsconfig": "^0.1.3",
-    "bundlewatch": "^0.3.3",
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "eslint": "^8.34.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -83,67 +82,5 @@
   "packageManager": "yarn@3.5.1",
   "volta": {
     "node": "18.16.0"
-  },
-  "bundlewatch": {
-    "ci": {
-      "trackBranches": [
-        "main",
-        "alpha",
-        "beta"
-      ]
-    },
-    "files": [
-      {
-        "path": "./apps/admin-component-tests/dist/**/*.js"
-      },
-      {
-        "path": "./apps/admin-preset-bootstrap4/dist/**/*.js"
-      },
-      {
-        "path": "./apps/admin-preset-dashicons/dist/**/*.js"
-      },
-      {
-        "path": "./apps/admin-preset-default/dist/**/*.js"
-      },
-      {
-        "path": "./apps/admin-preset-default/dist/**/*.js"
-      },
-      {
-        "path": "./apps/admin-preset-fontawesome/dist/**/*.js"
-      },
-      {
-        "path": "./apps/admin/dist/**/*.js"
-      },
-      {
-        "path": "./apps/app-builder/dist/**/*.js"
-      },
-      {
-        "path": "./apps/checkout/dist/**/*.js"
-      },
-      {
-        "path": "./apps/checkout/dist/**/*.js"
-      },
-      {
-        "path": "./libs/common/dist/**/*.js"
-      },
-      {
-        "path": "./libs/frontend/admin-core/dist/**/*.js"
-      },
-      {
-        "path": "./libs/frontend/checkout-core/dist/**/*.js"
-      },
-      {
-        "path": "./libs/frontend/checkout-delivery-options/dist/**/*.js"
-      },
-      {
-        "path": "./libs/frontend/checkout-separate-address-fields/dist/**/*.js"
-      },
-      {
-        "path": "./libs/frontend/checkout-tax-fields/dist/**/*.js"
-      },
-      {
-        "path": "./libs/frontend/delivery-options/dist/**/*.js"
-      }
-    ]
   }
 }

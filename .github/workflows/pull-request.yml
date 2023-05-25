@@ -17,26 +17,26 @@ jobs:
   test:
     uses: ./.github/workflows/test.yml
     secrets: inherit
-
-  bundlewatch:
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: ./.github/actions/install
-
-      - uses: ./.github/actions/build
-
-      - uses: myparcelnl/actions/setup-git-credentials@v3
-        id: credentials
-        with:
-          app-id: ${{ secrets.MYPARCEL_APP_ID }}
-          private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
-
-      - name: 'Fetch base branch'
-        shell: bash
-        run: git fetch --no-tags --prune --depth=1 origin ${{ github.base_ref }}
-
-      - uses: myparcelnl/actions/bundlewatch@v3
-        with:
-          token: ${{ inputs.bundlewatch-token }}
+# todo: enable when we're building apps and libs again
+#  bundlewatch:
+#    runs-on: ubuntu-22.04
+#    steps:
+#      - uses: actions/checkout@v3
+#
+#      - uses: ./.github/actions/install
+#
+#      - uses: ./.github/actions/build
+#
+#      - uses: myparcelnl/actions/setup-git-credentials@v3
+#        id: credentials
+#        with:
+#          app-id: ${{ secrets.MYPARCEL_APP_ID }}
+#          private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
+#
+#      - name: 'Fetch base branch'
+#        shell: bash
+#        run: git fetch --no-tags --prune --depth=1 origin ${{ github.base_ref }}
+#
+#      - uses: myparcelnl/actions/bundlewatch@v3
+#        with:
+#          token: ${{ inputs.bundlewatch-token }}
