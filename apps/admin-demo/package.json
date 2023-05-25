@@ -15,6 +15,7 @@
     "build": "run translations:import && vite build",
     "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
+    "lint:fix": "run ws:lint:fix \"$(pwd)\"",
     "serve": "vite",
     "test": "run ws:test \"$(pwd)\"",
     "test:run": "run ws:test:run \"$(pwd)\"",

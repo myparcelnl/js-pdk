@@ -19,6 +19,7 @@
     "build:dev": "run ws:vite:build:dev \"$(pwd)\"",
     "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
+    "lint:fix": "run ws:lint:fix \"$(pwd)\"",
     "serve": "run ws:vite:serve \"$(pwd)\"",
     "test": "run ws:test \"$(pwd)\"",
     "test:run": "run ws:test:run \"$(pwd)\"",

@@ -28,6 +28,9 @@
     "lint": {
       "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
     },
+    "lint:fix": {
+      "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
+    },
     "test:run": {
       "outputs": ["{projectRoot}/coverage"]
     }
@@ -37,7 +40,13 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "parallel": 10,
-        "cacheableOperations": ["build", "build:dev", "lint", "test:run"]
+        "cacheableOperations": [
+          "build",
+          "build:dev",
+          "lint",
+          "lint:fix",
+          "test:run"
+        ]
       }
     },
     "cloud": {

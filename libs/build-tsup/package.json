@@ -6,6 +6,10 @@
   "type": "module",
   "exports": "./index.js",
   "types": "./index.d.ts",
+  "scripts": {
+    "lint": "run ws:lint \"$(pwd)\"",
+    "lint:fix": "run ws:lint:fix \"$(pwd)\""
+  },
   "dependencies": {
     "fast-glob": "^3.2.12",
     "typescript": "^5.0.3"

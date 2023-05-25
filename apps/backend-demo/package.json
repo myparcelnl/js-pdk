@@ -5,6 +5,8 @@
   "scripts": {
     "build": "nitropack build",
     "postinstall": "npx nitropack prepare",
+    "lint": "run ws:lint \"$(pwd)\"",
+    "lint:fix": "run ws:lint:fix \"$(pwd)\"",
     "serve": "nitropack dev"
   },
   "devDependencies": {

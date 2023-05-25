@@ -20,6 +20,7 @@
     "clean": "run ws:clean \"$(pwd)\"",
     "emit": "run ws:tsup:emit \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
+    "lint:fix": "run ws:lint:fix \"$(pwd)\"",
     "serve": "run ws:tsup:serve \"$(pwd)\"",
     "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
   },
