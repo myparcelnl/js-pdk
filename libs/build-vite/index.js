@@ -1,23 +1,7 @@
 import dts from 'vite-plugin-dts';
 import customTsConfigPlugin from 'vite-plugin-custom-tsconfig';
 import {mergeConfig} from 'vite';
-
-const external = [
-  /^@myparcel-pdk\//,
-  /^@myparcel\//,
-  '@tanstack/vue-query',
-  '@types/lodash-es',
-  '@vue/test-utils',
-  '@vueuse/core',
-  'lodash',
-  'lodash-es',
-  'lodash-unified',
-  'pinia',
-  'tsup',
-  'vite',
-  'vitest',
-  'vue',
-];
+import vue from '@vitejs/plugin-vue';
 
 /** @type {import('vitest/config').UserConfigFn} */
 const createCommonViteConfig = (env) => {
@@ -27,14 +11,13 @@ const createCommonViteConfig = (env) => {
     plugins: [
       isProd && dts({skipDiagnostics: true, entryRoot: 'src', compilerOptions: {incremental: true}}),
       customTsConfigPlugin(),
+      vue(),
     ],
 
     build: {
       minify: isProd,
       rollupOptions: {
-        external,
         output: {
-          preserveModules: true,
           globals: {
             vue: 'Vue',
           },

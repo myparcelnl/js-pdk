@@ -23,8 +23,8 @@
 </template>
 
 <script lang="ts">
-import {PropType, computed, defineComponent, ref} from 'vue';
-import {TabDefinition} from '@myparcel-pdk/common';
+import {type PropType, computed, defineComponent, ref} from 'vue';
+import {type TabDefinition} from '@myparcel-pdk/common';
 import {HASH_SEPARATOR} from '../../data';
 import {useAdminConfig, useLanguage} from '../../composables';
 

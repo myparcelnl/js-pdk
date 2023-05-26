@@ -5,14 +5,18 @@
   "sideEffects": false,
   "type": "module",
   "exports": "./src/index.ts",
+  "types": "./dist/index.d.ts",
   "files": [
-    "./src"
+    "./src",
+    "./dist"
   ],
   "scripts": {
-    "emit": "run ws:tsup:emit \"$(pwd)\"",
+    "build": "run ws:ts:build \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "emit": "run ws:ts:emit \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
-    "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
+    "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.32",
@@ -20,10 +24,6 @@
     "@myparcel-pdk/frontend-checkout-delivery-options": "workspace:^1.0.0-alpha.10",
     "@myparcel-pdk/frontend-checkout-separate-address-fields": "workspace:^1.0.0-alpha.11",
     "@myparcel-pdk/frontend-checkout-tax-fields": "workspace:^1.0.0-alpha.11"
-  },
-  "devDependencies": {
-    "@myparcel-pdk/build-tsup": "workspace:*",
-    "tsup": "^6.6.3"
   },
   "publishConfig": {
     "access": "public"

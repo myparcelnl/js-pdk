@@ -1,5 +1,5 @@
-import {PdkDeliveryOptionsEvent} from './types';
-import {createDeliveryOptionsStore} from './store';
+import {type PdkDeliveryOptionsEvent} from './types';
+import {type createDeliveryOptionsStore} from './store';
 
 declare global {
   interface MyParcelPdkEvents {

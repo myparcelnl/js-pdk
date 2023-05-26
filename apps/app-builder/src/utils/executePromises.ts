@@ -1,4 +1,4 @@
-import {CommandArgs} from '../types';
+import {type CommandArgs} from '../types';
 
 export async function executePromises(args: CommandArgs, promises: Promise<unknown>[]): Promise<void> {
   if (args.parallel) {

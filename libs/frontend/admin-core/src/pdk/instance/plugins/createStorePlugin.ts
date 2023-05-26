@@ -1,5 +1,5 @@
-import {Pinia, createPinia} from 'pinia';
-import {PdkAppPlugin} from './plugins.types';
+import {type Pinia, createPinia} from 'pinia';
+import {type PdkAppPlugin} from './plugins.types';
 
 let store: Pinia;
 let initialized = false;

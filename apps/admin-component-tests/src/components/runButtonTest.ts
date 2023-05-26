@@ -1,6 +1,6 @@
 import {expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
-import {AdminComponentTest} from '../tests';
+import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests} from '../common';
 
 export const runButtonTest: AdminComponentTest = (component) => {

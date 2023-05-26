@@ -3,7 +3,7 @@ import {createLogger} from '../../services';
 import {createAdminConfig} from '../../pdk';
 import {INJECT_ADMIN_INSTANCE} from '../../data';
 import {useFormatter} from './useFormatter';
-import {Format, FormatterTranslateFunction} from './formatter.types';
+import {Format, type FormatterTranslateFunction} from './formatter.types';
 
 describe('format strings', () => {
   const fakeDate = new Date('2022-12-05T12:00:00.000Z');

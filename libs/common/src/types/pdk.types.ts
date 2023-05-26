@@ -1,4 +1,4 @@
-import {Component} from 'vue';
+import {type Component} from 'vue';
 
 export const ADMIN_COMPONENT_PREFIX = 'Pdk';
 

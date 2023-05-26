@@ -1,10 +1,6 @@
-import {
-  AddressType,
-  PdkCheckoutConfig,
-  PdkCheckoutConfigInput,
-  useConfig,
-  useSettings,
-} from '@myparcel-pdk/frontend-checkout-core';
+import {useSettings} from '../utils';
+import {type PdkCheckoutConfigInput, type PdkCheckoutConfig, type AddressType} from '../types';
+import {useConfig} from '../config';
 
 export const createConfig = (config: PdkCheckoutConfigInput): PdkCheckoutConfig => ({
   formChange(callback) {

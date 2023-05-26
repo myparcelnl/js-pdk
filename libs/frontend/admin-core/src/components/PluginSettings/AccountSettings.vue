@@ -39,7 +39,7 @@
 import {computed, ref} from 'vue';
 import {get} from '@vueuse/core';
 import {Status} from '@myparcel-pdk/common';
-import {FormInstance} from '@myparcel/vue-form-builder';
+import {type FormInstance} from '@myparcel/vue-form-builder';
 import StatusIndicator from '../common/StatusIndicator.vue';
 import {useAdminConfig, useLanguage, useStoreContextQuery} from '../../composables';
 import {useUpdateAccountMutation} from '../../actions';

@@ -1,6 +1,6 @@
 import {StopActionHandler} from '../stopActionHandler';
-import {ActionParameters, MaybeActionParameters, MaybeAdminAction} from '../../types';
-import {ActionContext} from './types';
+import {type ActionParameters, type MaybeActionParameters, type MaybeAdminAction} from '../../types';
+import {type ActionContext} from './types';
 
 const BEFORE_HANDLE = 'beforeHandle';
 

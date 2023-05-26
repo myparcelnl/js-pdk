@@ -9,13 +9,16 @@ module.exports = {
       },
     },
     {
-      files: ['./**/*.vue'],
       extends: ['@myparcel-eslint/eslint-config-prettier-typescript-vue', '@myparcel-eslint/eslint-config-import'],
+      files: ['./**/*.vue'],
       rules: {
         '@typescript-eslint/no-misused-promises': 'off',
+        // Disabled because it messes with multiple component blocks, like when using script setup and inheritAttrs.
         'import/first': 'off',
         'vue/html-self-closing': 'off',
         'vue/no-bare-strings-in-template': 'off',
+        // Disabled because @typescript-eslint freaks out when there is no component block
+        'vue/no-empty-component-block': 'off',
         'vue/no-undef-components': [
           'error',
           {

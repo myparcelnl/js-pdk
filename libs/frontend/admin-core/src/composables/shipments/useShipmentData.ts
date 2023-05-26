@@ -1,10 +1,10 @@
-import {ComputedRef, Ref, computed, ref} from 'vue';
+import {type ComputedRef, type Ref, computed, ref} from 'vue';
 import {get} from '@vueuse/core';
-import {Shipment} from '@myparcel-pdk/common';
-import {Carrier} from '@myparcel/sdk';
+import {type Shipment} from '@myparcel-pdk/common';
+import {type Carrier} from '@myparcel/sdk';
 import {useLoading} from '../useLoading';
 import {useAssetUrl} from '../useAssetUrl';
-import {ActionDefinition} from '../../types';
+import {type ActionDefinition} from '../../types';
 import {defineActions} from '../../services';
 import {useCarrier} from '../../sdk';
 import {shipmentActions} from '../../actions';

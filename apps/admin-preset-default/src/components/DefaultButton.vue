@@ -20,8 +20,8 @@
  * disabled.
  */
 
-import {PropType} from 'vue';
-import {AdminIcon, useLanguage} from '@myparcel-pdk/frontend-admin-core';
+import {type PropType} from 'vue';
+import {type AdminIcon, useLanguage} from '@myparcel-pdk/frontend-admin-core';
 import {Size} from '@myparcel-pdk/common';
 
 defineProps({

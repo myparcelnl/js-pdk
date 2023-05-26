@@ -5,22 +5,22 @@
   "sideEffects": false,
   "type": "module",
   "exports": "./src/index.ts",
+  "types": "./dist/index.d.ts",
   "files": [
-    "./src"
+    "./src",
+    "./dist"
   ],
   "scripts": {
-    "emit": "run ws:tsup:emit \"$(pwd)\"",
+    "build": "run ws:ts:build \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "emit": "run ws:ts:emit \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
-    "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
+    "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
     "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.3",
     "@myparcel/ts-utils": "^1.9.0"
-  },
-  "devDependencies": {
-    "@myparcel-pdk/build-tsup": "workspace:^",
-    "tsup": "^6.6.3"
   },
   "publishConfig": {
     "access": "public"

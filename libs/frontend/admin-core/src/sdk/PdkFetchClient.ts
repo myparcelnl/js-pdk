@@ -1,16 +1,16 @@
-import {Notification, useNotificationStore} from '@myparcel-pdk/frontend-admin-core';
 import {isOfType} from '@myparcel/ts-utils';
 import {
-  AbstractEndpoint,
+  type AbstractEndpoint,
   ApiException,
-  EndpointResponse,
-  EndpointResponseBody,
-  EndpointResponseProperty,
-  ErrorResponse,
+  type EndpointResponse,
+  type EndpointResponseBody,
+  type EndpointResponseProperty,
+  type ErrorResponse,
   FetchClient,
-  Options,
-  ResponseWrapper,
+  type Options,
+  type ResponseWrapper,
 } from '@myparcel/sdk';
+import {useNotificationStore} from '../stores';
 
 type EndpointResponseBodyWithNotifications = {
   notifications: Notification[];

@@ -1,7 +1,7 @@
-import {StoreListener} from '@myparcel-pdk/frontend-checkout-core';
 import {Util, getFrontendContext, hasAddressType, useUtil} from '../utils';
-import {AddressType, CheckoutAppContext, PdkCheckoutForm} from '../types';
+import {AddressType, type CheckoutAppContext, type PdkCheckoutForm} from '../types';
 import {updateAddressType} from '../listeners';
+import {StoreListener} from './realCreateStore';
 
 export type CheckoutStoreState = {
   addressType: AddressType;

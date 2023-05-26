@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {AnyAdminAction} from '../../types';
+import {type AnyAdminAction} from '../../types';
 import {defineActions} from '../../services';
 import {useOrder} from '../../composables';
 import {

@@ -1,4 +1,4 @@
-import {LoginCallback, ResolvedConfig} from './types.ts';
+import {type LoginCallback, type ResolvedConfig} from './types.ts';
 
 type LoginItem = {
   callback: LoginCallback;

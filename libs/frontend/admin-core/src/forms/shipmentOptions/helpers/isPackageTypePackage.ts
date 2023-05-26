@@ -1,4 +1,4 @@
-import {FormInstance} from '@myparcel/vue-form-builder';
+import {type FormInstance} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
 import {PACKAGE_TYPE} from '../field';
 

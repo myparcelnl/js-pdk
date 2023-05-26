@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 import {computed, ref, watch} from 'vue';
 import {get} from '@vueuse/core';
-import {TabDefinition} from '@myparcel-pdk/common';
+import {type TabDefinition} from '@myparcel-pdk/common';
 import TabNavigation from '../common/TabNavigation.vue';
 import {AdminContextKey} from '../../types';
 import {createActionContext} from '../../services';

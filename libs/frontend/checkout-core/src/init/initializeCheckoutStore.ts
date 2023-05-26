@@ -1,4 +1,4 @@
-import {createCheckoutStore} from '@myparcel-pdk/frontend-checkout-core';
+import {createCheckoutStore} from '../store';
 
 export const initializeCheckoutStore = (): void => {
   window.MyParcelPdk.stores.checkout = createCheckoutStore();

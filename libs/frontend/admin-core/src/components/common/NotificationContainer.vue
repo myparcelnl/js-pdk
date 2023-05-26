@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import {PropType, computed, defineComponent} from 'vue';
+import {type PropType, computed, defineComponent} from 'vue';
 import {NotificationCategory} from '../../types';
 import {useNotificationStore} from '../../stores';
 import {useAdminConfig} from '../../composables';

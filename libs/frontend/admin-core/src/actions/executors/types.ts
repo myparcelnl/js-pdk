@@ -1,14 +1,14 @@
-import {BackendEndpoint, Variant} from '@myparcel-pdk/common';
+import {type BackendEndpoint, type Variant} from '@myparcel-pdk/common';
 import {
-  ActionParameters,
-  ActionResponse,
-  AdminAction,
-  AnyAdminAction,
-  EndpointAdminActionMap,
-  MaybeAdminAction,
-  Notification,
+  type ActionParameters,
+  type ActionResponse,
+  type AdminAction,
+  type AnyAdminAction,
+  type EndpointAdminActionMap,
+  type MaybeAdminAction,
+  type Notification,
 } from '../../types';
-import {AdminInstance} from '../../data';
+import {type AdminInstance} from '../../data';
 
 type BaseActionContext<A extends MaybeAdminAction> = {
   action: AnyAdminAction<A>;

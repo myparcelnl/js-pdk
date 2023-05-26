@@ -1,5 +1,5 @@
-import {MaybeActionResponse, MaybeAdminAction} from '../../types';
-import {ActionContext} from './types';
+import {type MaybeActionResponse, type MaybeAdminAction} from '../../types';
+import {type ActionContext} from './types';
 
 const AFTER_HANDLE = 'afterHandle';
 

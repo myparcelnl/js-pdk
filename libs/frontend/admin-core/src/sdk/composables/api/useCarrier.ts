@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
-import {EndpointResponse, GetCarrier} from '@myparcel/sdk';
-import {CarrierName} from '@myparcel/constants';
+import {type EndpointResponse, type GetCarrier} from '@myparcel/sdk';
+import {type CarrierName} from '@myparcel/constants';
 import {useMyParcelApi} from '../useMyParcelApi';
 import {QUERY_KEY_CARRIERS} from './useCarriers';
 

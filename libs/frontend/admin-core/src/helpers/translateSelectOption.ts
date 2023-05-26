@@ -1,6 +1,6 @@
-import {SelectOption, SelectOptionValue, SelectOptionWithLabel} from '@myparcel-pdk/common';
+import {type SelectOption, type SelectOptionValue, type SelectOptionWithLabel} from '@myparcel-pdk/common';
 import {isOfType} from '@myparcel/ts-utils';
-import {useLanguage} from '../composables';
+import {type useLanguage} from '../composables';
 
 export const translateSelectOption = <T extends SelectOptionValue = SelectOptionValue>(
   option: SelectOption<T>,

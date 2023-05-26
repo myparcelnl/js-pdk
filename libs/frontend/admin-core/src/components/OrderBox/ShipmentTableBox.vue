@@ -26,7 +26,7 @@
 <script lang="ts">
 import {computed, defineComponent, ref, toRaw} from 'vue';
 import {get} from '@vueuse/core';
-import {Keyable} from '@myparcel-pdk/common';
+import {type Keyable} from '@myparcel-pdk/common';
 import {defineActions} from '../../services';
 import {useLanguage, useOrder} from '../../composables';
 import {shipmentActions} from '../../actions';

@@ -1,5 +1,5 @@
 import {inject} from 'vue';
-import {PdkAdmin} from '../pdk';
+import {type PdkAdmin} from '../pdk';
 import {INJECT_GLOBAL_PDK_ADMIN} from '../data';
 
 export const useGlobalPdkAdmin = (): PdkAdmin => {

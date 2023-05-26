@@ -12,7 +12,7 @@ import {
   logTimeTaken,
   reportDryRun,
 } from '../utils';
-import {PdkBuilderCommand} from '../types';
+import {type PdkBuilderCommand} from '../types';
 import {COMMAND_COPY_NAME, VerbosityLevel} from '../constants';
 
 export const copy: PdkBuilderCommand = async ({env, config, args}) => {

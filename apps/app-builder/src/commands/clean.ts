@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import {exists, initializeCommand, logTargetPath, logTimeTaken, reportDryRun} from '../utils';
-import {PdkBuilderCommand} from '../types';
+import {type PdkBuilderCommand} from '../types';
 import {COMMAND_CLEAN_NAME} from '../constants';
 
 export const clean: PdkBuilderCommand = async ({env, config, args}) => {

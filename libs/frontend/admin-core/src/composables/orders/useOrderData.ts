@@ -1,6 +1,6 @@
-import {ComputedRef, Ref, computed, ref} from 'vue';
-import {Plugin} from '@myparcel-pdk/common';
-import {Replace} from '@myparcel/ts-utils';
+import {type ComputedRef, type Ref, computed, ref} from 'vue';
+import {type Plugin} from '@myparcel-pdk/common';
+import {type Replace} from '@myparcel/ts-utils';
 
 type ReplacedOrder<O extends Plugin.ModelPdkOrder> = Replace<O, 'shipments', ComputedRef<O['shipments']>>;
 

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
-import {PartialComponentTest} from '../types';
+import {type PartialComponentTest} from '../types';
 
 export const runCommonComponentTests: PartialComponentTest = (component, options): void => {
   it('can be rendered', () => {

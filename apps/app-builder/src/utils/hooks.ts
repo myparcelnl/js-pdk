@@ -1,5 +1,5 @@
-import Liftoff from 'liftoff';
-import {CommandArgs, PdkBuilderContext} from '../types';
+import type Liftoff from 'liftoff';
+import {type CommandArgs, type PdkBuilderContext} from '../types';
 import {resolveConfig} from './resolveConfig';
 import {mergeDefaultConfig} from './mergeDefaultConfig';
 

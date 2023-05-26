@@ -1,5 +1,5 @@
-import {Plugin} from 'vue';
-import {AdminConfiguration, AdminContextObject} from '../types';
+import {type Plugin} from 'vue';
+import {type AdminConfiguration, type AdminContextObject} from '../types';
 import {globalLogger} from '../services';
 import {setupAdminApp} from './setupAdminApp';
 

@@ -1,5 +1,5 @@
 import {sendBootEvent} from '../utils';
-import {AdminConfiguration} from '../types';
+import {type AdminConfiguration} from '../types';
 import {getElementContext, globalLogger} from '../services';
 import {createAdminConfig} from './createAdminConfig';
 import {PdkAdmin} from './PdkAdmin';

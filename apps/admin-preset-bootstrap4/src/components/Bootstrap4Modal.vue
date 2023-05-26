@@ -44,11 +44,11 @@
 </template>
 
 <script lang="ts" setup>
-import {PropType, computed} from 'vue';
+import {type PropType, computed} from 'vue';
 import {
   ActionButton,
-  ActionDefinition,
-  AdminModalKey,
+  type ActionDefinition,
+  type AdminModalKey,
   NotificationContainer,
   useLanguage,
   useModalStore,

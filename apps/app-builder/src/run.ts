@@ -1,7 +1,7 @@
-import {LiftoffEnv} from 'liftoff';
+import {type LiftoffEnv} from 'liftoff';
 import {program} from 'commander';
 import {createWithConfig, createWithContext} from './utils';
-import {PdkBuilderCommand} from './types';
+import {type PdkBuilderCommand} from './types';
 import {
   COMMAND_BUILD_NAME,
   COMMAND_CLEAN_NAME,

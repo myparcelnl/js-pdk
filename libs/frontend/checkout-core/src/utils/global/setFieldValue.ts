@@ -1,5 +1,5 @@
 import {Util, useUtil} from '../useUtil';
-import {AddressField, AddressType} from '../../types';
+import {type AddressField, type AddressType} from '../../types';
 import {useConfig} from '../../config';
 import {getAddressField} from './getAddressField';
 

@@ -1,4 +1,4 @@
-import {CheckoutAppContext} from '../types';
+import {type CheckoutAppContext} from '../types';
 import {useConfig} from '../config';
 import {getElement} from './global/getElement';
 

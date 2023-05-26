@@ -1,5 +1,5 @@
 import {globalLogger} from '../logger';
-import {AdminContextObject} from '../../types';
+import {type AdminContextObject} from '../../types';
 
 export const getElementContext = (selector: string): AdminContextObject => {
   const element = document.querySelector(selector);

@@ -2,7 +2,7 @@
   "name": "@myparcel-pdk/app-builder",
   "version": "1.0.0-alpha.21",
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": "./src/index.ts",
   "types": "./dist/index.d.ts",
   "bin": {
     "pdk-builder": "./bin/index.js"
@@ -12,13 +12,13 @@
     "./dist"
   ],
   "scripts": {
-    "build": "run ws:tsup:build \"$(pwd)\"",
-    "build:dev": "run ws:tsup:build:dev \"$(pwd)\"",
+    "build": "tsup-node --minify",
+    "build:dev": "tsup-node --sourcemap",
     "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
     "start": "ts-node --project ./tsconfig.build.json src/index.ts",
-    "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
+    "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
     "archiver": "^5.3.1",
@@ -31,7 +31,6 @@
     "supports-color": "^9.3.1"
   },
   "devDependencies": {
-    "@myparcel-pdk/build-tsup": "workspace:*",
     "@types/archiver": "^5.3.1",
     "@types/commander": "^2.12.2",
     "@types/debug": "^4.1.7",

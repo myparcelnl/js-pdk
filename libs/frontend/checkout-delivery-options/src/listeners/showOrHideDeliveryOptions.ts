@@ -1,6 +1,6 @@
-import {StoreCallbackUpdate} from '@myparcel-pdk/frontend-checkout-core';
+import {type StoreCallbackUpdate} from '@myparcel-pdk/frontend-checkout-core';
 import {deliveryOptionsIsRendered, toggleDeliveryOptions} from '../utils';
-import {DeliveryOptionsStoreState} from '../store';
+import {type DeliveryOptionsStoreState} from '../store';
 
 export const showOrHideDeliveryOptions: StoreCallbackUpdate<DeliveryOptionsStoreState> = (newState, oldState) => {
   if (!deliveryOptionsIsRendered() || newState.enabled === oldState.enabled) {

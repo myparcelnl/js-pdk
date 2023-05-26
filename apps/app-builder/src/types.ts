@@ -1,6 +1,6 @@
-import {LiftoffEnv} from 'liftoff';
-import {PromiseOr} from '@myparcel/ts-utils';
-import {VersionSource} from './increment';
+import {type LiftoffEnv} from 'liftoff';
+import {type PromiseOr} from '@myparcel/ts-utils';
+import {type VersionSource} from './increment';
 
 export type PdkBuilderConfig = {
   /**

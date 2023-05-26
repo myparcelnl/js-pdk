@@ -9,7 +9,7 @@
 /**
  * A multi-select box. Renders a list of options which each have their own value. Allows multiple options to be selected.
  */
-import {PdkElementEmits, SelectInputProps, useSelectInputContext} from '@myparcel-pdk/frontend-admin-core';
+import {type PdkElementEmits, type SelectInputProps, useSelectInputContext} from '@myparcel-pdk/frontend-admin-core';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<SelectInputProps<T>>();

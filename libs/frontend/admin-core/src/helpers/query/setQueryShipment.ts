@@ -1,5 +1,5 @@
-import {QueryClient} from '@tanstack/vue-query';
-import {Shipment} from '@myparcel-pdk/common';
+import {type QueryClient} from '@tanstack/vue-query';
+import {type Shipment} from '@myparcel-pdk/common';
 import {QUERY_KEY_SHIPMENT} from '../../actions';
 import {setQueryData} from './setQueryData';
 

@@ -1,19 +1,19 @@
 import {
-  Account,
-  BackendEndpoint,
-  ExtractEndpointDefinition,
-  LabelFormat,
-  LabelOutput,
-  LabelPosition,
-  PdkEndpointDefinition,
-  Plugin,
-  Settings,
-  Shipment,
-  WebhookDefinition,
+  type Account,
+  type BackendEndpoint,
+  type ExtractEndpointDefinition,
+  type LabelFormat,
+  type LabelOutput,
+  type LabelPosition,
+  type PdkEndpointDefinition,
+  type Plugin,
+  type Settings,
+  type Shipment,
+  type WebhookDefinition,
 } from '@myparcel-pdk/common';
-import {RecursivePartial} from '@myparcel/ts-utils';
+import {type RecursivePartial} from '@myparcel/ts-utils';
 import {AbstractEndpoint} from '@myparcel/sdk';
-import {AdminContextObject} from '../../types';
+import {type AdminContextObject} from '../../types';
 
 export type PdfUrlResponse = {url: string};
 

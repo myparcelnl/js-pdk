@@ -1,5 +1,5 @@
-import {AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core';
-import {AllAddressFields, AnyAddressField} from '../types';
+import {type AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core';
+import {type AllAddressFields, type AnyAddressField} from '../types';
 import {triggerFormChange} from './triggerFormChange';
 
 export const fillAddressFields = (address: Partial<AllAddressFields>, addressType?: AddressType): void => {

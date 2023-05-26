@@ -45,11 +45,11 @@
 </template>
 
 <script lang="ts" setup>
-import {PropType} from 'vue';
+import {type PropType} from 'vue';
 import {
   ActionButton,
-  ActionDefinition,
-  AdminModalKey,
+  type ActionDefinition,
+  type AdminModalKey,
   NotificationContainer,
   useLanguage,
   useModalElementContext,

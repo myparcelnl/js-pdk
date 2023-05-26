@@ -1,5 +1,5 @@
-import {LiftoffEnv} from 'liftoff';
-import {PdkBuilderConfig} from '../types';
+import {type LiftoffEnv} from 'liftoff';
+import {type PdkBuilderConfig} from '../types';
 
 export async function resolveConfig(env: LiftoffEnv): Promise<PdkBuilderConfig> {
   if (!env.configPath) {

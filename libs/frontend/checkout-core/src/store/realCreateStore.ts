@@ -1,5 +1,5 @@
-import {Keyable} from '@myparcel-pdk/common';
-import {PromiseOr, objectIsEqual} from '@myparcel/ts-utils';
+import {type Keyable} from '@myparcel-pdk/common';
+import {type PromiseOr, objectIsEqual} from '@myparcel/ts-utils';
 import {logStoreDebugInfo} from './logStoreDebugInfo';
 
 export enum StoreListener {

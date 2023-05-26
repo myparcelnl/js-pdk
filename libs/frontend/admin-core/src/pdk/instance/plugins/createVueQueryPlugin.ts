@@ -1,10 +1,10 @@
-import {QueryClient, VueQueryPlugin} from '@tanstack/vue-query';
+import {type QueryClient, VueQueryPlugin} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {createQueryClient} from '../createQueryClient';
 import {createInstanceContext} from '../createInstanceContext';
 import {fillShipmentsQueryData} from '../../fillShipmentsQueryData';
 import {AdminContextKey} from '../../../types';
-import {PdkAppPlugin} from './plugins.types';
+import {type PdkAppPlugin} from './plugins.types';
 
 let queryClient: QueryClient;
 

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {StoreListener, Util, useCheckoutStore, useUtil} from '@myparcel-pdk/frontend-checkout-core';
 import {getDeliveryOptionsAddress} from '../utils';
-import {DeliveryOptionsConfiguration} from '../types';
+import {type DeliveryOptionsConfiguration} from '../types';
 import {showOrHideDeliveryOptions, updateConfigOrAddress} from '../listeners';
 
 export type DeliveryOptionsStoreState = {

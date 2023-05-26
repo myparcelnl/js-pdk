@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import {initializeCommand, logTimeTaken} from '../utils';
-import {CommandArgs, PdkBuilderContext} from '../types';
+import {type CommandArgs, type PdkBuilderContext} from '../types';
 import {COMMAND_INIT_NAME} from '../constants';
 
 const TEMPLATE = `import type {PdkBuilderConfig} from '@myparcel-pdk/app-builder';

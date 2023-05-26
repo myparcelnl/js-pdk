@@ -1,8 +1,8 @@
 import {
   AddressField,
-  CheckoutStoreState,
+  type CheckoutStoreState,
   PdkField,
-  StoreCallbackUpdate,
+  type StoreCallbackUpdate,
   Util,
   useUtil,
 } from '@myparcel-pdk/frontend-checkout-core';

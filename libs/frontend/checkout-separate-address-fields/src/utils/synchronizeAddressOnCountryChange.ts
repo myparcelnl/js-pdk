@@ -1,7 +1,7 @@
 import {
   AddressField,
-  CheckoutStoreState,
-  StoreCallbackUpdate,
+  type CheckoutStoreState,
+  type StoreCallbackUpdate,
   Util,
   useCheckoutStore,
   useUtil,

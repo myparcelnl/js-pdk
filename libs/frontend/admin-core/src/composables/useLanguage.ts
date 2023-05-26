@@ -1,4 +1,4 @@
-import {Ref, ref} from 'vue';
+import {type Ref, ref} from 'vue';
 import {get, memoize} from 'lodash-unified';
 import {createGlobalState} from '@vueuse/core';
 import {decodeHtmlEntities} from '../utils';
@@ -32,12 +32,12 @@ type UseLanguage = {
 /**
  * Cached translations.
  */
-const useCache = createGlobalState<Record<string, string>>(() => ({}));
+const useCache = createGlobalState<() => Record<string, string>>(() => ({}));
 
 /**
  * Keys that are missing in the translation file.
  */
-const useMissingKeys = createGlobalState<Ref<string[]>>(() => ref([]));
+const useMissingKeys = createGlobalState<() => Ref<string[]>>(() => ref([]));
 
 const all: UseLanguage['all'] = () => {
   const {translations} = useGlobalContext();

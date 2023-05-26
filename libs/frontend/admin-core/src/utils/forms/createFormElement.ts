@@ -1,6 +1,6 @@
 import {ref} from 'vue';
-import {FormInstance, InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
-import {ElementInstance} from '../../types';
+import {type FormInstance, type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
+import {type ElementInstance} from '../../types';
 
 export const createFormElement = (
   config?: Partial<InteractiveElementConfiguration>,

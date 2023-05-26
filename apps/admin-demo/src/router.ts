@@ -1,4 +1,4 @@
-import {Router, createRouter, createWebHistory} from 'vue-router';
+import {type Router, createRouter, createWebHistory} from 'vue-router';
 
 export const createRouterInstance = (): Router => {
   return createRouter({

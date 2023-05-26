@@ -1,6 +1,6 @@
 import {isEnumValue} from '@myparcel/ts-utils';
 import {useCheckoutStore} from '../useCheckoutStore';
-import {AddressField, AddressType, PdkCheckoutForm, PdkField} from '../../index';
+import {type AddressField, type AddressType, type PdkCheckoutForm, PdkField} from '../../index';
 
 type GetFieldValue = {
   (field: AddressField, addressType?: AddressType, fields?: PdkCheckoutForm): undefined | string;

@@ -1,6 +1,6 @@
 import {get} from '@vueuse/core';
-import {BackendEndpoint} from '@myparcel-pdk/common';
-import {ResolvedQuery} from '../../stores';
+import {type BackendEndpoint} from '@myparcel-pdk/common';
+import {type ResolvedQuery} from '../../stores';
 import {useShipments} from './useShipments';
 
 export const useOrderShipments = (

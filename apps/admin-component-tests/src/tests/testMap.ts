@@ -1,5 +1,5 @@
-import {Component} from 'vue';
-import {AdminComponent} from '@myparcel-pdk/common';
+import {type Component} from 'vue';
+import {type AdminComponent} from '@myparcel-pdk/common';
 import {
   runActionContainerTest,
   runButtonTest,

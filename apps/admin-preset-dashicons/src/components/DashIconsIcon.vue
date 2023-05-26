@@ -8,8 +8,8 @@
 </template>
 
 <script lang="ts" setup>
-import {PropType, computed} from 'vue';
-import {AdminIcon} from '@myparcel-pdk/frontend-admin-core';
+import {type PropType, computed} from 'vue';
+import {type AdminIcon} from '@myparcel-pdk/frontend-admin-core';
 import {convertToDashIcon} from '../convertToDashIcon';
 
 const props = defineProps({

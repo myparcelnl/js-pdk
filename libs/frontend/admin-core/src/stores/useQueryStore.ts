@@ -1,12 +1,12 @@
-import {Ref, ref} from 'vue';
+import {type Ref, ref} from 'vue';
 import {defineStore} from 'pinia';
 import {get as vuGet} from '@vueuse/core';
-import {QueryClient, UseQueryReturnType, useQueryClient} from '@tanstack/vue-query';
+import {type QueryClient, type UseQueryReturnType, useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
-import {ApiException} from '@myparcel/sdk';
+import {type ApiException} from '@myparcel/sdk';
 import {getOrderId} from '../utils';
-import {AdminContext, AdminContextKey} from '../types';
+import {type AdminContext, AdminContextKey} from '../types';
 import {MutationMode} from '../services';
 import {
   useCreateWebhooksMutation,
@@ -20,9 +20,9 @@ import {
   useFetchWebhooksQuery,
   usePrintOrdersMutation,
   usePrintShipmentsMutation,
-  useUpdateAccountMutation,
+  type useUpdateAccountMutation,
   useUpdateOrdersMutation,
-  useUpdatePluginSettingsMutation,
+  type useUpdatePluginSettingsMutation,
   useUpdateShipmentsMutation,
 } from '../actions';
 

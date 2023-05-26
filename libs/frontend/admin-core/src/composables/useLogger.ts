@@ -1,4 +1,4 @@
-import {PdkLogger} from '../services';
+import {type PdkLogger} from '../services';
 import {useAdminInstance} from './useAdminInstance';
 
 export const useLogger = (): PdkLogger => {

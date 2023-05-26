@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {Ref, ref} from 'vue';
+import {type Ref, ref} from 'vue';
 import {useAdminConfig} from '../useAdminConfig';
-import {Formatter, FormatterTranslateFunction, LocaleFormatterObject} from './formatter.types';
+import {type Formatter, type FormatterTranslateFunction, type LocaleFormatterObject} from './formatter.types';
 import {
   createDefaultCurrencyFormatter,
   createDefaultDateLongFormatter,

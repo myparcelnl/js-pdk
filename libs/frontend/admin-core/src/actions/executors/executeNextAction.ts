@@ -1,6 +1,6 @@
-import {ActionParameters, AnyAdminAction, MaybeActionResponse, MaybeAdminAction} from '../../types';
+import {type ActionParameters, type AnyAdminAction, type MaybeActionResponse, type MaybeAdminAction} from '../../types';
 import {createActionContext, createLogger, getActionIdentifier} from '../../services';
-import {ActionContext} from './types';
+import {type ActionContext} from './types';
 import {executeAction} from './executeAction';
 
 /**

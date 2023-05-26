@@ -3,13 +3,13 @@
 
 import {markRaw, ref} from 'vue';
 import {get} from '@vueuse/core';
-import {AdminComponent, Plugin, RadioGroupOption} from '@myparcel-pdk/common';
+import {AdminComponent, type Plugin} from '@myparcel-pdk/common';
 import {defineForm} from '@myparcel/vue-form-builder';
-import {OneOrMore, toArray} from '@myparcel/ts-utils';
-import {CarrierName, PackageTypeName} from '@myparcel/constants';
+import {type OneOrMore, toArray} from '@myparcel/ts-utils';
+import {type CarrierName, PackageTypeName} from '@myparcel/constants';
 import {defineFormField, resolveFormComponent, setFieldProp} from '../helpers';
 import {createShipmentFormName} from '../../utils';
-import {AdminContextKey, AdminModalKey, ElementInstance} from '../../types';
+import {AdminContextKey, AdminModalKey, type ElementInstance, type RadioGroupOption} from '../../types';
 import {useModalStore} from '../../stores';
 import {useCarrier} from '../../sdk';
 import {useAdminConfig, useAssetUrl, useContext, useLocalizedFormatter} from '../../composables';

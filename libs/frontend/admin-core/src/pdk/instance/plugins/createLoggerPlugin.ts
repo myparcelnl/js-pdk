@@ -1,4 +1,4 @@
-import {PdkAppPlugin} from './plugins.types';
+import {type PdkAppPlugin} from './plugins.types';
 
 export const createLoggerPlugin: PdkAppPlugin = (appConfig) => ({
   install(app) {

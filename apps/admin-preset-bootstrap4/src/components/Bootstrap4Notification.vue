@@ -22,8 +22,8 @@
 </template>
 
 <script lang="ts" setup>
-import {PropType, computed} from 'vue';
-import {Notification} from '@myparcel-pdk/frontend-admin-core';
+import {type PropType, computed} from 'vue';
+import {type Notification} from '@myparcel-pdk/frontend-admin-core';
 import {toArray} from '@myparcel/ts-utils';
 
 const props = defineProps({

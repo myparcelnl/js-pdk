@@ -1,7 +1,7 @@
 import {ref} from 'vue';
 import {defineStore} from 'pinia';
 import {isEnumValue} from '@myparcel/ts-utils';
-import {Notification, NotificationCategory, NotificationId} from '..';
+import {type Notification, NotificationCategory, type NotificationId} from '..';
 
 let autoId = 0;
 

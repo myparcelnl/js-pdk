@@ -33,7 +33,7 @@ export default {inheritAttrs: false};
 
 <script lang="ts" setup>
 import {useVModel} from '@vueuse/core';
-import {ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-admin-core';
+import {type ElementInstance, generateFieldId} from '@myparcel-pdk/frontend-admin-core';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{modelValue: string | number; element: ElementInstance}>();

@@ -1,7 +1,7 @@
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {getOrderId} from '../../utils';
-import {ResolvedQuery} from '../../stores';
+import {type ResolvedQuery} from '../../stores';
 import {useOrder} from './useOrder';
 
 export const useOrders = (

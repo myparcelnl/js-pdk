@@ -1,4 +1,4 @@
-import {FormatterFunction} from '../formatter.types';
+import {type FormatterFunction} from '../formatter.types';
 import {createCurrencyFormat} from './createCurrencyFormat';
 
 let formatCurrency: Intl.NumberFormat;

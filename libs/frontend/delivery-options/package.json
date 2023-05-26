@@ -5,18 +5,18 @@
   "sideEffects": false,
   "type": "module",
   "exports": "./src/index.ts",
+  "types": "./dist/index.d.ts",
   "files": [
-    "./src"
+    "./src",
+    "./dist"
   ],
   "scripts": {
-    "emit": "run ws:tsup:emit \"$(pwd)\"",
+    "build": "run ws:ts:build \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "emit": "run ws:ts:emit \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
-    "typecheck": "run ws:tsup:typecheck \"$(pwd)\""
-  },
-  "devDependencies": {
-    "@myparcel-pdk/build-tsup": "workspace:^",
-    "tsup": "^6.6.3"
+    "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "publishConfig": {
     "access": "public"

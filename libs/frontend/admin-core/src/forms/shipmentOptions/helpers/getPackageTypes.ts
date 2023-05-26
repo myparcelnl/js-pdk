@@ -1,5 +1,5 @@
-import {SelectOption} from '@myparcel-pdk/common';
-import {FormInstance} from '@myparcel/vue-form-builder';
+import {type SelectOption} from '@myparcel-pdk/common';
+import {type FormInstance} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
 import {getPackageTypeTranslation} from '../../../helpers';
 import {getCarrierOptions} from './getCarrierOptions';

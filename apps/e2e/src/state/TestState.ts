@@ -1,4 +1,4 @@
-import {OrderIdentifier, ProductIdentifier} from '../types.ts';
+import {type OrderIdentifier, type ProductIdentifier} from '../types.ts';
 
 export class TestState {
   protected static createdOrders: OrderIdentifier[] = [];

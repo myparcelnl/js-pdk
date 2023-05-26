@@ -1,4 +1,4 @@
-import {AdminContextObject, AdminInstanceContext, AdminInstanceContextKey} from '../../types';
+import {type AdminContextObject, type AdminInstanceContext, AdminInstanceContextKey} from '../../types';
 
 /**
  * Creates a context object for the current instance.

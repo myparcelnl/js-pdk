@@ -1,4 +1,4 @@
-import {ElementInstance} from '../../types';
+import {type ElementInstance} from '../../types';
 import {useElement} from '../../index';
 
 export const generateFieldId = (element?: ElementInstance): string => {

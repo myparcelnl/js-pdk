@@ -1,5 +1,5 @@
-import {EndpointDefinition} from '@myparcel/sdk';
-import {BackendEndpoint, FrontendEndpoint, Plugin} from '..';
+import {type EndpointDefinition} from '@myparcel/sdk';
+import {type BackendEndpoint, type FrontendEndpoint, type Plugin} from '..';
 
 export type AnyEndpoint = FrontendEndpoint | BackendEndpoint;
 

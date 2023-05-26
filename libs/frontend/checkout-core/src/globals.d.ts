@@ -1,17 +1,17 @@
-import {PromiseOr, isOfType} from '@myparcel/ts-utils';
+import {type PromiseOr, type isOfType} from '@myparcel/ts-utils';
 import {
-  Util,
-  doRequest,
-  fieldsEqual,
-  getAddressField,
-  getAddressFieldValue,
-  getElement,
-  getFieldValue,
-  setFieldValue,
-  triggerEvent,
+  type Util,
+  type doRequest,
+  type fieldsEqual,
+  type getAddressField,
+  type getAddressFieldValue,
+  type getElement,
+  type getFieldValue,
+  type setFieldValue,
+  type triggerEvent,
 } from './utils';
-import {PdkCheckout, PdkCheckoutConfig, PdkEvent} from './types';
-import {StoreData, createCheckoutStore, realCreateStore} from './store';
+import {type PdkCheckout, type PdkCheckoutConfig, type PdkEvent} from './types';
+import {type StoreData, type createCheckoutStore, type realCreateStore} from './store';
 
 declare global {
   interface MyParcelPdkUtils {

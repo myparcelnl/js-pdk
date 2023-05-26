@@ -1,7 +1,7 @@
 import {config} from '@vue/test-utils';
 import {
-  AdminAppConfig,
-  AdminContextObject,
+  type AdminAppConfig,
+  type AdminContextObject,
   LogLevel,
   createContextPlugin,
   createLogger,
@@ -9,7 +9,7 @@ import {
   globalLogger,
 } from '@myparcel-pdk/frontend-admin-core';
 import {
-  AdminComponentMap,
+  type AdminComponentMap,
   AdminView,
   BackendEndpoint,
   optionalAdminPlainWrapperComponentNames,

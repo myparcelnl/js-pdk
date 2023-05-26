@@ -4,7 +4,7 @@ import {BackendEndpoint} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {usePdkMutation} from '../orders';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
-import {BackendEndpointOptions, usePdkAdminApi} from '../../../../sdk';
+import {type BackendEndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {setQueryOrder} from '../../../../helpers';
 
 export const useUpdateOrdersMutation = () => {

@@ -1,22 +1,10 @@
 import {h, markRaw} from 'vue';
-import {Plugin, TabDefinition} from '@myparcel-pdk/common';
-import {FormInstance} from '@myparcel/vue-form-builder';
-import {AdminAction, AdminConfiguration} from '../../types';
+import {type Plugin, type TabDefinition} from '@myparcel-pdk/common';
 import {useLanguage} from '../../composables';
-import {ActionContext} from '../../actions';
+import {type PluginSettingsTabsContext} from './types';
 import {createPluginSettingsTabsComponent} from './createPluginSettingsTabsComponent';
 import {createPluginSettingsForm} from './createPluginSettingsForm';
 import {createFormTab} from './createFormTab';
-
-export interface FormTab extends Omit<TabDefinition, 'component'> {
-  form: FormInstance;
-}
-
-export type PluginSettingsTabsContext = {
-  pluginSettings: Plugin.ModelContextDynamicContext['pluginSettings'];
-  actionContext: ActionContext<AdminAction.PluginSettingsUpdate>;
-  config: AdminConfiguration;
-};
 
 export const createPluginSettingsTabs = (
   view: Plugin.ModelContextPluginSettingsViewContext,

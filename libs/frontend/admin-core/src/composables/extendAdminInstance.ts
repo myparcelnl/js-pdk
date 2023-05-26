@@ -1,6 +1,6 @@
 import {inject, provide} from 'vue';
 import {merge} from 'lodash-unified';
-import {AdminInstance, INJECT_ADMIN_INSTANCE} from '../data';
+import {type AdminInstance, INJECT_ADMIN_INSTANCE} from '../data';
 
 export const extendAdminInstance = (data: Partial<AdminInstance>): void => {
   const instance = inject(INJECT_ADMIN_INSTANCE);

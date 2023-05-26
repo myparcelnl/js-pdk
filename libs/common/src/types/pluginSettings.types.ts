@@ -1,6 +1,5 @@
-import {Component} from 'vue';
-import {AdminIcon} from '@myparcel-pdk/frontend-admin-core';
-import {Keyable} from './generic.types';
+import {type Component} from 'vue';
+import {type Keyable} from './generic.types';
 
 export type LabelFormat = 'a4' | 'a6';
 
@@ -30,11 +29,6 @@ export type SelectOptionValue = Keyable | boolean;
 export type SelectOption<Value extends SelectOptionValue = SelectOptionValue> =
   | SelectOptionWithLabel<Value>
   | SelectOptionWithPlainLabel<Value>;
-
-export type RadioGroupOption<Value extends Keyable = Keyable> = SelectOption<Value> & {
-  image?: string;
-  icon?: AdminIcon;
-};
 
 export interface TabDefinition {
   component: string | Component;

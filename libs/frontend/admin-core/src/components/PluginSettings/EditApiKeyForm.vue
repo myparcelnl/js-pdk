@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 import {markRaw, ref, watch} from 'vue';
 import {AdminComponent} from '@myparcel-pdk/common';
-import {FormInstance, MagicForm, defineField, defineForm} from '@myparcel/vue-form-builder';
+import {type FormInstance, MagicForm, defineField, defineForm} from '@myparcel/vue-form-builder';
 import {SubmitButton} from '../common';
 import {createActionContext} from '../../services';
 import {FORM_KEY_ACCOUNT_SETTINGS, defineFormField, resolveFormComponent} from '../../forms';

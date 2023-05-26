@@ -1,6 +1,6 @@
 import {useDeliveryOptionsStore} from '@myparcel-pdk/frontend-checkout-delivery-options';
 import {useSettings} from '@myparcel-pdk/frontend-checkout-core';
-import {CarrierName} from '@myparcel/constants';
+import {type CarrierName} from '@myparcel/constants';
 
 export const hasTaxFields = (): boolean => {
   const settings = useSettings();

@@ -3,7 +3,7 @@ import {toArray} from '@myparcel/ts-utils';
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
 import {createMutationHandler, createQueryHandler, executeNextAction, resolveOrderParameters} from '../executors';
 import {defineAction} from '../defineAction';
-import {ActionParameters, AdminAction, AdminIcon, AdminModalKey} from '../../types';
+import {type ActionParameters, AdminAction, AdminIcon, AdminModalKey} from '../../types';
 import {useModalStore} from '../../stores';
 import {shipmentsUpdateAction} from './shipments';
 

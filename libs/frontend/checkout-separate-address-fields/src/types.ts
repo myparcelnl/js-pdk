@@ -1,4 +1,4 @@
-import {AddressField, AddressFields} from '@myparcel-pdk/frontend-checkout-core';
+import {type AddressField, type AddressFields} from '@myparcel-pdk/frontend-checkout-core';
 
 export enum SeparateAddressField {
   Street = 'street',

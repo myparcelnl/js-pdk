@@ -33,7 +33,7 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {useVModel} from '@vueuse/core';
-import {InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
 import {useQueryStore} from '../../stores';

@@ -1,4 +1,4 @@
-import debugFactory, {Debugger} from 'debug';
+import debugFactory, {type Debugger} from 'debug';
 
 export const createDebugger = (name: string): Debugger => {
   const debug = debugFactory(`@myparcel-pdk/app-builder:${name}`);

@@ -26,11 +26,11 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {Status, WebhookDefinition} from '@myparcel-pdk/common';
+import {Status, type WebhookDefinition} from '@myparcel-pdk/common';
 import {partitionArray} from '@myparcel/ts-utils';
 import StatusIndicator from '../common/StatusIndicator.vue';
 import ActionButton from '../common/ActionButton.vue';
-import {ActionDefinition} from '../../types';
+import {type ActionDefinition} from '../../types';
 import {useActionStore, useQueryStore} from '../../stores';
 import {defineActions} from '../../services';
 import {useLanguage} from '../../composables';

@@ -1,4 +1,4 @@
-import {ActionContext, executeNextAction} from '../executors';
+import {type ActionContext, executeNextAction} from '../executors';
 import {defineAction} from '../defineAction';
 import {useModalStore} from '../../stores';
 

@@ -1,7 +1,7 @@
-import {UseQueryReturnType} from '@tanstack/vue-query';
+import {type UseQueryReturnType} from '@tanstack/vue-query';
 import {isOfType} from '@myparcel/ts-utils';
 import {useStoreQuery} from '../../composables';
-import {QueryExecutor} from './types';
+import {type QueryExecutor} from './types';
 
 export const createQueryHandler: QueryExecutor = (endpoint, suffix) => {
   return async (context) => {

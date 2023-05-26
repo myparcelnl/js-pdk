@@ -10,9 +10,9 @@
 
 <script lang="ts" setup>
 /* eslint-disable vue/no-unused-properties */
-import {PropType, computed} from 'vue';
-import {AdminIcon} from '@myparcel-pdk/frontend-admin-core';
-import {Size} from '@myparcel-pdk/common';
+import {type PropType, computed} from 'vue';
+import {type AdminIcon} from '@myparcel-pdk/frontend-admin-core';
+import {type Size} from '@myparcel-pdk/common';
 import BaseButton from './common/BaseButton.vue';
 
 const props = defineProps({

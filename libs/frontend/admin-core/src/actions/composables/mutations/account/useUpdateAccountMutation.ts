@@ -2,7 +2,7 @@
 import {useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint, Variant} from '@myparcel-pdk/common';
 import {isOfType} from '@myparcel/ts-utils';
-import {ApiException} from '@myparcel/sdk';
+import {type ApiException} from '@myparcel/sdk';
 import {usePdkMutation} from '../orders';
 import {formToBody} from '../../../../utils';
 import {NotificationCategory} from '../../../../types';

@@ -1,14 +1,16 @@
-import {WritableComputedRef, computed, ref, watch} from 'vue';
-import {Keyable} from '@myparcel-pdk/common';
+import {type WritableComputedRef, computed, ref, watch, type UnwrapRef} from 'vue';
+import {type Keyable} from '@myparcel-pdk/common';
+
+type Value<K extends Keyable = Keyable> = Partial<Record<K, boolean>>;
 
 export const useBulkSelectCheckbox = <K extends Keyable = Keyable, KS extends K[] = K[]>(
   options: KS,
-  emit: (event: 'select', value: Record<K, boolean>) => void,
+  emit: (event: 'select', value: UnwrapRef<Value<K>>) => void,
 ): {
-  bulkModel: WritableComputedRef<Partial<Record<K, boolean>>>;
+  bulkModel: WritableComputedRef<UnwrapRef<Value<K>>>;
   bulkOptions: Keyable[];
 } => {
-  const selected = ref<Partial<Record<K, boolean>>>({});
+  const selected = ref<Value<K>>({});
 
   const bulkModel = computed({
     get() {

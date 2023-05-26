@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {Component} from 'vue';
-import {AdminView, ComponentImportFunction} from '@myparcel-pdk/common';
+import {type Component} from 'vue';
+import {type AdminView, type ComponentImportFunction} from '@myparcel-pdk/common';
 
 /**
  * Maps components to render methods.

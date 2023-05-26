@@ -1,17 +1,17 @@
-import {App, Component, markRaw} from 'vue';
+import {type App, type Component, markRaw} from 'vue';
 import {memoize, mergeWith} from 'lodash-unified';
 import {
   AdminComponent,
-  PrefixedAdminComponent,
+  type PrefixedAdminComponent,
   optionalAdminActionContainerComponentNames,
   optionalAdminPlainWrapperComponentNames,
   requiredAdminComponentNames,
 } from '@myparcel-pdk/common';
-import {FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder';
+import {type FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder';
 import {prefixComponent} from '../../../helpers';
 import {useLanguage} from '../../../composables';
 import {PlainElement} from '../../../components';
-import {PdkAppPlugin} from './plugins.types';
+import {type PdkAppPlugin} from './plugins.types';
 
 const memoizedGetOptionalComponents = memoize((app: App): Record<string, Component | AdminComponent> => {
   const isNotRegistered = (component: PrefixedAdminComponent): boolean => app.component(component) === undefined;

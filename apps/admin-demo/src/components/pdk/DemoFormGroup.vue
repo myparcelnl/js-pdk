@@ -22,8 +22,8 @@
 </template>
 
 <script lang="ts">
-import {PropType, defineComponent} from 'vue';
-import {ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-admin-core';
+import {type PropType, defineComponent} from 'vue';
+import {type ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-admin-core';
 
 /**
  * @see import('@myparcel-pdk/admin-preset-default').DefaultFormGroup

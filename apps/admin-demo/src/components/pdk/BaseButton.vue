@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import {PropType, computed} from 'vue';
+import {type PropType, computed} from 'vue';
 import {Size} from '@myparcel-pdk/common';
 
 const props = defineProps({

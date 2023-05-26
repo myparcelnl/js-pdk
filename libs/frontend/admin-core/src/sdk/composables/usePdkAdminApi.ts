@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import {createGlobalState} from '@vueuse/core';
-import {PdkFetchClient} from '@myparcel-pdk/frontend-admin-core';
-import {BackendEndpoint} from '@myparcel-pdk/common';
-import {HttpMethod, MyParcelSdk, createMyParcelSdk} from '@myparcel/sdk';
+import {type BackendEndpoint} from '@myparcel-pdk/common';
+import {type HttpMethod, type MyParcelSdk, createMyParcelSdk} from '@myparcel/sdk';
 import {AbstractPdkEndpoint} from '../endpoints';
+import {PdkFetchClient} from '../PdkFetchClient';
 import {useGlobalContext} from '../../composables';
 
 /**

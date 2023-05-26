@@ -2,11 +2,11 @@ import {StoreListener, useCheckoutStore} from '@myparcel-pdk/frontend-checkout-c
 import {fillAddress1, prepareFields, synchronizeAddressOnCountryChange} from './utils';
 import {synchronizeAddress1} from './listeners';
 
-export {AllAddressFields} from './types';
+export type {AllAddressFields} from './types';
+
+export type {SeparateAddressFields} from './types';
 
 export {SPLIT_STREET_REGEX} from './constants';
-
-export {SeparateAddressFields} from './types';
 
 /**
  * Initializes the checkout separate address fields module.

@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import {PropType, computed} from 'vue';
+import {type PropType, computed} from 'vue';
 import {Status} from '@myparcel-pdk/common';
 import {AdminIcon} from '../../types';
 import {useAdminConfig} from '../../composables';

@@ -1,12 +1,12 @@
 /* eslint-disable new-cap */
 import {
-  Fixtures,
-  PlaywrightTestArgs,
-  PlaywrightTestOptions,
-  PlaywrightWorkerArgs,
-  PlaywrightWorkerOptions,
+  type Fixtures,
+  type PlaywrightTestArgs,
+  type PlaywrightTestOptions,
+  type PlaywrightWorkerArgs,
+  type PlaywrightWorkerOptions,
 } from '@playwright/test/types/test';
-import {Config, ExtendedCmsFixtures} from './types.ts';
+import {type Config, type ExtendedCmsFixtures} from './types.ts';
 import {parseConfiguration} from './parseConfiguration.ts';
 
 export const registerFixtures = (

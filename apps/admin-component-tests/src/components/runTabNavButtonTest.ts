@@ -1,5 +1,5 @@
-import {MountingOptions} from '@vue/test-utils';
-import {AdminComponentTest} from '../tests';
+import {type MountingOptions} from '@vue/test-utils';
+import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runHasPropTest} from '../common';
 
 export const runTabNavButtonTest: AdminComponentTest = (component) => {

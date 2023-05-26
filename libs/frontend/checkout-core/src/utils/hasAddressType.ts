@@ -1,4 +1,4 @@
-import {AddressType} from '../types';
+import {type AddressType} from '../types';
 import {useConfig} from '../config';
 
 export const hasAddressType = (addressType: AddressType): boolean => {

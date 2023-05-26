@@ -1,4 +1,4 @@
-import {InitializeCallback, PdkCheckoutConfigInput} from '../types';
+import {type InitializeCallback, type PdkCheckoutConfigInput} from '../types';
 import {useConfig} from '../config';
 import {setupGlobals} from './setupGlobals';
 import {createConfig} from './createConfig';

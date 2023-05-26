@@ -1,4 +1,4 @@
-import {FetchClient, GetCarrier, GetCarriers, MyParcelSdk, createMyParcelSdk} from '@myparcel/sdk';
+import {FetchClient, GetCarrier, GetCarriers, type MyParcelSdk, createMyParcelSdk} from '@myparcel/sdk';
 
 let sdk: ReturnType<typeof useMyParcelApi>;
 

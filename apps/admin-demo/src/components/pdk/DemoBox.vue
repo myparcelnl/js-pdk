@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-import {PropType, computed, useSlots} from 'vue';
+import {type PropType, computed, useSlots} from 'vue';
 import {Size} from '@myparcel-pdk/common';
 
 const slots = useSlots();

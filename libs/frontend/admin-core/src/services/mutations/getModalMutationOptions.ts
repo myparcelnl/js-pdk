@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {MutationOptions} from '@tanstack/vue-query';
+import {type MutationOptions} from '@tanstack/vue-query';
 import {NotificationCategory, addErrorToNotifications, useModalStore} from '../..';
 
 export const getModalMutationOptions = <

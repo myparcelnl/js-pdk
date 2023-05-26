@@ -1,4 +1,4 @@
-import {AddressField, AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core';
+import {AddressField, type AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core';
 import {getFullStreet} from './getFullStreet';
 
 export const setFullStreet = (addressType: AddressType, dispatchEvent = true): void => {

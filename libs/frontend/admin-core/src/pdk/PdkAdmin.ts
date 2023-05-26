@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {App, createApp} from 'vue';
+import {type App, createApp} from 'vue';
 import {AdminView} from '@myparcel-pdk/common';
-import {AdminConfiguration, AdminContextObject} from '../types';
+import {type AdminConfiguration, type AdminContextObject} from '../types';
 import {createLogger, getElementContext} from '../services';
-import {AdminAppConfig, INJECT_GLOBAL_PDK_ADMIN} from '../data';
+import {type AdminAppConfig, INJECT_GLOBAL_PDK_ADMIN} from '../data';
 import {setupAdminApp} from './setupAdminApp';
 import {renderViewComponent} from './renderMap';
 
@@ -47,6 +47,7 @@ export class PdkAdmin {
   }
 
   protected async createApp(view: AdminView, appConfig: AdminAppConfig): Promise<App> {
+    appConfig.view = view;
     appConfig.config?.beforeRender?.(appConfig.config);
 
     const component = await renderViewComponent(view);

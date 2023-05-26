@@ -1,5 +1,5 @@
-import {MaybeActionResponse, MaybeAdminAction} from '../../types';
-import {ActionContext} from './types';
+import {type MaybeActionResponse, type MaybeAdminAction} from '../../types';
+import {type ActionContext} from './types';
 import {executeHandler} from './executeHandler';
 import {executeBeforeHandle} from './executeBeforeHandle';
 import {executeAfterHandle} from './executeAfterHandle';

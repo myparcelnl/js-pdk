@@ -1,6 +1,6 @@
 import path from 'path';
-import {LiftoffEnv} from 'liftoff';
-import {ResolvedPdkBuilderConfig} from '../types';
+import {type LiftoffEnv} from 'liftoff';
+import {type ResolvedPdkBuilderConfig} from '../types';
 import {getPlatformFolderName} from './getPlatformFolderName';
 
 export const getPlatformDistPath = (context: {

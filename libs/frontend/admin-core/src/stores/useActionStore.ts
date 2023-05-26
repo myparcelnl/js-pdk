@@ -1,7 +1,7 @@
-import {UnwrapNestedRefs, ref} from 'vue';
+import {type UnwrapNestedRefs, ref} from 'vue';
 import {defineStore} from 'pinia';
-import {OneOrMore, PromiseOr, toArray} from '@myparcel/ts-utils';
-import {ActionParameters, AdminAction, AnyAdminAction, ResolvedAction} from '../types';
+import {type OneOrMore, type PromiseOr, toArray} from '@myparcel/ts-utils';
+import {type ActionParameters, type AdminAction, type AnyAdminAction, type ResolvedAction} from '../types';
 import {createAction, getActionIdentifier} from '../services';
 import {usePluginSettings} from '../composables';
 import {

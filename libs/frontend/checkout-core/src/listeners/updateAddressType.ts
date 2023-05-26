@@ -1,16 +1,12 @@
-import {
-  CheckoutStoreState,
-  PdkField,
-  StoreCallbackUpdate,
-  Util,
-  useConfig,
-  useUtil,
-} from '@myparcel-pdk/frontend-checkout-core';
+import {useUtil, Util} from '../utils';
+import {PdkField} from '../types';
+import {type StoreCallbackUpdate, type CheckoutStoreState} from '../store';
+import {useConfig} from '../config';
 
 export const updateAddressType: StoreCallbackUpdate<CheckoutStoreState> = (newState, oldState) => {
   const fieldsEqual = useUtil(Util.FieldsEqual);
 
-  if (fieldsEqual(newState.form, oldState.form, PdkField.AddressType)) {
+  if (!oldState || fieldsEqual(newState.form, oldState.form, PdkField.AddressType)) {
     return;
   }
 

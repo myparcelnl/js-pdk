@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {useQueryClient} from '@tanstack/vue-query';
-import {BackendEndpoint, Plugin} from '@myparcel-pdk/common';
+import {BackendEndpoint, type Plugin} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {usePdkMutation} from '../orders';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
 import {useModalStore} from '../../../../stores';
 import {MutationMode, getCallbackForMutationMode, getModalMutationOptions} from '../../../../services';
-import {BackendEndpointOptions, usePdkAdminApi} from '../../../../sdk';
+import {type BackendEndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {fillShipmentsQueryData} from '../../../../pdk';
 
 export const useExportOrdersMutation = (mode: MutationMode = MutationMode.Default) => {

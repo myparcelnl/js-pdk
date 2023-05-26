@@ -10,53 +10,42 @@
     "libs/**"
   ],
   "scripts": {
-    "build": "nx run-many --runner=cloud --target=build",
-    "build:dev": "nx run-many --target=build:dev",
-    "clean": "nx run-many --target=clean",
-    "lint": "run ws:lint \"$(pwd)\"",
-    "lint:fix": "run ws:lint:fix \"$(pwd)\"",
-    "prepare": "is-ci || husky install",
+    "build": "nx run-many --runner=cloud -t build",
+    "build:dev": "nx run-many -t build:dev",
+    "clean": "nx run-many -t clean",
+    "lint": "nx affected -t lint --output-style=stream",
+    "lint:fix": "nx affected -t lint:fix --output-style=stream",
+    "prepare": "echo 'prepare' && (is-ci || husky install)",
     "serve": "run build:dev --output-style=stream npx concurrently yarn:watch yarn:serve:demo",
     "serve:demo": "npx concurrently yarn:serve:demo:frontend yarn:serve:demo:backend",
     "serve:demo:backend": "nx serve backend-demo",
     "serve:demo:frontend": "nx serve admin-demo",
-    "test": "nx run-many --target=test --output-style=stream",
-    "test:run": "nx run-many --target=test:run --output-style=stream",
-    "typecheck": "nx run-many --target=typecheck",
-    "watch": "nodemon",
+    "test": "nx run-many -t test --output-style=stream",
+    "test:run": "nx run-many -t test:run --output-style=stream",
+    "typecheck": "nx run-many -t typecheck",
     "ws:clean": "cd $0 && rimraf lib dist coverage .eslintcache tsconfig.build.tsbuildinfo tsconfig.json node_modules",
     "ws:lint": "eslint --cache $0",
     "ws:lint:fix": "eslint --cache --fix $0",
     "ws:test": "cd $0 && vitest",
     "ws:test:run": "cd $0 && (vitest run --coverage --dangerouslyIgnoreUnhandledErrors || true)",
-    "ws:tsup:build": "cd $0 && tsup-node --minify",
-    "ws:tsup:build:dev": "cd $0 && tsup-node --sourcemap",
-    "ws:tsup:buildOnly": "cd $0 && tsup-node",
-    "ws:tsup:typecheck": "cd $0 && tsc --noEmit",
-    "ws:tsup:watch": "cd $0 && tsup-node --sourcemap --watch",
+    "ws:ts:build": "cd $0 && tsc --project tsconfig.build.json --emitDeclarationOnly --declarationDir dist --declaration || true",
+    "ws:ts:typecheck": "cd $0 && tsc --noEmit",
+    "ws:ts:watch": "cd $0 && tsup-node --sourcemap --watch",
     "ws:vite:build": "cd $0 && vite build",
     "ws:vite:build:dev": "cd $0 && vite build --mode development",
-    "ws:vite:buildOnly": "cd $0 && vite build",
-    "ws:vite:typecheck": "cd $0 && vue-tsc --noEmit",
-    "ws:vite:watch": "cd $0 && vite build --mode development --watch"
+    "ws:vite:watch": "cd $0 && vite build --mode development --watch",
+    "ws:vue:build": "cd $0 && vue-tsc --project tsconfig.build.json --emitDeclarationOnly --declarationDir dist --declaration || true",
+    "ws:vue:typecheck": "cd $0 && vue-tsc --noEmit"
   },
   "lint-staged": {
     "*.{json,md,yml}": "prettier --write",
     "*.{ts,vue,js,cjs,mjs}": "yarn run ws:lint:fix",
     "package.json": "npx sort-package-json"
   },
-  "nodemonConfig": {
-    "exec": "yarn build:dev --output-style=stream",
-    "ext": "ts,vue",
-    "ignore": [
-      "**/dist/**"
-    ],
-    "watch": [
-      "apps",
-      "libs"
-    ]
-  },
   "prettier": "@myparcel/prettier-config",
+  "resolutions": {
+    "eslint-plugin-import": "npm:eslint-plugin-i@^*"
+  },
   "devDependencies": {
     "@monodeploy/plugin-github": "^1.0.0",
     "@myparcel-eslint/eslint-config-esnext": "^1.2.0",

@@ -1,5 +1,5 @@
-import {Component} from 'vue';
-import {MountingOptions} from '@vue/test-utils';
+import {type Component} from 'vue';
+import {type MountingOptions} from '@vue/test-utils';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type PartialComponentTest = <O = any>(

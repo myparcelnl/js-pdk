@@ -1,11 +1,11 @@
 import {get as lodashGet} from 'lodash-unified';
-import {BackendEndpoint, Plugin} from '@myparcel-pdk/common';
-import {FormInstance, defineForm} from '@myparcel/vue-form-builder';
+import {BackendEndpoint, type Plugin} from '@myparcel-pdk/common';
+import {type FormInstance, defineForm} from '@myparcel/vue-form-builder';
 import {useStoreQuery} from '../../composables';
 import {SubmitButton} from '../../components';
 import {executeAction} from '../../actions';
+import {type PluginSettingsTabsContext} from './types';
 import {generateFormFields} from './generateFormFields';
-import {PluginSettingsTabsContext} from './createPluginSettingsTabs';
 
 export const createPluginSettingsForm = (
   id: string,

@@ -1,5 +1,5 @@
-import {Variant} from '@myparcel-pdk/common';
-import {OneOrMore} from '@myparcel/ts-utils';
+import {type Variant} from '@myparcel-pdk/common';
+import {type OneOrMore} from '@myparcel/ts-utils';
 
 export type NotificationId = number | string;
 

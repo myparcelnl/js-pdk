@@ -1,7 +1,7 @@
 import {get} from '@vueuse/core';
-import {FormInstance} from '@myparcel/vue-form-builder';
+import {type FormInstance} from '@myparcel/vue-form-builder';
 import {isOfType} from '@myparcel/ts-utils';
-import {ElementInstance} from '../../types';
+import {type ElementInstance} from '../../types';
 
 type SetFieldProp = {
   (form: FormInstance, name: string, key: string, value: unknown): void;

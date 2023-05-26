@@ -1,4 +1,4 @@
-import {Debugger} from 'debug';
+import {type Debugger} from 'debug';
 import {createDebugger} from './createDebugger';
 
 export const initializeCommand = (

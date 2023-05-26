@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {Plugin} from '@myparcel-pdk/common';
-import {CarrierId, CarrierName, DeliveryTypeName} from '@myparcel/constants';
+import {type Plugin} from '@myparcel-pdk/common';
+import {CarrierId, CarrierName, DeliveryTypeName, PackageTypeName} from '@myparcel/constants';
 
 // eslint-disable-next-line max-lines-per-function
 export const useDemoOrderData = (): Plugin.ModelContextOrderDataContext[] => [
@@ -17,7 +17,7 @@ export const useDemoOrderData = (): Plugin.ModelContextOrderDataContext[] => [
       date: undefined,
       deliveryType: undefined,
       labelAmount: 1,
-      packageType: 'package',
+      packageType: PackageTypeName.Package,
       pickupLocation: undefined,
       shipmentOptions: {
         ageCheck: undefined,
@@ -83,7 +83,7 @@ export const useDemoOrderData = (): Plugin.ModelContextOrderDataContext[] => [
           date: undefined,
           deliveryType: undefined,
           labelAmount: 1,
-          packageType: 'package',
+          packageType: PackageTypeName.Package,
           pickupLocation: undefined,
           shipmentOptions: {
             ageCheck: undefined,
@@ -169,7 +169,7 @@ export const useDemoOrderData = (): Plugin.ModelContextOrderDataContext[] => [
       date: undefined,
       deliveryType: undefined,
       labelAmount: 1,
-      packageType: 'package',
+      packageType: PackageTypeName.Package,
       pickupLocation: undefined,
       shipmentOptions: {
         ageCheck: undefined,
@@ -251,7 +251,7 @@ export const useDemoOrderData = (): Plugin.ModelContextOrderDataContext[] => [
           },
           deliveryType: DeliveryTypeName.Standard,
           labelAmount: 1,
-          packageType: 'package',
+          packageType: PackageTypeName.Package,
           pickupLocation: undefined,
           shipmentOptions: {
             ageCheck: false,

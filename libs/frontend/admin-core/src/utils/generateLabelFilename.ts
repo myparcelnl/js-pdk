@@ -1,6 +1,6 @@
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {isOfType, toArray} from '@myparcel/ts-utils';
-import {ActionInput} from '../types';
+import {type ActionInput} from '../types';
 
 export const generateLabelFilename = (
   parameters: ActionInput<BackendEndpoint.PrintShipments | BackendEndpoint.PrintOrders>,

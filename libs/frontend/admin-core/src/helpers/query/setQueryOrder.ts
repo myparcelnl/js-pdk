@@ -1,6 +1,6 @@
-import {QueryClient} from '@tanstack/vue-query';
-import {Plugin, Shipment} from '@myparcel-pdk/common';
-import {Replace, isOfType} from '@myparcel/ts-utils';
+import {type QueryClient} from '@tanstack/vue-query';
+import {type Plugin, type Shipment} from '@myparcel-pdk/common';
+import {type Replace, isOfType} from '@myparcel/ts-utils';
 import {QUERY_KEY_ORDER} from '../../actions';
 import {setQueryData} from './setQueryData';
 

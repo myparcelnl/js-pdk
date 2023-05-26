@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {BackendEndpointResponse} from '../../../../types';
+import {type BackendEndpointResponse} from '../../../../types';
 import {usePdkAdminApi} from '../../../../sdk';
 
 export const useFetchWebhooksQuery = () => {

@@ -1,5 +1,5 @@
-import {AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core';
-import {SeparateAddressFields} from '../types';
+import {type AddressType, Util, useUtil} from '@myparcel-pdk/frontend-checkout-core';
+import {type SeparateAddressFields} from '../types';
 import {SEPARATE_ADDRESS_FIELDS} from '../constants';
 
 export const getAddressFields = (addressType: AddressType): SeparateAddressFields => {

@@ -1,5 +1,5 @@
-import {App} from 'vue';
-import {AdminAppConfig} from '../data';
+import {type App} from 'vue';
+import {type AdminAppConfig} from '../data';
 import {testIdDirective} from './testIdDirective';
 import {
   createContextPlugin,

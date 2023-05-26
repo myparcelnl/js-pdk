@@ -1,10 +1,10 @@
 import {Variant} from '@myparcel-pdk/common';
 import {createLogger} from '../logger';
 import {createApiNotification} from '../createApiNotification';
-import {ActionParameters, AnyAdminAction, MaybeAdminAction} from '../../types';
-import {AdminInstance} from '../../data';
+import {type ActionParameters, type AnyAdminAction, type MaybeAdminAction} from '../../types';
+import {type AdminInstance} from '../../data';
 import {useAdminInstance} from '../../composables';
-import {ActionContext} from '../../actions';
+import {type ActionContext} from '../../actions';
 import {getActionIdentifier} from './getActionIdentifier';
 
 const VARIANTS = [Variant.Success, Variant.Error] as const;

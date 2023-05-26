@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {QueryKey, useQueryClient} from '@tanstack/vue-query';
+import {type QueryKey, useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {usePdkMutation} from '../orders';
 import {QUERY_KEY_ORDER} from '../../queries';
 import {encodeArrayParameter} from '../../../../utils';
-import {ActionInput, BackendEndpointResponse} from '../../../../types';
+import {type ActionInput, type BackendEndpointResponse} from '../../../../types';
 import {usePdkAdminApi} from '../../../../sdk';
 import {setQueryOrder} from '../../../../helpers';
 

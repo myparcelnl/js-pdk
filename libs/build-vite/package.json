@@ -11,6 +11,7 @@
     "lint:fix": "run ws:lint:fix \"$(pwd)\""
   },
   "dependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
     "rollup-plugin-visualizer": "^5.9.0",
     "typescript": "^5.0.3",
     "vite": "^4.3.4",

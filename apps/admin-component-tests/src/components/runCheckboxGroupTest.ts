@@ -1,4 +1,4 @@
-import {AdminComponentTest} from '../tests';
+import {type AdminComponentTest} from '../tests';
 import {createInputOptions} from '../helpers';
 import {runCommonComponentTests} from '../common';
 

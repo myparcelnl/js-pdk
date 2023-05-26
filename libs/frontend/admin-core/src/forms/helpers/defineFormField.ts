@@ -1,4 +1,4 @@
-import {InteractiveElementConfiguration, defineField} from '@myparcel/vue-form-builder';
+import {type InteractiveElementConfiguration, defineField} from '@myparcel/vue-form-builder';
 
 export const defineFormField = (config: InteractiveElementConfiguration): InteractiveElementConfiguration => {
   const {props, label} = config;

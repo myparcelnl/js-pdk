@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts" setup>
-import {Keyable} from '@myparcel-pdk/common';
+import {type Keyable} from '@myparcel-pdk/common';
 import {BulkSelectCheckbox} from '../common';
 import {useBulkSelectCheckbox, useLanguage, useOrder} from '../../composables';
 import OrderShipmentsTableRow from './OrderShipmentsTableRow.vue';

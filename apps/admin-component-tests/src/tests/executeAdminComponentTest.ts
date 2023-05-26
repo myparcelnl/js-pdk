@@ -1,9 +1,9 @@
 /* eslint-disable no-magic-numbers */
-import {Component} from 'vue';
+import {type Component} from 'vue';
 import {afterAll, beforeAll, describe, vi} from 'vitest';
-import {QueryKey} from '@tanstack/vue-query';
-import {AdminInstance, createAdminConfig, createLogger} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent, AdminView} from '@myparcel-pdk/common';
+import {type QueryKey} from '@tanstack/vue-query';
+import {type AdminInstance, createAdminConfig, createLogger} from '@myparcel-pdk/frontend-admin-core';
+import {type AdminComponent, type AdminView} from '@myparcel-pdk/common';
 import {testMap} from './testMap';
 
 export const executeAdminComponentTest = (name: AdminComponent, component: Omit<Component, 'props'>): void => {
@@ -17,9 +17,9 @@ export const executeAdminComponentTest = (name: AdminComponent, component: Omit<
 
   describe(name, () => {
     beforeAll(() => {
-      vi.mock('@myparcel-pdk/frontend-admin-core/src', async () => ({
+      vi.mock('@myparcel-pdk/frontend-admin-core', async () => ({
         // @ts-expect-error this works
-        ...(await vi.importActual('@myparcel-pdk/frontend-admin-core/src')),
+        ...(await vi.importActual('@myparcel-pdk/frontend-admin-core')),
         useQueryStore: () => ({
           get(queryKey: QueryKey) {
             return vi.fn(() => queryKey);

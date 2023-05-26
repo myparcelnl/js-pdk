@@ -10,7 +10,7 @@ import {
   setFieldValue,
   triggerEvent,
 } from '../utils';
-import {PdkCheckoutConfig, PdkEvent} from '../types';
+import {type PdkCheckoutConfig, PdkEvent} from '../types';
 import {realCreateStore} from '../store';
 import {
   EVENT_CHECKOUT,

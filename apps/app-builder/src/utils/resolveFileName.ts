@@ -1,4 +1,4 @@
-import {CommandArgs, PdkBuilderConfig} from '../types';
+import {type CommandArgs, type PdkBuilderConfig} from '../types';
 
 export const resolveFileName = (
   filename: string,

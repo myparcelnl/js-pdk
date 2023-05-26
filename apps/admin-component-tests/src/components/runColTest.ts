@@ -1,4 +1,4 @@
-import {AdminComponentTest} from '../tests';
+import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from '../common';
 
 export const runColTest: AdminComponentTest = (component) => {
