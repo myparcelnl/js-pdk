@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.41](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout@1.0.0-alpha.40...@myparcel-pdk/checkout@1.0.0-alpha.41) "@myparcel-pdk/checkout" (2023-05-26)
+
+
+### Bug Fixes
+
+* restore missing types ([903cfb9](https://github/myparcelnl/js-pdk/commit/903cfb95f161bb5b49fbb91c4f96a7e44c524db8))
+
+
+
+
 ## [1.0.0-alpha.39](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout@1.0.0-alpha.38...@myparcel-pdk/checkout@1.0.0-alpha.39) "@myparcel-pdk/checkout" (2023-05-25)
 
 

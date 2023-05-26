@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.4](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-delivery-options@1.0.0-alpha.3...@myparcel-pdk/frontend-delivery-options@1.0.0-alpha.4) "@myparcel-pdk/frontend-delivery-options" (2023-05-26)
+
+
+### Bug Fixes
+
+* restore missing types ([903cfb9](https://github/myparcelnl/js-pdk/commit/903cfb95f161bb5b49fbb91c4f96a7e44c524db8))
+
+
+
+
 ## [1.0.0-alpha.3](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-delivery-options@1.0.0-alpha.2...@myparcel-pdk/frontend-delivery-options@1.0.0-alpha.3) "@myparcel-pdk/frontend-delivery-options" (2023-05-25)
 
 

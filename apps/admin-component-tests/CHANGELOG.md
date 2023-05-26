@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.66](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.65...@myparcel-pdk/admin-component-tests@1.0.0-alpha.66) "@myparcel-pdk/admin-component-tests" (2023-05-26)
+
+
+### Bug Fixes
+
+* restore missing types ([903cfb9](https://github/myparcelnl/js-pdk/commit/903cfb95f161bb5b49fbb91c4f96a7e44c524db8))
+
+
+
+
 ## [1.0.0-alpha.65](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.64...@myparcel-pdk/admin-component-tests@1.0.0-alpha.65) "@myparcel-pdk/admin-component-tests" (2023-05-25)
 
 
