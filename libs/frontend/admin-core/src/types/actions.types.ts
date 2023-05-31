@@ -15,27 +15,30 @@ import {type AdminIcon} from './common.types';
 
 export type MaybeAdminAction = AdminAction | undefined;
 
-type BaseAction = {
+interface BaseAction {
+  disabled?: MaybeRef<boolean>;
   icon?: AdminIcon;
   label?: string;
-  variant?: MaybeRef<Variant | undefined>;
-  disabled?: MaybeRef<boolean>;
   standalone?: boolean;
-};
+  variant?: MaybeRef<Variant | undefined>;
+  afterHandle?(...args: unknown[]): PromiseOr<unknown>;
+  beforeHandle?(...args: unknown[]): PromiseOr<unknown>;
+  handler(...args: unknown[]): PromiseOr<unknown>;
+}
 
-export type NamedAction<A extends AdminAction = AdminAction> = BaseAction & {
+export interface NamedAction<A extends AdminAction = AdminAction> extends BaseAction {
   name: A;
-  handler(context: ActionContext<A>): PromiseOr<ActionResponse<A> | void>;
-  beforeHandle?(context: ActionContext<A>): PromiseOr<ActionParameters<A>>;
   afterHandle?(context: ActionContextWithResponse<A>): PromiseOr<ActionResponse<A>>;
-};
+  beforeHandle?(context: ActionContext<A>): PromiseOr<ActionParameters<A>>;
+  handler(context: ActionContext<A>): PromiseOr<ActionResponse<A> | void>;
+}
 
-export type GenericAction = BaseAction & {
+export interface GenericAction extends BaseAction {
   id: string;
-  handler(context: ActionContext<undefined>): PromiseOr<void>;
-  beforeHandle?(context: ActionContext<undefined>): PromiseOr<void>;
-  afterHandle?(context: ActionContext<undefined>): PromiseOr<void>;
-};
+  afterHandle?(context: ActionContextWithResponse): PromiseOr<void>;
+  beforeHandle?(context: ActionContext): PromiseOr<void>;
+  handler(context: ActionContext): PromiseOr<void>;
+}
 
 export type AnyAdminAction<A extends MaybeAdminAction = MaybeAdminAction> = A extends AdminAction
   ? NamedAction<A>
@@ -98,13 +101,13 @@ export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record
   };
   [BackendEndpoint.UpdateOrders]: {orderIds?: OneOrMore<string>; form: FormInstance};
 
-  [BackendEndpoint.DeleteShipments]: {orderIds?: OneOrMore<string>; shipmentIds: OneOrMore<number>};
-  [BackendEndpoint.ExportReturn]: {orderIds?: OneOrMore<string>; shipmentIds: OneOrMore<number>};
-  [BackendEndpoint.FetchShipments]: {orderIds?: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
-  [BackendEndpoint.UpdateShipments]: {orderIds?: OneOrMore<string>; shipmentIds?: OneOrMore<number>};
+  [BackendEndpoint.DeleteShipments]: {orderIds?: OneOrMore<string>; shipmentIds: OneOrMore<string | number>};
+  [BackendEndpoint.ExportReturn]: {orderIds?: OneOrMore<string>; shipmentIds: OneOrMore<string | number>};
+  [BackendEndpoint.FetchShipments]: {orderIds?: OneOrMore<string>; shipmentIds?: OneOrMore<string | number>};
+  [BackendEndpoint.UpdateShipments]: {orderIds?: OneOrMore<string>; shipmentIds?: OneOrMore<string | number>};
   [BackendEndpoint.PrintShipments]: LabelOptions & {
     orderIds?: OneOrMore<string>;
-    shipmentIds?: OneOrMore<number>;
+    shipmentIds?: OneOrMore<string | number>;
     form?: false | FormInstance;
   };
 

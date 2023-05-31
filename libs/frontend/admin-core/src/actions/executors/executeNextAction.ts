@@ -7,7 +7,7 @@ import {executeAction} from './executeAction';
  * Used to execute the next action in a chain. Propagates the context to the next action.
  */
 export const executeNextAction = async <A extends MaybeAdminAction>(
-  context: ActionContext,
+  context: ActionContext<A>,
   nextAction: AnyAdminAction<A>,
   parameters?: ActionParameters<A>,
 ): Promise<MaybeActionResponse<A>> => {

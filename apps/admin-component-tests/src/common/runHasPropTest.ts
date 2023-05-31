@@ -4,7 +4,7 @@ import {type PartialComponentTest} from '../types';
 
 export const runHasPropTest: PartialComponentTest = (component, options, prop, value = 'value') => {
   it(`has prop ${prop}`, () => {
-    const wrapper = mount(component, {
+    const wrapper = mount(component as any, {
       ...options,
       props: {
         ...options?.props,

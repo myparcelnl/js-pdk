@@ -1,5 +1,5 @@
-import {type ComponentOrHtmlElement, type InteractiveElementInstance} from '@myparcel-vfb/core';
 import {type Keyable, type SelectOption, type SelectOptionValue} from '@myparcel-pdk/common';
+import {type ComponentOrHtmlElement, type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {type Replace} from '@myparcel/ts-utils';
 import {type AdminIcon} from './common.types';
 

@@ -1,6 +1,6 @@
 <template>
   <PdkButtonGroup v-test="'OrderModeActions'">
-    <template v-if="order.exported">
+    <template v-if="data?.exported">
       <PdkLink :action="showExportedOrderAction" />
     </template>
 
@@ -14,30 +14,21 @@
   </PdkButtonGroup>
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue';
+<script lang="ts" setup>
+import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {ActionButton} from '../common';
 import {defineActions} from '../../services';
 import {useOrder} from '../../composables';
 import {orderExportAction, orderViewInBackofficeAction, ordersEditAction} from '../../actions';
 
-export default defineComponent({
-  name: 'OrderModeActions',
-  components: {
-    ActionButton,
-  },
+const query = useOrder();
 
-  setup: () => {
-    const query = useOrder();
+const data = computed(() => get(query.data));
 
-    return {
-      order: query.data,
-      showExportedOrderAction: defineActions(orderViewInBackofficeAction),
-      orderActions: defineActions([ordersEditAction, orderExportAction], {
-        orderIds: get(query.data)?.externalIdentifier,
-      }),
-    };
-  },
+const showExportedOrderAction = defineActions(orderViewInBackofficeAction);
+
+const orderActions = defineActions([ordersEditAction, orderExportAction], {
+  orderIds: data.value?.externalIdentifier,
 });
 </script>

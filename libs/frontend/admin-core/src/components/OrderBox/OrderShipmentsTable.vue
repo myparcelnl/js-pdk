@@ -24,7 +24,7 @@
 
     <template #default>
       <OrderShipmentsTableRow
-        v-for="shipment in query.data.shipments"
+        v-for="shipment in data?.shipments"
         :key="`row_${shipment.id}_${shipment.updated}`"
         v-model="bulkModel[shipment.id]"
         :shipment-id="shipment.id" />
@@ -33,16 +33,18 @@
 </template>
 
 <script lang="ts" setup>
-import {type Keyable} from '@myparcel-pdk/common';
+import {computed} from 'vue';
+import {get} from '@vueuse/core';
 import {BulkSelectCheckbox} from '../common';
-import {useBulkSelectCheckbox, useLanguage, useOrder} from '../../composables';
+import {useBulkSelectCheckbox, useLanguage, useOrder, type PdkBulkSelectCheckboxEmits} from '../../composables';
 import OrderShipmentsTableRow from './OrderShipmentsTableRow.vue';
 
-const emit = defineEmits<(event: 'select', value: Record<Keyable, boolean>) => void>();
+const emit = defineEmits<PdkBulkSelectCheckboxEmits>();
 
 const query = useOrder();
+const data = computed(() => get(query.data));
 
-const {bulkModel, bulkOptions} = useBulkSelectCheckbox(query?.data?.shipments?.map(({id}) => id) ?? [], emit);
+const {bulkModel, bulkOptions} = useBulkSelectCheckbox(query.data.value?.shipments?.map(({id}) => id) ?? [], emit);
 
 const {translate} = useLanguage();
 </script>

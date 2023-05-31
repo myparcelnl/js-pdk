@@ -1,12 +1,14 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
 import {AdminView, BackendEndpoint} from '@myparcel-pdk/common';
 import {encodeArrayParameter} from '../../../../utils';
 import {AdminContextKey} from '../../../../types';
+import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
 import {useAdminInstance} from '../../../../composables';
 
-export const useFetchContextQuery = <C extends AdminContextKey = AdminContextKey.Dynamic>(contextKey?: C) => {
+export const useFetchContextQuery = <C extends AdminContextKey = AdminContextKey.Dynamic>(
+  contextKey?: C,
+): ResolvedQuery<BackendEndpoint.FetchContext> => {
   const queryClient = useQueryClient();
   const adminInstance = useAdminInstance();
 

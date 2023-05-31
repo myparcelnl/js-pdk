@@ -1,7 +1,7 @@
 <template>
   <div>
     <MagicForm
-      :form="form"
+      :form="form as FormInstance"
       @afterSubmit="$emit('afterSubmit', $event)" />
   </div>
 </template>

@@ -21,7 +21,7 @@ export const synchronizeAddress1: StoreCallbackUpdate<CheckoutStoreState> = (new
 
   const addressTypesToUpdate = checkout.state.addressTypes.filter((addressType) => {
     return SEPARATE_ADDRESS_FIELDS.some((fieldName) => {
-      return fieldsEqual(newState.form, oldState.form, fieldName, addressType);
+      return oldState && fieldsEqual(newState.form, oldState.form, fieldName, addressType);
     });
   });
 

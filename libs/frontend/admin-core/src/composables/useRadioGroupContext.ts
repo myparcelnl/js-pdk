@@ -34,6 +34,7 @@ type UseRadioGroupContext<
   elements: ComputedRef<Record<T, ElementInstance>>;
 };
 
+// @ts-expect-error todo
 export const useRadioGroupContext: UseRadioGroupContext = (props, emit) => {
   const selectInputContext = useSelectInputContext(props, emit) as ReturnType<UseInputWithOptionsContext<Keyable>>;
 

@@ -62,7 +62,7 @@ export const runDropDownButtonTest: AdminComponentTest = (component) => {
     await wrapper.vm.$nextTick();
     const action = wrapper.find('.dropdown-item');
 
-    action.element.click();
+    action.element.parentElement?.click();
     await wrapper.vm.$nextTick();
 
     expect(wrapper.emitted().click).toHaveLength(2);

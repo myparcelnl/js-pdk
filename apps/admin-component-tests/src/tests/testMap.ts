@@ -29,6 +29,12 @@ import {
   runTextInputTest,
   runTimeInputTest,
   runToggleInputTest,
+  runCodeEditorTest,
+  runMultiSelectInputTest,
+  runTextAreaTest,
+  runBadgeTest,
+  runLoaderTest,
+  runSettingsDividerTest,
 } from '../components';
 
 export type AdminComponentTest = (component: Omit<Component, 'props'>) => void;
@@ -37,60 +43,65 @@ export const testMap: Record<AdminComponent, AdminComponentTest> = {
   /**
    * Inputs
    */
-  PdkCheckboxInput: runCheckboxInputTest,
-  PdkCurrencyInput: runCurrencyInputTest,
-  PdkDropOffInput: runDropOffInputTest,
-  PdkNumberInput: runNumberInputTest,
-  PdkRadioInput: runRadioInputTest,
-  PdkSelectInput: runSelectInputTest,
-  PdkTextInput: runTextInputTest,
-  PdkTimeInput: runTimeInputTest,
-  PdkToggleInput: runToggleInputTest,
-
-  PdkCheckboxGroup: runCheckboxGroupTest,
-  PdkRadioGroup: runRadioGroupTest,
+  CheckboxGroup: runCheckboxGroupTest,
+  CheckboxInput: runCheckboxInputTest,
+  CodeEditor: runCodeEditorTest,
+  CurrencyInput: runCurrencyInputTest,
+  DropOffInput: runDropOffInputTest,
+  MultiSelectInput: runMultiSelectInputTest,
+  NumberInput: runNumberInputTest,
+  RadioGroup: runRadioGroupTest,
+  RadioInput: runRadioInputTest,
+  SelectInput: runSelectInputTest,
+  TextArea: runTextAreaTest,
+  TextInput: runTextInputTest,
+  TimeInput: runTimeInputTest,
+  ToggleInput: runToggleInputTest,
 
   /**
    * Action containers
    */
-  PdkBox: runActionContainerTest,
-  PdkConceptBoxWrapper: runActionContainerTest,
-  PdkShipmentLabelWrapper: runActionContainerTest,
+  Box: runActionContainerTest,
+  ConceptBoxWrapper: runActionContainerTest,
+  ShipmentLabelWrapper: runActionContainerTest,
 
   /**
    * Plain wrappers
    */
-  PdkButtonGroup: runPlainWrapperTest,
-  PdkPluginSettingsWrapper: runPlainWrapperTest,
-  PdkTabNavButtonWrapper: runPlainWrapperTest,
-  PdkTabNavContentWrapper: runPlainWrapperTest,
+  ButtonGroup: runPlainWrapperTest,
+  PluginSettingsWrapper: runPlainWrapperTest,
+  TabNavButtonWrapper: runPlainWrapperTest,
+  TabNavContentWrapper: runPlainWrapperTest,
 
   /**
    * Layout
    */
-  PdkCol: runColTest,
-  PdkRow: runRowTest,
+  Col: runColTest,
+  Row: runRowTest,
 
-  PdkTable: runTableTest,
-  PdkTableCol: runTableColTest,
-  PdkTableRow: runTableRowTest,
+  Table: runTableTest,
+  TableCol: runTableColTest,
+  TableRow: runTableRowTest,
 
-  PdkFormGroup: runFormGroupTest,
+  FormGroup: runFormGroupTest,
 
   /**
    * Interactive components
    */
-  PdkButton: runButtonTest,
-  PdkDropdownButton: runDropDownButtonTest,
-  PdkLink: runLinkTest,
-  PdkModal: runModalTest,
-  PdkTabNavButton: runTabNavButtonTest,
+  Button: runButtonTest,
+  DropdownButton: runDropDownButtonTest,
+  Link: runLinkTest,
+  Modal: runModalTest,
+  TabNavButton: runTabNavButtonTest,
 
   /**
    * Other
    */
-  PdkHeading: runHeadingTest,
-  PdkIcon: runIconTest,
-  PdkImage: runImageTest,
-  PdkNotification: runNotificationTest,
+  Badge: runBadgeTest,
+  Heading: runHeadingTest,
+  Icon: runIconTest,
+  Image: runImageTest,
+  Loader: runLoaderTest,
+  Notification: runNotificationTest,
+  SettingsDivider: runSettingsDividerTest,
 };

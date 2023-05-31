@@ -9,7 +9,7 @@ export const runHasSlotTest: PartialComponentTest = (component, options, slot = 
   it(`has slot #${slot}`, () => {
     const content = `SLOT CONTENT ${Math.ceil(Math.random() * 100)}`;
 
-    const wrapper = mount(component, {
+    const wrapper = mount(component as any, {
       ...options,
       slots: {
         ...options?.slots,

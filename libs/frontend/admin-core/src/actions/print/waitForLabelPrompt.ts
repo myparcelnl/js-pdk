@@ -1,5 +1,5 @@
 import {markRaw} from 'vue';
-import {useFormBuilder} from '@myparcel/vue-form-builder';
+import {useFormBuilder, FormHook} from '@myparcel/vue-form-builder';
 import {StopActionHandler} from '../stopActionHandler';
 import {type ActionContext} from '../executors';
 import {type ActionParameters, AdminModalKey, type PrintAction} from '../../types';
@@ -21,7 +21,7 @@ export const waitForLabelPrompt = <A extends PrintAction>({
         return;
       }
 
-      form.on('afterSubmit', (instance) => {
+      form.on(FormHook.AfterSubmit, (instance) => {
         resolve({
           ...parameters,
           ...instance.getValues(),

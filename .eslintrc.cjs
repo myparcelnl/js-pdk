@@ -13,7 +13,7 @@ module.exports = {
       files: ['./**/*.vue'],
       rules: {
         '@typescript-eslint/no-misused-promises': 'off',
-        // Disabled because it messes with multiple component blocks, like when using script setup and inheritAttrs.
+        // Disabled because import messes with multiple component blocks, like when using script setup and inheritAttrs.
         'import/first': 'off',
         'vue/html-self-closing': 'off',
         'vue/no-bare-strings-in-template': 'off',

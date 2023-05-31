@@ -10,6 +10,9 @@ export {PdkDeliveryOptionsEvent} from './types';
  * Initializes the checkout delivery options module.
  */
 export const initializeCheckoutDeliveryOptions = (): void => {
+  // TODO: figure out why the build reports a ts error here.
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   window.MyParcelPdk.stores.deliveryOptions = createDeliveryOptionsStore();
 
   injectHiddenInput();

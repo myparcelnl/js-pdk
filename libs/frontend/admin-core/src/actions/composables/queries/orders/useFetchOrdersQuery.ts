@@ -1,18 +1,17 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {type QueryKey, useQuery, useQueryClient} from '@tanstack/vue-query';
 import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {QUERY_KEY_ORDER} from '../queryKeys';
 import {encodeArrayParameter} from '../../../../utils';
-import {type BackendEndpointResponse} from '../../../../types';
+import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
 import {fillShipmentsQueryData} from '../../../../pdk';
 
-export const useFetchOrdersQuery = (externalIdentifier?: string) => {
+export const useFetchOrdersQuery = (externalIdentifier?: string): ResolvedQuery<BackendEndpoint.FetchOrders> => {
   const queryKey: QueryKey = [QUERY_KEY_ORDER, ...(externalIdentifier ? [{id: externalIdentifier}] : [])] as const;
   const queryClient = useQueryClient();
 
-  return useQuery<BackendEndpointResponse<BackendEndpoint.FetchOrders>>(
+  return useQuery(
     queryKey,
     () => {
       const pdk = usePdkAdminApi();

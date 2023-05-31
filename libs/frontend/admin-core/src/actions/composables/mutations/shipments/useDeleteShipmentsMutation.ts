@@ -1,16 +1,16 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {type QueryKey, useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
-import {usePdkMutation} from '../orders';
+import {usePdkMutation} from '../usePdkMutation';
 import {QUERY_KEY_ORDER} from '../../queries';
 import {encodeArrayParameter} from '../../../../utils';
 import {type ActionInput, type BackendEndpointResponse} from '../../../../types';
+import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
 import {setQueryOrder} from '../../../../helpers';
 
 // eslint-disable-next-line max-lines-per-function
-export const useDeleteShipmentsMutation = () => {
+export const useDeleteShipmentsMutation = (): ResolvedQuery<BackendEndpoint.DeleteShipments> => {
   const queryClient = useQueryClient();
   const pdk = usePdkAdminApi();
 

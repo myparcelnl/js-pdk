@@ -29,7 +29,8 @@ export const setupGlobals = (config: PdkCheckoutConfig): void => {
   window.MyParcelPdk ??= {
     config,
 
-    // @ts-expect-error todo
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     events: {
       [PdkEvent.CheckoutUpdate]: createEventName(EVENT_CHECKOUT, EVENT_TYPE_UPDATE),
       [PdkEvent.CheckoutUpdated]: createEventName(EVENT_CHECKOUT, EVENT_TYPE_UPDATED),
@@ -46,9 +47,11 @@ export const setupGlobals = (config: PdkCheckoutConfig): void => {
     storedState: {},
 
     stores: {
-      // @ts-expect-error todo
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       checkout: null,
-      // @ts-expect-error todo
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       deliveryOptions: null,
     },
 

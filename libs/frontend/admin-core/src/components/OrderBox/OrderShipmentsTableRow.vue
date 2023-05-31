@@ -1,8 +1,5 @@
 <template>
-  <PdkTableRow
-    :class="{
-      [config?.cssUtilities?.animationLoading]: query.isLoading,
-    }">
+  <PdkTableRow :class="classes">
     <PdkTableCol>
       <PdkCheckboxInput
         v-model="selected"
@@ -20,7 +17,7 @@
 
     <PdkTableCol>
       <span
-        :title="shipment.updated"
+        :title="shipment.updated?.date"
         v-text="shipmentUpdatedAt" />
     </PdkTableCol>
 
@@ -36,6 +33,7 @@ import {useVModel} from '@vueuse/core';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
+import {createClasses} from '../../utils/createClasses';
 import {useQueryStore} from '../../stores';
 import {Format, useAdminConfig, useLocalizedFormatter, useShipmentData} from '../../composables';
 
@@ -45,7 +43,7 @@ const props = defineProps<{
   modelValue?: boolean;
 }>();
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<(event: 'update:modelValue', value: boolean) => void>();
 
 const query = useQueryStore().registerShipmentQuery(props.shipmentId);
 const {actions, shipment} = useShipmentData(props.shipmentId);
@@ -67,4 +65,11 @@ const shipmentUpdatedAt = computed(() => {
 });
 
 const config = useAdminConfig();
+
+const classes = createClasses([
+  {
+    key: config?.cssUtilities?.animationLoading,
+    value: query.isLoading,
+  },
+]);
 </script>

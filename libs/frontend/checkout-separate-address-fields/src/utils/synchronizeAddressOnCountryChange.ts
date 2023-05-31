@@ -23,7 +23,7 @@ export const synchronizeAddressOnCountryChange: StoreCallbackUpdate<CheckoutStor
 
   checkout.state.addressTypes
     // Only sync addresses if the country changed.
-    .filter((addressType) => !fieldsEqual(newState.form, oldState.form, AddressField.Country, addressType))
+    .filter((addressType) => oldState && !fieldsEqual(newState.form, oldState.form, AddressField.Country, addressType))
     .forEach((addressType) => {
       const newAddress = hasSeparateAddressFields(addressType)
         ? splitAddress1(addressType)

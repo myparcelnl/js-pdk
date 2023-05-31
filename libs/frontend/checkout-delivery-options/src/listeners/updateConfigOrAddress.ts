@@ -12,7 +12,7 @@ export const updateConfigOrAddress: StoreCallbackUpdate<DeliveryOptionsStoreStat
   const triggerEvent = useUtil(Util.TriggerEvent);
 
   const {config: newConfig, address: newAddress} = newState.configuration ?? {};
-  const {config: oldConfig, address: oldAddress} = oldState.configuration ?? {};
+  const {config: oldConfig, address: oldAddress} = oldState?.configuration ?? {};
 
   const isRendered = deliveryOptionsIsRendered();
 

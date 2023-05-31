@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {usePdkMutation} from '../orders';
+import {usePdkMutation} from '../usePdkMutation';
+import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
 
-export const useDeleteWebhooksMutation = () => {
+export const useDeleteWebhooksMutation = (): ResolvedQuery<BackendEndpoint.DeleteWebhooks> => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(

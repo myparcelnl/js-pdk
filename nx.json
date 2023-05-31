@@ -6,7 +6,7 @@
   "defaultBase": "alpha",
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "sharedGlobals": [],
+    "sharedGlobals": ["{workspaceRoot}/tsconfig.build.json"],
     "production": ["default"]
   },
   "npmScope": "myparcel-pdk",

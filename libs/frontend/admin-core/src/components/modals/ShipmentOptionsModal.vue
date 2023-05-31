@@ -46,6 +46,9 @@ const actions = computed(() => {
     ...(orderMode ? [orderExportAction] : [orderExportToShipmentsAction, ordersExportPrintShipmentsAction]),
   ];
 
+  // TODO: figure out why this throws an error in build
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return defineActions(actions, {disabled});
 });
 </script>

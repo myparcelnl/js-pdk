@@ -25,8 +25,7 @@
 
 <script lang="ts">
 import {computed, defineComponent, ref, toRaw} from 'vue';
-import {get} from '@vueuse/core';
-import {type Keyable} from '@myparcel-pdk/common';
+import {get, isDef} from '@vueuse/core';
 import {defineActions} from '../../services';
 import {useLanguage, useOrder} from '../../composables';
 import {shipmentActions} from '../../actions';
@@ -41,7 +40,7 @@ export default defineComponent({
   setup: () => {
     const query = useOrder();
 
-    const selectedLabels = ref<Keyable[]>([]);
+    const selectedLabels = ref<(string | number)[]>([]);
     const {translate} = useLanguage();
 
     return {
@@ -55,8 +54,8 @@ export default defineComponent({
         });
       }),
 
-      setSelectedLabels(labels: Record<Keyable, boolean>): void {
-        selectedLabels.value = Object.keys(labels).filter((id) => Boolean(labels[id]));
+      setSelectedLabels(labels: Record<string | number, boolean>): void {
+        selectedLabels.value = Object.keys(labels).filter((id) => isDef(labels[id]));
       },
 
       translate,

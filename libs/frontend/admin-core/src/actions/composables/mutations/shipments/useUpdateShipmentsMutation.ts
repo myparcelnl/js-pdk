@@ -1,12 +1,12 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {usePdkMutation} from '../orders';
+import {usePdkMutation} from '../usePdkMutation';
 import {encodeArrayParameter} from '../../../../utils';
+import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
 import {fillShipmentsQueryData} from '../../../../pdk';
 
-export const useUpdateShipmentsMutation = () => {
+export const useUpdateShipmentsMutation = (): ResolvedQuery<BackendEndpoint.UpdateShipments> => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(

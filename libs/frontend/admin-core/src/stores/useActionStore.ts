@@ -53,7 +53,7 @@ export const useActionStore = defineStore('actions', () => {
       throw new Error(`Action ${action} is not registered.`);
     }
 
-    return resolvedAction.handler(parameters);
+    return resolvedAction.handler(parameters) as PromiseOr<void>;
   };
 
   return {

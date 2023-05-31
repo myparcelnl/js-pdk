@@ -6,7 +6,11 @@
 import {type CarrierId, type CarrierName, type DeliveryTypeName, type PackageTypeName} from '@myparcel/constants';
 import {type AdminComponent} from './pdk.types';
 
-type DateTime = Record<string, unknown>;
+type DateTime = {
+  date: string;
+  timezone_type: number;
+  timezone: string;
+};
 
 type DateTimeImmutable = DateTime;
 

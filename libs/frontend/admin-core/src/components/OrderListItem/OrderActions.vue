@@ -3,11 +3,11 @@
 </template>
 
 <script lang="ts" setup>
-import {computed} from 'vue';
-import {get} from '@vueuse/core';
-import {type AnyAdminAction} from '../../types';
-import {defineActions} from '../../services';
-import {useOrder} from '../../composables';
+import { computed } from 'vue';
+import { get } from '@vueuse/core';
+import { type AnyAdminAction } from '../../types';
+import { defineActions } from '../../services';
+import { useOrder } from '../../composables';
 import {
   orderExportAction,
   ordersEditAction,

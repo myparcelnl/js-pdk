@@ -11,7 +11,7 @@
     </template>
   </div>
 
-  <NotificationContainer category="'api'" />
+  <NotificationContainer :category="NotificationCategory.Api" />
 </template>
 
 <script lang="ts" setup>
@@ -19,6 +19,7 @@
  * This is the main entry point for the order list column.
  */
 import {defineAsyncComponent} from 'vue';
+import {NotificationCategory} from '../types';
 import {useActionStore, useQueryStore} from '../stores';
 import {useOrder, usePluginSettings} from '../composables';
 import {NotificationContainer} from '../components';

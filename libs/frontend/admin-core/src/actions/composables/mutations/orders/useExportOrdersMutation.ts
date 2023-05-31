@@ -1,15 +1,16 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {useQueryClient} from '@tanstack/vue-query';
-import {BackendEndpoint, type Plugin} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
-import {usePdkMutation} from '../orders';
+import {usePdkMutation} from '../usePdkMutation';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
-import {useModalStore} from '../../../../stores';
+import {useModalStore, type ResolvedQuery} from '../../../../stores';
 import {MutationMode, getCallbackForMutationMode, getModalMutationOptions} from '../../../../services';
 import {type BackendEndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {fillShipmentsQueryData} from '../../../../pdk';
 
-export const useExportOrdersMutation = (mode: MutationMode = MutationMode.Default) => {
+export const useExportOrdersMutation = (
+  mode: MutationMode = MutationMode.Default,
+): ResolvedQuery<BackendEndpoint.ExportOrders> => {
   const queryClient = useQueryClient();
 
   return usePdkMutation(
@@ -35,7 +36,7 @@ export const useExportOrdersMutation = (mode: MutationMode = MutationMode.Defaul
       async onSuccess(data, input) {
         useModalStore().close();
 
-        (toArray(data) as Plugin.ModelContextOrderDataContext[]).forEach((order) => {
+        toArray(data).forEach((order) => {
           fillShipmentsQueryData(queryClient, order.shipments.slice(-1), order);
         });
 

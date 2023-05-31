@@ -54,7 +54,7 @@ export const ordersFetchAction = defineAction({
   handler: createQueryHandler(BackendEndpoint.FetchOrders, (context) => {
     const orderIds = toArray(context.parameters.orderIds ?? []);
 
-    return orderIds.length === 1 ? orderIds[0] : undefined;
+    return orderIds.length === 1 ? String(orderIds[0]) : undefined;
   }),
 });
 

@@ -1,12 +1,13 @@
 import {type Ref, ref} from 'vue';
 import {defineStore} from 'pinia';
 import {get as vuGet} from '@vueuse/core';
+import {type UseMutationReturnType} from '@tanstack/vue-query/build/lib/useMutation';
 import {type QueryClient, type UseQueryReturnType, useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {type ApiException} from '@myparcel/sdk';
 import {getOrderId} from '../utils';
-import {type AdminContext, AdminContextKey} from '../types';
+import {type AdminContext, AdminContextKey, type BackendEndpointResponse, type ActionInput} from '../types';
 import {MutationMode} from '../services';
 import {
   useCreateWebhooksMutation,
@@ -20,86 +21,66 @@ import {
   useFetchWebhooksQuery,
   usePrintOrdersMutation,
   usePrintShipmentsMutation,
-  type useUpdateAccountMutation,
   useUpdateOrdersMutation,
-  type useUpdatePluginSettingsMutation,
   useUpdateShipmentsMutation,
 } from '../actions';
 
-export type QueryKey =
-  | BackendEndpoint
-  | `${BackendEndpoint.FetchContext}.${AdminContextKey}`
-  | `${BackendEndpoint.FetchOrders}.${string}`
-  | `${BackendEndpoint.FetchShipments}.${string}`;
+type QueryModifier = string | number;
 
 export type ContextQuery<C extends AdminContextKey = AdminContextKey.Dynamic> = UseQueryReturnType<
   AdminContext<C>,
   ApiException
 >;
 
-export type ResolvedQuery<K extends QueryKey = QueryKey> = K extends BackendEndpoint
-  ? EndpointQuery<K>
-  : K extends `${BackendEndpoint.FetchOrders}.${infer C}`
-  ? C extends string
-    ? ReturnType<typeof useFetchOrdersQuery>
-    : never
-  : K extends `${BackendEndpoint.FetchShipments}.${infer C}`
-  ? C extends string
-    ? ReturnType<typeof useFetchShipmentsQuery>
-    : never
-  : K extends `${BackendEndpoint.FetchContext}.${infer C}`
-  ? C extends AdminContextKey
-    ? ContextQuery<C>
-    : never
+export type ResolvedQuery<E extends BackendEndpoint = BackendEndpoint> = E extends BackendEndpoint
+  ? EndpointQuery<E>
   : never;
 
-export type QueryObject<K extends QueryKey = QueryKey> = Record<K, ResolvedQuery<K>>;
+type Mutations =
+  | BackendEndpoint.CreateWebhooks
+  | BackendEndpoint.DeleteShipments
+  | BackendEndpoint.DeleteWebhooks
+  | BackendEndpoint.ExportOrders
+  | BackendEndpoint.ExportReturn
+  | BackendEndpoint.PrintOrders
+  | BackendEndpoint.PrintShipments
+  | BackendEndpoint.UpdateAccount
+  | BackendEndpoint.UpdateOrders
+  | BackendEndpoint.UpdatePluginSettings
+  | BackendEndpoint.UpdateProductSettings
+  | BackendEndpoint.UpdateShipments;
 
-type EndpointQuery<E extends BackendEndpoint = BackendEndpoint> = E extends BackendEndpoint.CreateWebhooks
-  ? ReturnType<typeof useCreateWebhooksMutation>
-  : E extends BackendEndpoint.DeleteShipments
-  ? ReturnType<typeof useDeleteShipmentsMutation>
-  : E extends BackendEndpoint.DeleteWebhooks
-  ? ReturnType<typeof useDeleteWebhooksMutation>
-  : E extends BackendEndpoint.ExportOrders
-  ? ReturnType<typeof useExportOrdersMutation>
-  : E extends BackendEndpoint.ExportReturn
-  ? ReturnType<typeof useExportReturnMutation>
-  : E extends BackendEndpoint.FetchContext
-  ? ReturnType<typeof useFetchContextQuery>
-  : E extends BackendEndpoint.FetchOrders
-  ? ReturnType<typeof useFetchOrdersQuery>
-  : E extends BackendEndpoint.FetchShipments
-  ? ReturnType<typeof useFetchShipmentsQuery>
-  : E extends BackendEndpoint.FetchWebhooks
-  ? ReturnType<typeof useFetchWebhooksQuery>
-  : E extends BackendEndpoint.PrintOrders
-  ? ReturnType<typeof usePrintOrdersMutation>
-  : E extends BackendEndpoint.PrintShipments
-  ? ReturnType<typeof usePrintShipmentsMutation>
-  : E extends BackendEndpoint.UpdateAccount
-  ? ReturnType<typeof useUpdateAccountMutation>
-  : E extends BackendEndpoint.UpdateOrders
-  ? ReturnType<typeof useUpdateOrdersMutation>
-  : E extends BackendEndpoint.UpdatePluginSettings
-  ? ReturnType<typeof useUpdatePluginSettingsMutation>
-  : E extends BackendEndpoint.UpdateProductSettings
-  ? ReturnType<typeof useUpdatePluginSettingsMutation>
-  : E extends BackendEndpoint.UpdateShipments
-  ? ReturnType<typeof useUpdateShipmentsMutation>
+type Queries =
+  | BackendEndpoint.FetchContext
+  | BackendEndpoint.FetchOrders
+  | BackendEndpoint.FetchShipments
+  | BackendEndpoint.FetchWebhooks;
+
+type EndpointQuery<E extends BackendEndpoint> = E extends Mutations
+  ? UseMutationReturnType<BackendEndpointResponse<E>, ApiException, ActionInput<E>, unknown>
+  : E extends Queries
+  ? UseQueryReturnType<BackendEndpointResponse<E>, ApiException>
   : never;
+
+const createQueryCacheKey = (endpoint: BackendEndpoint, modifier: string | number | undefined): string => {
+  return modifier ? `${endpoint}.${modifier}` : endpoint;
+};
 
 // eslint-disable-next-line max-lines-per-function
 export const useQueryStore = defineStore('query', () => {
-  const queries = ref({} as QueryObject);
+  const queries = ref({} as Record<string, ResolvedQuery>);
   const queryClient: Ref<QueryClient | undefined> = ref<QueryClient>();
 
-  const has = <K extends QueryKey>(key: K): boolean => {
+  const has = (endpoint: BackendEndpoint, modifier?: QueryModifier): boolean => {
+    const key = createQueryCacheKey(endpoint, modifier);
+
     return queries.value[key] !== undefined;
   };
 
-  const get = <K extends QueryKey>(key: K): ResolvedQuery<K> => {
-    if (!has(key)) {
+  const get = <E extends BackendEndpoint>(endpoint: E, modifier?: QueryModifier): ResolvedQuery<E> => {
+    const key = createQueryCacheKey(endpoint, modifier);
+
+    if (!has(endpoint, modifier)) {
       throw new Error(`No query found for key ${key}`);
     }
 
@@ -107,19 +88,34 @@ export const useQueryStore = defineStore('query', () => {
     return queries.value[key];
   };
 
+  type RegisterQuery = {
+    <E extends BackendEndpoint, Q extends ResolvedQuery<E> = ResolvedQuery<E>>(endpoint: E, query: Q, arg3?: never): Q;
+    <E extends BackendEndpoint, Q extends ResolvedQuery<E> = ResolvedQuery<E>>(
+      endpoint: E,
+      modifier: QueryModifier,
+      query: Q,
+    ): Q;
+  };
+
   /**
    * Queries must be registered manually, because vue-query hooks can only be
    * called from a component's setup() function.
    */
-  const register = <K extends QueryKey>(key: K, query: ResolvedQuery<K>): ResolvedQuery<K> => {
+  const register: RegisterQuery = (endpoint, arg2, arg3) => {
     if (!queryClient.value) {
       queryClient.value = useQueryClient();
     }
 
-    if (has(key)) {
-      // @ts-expect-error todo
-      return queries.value[key];
+    const hasModifier = typeof arg2 === 'string' || typeof arg2 === 'number';
+
+    const modifier = hasModifier ? arg2 : undefined;
+    const query = hasModifier ? arg3 : arg2;
+
+    if (has(endpoint, modifier)) {
+      return get(endpoint, modifier);
     }
+
+    const key = createQueryCacheKey(endpoint, modifier);
 
     // @ts-expect-error todo
     queries.value[key] = query;
@@ -127,17 +123,14 @@ export const useQueryStore = defineStore('query', () => {
     return query;
   };
 
-  const registerShipmentQuery = (id: number) => {
-    return register(`${BackendEndpoint.FetchShipments}.${id}`, useFetchShipmentsQuery(id));
+  const registerShipmentQuery = <I extends number>(id: I) => {
+    return register(BackendEndpoint.FetchShipments, id, useFetchShipmentsQuery(id));
   };
 
   return {
-    queries,
     get,
     has,
     register,
-
-    queryClient,
 
     registerShipmentQuery,
 
@@ -152,7 +145,7 @@ export const useQueryStore = defineStore('query', () => {
       }
 
       toArray(id).forEach((orderId) => {
-        const ordersQuery = register(`${BackendEndpoint.FetchOrders}.${orderId}`, useFetchOrdersQuery(orderId));
+        const ordersQuery = register(BackendEndpoint.FetchOrders, orderId, useFetchOrdersQuery(orderId));
 
         vuGet(ordersQuery.data)?.shipments?.forEach((shipment) => registerShipmentQuery(shipment.id));
       });
@@ -176,8 +169,7 @@ export const useQueryStore = defineStore('query', () => {
       ...keys: C[]
     ) => {
       [AdminContextKey.Global, AdminContextKey.Dynamic, ...keys].forEach((key) => {
-        const query = useFetchContextQuery(key) as ResolvedQuery<`${BackendEndpoint.FetchContext}.${C}`>;
-        register(`${BackendEndpoint.FetchContext}.${key}`, query);
+        register(BackendEndpoint.FetchContext, key, useFetchContextQuery(key));
       });
     },
 

@@ -1,4 +1,4 @@
-import {ref} from 'vue';
+import {ref, type Ref, type UnwrapNestedRefs} from 'vue';
 import {defineStore} from 'pinia';
 import {type AdminModalContext, type AdminModalKey, NotificationCategory} from '../types';
 import {useLoading} from '../composables';
@@ -8,7 +8,17 @@ type ModalOpenFn = <K extends AdminModalKey>(modal: K, context?: AdminModalConte
 
 type ModalCloseFn = <K extends AdminModalKey>(modal: K) => void;
 
-export const useModalStore = defineStore('modal', () => {
+type ModalStore = {
+  loading: Ref<boolean>;
+  opened: Ref<AdminModalKey | null>;
+  context: Ref<UnwrapNestedRefs<AdminModalContext>>;
+  onOpen(callback: ModalOpenFn): void;
+  onClose(callback: ModalCloseFn): void;
+  open<K extends AdminModalKey>(modal: K, newContext?: AdminModalContext<K>): void;
+  close(): void;
+};
+
+export const useModalStore = defineStore('modal', (): ModalStore => {
   const {loading} = useLoading();
 
   const opened = ref<AdminModalKey | null>(null);
@@ -21,24 +31,27 @@ export const useModalStore = defineStore('modal', () => {
     loading,
 
     opened,
+
     context,
 
-    onOpen: (callback: ModalOpenFn): void => {
+    onOpen(callback) {
       openHooks.value.push(callback);
     },
 
-    onClose: (callback: ModalCloseFn): void => {
+    onClose(callback) {
       closeHooks.value.push(callback);
     },
 
-    open: <K extends AdminModalKey>(modal: K, newContext: AdminModalContext<K> = null) => {
+    open(modal, newContext) {
       openHooks.value.forEach((hook) => hook(modal, newContext));
-      // @ts-expect-error excessive depth
+      // TODO: fix excessive depth error
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       context.value = newContext;
       opened.value = modal;
     },
 
-    close: () => {
+    close() {
       useNotificationStore().remove(NotificationCategory.Modal);
       const modal = opened.value as AdminModalKey;
 

@@ -4,7 +4,7 @@
     :loading="loading">
     <template #header>
       <PdkIcon icon="config" />
-      <span>{{ translate('shipment_options_title') }} #{{ query.data?.externalIdentifier }}</span>
+      <span>{{ translate('shipment_options_title') }} #{{ data?.externalIdentifier }}</span>
     </template>
 
     <template #default>
@@ -39,12 +39,14 @@ import {
 
 const query = useOrder();
 
+const data = computed(() => get(query.data));
+
 const {translate} = useLanguage();
 const pluginSettings = usePluginSettings();
 
 const {orderMode} = pluginSettings.general;
 
-const isExported = computed(() => orderMode && get(query.data)?.exported);
+const isExported = computed(() => orderMode && data.value?.exported);
 
 const orderQueries = [...BACKEND_ENDPOINTS_ORDERS.map((endpoint) => useStoreQuery(endpoint)), query];
 
@@ -60,7 +62,7 @@ const actions = computed(() => {
         ? [orderExportAction]
         : [orderExportToShipmentsAction, ordersPrintAction, ordersExportPrintShipmentsAction]),
     ],
-    {orderIds: get(query.data)?.externalIdentifier},
+    {orderIds: data.value?.externalIdentifier},
   );
 });
 

@@ -3,7 +3,7 @@ import {deliveryOptionsIsRendered, toggleDeliveryOptions} from '../utils';
 import {type DeliveryOptionsStoreState} from '../store';
 
 export const showOrHideDeliveryOptions: StoreCallbackUpdate<DeliveryOptionsStoreState> = (newState, oldState) => {
-  if (!deliveryOptionsIsRendered() || newState.enabled === oldState.enabled) {
+  if (!deliveryOptionsIsRendered() || (oldState && newState.enabled === oldState.enabled)) {
     return;
   }
 

@@ -15,7 +15,7 @@ const NAME_BULK = 'bulk';
 
 const props = defineProps<{
   options: Keyable[];
-  modelValue: Record<Keyable, boolean>;
+  modelValue: Partial<Record<Keyable, boolean>>;
 }>();
 
 const emit = defineEmits<(e: 'update:modelValue', value: Record<Keyable, boolean>) => void>();

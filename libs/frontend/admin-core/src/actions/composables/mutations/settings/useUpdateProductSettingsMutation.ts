@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {usePdkMutation} from '../orders';
+import {usePdkMutation} from '../usePdkMutation';
+import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
 
-export const useUpdateProductSettingsMutation = () => {
+export const useUpdateProductSettingsMutation = (): ResolvedQuery<BackendEndpoint.UpdateProductSettings> => {
   return usePdkMutation(BackendEndpoint.UpdateProductSettings, ({form, productIds}) => {
     const pdk = usePdkAdminApi();
 

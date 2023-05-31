@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import {createGlobalState} from '@vueuse/core';
 import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {type HttpMethod, type MyParcelSdk, createMyParcelSdk} from '@myparcel/sdk';
@@ -31,5 +30,5 @@ export const usePdkAdminApi = createGlobalState((): MyParcelSdk<AbstractPdkEndpo
     });
   });
 
-  return createMyParcelSdk(client, pdkEndpoints);
+  return createMyParcelSdk(client, pdkEndpoints) as MyParcelSdk<AbstractPdkEndpoint>;
 });

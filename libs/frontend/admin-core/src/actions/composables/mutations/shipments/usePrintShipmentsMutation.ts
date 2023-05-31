@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {usePdkMutation} from '../orders';
+import {usePdkMutation} from '../usePdkMutation';
 import {encodeArrayParameter} from '../../../../utils';
+import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
 import {usePluginSettings} from '../../../../composables';
 
-export const usePrintShipmentsMutation = () => {
+export const usePrintShipmentsMutation = (): ResolvedQuery<BackendEndpoint.PrintShipments> => {
   return usePdkMutation(BackendEndpoint.PrintShipments, (input) => {
     const pdk = usePdkAdminApi();
     const pluginSettings = usePluginSettings();

@@ -1,13 +1,11 @@
 import {Variant} from '@myparcel-pdk/common';
 import {createLogger} from '../logger';
 import {createApiNotification} from '../createApiNotification';
-import {type ActionParameters, type AnyAdminAction, type MaybeAdminAction} from '../../types';
+import {type ActionParameters, type AnyAdminAction, type MaybeAdminAction, type Notification} from '../../types';
 import {type AdminInstance} from '../../data';
 import {useAdminInstance} from '../../composables';
 import {type ActionContext} from '../../actions';
 import {getActionIdentifier} from './getActionIdentifier';
-
-const VARIANTS = [Variant.Success, Variant.Error] as const;
 
 type CreateActionContext = <A extends MaybeAdminAction>(
   action: AnyAdminAction<A>,
@@ -15,7 +13,6 @@ type CreateActionContext = <A extends MaybeAdminAction>(
   existingInstance?: AdminInstance,
 ) => ActionContext<A>;
 
-// @ts-expect-error todo
 export const createActionContext: CreateActionContext = (action, parameters, existingInstance) => {
   const identifier = getActionIdentifier(action);
   const logger = createLogger(identifier);
@@ -30,7 +27,7 @@ export const createActionContext: CreateActionContext = (action, parameters, exi
       logger,
     },
 
-    notifications: VARIANTS.reduce((acc, type) => {
+    notifications: Object.values(Variant).reduce((acc, type) => {
       const notification = createApiNotification(type, {identifier: `action_${identifier}`});
 
       if (!notification) {
@@ -38,6 +35,6 @@ export const createActionContext: CreateActionContext = (action, parameters, exi
       }
 
       return {...acc, [type]: notification};
-    }, {} as Record<keyof typeof VARIANTS, Notification>),
+    }, {} as Record<Variant, Notification>),
   };
 };

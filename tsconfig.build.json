@@ -1,14 +1,17 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "importsNotUsedAsValues": "remove",
-    "incremental": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "noEmitOnError": false,
     "preserveValueImports": false,
     "types": ["node", "vite/client"]
   },
   "include": [],
   "exclude": [
-    "**/node_modules",
+    "**/node_modules/**/*",
     "**/dist",
     "**/cypress/**/*",
     "**/__tests__/*",

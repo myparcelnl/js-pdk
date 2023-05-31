@@ -5,11 +5,11 @@ import {type PartialComponentTest} from '../types';
 
 export const runCommonComponentTests: PartialComponentTest = (component, options): void => {
   it('can be rendered', () => {
-    expect(() => mount(component, options)).not.toThrow();
+    expect(() => mount(component as any, options)).not.toThrow();
   });
 
   it('is visible', () => {
-    const wrapper = mount(component, options);
+    const wrapper = mount(component as any, options);
     expect(wrapper.isVisible()).toBeTruthy();
   });
 };

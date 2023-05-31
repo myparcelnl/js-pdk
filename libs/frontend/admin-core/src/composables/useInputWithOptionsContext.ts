@@ -26,6 +26,7 @@ export type UseInputWithOptionsContext<
   options: ComputedRef<SelectOptionWithLabel<K>[]>;
 };
 
+// @ts-expect-error todo
 export const useInputWithOptionsContext: UseInputWithOptionsContext = (props, emit, multiple = false) => {
   const {translate} = useLanguage();
 

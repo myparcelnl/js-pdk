@@ -10,6 +10,7 @@ import {
   type Options,
   type ResponseWrapper,
 } from '@myparcel/sdk';
+import {type Notification} from '../types';
 import {useNotificationStore} from '../stores';
 
 type EndpointResponseBodyWithNotifications = {

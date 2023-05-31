@@ -1,9 +1,9 @@
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {useStoreQuery} from '../useStoreQuery';
 import {getOrderId} from '../../utils';
-import {type ResolvedQuery} from '../../stores';
 
-export const useOrder = (externalIdentifier?: string): ResolvedQuery<`${BackendEndpoint.FetchOrders}.${string}`> => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const useOrder = (externalIdentifier?: string) => {
   const resolvedExternalIdentifier = externalIdentifier ?? getOrderId();
 
   if (Array.isArray(resolvedExternalIdentifier)) {

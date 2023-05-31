@@ -8,11 +8,7 @@ const createCommonViteConfig = (env) => {
   const isProd = env.mode === 'production';
 
   return {
-    plugins: [
-      isProd && dts({skipDiagnostics: true, entryRoot: 'src', compilerOptions: {incremental: true}}),
-      customTsConfigPlugin(),
-      vue(),
-    ],
+    plugins: [isProd && dts({skipDiagnostics: true, entryRoot: 'src'}), customTsConfigPlugin(), vue()],
 
     build: {
       minify: isProd,

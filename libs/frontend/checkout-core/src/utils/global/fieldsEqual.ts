@@ -1,11 +1,18 @@
 import {isEnumValue} from '@myparcel/ts-utils';
-import {type AddressField, type AddressType, type PdkCheckoutForm, PdkField, getAddressType} from '../../index';
+import {
+  type AddressField,
+  type AddressType,
+  type PdkCheckoutForm,
+  PdkField,
+  getAddressType,
+  type AddressFields,
+} from '../../index';
 
 type FieldsEqual = {
   (
     newFields: PdkCheckoutForm,
     oldFields: PdkCheckoutForm,
-    addressFieldName: AddressField,
+    addressFieldName: AddressField | string,
     addressType?: AddressType,
   ): boolean;
   (newFields: PdkCheckoutForm, oldFields: PdkCheckoutForm, fieldName: PdkField, arg4?: never): boolean;
@@ -23,5 +30,5 @@ export const fieldsEqual: FieldsEqual = (newFields, oldFields, arg3, arg4) => {
     arg4 = getAddressType();
   }
 
-  return newFields[arg4][arg3] === oldFields[arg4][arg3];
+  return newFields[arg4][arg3 as keyof AddressFields] === oldFields[arg4][arg3 as keyof AddressFields];
 };

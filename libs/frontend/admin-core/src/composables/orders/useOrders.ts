@@ -4,9 +4,7 @@ import {getOrderId} from '../../utils';
 import {type ResolvedQuery} from '../../stores';
 import {useOrder} from './useOrder';
 
-export const useOrders = (
-  externalIdentifiers?: string[],
-): ResolvedQuery<`${BackendEndpoint.FetchOrders}.${string}`>[] => {
+export const useOrders = (externalIdentifiers?: string[]): ResolvedQuery<BackendEndpoint.FetchOrders>[] => {
   return toArray(externalIdentifiers ?? getOrderId()).map((externalIdentifier) => {
     return useOrder(externalIdentifier);
   });

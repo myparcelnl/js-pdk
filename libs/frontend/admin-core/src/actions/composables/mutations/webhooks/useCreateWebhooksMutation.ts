@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {usePdkMutation} from '../orders';
+import {usePdkMutation} from '../usePdkMutation';
 import {usePdkAdminApi} from '../../../../sdk';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useCreateWebhooksMutation = () => {
   const queryClient = useQueryClient();
 

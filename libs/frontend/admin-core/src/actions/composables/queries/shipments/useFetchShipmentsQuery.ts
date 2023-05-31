@@ -1,18 +1,21 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {type QueryKey, useQuery, useQueryClient} from '@tanstack/vue-query';
 import {type BackendEndpoint, type Shipment} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {QUERY_KEY_SHIPMENT} from '../queryKeys';
 import {encodeArrayParameter} from '../../../../utils';
 import {type BackendEndpointResponse} from '../../../../types';
+import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
 import {fillShipmentsQueryData} from '../../../../pdk';
 
-export const useFetchShipmentsQuery = (id?: number, orderId?: number) => {
+export const useFetchShipmentsQuery = <I extends number>(
+  id?: I,
+  orderId?: number,
+): ResolvedQuery<BackendEndpoint.FetchShipments> => {
   const queryKey: QueryKey = [QUERY_KEY_SHIPMENT, ...(id ? [{id}] : [])] as const;
   const queryClient = useQueryClient();
 
-  return useQuery<BackendEndpointResponse<BackendEndpoint.FetchShipments>>(
+  return useQuery(
     queryKey,
     async () => {
       const pdk = usePdkAdminApi();
@@ -30,7 +33,7 @@ export const useFetchShipmentsQuery = (id?: number, orderId?: number) => {
         return shipment ?? acc;
       }, undefined as Shipment.ModelShipment | undefined);
 
-      return foundShipment as Shipment.ModelShipment;
+      return foundShipment as BackendEndpointResponse<BackendEndpoint.FetchShipments>;
     },
     {
       ...queryClient.defaultQueryOptions(),

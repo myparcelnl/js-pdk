@@ -3,16 +3,21 @@
     :name="config?.transitions?.shipmentBox"
     appear>
     <ShipmentLabel
-      v-for="shipment in query.data?.shipments ?? []"
-      :key="`${query.data?.externalIdentifier}_${shipment.id}`"
+      v-for="shipment in data?.shipments ?? []"
+      :key="`${data?.externalIdentifier}_${shipment.id}`"
       :shipment-id="shipment.id" />
   </TransitionGroup>
 </template>
 
 <script setup lang="ts">
+import {computed} from 'vue';
+import {get} from '@vueuse/core';
 import {useAdminConfig, useOrder} from '../../composables';
 import ShipmentLabel from './ShipmentLabel.vue';
 
 const query = useOrder();
+
+const data = computed(() => get(query.data));
+
 const config = useAdminConfig();
 </script>

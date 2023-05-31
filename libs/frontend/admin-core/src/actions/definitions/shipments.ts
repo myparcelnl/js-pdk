@@ -45,8 +45,8 @@ export const shipmentsPrintAction = defineAction({
     await openOrPrintPdf(context);
 
     void executeNextAction(context, shipmentsUpdateAction, {
-      orderIds: context.parameters?.orderIds,
-      shipmentIds: context.parameters?.shipmentIds,
+      orderIds: context.parameters?.orderIds as string,
+      shipmentIds: context.parameters?.shipmentIds as number,
     });
 
     return context.response;

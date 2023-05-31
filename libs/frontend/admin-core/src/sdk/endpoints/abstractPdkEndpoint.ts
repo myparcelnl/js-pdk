@@ -94,13 +94,13 @@ interface UpdateShipmentsDefinition extends PdkEndpointDefinition {
 }
 
 interface FetchShipmentsDefinition extends PdkEndpointDefinition {
-  formattedResponse: Shipment.ModelShipment;
   name: BackendEndpoint.FetchShipments;
   parameters: {
     orderIds: string;
     shipmentIds?: string;
   };
   response: Shipment.ModelShipment[];
+  formattedResponse: Shipment.ModelShipment;
 }
 
 interface UpdatePluginSettingsDefinition extends PdkEndpointDefinition {
@@ -170,6 +170,6 @@ export type BackendEndpointOptions<N extends BackendEndpoint> = Omit<
 export abstract class AbstractPdkEndpoint<N extends BackendEndpoint = BackendEndpoint> extends AbstractEndpoint<
   ExtractEndpointDefinition<N, BackendEndpointDefinition>
 > {
-  public declare readonly name: N;
+  public declare readonly name: N | `${N}}`;
   public declare readonly path: string;
 }
