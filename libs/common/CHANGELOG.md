@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.34](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.33...@myparcel-pdk/common@1.0.0-alpha.34) "@myparcel-pdk/common" (2023-05-31)
+
+
+### Bug Fixes
+
+* **meta:** fix all ts errors ([dfa0bbb](https://github/myparcelnl/js-pdk/commit/dfa0bbb308c4863ce0fb4c9a0d55f2b5fa8fdb6c))
+
+
+
+
 ## [1.0.0-alpha.33](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.32...@myparcel-pdk/common@1.0.0-alpha.33) "@myparcel-pdk/common" (2023-05-26)
 
 

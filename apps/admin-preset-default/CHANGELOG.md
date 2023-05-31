@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.63](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.62...@myparcel-pdk/admin-preset-default@1.0.0-alpha.63) "@myparcel-pdk/admin-preset-default" (2023-05-31)
+
+
+### Bug Fixes
+
+* **meta:** fix all ts errors ([dfa0bbb](https://github/myparcelnl/js-pdk/commit/dfa0bbb308c4863ce0fb4c9a0d55f2b5fa8fdb6c))
+
+
+
+
 ## [1.0.0-alpha.62](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.61...@myparcel-pdk/admin-preset-default@1.0.0-alpha.62) "@myparcel-pdk/admin-preset-default" (2023-05-26)
 
 

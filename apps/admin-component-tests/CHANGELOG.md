@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.67](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.66...@myparcel-pdk/admin-component-tests@1.0.0-alpha.67) "@myparcel-pdk/admin-component-tests" (2023-05-31)
+
+
+### Bug Fixes
+
+* **meta:** fix all ts errors ([dfa0bbb](https://github/myparcelnl/js-pdk/commit/dfa0bbb308c4863ce0fb4c9a0d55f2b5fa8fdb6c))
+
+
+
+
 ## [1.0.0-alpha.66](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.65...@myparcel-pdk/admin-component-tests@1.0.0-alpha.66) "@myparcel-pdk/admin-component-tests" (2023-05-26)
 
 
