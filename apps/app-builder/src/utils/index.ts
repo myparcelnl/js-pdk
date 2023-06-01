@@ -17,4 +17,5 @@ export * from './mergeDefaultConfig';
 export * from './reportDryRun';
 export * from './resolveConfig';
 export * from './resolveFileName';
+export * from './resolveString';
 export * from './validateDistPath';

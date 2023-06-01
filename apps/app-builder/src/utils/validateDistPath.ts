@@ -1,5 +1,5 @@
 import {type LiftoffEnv} from 'liftoff';
-import {type CommandArgs, type ResolvedPdkBuilderConfig} from '../types';
+import {type CommandArgs, type ResolvedPdkBuilderConfig, type PdkPlatformName} from '../types';
 import {copy} from '../commands';
 import {getPlatformDistPath} from './getPlatformDistPath';
 import {exists} from './exists';
@@ -7,7 +7,7 @@ import {exists} from './exists';
 export const validateDistPath = async (context: {
   config: ResolvedPdkBuilderConfig;
   env: LiftoffEnv;
-  platform: string;
+  platform: PdkPlatformName;
   args: CommandArgs;
 }): Promise<boolean> => {
   const platformDistPath = getPlatformDistPath(context);

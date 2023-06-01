@@ -2,7 +2,10 @@
   "name": "@myparcel-pdk/app-builder",
   "version": "1.0.0-alpha.22",
   "type": "module",
-  "exports": "./src/index.ts",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
   "types": "./dist/index.d.ts",
   "bin": {
     "pdk-builder": "./bin/index.js"
@@ -12,8 +15,8 @@
     "./dist"
   ],
   "scripts": {
-    "build": "tsup-node --minify",
-    "build:dev": "tsup-node --sourcemap",
+    "build": "tsup-node src/main.ts --format esm --minify && tsup-node src/index.ts --format esm,cjs --dts --minify",
+    "build:dev": "tsup-node src/main.ts --format esm && tsup-node src/index.ts --format esm,cjs --dts",
     "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",

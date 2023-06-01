@@ -2,13 +2,15 @@ import {type LiftoffEnv} from 'liftoff';
 import {type PromiseOr} from '@myparcel/ts-utils';
 import {type VersionSource} from './increment';
 
+export type StringGenerator = string | ((platform?: PdkPlatformName) => string);
+
 export type PdkBuilderConfig = {
   /**
    * Filename for the final compress file. Must include file extension.
    *
    * @default `{{platform}}-{{name}}-{{version}}.zip`
    */
-  archiveFilename?: string;
+  archiveFilename?: StringGenerator;
 
   /**
    * Enable debug logging.
@@ -23,7 +25,7 @@ export type PdkBuilderConfig = {
   /**
    * Name of the plugin.
    */
-  name: string;
+  name: StringGenerator;
 
   /**
    * Output directory for the created folders and archives.
@@ -37,12 +39,12 @@ export type PdkBuilderConfig = {
    *
    * @default `{{name}}-{{version}}`
    */
-  platformFolderName?: string;
+  platformFolderName?: StringGenerator;
 
   /**
    * Platforms to build for.
    */
-  platforms: string[];
+  platforms: PdkPlatformName[];
 
   /**
    * Glob patterns to include in final folder.
@@ -77,3 +79,9 @@ export type CommandArgs = {
   verbose: number;
   version?: string;
 };
+
+export enum PdkPlatformName {
+  Flespakket = 'flespakket',
+  MyParcelBe = 'myparcelbe',
+  MyParcelNl = 'myparcelnl',
+}

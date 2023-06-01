@@ -1,14 +1,21 @@
-import {type CommandArgs, type PdkBuilderConfig} from '../types';
+import {type CommandArgs, type PdkBuilderConfig, type StringGenerator, type PdkPlatformName} from '../types';
+import {resolveString} from './resolveString';
 
 export const resolveFileName = (
-  filename: string,
-  context: {config: PdkBuilderConfig; platform?: string; args?: CommandArgs},
+  stringGenerator: StringGenerator,
+  context: {
+    config: PdkBuilderConfig;
+    platform?: PdkPlatformName;
+    args?: CommandArgs;
+  },
 ): string => {
   const fields: Record<string, string> = {
-    name: context.config.name,
+    name: resolveString(context.config.name, context.platform),
     platform: context.platform ?? '',
     version: context.args?.version ?? context.config.version,
   };
+
+  const filename = resolveString(stringGenerator, context.platform);
 
   return filename.replace(/\{\{\s*(platform|name|version)\s*}}/g, (match, group) => fields[group] ?? '');
 };

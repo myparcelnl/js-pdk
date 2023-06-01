@@ -16,10 +16,10 @@ import {
   resolveFileName,
   validateDistPath,
 } from '../utils';
-import {PdkBuilderCommand} from '../types';
+import {type PdkBuilderCommand, PdkPlatformName} from '../types';
 import {COMMAND_TRANSFORM_NAME, VerbosityLevel} from '../constants';
 
-const SOURCE_PLATFORM = 'myparcelnl';
+const SOURCE_PLATFORM = PdkPlatformName.MyParcelNl;
 
 export const transform: PdkBuilderCommand = async ({env, config, args}) => {
   const {debug, time} = initializeCommand(COMMAND_TRANSFORM_NAME);
@@ -57,9 +57,10 @@ export const transform: PdkBuilderCommand = async ({env, config, args}) => {
         ],
       });
 
+      const platformDistPath = getPlatformDistPath({config, env, platform});
+
       const promises = await Promise.all(
         files.map(async (file) => {
-          const platformDistPath = getPlatformDistPath({config, env, platform});
 
           if (!(await validateDistPath({config, env, platform, args}))) {
             debug('Skipping because %s does not exist.', logRelativePath(env, platformDistPath));

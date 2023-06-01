@@ -15,8 +15,8 @@ import {
   resolveFileName,
   validateDistPath,
 } from '../utils';
-import {PdkBuilderCommand} from '../types';
-import {COMMAND_ZIP_NAME, VerbosityLevel} from '../constants';
+import { PdkBuilderCommand } from '../types';
+import { COMMAND_ZIP_NAME, VerbosityLevel } from '../constants';
 
 export const zip: PdkBuilderCommand = async ({env, config, args}) => {
   const {debug, time} = initializeCommand(COMMAND_ZIP_NAME);
