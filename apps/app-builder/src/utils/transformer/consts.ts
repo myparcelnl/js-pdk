@@ -1,1 +1,1 @@
-export const REPLACEMENT_EXCEPTIONS: string[] = ['Pdk', 'Sdk', 'DevTools'];
+export const REPLACEMENT_EXCEPTIONS: string[] = ['Pdk', 'Sdk', 'DevTools', 'github'];
