@@ -2,6 +2,22 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.23](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.22...@myparcel-pdk/app-builder@1.0.0-alpha.23) "@myparcel-pdk/app-builder" (2023-06-01)
+
+
+### Features
+
+* **app-builder:** allow passing function to various config attributes ([87118ae](https://github/myparcelnl/js-pdk/commit/87118aef970a8154c08be86d801c9b9935db4fe8))
+
+
+### Bug Fixes
+
+* **app-builder:** export defineConfig method ([dbd0de0](https://github/myparcelnl/js-pdk/commit/dbd0de068058849c9189878ba9a5ab53a8ad1a16))
+* **app-builder:** include composer autoload files in transform step ([#161](https://github/myparcelnl/js-pdk/issues/161)) ([d444456](https://github/myparcelnl/js-pdk/commit/d4444564e69219eaa92807fbaa8be72747977593))
+
+
+
+
 ## [1.0.0-alpha.22](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.21...@myparcel-pdk/app-builder@1.0.0-alpha.22) "@myparcel-pdk/app-builder" (2023-05-26)
 
 
