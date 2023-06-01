@@ -54,7 +54,7 @@ export type PdkBuilderConfig = {
   /**
    * Version of the plugin.
    */
-  version: string;
+  version?: string;
 
   /**
    * Glob patterns to replace version numbers in. Optionally pass a regex to match only a part of the file.
