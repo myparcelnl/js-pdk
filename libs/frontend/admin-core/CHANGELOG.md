@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.66](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.65...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.66) "@myparcel-pdk/frontend-admin-core" (2023-06-02)
+
+
+### Bug Fixes
+
+* **admin-core:** support api base urls that already contain a query parameter ([576a110](https://github/myparcelnl/js-pdk/commit/576a110510e6d926b0457225d0705085261fb06d))
+
+
+
+
 ## [1.0.0-alpha.65](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.64...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.65) "@myparcel-pdk/frontend-admin-core" (2023-05-31)
 
 
