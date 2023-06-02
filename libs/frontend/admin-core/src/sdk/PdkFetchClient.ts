@@ -50,4 +50,13 @@ export class PdkFetchClient extends FetchClient {
 
     return response;
   }
+
+  /**
+   * If the url already contains a query string, append the parameters with an ampersand instead.
+   */
+  protected createUrl<E extends AbstractEndpoint>(endpoint: E, options: Options<E>): string {
+    const url = super.createUrl(endpoint, options);
+
+    return url.replace(/\?([^?]*)(\?)/, '?$1&');
+  }
 }
