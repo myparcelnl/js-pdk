@@ -56,7 +56,9 @@ const webhookActions = computed(() => {
   const actions: ActionDefinition[] = [];
   const [connected, disconnected] = partitionArray(get(fetchWebhooks.data) ?? [], (webhook) => webhook.connected);
 
-  actions.push(...defineActions(webhooksCreateAction, {hooks: disconnected.map(({hook}) => hook)}));
+  if (disconnected.length) {
+    actions.push(...defineActions(webhooksCreateAction, {hooks: disconnected.map(({hook}) => hook)}));
+  }
 
   if (connected.length) {
     actions.push(...defineActions(webhooksDeleteAction, {hooks: connected.map(({hook}) => hook)}));
