@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.68](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.67...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.68) "@myparcel-pdk/frontend-admin-core" (2023-06-05)
+
+
+### Bug Fixes
+
+* **admin-core:** set signature and only_recipient to true when age_check is selected ([41382f2](https://github/myparcelnl/js-pdk/commit/41382f2c3e84e117a5d27ad608666a942500d57b))
+
+
+
+
 ## [1.0.0-alpha.67](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.66...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.67) "@myparcel-pdk/frontend-admin-core" (2023-06-05)
 
 
