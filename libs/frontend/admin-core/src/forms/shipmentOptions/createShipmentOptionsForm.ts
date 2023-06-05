@@ -5,7 +5,7 @@ import {markRaw, ref} from 'vue';
 import {get} from '@vueuse/core';
 import {AdminComponent, type Plugin} from '@myparcel-pdk/common';
 import {defineForm} from '@myparcel/vue-form-builder';
-import {type OneOrMore, toArray} from '@myparcel/ts-utils';
+import {type OneOrMore, toArray, type PromiseOr} from '@myparcel/ts-utils';
 import {type CarrierName, PackageTypeName} from '@myparcel/constants';
 import {defineFormField, resolveFormComponent, setFieldProp} from '../helpers';
 import {createShipmentFormName} from '../../utils';
@@ -140,6 +140,20 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
         ref: ref(values.deliveryOptions?.shipmentOptions.ageCheck ?? false),
         label: 'shipment_options_age_check',
         visibleWhen: ({form}) => isPackageTypePackage(form) && hasShipmentOption(form, 'ageCheck'),
+        afterUpdate(field, value): PromiseOr<void> {
+          const signatureField = field.form.fields.value.find((field) => field.name === SIGNATURE);
+          const onlyRecipientField = field.form.fields.value.find((field) => field.name === ONLY_RECIPIENT);
+
+          if (value === true) {
+            if (signatureField) {
+              signatureField.ref = true;
+            }
+
+            if (onlyRecipientField) {
+              onlyRecipientField.ref = true;
+            }
+          }
+        },
       }),
 
       defineFormField({
