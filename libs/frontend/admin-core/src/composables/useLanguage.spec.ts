@@ -1,3 +1,5 @@
+// @vitest-environment happy-dom
+
 import {type SpyInstance, afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {setActivePinia} from 'pinia';
 import {mount} from '@vue/test-utils';

@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="apps/pdk-preset-bootstrap4" type="JavaScriptTestRunnerVitest">
-    <config value="$PROJECT_DIR$/apps/pdk-preset-bootstrap4/vite.config.ts" />
+  <configuration default="false" name="apps/admin-preset-default" type="JavaScriptTestRunnerVitest">
+    <config value="$PROJECT_DIR$/apps/admin-preset-default/vitest.config.ts" />
     <node-interpreter value="project" />
     <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-    <working-dir value="$PROJECT_DIR$/apps/pdk-preset-bootstrap4" />
+    <working-dir value="$PROJECT_DIR$/apps/admin-preset-default" />
     <envs />
     <scope-kind value="ALL" />
     <method v="2" />

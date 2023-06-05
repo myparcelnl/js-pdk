@@ -53,7 +53,7 @@ export namespace Account {
     generalSettings: Record<string, unknown>;
     return: Record<string, unknown>;
     shipmentOptions: Record<string, unknown>;
-    trackTrace: Record<string, unknown>[];
+    trackTrace: Record<string, unknown>;
     carrierConfigurations: ShopCarrierConfigurationCollection;
     carrierOptions: Carrier.CarrierOptionsCollection;
   };
@@ -354,7 +354,7 @@ export namespace Plugin {
 
   export type DeleteShipmentsEndpointRequest = AbstractEndpointRequest;
 
-  export type EndpointRequestCollection = Record<string, AbstractEndpointRequest>[];
+  export type EndpointRequestCollection = Record<string, AbstractEndpointRequest>;
 
   export type ExportOrdersEndpointRequest = AbstractEndpointRequest;
 

@@ -16,13 +16,8 @@ jobs:
         run: |
           NX_BRANCH=production yarn nx run-many \
             --parallel \
-            --target=test:run \
+            --target=test:coverage \
             --output-style=static
 
       - uses: codecov/codecov-action@v3
         continue-on-error: true
-
-      - uses: codacy/codacy-coverage-reporter-action@v1
-        continue-on-error: true
-        with:
-          api-token: ${{ secrets.CODACY_API_TOKEN }}

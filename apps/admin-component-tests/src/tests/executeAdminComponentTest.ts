@@ -1,15 +1,15 @@
 /* eslint-disable no-magic-numbers */
 import {type Component} from 'vue';
-import {afterAll, beforeAll, describe, vi} from 'vitest';
+import {afterAll, beforeAll, describe, vi, test} from 'vitest';
 import {type QueryKey} from '@tanstack/vue-query';
 import {type AdminInstance, createAdminConfig, createLogger} from '@myparcel-pdk/frontend-admin-core';
 import {type AdminComponent, type AdminView} from '@myparcel-pdk/common';
 import {testMap} from './testMap';
 
 export const executeAdminComponentTest = (name: AdminComponent, component: Omit<Component, 'props'>): void => {
-  const test = testMap[name];
+  const componentTest = testMap[name];
 
-  if (!test) {
+  if (!componentTest) {
     // eslint-disable-next-line no-console
     console.warn(`No test found for component: ${name}`);
     return;
@@ -39,7 +39,9 @@ export const executeAdminComponentTest = (name: AdminComponent, component: Omit<
       }));
     });
 
-    test(component);
+    test(name, () => {
+      componentTest(component);
+    });
 
     afterAll(() => {
       vi.restoreAllMocks();

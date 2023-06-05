@@ -7,7 +7,7 @@ import {type AdminModalKey} from './modal.types';
 export type AdminContextObject = Replace<Plugin.ModelContextContextBag, 'global', GlobalAdminContext> &
   Partial<AdminInstanceContext>;
 
-type GlobalAdminContext = Replace<Plugin.ModelContextGlobalContext, 'endpoints', BackendPdkEndpointObject>;
+export type GlobalAdminContext = Replace<Plugin.ModelContextGlobalContext, 'endpoints', BackendPdkEndpointObject>;
 
 export type AnyAdminContext = AdminContext<AdminContextKey>;
 

@@ -1,6 +1,6 @@
 import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests';
-import {DashIconsIcon} from '../components';
+import {FontAwesomeIcon} from '../components';
 
 executePdkComponentTests({
-  PdkIcon: DashIconsIcon,
+  Icon: FontAwesomeIcon,
 });

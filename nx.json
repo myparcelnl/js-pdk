@@ -6,12 +6,20 @@
   "defaultBase": "alpha",
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "test": [
+      "default",
+      "{projectRoot}/src/**/*.spec.ts",
+      "{projectRoot}/src/**/*.test.ts",
+      "{projectRoot}/src/__mocks__/**/*",
+      "{projectRoot}/__tests__/**/*"
+    ],
     "sharedGlobals": ["{workspaceRoot}/tsconfig.build.json"],
     "production": ["default"]
   },
   "npmScope": "myparcel-pdk",
   "targetDefaults": {
     "build": {
+      "inputs": ["default"],
       "dependsOn": ["^build"],
       "outputs": [
         "{projectRoot}/dist",
@@ -19,6 +27,7 @@
       ]
     },
     "build:dev": {
+      "inputs": ["default"],
       "dependsOn": ["^build:dev"],
       "outputs": [
         "{projectRoot}/dist",
@@ -26,12 +35,18 @@
       ]
     },
     "lint": {
+      "inputs": ["default"],
       "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
     },
     "lint:fix": {
+      "inputs": ["default"],
       "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
     },
     "test:run": {
+      "inputs": ["test"]
+    },
+    "test:coverage": {
+      "inputs": ["test"],
       "outputs": ["{projectRoot}/coverage"]
     }
   },
@@ -45,7 +60,8 @@
           "build:dev",
           "lint",
           "lint:fix",
-          "test:run"
+          "test:run",
+          "test:coverage"
         ]
       }
     },
@@ -53,7 +69,7 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "parallel": 10,
-        "cacheableOperations": ["build"],
+        "cacheableOperations": ["build", "test:coverage"],
         "accessToken": "ZDk5NTE5ZWItMmYxYy00ZjNmLThjMzItMmM0MjIwZTU1M2Y3fHJlYWQtd3JpdGU="
       }
     }
