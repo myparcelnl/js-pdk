@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.67](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.66...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.67) "@myparcel-pdk/frontend-admin-core" (2023-06-05)
+
+
+### Bug Fixes
+
+* **admin-core:** do not show webhooks create button if they are all connected ([eade86e](https://github/myparcelnl/js-pdk/commit/eade86e374fa9ab4df3d0b9fa0f43528ae3a5c41))
+
+
+
+
 ## [1.0.0-alpha.66](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.65...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.66) "@myparcel-pdk/frontend-admin-core" (2023-06-02)
 
 
