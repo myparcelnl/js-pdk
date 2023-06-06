@@ -1,5 +1,5 @@
 import {vi} from 'vitest';
-import {type Plugin} from '@myparcel-pdk/admin';
+import {type Plugin} from '@myparcel-pdk/common';
 
 export const getDefaultPluginSettings = vi.fn((): Plugin.ModelContextDynamicContext['pluginSettings'] => ({
   account: {
