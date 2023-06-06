@@ -1,4 +1,5 @@
 import {vi} from 'vitest';
+import {type GlobalAdminContext} from '@myparcel-pdk/frontend-admin-core';
 import {BackendEndpoint} from '@myparcel-pdk/common';
 
 export const getDefaultEndpoints = vi.fn(() =>
@@ -14,5 +15,5 @@ export const getDefaultEndpoints = vi.fn(() =>
         property: '',
       },
     };
-  }, {} as AdminContext['endpoints']),
+  }, {} as GlobalAdminContext['endpoints']),
 );
