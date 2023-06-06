@@ -1,4 +1,3 @@
-import {get} from '@vueuse/core';
 import {type Carrier} from '@myparcel-pdk/common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {CARRIER} from '../field';
@@ -7,7 +6,7 @@ import {useContext} from '../../../composables';
 
 export const getCarrierOptions = (form: FormInstance): Carrier.ModelCarrierOptions | undefined => {
   const dynamicContext = useContext(AdminContextKey.Dynamic);
-  const chosenCarrier = get(form.model[CARRIER].ref);
+  const chosenCarrier = form.getValue(CARRIER);
 
   return dynamicContext.carrierOptions.find((options) => options.carrier.name === chosenCarrier);
 };

@@ -1,4 +1,3 @@
-import {get} from '@vueuse/core';
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {isOfType} from '@myparcel/ts-utils';
 import {type ElementInstance} from '../../types';
@@ -14,7 +13,7 @@ export const setFieldProp: SetFieldProp = (arg1, arg2, arg3, arg4) => {
   let value = arg3;
 
   if (isOfType<FormInstance>(arg1, 'fields')) {
-    const foundField = get(arg1.fields).find((field) => field.name === arg2);
+    const foundField = arg1.getField(arg2);
 
     if (!foundField) {
       throw new Error(`Field ${arg2} not found`);

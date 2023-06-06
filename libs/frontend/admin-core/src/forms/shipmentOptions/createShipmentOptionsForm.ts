@@ -140,18 +140,16 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
         ref: ref(values.deliveryOptions?.shipmentOptions.ageCheck ?? false),
         label: 'shipment_options_age_check',
         visibleWhen: ({form}) => isPackageTypePackage(form) && hasShipmentOption(form, 'ageCheck'),
-        afterUpdate(field, value): PromiseOr<void> {
-          const signatureField = field.form.fields.value.find((field) => field.name === SIGNATURE);
-          const onlyRecipientField = field.form.fields.value.find((field) => field.name === ONLY_RECIPIENT);
+        afterUpdate({form}, value): PromiseOr<void> {
+          const signatureField = form.getField(SIGNATURE);
+          const onlyRecipientField = form.getField(ONLY_RECIPIENT);
+
+          signatureField?.setDisabled(value);
+          onlyRecipientField?.setDisabled(value);
 
           if (value === true) {
-            if (signatureField) {
-              signatureField.ref = true;
-            }
-
-            if (onlyRecipientField) {
-              onlyRecipientField.ref = true;
-            }
+            form.setValue(SIGNATURE, true);
+            form.setValue(ONLY_RECIPIENT, true);
           }
         },
       }),
