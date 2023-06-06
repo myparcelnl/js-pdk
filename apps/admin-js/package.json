@@ -19,6 +19,9 @@
     "vite-plugin-custom-tsconfig": "^1.0.4",
     "vite-plugin-dts": "^2.3.0"
   },
+  "peerDependencies": {
+    "vue": "^3"
+  },
   "publishConfig": {
     "access": "public"
   }

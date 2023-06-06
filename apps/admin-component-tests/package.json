@@ -22,10 +22,14 @@
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.35",
     "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.69",
     "@vue/test-utils": "^2.3.0",
-    "vue": "^3.2.47"
+    "pinia": "^2"
   },
   "devDependencies": {
-    "@pinia/testing": "^0.0.16"
+    "@pinia/testing": "^0.0.16",
+    "vue": "^3.3.4"
+  },
+  "peerDependencies": {
+    "vue": "^3"
   },
   "publishConfig": {
     "access": "public"
