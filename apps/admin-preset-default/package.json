@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-preset-default",
-  "version": "1.0.0-alpha.66",
+  "version": "1.0.0-alpha.67",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -21,7 +21,7 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.68",
+    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.69",
     "@myparcel/ts-utils": "^1.9.0",
     "@vueuse/core": "^10.1.2",
     "vue": "^3.2.47"

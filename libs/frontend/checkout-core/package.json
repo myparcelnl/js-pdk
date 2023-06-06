@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/frontend-checkout-core",
-  "version": "1.0.0-alpha.13",
+  "version": "1.0.0-alpha.14",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -22,7 +22,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.4",
+    "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.5",
     "@myparcel/delivery-options": "^5.7.2"
   },
   "devDependencies": {
