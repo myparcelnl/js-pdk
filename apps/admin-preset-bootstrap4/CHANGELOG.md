@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.71](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.70...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.71) "@myparcel-pdk/admin-preset-bootstrap4" (2023-06-06)
+
+
+
+
 ## [1.0.0-alpha.70](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.69...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.70) "@myparcel-pdk/admin-preset-bootstrap4" (2023-06-06)
 
 

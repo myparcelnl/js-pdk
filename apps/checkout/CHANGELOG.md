@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.45](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout@1.0.0-alpha.44...@myparcel-pdk/checkout@1.0.0-alpha.45) "@myparcel-pdk/checkout" (2023-06-06)
+
+
+
+
 ## [1.0.0-alpha.41](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout@1.0.0-alpha.40...@myparcel-pdk/checkout@1.0.0-alpha.41) "@myparcel-pdk/checkout" (2023-05-26)
 
 

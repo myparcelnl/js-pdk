@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.70](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.69...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.70) "@myparcel-pdk/frontend-admin-core" (2023-06-06)
+
+
+### Bug Fixes
+
+* **admin-core:** disable signature and only recipient when using age check ([edcbd23](https://github/myparcelnl/js-pdk/commit/edcbd23f742899a06cc8c27a7f4063f7557c2383))
+
+
+
+
 ## [1.0.0-alpha.69](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.68...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.69) "@myparcel-pdk/frontend-admin-core" (2023-06-06)
 
 
