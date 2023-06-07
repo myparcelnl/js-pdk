@@ -1166,7 +1166,7 @@ __metadata:
     "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.70"
     "@pinia/testing": ^0.0.16
     "@vue/test-utils": ^2.3.0
-    pinia: ^2
+    pinia: ^2.1.3
     vue: ^3.3.4
   peerDependencies:
     vue: ^3
@@ -1229,7 +1229,7 @@ __metadata:
     "@vitest/coverage-c8": ^0.30.1
     "@vue/test-utils": ^2.3.0
     happy-dom: ^9.10.2
-    pinia: 2.0.36
+    pinia: ^2.1.3
     typescript: ^5.0.3
     vite: ^4.3.9
     vitest: ^0.31.4
@@ -1370,8 +1370,6 @@ __metadata:
     vite: ^4.3.8
     vite-plugin-custom-tsconfig: ^1.0.4
     vite-plugin-dts: ^2.3.0
-  peerDependencies:
-    vue: ^3
   languageName: unknown
   linkType: soft
 
@@ -1384,8 +1382,6 @@ __metadata:
     "@myparcel-pdk/frontend-checkout-delivery-options": "workspace:^1.0.0-alpha.13"
     "@myparcel-pdk/frontend-checkout-separate-address-fields": "workspace:^1.0.0-alpha.14"
     "@myparcel-pdk/frontend-checkout-tax-fields": "workspace:^1.0.0-alpha.15"
-  peerDependencies:
-    vue: ^3
   languageName: unknown
   linkType: soft
 
@@ -1426,7 +1422,7 @@ __metadata:
     lodash: ^4.17.21
     lodash-es: ^4.17.21
     lodash-unified: ^1.0.3
-    pinia: 2.0.36
+    pinia: ^2.1.3
     typescript: ^5.1.3
     vite: ^4.3.9
     vitest: ^0.31.4
@@ -10915,26 +10911,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinia@npm:2.0.36":
-  version: 2.0.36
-  resolution: "pinia@npm:2.0.36"
-  dependencies:
-    "@vue/devtools-api": ^6.5.0
-    vue-demi: "*"
-  peerDependencies:
-    "@vue/composition-api": ^1.4.0
-    typescript: ">=4.4.4"
-    vue: ^2.6.14 || ^3.2.0
-  peerDependenciesMeta:
-    "@vue/composition-api":
-      optional: true
-    typescript:
-      optional: true
-  checksum: 42a6f14a6875f0aac7026940671979d4dc31708a83b2c9551101148b752a8bb2c85b66a74b12d0b4cec793461d5eaf265777373fe79e33c5a8fb5dfa3169d7c6
-  languageName: node
-  linkType: hard
-
-"pinia@npm:^2":
+"pinia@npm:^2.1.3":
   version: 2.1.3
   resolution: "pinia@npm:2.1.3"
   dependencies:
@@ -13391,11 +13368,11 @@ __metadata:
 
 "typescript@patch:typescript@^5.0.3#~builtin<compat/typescript>, typescript@patch:typescript@^5.1.3#~builtin<compat/typescript>":
   version: 5.1.3
-  resolution: "typescript@patch:typescript@npm%3A5.1.3#~builtin<compat/typescript>::version=5.1.3&hash=5da071"
+  resolution: "typescript@patch:typescript@npm%3A5.1.3#~builtin<compat/typescript>::version=5.1.3&hash=77c9e2"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 6f0a9dca6bf4ce9dcaf4e282aade55ef4c56ecb5fb98d0a4a5c0113398815aea66d871b5611e83353e5953a19ed9ef103cf5a76ac0f276d550d1e7cd5344f61e
+  checksum: 32a25b2e128a4616f999d4ee502aabb1525d5647bc8955e6edf05d7fbc53af8aa98252e2f6ba80bcedfc0260c982b885f3c09cfac8bb65d2924f3133ad1e1e62
   languageName: node
   linkType: hard
 
