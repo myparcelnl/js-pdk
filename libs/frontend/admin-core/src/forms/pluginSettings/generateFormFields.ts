@@ -22,11 +22,12 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
   }
 
   return fields.map((data) => {
-    const {name, $component, $visibleWhen, $slot, $wrapper, label, ...props} = data;
+    const {$attributes, $component, $slot, $visibleWhen, $wrapper, label, name, ...props} = data;
 
     const common: AnyElementConfiguration = {
       component: resolveFormComponent($component),
       props: {...props},
+      attributes: {...$attributes},
       slots: $slot ? {default: $slot} : undefined,
       wrapper: $wrapper && typeof $wrapper === 'string' ? resolveFormComponent($wrapper) : undefined,
     };

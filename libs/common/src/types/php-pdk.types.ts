@@ -425,6 +425,7 @@ export namespace Plugin {
   export type ModelContextOrderDataContext = ModelPdkOrder;
 
   export type Field = {
+    $attributes?: Record<string, unknown>;
     $component: AdminComponent;
     $slot?: string;
     $visibleWhen?: Record<string, unknown>;
