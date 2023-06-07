@@ -31,7 +31,7 @@ export const useDropOffInputContext: UseDropOffInputContext = (possibilities, em
   };
 
   const toggleRefs = createReactiveObject('dispatch', false);
-  const cutoffRefs = createReactiveObject('cutoffTime', '00:00');
+  const cutoffRefs = createReactiveObject('cutoffTime', '16:00');
 
   const createElements = (reactiveObject: Record<Weekday, unknown>, name: string) =>
     createObjectWithKeys(weekdays, (day) =>
