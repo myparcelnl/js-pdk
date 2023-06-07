@@ -25,9 +25,6 @@
     "@myparcel-pdk/frontend-checkout-separate-address-fields": "workspace:^1.0.0-alpha.14",
     "@myparcel-pdk/frontend-checkout-tax-fields": "workspace:^1.0.0-alpha.15"
   },
-  "peerDependencies": {
-    "vue": "^3"
-  },
   "publishConfig": {
     "access": "public"
   }
