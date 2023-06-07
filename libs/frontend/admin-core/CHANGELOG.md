@@ -2,6 +2,22 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.71](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.70...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.71) "@myparcel-pdk/frontend-admin-core" (2023-06-07)
+
+
+### Features
+
+* **admin:** allow passing attributes to dynamic form components ([4f85d4e](https://github/myparcelnl/js-pdk/commit/4f85d4e97c117771962c52609de46939db19c5a0))
+
+
+### Bug Fixes
+
+* **admin:** fix error when drop-off possibilities are empty ([2de1014](https://github/myparcelnl/js-pdk/commit/2de101456ceb37b7d5c59340167227226c345e77))
+* **admin:** set a sensible default for cutoff time ([0bbe977](https://github/myparcelnl/js-pdk/commit/0bbe97785e3a7e3b6da987e1caacec0afe96ef34))
+
+
+
+
 ## [1.0.0-alpha.70](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.69...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.70) "@myparcel-pdk/frontend-admin-core" (2023-06-06)
 
 

@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.69](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.68...@myparcel-pdk/admin-preset-default@1.0.0-alpha.69) "@myparcel-pdk/admin-preset-default" (2023-06-07)
+
+
+### Bug Fixes
+
+* **admin:** remove hard coded min value of currency input ([d6a39df](https://github/myparcelnl/js-pdk/commit/d6a39df0fe849c9ed7221e5ec088059d8489f820))
+
+
+
+
 ## [1.0.0-alpha.68](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.67...@myparcel-pdk/admin-preset-default@1.0.0-alpha.68) "@myparcel-pdk/admin-preset-default" (2023-06-06)
 
 

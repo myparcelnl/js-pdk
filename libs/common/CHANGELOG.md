@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.36](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.35...@myparcel-pdk/common@1.0.0-alpha.36) "@myparcel-pdk/common" (2023-06-07)
+
+
+### Features
+
+* **admin:** allow passing attributes to dynamic form components ([4f85d4e](https://github/myparcelnl/js-pdk/commit/4f85d4e97c117771962c52609de46939db19c5a0))
+
+
+
+
 ## [1.0.0-alpha.35](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.34...@myparcel-pdk/common@1.0.0-alpha.35) "@myparcel-pdk/common" (2023-06-06)
 
 
