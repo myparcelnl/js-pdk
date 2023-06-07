@@ -4,7 +4,7 @@ import {createFormElement, createObjectWithKeys} from '../utils';
 import {type Weekday, type Weekdays, useWeekdays} from './useWeekdays';
 
 type UseDropOffInputContext = (
-  possibilities: Settings.ModelDropOffPossibilities,
+  possibilities?: Settings.ModelDropOffPossibilities,
   emit?: (name: 'update:modelValue', ...args: unknown[]) => void,
 ) => {
   weekdaysObject: Record<Weekday, string>;
@@ -25,7 +25,7 @@ export const useDropOffInputContext: UseDropOffInputContext = (possibilities, em
   ) => {
     return reactive(
       createObjectWithKeys(weekdays, (day) => {
-        return possibilities.dropOffDays.find(({weekday}) => weekday === day)?.[property] ?? defaultValue;
+        return possibilities?.dropOffDays.find(({weekday}) => weekday === day)?.[property] ?? defaultValue;
       }),
     );
   };
