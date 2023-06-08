@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.72](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.71...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.72) "@myparcel-pdk/frontend-admin-core" (2023-06-08)
+
+
+### Features
+
+* **admin:** improve account settings component ([449f42e](https://github/myparcelnl/js-pdk/commit/449f42ebaae9a6350daa6590d368dad26945fe90))
+
+
+
+
 ## [1.0.0-alpha.71](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.70...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.71) "@myparcel-pdk/frontend-admin-core" (2023-06-07)
 
 
