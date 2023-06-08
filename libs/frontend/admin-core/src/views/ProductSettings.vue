@@ -16,7 +16,7 @@ import {useAdminConfig, useContext} from '../composables';
 import {useUpdateProductSettingsMutation} from '../actions';
 
 const queryStore = useQueryStore();
-queryStore.registerContextQueries();
+queryStore.registerContextQueries(AdminContextKey.ProductSettingsView);
 
 const context = useContext(AdminContextKey.ProductSettingsView);
 const updateProductSettingsMutation = useUpdateProductSettingsMutation();
@@ -30,14 +30,11 @@ const createProductSettingsForm = (): FormInstance => {
   return defineForm(FORM_KEY_PRODUCT_SETTINGS, {
     ...adminConfig.formConfigOverrides?.[FORM_KEY_PRODUCT_SETTINGS],
     fields: [
-      ...generateFormFields(
-        {
-          // @ts-expect-error todo
-          fields: context.view.elements,
-          values: context.values,
-        },
-        'product',
-      ),
+      ...generateFormFields({
+        // @ts-expect-error todo
+        fields: context.view.elements,
+        values: context.values,
+      }),
     ],
 
     afterSubmit: async (form: FormInstance) => {
