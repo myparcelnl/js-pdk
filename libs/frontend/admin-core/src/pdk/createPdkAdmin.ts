@@ -1,10 +1,10 @@
 import {sendBootEvent} from '../utils';
-import {type AdminConfiguration} from '../types';
+import {type InputAdminConfiguration} from '../types';
 import {getElementContext, globalLogger} from '../services';
 import {createAdminConfig} from './createAdminConfig';
 import {PdkAdmin} from './PdkAdmin';
 
-export type CreatePdkAdmin = (configuration?: AdminConfiguration) => undefined | PdkAdmin;
+export type CreatePdkAdmin = (configuration?: InputAdminConfiguration) => undefined | PdkAdmin;
 
 /**
  * Must match \MyParcelNL\Pdk\Plugin\Service\Frontend::BOOTSTRAP_CONTAINER_ID.

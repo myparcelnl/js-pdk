@@ -1,5 +1,5 @@
 import {mergeWith} from 'lodash-unified';
-import {type AdminConfiguration, type DefaultAdminConfiguration} from '../types';
+import {type AdminConfiguration, type DefaultAdminConfiguration, type InputAdminConfiguration} from '../types';
 import {LogLevel} from '../services';
 
 const createDefaultConfig = (): DefaultAdminConfiguration => ({
@@ -7,9 +7,12 @@ const createDefaultConfig = (): DefaultAdminConfiguration => ({
   formatters: {},
   logLevel: import.meta.env.PROD ? LogLevel.Info : LogLevel.Debug,
   transitions: {},
+  generateFieldId: (element) => {
+    return `${element.form.name}-${element.name}`;
+  },
 });
 
-export const createAdminConfig = (customConfig?: AdminConfiguration | undefined): AdminConfiguration => {
+export const createAdminConfig = (customConfig?: InputAdminConfiguration | undefined): AdminConfiguration => {
   const defaultConfig = createDefaultConfig();
 
   const merged = mergeWith({}, defaultConfig, customConfig, (obj, src, key) => {

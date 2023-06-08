@@ -1,14 +1,16 @@
 import {type PiniaPluginContext} from 'pinia';
 import {type AdminComponentMap} from '@myparcel-pdk/common';
-import {type FormConfiguration} from '@myparcel/vue-form-builder';
+import {type FormConfiguration, type InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {type MakeOptional} from '@myparcel/ts-utils';
 import {type LogLevel} from '../services';
 import {type FORM_KEYS} from '../forms';
 import {type FormatterObject} from '../composables';
 import {type AdminContextObject} from './context.types';
 
-export type DefaultAdminConfiguration = Omit<AdminConfiguration, 'context' | 'components'> & {
+export type DefaultAdminConfiguration = Omit<AdminConfiguration, 'context' | 'components' | 'generateFieldId'> & {
   components?: Record<string, undefined>;
   formatters?: Record<string, undefined>;
+  generateFieldId?(element: InteractiveElementInstance): string;
 };
 
 export type AdminConfiguration = {
@@ -92,6 +94,13 @@ export type AdminConfiguration = {
    * Hook that executes after the pdk admin is created.
    */
   onInitialized?(configuration: AdminConfiguration, context: AdminContextObject): void;
+
+  /**
+   * Callback to generate a field id.
+   */
+  generateFieldId(element: InteractiveElementInstance): string;
 };
 
 export type AdminConfigurationPreset = Omit<Partial<AdminConfiguration>, 'components'>;
+
+export type InputAdminConfiguration = MakeOptional<AdminConfiguration, 'generateFieldId'>;

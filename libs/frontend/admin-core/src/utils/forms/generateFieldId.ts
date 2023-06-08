@@ -1,8 +1,10 @@
+import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {type ElementInstance} from '../../types';
-import {useElement} from '../../index';
+import {useElement, useAdminConfig} from '../../index';
 
 export const generateFieldId = (element?: ElementInstance): string => {
+  const config = useAdminConfig();
   const resolvedElement = element ?? useElement();
 
-  return `${resolvedElement.form.name}-${resolvedElement.name}`;
+  return config.generateFieldId(resolvedElement as InteractiveElementInstance);
 };
