@@ -2,6 +2,7 @@
   <textarea
     :id="id"
     v-model.trim="model"
+    :name="id"
     :disabled="element.isDisabled || element.isSuspended" />
 </template>
 

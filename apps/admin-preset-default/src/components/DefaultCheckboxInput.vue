@@ -4,6 +4,7 @@
     <input
       :id="id"
       v-model="model"
+      :name="id"
       :disabled="element.isDisabled || element.isSuspended"
       :value="element.props?.value"
       type="checkbox" />

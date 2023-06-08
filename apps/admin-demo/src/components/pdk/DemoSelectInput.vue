@@ -2,6 +2,7 @@
   <select
     :id="id"
     v-model="model"
+    :name="id"
     :disabled="options.length === 1 || element.isDisabled || element.isSuspended"
     class="border flex-grow px-2 py-1 rounded">
     <option

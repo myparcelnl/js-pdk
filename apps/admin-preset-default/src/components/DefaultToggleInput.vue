@@ -3,6 +3,7 @@
     <input
       :id="id"
       v-model="model"
+      :name="id"
       :disabled="element.isDisabled || element.isSuspended"
       :value="true"
       type="checkbox" />
