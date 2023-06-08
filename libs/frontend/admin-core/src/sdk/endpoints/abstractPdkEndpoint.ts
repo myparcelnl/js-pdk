@@ -1,5 +1,4 @@
 import {
-  type Account,
   type BackendEndpoint,
   type ExtractEndpointDefinition,
   type LabelFormat,
@@ -44,7 +43,7 @@ interface UpdateAccountDefinition extends PdkEndpointDefinition {
   body: Settings.ModelAccountSettings;
   name: BackendEndpoint.UpdateAccount;
   parameters: undefined;
-  response: Account.ModelAccount[];
+  response: [AdminContextObject];
 }
 
 interface FetchOrdersDefinition extends PdkEndpointDefinition {

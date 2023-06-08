@@ -6,6 +6,8 @@ export {default as NotificationContainer} from './NotificationContainer.vue';
 
 export {default as PlainElement} from './PlainElement';
 
+export {default as ResetButton} from './ResetButton.vue';
+
 export {default as ReturnsForm} from './ReturnsForm.vue';
 
 export {default as ShipmentBarcode} from './ShipmentBarcode.vue';

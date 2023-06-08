@@ -1,12 +1,19 @@
 <template>
-  <PdkTabNavButtonWrapper>
-    <PdkTabNavButton
+  <component
+    :is="buttonWrapper"
+    v-if="tabs.length > 1">
+    <component
+      :is="button"
       v-for="tab in tabs"
       :key="`tab_button_${tab.name}`"
       :active="tab.name === activeTab"
-      :tab="tab"
-      @click="() => handleClick(tab)" />
-  </PdkTabNavButtonWrapper>
+      @click="() => handleClick(tab)">
+      <PdkIcon
+        v-if="tab.icon"
+        :icon="tab.icon" />
+      {{ translate(tab.label) }}
+    </component>
+  </component>
 
   <PdkTabNavContentWrapper v-if="activeTabContents">
     <Transition
@@ -22,51 +29,94 @@
   </PdkTabNavContentWrapper>
 </template>
 
-<script lang="ts">
-import {type PropType, computed, defineComponent, ref} from 'vue';
-import {type TabDefinition} from '@myparcel-pdk/common';
+<script lang="ts" setup>
+import {computed, ref, type PropType, watch} from 'vue';
+import {type TabDefinition, AdminComponent, type PrefixedAdminComponent} from '@myparcel-pdk/common';
+import {type ComponentOrHtmlElement} from '@myparcel/vue-form-builder';
+import {prefixComponent} from '../../helpers';
 import {HASH_SEPARATOR} from '../../data';
 import {useAdminConfig, useLanguage} from '../../composables';
 
-/**
- * Tab navigation.
- */
-export default defineComponent({
-  name: 'TabNavigation',
-  props: {
-    hashPrefix: {
-      type: String,
-      default: '',
-    },
-
-    tabs: {
-      type: Array as PropType<TabDefinition[]>,
-      required: true,
-    },
+const props = defineProps({
+  button: {
+    type: [String, Object] as PropType<ComponentOrHtmlElement | PrefixedAdminComponent>,
+    default: () => prefixComponent(AdminComponent.TabNavButton),
   },
 
-  setup: (props) => {
-    const hash = window.location.hash.replace('#', '').replace(props.hashPrefix, '');
-    const tabName = hash.split(HASH_SEPARATOR)[0];
+  buttonWrapper: {
+    type: [String, Object] as PropType<ComponentOrHtmlElement | PrefixedAdminComponent>,
+    default: () => prefixComponent(AdminComponent.TabNavButtonWrapper),
+  },
 
-    const isValidHash = props.tabs.some((tab) => tab.name === tabName);
-    const initialTab = isValidHash ? tabName : props.tabs[0]?.name;
+  closeable: {
+    type: Boolean,
+  },
 
-    const activeTab = ref(initialTab);
+  hashPrefix: {
+    type: String,
+    default: '',
+  },
 
-    const {translate} = useLanguage();
+  initialTab: {
+    type: [String, Boolean],
+    default: null,
+  },
 
-    return {
-      handleClick: (tab: TabDefinition) => {
-        window.location.hash = props.hashPrefix + tab.name;
-        activeTab.value = tab.name;
-      },
-
-      config: useAdminConfig(),
-      activeTab,
-      activeTabContents: computed(() => props.tabs.find((tab) => tab.name === activeTab.value)),
-      translate,
-    };
+  tabs: {
+    type: Array as PropType<TabDefinition[]>,
+    required: true,
   },
 });
+
+const activeTab = ref<string | null>(null);
+
+const handleClick = (tab: TabDefinition) => {
+  if (props.initialTab !== false) {
+    window.location.hash = props.hashPrefix + tab.name;
+  }
+
+  if (props.closeable && activeTab.value === tab.name) {
+    activeTab.value = null;
+    return;
+  }
+
+  activeTab.value = tab.name;
+};
+
+const activeTabContents = computed(() => {
+  return (props.tabs as unknown as TabDefinition[])?.find((tab) => tab.name === activeTab.value);
+});
+
+const config = useAdminConfig();
+const {translate} = useLanguage();
+
+watch(
+  () => [props.tabs, props.initialTab],
+  () => {
+    if (!props.tabs?.length) {
+      activeTab.value = null;
+      return;
+    }
+
+    if (activeTab.value || props.initialTab === false) {
+      return;
+    }
+
+    let initialTab = props.initialTab === true ? null : props.initialTab;
+
+    if (!props.initialTab) {
+      const hash = window.location.hash.replace('#', '').replace(props.hashPrefix ?? '', '');
+      const tabName = hash.split(HASH_SEPARATOR)[0];
+
+      const isValidHash = props.tabs?.some((tab) => tab.name === tabName);
+
+      if (isValidHash) {
+        initialTab = tabName;
+      }
+    }
+
+    activeTab.value = initialTab ?? props.tabs?.[0]?.name;
+  },
+  {immediate: true, deep: true},
+);
 </script>

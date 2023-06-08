@@ -1,64 +1,38 @@
 <template>
   <PdkBox :loading="loading">
-    <KeepAlive>
-      <Transition
-        :name="config.transitions?.tabNavigation"
-        mode="out-in">
-        <EditApiKeyForm
-          v-if="!hasAccount || editingApiKey"
-          @afterSubmit="onSubmit" />
-        <div v-else>
-          <p><StatusIndicator :status="Status.Success" />&nbsp;{{ translate('notification_account_connected') }}</p>
+    <p>
+      <span v-if="hasAccount">
+        <StatusIndicator :status="Status.Success" />&nbsp;{{ translate('notification_account_connected') }}
+      </span>
+    </p>
 
-          <PdkButtonGroup>
-            <PdkButton
-              size="small"
-              variant="primary"
-              @click="editingApiKey = true">
-              {{ translate('button_api_key_edit') }}
-            </PdkButton>
-
-            <PdkButton
-              size="small"
-              variant="primary"
-              @click="editingWebhooks = !editingWebhooks">
-              {{ translate('button_webhooks_edit') }}
-            </PdkButton>
-          </PdkButtonGroup>
-
-          <KeepAlive>
-            <WebhooksStatus v-if="!editingApiKey && editingWebhooks" />
-          </KeepAlive>
-        </div>
-      </Transition>
-    </KeepAlive>
+    <TabNavigation
+      :button-wrapper="prefixComponent(AdminComponent.ButtonGroup)"
+      :button="prefixComponent(AdminComponent.Button)"
+      :initial-tab="!hasAccount"
+      :closeable="hasAccount"
+      :tabs="tabs" />
   </PdkBox>
 </template>
 
 <script lang="ts" setup>
 import {computed, ref} from 'vue';
 import {get} from '@vueuse/core';
-import {Status} from '@myparcel-pdk/common';
-import {type FormInstance} from '@myparcel/vue-form-builder';
+import {type TabDefinition, Status, AdminComponent} from '@myparcel-pdk/common';
+import TabNavigation from '../common/TabNavigation.vue';
 import StatusIndicator from '../common/StatusIndicator.vue';
-import {useAdminConfig, useLanguage, useStoreContextQuery} from '../../composables';
+import {prefixComponent} from '../../helpers';
+import {useLanguage, useStoreContextQuery} from '../../composables';
 import {useUpdateAccountMutation} from '../../actions';
 import WebhooksStatus from './WebhooksStatus.vue';
 import EditApiKeyForm from './EditApiKeyForm.vue';
 
 const contextQuery = useStoreContextQuery();
 
-const editingApiKey = ref(false);
-const editingWebhooks = ref(false);
-
 const updateAccount = useUpdateAccountMutation();
 
-const onSubmit = (form: FormInstance) => {
-  hasApiKey.value = Boolean(form.model.apiKey.ref);
-  editingApiKey.value = !hasApiKey.value;
-};
-
 const hasApiKey = ref(Boolean(get(contextQuery.data)?.pluginSettings.account.apiKey));
+
 const loading = computed(() => get(contextQuery.isLoading) || get(updateAccount.isLoading));
 
 const hasAccount = computed(() => {
@@ -67,5 +41,23 @@ const hasAccount = computed(() => {
 
 const {translate} = useLanguage();
 
-const config = useAdminConfig();
+const tabs = computed(() => {
+  const array: TabDefinition[] = [
+    {
+      name: 'apiKey',
+      component: EditApiKeyForm,
+      label: 'button_api_key_edit',
+    },
+  ];
+
+  if (hasAccount.value) {
+    array.push({
+      name: 'webhooks',
+      component: WebhooksStatus,
+      label: 'button_webhooks_edit',
+    });
+  }
+
+  return array;
+});
 </script>

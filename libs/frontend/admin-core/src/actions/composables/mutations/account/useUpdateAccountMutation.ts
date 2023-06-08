@@ -4,13 +4,15 @@ import {isOfType} from '@myparcel/ts-utils';
 import {type ApiException} from '@myparcel/sdk';
 import {usePdkMutation} from '../usePdkMutation';
 import {formToBody} from '../../../../utils';
-import {NotificationCategory} from '../../../../types';
+import {NotificationCategory, type ActionInput} from '../../../../types';
 import {useNotificationStore, type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
+import {useLanguage} from '../../../../composables';
 
 export const useUpdateAccountMutation = (): ResolvedQuery<BackendEndpoint.UpdateAccount> => {
   const queryClient = useQueryClient();
   const defaultMutationOptions = queryClient.defaultMutationOptions();
+  const {translate} = useLanguage();
 
   return usePdkMutation(
     BackendEndpoint.UpdateAccount,
@@ -25,7 +27,7 @@ export const useUpdateAccountMutation = (): ResolvedQuery<BackendEndpoint.Update
     {
       ...defaultMutationOptions,
 
-      onError: (error, variables, context) => {
+      onError(error, variables: ActionInput<BackendEndpoint.UpdateAccount>, context) {
         if (!isOfType<ApiException>(error, 'data')) {
           defaultMutationOptions.onError?.(error, variables, context);
         }
@@ -35,8 +37,8 @@ export const useUpdateAccountMutation = (): ResolvedQuery<BackendEndpoint.Update
 
         notificationStore.add({
           category: NotificationCategory.Api,
-          content: `${translation}_content`,
-          title: translation,
+          content: translate(`${translation}_content`),
+          title: translate(translation),
           timeout: false,
           variant: Variant.Error,
         });

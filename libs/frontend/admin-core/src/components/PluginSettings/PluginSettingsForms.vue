@@ -1,6 +1,10 @@
 <template>
-  <div v-show="hasAccount">
-    <TabNavigation :tabs="tabs" />
+  <div>
+    <div v-show="hasAccount">
+      <TabNavigation :tabs="tabs" />
+    </div>
+
+    <PdkLoader v-if="loading" />
   </div>
 </template>
 
@@ -9,39 +13,36 @@ import {computed, ref, watch} from 'vue';
 import {get} from '@vueuse/core';
 import {type TabDefinition} from '@myparcel-pdk/common';
 import TabNavigation from '../common/TabNavigation.vue';
-import {AdminContextKey} from '../../types';
+import {AdminContextKey, type AdminAction} from '../../types';
 import {createActionContext} from '../../services';
 import {createPluginSettingsTabs} from '../../forms';
-import {useAccount, useAdminConfig, useLogger, useStoreContextQuery} from '../../composables';
+import {useAdminConfig, useStoreContextQuery} from '../../composables';
 import {pluginSettingsUpdateAction} from '../../actions';
 
 const dynamicContextQuery = useStoreContextQuery();
 const pluginSettingsContextQuery = useStoreContextQuery(AdminContextKey.PluginSettingsView);
 
 const tabs = ref<TabDefinition[]>([]);
-const hasAccount = computed(() => !!get(dynamicContextQuery.data)?.account);
-const logger = useLogger();
+const hasAccount = computed(() => {
+  return Boolean(get(dynamicContextQuery.data)?.account);
+});
 
 const config = useAdminConfig();
-const actionContext = createActionContext(pluginSettingsUpdateAction);
+
+const actionContext = createActionContext<AdminAction.PluginSettingsUpdate>(pluginSettingsUpdateAction);
 
 watch(
   () => dynamicContextQuery.dataUpdatedAt,
   () => {
-    if (pluginSettingsContextQuery.isLoading || dynamicContextQuery.isLoading || !useAccount()) {
+    if (get(pluginSettingsContextQuery.isLoading) || get(dynamicContextQuery.isLoading)) {
       return;
     }
 
     const pluginSettingsView = get(pluginSettingsContextQuery.data);
     const dynamicContext = get(dynamicContextQuery.data);
 
-    if (!dynamicContext?.pluginSettings) {
-      logger.error('Plugin settings not found');
-      return;
-    }
-
-    if (!pluginSettingsView) {
-      logger.error(`${AdminContextKey.PluginSettingsView} not found`);
+    if (!pluginSettingsView || !dynamicContext?.pluginSettings || !hasAccount.value) {
+      tabs.value = [];
       return;
     }
 
@@ -53,4 +54,6 @@ watch(
   },
   {immediate: true},
 );
+
+const loading = computed(() => dynamicContextQuery.isLoading || pluginSettingsContextQuery.isLoading);
 </script>

@@ -1,5 +1,5 @@
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {createMutationHandler, createQueryHandler, executeNextAction} from '../executors';
+import {createMutationHandler, createQueryHandler} from '../executors';
 import {defineAction} from '../defineAction';
 import {AdminAction, AdminContextKey, AdminIcon} from '../../types';
 
@@ -24,16 +24,17 @@ export const updateAccountAction = defineAction({
   icon: AdminIcon.Save,
   label: 'action_save',
   handler: createMutationHandler(BackendEndpoint.UpdateAccount),
-  async afterHandle(context) {
-    if (context.response === undefined) {
+  afterHandle(context) {
+    if (!context.response?.[0].dynamic?.account) {
       context.instance.logger.error('Account not found');
       return context.response;
     }
 
-    await Promise.all([
-      executeNextAction(context, fetchDynamicContextAction),
-      executeNextAction(context, fetchPluginSettingsViewContextAction),
-    ]);
+    // TODO: Make this action properly interactive
+    // await Promise.all([
+    //   executeNextAction(context, fetchDynamicContextAction),
+    //   executeNextAction(context, fetchPluginSettingsViewContextAction),
+    // ]);
 
     return context.response;
   },

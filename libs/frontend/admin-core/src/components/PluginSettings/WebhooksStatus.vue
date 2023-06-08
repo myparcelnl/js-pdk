@@ -1,6 +1,8 @@
 <template>
-  <PdkBox>
-    <h2>{{ translate('settings_webhook_title') }}</h2>
+  <div>
+    <PdkHeading level="2">
+      {{ translate('settings_webhook_title') }}
+    </PdkHeading>
 
     <PdkButtonGroup>
       <ActionButton
@@ -20,7 +22,7 @@
     </ul>
 
     <PdkLoader v-else />
-  </PdkBox>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -40,8 +42,10 @@ const {fetchWebhooks, createWebhooks, deleteWebhooks} = useQueryStore().register
 
 useActionStore().registerWebhookActions();
 
+const data = computed(() => get(fetchWebhooks.data) ?? []);
+
 const webhooks = computed<(WebhookDefinition & {status: Status})[]>(() => {
-  return (get(fetchWebhooks.data) ?? []).map((webhook) => {
+  return data.value.map((webhook) => {
     let status = Status.Pending;
 
     if (!get(fetchWebhooks.isLoading) && !get(createWebhooks.isLoading) && !get(deleteWebhooks.isLoading)) {
@@ -54,7 +58,7 @@ const webhooks = computed<(WebhookDefinition & {status: Status})[]>(() => {
 
 const webhookActions = computed(() => {
   const actions: ActionDefinition[] = [];
-  const [connected, disconnected] = partitionArray(get(fetchWebhooks.data) ?? [], (webhook) => webhook.connected);
+  const [connected, disconnected] = partitionArray(data.value, (webhook) => webhook.connected);
 
   if (disconnected.length) {
     actions.push(...defineActions(webhooksCreateAction, {hooks: disconnected.map(({hook}) => hook)}));
