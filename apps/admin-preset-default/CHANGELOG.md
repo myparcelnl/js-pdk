@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.71](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.70...@myparcel-pdk/admin-preset-default@1.0.0-alpha.71) "@myparcel-pdk/admin-preset-default" (2023-06-09)
+
+
+### Bug Fixes
+
+* **components:** add name attribute to all form elements ([be95d50](https://github/myparcelnl/js-pdk/commit/be95d508fb496b75806a0262fc67a6c795a66753))
+
+
+
+
 ## [1.0.0-alpha.70](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.69...@myparcel-pdk/admin-preset-default@1.0.0-alpha.70) "@myparcel-pdk/admin-preset-default" (2023-06-08)
 
 

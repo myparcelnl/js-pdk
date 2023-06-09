@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.73](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.72...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.73) "@myparcel-pdk/frontend-admin-core" (2023-06-09)
+
+
+### Features
+
+* **admin:** make generateFieldId configurable ([b293d97](https://github/myparcelnl/js-pdk/commit/b293d97e6a28e0e93ace42a340ed0a8e7c2275da))
+
+
+### Bug Fixes
+
+* **admin:** remove form prefix from product settings fields ([d64c311](https://github/myparcelnl/js-pdk/commit/d64c3116b38ac2e9b1a1152c16499dffae2550d2))
+
+
+
+
 ## [1.0.0-alpha.72](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.71...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.72) "@myparcel-pdk/frontend-admin-core" (2023-06-08)
 
 
