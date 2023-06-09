@@ -6,5 +6,6 @@ export const getDefaultConfig = vi.fn(
   (): AdminConfiguration => ({
     components: {} as AdminComponentMap,
     logLevel: LogLevel.Off,
+    generateFieldId: (element) => `${element.form.name}-${element.name}`,
   }),
 );
