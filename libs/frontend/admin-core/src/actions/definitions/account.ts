@@ -31,6 +31,7 @@ export const updateAccountAction = defineAction({
     }
 
     // TODO: Make this action properly interactive
+    window.location.reload();
     // await Promise.all([
     //   executeNextAction(context, fetchDynamicContextAction),
     //   executeNextAction(context, fetchPluginSettingsViewContextAction),

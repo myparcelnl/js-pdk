@@ -6,7 +6,7 @@ const BEFORE_HANDLE = 'beforeHandle';
 
 export async function executeBeforeHandle<A extends MaybeAdminAction>(
   context: ActionContext<A>,
-): Promise<MaybeActionParameters<A>> {
+): Promise<MaybeActionParameters<A> | StopActionHandler> {
   const {action, instance, parameters} = context;
 
   try {
@@ -18,7 +18,7 @@ export async function executeBeforeHandle<A extends MaybeAdminAction>(
     context.parameters = resolvedParameters;
   } catch (error) {
     if (error instanceof StopActionHandler) {
-      return;
+      return error;
     }
 
     instance.logger.error(BEFORE_HANDLE, error);

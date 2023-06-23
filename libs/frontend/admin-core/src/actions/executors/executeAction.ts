@@ -1,3 +1,4 @@
+import {StopActionHandler} from '../stopActionHandler';
 import {type MaybeActionResponse, type MaybeAdminAction} from '../../types';
 import {type ActionContext} from './types';
 import {executeHandler} from './executeHandler';
@@ -19,7 +20,7 @@ export const executeAction = async <A extends MaybeAdminAction>(
   const resolvedParameters = await executeBeforeHandle(context);
 
   // If the action was stopped, return early.
-  if (!resolvedParameters) {
+  if (resolvedParameters instanceof StopActionHandler) {
     instance.logger.debug('Action canceled');
     return;
   }

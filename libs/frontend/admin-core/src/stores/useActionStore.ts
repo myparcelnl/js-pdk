@@ -1,4 +1,4 @@
-import {type UnwrapNestedRefs, ref} from 'vue';
+import {ref} from 'vue';
 import {defineStore} from 'pinia';
 import {type OneOrMore, type PromiseOr, toArray} from '@myparcel/ts-utils';
 import {type ActionParameters, type AdminAction, type AnyAdminAction, type ResolvedAction} from '../types';
@@ -39,7 +39,7 @@ export const useActionStore = defineStore('actions', () => {
       });
   };
 
-  const get = (action: string | AdminAction): UnwrapNestedRefs<ResolvedAction | undefined> => {
+  const get = (action: string | AdminAction): ResolvedAction | undefined => {
     return actions.value.find((a) => a.id === action);
   };
 

@@ -46,7 +46,7 @@ export type AnyAdminAction<A extends MaybeAdminAction = MaybeAdminAction> = A ex
 
 export type ActionDefinition = AnyAdminAction & {
   id: string;
-  parameters: ActionParameters<MaybeAdminAction>;
+  parameters?: ActionParameters<MaybeAdminAction>;
 };
 
 /**

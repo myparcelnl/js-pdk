@@ -19,10 +19,7 @@ export const useUpdateAccountMutation = (): ResolvedQuery<BackendEndpoint.Update
     async ({form}) => {
       const pdk = usePdkAdminApi();
 
-      return pdk.updateAccount({
-        // @ts-expect-error custom endpoints are not typed correctly
-        body: formToBody(form),
-      });
+      return pdk.updateAccount({body: formToBody(form)});
     },
     {
       ...defaultMutationOptions,

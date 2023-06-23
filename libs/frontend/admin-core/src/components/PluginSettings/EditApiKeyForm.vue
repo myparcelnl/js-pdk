@@ -10,10 +10,10 @@ import {get} from '@vueuse/core';
 import {AdminComponent, Variant, Size} from '@myparcel-pdk/common';
 import {type FormInstance, MagicForm, defineField, defineForm, FormHook} from '@myparcel/vue-form-builder';
 import {ResetButton, SubmitButton} from '../common';
-import {createActionContext} from '../../services';
+import {AdminAction} from '../../types';
+import {useActionStore} from '../../stores';
 import {FORM_KEY_ACCOUNT_SETTINGS, defineFormField, resolveFormComponent} from '../../forms';
 import {useAdminConfig, usePluginSettings, useStoreContextQuery} from '../../composables';
-import {updateAccountAction, executeAction} from '../../actions';
 
 defineEmits<(e: 'afterSubmit', form: FormInstance) => void>();
 
@@ -22,19 +22,14 @@ const FIELD_API_KEY = 'apiKey';
 const API_KEY_LABEL = 'settings_account_api_key';
 
 const createForm = (): FormInstance => {
-  const actionContext = createActionContext(updateAccountAction);
+  const actionStore = useActionStore();
+  const config = useAdminConfig();
   const pluginSettings = usePluginSettings();
 
-  const config = useAdminConfig();
   const apiKeyRef = ref(pluginSettings.account.apiKey);
 
   const submitApiKey = async (form: FormInstance): Promise<void> => {
-    const response = await executeAction({...actionContext, parameters: {form}});
-
-    if (response) {
-      // TODO: Make this action properly interactive and remove the reload.
-      window.location.reload();
-    }
+    await actionStore.dispatch(AdminAction.AccountUpdate, {form});
   };
 
   return defineForm(FORM_KEY_ACCOUNT_SETTINGS, {
