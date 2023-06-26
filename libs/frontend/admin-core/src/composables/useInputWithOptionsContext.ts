@@ -43,7 +43,7 @@ export const useInputWithOptionsContext: UseInputWithOptionsContext = (props, em
       (newOptions) => {
         const hasExistingValue = get(model) && newOptions.some((option) => option.value === get(model));
 
-        if (!hasExistingValue || newOptions.length === 0) {
+        if (hasExistingValue || newOptions.length === 0) {
           return;
         }
 
