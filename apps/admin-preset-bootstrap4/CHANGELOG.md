@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.76](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.75...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.76) "@myparcel-pdk/admin-preset-bootstrap4" (2023-06-26)
+
+
+### Performance Improvements
+
+* slightly reduce final bundle size ([52ba094](https://github/myparcelnl/js-pdk/commit/52ba0948423fecf58e879a18f0153616e8ca7c4c))
+
+
+
+
 ## [1.0.0-alpha.74](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.73...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.74) "@myparcel-pdk/admin-preset-bootstrap4" (2023-06-09)
 
 
