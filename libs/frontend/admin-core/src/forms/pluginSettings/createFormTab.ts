@@ -13,8 +13,7 @@ export const createFormTab = (tab: FormTab): TabDefinition => {
   }
 
   return {
-    name: tab.name,
-    label: tab.label,
+    ...tab,
     component: () => h('div', {}, children),
   };
 };

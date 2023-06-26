@@ -18,7 +18,7 @@
             class="close"
             data-dismiss="modal"
             type="button">
-            <PdkIcon icon="close" />
+            <PdkIcon :icon="AdminIcon.Close" />
           </button>
         </div>
 
@@ -52,6 +52,7 @@ import {
   NotificationContainer,
   useLanguage,
   useModalStore,
+  AdminIcon,
 } from '@myparcel-pdk/frontend-admin-core';
 
 const props = defineProps({

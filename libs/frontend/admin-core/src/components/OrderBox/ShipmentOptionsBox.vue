@@ -3,7 +3,7 @@
     :actions="actions"
     :loading="loading">
     <template #header>
-      <PdkIcon icon="config" />
+      <PdkIcon :icon="AdminIcon.Shipment" />
       <span>{{ translate('shipment_options_title') }} #{{ data?.externalIdentifier }}</span>
     </template>
 
@@ -26,6 +26,7 @@ import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
+import {AdminIcon} from '../../types';
 import {defineActions} from '../../services';
 import {useLanguage, useOrder, usePluginSettings, useStoreQuery} from '../../composables';
 import {

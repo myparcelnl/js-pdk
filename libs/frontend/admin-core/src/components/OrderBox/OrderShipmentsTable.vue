@@ -8,16 +8,16 @@
             :options="bulkOptions" />
         </PdkTableCol>
 
-        <PdkTableCol component="th">{{ translate('order_labels_column_track_trace') }}</PdkTableCol>
+        <PdkTableCol component="th">{{ translate(`${translationPrefix}track_trace`) }}</PdkTableCol>
 
-        <PdkTableCol component="th">{{ translate('order_labels_column_status') }}</PdkTableCol>
+        <PdkTableCol component="th">{{ translate(`${translationPrefix}status`) }}</PdkTableCol>
 
-        <PdkTableCol component="th">{{ translate('order_labels_column_last_update') }}</PdkTableCol>
+        <PdkTableCol component="th">{{ translate(`${translationPrefix}last_update`) }}</PdkTableCol>
 
         <PdkTableCol
           align="right"
           component="th">
-          {{ translate('order_labels_column_actions') }}
+          {{ translate(`${translationPrefix}actions`) }}
         </PdkTableCol>
       </PdkTableRow>
     </template>
@@ -47,4 +47,6 @@ const data = computed(() => get(query.data));
 const {bulkModel, bulkOptions} = useBulkSelectCheckbox(query.data.value?.shipments?.map(({id}) => id) ?? [], emit);
 
 const {translate} = useLanguage();
+
+const translationPrefix = 'order_labels_column_';
 </script>

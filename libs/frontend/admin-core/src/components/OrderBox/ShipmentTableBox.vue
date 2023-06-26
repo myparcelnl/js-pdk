@@ -1,7 +1,7 @@
 <template>
   <PdkBox>
     <template #header>
-      <PdkIcon icon="shipment" />
+      <PdkIcon :icon="AdminIcon.Shipment" />
       {{ translate('order_labels_header') }}
     </template>
 
@@ -23,43 +23,29 @@
   </PdkBox>
 </template>
 
-<script lang="ts">
-import {computed, defineComponent, ref, toRaw} from 'vue';
+<script setup lang="ts">
+import {computed, ref, toRaw} from 'vue';
 import {get, isDef} from '@vueuse/core';
+import {AdminIcon} from '../../types';
 import {defineActions} from '../../services';
-import {useLanguage, useOrder} from '../../composables';
+import {useOrder, useLanguage} from '../../composables';
 import {shipmentActions} from '../../actions';
 import OrderShipmentsTable from './OrderShipmentsTable.vue';
 
-export default defineComponent({
-  name: 'ShipmentTableBox',
-  components: {
-    OrderShipmentsTable,
-  },
+const query = useOrder();
 
-  setup: () => {
-    const query = useOrder();
+const selectedLabels = ref<(string | number)[]>([]);
 
-    const selectedLabels = ref<(string | number)[]>([]);
-    const {translate} = useLanguage();
-
-    return {
-      query,
-      selectedLabels,
-
-      bulkActions: computed(() => {
-        return defineActions(shipmentActions, {
-          orderIds: get(query.data)?.externalIdentifier,
-          shipmentIds: toRaw(selectedLabels.value),
-        });
-      }),
-
-      setSelectedLabels(labels: Record<string | number, boolean>): void {
-        selectedLabels.value = Object.keys(labels).filter((id) => isDef(labels[id]));
-      },
-
-      translate,
-    };
-  },
+const bulkActions = computed(() => {
+  return defineActions(shipmentActions, {
+    orderIds: get(query.data)?.externalIdentifier,
+    shipmentIds: toRaw(selectedLabels.value),
+  });
 });
+
+const setSelectedLabels = (labels: Record<string | number, boolean>): void => {
+  selectedLabels.value = Object.keys(labels).filter((id) => isDef(labels[id]));
+};
+
+const {translate} = useLanguage();
 </script>
