@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.74](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.73...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.74) "@myparcel-pdk/frontend-admin-core" (2023-06-26)
+
+
+### Features
+
+* **settings:** add manual update button to account settings ([b284503](https://github/myparcelnl/js-pdk/commit/b284503a95c9e9da6da846c44914a04133482d87))
+
+
+
+
 ## [1.0.0-alpha.73](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.72...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.73) "@myparcel-pdk/frontend-admin-core" (2023-06-09)
 
 
