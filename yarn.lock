@@ -1556,8 +1556,8 @@ __metadata:
   linkType: hard
 
 "@myparcel/delivery-options@npm:^5.7.2":
-  version: 5.7.4
-  resolution: "@myparcel/delivery-options@npm:5.7.4"
+  version: 5.8.0
+  resolution: "@myparcel/delivery-options@npm:5.8.0"
   dependencies:
     "@fortawesome/free-solid-svg-icons": ^5.15.4
     "@myparcel/js-sdk": ^2.0.3
@@ -1570,7 +1570,7 @@ __metadata:
     vue-async-computed: ^3.9.0
     vue-click-outside: ^1.1.0
     vue-fa: ^2.0.1
-  checksum: 0a8f56daffb4dbb2f1f4a8116794fae1bf0b9f977e8c9c2c02c10dd38a9a6e60de93fdad1270e592886d970cc1a8d4c159b2851011ec64074bdf341e0a898ab9
+  checksum: e96a85df78a1a4d84c80375a437fe7e79cd5f883b7f81244b6494c72aab55e005f8b0aaaceddf419c0718d65329bcd1cc03404071933acc10eb6b74ec31faa88
   languageName: node
   linkType: hard
 
@@ -13368,11 +13368,11 @@ __metadata:
 
 "typescript@patch:typescript@^5.0.3#~builtin<compat/typescript>, typescript@patch:typescript@^5.1.3#~builtin<compat/typescript>":
   version: 5.1.3
-  resolution: "typescript@patch:typescript@npm%3A5.1.3#~builtin<compat/typescript>::version=5.1.3&hash=5da071"
+  resolution: "typescript@patch:typescript@npm%3A5.1.3#~builtin<compat/typescript>::version=5.1.3&hash=77c9e2"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 6f0a9dca6bf4ce9dcaf4e282aade55ef4c56ecb5fb98d0a4a5c0113398815aea66d871b5611e83353e5953a19ed9ef103cf5a76ac0f276d550d1e7cd5344f61e
+  checksum: 32a25b2e128a4616f999d4ee502aabb1525d5647bc8955e6edf05d7fbc53af8aa98252e2f6ba80bcedfc0260c982b885f3c09cfac8bb65d2924f3133ad1e1e62
   languageName: node
   linkType: hard
 
