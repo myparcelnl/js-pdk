@@ -1,6 +1,6 @@
 export * from './createDefaultAppConfig';
 export * from './getDefaultAccount';
-export * from './getDefaultCarrierOptions';
+export * from './getDefaultCarriers';
 export * from './getDefaultPluginSettings';
 export * from './getDefaultPrintOptionsView';
 export * from './getDefaultShop';

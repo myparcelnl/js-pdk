@@ -12,7 +12,7 @@ import {createShipmentFormName} from '../../utils';
 import {AdminContextKey, AdminModalKey, type ElementInstance, type RadioGroupOption} from '../../types';
 import {useModalStore} from '../../stores';
 import {useCarrier} from '../../sdk';
-import {useAdminConfig, useAssetUrl, useContext, useLocalizedFormatter} from '../../composables';
+import {useAdminConfig, useAssetUrl, useContext, useLocalizedFormatter, useLanguage} from '../../composables';
 import {
   addBulkEditNotification,
   getFormattedInsurancePossibilities,
@@ -45,6 +45,8 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
   const modalStore = useModalStore();
   const formatter = useLocalizedFormatter();
 
+  const {translate} = useLanguage();
+
   const isBulk = ordersArray.length > 1;
   const isModal = modalStore.opened === AdminModalKey.ShipmentOptions;
 
@@ -76,15 +78,22 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
         // @ts-expect-error todo
         onBeforeMount: async (field) => {
           const carrierSelectOptions = await Promise.all(
-            dynamicContext.carrierOptions.map(async (options): Promise<RadioGroupOption> => {
-              const query = useCarrier(options.carrier.name);
+            dynamicContext.carriers.map(async (carrier): Promise<RadioGroupOption> => {
+              const query = useCarrier(carrier.name);
               await query.suspense();
-              const data = get(query.data);
+
+              const apiCarrier = get(query.data);
+
+              let plainLabel = apiCarrier?.human ?? carrier.human ?? '';
+
+              if (!carrier.isDefault) {
+                plainLabel += ` (${carrier.label ?? translate('custom')})`;
+              }
 
               return {
-                plainLabel: data?.human ?? '',
-                value: data?.name ?? '',
-                image: useAssetUrl(data?.meta.logo_svg ?? ''),
+                plainLabel,
+                value: carrier.externalIdentifier ?? apiCarrier?.name ?? '',
+                image: apiCarrier?.meta.logo_svg ? useAssetUrl(apiCarrier.meta.logo_svg) : undefined,
               };
             }),
           );

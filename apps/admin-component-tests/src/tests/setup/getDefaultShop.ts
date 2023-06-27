@@ -9,7 +9,7 @@ export const getDefaultShop = vi.fn(() => ({
   billing: {},
   return: {},
   carrierConfigurations: [],
-  carrierOptions: [],
+  carriers: [],
   deliveryAddress: {},
   hidden: false,
   shipmentOptions: {},

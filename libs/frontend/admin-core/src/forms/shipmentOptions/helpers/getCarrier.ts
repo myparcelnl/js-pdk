@@ -4,9 +4,9 @@ import {CARRIER} from '../field';
 import {AdminContextKey} from '../../../types';
 import {useContext} from '../../../composables';
 
-export const getCarrierOptions = (form: FormInstance): Carrier.ModelCarrierOptions | undefined => {
+export const getCarrier = (form: FormInstance): Carrier.ModelCarrier | undefined => {
   const dynamicContext = useContext(AdminContextKey.Dynamic);
   const chosenCarrier = form.getValue(CARRIER);
 
-  return dynamicContext.carrierOptions.find((options) => options.carrier.name === chosenCarrier);
+  return dynamicContext.carriers.find((carrier) => carrier.name === chosenCarrier);
 };

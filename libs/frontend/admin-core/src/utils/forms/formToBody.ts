@@ -5,15 +5,11 @@ import {convertDotNotationToObject} from '../convertDotNotationToObject';
 export const formToBody = <T extends Record<string, unknown> = Record<string, unknown>>(
   form?: false | FormInstance | T,
 ): T => {
-  if (isOfType<FormInstance>(form, 'getValues')) {
-    return convertDotNotationToObject(form.getValues(), (value) => {
-      if (typeof value === 'boolean') {
-        return value ? '1' : '0';
-      }
-
-      return value;
-    }) as T;
+  if (!isOfType<FormInstance>(form, 'getValues')) {
+    return form ? form : ({} as T);
   }
 
-  return form ? form : ({} as T);
+  return convertDotNotationToObject(form.getValues(), (value) => {
+    return typeof value === 'boolean' ? Number(value) : value;
+  }) as T;
 };

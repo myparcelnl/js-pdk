@@ -1,14 +1,14 @@
 <template>
   <div>
     <PdkHeading
-      v-if="element.props.heading && has(element.props.heading)"
+      v-if="element.props.heading"
       :level="element.props.level">
       {{ translate(element.props.heading) }}
     </PdkHeading>
 
-    <p v-if="element.props.content && has(element.props.content)">
-      {{ translate(element.props.content) }}
-    </p>
+    <p
+      v-if="element.props.content && has(element.props.content)"
+      v-text="translate(element.props.content)" />
   </div>
 </template>
 

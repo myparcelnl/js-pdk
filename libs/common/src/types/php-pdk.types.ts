@@ -55,7 +55,7 @@ export namespace Account {
     shipmentOptions: Record<string, unknown>;
     trackTrace: Record<string, unknown>;
     carrierConfigurations: ShopCarrierConfigurationCollection;
-    carrierOptions: Carrier.CarrierOptionsCollection;
+    carriers: Carrier.CarrierCollection;
   };
 
   export type ModelShopCarrierConfiguration = {
@@ -122,7 +122,7 @@ export namespace Base {
 }
 
 export namespace Carrier {
-  export type CarrierOptionsCollection = ModelCarrierOptions[];
+  export type CarrierCollection = ModelCarrier[];
 
   export type ModelCapability = {
     type: string;
@@ -137,14 +137,16 @@ export namespace Carrier {
     externalIdentifier?: string;
     id: CarrierId;
     name: CarrierName;
-    human?: string;
+    human: string;
     subscriptionId?: number;
     enabled: boolean;
     primary: boolean;
     isDefault: boolean;
     optional: boolean;
     label?: string;
-    type?: string;
+    type: string;
+    capabilities: ModelCarrierCapabilities;
+    returnCapabilities: ModelCarrierCapabilities;
   };
 
   export type ModelCarrierCapabilities = {
@@ -152,12 +154,6 @@ export namespace Carrier {
     features: Record<string, unknown>;
     packageTypes: string[];
     shipmentOptions: Shipment.ModelShipmentOptions;
-  };
-
-  export type ModelCarrierOptions = {
-    carrier: ModelCarrier;
-    capabilities: ModelCarrierCapabilities;
-    returnCapabilities: ModelCarrierCapabilities;
   };
 
   export type ModelShipmentOptionsCapabilities = {
@@ -416,7 +412,7 @@ export namespace Plugin {
 
   export type ModelContextDynamicContext = {
     account: Account.ModelAccount;
-    carrierOptions: Carrier.CarrierOptionsCollection;
+    carriers: Carrier.CarrierCollection;
     pluginSettings: Settings.ModelSettings;
     printOptionsView: SettingsView;
     shop: Account.ModelShop;
@@ -437,6 +433,7 @@ export namespace Plugin {
   export type SettingsView = {
     id: string;
     title: string;
+    titleSuffix?: string;
     description?: string;
     subtext?: string;
     elements: null | Field[];
@@ -780,7 +777,7 @@ export namespace Shipment {
     externalIdentifier?: string;
     apiKey?: string;
     barcode?: string;
-    carrier?: Carrier.ModelCarrierOptions;
+    carrier?: Carrier.ModelCarrier;
     collectionContact?: string;
     customsDeclaration?: ModelCustomsDeclaration;
     delayed: boolean;

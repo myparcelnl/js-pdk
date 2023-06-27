@@ -12,7 +12,11 @@
         v-if="tab.icon"
         :icon="tab.icon" />
       {{ translate(tab.label) }}
+      <span
+        v-if="tab.labelSuffix"
+        v-text="` ${translate(tab.labelSuffix)}`"></span>
     </component>
+    <slot name="button-wrapper" />
   </component>
 
   <PdkTabNavContentWrapper v-if="activeTabContents">
