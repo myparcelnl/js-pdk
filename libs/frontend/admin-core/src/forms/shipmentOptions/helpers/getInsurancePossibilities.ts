@@ -1,8 +1,8 @@
 import {type FormInstance} from '@myparcel/vue-form-builder';
-import {getCarrierOptions} from './getCarrierOptions';
+import {getCarrier} from './getCarrier';
 
 export const getInsurancePossibilities = (form: FormInstance): number[] => {
-  const carrierOptions = getCarrierOptions(form);
+  const carrier = getCarrier(form);
 
-  return carrierOptions?.capabilities?.shipmentOptions.insurance ?? [];
+  return carrier?.capabilities.shipmentOptions.insurance ?? [];
 };

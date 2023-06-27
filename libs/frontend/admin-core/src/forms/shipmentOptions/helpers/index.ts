@@ -1,5 +1,5 @@
 export * from './addBulkEditNotification';
-export * from './getCarrierOptions';
+export * from './getCarrier';
 export * from './getFormattedInsurancePossibilities';
 export * from './getInsurancePossibilities';
 export * from './getPackageTypes';

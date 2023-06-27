@@ -26,7 +26,7 @@ export const useShipmentData = (id: number): UseShipmentData => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const shipment = computed(() => get(query.data)!);
 
-  const carrierName = shipment.value?.carrier?.carrier?.name;
+  const carrierName = shipment.value?.carrier?.name;
   const carriersQuery = carrierName ? useCarrier(carrierName) : undefined;
 
   return {

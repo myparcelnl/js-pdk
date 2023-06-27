@@ -35,6 +35,7 @@ export interface TabDefinition {
   description?: string;
   icon?: string;
   label: string;
+  labelSuffix?: string;
   name: string;
   subtext?: string;
 }

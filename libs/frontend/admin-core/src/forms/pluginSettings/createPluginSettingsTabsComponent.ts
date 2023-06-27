@@ -17,11 +17,12 @@ export const createPluginSettingsTabsComponent = (
     setup: () => {
       return {
         tabs: (view.children ?? []).map((subview) => {
-          const {subtext, description, id: subviewId, title} = subview;
+          const {subtext, description, id: subviewId, title, titleSuffix} = subview;
 
           return createFormTab({
             name: `${id}.${subviewId}`,
             label: title,
+            labelSuffix: titleSuffix,
             form: createPluginSettingsForm(`${id}.${subviewId}`, subview, context),
             description,
             subtext,
