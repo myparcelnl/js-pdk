@@ -8,5 +8,6 @@ export const mergeDefaultConfig = (config: PdkBuilderConfig): Required<PdkBuilde
   jsonSpaces: DEFAULT_JSON_SPACES,
   outDir: 'dist',
   platformFolderName: '{{platform}}-{{name}}',
+  version: '0.0.0',
   ...config,
 });

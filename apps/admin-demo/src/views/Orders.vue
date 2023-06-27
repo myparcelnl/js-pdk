@@ -15,7 +15,7 @@
           <RouterLink :to="`/orders/${order.externalIdentifier}`"> #{{ order.externalIdentifier }} </RouterLink>
         </td>
 
-        <td class="p-4">{{ order.recipient.fullStreet }}, {{ order.recipient.city }}</td>
+        <td class="p-4">{{ order.shippingAddress.address1 }}, {{ order.shippingAddress.city }}</td>
 
         <td class="p-4">
           <OrderListItemView :order-identifier="order.externalIdentifier" />

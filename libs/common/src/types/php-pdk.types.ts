@@ -6,11 +6,11 @@
 import {type CarrierId, type CarrierName, type DeliveryTypeName, type PackageTypeName} from '@myparcel/constants';
 import {type AdminComponent} from './pdk.types';
 
-type DateTime = {
+interface DateTime {
   date: string;
   timezone_type: number;
   timezone: string;
-};
+}
 
 type DateTimeImmutable = DateTime;
 
@@ -27,22 +27,22 @@ export namespace Account {
 
   export type GetShopsRequest = Base.Request;
 
-  export type ModelAccount = {
+  export interface ModelAccount {
     id: number;
     platformId: number;
     status: number;
     contactInfo: Base.ModelContactDetails;
     generalSettings: ModelAccountGeneralSettings;
     shops: ShopCollection;
-  };
+  }
 
-  export type ModelAccountGeneralSettings = {
+  export interface ModelAccountGeneralSettings {
     isTest: boolean;
     orderMode: boolean;
     hasCarrierContract: boolean;
-  };
+  }
 
-  export type ModelShop = {
+  export interface ModelShop {
     id: number;
     accountId: number;
     platformId: number;
@@ -56,15 +56,15 @@ export namespace Account {
     trackTrace: Record<string, unknown>;
     carrierConfigurations: ShopCarrierConfigurationCollection;
     carrierOptions: Carrier.CarrierOptionsCollection;
-  };
+  }
 
-  export type ModelShopCarrierConfiguration = {
+  export interface ModelShopCarrierConfiguration {
     carrier?: string;
     defaultCutoffTime: string;
     defaultDropOffPoint: string;
     defaultDropOffPointIdentifier: string;
     mondayCutoffTime: string;
-  };
+  }
 
   export type ShopCarrierConfigurationCollection = ModelShopCarrierConfiguration[];
 
@@ -74,43 +74,36 @@ export namespace Account {
 export namespace Base {
   export type Model = Record<string, unknown>;
 
-  export type ModelAddress = {
+  export interface ModelAddress {
+    address1?: string;
+    address2?: string;
+    area?: string;
     boxNumber?: string;
     cc?: string;
     city?: string;
-    fullStreet?: string;
-    number?: string;
-    numberSuffix?: string;
     postalCode?: string;
     region?: string;
     state?: string;
-    street?: string;
-    streetAdditionalInfo?: string;
-  };
+  }
 
-  export type ModelContactDetails = ModelAddress & {
+  export interface ModelContactDetails extends ModelAddress {
     company?: string;
     email?: string;
     person?: string;
     phone?: string;
-    cc?: string;
-    city?: string;
-    fullStreet?: string;
-    number?: string;
-    numberSuffix?: string;
-    postalCode?: string;
-    region?: string;
-    state?: string;
-    street?: string;
-    streetAdditionalInfo?: string;
-  };
+  }
 
-  export type ModelCurrency = {
+  export interface ModelShippingAddress extends ModelContactDetails {
+    eoriNumber?: string;
+    vatNumber?: string;
+  }
+
+  export interface ModelCurrency {
     amount: number;
     currency: string;
-  };
+  }
 
-  export type Request = {
+  export interface Request {
     body?: string;
     headers: Record<string, string>;
     method: string;
@@ -118,22 +111,22 @@ export namespace Base {
     path: string;
     property: string;
     responseProperty?: string;
-  };
+  }
 }
 
 export namespace Carrier {
   export type CarrierOptionsCollection = ModelCarrierOptions[];
 
-  export type ModelCapability = {
+  export interface ModelCapability {
     type: string;
     enum: unknown[];
     minimum: number;
     maximum: number;
     minLength: number;
     maxLength: number;
-  };
+  }
 
-  export type ModelCarrier = {
+  export interface ModelCarrier {
     externalIdentifier?: string;
     id: CarrierId;
     name: CarrierName;
@@ -145,22 +138,22 @@ export namespace Carrier {
     optional: boolean;
     label?: string;
     type?: string;
-  };
+  }
 
-  export type ModelCarrierCapabilities = {
+  export interface ModelCarrierCapabilities {
     deliveryTypes: string[];
     features: Record<string, unknown>;
     packageTypes: string[];
     shipmentOptions: Shipment.ModelShipmentOptions;
-  };
+  }
 
-  export type ModelCarrierOptions = {
+  export interface ModelCarrierOptions {
     carrier: ModelCarrier;
-    capabilities: ModelCarrierCapabilities;
-    returnCapabilities: ModelCarrierCapabilities;
-  };
+    capabilities?: ModelCarrierCapabilities;
+    returnCapabilities?: ModelCarrierCapabilities;
+  }
 
-  export type ModelShipmentOptionsCapabilities = {
+  export interface ModelShipmentOptionsCapabilities {
     ageCheck: ModelCapability;
     dropOffAtPostalPoint: ModelCapability;
     insurance: ModelCapability;
@@ -171,7 +164,7 @@ export namespace Carrier {
     sameDayDelivery: ModelCapability;
     saturdayDelivery: ModelCapability;
     signature: ModelCapability;
-  };
+  }
 }
 
 export namespace Frontend {
@@ -182,25 +175,25 @@ export namespace Frontend {
     label: string;
   };
 
-  export type FormPlainElement = {
+  export interface FormPlainElement {
     component: string;
     props: Record<string, unknown>;
-  };
+  }
 }
 
 export namespace Form {
   export type InputOptionsCollection = ModelInputOptions[];
 
-  export type ModelFormGroup = {
+  export interface ModelFormGroup {
     name: string;
-  };
+  }
 
-  export type ModelInputBaseInput = {
+  export interface ModelInputBaseInput {
     component: string;
     name: string;
     label: string;
     props: Record<string, unknown>;
-  };
+  }
 
   export type ModelInputCheckboxInput = ModelInputBaseInput & {
     description: string;
@@ -226,11 +219,11 @@ export namespace Form {
     type: string;
   };
 
-  export type ModelInputOptions = {
+  export interface ModelInputOptions {
     query: unknown[];
     id: number;
     name: string;
-  };
+  }
 
   export type ModelInputRadioButtonInput = ModelInputBaseInput & {
     description: string;
@@ -283,11 +276,11 @@ export namespace Form {
     values: unknown[];
   };
 
-  export type ModelSelectOptions = {
+  export interface ModelSelectOptions {
     name: string;
     label: string;
     options: unknown[];
-  };
+  }
 
   export type SelectOptionsCollection = ModelSelectOptions[];
 }
@@ -295,7 +288,7 @@ export namespace Form {
 export namespace Fulfilment {
   export type GetOrdersRequest = Base.Request;
 
-  export type ModelOrder = {
+  export interface ModelOrder {
     accountId?: number;
     createdAt?: string;
     externalIdentifier?: string;
@@ -314,9 +307,9 @@ export namespace Fulfilment {
     updatedAt?: string;
     uuid?: string;
     vat?: number;
-  };
+  }
 
-  export type ModelOrderLine = {
+  export interface ModelOrderLine {
     uuid?: string;
     quantity: number;
     price: number;
@@ -325,9 +318,9 @@ export namespace Fulfilment {
     product?: ModelProduct;
     instructions: string;
     shippable: boolean;
-  };
+  }
 
-  export type ModelProduct = {
+  export interface ModelProduct {
     externalIdentifier: string;
     uuid?: string;
     sku?: string;
@@ -338,7 +331,7 @@ export namespace Fulfilment {
     length: number;
     height: number;
     weight: number;
-  };
+  }
 
   export type OrderCollection = ModelOrder[];
 
@@ -362,15 +355,15 @@ export namespace Plugin {
 
   export type GetOrdersEndpointRequest = AbstractEndpointRequest;
 
-  export type ModelContextContextBag = {
+  export interface ModelContextContextBag {
     global: ModelContextGlobalContext;
     dynamic?: ModelContextDynamicContext;
     orderData?: OrderDataContextCollection;
     pluginSettingsView?: ModelContextPluginSettingsViewContext;
     productSettingsView?: ModelContextProductSettingsViewContext;
-  };
+  }
 
-  export type ModelContextDeliveryOptionsConfig = {
+  export interface ModelContextDeliveryOptionsConfig {
     apiBaseUrl: string;
     currency: string;
     packageType: string;
@@ -381,15 +374,15 @@ export namespace Plugin {
     pickupLocationsDefaultView: string;
     priceStandardDelivery: number;
     carrierSettings: unknown[];
-  };
+  }
 
-  export type ModelContextCheckoutContext = {
+  export interface ModelContextCheckoutContext {
     strings: Record<string, string>;
     config?: Shipment.ModelDeliveryOptions;
     settings: Record<string, unknown>;
-  };
+  }
 
-  export type ModelContextGlobalContext = {
+  export interface ModelContextGlobalContext {
     appInfo: {
       name: string;
       path: string;
@@ -412,19 +405,19 @@ export namespace Plugin {
       name: string;
     };
     translations: Record<string, string>;
-  };
+  }
 
-  export type ModelContextDynamicContext = {
+  export interface ModelContextDynamicContext {
     account: Account.ModelAccount;
     carrierOptions: Carrier.CarrierOptionsCollection;
     pluginSettings: Settings.ModelSettings;
     printOptionsView: SettingsView;
     shop: Account.ModelShop;
-  };
+  }
 
   export type ModelContextOrderDataContext = ModelPdkOrder;
 
-  export type Field = {
+  export interface Field {
     $attributes?: Record<string, unknown>;
     $component: AdminComponent;
     $slot?: string;
@@ -432,33 +425,33 @@ export namespace Plugin {
     $wrapper?: AdminComponent | boolean;
     label?: string;
     name?: string;
-  } & Record<string, unknown>;
+  }
 
-  export type SettingsView = {
+  export interface SettingsView {
     id: string;
     title: string;
     description?: string;
     subtext?: string;
     elements: null | Field[];
     children: null | SettingsView[];
-  };
+  }
 
-  export type ModelContextPluginSettingsViewContext = {
+  export interface ModelContextPluginSettingsViewContext {
     general: SettingsView;
     order: SettingsView;
     label: SettingsView;
     customs: SettingsView;
     checkout: SettingsView;
     carrier: SettingsView;
-  };
+  }
 
-  export type ModelContextProductSettingsViewContext = {
+  export interface ModelContextProductSettingsViewContext {
     product: ModelPdkProduct;
     view: SettingsView[];
     values: Settings.ModelProductSettings;
-  };
+  }
 
-  export type ModelPdkOrder = {
+  export interface ModelPdkOrder {
     customsDeclaration?: Shipment.ModelCustomsDeclaration;
     deliveryOptions?: Shipment.ModelDeliveryOptions;
     exported: boolean;
@@ -467,8 +460,9 @@ export namespace Plugin {
     orderPrice: number;
     orderPriceAfterVat: number;
     orderVat: number;
-    recipient: Base.ModelContactDetails;
-    sender?: Base.ModelContactDetails;
+    billingAddress?: Base.ModelContactDetails;
+    shippingAddress: Base.ModelContactDetails;
+    senderAddress?: Base.ModelContactDetails;
     shipmentPrice: number;
     shipmentPriceAfterVat: number;
     shipmentVat: number;
@@ -476,23 +470,23 @@ export namespace Plugin {
     totalPrice: number;
     totalPriceAfterVat: number;
     totalVat: number;
-  };
+  }
 
-  export type ModelPdkOrderLine = {
+  export interface ModelPdkOrderLine {
     quantity: number;
     price: number;
     vat: number;
     priceAfterVat: number;
     product?: Fulfilment.ModelProduct;
-  };
+  }
 
-  export type ModelPdkProduct = {
+  export interface ModelPdkProduct {
     externalIdentifier: string;
     sku?: string;
     name?: string;
     weight: number;
     settings: Settings.ModelProductSettings;
-  };
+  }
 
   export type OrderDataContextCollection = ModelContextOrderDataContext[];
 
@@ -512,11 +506,11 @@ export namespace Plugin {
 export namespace Settings {
   export type CarrierSettingsCollection = ModelCarrierSettings[];
 
-  export type ModelAccountSettings = {
+  export interface ModelAccountSettings {
     apiKey: string;
-  };
+  }
 
-  export type ModelCarrierSettings = {
+  export interface ModelCarrierSettings {
     carrierName: string;
     allowDeliveryOptions: boolean;
     allowEveningDelivery: boolean;
@@ -587,9 +581,9 @@ export namespace Settings {
     stringStandardDelivery: string;
     stringWrongNumberPostalCode: string;
     stringWrongPostalCodeCity: string;
-  };
+  }
 
-  export type ModelCheckoutSettings = {
+  export interface ModelCheckoutSettings {
     deliveryOptionsCustomCss: string;
     deliveryOptionsDisplay: boolean;
     deliveryOptionsPosition: string;
@@ -621,20 +615,20 @@ export namespace Settings {
     stringStandardDelivery: string;
     stringWrongNumberPostalCode: string;
     stringWrongPostalCodeCity: string;
-  };
+  }
 
-  export type ModelCustomsSettings = {
+  export interface ModelCustomsSettings {
     countryOfOrigin?: string;
     customsCode: string;
     packageContents: string;
-  };
+  }
 
-  export type ModelDropOffPossibilities = {
+  export interface ModelDropOffPossibilities {
     dropOffDays: Shipment.DropOffDayCollection;
     dropOffDaysDeviations: Shipment.DropOffDayCollection;
-  };
+  }
 
-  export type ModelGeneralSettings = {
+  export interface ModelGeneralSettings {
     apiLogging: boolean;
     barcodeInNote: boolean;
     conceptShipments: boolean;
@@ -644,17 +638,17 @@ export namespace Settings {
     shareCustomerInformation: boolean;
     trackTraceInAccount: boolean;
     trackTraceInEmail: boolean;
-  };
+  }
 
-  export type ModelLabelSettings = {
+  export interface ModelLabelSettings {
     description?: string;
     format: string;
     output: string;
     position: number;
     prompt: boolean;
-  };
+  }
 
-  export type ModelOrderSettings = {
+  export interface ModelOrderSettings {
     emptyDigitalStampWeight?: number;
     emptyParcelWeight?: number;
     ignoreOrderStatuses?: string;
@@ -665,9 +659,9 @@ export namespace Settings {
     statusOnLabelCreate?: string;
     statusWhenDelivered?: string;
     statusWhenLabelScanned?: string;
-  };
+  }
 
-  export type ModelProductSettings = {
+  export interface ModelProductSettings {
     allowOnlyRecipient: boolean;
     allowSignature: boolean;
     countryOfOrigin: string;
@@ -680,9 +674,9 @@ export namespace Settings {
     fitInMailbox: number;
     packageType: string;
     returnShipments: boolean;
-  };
+  }
 
-  export type ModelSettings = {
+  export interface ModelSettings {
     account: ModelAccountSettings;
     general: ModelGeneralSettings;
     order: ModelOrderSettings;
@@ -690,7 +684,7 @@ export namespace Settings {
     customs: ModelCustomsSettings;
     checkout: ModelCheckoutSettings;
     carrier: Record<string, ModelCarrierSettings>;
-  };
+  }
 }
 
 export namespace Shipment {
@@ -706,23 +700,23 @@ export namespace Shipment {
 
   export type GetShipmentsRequest = Base.Request;
 
-  export type ModelCustomsDeclaration = {
+  export interface ModelCustomsDeclaration {
     contents: number;
     items: CustomsDeclarationItemCollection;
     invoice?: string;
     weight: number;
-  };
+  }
 
-  export type ModelCustomsDeclarationItem = {
+  export interface ModelCustomsDeclarationItem {
     amount: number;
     classification?: string;
     country?: string;
     description?: string;
     itemValue: Base.ModelCurrency;
     weight: number;
-  };
+  }
 
-  export type ModelDeliveryOptions = {
+  export interface ModelDeliveryOptions {
     carrier?: CarrierName;
     date?: DateTime;
     deliveryType?: DeliveryTypeName;
@@ -730,32 +724,32 @@ export namespace Shipment {
     packageType?: PackageTypeName;
     pickupLocation?: ModelRetailLocation;
     shipmentOptions: ModelShipmentOptions;
-  };
+  }
 
-  export type ModelDeliveryType = {
+  export interface ModelDeliveryType {
     id?: number;
     name?: string;
-  };
+  }
 
-  export type ModelDropOffDay = {
+  export interface ModelDropOffDay {
     cutoffTime?: string;
     date?: DateTimeImmutable;
     dispatch?: boolean;
     sameDayCutoffTime?: string;
     weekday: number;
-  };
+  }
 
-  export type ModelPackageType = {
+  export interface ModelPackageType {
     id?: number;
     name?: string;
-  };
+  }
 
-  export type ModelPhysicalProperties = {
+  export interface ModelPhysicalProperties {
     height?: number;
     length?: number;
     weight: number;
     width?: number;
-  };
+  }
 
   export type ModelRetailLocation = Base.ModelAddress & {
     locationCode?: string;
@@ -772,7 +766,7 @@ export namespace Shipment {
     street?: string;
   };
 
-  export type ModelShipment = {
+  export interface ModelShipment {
     id: number;
     shopId?: number;
     orderId: string;
@@ -795,8 +789,8 @@ export namespace Shipment {
     partnerTrackTraces: unknown[];
     physicalProperties?: ModelPhysicalProperties;
     price: Base.ModelCurrency;
-    recipient: Base.ModelContactDetails;
-    sender?: Base.ModelContactDetails;
+    shippingAddress: Base.ModelContactDetails;
+    senderAddress?: Base.ModelContactDetails;
     shipmentType?: number;
     status?: number;
     deleted?: DateTime;
@@ -805,9 +799,9 @@ export namespace Shipment {
     createdBy?: number;
     modified?: DateTime;
     modifiedBy?: number;
-  };
+  }
 
-  export type ModelShipmentOptions = {
+  export interface ModelShipmentOptions {
     ageCheck?: boolean;
     insurance?: number[];
     labelDescription?: string;
@@ -816,7 +810,7 @@ export namespace Shipment {
     return?: boolean;
     sameDayDelivery?: boolean;
     signature?: boolean;
-  };
+  }
 
   export type PostReturnShipmentsRequest = Base.Request;
 
@@ -834,10 +828,10 @@ export namespace Webhook {
 
   export type GetWebhookSubscriptionsRequest = Base.Request;
 
-  export type ModelWebhookSubscription = {
+  export interface ModelWebhookSubscription {
     hook: string;
     url: string;
-  };
+  }
 
   export type PostWebhookSubscriptionRequest = Base.Request;
 
