@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.4](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/e2e@1.0.0-alpha.3...@myparcel-pdk/e2e@1.0.0-alpha.4) "@myparcel-pdk/e2e" (2023-06-28)
+
+
+### Bug Fixes
+
+* **e2e:** add types to build ([6f66568](https://github/myparcelnl/js-pdk/commit/6f665685c685e119a0f2fc00feb29ea711f93f13))
+
+
+
+
 ## [1.0.0-alpha.3](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/e2e@1.0.0-alpha.2...@myparcel-pdk/e2e@1.0.0-alpha.3) "@myparcel-pdk/e2e" (2023-05-26)
 
 
