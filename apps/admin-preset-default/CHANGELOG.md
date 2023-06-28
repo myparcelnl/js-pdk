@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.75](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.74...@myparcel-pdk/admin-preset-default@1.0.0-alpha.75) "@myparcel-pdk/admin-preset-default" (2023-06-28)
+
+
+### Features
+
+* **admin:** improve carrier logic ([6783afd](https://github/myparcelnl/js-pdk/commit/6783afd7cc8f0903b1e8eedd53f11f9b0a8214fa))
+
+
+
+
 ## [1.0.0-alpha.71](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.70...@myparcel-pdk/admin-preset-default@1.0.0-alpha.71) "@myparcel-pdk/admin-preset-default" (2023-06-09)
 
 

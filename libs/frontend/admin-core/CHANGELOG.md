@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.77](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.76...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.77) "@myparcel-pdk/frontend-admin-core" (2023-06-28)
+
+
+### Features
+
+* **admin:** improve carrier logic ([6783afd](https://github/myparcelnl/js-pdk/commit/6783afd7cc8f0903b1e8eedd53f11f9b0a8214fa))
+
+
+### Bug Fixes
+
+* **admin:** fix select inputs replacing value with first option ([#184](https://github/myparcelnl/js-pdk/issues/184)) ([f67f49c](https://github/myparcelnl/js-pdk/commit/f67f49cb3101e154710e2eab3d788a8807c47ad0))
+
+
+
+
 ## [1.0.0-alpha.76](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.75...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.76) "@myparcel-pdk/frontend-admin-core" (2023-06-28)
 
 

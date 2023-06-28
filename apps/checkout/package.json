@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/checkout",
-  "version": "1.0.0-alpha.47",
+  "version": "1.0.0-alpha.48",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -19,7 +19,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.37",
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.38",
     "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.14",
     "@myparcel-pdk/frontend-checkout-delivery-options": "workspace:^1.0.0-alpha.13",
     "@myparcel-pdk/frontend-checkout-separate-address-fields": "workspace:^1.0.0-alpha.14",

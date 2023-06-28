@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/frontend-admin-core",
-  "version": "1.0.0-alpha.76",
+  "version": "1.0.0-alpha.77",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -22,7 +22,7 @@
   },
   "prettier": "@myparcel/prettier-config",
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.37",
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.38",
     "@myparcel/constants": "^1.0.0",
     "@myparcel/sdk": "^3.0.0",
     "@myparcel/ts-utils": "^1.9.0",
