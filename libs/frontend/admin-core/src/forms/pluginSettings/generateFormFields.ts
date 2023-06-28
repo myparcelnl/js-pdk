@@ -3,8 +3,8 @@ import {get} from '@vueuse/core';
 import {type Plugin} from '@myparcel-pdk/common';
 import {
   type AnyElementConfiguration,
-  type InteractiveElementConfiguration,
   defineField,
+  type InteractiveElementConfiguration,
 } from '@myparcel/vue-form-builder';
 import {resolveFormComponent} from '../helpers';
 
