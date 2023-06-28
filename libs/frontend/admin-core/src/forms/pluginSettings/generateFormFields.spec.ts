@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {type Plugin} from '@myparcel-pdk/common';
+import {AdminComponent, type Plugin} from '@myparcel-pdk/common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {generateFormFields} from './generateFormFields';
 
@@ -20,12 +20,12 @@ describe('generateFormFields', () => {
         {
           name: 'generalSettings.name',
           label: 'general_settings_name',
-          $component: 'TextInput',
+          $component: AdminComponent.TextInput,
         },
         {
           name: 'generalSettings.description',
           label: 'general_settings_description',
-          $component: 'TextInput',
+          $component: AdminComponent.TextInput,
         },
       ],
     };
