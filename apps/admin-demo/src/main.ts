@@ -4,7 +4,7 @@ import './assets/css/global.css';
 import './assets/css/transitions.css';
 import './assets/css/forms.css';
 import {createApp} from 'vue';
-import {AdminContextKey, LogLevel, createPdkAdminPlugin} from '@myparcel-pdk/frontend-admin-core';
+import {AdminContextKey, createPdkAdminPlugin, LogLevel} from '@myparcel-pdk/frontend-admin-core';
 import {FontAwesomeIcon} from '@myparcel-pdk/admin-preset-fontawesome';
 import {
   DefaultButtonGroup,
@@ -25,7 +25,7 @@ import {
   DefaultTableRow,
   DefaultTextArea,
   DefaultTimeInput,
-  DefaultToggleInput,
+  DefaultTriStateInput,
 } from '@myparcel-pdk/admin-preset-default';
 import {createRouterInstance} from './router';
 import {
@@ -40,9 +40,10 @@ import {
   DemoPluginSettingsWrapper,
   DemoRow,
   DemoSelectInput,
-  DemoTabNavButton,
   DemoTable,
+  DemoTabNavButton,
   DemoTextInput,
+  DemoToggleInput,
 } from './components';
 import App from './App.vue';
 
@@ -55,15 +56,20 @@ void (async () => {
   const dynamicContextPromise = fetch(`${apiUrl}/pdk?action=fetchContext&context=dynamic`);
   // todo allow plugin settings view context to be loaded dynamically
   const pluginSettingsViewContextPromise = fetch(`${apiUrl}/pdk?action=fetchContext&context=pluginSettingsView`);
+  // todo allow product settings view context to be loaded dynamically
+  const productSettingsViewContextPromise = fetch(`${apiUrl}/pdk?action=fetchContext&context=productSettingsView`);
 
   const app = createApp(App);
 
   app.use(createRouterInstance());
 
-  const [globalContext, dynamicContext, pluginSettingsViewContext] = await Promise.all(
-    [globalContextPromise, dynamicContextPromise, pluginSettingsViewContextPromise].map(async (promise) =>
-      (await promise).json(),
-    ),
+  const [globalContext, dynamicContext, pluginSettingsViewContext, productSettingsViewContext] = await Promise.all(
+    [
+      globalContextPromise,
+      dynamicContextPromise,
+      pluginSettingsViewContextPromise,
+      productSettingsViewContextPromise,
+    ].map(async (promise) => (await promise).json()),
   );
 
   const pdkAdminPlugin = createPdkAdminPlugin(
@@ -117,7 +123,8 @@ void (async () => {
         PdkTextArea: DefaultTextArea,
         PdkTextInput: DemoTextInput,
         PdkTimeInput: DefaultTimeInput,
-        PdkToggleInput: DefaultToggleInput,
+        PdkToggleInput: DemoToggleInput,
+        PdkTriStateInput: DefaultTriStateInput,
       },
       transitions: {
         modal: 'slide-up',
@@ -134,6 +141,8 @@ void (async () => {
       [AdminContextKey.Dynamic]: dynamicContext.data.context[0][AdminContextKey.Dynamic],
       [AdminContextKey.PluginSettingsView]:
         pluginSettingsViewContext.data.context[0][AdminContextKey.PluginSettingsView],
+      [AdminContextKey.ProductSettingsView]:
+        productSettingsViewContext.data.context[0][AdminContextKey.ProductSettingsView],
     },
   );
 

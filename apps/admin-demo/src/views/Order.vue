@@ -29,7 +29,7 @@
 <script lang="ts" setup>
 import {useRoute} from 'vue-router';
 import {OrderBoxView} from '@myparcel-pdk/frontend-admin-core';
-import {useDemoOrder} from '../composables/useDemoOrder';
+import {useDemoOrder} from '../composables';
 
 const route = useRoute();
 const {id} = route.params;

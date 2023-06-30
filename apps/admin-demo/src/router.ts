@@ -1,4 +1,4 @@
-import {type Router, createRouter, createWebHistory} from 'vue-router';
+import {createRouter, createWebHistory, type Router} from 'vue-router';
 
 export const createRouterInstance = (): Router => {
   return createRouter({
@@ -14,6 +14,19 @@ export const createRouterInstance = (): Router => {
         path: '/orders/:id',
         name: 'Order',
         component: () => import('./views/Order.vue'),
+        meta: {
+          hidden: true,
+        },
+      },
+      {
+        path: '/products',
+        name: 'Products',
+        component: () => import('./views/Products.vue'),
+      },
+      {
+        path: '/products/:id',
+        name: 'Product',
+        component: () => import('./views/Product.vue'),
         meta: {
           hidden: true,
         },

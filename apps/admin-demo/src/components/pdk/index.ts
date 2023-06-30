@@ -25,3 +25,5 @@ export {default as DemoTabNavButton} from './DemoTabNavButton.vue';
 export {default as DemoTable} from './DemoTable.vue';
 
 export {default as DemoTextInput} from './DemoTextInput.vue';
+
+export {default as DemoToggleInput} from './DemoToggleInput.vue';

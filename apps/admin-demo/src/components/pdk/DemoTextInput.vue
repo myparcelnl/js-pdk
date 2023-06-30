@@ -4,6 +4,7 @@
     v-model.trim="model"
     :name="id"
     :disabled="element.isDisabled || element.isSuspended"
+    :readonly="element.isReadOnly"
     class="border px-3 py-2 rounded" />
 </template>
 
