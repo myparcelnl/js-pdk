@@ -9,8 +9,8 @@ import {type AdminContextObject} from './context.types';
 
 export type DefaultAdminConfiguration = Omit<AdminConfiguration, 'context' | 'components' | 'generateFieldId'> & {
   components?: Record<string, undefined>;
-  formatters?: Record<string, undefined>;
-  generateFieldId?(element: InteractiveElementInstance): string;
+  formatters: Record<string, undefined>;
+  generateFieldId(element: InteractiveElementInstance): string;
 };
 
 export type AdminConfiguration = {
@@ -98,7 +98,7 @@ export type AdminConfiguration = {
   /**
    * Callback to generate a field id.
    */
-  generateFieldId(element: InteractiveElementInstance): string;
+  generateFieldId?(element: InteractiveElementInstance): string;
 };
 
 export type AdminConfigurationPreset = Omit<Partial<AdminConfiguration>, 'components'>;

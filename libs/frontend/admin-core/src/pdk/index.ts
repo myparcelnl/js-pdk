@@ -1,6 +1,5 @@
 export * from './PdkAdmin';
 export * from './createAdminConfig';
-export * from './createInjectionPlugin';
 export * from './createPdkAdmin';
 export * from './createPdkAdminPlugin';
 export * from './fillShipmentsQueryData';

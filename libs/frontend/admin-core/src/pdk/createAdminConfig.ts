@@ -7,9 +7,7 @@ const createDefaultConfig = (): DefaultAdminConfiguration => ({
   formatters: {},
   logLevel: import.meta.env.PROD ? LogLevel.Info : LogLevel.Debug,
   transitions: {},
-  generateFieldId: (element) => {
-    return `${element.form.name}-${element.name}`;
-  },
+  generateFieldId: (element) => `${element.form.name}-${element.name}`,
 });
 
 export const createAdminConfig = (customConfig?: InputAdminConfiguration | undefined): AdminConfiguration => {
