@@ -153,8 +153,8 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
           const signatureField = form.getField(SIGNATURE);
           const onlyRecipientField = form.getField(ONLY_RECIPIENT);
 
-          signatureField?.setDisabled(value);
-          onlyRecipientField?.setDisabled(value);
+          signatureField?.setReadOnly(value);
+          onlyRecipientField?.setReadOnly(value);
 
           if (value === true) {
             form.setValue(SIGNATURE, true);
