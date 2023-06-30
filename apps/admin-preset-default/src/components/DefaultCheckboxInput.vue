@@ -5,7 +5,8 @@
       :id="id"
       v-model="model"
       :name="id"
-      :disabled="element.isDisabled || element.isSuspended"
+      :disabled="element.isDisabled || element.isSuspended || element.isReadOnly"
+      :readonly="element.isReadOnly"
       :value="element.props?.value"
       type="checkbox" />
     <i />

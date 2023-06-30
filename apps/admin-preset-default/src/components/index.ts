@@ -65,3 +65,5 @@ export {default as DefaultTextInput} from './DefaultTextInput.vue';
 export {default as DefaultTimeInput} from './DefaultTimeInput.vue';
 
 export {default as DefaultToggleInput} from './DefaultToggleInput.vue';
+
+export {default as DefaultTriStateInput} from './DefaultTriStateInput.vue';

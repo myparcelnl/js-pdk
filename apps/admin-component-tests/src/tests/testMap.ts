@@ -2,9 +2,11 @@ import {type Component} from 'vue';
 import {type AdminComponent} from '@myparcel-pdk/common';
 import {
   runActionContainerTest,
+  runBadgeTest,
   runButtonTest,
   runCheckboxGroupTest,
   runCheckboxInputTest,
+  runCodeEditorTest,
   runColTest,
   runCurrencyInputTest,
   runDropDownButtonTest,
@@ -14,7 +16,9 @@ import {
   runIconTest,
   runImageTest,
   runLinkTest,
+  runLoaderTest,
   runModalTest,
+  runMultiSelectInputTest,
   runNotificationTest,
   runNumberInputTest,
   runPlainWrapperTest,
@@ -22,19 +26,16 @@ import {
   runRadioInputTest,
   runRowTest,
   runSelectInputTest,
-  runTabNavButtonTest,
+  runSettingsDividerTest,
   runTableColTest,
   runTableRowTest,
   runTableTest,
+  runTabNavButtonTest,
+  runTextAreaTest,
   runTextInputTest,
   runTimeInputTest,
   runToggleInputTest,
-  runCodeEditorTest,
-  runMultiSelectInputTest,
-  runTextAreaTest,
-  runBadgeTest,
-  runLoaderTest,
-  runSettingsDividerTest,
+  runTriStateInputTest,
 } from '../components';
 
 export type AdminComponentTest = (component: Omit<Component, 'props'>) => void;
@@ -57,6 +58,7 @@ export const testMap: Record<AdminComponent, AdminComponentTest> = {
   TextInput: runTextInputTest,
   TimeInput: runTimeInputTest,
   ToggleInput: runToggleInputTest,
+  TriStateInput: runTriStateInputTest,
 
   /**
    * Action containers

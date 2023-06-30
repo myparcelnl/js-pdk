@@ -32,3 +32,4 @@ export * from './runTextAreaTest';
 export * from './runTextInputTest';
 export * from './runTimeInputTest';
 export * from './runToggleInputTest';
+export * from './runTriStateInputTest';

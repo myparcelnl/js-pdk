@@ -1,5 +1,9 @@
 import {type Keyable, type SelectOption, type SelectOptionValue} from '@myparcel-pdk/common';
-import {type ComponentOrHtmlElement, type InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {
+  type ComponentOrHtmlElement,
+  type ElementName,
+  type InteractiveElementInstance,
+} from '@myparcel/vue-form-builder';
 import {type Replace} from '@myparcel/ts-utils';
 import {type AdminIcon} from './common.types';
 
@@ -11,11 +15,12 @@ type FieldProps = {
   value?: unknown;
 };
 
-export type ElementInstance<Props extends Record<string, unknown> = Record<string, unknown>> = Replace<
-  InteractiveElementInstance<ComponentOrHtmlElement, string>,
-  'props',
-  Props & FieldProps & Record<string, unknown>
->;
+export type ElementInstance<
+  Props extends Record<string, unknown> = Record<string, unknown>,
+  C extends ComponentOrHtmlElement = ComponentOrHtmlElement,
+  N extends ElementName = string,
+  RT = unknown,
+> = Replace<InteractiveElementInstance<C, N, RT>, 'props', Props & FieldProps & Record<string, unknown>>;
 
 export type OptionsProp<T extends SelectOptionValue = SelectOptionValue> = {
   options?: SelectOption<T>[];
@@ -38,3 +43,5 @@ export type RadioGroupOption<Value extends Keyable = Keyable> = SelectOption<Val
   image?: string;
   icon?: AdminIcon;
 };
+
+export type TriStateValue = 0 | 1 | -1;

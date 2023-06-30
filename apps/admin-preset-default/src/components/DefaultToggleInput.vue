@@ -4,7 +4,8 @@
       :id="id"
       v-model="model"
       :name="id"
-      :disabled="element.isDisabled || element.isSuspended"
+      :disabled="element.isDisabled || element.isSuspended || element.isReadOnly"
+      :readonly="element.isReadOnly"
       :value="true"
       type="checkbox" />
 

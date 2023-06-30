@@ -659,18 +659,18 @@ export namespace Settings {
   };
 
   export type ModelProductSettings = {
-    allowOnlyRecipient: boolean;
-    allowSignature: boolean;
+    allowOnlyRecipient: 0 | 1 | -1;
+    allowSignature: 0 | 1 | -1;
     countryOfOrigin: string;
     customsCode: string;
-    disableDeliveryOptions: boolean;
+    disableDeliveryOptions: 0 | 1 | -1;
     dropOffDelay: number;
-    exportAgeCheck: boolean;
-    exportInsurance: boolean;
-    exportLargeFormat: boolean;
+    exportAgeCheck: 0 | 1 | -1;
+    exportInsurance: 0 | 1 | -1;
+    exportLargeFormat: 0 | 1 | -1;
     fitInMailbox: number;
     packageType: string;
-    returnShipments: boolean;
+    returnShipments: 0 | 1 | -1;
   };
 
   export type ModelSettings = {

@@ -21,4 +21,5 @@ export * from './useRadioGroupContext';
 export * from './useSelectInputContext';
 export * from './useStoreContextQuery';
 export * from './useStoreQuery';
+export * from './useTriStateInputContext';
 export * from './useWeekdays';

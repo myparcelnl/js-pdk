@@ -8,6 +8,7 @@
         'form-required': !element.isValid,
       }"
       :disabled="element.isDisabled || element.isSuspended"
+      :readonly="element.isReadOnly"
       :value="element.props?.value"
       type="radio"
       v-bind="$attrs" />

@@ -3,7 +3,8 @@
     :id="id"
     v-model.trim="model"
     :name="id"
-    :disabled="element.isDisabled || element.isSuspended" />
+    :disabled="element.isDisabled || element.isSuspended"
+    :readonly="element.isReadOnly" />
 </template>
 
 <script lang="ts" setup>

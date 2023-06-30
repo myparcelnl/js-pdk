@@ -4,7 +4,8 @@
       v-for="(option, index) in options"
       :key="`${option.value}_${index}`"
       v-model="model"
-      :disabled="option.disabled || element.isDisabled || element.isSuspended"
+      :disabled="option.disabled || element.isDisabled || element.isSuspended || element.isReadOnly"
+      :readonly="element.isReadOnly"
       :element="element"
       :label="option.label"
       :value="option.value" />
