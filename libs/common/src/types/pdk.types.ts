@@ -42,6 +42,7 @@ export enum AdminComponent {
   TextInput = 'TextInput',
   TimeInput = 'TimeInput',
   ToggleInput = 'ToggleInput',
+  TristateInput = 'TristateInput',
 }
 
 export const requiredAdminComponentNames = [
@@ -74,6 +75,7 @@ export const requiredAdminComponentNames = [
   AdminComponent.TextInput,
   AdminComponent.TimeInput,
   AdminComponent.ToggleInput,
+  AdminComponent.TristateInput,
 ] as const;
 
 export const optionalAdminPlainWrapperComponentNames = [
