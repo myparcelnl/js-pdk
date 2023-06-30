@@ -1,5 +1,5 @@
 <template>
-  <table>
+  <table v-test="AdminComponent.Table">
     <thead v-if="$slots.header">
       <!-- Table header -->
       <slot name="header" />
@@ -24,6 +24,7 @@
  * A table component that can be used to render data via slots.
  */
 import {useAdminConfig} from '@myparcel-pdk/frontend-admin-core';
+import {AdminComponent} from '@myparcel-pdk/common';
 
 const config = useAdminConfig();
 </script>

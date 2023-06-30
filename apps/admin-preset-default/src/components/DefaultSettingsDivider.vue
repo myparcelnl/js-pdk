@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-test="AdminComponent.SettingsDivider">
     <PdkHeading
       v-if="element.props.heading"
       :level="element.props.level">
@@ -14,6 +14,7 @@
 
 <script lang="ts" setup>
 import {type ElementInstance, useLanguage} from '@myparcel-pdk/frontend-admin-core';
+import {AdminComponent} from '@myparcel-pdk/common';
 
 defineProps<{
   element: ElementInstance<{

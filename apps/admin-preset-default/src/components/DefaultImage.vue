@@ -1,9 +1,13 @@
 <template>
-  <img v-bind="$props" />
+  <img
+    v-test="AdminComponent.Image"
+    v-bind="$props" />
 </template>
 
 <script lang="ts" setup>
 /* eslint-disable vue/no-unused-properties */
+import {AdminComponent} from '@myparcel-pdk/common';
+
 /**
  * Image component.
  */

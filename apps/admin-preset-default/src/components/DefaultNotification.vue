@@ -2,7 +2,7 @@
   <Transition
     appear
     name="fade">
-    <div>
+    <div v-test="AdminComponent.Notification">
       <h1
         v-if="notification.title"
         v-text="notification.title" />
@@ -22,8 +22,9 @@
 </template>
 
 <script lang="ts" setup>
-import {type PropType, computed} from 'vue';
+import {computed, type PropType} from 'vue';
 import {type Notification} from '@myparcel-pdk/frontend-admin-core';
+import {AdminComponent} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 
 const props = defineProps({

@@ -1,5 +1,5 @@
 <template>
-  <label>
+  <label v-test="AdminComponent.ToggleInput">
     <input
       :id="id"
       v-model="model"
@@ -18,6 +18,7 @@
 <script lang="ts" setup>
 import {useVModel} from '@vueuse/core';
 import {type ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/frontend-admin-core';
+import {AdminComponent} from '@myparcel-pdk/common';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{modelValue: boolean; element: ElementInstance}>();

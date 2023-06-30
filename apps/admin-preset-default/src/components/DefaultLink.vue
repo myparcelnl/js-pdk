@@ -1,6 +1,6 @@
 <template>
   <a
-    :data-test-id="`link${action ? `-${action.id}` : ''}`"
+    v-test="`${AdminComponent.Link}${action ? `-${action.id}` : ''}`"
     v-bind="linkAttributes">
     <PdkIcon
       v-if="action?.icon"
@@ -16,13 +16,14 @@
 /**
  * This component is used to render a link. The link can be used to trigger an action.
  */
-import {type AnchorHTMLAttributes, type PropType, computed} from 'vue';
+import {type AnchorHTMLAttributes, computed, type PropType} from 'vue';
 import {
   type ActionDefinition,
   getActionIdentifier,
   useActionStore,
   useLanguage,
 } from '@myparcel-pdk/frontend-admin-core';
+import {AdminComponent} from '@myparcel-pdk/common';
 
 const props = defineProps({
   action: {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-test="AdminComponent.RadioGroup">
     <PdkRadioInput
       v-for="option in options"
       :key="option.value"
@@ -13,7 +13,7 @@
 
 <script lang="ts" setup>
 import {type ElementInstance, type OptionsProp, useRadioGroupContext} from '@myparcel-pdk/frontend-admin-core';
-import {type Keyable} from '@myparcel-pdk/common';
+import {AdminComponent, type Keyable} from '@myparcel-pdk/common';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{modelValue: string; element: ElementInstance<OptionsProp<Keyable>>}>();

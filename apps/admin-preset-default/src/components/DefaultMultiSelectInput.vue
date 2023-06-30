@@ -1,6 +1,7 @@
 <template>
   <PdkSelectInput
     v-model="model"
+    v-test="AdminComponent.MultiSelectInput"
     :element="element"
     multiple />
 </template>
@@ -10,6 +11,7 @@
  * A multi-select box. Renders a list of options which each have their own value. Allows multiple options to be selected.
  */
 import {type PdkElementEmits, type SelectInputProps, useSelectInputContext} from '@myparcel-pdk/frontend-admin-core';
+import {AdminComponent} from '@myparcel-pdk/common';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<SelectInputProps<T>>();

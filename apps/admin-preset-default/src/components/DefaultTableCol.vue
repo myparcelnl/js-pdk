@@ -1,5 +1,7 @@
 <template>
-  <component :is="component">
+  <component
+    :is="component"
+    v-test="AdminComponent.TableCol">
     <!-- Table column content -->
     <slot />
   </component>
@@ -9,6 +11,8 @@
 /**
  * The component that is used to render a table column in a PdkTable.
  */
+
+import {AdminComponent} from '@myparcel-pdk/common';
 
 defineProps({
   /**

@@ -1,5 +1,6 @@
 <template>
   <button
+    v-test="AdminComponent.TabNavButton"
     type="button"
     @click="$emit('click')">
     <slot />
@@ -7,6 +8,8 @@
 </template>
 
 <script lang="ts" setup>
+import {AdminComponent} from '@myparcel-pdk/common';
+
 // eslint-disable-next-line vue/no-unused-properties
 defineProps<{active: boolean}>();
 defineEmits<(event: 'click') => void>();

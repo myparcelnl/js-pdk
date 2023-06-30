@@ -1,5 +1,6 @@
 <template>
   <button
+    v-test="AdminComponent.Button"
     :disabled="disabled"
     type="button"
     @click="$emit('click')">
@@ -22,7 +23,7 @@
 
 import {type PropType} from 'vue';
 import {type AdminIcon, useLanguage} from '@myparcel-pdk/frontend-admin-core';
-import {Size} from '@myparcel-pdk/common';
+import {AdminComponent, Size} from '@myparcel-pdk/common';
 
 defineProps({
   /**

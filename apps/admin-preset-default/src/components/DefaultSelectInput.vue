@@ -2,6 +2,7 @@
   <select
     :id="id"
     v-model="model"
+    v-test="AdminComponent.SelectInput"
     :name="id"
     :disabled="options.length === 1 || element.isDisabled || element.isSuspended">
     <option
@@ -19,6 +20,7 @@
  */
 
 import {type ElementInstance, type OptionsProp, useSelectInputContext} from '@myparcel-pdk/frontend-admin-core';
+import {AdminComponent} from '@myparcel-pdk/common';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{element: ElementInstance<OptionsProp>; modelValue: string | number}>();

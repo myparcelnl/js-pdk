@@ -1,7 +1,9 @@
 <template>
   <PdkLoader v-if="loading" />
 
-  <div v-else>
+  <div
+    v-else
+    v-test="AdminComponent.Box">
     <div
       v-if="$slots.header || title"
       @click="$emit('clickHeader')">
@@ -37,7 +39,7 @@
 
 import {type PropType} from 'vue';
 import {ActionButton, type ActionDefinition, useLanguage} from '@myparcel-pdk/frontend-admin-core';
-import {Size} from '@myparcel-pdk/common';
+import {AdminComponent, Size} from '@myparcel-pdk/common';
 
 defineProps({
   /**

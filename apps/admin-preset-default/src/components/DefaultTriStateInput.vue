@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-test="AdminComponent.TriStateInput">
     <PdkToggleInput
       v-model="toggleModel"
       :element="element" />
@@ -17,6 +17,7 @@ import {
   type TriStateValue,
   useTriStateInputContext,
 } from '@myparcel-pdk/frontend-admin-core';
+import {AdminComponent} from '@myparcel-pdk/common';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<PdkElementProps<T>>();

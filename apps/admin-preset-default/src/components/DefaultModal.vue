@@ -1,5 +1,6 @@
 <template>
   <div
+    v-test="AdminComponent.Modal"
     :aria-hidden="!isOpen"
     tabindex="-1"
     @keydown.esc="close">
@@ -54,6 +55,7 @@ import {
   useLanguage,
   useModalElementContext,
 } from '@myparcel-pdk/frontend-admin-core';
+import {AdminComponent} from '@myparcel-pdk/common';
 
 const props = defineProps({
   /**

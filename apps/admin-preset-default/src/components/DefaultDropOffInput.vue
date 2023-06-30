@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-test="AdminComponent.DropOffInput">
     <ul>
       <template
         v-for="[day, human] in Object.entries(weekdaysObject)"
@@ -25,7 +25,7 @@
 <script lang="ts" setup>
 import {type PropType} from 'vue';
 import {useDropOffInputContext} from '@myparcel-pdk/frontend-admin-core';
-import {type Settings} from '@myparcel-pdk/common';
+import {AdminComponent, type Settings} from '@myparcel-pdk/common';
 
 const props = defineProps({
   modelValue: {
