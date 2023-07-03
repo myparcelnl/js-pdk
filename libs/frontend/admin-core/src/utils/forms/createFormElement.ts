@@ -7,14 +7,10 @@ import {
 } from '@myparcel/vue-form-builder';
 import {type ElementInstance, type PdkElementProps} from '../../types';
 
-export const createFormElement = <
-  RT = unknown,
-  C extends ComponentOrHtmlElement = 'input',
-  N extends ElementName = 'element',
->(
-  config?: Partial<InteractiveElementConfiguration<C, N, RT>>,
+export const createFormElement = <RT = unknown, C extends ComponentOrHtmlElement = 'input'>(
+  config?: Partial<InteractiveElementConfiguration<C, ElementName, RT>>,
   formName?: string,
-): ElementInstance<PdkElementProps<C>, C, N, RT> => {
+): ElementInstance<PdkElementProps<C>, C, ElementName, RT> => {
   const form = {
     name: formName ?? 'form',
   } as unknown as FormInstance;
@@ -25,5 +21,5 @@ export const createFormElement = <
     name: 'element',
     ref: ref(),
     ...config,
-  } as unknown as ElementInstance<PdkElementProps<C>, C, N, RT>;
+  } as unknown as ElementInstance<PdkElementProps<C>, C, ElementName, RT>;
 };

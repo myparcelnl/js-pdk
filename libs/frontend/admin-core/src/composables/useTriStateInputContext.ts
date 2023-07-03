@@ -1,13 +1,8 @@
 import {type Component, computed, type WritableComputedRef} from 'vue';
 import {get} from '@vueuse/core';
-import {
-  createFormElement,
-  type ElementInstance,
-  type PdkElementEmits,
-  type PdkElementProps,
-  type TriStateValue,
-} from '@myparcel-pdk/frontend-admin-core';
 import {type ComponentOrHtmlElement, type InteractiveElementInstance, useForm} from '@myparcel/vue-form-builder';
+import {createFormElement} from '../utils';
+import {type ElementInstance, type PdkElementEmits, type PdkElementProps, type TriStateValue} from '../types';
 
 type UseTriStateInputContext = (
   props: PdkElementProps<TriStateValue>,

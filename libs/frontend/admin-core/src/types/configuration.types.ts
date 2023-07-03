@@ -98,7 +98,7 @@ export type AdminConfiguration = {
   /**
    * Callback to generate a field id.
    */
-  generateFieldId?(element: InteractiveElementInstance): string;
+  generateFieldId(element: InteractiveElementInstance): string;
 };
 
 export type AdminConfigurationPreset = Omit<Partial<AdminConfiguration>, 'components'>;
