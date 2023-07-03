@@ -1205,7 +1205,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-js@workspace:apps/admin-js"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.78"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.79"
     "@myparcel-pdk/build-vite": "workspace:*"
     "@vitejs/plugin-vue": ^4.2.3
     vite: ^4.3.8
@@ -1220,7 +1220,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-bootstrap4@workspace:apps/admin-preset-bootstrap4"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.78"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.79"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel/ts-utils": ^1.9.0
     "@types/bootstrap": ^5.2.6
@@ -1242,7 +1242,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-dashicons@workspace:apps/admin-preset-dashicons"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.78"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.79"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.30.1
@@ -1260,7 +1260,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-default@workspace:apps/admin-preset-default"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.78"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.79"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel/ts-utils": ^1.9.0
     "@vitejs/plugin-vue": ^4.0.0
@@ -1280,7 +1280,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-fontawesome@workspace:apps/admin-preset-fontawesome"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.78"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.79"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@vitejs/plugin-vue": ^4.0.0
     "@vitest/coverage-c8": ^0.30.1
@@ -1294,7 +1294,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/admin@workspace:^1.0.0-alpha.78, @myparcel-pdk/admin@workspace:apps/admin":
+"@myparcel-pdk/admin@workspace:^1.0.0-alpha.79, @myparcel-pdk/admin@workspace:apps/admin":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin@workspace:apps/admin"
   dependencies:

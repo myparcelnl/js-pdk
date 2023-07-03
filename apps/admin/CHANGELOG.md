@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.79](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.78...@myparcel-pdk/admin@1.0.0-alpha.79) "@myparcel-pdk/admin" (2023-07-03)
+
+
+### Bug Fixes
+
+* **exports:** export TriStateValue type ([18779c5](https://github/myparcelnl/js-pdk/commit/18779c524a9d3822eb98ecdd93509613990b2926))
+
+
+
+
 ## [1.0.0-alpha.78](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.77...@myparcel-pdk/admin@1.0.0-alpha.78) "@myparcel-pdk/admin" (2023-07-03)
 
 
