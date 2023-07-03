@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.79](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.78...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.79) "@myparcel-pdk/frontend-admin-core" (2023-07-03)
+
+
+### Bug Fixes
+
+* **admin-core:** fix tri-state component not being readonly initially ([6ad5cf7](https://github/myparcelnl/js-pdk/commit/6ad5cf76f8395755734e1d2ced99558da9b5026e))
+* **admin-core:** fix untranslated string in tri-state input context ([5b9c32d](https://github/myparcelnl/js-pdk/commit/5b9c32d02f5c712a5e087b717b299937a3cf1eeb))
+
+
+
+
 ## [1.0.0-alpha.78](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.77...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.78) "@myparcel-pdk/frontend-admin-core" (2023-07-03)
 
 
