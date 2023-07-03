@@ -3,6 +3,7 @@ import {get} from '@vueuse/core';
 import {type ComponentOrHtmlElement, type InteractiveElementInstance, useForm} from '@myparcel/vue-form-builder';
 import {createFormElement} from '../utils';
 import {type ElementInstance, type PdkElementEmits, type PdkElementProps, type TriStateValue} from '../types';
+import {useLanguage} from '../composables';
 
 type UseTriStateInputContext = (
   props: PdkElementProps<TriStateValue>,
@@ -24,8 +25,10 @@ const TRI_STATE_VALUE_DEFAULT = -1;
  * A tri-state input can hold a value of 0, 1 or -1. -1 is used to indicate that the value should be inherited or defaulted.
  */
 export const useTriStateInputContext: UseTriStateInputContext = (props, emit) => {
+  const {translate} = useLanguage();
+
   const inheritValueElement = createFormElement<boolean>({
-    label: 'settings_use_default_value',
+    label: translate('settings_use_default_value'),
   });
 
   const model = computed<TriStateValue>({
