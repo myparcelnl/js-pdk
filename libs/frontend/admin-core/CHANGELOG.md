@@ -2,6 +2,27 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.78](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.77...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.78) "@myparcel-pdk/frontend-admin-core" (2023-07-03)
+
+
+### Features
+
+* **components:** add tri-state input ([8a27655](https://github/myparcelnl/js-pdk/commit/8a27655003ff7ee0ee363f78235fbd74cc0c0096))
+
+
+### Bug Fixes
+
+* **admin:** fix config defaults not being applied in plugin ([22af9d3](https://github/myparcelnl/js-pdk/commit/22af9d3e2a0594d5611de821b1cb4e11439bbff6))
+* **admin:** fix synergy between age_check and signature/only_recipient ([1566ca8](https://github/myparcelnl/js-pdk/commit/1566ca8039b9919e4f296725d36734fdff8efb96))
+
+
+### Performance Improvements
+
+* **admin:** use function for slot content ([140a702](https://github/myparcelnl/js-pdk/commit/140a7029e97fee3770b62db314789ff85e6191a7))
+
+
+
+
 ## [1.0.0-alpha.77](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.76...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.77) "@myparcel-pdk/frontend-admin-core" (2023-06-28)
 
 

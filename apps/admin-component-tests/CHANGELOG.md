@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.80](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.79...@myparcel-pdk/admin-component-tests@1.0.0-alpha.80) "@myparcel-pdk/admin-component-tests" (2023-07-03)
+
+
+### Features
+
+* **components:** add tri-state input ([8a27655](https://github/myparcelnl/js-pdk/commit/8a27655003ff7ee0ee363f78235fbd74cc0c0096))
+
+
+
+
 ## [1.0.0-alpha.79](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.78...@myparcel-pdk/admin-component-tests@1.0.0-alpha.79) "@myparcel-pdk/admin-component-tests" (2023-06-28)
 
 

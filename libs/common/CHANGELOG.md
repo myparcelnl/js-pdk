@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.39](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.38...@myparcel-pdk/common@1.0.0-alpha.39) "@myparcel-pdk/common" (2023-07-03)
+
+
+### Features
+
+* add tristate component to admin types ([#183](https://github/myparcelnl/js-pdk/issues/183)) ([7939894](https://github/myparcelnl/js-pdk/commit/7939894d5906a30abbc1206419e27049a8c5bb70))
+* **components:** add tri-state input ([8a27655](https://github/myparcelnl/js-pdk/commit/8a27655003ff7ee0ee363f78235fbd74cc0c0096))
+
+
+
+
 ## [1.0.0-alpha.38](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.37...@myparcel-pdk/common@1.0.0-alpha.38) "@myparcel-pdk/common" (2023-06-28)
 
 
