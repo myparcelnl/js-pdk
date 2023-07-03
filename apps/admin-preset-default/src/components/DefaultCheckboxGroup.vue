@@ -13,8 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import {type ElementInstance, type OptionsProp, useCheckboxGroupContext} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent, type ElementInstance, type OptionsProp, useCheckboxGroupContext} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{modelValue: string | boolean; element: ElementInstance<OptionsProp<string | boolean>>}>();

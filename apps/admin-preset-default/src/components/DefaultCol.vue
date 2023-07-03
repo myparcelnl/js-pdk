@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent} from '@myparcel-pdk/admin';
 
 defineProps<{
   // eslint-disable-next-line vue/no-unused-properties

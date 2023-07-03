@@ -8,8 +8,7 @@
 
 <script lang="ts" setup>
 import {type PropType} from 'vue';
-import {type ElementInstance} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent, type ElementInstance} from '@myparcel-pdk/admin';
 
 defineProps({
   // eslint-disable-next-line vue/no-unused-properties

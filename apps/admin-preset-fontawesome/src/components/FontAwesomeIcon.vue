@@ -8,8 +8,7 @@
 
 <script lang="ts" setup>
 import {computed, type PropType} from 'vue';
-import {type AdminIcon} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent, type AdminIcon} from '@myparcel-pdk/admin';
 import {convertToFontAwesomeIcon} from '../convertToFontAwesomeIcon';
 
 const props = defineProps({

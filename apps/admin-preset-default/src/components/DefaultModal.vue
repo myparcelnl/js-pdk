@@ -50,12 +50,12 @@ import {type PropType} from 'vue';
 import {
   ActionButton,
   type ActionDefinition,
+  AdminComponent,
   type AdminModalKey,
   NotificationContainer,
   useLanguage,
   useModalElementContext,
-} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent} from '@myparcel-pdk/common';
+} from '@myparcel-pdk/admin';
 
 const props = defineProps({
   /**

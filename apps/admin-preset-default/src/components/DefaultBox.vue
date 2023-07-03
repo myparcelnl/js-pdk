@@ -38,8 +38,7 @@
  */
 
 import {type PropType} from 'vue';
-import {ActionButton, type ActionDefinition, useLanguage} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent, Size} from '@myparcel-pdk/common';
+import {ActionButton, type ActionDefinition, AdminComponent, Size, useLanguage} from '@myparcel-pdk/admin';
 
 defineProps({
   /**

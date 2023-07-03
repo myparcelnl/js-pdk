@@ -33,9 +33,8 @@
 </template>
 
 <script lang="ts" setup>
-import {type PropType, computed} from 'vue';
-import {ActionButton, type ActionDefinition, useLanguage} from '@myparcel-pdk/frontend-admin-core';
-import {Size} from '@myparcel-pdk/common';
+import {computed, type PropType} from 'vue';
+import {ActionButton, type ActionDefinition, Size, useLanguage} from '@myparcel-pdk/admin';
 
 const props = defineProps({
   actions: {

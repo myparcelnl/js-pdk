@@ -13,8 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import {type ElementInstance, useLanguage} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent, type ElementInstance, useLanguage} from '@myparcel-pdk/admin';
 
 defineProps<{
   element: ElementInstance<{

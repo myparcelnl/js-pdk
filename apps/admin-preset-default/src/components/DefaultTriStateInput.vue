@@ -12,12 +12,12 @@
 
 <script setup lang="ts" generic="T extends TriStateValue">
 import {
+  AdminComponent,
   type PdkElementEmits,
   type PdkElementProps,
   type TriStateValue,
   useTriStateInputContext,
-} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent} from '@myparcel-pdk/common';
+} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<PdkElementProps<T>>();

@@ -1,5 +1,5 @@
 import {memoize} from 'lodash-unified';
-import {AdminIcon} from '@myparcel-pdk/frontend-admin-core';
+import {AdminIcon} from '@myparcel-pdk/admin';
 
 const PDK_FONT_AWESOME_ICON_MAP: Partial<Record<AdminIcon, string>> = {
   [AdminIcon.Add]: 'fas fa-plus',

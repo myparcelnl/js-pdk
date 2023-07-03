@@ -21,7 +21,7 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.78",
+    "@myparcel-pdk/admin": "workspace:*",
     "@myparcel/ts-utils": "^1.9.0",
     "@vueuse/core": "^10.1.2",
     "vue": "^3.2.47"

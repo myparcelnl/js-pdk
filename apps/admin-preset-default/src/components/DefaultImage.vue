@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 /* eslint-disable vue/no-unused-properties */
-import {AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent} from '@myparcel-pdk/admin';
 
 /**
  * Image component.

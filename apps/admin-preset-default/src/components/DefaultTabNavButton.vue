@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 defineProps<{active: boolean}>();

@@ -1,5 +1,5 @@
 import {memoize} from 'lodash-unified';
-import {AdminIcon} from '@myparcel-pdk/frontend-admin-core';
+import {AdminIcon} from '@myparcel-pdk/admin';
 
 const PDK_DASH_ICON_MAP: Partial<Record<AdminIcon, string>> = {
   [AdminIcon.Add]: 'plus',

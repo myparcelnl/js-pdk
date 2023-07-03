@@ -12,7 +12,7 @@
  * The component that is used to render a table column in a PdkTable.
  */
 
-import {AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent} from '@myparcel-pdk/admin';
 
 defineProps({
   /**

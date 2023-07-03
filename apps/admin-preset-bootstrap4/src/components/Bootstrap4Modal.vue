@@ -44,16 +44,16 @@
 </template>
 
 <script lang="ts" setup>
-import {type PropType, computed} from 'vue';
+import {computed, type PropType} from 'vue';
 import {
   ActionButton,
   type ActionDefinition,
+  AdminIcon,
   type AdminModalKey,
   NotificationContainer,
   useLanguage,
   useModalStore,
-  AdminIcon,
-} from '@myparcel-pdk/frontend-admin-core';
+} from '@myparcel-pdk/admin';
 
 const props = defineProps({
   actions: {

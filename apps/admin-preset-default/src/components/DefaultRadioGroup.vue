@@ -12,8 +12,13 @@
 </template>
 
 <script lang="ts" setup>
-import {type ElementInstance, type OptionsProp, useRadioGroupContext} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent, type Keyable} from '@myparcel-pdk/common';
+import {
+  AdminComponent,
+  type ElementInstance,
+  type Keyable,
+  type OptionsProp,
+  useRadioGroupContext,
+} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{modelValue: string; element: ElementInstance<OptionsProp<Keyable>>}>();

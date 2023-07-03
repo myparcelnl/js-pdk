@@ -7,8 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import {useLanguage} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent, useLanguage} from '@myparcel-pdk/admin';
 
 defineProps({
   tag: {

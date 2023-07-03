@@ -6,8 +6,7 @@
 
 <script lang="ts" setup>
 import {type PropType} from 'vue';
-import {type AdminIcon} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent, type AdminIcon} from '@myparcel-pdk/admin';
 
 defineProps({
   /**

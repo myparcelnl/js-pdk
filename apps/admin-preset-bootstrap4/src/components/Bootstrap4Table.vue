@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import {useAdminConfig} from '@myparcel-pdk/frontend-admin-core';
+import {useAdminConfig} from '@myparcel-pdk/admin';
 
 const config = useAdminConfig();
 </script>

@@ -19,11 +19,11 @@
 import {type AnchorHTMLAttributes, computed, type PropType} from 'vue';
 import {
   type ActionDefinition,
+  AdminComponent,
   getActionIdentifier,
   useActionStore,
   useLanguage,
-} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent} from '@myparcel-pdk/common';
+} from '@myparcel-pdk/admin';
 
 const props = defineProps({
   action: {

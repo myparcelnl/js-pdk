@@ -33,8 +33,7 @@
 </template>
 
 <script lang="ts" setup>
-import {ActionButton, type ActionDefinition, useDropdownData, useLanguage} from '@myparcel-pdk/frontend-admin-core';
-import {type Size} from '@myparcel-pdk/common';
+import {ActionButton, type ActionDefinition, type Size, useDropdownData, useLanguage} from '@myparcel-pdk/admin';
 import BaseButton from './common/BaseButton.vue';
 
 const props = defineProps<{

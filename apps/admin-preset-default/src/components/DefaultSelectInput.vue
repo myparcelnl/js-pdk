@@ -19,8 +19,7 @@
  * A select box. Renders a list of options which each have their own value.
  */
 
-import {type ElementInstance, type OptionsProp, useSelectInputContext} from '@myparcel-pdk/frontend-admin-core';
-import {AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent, type ElementInstance, type OptionsProp, useSelectInputContext} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{element: ElementInstance<OptionsProp>; modelValue: string | number}>();
