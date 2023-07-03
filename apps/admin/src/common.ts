@@ -35,6 +35,7 @@ export type {
   RadioGroupProps,
   ResolvedAction,
   SelectInputProps,
+  TriStateValue,
 } from '@myparcel-pdk/frontend-admin-core';
 
 export {
