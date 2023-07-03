@@ -1,7 +1,5 @@
 <template>
-  <div
-    v-if="!query.isLoading"
-    v-test="'OrderListItem'">
+  <div v-if="!query.isLoading">
     <OrderModeActions v-if="orderMode" />
 
     <template v-else>

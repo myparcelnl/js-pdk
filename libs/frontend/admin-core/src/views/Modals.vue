@@ -1,5 +1,5 @@
 <template>
-  <div v-test="'Modals'">
+  <div v-test>
     <KeepAlive>
       <PrintOptionsModal v-if="pluginSettings.label.prompt" />
     </KeepAlive>

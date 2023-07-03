@@ -1,5 +1,5 @@
 <template>
-  <PdkButtonGroup v-test="'OrderModeActions'">
+  <PdkButtonGroup>
     <template v-if="data?.exported">
       <PdkLink :action="showExportedOrderAction" />
     </template>
@@ -20,7 +20,7 @@ import {get} from '@vueuse/core';
 import {ActionButton} from '../common';
 import {defineActions} from '../../services';
 import {useOrder} from '../../composables';
-import {orderExportAction, orderViewInBackofficeAction, ordersEditAction} from '../../actions';
+import {orderExportAction, ordersEditAction, orderViewInBackofficeAction} from '../../actions';
 
 const query = useOrder();
 
