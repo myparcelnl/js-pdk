@@ -1,8 +1,12 @@
 <template>
   <div v-test="AdminComponent.TriStateInput">
+    <input
+      v-model="model"
+      type="hidden" />
+
     <PdkToggleInput
       v-model="toggleModel"
-      :element="element" />
+      :element="toggleElement" />
 
     <PdkCheckboxInput
       v-model="inheritValueModel"
@@ -23,5 +27,8 @@ import {
 const props = defineProps<PdkElementProps<T>>();
 const emit = defineEmits<PdkElementEmits<T>>();
 
-const {inheritValueElement, inheritValueModel, toggleModel} = useTriStateInputContext(props, emit);
+const {inheritValueElement, model, toggleElement, inheritValueModel, toggleModel} = useTriStateInputContext(
+  props,
+  emit,
+);
 </script>
