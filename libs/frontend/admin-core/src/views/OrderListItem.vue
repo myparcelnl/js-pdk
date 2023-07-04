@@ -9,7 +9,9 @@
     </template>
   </div>
 
-  <NotificationContainer :category="NotificationCategory.Api" />
+  <NotificationContainer
+    :category="NotificationCategory.Action"
+    :filter="notificationFilter" />
 </template>
 
 <script lang="ts" setup>
@@ -17,6 +19,7 @@
  * This is the main entry point for the order list column.
  */
 import {defineAsyncComponent} from 'vue';
+import {get} from '@vueuse/core';
 import {NotificationCategory} from '../types';
 import {useActionStore, useQueryStore} from '../stores';
 import {useOrder, usePluginSettings} from '../composables';
@@ -41,4 +44,8 @@ const pluginSettings = usePluginSettings();
 const {orderMode} = pluginSettings.general;
 
 const query = useOrder();
+
+const notificationFilter = (notification) => {
+  return notification.tags?.orderIds === get(query.data)?.externalIdentifier;
+};
 </script>

@@ -6,6 +6,7 @@ export type NotificationId = number | string;
 export interface Notification {
   category?: NotificationCategory;
   content?: OneOrMore<string>;
+  dismissible?: boolean;
   /**
    * ID of a notification. If not provided, a unique id will be generated. It may be a string, but make sure this string
    * does not exist in NotificationCategory.
@@ -13,12 +14,23 @@ export interface Notification {
    * @see NotificationCategory
    */
   id?: NotificationId;
+  /**
+   * Arbitrary tags that can be set to distinguish notifications from each other.
+   */
+  tags?: Record<string, unknown>;
   timeout?: boolean | number;
   title?: string;
   variant: Variant;
 }
 
+export type ResolvedNotification = Notification & {
+  id: NotificationId;
+  timeout: boolean | number;
+  dismissible: boolean;
+};
+
 export enum NotificationCategory {
+  Action = 'action',
   Api = 'api',
   General = 'general',
   Modal = 'modal',

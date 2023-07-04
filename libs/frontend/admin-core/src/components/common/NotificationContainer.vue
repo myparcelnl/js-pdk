@@ -1,5 +1,5 @@
 <template>
-  <div v-test="`NotificationContainer--${category}`">
+  <div>
     <TransitionGroup
       :name="config?.transitions?.notification"
       appear>
@@ -11,34 +11,27 @@
   </div>
 </template>
 
-<script lang="ts">
-import {type PropType, computed, defineComponent} from 'vue';
-import {NotificationCategory} from '../../types';
-import {useNotificationStore} from '../../stores';
-import {useAdminConfig} from '../../composables';
+<script lang="ts" setup>
+import {computed} from 'vue';
+import {
+  type Notification,
+  type NotificationCategory,
+  useAdminConfig,
+  useNotificationStore,
+} from '@myparcel-pdk/frontend-admin-core';
 
-export default defineComponent({
-  name: 'NotificationContainer',
+const props = defineProps<{
+  category: NotificationCategory;
+  filter?: (notification: Notification) => boolean;
+}>();
 
-  props: {
-    category: {
-      type: String as PropType<NotificationCategory>,
-      default: () => NotificationCategory.General,
-    },
-  },
+const config = useAdminConfig();
 
-  setup: (props) => {
-    return {
-      config: useAdminConfig(),
+const notifications = computed(() => {
+  const {notifications} = useNotificationStore();
 
-      notifications: computed(() => {
-        const {notifications} = useNotificationStore();
-
-        return notifications.filter((notification) => {
-          return notification.category === props.category;
-        });
-      }),
-    };
-  },
+  return notifications.filter((notification) => {
+    return notification.category === props.category && (props.filter ? props.filter?.(notification) : true);
+  });
 });
 </script>

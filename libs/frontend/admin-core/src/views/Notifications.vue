@@ -1,6 +1,5 @@
 <template>
-  <NotificationContainer />
-  <NotificationContainer :category="NotificationCategory.Api" />
+  <NotificationContainer :category="NotificationCategory.General" />
 </template>
 
 <!-- The notification container. Used to display notifications. -->
