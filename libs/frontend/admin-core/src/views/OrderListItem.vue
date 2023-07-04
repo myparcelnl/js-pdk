@@ -20,7 +20,7 @@
  */
 import {defineAsyncComponent} from 'vue';
 import {get} from '@vueuse/core';
-import {NotificationCategory} from '../types';
+import {NotificationCategory, type NotificationFilter} from '../types';
 import {useActionStore, useQueryStore} from '../stores';
 import {useOrder, usePluginSettings} from '../composables';
 import {NotificationContainer} from '../components';
@@ -45,7 +45,7 @@ const {orderMode} = pluginSettings.general;
 
 const query = useOrder();
 
-const notificationFilter = (notification) => {
+const notificationFilter: NotificationFilter = (notification) => {
   return notification.tags?.orderIds === get(query.data)?.externalIdentifier;
 };
 </script>

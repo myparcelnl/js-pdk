@@ -1,6 +1,6 @@
-import {createNotification} from '@myparcel-pdk/frontend-admin-core';
 import {Variant} from '@myparcel-pdk/common';
 import {createLogger} from '../logger';
+import {createNotification} from '../createNotification';
 import {
   type ActionParameters,
   type AnyAdminAction,

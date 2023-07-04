@@ -13,16 +13,13 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {
-  type Notification,
-  type NotificationCategory,
-  useAdminConfig,
-  useNotificationStore,
-} from '@myparcel-pdk/frontend-admin-core';
+import {type NotificationCategory, type NotificationFilter} from '../../types';
+import {useNotificationStore} from '../../stores';
+import {useAdminConfig} from '../../composables';
 
 const props = defineProps<{
   category: NotificationCategory;
-  filter?: (notification: Notification) => boolean;
+  filter?: NotificationFilter;
 }>();
 
 const config = useAdminConfig();

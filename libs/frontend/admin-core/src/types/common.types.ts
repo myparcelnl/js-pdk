@@ -55,3 +55,5 @@ export enum AdminIcon {
   Spinner = 'spinner',
   Yes = 'yes',
 }
+
+export type NotificationFilter = (notification: ResolvedNotification) => boolean;
