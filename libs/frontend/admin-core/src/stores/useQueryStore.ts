@@ -2,12 +2,12 @@ import {type Ref, ref} from 'vue';
 import {defineStore} from 'pinia';
 import {get as vuGet} from '@vueuse/core';
 import {type UseMutationReturnType} from '@tanstack/vue-query/build/lib/useMutation';
-import {type QueryClient, type UseQueryReturnType, useQueryClient} from '@tanstack/vue-query';
+import {type QueryClient, useQueryClient, type UseQueryReturnType} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {type ApiException} from '@myparcel/sdk';
 import {getOrderId} from '../utils';
-import {type AdminContext, AdminContextKey, type BackendEndpointResponse, type ActionInput} from '../types';
+import {type ActionInput, type AdminContext, AdminContextKey, type BackendEndpointResponse} from '../types';
 import {MutationMode} from '../services';
 import {
   useCreateWebhooksMutation,
@@ -137,18 +137,16 @@ export const useQueryStore = defineStore('query', () => {
     /**
      * Register queries needed to render any order related component.
      */
-    registerOrderQueries: (orderId?: string | null, mode: MutationMode = MutationMode.Default) => {
+    registerOrderQueries: (orderId?: string | undefined, mode: MutationMode = MutationMode.Default) => {
       const id = orderId ?? getOrderId();
 
-      if (!id) {
-        throw new Error('No order id found');
+      if (id) {
+        toArray(id).forEach((orderId) => {
+          const ordersQuery = register(BackendEndpoint.FetchOrders, orderId, useFetchOrdersQuery(orderId));
+
+          vuGet(ordersQuery.data)?.shipments?.forEach((shipment) => registerShipmentQuery(shipment.id));
+        });
       }
-
-      toArray(id).forEach((orderId) => {
-        const ordersQuery = register(BackendEndpoint.FetchOrders, orderId, useFetchOrdersQuery(orderId));
-
-        vuGet(ordersQuery.data)?.shipments?.forEach((shipment) => registerShipmentQuery(shipment.id));
-      });
 
       register(BackendEndpoint.FetchOrders, useFetchOrdersQuery());
       register(BackendEndpoint.ExportOrders, useExportOrdersMutation(mode));
