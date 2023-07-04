@@ -5,8 +5,14 @@
   "sideEffects": false,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./integrated": "./src/integrated.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./integrated": {
+      "types": "./dist/integrated.d.ts",
+      "default": "./src/integrated.ts"
+    }
   },
   "types": "./dist/index.d.ts",
   "files": [
@@ -22,7 +28,6 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.39",
     "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.79"
   },
   "engines": {

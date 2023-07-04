@@ -21,10 +21,6 @@
     "test:run": "run ws:test:run \"$(pwd)\"",
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
-  "dependencies": {
-    "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.5",
-    "@myparcel/delivery-options": "^5.7.2"
-  },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*"
   },

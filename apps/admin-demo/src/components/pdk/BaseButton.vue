@@ -16,8 +16,8 @@
 </template>
 
 <script lang="ts" setup>
-import {type PropType, computed} from 'vue';
-import {Size} from '@myparcel-pdk/common';
+import {computed, type PropType} from 'vue';
+import {Size} from '@myparcel-pdk/admin';
 
 const props = defineProps({
   disabled: {

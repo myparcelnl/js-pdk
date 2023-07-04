@@ -34,7 +34,7 @@
 
 <script setup lang="ts" generic="T extends boolean">
 import {useVModel} from '@vueuse/core';
-import {generateFieldId, type PdkElementEmits, type PdkElementProps} from '@myparcel-pdk/frontend-admin-core'; // eslint-disable-next-line vue/no-unused-properties
+import {generateFieldId, type PdkElementEmits, type PdkElementProps} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<PdkElementProps<T>>();

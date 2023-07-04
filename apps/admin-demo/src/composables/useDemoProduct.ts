@@ -1,4 +1,4 @@
-import {type Plugin} from '@myparcel-pdk/common';
+import {type Plugin} from '@myparcel-pdk/admin';
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {useDemoProductData} from './useDemoProductData';
 

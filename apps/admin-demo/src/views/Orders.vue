@@ -49,12 +49,13 @@ import {RouterLink} from 'vue-router';
 import {computed, ref} from 'vue';
 import {
   AdminModalKey,
+  BackendEndpoint,
   OrderListItemView,
+  type Plugin,
   useModalStore,
   useQueryStore,
   useStoreQuery,
-} from '@myparcel-pdk/frontend-admin-core';
-import {BackendEndpoint, type Plugin} from '@myparcel-pdk/common';
+} from '@myparcel-pdk/admin/integrated';
 
 const queryStore = useQueryStore();
 queryStore.registerOrderQueries();

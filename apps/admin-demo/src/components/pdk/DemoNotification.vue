@@ -44,7 +44,7 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {type ResolvedNotification, useNotificationStore} from '@myparcel-pdk/frontend-admin-core';
+import {type ResolvedNotification, useNotificationStore} from '@myparcel-pdk/admin';
 import {toArray} from '@myparcel/ts-utils';
 
 const props = defineProps<{

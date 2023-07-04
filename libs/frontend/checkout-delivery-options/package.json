@@ -24,6 +24,7 @@
   "dependencies": {
     "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.14",
     "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.5",
+    "@myparcel/delivery-options": "^5.7.2",
     "@myparcel/ts-utils": "^1.9.0"
   },
   "devDependencies": {

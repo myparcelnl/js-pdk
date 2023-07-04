@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "exports": "./src/index.ts",
-  "files": [
-    "./src"
-  ],
   "scripts": {
     "build": "run translations:init && nitropack build",
     "postinstall": "npx nitropack prepare",

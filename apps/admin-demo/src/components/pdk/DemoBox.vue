@@ -27,8 +27,8 @@
 </template>
 
 <script lang="ts" setup>
-import {type PropType, computed, useSlots} from 'vue';
-import {Size} from '@myparcel-pdk/common';
+import {computed, type PropType, useSlots} from 'vue';
+import {Size} from '@myparcel-pdk/admin';
 
 const slots = useSlots();
 
@@ -43,11 +43,16 @@ const props = defineProps({
   },
 });
 
-const paddingClasses = computed(() => ({
-  'p-2': [Size.Small, Size.ExtraSmall].includes(props.size),
-  'p-4': [Size.Medium].includes(props.size),
-  'p-5': [Size.Large, Size.ExtraLarge].includes(props.size),
-}));
+const paddingClasses = computed(() => {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
+  const size = props.size!;
+
+  return {
+    'p-2': ([Size.Small, Size.ExtraSmall] as Size[]).includes(size),
+    'p-4': (Size.Medium as Size[]).includes(size),
+    'p-5': (Size.Large, Size.ExtraLarge as Size[]).includes(size),
+  };
+});
 
 const bodyClasses = computed(() => ({
   'border-b rounded-b-xl': !slots.footer,

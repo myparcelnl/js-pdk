@@ -31,8 +31,7 @@
 <script lang="ts" setup>
 import {useRoute} from 'vue-router';
 import {computed} from 'vue';
-import {OrderBoxView, useQueryStore, useStoreQuery} from '@myparcel-pdk/frontend-admin-core';
-import {BackendEndpoint, type Plugin} from '@myparcel-pdk/common';
+import {BackendEndpoint, OrderBoxView, type Plugin, useQueryStore, useStoreQuery} from '@myparcel-pdk/admin/integrated';
 
 const route = useRoute();
 const {id} = route.params as {id: string};

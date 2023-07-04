@@ -829,7 +829,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@istanbuljs/schema@npm:^0.1.2, @istanbuljs/schema@npm:^0.1.3":
+"@istanbuljs/schema@npm:^0.1.2":
   version: 0.1.3
   resolution: "@istanbuljs/schema@npm:0.1.3"
   checksum: 5282759d961d61350f33d9118d16bcaed914ebf8061a52f4fa474b2cb08720c9c81d165e13b82f2e5a8a212cc5af482f0c6fc1ac27b9e067e5394c9a6ed186c9
@@ -1335,11 +1335,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-component-tests@workspace:apps/admin-component-tests"
   dependencies:
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.39"
     "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.79"
     "@myparcel/vue-form-builder": ^1.0.0-alpha.1
     "@pinia/testing": ^0.1.2
-    "@vitest/coverage-c8": ^0.32.4
+    "@vitest/coverage-v8": ^0.32.4
     "@vue/test-utils": ^2.4.0
     happy-dom: ^9.20.3
     pinia: ^2.1.3
@@ -1355,9 +1354,9 @@ __metadata:
   resolution: "@myparcel-pdk/admin-demo@workspace:apps/admin-demo"
   dependencies:
     "@fortawesome/fontawesome-free": ^6.3.0
+    "@myparcel-pdk/admin": "workspace:*"
     "@myparcel-pdk/admin-preset-default": "workspace:*"
     "@myparcel-pdk/admin-preset-fontawesome": "workspace:*"
-    "@myparcel-pdk/frontend-admin-core": "workspace:*"
     "@myparcel/constants": ^1.0.0
     "@myparcel/ts-utils": ^1.9.0
     "@tanstack/vue-query": ^4.24.10
@@ -1438,11 +1437,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/admin@workspace:^1.0.0-alpha.79, @myparcel-pdk/admin@workspace:apps/admin":
+"@myparcel-pdk/admin@workspace:*, @myparcel-pdk/admin@workspace:^1.0.0-alpha.79, @myparcel-pdk/admin@workspace:apps/admin":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin@workspace:apps/admin"
   dependencies:
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.39"
     "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.79"
   languageName: unknown
   linkType: soft
@@ -1496,7 +1494,7 @@ __metadata:
     "@myparcel/ts-utils": ^1.9.0
     "@pinia/testing": ^0.1.2
     "@vitejs/plugin-vue": ^4.2.3
-    "@vitest/coverage-c8": ^0.32.4
+    "@vitest/coverage-v8": ^0.32.4
     happy-dom: ^9.20.3
     typescript: ^5.1.6
     vite: ^4.3.9
@@ -1548,7 +1546,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/frontend-admin-core@workspace:*, @myparcel-pdk/frontend-admin-core@workspace:^1.0.0-alpha.79, @myparcel-pdk/frontend-admin-core@workspace:libs/frontend/admin-core":
+"@myparcel-pdk/frontend-admin-core@workspace:^1.0.0-alpha.79, @myparcel-pdk/frontend-admin-core@workspace:libs/frontend/admin-core":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/frontend-admin-core@workspace:libs/frontend/admin-core"
   dependencies:
@@ -1576,8 +1574,6 @@ __metadata:
   resolution: "@myparcel-pdk/frontend-checkout-core@workspace:libs/frontend/checkout-core"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.5"
-    "@myparcel/delivery-options": ^5.7.2
   languageName: unknown
   linkType: soft
 
@@ -1588,6 +1584,7 @@ __metadata:
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.14"
     "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.5"
+    "@myparcel/delivery-options": ^5.7.2
     "@myparcel/ts-utils": ^1.9.0
   languageName: unknown
   linkType: soft
@@ -3094,18 +3091,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-c8@npm:^0.32.4":
+"@vitest/coverage-v8@npm:^0.32.4":
   version: 0.32.4
-  resolution: "@vitest/coverage-c8@npm:0.32.4"
+  resolution: "@vitest/coverage-v8@npm:0.32.4"
   dependencies:
     "@ampproject/remapping": ^2.2.1
-    c8: ^7.14.0
+    "@bcoe/v8-coverage": ^0.2.3
+    istanbul-lib-coverage: ^3.2.0
+    istanbul-lib-report: ^3.0.0
+    istanbul-lib-source-maps: ^4.0.1
+    istanbul-reports: ^3.1.5
     magic-string: ^0.30.0
     picocolors: ^1.0.0
     std-env: ^3.3.3
+    test-exclude: ^6.0.0
+    v8-to-istanbul: ^9.1.0
   peerDependencies:
-    vitest: ">=0.30.0 <1"
-  checksum: 5e394cbbeabfbe0ff47afce43434fb0b26706c6d9c5ad51bafd02309e39598b8405a02fed3c122c54b98e0b349ecdf25b3f6a5011f0804135aba6b2bb333dd6b
+    vitest: ">=0.32.0 <1"
+  checksum: 612bf300e685ede10bec3be862ef78d87b238938fb2f2f1cd9d9d0155d0ef4a8f8afd689ccf80e40831c9c5f36fa4810563e98240c84a8ea170cf3ccf8ef2f28
   languageName: node
   linkType: hard
 
@@ -4725,28 +4728,6 @@ __metadata:
     pkg-types: ^1.0.3
     rc9: ^2.1.1
   checksum: d6ca2664bbdcaa6a4c078a5cf226d1736a880f3722271c948bd7130f5ac06adb77f9f3b00207f6e574e80ad1f00f33097054d8933f2d48635998e0b15ee91105
-  languageName: node
-  linkType: hard
-
-"c8@npm:^7.14.0":
-  version: 7.14.0
-  resolution: "c8@npm:7.14.0"
-  dependencies:
-    "@bcoe/v8-coverage": ^0.2.3
-    "@istanbuljs/schema": ^0.1.3
-    find-up: ^5.0.0
-    foreground-child: ^2.0.0
-    istanbul-lib-coverage: ^3.2.0
-    istanbul-lib-report: ^3.0.0
-    istanbul-reports: ^3.1.4
-    rimraf: ^3.0.2
-    test-exclude: ^6.0.0
-    v8-to-istanbul: ^9.0.0
-    yargs: ^16.2.0
-    yargs-parser: ^20.2.9
-  bin:
-    c8: bin/c8.js
-  checksum: ca44bbd200b09dd5b7a3b8909b964c82eabbbb28ce4543873a313118e1ba24c924fdb6440ed09c636debdbd2dffec5529cca9657d408cba295367b715e131975
   languageName: node
   linkType: hard
 
@@ -7187,16 +7168,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"foreground-child@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "foreground-child@npm:2.0.0"
-  dependencies:
-    cross-spawn: ^7.0.0
-    signal-exit: ^3.0.2
-  checksum: f77ec9aff621abd6b754cb59e690743e7639328301fbea6ff09df27d2befaf7dd5b77cec51c32323d73a81a7d91caaf9413990d305cbe3d873eec4fe58960956
-  languageName: node
-  linkType: hard
-
 "foreground-child@npm:^3.1.0":
   version: 3.1.1
   resolution: "foreground-child@npm:3.1.1"
@@ -8774,7 +8745,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"istanbul-reports@npm:^3.1.4":
+"istanbul-lib-source-maps@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "istanbul-lib-source-maps@npm:4.0.1"
+  dependencies:
+    debug: ^4.1.1
+    istanbul-lib-coverage: ^3.0.0
+    source-map: ^0.6.1
+  checksum: 21ad3df45db4b81852b662b8d4161f6446cd250c1ddc70ef96a585e2e85c26ed7cd9c2a396a71533cfb981d1a645508bc9618cae431e55d01a0628e7dec62ef2
+  languageName: node
+  linkType: hard
+
+"istanbul-reports@npm:^3.1.5":
   version: 3.1.5
   resolution: "istanbul-reports@npm:3.1.5"
   dependencies:
@@ -13834,7 +13816,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"v8-to-istanbul@npm:^9.0.0":
+"v8-to-istanbul@npm:^9.1.0":
   version: 9.1.0
   resolution: "v8-to-istanbul@npm:9.1.0"
   dependencies:
@@ -14480,25 +14462,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs-parser@npm:^20.2.2, yargs-parser@npm:^20.2.3, yargs-parser@npm:^20.2.9":
+"yargs-parser@npm:^20.2.3":
   version: 20.2.9
   resolution: "yargs-parser@npm:20.2.9"
   checksum: 8bb69015f2b0ff9e17b2c8e6bfe224ab463dd00ca211eece72a4cd8a906224d2703fb8a326d36fdd0e68701e201b2a60ed7cf81ce0fd9b3799f9fe7745977ae3
-  languageName: node
-  linkType: hard
-
-"yargs@npm:^16.2.0":
-  version: 16.2.0
-  resolution: "yargs@npm:16.2.0"
-  dependencies:
-    cliui: ^7.0.2
-    escalade: ^3.1.1
-    get-caller-file: ^2.0.5
-    require-directory: ^2.1.1
-    string-width: ^4.2.0
-    y18n: ^5.0.5
-    yargs-parser: ^20.2.2
-  checksum: b14afbb51e3251a204d81937c86a7e9d4bdbf9a2bcee38226c900d00f522969ab675703bee2a6f99f8e20103f608382936034e64d921b74df82b63c07c5e8f59
   languageName: node
   linkType: hard
 
