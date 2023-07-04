@@ -21,6 +21,9 @@
     "test:run": "run ws:test:run \"$(pwd)\"",
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
+  "dependencies": {
+    "@myparcel-pdk/common": "workspace:*"
+  },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*"
   },

@@ -1574,6 +1574,7 @@ __metadata:
   resolution: "@myparcel-pdk/frontend-checkout-core@workspace:libs/frontend/checkout-core"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
+    "@myparcel-pdk/common": "workspace:*"
   languageName: unknown
   linkType: soft
 
