@@ -12,15 +12,14 @@
     "./dist"
   ],
   "scripts": {
-    "build": "run translations:import && vite build",
+    "build": "vite build",
     "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
     "serve": "vite",
     "test": "run ws:test \"$(pwd)\"",
     "test:coverage": "run ws:test:coverage \"$(pwd)\"",
-    "test:run": "run ws:test:run \"$(pwd)\"",
-    "translations:import": "npx -q @edielemoine/google-docs-importer --documentId 1TPE7gwG2GXtX7vlKIaskwMy0Xr4o_ir-lsedWB86xyc -o src/translations"
+    "test:run": "run ws:test:run \"$(pwd)\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.3.0",
@@ -35,7 +34,6 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@edielemoine/google-docs-importer": "^1.0.2",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitest/coverage-c8": "^0.30.1",
     "autoprefixer": "^10.4.13",

@@ -10,6 +10,11 @@ export default defineNitroConfig({
       driver: 'fs',
       base: './data/db',
     },
+
+    translations: {
+      driver: 'fs',
+      base: './data/translations',
+    },
   },
 
   routeRules: {

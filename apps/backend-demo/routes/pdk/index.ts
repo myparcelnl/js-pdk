@@ -1,9 +1,11 @@
+import {type H3Event} from 'h3';
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {getItemsByParameter} from '../../src/utils/getItemsByParameter';
+import {getContext} from '../../src/utils/getContext';
 
-const resolveAction = async (
-  query: ReturnType<typeof getQuery>,
-): Promise<{key: string; response: Record<string, unknown>[]}> => {
+const resolveAction = async (event: H3Event): Promise<{key: string; response: Record<string, unknown>[]}> => {
+  const query = getQuery(event);
+
   if (!query.action) {
     throw new Error('No action provided');
   }
@@ -18,7 +20,7 @@ const resolveAction = async (
     case BackendEndpoint.FetchContext:
       return {
         key: 'context',
-        response: await getItemsByParameter('context', query.context),
+        response: await getContext(event),
       };
   }
 
@@ -26,9 +28,7 @@ const resolveAction = async (
 };
 
 export default cachedEventHandler(async (event) => {
-  const query = getQuery(event);
-
-  const resolved = await resolveAction(query);
+  const resolved = await resolveAction(event);
 
   return {
     data: {
