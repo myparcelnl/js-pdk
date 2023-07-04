@@ -416,11 +416,14 @@ export namespace Plugin {
   export type Field = {
     $attributes?: Record<string, unknown>;
     $component: AdminComponent;
+    $disabledWhen?: Record<string, unknown>;
+    $readOnlyWhen?: Record<string, unknown>;
     $slot?: string;
     $visibleWhen?: Record<string, unknown>;
     $wrapper?: AdminComponent | boolean;
     label?: string;
     name?: string;
+    subtext?: string;
   };
 
   export type SettingsView = {

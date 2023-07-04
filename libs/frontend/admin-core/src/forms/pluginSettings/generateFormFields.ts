@@ -1,5 +1,5 @@
 import {ref, toRaw} from 'vue';
-import {get} from '@vueuse/core';
+import {createFormStateWatcher} from '@myparcel-pdk/frontend-admin-core';
 import {type Plugin} from '@myparcel-pdk/common';
 import {
   type AnyElementConfiguration,
@@ -22,7 +22,18 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
   }
 
   return fields.map((data) => {
-    const {$attributes, $component, $slot, $visibleWhen, $wrapper, label, name, ...props} = data;
+    const {
+      $attributes,
+      $component,
+      $disabledWhen,
+      $readOnlyWhen,
+      $slot,
+      $visibleWhen,
+      $wrapper,
+      label,
+      name,
+      ...props
+    } = data;
 
     const common: AnyElementConfiguration = {
       component: resolveFormComponent($component),
@@ -33,16 +44,20 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
     };
 
     if ($visibleWhen) {
-      common.visibleWhen = (field) => {
-        return Object.entries($visibleWhen).every(([fieldName, value]) => {
-          return get(field.form.model[prefix + fieldName]?.ref) === value;
-        });
-      };
+      common.visibleWhen = createFormStateWatcher($visibleWhen, prefix);
     }
 
     // Plain element
     if (!label || !name) {
       return defineField(common);
+    }
+
+    if ($disabledWhen) {
+      common.disabledWhen = createFormStateWatcher($disabledWhen, prefix);
+    }
+
+    if ($readOnlyWhen) {
+      common.readOnlyWhen = createFormStateWatcher($readOnlyWhen, prefix);
     }
 
     return defineField({
