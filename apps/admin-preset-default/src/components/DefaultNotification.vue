@@ -1,24 +1,20 @@
 <template>
-  <Transition
-    appear
-    name="fade">
-    <div v-test="AdminComponent.Notification">
-      <h1
-        v-if="notification.title"
-        v-text="notification.title" />
+  <div v-test="AdminComponent.Notification">
+    <b
+      v-if="notification.title"
+      v-text="notification.title" />
 
-      <ul v-if="contentArray.length > 1">
-        <li
-          v-for="item in contentArray"
-          :key="item"
-          v-text="item" />
-      </ul>
+    <ul v-if="contentArray.length > 1">
+      <li
+        v-for="item in contentArray"
+        :key="item"
+        v-text="item" />
+    </ul>
 
-      <p
-        v-else
-        v-text="contentArray[0]" />
-    </div>
-  </Transition>
+    <p
+      v-else
+      v-text="contentArray[0]" />
+  </div>
 </template>
 
 <script lang="ts" setup>
