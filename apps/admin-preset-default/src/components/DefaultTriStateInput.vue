@@ -9,8 +9,8 @@
       :element="toggleElement" />
 
     <PdkCheckboxInput
-      v-model="inheritValueModel"
-      :element="inheritValueElement" />
+      v-model="inheritModel"
+      :element="inheritElement" />
   </div>
 </template>
 
@@ -21,14 +21,11 @@ import {
   type PdkElementProps,
   type TriStateValue,
   useTriStateInputContext,
-} from '@myparcel-pdk/admin';
+} from '@myparcel-pdk/admin'; // eslint-disable-next-line vue/no-unused-properties
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<PdkElementProps<T>>();
 const emit = defineEmits<PdkElementEmits<T>>();
 
-const {inheritValueElement, model, toggleElement, inheritValueModel, toggleModel} = useTriStateInputContext(
-  props,
-  emit,
-);
+const {model, inheritElement, inheritModel, toggleElement, toggleModel} = useTriStateInputContext(props, emit);
 </script>

@@ -1,27 +1,30 @@
-import {type Component, computed, type WritableComputedRef} from 'vue';
-import {get, watchOnce} from '@vueuse/core';
-import {type ComponentOrHtmlElement, type InteractiveElementInstance, useForm} from '@myparcel/vue-form-builder';
-import {createFormElement} from '../utils';
+import {computed, markRaw, reactive, type Ref, ref, watch, type WritableComputedRef} from 'vue';
+import {get, useVModel} from '@vueuse/core';
+import {
+  type AnyElementConfiguration,
+  type ComponentOrHtmlElement,
+  defineField,
+  useForm,
+} from '@myparcel/vue-form-builder';
 import {type ElementInstance, type PdkElementEmits, type PdkElementProps, type TriStateValue} from '../types';
 import {useLanguage} from '../composables';
+
+type BoolElInstance = ElementInstance<PdkElementProps<ComponentOrHtmlElement>, ComponentOrHtmlElement, string, boolean>;
 
 type UseTriStateInputContext = (
   props: PdkElementProps<TriStateValue>,
   emit: PdkElementEmits<TriStateValue>,
 ) => {
-  inheritValueElement: ElementInstance<
-    PdkElementProps<ComponentOrHtmlElement>,
-    ComponentOrHtmlElement,
-    string,
-    boolean
-  >;
-  inheritValueModel: WritableComputedRef<boolean>;
+  inheritElement: BoolElInstance;
+  inheritModel: Ref<boolean>;
   model: WritableComputedRef<TriStateValue>;
-  toggleElement: ElementInstance<PdkElementProps<ComponentOrHtmlElement>, ComponentOrHtmlElement, string, boolean>;
-  toggleModel: WritableComputedRef<boolean>;
+  toggleElement: BoolElInstance;
+  toggleModel: Ref<boolean>;
 };
 
-const TRI_STATE_VALUE_DEFAULT = -1;
+const TRI_STATE_INHERIT = -1;
+const TRI_STATE_ON = 1;
+const TRI_STATE_OFF = 0;
 
 /**
  * A tri-state input can hold a value of 0, 1 or -1. -1 is used to indicate that the value should be inherited or defaulted.
@@ -33,48 +36,52 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
 
   const toggleName = `${props.element.name}__toggle`;
 
-  const setToggleReadOnly = (value: boolean): void => {
-    const toggle = form.getField<InteractiveElementInstance<Component, string, boolean>>(toggleName);
+  const inheritModel = ref<boolean>(TRI_STATE_INHERIT === props.modelValue);
+  const toggleModel = ref<boolean>(TRI_STATE_INHERIT === props.modelValue ? false : Boolean(props.modelValue));
 
-    toggle.setReadOnly(value);
-  };
+  const model = useVModel(props, undefined, emit) as WritableComputedRef<TriStateValue>;
 
-  const model = computed<TriStateValue>({
-    set: (value) => emit('update:modelValue', value),
-    get: () => props.modelValue,
-  });
-
-  const toggleModel = computed<boolean>({
-    set: (value) => {
-      model.value = value ? 1 : 0;
+  const commonFieldProperties = Object.freeze({
+    form,
+    component: 'input',
+    wrapper: false,
+    attributes: {
+      hidden: true,
     },
-    get: () => get(props.element.ref) === 1,
-  });
+  }) satisfies AnyElementConfiguration;
 
-  const toggleElement = createFormElement<boolean>({name: toggleName});
+  const inheritElement = reactive(
+    defineField({
+      ...commonFieldProperties,
+      ref: inheritModel,
+      name: `${props.element.name}__inherit`,
+      label: translate('settings_use_default_value'),
+    }) as unknown as BoolElInstance,
+  );
 
-  const inheritValueModel = computed<boolean>({
-    set: (value) => {
-      model.value = value ? TRI_STATE_VALUE_DEFAULT : (Number(toggleModel.value) as 0 | 1);
+  const toggleElement = reactive(
+    defineField({
+      ...commonFieldProperties,
+      name: toggleName,
+      ref: toggleModel,
+      isReadOnly: markRaw(computed(() => get(inheritModel))),
+    }) as unknown as BoolElInstance,
+  );
 
-      setToggleReadOnly(value);
-    },
-    get: () => get(props.element.ref) === TRI_STATE_VALUE_DEFAULT,
-  });
+  watch([toggleModel, inheritModel], ([toggle, inherit]) => {
+    if (inherit) {
+      toggleModel.value = false;
+      model.value = TRI_STATE_INHERIT;
+      return;
+    }
 
-  const inheritValueElement = createFormElement<boolean>({
-    name: undefined,
-    label: translate('settings_use_default_value'),
-  });
-
-  watchOnce(form.stable, () => {
-    setToggleReadOnly(get(inheritValueModel));
+    model.value = toggle ? TRI_STATE_ON : TRI_STATE_OFF;
   });
 
   return {
-    inheritValueElement,
-    inheritValueModel,
     model,
+    inheritElement,
+    inheritModel,
     toggleElement,
     toggleModel,
   };
