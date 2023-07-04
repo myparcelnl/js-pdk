@@ -25,16 +25,16 @@ defineProps<{
   /**
    * The title of the image.
    */
-  title: string | null;
+  title?: string | null;
 
   /**
    * The width of the image.
    */
-  width: number | string | null;
+  width?: number | string | null;
 
   /**
    * The height of the image.
    */
-  height: number | string | null;
+  height?: number | string | null;
 }>();
 </script>

@@ -12,8 +12,8 @@
 defineProps<{
   src: string;
   alt: string;
-  title: string | null;
-  width: number | string | null;
-  height: number | string | null;
+  title?: string | null;
+  width?: number | string | null;
+  height?: number | string | null;
 }>();
 </script>

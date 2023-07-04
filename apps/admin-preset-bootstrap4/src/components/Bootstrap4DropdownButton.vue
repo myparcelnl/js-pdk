@@ -39,8 +39,8 @@ import BaseButton from './common/BaseButton.vue';
 const props = defineProps<{
   // eslint-disable-next-line vue/no-unused-properties
   actions: ActionDefinition[];
-  disabled: boolean;
-  hideText: boolean;
+  disabled?: boolean;
+  hideText?: boolean;
   size?: Size;
 }>();
 

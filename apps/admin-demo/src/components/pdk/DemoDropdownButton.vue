@@ -54,9 +54,9 @@ import {AdminComponent, type Size} from '@myparcel-pdk/common';
 const props = defineProps<{
   // eslint-disable-next-line vue/no-unused-properties
   actions: ActionDefinition[];
-  disabled: boolean;
-  hideText: boolean;
-  size: Size;
+  disabled?: boolean;
+  hideText?: boolean;
+  size?: Size;
 }>();
 
 const {toggled, dropdownActions, dropdownIcon} = useDropdownData(props);

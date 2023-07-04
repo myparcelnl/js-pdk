@@ -60,12 +60,12 @@ const props = defineProps<{
   /**
    * Controls disabled state.
    */
-  disabled: boolean;
+  disabled?: boolean;
 
   /**
    * To hide the text of the standalone actions.
    */
-  hideText: boolean;
+  hideText?: boolean;
 
   /**
    * Size of the button.
