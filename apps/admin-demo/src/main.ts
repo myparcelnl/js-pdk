@@ -25,7 +25,6 @@ import {
   DefaultTableRow,
   DefaultTextArea,
   DefaultTimeInput,
-  DefaultTriStateInput,
 } from '@myparcel-pdk/admin-preset-default';
 import {createRouterInstance} from './router';
 import {
@@ -44,6 +43,7 @@ import {
   DemoTabNavButton,
   DemoTextInput,
   DemoToggleInput,
+  DemoTriStateInput,
 } from './components';
 import App from './App.vue';
 
@@ -124,7 +124,7 @@ void (async () => {
         PdkTextInput: DemoTextInput,
         PdkTimeInput: DefaultTimeInput,
         PdkToggleInput: DemoToggleInput,
-        PdkTriStateInput: DefaultTriStateInput,
+        PdkTriStateInput: DemoTriStateInput,
       },
       transitions: {
         modal: 'slide-up',

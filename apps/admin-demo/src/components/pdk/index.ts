@@ -27,3 +27,5 @@ export {default as DemoTable} from './DemoTable.vue';
 export {default as DemoTextInput} from './DemoTextInput.vue';
 
 export {default as DemoToggleInput} from './DemoToggleInput.vue';
+
+export {default as DemoTriStateInput} from './DemoTriStateInput.vue';
