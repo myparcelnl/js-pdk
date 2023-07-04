@@ -8,21 +8,23 @@
   "deliveryOptions": {
     "labelAmount": 1,
     "packageType": "package",
-    "shipmentOptions": {}
+    "shipmentOptions": {
+      "signature": true
+    }
   },
-  "recipient": {
+  "shippingAddress": {
     "cc": "US",
     "city": "Miami",
-    "fullStreet": "16, Main street 2nd floor",
+    "address1": "16, Main street",
+    "address2": "2nd floor",
     "postalCode": "33133",
     "region": "Florida",
-    "street": "16, Main street 2nd floor",
     "email": "admin@prestashop.dev.myparcel.nl",
     "phone": "0102030405",
     "person": "John DOE",
     "company": "My Company"
   },
-  "sender": {},
+  "senderAddress": {},
   "shipments": [
     {
       "orderId": "3",

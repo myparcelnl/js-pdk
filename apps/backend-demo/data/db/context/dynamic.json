@@ -6,19 +6,15 @@
       "status": 2,
       "contactInfo": {
         "boxNumber": "",
-        "cc": null,
         "city": "",
-        "fullStreet": null,
         "number": "",
         "numberSuffix": "",
         "postalCode": "",
         "region": "",
-        "state": null,
         "street": "",
         "streetAdditionalInfo": "",
         "email": "test@myparcel.nl",
         "phone": "0612345678",
-        "person": null,
         "company": null
       },
       "generalSettings": {
@@ -106,7 +102,6 @@
             "useCustomDescription": 0,
             "fromAddressName": "MyParcel",
             "bcc": 0,
-            "emailAddressForTracktraceReturnShipments": null,
             "contribution": {
               "amount": 0,
               "currency": "EUR"
@@ -137,27 +132,19 @@
           "carrierConfigurations": [
             {
               "carrier": "instabox",
-              "defaultCutoffTime": null,
-              "defaultDropOffPoint": null,
-              "defaultDropOffPointIdentifier": null,
               "mondayCutoffTime": null
             }
           ],
-          "carrierOptions": [
+          "carriers": [
             {
-              "carrier": {
-                "externalIdentifier": "postnl",
-                "id": 1,
-                "name": "postnl",
-                "human": null,
-                "subscriptionId": null,
-                "enabled": true,
-                "isDefault": false,
-                "label": null,
-                "optional": false,
-                "primary": true,
-                "type": "main"
-              },
+              "externalIdentifier": "postnl",
+              "id": 1,
+              "name": "postnl",
+              "enabled": true,
+              "isDefault": false,
+              "optional": false,
+              "primary": true,
+              "type": "main",
               "capabilities": {
                 "deliveryTypes": ["morning", "standard", "evening", "pickup"],
                 "features": {
@@ -203,19 +190,14 @@
               }
             },
             {
-              "carrier": {
-                "externalIdentifier": "cheapcargo",
-                "id": 3,
-                "name": "cheapcargo",
-                "human": null,
-                "subscriptionId": null,
-                "enabled": true,
-                "isDefault": false,
-                "label": null,
-                "optional": false,
-                "primary": true,
-                "type": "main"
-              },
+              "externalIdentifier": "cheapcargo",
+              "id": 3,
+              "name": "cheapcargo",
+              "enabled": true,
+              "isDefault": false,
+              "optional": false,
+              "primary": true,
+              "type": "main",
               "capabilities": {
                 "deliveryTypes": [],
                 "features": [],
@@ -230,19 +212,14 @@
               }
             },
             {
-              "carrier": {
-                "externalIdentifier": "dhl",
-                "id": 6,
-                "name": "dhl",
-                "human": null,
-                "subscriptionId": null,
-                "enabled": true,
-                "isDefault": false,
-                "label": null,
-                "optional": true,
-                "primary": true,
-                "type": "main"
-              },
+              "externalIdentifier": "dhl",
+              "id": 6,
+              "name": "dhl",
+              "enabled": true,
+              "isDefault": false,
+              "optional": true,
+              "primary": true,
+              "type": "main",
               "capabilities": {
                 "deliveryTypes": [],
                 "features": [],
@@ -257,19 +234,14 @@
               }
             },
             {
-              "carrier": {
-                "externalIdentifier": "bol.com",
-                "id": 7,
-                "name": "bol.com",
-                "human": null,
-                "subscriptionId": null,
-                "enabled": true,
-                "isDefault": false,
-                "label": null,
-                "optional": false,
-                "primary": true,
-                "type": "main"
-              },
+              "externalIdentifier": "bol.com",
+              "id": 7,
+              "name": "bol.com",
+              "enabled": true,
+              "isDefault": false,
+              "optional": false,
+              "primary": true,
+              "type": "main",
               "capabilities": {
                 "deliveryTypes": [],
                 "features": [],
@@ -284,19 +256,14 @@
               }
             },
             {
-              "carrier": {
-                "externalIdentifier": "ups",
-                "id": 8,
-                "name": "ups",
-                "human": null,
-                "subscriptionId": null,
-                "enabled": true,
-                "isDefault": false,
-                "label": null,
-                "optional": true,
-                "primary": true,
-                "type": "main"
-              },
+              "externalIdentifier": "ups",
+              "id": 8,
+              "name": "ups",
+              "enabled": true,
+              "isDefault": false,
+              "optional": true,
+              "primary": true,
+              "type": "main",
               "capabilities": {
                 "deliveryTypes": [],
                 "features": [],
@@ -311,19 +278,14 @@
               }
             },
             {
-              "carrier": {
-                "externalIdentifier": "dhlforyou",
-                "id": 9,
-                "name": "dhlforyou",
-                "human": null,
-                "subscriptionId": null,
-                "enabled": true,
-                "isDefault": false,
-                "label": null,
-                "optional": true,
-                "primary": true,
-                "type": "main"
-              },
+              "externalIdentifier": "dhlforyou",
+              "id": 9,
+              "name": "dhlforyou",
+              "enabled": true,
+              "isDefault": false,
+              "optional": true,
+              "primary": true,
+              "type": "main",
               "capabilities": {
                 "deliveryTypes": ["standard", "pickup"],
                 "features": {
@@ -363,19 +325,14 @@
               }
             },
             {
-              "carrier": {
-                "externalIdentifier": "dhlparcelconnect",
-                "id": 10,
-                "name": "dhlparcelconnect",
-                "human": null,
-                "subscriptionId": null,
-                "enabled": true,
-                "isDefault": false,
-                "label": null,
-                "optional": true,
-                "primary": true,
-                "type": "main"
-              },
+              "externalIdentifier": "dhlparcelconnect",
+              "id": 10,
+              "name": "dhlparcelconnect",
+              "enabled": true,
+              "isDefault": false,
+              "optional": true,
+              "primary": true,
+              "type": "main",
               "capabilities": {
                 "deliveryTypes": ["standard", "pickup"],
                 "features": {
@@ -414,19 +371,14 @@
               }
             },
             {
-              "carrier": {
-                "externalIdentifier": "dhleuroplus",
-                "id": 11,
-                "name": "dhleuroplus",
-                "human": null,
-                "subscriptionId": null,
-                "enabled": true,
-                "isDefault": false,
-                "label": null,
-                "optional": true,
-                "primary": true,
-                "type": "main"
-              },
+              "externalIdentifier": "dhleuroplus",
+              "id": 11,
+              "name": "dhleuroplus",
+              "enabled": true,
+              "isDefault": false,
+              "optional": true,
+              "primary": true,
+              "type": "main",
               "capabilities": {
                 "deliveryTypes": ["standard"],
                 "features": {
@@ -449,7 +401,6 @@
         }
       ]
     },
-    "carriers": null,
     "pluginSettings": {
       "account": {
         "id": "account",
@@ -459,9 +410,7 @@
         "id": "general",
         "apiLogging": false,
         "barcodeInNote": false,
-        "barcodeInNoteTitle": null,
         "conceptShipments": false,
-        "exportWithAutomaticStatus": null,
         "orderMode": false,
         "processDirectly": false,
         "shareCustomerInformation": false,
@@ -470,13 +419,8 @@
       },
       "order": {
         "id": "order",
-        "emptyDigitalStampWeight": null,
-        "emptyMailboxWeight": null,
-        "emptyParcelWeight": null,
-        "ignoreOrderStatuses": null,
         "orderStatusMail": true,
         "saveCustomerAddress": false,
-        "sendNotificationAfter": null,
         "sendOrderStateForDigitalStamp": true,
         "statusOnLabelCreate": "wc-pending",
         "statusWhenDelivered": "-1",
@@ -484,7 +428,6 @@
       },
       "label": {
         "id": "label",
-        "description": null,
         "format": "A4",
         "output": "open",
         "position": 1,
@@ -492,16 +435,12 @@
       },
       "customs": {
         "id": "customs",
-        "countryOfOrigin": null,
         "customsCode": "0",
         "packageContents": "1"
       },
       "checkout": {
         "id": "checkout",
-        "deliveryOptionsCustomCss": null,
         "deliveryOptionsDisplay": false,
-        "deliveryOptionsHeader": null,
-        "deliveryOptionsPosition": null,
         "pickupLocationsDefaultView": "list",
         "priceType": "included",
         "enableDeliveryOptions": true,
@@ -511,7 +450,6 @@
       "carrier": {
         "dhleuroplus": {
           "id": "dhleuroplus",
-          "carrierName": null,
           "allowDeliveryOptions": true,
           "allowEveningDelivery": true,
           "allowMondayDelivery": false,
@@ -521,15 +459,11 @@
           "allowSameDayDelivery": false,
           "allowSaturdayDelivery": false,
           "allowSignature": true,
-          "cutoffTime": null,
-          "cutoffTimeSameDay": null,
           "defaultPackageType": "package",
           "deliveryDaysWindow": 7,
-          "deliveryOptionsDisplay": null,
           "deliveryOptionsEnabledForBackorders": false,
           "digitalStampDefaultWeight": 0,
           "dropOffDelay": 0,
-          "dropOffPoint": null,
           "dropOffPossibilities": {
             "dropOffDays": [],
             "dropOffDaysDeviations": []
@@ -561,7 +495,6 @@
         },
         "postnl": {
           "id": "postnl",
-          "carrierName": null,
           "allowDeliveryOptions": true,
           "allowEveningDelivery": true,
           "allowMondayDelivery": false,
@@ -571,15 +504,11 @@
           "allowSameDayDelivery": false,
           "allowSaturdayDelivery": false,
           "allowSignature": true,
-          "cutoffTime": null,
-          "cutoffTimeSameDay": null,
           "defaultPackageType": "package",
           "deliveryDaysWindow": 7,
-          "deliveryOptionsDisplay": null,
           "deliveryOptionsEnabledForBackorders": false,
           "digitalStampDefaultWeight": 0,
           "dropOffDelay": 0,
-          "dropOffPoint": null,
           "dropOffPossibilities": {
             "dropOffDays": [],
             "dropOffDaysDeviations": []
@@ -611,7 +540,6 @@
         },
         "dhlforyou": {
           "id": "dhlforyou",
-          "carrierName": null,
           "allowDeliveryOptions": true,
           "allowEveningDelivery": true,
           "allowMondayDelivery": false,
@@ -621,15 +549,11 @@
           "allowSameDayDelivery": false,
           "allowSaturdayDelivery": false,
           "allowSignature": true,
-          "cutoffTime": null,
-          "cutoffTimeSameDay": null,
           "defaultPackageType": "package",
           "deliveryDaysWindow": 7,
-          "deliveryOptionsDisplay": null,
           "deliveryOptionsEnabledForBackorders": false,
           "digitalStampDefaultWeight": 0,
           "dropOffDelay": 0,
-          "dropOffPoint": null,
           "dropOffPossibilities": {
             "dropOffDays": [],
             "dropOffDaysDeviations": []
@@ -661,7 +585,6 @@
         },
         "dhlparcelconnect": {
           "id": "dhlparcelconnect",
-          "carrierName": null,
           "allowDeliveryOptions": true,
           "allowEveningDelivery": true,
           "allowMondayDelivery": false,
@@ -671,15 +594,11 @@
           "allowSameDayDelivery": false,
           "allowSaturdayDelivery": false,
           "allowSignature": true,
-          "cutoffTime": null,
-          "cutoffTimeSameDay": null,
           "defaultPackageType": "package",
           "deliveryDaysWindow": 7,
-          "deliveryOptionsDisplay": null,
           "deliveryOptionsEnabledForBackorders": false,
           "digitalStampDefaultWeight": 0,
           "dropOffDelay": 0,
-          "dropOffPoint": null,
           "dropOffPossibilities": {
             "dropOffDays": [],
             "dropOffDaysDeviations": []
@@ -711,7 +630,6 @@
         }
       }
     },
-    "printOptionsView": null,
     "shop": {
       "id": 86330,
       "accountId": 126594,
@@ -791,7 +709,6 @@
         "useCustomDescription": 0,
         "fromAddressName": "MyParcel",
         "bcc": 0,
-        "emailAddressForTracktraceReturnShipments": null,
         "contribution": {
           "amount": 0,
           "currency": "EUR"
@@ -822,27 +739,19 @@
       "carrierConfigurations": [
         {
           "carrier": "instabox",
-          "defaultCutoffTime": null,
-          "defaultDropOffPoint": null,
-          "defaultDropOffPointIdentifier": null,
           "mondayCutoffTime": null
         }
       ],
-      "carrierOptions": [
+      "carriers": [
         {
-          "carrier": {
-            "externalIdentifier": "postnl",
-            "id": 1,
-            "name": "postnl",
-            "human": null,
-            "subscriptionId": null,
-            "enabled": true,
-            "isDefault": false,
-            "label": null,
-            "optional": false,
-            "primary": true,
-            "type": "main"
-          },
+          "externalIdentifier": "postnl",
+          "id": 1,
+          "name": "postnl",
+          "enabled": true,
+          "isDefault": false,
+          "optional": false,
+          "primary": true,
+          "type": "main",
           "capabilities": {
             "deliveryTypes": ["morning", "standard", "evening", "pickup"],
             "features": {
@@ -883,19 +792,14 @@
           }
         },
         {
-          "carrier": {
-            "externalIdentifier": "cheapcargo",
-            "id": 3,
-            "name": "cheapcargo",
-            "human": null,
-            "subscriptionId": null,
-            "enabled": true,
-            "isDefault": false,
-            "label": null,
-            "optional": false,
-            "primary": true,
-            "type": "main"
-          },
+          "externalIdentifier": "cheapcargo",
+          "id": 3,
+          "name": "cheapcargo",
+          "enabled": true,
+          "isDefault": false,
+          "optional": false,
+          "primary": true,
+          "type": "main",
           "capabilities": {
             "deliveryTypes": [],
             "features": [],
@@ -910,19 +814,14 @@
           }
         },
         {
-          "carrier": {
-            "externalIdentifier": "dhl",
-            "id": 6,
-            "name": "dhl",
-            "human": null,
-            "subscriptionId": null,
-            "enabled": true,
-            "isDefault": false,
-            "label": null,
-            "optional": true,
-            "primary": true,
-            "type": "main"
-          },
+          "externalIdentifier": "dhl",
+          "id": 6,
+          "name": "dhl",
+          "enabled": true,
+          "isDefault": false,
+          "optional": true,
+          "primary": true,
+          "type": "main",
           "capabilities": {
             "deliveryTypes": [],
             "features": [],
@@ -937,19 +836,14 @@
           }
         },
         {
-          "carrier": {
-            "externalIdentifier": "bol.com",
-            "id": 7,
-            "name": "bol.com",
-            "human": null,
-            "subscriptionId": null,
-            "enabled": true,
-            "isDefault": false,
-            "label": null,
-            "optional": false,
-            "primary": true,
-            "type": "main"
-          },
+          "externalIdentifier": "bol.com",
+          "id": 7,
+          "name": "bol.com",
+          "enabled": true,
+          "isDefault": false,
+          "optional": false,
+          "primary": true,
+          "type": "main",
           "capabilities": {
             "deliveryTypes": [],
             "features": [],
@@ -964,19 +858,14 @@
           }
         },
         {
-          "carrier": {
-            "externalIdentifier": "ups",
-            "id": 8,
-            "name": "ups",
-            "human": null,
-            "subscriptionId": null,
-            "enabled": true,
-            "isDefault": false,
-            "label": null,
-            "optional": true,
-            "primary": true,
-            "type": "main"
-          },
+          "externalIdentifier": "ups",
+          "id": 8,
+          "name": "ups",
+          "enabled": true,
+          "isDefault": false,
+          "optional": true,
+          "primary": true,
+          "type": "main",
           "capabilities": {
             "deliveryTypes": [],
             "features": [],
@@ -991,19 +880,14 @@
           }
         },
         {
-          "carrier": {
-            "externalIdentifier": "dhlforyou",
-            "id": 9,
-            "name": "dhlforyou",
-            "human": null,
-            "subscriptionId": null,
-            "enabled": true,
-            "isDefault": false,
-            "label": null,
-            "optional": true,
-            "primary": true,
-            "type": "main"
-          },
+          "externalIdentifier": "dhlforyou",
+          "id": 9,
+          "name": "dhlforyou",
+          "enabled": true,
+          "isDefault": false,
+          "optional": true,
+          "primary": true,
+          "type": "main",
           "capabilities": {
             "deliveryTypes": ["standard", "pickup"],
             "features": {
@@ -1043,19 +927,14 @@
           }
         },
         {
-          "carrier": {
-            "externalIdentifier": "dhlparcelconnect",
-            "id": 10,
-            "name": "dhlparcelconnect",
-            "human": null,
-            "subscriptionId": null,
-            "enabled": true,
-            "isDefault": false,
-            "label": null,
-            "optional": true,
-            "primary": true,
-            "type": "main"
-          },
+          "externalIdentifier": "dhlparcelconnect",
+          "id": 10,
+          "name": "dhlparcelconnect",
+          "enabled": true,
+          "isDefault": false,
+          "optional": true,
+          "primary": true,
+          "type": "main",
           "capabilities": {
             "deliveryTypes": ["standard", "pickup"],
             "features": {
@@ -1094,19 +973,14 @@
           }
         },
         {
-          "carrier": {
-            "externalIdentifier": "dhleuroplus",
-            "id": 11,
-            "name": "dhleuroplus",
-            "human": null,
-            "subscriptionId": null,
-            "enabled": true,
-            "isDefault": false,
-            "label": null,
-            "optional": true,
-            "primary": true,
-            "type": "main"
-          },
+          "externalIdentifier": "dhleuroplus",
+          "id": 11,
+          "name": "dhleuroplus",
+          "enabled": true,
+          "isDefault": false,
+          "optional": true,
+          "primary": true,
+          "type": "main",
           "capabilities": {
             "deliveryTypes": ["standard"],
             "features": {
@@ -1127,21 +1001,16 @@
         }
       ]
     },
-    "carrierOptions": [
+    "carriers": [
       {
-        "carrier": {
-          "externalIdentifier": "postnl",
-          "id": 1,
-          "name": "postnl",
-          "human": null,
-          "subscriptionId": null,
-          "enabled": true,
-          "isDefault": false,
-          "label": null,
-          "optional": false,
-          "primary": true,
-          "type": "main"
-        },
+        "externalIdentifier": "postnl",
+        "id": 1,
+        "name": "postnl",
+        "enabled": true,
+        "isDefault": false,
+        "optional": false,
+        "primary": true,
+        "type": "main",
         "capabilities": {
           "deliveryTypes": ["morning", "standard", "evening", "pickup"],
           "features": {
@@ -1182,19 +1051,14 @@
         }
       },
       {
-        "carrier": {
-          "externalIdentifier": "dhlforyou",
-          "id": 9,
-          "name": "dhlforyou",
-          "human": null,
-          "subscriptionId": null,
-          "enabled": true,
-          "isDefault": false,
-          "label": null,
-          "optional": true,
-          "primary": true,
-          "type": "main"
-        },
+        "externalIdentifier": "dhlforyou",
+        "id": 9,
+        "name": "dhlforyou",
+        "enabled": true,
+        "isDefault": false,
+        "optional": true,
+        "primary": true,
+        "type": "main",
         "capabilities": {
           "deliveryTypes": ["standard", "pickup"],
           "features": {
@@ -1234,19 +1098,14 @@
         }
       },
       {
-        "carrier": {
-          "externalIdentifier": "dhlparcelconnect",
-          "id": 10,
-          "name": "dhlparcelconnect",
-          "human": null,
-          "subscriptionId": null,
-          "enabled": true,
-          "isDefault": false,
-          "label": null,
-          "optional": true,
-          "primary": true,
-          "type": "main"
-        },
+        "externalIdentifier": "dhlparcelconnect",
+        "id": 10,
+        "name": "dhlparcelconnect",
+        "enabled": true,
+        "isDefault": false,
+        "optional": true,
+        "primary": true,
+        "type": "main",
         "capabilities": {
           "deliveryTypes": ["standard", "pickup"],
           "features": {
@@ -1285,19 +1144,14 @@
         }
       },
       {
-        "carrier": {
-          "externalIdentifier": "dhleuroplus",
-          "id": 11,
-          "name": "dhleuroplus",
-          "human": null,
-          "subscriptionId": null,
-          "enabled": true,
-          "isDefault": false,
-          "label": null,
-          "optional": true,
-          "primary": true,
-          "type": "main"
-        },
+        "externalIdentifier": "dhleuroplus",
+        "id": 11,
+        "name": "dhleuroplus",
+        "enabled": true,
+        "isDefault": false,
+        "optional": true,
+        "primary": true,
+        "type": "main",
         "capabilities": {
           "deliveryTypes": ["standard"],
           "features": {

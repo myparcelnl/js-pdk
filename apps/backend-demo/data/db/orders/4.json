@@ -10,19 +10,17 @@
     "packageType": "package",
     "shipmentOptions": {}
   },
-  "recipient": {
-    "cc": "US",
-    "city": "Miami",
-    "fullStreet": "16, Main street 2nd floor",
-    "postalCode": "33133",
-    "region": "Florida",
-    "street": "16, Main street 2nd floor",
+  "shippingAddress": {
+    "cc": "NL",
+    "city": "Hoofddorp",
+    "address1": "Antareslaan 31",
+    "postalCode": "2132 JE",
     "email": "admin@prestashop.dev.myparcel.nl",
     "phone": "0102030405",
-    "person": "John DOE",
-    "company": "My Company"
+    "person": "Felicia Parcel",
+    "company": "MyParcel"
   },
-  "sender": {},
+  "senderAddress": {},
   "shipments": [
     {
       "orderId": "4",
