@@ -21,7 +21,7 @@ import {
   type PdkElementProps,
   type TriStateValue,
   useTriStateInputContext,
-} from '@myparcel-pdk/admin'; // eslint-disable-next-line vue/no-unused-properties
+} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<PdkElementProps<T>>();

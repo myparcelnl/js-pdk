@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 import {useVModel} from '@vueuse/core';
-import {AdminComponent, type ElementInstance} from '@myparcel-pdk/admin'; // eslint-disable-next-line vue/no-unused-properties
+import {AdminComponent, type ElementInstance} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{modelValue: string; element: ElementInstance}>();
