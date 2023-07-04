@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.82](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.81...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.82) "@myparcel-pdk/admin-preset-bootstrap4" (2023-07-04)
+
+
+### Bug Fixes
+
+* **components:** fix props wrongly being required ([1ecb296](https://github/myparcelnl/js-pdk/commit/1ecb2960f41d703c476a947d714d8ac6d92aebe9))
+
+
+
+
 ## [1.0.0-alpha.80](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.79...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.80) "@myparcel-pdk/admin-preset-bootstrap4" (2023-07-03)
 
 

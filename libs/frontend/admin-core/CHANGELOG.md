@@ -2,6 +2,25 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.80](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.79...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.80) "@myparcel-pdk/frontend-admin-core" (2023-07-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **admin-core:** rename inheritValueElement to inheritElement
+* **admin-core:** rename inheritValueModel to inheritModel
+
+### Bug Fixes
+
+* **admin-core:** allow registering order queries without id ([2c23fb5](https://github/myparcelnl/js-pdk/commit/2c23fb5670de977fd519022f37e9a5fc34b2e6d3))
+* **admin-core:** improve tri-state input logic ([303c070](https://github/myparcelnl/js-pdk/commit/303c070b0df6c69143e386a0e7842dc939d6a4bd))
+* **admin-core:** improve tri-state logic ([650c54f](https://github/myparcelnl/js-pdk/commit/650c54f131f3a4b560dc667b626896a4b5b65945))
+* **admin-core:** show order item errors only on relevant order ([1981679](https://github/myparcelnl/js-pdk/commit/1981679cbcd7bff64e668d3d44628bb4e3059f7b))
+* **plugin:** fix type errors ([3705c1f](https://github/myparcelnl/js-pdk/commit/3705c1fc9798e2d05a12bc59dd7725f8a0381407))
+
+
+
+
 ## [1.0.0-alpha.79](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.78...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.79) "@myparcel-pdk/frontend-admin-core" (2023-07-03)
 
 

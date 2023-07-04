@@ -2,6 +2,23 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.79](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.78...@myparcel-pdk/admin-preset-default@1.0.0-alpha.79) "@myparcel-pdk/admin-preset-default" (2023-07-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **admin-core:** rename inheritValueElement to inheritElement
+* **admin-core:** rename inheritValueModel to inheritModel
+
+### Bug Fixes
+
+* **admin-core:** improve tri-state input logic ([303c070](https://github/myparcelnl/js-pdk/commit/303c070b0df6c69143e386a0e7842dc939d6a4bd))
+* **admin-core:** improve tri-state logic ([650c54f](https://github/myparcelnl/js-pdk/commit/650c54f131f3a4b560dc667b626896a4b5b65945))
+* **components:** fix props wrongly being required ([1ecb296](https://github/myparcelnl/js-pdk/commit/1ecb2960f41d703c476a947d714d8ac6d92aebe9))
+
+
+
+
 ## [1.0.0-alpha.77](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.76...@myparcel-pdk/admin-preset-default@1.0.0-alpha.77) "@myparcel-pdk/admin-preset-default" (2023-07-03)
 
 

@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.80](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.79...@myparcel-pdk/admin@1.0.0-alpha.80) "@myparcel-pdk/admin" (2023-07-04)
+
+
+### Bug Fixes
+
+* **admin:** expose missing exports ([8d9ccfc](https://github/myparcelnl/js-pdk/commit/8d9ccfcfd369c76983685a1976218075c758ccfd))
+
+
+
+
 ## [1.0.0-alpha.79](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.78...@myparcel-pdk/admin@1.0.0-alpha.79) "@myparcel-pdk/admin" (2023-07-03)
 
 
