@@ -19,11 +19,11 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.39",
-    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.14",
-    "@myparcel-pdk/frontend-checkout-delivery-options": "workspace:^1.0.0-alpha.13",
-    "@myparcel-pdk/frontend-checkout-separate-address-fields": "workspace:^1.0.0-alpha.14",
-    "@myparcel-pdk/frontend-checkout-tax-fields": "workspace:^1.0.0-alpha.15"
+    "@myparcel-pdk/common": "workspace:*",
+    "@myparcel-pdk/frontend-checkout-core": "workspace:*",
+    "@myparcel-pdk/frontend-checkout-delivery-options": "workspace:*",
+    "@myparcel-pdk/frontend-checkout-separate-address-fields": "workspace:*",
+    "@myparcel-pdk/frontend-checkout-tax-fields": "workspace:*"
   },
   "engines": {
     "node": ">=16"

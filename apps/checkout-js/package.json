@@ -10,7 +10,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@myparcel-pdk/checkout": "workspace:^1.0.0-alpha.49"
+    "@myparcel-pdk/checkout": "workspace:*"
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*"

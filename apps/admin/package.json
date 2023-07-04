@@ -28,7 +28,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.79"
+    "@myparcel-pdk/frontend-admin-core": "workspace:*"
   },
   "engines": {
     "node": ">=16"

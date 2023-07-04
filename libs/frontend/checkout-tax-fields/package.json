@@ -22,7 +22,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.14"
+    "@myparcel-pdk/frontend-checkout-core": "workspace:*"
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*"
