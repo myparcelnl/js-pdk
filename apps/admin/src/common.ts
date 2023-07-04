@@ -29,11 +29,13 @@ export type {
   ModalCallbackProps,
   NamedAction,
   Notification,
+  NotificationFilter,
   OptionsProp,
   PdkElementEmits,
   PdkElementProps,
   RadioGroupProps,
   ResolvedAction,
+  ResolvedNotification,
   SelectInputProps,
   TriStateValue,
 } from '@myparcel-pdk/frontend-admin-core';
@@ -93,4 +95,4 @@ export {
   webhooksDeleteAction,
 } from '@myparcel-pdk/frontend-admin-core';
 
-export {AdminComponent, AdminView, Size, Status, Variant} from '@myparcel-pdk/common';
+export {AdminComponent, AdminView, BackendEndpoint, Size, Status, Variant} from '@myparcel-pdk/common';

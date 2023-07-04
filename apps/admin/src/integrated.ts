@@ -8,4 +8,6 @@ export {
   PluginSettingsView,
   ProductSettingsView,
   createPdkAdminPlugin,
+  useQueryStore,
+  useStoreQuery,
 } from '@myparcel-pdk/frontend-admin-core';
