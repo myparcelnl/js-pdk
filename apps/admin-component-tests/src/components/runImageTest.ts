@@ -1,9 +1,9 @@
-import {type MountingOptions} from '@vue/test-utils';
+import {type ComponentMountingOptions} from '@vue/test-utils';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runHasPropTest} from '../common';
 
 export const runImageTest: AdminComponentTest = (component) => {
-  const options: MountingOptions<any> = {
+  const options: ComponentMountingOptions<any> = {
     props: {
       src: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
       alt: 'Google Logo',

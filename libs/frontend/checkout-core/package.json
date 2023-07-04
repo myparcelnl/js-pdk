@@ -28,6 +28,9 @@
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "publishConfig": {
     "access": "public"
   }

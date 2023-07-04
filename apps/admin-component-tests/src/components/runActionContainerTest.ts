@@ -1,9 +1,9 @@
-import {type MountingOptions} from '@vue/test-utils';
+import {type ComponentMountingOptions} from '@vue/test-utils';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from '../common';
 
 export const runActionContainerTest: AdminComponentTest = (component) => {
-  const options: MountingOptions<any> = {};
+  const options: ComponentMountingOptions<any> = {};
   runCommonComponentTests(component, options);
 
   runHasSlotTest(component, options, 'default');

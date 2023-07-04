@@ -21,15 +21,22 @@
   "dependencies": {
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.39",
     "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.79",
-    "@vue/test-utils": "^2.3.0",
-    "pinia": "^2.1.3"
+    "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
+    "@pinia/testing": "^0.1.2",
+    "@vitest/coverage-c8": "^0.32.4",
+    "@vue/test-utils": "^2.4.0",
+    "happy-dom": "^9.20.3",
+    "pinia": "^2.1.3",
+    "vitest": "^0.32.4"
   },
   "devDependencies": {
-    "@pinia/testing": "^0.0.16",
     "vue": "^3.3.4"
   },
   "peerDependencies": {
     "vue": "^3"
+  },
+  "engines": {
+    "node": ">=16"
   },
   "publishConfig": {
     "access": "public"

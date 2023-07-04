@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import {expect, it} from 'vitest';
-import {type MountingOptions, mount} from '@vue/test-utils';
+import {type ComponentMountingOptions, mount} from '@vue/test-utils';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runHasPropTest} from '../common';
 
@@ -24,7 +24,7 @@ const DEFAULT_OPTIONS = {
 };
 
 export const runDropDownButtonTest: AdminComponentTest = (component) => {
-  const options: MountingOptions<any> = {};
+  const options: ComponentMountingOptions<any> = {};
 
   runCommonComponentTests(component, options);
   runCommonComponentTests(component, DEFAULT_OPTIONS);

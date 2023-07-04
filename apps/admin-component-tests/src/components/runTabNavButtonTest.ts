@@ -1,9 +1,9 @@
-import {type MountingOptions} from '@vue/test-utils';
+import {type ComponentMountingOptions} from '@vue/test-utils';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runHasPropTest} from '../common';
 
 export const runTabNavButtonTest: AdminComponentTest = (component) => {
-  const options: MountingOptions<any> = {
+  const options: ComponentMountingOptions<any> = {
     props: {
       tab: {name: 'tab', label: 'Tab'},
     },

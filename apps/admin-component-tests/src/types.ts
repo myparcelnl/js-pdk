@@ -1,9 +1,13 @@
 import {type Component} from 'vue';
-import {type MountingOptions} from '@vue/test-utils';
+import {type ComponentMountingOptions} from '@vue/test-utils';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type PartialComponentTest = <O = any>(
+type Options = {
+  $slots: Record<string, unknown>;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/ban-types
+export type PartialComponentTest = <T extends Options = Options>(
   component: Omit<Component, 'props'>,
-  options?: MountingOptions<O>,
+  options?: ComponentMountingOptions<T>,
   ...args: unknown[]
 ) => void;

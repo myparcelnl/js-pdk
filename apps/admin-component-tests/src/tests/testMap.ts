@@ -1,5 +1,5 @@
 import {type Component} from 'vue';
-import {type AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent} from '@myparcel-pdk/common';
 import {
   runActionContainerTest,
   runBadgeTest,
@@ -40,70 +40,70 @@ import {
 
 export type AdminComponentTest = (component: Omit<Component, 'props'>) => void;
 
-export const testMap: Record<AdminComponent, AdminComponentTest> = {
+export const testMap: Readonly<Record<AdminComponent, AdminComponentTest>> = Object.freeze({
   /**
    * Inputs
    */
-  CheckboxGroup: runCheckboxGroupTest,
-  CheckboxInput: runCheckboxInputTest,
-  CodeEditor: runCodeEditorTest,
-  CurrencyInput: runCurrencyInputTest,
-  DropOffInput: runDropOffInputTest,
-  MultiSelectInput: runMultiSelectInputTest,
-  NumberInput: runNumberInputTest,
-  RadioGroup: runRadioGroupTest,
-  RadioInput: runRadioInputTest,
-  SelectInput: runSelectInputTest,
-  TextArea: runTextAreaTest,
-  TextInput: runTextInputTest,
-  TimeInput: runTimeInputTest,
-  ToggleInput: runToggleInputTest,
-  TriStateInput: runTriStateInputTest,
+  [AdminComponent.CheckboxGroup]: runCheckboxGroupTest,
+  [AdminComponent.CheckboxInput]: runCheckboxInputTest,
+  [AdminComponent.CodeEditor]: runCodeEditorTest,
+  [AdminComponent.CurrencyInput]: runCurrencyInputTest,
+  [AdminComponent.DropOffInput]: runDropOffInputTest,
+  [AdminComponent.MultiSelectInput]: runMultiSelectInputTest,
+  [AdminComponent.NumberInput]: runNumberInputTest,
+  [AdminComponent.RadioGroup]: runRadioGroupTest,
+  [AdminComponent.RadioInput]: runRadioInputTest,
+  [AdminComponent.SelectInput]: runSelectInputTest,
+  [AdminComponent.TextArea]: runTextAreaTest,
+  [AdminComponent.TextInput]: runTextInputTest,
+  [AdminComponent.TimeInput]: runTimeInputTest,
+  [AdminComponent.ToggleInput]: runToggleInputTest,
+  [AdminComponent.TriStateInput]: runTriStateInputTest,
 
   /**
    * Action containers
    */
-  Box: runActionContainerTest,
-  ConceptBoxWrapper: runActionContainerTest,
-  ShipmentLabelWrapper: runActionContainerTest,
+  [AdminComponent.Box]: runActionContainerTest,
+  [AdminComponent.ConceptBoxWrapper]: runActionContainerTest,
+  [AdminComponent.ShipmentLabelWrapper]: runActionContainerTest,
 
   /**
    * Plain wrappers
    */
-  ButtonGroup: runPlainWrapperTest,
-  PluginSettingsWrapper: runPlainWrapperTest,
-  TabNavButtonWrapper: runPlainWrapperTest,
-  TabNavContentWrapper: runPlainWrapperTest,
+  [AdminComponent.ButtonGroup]: runPlainWrapperTest,
+  [AdminComponent.PluginSettingsWrapper]: runPlainWrapperTest,
+  [AdminComponent.TabNavButtonWrapper]: runPlainWrapperTest,
+  [AdminComponent.TabNavContentWrapper]: runPlainWrapperTest,
 
   /**
    * Layout
    */
-  Col: runColTest,
-  Row: runRowTest,
+  [AdminComponent.Col]: runColTest,
+  [AdminComponent.Row]: runRowTest,
 
-  Table: runTableTest,
-  TableCol: runTableColTest,
-  TableRow: runTableRowTest,
+  [AdminComponent.Table]: runTableTest,
+  [AdminComponent.TableCol]: runTableColTest,
+  [AdminComponent.TableRow]: runTableRowTest,
 
-  FormGroup: runFormGroupTest,
+  [AdminComponent.FormGroup]: runFormGroupTest,
 
   /**
    * Interactive components
    */
-  Button: runButtonTest,
-  DropdownButton: runDropDownButtonTest,
-  Link: runLinkTest,
-  Modal: runModalTest,
-  TabNavButton: runTabNavButtonTest,
+  [AdminComponent.Button]: runButtonTest,
+  [AdminComponent.DropdownButton]: runDropDownButtonTest,
+  [AdminComponent.Link]: runLinkTest,
+  [AdminComponent.Modal]: runModalTest,
+  [AdminComponent.TabNavButton]: runTabNavButtonTest,
 
   /**
    * Other
    */
-  Badge: runBadgeTest,
-  Heading: runHeadingTest,
-  Icon: runIconTest,
-  Image: runImageTest,
-  Loader: runLoaderTest,
-  Notification: runNotificationTest,
-  SettingsDivider: runSettingsDividerTest,
-};
+  [AdminComponent.Badge]: runBadgeTest,
+  [AdminComponent.Heading]: runHeadingTest,
+  [AdminComponent.Icon]: runIconTest,
+  [AdminComponent.Image]: runImageTest,
+  [AdminComponent.Loader]: runLoaderTest,
+  [AdminComponent.Notification]: runNotificationTest,
+  [AdminComponent.SettingsDivider]: runSettingsDividerTest,
+});

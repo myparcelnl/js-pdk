@@ -1,7 +1,9 @@
 import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests';
 import {
+  DemoBadge,
   DemoBox,
   DemoButton,
+  DemoDropdownButton,
   DemoFormGroup,
   DemoImage,
   DemoModal,
@@ -9,11 +11,11 @@ import {
   DemoPluginSettingsWrapper,
   DemoRow,
   DemoSelectInput,
+  DemoTable,
   DemoTabNavButton,
   DemoTextInput,
-  DemoBadge,
-  DemoDropdownButton,
-  DemoTable,
+  DemoToggleInput,
+  DemoTriStateInput,
 } from '../components';
 
 executePdkComponentTests({
@@ -31,4 +33,6 @@ executePdkComponentTests({
   TabNavButton: DemoTabNavButton,
   Table: DemoTable,
   TextInput: DemoTextInput,
+  ToggleInput: DemoToggleInput,
+  TriStateInput: DemoTriStateInput,
 });

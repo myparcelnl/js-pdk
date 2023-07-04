@@ -1363,11 +1363,11 @@ __metadata:
     "@tanstack/vue-query": ^4.24.10
     "@vitejs/plugin-vue": ^4.2.3
     autoprefixer: ^10.4.13
-    happy-dom: ^9.20.3
     postcss: ^8.4.21
     rollup-plugin-visualizer: ^5.9.2
     tailwindcss: ^3.2.7
     typescript: ^5.1.6
+    vite-plugin-custom-tsconfig: ^1.0.4
     vue: ^3.3.4
     vue-router: ^4.1.6
   languageName: unknown
@@ -1379,7 +1379,6 @@ __metadata:
   dependencies:
     "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.79"
     "@myparcel-pdk/build-vite": "workspace:*"
-    vite-plugin-dts: ^3.0.3
   peerDependencies:
     vue: ^3
   languageName: unknown
@@ -1408,8 +1407,6 @@ __metadata:
     "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.79"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@vue/test-utils": ^2.4.0
-    happy-dom: ^9.20.3
     typescript: ^5.1.6
     vue: ^3.3.4
   languageName: unknown
@@ -1423,9 +1420,7 @@ __metadata:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel/ts-utils": ^1.9.0
-    "@vue/test-utils": ^2.4.0
     "@vueuse/core": ^10.1.2
-    happy-dom: ^9.20.3
     typescript: ^5.1.6
     vue: ^3.3.4
   languageName: unknown
@@ -1438,8 +1433,6 @@ __metadata:
     "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.79"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@vue/test-utils": ^2.4.0
-    happy-dom: ^9.20.3
     typescript: ^5.1.6
     vue: ^3.3.4
   languageName: unknown
@@ -1504,7 +1497,6 @@ __metadata:
     "@pinia/testing": ^0.1.2
     "@vitejs/plugin-vue": ^4.2.3
     "@vitest/coverage-c8": ^0.32.4
-    "@vue/test-utils": ^2.4.0
     happy-dom: ^9.20.3
     typescript: ^5.1.6
     vite: ^4.3.9
@@ -1522,7 +1514,6 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/checkout": "workspace:^1.0.0-alpha.49"
-    vite-plugin-dts: ^3.0.3
   languageName: unknown
   linkType: soft
 
@@ -1569,10 +1560,8 @@ __metadata:
     "@myparcel/vue-form-builder": ^1.0.0-beta.0
     "@tanstack/vue-query": ^4.24.10
     "@types/lodash-es": ^4.17.6
-    "@vitejs/plugin-vue": ^4.2.3
     "@vue/test-utils": ^2.4.0
     "@vueuse/core": ^10.1.2
-    happy-dom: ^9.20.3
     lodash: ^4.17.21
     lodash-es: ^4.17.21
     lodash-unified: ^1.0.3

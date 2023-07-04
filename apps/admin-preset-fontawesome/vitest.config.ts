@@ -1,9 +1,3 @@
-import {defineConfig} from 'vitest/config';
-import vue from '@vitejs/plugin-vue';
+import {createViteConfig} from '@myparcel-pdk/build-vite';
 
-export default defineConfig(() => ({
-  plugins: [vue()],
-  test: {
-    environment: 'happy-dom',
-  },
-}));
+export default createViteConfig();

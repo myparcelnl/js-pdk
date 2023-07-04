@@ -19,7 +19,10 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "devDependencies": {
-    "vue": "^3.2.47"
+    "vue": "^3.3.4"
+  },
+  "engines": {
+    "node": ">=16"
   },
   "publishConfig": {
     "access": "public"

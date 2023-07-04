@@ -9,7 +9,6 @@ export const runCommonInputTests: PartialComponentTest = (component, options) =>
   runHasPropTest(component, {}, 'element', options?.props?.element);
 
   it('can be disabled', () => {
-    // @ts-expect-error component types
     const wrapper = mount(component, merge({}, options, {props: {element: {isDisabled: true}}}));
 
     const select = wrapper.find('select');
@@ -25,7 +24,6 @@ export const runCommonInputTests: PartialComponentTest = (component, options) =>
   });
 
   it('sets value from modelValue prop', () => {
-    // @ts-expect-error component types
     const wrapper = mount(component, options);
 
     const select = wrapper.find('select');
@@ -42,7 +40,6 @@ export const runCommonInputTests: PartialComponentTest = (component, options) =>
 
   it('emits update:modelValue event', async () => {
     expect.assertions(1);
-    // @ts-expect-error component types
     const wrapper = mount(component, options);
 
     const select = wrapper.find('select');

@@ -68,6 +68,9 @@
     "rimraf": "^5.0.0"
   },
   "packageManager": "yarn@3.6.0",
+  "engines": {
+    "node": ">=16"
+  },
   "volta": {
     "node": "18.16.0"
   }

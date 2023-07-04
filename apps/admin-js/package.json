@@ -13,14 +13,13 @@
     "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.79"
   },
   "devDependencies": {
-    "@myparcel-pdk/build-vite": "workspace:*",
-    "@vitejs/plugin-vue": "^4.2.3",
-    "vite": "^4.3.8",
-    "vite-plugin-custom-tsconfig": "^1.0.4",
-    "vite-plugin-dts": "^2.3.0"
+    "@myparcel-pdk/build-vite": "workspace:*"
   },
   "peerDependencies": {
     "vue": "^3"
+  },
+  "engines": {
+    "node": ">=16"
   },
   "publishConfig": {
     "access": "public"

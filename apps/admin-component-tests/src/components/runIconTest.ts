@@ -1,10 +1,10 @@
 import {expect, it} from 'vitest';
-import {type MountingOptions, mount} from '@vue/test-utils';
+import {type ComponentMountingOptions, mount} from '@vue/test-utils';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runHasPropTest} from '../common';
 
 export const runIconTest: AdminComponentTest = (component) => {
-  const options: MountingOptions<any> = {
+  const options: ComponentMountingOptions<any> = {
     props: {
       icon: 'truck',
     },

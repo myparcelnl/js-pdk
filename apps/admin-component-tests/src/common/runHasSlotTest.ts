@@ -14,7 +14,7 @@ export const runHasSlotTest: PartialComponentTest = (component, options, slot = 
       slots: {
         ...options?.slots,
         // @ts-expect-error slots are not typed
-        [slot]: content,
+        [slot]: () => content,
       },
     });
 
