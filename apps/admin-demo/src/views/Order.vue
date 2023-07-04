@@ -1,6 +1,8 @@
 <template>
   <!-- Order data page -->
-  <div class="gap-8 grid grid-cols-2">
+  <div
+    v-if="order"
+    class="gap-8 grid grid-cols-2">
     <div class="col-span-2">
       <h1 class="font-bold text-2xl">Order #{{ order.externalIdentifier }}</h1>
     </div>
@@ -28,11 +30,16 @@
 
 <script lang="ts" setup>
 import {useRoute} from 'vue-router';
-import {OrderBoxView} from '@myparcel-pdk/frontend-admin-core';
-import {useDemoOrder} from '../composables';
+import {computed} from 'vue';
+import {OrderBoxView, useQueryStore, useStoreQuery} from '@myparcel-pdk/frontend-admin-core';
+import {BackendEndpoint, type Plugin} from '@myparcel-pdk/common';
 
 const route = useRoute();
-const {id} = route.params;
+const {id} = route.params as {id: string};
 
-const order = useDemoOrder(id);
+useQueryStore().registerOrderQueries(id);
+
+const query = useStoreQuery(BackendEndpoint.FetchOrders, id);
+
+const order = computed(() => query.data) as Plugin.ModelPdkOrder;
 </script>

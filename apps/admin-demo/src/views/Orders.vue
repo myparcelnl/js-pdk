@@ -8,7 +8,7 @@
     </tr>
 
     <template
-      v-for="(order, index) in orderData"
+      v-for="(order, index) in orders"
       :key="`order_${order.externalIdentifier}`">
       <tr :class="{'bg-gray-900': index % 2 !== 0}">
         <td class="p-4">
@@ -46,9 +46,18 @@
 
 <script lang="ts" setup>
 import {RouterLink} from 'vue-router';
-import {ref} from 'vue';
-import {AdminModalKey, OrderListItemView, useModalStore} from '@myparcel-pdk/frontend-admin-core';
-import {useDemoOrderData} from '../composables';
+import {computed, ref} from 'vue';
+import {
+  AdminModalKey,
+  OrderListItemView,
+  useModalStore,
+  useQueryStore,
+  useStoreQuery,
+} from '@myparcel-pdk/frontend-admin-core';
+import {BackendEndpoint, type Plugin} from '@myparcel-pdk/common';
+
+const queryStore = useQueryStore();
+queryStore.registerOrderQueries();
 
 const toggled = ref<string | null>(null);
 
@@ -58,5 +67,7 @@ const toggle = (id: string) => {
   modalStore.open(AdminModalKey.ShipmentOptions, {orderIds: id});
 };
 
-const orderData = useDemoOrderData();
+const query = useStoreQuery(BackendEndpoint.FetchOrders);
+
+const orders = computed(() => query.data) as Plugin.ModelPdkOrder[];
 </script>

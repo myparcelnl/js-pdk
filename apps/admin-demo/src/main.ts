@@ -4,7 +4,13 @@ import './assets/css/global.css';
 import './assets/css/transitions.css';
 import './assets/css/forms.css';
 import {createApp} from 'vue';
-import {AdminContextKey, createPdkAdminPlugin, LogLevel} from '@myparcel-pdk/frontend-admin-core';
+import {
+  AdminContextKey,
+  type BackendEndpointDefinition,
+  createPdkAdminPlugin,
+  LogLevel,
+} from '@myparcel-pdk/frontend-admin-core';
+import {type BackendEndpoint, type PdkEndpointResponse} from '@myparcel-pdk/common';
 import {FontAwesomeIcon} from '@myparcel-pdk/admin-preset-fontawesome';
 import {
   DefaultButtonGroup,
@@ -26,6 +32,7 @@ import {
   DefaultTextArea,
   DefaultTimeInput,
 } from '@myparcel-pdk/admin-preset-default';
+import {fetchFromApi} from './utils';
 import {createRouterInstance} from './router';
 import {
   DemoBadge,
@@ -48,29 +55,36 @@ import {
 import App from './App.vue';
 
 void (async () => {
-  const apiUrl = import.meta.env.VITE_API_URL;
-
   // todo allow global context to be loaded dynamically
-  const globalContextPromise = fetch(`${apiUrl}/pdk?action=fetchContext&context=global`);
+  const globalContextPromise = fetchFromApi<
+    [PdkEndpointResponse<BackendEndpoint.FetchContext, BackendEndpointDefinition>]
+  >(`pdk?action=fetchContext&context=global`);
+
   // todo allow dynamic context to be loaded dynamically (hehe)
-  const dynamicContextPromise = fetch(`${apiUrl}/pdk?action=fetchContext&context=dynamic`);
+  const dynamicContextPromise = fetchFromApi<
+    [PdkEndpointResponse<BackendEndpoint.FetchContext, BackendEndpointDefinition>]
+  >(`pdk?action=fetchContext&context=dynamic`);
+
   // todo allow plugin settings view context to be loaded dynamically
-  const pluginSettingsViewContextPromise = fetch(`${apiUrl}/pdk?action=fetchContext&context=pluginSettingsView`);
+  const pluginSettingsViewContextPromise = fetchFromApi<
+    [PdkEndpointResponse<BackendEndpoint.FetchContext, BackendEndpointDefinition>]
+  >(`pdk?action=fetchContext&context=pluginSettingsView`);
+
   // todo allow product settings view context to be loaded dynamically
-  const productSettingsViewContextPromise = fetch(`${apiUrl}/pdk?action=fetchContext&context=productSettingsView`);
+  const productSettingsViewContextPromise = fetchFromApi<
+    [PdkEndpointResponse<BackendEndpoint.FetchContext, BackendEndpointDefinition>]
+  >(`pdk?action=fetchContext&context=productSettingsView`);
 
   const app = createApp(App);
 
   app.use(createRouterInstance());
 
-  const [globalContext, dynamicContext, pluginSettingsViewContext, productSettingsViewContext] = await Promise.all(
-    [
-      globalContextPromise,
-      dynamicContextPromise,
-      pluginSettingsViewContextPromise,
-      productSettingsViewContextPromise,
-    ].map(async (promise) => (await promise).json()),
-  );
+  const [globalContext, dynamicContext, pluginSettingsViewContext, productSettingsViewContext] = await Promise.all([
+    globalContextPromise,
+    dynamicContextPromise,
+    pluginSettingsViewContextPromise,
+    productSettingsViewContextPromise,
+  ]);
 
   const pdkAdminPlugin = createPdkAdminPlugin(
     {
