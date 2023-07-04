@@ -1,10 +1,10 @@
 import {type Plugin} from 'vue';
-import {type AdminConfiguration, type AdminContextObject} from '../types';
+import {type AdminContextObject, type InputAdminConfiguration} from '../types';
 import {globalLogger} from '../services';
 import {setupAdminApp} from './setupAdminApp';
 import {createAdminConfig} from './createAdminConfig';
 
-export const createPdkAdminPlugin = (config: AdminConfiguration, context: AdminContextObject): Plugin => {
+export const createPdkAdminPlugin = (config: InputAdminConfiguration, context: AdminContextObject): Plugin => {
   return {
     install(app) {
       setupAdminApp(app, {
