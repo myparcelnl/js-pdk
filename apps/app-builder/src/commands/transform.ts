@@ -3,26 +3,27 @@ import path from 'path';
 import fs from 'fs';
 import glob from 'fast-glob';
 import chalk from 'chalk';
-import {getOccurrences, replaceCaseSensitive} from '../utils/transformer';
 import {
   executePromises,
+  getOccurrences,
   getPlatformDistPath,
   initializeCommand,
   logPlatforms,
   logRelativePath,
   logTargetPath,
   logTimeTaken,
+  replaceCaseSensitive,
   reportDryRun,
   resolveFileName,
   validateDistPath,
 } from '../utils';
-import {PdkBuilderCommand, PdkPlatformName} from '../types';
+import {type PdkBuilderCommand, PdkPlatformName} from '../types';
 import {COMMAND_TRANSFORM_NAME, VerbosityLevel} from '../constants';
 
 const SOURCE_PLATFORM = PdkPlatformName.MyParcelNl;
 
 export const transform: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(COMMAND_TRANSFORM_NAME);
+  const {debug, time} = initializeCommand(COMMAND_TRANSFORM_NAME, args);
 
   if (args.dryRun) {
     reportDryRun(debug, 'No files will be transformed.');
@@ -61,7 +62,6 @@ export const transform: PdkBuilderCommand = async ({env, config, args}) => {
 
       const promises = await Promise.all(
         files.map(async (file) => {
-
           if (!(await validateDistPath({config, env, platform, args}))) {
             debug('Skipping because %s does not exist.', logRelativePath(env, platformDistPath));
             return;

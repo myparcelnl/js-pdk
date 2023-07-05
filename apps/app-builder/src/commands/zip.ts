@@ -15,11 +15,11 @@ import {
   resolveFileName,
   validateDistPath,
 } from '../utils';
+import {type PdkBuilderCommand} from '../types';
 import {COMMAND_ZIP_NAME, VerbosityLevel} from '../constants';
-import {PdkBuilderCommand} from "../types";
 
 export const zip: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(COMMAND_ZIP_NAME);
+  const {debug, time} = initializeCommand(COMMAND_ZIP_NAME, args);
 
   if (args.dryRun) reportDryRun(debug, 'No archive will be created.');
 

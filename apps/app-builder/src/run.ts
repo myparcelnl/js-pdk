@@ -1,7 +1,7 @@
 import {type LiftoffEnv} from 'liftoff';
 import {program} from 'commander';
 import {createWithConfig, createWithContext} from './utils';
-import {type PdkBuilderCommand} from './types/command';
+import {type PdkBuilderCommand} from './types';
 import {
   COMMAND_BUILD_NAME,
   COMMAND_CLEAN_NAME,
@@ -29,6 +29,8 @@ const OPTION_VERSION = ['--version <version>', 'Version to use. Defaults to vers
 
 const OPTION_VERBOSITY = ['-v, --verbose', 'Verbosity', (dummy: string, prev: number) => prev + 1, 0] as const;
 
+const OPTION_QUIET = ['-q, --quiet', 'Quiet'] as const;
+
 const OPTION_DRY_RUN = ['-d, --dry-run', 'Dry run'] as const;
 
 const OPTION_PARALLEL = ['-p, --parallel', 'Run each platform in parallel'] as const;
@@ -39,42 +41,42 @@ const COMMAND_CLEAN: CommandDefinition = {
   name: COMMAND_CLEAN_NAME,
   action: clean,
   description: `Clear output directory. ${REQUIRES_CONFIG_FILE}`,
-  options: [OPTION_VERBOSITY, OPTION_DRY_RUN],
+  options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
 const COMMAND_COPY: CommandDefinition = {
   name: COMMAND_COPY_NAME,
   action: copy,
   description: `Copy source files to output directory. ${REQUIRES_CONFIG_FILE}`,
-  options: [OPTION_VERBOSITY, OPTION_DRY_RUN],
+  options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
 const COMMAND_INCREMENT: CommandDefinition = {
   name: COMMAND_INCREMENT_NAME,
   action: increment,
   description: `Increment version in output files. ${REQUIRES_CONFIG_FILE}`,
-  options: [OPTION_VERBOSITY, OPTION_DRY_RUN, OPTION_VERSION],
+  options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN, OPTION_VERSION],
 };
 
 const COMMAND_RENAME: CommandDefinition = {
   name: COMMAND_RENAME_NAME,
   action: rename,
   description: `Transform output files. ${REQUIRES_CONFIG_FILE}`,
-  options: [OPTION_VERBOSITY, OPTION_DRY_RUN],
+  options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
 const COMMAND_TRANSFORM: CommandDefinition = {
   name: COMMAND_TRANSFORM_NAME,
   action: transform,
   description: `Transform output files. ${REQUIRES_CONFIG_FILE}`,
-  options: [OPTION_VERBOSITY, OPTION_DRY_RUN],
+  options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
 const COMMAND_ZIP: CommandDefinition = {
   name: COMMAND_ZIP_NAME,
   action: zip,
   description: `Compress output files into an archive. ${REQUIRES_CONFIG_FILE}`,
-  options: [OPTION_VERBOSITY, OPTION_DRY_RUN],
+  options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
 const CONFIG_COMMANDS = [
@@ -113,12 +115,14 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .command(COMMAND_INIT_NAME)
     .description(`Generate a config file in the current directory. Necessary for all other commands.`)
     .option(...OPTION_VERBOSITY)
+    .option(...OPTION_QUIET)
     .action(withContext(init));
 
   program
     .command(COMMAND_UPGRADE_NAME)
     .description(`Upgrade Yarn or Composer package.`)
     .option(...OPTION_VERBOSITY)
+    .option(...OPTION_QUIET)
     .option(...OPTION_DRY_RUN)
     .option('-l, --lockfile <lockfile>', 'Provide an alternative path to a lockfile.')
     .option('--no-check', 'Skip checking whether the lockfile is modified.')
@@ -146,6 +150,7 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
       .option(...OPTION_DRY_RUN)
       .option(...OPTION_PARALLEL)
       .option(...OPTION_VERBOSITY)
+      .option(...OPTION_QUIET)
       .option(...OPTION_VERSION)
       .action(
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

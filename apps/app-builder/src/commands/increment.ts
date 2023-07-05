@@ -14,7 +14,7 @@ import {
 import {COMMAND_INCREMENT_NAME, REGEX_VERSION, VerbosityLevel} from '../constants';
 
 export const increment: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(COMMAND_INCREMENT_NAME);
+  const {debug, time} = initializeCommand(COMMAND_INCREMENT_NAME, args);
   const newVersion = args.version ?? config.version;
 
   if (args.dryRun) {

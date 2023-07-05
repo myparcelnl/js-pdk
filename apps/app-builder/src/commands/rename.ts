@@ -21,7 +21,7 @@ import {COMMAND_RENAME_NAME, VerbosityLevel} from '../constants';
 const STRING_TO_REPLACE = 'myparcelnl';
 
 export const rename: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(COMMAND_RENAME_NAME);
+  const {debug, time} = initializeCommand(COMMAND_RENAME_NAME, args);
 
   if (args.dryRun) reportDryRun(debug, 'No files will be renamed.');
 

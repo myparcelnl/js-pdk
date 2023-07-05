@@ -11,7 +11,7 @@ import {determineUpgradeMode} from './determineUpgradeMode';
 import {createCommitMessage} from './createCommitMessage';
 
 export const upgrade: PdkBuilderCommandWithoutConfig<UpgradeCommandArgs> = async ({env, args}) => {
-  const {debug, time} = initializeCommand(COMMAND_UPGRADE_NAME);
+  const {debug, time} = initializeCommand(COMMAND_UPGRADE_NAME, args);
 
   const [packageName] = args.arguments ?? [];
 

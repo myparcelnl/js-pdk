@@ -5,7 +5,7 @@ import {type PdkBuilderCommand} from '../types';
 import {COMMAND_CLEAN_NAME} from '../constants';
 
 export const clean: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(COMMAND_CLEAN_NAME);
+  const {debug, time} = initializeCommand(COMMAND_CLEAN_NAME, args);
 
   if (args.dryRun) reportDryRun(debug, 'No files will be deleted.');
 

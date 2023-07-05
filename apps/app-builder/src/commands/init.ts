@@ -17,10 +17,10 @@ const config:configType = {
 export default config;
 `;
 
-export const init: PdkBuilderCommandWithoutConfig = async (context) => {
-  const {debug, time} = initializeCommand(COMMAND_INIT_NAME);
+export const init: PdkBuilderCommandWithoutConfig = async ({env, args}) => {
+  const {debug, time} = initializeCommand(COMMAND_INIT_NAME, args);
 
-  const packageJsonPath = `${context.env.cwd}/package.json`;
+  const packageJsonPath = `${env.cwd}/package.json`;
 
   const packageJson = (
     await import(packageJsonPath, {
@@ -33,7 +33,7 @@ export const init: PdkBuilderCommandWithoutConfig = async (context) => {
   let filename = 'pdk.config.ts';
   let tsType = ': PdkBuilderConfig';
 
-  if (!fs.existsSync(path.resolve(context.env.cwd, 'tsconfig.json'))) {
+  if (!fs.existsSync(path.resolve(env.cwd, 'tsconfig.json'))) {
     filename = 'pdk.config.js';
     tsType = '';
   }

@@ -16,7 +16,7 @@ import {type PdkBuilderCommand} from '../types';
 import {COMMAND_COPY_NAME, VerbosityLevel} from '../constants';
 
 export const copy: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(COMMAND_COPY_NAME);
+  const {debug, time} = initializeCommand(COMMAND_COPY_NAME, args);
 
   if (args.dryRun) reportDryRun(debug, 'No files will be copied.');
 
