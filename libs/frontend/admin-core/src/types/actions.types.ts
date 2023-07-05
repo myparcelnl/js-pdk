@@ -1,13 +1,14 @@
 import {type MaybeRef} from '@vueuse/core';
 import {
+  type BackendEndpoint,
+  type LabelFormat,
+  type LabelOutput,
   type LabelPosition,
   type PdkEndpointResponse,
-  type LabelOutput,
-  type LabelFormat,
-} from '@myparcel-pdk/common/src';
-import {type Variant, type BackendEndpoint} from '@myparcel-pdk/common';
+  type Variant,
+} from '@myparcel-pdk/common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
-import {type PromiseOr, type ReverseMap, type OneOrMore} from '@myparcel/ts-utils';
+import {type OneOrMore, type PromiseOr, type ReverseMap} from '@myparcel/ts-utils';
 import {type BackendEndpointDefinition} from '../sdk';
 import {type ActionContext, type ActionContextWithResponse} from '../actions';
 import {type AdminContextKey} from './context.types';
@@ -19,6 +20,7 @@ interface BaseAction {
   disabled?: MaybeRef<boolean>;
   icon?: AdminIcon;
   label?: string;
+  notifications?: OneOrMore<Variant>;
   standalone?: boolean;
   variant?: MaybeRef<Variant | undefined>;
   afterHandle?(...args: unknown[]): PromiseOr<unknown>;

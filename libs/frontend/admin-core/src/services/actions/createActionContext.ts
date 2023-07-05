@@ -1,4 +1,5 @@
 import {Variant} from '@myparcel-pdk/common';
+import {toArray} from '@myparcel/ts-utils';
 import {createLogger} from '../logger';
 import {createNotification} from '../createNotification';
 import {
@@ -33,7 +34,7 @@ export const createActionContext: CreateActionContext = (action, parameters, exi
       logger,
     },
 
-    notifications: [Variant.Error, Variant.Success].reduce(
+    notifications: toArray(action.notifications ?? [Variant.Error]).reduce(
       (acc, variant) => ({
         ...acc,
         [variant]: createNotification(variant, {
