@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import {initializeCommand, logTimeTaken} from '../utils';
-import {type CommandArgs, type PdkBuilderContext} from '../types';
+import {type PdkBuilderCommandWithoutConfig} from '../types';
 import {COMMAND_INIT_NAME} from '../constants';
 
 const TEMPLATE = `import type {PdkBuilderConfig} from '@myparcel-pdk/app-builder';
@@ -17,7 +17,7 @@ const config:configType = {
 export default config;
 `;
 
-export const init = async <A extends CommandArgs>(context: Omit<PdkBuilderContext, 'config'>): Promise<void> => {
+export const init: PdkBuilderCommandWithoutConfig = async (context) => {
   const {debug, time} = initializeCommand(COMMAND_INIT_NAME);
 
   const packageJsonPath = `${context.env.cwd}/package.json`;

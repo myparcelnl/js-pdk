@@ -1,4 +1,4 @@
-import {type CommandArgs, type PdkBuilderConfig, type StringGenerator, type PdkPlatformName} from '../types';
+import {type CommandArgs, type PdkBuilderConfig, type PdkPlatformName, type StringGenerator} from '../types';
 import {resolveString} from './resolveString';
 
 export const resolveFileName = (
@@ -12,7 +12,7 @@ export const resolveFileName = (
   const fields: Record<string, string> = {
     name: resolveString(context.config.name, context.platform),
     platform: context.platform ?? '',
-    version: context.args?.version ?? context.config.version,
+    version: context.args?.version ?? context.config.version ?? '',
   };
 
   const filename = resolveString(stringGenerator, context.platform);

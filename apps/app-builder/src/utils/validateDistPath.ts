@@ -1,5 +1,5 @@
 import {type LiftoffEnv} from 'liftoff';
-import {type CommandArgs, type ResolvedPdkBuilderConfig, type PdkPlatformName} from '../types';
+import {type CommandArgs, type PdkPlatformName, type ResolvedPdkBuilderConfig} from '../types';
 import {copy} from '../commands';
 import {getPlatformDistPath} from './getPlatformDistPath';
 import {exists} from './exists';

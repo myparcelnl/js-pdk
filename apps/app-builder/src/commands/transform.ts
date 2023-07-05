@@ -16,7 +16,7 @@ import {
   resolveFileName,
   validateDistPath,
 } from '../utils';
-import {type PdkBuilderCommand, PdkPlatformName} from '../types';
+import {PdkBuilderCommand, PdkPlatformName} from '../types';
 import {COMMAND_TRANSFORM_NAME, VerbosityLevel} from '../constants';
 
 const SOURCE_PLATFORM = PdkPlatformName.MyParcelNl;

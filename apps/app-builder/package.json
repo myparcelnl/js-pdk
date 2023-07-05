@@ -20,10 +20,11 @@
     "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
-    "start": "ts-node --project ./tsconfig.build.json src/index.ts",
+    "start": "ts-node --project ./tsconfig.build.json src/main.ts",
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
+    "@yarnpkg/parsers": "^3.0.0-rc.48.1",
     "archiver": "^5.3.1",
     "chalk": "^5.2.0",
     "commander": "^10.0.0",

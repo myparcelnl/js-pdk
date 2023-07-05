@@ -3,7 +3,6 @@ import path from 'path';
 import fs from 'fs';
 import glob from 'fast-glob';
 import chalk from 'chalk';
-import {replaceCaseSensitive} from '../utils/transformer';
 import {
   executePromises,
   getPlatformDistPath,
@@ -12,10 +11,11 @@ import {
   logSourcePath,
   logTargetPath,
   logTimeTaken,
+  replaceCaseSensitive,
   reportDryRun,
   validateDistPath,
 } from '../utils';
-import {PdkBuilderCommand} from '../types';
+import {type PdkBuilderCommand} from '../types';
 import {COMMAND_RENAME_NAME, VerbosityLevel} from '../constants';
 
 const STRING_TO_REPLACE = 'myparcelnl';

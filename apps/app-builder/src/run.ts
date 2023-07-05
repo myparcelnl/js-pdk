@@ -1,7 +1,7 @@
 import {type LiftoffEnv} from 'liftoff';
 import {program} from 'commander';
 import {createWithConfig, createWithContext} from './utils';
-import {type PdkBuilderCommand} from './types';
+import {type PdkBuilderCommand} from './types/command';
 import {
   COMMAND_BUILD_NAME,
   COMMAND_CLEAN_NAME,
@@ -11,10 +11,11 @@ import {
   COMMAND_RELEASE_NAME,
   COMMAND_RENAME_NAME,
   COMMAND_TRANSFORM_NAME,
+  COMMAND_UPGRADE_NAME,
   COMMAND_ZIP_NAME,
   TITLE,
 } from './constants';
-import {clean, copy, increment, init, rename, transform, zip} from './commands';
+import {clean, copy, increment, init, rename, transform, upgrade, zip} from './commands';
 
 type CommandDefinition = {
   name: string;
@@ -28,9 +29,9 @@ const OPTION_VERSION = ['--version <version>', 'Version to use. Defaults to vers
 
 const OPTION_VERBOSITY = ['-v, --verbose', 'Verbosity', (dummy: string, prev: number) => prev + 1, 0] as const;
 
-const OPTION_DRY_RUN = ['--dry-run', 'Dry run'] as const;
+const OPTION_DRY_RUN = ['-d, --dry-run', 'Dry run'] as const;
 
-const OPTION_PARALLEL = ['--parallel', 'Run each platform in parallel'] as const;
+const OPTION_PARALLEL = ['-p, --parallel', 'Run each platform in parallel'] as const;
 
 const REQUIRES_CONFIG_FILE = 'Requires a config file.';
 
@@ -114,6 +115,17 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .option(...OPTION_VERBOSITY)
     .action(withContext(init));
 
+  program
+    .command(COMMAND_UPGRADE_NAME)
+    .description(`Upgrade Yarn or Composer package.`)
+    .option(...OPTION_VERBOSITY)
+    .option(...OPTION_DRY_RUN)
+    .option('-l, --lockfile <lockfile>', 'Provide an alternative path to a lockfile.')
+    .option('--no-check', 'Skip checking whether the lockfile is modified.')
+    .option('--no-commit', 'Skip creating a commit.')
+    .argument('[package]', 'Package to upgrade')
+    .action(withContext(upgrade));
+
   CONFIG_COMMANDS.forEach(({name, description, options, action}) => {
     const command = program.command(name).description(description);
 
@@ -136,6 +148,8 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
       .option(...OPTION_VERBOSITY)
       .option(...OPTION_VERSION)
       .action(
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         withConfig(async (context) => {
           for (const command of commands) {
             await command.action(context);

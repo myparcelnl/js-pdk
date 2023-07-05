@@ -1,8 +1,5 @@
-import {type LiftoffEnv} from 'liftoff';
-import {type PromiseOr} from '@myparcel/ts-utils';
-import {type VersionSource} from './increment';
-
-export type StringGenerator = string | ((platform?: PdkPlatformName) => string);
+import {type VersionSource} from '../increment';
+import {type PdkPlatformName, type StringGenerator} from './common';
 
 export type PdkBuilderConfig = {
   /**
@@ -63,25 +60,3 @@ export type PdkBuilderConfig = {
 };
 
 export type ResolvedPdkBuilderConfig = Required<PdkBuilderConfig>;
-
-export type PdkBuilderContext<A extends CommandArgs = CommandArgs> = {
-  args: A;
-  config: ResolvedPdkBuilderConfig;
-  env: LiftoffEnv;
-};
-
-export type PdkBuilderCommand = (context: PdkBuilderContext) => PromiseOr<void>;
-
-export type CommandArgs = {
-  dryRun?: boolean;
-  parallel?: boolean;
-  quiet?: boolean;
-  verbose: number;
-  version?: string;
-};
-
-export enum PdkPlatformName {
-  Flespakket = 'flespakket',
-  MyParcelBe = 'myparcelbe',
-  MyParcelNl = 'myparcelnl',
-}

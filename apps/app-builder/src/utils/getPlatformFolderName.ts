@@ -1,4 +1,4 @@
-import {type ResolvedPdkBuilderConfig, type PdkPlatformName} from '../types';
+import {type PdkPlatformName, type ResolvedPdkBuilderConfig} from '../types';
 import {resolveFileName} from './resolveFileName';
 
 export const getPlatformFolderName = ({
