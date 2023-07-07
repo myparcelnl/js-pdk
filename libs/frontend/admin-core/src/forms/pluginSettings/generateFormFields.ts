@@ -39,6 +39,7 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
       component: resolveFormComponent($component),
       props: {...props},
       attributes: {...$attributes},
+      optional: true,
       slots: $slot ? {default: () => $slot} : undefined,
       wrapper: $wrapper && typeof $wrapper === 'string' ? resolveFormComponent($wrapper) : undefined,
     };
