@@ -1,7 +1,7 @@
 import {type FrontendEndpoint} from '@myparcel-pdk/common';
 import {useSettings} from '../useSettings';
 import {type FrontendEndpointParameters, type FrontendEndpointResponse} from '../../types/endpoints.types';
-import {useConfig} from '../../config/useConfig';
+import {useConfig} from '../../config';
 
 type DoRequest = <E extends FrontendEndpoint>(
   endpoint: E,
