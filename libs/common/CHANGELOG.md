@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.41](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.40...@myparcel-pdk/common@1.0.0-alpha.41) "@myparcel-pdk/common" (2023-07-10)
+
+
+### Features
+
+* **admin:** support disabledWhen and readOnlyWhen from backend ([01cb7a1](https://github/myparcelnl/js-pdk/commit/01cb7a1952ec95f419ea0e8598d13ceb81f2f48f))
+
+
+
+
 ## [1.0.0-alpha.40](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.39...@myparcel-pdk/common@1.0.0-alpha.40) "@myparcel-pdk/common" (2023-07-04)
 
 

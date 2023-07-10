@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-preset-bootstrap4",
-  "version": "1.0.0-alpha.82",
+  "version": "1.0.0-alpha.83",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -21,7 +21,7 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.80",
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.81",
     "@myparcel/ts-utils": "^1.9.0",
     "vue": "^3.3.4"
   },

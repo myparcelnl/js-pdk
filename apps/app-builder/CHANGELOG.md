@@ -2,6 +2,24 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.26](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.25...@myparcel-pdk/app-builder@1.0.0-alpha.26) "@myparcel-pdk/app-builder" (2023-07-10)
+
+
+### Features
+
+* **app-builder:** add quiet flag ([95dd17e](https://github/myparcelnl/js-pdk/commit/95dd17e447526e28b8c5bedb8b7cedf4b823e8ac))
+* **app-builder:** add upgrade command ([b7f4b07](https://github/myparcelnl/js-pdk/commit/b7f4b0718507cf0c6d0dfe00c5749d69453d346d))
+* **app-builder:** support composer package upgrades ([fb2f68b](https://github/myparcelnl/js-pdk/commit/fb2f68b538e5463b563d32e9a535a7717b60ae21))
+
+
+### Bug Fixes
+
+* **app-builder:** export PdkBuilderConfig type ([0cfd44e](https://github/myparcelnl/js-pdk/commit/0cfd44ea43b8eb47451e5b9ca010348b3a70edad))
+* **app-builder:** fix debugger being quiet when quiet is not passed ([da9f0c5](https://github/myparcelnl/js-pdk/commit/da9f0c5dc975b144194da9c43ad9832c11cb86b2))
+
+
+
+
 ## [1.0.0-alpha.25](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.24...@myparcel-pdk/app-builder@1.0.0-alpha.25) "@myparcel-pdk/app-builder" (2023-07-04)
 
 

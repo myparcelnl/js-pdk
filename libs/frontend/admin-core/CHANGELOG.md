@@ -2,6 +2,22 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.81](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.80...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.81) "@myparcel-pdk/frontend-admin-core" (2023-07-10)
+
+
+### Features
+
+* **admin:** support disabledWhen and readOnlyWhen from backend ([01cb7a1](https://github/myparcelnl/js-pdk/commit/01cb7a1952ec95f419ea0e8598d13ceb81f2f48f))
+
+
+### Bug Fixes
+
+* **actions:** default to only show error notification ([f34ca86](https://github/myparcelnl/js-pdk/commit/f34ca860e0e062726efed49507260b12b21a267b))
+* **admin:** make plugin settings fields optional by default ([207faba](https://github/myparcelnl/js-pdk/commit/207faba5148c64716c1baeee54feffe680d85f5a))
+
+
+
+
 ## [1.0.0-alpha.80](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.79...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.80) "@myparcel-pdk/frontend-admin-core" (2023-07-04)
 
 
