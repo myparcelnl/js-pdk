@@ -1,5 +1,4 @@
 import {ref, toRaw} from 'vue';
-import {createFormStateWatcher} from '@myparcel-pdk/frontend-admin-core';
 import {type Plugin} from '@myparcel-pdk/common';
 import {
   type AnyElementConfiguration,
@@ -7,6 +6,7 @@ import {
   type InteractiveElementConfiguration,
 } from '@myparcel/vue-form-builder';
 import {resolveFormComponent} from '../helpers';
+import {createFormStateWatcher} from '../../forms';
 
 type GenerateFormFields = (
   config: {
