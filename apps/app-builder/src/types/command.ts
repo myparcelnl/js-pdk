@@ -22,6 +22,7 @@ export type PdkBuilderCommandWithoutConfig<A extends AnyCommandArgs = AnyCommand
 export type AnyCommandArgs = Record<string, unknown>;
 
 export type CommandArgs = {
+  arguments?: string[];
   dryRun?: boolean;
   parallel?: boolean;
   quiet?: boolean;

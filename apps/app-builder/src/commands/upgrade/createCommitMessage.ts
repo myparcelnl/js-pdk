@@ -8,13 +8,13 @@ export const createCommitMessage = (
   const lines: string[] = [];
 
   if (upgradedVersions.length === 1) {
-    lines.push(`chore(deps): upgrade ${upgradedVersions[0].name} to ${upgradedVersions[0].version}`);
+    lines.push(`chore(deps): upgrade ${upgradedVersions[0].name} to v${upgradedVersions[0].version}`);
   } else {
     lines.push(`chore(deps): upgrade ${packageName}`);
     lines.push('');
 
     upgradedVersions.forEach((updatedVersion) => {
-      lines.push(`- upgrade ${updatedVersion.name} to ${updatedVersion.version}`);
+      lines.push(`- upgrade ${updatedVersion.name} to v${updatedVersion.version}`);
     });
   }
 
@@ -22,7 +22,7 @@ export const createCommitMessage = (
   lines.push('Compare changes:');
 
   upgradedVersions.forEach((updatedVersion) => {
-    lines.push(`- ${updatedVersion.repository}compare/${updatedVersion.oldVersion}..${updatedVersion.version}`);
+    lines.push(`- ${updatedVersion.repository}compare/v${updatedVersion.oldVersion}..v${updatedVersion.version}`);
   });
 
   const commitMessage = lines.join('\n');

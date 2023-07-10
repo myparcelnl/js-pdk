@@ -1,7 +1,7 @@
 import {type LiftoffEnv} from 'liftoff';
 import {type Debugger} from 'debug';
-import {type PromiseOr} from '@myparcel/ts-utils';
-import {type CommandArgs} from '../../types';
+import {type MakeOptional, type PromiseOr} from '@myparcel/ts-utils';
+import {type CommandArgs, type ResolvedPdkBuilderConfig} from '../../types';
 
 export type YarnLockfileEntry = [
   string,
@@ -16,6 +16,7 @@ export type YarnLockfileEntry = [
 
 export interface ParsedEntry {
   name: string;
+  repository?: string;
   version: string;
 }
 
@@ -25,13 +26,16 @@ export interface UpgradedEntry extends ParsedEntry {
 }
 
 export type UpgradeCommandArgs = CommandArgs & {
-  lockfile?: string;
   check?: boolean;
   commit?: boolean;
+  lockfile?: string;
 };
+
+export type InputUpgradeCommandArgs = MakeOptional<UpgradeCommandArgs, 'composerCommand' | 'yarnCommand'>;
 
 export interface UpgradeSubContext {
   args: UpgradeCommandArgs;
+  config: ResolvedPdkBuilderConfig;
   debug: Debugger;
   env: LiftoffEnv;
   mode: UpgradeMode;
@@ -43,7 +47,6 @@ export interface UpgradeSubContextWithLockfile extends UpgradeSubContext {
 }
 
 export interface UpgradeSubResult {
-  lockfilePath: string;
   oldVersions: ParsedEntry[];
   newVersions: ParsedEntry[];
 }

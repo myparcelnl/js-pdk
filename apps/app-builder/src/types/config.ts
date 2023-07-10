@@ -1,3 +1,4 @@
+import {type OneOrMore} from '@myparcel/ts-utils';
 import {type VersionSource} from '../increment';
 import {type PdkPlatformName, type StringGenerator} from './common';
 
@@ -57,6 +58,16 @@ export type PdkBuilderConfig = {
    * Glob patterns to replace version numbers in. Optionally pass a regex to match only a part of the file.
    */
   versionSource: VersionSource[];
+
+  /**
+   * Command to use when running yarn.
+   */
+  yarnCommand?: OneOrMore<string>;
+
+  /**
+   * Command to use when running composer.
+   */
+  composerCommand?: OneOrMore<string>;
 };
 
 export type ResolvedPdkBuilderConfig = Required<PdkBuilderConfig>;

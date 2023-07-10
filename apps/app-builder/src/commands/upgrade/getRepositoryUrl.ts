@@ -1,31 +1,29 @@
 /* eslint-disable no-case-declarations */
 import {executeCommand} from '../../utils';
 import {type NpmInfo} from '../../types';
-import {UpgradeMode, type UpgradeSubContext} from './types';
+import {type ParsedEntry, UpgradeMode, type UpgradeSubContext} from './types';
+import {parseGitHubUrl} from './parseGitHubUrl';
 
-const GITHUB_URL = 'https://github.com/';
+export const getRepositoryUrl = async (entry: ParsedEntry, {config, mode, env}: UpgradeSubContext): Promise<string> => {
+  if (entry.repository) {
+    return entry.repository;
+  }
 
-export const getRepositoryUrl = async (name: string, {mode, env}: UpgradeSubContext): Promise<string> => {
   switch (mode) {
     case UpgradeMode.Yarn:
-      const stdout = await executeCommand({env}, 'yarn', ['npm', 'info', name, '--json'], {});
+      const stdout = await executeCommand({env}, config.yarnCommand, ['npm', 'info', entry.name, '--json'], {});
 
       if (!stdout) {
-        throw new Error(`Could not get info for ${name}`);
+        throw new Error(`Could not get info for ${entry.name}`);
       }
 
       const npmInfo: NpmInfo = JSON.parse(stdout);
 
       if (!npmInfo?.repository) {
-        throw new Error(`No repository found for ${name}`);
+        throw new Error(`No repository found for ${entry.name}`);
       }
 
-      const repository = (typeof npmInfo.repository === 'string' ? npmInfo.repository : npmInfo.repository.url)
-        .replace(/\.git$/, '')
-        .replace(/^git\+/, '')
-        .replace(/^github:/, '');
-
-      return repository.startsWith(GITHUB_URL) ? repository : `${GITHUB_URL}${repository}/`;
+      return parseGitHubUrl(typeof npmInfo.repository === 'string' ? npmInfo.repository : npmInfo.repository.url);
   }
 
   throw new Error(`Unsupported upgrade mode: ${mode}`);

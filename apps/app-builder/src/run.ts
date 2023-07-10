@@ -19,10 +19,12 @@ import {clean, copy, increment, init, rename, transform, upgrade, zip} from './c
 
 type CommandDefinition = {
   name: string;
-  action: PdkBuilderCommand;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  action: PdkBuilderCommand<any>;
   description: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options?: any[];
+  args?: string[][];
 };
 
 const OPTION_VERSION = ['--version <version>', 'Version to use. Defaults to version in config.'] as const;
@@ -72,6 +74,21 @@ const COMMAND_TRANSFORM: CommandDefinition = {
   options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
+const COMMAND_UPGRADE: CommandDefinition = {
+  name: COMMAND_UPGRADE_NAME,
+  action: upgrade,
+  description: `Upgrade a dependency. ${REQUIRES_CONFIG_FILE}`,
+  options: [
+    OPTION_VERBOSITY,
+    OPTION_QUIET,
+    OPTION_DRY_RUN,
+    ['-l, --lockfile <lockfile>', 'Provide an alternative path to a lockfile.'],
+    ['--no-check', 'Skip checking whether the lockfile is modified.'],
+    ['--no-commit', 'Skip creating a commit.'],
+  ],
+  args: [['[package]', 'Package to upgrade']],
+};
+
 const COMMAND_ZIP: CommandDefinition = {
   name: COMMAND_ZIP_NAME,
   action: zip,
@@ -85,6 +102,7 @@ const CONFIG_COMMANDS = [
   COMMAND_INCREMENT,
   COMMAND_RENAME,
   COMMAND_TRANSFORM,
+  COMMAND_UPGRADE,
   COMMAND_ZIP,
 ] as const;
 
@@ -118,25 +136,20 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .option(...OPTION_QUIET)
     .action(withContext(init));
 
-  program
-    .command(COMMAND_UPGRADE_NAME)
-    .description(`Upgrade Yarn or Composer package.`)
-    .option(...OPTION_VERBOSITY)
-    .option(...OPTION_QUIET)
-    .option(...OPTION_DRY_RUN)
-    .option('-l, --lockfile <lockfile>', 'Provide an alternative path to a lockfile.')
-    .option('--no-check', 'Skip checking whether the lockfile is modified.')
-    .option('--no-commit', 'Skip creating a commit.')
-    .argument('[package]', 'Package to upgrade')
-    .action(withContext(upgrade));
-
-  CONFIG_COMMANDS.forEach(({name, description, options, action}) => {
+  CONFIG_COMMANDS.forEach(({name, description, options, action, args}) => {
     const command = program.command(name).description(description);
 
     if (options) {
       options.forEach((option) => {
         // @ts-expect-error todo
         command.option(...option);
+      });
+    }
+
+    if (args) {
+      args.forEach((argument) => {
+        // @ts-expect-error todo
+        command.argument(...argument);
       });
     }
 

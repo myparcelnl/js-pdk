@@ -2,17 +2,18 @@ import {executeCommand} from '../../utils';
 import {type UpgradeSubMethod} from './types';
 import {getYarnPackageVersion} from './getYarnPackageVersion';
 
-export const upgradeYarnPackage: UpgradeSubMethod = async ({args, env, packageName, lockfilePath}) => {
-  const oldVersions = getYarnPackageVersion(packageName, lockfilePath);
+export const upgradeYarnPackage: UpgradeSubMethod = async (context) => {
+  const {args, config, packageName} = context;
+
+  const oldVersions = getYarnPackageVersion(context);
 
   if (!args.dryRun) {
-    await executeCommand({env}, 'yarn', ['up', packageName]);
+    await executeCommand(context, config.yarnCommand, ['up', packageName]);
   }
 
-  const newVersions = getYarnPackageVersion(packageName, lockfilePath);
+  const newVersions = getYarnPackageVersion(context);
 
   return {
-    lockfilePath,
     oldVersions,
     newVersions,
   };

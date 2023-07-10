@@ -1,5 +1,6 @@
 import {spawnSync, type SpawnSyncOptions, type SpawnSyncOptionsWithStringEncoding} from 'child_process';
 import {type LiftoffEnv} from 'liftoff';
+import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 
 export interface ExecuteCommandContext {
   env: LiftoffEnv;
@@ -7,7 +8,7 @@ export interface ExecuteCommandContext {
 
 export const executeCommand = async (
   context: ExecuteCommandContext,
-  command: string,
+  command: OneOrMore<string>,
   args?: string[],
   options?: Omit<SpawnSyncOptions, 'encoding'>,
 ): Promise<string> => {
@@ -18,7 +19,12 @@ export const executeCommand = async (
   };
 
   return new Promise((resolve, reject) => {
-    const {status, stdout, stderr} = spawnSync(command, args ?? [], resolvedOptions);
+    const splitCommand = toArray(command).reduce((acc, command) => [...acc, ...command.split(' ')], [] as string[]);
+    const allArgs = [...splitCommand, ...(args ?? [])];
+
+    const [commandName, ...commandArgs] = allArgs;
+
+    const {status, stdout, stderr} = spawnSync(commandName, commandArgs ?? [], resolvedOptions);
 
     if (status === 0) {
       resolve(stdout);

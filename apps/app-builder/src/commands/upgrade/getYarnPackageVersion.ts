@@ -1,8 +1,8 @@
 import fs from 'fs';
 import {parseSyml} from '@yarnpkg/parsers';
-import {type ParsedEntry, type YarnLockfileEntry} from './types';
+import {type ParsedEntry, type UpgradeSubContextWithLockfile, type YarnLockfileEntry} from './types';
 
-export const getYarnPackageVersion = (packageName: string, lockfilePath: string): ParsedEntry[] => {
+export const getYarnPackageVersion = ({lockfilePath, packageName}: UpgradeSubContextWithLockfile): ParsedEntry[] => {
   const contents = fs.readFileSync(lockfilePath, 'utf8');
 
   const lockfile = parseSyml(contents);
