@@ -2,6 +2,7 @@
   "name": "@myparcel-pdk/backend-demo",
   "version": "1.0.0",
   "private": true,
+  "repository": "github:myparcelnl/js-pdk",
   "type": "module",
   "scripts": {
     "build": "run translations:init && nitropack build",

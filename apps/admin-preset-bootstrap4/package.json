@@ -1,6 +1,7 @@
 {
   "name": "@myparcel-pdk/admin-preset-bootstrap4",
   "version": "1.0.0-alpha.83",
+  "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",

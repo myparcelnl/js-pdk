@@ -1,6 +1,7 @@
 {
   "name": "@myparcel-pdk/checkout-js",
   "version": "1.0.0-alpha.11",
+  "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",

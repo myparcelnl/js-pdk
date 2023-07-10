@@ -1,6 +1,7 @@
 {
   "name": "@myparcel-pdk/admin-component-tests",
   "version": "1.0.0-alpha.83",
+  "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",

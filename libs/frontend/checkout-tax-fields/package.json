@@ -1,6 +1,7 @@
 {
   "name": "@myparcel-pdk/frontend-checkout-tax-fields",
   "version": "1.0.0-alpha.17",
+  "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",

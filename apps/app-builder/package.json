@@ -1,6 +1,7 @@
 {
   "name": "@myparcel-pdk/app-builder",
   "version": "1.0.0-alpha.26",
+  "repository": "github:myparcelnl/js-pdk",
   "type": "module",
   "exports": {
     "import": "./dist/index.js",

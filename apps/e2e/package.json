@@ -1,6 +1,7 @@
 {
   "name": "@myparcel-pdk/e2e",
   "version": "1.0.0-alpha.5",
+  "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
   "type": "module",
   "exports": "./src/index.ts",

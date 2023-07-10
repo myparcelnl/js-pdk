@@ -1,6 +1,7 @@
 {
   "name": "@myparcel-pdk/admin-preset-fontawesome",
   "version": "1.0.0-alpha.82",
+  "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",

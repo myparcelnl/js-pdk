@@ -1,6 +1,7 @@
 {
   "name": "@myparcel-pdk/frontend-delivery-options",
   "version": "1.0.0-alpha.6",
+  "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
