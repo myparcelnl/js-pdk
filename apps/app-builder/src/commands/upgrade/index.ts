@@ -66,8 +66,8 @@ export const upgrade: PdkBuilderCommand<InputUpgradeCommandArgs> = async ({env, 
     }
 
     if (!args.dryRun) {
-      await executeCommand({env}, 'git', ['add', lockfilePath], {});
-      await executeCommand({env}, 'git', ['commit', '-m', commit], {});
+      await executeCommand(context, 'git', ['add', lockfilePath], {});
+      await executeCommand(context, 'git', ['commit', '-m', commit], {});
     }
   }
 

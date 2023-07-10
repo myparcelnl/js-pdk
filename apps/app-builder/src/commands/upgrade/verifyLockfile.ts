@@ -1,7 +1,9 @@
 import {UpgradeMode, type UpgradeSubContext} from './types';
 import {ensureCleanLockfile} from './ensureCleanLockfile';
 
-export const verifyLockfile = async ({mode, args, debug, env}: UpgradeSubContext): Promise<string> => {
+export const verifyLockfile = async (context: UpgradeSubContext): Promise<string> => {
+  const {args, debug, mode} = context;
+
   let lockfilePath: string | undefined = args.lockfile;
 
   switch (mode) {
@@ -20,7 +22,7 @@ export const verifyLockfile = async ({mode, args, debug, env}: UpgradeSubContext
   }
 
   if (args.check) {
-    await ensureCleanLockfile(lockfilePath, debug, {env});
+    await ensureCleanLockfile(lockfilePath, debug, context);
   }
 
   return lockfilePath;

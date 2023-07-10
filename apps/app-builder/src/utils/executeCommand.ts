@@ -1,10 +1,7 @@
 import {spawnSync, type SpawnSyncOptions, type SpawnSyncOptionsWithStringEncoding} from 'child_process';
-import {type LiftoffEnv} from 'liftoff';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-
-export interface ExecuteCommandContext {
-  env: LiftoffEnv;
-}
+import {type ExecuteCommandContext} from '../types';
+import {VerbosityLevel} from '../constants';
 
 export const executeCommand = async (
   context: ExecuteCommandContext,
@@ -23,6 +20,10 @@ export const executeCommand = async (
     const allArgs = [...splitCommand, ...(args ?? [])];
 
     const [commandName, ...commandArgs] = allArgs;
+
+    if (context.args.verbose >= VerbosityLevel.VeryVeryVerbose) {
+      context.debug?.(`Executing command: ${commandName} ${commandArgs.join(' ')}`);
+    }
 
     const {status, stdout, stderr} = spawnSync(commandName, commandArgs ?? [], resolvedOptions);
 

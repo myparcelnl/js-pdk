@@ -1,5 +1,6 @@
 import {type Debugger} from 'debug';
-import {executeCommand, type ExecuteCommandContext} from '../../utils';
+import {executeCommand} from '../../utils';
+import {type ExecuteCommandContext} from '../../types';
 
 export const ensureCleanLockfile = async (
   lockfilePath: string,

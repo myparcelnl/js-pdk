@@ -1,6 +1,7 @@
 import type Liftoff from 'liftoff';
 // eslint-disable-next-line no-duplicate-imports
 import {type LiftoffEnv} from 'liftoff';
+import {type Debugger} from 'debug';
 import {type PromiseOr} from '@myparcel/ts-utils';
 import {type CommandArguments, type ParsedCommand} from '../utils';
 import {type ResolvedPdkBuilderConfig} from './config';
@@ -39,3 +40,9 @@ export type WithConfigParams = <A extends AnyCommandArgs>(context: PdkBuilderCon
 export type CommandCb = (...args: CommandArguments) => void | Promise<void>;
 
 export type CreateHook<T> = (env: Liftoff.LiftoffEnv, argv: string[]) => (callback: T) => CommandCb;
+
+export interface ExecuteCommandContext {
+  env: LiftoffEnv;
+  args: CommandArgs;
+  debug?: Debugger;
+}
