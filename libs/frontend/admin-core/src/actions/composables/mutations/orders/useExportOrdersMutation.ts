@@ -3,8 +3,8 @@ import {BackendEndpoint} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {usePdkMutation} from '../usePdkMutation';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
-import {useModalStore, type ResolvedQuery} from '../../../../stores';
-import {MutationMode, getCallbackForMutationMode, getModalMutationOptions} from '../../../../services';
+import {type ResolvedQuery, useModalStore} from '../../../../stores';
+import {getCallbackForMutationMode, getModalMutationOptions, MutationMode} from '../../../../services';
 import {type BackendEndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {fillShipmentsQueryData} from '../../../../pdk';
 
@@ -37,7 +37,7 @@ export const useExportOrdersMutation = (
         useModalStore().close();
 
         toArray(data).forEach((order) => {
-          fillShipmentsQueryData(queryClient, order.shipments.slice(-1), order);
+          fillShipmentsQueryData(queryClient, order.shipments?.slice(-1) ?? [], order);
         });
 
         if (input.form) {
