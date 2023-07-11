@@ -16,7 +16,6 @@
     "sharedGlobals": ["{workspaceRoot}/tsconfig.build.json"],
     "production": ["default"]
   },
-  "npmScope": "myparcel-pdk",
   "targetDefaults": {
     "build": {
       "inputs": ["default"],
