@@ -17,7 +17,7 @@ jobs:
         shell: bash
         run: |
           NX_BRANCH=production yarn nx run-many \
-            --parallel \
+            --parallel=1 \
             --target=test:coverage \
             --output-style=static
 
