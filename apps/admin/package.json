@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin",
-  "version": "1.0.0-alpha.81",
+  "version": "1.0.0-alpha.82",
   "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
   "sideEffects": false,
@@ -29,7 +29,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.81"
+    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.82"
   },
   "engines": {
     "node": ">=16"

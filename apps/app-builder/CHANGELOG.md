@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.27](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.26...@myparcel-pdk/app-builder@1.0.0-alpha.27) "@myparcel-pdk/app-builder" (2023-07-11)
+
+
+### Bug Fixes
+
+* **app-builder:** increase verbose logging ([7f551ba](https://github/myparcelnl/js-pdk/commit/7f551ba923a9c15ad8ef32613672d6adb2037685))
+
+
+
+
 ## [1.0.0-alpha.26](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.25...@myparcel-pdk/app-builder@1.0.0-alpha.26) "@myparcel-pdk/app-builder" (2023-07-10)
 
 

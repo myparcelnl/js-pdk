@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.16](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-delivery-options@1.0.0-alpha.15...@myparcel-pdk/frontend-checkout-delivery-options@1.0.0-alpha.16) "@myparcel-pdk/frontend-checkout-delivery-options" (2023-07-11)
+
+
+
+
 ## [1.0.0-alpha.14](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-delivery-options@1.0.0-alpha.13...@myparcel-pdk/frontend-checkout-delivery-options@1.0.0-alpha.14) "@myparcel-pdk/frontend-checkout-delivery-options" (2023-07-04)
 
 

@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.82](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.81...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.82) "@myparcel-pdk/frontend-admin-core" (2023-07-11)
+
+
+### Bug Fixes
+
+* **admin:** fix error in console when exporting in order mode ([5b293b3](https://github/myparcelnl/js-pdk/commit/5b293b3e9469502ce8cef747c83ad95fb8b6f3f7))
+
+
+
+
 ## [1.0.0-alpha.81](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.80...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.81) "@myparcel-pdk/frontend-admin-core" (2023-07-10)
 
 

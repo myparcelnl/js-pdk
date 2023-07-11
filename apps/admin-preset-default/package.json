@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-preset-default",
-  "version": "1.0.0-alpha.80",
+  "version": "1.0.0-alpha.81",
   "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
   "sideEffects": false,
@@ -22,7 +22,7 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.81",
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.82",
     "@myparcel/ts-utils": "^1.9.0",
     "@vueuse/core": "^10.1.2",
     "vue": "^3.3.4"
