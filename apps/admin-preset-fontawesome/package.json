@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-preset-fontawesome",
-  "version": "1.0.0-alpha.83",
+  "version": "1.0.0-alpha.84",
   "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
   "sideEffects": false,
@@ -22,7 +22,7 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.82",
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.83",
     "vue": "^3.3.4"
   },
   "devDependencies": {

@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.83](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.82...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.83) "@myparcel-pdk/frontend-admin-core" (2023-07-13)
+
+
+### Bug Fixes
+
+* **admin:** lower log level of some logs ([bb7f8cf](https://github/myparcelnl/js-pdk/commit/bb7f8cf328f10e96acb969a1b71c6080abe00a27))
+
+
+
+
 ## [1.0.0-alpha.82](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.81...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.82) "@myparcel-pdk/frontend-admin-core" (2023-07-11)
 
 
