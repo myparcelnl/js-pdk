@@ -14,7 +14,7 @@ export const executeNextAction = async <A extends MaybeAdminAction>(
   const {instance} = context;
   const nextActionIdentifier = getActionIdentifier(nextAction);
 
-  instance.logger.info(`Executing next action: ${nextActionIdentifier}`);
+  instance.logger.debug(`Executing next action: ${nextActionIdentifier}`);
 
   const newContext: ActionContext<A> = {
     ...context,

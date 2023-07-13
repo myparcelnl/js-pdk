@@ -7,7 +7,7 @@ export const getElementContext = (selector: string): AdminContextObject => {
   const parsedContext = context ? JSON.parse(context) : null;
 
   if (parsedContext && Object.keys(parsedContext).length) {
-    globalLogger.info(`Found context in ${selector}`, parsedContext);
+    globalLogger.debug(`Found context in ${selector}`, parsedContext);
     element?.removeAttribute('data-pdk-context');
     return parsedContext;
   }
