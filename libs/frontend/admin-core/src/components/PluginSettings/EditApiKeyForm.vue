@@ -5,14 +5,14 @@
 </template>
 
 <script lang="ts" setup>
-import {markRaw, ref, watch, computed} from 'vue';
+import {computed, markRaw, ref, watch} from 'vue';
 import {get} from '@vueuse/core';
-import {AdminComponent, Variant, Size} from '@myparcel-pdk/common';
-import {type FormInstance, MagicForm, defineField, defineForm, FormHook} from '@myparcel/vue-form-builder';
+import {AdminComponent, Size, Variant} from '@myparcel-pdk/common';
+import {defineField, defineForm, FormHook, type FormInstance, MagicForm} from '@myparcel/vue-form-builder';
 import {ResetButton, SubmitButton} from '../common';
 import {AdminAction} from '../../types';
 import {useActionStore} from '../../stores';
-import {FORM_KEY_ACCOUNT_SETTINGS, defineFormField, resolveFormComponent} from '../../forms';
+import {defineFormField, FORM_KEY_ACCOUNT_SETTINGS, resolveFormComponent} from '../../forms';
 import {useAdminConfig, usePluginSettings, useStoreContextQuery} from '../../composables';
 
 defineEmits<(e: 'afterSubmit', form: FormInstance) => void>();
@@ -28,10 +28,6 @@ const createForm = (): FormInstance => {
 
   const apiKeyRef = ref(pluginSettings.account.apiKey);
 
-  const submitApiKey = async (form: FormInstance): Promise<void> => {
-    await actionStore.dispatch(AdminAction.AccountUpdate, {form});
-  };
-
   return defineForm(FORM_KEY_ACCOUNT_SETTINGS, {
     ...config.formConfigOverrides?.[FORM_KEY_ACCOUNT_SETTINGS],
     fields: [
@@ -42,13 +38,13 @@ const createForm = (): FormInstance => {
         optional: true,
         ref: apiKeyRef,
         isValid: () => Boolean(hasAccount.value),
-        disabledWhen: () => Boolean(hasAccount.value),
+        readOnlyWhen: () => Boolean(hasAccount.value),
       }),
 
       defineField({
         component: SubmitButton,
         visibleWhen: () => !hasAccount.value,
-        disabledWhen: () => !apiKeyRef.value,
+        readOnlyWhen: () => !apiKeyRef.value,
       }),
 
       defineField({
@@ -59,12 +55,17 @@ const createForm = (): FormInstance => {
           size: Size.Small,
         },
         visibleWhen: () => Boolean(hasAccount.value),
-        disabledWhen: () => !apiKeyRef.value,
+        readOnlyWhen: () => !apiKeyRef.value,
       }),
     ],
 
-    [FormHook.AfterSubmit]: submitApiKey,
-    [FormHook.AfterReset]: submitApiKey,
+    [FormHook.AfterSubmit]: async (form: FormInstance): Promise<void> => {
+      await actionStore.dispatch(AdminAction.AccountUpdate, {form});
+    },
+
+    [FormHook.AfterReset]: async (): Promise<void> => {
+      await actionStore.dispatch(AdminAction.AccountDelete);
+    },
   });
 };
 

@@ -38,6 +38,7 @@ export type ResolvedQuery<E extends BackendEndpoint = BackendEndpoint> = E exten
 
 type Mutations =
   | BackendEndpoint.CreateWebhooks
+  | BackendEndpoint.DeleteAccount
   | BackendEndpoint.DeleteShipments
   | BackendEndpoint.DeleteWebhooks
   | BackendEndpoint.ExportOrders

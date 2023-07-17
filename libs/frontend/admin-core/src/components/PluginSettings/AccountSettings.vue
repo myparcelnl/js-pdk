@@ -25,29 +25,37 @@
 <script lang="ts" setup>
 import {computed, ref} from 'vue';
 import {get} from '@vueuse/core';
-import {type TabDefinition, Status, AdminComponent, Size, Variant} from '@myparcel-pdk/common';
+import {AdminComponent, Size, Status, type TabDefinition, Variant} from '@myparcel-pdk/common';
 import TabNavigation from '../common/TabNavigation.vue';
 import StatusIndicator from '../common/StatusIndicator.vue';
 import ActionButton from '../common/ActionButton.vue';
 import {useActionStore} from '../../stores';
-import {defineActions} from '../../services';
+import {instantiateAction} from '../../services';
 import {prefixComponent} from '../../helpers';
 import {useLanguage, useStoreContextQuery} from '../../composables';
-import {useUpdateAccountMutation, updateAccountAction} from '../../actions';
+import {
+  deleteAccountAction,
+  refreshAccountAction,
+  updateAccountAction,
+  useDeleteAccountMutation,
+  useUpdateAccountMutation,
+} from '../../actions';
 import WebhooksStatus from './WebhooksStatus.vue';
 import EditApiKeyForm from './EditApiKeyForm.vue';
 
 const actionStore = useActionStore();
 
-actionStore.register(updateAccountAction);
+actionStore.register([updateAccountAction, deleteAccountAction]);
 
 const contextQuery = useStoreContextQuery();
 
 const updateAccount = useUpdateAccountMutation();
+const deleteAccount = useDeleteAccountMutation();
+
+const loading =
+  computed(() => get(contextQuery.isLoading) || get(updateAccount.isLoading)) || get(deleteAccount.isLoading);
 
 const hasApiKey = ref(Boolean(get(contextQuery.data)?.pluginSettings.account.apiKey));
-
-const loading = computed(() => get(contextQuery.isLoading) || get(updateAccount.isLoading));
 
 const hasAccount = computed(() => {
   return !loading.value && hasApiKey.value && Boolean(get(contextQuery.data)?.account);

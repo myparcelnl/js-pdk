@@ -63,6 +63,7 @@ export type ResolvedAction = BaseAction & {
 export type BackendEndpointResponse<E extends BackendEndpoint> = PdkEndpointResponse<E, BackendEndpointDefinition>;
 
 export interface AdminActionEndpointMap extends Record<AdminAction, BackendEndpoint> {
+  [AdminAction.AccountDelete]: BackendEndpoint.DeleteAccount;
   [AdminAction.AccountUpdate]: BackendEndpoint.UpdateAccount;
   [AdminAction.ContextFetch]: BackendEndpoint.FetchContext;
   [AdminAction.OrdersExportPrint]: BackendEndpoint.ExportOrders;
@@ -138,6 +139,7 @@ export type MaybeActionResponse<A extends MaybeAdminAction> = ActionResponse<A> 
 export enum AdminAction {
   ContextFetch = 'contextFetch',
 
+  AccountDelete = 'accountDelete',
   AccountUpdate = 'accountUpdate',
 
   OrdersExport = 'ordersExport',

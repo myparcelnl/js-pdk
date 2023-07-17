@@ -11,6 +11,11 @@ export enum BackendEndpoint {
   FetchContext = 'fetchContext',
 
   /**
+   * Delete account.
+   */
+  DeleteAccount = 'deleteAccount',
+
+  /**
    * Update account.
    */
   UpdateAccount = 'updateAccount',

@@ -19,6 +19,7 @@ import {
   fetchDynamicContextAction,
   fetchPluginSettingsViewContextAction,
   pluginSettingsUpdateAction,
+  useDeleteAccountMutation,
   useUpdateAccountMutation,
   useUpdatePluginSettingsMutation,
 } from '../actions';
@@ -27,8 +28,8 @@ const queryStore = useQueryStore();
 
 queryStore.registerContextQueries(AdminContextKey.PluginSettingsView);
 
+queryStore.register(BackendEndpoint.DeleteAccount, useDeleteAccountMutation());
 queryStore.register(BackendEndpoint.UpdateAccount, useUpdateAccountMutation());
-
 queryStore.register(BackendEndpoint.UpdatePluginSettings, useUpdatePluginSettingsMutation());
 
 const actionStore = useActionStore();

@@ -4,8 +4,8 @@ import {isOfType} from '@myparcel/ts-utils';
 import {type ApiException} from '@myparcel/sdk';
 import {usePdkMutation} from '../usePdkMutation';
 import {formToBody} from '../../../../utils';
-import {NotificationCategory, type ActionInput} from '../../../../types';
-import {useNotificationStore, type ResolvedQuery} from '../../../../stores';
+import {type ActionInput, AdminContextKey, NotificationCategory} from '../../../../types';
+import {type ResolvedQuery, useNotificationStore} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
 import {useLanguage} from '../../../../composables';
 
@@ -19,10 +19,16 @@ export const useUpdateAccountMutation = (): ResolvedQuery<BackendEndpoint.Update
     async ({form}) => {
       const pdk = usePdkAdminApi();
 
-      return pdk.updateAccount({body: formToBody(form)});
+      const response = await pdk.updateAccount({body: formToBody(form)});
+
+      return response[0][AdminContextKey.Dynamic];
     },
     {
       ...defaultMutationOptions,
+
+      onSuccess(data) {
+        queryClient.setQueryData([BackendEndpoint.FetchContext, AdminContextKey.Dynamic], data);
+      },
 
       onError(error, variables: ActionInput<BackendEndpoint.UpdateAccount>, context) {
         if (!isOfType<ApiException>(error, 'data')) {

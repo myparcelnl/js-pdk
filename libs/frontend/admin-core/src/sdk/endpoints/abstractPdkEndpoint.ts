@@ -12,7 +12,7 @@ import {
 } from '@myparcel-pdk/common';
 import {type RecursivePartial} from '@myparcel/ts-utils';
 import {AbstractEndpoint} from '@myparcel/sdk';
-import {type AdminContextObject} from '../../types';
+import {type AdminContextKey, type AdminContextObject} from '../../types';
 
 export type PdfUrlResponse = {url: string};
 
@@ -39,11 +39,20 @@ interface FetchContextDefinition extends PdkEndpointDefinition {
   response: [AdminContextObject];
 }
 
+interface DeleteAccountDefinition extends PdkEndpointDefinition {
+  name: BackendEndpoint.UpdateAccount;
+  body: undefined;
+  parameters: undefined;
+  response: [Pick<AdminContextObject, AdminContextKey.Dynamic>];
+  formattedResponse: AdminContextObject[AdminContextKey.Dynamic];
+}
+
 interface UpdateAccountDefinition extends PdkEndpointDefinition {
   body: Settings.ModelAccountSettings;
   name: BackendEndpoint.UpdateAccount;
   parameters: undefined;
-  response: [AdminContextObject];
+  response: [Pick<AdminContextObject, AdminContextKey.Dynamic>];
+  formattedResponse: AdminContextObject[AdminContextKey.Dynamic];
 }
 
 interface FetchOrdersDefinition extends PdkEndpointDefinition {
@@ -146,6 +155,7 @@ interface DeleteWebhooksDefinition extends PdkEndpointDefinition {
 
 export type BackendEndpointDefinition =
   | CreateWebhooksDefinition
+  | DeleteAccountDefinition
   | DeleteShipmentsDefinition
   | DeleteWebhooksDefinition
   | ExportOrdersDefinition

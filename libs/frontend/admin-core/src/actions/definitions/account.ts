@@ -1,20 +1,7 @@
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {createMutationHandler, createQueryHandler} from '../executors';
+import {createMutationHandler} from '../executors';
 import {defineAction} from '../defineAction';
-import {AdminAction, AdminContextKey, AdminIcon} from '../../types';
-
-/**
- * Retrieve context.
- */
-export const fetchDynamicContextAction = defineAction({
-  name: AdminAction.ContextFetch,
-  handler: createQueryHandler(BackendEndpoint.FetchContext, AdminContextKey.Dynamic),
-});
-
-export const fetchPluginSettingsViewContextAction = defineAction({
-  name: AdminAction.ContextFetch,
-  handler: createQueryHandler(BackendEndpoint.FetchContext, AdminContextKey.PluginSettingsView),
-});
+import {AdminAction, AdminIcon} from '../../types';
 
 /**
  * Update account.
@@ -25,7 +12,7 @@ export const updateAccountAction = defineAction({
   label: 'action_save',
   handler: createMutationHandler(BackendEndpoint.UpdateAccount),
   afterHandle(context) {
-    if (!context.response?.[0].dynamic?.account) {
+    if (!context.response?.account) {
       context.instance.logger.error('Account not found');
       return context.response;
     }
@@ -36,6 +23,30 @@ export const updateAccountAction = defineAction({
     //   executeNextAction(context, fetchDynamicContextAction),
     //   executeNextAction(context, fetchPluginSettingsViewContextAction),
     // ]);
+
+    return context.response;
+  },
+});
+
+/**
+ * Refresh account.
+ */
+export const refreshAccountAction = defineAction({
+  ...updateAccountAction,
+  label: 'action_update_account',
+});
+
+/**
+ * Delete account.
+ */
+export const deleteAccountAction = defineAction({
+  name: AdminAction.AccountDelete,
+  icon: AdminIcon.Delete,
+  label: 'action_delete',
+  handler: createMutationHandler(BackendEndpoint.DeleteAccount),
+  afterHandle(context) {
+    // TODO: Make this action properly interactive
+    window.location.reload();
 
     return context.response;
   },
