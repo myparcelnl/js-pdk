@@ -71,6 +71,7 @@ export interface AdminActionEndpointMap extends Record<AdminAction, BackendEndpo
   [AdminAction.OrdersFetch]: BackendEndpoint.FetchOrders;
   [AdminAction.OrdersPrint]: BackendEndpoint.PrintOrders;
   [AdminAction.OrdersUpdate]: BackendEndpoint.UpdateOrders;
+  [AdminAction.PostOrderNotes]: BackendEndpoint.PostOrderNotes;
   [AdminAction.PluginSettingsUpdate]: BackendEndpoint.UpdatePluginSettings;
   [AdminAction.ProductSettingsUpdate]: BackendEndpoint.UpdateProductSettings;
   [AdminAction.ShipmentsDelete]: BackendEndpoint.DeleteShipments;
@@ -148,6 +149,7 @@ export enum AdminAction {
   OrdersFetch = 'ordersFetch',
   OrdersUpdate = 'ordersUpdate',
   OrdersEdit = 'ordersEdit',
+  PostOrderNotes = 'postOrderNotes',
 
   ShipmentsDelete = 'shipmentsDelete',
   ShipmentsPrint = 'shipmentsPrint',
@@ -171,4 +173,5 @@ export type OrderAction =
   | AdminAction.OrdersPrint
   | AdminAction.OrdersFetch
   | AdminAction.OrdersUpdate
-  | AdminAction.OrdersEdit;
+  | AdminAction.OrdersEdit
+  | AdminAction.PostOrderNotes;

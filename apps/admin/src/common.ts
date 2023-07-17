@@ -69,6 +69,7 @@ export {
   ordersFetchAction,
   ordersPrintAction,
   ordersUpdateAction,
+  postOrderNotes,
   shipmentsExportReturnAction,
   shipmentsPrintAction,
   shipmentsUpdateAction,

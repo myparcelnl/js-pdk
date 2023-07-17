@@ -15,6 +15,7 @@ import {
   ordersFetchAction,
   ordersPrintAction,
   ordersUpdateAction,
+  postOrderNotes,
   shipmentsDeleteAction,
   shipmentsExportReturnAction,
   shipmentsPrintAction,
@@ -71,6 +72,7 @@ export const useActionStore = defineStore('actions', () => {
         ordersFetchAction,
         ordersPrintAction,
         ordersUpdateAction,
+        postOrderNotes,
         ...(pluginSettings.general.orderMode
           ? [orderExportAction, orderViewInBackofficeAction]
           : [

@@ -34,6 +34,17 @@ export const orderExportAction = defineAction({
 });
 
 /**
+ * Shown only in order mode. Exports entire order.
+ */
+export const postOrderNotes = defineAction({
+  name: AdminAction.PostOrderNotes,
+  icon: AdminIcon.Export,
+  label: 'action_post_order_notes',
+  beforeHandle: resolveOrderParameters,
+  handler: createMutationHandler(BackendEndpoint.PostOrderNotes),
+});
+
+/**
  * Shown if not in order mode. Exports shipments.
  */
 export const orderExportToShipmentsAction = defineAction({
