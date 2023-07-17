@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-js",
-  "version": "1.0.0-alpha.21",
+  "version": "1.0.0-alpha.22",
   "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
   "sideEffects": false,
@@ -11,7 +11,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.83"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.84"
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*"

@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.43](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.42...@myparcel-pdk/common@1.0.0-alpha.43) "@myparcel-pdk/common" (2023-07-17)
+
+
+### Bug Fixes
+
+* **admin:** fix deleting and updating account actions ([9b14b43](https://github/myparcelnl/js-pdk/commit/9b14b4337c661767bb0f4989829c0ff69a779386))
+
+
+
+
 ## [1.0.0-alpha.42](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.41...@myparcel-pdk/common@1.0.0-alpha.42) "@myparcel-pdk/common" (2023-07-11)
 
 
