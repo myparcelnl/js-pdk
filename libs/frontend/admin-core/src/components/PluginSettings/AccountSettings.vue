@@ -53,7 +53,7 @@ const hasAccount = computed(() => {
   return !loading.value && hasApiKey.value && Boolean(get(contextQuery.data)?.account);
 });
 
-const refreshAction = defineActions({...updateAccountAction, label: 'action_update_account'})[0];
+const refreshAction = instantiateAction(refreshAccountAction);
 
 const {translate} = useLanguage();
 

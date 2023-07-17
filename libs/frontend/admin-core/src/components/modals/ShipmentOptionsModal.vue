@@ -12,7 +12,7 @@ import {computed, defineAsyncComponent} from 'vue';
 import {get} from '@vueuse/core';
 import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common';
 import {AdminModalKey} from '../../types';
-import {defineActions} from '../../services';
+import {instantiateActions} from '../../services';
 import {usePluginSettings, useStoreQuery} from '../../composables';
 import {
   modalCloseAction,
@@ -49,6 +49,6 @@ const actions = computed(() => {
   // TODO: figure out why this throws an error in build
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  return defineActions(actions, {disabled});
+  return instantiateActions(actions, {disabled});
 });
 </script>

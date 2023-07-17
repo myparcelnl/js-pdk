@@ -6,7 +6,7 @@
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {type AnyAdminAction} from '../../types';
-import {defineActions} from '../../services';
+import {instantiateActions} from '../../services';
 import {useOrder} from '../../composables';
 import {
   orderExportAction,
@@ -33,6 +33,6 @@ const actions = computed(() => {
 
   actions.push(ordersEditAction);
 
-  return defineActions(actions, {orderIds: order?.externalIdentifier, form: false});
+  return instantiateActions(actions, {orderIds: order?.externalIdentifier, form: false});
 });
 </script>

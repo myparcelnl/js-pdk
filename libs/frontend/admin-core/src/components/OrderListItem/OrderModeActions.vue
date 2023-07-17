@@ -18,7 +18,7 @@
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {ActionButton} from '../common';
-import {defineActions} from '../../services';
+import {instantiateAction, instantiateActions} from '../../services';
 import {useOrder} from '../../composables';
 import {orderExportAction, ordersEditAction, orderViewInBackofficeAction} from '../../actions';
 
@@ -26,9 +26,9 @@ const query = useOrder();
 
 const data = computed(() => get(query.data));
 
-const showExportedOrderAction = defineActions(orderViewInBackofficeAction);
+const showExportedOrderAction = instantiateAction(orderViewInBackofficeAction);
 
-const orderActions = defineActions([ordersEditAction, orderExportAction], {
+const orderActions = instantiateActions([ordersEditAction, orderExportAction], {
   orderIds: data.value?.externalIdentifier,
 });
 </script>

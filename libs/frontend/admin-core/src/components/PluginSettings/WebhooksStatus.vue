@@ -34,7 +34,7 @@ import StatusIndicator from '../common/StatusIndicator.vue';
 import ActionButton from '../common/ActionButton.vue';
 import {type ActionDefinition} from '../../types';
 import {useActionStore, useQueryStore} from '../../stores';
-import {defineActions} from '../../services';
+import {instantiateAction} from '../../services';
 import {useLanguage} from '../../composables';
 import {webhooksCreateAction, webhooksDeleteAction} from '../../actions';
 
@@ -61,11 +61,11 @@ const webhookActions = computed(() => {
   const [connected, disconnected] = partitionArray(data.value, (webhook) => webhook.connected);
 
   if (disconnected.length) {
-    actions.push(...defineActions(webhooksCreateAction, {hooks: disconnected.map(({hook}) => hook)}));
+    actions.push(instantiateAction(webhooksCreateAction, {hooks: disconnected.map(({hook}) => hook)}));
   }
 
   if (connected.length) {
-    actions.push(...defineActions(webhooksDeleteAction, {hooks: connected.map(({hook}) => hook)}));
+    actions.push(instantiateAction(webhooksDeleteAction, {hooks: connected.map(({hook}) => hook)}));
   }
 
   return actions;

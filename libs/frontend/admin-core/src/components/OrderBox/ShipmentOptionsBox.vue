@@ -27,15 +27,15 @@ import {get} from '@vueuse/core';
 import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
 import {AdminIcon} from '../../types';
-import {defineActions} from '../../services';
+import {instantiateActions} from '../../services';
 import {useLanguage, useOrder, usePluginSettings, useStoreQuery} from '../../composables';
 import {
   orderExportAction,
   orderExportToShipmentsAction,
-  orderViewInBackofficeAction,
   ordersExportPrintShipmentsAction,
   ordersPrintAction,
   ordersUpdateAction,
+  orderViewInBackofficeAction,
 } from '../../actions';
 
 const query = useOrder();
@@ -53,10 +53,10 @@ const orderQueries = [...BACKEND_ENDPOINTS_ORDERS.map((endpoint) => useStoreQuer
 
 const actions = computed(() => {
   if (isExported.value) {
-    return defineActions(orderViewInBackofficeAction);
+    return instantiateActions(orderViewInBackofficeAction);
   }
 
-  return defineActions(
+  return instantiateActions(
     [
       ordersUpdateAction,
       ...(orderMode

@@ -15,7 +15,7 @@
 import {defineAsyncComponent} from 'vue';
 import {AdminModalKey} from '../../types';
 import {useActionStore} from '../../stores';
-import {defineActions} from '../../services';
+import {instantiateActions} from '../../services';
 import {modalCloseAction, modalSubmitFormAction} from '../../actions';
 
 const modalKey = AdminModalKey.PrintOptions;
@@ -27,5 +27,5 @@ const actionStore = useActionStore();
 
 actionStore.register(modalSubmitFormAction);
 
-const actions = defineActions([modalCloseAction, modalSubmitFormAction]);
+const actions = instantiateActions([modalCloseAction, modalSubmitFormAction]);
 </script>

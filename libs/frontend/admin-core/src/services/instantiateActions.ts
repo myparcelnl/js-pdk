@@ -1,6 +1,6 @@
 import {toArray} from '@myparcel/ts-utils';
 import {type ActionDefinition, type ActionParameters, type AdminAction, type AnyAdminAction} from '../types';
-import {getActionIdentifier} from './actions';
+import {instantiateAction} from './instantiateAction';
 
 type DefineActions = {
   (action: AnyAdminAction, parameters?: ActionParameters<AdminAction>): ActionDefinition[];
@@ -8,10 +8,6 @@ type DefineActions = {
   (actions: AnyAdminAction[], parameters?: ActionParameters<AdminAction>): ActionDefinition[];
 };
 
-export const defineActions: DefineActions = (actions, parameters) => {
-  return toArray(actions).map((action) => ({
-    ...action,
-    id: getActionIdentifier(action as AnyAdminAction<AdminAction>),
-    parameters: parameters ?? {},
-  }));
+export const instantiateActions: DefineActions = (actions, parameters) => {
+  return toArray(actions).map((action) => instantiateAction(action, parameters));
 };
