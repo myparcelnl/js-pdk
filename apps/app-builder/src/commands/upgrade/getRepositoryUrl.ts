@@ -5,7 +5,7 @@ import {VerbosityLevel} from '../../constants';
 import {type ParsedEntry, UpgradeMode, type UpgradeSubContext} from './types';
 import {parseGitHubUrl} from './parseGitHubUrl';
 
-export const getRepositoryUrl = async (entry: ParsedEntry, context: UpgradeSubContext): Promise<string> => {
+export const getRepositoryUrl = async (entry: ParsedEntry, context: UpgradeSubContext): Promise<undefined | string> => {
   if (entry.repository) {
     return entry.repository;
   }
@@ -21,13 +21,13 @@ export const getRepositoryUrl = async (entry: ParsedEntry, context: UpgradeSubCo
       const stdout = await executeCommand(context, config.yarnCommand, ['npm', 'info', entry.name, '--json'], {});
 
       if (!stdout) {
-        throw new Error(`Could not get info for ${entry.name}`);
+        return;
       }
 
       const npmInfo: NpmInfo = JSON.parse(stdout);
 
       if (!npmInfo?.repository) {
-        throw new Error(`No repository found for ${entry.name}`);
+        return;
       }
 
       return parseGitHubUrl(typeof npmInfo.repository === 'string' ? npmInfo.repository : npmInfo.repository.url);

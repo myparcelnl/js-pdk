@@ -18,12 +18,16 @@ export const createCommitMessage = (
     });
   }
 
-  lines.push('');
-  lines.push('Compare changes:');
+  const versionsWithRepository = upgradedVersions.filter((updatedVersion) => updatedVersion.repository);
 
-  upgradedVersions.forEach((updatedVersion) => {
-    lines.push(`- ${updatedVersion.repository}compare/v${updatedVersion.oldVersion}..v${updatedVersion.version}`);
-  });
+  if (versionsWithRepository.length) {
+    lines.push('');
+    lines.push('Compare changes:');
+
+    versionsWithRepository.forEach((updatedVersion) => {
+      lines.push(`- ${updatedVersion.repository}compare/v${updatedVersion.oldVersion}...v${updatedVersion.version}`);
+    });
+  }
 
   const commitMessage = lines.join('\n');
 

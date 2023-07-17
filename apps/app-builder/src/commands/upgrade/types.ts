@@ -22,7 +22,7 @@ export interface ParsedEntry {
 
 export interface UpgradedEntry extends ParsedEntry {
   oldVersion: string | undefined;
-  repository: string;
+  repository: string | undefined;
 }
 
 export type UpgradeCommandArgs = CommandArgs & {
