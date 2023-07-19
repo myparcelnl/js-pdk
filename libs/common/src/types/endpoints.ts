@@ -36,6 +36,11 @@ export enum BackendEndpoint {
   ExportOrders = 'exportOrders',
 
   /**
+   * Post order notes on fulfilment orders.
+   */
+  PostOrderNotes = 'postOrderNotes',
+
+  /**
    * Print all shipments belonging to the given orders.
    */
   PrintOrders = 'printOrders',
@@ -97,6 +102,7 @@ export const BACKEND_ENDPOINTS_ORDERS = [
   BackendEndpoint.UpdateOrders,
   BackendEndpoint.ExportOrders,
   BackendEndpoint.PrintOrders,
+  BackendEndpoint.PostOrderNotes,
 ] as const;
 
 export const BACKEND_ENDPOINTS_SHIPMENTS = [
