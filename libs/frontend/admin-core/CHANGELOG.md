@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.85](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.84...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.85) "@myparcel-pdk/frontend-admin-core" (2023-07-19)
+
+
+### Bug Fixes
+
+* **admin:** fix shipment options staying enabled when unavailable ([df0c068](https://github/myparcelnl/js-pdk/commit/df0c06802c40f4d22d434467881fccdd44146189))
+
+
+
+
 ## [1.0.0-alpha.84](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.83...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.84) "@myparcel-pdk/frontend-admin-core" (2023-07-17)
 
 
