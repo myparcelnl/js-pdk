@@ -4,7 +4,7 @@
       <TabNavigation :tabs="tabs" />
     </div>
 
-    <PdkLoader v-if="loading" />
+    <PdkLoader v-if="hasAccount && loading" />
   </div>
 </template>
 
@@ -13,28 +13,29 @@ import {computed, ref, watch} from 'vue';
 import {get} from '@vueuse/core';
 import {type TabDefinition} from '@myparcel-pdk/common';
 import TabNavigation from '../common/TabNavigation.vue';
-import {AdminContextKey, type AdminAction} from '../../types';
+import {type AdminAction, AdminContextKey} from '../../types';
 import {createActionContext} from '../../services';
 import {createPluginSettingsTabs} from '../../forms';
 import {useAdminConfig, useStoreContextQuery} from '../../composables';
 import {pluginSettingsUpdateAction} from '../../actions';
 
+const config = useAdminConfig();
+
 const dynamicContextQuery = useStoreContextQuery();
 const pluginSettingsContextQuery = useStoreContextQuery(AdminContextKey.PluginSettingsView);
 
 const tabs = ref<TabDefinition[]>([]);
-const hasAccount = computed(() => {
-  return Boolean(get(dynamicContextQuery.data)?.account);
-});
 
-const config = useAdminConfig();
+const hasAccount = computed(() => Boolean(get(dynamicContextQuery.data)?.account));
 
 const actionContext = createActionContext<AdminAction.PluginSettingsUpdate>(pluginSettingsUpdateAction);
+
+const loading = computed(() => dynamicContextQuery.isLoading || pluginSettingsContextQuery.isLoading);
 
 watch(
   () => dynamicContextQuery.dataUpdatedAt,
   () => {
-    if (get(pluginSettingsContextQuery.isLoading) || get(dynamicContextQuery.isLoading)) {
+    if (get(loading)) {
       return;
     }
 
@@ -54,6 +55,4 @@ watch(
   },
   {immediate: true},
 );
-
-const loading = computed(() => dynamicContextQuery.isLoading || pluginSettingsContextQuery.isLoading);
 </script>
