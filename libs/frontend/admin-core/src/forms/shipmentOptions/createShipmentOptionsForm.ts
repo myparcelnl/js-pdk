@@ -15,24 +15,32 @@ import {useCarrier} from '../../sdk';
 import {useAdminConfig, useAssetUrl, useContext, useLanguage, useLocalizedFormatter} from '../../composables';
 import {
   addBulkEditNotification,
+  createHasShipmentOptionWatcher,
   getFormattedInsurancePossibilities,
   getPackageTypes,
-  hasShipmentOption,
-  isPackageTypePackage,
 } from './helpers';
 import {
   AGE_CHECK,
-  CARRIER,
   DIRECT_RETURN,
+  FIELD_AGE_CHECK,
+  FIELD_CARRIER,
+  FIELD_DIRECT_RETURN,
+  FIELD_INSURANCE,
+  FIELD_LABEL_AMOUNT,
+  FIELD_LARGE_FORMAT,
+  FIELD_ONLY_RECIPIENT,
+  FIELD_PACKAGE_TYPE,
+  FIELD_SAME_DAY_DELIVERY,
+  FIELD_SIGNATURE,
   INSURANCE,
-  LABEL_AMOUNT,
   LARGE_FORMAT,
   ONLY_RECIPIENT,
-  PACKAGE_TYPE,
   PROP_OPTIONS,
   SAME_DAY_DELIVERY,
   SIGNATURE,
 } from './field';
+
+const SHIPMENT_OPTIONS_LABEL_PREFIX = 'shipment_options_';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,max-lines-per-function,complexity
 export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrder>) => {
@@ -48,7 +56,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
   const {translate} = useLanguage();
 
   const isBulk = ordersArray.length > 1;
-  const isModal = modalStore.opened === AdminModalKey.ShipmentOptions;
+  const isModal = AdminModalKey.ShipmentOptions === modalStore.opened;
 
   if (isBulk) {
     addBulkEditNotification(isModal);
@@ -67,7 +75,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
     ...config.formConfigOverrides?.shipmentOptions,
     fields: [
       defineFormField({
-        name: CARRIER,
+        name: FIELD_CARRIER,
         label: 'carrier',
         ref: ref<string>(values.deliveryOptions?.carrier?.externalIdentifier as string),
         component: resolveFormComponent(AdminComponent.RadioGroup),
@@ -104,13 +112,13 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
         },
 
         afterUpdate: (field) => {
-          setFieldProp(field.form, INSURANCE, PROP_OPTIONS, getFormattedInsurancePossibilities(field, formatter));
-          setFieldProp(field.form, PACKAGE_TYPE, PROP_OPTIONS, getPackageTypes(field.form));
+          setFieldProp(field.form, FIELD_INSURANCE, PROP_OPTIONS, getFormattedInsurancePossibilities(field, formatter));
+          setFieldProp(field.form, FIELD_PACKAGE_TYPE, PROP_OPTIONS, getPackageTypes(field.form));
         },
       }),
 
       defineFormField({
-        name: LABEL_AMOUNT,
+        name: FIELD_LABEL_AMOUNT,
         label: 'label_amount',
         ref: ref(values.deliveryOptions?.labelAmount ?? 1),
         component: resolveFormComponent(AdminComponent.NumberInput),
@@ -121,78 +129,83 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
       }),
 
       defineFormField({
-        name: PACKAGE_TYPE,
-        label: 'shipment_options_package_type',
+        name: FIELD_PACKAGE_TYPE,
+        label: `${SHIPMENT_OPTIONS_LABEL_PREFIX}package_type`,
         ref: ref<PackageTypeName>((values.deliveryOptions?.packageType as PackageTypeName) ?? PackageTypeName.Package),
         component: resolveFormComponent(AdminComponent.RadioGroup),
       }),
 
       defineFormField({
-        name: SIGNATURE,
-        label: 'shipment_options_signature',
+        name: FIELD_SIGNATURE,
+        label: `${SHIPMENT_OPTIONS_LABEL_PREFIX}signature`,
         ref: ref(values.deliveryOptions?.shipmentOptions.signature ?? false),
         component: resolveFormComponent(AdminComponent.ToggleInput),
-        visibleWhen: ({form}) => isPackageTypePackage(form) && hasShipmentOption(form, 'signature'),
+        visibleWhen: createHasShipmentOptionWatcher(SIGNATURE),
+        disabledWhen: createHasShipmentOptionWatcher(SIGNATURE, true),
+        readOnlyWhen: ({form}) => form.getValue(FIELD_AGE_CHECK),
       }),
 
       defineFormField({
-        name: ONLY_RECIPIENT,
-        label: 'shipment_options_only_recipient',
+        name: FIELD_ONLY_RECIPIENT,
+        label: `${SHIPMENT_OPTIONS_LABEL_PREFIX}only_recipient`,
         ref: ref(values.deliveryOptions?.shipmentOptions.onlyRecipient ?? false),
         component: resolveFormComponent(AdminComponent.ToggleInput),
-        visibleWhen: ({form}) => isPackageTypePackage(form) && hasShipmentOption(form, 'onlyRecipient'),
+        visibleWhen: createHasShipmentOptionWatcher(ONLY_RECIPIENT),
+        disabledWhen: createHasShipmentOptionWatcher(ONLY_RECIPIENT, true),
+        readOnlyWhen: ({form}) => form.getValue(FIELD_AGE_CHECK),
       }),
 
       defineFormField({
-        name: AGE_CHECK,
+        name: FIELD_AGE_CHECK,
         component: resolveFormComponent(AdminComponent.ToggleInput),
         ref: ref(values.deliveryOptions?.shipmentOptions.ageCheck ?? false),
-        label: 'shipment_options_age_check',
-        visibleWhen: ({form}) => isPackageTypePackage(form) && hasShipmentOption(form, 'ageCheck'),
+        label: `${SHIPMENT_OPTIONS_LABEL_PREFIX}age_check`,
+        visibleWhen: createHasShipmentOptionWatcher(AGE_CHECK),
+        disabledWhen: createHasShipmentOptionWatcher(AGE_CHECK, true),
         afterUpdate({form}, value): PromiseOr<void> {
-          const signatureField = form.getField(SIGNATURE);
-          const onlyRecipientField = form.getField(ONLY_RECIPIENT);
-
-          signatureField?.setReadOnly(value);
-          onlyRecipientField?.setReadOnly(value);
-
-          if (value === true) {
-            form.setValue(SIGNATURE, true);
-            form.setValue(ONLY_RECIPIENT, true);
+          if (!value) {
+            return;
           }
+
+          form.setValue(FIELD_SIGNATURE, true);
+          form.setValue(FIELD_ONLY_RECIPIENT, true);
         },
       }),
 
       defineFormField({
-        name: DIRECT_RETURN,
+        name: FIELD_DIRECT_RETURN,
         component: resolveFormComponent(AdminComponent.ToggleInput),
         ref: ref(values.deliveryOptions?.shipmentOptions.return ?? false),
-        label: 'shipment_options_return',
-        visibleWhen: ({form}) => isPackageTypePackage(form) && hasShipmentOption(form, 'return'),
+        label: `${SHIPMENT_OPTIONS_LABEL_PREFIX}return`,
+        visibleWhen: createHasShipmentOptionWatcher(DIRECT_RETURN),
+        disabledWhen: createHasShipmentOptionWatcher(DIRECT_RETURN, true),
       }),
 
       defineFormField({
-        name: LARGE_FORMAT,
+        name: FIELD_LARGE_FORMAT,
         component: resolveFormComponent(AdminComponent.ToggleInput),
         ref: ref(values.deliveryOptions?.shipmentOptions.largeFormat ?? false),
-        label: 'shipment_options_large_format',
-        visibleWhen: ({form}) => isPackageTypePackage(form) && hasShipmentOption(form, 'largeFormat'),
+        label: `${SHIPMENT_OPTIONS_LABEL_PREFIX}large_format`,
+        visibleWhen: createHasShipmentOptionWatcher(LARGE_FORMAT),
+        disabledWhen: createHasShipmentOptionWatcher(LARGE_FORMAT, true),
       }),
 
       defineFormField({
-        name: SAME_DAY_DELIVERY,
+        name: FIELD_SAME_DAY_DELIVERY,
         component: resolveFormComponent(AdminComponent.ToggleInput),
         ref: ref(values.deliveryOptions?.shipmentOptions.sameDayDelivery ?? false),
-        label: 'shipment_options_same_day_delivery',
-        visibleWhen: ({form}) => isPackageTypePackage(form) && hasShipmentOption(form, 'sameDayDelivery'),
+        label: `${SHIPMENT_OPTIONS_LABEL_PREFIX}same_day_delivery`,
+        visibleWhen: createHasShipmentOptionWatcher(SAME_DAY_DELIVERY),
+        disabledWhen: createHasShipmentOptionWatcher(SAME_DAY_DELIVERY, true),
       }),
 
       defineFormField({
-        name: INSURANCE,
+        name: FIELD_INSURANCE,
         component: resolveFormComponent(AdminComponent.SelectInput),
         ref: ref(values.deliveryOptions?.shipmentOptions.insurance ?? 0),
-        label: 'shipment_options_insurance',
-        visibleWhen: ({form}) => isPackageTypePackage(form) && hasShipmentOption(form, 'insurance'),
+        label: `${SHIPMENT_OPTIONS_LABEL_PREFIX}insurance`,
+        visibleWhen: createHasShipmentOptionWatcher(INSURANCE),
+        disabledWhen: createHasShipmentOptionWatcher(INSURANCE, true),
 
         onBeforeMount: (field: ElementInstance) => {
           setFieldProp(field, PROP_OPTIONS, getFormattedInsurancePossibilities(field, formatter));

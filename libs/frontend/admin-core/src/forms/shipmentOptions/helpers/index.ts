@@ -1,4 +1,5 @@
 export * from './addBulkEditNotification';
+export * from './createHasShipmentOptionWatcher';
 export * from './getCarrier';
 export * from './getFormattedInsurancePossibilities';
 export * from './getInsurancePossibilities';
