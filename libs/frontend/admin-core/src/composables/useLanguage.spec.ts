@@ -1,14 +1,15 @@
 // @vitest-environment happy-dom
 
-import {type SpyInstance, afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, type SpyInstance, vi} from 'vitest';
 import {setActivePinia} from 'pinia';
 import {mount} from '@vue/test-utils';
 import {createTestingPinia} from '@pinia/testing';
-import {doComponentTestSetup, doComponentTestTeardown} from '@myparcel-pdk/admin-component-tests';
+import {doComponentTestSetup, doComponentTestTeardown, setup} from '@myparcel-pdk/admin-component-tests';
 import {useQueryStore} from '../stores';
+import {globalLogger} from '../services';
 import {useLanguage} from './useLanguage';
 
-let consoleSpy: SpyInstance;
+let warnSpy: SpyInstance;
 
 const commonSetup = () => {
   useQueryStore().registerContextQueries();
@@ -17,10 +18,17 @@ const commonSetup = () => {
 };
 
 describe('useLanguage', () => {
-  beforeAll(() => doComponentTestSetup());
+  beforeAll(() => {
+    setup.getDefaultTranslations.mockReturnValue({
+      my_translation: 'My translation',
+      my_translation_with_replacement: 'My translation with replacement: {platform.backofficeUrl}',
+    });
+
+    doComponentTestSetup();
+  });
 
   beforeEach(() => {
-    consoleSpy = vi.spyOn(console, 'warn');
+    warnSpy = vi.spyOn(globalLogger, 'warn');
 
     setActivePinia(
       createTestingPinia({
@@ -31,10 +39,13 @@ describe('useLanguage', () => {
   });
 
   afterEach(() => {
-    consoleSpy.mockClear();
+    warnSpy.mockClear();
   });
 
-  afterAll(() => doComponentTestTeardown());
+  afterAll(() => {
+    setup.getDefaultTranslations.mockReset();
+    doComponentTestTeardown();
+  });
 
   describe('translate', () => {
     it('translates strings', () => {
@@ -44,7 +55,7 @@ describe('useLanguage', () => {
       });
 
       expect(wrapper.find('div').element.innerText).toBe('My translation');
-      expect(consoleSpy).not.toHaveBeenCalled();
+      expect(warnSpy).not.toHaveBeenCalled();
     });
 
     it('warns about missing translations', () => {
@@ -54,7 +65,7 @@ describe('useLanguage', () => {
       });
 
       expect(wrapper.find('div').element.innerText).toBe('missing');
-      expect(consoleSpy).toHaveBeenCalledWith('Missing translation for key: missing');
+      expect(warnSpy).toHaveBeenCalledWith('Missing translation: missing');
     });
 
     it('translates strings with replacements', () => {
@@ -63,8 +74,10 @@ describe('useLanguage', () => {
         template: '<div>{{ translate("my_translation_with_replacement") }}</div>',
       });
 
-      expect(wrapper.find('div').element.innerText).toBe('My translation with replacement: http://localhost:3000');
-      expect(consoleSpy).not.toHaveBeenCalled();
+      expect(wrapper.find('div').element.innerText).toBe(
+        'My translation with replacement: https://backoffice.test.myparcel.nl',
+      );
+      expect(warnSpy).not.toHaveBeenCalled();
     });
   });
 
@@ -76,7 +89,7 @@ describe('useLanguage', () => {
       });
 
       expect(wrapper.find('div').element.innerText).toBe('true');
-      expect(consoleSpy).not.toHaveBeenCalled();
+      expect(warnSpy).not.toHaveBeenCalled();
     });
 
     it('returns false for missing translations', () => {
@@ -86,7 +99,7 @@ describe('useLanguage', () => {
       });
 
       expect(wrapper.find('div').element.innerText).toBe('false');
-      expect(consoleSpy).not.toHaveBeenCalled();
+      expect(warnSpy).not.toHaveBeenCalled();
     });
   });
 });

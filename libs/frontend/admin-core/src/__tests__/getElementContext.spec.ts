@@ -9,10 +9,10 @@ describe('get element context', () => {
 
     document.body.appendChild(div);
 
-    expect(getElementContext('a-div-with-context')).toEqual({json: 'content'});
+    expect(getElementContext('#a-div-with-context')).toEqual({json: 'content'});
   });
 
   it('returns empty object for element that does not exist', () => {
-    expect(getElementContext('does-not-exist')).toEqual({});
+    expect(getElementContext('#does-not-exist')).toEqual({});
   });
 });

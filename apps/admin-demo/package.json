@@ -13,7 +13,6 @@
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
     "serve": "vite",
     "test": "run ws:test \"$(pwd)\"",
-    "test:coverage": "run ws:test:coverage \"$(pwd)\"",
     "test:run": "run ws:test:run \"$(pwd)\""
   },
   "dependencies": {

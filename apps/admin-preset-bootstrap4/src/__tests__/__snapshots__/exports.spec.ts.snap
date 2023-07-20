@@ -1,0 +1,24 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`exports > exports from index.ts 1`] = `
+[
+  "bootstrap4Config",
+  "Bootstrap4Badge",
+  "Bootstrap4Box",
+  "Bootstrap4Button",
+  "Bootstrap4ButtonGroup",
+  "Bootstrap4CheckboxInput",
+  "Bootstrap4Col",
+  "Bootstrap4DropdownButton",
+  "Bootstrap4FormGroup",
+  "Bootstrap4Image",
+  "Bootstrap4Modal",
+  "Bootstrap4Notification",
+  "Bootstrap4RadioInput",
+  "Bootstrap4Row",
+  "Bootstrap4SelectInput",
+  "Bootstrap4Table",
+  "Bootstrap4TextArea",
+  "Bootstrap4TextInput",
+]
+`;

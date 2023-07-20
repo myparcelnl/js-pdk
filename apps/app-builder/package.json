@@ -22,6 +22,9 @@
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
     "start": "ts-node --project ./tsconfig.build.json src/main.ts",
+    "test": "run ws:test \"$(pwd)\"",
+    "test:coverage": "run ws:test:coverage \"$(pwd)\"",
+    "test:run": "run ws:test:run \"$(pwd)\"",
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {

@@ -33,16 +33,24 @@ describe('generateFormFields', () => {
     const fields = generateFormFields({fields: view.elements, values: {}});
     expect(fields.map(removeRef)).toEqual([
       {
+        attributes: {},
         component: 'PdkTextInput',
         label: 'general_settings_name',
         name: 'generalSettings.name',
+        optional: true,
         props: {},
+        slots: undefined,
+        wrapper: undefined,
       },
       {
+        attributes: {},
         component: 'PdkTextInput',
         label: 'general_settings_description',
         name: 'generalSettings.description',
+        optional: true,
         props: {},
+        slots: undefined,
+        wrapper: undefined,
       },
     ]);
   });

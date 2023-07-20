@@ -1,7 +1,7 @@
 import {vi} from 'vitest';
 
 export const getDefaultPlatform = vi.fn(() => ({
-  backofficeUrl: 'https://backoffice.test.com',
+  backofficeUrl: 'https://backoffice.test.myparcel.nl',
   defaultCarrier: 'postnl',
   defaultCarrierId: 1,
   human: 'Test',

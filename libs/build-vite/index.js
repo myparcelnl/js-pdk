@@ -28,11 +28,13 @@ const createCommonViteConfig = (env) => {
     },
 
     test: {
-      environment: 'happy-dom',
       coverage: {
+        all: true,
         enabled: false,
         reporter: ['text', 'clover'],
       },
+      environment: 'happy-dom',
+      passWithNoTests: true,
     },
   };
 };

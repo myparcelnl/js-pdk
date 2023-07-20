@@ -8,7 +8,10 @@
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "test": "run ws:test \"$(pwd)\"",
+    "test:coverage": "run ws:test:coverage \"$(pwd)\"",
+    "test:run": "run ws:test:run \"$(pwd)\""
   },
   "dependencies": {
     "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.86"
