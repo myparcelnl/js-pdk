@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, ref} from 'vue';
+import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {AdminComponent, Size, Status, type TabDefinition, Variant} from '@myparcel-pdk/common';
 import TabNavigation from '../common/TabNavigation.vue';
@@ -55,11 +55,9 @@ const deleteAccount = useDeleteAccountMutation();
 const loading =
   computed(() => get(contextQuery.isLoading) || get(updateAccount.isLoading)) || get(deleteAccount.isLoading);
 
-const hasApiKey = ref(Boolean(get(contextQuery.data)?.pluginSettings.account.apiKey));
+const hasApiKey = computed(() => Boolean(get(contextQuery.data)?.pluginSettings.account.apiKey));
 
-const hasAccount = computed(() => {
-  return !loading.value && hasApiKey.value && Boolean(get(contextQuery.data)?.account);
-});
+const hasAccount = computed(() => !get(loading) && hasApiKey.value && Boolean(get(contextQuery.data)?.account));
 
 const refreshAction = instantiateAction(refreshAccountAction);
 
@@ -74,7 +72,7 @@ const tabs = computed(() => {
     },
   ];
 
-  if (hasAccount.value) {
+  if (get(hasAccount)) {
     array.push({
       name: 'webhooks',
       component: WebhooksStatus,

@@ -1,7 +1,11 @@
 <template>
-  <MagicForm
-    :form="form as FormInstance"
-    @afterSubmit="$emit('afterSubmit', $event)" />
+  <div>
+    <MagicForm
+      :form="form as FormInstance"
+      @afterSubmit="$emit('afterSubmit', $event)" />
+
+    <NotificationContainer :category="NotificationCategory.Api" />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -9,8 +13,9 @@ import {computed, markRaw, ref, watch} from 'vue';
 import {get} from '@vueuse/core';
 import {AdminComponent, Size, Variant} from '@myparcel-pdk/common';
 import {defineField, defineForm, FormHook, type FormInstance, MagicForm} from '@myparcel/vue-form-builder';
+import NotificationContainer from '../common/NotificationContainer.vue';
 import {ResetButton, SubmitButton} from '../common';
-import {AdminAction} from '../../types';
+import {AdminAction, NotificationCategory} from '../../types';
 import {useActionStore} from '../../stores';
 import {defineFormField, FORM_KEY_ACCOUNT_SETTINGS, resolveFormComponent} from '../../forms';
 import {useAdminConfig, usePluginSettings, useStoreContextQuery} from '../../composables';

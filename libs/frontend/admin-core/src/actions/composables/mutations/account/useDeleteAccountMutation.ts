@@ -15,13 +15,16 @@ export const useDeleteAccountMutation = (): ResolvedQuery<BackendEndpoint.Delete
 
       const context = await pdk.deleteAccount();
 
-      return context[0][AdminContextKey.Dynamic];
+      return context[0];
     },
     {
       ...queryClient.defaultMutationOptions(),
 
       onSuccess(data) {
-        queryClient.setQueryData([BackendEndpoint.FetchContext, AdminContextKey.Dynamic], data);
+        queryClient.setQueryData(
+          [BackendEndpoint.FetchContext, AdminContextKey.Dynamic],
+          data[AdminContextKey.Dynamic],
+        );
       },
     },
   );

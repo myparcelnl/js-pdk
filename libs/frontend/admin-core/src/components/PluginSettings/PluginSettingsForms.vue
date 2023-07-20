@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div v-show="hasAccount">
+    <PdkLoader v-show="loading" />
+
+    <div v-show="!loading">
       <TabNavigation :tabs="tabs" />
     </div>
-
-    <PdkLoader v-if="hasAccount && loading" />
   </div>
 </template>
 
@@ -26,14 +26,12 @@ const pluginSettingsContextQuery = useStoreContextQuery(AdminContextKey.PluginSe
 
 const tabs = ref<TabDefinition[]>([]);
 
-const hasAccount = computed(() => Boolean(get(dynamicContextQuery.data)?.account));
-
 const actionContext = createActionContext<AdminAction.PluginSettingsUpdate>(pluginSettingsUpdateAction);
 
 const loading = computed(() => dynamicContextQuery.isLoading || pluginSettingsContextQuery.isLoading);
 
 watch(
-  () => dynamicContextQuery.dataUpdatedAt,
+  () => pluginSettingsContextQuery.dataUpdatedAt,
   () => {
     if (get(loading)) {
       return;
@@ -42,7 +40,7 @@ watch(
     const pluginSettingsView = get(pluginSettingsContextQuery.data);
     const dynamicContext = get(dynamicContextQuery.data);
 
-    if (!pluginSettingsView || !dynamicContext?.pluginSettings || !hasAccount.value) {
+    if (!pluginSettingsView || !dynamicContext?.pluginSettings) {
       tabs.value = [];
       return;
     }

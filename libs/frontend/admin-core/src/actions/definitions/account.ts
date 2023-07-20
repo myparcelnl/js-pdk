@@ -1,7 +1,7 @@
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {createMutationHandler} from '../executors';
 import {defineAction} from '../defineAction';
-import {AdminAction, AdminIcon} from '../../types';
+import {AdminAction, AdminContextKey, AdminIcon} from '../../types';
 
 /**
  * Update account.
@@ -12,17 +12,9 @@ export const updateAccountAction = defineAction({
   label: 'action_save',
   handler: createMutationHandler(BackendEndpoint.UpdateAccount),
   afterHandle(context) {
-    if (!context.response?.account) {
+    if (!context.response?.[AdminContextKey.Dynamic]?.account) {
       context.instance.logger.error('Account not found');
-      return context.response;
     }
-
-    // TODO: Make this action properly interactive
-    window.location.reload();
-    // await Promise.all([
-    //   executeNextAction(context, fetchDynamicContextAction),
-    //   executeNextAction(context, fetchPluginSettingsViewContextAction),
-    // ]);
 
     return context.response;
   },
@@ -44,10 +36,4 @@ export const deleteAccountAction = defineAction({
   icon: AdminIcon.Delete,
   label: 'action_delete',
   handler: createMutationHandler(BackendEndpoint.DeleteAccount),
-  afterHandle(context) {
-    // TODO: Make this action properly interactive
-    window.location.reload();
-
-    return context.response;
-  },
 });

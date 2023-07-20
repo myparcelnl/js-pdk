@@ -2,7 +2,7 @@
   <PdkPluginSettingsWrapper v-test>
     <AccountSettings />
 
-    <PluginSettingsForms />
+    <PluginSettingsForms v-if="hasAccount" />
   </PdkPluginSettingsWrapper>
 </template>
 
@@ -10,9 +10,12 @@
 /**
  * Plugin settings screen.
  */
+import {computed} from 'vue';
+import {get} from '@vueuse/core';
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {AdminContextKey} from '../types';
 import {useActionStore, useQueryStore} from '../stores';
+import {useStoreContextQuery} from '../composables';
 import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForms.vue';
 import AccountSettings from '../components/PluginSettings/AccountSettings.vue';
 import {
@@ -35,4 +38,8 @@ queryStore.register(BackendEndpoint.UpdatePluginSettings, useUpdatePluginSetting
 const actionStore = useActionStore();
 
 actionStore.register([pluginSettingsUpdateAction, fetchPluginSettingsViewContextAction, fetchDynamicContextAction]);
+
+const dynamicContextQuery = useStoreContextQuery();
+
+const hasAccount = computed(() => Boolean(get(dynamicContextQuery.data)?.account));
 </script>

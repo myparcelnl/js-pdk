@@ -43,16 +43,16 @@ interface DeleteAccountDefinition extends PdkEndpointDefinition {
   name: BackendEndpoint.UpdateAccount;
   body: undefined;
   parameters: undefined;
-  response: [Pick<AdminContextObject, AdminContextKey.Dynamic>];
-  formattedResponse: AdminContextObject[AdminContextKey.Dynamic];
+  response: [Pick<AdminContextObject, AdminContextKey.Dynamic | AdminContextKey.PluginSettingsView>];
+  formattedResponse: Pick<AdminContextObject, AdminContextKey.Dynamic | AdminContextKey.PluginSettingsView>;
 }
 
 interface UpdateAccountDefinition extends PdkEndpointDefinition {
   body: Settings.ModelAccountSettings;
   name: BackendEndpoint.UpdateAccount;
   parameters: undefined;
-  response: [Pick<AdminContextObject, AdminContextKey.Dynamic>];
-  formattedResponse: AdminContextObject[AdminContextKey.Dynamic];
+  response: [Pick<AdminContextObject, AdminContextKey.Dynamic | AdminContextKey.PluginSettingsView>];
+  formattedResponse: Pick<AdminContextObject, AdminContextKey.Dynamic | AdminContextKey.PluginSettingsView>;
 }
 
 interface FetchOrdersDefinition extends PdkEndpointDefinition {

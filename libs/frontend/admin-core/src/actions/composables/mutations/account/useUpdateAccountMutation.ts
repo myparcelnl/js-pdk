@@ -21,13 +21,21 @@ export const useUpdateAccountMutation = (): ResolvedQuery<BackendEndpoint.Update
 
       const response = await pdk.updateAccount({body: formToBody(form)});
 
-      return response[0][AdminContextKey.Dynamic];
+      return response[0];
     },
     {
       ...defaultMutationOptions,
 
       onSuccess(data) {
-        queryClient.setQueryData([BackendEndpoint.FetchContext, AdminContextKey.Dynamic], data);
+        queryClient.setQueryData(
+          [BackendEndpoint.FetchContext, AdminContextKey.Dynamic],
+          data[AdminContextKey.Dynamic],
+        );
+
+        queryClient.setQueryData(
+          [BackendEndpoint.FetchContext, AdminContextKey.PluginSettingsView],
+          data[AdminContextKey.PluginSettingsView],
+        );
       },
 
       onError(error, variables: ActionInput<BackendEndpoint.UpdateAccount>, context) {
