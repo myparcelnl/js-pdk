@@ -32,7 +32,8 @@ jobs:
             bash -c 'if [ -f coverage/clover.xml ]; then mv coverage/clover.xml coverage/${npm_package_name//\//-}.xml; fi' -- {}
 
           mkdir -p coverage
-          mv apps/**/coverage/*.xml libs/**/coverage/*.xml coverage/
+          mv apps/**/coverage/*.xml coverage/
+          mv libs/**/coverage/*.xml coverage/
 
       - uses: codecov/codecov-action@v3
         with:
