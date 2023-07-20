@@ -74,5 +74,15 @@
   },
   "volta": {
     "node": "18.16.0"
+  },
+  "bundlewatch": {
+    "files": [
+      {
+        "path": "apps/admin-js/dist/**/*.js"
+      },
+      {
+        "path": "apps/checkout-js/dist/**/*.js"
+      }
+    ]
   }
 }
