@@ -3,6 +3,8 @@ name: 'Run tests'
 on:
   workflow_call:
 
+  workflow_dispatch:
+
 jobs:
   test:
     runs-on: ubuntu-22.04
@@ -21,5 +23,18 @@ jobs:
             --target=test:coverage \
             --output-style=static
 
+      - name: 'Gather coverage files'
+        shell: bash
+        run: |
+          yarn workspaces foreach -pv \
+            --exclude='@myparcel-pdk/monorepo' \
+            exec \
+            bash -c 'if [ -f coverage/clover.xml ]; then mv coverage/clover.xml coverage/${npm_package_name//\//-}.xml; fi' -- {}
+
+          mkdir -p coverage
+          mv apps/**/coverage/*.xml libs/**/coverage/*.xml coverage/
+
       - uses: codecov/codecov-action@v3
-        continue-on-error: true
+        with:
+          files: coverage/*.xml
+          flags: unit
