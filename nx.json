@@ -5,13 +5,20 @@
   },
   "defaultBase": "alpha",
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{workspaceRoot}/libs/build-vite/*.js",
+      "{projectRoot}/vite.config.ts",
+      "{projectRoot}/tsconfig.*",
+      "{projectRoot}/package.json",
+      "sharedGlobals"
+    ],
     "test": [
       "default",
+      "{projectRoot}/src/__tests__/**/*",
       "{projectRoot}/src/**/*.spec.ts",
       "{projectRoot}/src/**/*.test.ts",
       "{projectRoot}/src/__mocks__/**/*",
-      "{projectRoot}/__tests__/**/*"
+      "{projectRoot}/vitest.config.ts"
     ],
     "sharedGlobals": ["{workspaceRoot}/tsconfig.build.json"],
     "production": ["default"]

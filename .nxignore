@@ -1,0 +1,7 @@
+**/project.json
+.netlify/
+.nitro/
+.output/
+coverage/
+dist/
+vite.config.ts.*
