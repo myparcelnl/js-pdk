@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/frontend-admin-core",
-  "version": "1.0.0-alpha.85",
+  "version": "1.0.0-alpha.86",
   "repository": "github:myparcelnl/js-pdk",
   "license": "MIT",
   "sideEffects": false,

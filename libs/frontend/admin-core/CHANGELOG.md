@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.86](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.85...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.86) "@myparcel-pdk/frontend-admin-core" (2023-07-20)
+
+
+### Features
+
+* **admin:** make update and delete accounts properly dynamic ([69a5958](https://github/myparcelnl/js-pdk/commit/69a5958dc405a0806b6d1ce99342beb5a6c18064))
+
+
+### Bug Fixes
+
+* **admin:** do not show loader in settings when there is no account ([99f4676](https://github/myparcelnl/js-pdk/commit/99f467633451c2784f44afdde70acd488c8552f2))
+
+
+
+
 ## [1.0.0-alpha.85](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.84...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.85) "@myparcel-pdk/frontend-admin-core" (2023-07-19)
 
 
