@@ -32,7 +32,7 @@ export default defineConfig((env) => {
       environment: 'happy-dom',
       coverage: {
         enabled: false,
-        reporter: ['text', 'clover'],
+        reporter: ['clover'],
       },
     },
   };

@@ -31,7 +31,7 @@ const createCommonViteConfig = (env) => {
       coverage: {
         all: true,
         enabled: false,
-        reporter: ['text', 'clover'],
+        reporter: ['clover'],
       },
       environment: 'happy-dom',
       passWithNoTests: true,
