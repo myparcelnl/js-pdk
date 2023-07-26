@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.88](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.87...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.88) "@myparcel-pdk/frontend-admin-core" (2023-07-26)
+
+
+### Bug Fixes
+
+* **admin:** fix form element subtext not rendering ([7da613c](https://github.com/myparcelnl/js-pdk/commit/7da613cf3642ea7e81958a157d04038e47798102))
+
+
+
+
 ## [1.0.0-alpha.87](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.86...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.87) "@myparcel-pdk/frontend-admin-core" (2023-07-26)
 
 
