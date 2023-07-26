@@ -15,6 +15,7 @@ node_modules
 
 # Temporary build files
 vite.config.ts.timestamp-*
+vitest.config.ts.timestamp-*
 tsup.config.bundled_*.mjs
 
 # Logs
