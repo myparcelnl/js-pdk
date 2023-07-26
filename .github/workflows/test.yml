@@ -17,8 +17,11 @@ jobs:
 
       - name: 'Run tests'
         shell: bash
+        env:
+          NX_BRANCH: ${{ github.event.inputs.branch || github.head_ref || github.ref }}
         run: |
-          NX_BRANCH=production yarn nx run-many \
+          yarn nx run-many \
+            --runner=cloud \
             --parallel=1 \
             --target=test:coverage \
             --output-style=static
@@ -32,8 +35,7 @@ jobs:
             bash -c 'if [ -f coverage/clover.xml ]; then mv coverage/clover.xml coverage/${npm_package_name//\//-}.xml; fi' -- {}
 
           mkdir -p coverage
-          mv apps/**/coverage/*.xml coverage/
-          mv libs/**/coverage/*.xml coverage/
+          find apps libs -type f -path '*/coverage/*.xml' -exec cp {} coverage \;
 
       - uses: codecov/codecov-action@v3
         with:
