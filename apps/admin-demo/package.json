@@ -2,7 +2,11 @@
   "name": "@myparcel-pdk/admin-demo",
   "version": "1.0.0-alpha.0",
   "private": true,
-  "repository": "github:myparcelnl/js-pdk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myparcelnl/js-pdk.git",
+    "directory": "apps/admin-demo"
+  },
   "license": "MIT",
   "sideEffects": false,
   "type": "module",

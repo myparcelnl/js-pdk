@@ -1,7 +1,11 @@
 {
   "name": "@myparcel-pdk/frontend-checkout-delivery-options",
   "version": "1.0.0-alpha.17",
-  "repository": "github:myparcelnl/js-pdk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myparcelnl/js-pdk.git",
+    "directory": "libs/frontend/checkout-delivery-options"
+  },
   "license": "MIT",
   "sideEffects": false,
   "type": "module",

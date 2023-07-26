@@ -1,7 +1,11 @@
 {
   "name": "@myparcel-pdk/frontend-checkout-separate-address-fields",
   "version": "1.0.0-alpha.18",
-  "repository": "github:myparcelnl/js-pdk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myparcelnl/js-pdk.git",
+    "directory": "libs/frontend/checkout-separate-address-fields"
+  },
   "license": "MIT",
   "sideEffects": false,
   "type": "module",

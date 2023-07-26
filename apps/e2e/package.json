@@ -1,7 +1,11 @@
 {
   "name": "@myparcel-pdk/e2e",
   "version": "1.0.0-alpha.6",
-  "repository": "github:myparcelnl/js-pdk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myparcelnl/js-pdk.git",
+    "directory": "apps/e2e"
+  },
   "license": "MIT",
   "type": "module",
   "exports": "./src/index.ts",
