@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.19](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-separate-address-fields@1.0.0-alpha.18...@myparcel-pdk/frontend-checkout-separate-address-fields@1.0.0-alpha.19) "@myparcel-pdk/frontend-checkout-separate-address-fields" (2023-07-26)
+
+
+### Bug Fixes
+
+* **npm:** update repository field ([e940854](https://github.com/myparcelnl/js-pdk/commit/e940854ba1d99c0fcdada8b66f88a7c7e6060272))
+
+
+
+
 ## [1.0.0-alpha.17](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-checkout-separate-address-fields@1.0.0-alpha.16...@myparcel-pdk/frontend-checkout-separate-address-fields@1.0.0-alpha.17) "@myparcel-pdk/frontend-checkout-separate-address-fields" (2023-07-11)
 
 

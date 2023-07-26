@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.30](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.29...@myparcel-pdk/app-builder@1.0.0-alpha.30) "@myparcel-pdk/app-builder" (2023-07-26)
+
+
+### Features
+
+* **app-builder:** add translations import command ([8138083](https://github.com/myparcelnl/js-pdk/commit/8138083b960d5c34858384a8d70320b57721ff36))
+
+
+### Bug Fixes
+
+* **npm:** update repository field ([e940854](https://github.com/myparcelnl/js-pdk/commit/e940854ba1d99c0fcdada8b66f88a7c7e6060272))
+
+
+
+
 ## [1.0.0-alpha.29](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.28...@myparcel-pdk/app-builder@1.0.0-alpha.29) "@myparcel-pdk/app-builder" (2023-07-17)
 
 

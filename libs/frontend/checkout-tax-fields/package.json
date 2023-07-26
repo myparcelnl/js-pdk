@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/frontend-checkout-tax-fields",
-  "version": "1.0.0-alpha.19",
+  "version": "1.0.0-alpha.20",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -27,7 +27,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.18"
+    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.19"
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*"

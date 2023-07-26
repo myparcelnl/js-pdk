@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.25](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-js@1.0.0-alpha.24...@myparcel-pdk/admin-js@1.0.0-alpha.25) "@myparcel-pdk/admin-js" (2023-07-26)
+
+
+### Bug Fixes
+
+* **npm:** update repository field ([e940854](https://github.com/myparcelnl/js-pdk/commit/e940854ba1d99c0fcdada8b66f88a7c7e6060272))
+
+
+
+
 ## [1.0.0-alpha.20](https://github/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-js@1.0.0-alpha.19...@myparcel-pdk/admin-js@1.0.0-alpha.20) "@myparcel-pdk/admin-js" (2023-07-11)
 
 
