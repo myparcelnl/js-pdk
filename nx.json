@@ -7,17 +7,18 @@
   "namedInputs": {
     "default": [
       "{workspaceRoot}/libs/build-vite/*.js",
-      "{projectRoot}/vite.config.ts",
-      "{projectRoot}/tsconfig.*",
       "{projectRoot}/package.json",
+      "{projectRoot}/src/**/*",
+      "{projectRoot}/tsconfig.*",
+      "{projectRoot}/vite.config.ts",
       "sharedGlobals"
     ],
     "test": [
       "default",
-      "{projectRoot}/src/__tests__/**/*",
       "{projectRoot}/src/**/*.spec.ts",
       "{projectRoot}/src/**/*.test.ts",
       "{projectRoot}/src/__mocks__/**/*",
+      "{projectRoot}/src/__tests__/**/*",
       "{projectRoot}/vitest.config.ts"
     ],
     "sharedGlobals": ["{workspaceRoot}/tsconfig.build.json"],
