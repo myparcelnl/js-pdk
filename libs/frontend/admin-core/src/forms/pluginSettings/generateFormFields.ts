@@ -5,7 +5,7 @@ import {
   defineField,
   type InteractiveElementConfiguration,
 } from '@myparcel/vue-form-builder';
-import {resolveFormComponent} from '../helpers';
+import {defineFormField, resolveFormComponent} from '../helpers';
 import {createFormStateWatcher} from '../../forms';
 
 type GenerateFormFields = (
@@ -61,7 +61,7 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
       common.readOnlyWhen = createFormStateWatcher($readOnlyWhen, prefix);
     }
 
-    return defineField({
+    return defineFormField({
       ...common,
       name: prefix + name,
       ref: ref(toRaw(values?.[name])),

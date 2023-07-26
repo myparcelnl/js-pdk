@@ -38,7 +38,10 @@ describe('generateFormFields', () => {
         label: 'general_settings_name',
         name: 'generalSettings.name',
         optional: true,
-        props: {},
+        props: {
+          description: 'general_settings_name_description',
+          subtext: 'general_settings_name_subtext',
+        },
         slots: undefined,
         wrapper: undefined,
       },
@@ -48,7 +51,10 @@ describe('generateFormFields', () => {
         label: 'general_settings_description',
         name: 'generalSettings.description',
         optional: true,
-        props: {},
+        props: {
+          description: 'general_settings_description_description',
+          subtext: 'general_settings_description_subtext',
+        },
         slots: undefined,
         wrapper: undefined,
       },
