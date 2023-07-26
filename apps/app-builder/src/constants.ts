@@ -1,3 +1,5 @@
+import {PdkPlatformName} from './types';
+
 export const TITLE = 'pdk-builder';
 
 export const COMMAND_BUILD_NAME = 'build';
@@ -16,6 +18,8 @@ export const COMMAND_RENAME_NAME = 'rename';
 
 export const COMMAND_TRANSFORM_NAME = 'transform';
 
+export const COMMAND_TRANSLATIONS_NAME = 'translations';
+
 export const COMMAND_UPGRADE_NAME = 'upgrade';
 
 export const COMMAND_ZIP_NAME = 'zip';
@@ -27,3 +31,14 @@ export enum VerbosityLevel {
 }
 
 export const REGEX_VERSION = /(v?\d+\.\d+\.\d+(?:-\w+\.\d+)?)/;
+
+export const DEFAULT_JSON_SPACES = 2;
+
+export const PLATFORM_SHEET_ID_MAP = {
+  // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+  [PdkPlatformName.Flespakket]: 286749530,
+  // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+  [PdkPlatformName.MyParcelBe]: 286749530,
+  // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+  [PdkPlatformName.MyParcelNl]: 1550017884,
+} satisfies Record<PdkPlatformName, number>;

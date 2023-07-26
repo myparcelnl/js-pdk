@@ -28,6 +28,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
+    "@edielemoine/google-docs-importer": "^1.1.1",
     "@yarnpkg/parsers": "^3.0.0-rc.48.1",
     "archiver": "^5.3.1",
     "chalk": "^5.2.0",

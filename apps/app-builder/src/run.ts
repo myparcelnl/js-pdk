@@ -11,11 +11,12 @@ import {
   COMMAND_RELEASE_NAME,
   COMMAND_RENAME_NAME,
   COMMAND_TRANSFORM_NAME,
+  COMMAND_TRANSLATIONS_NAME,
   COMMAND_UPGRADE_NAME,
   COMMAND_ZIP_NAME,
   TITLE,
 } from './constants';
-import {clean, copy, increment, init, rename, transform, upgrade, zip} from './commands';
+import {clean, copy, increment, init, rename, transform, translations, upgrade, zip} from './commands';
 
 type CommandDefinition = {
   name: string;
@@ -74,6 +75,13 @@ const COMMAND_TRANSFORM: CommandDefinition = {
   options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
+const COMMAND_TRANSLATIONS: CommandDefinition = {
+  name: COMMAND_TRANSLATIONS_NAME,
+  action: translations,
+  description: `Import translations. ${REQUIRES_CONFIG_FILE}`,
+  options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
+};
+
 const COMMAND_UPGRADE: CommandDefinition = {
   name: COMMAND_UPGRADE_NAME,
   action: upgrade,
@@ -102,15 +110,17 @@ const CONFIG_COMMANDS = [
   COMMAND_INCREMENT,
   COMMAND_RENAME,
   COMMAND_TRANSFORM,
+  COMMAND_TRANSLATIONS,
   COMMAND_UPGRADE,
   COMMAND_ZIP,
 ] as const;
 
-const BUILD_COMMANDS = [COMMAND_CLEAN, COMMAND_COPY, COMMAND_RENAME, COMMAND_TRANSFORM] as const;
+const BUILD_COMMANDS = [COMMAND_CLEAN, COMMAND_TRANSLATIONS, COMMAND_COPY, COMMAND_RENAME, COMMAND_TRANSFORM] as const;
 
 const RELEASE_COMMANDS = [
   COMMAND_CLEAN,
   COMMAND_INCREMENT,
+  COMMAND_TRANSLATIONS,
   COMMAND_COPY,
   COMMAND_RENAME,
   COMMAND_TRANSFORM,

@@ -68,6 +68,18 @@ export type PdkBuilderConfig = {
    * Command to use when running composer.
    */
   composerCommand?: OneOrMore<string>;
+
+  /**
+   * Translations configuration.
+   */
+  translations?: {
+    additionalSheet?: number;
+    documentId?: string;
+    outDir?: string;
+    sheetId?: number;
+  };
 };
 
-export type ResolvedPdkBuilderConfig = Required<PdkBuilderConfig>;
+export type ResolvedPdkBuilderConfig = Required<Omit<PdkBuilderConfig, 'translations'>> & {
+  translations: Required<Omit<PdkBuilderConfig['translations'], 'additionalSheet'>> & {additionalSheet?: number};
+};

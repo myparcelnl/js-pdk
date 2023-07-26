@@ -1,8 +1,7 @@
-import {type PdkBuilderConfig} from '../types';
+import {type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types';
+import {DEFAULT_JSON_SPACES} from '../constants';
 
-const DEFAULT_JSON_SPACES = 2;
-
-export const mergeDefaultConfig = (config: PdkBuilderConfig): Required<PdkBuilderConfig> => ({
+export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilderConfig => ({
   archiveFilename: '{{platform}}-{{name}}-{{version}}.zip',
   composerCommand: 'composer',
   debug: false,
@@ -12,4 +11,10 @@ export const mergeDefaultConfig = (config: PdkBuilderConfig): Required<PdkBuilde
   version: '0.0.0',
   yarnCommand: 'yarn',
   ...config,
+  translations: {
+    documentId: '1TPE7gwG2GXtX7vlKIaskwMy0Xr4o_ir-lsedWB86xyc',
+    outDir: 'config/pdk/translations',
+    sheetId: 0,
+    ...config.translations,
+  },
 });
