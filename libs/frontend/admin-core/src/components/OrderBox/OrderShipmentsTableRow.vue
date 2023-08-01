@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import {computed} from 'vue';
+import {computed, toRefs} from 'vue';
 import {useVModel} from '@vueuse/core';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
@@ -43,33 +43,38 @@ const props = defineProps<{
   modelValue?: boolean;
 }>();
 
+const {shipmentId} = toRefs(props);
+
 const emit = defineEmits<(event: 'update:modelValue', value: boolean) => void>();
 
-const query = useQueryStore().registerShipmentQuery(props.shipmentId);
-const {actions, shipment} = useShipmentData(props.shipmentId);
+const config = useAdminConfig();
+const formatter = useLocalizedFormatter();
+const queryStore = useQueryStore();
+
+queryStore.registerShipmentQueries(shipmentId);
+
+const {loading, actions, shipment} = useShipmentData(shipmentId);
 
 const selected = useVModel(props, undefined, emit);
 
 const checkboxElement = {
-  id: `shipment_${props.shipmentId}`,
+  id: `shipment_${shipmentId.value}`,
   ref: selected,
   form: {
-    name: `shipment-${props.shipmentId}`,
+    name: `shipment-${shipmentId.value}`,
   },
 } as unknown as InteractiveElementInstance;
-
-const formatter = useLocalizedFormatter();
 
 const shipmentUpdatedAt = computed(() => {
   return shipment.value.updated ? formatter.format(Format.DateRelative, shipment.value.updated) : '–';
 });
 
-const config = useAdminConfig();
-
-const classes = createClasses([
-  {
-    key: config?.cssUtilities?.animationLoading,
-    value: query.isLoading,
-  },
-]);
+const classes = computed(() => {
+  return createClasses([
+    {
+      key: config?.cssUtilities?.animationLoading,
+      value: loading.value,
+    },
+  ]);
+});
 </script>

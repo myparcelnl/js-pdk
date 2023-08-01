@@ -1,8 +1,7 @@
-import {type QueryKey, useQueryClient} from '@tanstack/vue-query';
-import {BackendEndpoint} from '@myparcel-pdk/common';
-import {toArray} from '@myparcel/ts-utils';
-import {usePdkMutation} from '../usePdkMutation';
-import {QUERY_KEY_ORDER} from '../../queries';
+import {type QueryKey, useMutation, useQueryClient} from '@tanstack/vue-query';
+import {type BackendEndpoint} from '@myparcel-pdk/common';
+import {type OneOrMore, toArray} from '@myparcel/ts-utils';
+import {QUERY_KEY_ORDER, QUERY_KEY_SHIPMENT} from '../../queries';
 import {encodeArrayParameter} from '../../../../utils';
 import {type ActionInput, type BackendEndpointResponse} from '../../../../types';
 import {type ResolvedQuery} from '../../../../stores';
@@ -10,16 +9,16 @@ import {usePdkAdminApi} from '../../../../sdk';
 import {setQueryOrder} from '../../../../helpers';
 
 // eslint-disable-next-line max-lines-per-function
-export const useDeleteShipmentsMutation = (): ResolvedQuery<BackendEndpoint.DeleteShipments> => {
+export const useDeleteShipmentsMutation = (
+  orderIds?: OneOrMore<string>,
+  shipmentIds?: OneOrMore<number>,
+): ResolvedQuery<BackendEndpoint.DeleteShipments> => {
   const queryClient = useQueryClient();
   const pdk = usePdkAdminApi();
 
-  return usePdkMutation(
-    BackendEndpoint.DeleteShipments,
-    async (input) => {
-      const orderIds = toArray(input.orderIds);
-      const shipmentIds = toArray(input.shipmentIds);
-
+  return useMutation(
+    [QUERY_KEY_SHIPMENT, {orderIds, shipmentIds}],
+    async () => {
       return pdk.deleteShipments({
         // @ts-expect-error custom endpoints are not typed correctly
         parameters: {

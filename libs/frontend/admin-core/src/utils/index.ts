@@ -6,3 +6,4 @@ export * from './forms';
 export * from './generateLabelFilename';
 export * from './getOrderId';
 export * from './sendBootEvent';
+export * from './validateOrderId';

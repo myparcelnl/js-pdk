@@ -28,11 +28,11 @@ import {computed, ref, toRaw} from 'vue';
 import {get, isDef} from '@vueuse/core';
 import {AdminIcon} from '../../types';
 import {instantiateActions} from '../../services';
-import {useLanguage, useOrder} from '../../composables';
+import {useLanguage, useOrderData} from '../../composables';
 import {shipmentActions} from '../../actions';
 import OrderShipmentsTable from './OrderShipmentsTable.vue';
 
-const query = useOrder();
+const {query} = useOrderData();
 
 const selectedLabels = ref<(string | number)[]>([]);
 

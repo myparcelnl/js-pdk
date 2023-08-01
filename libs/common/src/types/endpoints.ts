@@ -94,13 +94,16 @@ export enum FrontendEndpoint {
 }
 
 export const BACKEND_ENDPOINTS_ORDERS = [
-  BackendEndpoint.UpdateOrders,
   BackendEndpoint.ExportOrders,
+  BackendEndpoint.FetchOrders,
   BackendEndpoint.PrintOrders,
+  BackendEndpoint.UpdateOrders,
 ] as const;
 
 export const BACKEND_ENDPOINTS_SHIPMENTS = [
   BackendEndpoint.DeleteShipments,
+  BackendEndpoint.ExportReturn,
+  BackendEndpoint.FetchShipments,
   BackendEndpoint.PrintShipments,
   BackendEndpoint.UpdateShipments,
 ] as const;
@@ -110,3 +113,9 @@ export const BACKEND_ENDPOINTS_WEBHOOKS = [
   BackendEndpoint.DeleteWebhooks,
   BackendEndpoint.FetchWebhooks,
 ] as const;
+
+export type BackendShipmentEndpoint = (typeof BACKEND_ENDPOINTS_SHIPMENTS)[number];
+
+export type BackendOrderEndpoint = (typeof BACKEND_ENDPOINTS_ORDERS)[number];
+
+export type BackendWebhookEndpoint = (typeof BACKEND_ENDPOINTS_WEBHOOKS)[number];

@@ -1,3 +1,4 @@
+export * from './actions';
 export * from './actions.types';
 export * from './common.types';
 export * from './configuration.types';

@@ -1,4 +1,4 @@
-import {type Shipment} from '@myparcel-pdk/common/src';
+import {type Shipment} from '@myparcel-pdk/common';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {isPackageTypePackage} from './isPackageTypePackage';
 import {hasShipmentOption} from './hasShipmentOption';

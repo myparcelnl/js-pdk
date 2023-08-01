@@ -13,36 +13,24 @@
 </template>
 
 <script lang="ts" setup>
-import {type PropType} from 'vue';
 import {Size, Variant} from '@myparcel-pdk/common';
 import {type ActionDefinition} from '../../types';
 import {useActionStore} from '../../stores';
 import {useLoading} from '../../composables';
 
-const props = defineProps({
-  action: {
-    type: Object as PropType<ActionDefinition>,
-    required: true,
+const props = withDefaults(
+  defineProps<{
+    action: ActionDefinition;
+    disabled?: boolean;
+    hideText?: boolean;
+    size?: Size;
+    variant?: Variant;
+  }>(),
+  {
+    size: () => Size.Medium,
+    variant: () => Variant.Primary,
   },
-
-  disabled: {
-    type: Boolean,
-  },
-
-  hideText: {
-    type: Boolean,
-  },
-
-  size: {
-    type: String as PropType<Size>,
-    default: Size.Medium,
-  },
-
-  variant: {
-    type: String as PropType<Variant>,
-    default: Variant.Primary,
-  },
-});
+);
 
 const emit = defineEmits(['click']);
 

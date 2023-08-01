@@ -1,6 +1,6 @@
 import {useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {toArray} from '@myparcel/ts-utils';
+import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {usePdkMutation} from '../usePdkMutation';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
 import {type ResolvedQuery, useModalStore} from '../../../../stores';
@@ -9,6 +9,7 @@ import {type BackendEndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {fillShipmentsQueryData} from '../../../../pdk';
 
 export const useExportOrdersMutation = (
+  orderIds?: OneOrMore<string>,
   mode: MutationMode = MutationMode.Default,
 ): ResolvedQuery<BackendEndpoint.ExportOrders> => {
   const queryClient = useQueryClient();
@@ -21,7 +22,7 @@ export const useExportOrdersMutation = (
 
       const options: BackendEndpointOptions<BackendEndpoint.ExportOrders> = {
         parameters: {
-          orderIds: encodeArrayParameter(input.orderIds),
+          orderIds: encodeArrayParameter(orderIds),
         },
         body: [formToBody(input.form)],
       };

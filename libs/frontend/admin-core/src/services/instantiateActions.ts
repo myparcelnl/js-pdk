@@ -1,13 +1,13 @@
 import {toArray} from '@myparcel/ts-utils';
-import {type ActionDefinition, type ActionParameters, type AdminAction, type AnyAdminAction} from '../types';
+import {type ActionDefinition, type ActionParameters, type AdminAction, type AnyActionDefinition} from '../types';
 import {instantiateAction} from './instantiateAction';
 
-type DefineActions = {
-  (action: AnyAdminAction, parameters?: ActionParameters<AdminAction>): ActionDefinition[];
+type InstantiateActions = {
+  (action: AnyActionDefinition, parameters?: ActionParameters<AdminAction>): ActionDefinition[];
   // eslint-disable-next-line @typescript-eslint/unified-signatures
-  (actions: AnyAdminAction[], parameters?: ActionParameters<AdminAction>): ActionDefinition[];
+  (actions: AnyActionDefinition[], parameters?: ActionParameters<AdminAction>): ActionDefinition[];
 };
 
-export const instantiateActions: DefineActions = (actions, parameters) => {
+export const instantiateActions: InstantiateActions = (actions, parameters) => {
   return toArray(actions).map((action) => instantiateAction(action, parameters));
 };

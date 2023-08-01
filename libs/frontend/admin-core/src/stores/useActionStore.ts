@@ -1,7 +1,7 @@
 import {ref} from 'vue';
 import {defineStore} from 'pinia';
 import {type OneOrMore, type PromiseOr, toArray} from '@myparcel/ts-utils';
-import {type ActionParameters, type AdminAction, type AnyAdminAction, type ResolvedAction} from '../types';
+import {type ActionParameters, type AdminAction, type AnyActionDefinition, type ResolvedAction} from '../types';
 import {createAction, getActionIdentifier} from '../services';
 import {usePluginSettings} from '../composables';
 import {
@@ -9,12 +9,12 @@ import {
   modalSubmitFormAction,
   orderExportAction,
   orderExportToShipmentsAction,
-  orderViewInBackofficeAction,
   ordersEditAction,
   ordersExportPrintShipmentsAction,
   ordersFetchAction,
   ordersPrintAction,
   ordersUpdateAction,
+  orderViewInBackofficeAction,
   shipmentsDeleteAction,
   shipmentsExportReturnAction,
   shipmentsPrintAction,
@@ -28,7 +28,7 @@ import {
 export const useActionStore = defineStore('actions', () => {
   const actions = ref<ResolvedAction[]>([]);
 
-  const register = (action: OneOrMore<AnyAdminAction>) => {
+  const register = (action: OneOrMore<AnyActionDefinition>) => {
     toArray(action)
       .filter((action) => !get(getActionIdentifier(action)))
       .forEach((action) => {

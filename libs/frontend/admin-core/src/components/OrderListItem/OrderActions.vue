@@ -5,9 +5,9 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {type AnyAdminAction} from '../../types';
+import {type AnyActionDefinition} from '../../types';
 import {instantiateActions} from '../../services';
-import {useOrder} from '../../composables';
+import {useOrderData} from '../../composables';
 import {
   orderExportAction,
   ordersEditAction,
@@ -16,10 +16,10 @@ import {
   ordersPrintAction,
 } from '../../actions';
 
-const query = useOrder();
+const {query} = useOrderData();
 
 const actions = computed(() => {
-  const actions: AnyAdminAction[] = [];
+  const actions: AnyActionDefinition[] = [];
   const order = get(query.data);
 
   if (order?.shipments?.some((item) => !item.deleted)) {

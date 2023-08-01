@@ -1,9 +1,10 @@
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
-import {createMutationHandler, createQueryHandler, executeNextAction, resolveOrderParameters} from '../executors';
+import {createOrdersMutationHandler, createQueryHandler, executeNextAction, resolveOrderParameters} from '../executors';
 import {defineAction} from '../defineAction';
-import {type ActionParameters, AdminAction, AdminIcon, AdminModalKey} from '../../types';
+import {getOrderShipmentIds} from '../../utils/getOrderShipmentIds';
+import {type ActionParameters, AdminAction, AdminIcon, AdminModalKey, type OrderIds} from '../../types';
 import {useModalStore} from '../../stores';
 import {shipmentsUpdateAction} from './shipments';
 
@@ -30,7 +31,7 @@ export const orderExportAction = defineAction({
   icon: AdminIcon.Export,
   label: 'action_export',
   beforeHandle: resolveOrderParameters,
-  handler: createMutationHandler(BackendEndpoint.ExportOrders),
+  handler: createOrdersMutationHandler(BackendEndpoint.ExportOrders),
 });
 
 /**
@@ -41,7 +42,7 @@ export const orderExportToShipmentsAction = defineAction({
   icon: AdminIcon.Export,
   label: 'action_export_shipments',
   beforeHandle: resolveOrderParameters,
-  handler: createMutationHandler(BackendEndpoint.ExportOrders),
+  handler: createOrdersMutationHandler(BackendEndpoint.ExportOrders),
 });
 
 /**
@@ -66,7 +67,7 @@ export const ordersUpdateAction = defineAction({
   icon: AdminIcon.Save,
   label: 'action_save',
   beforeHandle: resolveOrderParameters,
-  handler: createMutationHandler(BackendEndpoint.UpdateOrders),
+  handler: createOrdersMutationHandler(BackendEndpoint.UpdateOrders),
 });
 
 /**
@@ -77,7 +78,7 @@ export const ordersExportPrintShipmentsAction = defineAction({
   icon: AdminIcon.Print,
   label: 'action_export_print',
   beforeHandle: resolveOrderParameters,
-  handler: createMutationHandler(BackendEndpoint.ExportOrders),
+  handler: createOrdersMutationHandler(BackendEndpoint.ExportOrders),
   afterHandle(context) {
     void executeNextAction(context, ordersPrintAction, context.parameters);
 
@@ -93,11 +94,14 @@ export const ordersPrintAction = defineAction({
   icon: AdminIcon.Print,
   label: 'action_print',
   beforeHandle: resolvePrintParameters,
-  handler: createMutationHandler(BackendEndpoint.PrintOrders),
+  handler: createOrdersMutationHandler(BackendEndpoint.PrintOrders),
   async afterHandle(context) {
     await openOrPrintPdf(context);
 
-    void executeNextAction(context, shipmentsUpdateAction, context.parameters);
+    void executeNextAction(context, shipmentsUpdateAction, {
+      ...context.parameters,
+      shipmentIds: getOrderShipmentIds((context.parameters.orderIds as OrderIds) ?? []),
+    });
 
     return context.response;
   },

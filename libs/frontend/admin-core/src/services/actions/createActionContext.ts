@@ -4,7 +4,7 @@ import {createLogger} from '../logger';
 import {createNotification} from '../createNotification';
 import {
   type ActionParameters,
-  type AnyAdminAction,
+  type AnyActionDefinition,
   type MaybeAdminAction,
   type Notification,
   NotificationCategory,
@@ -14,17 +14,16 @@ import {useAdminInstance} from '../../composables';
 import {type ActionContext} from '../../actions';
 import {getActionIdentifier} from './getActionIdentifier';
 
-type CreateActionContext = <A extends MaybeAdminAction>(
-  action: AnyAdminAction<A>,
+export const createActionContext = <A extends MaybeAdminAction>(
+  action: AnyActionDefinition<A>,
   parameters?: ActionParameters<A>,
   existingInstance?: AdminInstance,
-) => ActionContext<A>;
-
-export const createActionContext: CreateActionContext = (action, parameters, existingInstance) => {
+): ActionContext<A> => {
   const identifier = getActionIdentifier(action);
   const logger = createLogger(identifier);
 
   return {
+    // @ts-expect-error todo
     action,
 
     parameters: parameters ?? {},

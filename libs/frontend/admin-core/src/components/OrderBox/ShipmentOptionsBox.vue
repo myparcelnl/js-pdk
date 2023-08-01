@@ -24,11 +24,10 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
 import {AdminIcon} from '../../types';
 import {instantiateActions} from '../../services';
-import {useLanguage, useOrder, usePluginSettings, useStoreQuery} from '../../composables';
+import {useLanguage, useOrderData, usePluginSettings} from '../../composables';
 import {
   orderExportAction,
   orderExportToShipmentsAction,
@@ -38,18 +37,14 @@ import {
   orderViewInBackofficeAction,
 } from '../../actions';
 
-const query = useOrder();
-
-const data = computed(() => get(query.data));
+const {order: data, loading} = useOrderData();
 
 const {translate} = useLanguage();
 const pluginSettings = usePluginSettings();
 
 const {orderMode} = pluginSettings.general;
 
-const isExported = computed(() => orderMode && data.value?.exported);
-
-const orderQueries = [...BACKEND_ENDPOINTS_ORDERS.map((endpoint) => useStoreQuery(endpoint)), query];
+const isExported = computed(() => pluginSettings.general.orderMode && get(data)?.exported);
 
 const actions = computed(() => {
   if (isExported.value) {
@@ -63,9 +58,7 @@ const actions = computed(() => {
         ? [orderExportAction]
         : [orderExportToShipmentsAction, ordersPrintAction, ordersExportPrintShipmentsAction]),
     ],
-    {orderIds: data.value?.externalIdentifier},
+    {orderIds: get(data)?.externalIdentifier},
   );
 });
-
-const loading = computed(() => orderQueries.some((query) => get(query.isLoading)));
 </script>

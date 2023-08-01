@@ -30,15 +30,12 @@
 
 <script lang="ts" setup>
 import {useRoute} from 'vue-router';
-import {computed} from 'vue';
-import {BackendEndpoint, OrderBoxView, type Plugin, useQueryStore, useStoreQuery} from '@myparcel-pdk/admin/integrated';
+import {OrderBoxView, useOrderData, useQueryStore} from '@myparcel-pdk/admin/integrated';
 
 const route = useRoute();
 const {id} = route.params as {id: string};
 
 useQueryStore().registerOrderQueries(id);
 
-const query = useStoreQuery(BackendEndpoint.FetchOrders, id);
-
-const order = computed(() => query.data) as Plugin.ModelPdkOrder;
+const {order} = useOrderData(id);
 </script>

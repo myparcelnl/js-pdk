@@ -1,6 +1,6 @@
 import {BackendEndpoint, Variant} from '@myparcel-pdk/common';
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
-import {createMutationHandler, executeNextAction} from '../executors';
+import {createShipmentsMutationHandler, executeNextAction} from '../executors';
 import {defineAction} from '../defineAction';
 import {AdminAction, AdminIcon} from '../../types';
 
@@ -8,7 +8,7 @@ export const shipmentsExportReturnAction = defineAction({
   name: AdminAction.ShipmentsExportReturn,
   icon: AdminIcon.Return,
   label: 'action_export_return',
-  handler: createMutationHandler(BackendEndpoint.ExportReturn),
+  handler: createShipmentsMutationHandler(BackendEndpoint.ExportReturn),
 });
 
 /**
@@ -18,7 +18,7 @@ export const shipmentsUpdateAction = defineAction({
   name: AdminAction.ShipmentsUpdate,
   icon: AdminIcon.Refresh,
   label: 'action_refresh',
-  handler: createMutationHandler(BackendEndpoint.UpdateShipments),
+  handler: createShipmentsMutationHandler(BackendEndpoint.UpdateShipments),
 });
 
 /**
@@ -28,7 +28,7 @@ export const shipmentsDeleteAction = defineAction({
   name: AdminAction.ShipmentsDelete,
   icon: AdminIcon.Delete,
   label: 'action_delete',
-  handler: createMutationHandler(BackendEndpoint.DeleteShipments),
+  handler: createShipmentsMutationHandler(BackendEndpoint.DeleteShipments),
   variant: Variant.Error,
 });
 
@@ -40,7 +40,7 @@ export const shipmentsPrintAction = defineAction({
   icon: AdminIcon.Print,
   label: 'action_print',
   beforeHandle: resolvePrintParameters,
-  handler: createMutationHandler(BackendEndpoint.PrintShipments),
+  handler: createShipmentsMutationHandler(BackendEndpoint.PrintShipments),
   async afterHandle(context) {
     await openOrPrintPdf(context);
 

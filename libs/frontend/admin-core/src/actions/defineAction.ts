@@ -1,5 +1,9 @@
-import {type AnyAdminAction} from '../types';
+import {type AdminAction, type GenericActionDefinition, type NamedActionDefinition} from '../types';
 
-export const defineAction = <A extends AnyAdminAction>(input: A): A => {
-  return input;
+type DefineAction = {
+  <A extends AdminAction>(input: NamedActionDefinition<A>): NamedActionDefinition<A>;
+  <D extends GenericActionDefinition>(input: D): D;
 };
+
+// @ts-expect-error todo
+export const defineAction: DefineAction = (input) => input;

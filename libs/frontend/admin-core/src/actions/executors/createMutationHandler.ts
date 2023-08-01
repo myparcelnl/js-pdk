@@ -1,11 +1,10 @@
-import {useStoreQuery} from '../../composables';
-import {type QueryExecutor} from './types';
+import {type BackendEndpoint} from '@myparcel-pdk/common';
+import {type QueryHandler, type QueryModifier} from './types';
+import {doMutate} from './doMutate';
 
-export const createMutationHandler: QueryExecutor = (endpoint) => {
-  return (context) => {
-    const mutation = useStoreQuery(endpoint);
-
-    // @ts-expect-error todo
-    return mutation.mutateAsync(context.parameters);
-  };
+export const createMutationHandler = <E extends BackendEndpoint>(
+  endpoint: E,
+  suffix?: QueryModifier<E>,
+): QueryHandler<E> => {
+  return (context) => doMutate(endpoint, suffix, context);
 };

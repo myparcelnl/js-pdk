@@ -1,15 +1,16 @@
-import {type Ref, ref} from 'vue';
+import {computed, type ComputedRef, type Ref, ref, unref} from 'vue';
 import {defineStore} from 'pinia';
-import {get as vuGet} from '@vueuse/core';
-import {type UseMutationReturnType} from '@tanstack/vue-query/build/lib/useMutation';
-import {type QueryClient, useQueryClient, type UseQueryReturnType} from '@tanstack/vue-query';
-import {BackendEndpoint} from '@myparcel-pdk/common';
-import {toArray} from '@myparcel/ts-utils';
-import {type ApiException} from '@myparcel/sdk';
-import {getOrderId} from '../utils';
-import {type ActionInput, type AdminContext, AdminContextKey, type BackendEndpointResponse} from '../types';
-import {MutationMode} from '../services';
+import {get as vuGet, type MaybeRef} from '@vueuse/core';
+import {type QueryClient, useQueryClient} from '@tanstack/vue-query';
+import {BACKEND_ENDPOINTS_ORDERS, BACKEND_ENDPOINTS_SHIPMENTS, BackendEndpoint} from '@myparcel-pdk/common';
+import {type OneOrMore, toArray} from '@myparcel/ts-utils';
+import {getOrderId, validateOrderId} from '../utils';
+import {AdminContextKey} from '../types';
+import {globalLogger, MutationMode} from '../services';
 import {
+  type PlainModifier,
+  QUERY_KEY_ORDER,
+  QUERY_KEY_SHIPMENT,
   useCreateWebhooksMutation,
   useDeleteShipmentsMutation,
   useDeleteWebhooksMutation,
@@ -24,61 +25,21 @@ import {
   useUpdateOrdersMutation,
   useUpdateShipmentsMutation,
 } from '../actions';
-
-type QueryModifier = string | number;
-
-export type ContextQuery<C extends AdminContextKey = AdminContextKey.Dynamic> = UseQueryReturnType<
-  AdminContext<C>,
-  ApiException
->;
-
-export type ResolvedQuery<E extends BackendEndpoint = BackendEndpoint> = E extends BackendEndpoint
-  ? EndpointQuery<E>
-  : never;
-
-type Mutations =
-  | BackendEndpoint.CreateWebhooks
-  | BackendEndpoint.DeleteAccount
-  | BackendEndpoint.DeleteShipments
-  | BackendEndpoint.DeleteWebhooks
-  | BackendEndpoint.ExportOrders
-  | BackendEndpoint.ExportReturn
-  | BackendEndpoint.PrintOrders
-  | BackendEndpoint.PrintShipments
-  | BackendEndpoint.UpdateAccount
-  | BackendEndpoint.UpdateOrders
-  | BackendEndpoint.UpdatePluginSettings
-  | BackendEndpoint.UpdateProductSettings
-  | BackendEndpoint.UpdateShipments;
-
-type Queries =
-  | BackendEndpoint.FetchContext
-  | BackendEndpoint.FetchOrders
-  | BackendEndpoint.FetchShipments
-  | BackendEndpoint.FetchWebhooks;
-
-type EndpointQuery<E extends BackendEndpoint> = E extends Mutations
-  ? UseMutationReturnType<BackendEndpointResponse<E>, ApiException, ActionInput<E>, unknown>
-  : E extends Queries
-  ? UseQueryReturnType<BackendEndpointResponse<E>, ApiException>
-  : never;
-
-const createQueryCacheKey = (endpoint: BackendEndpoint, modifier: string | number | undefined): string => {
-  return modifier ? `${endpoint}.${modifier}` : endpoint;
-};
+import {type RegisterQuery, type ResolvedQuery} from './types';
+import {createQueryCacheKey} from './createQueryCacheKey';
 
 // eslint-disable-next-line max-lines-per-function
 export const useQueryStore = defineStore('query', () => {
   const queries = ref({} as Record<string, ResolvedQuery>);
   const queryClient: Ref<QueryClient | undefined> = ref<QueryClient>();
 
-  const has = (endpoint: BackendEndpoint, modifier?: QueryModifier): boolean => {
+  const has = <E extends BackendEndpoint>(endpoint: E, modifier?: PlainModifier): boolean => {
     const key = createQueryCacheKey(endpoint, modifier);
 
     return queries.value[key] !== undefined;
   };
 
-  const get = <E extends BackendEndpoint>(endpoint: E, modifier?: QueryModifier): ResolvedQuery<E> => {
+  const get = <E extends BackendEndpoint>(endpoint: E, modifier?: PlainModifier): ResolvedQuery<E> => {
     const key = createQueryCacheKey(endpoint, modifier);
 
     if (!has(endpoint, modifier)) {
@@ -87,15 +48,6 @@ export const useQueryStore = defineStore('query', () => {
 
     // @ts-expect-error todo
     return queries.value[key];
-  };
-
-  type RegisterQuery = {
-    <E extends BackendEndpoint, Q extends ResolvedQuery<E> = ResolvedQuery<E>>(endpoint: E, query: Q, arg3?: never): Q;
-    <E extends BackendEndpoint, Q extends ResolvedQuery<E> = ResolvedQuery<E>>(
-      endpoint: E,
-      modifier: QueryModifier,
-      query: Q,
-    ): Q;
   };
 
   /**
@@ -118,14 +70,51 @@ export const useQueryStore = defineStore('query', () => {
 
     const key = createQueryCacheKey(endpoint, modifier);
 
+    globalLogger.debug(`Registering query ${key}`);
+
     // @ts-expect-error todo
     queries.value[key] = query;
 
     return query;
   };
 
-  const registerShipmentQuery = <I extends number>(id: I) => {
-    return register(BackendEndpoint.FetchShipments, id, useFetchShipmentsQuery(id));
+  const registerShipmentQueries = (
+    shipmentIds: MaybeRef<OneOrMore<number>>,
+    orderIds?: MaybeRef<OneOrMore<string>>,
+  ): void => {
+    toArray(validateOrderId(unref(orderIds) ?? getOrderId(), true)).forEach((orderId) => {
+      toArray(unref(shipmentIds)).forEach((shipmentId) => {
+        register(BackendEndpoint.FetchShipments, shipmentId, useFetchShipmentsQuery(orderId, shipmentId));
+        register(BackendEndpoint.DeleteShipments, shipmentId, useDeleteShipmentsMutation(orderId, shipmentId));
+        register(BackendEndpoint.PrintShipments, shipmentId, usePrintShipmentsMutation(orderId, shipmentId));
+        register(BackendEndpoint.UpdateShipments, shipmentId, useUpdateShipmentsMutation(orderId, shipmentId));
+        register(BackendEndpoint.ExportReturn, shipmentId, useExportReturnMutation(orderId, shipmentId));
+      });
+    });
+  };
+
+  const computedWatchers: Record<string, ComputedRef<Record<BackendEndpoint, ResolvedQuery>>> = {};
+
+  const getMatchingQueries = (
+    key: string,
+    id: number | string,
+    list: readonly BackendEndpoint[],
+  ): ComputedRef<Record<BackendEndpoint, ResolvedQuery>> => {
+    const identifier = `${key}-${id}`;
+
+    if (!computedWatchers[identifier]) {
+      computedWatchers[identifier] = computed(() => {
+        return list.reduce((acc, endpoint) => {
+          if (has(endpoint, id)) {
+            acc[endpoint] = get(endpoint, id);
+          }
+
+          return acc;
+        }, {} as Record<BackendEndpoint, ResolvedQuery>);
+      });
+    }
+
+    return computedWatchers[identifier];
   };
 
   return {
@@ -133,32 +122,22 @@ export const useQueryStore = defineStore('query', () => {
     has,
     register,
 
-    registerShipmentQuery,
+    registerShipmentQueries,
 
     /**
      * Register queries needed to render any order related component.
      */
     registerOrderQueries: (orderId?: string | undefined, mode: MutationMode = MutationMode.Default) => {
-      const id = orderId ?? getOrderId();
+      const id = validateOrderId(orderId ?? getOrderId(), true);
 
-      if (id) {
-        toArray(id).forEach((orderId) => {
-          const ordersQuery = register(BackendEndpoint.FetchOrders, orderId, useFetchOrdersQuery(orderId));
-
-          vuGet(ordersQuery.data)?.shipments?.forEach((shipment) => registerShipmentQuery(shipment.id));
-        });
-      }
-
-      register(BackendEndpoint.FetchOrders, useFetchOrdersQuery());
-      register(BackendEndpoint.ExportOrders, useExportOrdersMutation(mode));
-      register(BackendEndpoint.PrintOrders, usePrintOrdersMutation());
-      register(BackendEndpoint.UpdateOrders, useUpdateOrdersMutation());
-
-      register(BackendEndpoint.DeleteShipments, useDeleteShipmentsMutation());
-      register(BackendEndpoint.PrintShipments, usePrintShipmentsMutation());
-      register(BackendEndpoint.UpdateShipments, useUpdateShipmentsMutation());
-
-      register(BackendEndpoint.ExportReturn, useExportReturnMutation());
+      toArray(id).forEach((orderId) => {
+        const ordersQuery = register(BackendEndpoint.FetchOrders, orderId, useFetchOrdersQuery(orderId));
+        vuGet(ordersQuery.data)?.shipments?.forEach((shipment) => registerShipmentQueries(shipment.id, orderId));
+        register(BackendEndpoint.FetchOrders, orderId, useFetchOrdersQuery(orderId));
+        register(BackendEndpoint.ExportOrders, orderId, useExportOrdersMutation(orderId, mode));
+        register(BackendEndpoint.PrintOrders, orderId, usePrintOrdersMutation(orderId));
+        register(BackendEndpoint.UpdateOrders, orderId, useUpdateOrdersMutation(orderId));
+      });
     },
 
     /**
@@ -170,6 +149,14 @@ export const useQueryStore = defineStore('query', () => {
       [AdminContextKey.Global, AdminContextKey.Dynamic, ...keys].forEach((key) => {
         register(BackendEndpoint.FetchContext, key, useFetchContextQuery(key));
       });
+    },
+
+    getQueriesForShipment(id: number): ComputedRef<Record<BackendEndpoint, ResolvedQuery>> {
+      return getMatchingQueries(QUERY_KEY_SHIPMENT, id, BACKEND_ENDPOINTS_SHIPMENTS);
+    },
+
+    getQueriesForOrder(externalIdentifier: string): ComputedRef<Record<BackendEndpoint, ResolvedQuery>> {
+      return getMatchingQueries(QUERY_KEY_ORDER, externalIdentifier, BACKEND_ENDPOINTS_ORDERS);
     },
 
     registerWebhookQueries: () => {

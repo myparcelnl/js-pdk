@@ -1,22 +1,19 @@
-import {type UseQueryReturnType} from '@tanstack/vue-query';
-import {isOfType} from '@myparcel/ts-utils';
+import {type BackendQueryEndpoints} from '../../types';
 import {useStoreQuery} from '../../composables';
-import {type QueryExecutor} from './types';
+import {type QueryHandler, type QueryModifier} from './types';
+import {resolveQuerySuffix} from './resolveQuerySuffix';
 
-export const createQueryHandler: QueryExecutor = (endpoint, suffix) => {
+export const createQueryHandler = <E extends BackendQueryEndpoints>(
+  endpoint: E,
+  suffix?: QueryModifier<E>,
+): QueryHandler<E> => {
+  // @ts-expect-error todo
   return async (context) => {
-    const resolvedSuffix = typeof suffix === 'function' ? suffix(context) : suffix;
-
+    const resolvedSuffix = resolveQuerySuffix(suffix, context);
     const query = useStoreQuery(endpoint, resolvedSuffix);
-
-    if (!query || !isOfType<UseQueryReturnType<unknown, unknown>>(query, 'refetch')) {
-      throw new Error(`Query ${endpoint} not found`);
-    }
 
     await query.refetch();
 
-    // TODO: figure out why data.value isn't working
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return query.data as any;
+    return query.data;
   };
 };

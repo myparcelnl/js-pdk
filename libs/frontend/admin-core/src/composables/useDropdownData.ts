@@ -1,16 +1,16 @@
-import {type ComputedRef, type Ref, computed, ref, toRefs} from 'vue';
+import {computed, type ComputedRef, type Ref, ref, toRefs} from 'vue';
 import {get} from '@vueuse/core';
 import {partitionArray} from '@myparcel/ts-utils';
-import {type ActionDefinition, AdminIcon} from '../types';
+import {AdminIcon, type AnyActionDefinition} from '../types';
 
 type DropdownProps = {
-  actions: ActionDefinition[];
+  actions: AnyActionDefinition[];
 };
 
 type DropdownData = {
   dropdownActions: ComputedRef<{
-    standalone: ActionDefinition[];
-    hidden: ActionDefinition[];
+    standalone: AnyActionDefinition[];
+    hidden: AnyActionDefinition[];
   }>;
 
   dropdownIcon: ComputedRef<AdminIcon>;

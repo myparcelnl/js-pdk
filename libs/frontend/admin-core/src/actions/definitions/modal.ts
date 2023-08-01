@@ -1,4 +1,4 @@
-import {type ActionContext, executeNextAction} from '../executors';
+import {executeNextAction} from '../executors';
 import {defineAction} from '../defineAction';
 import {useModalStore} from '../../stores';
 
@@ -21,11 +21,12 @@ export const modalCloseAction = defineAction({
 export const modalSubmitFormAction = defineAction({
   id: 'modal_submit',
   label: 'action_submit',
-  async handler(context: ActionContext) {
+  async handler() {
     const modalStore = useModalStore();
 
     await modalStore.context?.form?.submit();
-
+  },
+  async afterHandle(context) {
     await executeNextAction(context, modalCloseAction);
   },
 });

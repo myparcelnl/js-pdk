@@ -7,3 +7,12 @@ export * from './executeHandler';
 export * from './executeNextAction';
 export * from './resolveOrderParameters';
 export * from './types';
+export {createHandlerWithParameters} from './createHandlerWithParameters';
+
+export {createOrdersMutationHandler} from './createOrdersMutationHandler';
+
+export {createShipmentsMutationHandler} from './createShipmentsMutationHandler';
+
+export {doMutate} from './doMutate';
+
+export {resolveQuerySuffix} from './resolveQuerySuffix';

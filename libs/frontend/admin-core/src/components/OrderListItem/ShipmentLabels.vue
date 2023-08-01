@@ -12,11 +12,10 @@
 <script setup lang="ts">
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {useAdminConfig, useOrder} from '../../composables';
+import {useAdminConfig, useOrderData} from '../../composables';
 import ShipmentLabel from './ShipmentLabel.vue';
 
-const query = useOrder();
-
+const {query} = useOrderData();
 const data = computed(() => get(query.data));
 
 const config = useAdminConfig();

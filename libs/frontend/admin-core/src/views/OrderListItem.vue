@@ -22,7 +22,7 @@ import {defineAsyncComponent} from 'vue';
 import {get} from '@vueuse/core';
 import {NotificationCategory, type NotificationFilter} from '../types';
 import {useActionStore, useQueryStore} from '../stores';
-import {useOrder, usePluginSettings} from '../composables';
+import {useOrderData, usePluginSettings} from '../composables';
 import {NotificationContainer} from '../components';
 
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -41,9 +41,10 @@ const actionStore = useActionStore();
 actionStore.registerOrderActions();
 
 const pluginSettings = usePluginSettings();
+
 const {orderMode} = pluginSettings.general;
 
-const query = useOrder();
+const {query} = useOrderData();
 
 const notificationFilter: NotificationFilter = (notification) => {
   return notification.tags?.orderIds === get(query.data)?.externalIdentifier;

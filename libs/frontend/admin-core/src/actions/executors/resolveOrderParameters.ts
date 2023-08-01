@@ -1,3 +1,4 @@
+import {get} from '@vueuse/core';
 import {useFormBuilder} from '@myparcel/vue-form-builder';
 import {createShipmentFormName, getOrderId} from '../../utils';
 import {type ActionParameters, type OrderAction} from '../../types';
@@ -13,7 +14,7 @@ export const resolveOrderParameters = <A extends OrderAction>({
   parameters.orderIds ??= getOrderId(instance);
 
   // @ts-expect-error todo
-  parameters.form ??= formBuilder.forms.value[createShipmentFormName(parameters.orderIds)];
+  parameters.form ??= get(formBuilder.forms)?.[createShipmentFormName(parameters.orderIds)];
 
   return Promise.resolve(parameters as ActionParameters<A>);
 };

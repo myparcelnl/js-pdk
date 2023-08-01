@@ -27,6 +27,7 @@
 </template>
 
 <script lang="ts" setup>
+import {toRefs} from 'vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
 import ShipmentPackageType from '../common/ShipmentPackageType.vue';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
@@ -35,8 +36,10 @@ import {useAdminConfig, useShipmentData} from '../../composables';
 
 const props = defineProps<{shipmentId: number}>();
 
-useQueryStore().registerShipmentQuery(props.shipmentId);
+const {shipmentId} = toRefs(props);
 
-const {loading, actions} = useShipmentData(props.shipmentId);
+useQueryStore().registerShipmentQueries(shipmentId);
+
+const {loading, actions} = useShipmentData(shipmentId);
 const config = useAdminConfig();
 </script>

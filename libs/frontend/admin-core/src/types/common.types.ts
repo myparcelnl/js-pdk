@@ -57,3 +57,7 @@ export enum AdminIcon {
 }
 
 export type NotificationFilter = (notification: ResolvedNotification) => boolean;
+
+export type OrderIds = OneOrMore<string>;
+
+export type ShipmentIds = OneOrMore<string | number>;

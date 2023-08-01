@@ -1,10 +1,10 @@
 <template>
-  <ShipmentOptionsForm v-if="queries.some((query) => query.data)" />
+  <ShipmentOptionsForm v-if="queries.some((data) => data.order)" />
 </template>
 
 <script setup lang="ts">
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
-import {useOrders} from '../../composables';
+import {useOrdersData} from '../../composables';
 
-const queries = useOrders();
+const queries = useOrdersData();
 </script>

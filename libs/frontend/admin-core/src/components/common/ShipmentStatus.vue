@@ -1,24 +1,23 @@
 <template>
   <span
     v-if="data?.status"
-    v-test="`shipment__status--${data.id}`"
+    v-test="`shipment__status--${shipmentId}`"
     :title="translate('shipment_status')"
     v-text="translate(`shipment_status_${data.status}`)" />
 </template>
 
 <script lang="ts" setup>
-import {computed} from 'vue';
-import {get} from '@vueuse/core';
+import {toRefs} from 'vue';
 import {useQueryStore} from '../../stores';
-import {useLanguage} from '../../composables';
+import {useLanguage, useShipmentData} from '../../composables';
 
 const props = defineProps<{shipmentId: number}>();
 
-const queryStore = useQueryStore();
+const {shipmentId} = toRefs(props);
 
-const query = queryStore.registerShipmentQuery(props.shipmentId);
+useQueryStore().registerShipmentQueries(shipmentId);
 
-const data = computed(() => get(query.data));
+const {shipment: data} = useShipmentData(shipmentId);
 
 const {translate} = useLanguage();
 </script>

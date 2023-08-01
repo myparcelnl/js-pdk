@@ -9,17 +9,18 @@
 </template>
 
 <script lang="ts" setup>
-import {computed} from 'vue';
-import {get} from '@vueuse/core';
+import {toRefs} from 'vue';
 import {useQueryStore} from '../../stores';
 import {getPackageTypeTranslation} from '../../helpers';
-import {useLanguage} from '../../composables';
+import {useLanguage, useShipmentData} from '../../composables';
 
 const props = defineProps<{shipmentId: number}>();
 
-const query = useQueryStore().registerShipmentQuery(props.shipmentId);
+const {shipmentId} = toRefs(props);
 
-const data = computed(() => get(query.data));
+useQueryStore().registerShipmentQueries(shipmentId);
+
+const {shipment: data} = useShipmentData(shipmentId);
 
 const {translate} = useLanguage();
 </script>

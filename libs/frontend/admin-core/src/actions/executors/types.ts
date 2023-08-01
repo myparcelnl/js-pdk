@@ -1,34 +1,45 @@
 import {type BackendEndpoint, type Variant} from '@myparcel-pdk/common';
+import {type OneOrMore, type PromiseOr} from '@myparcel/ts-utils';
 import {
   type ActionParameters,
   type ActionResponse,
-  type AnyAdminAction,
+  type AdminAction,
+  type AnyActionDefinition,
+  type BackendEndpointResponse,
   type EndpointAdminActionMap,
   type MaybeAdminAction,
   type Notification,
-  type AdminAction,
 } from '../../types';
 import {type AdminInstance} from '../../data';
 
-export interface ActionContext<A extends MaybeAdminAction = undefined> {
-  action: AnyAdminAction<A>;
+export type ResolvedAdminAction<A extends undefined | MaybeAdminAction | BackendEndpoint> = A extends MaybeAdminAction
+  ? A
+  : A extends BackendEndpoint
+  ? EndpointAdminActionMap[A]
+  : never;
+
+export interface ActionContext<
+  A extends MaybeAdminAction | BackendEndpoint = undefined,
+  R extends ResolvedAdminAction<A> = ResolvedAdminAction<A>,
+> {
+  action: AnyActionDefinition<R>;
   instance: AdminInstance;
   notifications: Record<Variant, Notification>;
-  parameters: ActionParameters<A> | Record<string, unknown>;
+  parameters: ActionParameters<R> | Record<string, unknown>;
 }
 
 export interface ActionContextWithResponse<A extends MaybeAdminAction = undefined> extends ActionContext<A> {
   response: ActionResponse<A>;
 }
 
-type EndpointSuffix = string | undefined;
+export type PlainModifier = string | number | undefined;
 
-type QueryExecutorSuffixCallback<A extends AdminAction> = (context: ActionContext<A>) => EndpointSuffix;
+type ModifierCallback<A extends AdminAction | BackendEndpoint> = (context: ActionContext<A>) => PlainModifier;
 
-export type QueryExecutor = <
-  E extends BackendEndpoint,
-  A extends EndpointAdminActionMap[E] = EndpointAdminActionMap[E],
->(
-  endpoint: E,
-  suffix?: EndpointSuffix | QueryExecutorSuffixCallback<A>,
-) => (context: ActionContext<A>) => Promise<ActionResponse<A>>;
+export type QueryModifier<A extends undefined | AdminAction | BackendEndpoint = AdminAction> =
+  | PlainModifier
+  | (A extends BackendEndpoint ? ModifierCallback<A> : never);
+
+export type QueryHandler<E extends BackendEndpoint = BackendEndpoint> = (
+  context: ActionContext<E>,
+) => PromiseOr<OneOrMore<BackendEndpointResponse<E>> | void>;

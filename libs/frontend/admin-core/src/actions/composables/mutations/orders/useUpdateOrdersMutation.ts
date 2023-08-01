@@ -1,13 +1,13 @@
 import {useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {toArray} from '@myparcel/ts-utils';
+import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {usePdkMutation} from '../usePdkMutation';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
 import {type ResolvedQuery} from '../../../../stores';
 import {type BackendEndpointOptions, usePdkAdminApi} from '../../../../sdk';
 import {setQueryOrder} from '../../../../helpers';
 
-export const useUpdateOrdersMutation = (): ResolvedQuery<BackendEndpoint.UpdateOrders> => {
+export const useUpdateOrdersMutation = (orderIds?: OneOrMore<string>): ResolvedQuery<BackendEndpoint.UpdateOrders> => {
   const queryClient = useQueryClient();
   const pdk = usePdkAdminApi();
 
@@ -16,7 +16,7 @@ export const useUpdateOrdersMutation = (): ResolvedQuery<BackendEndpoint.UpdateO
     async (input) => {
       const options: BackendEndpointOptions<BackendEndpoint.UpdateOrders> = {
         parameters: {
-          orderIds: encodeArrayParameter(input.orderIds),
+          orderIds: encodeArrayParameter(orderIds),
         },
         body: [formToBody(input.form)],
       };

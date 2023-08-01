@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts" setup>
-import {defineAsyncComponent, computed} from 'vue';
+import {computed, defineAsyncComponent} from 'vue';
 import {get} from '@vueuse/core';
 import {useActionStore, useQueryStore} from '../stores';
-import {useOrder, usePluginSettings} from '../composables';
+import {useOrderData, usePluginSettings} from '../composables';
 import ShipmentOptionsBox from '../components/OrderBox/ShipmentOptionsBox.vue';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -25,7 +25,8 @@ actionStore.registerOrderActions();
 
 const pluginSettings = usePluginSettings();
 
-const query = useOrder();
+const {query} = useOrderData();
+
 const data = computed(() => get(query.data));
 
 const {orderMode} = pluginSettings.general;

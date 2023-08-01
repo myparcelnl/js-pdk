@@ -1,7 +1,7 @@
 import {
   type ActionParameters,
   type AdminAction,
-  type AnyAdminAction,
+  type AnyActionDefinition,
   type MaybeAdminAction,
   type ResolvedAction,
 } from '../../types';
@@ -9,10 +9,10 @@ import {type ActionContext, executeAction} from '../../actions';
 import {getActionIdentifier} from './getActionIdentifier';
 import {createActionContext} from './createActionContext';
 
-type CreateAction = (action: AnyAdminAction) => ResolvedAction;
+type CreateAction = (action: AnyActionDefinition) => ResolvedAction;
 
 export const createAction: CreateAction = (action) => {
-  const context = createActionContext(action as AnyAdminAction<AdminAction>);
+  const context = createActionContext(action as AnyActionDefinition<AdminAction>);
 
   return {
     id: getActionIdentifier(action),

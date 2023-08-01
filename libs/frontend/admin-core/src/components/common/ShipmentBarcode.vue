@@ -26,15 +26,18 @@
 </template>
 
 <script lang="ts" setup>
+import {toRefs} from 'vue';
 import {useQueryStore} from '../../stores';
 import {useAdminConfig, useLanguage, useShipmentData} from '../../composables';
 
 const props = defineProps<{shipmentId: number}>();
 
-useQueryStore().registerShipmentQuery(props.shipmentId);
+const {shipmentId} = toRefs(props);
+
+useQueryStore().registerShipmentQueries(shipmentId);
 
 const {translate} = useLanguage();
 
-const {useAssetUrl, carrier, shipment} = useShipmentData(props.shipmentId);
+const {useAssetUrl, carrier, shipment} = useShipmentData(shipmentId);
 const config = useAdminConfig();
 </script>

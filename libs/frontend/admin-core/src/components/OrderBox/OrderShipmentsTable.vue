@@ -36,12 +36,12 @@
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {BulkSelectCheckbox} from '../common';
-import {useBulkSelectCheckbox, useLanguage, useOrder, type PdkBulkSelectCheckboxEmits} from '../../composables';
+import {type PdkBulkSelectCheckboxEmits, useBulkSelectCheckbox, useLanguage, useOrderData} from '../../composables';
 import OrderShipmentsTableRow from './OrderShipmentsTableRow.vue';
 
 const emit = defineEmits<PdkBulkSelectCheckboxEmits>();
 
-const query = useOrder();
+const {query} = useOrderData();
 const data = computed(() => get(query.data));
 
 const {bulkModel, bulkOptions} = useBulkSelectCheckbox(query.data.value?.shipments?.map(({id}) => id) ?? [], emit);

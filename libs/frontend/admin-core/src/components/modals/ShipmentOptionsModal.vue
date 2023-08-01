@@ -1,7 +1,7 @@
 <template>
   <PdkModal
     :actions="actions"
-    :modal-key="modalKey"
+    :modal-key="AdminModalKey.ShipmentOptions"
     title="shipment_options_title">
     <ShipmentOptionsModalForm />
   </PdkModal>
@@ -10,10 +10,10 @@
 <script lang="ts" setup>
 import {computed, defineAsyncComponent} from 'vue';
 import {get} from '@vueuse/core';
-import {BACKEND_ENDPOINTS_ORDERS} from '@myparcel-pdk/common';
 import {AdminModalKey} from '../../types';
+import {useQueryStore} from '../../stores';
 import {instantiateActions} from '../../services';
-import {usePluginSettings, useStoreQuery} from '../../composables';
+import {useOrdersData, usePluginSettings} from '../../composables';
 import {
   modalCloseAction,
   orderExportAction,
@@ -30,15 +30,16 @@ import {
 const ShipmentOptionsModalForm = defineAsyncComponent(() => import('./ShipmentOptionsModalForm.vue'));
 
 const pluginSettings = usePluginSettings();
+const queryStore = useQueryStore();
 
 const {orderMode} = pluginSettings.general;
 
-const orderQueries = BACKEND_ENDPOINTS_ORDERS.map((endpoint) => useStoreQuery(endpoint));
+queryStore.registerOrderQueries();
 
-const modalKey = AdminModalKey.ShipmentOptions;
+const ordersData = useOrdersData();
 
 const actions = computed(() => {
-  const disabled = orderQueries.some((query) => get(query.isLoading));
+  const disabled = ordersData.some((data) => get(data.query.isLoading));
 
   const actions = [
     modalCloseAction,
