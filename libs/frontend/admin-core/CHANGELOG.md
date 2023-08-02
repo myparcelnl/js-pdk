@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.89](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.88...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.89) "@myparcel-pdk/frontend-admin-core" (2023-08-02)
+
+
+### Features
+
+* make unique queries for all orders and shipments actions ([91bb5d8](https://github.com/myparcelnl/js-pdk/commit/91bb5d895753d0bb39504a5f4c29a782fe0a38e7))
+
+
+### Bug Fixes
+
+* **a11y:** improve accessibility of tab navigation ([f6b34c5](https://github.com/myparcelnl/js-pdk/commit/f6b34c5c7f6ccf2a1b2280780f136ea72f21e478))
+
+
+
+
 ## [1.0.0-alpha.88](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.87...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.88) "@myparcel-pdk/frontend-admin-core" (2023-07-26)
 
 

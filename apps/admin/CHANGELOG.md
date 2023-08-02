@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.89](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.88...@myparcel-pdk/admin@1.0.0-alpha.89) "@myparcel-pdk/admin" (2023-08-02)
+
+
+### Features
+
+* make unique queries for all orders and shipments actions ([91bb5d8](https://github.com/myparcelnl/js-pdk/commit/91bb5d895753d0bb39504a5f4c29a782fe0a38e7))
+
+
+
+
 ## [1.0.0-alpha.87](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.86...@myparcel-pdk/admin@1.0.0-alpha.87) "@myparcel-pdk/admin" (2023-07-26)
 
 

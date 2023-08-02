@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/frontend-checkout-core",
-  "version": "1.0.0-alpha.19",
+  "version": "1.0.0-alpha.20",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -27,7 +27,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.44"
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.45"
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*"
