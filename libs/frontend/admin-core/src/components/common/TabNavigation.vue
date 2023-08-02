@@ -1,11 +1,13 @@
 <template>
   <component
     :is="buttonWrapper"
-    v-if="tabs.length > 1">
+    v-if="tabs.length > 1"
+    role="tablist">
     <component
       :is="button"
       v-for="tab in tabs"
       :key="`tab_button_${tab.name}`"
+      role="tab"
       :active="tab.name === activeTab"
       @click="() => handleClick(tab)">
       <PdkIcon
@@ -19,7 +21,9 @@
     <slot name="button-wrapper" />
   </component>
 
-  <PdkTabNavContentWrapper v-if="activeTabContents">
+  <PdkTabNavContentWrapper
+    v-if="activeTabContents"
+    role="tabpanel">
     <Transition
       :name="config.transitions?.tabNavigation"
       mode="out-in">
@@ -34,8 +38,8 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, ref, type PropType, watch} from 'vue';
-import {type TabDefinition, AdminComponent, type PrefixedAdminComponent} from '@myparcel-pdk/common';
+import {computed, type PropType, ref, watch} from 'vue';
+import {AdminComponent, type PrefixedAdminComponent, type TabDefinition} from '@myparcel-pdk/common';
 import {type ComponentOrHtmlElement} from '@myparcel/vue-form-builder';
 import {prefixComponent} from '../../helpers';
 import {HASH_SEPARATOR} from '../../data';
@@ -121,6 +125,9 @@ watch(
 
     activeTab.value = initialTab ?? props.tabs?.[0]?.name;
   },
-  {immediate: true, deep: true},
+  {
+    immediate: true,
+    deep: true,
+  },
 );
 </script>
