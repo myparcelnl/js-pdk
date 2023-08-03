@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.93](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-fontawesome@1.0.0-alpha.92...@myparcel-pdk/admin-preset-fontawesome@1.0.0-alpha.93) "@myparcel-pdk/admin-preset-fontawesome" (2023-08-03)
+
+
+### Bug Fixes
+
+* **test:** improve test ids ([67f09ed](https://github.com/myparcelnl/js-pdk/commit/67f09ed1ffe051beffb34c3eac1bd1907fee535d))
+
+
+
+
 ## [1.0.0-alpha.91](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-fontawesome@1.0.0-alpha.90...@myparcel-pdk/admin-preset-fontawesome@1.0.0-alpha.91) "@myparcel-pdk/admin-preset-fontawesome" (2023-08-03)
 
 
