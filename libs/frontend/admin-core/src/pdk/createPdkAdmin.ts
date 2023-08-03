@@ -20,13 +20,12 @@ const BOOTSTRAP_CONTAINER_SELECTOR = '#myparcel-pdk-boot';
 export const createPdkAdmin: CreatePdkAdmin = (configuration?) => {
   try {
     const config = createAdminConfig(configuration);
+
+    globalLogger.level = config.logLevel;
+
     const context = getElementContext(BOOTSTRAP_CONTAINER_SELECTOR);
 
     const pdkAdmin = new PdkAdmin(config, context);
-
-    if (config.logLevel) {
-      globalLogger.level = config.logLevel;
-    }
 
     sendBootEvent(pdkAdmin, context);
     globalLogger.debug('Created PDK admin!', {context});
