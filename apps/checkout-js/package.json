@@ -15,7 +15,8 @@
     "build": "vite build",
     "test": "run ws:test \"$(pwd)\"",
     "test:coverage": "run ws:test:coverage \"$(pwd)\"",
-    "test:run": "run ws:test:run \"$(pwd)\""
+    "test:run": "run ws:test:run \"$(pwd)\"",
+    "test:update": "run ws:test:update \"$(pwd)\""
   },
   "dependencies": {
     "@myparcel-pdk/checkout": "workspace:^1.0.0-alpha.57"

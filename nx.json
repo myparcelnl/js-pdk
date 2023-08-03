@@ -52,6 +52,10 @@
     "test:run": {
       "inputs": ["test"]
     },
+    "test:update": {
+      "inputs": ["test"],
+      "outputs": ["{projectRoot}/src/__tests__/__snapshots__"]
+    },
     "test:coverage": {
       "inputs": ["test"],
       "outputs": ["{projectRoot}/coverage"]
@@ -68,6 +72,7 @@
           "lint",
           "lint:fix",
           "test:run",
+          "test:update",
           "test:coverage"
         ]
       }
