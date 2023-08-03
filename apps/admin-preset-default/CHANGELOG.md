@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.89](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.88...@myparcel-pdk/admin-preset-default@1.0.0-alpha.89) "@myparcel-pdk/admin-preset-default" (2023-08-03)
+
+
+
+
 ## [1.0.0-alpha.86](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.85...@myparcel-pdk/admin-preset-default@1.0.0-alpha.86) "@myparcel-pdk/admin-preset-default" (2023-07-26)
 
 
