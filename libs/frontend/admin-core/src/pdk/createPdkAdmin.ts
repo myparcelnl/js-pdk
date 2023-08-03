@@ -1,7 +1,7 @@
-import {sendBootEvent} from '../utils';
 import {type InputAdminConfiguration} from '../types';
 import {getElementContext, globalLogger} from '../services';
 import {createAdminConfig} from './createAdminConfig';
+import {boot} from './boot';
 import {PdkAdmin} from './PdkAdmin';
 
 export type CreatePdkAdmin = (configuration?: InputAdminConfiguration) => undefined | PdkAdmin;
@@ -27,8 +27,7 @@ export const createPdkAdmin: CreatePdkAdmin = (configuration?) => {
 
     const pdkAdmin = new PdkAdmin(config, context);
 
-    sendBootEvent(pdkAdmin, context);
-    globalLogger.debug('Created PDK admin!', {context});
+    boot(pdkAdmin, context);
 
     return pdkAdmin;
   } catch (e) {

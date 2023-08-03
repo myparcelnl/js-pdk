@@ -389,7 +389,8 @@ export namespace Plugin {
     baseUrl: string;
     bootId: string;
     endpoints: EndpointRequestCollection;
-    event: string;
+    eventPing: string;
+    eventPong: string;
     language: string;
     mode: string;
     platform: {
