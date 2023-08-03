@@ -1,5 +1,7 @@
 <template>
-  <PdkTableRow :class="classes">
+  <PdkTableRow
+    v-test="`${$.type.__name}--${shipmentId}`"
+    :class="classes">
     <PdkTableCol>
       <PdkCheckboxInput
         v-model="selected"

@@ -1,6 +1,7 @@
 <template>
   <PdkCheckboxInput
     v-model="model"
+    v-test="$.type.__name"
     :element="bulkCheckboxElement"
     :title="translate('select_all')" />
 </template>

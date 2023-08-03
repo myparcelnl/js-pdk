@@ -1,5 +1,5 @@
 <template>
-  <PdkBox>
+  <PdkBox v-test="$.type.__name">
     <template #header>
       <PdkIcon :icon="AdminIcon.Shipment" />
       {{ translate('order_labels_header') }}

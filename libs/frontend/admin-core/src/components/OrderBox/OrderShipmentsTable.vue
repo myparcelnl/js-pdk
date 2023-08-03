@@ -1,5 +1,7 @@
 <template>
-  <PdkTable class="mb-0">
+  <PdkTable
+    v-test="$.type.__name"
+    class="mb-0">
     <template #header>
       <PdkTableRow>
         <PdkTableCol component="th">
