@@ -1,5 +1,7 @@
 <template>
-  <div v-if="data?.deliveryOptions.packageType">
+  <div
+    v-if="data?.deliveryOptions.packageType"
+    v-test="[$.type.__name, shipmentId]">
     <PdkIcon :icon="data.deliveryOptions.packageType" />
 
     <span

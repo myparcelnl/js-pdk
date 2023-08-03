@@ -1,5 +1,5 @@
 <template>
-  <label v-test="AdminComponent.ToggleInput">
+  <label v-test="[AdminComponent.ToggleInput, element]">
     <input
       :id="id"
       v-model="model"

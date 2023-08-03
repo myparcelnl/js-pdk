@@ -1,5 +1,7 @@
 <template>
-  <ShipmentOptionsForm v-if="queries.some((data) => data.order)" />
+  <ShipmentOptionsForm
+    v-if="queries.some((data) => data.order)"
+    v-test="$.type.__name" />
 </template>
 
 <script setup lang="ts">

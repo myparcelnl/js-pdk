@@ -1,5 +1,5 @@
 <template>
-  <div v-test="AdminComponent.RadioInput">
+  <div v-test="[AdminComponent.RadioInput, element]">
     <input
       :id="id"
       v-model="model"

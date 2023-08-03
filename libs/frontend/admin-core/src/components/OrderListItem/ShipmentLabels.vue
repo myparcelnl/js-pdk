@@ -1,5 +1,6 @@
 <template>
   <TransitionGroup
+    v-test="$.type.__name"
     :name="config?.transitions?.shipmentBox"
     appear>
     <ShipmentLabel

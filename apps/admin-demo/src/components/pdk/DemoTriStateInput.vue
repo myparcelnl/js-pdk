@@ -1,6 +1,6 @@
 <template>
   <div
-    v-test="AdminComponent.TriStateInput"
+    v-test="[AdminComponent.TriStateInput, element]"
     class="gap-4 grid-cols-2 inline-grid items-center">
     <input
       v-model="model"

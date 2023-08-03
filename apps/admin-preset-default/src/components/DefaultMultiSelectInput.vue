@@ -1,7 +1,7 @@
 <template>
   <PdkSelectInput
     v-model="model"
-    v-test="AdminComponent.MultiSelectInput"
+    v-test="[AdminComponent.MultiSelectInput, element]"
     :element="element"
     multiple />
 </template>

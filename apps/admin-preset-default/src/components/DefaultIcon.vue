@@ -1,6 +1,6 @@
 <template>
   <i
-    v-test="AdminComponent.Icon"
+    v-test="[AdminComponent.Icon, icon]"
     v-text="icon" />
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <PdkButton
-    v-test="`actionButton--${action?.id}`"
+    v-test="[$.type.__name, action?.id]"
     :aria-label="hideText ? action?.label : null"
     :disabled="disabled || action?.disabled"
     :icon="action?.icon"

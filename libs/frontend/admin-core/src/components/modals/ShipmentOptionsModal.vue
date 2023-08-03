@@ -1,5 +1,6 @@
 <template>
   <PdkModal
+    v-test="$.type.__name"
     :actions="actions"
     :modal-key="AdminModalKey.ShipmentOptions"
     title="shipment_options_title">

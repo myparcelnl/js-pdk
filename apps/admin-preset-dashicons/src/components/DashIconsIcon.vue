@@ -1,7 +1,7 @@
 <template>
   <span
     v-if="dashIcon"
-    v-test="AdminComponent.Icon"
+    v-test="[AdminComponent.Icon, icon]"
     :class="`dashicons-${dashIcon}`"
     class="dashicons"
     role="none" />

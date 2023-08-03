@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-test="$.type.__name">
     <PdkHeading level="2">
       {{ translate('settings_webhook_title') }}
     </PdkHeading>

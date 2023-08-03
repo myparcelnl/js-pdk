@@ -1,5 +1,7 @@
 <template>
-  <PdkBox :loading="loading">
+  <PdkBox
+    v-test="$.type.__name"
+    :loading="loading">
     <p v-if="hasAccount">
       <StatusIndicator :status="Status.Success" />&nbsp;{{ translate('notification_account_connected') }}
     </p>

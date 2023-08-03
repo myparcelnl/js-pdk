@@ -1,5 +1,6 @@
 <template>
   <PdkConceptBoxWrapper
+    v-test="[$.type.__name, data?.externalIdentifier]"
     :actions="actions"
     :loading="loading">
     <template #header>

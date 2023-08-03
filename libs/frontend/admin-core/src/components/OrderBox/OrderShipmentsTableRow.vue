@@ -1,6 +1,6 @@
 <template>
   <PdkTableRow
-    v-test="`${$.type.__name}--${shipmentId}`"
+    v-test="[$.type.__name, shipmentId]"
     :class="classes">
     <PdkTableCol>
       <PdkCheckboxInput

@@ -2,6 +2,7 @@
   <component
     :is="buttonWrapper"
     v-if="tabs.length > 1"
+    v-test="$.type.__name"
     role="tablist">
     <component
       :is="button"

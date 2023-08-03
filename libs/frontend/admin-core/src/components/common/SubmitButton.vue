@@ -1,5 +1,6 @@
 <template>
   <PdkButton
+    v-test="$.type.__name"
     :disabled="disabled"
     :icon="icon"
     :loading="loading"

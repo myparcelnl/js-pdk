@@ -2,7 +2,7 @@
   <input
     :id="id"
     v-model.trim="model"
-    v-test="AdminComponent.TextInput"
+    v-test="[AdminComponent.TextInput, element]"
     :name="id"
     :disabled="element.isDisabled || element.isSuspended"
     :readonly="element.isReadOnly" />

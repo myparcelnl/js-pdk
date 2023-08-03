@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-test="$.type.__name">
     <MagicForm
       :form="form as FormInstance"
       @afterSubmit="$emit('afterSubmit', $event)" />

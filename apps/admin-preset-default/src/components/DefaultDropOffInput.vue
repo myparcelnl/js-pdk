@@ -1,5 +1,5 @@
 <template>
-  <div v-test="AdminComponent.DropOffInput">
+  <div v-test="[AdminComponent.DropOffInput, element]">
     <ul>
       <template
         v-for="[day, human] in Object.entries(weekdaysObject)"

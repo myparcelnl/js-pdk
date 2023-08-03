@@ -1,5 +1,7 @@
 <template>
-  <span :class="config?.cssUtilities?.whitespaceNoWrap">
+  <span
+    v-test="[$.type.__name, status]"
+    :class="config?.cssUtilities?.whitespaceNoWrap">
     <PdkIcon
       :class="cssClasses"
       :icon="icon" />
@@ -8,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import {type PropType, computed} from 'vue';
+import {computed, type PropType} from 'vue';
 import {Status} from '@myparcel-pdk/common';
 import {AdminIcon} from '../../types';
 import {useAdminConfig} from '../../composables';

@@ -1,5 +1,6 @@
 <template>
   <PdkShipmentLabelWrapper
+    v-test="[$.type.__name, shipmentId]"
     :class="config?.cssUtilities?.cursorDefault"
     :loading="loading"
     @click.stop>

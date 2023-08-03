@@ -1,5 +1,6 @@
 <template>
   <PdkModal
+    v-test="$.type.__name"
     :actions="actions"
     :modal-key="modalKey"
     title="print_options_title">

@@ -1,5 +1,5 @@
 <template>
-  <label v-test="AdminComponent.CheckboxInput">
+  <label v-test="[AdminComponent.CheckboxInput, element]">
     {{ element.label }}
     <input
       :id="id"
@@ -15,7 +15,7 @@
 
 <script lang="ts" setup>
 import {useVModel} from '@vueuse/core';
-import {AdminComponent, type ElementInstance, generateFieldId} from '@myparcel-pdk/admin';
+import {AdminComponent, type ElementInstance, generateFieldId} from '@myparcel-pdk/admin'; // eslint-disable-next-line vue/no-unused-properties
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<{modelValue?: string | number | symbol | boolean; element: ElementInstance}>();

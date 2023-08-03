@@ -1,6 +1,6 @@
 <template>
   <div
-    v-test="AdminComponent.RadioInput"
+    v-test="[AdminComponent.RadioInput, element]"
     class="form-check">
     <input
       :id="id"

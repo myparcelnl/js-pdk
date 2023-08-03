@@ -1,5 +1,7 @@
 <template>
-  <PdkDropdownButton :actions="actions" />
+  <PdkDropdownButton
+    v-test="[$.type.__name, order?.externalIdentifier]"
+    :actions="actions" />
 </template>
 
 <script lang="ts" setup>
@@ -16,13 +18,12 @@ import {
   ordersPrintAction,
 } from '../../actions';
 
-const {query} = useOrderData();
+const {order} = useOrderData();
 
 const actions = computed(() => {
   const actions: AnyActionDefinition[] = [];
-  const order = get(query.data);
 
-  if (order?.shipments?.some((item) => !item.deleted)) {
+  if (get(order)?.shipments?.some((item) => !item.deleted)) {
     actions.push(orderExportAction);
     actions.push({...ordersPrintAction, standalone: true});
     actions.push(ordersFetchAction);
@@ -33,6 +34,6 @@ const actions = computed(() => {
 
   actions.push(ordersEditAction);
 
-  return instantiateActions(actions, {orderIds: order?.externalIdentifier, form: false});
+  return instantiateActions(actions, {orderIds: get(order)?.externalIdentifier, form: false});
 });
 </script>

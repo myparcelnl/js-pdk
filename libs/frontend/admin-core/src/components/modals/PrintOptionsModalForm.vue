@@ -1,9 +1,11 @@
 <template>
-  <MagicForm :form="form" />
+  <MagicForm
+    v-test="$.type.__name"
+    :form="form" />
 </template>
 
 <script lang="ts" setup>
-import {MagicForm, defineForm} from '@myparcel/vue-form-builder';
+import {defineForm, MagicForm} from '@myparcel/vue-form-builder';
 import {AdminModalKey} from '../../types';
 import {generateFormFields} from '../../forms';
 import {useAdminConfig, useContext, usePluginSettings} from '../../composables';

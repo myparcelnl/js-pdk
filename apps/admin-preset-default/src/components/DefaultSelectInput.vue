@@ -2,7 +2,7 @@
   <select
     :id="id"
     v-model="model"
-    v-test="AdminComponent.SelectInput"
+    v-test="[AdminComponent.SelectInput, element]"
     :name="id"
     :disabled="options.length === 1 || element.isDisabled || element.isSuspended">
     <option

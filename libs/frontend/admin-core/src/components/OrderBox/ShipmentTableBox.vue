@@ -1,5 +1,5 @@
 <template>
-  <PdkBox v-test="$.type.__name">
+  <PdkBox v-test="[$.type.__name, order?.externalIdentifier]">
     <template #header>
       <PdkIcon :icon="AdminIcon.Shipment" />
       {{ translate('order_labels_header') }}
@@ -32,13 +32,13 @@ import {useLanguage, useOrderData} from '../../composables';
 import {shipmentActions} from '../../actions';
 import OrderShipmentsTable from './OrderShipmentsTable.vue';
 
-const {query} = useOrderData();
+const {order} = useOrderData();
 
 const selectedLabels = ref<(string | number)[]>([]);
 
 const bulkActions = computed(() => {
   return instantiateActions(shipmentActions, {
-    orderIds: get(query.data)?.externalIdentifier,
+    orderIds: get(order)?.externalIdentifier,
     shipmentIds: toRaw(selectedLabels.value),
   });
 });

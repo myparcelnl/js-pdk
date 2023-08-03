@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-test="$.type.__name">
     <PdkLoader v-show="loading" />
 
     <div v-show="!loading">

@@ -1,7 +1,7 @@
 <template>
   <span
     v-if="data?.status"
-    v-test="`shipment__status--${shipmentId}`"
+    v-test="[$.type.__name, shipmentId]"
     :title="translate('shipment_status')"
     v-text="translate(`shipment_status_${data.status}`)" />
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-test="[$.type.__name, category]">
     <TransitionGroup
       :name="config?.transitions?.notification"
       appear>
