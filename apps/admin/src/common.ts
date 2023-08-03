@@ -90,6 +90,7 @@ export {
   useNotificationStore,
   useOrderData,
   useOrdersData,
+  useProductData,
   useRadioGroupContext,
   useSelectInputContext,
   useTriStateInputContext,

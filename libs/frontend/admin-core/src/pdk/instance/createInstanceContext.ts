@@ -12,5 +12,11 @@ export const createInstanceContext = (context: AdminContextObject): Partial<Admi
     instanceContext[AdminInstanceContextKey.OrderIdentifier] = order.externalIdentifier;
   }
 
+  if (context.productData?.length === 1) {
+    const [product] = context.productData;
+
+    instanceContext[AdminInstanceContextKey.ProductIdentifier] = product.externalIdentifier;
+  }
+
   return instanceContext;
 };

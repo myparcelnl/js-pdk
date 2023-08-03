@@ -1,10 +1,14 @@
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {type ElementInstance} from '../../types';
-import {useElement, useAdminConfig} from '../../index';
+import {type FORM_KEYS, useAdminConfig, useElement} from '../../index';
 
 export const generateFieldId = (element?: ElementInstance): string => {
   const config = useAdminConfig();
   const resolvedElement = element ?? useElement();
 
-  return config.generateFieldId(resolvedElement as InteractiveElementInstance);
+  const formBaseName = resolvedElement.form.name.split('--')[0] as (typeof FORM_KEYS)[number];
+
+  const method = config.formConfigOverrides?.[formBaseName]?.generateFieldId ?? config.generateFieldId;
+
+  return method(resolvedElement as InteractiveElementInstance);
 };

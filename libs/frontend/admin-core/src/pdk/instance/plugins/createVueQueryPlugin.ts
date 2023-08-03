@@ -37,6 +37,12 @@ export const createVueQueryPlugin: PdkAppPlugin = ({context, logger}) => {
         });
       }
 
+      if (context.productData) {
+        context.productData.forEach((product) => {
+          queryClient.setQueryData([BackendEndpoint.FetchProducts, {id: product.externalIdentifier}], product);
+        });
+      }
+
       app.use(VueQueryPlugin, {queryClient});
     },
   };

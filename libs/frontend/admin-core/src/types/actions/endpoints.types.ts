@@ -24,5 +24,6 @@ export type BackendMutationEndpoints =
 export type BackendQueryEndpoints =
   | BackendEndpoint.FetchContext
   | BackendEndpoint.FetchOrders
+  | BackendEndpoint.FetchProducts
   | BackendEndpoint.FetchShipments
   | BackendEndpoint.FetchWebhooks;

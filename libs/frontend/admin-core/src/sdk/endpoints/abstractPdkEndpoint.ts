@@ -111,6 +111,15 @@ interface FetchShipmentsDefinition extends PdkEndpointDefinition {
   formattedResponse: Shipment.ModelShipment;
 }
 
+interface FetchProductsDefinition extends PdkEndpointDefinition {
+  formattedResponse: Plugin.ModelContextProductDataContext;
+  name: BackendEndpoint.FetchProducts;
+  parameters: {
+    productIds: string;
+  };
+  response: [Plugin.ModelContextProductDataContext];
+}
+
 interface UpdatePluginSettingsDefinition extends PdkEndpointDefinition {
   body: Settings.ModelSettings;
   name: BackendEndpoint.UpdatePluginSettings;
@@ -161,6 +170,7 @@ export type BackendEndpointDefinition =
   | ExportOrdersDefinition
   | FetchContextDefinition
   | FetchOrdersDefinition
+  | FetchProductsDefinition
   | FetchShipmentsDefinition
   | FetchWebhooksDefinition
   | PrintOrdersDefinition

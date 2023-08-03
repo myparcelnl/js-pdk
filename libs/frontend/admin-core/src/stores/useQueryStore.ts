@@ -4,9 +4,10 @@ import {get as vuGet, type MaybeRef} from '@vueuse/core';
 import {type QueryClient, useQueryClient} from '@tanstack/vue-query';
 import {BACKEND_ENDPOINTS_ORDERS, BACKEND_ENDPOINTS_SHIPMENTS, BackendEndpoint} from '@myparcel-pdk/common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {getOrderId, validateOrderId} from '../utils';
-import {AdminContextKey} from '../types';
+import {getOrderId, validateId} from '../utils';
+import {AdminContextKey, AdminInstanceContextKey} from '../types';
 import {globalLogger, MutationMode} from '../services';
+import {useInstanceContext} from '../composables';
 import {
   type PlainModifier,
   QUERY_KEY_ORDER,
@@ -18,6 +19,7 @@ import {
   useExportReturnMutation,
   useFetchContextQuery,
   useFetchOrdersQuery,
+  useFetchProductsQuery,
   useFetchShipmentsQuery,
   useFetchWebhooksQuery,
   usePrintOrdersMutation,
@@ -82,7 +84,7 @@ export const useQueryStore = defineStore('query', () => {
     shipmentIds: MaybeRef<OneOrMore<number>>,
     orderIds?: MaybeRef<OneOrMore<string>>,
   ): void => {
-    toArray(validateOrderId(unref(orderIds) ?? getOrderId(), true)).forEach((orderId) => {
+    toArray(validateId(unref(orderIds) ?? getOrderId(), true)).forEach((orderId) => {
       toArray(unref(shipmentIds)).forEach((shipmentId) => {
         register(BackendEndpoint.FetchShipments, shipmentId, useFetchShipmentsQuery(orderId, shipmentId));
         register(BackendEndpoint.DeleteShipments, shipmentId, useDeleteShipmentsMutation(orderId, shipmentId));
@@ -128,7 +130,7 @@ export const useQueryStore = defineStore('query', () => {
      * Register queries needed to render any order related component.
      */
     registerOrderQueries: (orderId?: string | undefined, mode: MutationMode = MutationMode.Default) => {
-      const id = validateOrderId(orderId ?? getOrderId(), true);
+      const id = validateId(orderId ?? getOrderId(), true);
 
       toArray(id).forEach((orderId) => {
         const ordersQuery = register(BackendEndpoint.FetchOrders, orderId, useFetchOrdersQuery(orderId));
@@ -137,6 +139,14 @@ export const useQueryStore = defineStore('query', () => {
         register(BackendEndpoint.ExportOrders, orderId, useExportOrdersMutation(orderId, mode));
         register(BackendEndpoint.PrintOrders, orderId, usePrintOrdersMutation(orderId));
         register(BackendEndpoint.UpdateOrders, orderId, useUpdateOrdersMutation(orderId));
+      });
+    },
+
+    registerProductQueries: (productId?: string | undefined) => {
+      const id = validateId(productId ?? useInstanceContext(AdminInstanceContextKey.ProductIdentifier), true);
+
+      toArray(id).forEach((productId) => {
+        register(BackendEndpoint.FetchProducts, productId, useFetchProductsQuery(productId));
       });
     },
 

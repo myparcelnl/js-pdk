@@ -356,6 +356,7 @@ export namespace Plugin {
     dynamic?: ModelContextDynamicContext;
     orderData?: OrderDataContextCollection;
     pluginSettingsView?: ModelContextPluginSettingsViewContext;
+    productData?: ProductDataContextCollection;
     productSettingsView?: ModelContextProductSettingsViewContext;
   };
 
@@ -413,6 +414,8 @@ export namespace Plugin {
   };
 
   export type ModelContextOrderDataContext = ModelPdkOrder;
+
+  export type ModelContextProductDataContext = ModelPdkProduct;
 
   export type Field = {
     $attributes?: Record<string, unknown>;
@@ -490,6 +493,8 @@ export namespace Plugin {
   };
 
   export type OrderDataContextCollection = ModelContextOrderDataContext[];
+
+  export type ProductDataContextCollection = ModelContextProductDataContext[];
 
   export type PdkOrderCollection = ModelPdkOrder[];
 

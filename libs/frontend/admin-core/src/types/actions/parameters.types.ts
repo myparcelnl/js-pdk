@@ -55,6 +55,8 @@ export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record
   [BackendEndpoint.UpdateShipments]: OrderIdParameters & ShipmentIdParameters;
   [BackendEndpoint.PrintShipments]: OrderIdParameters & ShipmentIdParameters & OptionalFormParameters & LabelParameters;
 
+  [BackendEndpoint.FetchProducts]: ProductIdParameters;
+
   [BackendEndpoint.UpdatePluginSettings]: FormParameters;
   [BackendEndpoint.UpdateProductSettings]: ProductIdParameters & FormParameters;
 

@@ -5,4 +5,4 @@ export * from './encodeArrayParameter';
 export * from './forms';
 export * from './generateLabelFilename';
 export * from './getOrderId';
-export * from './validateOrderId';
+export * from './validateId';

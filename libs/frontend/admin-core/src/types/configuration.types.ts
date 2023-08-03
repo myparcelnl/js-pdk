@@ -37,7 +37,17 @@ export type AdminConfiguration = {
   /**
    * Overrides per form.
    */
-  formConfigOverrides?: Partial<Record<(typeof FORM_KEYS)[number], Omit<FormConfiguration, 'fields'>>>;
+  formConfigOverrides?: Partial<
+    Record<
+      (typeof FORM_KEYS)[number],
+      Omit<FormConfiguration, 'fields'> & {
+        /**
+         * Callback to generate a field id.
+         */
+        generateFieldId(element: InteractiveElementInstance): string;
+      }
+    >
+  >;
 
   /**
    * Transition names.

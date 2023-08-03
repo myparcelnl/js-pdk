@@ -1,7 +1,7 @@
 import {computed, type ComputedRef} from 'vue';
 import {get} from '@vueuse/core';
 import {type BackendEndpoint, type Plugin} from '@myparcel-pdk/common';
-import {getOrderId, validateOrderId} from '../../utils';
+import {getOrderId, validateId} from '../../utils';
 import {type ResolvedQuery, useQueryStore} from '../../stores';
 import {useOrder} from './useOrder';
 
@@ -12,7 +12,7 @@ export interface UseOrderData {
 }
 
 export const useOrderData = (externalIdentifier?: string): UseOrderData => {
-  const orderId = validateOrderId(externalIdentifier ?? getOrderId());
+  const orderId = validateId(externalIdentifier ?? getOrderId());
 
   const queryStore = useQueryStore();
 

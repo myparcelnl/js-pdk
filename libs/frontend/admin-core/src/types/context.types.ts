@@ -15,6 +15,7 @@ export type AdminContext<T> = T extends keyof AdminContextObject ? AdminContextO
 
 export type AdminInstanceContext = {
   [AdminInstanceContextKey.OrderIdentifier]: Plugin.ModelContextOrderDataContext['externalIdentifier'];
+  [AdminInstanceContextKey.ProductIdentifier]: Plugin.ModelContextProductDataContext['externalIdentifier'];
 };
 
 type BaseModalContext = {form?: FormInstance};
@@ -28,6 +29,7 @@ export enum AdminContextKey {
   Dynamic = 'dynamic',
   OrderData = 'orderData',
   PluginSettingsView = 'pluginSettingsView',
+  ProductData = 'productData',
   ProductSettingsView = 'productSettingsView',
 
   Instance = 'instance',
@@ -35,4 +37,5 @@ export enum AdminContextKey {
 
 export enum AdminInstanceContextKey {
   OrderIdentifier = 'orderIdentifier',
+  ProductIdentifier = 'productIdentifier',
 }

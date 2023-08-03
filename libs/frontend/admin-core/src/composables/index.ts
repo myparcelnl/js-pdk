@@ -2,6 +2,7 @@ export * from './context';
 export * from './extendAdminInstance';
 export * from './formatter';
 export * from './orders';
+export * from './products';
 export * from './shipments';
 export * from './useAdminConfig';
 export * from './useAdminInstance';

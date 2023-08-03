@@ -108,6 +108,7 @@ export type AdminComponentMap = Record<PrefixedAdminComponent<RequiredAdminCompo
 export type ComponentImportFunction = () => Promise<{default: Component}>;
 
 export enum AdminView {
+  ChildProductSettings = 'ChildProductSettings',
   Modals = 'Modals',
   Notifications = 'Notifications',
   OrderBox = 'OrderBox',

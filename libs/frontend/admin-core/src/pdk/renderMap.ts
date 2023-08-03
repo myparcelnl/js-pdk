@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {type Component} from 'vue';
-import {type AdminView, type ComponentImportFunction} from '@myparcel-pdk/common';
+import {AdminView, type ComponentImportFunction} from '@myparcel-pdk/common';
 
 /**
  * Maps components to render methods.
  */
 const renderMap = Object.freeze<Record<AdminView, ComponentImportFunction>>({
-  Modals: async () => import('../views/Modals.vue'),
-  Notifications: async () => import('../views/Notifications.vue'),
-  OrderBox: async () => import('../views/OrderBox.vue'),
-  OrderListItem: async () => import('../views/OrderListItem.vue'),
-  PluginSettings: async () => import('../views/PluginSettings.vue'),
-  ProductSettings: async () => import('../views/ProductSettings.vue'),
+  [AdminView.ChildProductSettings]: async () => import('../views/ChildProductSettings.vue'),
+  [AdminView.Modals]: async () => import('../views/Modals.vue'),
+  [AdminView.Notifications]: async () => import('../views/Notifications.vue'),
+  [AdminView.OrderBox]: async () => import('../views/OrderBox.vue'),
+  [AdminView.OrderListItem]: async () => import('../views/OrderListItem.vue'),
+  [AdminView.PluginSettings]: async () => import('../views/PluginSettings.vue'),
+  [AdminView.ProductSettings]: async () => import('../views/ProductSettings.vue'),
 });
 
 export const renderViewComponent = async (componentName: AdminView): Promise<Component> => {

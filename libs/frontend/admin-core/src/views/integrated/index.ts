@@ -1,3 +1,5 @@
+export {default as ChildProductSettingsView} from '../ChildProductSettings.vue';
+
 export {default as ModalsView} from '../Modals.vue';
 
 export {default as NotificationsView} from '../Notifications.vue';

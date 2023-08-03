@@ -1,6 +1,7 @@
 export * from './common';
 
 export {
+  ChildProductSettingsView,
   ModalsView,
   NotificationsView,
   OrderBoxView,

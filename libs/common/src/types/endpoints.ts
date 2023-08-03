@@ -66,6 +66,11 @@ export enum BackendEndpoint {
   ExportReturn = 'exportReturn',
 
   /**
+   * Fetch a product from the plugin.
+   */
+  FetchProducts = 'fetchProducts',
+
+  /**
    * Update plugin settings.
    */
   UpdatePluginSettings = 'updatePluginSettings',
