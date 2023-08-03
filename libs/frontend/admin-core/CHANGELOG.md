@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.91](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.90...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.91) "@myparcel-pdk/frontend-admin-core" (2023-08-03)
+
+
+### Bug Fixes
+
+* **admin:** fix global log level being set too late ([5b61dfa](https://github.com/myparcelnl/js-pdk/commit/5b61dfaf57c4bb1f57effbfc34a49385ce6f186f))
+
+
+
+
 ## [1.0.0-alpha.90](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.89...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.90) "@myparcel-pdk/frontend-admin-core" (2023-08-03)
 
 
