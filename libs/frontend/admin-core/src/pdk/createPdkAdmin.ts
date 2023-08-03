@@ -1,5 +1,5 @@
 import {sendBootEvent} from '../utils';
-import {type InputAdminConfiguration} from '../types';
+import {type AdminContextObject, type InputAdminConfiguration} from '../types';
 import {getElementContext, globalLogger} from '../services';
 import {createAdminConfig} from './createAdminConfig';
 import {PdkAdmin} from './PdkAdmin';
@@ -12,6 +12,17 @@ export type CreatePdkAdmin = (configuration?: InputAdminConfiguration) => undefi
  * @see https://github.com/myparcelnl/pdk/blob/main/src/Frontend/Service/FrontendRenderService.php
  */
 const BOOTSTRAP_CONTAINER_SELECTOR = '#myparcel-pdk-boot';
+
+const boot = (pdkAdmin: PdkAdmin, context: AdminContextObject): void => {
+  sendBootEvent(pdkAdmin, context);
+
+  globalLogger.info('PDK admin is available as window.MyParcelPdkAdmin');
+
+  window.MyParcelPdkAdmin = pdkAdmin;
+  void window.MyParcelPdkAdminRenderer.flush();
+
+  globalLogger.debug('Created PDK admin!', {context});
+};
 
 /**
  * Initialize the pdk frontend, parse configuration, and send a boot event that triggers the
@@ -27,8 +38,7 @@ export const createPdkAdmin: CreatePdkAdmin = (configuration?) => {
 
     const pdkAdmin = new PdkAdmin(config, context);
 
-    sendBootEvent(pdkAdmin, context);
-    globalLogger.debug('Created PDK admin!', {context});
+    boot(pdkAdmin, context);
 
     return pdkAdmin;
   } catch (e) {
