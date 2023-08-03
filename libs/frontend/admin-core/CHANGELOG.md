@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.93](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.92...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.93) "@myparcel-pdk/frontend-admin-core" (2023-08-03)
+
+
+### Features
+
+* **admin:** support rendering components after initial render ([bdba1fc](https://github.com/myparcelnl/js-pdk/commit/bdba1fc5a68cf413560baf8d28023f455198218a))
+
+
+
+
 ## [1.0.0-alpha.92](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.91...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.92) "@myparcel-pdk/frontend-admin-core" (2023-08-03)
 
 

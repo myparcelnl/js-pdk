@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.46](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.45...@myparcel-pdk/common@1.0.0-alpha.46) "@myparcel-pdk/common" (2023-08-03)
+
+
+### Features
+
+* **admin:** support rendering components after initial render ([bdba1fc](https://github.com/myparcelnl/js-pdk/commit/bdba1fc5a68cf413560baf8d28023f455198218a))
+
+
+
+
 ## [1.0.0-alpha.45](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.44...@myparcel-pdk/common@1.0.0-alpha.45) "@myparcel-pdk/common" (2023-08-02)
 
 
