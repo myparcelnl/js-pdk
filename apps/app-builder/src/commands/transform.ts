@@ -7,24 +7,20 @@ import {
   executePromises,
   getOccurrences,
   getPlatformDistPath,
-  initializeCommand,
   logPlatforms,
   logRelativePath,
   logTargetPath,
-  logTimeTaken,
   replaceCaseSensitive,
   reportDryRun,
   resolveFileName,
   validateDistPath,
 } from '../utils';
 import {type PdkBuilderCommand, PdkPlatformName} from '../types';
-import {COMMAND_TRANSFORM_NAME, VerbosityLevel} from '../constants';
+import {VerbosityLevel} from '../constants';
 
 const SOURCE_PLATFORM = PdkPlatformName.MyParcelNl;
 
-export const transform: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(COMMAND_TRANSFORM_NAME, args);
-
+const transform: PdkBuilderCommand = async ({env, config, args, debug}) => {
   if (args.dryRun) {
     reportDryRun(debug, 'No files will be transformed.');
   }
@@ -98,6 +94,6 @@ export const transform: PdkBuilderCommand = async ({env, config, args}) => {
       return promises;
     }),
   );
-
-  logTimeTaken(debug, time);
 };
+
+export default transform;

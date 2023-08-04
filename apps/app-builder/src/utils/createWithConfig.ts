@@ -1,18 +1,20 @@
 import {type CreateHook, type WithConfigParams} from '../types';
 import {resolveConfig} from './resolveConfig';
-import {parseCommand} from './parseCommand';
+import {parseCommandInput} from './parseCommandInput';
 import {mergeDefaultConfig} from './mergeDefaultConfig';
 
 export const createWithConfig: CreateHook<WithConfigParams> = (env) => {
   return (callback) => {
     return async (...args) => {
       const config = await resolveConfig(env);
+      const {command, context} = await parseCommandInput(callback, args, env);
 
-      return callback({
+      await command({
+        ...context,
         config: mergeDefaultConfig(config),
-        env,
-        args: parseCommand(args),
       });
+
+      context.debug.logTimeTaken();
     };
   };
 };

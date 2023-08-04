@@ -6,23 +6,19 @@ import chalk from 'chalk';
 import {
   executePromises,
   getPlatformDistPath,
-  initializeCommand,
   logRelativePath,
   logSourcePath,
   logTargetPath,
-  logTimeTaken,
   replaceCaseSensitive,
   reportDryRun,
   validateDistPath,
 } from '../utils';
 import {type PdkBuilderCommand} from '../types';
-import {COMMAND_RENAME_NAME, VerbosityLevel} from '../constants';
+import {VerbosityLevel} from '../constants';
 
 const STRING_TO_REPLACE = 'myparcelnl';
 
-export const rename: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(COMMAND_RENAME_NAME, args);
-
+const rename: PdkBuilderCommand = async ({env, config, args, debug}) => {
   if (args.dryRun) reportDryRun(debug, 'No files will be renamed.');
 
   debug('Renaming files for platforms %s', chalk.cyanBright(config.platforms.join(', ')));
@@ -73,6 +69,6 @@ export const rename: PdkBuilderCommand = async ({env, config, args}) => {
       debug('Finished renaming files in %s', logRelativePath(env, platformDistPath));
     }),
   );
-
-  logTimeTaken(debug, time);
 };
+
+export default rename;

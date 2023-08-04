@@ -29,15 +29,19 @@ export type VersionReplacerOutput = {
   newContents: string;
 };
 
+export interface VersionReplacerInput<T extends VersionSource = VersionSource> {
+  match: T;
+  contents: string;
+  newVersion: string;
+}
+
+export interface VersionReplacerContext {
+  config: PdkBuilderConfig;
+  args: CommandArgs;
+  debug: Debugger;
+}
+
 export type VersionReplacer<T extends VersionSource = VersionSource> = (
-  data: {
-    match: T;
-    contents: string;
-    newVersion: string;
-  },
-  context: {
-    config: PdkBuilderConfig;
-    args: CommandArgs;
-    debug: Debugger;
-  },
+  data: VersionReplacerInput<T>,
+  context: VersionReplacerContext,
 ) => VersionReplacerOutput;

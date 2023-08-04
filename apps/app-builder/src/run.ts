@@ -1,7 +1,7 @@
 import {type LiftoffEnv} from 'liftoff';
 import {program} from 'commander';
 import {createWithConfig, createWithContext} from './utils';
-import {type PdkBuilderCommand} from './types';
+import {type CommandDefinition} from './types';
 import {
   COMMAND_BUILD_NAME,
   COMMAND_CLEAN_NAME,
@@ -16,21 +16,10 @@ import {
   COMMAND_ZIP_NAME,
   TITLE,
 } from './constants';
-import {clean, copy, increment, init, rename, transform, translations, upgrade, zip} from './commands';
-
-type CommandDefinition = {
-  name: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  action: PdkBuilderCommand<any>;
-  description: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  options?: any[];
-  args?: string[][];
-};
 
 const OPTION_VERSION = ['--version <version>', 'Version to use. Defaults to version in config.'] as const;
 
-const OPTION_VERBOSITY = ['-v, --verbose', 'Verbosity', (dummy: string, prev: number) => prev + 1, 0] as const;
+const OPTION_VERBOSITY = ['-v, --verbose', 'Verbosity', (_: string, prev: number) => prev + 1, 0] as const;
 
 const OPTION_QUIET = ['-q, --quiet', 'Quiet'] as const;
 
@@ -42,49 +31,49 @@ const REQUIRES_CONFIG_FILE = 'Requires a config file.';
 
 const COMMAND_CLEAN: CommandDefinition = {
   name: COMMAND_CLEAN_NAME,
-  action: clean,
+  action: () => import('./commands/clean'),
   description: `Clear output directory. ${REQUIRES_CONFIG_FILE}`,
   options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
 const COMMAND_COPY: CommandDefinition = {
   name: COMMAND_COPY_NAME,
-  action: copy,
+  action: () => import('./commands/copy'),
   description: `Copy source files to output directory. ${REQUIRES_CONFIG_FILE}`,
   options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
 const COMMAND_INCREMENT: CommandDefinition = {
   name: COMMAND_INCREMENT_NAME,
-  action: increment,
+  action: () => import('./commands/increment'),
   description: `Increment version in output files. ${REQUIRES_CONFIG_FILE}`,
   options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN, OPTION_VERSION],
 };
 
 const COMMAND_RENAME: CommandDefinition = {
   name: COMMAND_RENAME_NAME,
-  action: rename,
+  action: () => import('./commands/rename'),
   description: `Transform output files. ${REQUIRES_CONFIG_FILE}`,
   options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
 const COMMAND_TRANSFORM: CommandDefinition = {
   name: COMMAND_TRANSFORM_NAME,
-  action: transform,
+  action: () => import('./commands/transform'),
   description: `Transform output files. ${REQUIRES_CONFIG_FILE}`,
   options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
 const COMMAND_TRANSLATIONS: CommandDefinition = {
   name: COMMAND_TRANSLATIONS_NAME,
-  action: translations,
+  action: () => import('./commands/translations'),
   description: `Import translations. ${REQUIRES_CONFIG_FILE}`,
   options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
 const COMMAND_UPGRADE: CommandDefinition = {
   name: COMMAND_UPGRADE_NAME,
-  action: upgrade,
+  action: () => import('./commands/upgrade'),
   description: `Upgrade a dependency. ${REQUIRES_CONFIG_FILE}`,
   options: [
     OPTION_VERBOSITY,
@@ -99,7 +88,7 @@ const COMMAND_UPGRADE: CommandDefinition = {
 
 const COMMAND_ZIP: CommandDefinition = {
   name: COMMAND_ZIP_NAME,
-  action: zip,
+  action: () => import('./commands/zip'),
   description: `Compress output files into an archive. ${REQUIRES_CONFIG_FILE}`,
   options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
@@ -144,7 +133,7 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .description(`Generate a config file in the current directory. Necessary for all other commands.`)
     .option(...OPTION_VERBOSITY)
     .option(...OPTION_QUIET)
-    .action(withContext(init));
+    .action(withContext(() => import('./commands/init')));
 
   CONFIG_COMMANDS.forEach(({name, description, options, action, args}) => {
     const command = program.command(name).description(description);
@@ -175,15 +164,11 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
       .option(...OPTION_VERBOSITY)
       .option(...OPTION_QUIET)
       .option(...OPTION_VERSION)
-      .action(
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        withConfig(async (context) => {
-          for (const command of commands) {
-            await command.action(context);
-          }
-        }),
-      );
+      .action(async (...args) => {
+        for (const command of commands) {
+          await withConfig(command.action)(...args);
+        }
+      });
   });
 
   program.parse(argv);

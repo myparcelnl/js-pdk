@@ -3,7 +3,7 @@ import fs from 'fs';
 import glob from 'fast-glob';
 import chalk from 'chalk';
 import {isOfType} from '@myparcel/ts-utils';
-import {executePromises, getFileContents, initializeCommand, logSourcePath, logTimeTaken, reportDryRun} from '../utils';
+import {executePromises, getFileContents, logSourcePath, reportDryRun} from '../utils';
 import {type PdkBuilderCommand} from '../types';
 import {
   type RegexVersionSource,
@@ -11,10 +11,9 @@ import {
   replaceVersionInJson,
   type VersionReplacerOutput,
 } from '../increment';
-import {COMMAND_INCREMENT_NAME, REGEX_VERSION, VerbosityLevel} from '../constants';
+import {REGEX_VERSION, VerbosityLevel} from '../constants';
 
-export const increment: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(COMMAND_INCREMENT_NAME, args);
+const increment: PdkBuilderCommand = async ({env, config, args, debug}) => {
   const newVersion = args.version ?? config.version;
 
   if (args.dryRun) {
@@ -58,6 +57,6 @@ export const increment: PdkBuilderCommand = async ({env, config, args}) => {
       }
     }),
   );
-
-  logTimeTaken(debug, time);
 };
+
+export default increment;

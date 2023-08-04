@@ -2,18 +2,16 @@
 import fs from 'fs';
 import chalk from 'chalk';
 import {importTranslations} from '@edielemoine/google-docs-importer';
-import {executePromises, initializeCommand, logTimeTaken, reportDryRun} from '../utils';
+import {executePromises, reportDryRun} from '../utils';
 import {type PdkBuilderCommand} from '../types';
-import {COMMAND_TRANSLATIONS_NAME, PLATFORM_SHEET_ID_MAP, VerbosityLevel} from '../constants';
+import {PLATFORM_SHEET_ID_MAP, VerbosityLevel} from '../constants';
 
 interface SheetDefinition {
   name: string;
   sheetId: number;
 }
 
-export const translations: PdkBuilderCommand = async ({config, args}) => {
-  const {debug, time} = initializeCommand(COMMAND_TRANSLATIONS_NAME, args);
-
+const translations: PdkBuilderCommand = async ({config, args, debug}) => {
   if (args.dryRun) reportDryRun(debug, 'No files will be modified.');
 
   const {documentId, outDir, additionalSheet, sheetId} = config.translations;
@@ -106,6 +104,6 @@ export const translations: PdkBuilderCommand = async ({config, args}) => {
   if (!args.dryRun) {
     await fs.promises.rm(`${outDir}/.tmp`, {recursive: true});
   }
-
-  logTimeTaken(debug, time);
 };
+
+export default translations;

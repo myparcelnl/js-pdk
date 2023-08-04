@@ -7,20 +7,16 @@ import {
   exists,
   getPlatformDistPath,
   getPlatformFolderName,
-  initializeCommand,
   logSourcePath,
   logTargetPath,
-  logTimeTaken,
   reportDryRun,
   resolveFileName,
   validateDistPath,
 } from '../utils';
 import {type PdkBuilderCommand} from '../types';
-import {COMMAND_ZIP_NAME, VerbosityLevel} from '../constants';
+import {VerbosityLevel} from '../constants';
 
-export const zip: PdkBuilderCommand = async ({env, config, args}) => {
-  const {debug, time} = initializeCommand(COMMAND_ZIP_NAME, args);
-
+const zip: PdkBuilderCommand = async ({env, config, args, debug}) => {
   if (args.dryRun) reportDryRun(debug, 'No archive will be created.');
 
   debug('Compressing files for platforms %s', chalk.cyanBright(config.platforms.join(', ')));
@@ -63,6 +59,6 @@ export const zip: PdkBuilderCommand = async ({env, config, args}) => {
       }
     }),
   );
-
-  logTimeTaken(debug, time);
 };
+
+export default zip;

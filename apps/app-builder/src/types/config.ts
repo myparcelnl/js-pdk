@@ -81,5 +81,10 @@ export type PdkBuilderConfig = {
 };
 
 export type ResolvedPdkBuilderConfig = Required<Omit<PdkBuilderConfig, 'translations'>> & {
-  translations: Required<Omit<PdkBuilderConfig['translations'], 'additionalSheet'>> & {additionalSheet?: number};
+  translations: {
+    additionalSheet?: number;
+    documentId: string;
+    outDir: string;
+    sheetId: number;
+  };
 };

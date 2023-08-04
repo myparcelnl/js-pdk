@@ -6,10 +6,14 @@ import {type PromiseOr} from '@myparcel/ts-utils';
 import {type CommandArguments, type ParsedCommand} from '../utils';
 import {type ResolvedPdkBuilderConfig} from './config';
 
-export type PdkBuilderContext<A extends AnyCommandArgs = AnyCommandArgs> = {
-  args: ParsedCommand<A>;
-  config: ResolvedPdkBuilderConfig;
-  env: LiftoffEnv;
+export type CommandDefinition = {
+  name: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  action: () => Promise<any>;
+  description: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  options?: any[];
+  args?: string[][];
 };
 
 export type PdkBuilderCommand<A extends AnyCommandArgs = AnyCommandArgs> = (
@@ -17,7 +21,7 @@ export type PdkBuilderCommand<A extends AnyCommandArgs = AnyCommandArgs> = (
 ) => PromiseOr<void>;
 
 export type PdkBuilderCommandWithoutConfig<A extends AnyCommandArgs = AnyCommandArgs> = (
-  context: Omit<PdkBuilderContext<A>, 'config'>,
+  context: PdkBuilderContextWithoutConfig<A>,
 ) => PromiseOr<void>;
 
 export type AnyCommandArgs = Record<string, unknown>;
@@ -39,10 +43,28 @@ export type WithConfigParams = <A extends AnyCommandArgs>(context: PdkBuilderCon
 
 export type CommandCb = (...args: CommandArguments) => void | Promise<void>;
 
-export type CreateHook<T> = (env: Liftoff.LiftoffEnv, argv: string[]) => (callback: T) => CommandCb;
+export type CreateHook<T> = (
+  env: Liftoff.LiftoffEnv,
+  argv: string[],
+) => (callback: () => Promise<{default: T}>) => CommandCb;
 
 export interface ExecuteCommandContext {
   env: LiftoffEnv;
   args: CommandArgs;
-  debug?: Debugger;
+  debug?: PdkDebugger;
 }
+
+export interface PdkBuilderContext<A extends AnyCommandArgs = AnyCommandArgs>
+  extends PdkBuilderContextWithoutConfig<A> {
+  config: ResolvedPdkBuilderConfig;
+}
+
+export interface PdkBuilderContextWithoutConfig<A extends AnyCommandArgs = AnyCommandArgs>
+  extends ExecuteCommandContext {
+  args: ParsedCommand<A>;
+  debug: PdkDebugger;
+}
+
+export type PdkDebugger = Debugger & {
+  logTimeTaken: () => void;
+};

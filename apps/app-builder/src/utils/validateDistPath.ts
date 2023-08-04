@@ -1,6 +1,6 @@
 import {type LiftoffEnv} from 'liftoff';
 import {type CommandArgs, type PdkPlatformName, type ResolvedPdkBuilderConfig} from '../types';
-import {copy} from '../commands';
+import {COMMAND_COPY_NAME} from '../constants';
 import {getPlatformDistPath} from './getPlatformDistPath';
 import {exists} from './exists';
 
@@ -17,7 +17,7 @@ export const validateDistPath = async (context: {
       return false;
     }
 
-    throw new Error(`Platform dist folder ${platformDistPath} does not exist. Run "${copy.name}" first.`);
+    throw new Error(`Platform dist folder ${platformDistPath} does not exist. Run "${COMMAND_COPY_NAME}" first.`);
   }
 
   return true;

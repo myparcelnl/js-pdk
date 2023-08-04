@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
-import {executeCommand, initializeCommand, logTimeTaken, reportDryRun} from '../../utils';
+import {executeCommand, reportDryRun} from '../../utils';
 import {type PdkBuilderCommand} from '../../types';
-import {COMMAND_UPGRADE_NAME, VerbosityLevel} from '../../constants';
+import {VerbosityLevel} from '../../constants';
 import {verifyLockfile} from './verifyLockfile';
 import {upgradePackage} from './upgradePackage';
 import {type InputUpgradeCommandArgs, type UpgradedEntry, type UpgradeSubContext} from './types';
@@ -10,9 +10,7 @@ import {getRepositoryUrl} from './getRepositoryUrl';
 import {determineUpgradeMode} from './determineUpgradeMode';
 import {createCommitMessage} from './createCommitMessage';
 
-export const upgrade: PdkBuilderCommand<InputUpgradeCommandArgs> = async ({env, args, config}) => {
-  const {debug, time} = initializeCommand(COMMAND_UPGRADE_NAME, args);
-
+const upgrade: PdkBuilderCommand<InputUpgradeCommandArgs> = async ({env, args, config, debug}) => {
   const [packageName] = args.arguments ?? [];
 
   if (args.dryRun) {
@@ -70,6 +68,6 @@ export const upgrade: PdkBuilderCommand<InputUpgradeCommandArgs> = async ({env, 
       await executeCommand(context, 'git', ['commit', '-m', commit], {});
     }
   }
-
-  logTimeTaken(debug, time);
 };
+
+export default upgrade;

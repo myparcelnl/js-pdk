@@ -1,12 +1,14 @@
 import {type CreateHook, type WithContextParams} from '../types';
-import {parseCommand} from './parseCommand';
+import {parseCommandInput} from './parseCommandInput';
 
 export const createWithContext: CreateHook<WithContextParams> = (env) => {
   return (callback) => {
-    return async (...args) =>
-      callback({
-        env,
-        args: parseCommand(args),
-      });
+    return async (...args) => {
+      const {command, context} = await parseCommandInput(callback, args, env);
+
+      await command(context);
+
+      context.debug.logTimeTaken();
+    };
   };
 };
