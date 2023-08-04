@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import {REGEX_VERSION, VerbosityLevel} from '../constants';
-import {RegexVersionSource, VersionReplacer} from './types';
+import {type RegexVersionSource, type VersionReplacer} from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-arguments
 export const replaceVersionByRegex: VersionReplacer<RegexVersionSource> = (

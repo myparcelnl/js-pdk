@@ -1,4 +1,4 @@
-import {LiftoffEnv} from 'liftoff';
+import {type LiftoffEnv} from 'liftoff';
 import chalk from 'chalk';
 import {getRelativePath} from './getRelativePath';
 

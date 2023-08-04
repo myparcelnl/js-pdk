@@ -1,5 +1,5 @@
-import chalk from "chalk";
 import {type Debugger} from 'debug';
+import chalk from 'chalk';
 import {type UpgradedEntry} from './types';
 
 export const logVersions = (versions: UpgradedEntry[], debug: Debugger): void => {

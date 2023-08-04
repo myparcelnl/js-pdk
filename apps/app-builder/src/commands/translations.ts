@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function,@typescript-eslint/no-magic-numbers */
-import chalk from "chalk";
 import fs from 'fs';
+import chalk from 'chalk';
 import {importTranslations} from '@edielemoine/google-docs-importer';
 import {executePromises, initializeCommand, logTimeTaken, reportDryRun} from '../utils';
 import {type PdkBuilderCommand} from '../types';

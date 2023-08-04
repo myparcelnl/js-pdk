@@ -1,4 +1,4 @@
-import {Debugger} from 'debug';
+import {type Debugger} from 'debug';
 import chalk from 'chalk';
 
 export const reportDryRun = (debug: Debugger, string: string): void => {

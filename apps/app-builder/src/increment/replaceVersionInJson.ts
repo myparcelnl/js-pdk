@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import {VerbosityLevel} from '../constants';
-import {JsonVersionSource, VersionReplacer} from './types';
+import {type JsonVersionSource, type VersionReplacer} from './types';
 
 const JSON_SPACES_DEFAULT = 2;
 
