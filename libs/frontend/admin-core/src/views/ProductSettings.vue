@@ -40,32 +40,34 @@ const updateProductSettingsMutation = useUpdateProductSettingsMutation();
 const adminConfig = useAdminConfig();
 
 const createProductSettingsForm = (): FormInstance => {
-  if (!get(product) || !viewContext.view) {
+  const resolvedProduct = get(product);
+
+  if (!resolvedProduct || !viewContext.view) {
     throw new Error('Product settings not loaded');
   }
 
   const overrides =
-    FORM_KEY_CHILD_PRODUCT_SETTINGS === propRefs.formKey.value
+    FORM_KEY_CHILD_PRODUCT_SETTINGS === get(propRefs.formKey)
       ? {
           ...adminConfig.formConfigOverrides?.[FORM_KEY_PRODUCT_SETTINGS],
           ...adminConfig.formConfigOverrides?.[FORM_KEY_CHILD_PRODUCT_SETTINGS],
         }
       : adminConfig.formConfigOverrides?.[FORM_KEY_PRODUCT_SETTINGS];
 
-  return defineForm(propRefs.formName.value, {
+  return defineForm(get(propRefs.formName), {
     ...overrides,
     fields: [
       ...generateFormFields({
         // @ts-expect-error todo
         fields: viewContext.view.elements,
-        values: get(product)?.settings,
+        values: resolvedProduct.settings ?? {},
       }),
     ],
 
     afterSubmit: async (form: FormInstance) => {
       await updateProductSettingsMutation.mutateAsync({
         form,
-        productIds: [get(product)?.externalIdentifier],
+        productIds: [resolvedProduct.externalIdentifier],
       });
     },
   });
