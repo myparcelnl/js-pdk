@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.94](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.93...@myparcel-pdk/admin@1.0.0-alpha.94) "@myparcel-pdk/admin" (2023-08-04)
+
+
+### Features
+
+* **admin:** support child products ([f06fca0](https://github.com/myparcelnl/js-pdk/commit/f06fca08a3b2ec5575efb6b59978a75caca76b4d))
+
+
+
+
 ## [1.0.0-alpha.90](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.89...@myparcel-pdk/admin@1.0.0-alpha.90) "@myparcel-pdk/admin" (2023-08-03)
 
 

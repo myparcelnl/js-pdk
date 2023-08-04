@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.33](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.32...@myparcel-pdk/app-builder@1.0.0-alpha.33) "@myparcel-pdk/app-builder" (2023-08-04)
+
+
+### Bug Fixes
+
+* **app-builder:** improve regex version replacing ([eea8c9a](https://github.com/myparcelnl/js-pdk/commit/eea8c9a13f2a9121b0c27739d27399e470bbad87))
+
+
+
+
 ## [1.0.0-alpha.32](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.31...@myparcel-pdk/app-builder@1.0.0-alpha.32) "@myparcel-pdk/app-builder" (2023-08-03)
 
 
