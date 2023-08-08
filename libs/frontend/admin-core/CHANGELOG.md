@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.95](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.94...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.95) "@myparcel-pdk/frontend-admin-core" (2023-08-08)
+
+
+
+
 ## [1.0.0-alpha.94](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.93...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.94) "@myparcel-pdk/frontend-admin-core" (2023-08-04)
 
 

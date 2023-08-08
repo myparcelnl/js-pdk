@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.96](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-fontawesome@1.0.0-alpha.95...@myparcel-pdk/admin-preset-fontawesome@1.0.0-alpha.96) "@myparcel-pdk/admin-preset-fontawesome" (2023-08-08)
+
+
+
+
 ## [1.0.0-alpha.95](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-fontawesome@1.0.0-alpha.94...@myparcel-pdk/admin-preset-fontawesome@1.0.0-alpha.95) "@myparcel-pdk/admin-preset-fontawesome" (2023-08-04)
 
 

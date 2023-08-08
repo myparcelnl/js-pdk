@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/frontend-checkout-separate-address-fields",
-  "version": "1.0.0-alpha.23",
+  "version": "1.0.0-alpha.24",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -28,7 +28,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.23"
+    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.24"
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*"
