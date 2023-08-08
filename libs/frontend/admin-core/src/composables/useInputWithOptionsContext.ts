@@ -1,7 +1,7 @@
-import {type ComputedRef, type Ref, type WritableComputedRef, computed, onMounted, watch} from 'vue';
+import {computed, type ComputedRef, onMounted, type Ref, watch, type WritableComputedRef} from 'vue';
 import {get, useVModel} from '@vueuse/core';
 import {type SelectOptionValue, type SelectOptionWithLabel} from '@myparcel-pdk/common';
-import {type OneOrMore} from '@myparcel/ts-utils';
+import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {generateFieldId} from '../utils';
 import {type ArrayItem, type OptionsProp, type PdkElementEmits, type PdkElementProps} from '../types';
 import {translateSelectOption} from '../helpers';
@@ -41,7 +41,8 @@ export const useInputWithOptionsContext: UseInputWithOptionsContext = (props, em
     watch(
       options,
       (newOptions) => {
-        const hasExistingValue = get(model) && newOptions.some((option) => option.value === get(model));
+        const values = toArray(get(model));
+        const hasExistingValue = values.length && newOptions.some((option) => values.includes(option.value));
 
         if (hasExistingValue || newOptions.length === 0) {
           return;
