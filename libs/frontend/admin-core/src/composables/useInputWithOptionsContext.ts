@@ -47,7 +47,15 @@ export const useInputWithOptionsContext: UseInputWithOptionsContext = (props, em
           return;
         }
 
-        model.value = multiple ? [newOptions[0].value] : newOptions[0].value;
+        const multipleValues: SelectOptionValue[] = [];
+
+        newOptions.forEach((option) => {
+          if (get(model).includes(option.value)) {
+            multipleValues.push(option.value);
+          }
+        });
+
+        model.value = multiple ? multipleValues : newOptions[0].value;
       },
       {immediate: Number(get(options)?.length) > 0},
     );
