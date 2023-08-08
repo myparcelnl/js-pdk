@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.96](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.95...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.96) "@myparcel-pdk/frontend-admin-core" (2023-08-08)
+
+
+### Bug Fixes
+
+* **multi-select-input:** fix inputs always having single value ([#189](https://github.com/myparcelnl/js-pdk/issues/189)) ([1b9c6d6](https://github.com/myparcelnl/js-pdk/commit/1b9c6d6b002cffc4ac14ffd4a6b18d7267ea4ee5))
+
+
+
+
 ## [1.0.0-alpha.95](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.94...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.95) "@myparcel-pdk/frontend-admin-core" (2023-08-08)
 
 
