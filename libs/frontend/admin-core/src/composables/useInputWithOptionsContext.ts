@@ -50,7 +50,7 @@ export const useInputWithOptionsContext: UseInputWithOptionsContext = (props, em
         const multipleValues: SelectOptionValue[] = [];
 
         newOptions.forEach((option) => {
-          if (get(model).includes(option.value)) {
+          if (typeof get(model) === 'object' && get(model).includes(option.value)) {
             multipleValues.push(option.value);
           }
         });
