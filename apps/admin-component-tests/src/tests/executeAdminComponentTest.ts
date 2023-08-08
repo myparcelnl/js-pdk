@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import {type Component} from 'vue';
-import {afterAll, beforeAll, describe, vi, test} from 'vitest';
+import {afterAll, afterEach, beforeAll, beforeEach, describe, test, vi} from 'vitest';
 import {type QueryKey} from '@tanstack/vue-query';
 import {type AdminInstance, createAdminConfig, createLogger} from '@myparcel-pdk/frontend-admin-core';
 import {type AdminComponent, type AdminView} from '@myparcel-pdk/common';
@@ -16,6 +16,16 @@ export const executeAdminComponentTest = (name: AdminComponent, component: Omit<
   }
 
   describe(name, () => {
+    beforeEach(() => {
+      vi.spyOn(console, 'log');
+      vi.spyOn(console, 'warn');
+      vi.spyOn(console, 'error');
+    });
+
+    afterEach(() => {
+      vi.restoreAllMocks();
+    });
+
     beforeAll(() => {
       vi.mock('@myparcel-pdk/frontend-admin-core', async () => ({
         // @ts-expect-error this works
