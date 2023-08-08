@@ -6,11 +6,12 @@ export const createCommitMessage = (
   {packageName, debug, args}: UpgradeSubContext,
 ): string => {
   const lines: string[] = [];
+  const commitType = args.commitType ?? 'chore';
 
   if (upgradedVersions.length === 1) {
-    lines.push(`chore(deps): upgrade ${upgradedVersions[0].name} to v${upgradedVersions[0].version}`);
+    lines.push(`${commitType}(deps): upgrade ${upgradedVersions[0].name} to v${upgradedVersions[0].version}`);
   } else {
-    lines.push(`chore(deps): upgrade ${packageName}`);
+    lines.push(`${commitType}(deps): upgrade ${packageName}`);
     lines.push('');
 
     upgradedVersions.forEach((updatedVersion) => {

@@ -28,6 +28,7 @@ export interface UpgradedEntry extends ParsedEntry {
 export type UpgradeCommandArgs = CommandArgs & {
   check?: boolean;
   commit?: boolean;
+  commitType?: string;
   lockfile?: string;
 };
 

@@ -80,6 +80,7 @@ const COMMAND_UPGRADE: CommandDefinition = {
     OPTION_QUIET,
     OPTION_DRY_RUN,
     ['-l, --lockfile <lockfile>', 'Provide an alternative path to a lockfile.'],
+    ['--commit-type <type>', 'Commit type', 'chore'],
     ['--no-check', 'Skip checking whether the lockfile is modified.'],
     ['--no-commit', 'Skip creating a commit.'],
   ],
