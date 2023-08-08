@@ -1,10 +1,26 @@
-import {type UseMutationReturnType, type VueMutationObserverOptions} from '@tanstack/vue-query/build/lib/useMutation';
-import {type MaybeRef} from '@tanstack/vue-query/build/lib/types';
-import {useMutation} from '@tanstack/vue-query';
+import {type MaybeRef} from '@vueuse/core';
+import {useMutation, type UseMutationOptions, type UseMutationReturnType} from '@tanstack/vue-query';
 import {type MutationFunction} from '@tanstack/query-core';
 import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {type ApiException} from '@myparcel/sdk';
 import {type ActionInput, type BackendEndpointResponse} from '../../../types';
+
+type MaybeRefDeep<T> = MaybeRef<
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  T extends Function
+    ? T
+    : T extends object
+    ? {
+        [Property in keyof T]: MaybeRefDeep<T[Property]>;
+      }
+    : T
+>;
+
+type VueMutationObserverOptions<TData = unknown, TError = unknown, TVariables = void, TContext = unknown> = {
+  [Property in keyof UseMutationOptions<TData, TError, TVariables, TContext>]: MaybeRefDeep<
+    UseMutationOptions<TData, TError, TVariables, TContext>[Property]
+  >;
+};
 
 type UsePdkMutation = <
   N extends BackendEndpoint,

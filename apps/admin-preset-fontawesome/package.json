@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.94",
-    "vue": "^3.3.4"
+    "vue": "^3.3.0"
   },
   "devDependencies": {
     "@myparcel-pdk/admin-component-tests": "workspace:*",
