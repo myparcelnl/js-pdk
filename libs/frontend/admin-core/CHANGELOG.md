@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.98](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.97...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.98) "@myparcel-pdk/frontend-admin-core" (2023-08-09)
+
+
+### Bug Fixes
+
+* print multiple orders and shipments together ([65d0543](https://github.com/myparcelnl/js-pdk/commit/65d05439b95885808c5b4ca6786af6232580d112))
+
+
+
+
 ## [1.0.0-alpha.97](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.96...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.97) "@myparcel-pdk/frontend-admin-core" (2023-08-09)
 
 
