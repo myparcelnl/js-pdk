@@ -11,6 +11,6 @@ export const openUrl = (url: string, attributes: Record<string, string> = {}): v
   });
 
   document.body.appendChild(link);
-  link.click();
+  window.open(link.href, '_blank');
   link.remove();
 };
