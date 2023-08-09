@@ -93,6 +93,8 @@ export const useQueryStore = defineStore('query', () => {
         register(BackendEndpoint.ExportReturn, shipmentId, useExportReturnMutation(orderId, shipmentId));
       });
     });
+
+    register(BackendEndpoint.PrintShipments, usePrintShipmentsMutation());
   };
 
   const computedWatchers: Record<string, ComputedRef<Record<BackendEndpoint, ResolvedQuery>>> = {};
@@ -140,6 +142,8 @@ export const useQueryStore = defineStore('query', () => {
         register(BackendEndpoint.PrintOrders, orderId, usePrintOrdersMutation(orderId));
         register(BackendEndpoint.UpdateOrders, orderId, useUpdateOrdersMutation(orderId));
       });
+
+      register(BackendEndpoint.PrintOrders, usePrintOrdersMutation());
     },
 
     registerProductQueries: (productId?: string | undefined) => {

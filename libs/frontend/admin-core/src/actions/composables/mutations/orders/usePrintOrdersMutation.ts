@@ -15,7 +15,8 @@ export const usePrintOrdersMutation = (orderIds?: OneOrMore<string>): ResolvedQu
         format: input.format,
         output: input.output,
         position: input.position,
-        orderIds: encodeArrayParameter(orderIds),
+        // Input is used instead of orderIds parameter when bulk printing
+        orderIds: encodeArrayParameter(orderIds ?? input.orderIds),
       },
     });
   });

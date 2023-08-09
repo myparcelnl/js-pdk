@@ -4,15 +4,21 @@ import {type BackendEndpointResponse} from '../../types';
 import {type ActionContext} from './types';
 import {doMutate} from './doMutate';
 
-export const createHandlerWithParameters = <E extends BackendEndpoint>(
+export const createHandlerWithParameters = <E extends BackendEndpoint, Bulk extends boolean = false>(
   args: OneOrMore<number | string>,
   endpoint: E,
   context: ActionContext<E>,
-): Promise<BackendEndpointResponse<E>[]> => {
+  allowBulk?: Bulk,
+): Promise<OneOrMore<BackendEndpointResponse<E>>> => {
   const ids = toArray(args);
 
   if (!ids.length) {
     throw new Error('No arguments provided');
+  }
+
+  if (allowBulk && ids.length > 1) {
+    // For bulk actions, don't pass ids to the mutations.
+    return doMutate(endpoint, undefined, context);
   }
 
   return Promise.all(ids.map((id) => doMutate(endpoint, id, context)));

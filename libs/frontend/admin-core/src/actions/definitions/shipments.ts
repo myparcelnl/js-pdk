@@ -40,7 +40,7 @@ export const shipmentsPrintAction = defineAction({
   icon: AdminIcon.Print,
   label: 'action_print',
   beforeHandle: resolvePrintParameters,
-  handler: createShipmentsMutationHandler(BackendEndpoint.PrintShipments),
+  handler: createShipmentsMutationHandler(BackendEndpoint.PrintShipments, true),
   async afterHandle(context) {
     await openOrPrintPdf(context);
 
