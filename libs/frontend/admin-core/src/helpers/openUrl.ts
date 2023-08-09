@@ -5,12 +5,13 @@ export const openUrl = (url: string, attributes: Record<string, string> = {}): v
   const link = document.createElement('a');
 
   link.href = url;
+  link.target = '_blank';
 
   Object.entries(attributes).forEach(([key, value]) => {
     link.setAttribute(key, value);
   });
 
   document.body.appendChild(link);
-  window.open(link.href, '_blank');
+  link.click();
   link.remove();
 };
