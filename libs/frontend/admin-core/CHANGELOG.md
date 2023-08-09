@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.99](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.98...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.99) "@myparcel-pdk/frontend-admin-core" (2023-08-09)
+
+
+### Bug Fixes
+
+* **admin:** fix printing single orders and shipments not working ([ab68bc3](https://github.com/myparcelnl/js-pdk/commit/ab68bc3ba39b30fc7dc6ef39384c8572da3ce15b))
+
+
+
+
 ## [1.0.0-alpha.98](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.97...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.98) "@myparcel-pdk/frontend-admin-core" (2023-08-09)
 
 
