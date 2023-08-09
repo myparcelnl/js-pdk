@@ -2,9 +2,9 @@ import {type App, type Component, markRaw} from 'vue';
 import {memoize, mergeWith} from 'lodash-unified';
 import {
   AdminComponent,
-  type PrefixedAdminComponent,
   optionalAdminActionContainerComponentNames,
   optionalAdminPlainWrapperComponentNames,
+  type PrefixedAdminComponent,
   requiredAdminComponentNames,
 } from '@myparcel-pdk/common';
 import {type FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder';
