@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.97](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.96...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.97) "@myparcel-pdk/frontend-admin-core" (2023-08-09)
+
+
+### Bug Fixes
+
+* **types:** make generateFieldId optional in form config overrides ([01ddf80](https://github.com/myparcelnl/js-pdk/commit/01ddf80c4525d64a33adb8e99579add7ab7a98f4))
+
+
+
+
 ## [1.0.0-alpha.96](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.95...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.96) "@myparcel-pdk/frontend-admin-core" (2023-08-08)
 
 
