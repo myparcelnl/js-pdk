@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.100](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.99...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.100) "@myparcel-pdk/frontend-admin-core" (2023-08-10)
+
+
+### Bug Fixes
+
+* **admin:** fix label opening in new tab ([#190](https://github.com/myparcelnl/js-pdk/issues/190)) ([9e93b05](https://github.com/myparcelnl/js-pdk/commit/9e93b05ecb0456a805b0afa782f86951366abe66))
+
+
+
+
 ## [1.0.0-alpha.99](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.98...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.99) "@myparcel-pdk/frontend-admin-core" (2023-08-09)
 
 
