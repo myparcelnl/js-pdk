@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.101](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.100...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.101) "@myparcel-pdk/frontend-admin-core" (2023-08-21)
+
+
+### Features
+
+* **admin:** allow more advanced reactivity in generated forms ([b49dd4b](https://github.com/myparcelnl/js-pdk/commit/b49dd4b171f27798225af08ba0926704e695ce29))
+
+
+
+
 ## [1.0.0-alpha.100](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.99...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.100) "@myparcel-pdk/frontend-admin-core" (2023-08-10)
 
 

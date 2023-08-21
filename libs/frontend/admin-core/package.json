@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/frontend-admin-core",
-  "version": "1.0.0-alpha.100",
+  "version": "1.0.0-alpha.101",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -28,8 +28,8 @@
   },
   "prettier": "@myparcel/prettier-config",
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.48",
-    "@myparcel-pdk/frontend-form-builder": "workspace:*",
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.49",
+    "@myparcel-pdk/frontend-form-builder": "workspace:^1.0.0-alpha.1",
     "@myparcel/constants": "^1.0.0",
     "@myparcel/sdk": "^3.0.0",
     "@myparcel/ts-utils": "^1.9.0",

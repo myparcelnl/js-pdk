@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.49](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.48...@myparcel-pdk/common@1.0.0-alpha.49) "@myparcel-pdk/common" (2023-08-21)
+
+
+### Features
+
+* **admin:** allow more advanced reactivity in generated forms ([b49dd4b](https://github.com/myparcelnl/js-pdk/commit/b49dd4b171f27798225af08ba0926704e695ce29))
+
+
+
+
 ## [1.0.0-alpha.48](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.47...@myparcel-pdk/common@1.0.0-alpha.48) "@myparcel-pdk/common" (2023-08-08)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/common",
-  "version": "1.0.0-alpha.48",
+  "version": "1.0.0-alpha.49",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -24,7 +24,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-form-builder": "workspace:*"
+    "@myparcel-pdk/frontend-form-builder": "workspace:^1.0.0-alpha.1"
   },
   "devDependencies": {
     "vue": "^3.3.0"
