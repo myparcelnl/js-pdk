@@ -20,44 +20,34 @@ describe('generateFormFields', () => {
         {
           name: 'generalSettings.name',
           label: 'general_settings_name',
-          $component: AdminComponent.TextInput,
+          $attributes: {
+            min: 0,
+            max: 100,
+            step: 1,
+          },
+          $component: AdminComponent.NumberInput,
         },
         {
           name: 'generalSettings.description',
           label: 'general_settings_description',
           $component: AdminComponent.TextInput,
+          $builders: [
+            {
+              $visibleWhen: {
+                $if: [
+                  {
+                    $target: 'generalSettings.name',
+                    $eq: 'foo',
+                  },
+                ],
+              },
+            },
+          ],
         },
       ],
     };
 
     const fields = generateFormFields({fields: view.elements, values: {}});
-    expect(fields.map(removeRef)).toEqual([
-      {
-        attributes: {},
-        component: 'PdkTextInput',
-        label: 'general_settings_name',
-        name: 'generalSettings.name',
-        optional: true,
-        props: {
-          description: 'general_settings_name_description',
-          subtext: 'general_settings_name_subtext',
-        },
-        slots: undefined,
-        wrapper: undefined,
-      },
-      {
-        attributes: {},
-        component: 'PdkTextInput',
-        label: 'general_settings_description',
-        name: 'generalSettings.description',
-        optional: true,
-        props: {
-          description: 'general_settings_description_description',
-          subtext: 'general_settings_description_subtext',
-        },
-        slots: undefined,
-        wrapper: undefined,
-      },
-    ]);
+    expect(fields.map(removeRef)).toMatchSnapshot();
   });
 });

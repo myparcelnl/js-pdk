@@ -1,4 +1,5 @@
 import {ref, toRaw} from 'vue';
+import {parseBuilders} from '@myparcel-pdk/frontend-form-builder';
 import {type Plugin} from '@myparcel-pdk/common';
 import {
   type AnyElementConfiguration,
@@ -6,7 +7,6 @@ import {
   type InteractiveElementConfiguration,
 } from '@myparcel/vue-form-builder';
 import {defineFormField, resolveFormComponent} from '../helpers';
-import {createFormStateWatcher} from '../../forms';
 
 type GenerateFormFields = (
   config: {
@@ -22,43 +22,21 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
   }
 
   return fields.map((data) => {
-    const {
-      $attributes,
-      $component,
-      $disabledWhen,
-      $readOnlyWhen,
-      $slot,
-      $visibleWhen,
-      $wrapper,
-      label,
-      name,
-      ...props
-    } = data;
+    const {$attributes, $component, $slot, $wrapper, label, name, $builders, ...props} = toRaw(data);
 
-    const common: AnyElementConfiguration = {
+    const common = {
       component: resolveFormComponent($component),
       props: {...props},
       attributes: {...$attributes},
       optional: true,
       slots: $slot ? {default: () => $slot} : undefined,
       wrapper: $wrapper && typeof $wrapper === 'string' ? resolveFormComponent($wrapper) : undefined,
-    };
-
-    if ($visibleWhen) {
-      common.visibleWhen = createFormStateWatcher($visibleWhen, prefix);
-    }
+      ...parseBuilders($builders ?? [], prefix),
+    } as AnyElementConfiguration;
 
     // Plain element
     if (!label || !name) {
       return defineField(common);
-    }
-
-    if ($disabledWhen) {
-      common.disabledWhen = createFormStateWatcher($disabledWhen, prefix);
-    }
-
-    if ($readOnlyWhen) {
-      common.readOnlyWhen = createFormStateWatcher($readOnlyWhen, prefix);
     }
 
     return defineFormField({

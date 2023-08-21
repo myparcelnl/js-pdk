@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`generateFormFields > should generate fields from a view 1`] = `
+[
+  {
+    "attributes": {
+      "max": 100,
+      "min": 0,
+      "step": 1,
+    },
+    "component": "PdkNumberInput",
+    "label": "general_settings_name",
+    "name": "generalSettings.name",
+    "optional": true,
+    "props": {
+      "description": "general_settings_name_description",
+      "subtext": "general_settings_name_subtext",
+    },
+    "slots": undefined,
+    "wrapper": undefined,
+  },
+  {
+    "attributes": {},
+    "component": "PdkTextInput",
+    "label": "general_settings_description",
+    "name": "generalSettings.description",
+    "optional": true,
+    "props": {
+      "description": "general_settings_description_description",
+      "subtext": "general_settings_description_subtext",
+    },
+    "slots": undefined,
+    "visibleWhen": [Function],
+    "wrapper": undefined,
+  },
+]
+`;

@@ -1,10 +1,10 @@
 {
-  "name": "@myparcel-pdk/common",
-  "version": "1.0.0-alpha.48",
+  "name": "@myparcel-pdk/frontend-form-builder",
+  "version": "1.0.0-alpha.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
-    "directory": "libs/common"
+    "directory": "libs/frontend/form-builder"
   },
   "license": "MIT",
   "sideEffects": false,
@@ -21,13 +21,18 @@
     "emit": "run ws:ts:emit \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
+    "test": "run ws:test \"$(pwd)\"",
+    "test:coverage": "run ws:test:coverage \"$(pwd)\"",
+    "test:run": "run ws:test:run \"$(pwd)\"",
+    "test:update": "run ws:test:update \"$(pwd)\"",
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/frontend-form-builder": "workspace:*"
+    "@myparcel/ts-utils": "^1.9.0",
+    "@myparcel/vue-form-builder": "^1.0.0-beta.0"
   },
   "devDependencies": {
-    "vue": "^3.3.0"
+    "@myparcel-pdk/build-vite": "workspace:*"
   },
   "engines": {
     "node": ">=16"
