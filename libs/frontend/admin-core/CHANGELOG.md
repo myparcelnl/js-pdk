@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.102](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.101...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.102) "@myparcel-pdk/frontend-admin-core" (2023-08-24)
+
+
+### Features
+
+* **admin:** support new form operations ([04c7f3f](https://github.com/myparcelnl/js-pdk/commit/04c7f3f5b871ecb12b4cfeb22215ba04cc6cf8f7))
+
+
+
+
 ## [1.0.0-alpha.101](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/frontend-admin-core@1.0.0-alpha.100...@myparcel-pdk/frontend-admin-core@1.0.0-alpha.101) "@myparcel-pdk/frontend-admin-core" (2023-08-21)
 
 
