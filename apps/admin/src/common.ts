@@ -37,7 +37,9 @@ export type {
   ResolvedAction,
   ResolvedNotification,
   SelectInputProps,
-  TriStateValue,
+  TriState,
+  TriStateInputEmits,
+  TriStateInputProps,
 } from '@myparcel-pdk/frontend-admin-core';
 
 export {
@@ -99,3 +101,8 @@ export {
 } from '@myparcel-pdk/frontend-admin-core';
 
 export {AdminComponent, AdminView, BackendEndpoint, Size, Status, Variant} from '@myparcel-pdk/common';
+
+export {
+  /** @deprecated use TriState */
+  TriState as TriStateValue,
+} from '@myparcel-pdk/frontend-admin-core';

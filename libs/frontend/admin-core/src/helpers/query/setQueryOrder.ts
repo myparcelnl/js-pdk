@@ -1,12 +1,12 @@
 import {type QueryClient} from '@tanstack/vue-query';
 import {type Plugin, type Shipment} from '@myparcel-pdk/common';
-import {type Replace, isOfType} from '@myparcel/ts-utils';
+import {isOfType, type Replace} from '@myparcel/ts-utils';
 import {QUERY_KEY_ORDER} from '../../actions';
 import {setQueryData} from './setQueryData';
 
 type FilteredShipment = {id: number; updated: unknown};
 
-type FilteredOrder = Replace<Plugin.ModelContextOrderDataContext, 'shipments', FilteredShipment[]>;
+type FilteredOrder = Replace<Plugin.ModelPdkOrder, 'shipments', FilteredShipment[]>;
 
 export const setQueryOrder = (queryClient: QueryClient, order: Plugin.ModelPdkOrder | FilteredOrder): void => {
   let filteredOrder: FilteredOrder;
