@@ -11,7 +11,9 @@ exports[`exports > exports from index.ts 1`] = `
   "executeOperations",
   "executeSetValueOperation",
   "parseBuilders",
+  "executeCustomOperationHandlers",
   "createValueGetter",
   "createValueSetter",
+  "createPropSetter",
 ]
 `;

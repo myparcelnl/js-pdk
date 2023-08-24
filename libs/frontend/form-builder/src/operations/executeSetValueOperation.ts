@@ -1,11 +1,9 @@
-import {type FormValueGetter, type FormValueSetter} from '../utils';
-import {type FormSetValueOperation} from '../types';
+import {type FormOperationMethods, type FormSetValueOperation} from '../types';
 import {validateIfConditions} from '../conditions';
 
 export const executeSetValueOperation = (
   operation: FormSetValueOperation,
-  getValue: FormValueGetter,
-  setValue: FormValueSetter,
+  {getValue, setValue}: FormOperationMethods,
 ): void => {
   if (!validateIfConditions(operation.$setValue, getValue)) {
     return;
@@ -13,5 +11,5 @@ export const executeSetValueOperation = (
 
   const {$value, $target} = operation.$setValue;
 
-  setValue($target, $value);
+  setValue($value, $target);
 };

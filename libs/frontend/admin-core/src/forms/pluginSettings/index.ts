@@ -8,3 +8,4 @@ export * from './createPluginSettingsTabs';
 export * from './createPluginSettingsTabsComponent';
 
 export * from './generateFormFields';
+export {parseFormBuilders} from './parseFormBuilders';

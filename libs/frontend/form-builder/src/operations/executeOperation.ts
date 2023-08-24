@@ -1,14 +1,27 @@
 import {isOfType} from '@myparcel/ts-utils';
-import {type FormValueGetter, type FormValueSetter} from '../utils';
-import {type FormOperation, type FormSetValueOperation} from '../types';
+import {
+  type FormOperation,
+  type FormOperationMethods,
+  type FormSetPropOperation,
+  type FormSetValueOperation,
+  type HandlerDefinition,
+} from '../types';
 import {executeSetValueOperation} from './executeSetValueOperation';
+import {executeSetPropOperation} from './executeSetPropOperation';
+import {executeCustomOperationHandlers} from './executeCustomOperationHandlers';
 
 export const executeOperation = (
   operation: FormOperation,
-  getValue: FormValueGetter,
-  setValue: FormValueSetter,
+  methods: FormOperationMethods,
+  customHandlers: HandlerDefinition[] = [],
 ): void => {
   if (isOfType<FormSetValueOperation>(operation, '$setValue')) {
-    executeSetValueOperation(operation, getValue, setValue);
+    executeSetValueOperation(operation, methods);
   }
+
+  if (isOfType<FormSetPropOperation>(operation, '$setProp')) {
+    executeSetPropOperation(operation, methods);
+  }
+
+  executeCustomOperationHandlers(operation, methods, customHandlers);
 };

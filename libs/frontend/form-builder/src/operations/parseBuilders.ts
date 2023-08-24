@@ -6,10 +6,15 @@ import {
   type FormDisabledWhenBuilder,
   type FormReadOnlyWhenBuilder,
   type FormVisibleWhenBuilder,
+  type HandlerDefinition,
 } from '../types';
 import {buildAfterUpdate, buildFormStateWatcher} from '../builders';
 
-export const parseBuilders = (builders: FormBuilder[], prefix: string): Partial<AnyElementConfiguration> => {
+export const parseBuilders = (
+  builders: FormBuilder[],
+  prefix: string,
+  customHandlers: HandlerDefinition[] = [],
+): Partial<AnyElementConfiguration> => {
   const config: Partial<AnyElementConfiguration> = {};
 
   builders?.forEach((builder) => {
@@ -26,7 +31,7 @@ export const parseBuilders = (builders: FormBuilder[], prefix: string): Partial<
     }
 
     if (isOfType<FormAfterUpdateBuilder>(builder, '$afterUpdate')) {
-      config.afterUpdate = buildAfterUpdate(builder.$afterUpdate, prefix);
+      config.afterUpdate = buildAfterUpdate(builder.$afterUpdate, prefix, customHandlers);
     }
   });
 

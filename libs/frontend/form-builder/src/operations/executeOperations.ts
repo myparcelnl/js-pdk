@@ -1,11 +1,10 @@
-import {type FormValueGetter, type FormValueSetter} from '../utils';
-import {type FormOperation} from '../types';
+import {type FormOperation, type FormOperationMethods, type HandlerDefinition} from '../types';
 import {executeOperation} from './executeOperation';
 
 export const executeOperations = (
   operations: FormOperation[],
-  getValue: FormValueGetter,
-  setValue: FormValueSetter,
+  methods: FormOperationMethods,
+  customHandlers: HandlerDefinition[] = [],
 ): void => {
-  operations.forEach((operation) => executeOperation(operation, getValue, setValue));
+  operations.forEach((operation) => executeOperation(operation, methods, customHandlers));
 };
