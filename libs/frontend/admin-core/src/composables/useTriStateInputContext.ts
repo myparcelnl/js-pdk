@@ -47,6 +47,13 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
 
   const model = useVModel(props, undefined, emit) as WritableComputedRef<TriState>;
 
+  /**
+   * The value when the element is set to inherit.
+   */
+  const defaultValue = computed(() => {
+    return props.element.props.defaultValue ?? TriState.Inherit;
+  });
+
   const commonFieldProperties = Object.freeze({
     form,
     component: 'input',
@@ -86,14 +93,18 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
 
   // When inherit is disabled, the model is updated to the current toggle value
   // When inherit is enabled, the model is updated to -1 and the toggle is updated to the default value.
-  watch([inheritModel, props.element], ([inherit, element]) => {
+  watch([inheritModel, defaultValue], ([inherit, defaultValue], [oldInherit, oldDefaultValue]) => {
+    if (inherit === oldInherit && defaultValue === oldDefaultValue) {
+      return;
+    }
+
     if (!inherit) {
       model.value = toTriState(toggleModel.value);
       return;
     }
 
     model.value = TriState.Inherit;
-    toggleModel.value = triStateToBoolean(element.props.defaultValue ?? TriState.Inherit);
+    toggleModel.value = triStateToBoolean(defaultValue ?? TriState.Inherit);
   });
 
   // When the model is changed manually, like from another element, the toggle is updated if inherit is disabled.

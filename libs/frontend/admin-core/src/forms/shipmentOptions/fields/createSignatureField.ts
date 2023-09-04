@@ -7,7 +7,7 @@ import {createShipmentOptionField} from './createShipmentOptionField';
 
 export const createSignatureField = (refs: ShipmentOptionsRefs): InteractiveElementConfiguration => {
   return createShipmentOptionField(refs, FIELD_SIGNATURE, {
-    readOnlyWhen: ({form}) => {
+    readOnlyWhen({form}) {
       const carrier = getFormCarrierName(form);
 
       return CarrierName.PostNl === carrier && triStateFieldIsEnabled(form, FIELD_AGE_CHECK);

@@ -1,5 +1,4 @@
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
-import {type PromiseOr} from '@myparcel/ts-utils';
 import {CarrierName} from '@myparcel/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_AGE_CHECK, FIELD_ONLY_RECIPIENT} from '../field';
@@ -9,13 +8,13 @@ import {createShipmentOptionField} from './createShipmentOptionField';
 
 export const createOnlyRecipientField = (refs: ShipmentOptionsRefs): InteractiveElementConfiguration => {
   return createShipmentOptionField(refs, FIELD_ONLY_RECIPIENT, {
-    readOnlyWhen: ({form}) => {
+    readOnlyWhen({form}) {
       const carrier = getFormCarrierName(form);
 
       return CarrierName.PostNl === carrier && triStateFieldIsEnabled(form, FIELD_AGE_CHECK);
     },
 
-    afterUpdate({form}, value): PromiseOr<void> {
+    afterUpdate({form}, value) {
       if (!(CarrierName.DhlForYou === getFormCarrierName(form) && TriState.On === value)) {
         return;
       }
