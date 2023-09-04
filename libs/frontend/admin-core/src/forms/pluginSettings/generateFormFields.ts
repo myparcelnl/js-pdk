@@ -1,4 +1,5 @@
 import {ref, toRaw} from 'vue';
+import {parseBuilders} from '@myparcel-pdk/frontend-form-builder';
 import {type Plugin} from '@myparcel-pdk/common';
 import {
   type AnyElementConfiguration,
@@ -6,7 +7,6 @@ import {
   type InteractiveElementConfiguration,
 } from '@myparcel/vue-form-builder';
 import {defineFormField, resolveFormComponent} from '../helpers';
-import {parseFormBuilders} from './parseFormBuilders';
 
 type GenerateFormFields = (
   config: {
@@ -31,7 +31,7 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
       optional: true,
       slots: $slot ? {default: () => $slot} : undefined,
       wrapper: $wrapper && typeof $wrapper === 'string' ? resolveFormComponent($wrapper) : undefined,
-      ...parseFormBuilders($builders, prefix),
+      ...parseBuilders($builders ?? [], prefix),
     } as AnyElementConfiguration;
 
     // Plain element
