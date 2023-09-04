@@ -12,6 +12,7 @@ import {useModalStore} from '../../stores';
 import {useAdminConfig} from '../../composables';
 import {type ShipmentOptionsRefs} from './types';
 import {addBulkEditNotification} from './helpers';
+import {createHideSenderField} from './fields/createHideSenderField';
 import {
   createAgeCheckField,
   createCarrierField,
@@ -64,6 +65,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
       createOnlyRecipientField(refs),
       createDirectReturnField(refs),
       createLargeFormatField(refs),
+      createHideSenderField(refs),
       createSameDayDeliveryField(refs),
 
       createInsuranceField(refs),

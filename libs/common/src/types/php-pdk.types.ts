@@ -812,6 +812,7 @@ export namespace Shipment {
 
   export type ModelShipmentOptions = {
     ageCheck?: boolean;
+    hideSender?: boolean;
     insurance?: number[];
     labelDescription?: string;
     largeFormat?: boolean;
