@@ -7,7 +7,7 @@ const createCommonViteConfig = (env) => {
   const isProd = env.mode === 'production';
 
   return {
-    plugins: [isProd && dts({entryRoot: 'src'}), customTsConfig()],
+    plugins: [isProd && dts({entryRoot: 'src'}), customTsConfig({tsConfigPath: 'tsconfig.base.json'})],
 
     build: {
       minify: isProd,

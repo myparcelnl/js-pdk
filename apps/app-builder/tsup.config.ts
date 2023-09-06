@@ -5,5 +5,5 @@ export default defineConfig({
   minify: false,
   sourcemap: false,
   target: 'esnext',
-  tsconfig: 'tsconfig.build.json',
+  tsconfig: 'tsconfig.base.json',
 });

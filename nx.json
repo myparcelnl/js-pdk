@@ -22,7 +22,7 @@
       "{projectRoot}/src/__tests__/**/*",
       "{projectRoot}/vitest.config.ts"
     ],
-    "sharedGlobals": ["{workspaceRoot}/tsconfig.build.json"],
+    "sharedGlobals": ["{workspaceRoot}/tsconfig.base.json"],
     "production": ["default"]
   },
   "targetDefaults": {

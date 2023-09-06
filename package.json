@@ -36,10 +36,10 @@
     "ws:test:coverage": "cd $0 && vitest run --coverage --passWithNoTests",
     "ws:test:run": "cd $0 && vitest run --passWithNoTests",
     "ws:test:update": "cd $0 && vitest run -u --passWithNoTests",
-    "ws:ts:build": "cd $0 && tsc --project tsconfig.build.json --emitDeclarationOnly --declarationDir dist",
-    "ws:ts:typecheck": "cd $0 && tsc --project tsconfig.build.json --noEmit",
-    "ws:vue:build": "cd $0 && vue-tsc --project tsconfig.build.json --emitDeclarationOnly --declarationDir dist",
-    "ws:vue:typecheck": "cd $0 && vue-tsc --project tsconfig.build.json --noEmit"
+    "ws:ts:build": "cd $0 && tsc --project tsconfig.base.json --emitDeclarationOnly --declarationDir dist",
+    "ws:ts:typecheck": "cd $0 && tsc --project tsconfig.base.json --noEmit",
+    "ws:vue:build": "cd $0 && vue-tsc --project tsconfig.base.json --emitDeclarationOnly --declarationDir dist",
+    "ws:vue:typecheck": "cd $0 && vue-tsc --project tsconfig.base.json --noEmit"
   },
   "lint-staged": {
     "*.{json,md,yml}": "prettier --write",

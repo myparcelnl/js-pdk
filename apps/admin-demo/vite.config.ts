@@ -9,7 +9,7 @@ export default defineConfig((env) => {
   const isProd = env.mode === 'production';
 
   return {
-    plugins: [vue(), customTsConfig()],
+    plugins: [vue(), customTsConfig({tsConfigPath: 'tsconfig.base.json'})],
     base: isProd ? '/js-pdk/' : '/',
 
     server: {
