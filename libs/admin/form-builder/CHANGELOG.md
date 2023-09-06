@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-form-builder@1.0.0-alpha.2...@myparcel-pdk/admin-form-builder@1.0.0-alpha.3) "@myparcel-pdk/admin-form-builder" (2023-09-06)
+
+
+
+
 ## [1.0.0-alpha.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-form-builder@1.0.0-alpha.1...@myparcel-pdk/admin-form-builder@1.0.0-alpha.2) "@myparcel-pdk/admin-form-builder" (2023-08-24)
 
 ### Features

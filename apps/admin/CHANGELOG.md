@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.104](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.103...@myparcel-pdk/admin@1.0.0-alpha.104) "@myparcel-pdk/admin" (2023-09-06)
+
+
+### Bug Fixes
+
+* **admin:** export form keys ([9ae7bb0](https://github.com/myparcelnl/js-pdk/commit/9ae7bb099d76d0eceebb6659afeee7b7b6607bad))
+
+
+
+
 ## [1.0.0-alpha.103](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.102...@myparcel-pdk/admin@1.0.0-alpha.103) "@myparcel-pdk/admin" (2023-09-06)
 
 

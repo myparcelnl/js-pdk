@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/checkout-core",
-  "version": "1.0.0-alpha.27",
+  "version": "1.0.0-alpha.28",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -28,7 +28,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/checkout-common": "workspace:*"
+    "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.1"
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*"

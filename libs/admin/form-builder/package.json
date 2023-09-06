@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-form-builder",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -28,7 +28,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin-common": "workspace:*"
+    "@myparcel-pdk/admin-common": "workspace:^1.0.0-alpha.1"
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*"

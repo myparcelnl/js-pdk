@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.105](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-dashicons@1.0.0-alpha.104...@myparcel-pdk/admin-preset-dashicons@1.0.0-alpha.105) "@myparcel-pdk/admin-preset-dashicons" (2023-09-06)
+
+
+
+
 ## [1.0.0-alpha.96](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-dashicons@1.0.0-alpha.95...@myparcel-pdk/admin-preset-dashicons@1.0.0-alpha.96) "@myparcel-pdk/admin-preset-dashicons" (2023-08-08)
 
 
