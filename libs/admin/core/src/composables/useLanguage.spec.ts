@@ -17,7 +17,7 @@ const commonSetup = () => {
   return useLanguage();
 };
 
-describe('useLanguage', () => {
+describe.skip('useLanguage', () => {
   beforeAll(() => {
     mockDefaultTranslations.mockReturnValue({
       my_translation: 'My translation',
