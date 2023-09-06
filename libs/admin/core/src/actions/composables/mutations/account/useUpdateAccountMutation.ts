@@ -16,10 +16,10 @@ export const useUpdateAccountMutation = (): ResolvedQuery<BackendEndpoint.Update
 
   return usePdkMutation(
     BackendEndpoint.UpdateAccount,
-    async ({form}) => {
+    async (input) => {
       const pdk = usePdkAdminApi();
 
-      const response = await pdk.updateAccount({body: formToBody(form)});
+      const response = await pdk.updateAccount({body: formToBody(input.form)});
 
       return response[0];
     },

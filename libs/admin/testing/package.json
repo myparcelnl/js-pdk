@@ -1,13 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-testing",
   "version": "1.0.0-alpha.0",
-  "type": "module",
-  "dependencies": {
-    "@myparcel-pdk/admin-common": "workspace:*",
-    "@testing-library/vue": "^7.0.0",
-    "@vue/test-utils": "^2.4.1",
-    "vitest": "^0.34.3"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -15,6 +8,7 @@
   },
   "license": "MIT",
   "sideEffects": false,
+  "type": "module",
   "exports": "./src/index.ts",
   "types": "./dist/index.d.ts",
   "files": [
@@ -27,6 +21,12 @@
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
+  },
+  "dependencies": {
+    "@myparcel-pdk/admin-common": "workspace:*",
+    "@testing-library/vue": "^7.0.0",
+    "@vue/test-utils": "^2.4.1",
+    "vitest": "^0.34.3"
   },
   "engines": {
     "node": ">=16"
