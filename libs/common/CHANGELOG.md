@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.51](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.50...@myparcel-pdk/common@1.0.0-alpha.51) "@myparcel-pdk/common" (2023-09-06)
+
+
+### Features
+
+* **admin:** make shipment options more dynamic ([#192](https://github.com/myparcelnl/js-pdk/issues/192)) ([7716b86](https://github.com/myparcelnl/js-pdk/commit/7716b86d1b3a4cc65c85778c73c8d85ce00a65cf))
+
+
+
+
 ## [1.0.0-alpha.49](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.48...@myparcel-pdk/common@1.0.0-alpha.49) "@myparcel-pdk/common" (2023-08-21)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/checkout",
-  "version": "1.0.0-alpha.61",
+  "version": "1.0.0-alpha.62",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -28,11 +28,11 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.50",
-    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.26",
-    "@myparcel-pdk/frontend-checkout-delivery-options": "workspace:^1.0.0-alpha.25",
-    "@myparcel-pdk/frontend-checkout-separate-address-fields": "workspace:^1.0.0-alpha.26",
-    "@myparcel-pdk/frontend-checkout-tax-fields": "workspace:^1.0.0-alpha.27"
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.51",
+    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.27",
+    "@myparcel-pdk/frontend-checkout-delivery-options": "workspace:^1.0.0-alpha.26",
+    "@myparcel-pdk/frontend-checkout-separate-address-fields": "workspace:^1.0.0-alpha.27",
+    "@myparcel-pdk/frontend-checkout-tax-fields": "workspace:^1.0.0-alpha.28"
   },
   "engines": {
     "node": ">=16"
