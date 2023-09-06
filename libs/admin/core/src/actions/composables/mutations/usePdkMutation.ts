@@ -23,14 +23,14 @@ type VueMutationObserverOptions<TData = unknown, TError = unknown, TVariables = 
 };
 
 type UsePdkMutation = <
-  N extends BackendEndpoint,
-  TData = BackendEndpointResponse<N>,
-  TError = ApiException,
-  TVariables = ActionInput<N>,
+  E extends BackendEndpoint,
+  TData extends BackendEndpointResponse<E> = BackendEndpointResponse<E>,
+  TError extends ApiException = ApiException,
+  TVariables extends ActionInput<E> = ActionInput<E>,
   TContext = unknown,
 >(
-  endpoint: N,
-  mutationFn?: MaybeRef<MutationFunction<TData, TVariables>>,
+  endpoint: E,
+  mutationFn: MaybeRef<MutationFunction<TData, TVariables>>,
   options?: MaybeRef<
     Omit<VueMutationObserverOptions<TData, TError, TVariables, TContext>, 'mutationKey' | 'mutationFn'>
   >,

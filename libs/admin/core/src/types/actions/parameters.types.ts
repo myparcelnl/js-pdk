@@ -11,44 +11,44 @@ import {type OneOrMore} from '@myparcel/ts-utils';
 import {type AdminContextKey} from '../context.types';
 import {type AdminAction, type AdminActionEndpointMap, type MaybeAdminAction} from './actions.types';
 
-type LabelParameters = {
+interface LabelParameters {
   output?: LabelOutput;
   format?: LabelFormat;
   position?: OneOrMore<LabelPosition>;
-};
+}
 
-type OrderIdParameters = {
+interface OrderIdParameters {
   orderIds?: OrderIds;
-};
+}
 
-type ShipmentIdParameters = {
+interface ShipmentIdParameters {
   shipmentIds?: ShipmentIds;
-};
+}
 
-type FormParameters = {
+interface FormParameters {
   form: FormInstance;
-};
+}
 
-type OptionalFormParameters = {
+interface OptionalFormParameters {
   form?: false | FormInstance;
-};
+}
 
-type ProductIdParameters = {
+interface ProductIdParameters {
   productIds?: OneOrMore<string>;
-};
+}
 
-type HooksParameters = {
+interface HooksParameters {
   hooks: OneOrMore<string>;
-};
+}
 
-type ContextParameters = {
+interface ContextParameters {
   context?: OneOrMore<AdminContextKey>;
-};
+}
 
-export interface EndpointMutationInputMap extends Record<BackendEndpoint, Record<string, unknown>> {
+export interface EndpointMutationInputMap extends Record<BackendEndpoint, object> {
   [BackendEndpoint.FetchContext]: ContextParameters;
 
-  [BackendEndpoint.UpdateAccount]: FormParameters;
+  [BackendEndpoint.UpdateAccount]: OptionalFormParameters;
 
   [BackendEndpoint.ExportOrders]: OrderIdParameters & OptionalFormParameters;
   [BackendEndpoint.FetchOrders]: OrderIdParameters;
