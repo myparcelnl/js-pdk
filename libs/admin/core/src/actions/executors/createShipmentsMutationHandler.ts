@@ -1,5 +1,4 @@
-import {type BackendShipmentEndpoint} from '@myparcel-pdk/common';
-import {type ShipmentIds} from '../../types';
+import {BackendShipmentEndpoint, type ShipmentIds} from '@myparcel-pdk/admin-common';
 import {type QueryHandler} from './types';
 import {createHandlerWithParameters} from './createHandlerWithParameters';
 

@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@myparcel-pdk/admin-core": "workspace:^1.0.0-alpha.103",
+    "@myparcel-pdk/admin-testing": "workspace:*",
     "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
     "@pinia/testing": ">= 0.1.0 < 1",
     "@vitest/coverage-v8": ">= 0.30.0 < 1",

@@ -1,11 +1,10 @@
-import {type Keyable, type SelectOption, type SelectOptionValue} from '@myparcel-pdk/common';
+import {type AdminIcon, type Keyable, type SelectOption, type SelectOptionValue} from '@myparcel-pdk/admin-common';
 import {
   type ComponentOrHtmlElement,
   type ElementName,
   type InteractiveElementInstance,
 } from '@myparcel/vue-form-builder';
 import {type Replace} from '@myparcel/ts-utils';
-import {type AdminIcon} from './common.types';
 
 export type ArrayItem<T> = T extends (infer U)[] ? U : T;
 
@@ -43,5 +42,3 @@ export type RadioGroupOption<Value extends Keyable = Keyable> = SelectOption<Val
   image?: string;
   icon?: AdminIcon;
 };
-
-export type TriStateValue = 0 | 1 | -1;

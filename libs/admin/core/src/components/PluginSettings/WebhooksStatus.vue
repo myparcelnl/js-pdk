@@ -28,7 +28,7 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {Status, type WebhookDefinition} from '@myparcel-pdk/common';
+import {Status, type WebhookDefinition} from '@myparcel-pdk/admin-common';
 import {partitionArray} from '@myparcel/ts-utils';
 import StatusIndicator from '../common/StatusIndicator.vue';
 import ActionButton from '../common/ActionButton.vue';

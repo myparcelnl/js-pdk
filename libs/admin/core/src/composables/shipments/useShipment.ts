@@ -1,4 +1,4 @@
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {useStoreQuery} from '../useStoreQuery';
 import {type ResolvedQuery} from '../../stores';
 

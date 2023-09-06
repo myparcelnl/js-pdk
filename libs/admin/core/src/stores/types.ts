@@ -1,6 +1,6 @@
 import {type UseMutationReturnType} from '@tanstack/vue-query/build/lib/useMutation';
 import {type UseQueryReturnType} from '@tanstack/vue-query';
-import {type BackendEndpoint} from '@myparcel-pdk/common';
+import {type BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {type ApiException} from '@myparcel/sdk';
 import {
   type ActionInput,

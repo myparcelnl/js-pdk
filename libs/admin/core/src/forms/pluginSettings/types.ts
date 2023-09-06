@@ -1,4 +1,4 @@
-import {type Plugin, type TabDefinition} from '@myparcel-pdk/common';
+import {type Plugin, type TabDefinition} from '@myparcel-pdk/admin-common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {type AdminAction, type AdminConfiguration} from '../../types';
 import {type ActionContext} from '../../actions';

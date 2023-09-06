@@ -1,6 +1,6 @@
 import {ref, toRaw} from 'vue';
-import {type Plugin} from '@myparcel-pdk/common';
-import {parseBuilders} from '@myparcel-pdk/admin-form-builder';
+import {type FormBuilder, parseBuilders} from '@myparcel-pdk/admin-form-builder';
+import {type AdminComponent, type Plugin} from '@myparcel-pdk/admin-common';
 import {
   type AnyElementConfiguration,
   defineField,
@@ -25,13 +25,13 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
     const {$attributes, $component, $slot, $wrapper, label, name, $builders, ...props} = toRaw(data);
 
     const common = {
-      component: resolveFormComponent($component),
+      component: resolveFormComponent($component as AdminComponent),
       props: {...props},
       attributes: {...$attributes},
       optional: true,
       slots: $slot ? {default: () => $slot} : undefined,
-      wrapper: $wrapper && typeof $wrapper === 'string' ? resolveFormComponent($wrapper) : undefined,
-      ...parseBuilders($builders ?? [], prefix),
+      wrapper: $wrapper && typeof $wrapper === 'string' ? resolveFormComponent($wrapper as AdminComponent) : undefined,
+      ...parseBuilders(($builders ?? []) as FormBuilder[], prefix),
     } as AnyElementConfiguration;
 
     // Plain element

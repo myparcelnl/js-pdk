@@ -11,8 +11,7 @@
 
 <script lang="ts" setup>
 import {computed, type PropType} from 'vue';
-import {Status} from '@myparcel-pdk/common';
-import {AdminIcon} from '../../types';
+import {AdminIcon, Status} from '@myparcel-pdk/admin-common';
 import {useAdminConfig} from '../../composables';
 
 const props = defineProps({

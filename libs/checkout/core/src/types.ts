@@ -1,4 +1,4 @@
-import {type FrontendEndpoint, type FrontendPdkEndpointObject} from '@myparcel-pdk/common';
+import {type FrontendEndpoint, type FrontendPdkEndpointObject} from '@myparcel-pdk/checkout-common';
 import {type PromiseOr} from '@myparcel/ts-utils';
 import {type MyParcelDeliveryOptions} from '@myparcel/delivery-options';
 import {type CarrierName} from '@myparcel/constants';

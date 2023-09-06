@@ -1,0 +1,37 @@
+{
+  "name": "@myparcel-pdk/admin-common",
+  "version": "1.0.0-alpha.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myparcelnl/js-pdk.git",
+    "directory": "libs/admin/common"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./src",
+    "./dist"
+  ],
+  "scripts": {
+    "build": "run ws:ts:build \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "lint": "run ws:lint \"$(pwd)\"",
+    "lint:fix": "run ws:lint:fix \"$(pwd)\"",
+    "typecheck": "run ws:ts:typecheck \"$(pwd)\""
+  },
+  "dependencies": {
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.51",
+    "@myparcel/constants": "^1.1.0",
+    "@myparcel/ts-utils": "^1.11.0",
+    "@myparcel/vue-form-builder": "^1.0.0-beta.0"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,14 +1,8 @@
-import {Variant} from '@myparcel-pdk/common';
+import {type Notification, NotificationCategory, Variant} from '@myparcel-pdk/admin-common';
 import {toArray} from '@myparcel/ts-utils';
 import {createLogger} from '../logger';
 import {createNotification} from '../createNotification';
-import {
-  type ActionParameters,
-  type AnyActionDefinition,
-  type MaybeAdminAction,
-  type Notification,
-  NotificationCategory,
-} from '../../types';
+import {type ActionParameters, type AnyActionDefinition, type MaybeAdminAction} from '../../types';
 import {type AdminInstance} from '../../data';
 import {useAdminInstance} from '../../composables';
 import {type ActionContext} from '../../actions';

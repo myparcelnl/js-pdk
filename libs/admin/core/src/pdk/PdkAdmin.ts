@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+
 import {type App, createApp} from 'vue';
-import {AdminView} from '@myparcel-pdk/common';
+import {AdminView} from '@myparcel-pdk/admin-common';
 import {type AdminConfiguration, type AdminContextObject} from '../types';
 import {createLogger, getElementContext} from '../services';
 import {type AdminAppConfig, INJECT_GLOBAL_PDK_ADMIN} from '../data';

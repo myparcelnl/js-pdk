@@ -3,7 +3,7 @@
 
 import {toRaw} from 'vue';
 import {get} from 'lodash-unified';
-import {type Plugin} from '@myparcel-pdk/common';
+import {type Plugin} from '@myparcel-pdk/admin-common';
 import {defineForm, type FormInstance} from '@myparcel/vue-form-builder';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {createShipmentFormName} from '../../utils';

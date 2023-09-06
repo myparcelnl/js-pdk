@@ -1,5 +1,5 @@
 import {computed, ref, type UnwrapRef, watch, type WritableComputedRef} from 'vue';
-import {type Keyable} from '@myparcel-pdk/common';
+import {type Keyable} from '@myparcel-pdk/admin-common';
 
 type Value<K extends Keyable = Keyable> = Partial<Record<K, boolean>>;
 

@@ -9,7 +9,7 @@ import {
   type Settings,
   type Shipment,
   type WebhookDefinition,
-} from '@myparcel-pdk/common';
+} from '@myparcel-pdk/admin-common';
 import {type RecursivePartial} from '@myparcel/ts-utils';
 import {AbstractEndpoint} from '@myparcel/sdk';
 import {type AdminContextKey, type AdminContextObject} from '../../types';

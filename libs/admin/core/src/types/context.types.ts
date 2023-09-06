@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {type BackendPdkEndpointObject, type Plugin} from '@myparcel-pdk/common';
+import {type BackendPdkEndpointObject, type Plugin} from '@myparcel-pdk/admin-common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {type OneOrMore, type Replace} from '@myparcel/ts-utils';
 import {type AdminModalKey} from './modal.types';

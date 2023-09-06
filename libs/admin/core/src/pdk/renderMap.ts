@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {type Component} from 'vue';
-import {AdminView, type ComponentImportFunction} from '@myparcel-pdk/common';
+import {AdminView, type ComponentImportFunction} from '@myparcel-pdk/admin-common';
 
 /**
  * Maps components to render methods.

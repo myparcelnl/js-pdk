@@ -1,6 +1,6 @@
 import {get as lodashGet} from 'lodash-es';
 import {get} from '@vueuse/core/index';
-import {type Shipment} from '@myparcel-pdk/common';
+import {type Shipment} from '@myparcel-pdk/admin-common';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {type ElementInstance} from '../../../types';
 import {type TriStateElementProps} from '../../../composables';

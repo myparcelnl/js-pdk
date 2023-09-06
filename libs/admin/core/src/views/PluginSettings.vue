@@ -12,7 +12,7 @@
  */
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {AdminContextKey} from '../types';
 import {useActionStore, useQueryStore} from '../stores';
 import {useStoreContextQuery} from '../composables';

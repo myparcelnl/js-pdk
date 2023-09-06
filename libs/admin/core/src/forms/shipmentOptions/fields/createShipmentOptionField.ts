@@ -1,5 +1,5 @@
 import {snakeCase} from 'lodash-unified';
-import {AdminComponent, type Shipment} from '@myparcel-pdk/common';
+import {AdminComponent, type Shipment} from '@myparcel-pdk/admin-common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {type ShipmentOptionsRefs} from '../types';
 import {createHasShipmentOptionWatcher} from '../helpers';

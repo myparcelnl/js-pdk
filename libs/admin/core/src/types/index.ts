@@ -1,6 +1,5 @@
 export * from './actions';
 export * from './actions.types';
-export * from './common.types';
 export * from './configuration.types';
 export * from './context.types';
 export * from './form.types';

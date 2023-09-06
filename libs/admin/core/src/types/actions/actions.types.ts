@@ -1,4 +1,4 @@
-import {type BackendEndpoint} from '@myparcel-pdk/common';
+import {type BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {type ReverseMap} from '@myparcel/ts-utils';
 
 export enum AdminAction {

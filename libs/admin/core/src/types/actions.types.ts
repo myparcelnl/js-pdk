@@ -1,8 +1,7 @@
 import {type MaybeRef} from '@vueuse/core';
-import {type Variant} from '@myparcel-pdk/common';
+import {type AdminIcon, type Variant} from '@myparcel-pdk/admin-common';
 import {type OneOrMore, type PromiseOr} from '@myparcel/ts-utils';
 import {type ActionContext, type ActionContextWithResponse, type QueryHandler} from '../actions';
-import {type AdminIcon} from './common.types';
 import {
   type ActionParameters,
   type ActionResponse,

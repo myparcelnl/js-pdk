@@ -1,5 +1,5 @@
 import {useMutation} from '@tanstack/vue-query';
-import {type BackendEndpoint} from '@myparcel-pdk/common';
+import {type BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {QUERY_KEY_SHIPMENT} from '../../queries';
 import {encodeArrayParameter} from '../../../../utils';

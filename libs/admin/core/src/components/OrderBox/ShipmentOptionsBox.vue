@@ -25,8 +25,8 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
+import {AdminIcon} from '@myparcel-pdk/admin-common';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
-import {AdminIcon} from '../../types';
 import {instantiateActions} from '../../services';
 import {useLanguage, useOrderData, usePluginSettings} from '../../composables';
 import {

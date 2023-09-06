@@ -4,9 +4,9 @@ import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, type S
 import {setActivePinia} from 'pinia';
 import {mount} from '@vue/test-utils';
 import {createTestingPinia} from '@pinia/testing';
-import {doComponentTestSetup, doComponentTestTeardown, setup} from '@myparcel-pdk/admin-component-tests';
 import {useQueryStore} from '../stores';
 import {globalLogger} from '../services';
+import {doComponentTestSetup, doComponentTestTeardown, mockDefaultTranslations} from '../__tests__';
 import {useLanguage} from './useLanguage';
 
 let warnSpy: SpyInstance;
@@ -19,7 +19,7 @@ const commonSetup = () => {
 
 describe('useLanguage', () => {
   beforeAll(() => {
-    setup.getDefaultTranslations.mockReturnValue({
+    mockDefaultTranslations.mockReturnValue({
       my_translation: 'My translation',
       my_translation_with_replacement: 'My translation with replacement: {platform.backofficeUrl}',
     });
@@ -43,7 +43,7 @@ describe('useLanguage', () => {
   });
 
   afterAll(() => {
-    setup.getDefaultTranslations.mockReset();
+    mockDefaultTranslations.mockReset();
     doComponentTestTeardown();
   });
 

@@ -1,5 +1,5 @@
 import {get} from '@vueuse/core/index';
-import {AdminComponent, type Plugin} from '@myparcel-pdk/common';
+import {AdminComponent, type Plugin} from '@myparcel-pdk/admin-common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
 import {type ShipmentOptionsRefs} from '../types';

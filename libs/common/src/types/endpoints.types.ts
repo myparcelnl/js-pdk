@@ -1,15 +1,18 @@
 import {type EndpointDefinition} from '@myparcel/sdk';
-import {type BackendEndpoint, type FrontendEndpoint, type Plugin} from '..';
-
-export type AnyEndpoint = FrontendEndpoint | BackendEndpoint;
+import {type Plugin} from './php-pdk.types';
 
 export interface PdkEndpointDefinition extends EndpointDefinition {
   formattedResponse?: unknown;
 }
 
-export type ExtractEndpointDefinition<E extends AnyEndpoint, D extends PdkEndpointDefinition> = Extract<D, {name: E}>;
+export type ExtractEndpointDefinition<E extends string, D extends PdkEndpointDefinition> = Extract<
+  D,
+  {
+    name: E;
+  }
+>;
 
-export type PdkEndpointResponse<E extends AnyEndpoint, D extends PdkEndpointDefinition> = ExtractEndpointDefinition<
+export type PdkEndpointResponse<E extends string, D extends PdkEndpointDefinition> = ExtractEndpointDefinition<
   E,
   D
 > extends {
@@ -18,13 +21,9 @@ export type PdkEndpointResponse<E extends AnyEndpoint, D extends PdkEndpointDefi
   ? R
   : ExtractEndpointDefinition<E, D>['response'];
 
-export type PdkEndpointParameters<E extends AnyEndpoint, D extends PdkEndpointDefinition> = ExtractEndpointDefinition<
+export type PdkEndpointParameters<E extends string, D extends PdkEndpointDefinition> = ExtractEndpointDefinition<
   E,
   D
 >['parameters'];
 
-export type EndpointObject<T extends AnyEndpoint> = Record<T, Plugin.AbstractEndpointRequest>;
-
-export type BackendPdkEndpointObject = EndpointObject<BackendEndpoint>;
-
-export type FrontendPdkEndpointObject = EndpointObject<FrontendEndpoint>;
+export type EndpointObject<E extends string> = Record<E, Plugin.AbstractEndpointRequest>;

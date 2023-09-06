@@ -40,9 +40,13 @@
 
 <script lang="ts" setup>
 import {computed, type PropType, ref, watch} from 'vue';
-import {AdminComponent, type PrefixedAdminComponent, type TabDefinition} from '@myparcel-pdk/common';
+import {
+  AdminComponent,
+  prefixComponent,
+  type PrefixedAdminComponent,
+  type TabDefinition,
+} from '@myparcel-pdk/admin-common';
 import {type ComponentOrHtmlElement} from '@myparcel/vue-form-builder';
-import {prefixComponent} from '../../helpers';
 import {HASH_SEPARATOR} from '../../data';
 import {useAdminConfig, useLanguage} from '../../composables';
 

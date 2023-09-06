@@ -13,7 +13,7 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {type NotificationCategory, type NotificationFilter} from '../../types';
+import {type NotificationCategory, type NotificationFilter} from '@myparcel-pdk/admin-common';
 import {useNotificationStore} from '../../stores';
 import {useAdminConfig} from '../../composables';
 

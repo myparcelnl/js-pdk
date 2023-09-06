@@ -1,3 +1,5 @@
+export * as testing from './__tests__';
+
 export * from './actions';
 export * from './components';
 export * from './composables';

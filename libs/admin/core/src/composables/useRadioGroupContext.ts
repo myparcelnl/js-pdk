@@ -1,14 +1,15 @@
 import {computed, type ComputedRef, type Ref, type WritableComputedRef} from 'vue';
 import {get} from '@vueuse/core';
 import {
+  type AdminIcon,
   type Keyable,
   type SelectOption,
   type SelectOptionValue,
   type SelectOptionWithLabel,
-} from '@myparcel-pdk/common';
+} from '@myparcel-pdk/admin-common';
 import {isOfType} from '@myparcel/ts-utils';
 import {createFormElement, createObjectWithKeys} from '../utils';
-import {type AdminIcon, type ElementInstance, type RadioGroupOption} from '../types';
+import {type ElementInstance, type RadioGroupOption} from '../types';
 import {useSelectInputContext} from './useSelectInputContext';
 import {type UseInputWithOptionsContext} from './useInputWithOptionsContext';
 

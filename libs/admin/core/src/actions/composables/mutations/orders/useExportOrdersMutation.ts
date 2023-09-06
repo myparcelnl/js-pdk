@@ -1,5 +1,5 @@
 import {useQueryClient} from '@tanstack/vue-query';
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {usePdkMutation} from '../usePdkMutation';
 import {encodeArrayParameter, formToBody} from '../../../../utils';

@@ -1,4 +1,4 @@
-import {type Shipment} from '@myparcel-pdk/common';
+import {type Shipment} from '@myparcel-pdk/admin-common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {getCarrier} from './getCarrier';
 

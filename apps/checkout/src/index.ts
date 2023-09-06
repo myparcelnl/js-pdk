@@ -1,6 +1,6 @@
 export type {AddressFields} from '@myparcel-pdk/checkout-core';
 
-export type {FrontendEndpoint, FrontendPdkEndpointObject} from '@myparcel-pdk/common';
+export type {FrontendEndpoint} from '@myparcel-pdk/checkout-common';
 
 export {
   AddressField,

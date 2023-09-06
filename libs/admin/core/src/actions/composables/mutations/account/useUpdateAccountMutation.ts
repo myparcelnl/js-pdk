@@ -1,10 +1,10 @@
 import {useQueryClient} from '@tanstack/vue-query';
-import {BackendEndpoint, Variant} from '@myparcel-pdk/common';
+import {BackendEndpoint, NotificationCategory, Variant} from '@myparcel-pdk/admin-common';
 import {isOfType} from '@myparcel/ts-utils';
 import {type ApiException} from '@myparcel/sdk';
 import {usePdkMutation} from '../usePdkMutation';
 import {formToBody} from '../../../../utils';
-import {type ActionInput, AdminContextKey, NotificationCategory} from '../../../../types';
+import {type ActionInput, AdminContextKey} from '../../../../types';
 import {type ResolvedQuery, useNotificationStore} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
 import {useLanguage} from '../../../../composables';

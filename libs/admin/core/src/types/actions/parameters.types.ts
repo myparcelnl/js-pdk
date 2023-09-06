@@ -1,8 +1,14 @@
-import {type BackendEndpoint, type LabelFormat, type LabelOutput, type LabelPosition} from '@myparcel-pdk/common';
+import {
+  type BackendEndpoint,
+  type LabelFormat,
+  type LabelOutput,
+  type LabelPosition,
+  type OrderIds,
+  type ShipmentIds,
+} from '@myparcel-pdk/admin-common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {type AdminContextKey} from '../context.types';
-import {type OrderIds, type ShipmentIds} from '../common.types';
 import {type AdminAction, type AdminActionEndpointMap, type MaybeAdminAction} from './actions.types';
 
 type LabelParameters = {

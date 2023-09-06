@@ -1,4 +1,4 @@
-import {type BackendEndpoint, type PdkEndpointResponse} from '@myparcel-pdk/common';
+import {type BackendEndpoint, type PdkEndpointResponse} from '@myparcel-pdk/admin-common';
 import {type BackendEndpointDefinition} from '../../sdk';
 import {type AdminAction, type AdminActionEndpointMap, type MaybeAdminAction} from './actions.types';
 

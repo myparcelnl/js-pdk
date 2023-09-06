@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {AdminComponent, type Plugin} from '@myparcel-pdk/common';
+import {AdminComponent, type Plugin} from '@myparcel-pdk/admin-common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {generateFormFields} from './generateFormFields';
 

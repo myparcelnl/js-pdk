@@ -23,9 +23,6 @@
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
-  "dependencies": {
-    "@myparcel-pdk/admin-form-builder": "workspace:^1.0.0-alpha.2"
-  },
   "devDependencies": {
     "vue": "^3.3.0"
   },

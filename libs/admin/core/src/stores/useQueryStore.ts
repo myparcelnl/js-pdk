@@ -2,7 +2,7 @@ import {computed, type ComputedRef, type Ref, ref, unref} from 'vue';
 import {defineStore} from 'pinia';
 import {get as vuGet, type MaybeRef} from '@vueuse/core';
 import {type QueryClient, useQueryClient} from '@tanstack/vue-query';
-import {BACKEND_ENDPOINTS_ORDERS, BACKEND_ENDPOINTS_SHIPMENTS, BackendEndpoint} from '@myparcel-pdk/common';
+import {BACKEND_ENDPOINTS_ORDERS, BACKEND_ENDPOINTS_SHIPMENTS, BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {getOrderId, validateId} from '../utils';
 import {AdminContextKey, AdminInstanceContextKey} from '../types';

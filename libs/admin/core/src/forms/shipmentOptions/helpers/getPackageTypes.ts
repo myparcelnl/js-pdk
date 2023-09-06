@@ -1,4 +1,4 @@
-import {type SelectOption} from '@myparcel-pdk/common';
+import {type SelectOption} from '@myparcel-pdk/admin-common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
 import {getPackageTypeTranslation} from '../../../helpers';

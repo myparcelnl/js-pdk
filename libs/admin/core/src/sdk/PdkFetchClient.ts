@@ -1,3 +1,4 @@
+import {type Notification} from '@myparcel-pdk/admin-common';
 import {isOfType} from '@myparcel/ts-utils';
 import {
   type AbstractEndpoint,
@@ -10,7 +11,6 @@ import {
   type Options,
   type ResponseWrapper,
 } from '@myparcel/sdk';
-import {type Notification} from '../types';
 import {useNotificationStore} from '../stores';
 
 type EndpointResponseBodyWithNotifications = {

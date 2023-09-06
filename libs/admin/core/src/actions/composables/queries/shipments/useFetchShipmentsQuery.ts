@@ -1,5 +1,5 @@
 import {type QueryKey, useQuery, useQueryClient} from '@tanstack/vue-query';
-import {type BackendEndpoint, type Shipment} from '@myparcel-pdk/common';
+import {type BackendEndpoint, type Shipment} from '@myparcel-pdk/admin-common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {QUERY_KEY_SHIPMENT} from '../queryKeys';
 import {encodeArrayParameter} from '../../../../utils';
@@ -27,14 +27,13 @@ export const useFetchShipmentsQuery = <I extends number>(
         },
       })) as BackendEndpointResponse<BackendEndpoint.FetchOrders>;
 
-      const foundShipment = toArray(orders).reduce((acc, order) => {
+      return toArray(orders).reduce((acc, order) => {
         const shipment = order.shipments?.find((shipment) => shipment.id === shipmentIds);
 
         return shipment ?? acc;
       }, undefined as Shipment.ModelShipment | undefined);
-
-      return foundShipment as BackendEndpointResponse<BackendEndpoint.FetchShipments>;
     },
+    // @ts-expect-error todo
     {
       ...queryClient.defaultQueryOptions(),
       onSuccess(data) {

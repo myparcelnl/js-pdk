@@ -11,11 +11,11 @@
 <script lang="ts" setup>
 import {computed, markRaw, ref, watch} from 'vue';
 import {get} from '@vueuse/core';
-import {AdminComponent, Size, Variant} from '@myparcel-pdk/common';
+import {AdminComponent, NotificationCategory, Size, Variant} from '@myparcel-pdk/admin-common';
 import {defineField, defineForm, FormHook, type FormInstance, MagicForm} from '@myparcel/vue-form-builder';
 import NotificationContainer from '../common/NotificationContainer.vue';
 import {ResetButton, SubmitButton} from '../common';
-import {AdminAction, NotificationCategory} from '../../types';
+import {AdminAction} from '../../types';
 import {useActionStore} from '../../stores';
 import {defineFormField, FORM_KEY_ACCOUNT_SETTINGS, resolveFormComponent} from '../../forms';
 import {useAdminConfig, usePluginSettings, useStoreContextQuery} from '../../composables';

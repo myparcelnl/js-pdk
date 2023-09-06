@@ -1,5 +1,5 @@
 import {QueryClient} from '@tanstack/vue-query';
-import {NotificationCategory} from '../../types';
+import {NotificationCategory} from '@myparcel-pdk/admin-common';
 import {useNotificationStore} from '../../stores';
 import {addErrorToNotifications} from '../../services';
 

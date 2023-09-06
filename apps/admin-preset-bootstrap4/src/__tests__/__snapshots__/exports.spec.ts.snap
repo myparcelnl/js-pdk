@@ -2,7 +2,6 @@
 
 exports[`exports > exports from index.ts 1`] = `
 [
-  "bootstrap4Config",
   "Bootstrap4Badge",
   "Bootstrap4Box",
   "Bootstrap4Button",
@@ -20,5 +19,6 @@ exports[`exports > exports from index.ts 1`] = `
   "Bootstrap4Table",
   "Bootstrap4TextArea",
   "Bootstrap4TextInput",
+  "bootstrap4Config",
 ]
 `;

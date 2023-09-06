@@ -27,12 +27,9 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
+    "@myparcel-pdk/admin-common": "workspace:*",
     "@myparcel-pdk/admin-form-builder": "workspace:^1.0.0-alpha.2",
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.51",
-    "@myparcel/constants": "^1.0.0",
     "@myparcel/sdk": "^3.0.0",
-    "@myparcel/ts-utils": "^1.9.0",
-    "@myparcel/vue-form-builder": "^1.0.0-beta.0",
     "@tanstack/vue-query": "^4.0.0",
     "@vueuse/core": "^10.0.0",
     "lodash": "^4.17.21",
@@ -42,6 +39,7 @@
     "vue": "^3.3.0"
   },
   "devDependencies": {
+    "@myparcel-pdk/admin-testing": "workspace:*",
     "@myparcel-pdk/build-vite": "workspace:*",
     "@types/lodash-es": "^4.17.6",
     "@vue/test-utils": "^2.0.0",

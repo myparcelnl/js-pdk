@@ -1,4 +1,4 @@
-import {type BackendEndpoint, type Variant} from '@myparcel-pdk/common';
+import {type BackendEndpoint, type Notification, type Variant} from '@myparcel-pdk/admin-common';
 import {type OneOrMore, type PromiseOr} from '@myparcel/ts-utils';
 import {
   type ActionParameters,
@@ -8,7 +8,6 @@ import {
   type BackendEndpointResponse,
   type EndpointAdminActionMap,
   type MaybeAdminAction,
-  type Notification,
 } from '../../types';
 import {type AdminInstance} from '../../data';
 

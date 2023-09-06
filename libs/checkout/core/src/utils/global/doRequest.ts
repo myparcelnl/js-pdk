@@ -1,4 +1,4 @@
-import {type FrontendEndpoint} from '@myparcel-pdk/common';
+import {type FrontendEndpoint} from '@myparcel-pdk/checkout-common';
 import {useSettings} from '../useSettings';
 import {type FrontendEndpointParameters, type FrontendEndpointResponse} from '../../types/endpoints.types';
 import {useConfig} from '../../config';

@@ -1,10 +1,10 @@
 import {
-  type FrontendEndpoint,
   type PdkEndpointDefinition,
   type PdkEndpointParameters,
   type PdkEndpointResponse,
   type Plugin,
 } from '@myparcel-pdk/common';
+import {type FrontendEndpoint} from '@myparcel-pdk/checkout-common';
 
 export type FrontendEndpointResponse<E extends FrontendEndpoint> = PdkEndpointResponse<E, FrontendEndpointDefinition>;
 

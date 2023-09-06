@@ -1,6 +1,6 @@
 import {computed, type ComputedRef} from 'vue';
 import {get} from '@vueuse/core';
-import {BackendEndpoint, type Plugin} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {useStoreQuery} from '../useStoreQuery';
 import {useInstanceContext} from '../context';
 import {validateId} from '../../utils';
@@ -8,7 +8,7 @@ import {AdminInstanceContextKey} from '../../types';
 import {type ResolvedQuery} from '../../stores';
 
 export interface UseProductData {
-  product: ComputedRef<Plugin.ModelPdkProduct | undefined>;
+  product: ComputedRef;
   query: ResolvedQuery<BackendEndpoint.FetchProducts>;
 }
 

@@ -1,4 +1,4 @@
-import {type Shipment} from '@myparcel-pdk/common';
+import {type Shipment} from '@myparcel-pdk/admin-common';
 
 export type FieldName = string;
 

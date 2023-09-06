@@ -9,9 +9,8 @@
 </template>
 
 <script lang="ts" setup>
-import {Variant} from '@myparcel-pdk/common';
+import {AdminIcon, Variant} from '@myparcel-pdk/admin-common';
 import {useForm} from '@myparcel/vue-form-builder';
-import {AdminIcon} from '../../types';
 
 defineProps<{
   disabled?: boolean;

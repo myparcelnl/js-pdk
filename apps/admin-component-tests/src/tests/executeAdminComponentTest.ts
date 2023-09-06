@@ -2,8 +2,8 @@
 import {type Component} from 'vue';
 import {afterAll, afterEach, beforeAll, beforeEach, describe, test, vi} from 'vitest';
 import {type QueryKey} from '@tanstack/vue-query';
-import {type AdminComponent, type AdminView} from '@myparcel-pdk/common';
 import {type AdminInstance, createAdminConfig, createLogger} from '@myparcel-pdk/admin-core';
+import {type AdminComponent, type AdminView} from '@myparcel-pdk/admin-common';
 import {testMap} from './testMap';
 
 export const executeAdminComponentTest = (name: AdminComponent, component: Omit<Component, 'props'>): void => {

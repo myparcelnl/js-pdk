@@ -1,4 +1,4 @@
-import {type SelectOption} from '@myparcel-pdk/common';
+import {type SelectOption} from '@myparcel-pdk/admin-common';
 import {type ElementInstance} from '../../../types';
 import {TriState} from '../../../data';
 import {Format, type Formatter} from '../../../composables';

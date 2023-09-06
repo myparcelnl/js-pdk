@@ -260,6 +260,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/code-frame@npm:^7.10.4":
+  version: 7.22.13
+  resolution: "@babel/code-frame@npm:7.22.13"
+  dependencies:
+    "@babel/highlight": ^7.22.13
+    chalk: ^2.4.2
+  checksum: 22e342c8077c8b77eeb11f554ecca2ba14153f707b85294fcf6070b6f6150aae88a7b7436dd88d8c9289970585f3fe5b9b941c5aa3aa26a6d5a8ef3f292da058
+  languageName: node
+  linkType: hard
+
 "@babel/helper-string-parser@npm:^7.22.5":
   version: 7.22.5
   resolution: "@babel/helper-string-parser@npm:7.22.5"
@@ -285,6 +295,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/highlight@npm:^7.22.13":
+  version: 7.22.13
+  resolution: "@babel/highlight@npm:7.22.13"
+  dependencies:
+    "@babel/helper-validator-identifier": ^7.22.5
+    chalk: ^2.4.2
+    js-tokens: ^4.0.0
+  checksum: 7266d2bff8aa8fc78eb65b6e92a8211e12897a731126a282d2f9bb50d8fcaa4c1b02af2284f990ac7e3ab8d892d448a2cab8f5ed0ea8a90bce2c025b11ebe802
+  languageName: node
+  linkType: hard
+
 "@babel/parser@npm:^7.20.15, @babel/parser@npm:^7.21.3":
   version: 7.22.10
   resolution: "@babel/parser@npm:7.22.10"
@@ -300,6 +321,15 @@ __metadata:
   dependencies:
     regenerator-runtime: ^0.14.0
   checksum: 524d41517e68953dbc73a4f3616b8475e5813f64e28ba89ff5fca2c044d535c2ea1a3f310df1e5bb06162e1f0b401b5c4af73fe6e2519ca2450d9d8c44cf268d
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.21.0":
+  version: 7.22.15
+  resolution: "@babel/runtime@npm:7.22.15"
+  dependencies:
+    regenerator-runtime: ^0.14.0
+  checksum: 793296df1e41599a935a3d77ec01eb6088410d3fd4dbe4e92f06c6b7bb2f8355024e6d78621a3a35f44e0e23b0b59107f23d585384df4f3123256a1e1492040e
   languageName: node
   linkType: hard
 
@@ -1173,11 +1203,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@myparcel-pdk/admin-common@workspace:*, @myparcel-pdk/admin-common@workspace:libs/admin/common":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/admin-common@workspace:libs/admin/common"
+  dependencies:
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.51"
+    "@myparcel/constants": ^1.1.0
+    "@myparcel/ts-utils": ^1.11.0
+    "@myparcel/vue-form-builder": ^1.0.0-beta.0
+  languageName: unknown
+  linkType: soft
+
 "@myparcel-pdk/admin-component-tests@workspace:*, @myparcel-pdk/admin-component-tests@workspace:apps/admin-component-tests":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-component-tests@workspace:apps/admin-component-tests"
   dependencies:
-    "@myparcel-pdk/admin-core": "workspace:*"
+    "@myparcel-pdk/admin-core": "workspace:^1.0.0-alpha.103"
+    "@myparcel-pdk/admin-testing": "workspace:*"
     "@myparcel/vue-form-builder": ^1.0.0-alpha.1
     "@pinia/testing": ">= 0.1.0 < 1"
     "@vitest/coverage-v8": ">= 0.30.0 < 1"
@@ -1191,17 +1233,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/admin-core@workspace:*, @myparcel-pdk/admin-core@workspace:libs/admin/core":
+"@myparcel-pdk/admin-core@workspace:^1.0.0-alpha.103, @myparcel-pdk/admin-core@workspace:libs/admin/core":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-core@workspace:libs/admin/core"
   dependencies:
-    "@myparcel-pdk/admin-form-builder": "workspace:*"
+    "@myparcel-pdk/admin-common": "workspace:*"
+    "@myparcel-pdk/admin-form-builder": "workspace:^1.0.0-alpha.2"
+    "@myparcel-pdk/admin-testing": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/common": "workspace:*"
-    "@myparcel/constants": ^1.0.0
     "@myparcel/sdk": ^3.0.0
-    "@myparcel/ts-utils": ^1.9.0
-    "@myparcel/vue-form-builder": ^1.0.0-beta.0
     "@tanstack/vue-query": ^4.0.0
     "@types/lodash-es": ^4.17.6
     "@vue/test-utils": ^2.0.0
@@ -1238,13 +1278,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/admin-form-builder@workspace:*, @myparcel-pdk/admin-form-builder@workspace:libs/admin/form-builder":
+"@myparcel-pdk/admin-form-builder@workspace:^1.0.0-alpha.2, @myparcel-pdk/admin-form-builder@workspace:libs/admin/form-builder":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-form-builder@workspace:libs/admin/form-builder"
   dependencies:
+    "@myparcel-pdk/admin-common": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel/ts-utils": ^1.9.0
-    "@myparcel/vue-form-builder": ^1.0.0-beta.0
   languageName: unknown
   linkType: soft
 
@@ -1252,7 +1291,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-js@workspace:apps/admin-js"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:*"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.103"
     "@myparcel-pdk/build-vite": "workspace:*"
   peerDependencies:
     vue: ^3
@@ -1263,7 +1302,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-bootstrap4@workspace:apps/admin-preset-bootstrap4"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:*"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.103"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel/ts-utils": ^1.9.0
@@ -1279,7 +1318,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-dashicons@workspace:apps/admin-preset-dashicons"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:*"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.103"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     typescript: ^5.1.6
@@ -1291,7 +1330,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-default@workspace:apps/admin-preset-default"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:*"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.103"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel/ts-utils": ^1.9.0
@@ -1305,7 +1344,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-fontawesome@workspace:apps/admin-preset-fontawesome"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:*"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.103"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     typescript: ^5.1.6
@@ -1313,11 +1352,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/admin@workspace:*, @myparcel-pdk/admin@workspace:apps/admin":
+"@myparcel-pdk/admin-testing@workspace:*, @myparcel-pdk/admin-testing@workspace:libs/admin/testing":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/admin-testing@workspace:libs/admin/testing"
+  dependencies:
+    "@myparcel-pdk/admin-common": "workspace:*"
+    "@testing-library/vue": ^7.0.0
+    "@vue/test-utils": ^2.4.1
+    vitest: ^0.34.3
+  languageName: unknown
+  linkType: soft
+
+"@myparcel-pdk/admin@workspace:*, @myparcel-pdk/admin@workspace:^1.0.0-alpha.103, @myparcel-pdk/admin@workspace:apps/admin":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin@workspace:apps/admin"
   dependencies:
-    "@myparcel-pdk/admin-core": "workspace:*"
+    "@myparcel-pdk/admin-core": "workspace:^1.0.0-alpha.103"
   languageName: unknown
   linkType: soft
 
@@ -1384,22 +1434,30 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout-core@workspace:*, @myparcel-pdk/checkout-core@workspace:libs/checkout/core":
+"@myparcel-pdk/checkout-common@workspace:*, @myparcel-pdk/checkout-common@workspace:libs/checkout/common":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/checkout-common@workspace:libs/checkout/common"
+  dependencies:
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.51"
+  languageName: unknown
+  linkType: soft
+
+"@myparcel-pdk/checkout-core@workspace:^1.0.0-alpha.27, @myparcel-pdk/checkout-core@workspace:libs/checkout/core":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/checkout-core@workspace:libs/checkout/core"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/common": "workspace:*"
+    "@myparcel-pdk/checkout-common": "workspace:*"
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout-delivery-options@workspace:*, @myparcel-pdk/checkout-delivery-options@workspace:libs/checkout/delivery-options":
+"@myparcel-pdk/checkout-delivery-options@workspace:^1.0.0-alpha.26, @myparcel-pdk/checkout-delivery-options@workspace:libs/checkout/delivery-options":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/checkout-delivery-options@workspace:libs/checkout/delivery-options"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/checkout-core": "workspace:*"
-    "@myparcel-pdk/delivery-options": "workspace:*"
+    "@myparcel-pdk/checkout-core": "workspace:^1.0.0-alpha.27"
+    "@myparcel-pdk/delivery-options": "workspace:^1.0.0-alpha.10"
     "@myparcel/delivery-options": ^5.7.2
     "@myparcel/ts-utils": ^1.9.0
   languageName: unknown
@@ -1410,50 +1468,49 @@ __metadata:
   resolution: "@myparcel-pdk/checkout-js@workspace:apps/checkout-js"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/checkout": "workspace:*"
+    "@myparcel-pdk/checkout": "workspace:^1.0.0-alpha.62"
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout-separate-address-fields@workspace:*, @myparcel-pdk/checkout-separate-address-fields@workspace:libs/checkout/separate-address-fields":
+"@myparcel-pdk/checkout-separate-address-fields@workspace:^1.0.0-alpha.27, @myparcel-pdk/checkout-separate-address-fields@workspace:libs/checkout/separate-address-fields":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/checkout-separate-address-fields@workspace:libs/checkout/separate-address-fields"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/checkout-core": "workspace:*"
+    "@myparcel-pdk/checkout-core": "workspace:^1.0.0-alpha.27"
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout-tax-fields@workspace:*, @myparcel-pdk/checkout-tax-fields@workspace:libs/checkout/tax-fields":
+"@myparcel-pdk/checkout-tax-fields@workspace:^1.0.0-alpha.28, @myparcel-pdk/checkout-tax-fields@workspace:libs/checkout/tax-fields":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/checkout-tax-fields@workspace:libs/checkout/tax-fields"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/checkout-core": "workspace:*"
+    "@myparcel-pdk/checkout-core": "workspace:^1.0.0-alpha.27"
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout@workspace:*, @myparcel-pdk/checkout@workspace:apps/checkout":
+"@myparcel-pdk/checkout@workspace:^1.0.0-alpha.62, @myparcel-pdk/checkout@workspace:apps/checkout":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/checkout@workspace:apps/checkout"
   dependencies:
-    "@myparcel-pdk/checkout-core": "workspace:*"
-    "@myparcel-pdk/checkout-delivery-options": "workspace:*"
-    "@myparcel-pdk/checkout-separate-address-fields": "workspace:*"
-    "@myparcel-pdk/checkout-tax-fields": "workspace:*"
-    "@myparcel-pdk/common": "workspace:*"
+    "@myparcel-pdk/checkout-core": "workspace:^1.0.0-alpha.27"
+    "@myparcel-pdk/checkout-delivery-options": "workspace:^1.0.0-alpha.26"
+    "@myparcel-pdk/checkout-separate-address-fields": "workspace:^1.0.0-alpha.27"
+    "@myparcel-pdk/checkout-tax-fields": "workspace:^1.0.0-alpha.28"
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.51"
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/common@workspace:*, @myparcel-pdk/common@workspace:libs/common":
+"@myparcel-pdk/common@workspace:*, @myparcel-pdk/common@workspace:^1.0.0-alpha.51, @myparcel-pdk/common@workspace:libs/common":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/common@workspace:libs/common"
   dependencies:
-    "@myparcel-pdk/admin-form-builder": "workspace:*"
     vue: ^3.3.0
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/delivery-options@workspace:*, @myparcel-pdk/delivery-options@workspace:libs/delivery-options":
+"@myparcel-pdk/delivery-options@workspace:^1.0.0-alpha.10, @myparcel-pdk/delivery-options@workspace:libs/delivery-options":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/delivery-options@workspace:libs/delivery-options"
   dependencies:
@@ -1529,7 +1586,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel/constants@npm:^1.0.0":
+"@myparcel/constants@npm:^1.0.0, @myparcel/constants@npm:^1.1.0":
   version: 1.1.0
   resolution: "@myparcel/constants@npm:1.1.0"
   dependencies:
@@ -1586,7 +1643,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel/ts-utils@npm:^1.6.0, @myparcel/ts-utils@npm:^1.7.0, @myparcel/ts-utils@npm:^1.9.0":
+"@myparcel/ts-utils@npm:^1.11.0, @myparcel/ts-utils@npm:^1.6.0, @myparcel/ts-utils@npm:^1.7.0, @myparcel/ts-utils@npm:^1.9.0":
   version: 1.11.0
   resolution: "@myparcel/ts-utils@npm:1.11.0"
   checksum: 8ec94b58dd834913448048551ab9ca6d521f29c8c341d78d585a0edc260309472c8bcb33c09f236460f7ff47e4d22eee389da884d80dad7dc8ed16ae4210b7dc
@@ -2334,6 +2391,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@testing-library/dom@npm:^9.0.1":
+  version: 9.3.1
+  resolution: "@testing-library/dom@npm:9.3.1"
+  dependencies:
+    "@babel/code-frame": ^7.10.4
+    "@babel/runtime": ^7.12.5
+    "@types/aria-query": ^5.0.1
+    aria-query: 5.1.3
+    chalk: ^4.1.0
+    dom-accessibility-api: ^0.5.9
+    lz-string: ^1.5.0
+    pretty-format: ^27.0.2
+  checksum: 8ee3136451644e39990edea93709c38cf1e8ce5306f3c66273ca00935963faa51ca74e8d92b02eb442ccb842cfa28ca62833e393e075eb269cf9bef6f5600663
+  languageName: node
+  linkType: hard
+
+"@testing-library/vue@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "@testing-library/vue@npm:7.0.0"
+  dependencies:
+    "@babel/runtime": ^7.21.0
+    "@testing-library/dom": ^9.0.1
+    "@vue/test-utils": ^2.3.1
+  peerDependencies:
+    "@vue/compiler-sfc": ">= 3"
+    vue: ">= 3"
+  checksum: 73dc8112e576e2038004cf4d2b206d3d9de9b67407e74782b10e2d83eae9b1b92eab2925dfd0d2fc8a332846161bda5d9574504893a24da232af01765f88c5c9
+  languageName: node
+  linkType: hard
+
 "@tokenizer/token@npm:^0.3.0":
   version: 0.3.0
   resolution: "@tokenizer/token@npm:0.3.0"
@@ -2361,6 +2448,13 @@ __metadata:
   version: 1.0.38
   resolution: "@types/argparse@npm:1.0.38"
   checksum: 26ed7e3f1e3595efdb883a852f5205f971b798e4c28b7e30a32c5298eee596e8b45834ce831f014d250b9730819ab05acff5b31229666d3af4ba465b4697d0eb
+  languageName: node
+  linkType: hard
+
+"@types/aria-query@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "@types/aria-query@npm:5.0.1"
+  checksum: 69fd7cceb6113ed370591aef04b3fd0742e9a1b06dd045c43531448847b85de181495e4566f98e776b37c422a12fd71866e0a1dfd904c5ec3f84d271682901de
   languageName: node
   linkType: hard
 
@@ -2954,6 +3048,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vitest/expect@npm:0.34.3":
+  version: 0.34.3
+  resolution: "@vitest/expect@npm:0.34.3"
+  dependencies:
+    "@vitest/spy": 0.34.3
+    "@vitest/utils": 0.34.3
+    chai: ^4.3.7
+  checksum: 79afaa37d2efb7bb5503332caf389860b2261f198dbe61557e8061262b628d18658e59eb51d1808ecd35fc59f4bb4d04c0e0f97a27c7db02584ab5b424147b8d
+  languageName: node
+  linkType: hard
+
 "@vitest/runner@npm:0.34.1":
   version: 0.34.1
   resolution: "@vitest/runner@npm:0.34.1"
@@ -2962,6 +3067,17 @@ __metadata:
     p-limit: ^4.0.0
     pathe: ^1.1.1
   checksum: c8108c8f8eb75c9995422689b0c7da6a4793425a673d32d6ce7df99f84be8c2037f0acc46c6f8b55d9bd90a864ff7c5dce2ddc3656b41888b125b9311ae20559
+  languageName: node
+  linkType: hard
+
+"@vitest/runner@npm:0.34.3":
+  version: 0.34.3
+  resolution: "@vitest/runner@npm:0.34.3"
+  dependencies:
+    "@vitest/utils": 0.34.3
+    p-limit: ^4.0.0
+    pathe: ^1.1.1
+  checksum: 945580eaa58e8edbe29a64059bc2a524a9e85117b6d600fdb457cfe84cbfb81bf6d7e98e1227e7cb4e7399992c8fe8d83d0791d0385ff005dc1a4d9da125443b
   languageName: node
   linkType: hard
 
@@ -2976,12 +3092,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vitest/snapshot@npm:0.34.3":
+  version: 0.34.3
+  resolution: "@vitest/snapshot@npm:0.34.3"
+  dependencies:
+    magic-string: ^0.30.1
+    pathe: ^1.1.1
+    pretty-format: ^29.5.0
+  checksum: 234893e91a1efd4bdbbde047a68de40975e02ead8407724ce8ca4a24edf0fb2d725f8a3efceb104965388407b598faf22407aadfbf4164cc74b3cf1e0e9f4543
+  languageName: node
+  linkType: hard
+
 "@vitest/spy@npm:0.34.1":
   version: 0.34.1
   resolution: "@vitest/spy@npm:0.34.1"
   dependencies:
     tinyspy: ^2.1.1
   checksum: 7a3f676096fdf201cb057588cfe3ea1199beb29b50581593c2a9c37be0a7d8b11b0986eeec4f67e358a1b8144b1675154ec5f29b339791f97bc5656fc39d8791
+  languageName: node
+  linkType: hard
+
+"@vitest/spy@npm:0.34.3":
+  version: 0.34.3
+  resolution: "@vitest/spy@npm:0.34.3"
+  dependencies:
+    tinyspy: ^2.1.1
+  checksum: a2b64b9c357a56ad2f2340ecd225ffe787e61afba4ffb24a6670aad3fc90ea2606ed48daa188ed62b3ef67d55c0259fda6b101143d6c91b58c9ac4298d8be4f9
   languageName: node
   linkType: hard
 
@@ -2993,6 +3129,17 @@ __metadata:
     loupe: ^2.3.6
     pretty-format: ^29.5.0
   checksum: 0015504f3af725ef84f9759f08bc051071d29b0024d6bbd27276450cdb9dccde367bb86cfede2ccfef803965f29f0ffb76104e92bf569169f87e0e74e5a720f1
+  languageName: node
+  linkType: hard
+
+"@vitest/utils@npm:0.34.3":
+  version: 0.34.3
+  resolution: "@vitest/utils@npm:0.34.3"
+  dependencies:
+    diff-sequences: ^29.4.3
+    loupe: ^2.3.6
+    pretty-format: ^29.5.0
+  checksum: aeb8ef7fd98b32cb6c403796880d0aa8f5411bbdb249bb23b3301a70e1b7d1ee025ddb204aae8c1db5756f6ac428c49ebbb8e2ed23ce185c8a659b67413efa85
   languageName: node
   linkType: hard
 
@@ -3194,7 +3341,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/test-utils@npm:^2.0.0":
+"@vue/test-utils@npm:^2.0.0, @vue/test-utils@npm:^2.3.1, @vue/test-utils@npm:^2.4.1":
   version: 2.4.1
   resolution: "@vue/test-utils@npm:2.4.1"
   dependencies:
@@ -4065,6 +4212,15 @@ __metadata:
   version: 2.0.1
   resolution: "argparse@npm:2.0.1"
   checksum: 83644b56493e89a254bae05702abf3a1101b4fa4d0ca31df1c9985275a5a5bd47b3c27b7fa0b71098d41114d8ca000e6ed90cad764b306f8a503665e4d517ced
+  languageName: node
+  linkType: hard
+
+"aria-query@npm:5.1.3":
+  version: 5.1.3
+  resolution: "aria-query@npm:5.1.3"
+  dependencies:
+    deep-equal: ^2.0.5
+  checksum: 929ff95f02857b650fb4cbcd2f41072eee2f46159a6605ea03bf63aa572e35ffdff43d69e815ddc462e16e07de8faba3978afc2813650b4448ee18c9895d982b
   languageName: node
   linkType: hard
 
@@ -5535,6 +5691,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"deep-equal@npm:^2.0.5":
+  version: 2.2.2
+  resolution: "deep-equal@npm:2.2.2"
+  dependencies:
+    array-buffer-byte-length: ^1.0.0
+    call-bind: ^1.0.2
+    es-get-iterator: ^1.1.3
+    get-intrinsic: ^1.2.1
+    is-arguments: ^1.1.1
+    is-array-buffer: ^3.0.2
+    is-date-object: ^1.0.5
+    is-regex: ^1.1.4
+    is-shared-array-buffer: ^1.0.2
+    isarray: ^2.0.5
+    object-is: ^1.1.5
+    object-keys: ^1.1.1
+    object.assign: ^4.1.4
+    regexp.prototype.flags: ^1.5.0
+    side-channel: ^1.0.4
+    which-boxed-primitive: ^1.0.2
+    which-collection: ^1.0.1
+    which-typed-array: ^1.1.9
+  checksum: eb61c35157b6ecb96a5359b507b083fbff8ddb4c86a78a781ee38485f77a667465e45d63ee2ebd8a00e86d94c80e499906900cd82c2debb400237e1662cd5397
+  languageName: node
+  linkType: hard
+
 "deep-is@npm:^0.1.3":
   version: 0.1.4
   resolution: "deep-is@npm:0.1.4"
@@ -5727,6 +5909,13 @@ __metadata:
   dependencies:
     esutils: ^2.0.2
   checksum: fd7673ca77fe26cd5cba38d816bc72d641f500f1f9b25b83e8ce28827fe2da7ad583a8da26ab6af85f834138cf8dae9f69b0cd6ab925f52ddab1754db44d99ce
+  languageName: node
+  linkType: hard
+
+"dom-accessibility-api@npm:^0.5.9":
+  version: 0.5.16
+  resolution: "dom-accessibility-api@npm:0.5.16"
+  checksum: 005eb283caef57fc1adec4d5df4dd49189b628f2f575af45decb210e04d634459e3f1ee64f18b41e2dcf200c844bc1d9279d80807e686a30d69a4756151ad248
   languageName: node
   linkType: hard
 
@@ -5969,6 +6158,23 @@ __metadata:
     unbox-primitive: ^1.0.2
     which-typed-array: ^1.1.10
   checksum: 614e2c1c3717cb8d30b6128ef12ea110e06fd7d75ad77091ca1c5dbfb00da130e62e4bbbbbdda190eada098a22b27fe0f99ae5a1171dac2c8663b1e8be8a3a9b
+  languageName: node
+  linkType: hard
+
+"es-get-iterator@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "es-get-iterator@npm:1.1.3"
+  dependencies:
+    call-bind: ^1.0.2
+    get-intrinsic: ^1.1.3
+    has-symbols: ^1.0.3
+    is-arguments: ^1.1.1
+    is-map: ^2.0.2
+    is-set: ^2.0.2
+    is-string: ^1.0.7
+    isarray: ^2.0.5
+    stop-iteration-iterator: ^1.0.0
+  checksum: 8fa118da42667a01a7c7529f8a8cca514feeff243feec1ce0bb73baaa3514560bd09d2b3438873cf8a5aaec5d52da248131de153b28e2638a061b6e4df13267d
   languageName: node
   linkType: hard
 
@@ -8002,7 +8208,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"internal-slot@npm:^1.0.5":
+"internal-slot@npm:^1.0.4, internal-slot@npm:^1.0.5":
   version: 1.0.5
   resolution: "internal-slot@npm:1.0.5"
   dependencies:
@@ -8075,7 +8281,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-arguments@npm:^1.0.4":
+"is-arguments@npm:^1.0.4, is-arguments@npm:^1.1.1":
   version: 1.1.1
   resolution: "is-arguments@npm:1.1.1"
   dependencies:
@@ -8167,7 +8373,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-date-object@npm:^1.0.1":
+"is-date-object@npm:^1.0.1, is-date-object@npm:^1.0.5":
   version: 1.0.5
   resolution: "is-date-object@npm:1.0.5"
   dependencies:
@@ -8235,6 +8441,13 @@ __metadata:
   version: 1.0.1
   resolution: "is-lambda@npm:1.0.1"
   checksum: 93a32f01940220532e5948538699ad610d5924ac86093fcee83022252b363eb0cc99ba53ab084a04e4fb62bf7b5731f55496257a4c38adf87af9c4d352c71c35
+  languageName: node
+  linkType: hard
+
+"is-map@npm:^2.0.1, is-map@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "is-map@npm:2.0.2"
+  checksum: ace3d0ecd667bbdefdb1852de601268f67f2db725624b1958f279316e13fecb8fa7df91fd60f690d7417b4ec180712f5a7ee967008e27c65cfd475cc84337728
   languageName: node
   linkType: hard
 
@@ -8352,6 +8565,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-set@npm:^2.0.1, is-set@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "is-set@npm:2.0.2"
+  checksum: b64343faf45e9387b97a6fd32be632ee7b269bd8183701f3b3f5b71a7cf00d04450ed8669d0bd08753e08b968beda96fca73a10fd0ff56a32603f64deba55a57
+  languageName: node
+  linkType: hard
+
 "is-shared-array-buffer@npm:^1.0.2":
   version: 1.0.2
   resolution: "is-shared-array-buffer@npm:1.0.2"
@@ -8450,12 +8670,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-weakmap@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "is-weakmap@npm:2.0.1"
+  checksum: 1222bb7e90c32bdb949226e66d26cb7bce12e1e28e3e1b40bfa6b390ba3e08192a8664a703dff2a00a84825f4e022f9cd58c4599ff9981ab72b1d69479f4f7f6
+  languageName: node
+  linkType: hard
+
 "is-weakref@npm:^1.0.2":
   version: 1.0.2
   resolution: "is-weakref@npm:1.0.2"
   dependencies:
     call-bind: ^1.0.2
   checksum: 95bd9a57cdcb58c63b1c401c60a474b0f45b94719c30f548c891860f051bc2231575c290a6b420c6bc6e7ed99459d424c652bd5bf9a1d5259505dc35b4bf83de
+  languageName: node
+  linkType: hard
+
+"is-weakset@npm:^2.0.1":
+  version: 2.0.2
+  resolution: "is-weakset@npm:2.0.2"
+  dependencies:
+    call-bind: ^1.0.2
+    get-intrinsic: ^1.1.1
+  checksum: 5d8698d1fa599a0635d7ca85be9c26d547b317ed8fd83fc75f03efbe75d50001b5eececb1e9971de85fcde84f69ae6f8346bc92d20d55d46201d328e4c74a367
   languageName: node
   linkType: hard
 
@@ -9240,6 +9477,15 @@ __metadata:
   dependencies:
     es5-ext: ~0.10.2
   checksum: 7f2c53c5e7f2de20efb6ebb3086b7aea88d6cf9ae91ac5618ece974122960c4e8ed04988e81d92c3e63d60b12c556b14d56ef7a9c5a4627b23859b813e39b1a2
+  languageName: node
+  linkType: hard
+
+"lz-string@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "lz-string@npm:1.5.0"
+  bin:
+    lz-string: bin/bin.js
+  checksum: 1ee98b4580246fd90dd54da6e346fb1caefcf05f677c686d9af237a157fdea3fd7c83a4bc58f858cd5b10a34d27afe0fdcbd0505a47e0590726a873dc8b8f65d
   languageName: node
   linkType: hard
 
@@ -10325,6 +10571,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"object-is@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "object-is@npm:1.1.5"
+  dependencies:
+    call-bind: ^1.0.2
+    define-properties: ^1.1.3
+  checksum: 989b18c4cba258a6b74dc1d74a41805c1a1425bce29f6cabb50dcb1a6a651ea9104a1b07046739a49a5bb1bc49727bcb00efd5c55f932f6ea04ec8927a7901fe
+  languageName: node
+  linkType: hard
+
 "object-keys@npm:^1.1.1":
   version: 1.1.1
   resolution: "object-keys@npm:1.1.1"
@@ -11028,6 +11284,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pretty-format@npm:^27.0.2":
+  version: 27.5.1
+  resolution: "pretty-format@npm:27.5.1"
+  dependencies:
+    ansi-regex: ^5.0.1
+    ansi-styles: ^5.0.0
+    react-is: ^17.0.1
+  checksum: cf610cffcb793885d16f184a62162f2dd0df31642d9a18edf4ca298e909a8fe80bdbf556d5c9573992c102ce8bf948691da91bf9739bee0ffb6e79c8a8a6e088
+  languageName: node
+  linkType: hard
+
 "pretty-format@npm:^29.5.0":
   version: 29.6.2
   resolution: "pretty-format@npm:29.6.2"
@@ -11299,6 +11566,13 @@ __metadata:
     destr: ^2.0.0
     flat: ^5.0.2
   checksum: d704e4f4ecf321b691b37e5cfeee11bb2c5d3eb7393cef32096ed4bc3c7f7a64d2c79e2ad159b5e20c15917290ca80a1343fc25c86a3c8d0c67f4601ce8c4085
+  languageName: node
+  linkType: hard
+
+"react-is@npm:^17.0.1":
+  version: 17.0.2
+  resolution: "react-is@npm:17.0.2"
+  checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
   languageName: node
   linkType: hard
 
@@ -12345,6 +12619,15 @@ __metadata:
   version: 3.3.3
   resolution: "std-env@npm:3.3.3"
   checksum: 6665f6d8bd63aae432d3eb9abbd7322847ad0d902603e6dce1e8051b4f42ceeb4f7f96a4faf70bb05ce65ceee2dc982502b701575c8a58b1bfad29f3dbb19f81
+  languageName: node
+  linkType: hard
+
+"stop-iteration-iterator@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "stop-iteration-iterator@npm:1.0.0"
+  dependencies:
+    internal-slot: ^1.0.4
+  checksum: d04173690b2efa40e24ab70e5e51a3ff31d56d699550cfad084104ab3381390daccb36652b25755e420245f3b0737de66c1879eaa2a8d4fc0a78f9bf892fcb42
   languageName: node
   linkType: hard
 
@@ -13670,6 +13953,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vite-node@npm:0.34.3":
+  version: 0.34.3
+  resolution: "vite-node@npm:0.34.3"
+  dependencies:
+    cac: ^6.7.14
+    debug: ^4.3.4
+    mlly: ^1.4.0
+    pathe: ^1.1.1
+    picocolors: ^1.0.0
+    vite: ^3.0.0 || ^4.0.0
+  bin:
+    vite-node: vite-node.mjs
+  checksum: 366c4f3fb7c038e2180abc6b18cfbac3b8684cd878eaf7ebf1ffb07d95d2ea325713fc575a7949a13bb00cfe264acbc28c02e2836b8647e1f443fe631c17805a
+  languageName: node
+  linkType: hard
+
 "vite-plugin-custom-tsconfig@npm:^1.0.4":
   version: 1.0.4
   resolution: "vite-plugin-custom-tsconfig@npm:1.0.4"
@@ -13794,6 +14093,66 @@ __metadata:
   bin:
     vitest: vitest.mjs
   checksum: 39d270e78be0ce06cb348c6c1e92517aa7269ad8c51f5432349849ca1615c18eeaeb635a49d16eedcb9b77a7a19186723f906d286d819368c15d086cecacfb0d
+  languageName: node
+  linkType: hard
+
+"vitest@npm:^0.34.3":
+  version: 0.34.3
+  resolution: "vitest@npm:0.34.3"
+  dependencies:
+    "@types/chai": ^4.3.5
+    "@types/chai-subset": ^1.3.3
+    "@types/node": "*"
+    "@vitest/expect": 0.34.3
+    "@vitest/runner": 0.34.3
+    "@vitest/snapshot": 0.34.3
+    "@vitest/spy": 0.34.3
+    "@vitest/utils": 0.34.3
+    acorn: ^8.9.0
+    acorn-walk: ^8.2.0
+    cac: ^6.7.14
+    chai: ^4.3.7
+    debug: ^4.3.4
+    local-pkg: ^0.4.3
+    magic-string: ^0.30.1
+    pathe: ^1.1.1
+    picocolors: ^1.0.0
+    std-env: ^3.3.3
+    strip-literal: ^1.0.1
+    tinybench: ^2.5.0
+    tinypool: ^0.7.0
+    vite: ^3.0.0 || ^4.0.0
+    vite-node: 0.34.3
+    why-is-node-running: ^2.2.2
+  peerDependencies:
+    "@edge-runtime/vm": "*"
+    "@vitest/browser": "*"
+    "@vitest/ui": "*"
+    happy-dom: "*"
+    jsdom: "*"
+    playwright: "*"
+    safaridriver: "*"
+    webdriverio: "*"
+  peerDependenciesMeta:
+    "@edge-runtime/vm":
+      optional: true
+    "@vitest/browser":
+      optional: true
+    "@vitest/ui":
+      optional: true
+    happy-dom:
+      optional: true
+    jsdom:
+      optional: true
+    playwright:
+      optional: true
+    safaridriver:
+      optional: true
+    webdriverio:
+      optional: true
+  bin:
+    vitest: vitest.mjs
+  checksum: 4535d080feede94db5015eb60c6ed5f7b0d8cd67f12072de5ae1faded133cc640043c0c2646ef51ab9b61c2f885589da57458a65e82cf91a25cf954470018a40
   languageName: node
   linkType: hard
 
@@ -14026,7 +14385,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"which-typed-array@npm:^1.1.10, which-typed-array@npm:^1.1.11, which-typed-array@npm:^1.1.2":
+"which-collection@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "which-collection@npm:1.0.1"
+  dependencies:
+    is-map: ^2.0.1
+    is-set: ^2.0.1
+    is-weakmap: ^2.0.1
+    is-weakset: ^2.0.1
+  checksum: c815bbd163107ef9cb84f135e6f34453eaf4cca994e7ba85ddb0d27cea724c623fae2a473ceccfd5549c53cc65a5d82692de418166df3f858e1e5dc60818581c
+  languageName: node
+  linkType: hard
+
+"which-typed-array@npm:^1.1.10, which-typed-array@npm:^1.1.11, which-typed-array@npm:^1.1.2, which-typed-array@npm:^1.1.9":
   version: 1.1.11
   resolution: "which-typed-array@npm:1.1.11"
   dependencies:

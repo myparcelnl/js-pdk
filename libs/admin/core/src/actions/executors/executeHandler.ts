@@ -1,4 +1,5 @@
-import {type ActionResponse, type MaybeAdminAction, NotificationCategory} from '../../types';
+import {NotificationCategory} from '@myparcel-pdk/admin-common';
+import {type ActionResponse, type MaybeAdminAction} from '../../types';
 import {useNotificationStore} from '../../stores';
 import {type ActionContext} from './types';
 

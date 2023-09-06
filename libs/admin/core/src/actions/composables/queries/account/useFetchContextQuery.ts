@@ -1,5 +1,5 @@
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
-import {AdminView, BackendEndpoint} from '@myparcel-pdk/common';
+import {AdminView, BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {encodeArrayParameter} from '../../../../utils';
 import {AdminContextKey} from '../../../../types';
 import {type ResolvedQuery} from '../../../../stores';

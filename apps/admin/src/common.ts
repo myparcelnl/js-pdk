@@ -6,12 +6,15 @@ export type {
   Form,
   Frontend,
   Fulfilment,
+  Notification,
+  NotificationFilter,
   Plugin,
+  ResolvedNotification,
   SelectOption,
   Settings,
   TabDefinition,
   Webhook,
-} from '@myparcel-pdk/common';
+} from '@myparcel-pdk/admin-common';
 
 export type {
   ActionDefinition,
@@ -28,14 +31,11 @@ export type {
   ModalCallback,
   ModalCallbackProps,
   NamedActionDefinition,
-  Notification,
-  NotificationFilter,
   OptionsProp,
   PdkElementEmits,
   PdkElementProps,
   RadioGroupProps,
   ResolvedAction,
-  ResolvedNotification,
   SelectInputProps,
   TriState,
   TriStateInputEmits,
@@ -46,11 +46,9 @@ export {
   ActionButton,
   AdminAction,
   AdminContextKey,
-  AdminIcon,
   AdminInstanceContextKey,
   AdminModalKey,
   LogLevel,
-  NotificationCategory,
   NotificationContainer,
   PlainElement,
   ReturnsForm,
@@ -100,7 +98,16 @@ export {
   webhooksDeleteAction,
 } from '@myparcel-pdk/admin-core';
 
-export {AdminComponent, AdminView, BackendEndpoint, Size, Status, Variant} from '@myparcel-pdk/common';
+export {
+  AdminComponent,
+  AdminIcon,
+  AdminView,
+  BackendEndpoint,
+  NotificationCategory,
+  Size,
+  Status,
+  Variant,
+} from '@myparcel-pdk/admin-common';
 
 export {
   /** @deprecated use TriState */

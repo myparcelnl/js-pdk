@@ -7,7 +7,8 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {type AnyActionDefinition} from '../../types';
+import {type Shipment} from '@myparcel-pdk/common';
+import {type ActionDefinition, type AnyActionDefinition} from '../../types';
 import {instantiateActions} from '../../services';
 import {useOrderData} from '../../composables';
 import {
@@ -20,10 +21,10 @@ import {
 
 const {order} = useOrderData();
 
-const actions = computed(() => {
+const actions = computed<ActionDefinition[]>(() => {
   const actions: AnyActionDefinition[] = [];
 
-  if (get(order)?.shipments?.some((item) => !item.deleted)) {
+  if (get(order)?.shipments?.some((item: Shipment.ModelShipment) => !item.deleted)) {
     actions.push(orderExportAction);
     actions.push({...ordersPrintAction, standalone: true});
     actions.push(ordersFetchAction);

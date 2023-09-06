@@ -3,6 +3,6 @@ import * as index from '../index';
 
 describe('exports', () => {
   it('exports from index.ts', () => {
-    expect(Object.keys(index)).toMatchSnapshot();
+    expect(Object.keys(index).sort()).toMatchSnapshot();
   });
 });

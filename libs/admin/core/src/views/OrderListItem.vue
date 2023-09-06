@@ -20,7 +20,7 @@
  */
 import {defineAsyncComponent} from 'vue';
 import {get} from '@vueuse/core';
-import {NotificationCategory, type NotificationFilter} from '../types';
+import {NotificationCategory, type NotificationFilter} from '@myparcel-pdk/admin-common';
 import {useActionStore, useQueryStore} from '../stores';
 import {useOrderData, usePluginSettings} from '../composables';
 import {NotificationContainer} from '../components';

@@ -1,7 +1,6 @@
 import {type Component, resolveComponent} from 'vue';
 import {memoize} from 'lodash-unified';
-import {type AdminComponent} from '@myparcel-pdk/common';
-import {prefixComponent} from '../../helpers';
+import {type AdminComponent, prefixComponent} from '@myparcel-pdk/admin-common';
 
 const memoizedResolveFormComponent = memoize((componentName: AdminComponent): Component => {
   return resolveComponent(prefixComponent(componentName)) as Component;

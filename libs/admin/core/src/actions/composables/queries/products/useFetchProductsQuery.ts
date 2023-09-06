@@ -1,5 +1,5 @@
 import {type QueryKey, useQuery, useQueryClient} from '@tanstack/vue-query';
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {type ResolvedQuery} from '../../../../stores';
 
 export const useFetchProductsQuery = (externalIdentifier?: string): ResolvedQuery<BackendEndpoint.FetchProducts> => {

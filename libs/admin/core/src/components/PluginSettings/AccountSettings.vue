@@ -27,13 +27,12 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {AdminComponent, Size, Status, type TabDefinition, Variant} from '@myparcel-pdk/common';
+import {AdminComponent, prefixComponent, Size, Status, type TabDefinition, Variant} from '@myparcel-pdk/admin-common';
 import TabNavigation from '../common/TabNavigation.vue';
 import StatusIndicator from '../common/StatusIndicator.vue';
 import ActionButton from '../common/ActionButton.vue';
 import {useActionStore} from '../../stores';
 import {instantiateAction} from '../../services';
-import {prefixComponent} from '../../helpers';
 import {useLanguage, useStoreContextQuery} from '../../composables';
 import {
   deleteAccountAction,

@@ -4,6 +4,6 @@
 
 <!-- The notification container. Used to display notifications. -->
 <script lang="ts" setup>
-import {NotificationCategory} from '../types';
+import {NotificationCategory} from '@myparcel-pdk/admin-common';
 import {NotificationContainer} from '../components';
 </script>

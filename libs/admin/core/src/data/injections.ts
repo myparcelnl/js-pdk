@@ -1,5 +1,5 @@
 import {type InjectionKey} from 'vue';
-import {type AdminView} from '@myparcel-pdk/common';
+import {type AdminView} from '@myparcel-pdk/admin-common';
 import {type AdminConfiguration, type AdminContextObject, type AdminInstanceContext} from '../types';
 import {type PdkLogger} from '../services';
 import {type PdkAdmin} from '../pdk';

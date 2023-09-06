@@ -1,4 +1,5 @@
-import {MutationMode, NotificationCategory, useModalStore, useNotificationStore} from '../..';
+import {NotificationCategory} from '@myparcel-pdk/admin-common';
+import {MutationMode, useModalStore, useNotificationStore} from '../..';
 
 type Callback = (() => void) | undefined;
 

@@ -1,6 +1,6 @@
 import {computed, type ComputedRef, type Ref, ref, unref} from 'vue';
 import {get, type MaybeRef} from '@vueuse/core';
-import {type Shipment} from '@myparcel-pdk/common';
+import {type Shipment} from '@myparcel-pdk/admin-common';
 import {type Carrier} from '@myparcel/sdk';
 import {useAssetUrl} from '../useAssetUrl';
 import {type AnyActionDefinition} from '../../types';

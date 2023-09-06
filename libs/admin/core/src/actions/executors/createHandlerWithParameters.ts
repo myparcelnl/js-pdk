@@ -1,4 +1,4 @@
-import {type BackendEndpoint} from '@myparcel-pdk/common';
+import {type BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {type BackendEndpointResponse} from '../../types';
 import {type ActionContext} from './types';

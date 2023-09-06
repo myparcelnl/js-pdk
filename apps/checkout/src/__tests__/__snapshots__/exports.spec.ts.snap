@@ -4,17 +4,17 @@ exports[`exports > exports from index.ts 1`] = `
 [
   "AddressField",
   "AddressType",
+  "PdkDeliveryOptionsEvent",
   "PdkEvent",
   "PdkField",
   "Util",
   "createPdkCheckout",
+  "initializeCheckoutDeliveryOptions",
+  "initializeCheckoutSeparateAddressFields",
+  "initializeCheckoutTaxFields",
   "useEvent",
   "usePdkCheckout",
   "useSettings",
   "useUtil",
-  "PdkDeliveryOptionsEvent",
-  "initializeCheckoutDeliveryOptions",
-  "initializeCheckoutSeparateAddressFields",
-  "initializeCheckoutTaxFields",
 ]
 `;

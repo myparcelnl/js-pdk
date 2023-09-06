@@ -26,7 +26,7 @@
 <script setup lang="ts">
 import {computed, ref, toRaw} from 'vue';
 import {get, isDef} from '@vueuse/core';
-import {AdminIcon} from '../../types';
+import {AdminIcon} from '@myparcel-pdk/admin-common';
 import {instantiateActions} from '../../services';
 import {useLanguage, useOrderData} from '../../composables';
 import {shipmentActions} from '../../actions';

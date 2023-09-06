@@ -1,5 +1,5 @@
 import {type QueryClient} from '@tanstack/vue-query';
-import {type Plugin, type Shipment} from '@myparcel-pdk/common';
+import {type Plugin, type Shipment} from '@myparcel-pdk/admin-common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {setQueryOrder, setQueryShipment} from '../helpers';
 import {QUERY_KEY_ORDER} from '../actions';

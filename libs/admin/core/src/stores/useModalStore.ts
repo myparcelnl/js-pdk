@@ -1,6 +1,7 @@
 import {ref, type Ref, type UnwrapNestedRefs} from 'vue';
 import {defineStore} from 'pinia';
-import {type AdminModalContext, type AdminModalKey, NotificationCategory} from '../types';
+import {NotificationCategory} from '@myparcel-pdk/admin-common';
+import {type AdminModalContext, type AdminModalKey} from '../types';
 import {useLoading} from '../composables';
 import {useNotificationStore} from './useNotificationStore';
 

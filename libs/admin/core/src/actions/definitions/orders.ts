@@ -1,10 +1,10 @@
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {AdminIcon, BackendEndpoint, type OrderIds} from '@myparcel-pdk/admin-common';
 import {toArray} from '@myparcel/ts-utils';
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
 import {createOrdersMutationHandler, createQueryHandler, executeNextAction, resolveOrderParameters} from '../executors';
 import {defineAction} from '../defineAction';
 import {getOrderShipmentIds} from '../../utils/getOrderShipmentIds';
-import {type ActionParameters, AdminAction, AdminIcon, AdminModalKey, type OrderIds} from '../../types';
+import {type ActionParameters, AdminAction, AdminModalKey} from '../../types';
 import {useModalStore} from '../../stores';
 import {shipmentsUpdateAction} from './shipments';
 

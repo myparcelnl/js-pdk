@@ -4,11 +4,11 @@ import {
   AdminComponent,
   optionalAdminActionContainerComponentNames,
   optionalAdminPlainWrapperComponentNames,
+  prefixComponent,
   type PrefixedAdminComponent,
   requiredAdminComponentNames,
-} from '@myparcel-pdk/common';
+} from '@myparcel-pdk/admin-common';
 import {type FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder';
-import {prefixComponent} from '../../../helpers';
 import {useLanguage} from '../../../composables';
 import {PlainElement} from '../../../components';
 import {type PdkAppPlugin} from './plugins.types';

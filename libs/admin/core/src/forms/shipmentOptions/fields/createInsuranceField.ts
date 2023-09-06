@@ -1,4 +1,4 @@
-import {AdminComponent} from '@myparcel-pdk/common';
+import {AdminComponent} from '@myparcel-pdk/admin-common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {type ShipmentOptionsRefs} from '../types';
 import {getInsuranceOptions} from '../helpers';

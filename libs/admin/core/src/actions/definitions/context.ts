@@ -1,4 +1,4 @@
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {createQueryHandler} from '../executors';
 import {defineAction} from '../defineAction';
 import {AdminAction, AdminContextKey} from '../../types';

@@ -1,13 +1,13 @@
 import {computed, type ComputedRef} from 'vue';
 import {get} from '@vueuse/core';
-import {type BackendEndpoint, type Plugin} from '@myparcel-pdk/common';
+import {type BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {getOrderId, validateId} from '../../utils';
 import {type ResolvedQuery, useQueryStore} from '../../stores';
 import {useOrder} from './useOrder';
 
 export interface UseOrderData {
   loading: ComputedRef<boolean>;
-  order: ComputedRef<Plugin.ModelPdkOrder | undefined>;
+  order: ComputedRef;
   query: ResolvedQuery<BackendEndpoint.FetchOrders>;
 }
 

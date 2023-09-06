@@ -1,7 +1,8 @@
 import {computed, type ComputedRef, type Ref, ref, toRefs} from 'vue';
 import {get} from '@vueuse/core';
+import {AdminIcon} from '@myparcel-pdk/admin-common';
 import {partitionArray} from '@myparcel/ts-utils';
-import {AdminIcon, type AnyActionDefinition} from '../types';
+import {type AnyActionDefinition} from '../types';
 
 type DropdownProps = {
   actions: AnyActionDefinition[];
