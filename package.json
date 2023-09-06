@@ -2,7 +2,10 @@
   "name": "@myparcel-pdk/monorepo",
   "version": "1.0.0-alpha.0",
   "private": true,
-  "repository": "github:myparcelnl/js-pdk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myparcelnl/pdk"
+  },
   "license": "MIT",
   "type": "module",
   "workspaces": [
@@ -18,8 +21,8 @@
     "prepare": "echo 'prepare' && (is-ci || husky install)",
     "serve": "run build:dev --output-style=stream npx concurrently yarn:watch yarn:serve:demo",
     "serve:demo": "npx concurrently yarn:serve:demo:frontend yarn:serve:demo:backend",
-    "serve:demo:backend": "nx serve @myparcel-pdk/backend-demo",
-    "serve:demo:frontend": "nx serve @myparcel-pdk/admin-demo",
+    "serve:demo:backend": "nx serve backend-demo",
+    "serve:demo:frontend": "nx serve admin-demo",
     "test": "nx run-many -t test --parallel=99 --output-style=stream",
     "test:affected": "nx affected -t test:run --parallel=1 --output-style=stream",
     "test:coverage": "nx run-many -t test:coverage --parallel=1 --output-style=stream",
@@ -46,8 +49,7 @@
   },
   "prettier": "@myparcel/prettier-config",
   "resolutions": {
-    "eslint-plugin-prettier": "4.2.1",
-    "nx": "16.5.3"
+    "eslint-plugin-prettier": "4.2.1"
   },
   "devDependencies": {
     "@monodeploy/plugin-github": "^1.0.0",
@@ -77,7 +79,7 @@
     "node": ">=16"
   },
   "volta": {
-    "node": "18.16.0"
+    "node": "18.17.1"
   },
   "bundlewatch": {
     "files": [
