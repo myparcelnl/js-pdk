@@ -1,12 +1,12 @@
 import {config} from '@vue/test-utils';
+import {optionalAdminPlainWrapperComponentNames, requiredAdminComponentNames} from '@myparcel-pdk/common';
 import {
-  LogLevel,
   createContextPlugin,
+  createLoggerPlugin,
   createVueQueryPlugin,
   globalLogger,
-  createLoggerPlugin,
-} from '@myparcel-pdk/frontend-admin-core';
-import {optionalAdminPlainWrapperComponentNames, requiredAdminComponentNames} from '@myparcel-pdk/common';
+  LogLevel,
+} from '@myparcel-pdk/admin-core';
 import {createDefaultAppConfig} from './setup';
 
 export const doComponentTestSetup = (): void => {

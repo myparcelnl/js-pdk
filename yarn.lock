@@ -1177,7 +1177,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-component-tests@workspace:apps/admin-component-tests"
   dependencies:
-    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.103"
+    "@myparcel-pdk/admin-core": "workspace:*"
     "@myparcel/vue-form-builder": ^1.0.0-alpha.1
     "@pinia/testing": ">= 0.1.0 < 1"
     "@vitest/coverage-v8": ">= 0.30.0 < 1"
@@ -1188,6 +1188,30 @@ __metadata:
     vue: ^3.3.0
   peerDependencies:
     vue: ^3
+  languageName: unknown
+  linkType: soft
+
+"@myparcel-pdk/admin-core@workspace:*, @myparcel-pdk/admin-core@workspace:libs/admin/core":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/admin-core@workspace:libs/admin/core"
+  dependencies:
+    "@myparcel-pdk/admin-form-builder": "workspace:*"
+    "@myparcel-pdk/build-vite": "workspace:*"
+    "@myparcel-pdk/common": "workspace:*"
+    "@myparcel/constants": ^1.0.0
+    "@myparcel/sdk": ^3.0.0
+    "@myparcel/ts-utils": ^1.9.0
+    "@myparcel/vue-form-builder": ^1.0.0-beta.0
+    "@tanstack/vue-query": ^4.0.0
+    "@types/lodash-es": ^4.17.6
+    "@vue/test-utils": ^2.0.0
+    "@vueuse/core": ^10.0.0
+    lodash: ^4.17.21
+    lodash-es: ^4.17.21
+    lodash-unified: ^1.0.3
+    pinia: ^2.0.0
+    typescript: ^5.1.6
+    vue: ^3.3.0
   languageName: unknown
   linkType: soft
 
@@ -1214,11 +1238,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@myparcel-pdk/admin-form-builder@workspace:*, @myparcel-pdk/admin-form-builder@workspace:libs/admin/form-builder":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/admin-form-builder@workspace:libs/admin/form-builder"
+  dependencies:
+    "@myparcel-pdk/build-vite": "workspace:*"
+    "@myparcel/ts-utils": ^1.9.0
+    "@myparcel/vue-form-builder": ^1.0.0-beta.0
+  languageName: unknown
+  linkType: soft
+
 "@myparcel-pdk/admin-js@workspace:apps/admin-js":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-js@workspace:apps/admin-js"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.103"
+    "@myparcel-pdk/admin": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
   peerDependencies:
     vue: ^3
@@ -1229,7 +1263,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-bootstrap4@workspace:apps/admin-preset-bootstrap4"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.103"
+    "@myparcel-pdk/admin": "workspace:*"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel/ts-utils": ^1.9.0
@@ -1245,7 +1279,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-dashicons@workspace:apps/admin-preset-dashicons"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.103"
+    "@myparcel-pdk/admin": "workspace:*"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     typescript: ^5.1.6
@@ -1257,7 +1291,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-default@workspace:apps/admin-preset-default"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.103"
+    "@myparcel-pdk/admin": "workspace:*"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel/ts-utils": ^1.9.0
@@ -1271,7 +1305,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-fontawesome@workspace:apps/admin-preset-fontawesome"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.103"
+    "@myparcel-pdk/admin": "workspace:*"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     typescript: ^5.1.6
@@ -1279,11 +1313,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/admin@workspace:*, @myparcel-pdk/admin@workspace:^1.0.0-alpha.103, @myparcel-pdk/admin@workspace:apps/admin":
+"@myparcel-pdk/admin@workspace:*, @myparcel-pdk/admin@workspace:apps/admin":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin@workspace:apps/admin"
   dependencies:
-    "@myparcel-pdk/frontend-admin-core": "workspace:^1.0.0-alpha.103"
+    "@myparcel-pdk/admin-core": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -1350,114 +1384,80 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout-js@workspace:apps/checkout-js":
+"@myparcel-pdk/checkout-core@workspace:*, @myparcel-pdk/checkout-core@workspace:libs/checkout/core":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/checkout-js@workspace:apps/checkout-js"
+  resolution: "@myparcel-pdk/checkout-core@workspace:libs/checkout/core"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/checkout": "workspace:^1.0.0-alpha.62"
+    "@myparcel-pdk/common": "workspace:*"
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout@workspace:^1.0.0-alpha.62, @myparcel-pdk/checkout@workspace:apps/checkout":
+"@myparcel-pdk/checkout-delivery-options@workspace:*, @myparcel-pdk/checkout-delivery-options@workspace:libs/checkout/delivery-options":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/checkout@workspace:apps/checkout"
-  dependencies:
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.51"
-    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.27"
-    "@myparcel-pdk/frontend-checkout-delivery-options": "workspace:^1.0.0-alpha.26"
-    "@myparcel-pdk/frontend-checkout-separate-address-fields": "workspace:^1.0.0-alpha.27"
-    "@myparcel-pdk/frontend-checkout-tax-fields": "workspace:^1.0.0-alpha.28"
-  languageName: unknown
-  linkType: soft
-
-"@myparcel-pdk/common@workspace:*, @myparcel-pdk/common@workspace:^1.0.0-alpha.51, @myparcel-pdk/common@workspace:libs/common":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/common@workspace:libs/common"
-  dependencies:
-    "@myparcel-pdk/frontend-form-builder": "workspace:^1.0.0-alpha.2"
-    vue: ^3.3.0
-  languageName: unknown
-  linkType: soft
-
-"@myparcel-pdk/frontend-admin-core@workspace:^1.0.0-alpha.103, @myparcel-pdk/frontend-admin-core@workspace:libs/frontend/admin-core":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/frontend-admin-core@workspace:libs/frontend/admin-core"
+  resolution: "@myparcel-pdk/checkout-delivery-options@workspace:libs/checkout/delivery-options"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.51"
-    "@myparcel-pdk/frontend-form-builder": "workspace:^1.0.0-alpha.2"
-    "@myparcel/constants": ^1.0.0
-    "@myparcel/sdk": ^3.0.0
-    "@myparcel/ts-utils": ^1.9.0
-    "@myparcel/vue-form-builder": ^1.0.0-beta.0
-    "@tanstack/vue-query": ^4.0.0
-    "@types/lodash-es": ^4.17.6
-    "@vue/test-utils": ^2.0.0
-    "@vueuse/core": ^10.0.0
-    lodash: ^4.17.21
-    lodash-es: ^4.17.21
-    lodash-unified: ^1.0.3
-    pinia: ^2.0.0
-    typescript: ^5.1.6
-    vue: ^3.3.0
-  languageName: unknown
-  linkType: soft
-
-"@myparcel-pdk/frontend-checkout-core@workspace:^1.0.0-alpha.27, @myparcel-pdk/frontend-checkout-core@workspace:libs/frontend/checkout-core":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/frontend-checkout-core@workspace:libs/frontend/checkout-core"
-  dependencies:
-    "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.51"
-  languageName: unknown
-  linkType: soft
-
-"@myparcel-pdk/frontend-checkout-delivery-options@workspace:^1.0.0-alpha.26, @myparcel-pdk/frontend-checkout-delivery-options@workspace:libs/frontend/checkout-delivery-options":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/frontend-checkout-delivery-options@workspace:libs/frontend/checkout-delivery-options"
-  dependencies:
-    "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.27"
-    "@myparcel-pdk/frontend-delivery-options": "workspace:^1.0.0-alpha.10"
+    "@myparcel-pdk/checkout-core": "workspace:*"
+    "@myparcel-pdk/delivery-options": "workspace:*"
     "@myparcel/delivery-options": ^5.7.2
     "@myparcel/ts-utils": ^1.9.0
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/frontend-checkout-separate-address-fields@workspace:^1.0.0-alpha.27, @myparcel-pdk/frontend-checkout-separate-address-fields@workspace:libs/frontend/checkout-separate-address-fields":
+"@myparcel-pdk/checkout-js@workspace:apps/checkout-js":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/frontend-checkout-separate-address-fields@workspace:libs/frontend/checkout-separate-address-fields"
+  resolution: "@myparcel-pdk/checkout-js@workspace:apps/checkout-js"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.27"
+    "@myparcel-pdk/checkout": "workspace:*"
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/frontend-checkout-tax-fields@workspace:^1.0.0-alpha.28, @myparcel-pdk/frontend-checkout-tax-fields@workspace:libs/frontend/checkout-tax-fields":
+"@myparcel-pdk/checkout-separate-address-fields@workspace:*, @myparcel-pdk/checkout-separate-address-fields@workspace:libs/checkout/separate-address-fields":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/frontend-checkout-tax-fields@workspace:libs/frontend/checkout-tax-fields"
+  resolution: "@myparcel-pdk/checkout-separate-address-fields@workspace:libs/checkout/separate-address-fields"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/frontend-checkout-core": "workspace:^1.0.0-alpha.27"
+    "@myparcel-pdk/checkout-core": "workspace:*"
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/frontend-delivery-options@workspace:^1.0.0-alpha.10, @myparcel-pdk/frontend-delivery-options@workspace:libs/frontend/delivery-options":
+"@myparcel-pdk/checkout-tax-fields@workspace:*, @myparcel-pdk/checkout-tax-fields@workspace:libs/checkout/tax-fields":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/frontend-delivery-options@workspace:libs/frontend/delivery-options"
+  resolution: "@myparcel-pdk/checkout-tax-fields@workspace:libs/checkout/tax-fields"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
+    "@myparcel-pdk/checkout-core": "workspace:*"
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/frontend-form-builder@workspace:^1.0.0-alpha.2, @myparcel-pdk/frontend-form-builder@workspace:libs/frontend/form-builder":
+"@myparcel-pdk/checkout@workspace:*, @myparcel-pdk/checkout@workspace:apps/checkout":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/frontend-form-builder@workspace:libs/frontend/form-builder"
+  resolution: "@myparcel-pdk/checkout@workspace:apps/checkout"
+  dependencies:
+    "@myparcel-pdk/checkout-core": "workspace:*"
+    "@myparcel-pdk/checkout-delivery-options": "workspace:*"
+    "@myparcel-pdk/checkout-separate-address-fields": "workspace:*"
+    "@myparcel-pdk/checkout-tax-fields": "workspace:*"
+    "@myparcel-pdk/common": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@myparcel-pdk/common@workspace:*, @myparcel-pdk/common@workspace:libs/common":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/common@workspace:libs/common"
+  dependencies:
+    "@myparcel-pdk/admin-form-builder": "workspace:*"
+    vue: ^3.3.0
+  languageName: unknown
+  linkType: soft
+
+"@myparcel-pdk/delivery-options@workspace:*, @myparcel-pdk/delivery-options@workspace:libs/delivery-options":
+  version: 0.0.0-use.local
+  resolution: "@myparcel-pdk/delivery-options@workspace:libs/delivery-options"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel/ts-utils": ^1.9.0
-    "@myparcel/vue-form-builder": ^1.0.0-beta.0
   languageName: unknown
   linkType: soft
 

@@ -1,5 +1,5 @@
 import {vi} from 'vitest';
-import {type GlobalAdminContext} from '@myparcel-pdk/frontend-admin-core';
+import {type GlobalAdminContext} from '@myparcel-pdk/admin-core';
 import {getDefaultTranslations} from './getDefaultTranslations';
 import {getDefaultPluginSettings} from './getDefaultPluginSettings';
 import {getDefaultPlatform} from './getDefaultPlatform';

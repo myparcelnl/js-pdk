@@ -40,7 +40,7 @@ export type {
   TriState,
   TriStateInputEmits,
   TriStateInputProps,
-} from '@myparcel-pdk/frontend-admin-core';
+} from '@myparcel-pdk/admin-core';
 
 export {
   ActionButton,
@@ -98,11 +98,11 @@ export {
   useTriStateInputContext,
   useWeekdays,
   webhooksDeleteAction,
-} from '@myparcel-pdk/frontend-admin-core';
+} from '@myparcel-pdk/admin-core';
 
 export {AdminComponent, AdminView, BackendEndpoint, Size, Status, Variant} from '@myparcel-pdk/common';
 
 export {
   /** @deprecated use TriState */
   TriState as TriStateValue,
-} from '@myparcel-pdk/frontend-admin-core';
+} from '@myparcel-pdk/admin-core';

@@ -1,0 +1,56 @@
+{
+  "name": "@myparcel-pdk/admin-core",
+  "version": "1.0.0-alpha.103",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myparcelnl/js-pdk.git",
+    "directory": "libs/admin/core"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./src",
+    "./dist"
+  ],
+  "scripts": {
+    "build": "run ws:vue:build \"$(pwd)\"",
+    "clean": "run ws:clean \"$(pwd)\"",
+    "lint": "run ws:lint \"$(pwd)\"",
+    "lint:fix": "run ws:lint:fix \"$(pwd)\"",
+    "test": "run ws:test \"$(pwd)\"",
+    "test:coverage": "run ws:test:coverage \"$(pwd)\"",
+    "test:run": "run ws:test:run \"$(pwd)\"",
+    "test:update": "run ws:test:update \"$(pwd)\"",
+    "typecheck": "run ws:vue:typecheck \"$(pwd)\""
+  },
+  "dependencies": {
+    "@myparcel-pdk/admin-form-builder": "workspace:^1.0.0-alpha.2",
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.51",
+    "@myparcel/constants": "^1.0.0",
+    "@myparcel/sdk": "^3.0.0",
+    "@myparcel/ts-utils": "^1.9.0",
+    "@myparcel/vue-form-builder": "^1.0.0-beta.0",
+    "@tanstack/vue-query": "^4.0.0",
+    "@vueuse/core": "^10.0.0",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "lodash-unified": "^1.0.3",
+    "pinia": "^2.0.0",
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "@myparcel-pdk/build-vite": "workspace:*",
+    "@types/lodash-es": "^4.17.6",
+    "@vue/test-utils": "^2.0.0",
+    "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

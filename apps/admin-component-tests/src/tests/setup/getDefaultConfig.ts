@@ -1,6 +1,6 @@
 import {vi} from 'vitest';
-import {type AdminConfiguration, LogLevel} from '@myparcel-pdk/frontend-admin-core';
 import {type AdminComponentMap} from '@myparcel-pdk/common';
+import {type AdminConfiguration, LogLevel} from '@myparcel-pdk/admin-core';
 
 export const getDefaultConfig = vi.fn(
   (): AdminConfiguration => ({

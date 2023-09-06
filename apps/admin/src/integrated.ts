@@ -11,4 +11,4 @@ export {
   createPdkAdminPlugin,
   useQueryStore,
   useStoreQuery,
-} from '@myparcel-pdk/frontend-admin-core';
+} from '@myparcel-pdk/admin-core';

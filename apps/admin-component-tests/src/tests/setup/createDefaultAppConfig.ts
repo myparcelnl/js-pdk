@@ -1,6 +1,6 @@
 import {vi} from 'vitest';
-import {type AdminAppConfig} from '@myparcel-pdk/frontend-admin-core';
 import {AdminView} from '@myparcel-pdk/common';
+import {type AdminAppConfig} from '@myparcel-pdk/admin-core';
 import {getDefaultLogger} from './getDefaultLogger';
 import {getDefaultGlobalContext} from './getDefaultGlobalContext';
 import {getDefaultDynamicContext} from './getDefaultDynamicContext';

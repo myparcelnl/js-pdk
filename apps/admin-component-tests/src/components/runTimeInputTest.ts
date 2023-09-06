@@ -1,5 +1,5 @@
 import {type ComponentMountingOptions} from '@vue/test-utils';
-import {createFormElement, type ElementInstance} from '@myparcel-pdk/frontend-admin-core';
+import {createFormElement, type ElementInstance} from '@myparcel-pdk/admin-core';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runCommonInputTests} from '../common';
 
