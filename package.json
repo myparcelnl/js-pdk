@@ -44,7 +44,6 @@
   "lint-staged": {
     "*.{json,md,yml}": "prettier --write",
     "*.{ts,vue,js,cjs,mjs}": "yarn run ws:lint:fix",
-    "{apps,libs}/**/src/**/*": "yarn run test:affected",
     "package.json": "npx sort-package-json"
   },
   "prettier": "@myparcel/prettier-config",
