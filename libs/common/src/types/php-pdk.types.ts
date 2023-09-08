@@ -440,7 +440,6 @@ export namespace Plugin {
   };
 
   export type ModelContextPluginSettingsViewContext = {
-    general: SettingsView;
     order: SettingsView;
     label: SettingsView;
     customs: SettingsView;
@@ -633,18 +632,6 @@ export namespace Settings {
     dropOffDaysDeviations: Shipment.DropOffDayCollection;
   };
 
-  export type ModelGeneralSettings = {
-    apiLogging: boolean;
-    barcodeInNote: boolean;
-    conceptShipments: boolean;
-    exportWithAutomaticStatus?: string;
-    orderMode: boolean;
-    processDirectly: boolean;
-    shareCustomerInformation: boolean;
-    trackTraceInAccount: boolean;
-    trackTraceInEmail: boolean;
-  };
-
   export type ModelLabelSettings = {
     description?: string;
     format: string;
@@ -654,16 +641,23 @@ export namespace Settings {
   };
 
   export type ModelOrderSettings = {
-    emptyDigitalStampWeight?: number;
-    emptyParcelWeight?: number;
-    ignoreOrderStatuses?: string;
+    barcodeInNote: boolean;
+    conceptShipments: boolean;
+    emptyDigitalStampWeight: number;
+    emptyParcelWeight: number;
+    exportWithAutomaticStatus: string;
+    ignoreOrderStatuses: string[];
+    orderMode: boolean;
     orderStatusMail: boolean;
+    processDirectly: boolean;
     saveCustomerAddress: boolean;
-    sendNotificationAfter?: string;
-    sendOrderStateForDigitalStamps: boolean;
-    statusOnLabelCreate?: string;
-    statusWhenDelivered?: string;
-    statusWhenLabelScanned?: string;
+    sendNotificationAfter: -1 | string;
+    shareCustomerInformation: boolean;
+    statusOnLabelCreate: -1 | string;
+    statusWhenDelivered: -1 | string;
+    statusWhenLabelScanned: -1 | string;
+    trackTraceInAccount: boolean;
+    trackTraceInEmail: boolean;
   };
 
   export type ModelProductSettings = {
@@ -683,7 +677,6 @@ export namespace Settings {
 
   export type ModelSettings = {
     account: ModelAccountSettings;
-    general: ModelGeneralSettings;
     order: ModelOrderSettings;
     label: ModelLabelSettings;
     customs: ModelCustomsSettings;

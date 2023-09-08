@@ -29,5 +29,5 @@ const {query} = useOrderData();
 
 const data = computed(() => get(query.data));
 
-const {orderMode} = pluginSettings.general;
+const {orderMode} = pluginSettings.order;
 </script>

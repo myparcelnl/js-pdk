@@ -43,9 +43,9 @@ const {order: data, loading} = useOrderData();
 const {translate} = useLanguage();
 const pluginSettings = usePluginSettings();
 
-const {orderMode} = pluginSettings.general;
+const {orderMode} = pluginSettings.order;
 
-const isExported = computed(() => pluginSettings.general.orderMode && get(data)?.exported);
+const isExported = computed(() => pluginSettings.order.orderMode && get(data)?.exported);
 
 const actions = computed(() => {
   if (isExported.value) {

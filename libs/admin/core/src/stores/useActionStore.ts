@@ -68,7 +68,7 @@ export const useActionStore = defineStore('actions', () => {
         ordersFetchAction,
         ordersPrintAction,
         ordersUpdateAction,
-        ...(pluginSettings.general.orderMode
+        ...(pluginSettings.order.orderMode
           ? [orderExportAction, orderViewInBackofficeAction]
           : [
               orderExportToShipmentsAction,

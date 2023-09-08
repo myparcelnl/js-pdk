@@ -33,7 +33,7 @@ const ShipmentOptionsModalForm = defineAsyncComponent(() => import('./ShipmentOp
 const pluginSettings = usePluginSettings();
 const queryStore = useQueryStore();
 
-const {orderMode} = pluginSettings.general;
+const {orderMode} = pluginSettings.order;
 
 queryStore.registerOrderQueries();
 

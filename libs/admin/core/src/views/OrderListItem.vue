@@ -42,7 +42,7 @@ actionStore.registerOrderActions();
 
 const pluginSettings = usePluginSettings();
 
-const {orderMode} = pluginSettings.general;
+const {orderMode} = pluginSettings.order;
 
 const {query} = useOrderData();
 

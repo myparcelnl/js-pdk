@@ -9,7 +9,6 @@ export const mockDefaultPluginSettings = vi.fn((): Plugin.ModelContextDynamicCon
     carrier: {},
     checkout: {},
     customs: {},
-    general: {},
     label: {},
     order: {},
   } as Plugin.ModelContextDynamicContext['pluginSettings'];
