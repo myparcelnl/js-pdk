@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.105](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.104...@myparcel-pdk/admin-core@1.0.0-alpha.105) "@myparcel-pdk/admin-core" (2023-09-08)
+
+
+### Bug Fixes
+
+* **admin:** improve mutation types ([8997e8b](https://github.com/myparcelnl/js-pdk/commit/8997e8be9b25dc36b47b7ed1a8cdae49e8c1f30c))
+
+
+
+
 ## [1.0.0-alpha.104](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.103...@myparcel-pdk/admin-core@1.0.0-alpha.104) "@myparcel-pdk/admin-core" (2023-09-06)
 
 
