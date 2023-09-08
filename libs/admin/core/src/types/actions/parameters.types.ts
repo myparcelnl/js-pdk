@@ -11,39 +11,39 @@ import {type OneOrMore} from '@myparcel/ts-utils';
 import {type AdminContextKey} from '../context.types';
 import {type AdminAction, type AdminActionEndpointMap, type MaybeAdminAction} from './actions.types';
 
-interface LabelParameters {
+type LabelParameters = {
   output?: LabelOutput;
   format?: LabelFormat;
   position?: OneOrMore<LabelPosition>;
-}
+};
 
-interface OrderIdParameters {
+type OrderIdParameters = {
   orderIds?: OrderIds;
-}
+};
 
 interface ShipmentIdParameters {
   shipmentIds?: ShipmentIds;
 }
 
-interface FormParameters {
+type FormParameters = {
   form: FormInstance;
-}
+};
 
-interface OptionalFormParameters {
+type OptionalFormParameters = {
   form?: false | FormInstance;
-}
+};
 
-interface ProductIdParameters {
+type ProductIdParameters = {
   productIds?: OneOrMore<string>;
-}
+};
 
-interface HooksParameters {
+type HooksParameters = {
   hooks: OneOrMore<string>;
-}
+};
 
-interface ContextParameters {
+type ContextParameters = {
   context?: OneOrMore<AdminContextKey>;
-}
+};
 
 export interface EndpointMutationInputMap extends Record<BackendEndpoint, object> {
   [BackendEndpoint.FetchContext]: ContextParameters;
@@ -73,8 +73,8 @@ export interface EndpointMutationInputMap extends Record<BackendEndpoint, object
 
 export type ActionInput<E extends BackendEndpoint> = EndpointMutationInputMap[E];
 
-export type ActionParameters<A extends MaybeAdminAction> = A extends AdminAction
+export type ActionParameters<A extends string | MaybeAdminAction> = A extends AdminAction
   ? ActionInput<AdminActionEndpointMap[A]>
-  : Record<string, unknown>;
+  : object;
 
 export type MaybeActionParameters<A extends MaybeAdminAction> = ActionParameters<A> | void;

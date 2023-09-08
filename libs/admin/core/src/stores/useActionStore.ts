@@ -43,10 +43,7 @@ export const useActionStore = defineStore('actions', () => {
     return actions.value.find((a) => a.id === action);
   };
 
-  const dispatch = <A extends string | AdminAction>(
-    action: A,
-    parameters?: A extends AdminAction ? ActionParameters<A> : Record<string, unknown>,
-  ): PromiseOr<void> => {
+  const dispatch = <A extends string | AdminAction>(action: A, parameters?: ActionParameters<A>): PromiseOr<void> => {
     const resolvedAction = get(action);
 
     if (!resolvedAction) {

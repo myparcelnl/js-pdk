@@ -1,5 +1,5 @@
 import {StopActionHandler} from '../stopActionHandler';
-import {type ActionParameters, type MaybeActionParameters, type MaybeAdminAction} from '../../types';
+import {type MaybeActionParameters, type MaybeAdminAction} from '../../types';
 import {type ActionContext} from './types';
 
 const BEFORE_HANDLE = 'beforeHandle';
@@ -15,6 +15,7 @@ export async function executeBeforeHandle<A extends MaybeAdminAction>(
 
     instance.logger.debug(BEFORE_HANDLE, {parameters, resolvedParameters});
 
+    // @ts-expect-error todo
     context.parameters = resolvedParameters;
   } catch (error) {
     if (error instanceof StopActionHandler) {
@@ -24,5 +25,5 @@ export async function executeBeforeHandle<A extends MaybeAdminAction>(
     instance.logger.error(BEFORE_HANDLE, error);
   }
 
-  return context.parameters as ActionParameters<A>;
+  return context.parameters as MaybeActionParameters<A>;
 }

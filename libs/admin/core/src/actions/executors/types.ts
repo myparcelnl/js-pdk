@@ -24,7 +24,7 @@ export interface ActionContext<
   action: AnyActionDefinition<R>;
   instance: AdminInstance;
   notifications: Record<Variant, Notification>;
-  parameters: ActionParameters<R> | Record<string, unknown>;
+  parameters: ActionParameters<R>;
 }
 
 export interface ActionContextWithResponse<A extends MaybeAdminAction = undefined> extends ActionContext<A> {

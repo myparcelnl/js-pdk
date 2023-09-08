@@ -21,7 +21,7 @@ export const useNotificationStore = defineStore('notifications', () => {
     /**
      * Add a notification to the store.
      */
-    add(notification: Notification, tags?: Record<string, unknown>) {
+    add(notification: Notification, tags?: object | Record<string, unknown>) {
       const resolvedNotification: ResolvedNotification = {
         timeout: true,
         dismissible: notification.timeout === false,
