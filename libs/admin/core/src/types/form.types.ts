@@ -5,6 +5,7 @@ import {
   type InteractiveElementInstance,
 } from '@myparcel/vue-form-builder';
 import {type Replace} from '@myparcel/ts-utils';
+import {type SortType} from '../data';
 
 export type ArrayItem<T> = T extends (infer U)[] ? U : T;
 
@@ -23,6 +24,7 @@ export type ElementInstance<
 
 export type OptionsProp<T extends SelectOptionValue = SelectOptionValue> = {
   options?: SelectOption<T>[];
+  sort?: SortType;
 };
 
 export type PdkElementProps<

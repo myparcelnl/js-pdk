@@ -5,3 +5,8 @@ export enum TriState {
   On = 1,
   Off = 0,
 }
+
+export enum SortType {
+  Ascending = 'asc',
+  Descending = 'desc',
+}
