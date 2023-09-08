@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.53](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.52...@myparcel-pdk/common@1.0.0-alpha.53) "@myparcel-pdk/common" (2023-09-08)
+
+
+### Bug Fixes
+
+* **settings:** move general settings to order ([18f5c5f](https://github.com/myparcelnl/js-pdk/commit/18f5c5f539a0ee335b78b1b5eada2375a18f36f7))
+
+
+
+
 ## [1.0.0-alpha.52](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.51...@myparcel-pdk/common@1.0.0-alpha.52) "@myparcel-pdk/common" (2023-09-06)
 
 

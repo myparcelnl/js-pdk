@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-component-tests",
-  "version": "1.0.0-alpha.108",
+  "version": "1.0.0-alpha.109",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -28,8 +28,8 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin-core": "workspace:^1.0.0-alpha.105",
-    "@myparcel-pdk/admin-testing": "workspace:^1.0.0-alpha.1",
+    "@myparcel-pdk/admin-core": "workspace:^1.0.0-alpha.106",
+    "@myparcel-pdk/admin-testing": "workspace:^1.0.0-alpha.2",
     "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
     "@pinia/testing": ">= 0.1.0 < 1",
     "@vitest/coverage-v8": ">= 0.30.0 < 1",
