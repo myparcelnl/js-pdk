@@ -17,11 +17,24 @@ export interface DropdownButtonProps {
  * @see AdminComponent.FormGroup
  */
 
-export type PdkFormGroupProps = PdkElementProps<
+export type FormGroupProps = PdkElementProps<
   unknown,
   {
     label?: string;
     description?: string;
     subtext?: string;
+  }
+>;
+
+/**
+ * @see AdminComponent.SettingsDivider
+ */
+
+export type SettingsDividerProps = PdkElementProps<
+  unknown,
+  {
+    content?: string;
+    heading?: string;
+    level?: number | string;
   }
 >;

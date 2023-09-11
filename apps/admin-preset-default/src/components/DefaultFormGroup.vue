@@ -37,9 +37,9 @@
  * A form group is used to render a label and a form element.
  */
 import {toRefs} from 'vue';
-import {AdminComponent, generateFieldId, type PdkFormGroupProps, useLanguage} from '@myparcel-pdk/admin';
+import {AdminComponent, type FormGroupProps, generateFieldId, useLanguage} from '@myparcel-pdk/admin';
 
-const props = defineProps<PdkFormGroupProps>();
+const props = defineProps<FormGroupProps>();
 
 const propRefs = toRefs(props);
 

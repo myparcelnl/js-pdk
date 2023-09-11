@@ -23,9 +23,9 @@
 
 <script lang="ts" setup>
 import {toRefs} from 'vue';
-import {generateFieldId, type PdkFormGroupProps, useLanguage} from '@myparcel-pdk/admin';
+import {type FormGroupProps, generateFieldId, useLanguage} from '@myparcel-pdk/admin';
 
-const props = defineProps<PdkFormGroupProps>();
+const props = defineProps<FormGroupProps>();
 
 const propRefs = toRefs(props);
 

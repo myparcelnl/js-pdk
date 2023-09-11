@@ -32,6 +32,16 @@ export type CheckboxInputProps<T extends CheckboxInputModelValue> = PdkElementPr
 export type CheckboxInputEmits<T extends CheckboxInputModelValue> = PdkElementEmits<T>;
 
 /**
+ * @see AdminComponent.CodeEditor
+ */
+
+export type CodeEditorModelValue = TextInputModelValue;
+
+export type CodeEditorProps = PdkElementProps<CodeEditorModelValue>;
+
+export type CodeEditorEmits = PdkElementEmits<CodeEditorModelValue>;
+
+/**
  * @see AdminComponent.DropOffInput
  */
 export type DropOffInputModelValue = Settings.ModelDropOffPossibilities;
