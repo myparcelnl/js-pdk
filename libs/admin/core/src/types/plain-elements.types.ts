@@ -1,4 +1,5 @@
 import {type Size} from '@myparcel-pdk/common';
+import {type PdkElementProps} from './form.types';
 import {type ActionDefinition} from './actions.types';
 
 /**
@@ -11,3 +12,16 @@ export interface DropdownButtonProps {
   hideText?: boolean;
   size?: Size;
 }
+
+/**
+ * @see AdminComponent.FormGroup
+ */
+
+export type PdkFormGroupProps = PdkElementProps<
+  unknown,
+  {
+    label?: string;
+    description?: string;
+    subtext?: string;
+  }
+>;

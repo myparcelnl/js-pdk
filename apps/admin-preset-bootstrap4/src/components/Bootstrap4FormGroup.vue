@@ -36,11 +36,14 @@
 </template>
 
 <script lang="ts" setup>
-import {type ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/admin';
+import {toRefs} from 'vue';
+import {generateFieldId, type PdkFormGroupProps, useLanguage} from '@myparcel-pdk/admin';
 
-const props = defineProps<{element: ElementInstance<{description: string}>}>();
+const props = defineProps<PdkFormGroupProps>();
+
+const propRefs = toRefs(props);
 
 const {translate} = useLanguage();
 
-const id = generateFieldId(props.element);
+const id = generateFieldId(propRefs.element);
 </script>

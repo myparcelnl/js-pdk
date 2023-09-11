@@ -54,6 +54,7 @@ export type {
   OptionsProp,
   PdkElementEmits,
   PdkElementProps,
+  PdkFormGroupProps,
   RadioGroupEmits,
   RadioGroupModelValue,
   RadioGroupProps,
