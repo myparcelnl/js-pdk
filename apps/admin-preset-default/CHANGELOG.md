@@ -2,6 +2,18 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.106](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.105...@myparcel-pdk/admin-preset-default@1.0.0-alpha.106) "@myparcel-pdk/admin-preset-default" (2023-09-11)
+
+
+### Bug Fixes
+
+* **admin:** add form group props ([818f614](https://github.com/myparcelnl/js-pdk/commit/818f614d510fad8dfeaec66bbe0f5c5a0923d655))
+* **admin:** add more props ([14eac5a](https://github.com/myparcelnl/js-pdk/commit/14eac5ae0025a5a72e2aa03f396121d6542e02ab))
+* **admin:** export component prop and emit types ([ca7a3c8](https://github.com/myparcelnl/js-pdk/commit/ca7a3c83f774859494ca4c11831bbd6c7e755136))
+
+
+
+
 ## [1.0.0-alpha.105](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.104...@myparcel-pdk/admin-preset-default@1.0.0-alpha.105) "@myparcel-pdk/admin-preset-default" (2023-09-08)
 
 

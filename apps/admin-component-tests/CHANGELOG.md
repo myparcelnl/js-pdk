@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.110](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.109...@myparcel-pdk/admin-component-tests@1.0.0-alpha.110) "@myparcel-pdk/admin-component-tests" (2023-09-11)
+
+
+### Bug Fixes
+
+* **admin:** export component prop and emit types ([ca7a3c8](https://github.com/myparcelnl/js-pdk/commit/ca7a3c83f774859494ca4c11831bbd6c7e755136))
+
+
+
+
 ## [1.0.0-alpha.107](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.106...@myparcel-pdk/admin-component-tests@1.0.0-alpha.107) "@myparcel-pdk/admin-component-tests" (2023-09-06)
 
 
