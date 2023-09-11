@@ -19,15 +19,15 @@
 <script setup lang="ts" generic="T extends TriStateValue">
 import {
   AdminComponent,
-  type PdkElementEmits,
-  type PdkElementProps,
+  type TriStateInputEmits,
+  type TriStateInputProps,
   type TriStateValue,
   useTriStateInputContext,
 } from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<PdkElementProps<T>>();
-const emit = defineEmits<PdkElementEmits<T>>();
+const props = defineProps<TriStateInputProps>();
+const emit = defineEmits<TriStateInputEmits>();
 
 const {model, inheritElement, inheritModel, toggleElement, toggleModel} = useTriStateInputContext(props, emit);
 </script>

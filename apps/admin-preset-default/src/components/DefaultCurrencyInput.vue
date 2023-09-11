@@ -8,11 +8,11 @@
 
 <script lang="ts" setup>
 import {useVModel} from '@vueuse/core';
-import {AdminComponent, type ElementInstance} from '@myparcel-pdk/admin';
+import {AdminComponent, type CurrencyInputEmits, type CurrencyInputProps} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: string | number; element: ElementInstance}>();
-const emit = defineEmits<(e: 'update:modelValue', value: number) => void>();
+const props = defineProps<CurrencyInputProps>();
+const emit = defineEmits<CurrencyInputEmits>();
 
 const model = useVModel(props, undefined, emit);
 </script>

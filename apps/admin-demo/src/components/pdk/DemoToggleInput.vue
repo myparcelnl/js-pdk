@@ -32,15 +32,18 @@
   </label>
 </template>
 
-<script setup lang="ts" generic="T extends boolean">
+<script lang="ts" setup>
+import {toRefs} from 'vue';
 import {useVModel} from '@vueuse/core';
-import {generateFieldId, type PdkElementEmits, type PdkElementProps} from '@myparcel-pdk/admin';
+import {generateFieldId, type ToggleInputEmits, type ToggleInputProps} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<PdkElementProps<T>>();
-const emit = defineEmits<PdkElementEmits<T>>();
+const props = defineProps<ToggleInputProps>();
+const emit = defineEmits<ToggleInputEmits>();
 
-const id = generateFieldId(props.element);
+const propRefs = toRefs(props);
+
+const id = generateFieldId(propRefs.element);
 
 const model = useVModel(props, undefined, emit);
 </script>

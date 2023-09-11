@@ -8,14 +8,17 @@
 </template>
 
 <script lang="ts" setup>
+import {toRefs} from 'vue';
 import {useVModel} from '@vueuse/core';
-import {type ElementInstance, generateFieldId} from '@myparcel-pdk/admin';
+import {generateFieldId, type TextInputEmits, type TextInputProps} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: string | number | null; element: ElementInstance}>();
-const emit = defineEmits<(e: 'update:modelValue', value: string) => void>();
+const props = defineProps<TextInputProps>();
+const emit = defineEmits<TextInputEmits>();
+
+const propRefs = toRefs(props);
 
 const model = useVModel(props, undefined, emit);
 
-const id = generateFieldId(props.element);
+const id = generateFieldId(propRefs.element);
 </script>

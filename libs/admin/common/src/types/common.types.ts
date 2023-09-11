@@ -1,3 +1,4 @@
+import {type Component} from 'vue';
 import {type Variant} from '@myparcel-pdk/common';
 import {type OneOrMore} from '@myparcel/ts-utils';
 
@@ -61,3 +62,21 @@ export type NotificationFilter = (notification: ResolvedNotification) => boolean
 export type OrderIds = OneOrMore<string>;
 
 export type ShipmentIds = OneOrMore<string | number>;
+
+export type ArrayItem<T> = T extends (infer U)[] ? U : T;
+
+export interface TabDefinition {
+  component: string | Component;
+  description?: string;
+  icon?: string;
+  label: string;
+  labelSuffix?: string;
+  name: string;
+  subtext?: string;
+}
+
+export type WebhookDefinition = {
+  connected: boolean;
+  hook: string;
+  url: null | string;
+};

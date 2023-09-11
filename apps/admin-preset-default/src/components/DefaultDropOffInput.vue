@@ -23,20 +23,21 @@
 </template>
 
 <script lang="ts" setup>
-import {type PropType} from 'vue';
-import {AdminComponent, type Settings, useDropOffInputContext} from '@myparcel-pdk/admin';
+import {toRefs} from 'vue';
+import {
+  AdminComponent,
+  type DropOffInputEmits,
+  type DropOffInputProps,
+  useDropOffInputContext,
+} from '@myparcel-pdk/admin';
 
-const props = defineProps({
-  modelValue: {
-    type: Object as PropType<Settings.ModelDropOffPossibilities>,
-    default: null,
-  },
-});
+const props = defineProps<DropOffInputProps>();
+const emit = defineEmits<DropOffInputEmits>();
 
-const emit = defineEmits(['update:modelValue']);
+const propRefs = toRefs(props);
 
 const {weekdaysObject, cutoffElements, toggleElements, toggleRefs, cutoffRefs} = useDropOffInputContext(
-  props.modelValue,
+  propRefs.modelValue?.value,
   emit,
 );
 </script>

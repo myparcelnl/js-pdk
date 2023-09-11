@@ -16,16 +16,25 @@
 </template>
 
 <script lang="ts" setup>
+import {toRefs} from 'vue';
 import {useVModel} from '@vueuse/core';
-import {AdminComponent, type ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/admin';
+import {
+  AdminComponent,
+  generateFieldId,
+  type ToggleInputEmits,
+  type ToggleInputProps,
+  useLanguage,
+} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: boolean; element: ElementInstance}>();
-const emit = defineEmits<(e: 'update:modelValue', value: boolean) => void>();
+const props = defineProps<ToggleInputProps>();
+const emit = defineEmits<ToggleInputEmits>();
+
+const propRefs = toRefs(props);
 
 const model = useVModel(props, undefined, emit);
 
-const id = generateFieldId(props.element);
+const id = generateFieldId(propRefs.element);
 
 const {translate} = useLanguage();
 </script>

@@ -1,56 +1,43 @@
-import {computed, type ComputedRef, type Ref, type WritableComputedRef} from 'vue';
+import {computed, type ComputedRef, type WritableComputedRef} from 'vue';
 import {get} from '@vueuse/core';
-import {
-  type AdminIcon,
-  type Keyable,
-  type SelectOption,
-  type SelectOptionValue,
-  type SelectOptionWithLabel,
-} from '@myparcel-pdk/admin-common';
+import {type SelectOption, type SelectOptionWithLabel} from '@myparcel-pdk/admin-common';
 import {isOfType} from '@myparcel/ts-utils';
 import {createFormElement, createObjectWithKeys} from '../utils';
-import {type ElementInstance, type RadioGroupOption} from '../types';
-import {useSelectInputContext} from './useSelectInputContext';
-import {type UseInputWithOptionsContext} from './useInputWithOptionsContext';
+import {
+  type ArrayItem,
+  type ElementInstance,
+  type RadioGroupEmits,
+  type RadioGroupModelValue,
+  type RadioGroupProps,
+} from '../types';
+import {useInputWithOptionsContext} from './useInputWithOptionsContext';
 
-export type RadioGroupProps<T extends SelectOptionValue = SelectOptionValue> = {
-  modelValue: T;
-  element: ElementInstance<{
-    options?: (SelectOption<T> & {icon?: AdminIcon})[];
-  }>;
-};
-
-type UseRadioGroupContext<
-  T extends Keyable = Keyable,
-  P extends RadioGroupProps<T> = RadioGroupProps<T>,
-  K extends keyof P = keyof P,
-> = (
-  props: P,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  emit: (e: 'update:modelValue', value: T | any) => void,
-) => {
+interface RadioGroupContext<T extends RadioGroupModelValue> {
   id: string;
-  model: Ref<P[K]> | WritableComputedRef<P[K]>;
-  options: ComputedRef<RadioGroupOption<T>[]>;
-  elements: ComputedRef<Record<T, ElementInstance>>;
-};
+  model: WritableComputedRef<ArrayItem<T>>;
+  options: ComputedRef<SelectOption<T>[]>;
+  elements: ComputedRef<Record<ArrayItem<T>, ElementInstance>>;
+}
 
-// @ts-expect-error todo
-export const useRadioGroupContext: UseRadioGroupContext = (props, emit) => {
-  const selectInputContext = useSelectInputContext(props, emit) as ReturnType<UseInputWithOptionsContext<Keyable>>;
+export const useRadioGroupContext = <
+  T extends RadioGroupModelValue = RadioGroupModelValue,
+  Props extends RadioGroupProps<T> = RadioGroupProps<T>,
+>(
+  props: Props,
+  emit: RadioGroupEmits<T>,
+): RadioGroupContext<T> => {
+  const context = useInputWithOptionsContext<T, Props>(props, emit);
 
   const elements = computed(() => {
-    const optionValues = (get(selectInputContext.options) ?? []).map((option) => option.value);
+    const optionValues = (get(context.options) ?? []).map((option) => option.value);
 
     return createObjectWithKeys(optionValues, (value) => {
-      const option = (get(selectInputContext.options) ?? []).find(
-        (option) => option.value === value,
-      ) as RadioGroupOption;
+      const option = (get(context.options) ?? []).find((option) => option.value === value) as SelectOption<T>;
 
       return createFormElement({
-        ref: selectInputContext.model,
+        ref: context.model,
         name: `${props.element.name}${value.toString()}`,
-        label: isOfType<SelectOptionWithLabel>(option, 'label') ? option.label : option.plainLabel,
+        label: isOfType<SelectOptionWithLabel<T>>(option, 'label') ? option.label : option.plainLabel,
         props: {
           value: option.value,
           image: option.image,
@@ -60,8 +47,9 @@ export const useRadioGroupContext: UseRadioGroupContext = (props, emit) => {
     });
   });
 
+  // @ts-expect-error todo
   return {
-    ...selectInputContext,
+    ...context,
     elements,
   };
 };

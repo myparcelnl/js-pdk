@@ -50,20 +50,14 @@
 <script lang="ts" setup>
 import {
   ActionButton,
-  type ActionDefinition,
   AdminComponent,
-  type Size,
+  type DropdownButtonProps,
   useDropdownData,
   useLanguage,
 } from '@myparcel-pdk/admin';
 
-const props = defineProps<{
-  // eslint-disable-next-line vue/no-unused-properties
-  actions: ActionDefinition[];
-  disabled?: boolean;
-  hideText?: boolean;
-  size?: Size;
-}>();
+// eslint-disable-next-line vue/no-unused-properties
+const props = defineProps<DropdownButtonProps>();
 
 const {toggled, dropdownActions, dropdownIcon} = useDropdownData(props);
 

@@ -11,18 +11,18 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script generic="T extends RadioGroupModelValue" lang="ts" setup>
 import {
   AdminComponent,
-  type ElementInstance,
-  type Keyable,
-  type OptionsProp,
+  type RadioGroupEmits,
+  type RadioGroupModelValue,
+  type RadioGroupProps,
   useRadioGroupContext,
 } from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: string; element: ElementInstance<OptionsProp<Keyable>>}>();
-const emit = defineEmits<(e: 'update:modelValue', value: string) => void>();
+const props = defineProps<RadioGroupProps<T>>();
+const emit = defineEmits<RadioGroupEmits<T>>();
 
 const {options, id, model, elements} = useRadioGroupContext(props, emit);
 </script>

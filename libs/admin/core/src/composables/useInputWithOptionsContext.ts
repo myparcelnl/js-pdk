@@ -1,40 +1,36 @@
-import {computed, type ComputedRef, onMounted, type Ref, watch, type WritableComputedRef} from 'vue';
+import {computed, type ComputedRef, onMounted, type UnwrapRef, watch, type WritableComputedRef} from 'vue';
 import {get, useVModel} from '@vueuse/core';
-import {type SelectOptionValue, type SelectOptionWithLabel} from '@myparcel-pdk/admin-common';
-import {type OneOrMore, toArray} from '@myparcel/ts-utils';
+import {type ArrayItem, type SelectOptionWithLabel} from '@myparcel-pdk/admin-common';
+import {toArray} from '@myparcel/ts-utils';
 import {generateFieldId} from '../utils';
-import {type ArrayItem, type OptionsProp, type PdkElementEmits, type PdkElementProps} from '../types';
+import {type SelectInputEmits, type SelectInputModelValue, type SelectInputProps} from '../types';
 import {translateSelectOption} from '../helpers';
 import {useLanguage} from './useLanguage';
 
-export type SelectInputProps<T extends OneOrMore<SelectOptionValue> = OneOrMore<SelectOptionValue>> = PdkElementProps<
-  T,
-  OptionsProp<ArrayItem<T>>
->;
+type ModelValue<T extends SelectInputModelValue, Multiple extends boolean> = Multiple extends true ? T : ArrayItem<T>;
 
-export type UseInputWithOptionsContext<
-  K extends SelectOptionValue = SelectOptionValue,
-  T extends OneOrMore<K> = OneOrMore<K>,
-  P extends SelectInputProps<T> = SelectInputProps<T>,
-> = (
-  props: P,
-  emit: PdkElementEmits<T>,
-  multiple?: boolean,
-) => {
+export interface InputWithOptionsContext<T extends SelectInputModelValue, Multiple extends boolean> {
   id: string;
-  model: T extends unknown[] ? Ref<T> | WritableComputedRef<T> : Ref<K> | WritableComputedRef<K>;
-  options: ComputedRef<SelectOptionWithLabel<K>[]>;
-};
+  model: WritableComputedRef<ModelValue<T, Multiple>>;
+  options: ComputedRef<SelectOptionWithLabel<UnwrapRef<T>>[]>;
+}
 
-// @ts-expect-error todo
-export const useInputWithOptionsContext: UseInputWithOptionsContext = (props, emit, multiple = false) => {
+export const useInputWithOptionsContext = <
+  T extends SelectInputModelValue = SelectInputModelValue,
+  Props extends SelectInputProps<T> = SelectInputProps<T>,
+  Multiple extends boolean = boolean,
+>(
+  props: Props,
+  emit: SelectInputEmits<T>,
+  multiple?: Multiple,
+): InputWithOptionsContext<T, Multiple> => {
   const {translate} = useLanguage();
 
   const id = generateFieldId(props.element);
-  const model = useVModel(props, undefined, emit);
+  const model = useVModel(props, undefined, emit) as WritableComputedRef<ModelValue<T, Multiple>>;
 
   const options = computed(() => {
-    return (props.element.props.options ?? []).map((option) => translateSelectOption(option, translate));
+    return (get(props.element).props.options ?? []).map((option) => translateSelectOption(option, translate));
   });
 
   onMounted(() => {
@@ -42,17 +38,19 @@ export const useInputWithOptionsContext: UseInputWithOptionsContext = (props, em
       options,
       (newOptions) => {
         const values = toArray(get(model));
-        const hasExistingValue = values.length && newOptions.some((option) => values.includes(option.value));
+        const hasExistingValue =
+          values.length && newOptions.some((option) => values.includes(option.value as ModelValue<T, Multiple>));
 
         if (hasExistingValue || newOptions.length === 0) {
           return;
         }
 
-        model.value = multiple ? [newOptions[0].value] : newOptions[0].value;
+        model.value = (multiple ? [newOptions[0].value] : newOptions[0].value) as ModelValue<T, Multiple>;
       },
       {immediate: Number(get(options)?.length) > 0},
     );
   });
 
+  // @ts-expect-error todo
   return {id, options, model};
 };

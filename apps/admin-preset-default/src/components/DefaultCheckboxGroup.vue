@@ -12,12 +12,18 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import {AdminComponent, type ElementInstance, type OptionsProp, useCheckboxGroupContext} from '@myparcel-pdk/admin';
+<script generic="T extends CheckboxGroupModelValue" lang="ts" setup>
+import {
+  AdminComponent,
+  type CheckboxGroupEmits,
+  type CheckboxGroupModelValue,
+  type CheckboxGroupProps,
+  useCheckboxGroupContext,
+} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: string | boolean; element: ElementInstance<OptionsProp<string | boolean>>}>();
-const emit = defineEmits<(e: 'update:modelValue', value: string | boolean) => void>();
+const props = defineProps<CheckboxGroupProps<T>>();
+const emit = defineEmits<CheckboxGroupEmits<T>>();
 
 const {options, model} = useCheckboxGroupContext(props, emit);
 </script>

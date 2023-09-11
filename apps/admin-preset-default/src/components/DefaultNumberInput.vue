@@ -6,13 +6,13 @@
     type="number" />
 </template>
 
-<script lang="ts" setup>
+<script generic="" lang="ts" setup>
 import {useVModel} from '@vueuse/core';
-import {AdminComponent, type ElementInstance} from '@myparcel-pdk/admin';
+import {AdminComponent, type NumberInputEmits, type NumberInputProps} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: string | number; element: ElementInstance}>();
-const emit = defineEmits<(e: 'update:modelValue', value: number) => void>();
+const props = defineProps<NumberInputProps>();
+const emit = defineEmits<NumberInputEmits>();
 
 const model = useVModel(props, undefined, emit);
 </script>
