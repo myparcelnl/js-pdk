@@ -47,9 +47,9 @@ export const useRadioGroupContext = <
     });
   });
 
-  // @ts-expect-error todo
   return {
     ...context,
+    // @ts-expect-error todo
     elements,
   };
 };
