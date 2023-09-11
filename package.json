@@ -48,7 +48,7 @@
   },
   "prettier": "@myparcel/prettier-config",
   "resolutions": {
-    "eslint-plugin-prettier": "4.2.1"
+    "eslint-plugin-prettier": "^4.2.1"
   },
   "devDependencies": {
     "@monodeploy/plugin-github": "^1.0.0",
