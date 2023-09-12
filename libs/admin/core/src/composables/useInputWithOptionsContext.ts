@@ -5,6 +5,7 @@ import {toArray} from '@myparcel/ts-utils';
 import {generateFieldId} from '../utils';
 import {type SelectInputEmits, type SelectInputModelValue, type SelectInputProps} from '../types';
 import {translateSelectOption} from '../helpers';
+import {SortType} from '../data';
 import {useLanguage} from './useLanguage';
 
 type ModelValue<T extends SelectInputModelValue, Multiple extends boolean> = Multiple extends true ? T : ArrayItem<T>;
@@ -27,10 +28,19 @@ export const useInputWithOptionsContext = <
   const {translate} = useLanguage();
 
   const id = generateFieldId(props.element);
-  const model = useVModel(props, undefined, emit) as WritableComputedRef<ModelValue<T, Multiple>>;
+  const model = useVModel(props, undefined, emit);
+  const sort = computed(() => props.element.props.sort ?? SortType.Ascending);
 
   const options = computed(() => {
-    return (get(props.element).props.options ?? []).map((option) => translateSelectOption(option, translate));
+    return (props.element.props.options ?? [])
+      .map((option) => translateSelectOption(option, translate))
+      .sort((a, b) => {
+        if (sort.value === SortType.Descending) {
+          return b.label.localeCompare(a.label);
+        }
+
+        return a.label.localeCompare(b.label);
+      });
   });
 
   onMounted(() => {
