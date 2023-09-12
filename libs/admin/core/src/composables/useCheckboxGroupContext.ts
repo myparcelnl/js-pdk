@@ -1,4 +1,10 @@
-import {type UseInputWithOptionsContext, useInputWithOptionsContext} from './useInputWithOptionsContext';
+import {type CheckboxGroupEmits, type CheckboxGroupModelValue, type CheckboxGroupProps} from '../types';
+import {type InputWithOptionsContext, useInputWithOptionsContext} from './useInputWithOptionsContext';
 
-export const useCheckboxGroupContext: UseInputWithOptionsContext = (props, emit) =>
+export type UseCheckboxGroupContext<
+  T extends CheckboxGroupModelValue = CheckboxGroupModelValue,
+  P extends CheckboxGroupProps<T> = CheckboxGroupProps<T>,
+> = (props: P, emit: CheckboxGroupEmits<T>) => InputWithOptionsContext<T, false>;
+
+export const useCheckboxGroupContext: UseCheckboxGroupContext = (props, emit) =>
   useInputWithOptionsContext(props, emit);

@@ -8,11 +8,11 @@
 
 <script lang="ts" setup>
 import {useVModel} from '@vueuse/core';
-import {AdminComponent, type ElementInstance} from '@myparcel-pdk/admin';
+import {AdminComponent, type TimeInputEmits, type TimeInputProps} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue: string; element: ElementInstance}>();
-const emit = defineEmits<(e: 'update:modelValue', value: string) => void>();
+const props = defineProps<TimeInputProps>();
+const emit = defineEmits<TimeInputEmits>();
 
 const model = useVModel(props, undefined, emit);
 </script>

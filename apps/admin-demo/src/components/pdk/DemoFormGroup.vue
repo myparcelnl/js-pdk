@@ -21,29 +21,15 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent, type PropType} from 'vue';
-import {type ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/admin';
+<script lang="ts" setup>
+import {toRefs} from 'vue';
+import {type FormGroupProps, generateFieldId, useLanguage} from '@myparcel-pdk/admin';
 
-/**
- * @see import('@myparcel-pdk/admin-preset-default').DefaultFormGroup
- */
-export default defineComponent({
-  name: 'DemoFormGroup',
-  props: {
-    element: {
-      type: Object as PropType<ElementInstance>,
-      required: true,
-    },
-  },
+const props = defineProps<FormGroupProps>();
 
-  setup: (props) => {
-    const {translate} = useLanguage();
+const propRefs = toRefs(props);
 
-    return {
-      id: generateFieldId(props.element),
-      translate,
-    };
-  },
-});
+const id = generateFieldId(propRefs.element);
+
+const {translate} = useLanguage();
 </script>

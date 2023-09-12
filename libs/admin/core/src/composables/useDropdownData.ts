@@ -2,28 +2,24 @@ import {computed, type ComputedRef, type Ref, ref, toRefs} from 'vue';
 import {get} from '@vueuse/core';
 import {AdminIcon} from '@myparcel-pdk/admin-common';
 import {partitionArray} from '@myparcel/ts-utils';
-import {type AnyActionDefinition} from '../types';
+import {type ActionDefinition, type DropdownButtonProps} from '../types';
 
-type DropdownProps = {
-  actions: AnyActionDefinition[];
-};
+interface DropdownActions {
+  standalone: ActionDefinition[];
+  hidden: ActionDefinition[];
+}
 
-type DropdownData = {
-  dropdownActions: ComputedRef<{
-    standalone: AnyActionDefinition[];
-    hidden: AnyActionDefinition[];
-  }>;
+interface DropdownData {
+  dropdownActions: ComputedRef<DropdownActions>;
 
   dropdownIcon: ComputedRef<AdminIcon>;
 
   toggle(value?: boolean): void;
 
   toggled: Ref<boolean>;
-};
+}
 
-type UseDropdownData = (props: DropdownProps) => DropdownData;
-
-export const useDropdownData: UseDropdownData = (props) => {
+export const useDropdownData = (props: DropdownButtonProps): DropdownData => {
   const toggled = ref(false);
   const propRefs = toRefs(props);
 

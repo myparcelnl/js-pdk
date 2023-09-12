@@ -2,6 +2,24 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.107](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.106...@myparcel-pdk/admin-core@1.0.0-alpha.107) "@myparcel-pdk/admin-core" (2023-09-11)
+
+
+### Features
+
+* **admin:** support propRefs in generateFieldId ([aa568fd](https://github.com/myparcelnl/js-pdk/commit/aa568fd27363448b99ac7b42ff3477a2ddb5791b))
+
+
+### Bug Fixes
+
+* **admin:** add form group props ([818f614](https://github.com/myparcelnl/js-pdk/commit/818f614d510fad8dfeaec66bbe0f5c5a0923d655))
+* **admin:** add more props ([14eac5a](https://github.com/myparcelnl/js-pdk/commit/14eac5ae0025a5a72e2aa03f396121d6542e02ab))
+* **admin:** add more props ([71c762b](https://github.com/myparcelnl/js-pdk/commit/71c762b465f449ca1fcf7a6401185638d41db3f7))
+* **admin:** export component prop and emit types ([ca7a3c8](https://github.com/myparcelnl/js-pdk/commit/ca7a3c83f774859494ca4c11831bbd6c7e755136))
+
+
+
+
 ## [1.0.0-alpha.106](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.105...@myparcel-pdk/admin-core@1.0.0-alpha.106) "@myparcel-pdk/admin-core" (2023-09-08)
 
 

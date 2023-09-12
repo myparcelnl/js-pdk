@@ -13,15 +13,24 @@
   </label>
 </template>
 
-<script lang="ts" setup>
+<script generic="T extends CheckboxInputModelValue" lang="ts" setup>
+import {toRefs} from 'vue';
 import {useVModel} from '@vueuse/core';
-import {AdminComponent, type ElementInstance, generateFieldId} from '@myparcel-pdk/admin'; // eslint-disable-next-line vue/no-unused-properties
+import {
+  AdminComponent,
+  type CheckboxInputEmits,
+  type CheckboxInputModelValue,
+  type CheckboxInputProps,
+  generateFieldId,
+} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{modelValue?: string | number | symbol | boolean; element: ElementInstance}>();
-const emit = defineEmits<(e: 'update:modelValue', value: string | number | symbol | boolean) => void>();
+const props = defineProps<CheckboxInputProps<T>>();
+const emit = defineEmits<CheckboxInputEmits<T>>();
+
+const propRefs = toRefs(props);
 
 const model = useVModel(props, undefined, emit);
 
-const id = generateFieldId(props.element);
+const id = generateFieldId(propRefs.element);
 </script>

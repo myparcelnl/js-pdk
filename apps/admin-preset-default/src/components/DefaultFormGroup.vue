@@ -36,12 +36,14 @@
 /**
  * A form group is used to render a label and a form element.
  */
-import {AdminComponent, type ElementInstance, generateFieldId, useLanguage} from '@myparcel-pdk/admin';
+import {toRefs} from 'vue';
+import {AdminComponent, type FormGroupProps, generateFieldId, useLanguage} from '@myparcel-pdk/admin';
 
-// eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{element: ElementInstance<{description: string}>}>();
+const props = defineProps<FormGroupProps>();
 
-const id = generateFieldId(props.element);
+const propRefs = toRefs(props);
+
+const id = generateFieldId(propRefs.element);
 
 const {translate} = useLanguage();
 </script>

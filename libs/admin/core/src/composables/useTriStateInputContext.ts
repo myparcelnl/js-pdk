@@ -7,30 +7,27 @@ import {
   useForm,
 } from '@myparcel/vue-form-builder';
 import {toTriState, triStateToBoolean} from '../utils';
-import {type ElementInstance, type PdkElementEmits, type PdkElementProps} from '../types';
+import {
+  type ElementInstance,
+  type PdkElementProps,
+  type TriStateInputEmits,
+  type TriStateInputModelValue,
+  type TriStateInputProps,
+} from '../types';
 import {TriState} from '../data';
 import {useLanguage} from './useLanguage';
 
 type BoolElInstance = ElementInstance<PdkElementProps<ComponentOrHtmlElement>, ComponentOrHtmlElement, string, boolean>;
 
-export type TriStateElementProps = {
-  defaultValue?: TriState;
-};
-
-export type TriStateInputProps = PdkElementProps<TriState, TriStateElementProps>;
-
-export type TriStateInputEmits = PdkElementEmits<TriState>;
-
-type UseTriStateInputContext = (
-  props: TriStateInputProps,
-  emit: TriStateInputEmits,
-) => {
+interface TriStateInputContext {
   inheritElement: BoolElInstance;
   inheritModel: Ref<boolean>;
-  model: WritableComputedRef<TriState>;
+  model: WritableComputedRef<TriStateInputModelValue>;
   toggleElement: BoolElInstance;
   toggleModel: Ref<boolean>;
-};
+}
+
+type UseTriStateInputContext = (props: TriStateInputProps, emit: TriStateInputEmits) => TriStateInputContext;
 
 /**
  * A tri-state input can hold a value of 0, 1 or -1. -1 is used to indicate that the value should be inherited .
@@ -45,7 +42,7 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
   const inheritModel = ref<boolean>(TriState.Inherit === get(props.modelValue));
   const toggleModel = ref<boolean>(triStateToBoolean(get(props.modelValue)));
 
-  const model = useVModel(props, undefined, emit) as WritableComputedRef<TriState>;
+  const model = useVModel(props, undefined, emit) as WritableComputedRef<TriStateInputModelValue>;
 
   /**
    * The value when the element is set to inherit.

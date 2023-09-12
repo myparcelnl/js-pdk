@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.54](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.53...@myparcel-pdk/common@1.0.0-alpha.54) "@myparcel-pdk/common" (2023-09-11)
+
+
+### Bug Fixes
+
+* **admin:** export component prop and emit types ([ca7a3c8](https://github.com/myparcelnl/js-pdk/commit/ca7a3c83f774859494ca4c11831bbd6c7e755136))
+
+
+
+
 ## [1.0.0-alpha.53](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.52...@myparcel-pdk/common@1.0.0-alpha.53) "@myparcel-pdk/common" (2023-09-08)
 
 

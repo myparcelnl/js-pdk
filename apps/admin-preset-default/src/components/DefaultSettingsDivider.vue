@@ -13,17 +13,9 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, type ElementInstance, useLanguage} from '@myparcel-pdk/admin';
+import {AdminComponent, type SettingsDividerProps, useLanguage} from '@myparcel-pdk/admin';
 
-defineProps<{
-  element: ElementInstance<{
-    content?: string;
-    heading?: string;
-    level?: number | string;
-  }>;
-  // eslint-disable-next-line vue/no-unused-properties
-  modelValue: string | number;
-}>();
+defineProps<SettingsDividerProps>();
 
 const {translate, has} = useLanguage();
 </script>

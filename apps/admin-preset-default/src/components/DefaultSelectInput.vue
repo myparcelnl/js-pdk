@@ -14,16 +14,22 @@
   </select>
 </template>
 
-<script lang="ts" setup>
+<script generic="T extends SelectInputModelValue" lang="ts" setup>
 /**
  * A select box. Renders a list of options which each have their own value.
  */
 
-import {AdminComponent, type ElementInstance, type OptionsProp, useSelectInputContext} from '@myparcel-pdk/admin';
+import {
+  AdminComponent,
+  type SelectInputEmits,
+  type SelectInputModelValue,
+  type SelectInputProps,
+  useSelectInputContext,
+} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<{element: ElementInstance<OptionsProp>; modelValue: string | number}>();
-const emit = defineEmits<(e: 'update:modelValue', value: string | number) => void>();
+const props = defineProps<SelectInputProps<T>>();
+const emit = defineEmits<SelectInputEmits<T>>();
 
 const {options, id, model} = useSelectInputContext(props, emit);
 </script>
