@@ -33,17 +33,11 @@
 </template>
 
 <script lang="ts" setup>
-import {toRefs} from 'vue';
-import {useVModel} from '@vueuse/core';
-import {generateFieldId, type ToggleInputEmits, type ToggleInputProps} from '@myparcel-pdk/admin';
+import {type ToggleInputEmits, type ToggleInputProps, useElementContext} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<ToggleInputProps>();
 const emit = defineEmits<ToggleInputEmits>();
 
-const propRefs = toRefs(props);
-
-const id = generateFieldId(propRefs.element);
-
-const model = useVModel(props, undefined, emit);
+const {id, model} = useElementContext(props, emit);
 </script>

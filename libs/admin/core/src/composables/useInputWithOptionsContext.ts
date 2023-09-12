@@ -1,12 +1,12 @@
 import {computed, type ComputedRef, onMounted, type UnwrapRef, watch, type WritableComputedRef} from 'vue';
-import {get, useVModel} from '@vueuse/core';
+import {get} from '@vueuse/core';
 import {type ArrayItem, type SelectOptionWithLabel} from '@myparcel-pdk/admin-common';
 import {toArray} from '@myparcel/ts-utils';
-import {generateFieldId} from '../utils';
 import {type SelectInputEmits, type SelectInputModelValue, type SelectInputProps} from '../types';
 import {translateSelectOption} from '../helpers';
 import {SortType} from '../data';
 import {useLanguage} from './useLanguage';
+import {type ElementContext, useElementContext} from './useElementContext';
 
 type ModelValue<T extends SelectInputModelValue, Multiple extends boolean> = Multiple extends true ? T : ArrayItem<T>;
 
@@ -25,11 +25,10 @@ export const useInputWithOptionsContext = <
   emit: SelectInputEmits<T>,
   multiple?: Multiple,
 ): InputWithOptionsContext<T, Multiple> => {
-  const {translate} = useLanguage();
-
-  const id = generateFieldId(props.element);
-  const model = useVModel(props, undefined, emit);
+  const {id, model} = useElementContext<T>(props, emit) as ElementContext<ModelValue<T, Multiple>>;
   const sort = computed(() => props.element.props.sort ?? SortType.Ascending);
+
+  const {translate} = useLanguage();
 
   const options = computed(() => {
     return (props.element.props.options ?? [])

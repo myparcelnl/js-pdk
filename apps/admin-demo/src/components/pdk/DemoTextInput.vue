@@ -9,17 +9,11 @@
 </template>
 
 <script lang="ts" setup>
-import {toRefs} from 'vue';
-import {useVModel} from '@vueuse/core';
-import {generateFieldId, type TextInputEmits, type TextInputProps} from '@myparcel-pdk/admin';
+import {type TextInputEmits, type TextInputProps, useElementContext} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<TextInputProps>();
 const emit = defineEmits<TextInputEmits>();
 
-const propRefs = toRefs(props);
-
-const model = useVModel(props, undefined, emit);
-
-const id = generateFieldId(propRefs.element);
+const {id, model} = useElementContext(props, emit);
 </script>

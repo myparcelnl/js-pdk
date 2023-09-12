@@ -16,13 +16,11 @@
 </template>
 
 <script lang="ts" setup>
-import {toRefs} from 'vue';
-import {useVModel} from '@vueuse/core';
 import {
   AdminComponent,
-  generateFieldId,
   type ToggleInputEmits,
   type ToggleInputProps,
+  useElementContext,
   useLanguage,
 } from '@myparcel-pdk/admin';
 
@@ -30,11 +28,7 @@ import {
 const props = defineProps<ToggleInputProps>();
 const emit = defineEmits<ToggleInputEmits>();
 
-const propRefs = toRefs(props);
-
-const model = useVModel(props, undefined, emit);
-
-const id = generateFieldId(propRefs.element);
+const {id, model} = useElementContext(props, emit);
 
 const {translate} = useLanguage();
 </script>

@@ -34,17 +34,11 @@ export default {inheritAttrs: false};
 </script>
 
 <script lang="ts" setup>
-import {toRefs} from 'vue';
-import {useVModel} from '@vueuse/core';
-import {AdminComponent, generateFieldId, type RadioInputEmits, type RadioInputProps} from '@myparcel-pdk/admin';
+import {AdminComponent, type RadioInputEmits, type RadioInputProps, useElementContext} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<RadioInputProps>();
 const emit = defineEmits<RadioInputEmits>();
 
-const propRefs = toRefs(props);
-
-const model = useVModel(props, undefined, emit);
-
-const id = generateFieldId(propRefs.element);
+const {id, model} = useElementContext(props, emit);
 </script>

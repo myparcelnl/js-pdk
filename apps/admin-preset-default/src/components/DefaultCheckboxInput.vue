@@ -14,23 +14,17 @@
 </template>
 
 <script generic="T extends CheckboxInputModelValue" lang="ts" setup>
-import {toRefs} from 'vue';
-import {useVModel} from '@vueuse/core';
 import {
   AdminComponent,
   type CheckboxInputEmits,
   type CheckboxInputModelValue,
   type CheckboxInputProps,
-  generateFieldId,
+  useElementContext,
 } from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<CheckboxInputProps<T>>();
 const emit = defineEmits<CheckboxInputEmits<T>>();
 
-const propRefs = toRefs(props);
-
-const model = useVModel(props, undefined, emit);
-
-const id = generateFieldId(propRefs.element);
+const {id, model} = useElementContext(props, emit);
 </script>

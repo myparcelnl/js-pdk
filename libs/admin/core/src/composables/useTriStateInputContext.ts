@@ -1,5 +1,5 @@
 import {computed, markRaw, reactive, ref, type Ref, watch, type WritableComputedRef} from 'vue';
-import {get, useVModel} from '@vueuse/core';
+import {get} from '@vueuse/core';
 import {
   type AnyElementConfiguration,
   type ComponentOrHtmlElement,
@@ -16,10 +16,12 @@ import {
 } from '../types';
 import {TriState} from '../data';
 import {useLanguage} from './useLanguage';
+import {useElementContext} from './useElementContext';
 
 type BoolElInstance = ElementInstance<PdkElementProps<ComponentOrHtmlElement>, ComponentOrHtmlElement, string, boolean>;
 
 interface TriStateInputContext {
+  id: string;
   inheritElement: BoolElInstance;
   inheritModel: Ref<boolean>;
   model: WritableComputedRef<TriStateInputModelValue>;
@@ -42,7 +44,7 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
   const inheritModel = ref<boolean>(TriState.Inherit === get(props.modelValue));
   const toggleModel = ref<boolean>(triStateToBoolean(get(props.modelValue)));
 
-  const model = useVModel(props, undefined, emit) as WritableComputedRef<TriStateInputModelValue>;
+  const {id, model} = useElementContext<TriStateInputModelValue>(props, emit);
 
   /**
    * The value when the element is set to inherit.
@@ -114,9 +116,10 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
   });
 
   return {
-    model,
+    id,
     inheritElement,
     inheritModel,
+    model,
     toggleElement,
     toggleModel,
   };

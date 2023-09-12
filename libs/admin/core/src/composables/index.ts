@@ -11,6 +11,7 @@ export * from './useBulkSelectCheckbox';
 export * from './useCheckboxGroupContext';
 export * from './useDropOffInputContext';
 export * from './useDropdownData';
+export * from './useElementContext';
 export * from './useGlobalPdkAdmin';
 export * from './useInputWithOptionsContext';
 export * from './useLanguage';
