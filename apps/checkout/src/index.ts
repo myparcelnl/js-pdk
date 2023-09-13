@@ -1,3 +1,5 @@
+import './globals';
+
 export type {AddressFields} from '@myparcel-pdk/checkout-core';
 
 export type {FrontendEndpoint} from '@myparcel-pdk/checkout-common';
@@ -7,15 +9,21 @@ export {
   AddressType,
   PdkEvent,
   PdkField,
+  StoreListener,
   Util,
   createPdkCheckout,
+  useCheckoutStore,
   useEvent,
   usePdkCheckout,
   useSettings,
   useUtil,
 } from '@myparcel-pdk/checkout-core';
 
-export {PdkDeliveryOptionsEvent, initializeCheckoutDeliveryOptions} from '@myparcel-pdk/checkout-delivery-options';
+export {
+  PdkDeliveryOptionsEvent,
+  initializeCheckoutDeliveryOptions,
+  useDeliveryOptionsStore,
+} from '@myparcel-pdk/checkout-delivery-options';
 
 export {initializeCheckoutSeparateAddressFields} from '@myparcel-pdk/checkout-separate-address-fields';
 
