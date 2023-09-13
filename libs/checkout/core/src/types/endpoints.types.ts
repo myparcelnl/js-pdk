@@ -13,8 +13,6 @@ export type FrontendEndpointParameters<E extends FrontendEndpoint> = PdkEndpoint
   FrontendEndpointDefinition
 >;
 
-export type FrontendContextObject = {checkout: Plugin.ModelContextCheckoutContext};
-
 interface FetchCheckoutContextDefinition extends PdkEndpointDefinition {
   formattedResponse: Plugin.ModelContextCheckoutContext;
   name: FrontendEndpoint.FetchCheckoutContext;

@@ -1,8 +1,15 @@
 import './globals';
 
-export type {AddressFields} from '@myparcel-pdk/checkout-core';
+export type {
+  AddressFields,
+  FrontendEndpointParameters,
+  FrontendEndpointResponse,
+  PdkCheckoutConfig,
+  PdkCheckoutConfigInput,
+  PdkCheckoutForm,
+} from '@myparcel-pdk/checkout-core';
 
-export type {FrontendEndpoint} from '@myparcel-pdk/checkout-common';
+export type {FrontendPdkEndpointObject} from '@myparcel-pdk/checkout-common';
 
 export {
   AddressField,
@@ -18,6 +25,8 @@ export {
   useSettings,
   useUtil,
 } from '@myparcel-pdk/checkout-core';
+
+export {FrontendEndpoint} from '@myparcel-pdk/checkout-common';
 
 export {
   PdkDeliveryOptionsEvent,
