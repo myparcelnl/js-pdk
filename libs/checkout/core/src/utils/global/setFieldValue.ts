@@ -4,7 +4,7 @@ import {useConfig} from '../../config';
 import {getAddressField} from './getAddressField';
 
 export const setFieldValue = (
-  name: AddressField,
+  name: AddressField | string,
   value?: string,
   addressType?: AddressType,
   dispatchEvent = true,

@@ -3,7 +3,7 @@ import {useCheckoutStore} from '../useCheckoutStore';
 import {type AddressField, type AddressType, type PdkCheckoutForm, PdkField} from '../../index';
 
 type GetFieldValue = {
-  (field: AddressField, addressType?: AddressType, fields?: PdkCheckoutForm): undefined | string;
+  (field: AddressField | string, addressType?: AddressType, fields?: PdkCheckoutForm): undefined | string;
   (field: PdkField | string, fields?: PdkCheckoutForm, arg3?: never): undefined | string;
 };
 

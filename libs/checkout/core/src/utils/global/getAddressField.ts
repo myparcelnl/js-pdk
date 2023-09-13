@@ -6,7 +6,7 @@ import {type AddressField, useConfig, useUtil, Util} from '../../index';
  * Get field by name. Will return element with selector: "#<billing|shipping>_<name>".
  */
 export const getAddressField = (
-  name: AddressField,
+  name: AddressField | string,
   addressType?: AddressType,
   warn = true,
 ): HTMLInputElement | null => {
@@ -15,5 +15,6 @@ export const getAddressField = (
   const config = useConfig();
   const getElement = useUtil(Util.GetElement);
 
+  // @ts-expect-error todo
   return getElement(config.fields[resolvedAddressType][name], warn);
 };
