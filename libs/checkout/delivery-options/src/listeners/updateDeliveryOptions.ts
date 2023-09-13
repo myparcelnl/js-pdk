@@ -27,8 +27,9 @@ export const updateDeliveryOptions: StoreCallbackUpdate<CheckoutStoreState> = as
   await deliveryOptions.set({
     enabled: await shippingMethodHasDeliveryOptions(newState.form[PdkField.ShippingMethod]),
     configuration: {
-      ...deliveryOptions.state.configuration,
       address: getDeliveryOptionsAddress(),
+      config: deliveryOptions.state.settings.updateDeliveryOptions(deliveryOptions.state),
+      strings: deliveryOptions.state.configuration.strings,
     },
   });
 };

@@ -1,17 +1,23 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {StoreListener, useCheckoutStore, useUtil, Util} from '@myparcel-pdk/checkout-core';
 import {getDeliveryOptionsAddress} from '../utils';
-import {type DeliveryOptionsConfiguration} from '../types';
+import {
+  type CheckoutDeliveryOptionsSettings,
+  type CheckoutDeliveryOptionsSettingsInput,
+  type DeliveryOptionsConfiguration,
+} from '../types';
 import {showOrHideDeliveryOptions, updateConfigOrAddress} from '../listeners';
+import {getResolvedSettings} from './getResolvedSettings';
 
 export type DeliveryOptionsStoreState = {
+  settings: CheckoutDeliveryOptionsSettings;
   configuration: DeliveryOptionsConfiguration;
   enabled: boolean;
   hiddenInput?: HTMLInputElement;
   output: Record<string, unknown>;
 };
 
-export const createDeliveryOptionsStore = () => {
+export const createDeliveryOptionsStore = (settings?: CheckoutDeliveryOptionsSettingsInput) => {
   const createStore = useUtil(Util.CreateStore);
 
   const checkout = useCheckoutStore();
@@ -21,6 +27,8 @@ export const createDeliveryOptionsStore = () => {
   return createStore<DeliveryOptionsStoreState>(Symbol('deliveryOptions'), () => {
     return {
       state: {
+        settings: getResolvedSettings(settings),
+
         /**
          * Configuration that is passed to the delivery options library.
          */

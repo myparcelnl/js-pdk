@@ -1,5 +1,6 @@
 import {type Replace} from '@myparcel/ts-utils';
 import {type MyParcelDeliveryOptions} from '@myparcel/delivery-options';
+import {type DeliveryOptionsStoreState} from './store';
 
 export enum PdkDeliveryOptionsEvent {
   DeliveryOptionsUpdated = 'deliveryOptionsUpdated',
@@ -10,7 +11,7 @@ type ToRecord<T> = {
 };
 
 // TODO: fix types in @myparcel/delivery-options, currently does not allow street.
-type DeliveryOptionsAddress = {
+export type DeliveryOptionsAddress = {
   cc: string;
   postalCode: string;
   street: string;
@@ -22,3 +23,16 @@ export type DeliveryOptionsConfiguration = Replace<
   'address',
   DeliveryOptionsAddress
 >;
+
+export type CheckoutDeliveryOptionsSettingsInput = Partial<CheckoutDeliveryOptionsSettings>;
+
+export enum DeliveryOptionsMode {
+  Single = 'single',
+  Multi = 'multi',
+}
+
+export interface CheckoutDeliveryOptionsSettings {
+  mode: DeliveryOptionsMode;
+
+  updateDeliveryOptions(state: DeliveryOptionsStoreState): MyParcelDeliveryOptions.Config;
+}
