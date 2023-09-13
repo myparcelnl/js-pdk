@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.46](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-js@1.0.0-alpha.45...@myparcel-pdk/admin-js@1.0.0-alpha.46) "@myparcel-pdk/admin-js" (2023-09-13)
+
+
+### Features
+
+* **admin:** add useElementContext ([6e7f2d8](https://github.com/myparcelnl/js-pdk/commit/6e7f2d8b7e13e2dd47940d33c2e6fc5a7d537d8a))
+
+
+
+
 ## [1.0.0-alpha.42](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-js@1.0.0-alpha.41...@myparcel-pdk/admin-js@1.0.0-alpha.42) "@myparcel-pdk/admin-js" (2023-09-06)
 
 

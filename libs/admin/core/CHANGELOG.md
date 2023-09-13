@@ -2,6 +2,22 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.108](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.107...@myparcel-pdk/admin-core@1.0.0-alpha.108) "@myparcel-pdk/admin-core" (2023-09-13)
+
+
+### Features
+
+* **admin:** add sort prop to elements with options ([#194](https://github.com/myparcelnl/js-pdk/issues/194)) ([23ee260](https://github.com/myparcelnl/js-pdk/commit/23ee260a1159175442198043fe566ce0e0ec9f99))
+* **admin:** add useElementContext ([6e7f2d8](https://github.com/myparcelnl/js-pdk/commit/6e7f2d8b7e13e2dd47940d33c2e6fc5a7d537d8a))
+
+
+### Bug Fixes
+
+* **admin:** fix type import from vue-query ([b4e3fce](https://github.com/myparcelnl/js-pdk/commit/b4e3fce470d9f3d7c683fa48796227955060b20e))
+
+
+
+
 ## [1.0.0-alpha.107](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.106...@myparcel-pdk/admin-core@1.0.0-alpha.107) "@myparcel-pdk/admin-core" (2023-09-11)
 
 
