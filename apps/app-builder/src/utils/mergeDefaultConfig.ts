@@ -2,6 +2,7 @@ import {type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types';
 import {DEFAULT_JSON_SPACES} from '../constants';
 
 export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilderConfig => ({
+  additionalCommands: [],
   archiveFilename: '{{platform}}-{{name}}-{{version}}.zip',
   composerCommand: 'composer',
   debug: false,

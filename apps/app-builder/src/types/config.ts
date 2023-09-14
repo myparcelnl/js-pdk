@@ -1,6 +1,7 @@
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {type VersionSource} from '../increment';
 import {type PdkPlatformName, type StringGenerator} from './common';
+import {type CommandDefinition} from './command';
 
 export type PdkBuilderConfig = {
   /**
@@ -78,6 +79,8 @@ export type PdkBuilderConfig = {
     outDir?: string;
     sheetId?: number;
   };
+
+  additionalCommands?: CommandDefinition[];
 };
 
 export type ResolvedPdkBuilderConfig = Required<Omit<PdkBuilderConfig, 'translations'>> & {

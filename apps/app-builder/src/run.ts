@@ -1,6 +1,7 @@
 import {type LiftoffEnv} from 'liftoff';
 import {program} from 'commander';
-import {createWithConfig, createWithContext} from './utils';
+import {registerConfigCommand} from './utils/registerConfigCommand';
+import {createWithConfig, createWithContext, resolveConfig} from './utils';
 import {type CommandDefinition} from './types';
 import {
   COMMAND_BUILD_NAME,
@@ -136,25 +137,7 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
     .option(...OPTION_QUIET)
     .action(withContext(() => import('./commands/init')));
 
-  CONFIG_COMMANDS.forEach(({name, description, options, action, args}) => {
-    const command = program.command(name).description(description);
-
-    if (options) {
-      options.forEach((option) => {
-        // @ts-expect-error todo
-        command.option(...option);
-      });
-    }
-
-    if (args) {
-      args.forEach((argument) => {
-        // @ts-expect-error todo
-        command.argument(...argument);
-      });
-    }
-
-    command.action(withConfig(action));
-  });
+  CONFIG_COMMANDS.forEach((definition) => registerConfigCommand(definition, withConfig));
 
   ALL_BULK_COMMANDS.forEach(([commandName, commands]) => {
     program
@@ -172,5 +155,20 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
       });
   });
 
-  program.parse(argv);
+  void (async () => {
+    if (env.configPath) {
+      const config = await resolveConfig(env);
+
+      config.additionalCommands?.forEach((definition) => {
+        const resolvedDefinition = {
+          ...definition,
+          action: () => Promise.resolve({default: definition.action}),
+        };
+
+        return registerConfigCommand(resolvedDefinition, withConfig);
+      });
+    }
+
+    program.parse(argv);
+  })();
 };
