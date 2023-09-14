@@ -26,7 +26,7 @@ export const useInputWithOptionsContext = <
   multiple?: Multiple,
 ): InputWithOptionsContext<T, Multiple> => {
   const {id, model} = useElementContext<T>(props, emit) as ElementContext<ModelValue<T, Multiple>>;
-  const sort = computed(() => props.element.props.sort ?? SortType.Ascending);
+  const sort = computed(() => props.element.props.sort);
 
   const {translate} = useLanguage();
 
@@ -34,11 +34,19 @@ export const useInputWithOptionsContext = <
     return (props.element.props.options ?? [])
       .map((option) => translateSelectOption(option, translate))
       .sort((a, b) => {
-        if (sort.value === SortType.Descending) {
-          return b.label.localeCompare(a.label);
+        if (b.value === -1) {
+          return 1;
         }
 
-        return a.label.localeCompare(b.label);
+        switch (sort.value) {
+          case SortType.Ascending:
+            return a.label.localeCompare(b.label);
+
+          case SortType.Descending:
+            return b.label.localeCompare(a.label);
+        }
+
+        return 0;
       });
   });
 
