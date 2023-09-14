@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.109](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.108...@myparcel-pdk/admin-core@1.0.0-alpha.109) "@myparcel-pdk/admin-core" (2023-09-14)
+
+
+### Bug Fixes
+
+* **admin:** improve options sorting ([ca4cb7b](https://github.com/myparcelnl/js-pdk/commit/ca4cb7be15fa38edcf359f1706519ae2a3802967))
+
+
+
+
 ## [1.0.0-alpha.108](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.107...@myparcel-pdk/admin-core@1.0.0-alpha.108) "@myparcel-pdk/admin-core" (2023-09-13)
 
 

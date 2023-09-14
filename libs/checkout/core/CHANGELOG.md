@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.32](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-core@1.0.0-alpha.31...@myparcel-pdk/checkout-core@1.0.0-alpha.32) "@myparcel-pdk/checkout-core" (2023-09-14)
+
+
+### Bug Fixes
+
+* **checkout:** export more variables ([0314ce2](https://github.com/myparcelnl/js-pdk/commit/0314ce2afe60b02ea4371d1662abfe7b174bb562))
+* **checkout:** update checkout ([bd5df9a](https://github.com/myparcelnl/js-pdk/commit/bd5df9a03377b01ac62c9cc50025e5e246627edf))
+
+
+
+
 ## [1.0.0-alpha.31](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-core@1.0.0-alpha.30...@myparcel-pdk/checkout-core@1.0.0-alpha.31) "@myparcel-pdk/checkout-core" (2023-09-13)
 
 

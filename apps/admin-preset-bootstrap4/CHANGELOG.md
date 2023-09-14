@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.111](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.110...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.111) "@myparcel-pdk/admin-preset-bootstrap4" (2023-09-14)
+
+
+### Bug Fixes
+
+* **admin-preset-bootstrap4:** fix button size prop ([e537517](https://github.com/myparcelnl/js-pdk/commit/e537517a79068073d3938b3c9d68f1a9df5a2e51))
+
+
+
+
 ## [1.0.0-alpha.110](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.109...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.110) "@myparcel-pdk/admin-preset-bootstrap4" (2023-09-13)
 
 

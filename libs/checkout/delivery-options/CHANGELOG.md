@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.31](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.30...@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.31) "@myparcel-pdk/checkout-delivery-options" (2023-09-14)
+
+
+### Bug Fixes
+
+* **checkout:** update checkout ([bd5df9a](https://github.com/myparcelnl/js-pdk/commit/bd5df9a03377b01ac62c9cc50025e5e246627edf))
+
+
+
+
 ## [1.0.0-alpha.27](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.26...@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.27) "@myparcel-pdk/checkout-delivery-options" (2023-09-06)
 
 

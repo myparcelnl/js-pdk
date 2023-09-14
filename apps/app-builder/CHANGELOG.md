@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.36](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.35...@myparcel-pdk/app-builder@1.0.0-alpha.36) "@myparcel-pdk/app-builder" (2023-09-14)
+
+
+### Features
+
+* **app-builder:** allow adding additional commands via config ([c7389f9](https://github.com/myparcelnl/js-pdk/commit/c7389f955a2dac26a0d07e045d26cac24e3a4050))
+
+
+### Bug Fixes
+
+* **app-builder:** expose more types ([87869bd](https://github.com/myparcelnl/js-pdk/commit/87869bd3f1d5d4707ef373687ddb40965513521d))
+
+
+
+
 ## [1.0.0-alpha.35](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.34...@myparcel-pdk/app-builder@1.0.0-alpha.35) "@myparcel-pdk/app-builder" (2023-09-06)
 
 
