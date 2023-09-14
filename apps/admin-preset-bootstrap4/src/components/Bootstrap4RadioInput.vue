@@ -15,8 +15,19 @@
       v-bind="$attrs" />
     <label
       :for="id"
-      class="form-check-label"
-      v-text="element.label" />
+      class="form-check-label">
+      <PdkIcon
+        v-if="element.props?.icon"
+        :icon="element.props.icon" />
+
+      <PdkImage
+        v-if="element.props?.image"
+        :alt="element.label"
+        :src="element.props.image"
+        width="24" />
+
+      {{ element.label }}
+    </label>
   </div>
 </template>
 
