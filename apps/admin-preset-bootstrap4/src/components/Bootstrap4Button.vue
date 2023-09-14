@@ -11,7 +11,7 @@
 <script lang="ts" setup>
 /* eslint-disable vue/no-unused-properties */
 import {computed, type PropType} from 'vue';
-import {type AdminIcon, type Size} from '@myparcel-pdk/admin';
+import {type AdminIcon, Size} from '@myparcel-pdk/admin';
 import BaseButton from './common/BaseButton.vue';
 
 const props = defineProps({
@@ -35,7 +35,7 @@ const props = defineProps({
 
   size: {
     type: String as PropType<Size>,
-    default: 'md',
+    default: Size.Medium,
   },
 });
 
@@ -43,10 +43,14 @@ defineEmits(['click']);
 
 const sizeClasses = computed(() => {
   switch (props.size) {
-    case 'sm':
+    case Size.ExtraSmall:
+    case Size.Small:
       return 'btn-sm';
-    case 'lg':
+
+    case Size.Large:
+    case Size.ExtraLarge:
       return 'btn-lg';
+
     default:
       return '';
   }
