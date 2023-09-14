@@ -14,6 +14,8 @@ export const triggerEvent = (
     eventSource = element;
   }
 
+  console.warn('triggerEvent', eventName, detail, eventSource);
+
   if (detail) {
     eventSource?.dispatchEvent(new CustomEvent(eventName, {detail}));
     return;

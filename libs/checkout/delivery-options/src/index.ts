@@ -5,6 +5,7 @@ import {type CheckoutDeliveryOptionsSettingsInput} from './types';
 import {createDeliveryOptionsStore} from './store';
 import {updateDeliveryOptions, updateDeliveryOptionsOutput} from './listeners';
 
+export * from './store';
 export * from './types';
 
 /**

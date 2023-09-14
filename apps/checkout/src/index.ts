@@ -2,11 +2,13 @@ import './globals';
 
 export type {
   AddressFields,
+  CheckoutStoreState,
   FrontendEndpointParameters,
   FrontendEndpointResponse,
   PdkCheckoutConfig,
   PdkCheckoutConfigInput,
   PdkCheckoutForm,
+  StoreCallbackUpdate,
 } from '@myparcel-pdk/checkout-core';
 
 export type {
@@ -14,6 +16,7 @@ export type {
   CheckoutDeliveryOptionsSettingsInput,
   DeliveryOptionsAddress,
   DeliveryOptionsConfiguration,
+  DeliveryOptionsStoreState,
 } from '@myparcel-pdk/checkout-delivery-options';
 
 export type {FrontendPdkEndpointObject} from '@myparcel-pdk/checkout-common';
