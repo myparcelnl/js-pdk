@@ -2,6 +2,18 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.112](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.111...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.112) "@myparcel-pdk/admin-preset-bootstrap4" (2023-09-22)
+
+
+### Features
+
+* **admin-preset-bootstrap4:** add flexGrow css utility ([08890fd](https://github.com/myparcelnl/js-pdk/commit/08890fd5b924a0a511c4b83d65a24971562f0017))
+* **admin-preset-bootstrap4:** add loader component ([ba960b6](https://github.com/myparcelnl/js-pdk/commit/ba960b6578c6c0b4d7fa6f405780219279961c1a))
+* **admin-preset-bootstrap4:** render images and icons in radio inputs ([ba61043](https://github.com/myparcelnl/js-pdk/commit/ba61043e61cbe04802d073c5adb318e3d8858338))
+
+
+
+
 ## [1.0.0-alpha.111](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.110...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.111) "@myparcel-pdk/admin-preset-bootstrap4" (2023-09-14)
 
 
