@@ -7,7 +7,7 @@
     <PdkLoader
       v-if="loading"
       :size="Size.ExtraSmall"
-      class="d-inline mr-1" />
+      class="d-inline-block mr-1" />
 
     <PdkIcon
       v-if="icon"
