@@ -7,6 +7,7 @@ import {type AdminConfigurationPreset, type AdminModalKey, useModalStore} from '
 export const bootstrap4Config: AdminConfigurationPreset = {
   cssUtilities: {
     displayFlex: 'd-flex',
+    flexGrow: 'flex-grow-1',
     marginLAuto: 'ml-auto',
     marginYAuto: 'my-auto',
     textCenter: 'text-center',
