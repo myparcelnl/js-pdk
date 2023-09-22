@@ -13,7 +13,6 @@ export const bootstrap4Config: AdminConfigurationPreset = {
     textCenter: 'text-center',
     textColorError: 'text-danger',
     textColorSuccess: 'text-success',
-    whitespaceNoWrap: 'whitespace-nowrap',
   },
 
   /**
