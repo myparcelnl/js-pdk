@@ -17,6 +17,7 @@ exports[`exports > exports from index.ts 1`] = `
   "Bootstrap4RadioInput",
   "Bootstrap4Row",
   "Bootstrap4SelectInput",
+  "Bootstrap4ShipmentLabelWrapper",
   "Bootstrap4Table",
   "Bootstrap4TextArea",
   "Bootstrap4TextInput",

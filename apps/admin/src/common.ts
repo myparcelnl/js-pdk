@@ -69,6 +69,7 @@ export type {
   SelectInputModelValue,
   SelectInputProps,
   SettingsDividerProps,
+  ShipmentLabelWrapperProps,
   TextAreaEmits,
   TextAreaModelValue,
   TextAreaProps,
@@ -162,6 +163,7 @@ export {
   Size,
   Status,
   Variant,
+  prefixComponent,
 } from '@myparcel-pdk/admin-common';
 
 export {

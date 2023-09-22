@@ -48,6 +48,7 @@ exports[`exports > exports from index.ts 1`] = `
   "ordersFetchAction",
   "ordersPrintAction",
   "ordersUpdateAction",
+  "prefixComponent",
   "shipmentsExportReturnAction",
   "shipmentsPrintAction",
   "shipmentsUpdateAction",

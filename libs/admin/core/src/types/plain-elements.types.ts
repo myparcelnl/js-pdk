@@ -38,3 +38,11 @@ export type SettingsDividerProps = PdkElementProps<
     level?: number | string;
   }
 >;
+
+/**
+ * @see AdminComponent.ShipmentLabelWrapper
+ */
+
+export interface ShipmentLabelWrapperProps {
+  loading: boolean;
+}

@@ -1,21 +1,26 @@
 <template>
   <component
     :is="tag"
-    v-test="AdminComponent.Loader">
-    <div
-      class="spinner-border text-primary"
-      role="status">
-      <span
-        class="sr-only"
-        v-text="translate('loading')" />
-    </div>
+    v-test="AdminComponent.Loader"
+    :class="sizeClasses"
+    class="spinner-border text-primary"
+    role="status">
+    <span
+      class="sr-only"
+      v-text="translate('loading')" />
   </component>
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, useLanguage} from '@myparcel-pdk/admin';
+import {computed, type PropType} from 'vue';
+import {AdminComponent, Size, useLanguage} from '@myparcel-pdk/admin';
 
-defineProps({
+const props = defineProps({
+  size: {
+    type: String as PropType<Size>,
+    default: Size.Medium,
+  },
+
   tag: {
     type: String,
     default: 'div',
@@ -23,4 +28,8 @@ defineProps({
 });
 
 const {translate} = useLanguage();
+
+const sizeClasses = computed(() => ({
+  [`spinner-border-${Size.Small}`]: [Size.Small, Size.ExtraSmall].includes(props.size),
+}));
 </script>

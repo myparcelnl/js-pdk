@@ -1,5 +1,6 @@
 <template>
-  <PdkButton
+  <Component
+    :is="component"
     v-test="[$.type.__name, action?.id]"
     :aria-label="hideText ? action?.label : null"
     :disabled="disabled || action?.disabled"
@@ -13,13 +14,15 @@
 </template>
 
 <script lang="ts" setup>
-import {Size, Variant} from '@myparcel-pdk/common';
+import {type Component} from 'vue';
+import {AdminComponent, prefixComponent, Size, Variant} from '@myparcel-pdk/admin-common';
 import {type ActionDefinition} from '../../types';
 import {useActionStore} from '../../stores';
 import {useLoading} from '../../composables';
 
 const props = withDefaults(
   defineProps<{
+    component?: string | Component;
     action: ActionDefinition;
     disabled?: boolean;
     hideText?: boolean;
@@ -27,6 +30,7 @@ const props = withDefaults(
     variant?: Variant;
   }>(),
   {
+    component: () => prefixComponent(AdminComponent.Button),
     size: () => Size.Medium,
     variant: () => Variant.Primary,
   },

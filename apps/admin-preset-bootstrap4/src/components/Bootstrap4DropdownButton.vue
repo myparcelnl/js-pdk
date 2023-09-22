@@ -1,50 +1,73 @@
 <template>
-  <div class="btn-group">
+  <PdkButtonGroup v-test="AdminComponent.DropdownButton">
     <ActionButton
       v-for="action in dropdownActions.standalone"
       :key="`dropdown_${action.id}`"
       :action="action"
+      :class="adminConfig.cssUtilities?.whitespaceNoWrap"
       :disabled="disabled"
       :hide-text="hideText"
-      class="btn-sm" />
+      :size="size" />
 
     <PdkButton
+      v-if="dropdownActions.hidden.length > 0"
+      ref="dropdown"
       :aria-label="translate('toggle_dropdown')"
       :disabled="disabled"
-      :icon="dropdownIcon"
       :size="size"
-      aria-expanded="false"
+      :class="{
+        'p-0': dropdownActions.standalone.length === 0,
+      }"
       aria-haspopup="true"
-      class="btn-sm dropdown-toggle dropdown-toggle-split"
+      class="dropdown-toggle dropdown-toggle-split"
       data-toggle="dropdown">
       <slot />
-    </PdkButton>
 
-    <div class="dropdown-menu">
-      <BaseButton
-        v-for="(action, index) in dropdownActions.hidden"
-        :key="`${index}_${action.label}`"
-        :disabled="disabled"
-        :icon="action.icon"
-        :label="action.label"
-        class="dropdown-item" />
-    </div>
-  </div>
+      <div class="dropdown-menu">
+        <ActionButton
+          v-for="(action, index) in dropdownActions.hidden"
+          :key="`${index}_${action.id}`"
+          :action="action"
+          :component="BaseButton"
+          :disabled="disabled"
+          :icon="action.icon"
+          :size="size"
+          class="dropdown-item">
+          {{ translate(action.label) }}
+        </ActionButton>
+      </div>
+    </PdkButton>
+  </PdkButtonGroup>
 </template>
 
 <script lang="ts" setup>
-import {ActionButton, type ActionDefinition, type Size, useDropdownData, useLanguage} from '@myparcel-pdk/admin';
+import {type ComponentPublicInstance, onMounted, ref} from 'vue';
+import {
+  ActionButton,
+  AdminComponent,
+  type DropdownButtonProps,
+  useAdminConfig,
+  useDropdownData,
+  useLanguage,
+} from '@myparcel-pdk/admin';
 import BaseButton from './common/BaseButton.vue';
 
-const props = defineProps<{
-  // eslint-disable-next-line vue/no-unused-properties
-  actions: ActionDefinition[];
-  disabled?: boolean;
-  hideText?: boolean;
-  size?: Size;
-}>();
+// eslint-disable-next-line vue/no-unused-properties
+const props = defineProps<DropdownButtonProps>();
 
-const {dropdownActions, dropdownIcon} = useDropdownData(props);
+const {dropdownActions} = useDropdownData(props);
 
 const {translate} = useLanguage();
+
+const adminConfig = useAdminConfig();
+
+const dropdown = ref<ComponentPublicInstance | null>(null);
+
+onMounted(() => {
+  if (!dropdown.value) {
+    return;
+  }
+
+  jQuery(dropdown.value.$el).dropdown();
+});
 </script>

@@ -28,6 +28,8 @@ export {default as Bootstrap4Row} from './Bootstrap4Row.vue';
 
 export {default as Bootstrap4SelectInput} from './Bootstrap4SelectInput.vue';
 
+export {default as Bootstrap4ShipmentLabelWrapper} from './Bootstrap4ShipmentLabelWrapper.vue';
+
 export {default as Bootstrap4Table} from './Bootstrap4Table.vue';
 
 export {default as Bootstrap4TextArea} from './Bootstrap4TextArea.vue';

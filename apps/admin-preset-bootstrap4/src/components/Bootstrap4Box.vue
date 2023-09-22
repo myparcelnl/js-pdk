@@ -59,6 +59,7 @@ const props = defineProps({
 
 const bodyClass = computed(() => ({
   'card-body': [Size.Medium, Size.Large, Size.ExtraLarge].includes(props.size),
+  'p-1': [Size.Small, Size.ExtraSmall].includes(props.size),
 }));
 
 const {translate} = useLanguage();
