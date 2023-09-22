@@ -16,6 +16,8 @@ export {default as Bootstrap4FormGroup} from './Bootstrap4FormGroup.vue';
 
 export {default as Bootstrap4Image} from './Bootstrap4Image.vue';
 
+export {default as Bootstrap4Loader} from './Bootstrap4Loader.vue';
+
 export {default as Bootstrap4Modal} from './Bootstrap4Modal.vue';
 
 export {default as Bootstrap4Notification} from './Bootstrap4Notification.vue';

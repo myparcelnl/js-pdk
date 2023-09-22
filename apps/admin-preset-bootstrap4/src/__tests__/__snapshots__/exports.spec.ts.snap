@@ -11,6 +11,7 @@ exports[`exports > exports from index.ts 1`] = `
   "Bootstrap4DropdownButton",
   "Bootstrap4FormGroup",
   "Bootstrap4Image",
+  "Bootstrap4Loader",
   "Bootstrap4Modal",
   "Bootstrap4Notification",
   "Bootstrap4RadioInput",
