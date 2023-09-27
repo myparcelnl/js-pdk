@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.48](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-js@1.0.0-alpha.47...@myparcel-pdk/admin-js@1.0.0-alpha.48) "@myparcel-pdk/admin-js" (2023-09-27)
+
+
+### Features
+
+* **admin-preset-bootstrap4:** improve components ([34181d0](https://github.com/myparcelnl/js-pdk/commit/34181d02a5328751746a72fdf9bea603d53d2f1b))
+
+
+
+
 ## [1.0.0-alpha.46](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-js@1.0.0-alpha.45...@myparcel-pdk/admin-js@1.0.0-alpha.46) "@myparcel-pdk/admin-js" (2023-09-13)
 
 

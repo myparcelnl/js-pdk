@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.113](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.112...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.113) "@myparcel-pdk/admin-preset-bootstrap4" (2023-09-27)
+
+
+### Features
+
+* **admin-preset-bootstrap4:** improve components ([34181d0](https://github.com/myparcelnl/js-pdk/commit/34181d02a5328751746a72fdf9bea603d53d2f1b))
+
+
+### Bug Fixes
+
+* **admin-preset-bootstrap4:** fix squished loader in buttons ([756d59d](https://github.com/myparcelnl/js-pdk/commit/756d59d6b6267c29cccb89664f4cd9200ca44c8a))
+
+
+
+
 ## [1.0.0-alpha.112](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.111...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.112) "@myparcel-pdk/admin-preset-bootstrap4" (2023-09-22)
 
 
