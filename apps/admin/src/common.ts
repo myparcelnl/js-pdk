@@ -10,6 +10,7 @@ export type {
   Notification,
   NotificationFilter,
   Plugin,
+  PrefixedAdminComponentMap,
   ResolvedNotification,
   SelectOption,
   Settings,

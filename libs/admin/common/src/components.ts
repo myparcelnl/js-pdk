@@ -48,3 +48,9 @@ export const optionalAdminActionContainerComponentNames = [
   AdminComponent.ConceptBoxWrapper,
   AdminComponent.ShipmentLabelWrapper,
 ] as const;
+
+export const allAdminComponentNames = [
+  ...requiredAdminComponentNames,
+  ...optionalAdminPlainWrapperComponentNames,
+  ...optionalAdminActionContainerComponentNames,
+] as const;

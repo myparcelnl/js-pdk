@@ -1,5 +1,5 @@
 import {type PiniaPluginContext} from 'pinia';
-import {type AdminComponentMap} from '@myparcel-pdk/admin-common';
+import {type AdminComponentMap, type PrefixedAdminComponentMap} from '@myparcel-pdk/admin-common';
 import {type FormConfiguration, type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {type MakeOptional} from '@myparcel/ts-utils';
 import {type LogLevel} from '../services';
@@ -17,7 +17,7 @@ export type AdminConfiguration = {
   /**
    * Components to use.
    */
-  components: AdminComponentMap;
+  components: AdminComponentMap | PrefixedAdminComponentMap;
 
   /**
    * Override default formatters.
