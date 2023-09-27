@@ -1,6 +1,6 @@
-import {executeCommand} from '../../utils';
-import {type ParsedEntry, type UpgradeSubContext} from './types';
-import {parseGitHubUrl} from './parseGitHubUrl';
+import {type ParsedEntry, type UpgradeSubContext} from '../types';
+import {parseGitHubUrl} from '../parseGitHubUrl';
+import {executeCommand} from '../../../utils';
 
 export const getComposerPackageVersion = async (context: UpgradeSubContext): Promise<ParsedEntry[]> => {
   const {config, packageName} = context;

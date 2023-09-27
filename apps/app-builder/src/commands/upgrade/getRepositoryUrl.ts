@@ -2,7 +2,7 @@
 import {executeCommand} from '../../utils';
 import {type NpmInfo} from '../../types';
 import {VerbosityLevel} from '../../constants';
-import {type ParsedEntry, UpgradeMode, type UpgradeSubContext} from './types';
+import {NodePackageManager, type ParsedEntry, UpgradeMode, type UpgradeSubContext} from './types';
 import {parseGitHubUrl} from './parseGitHubUrl';
 
 export const getRepositoryUrl = async (entry: ParsedEntry, context: UpgradeSubContext): Promise<undefined | string> => {
@@ -17,8 +17,24 @@ export const getRepositoryUrl = async (entry: ParsedEntry, context: UpgradeSubCo
   const {config, mode} = context;
 
   switch (mode) {
-    case UpgradeMode.Yarn:
-      const stdout = await executeCommand(context, config.yarnCommand, ['npm', 'info', entry.name, '--json'], {});
+    case UpgradeMode.Node:
+      let stdout: string;
+
+      switch (config.nodePackageManager) {
+        case NodePackageManager.Yarn:
+          stdout = await executeCommand(
+            context,
+            config.nodePackageManagerCommand,
+            ['npm', 'info', entry.name, '--json'],
+            {},
+          );
+          break;
+
+        case NodePackageManager.Bun:
+          // TODO: Change this when bun has a command that can do this
+          stdout = await executeCommand(context, 'npm', ['info', entry.name, '--json'], {});
+          break;
+      }
 
       if (!stdout) {
         return;

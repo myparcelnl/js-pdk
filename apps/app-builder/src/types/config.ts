@@ -1,5 +1,6 @@
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {type VersionSource} from '../increment';
+import {type NodePackageManager} from '../commands/upgrade/types';
 import {type PdkPlatformName, type StringGenerator} from './common';
 import {type CommandDefinition} from './command';
 
@@ -61,7 +62,22 @@ export type PdkBuilderConfig = {
   versionSource: VersionSource[];
 
   /**
+   * Node package manager to use. Defaults to `yarn`.
+   *
+   * Supported package managers:
+   * - yarn >= 3.0.0 (berry)
+   * - bun
+   */
+  nodePackageManager?: NodePackageManager;
+
+  /**
+   * Command to use when running the node package manager. Has a default value based on `nodePackageManager`.
+   */
+  nodePackageManagerCommand?: OneOrMore<string>;
+
+  /**
    * Command to use when running yarn.
+   * @deprecated Use `nodePackageManagerCommand` instead. Will be removed in v1.0.0.
    */
   yarnCommand?: OneOrMore<string>;
 

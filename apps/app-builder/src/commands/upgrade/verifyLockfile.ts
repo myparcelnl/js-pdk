@@ -1,4 +1,5 @@
 import {UpgradeMode, type UpgradeSubContext} from './types';
+import {getDefaultNodeLockfilePath} from './node/getDefaultNodeLockfilePath';
 import {ensureCleanLockfile} from './ensureCleanLockfile';
 
 export const verifyLockfile = async (context: UpgradeSubContext): Promise<string> => {
@@ -7,8 +8,9 @@ export const verifyLockfile = async (context: UpgradeSubContext): Promise<string
   let lockfilePath: string | undefined = args.lockfile;
 
   switch (mode) {
-    case UpgradeMode.Yarn:
-      lockfilePath ??= 'yarn.lock';
+    case UpgradeMode.Node:
+      lockfilePath ??= getDefaultNodeLockfilePath(context);
+
       break;
 
     case UpgradeMode.Composer:
