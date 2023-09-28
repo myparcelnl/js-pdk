@@ -1348,7 +1348,7 @@ __metadata:
     "@pinia/testing": ">= 0.1.0 < 1"
     "@vitest/coverage-v8": ">= 0.30.0 < 1"
     "@vue/test-utils": ^2.0.0
-    happy-dom: ^10.0.0
+    happy-dom: ^12.2.1
     pinia: ^2.0.0
     vitest: ^0.34.3
     vue: ^3.3.0
@@ -1547,7 +1547,7 @@ __metadata:
     "@pinia/testing": ">= 0.1.0 < 1"
     "@vitejs/plugin-vue": ^4.2.3
     "@vitest/coverage-v8": ">= 0.30.0 < 1"
-    happy-dom: ^10.0.0
+    happy-dom: ^12.2.1
     typescript: ^5.2.2
     vite: ^4.3.9
     vite-plugin-custom-tsconfig: ^1.0.4
@@ -8098,9 +8098,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:^10.0.0":
-  version: 10.11.2
-  resolution: "happy-dom@npm:10.11.2"
+"happy-dom@npm:^12.2.1":
+  version: 12.2.1
+  resolution: "happy-dom@npm:12.2.1"
   dependencies:
     css.escape: ^1.5.1
     entities: ^4.5.0
@@ -8108,7 +8108,7 @@ __metadata:
     webidl-conversions: ^7.0.0
     whatwg-encoding: ^2.0.0
     whatwg-mimetype: ^3.0.0
-  checksum: 5781985c594f216fc8c6ae1d673aec2ef8c2eaa57b79036775ce42a55537486321bed9e1e3fc994a6a7ee9cc8729097486877f39d796ab9e440a7ba6e82e2401
+  checksum: 3048902b0a3e47b150a32a4ccdde6ba84306328d1ce068fba1be9bdd6697717be24f7194e7f9152f3e58b264462a5b4d86f24066bdf127bb0c5d3bd53b361547
   languageName: node
   linkType: hard
 
@@ -13570,11 +13570,11 @@ __metadata:
 
 "typescript@patch:typescript@^5.2.2#~builtin<compat/typescript>":
   version: 5.2.2
-  resolution: "typescript@patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"
+  resolution: "typescript@patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=5da071"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 0f4da2f15e6f1245e49db15801dbee52f2bbfb267e1c39225afdab5afee1a72839cd86000e65ee9d7e4dfaff12239d28beaf5ee431357fcced15fb08583d72ca
+  checksum: 07106822b4305de3f22835cbba949a2b35451cad50888759b6818421290ff95d522b38ef7919e70fb381c5fe9c1c643d7dea22c8b31652a717ddbd57b7f4d554
   languageName: node
   linkType: hard
 
