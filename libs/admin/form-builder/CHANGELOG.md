@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.7](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-form-builder@1.0.0-alpha.6...@myparcel-pdk/admin-form-builder@1.0.0-alpha.7) "@myparcel-pdk/admin-form-builder" (2023-09-28)
+
+
+### Bug Fixes
+
+* **imports:** fix weird imports ([efd1102](https://github.com/myparcelnl/js-pdk/commit/efd11022f850391261f3b484305cffa4689265e2))
+
+
+
+
 ## [1.0.0-alpha.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-form-builder@1.0.0-alpha.2...@myparcel-pdk/admin-form-builder@1.0.0-alpha.3) "@myparcel-pdk/admin-form-builder" (2023-09-06)
 
 

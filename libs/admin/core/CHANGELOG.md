@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.111](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.110...@myparcel-pdk/admin-core@1.0.0-alpha.111) "@myparcel-pdk/admin-core" (2023-09-28)
+
+
+### Bug Fixes
+
+* **imports:** fix weird imports ([efd1102](https://github.com/myparcelnl/js-pdk/commit/efd11022f850391261f3b484305cffa4689265e2))
+
+
+
+
 ## [1.0.0-alpha.110](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.109...@myparcel-pdk/admin-core@1.0.0-alpha.110) "@myparcel-pdk/admin-core" (2023-09-27)
 
 

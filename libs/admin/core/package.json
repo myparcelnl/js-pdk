@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-core",
-  "version": "1.0.0-alpha.110",
+  "version": "1.0.0-alpha.111",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@myparcel-pdk/admin-common": "workspace:^1.0.0-alpha.4",
-    "@myparcel-pdk/admin-form-builder": "workspace:^1.0.0-alpha.6",
+    "@myparcel-pdk/admin-form-builder": "workspace:^1.0.0-alpha.7",
     "@myparcel/sdk": "^3.0.0",
     "@tanstack/vue-query": "^4.0.0",
     "@vueuse/core": "^10.0.0",
