@@ -1,4 +1,4 @@
-import {get} from '@vueuse/core/index';
+import {get} from '@vueuse/core';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {type AnyVal} from '../types';
 

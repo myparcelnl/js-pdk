@@ -1,4 +1,4 @@
-import {get} from '@vueuse/core/index';
+import {get} from '@vueuse/core';
 import {AdminComponent, type Plugin} from '@myparcel-pdk/admin-common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';

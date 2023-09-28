@@ -1,5 +1,5 @@
-import {get as lodashGet} from 'lodash-es';
-import {get} from '@vueuse/core/index';
+import {get as lodashGet} from 'lodash-unified';
+import {get} from '@vueuse/core';
 import {type Shipment} from '@myparcel-pdk/admin-common';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 
