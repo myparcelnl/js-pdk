@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.37](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.36...@myparcel-pdk/app-builder@1.0.0-alpha.37) "@myparcel-pdk/app-builder" (2023-09-28)
+
+
+### Features
+
+* **app-builder:** support bun ([8a1dd6d](https://github.com/myparcelnl/js-pdk/commit/8a1dd6db6303214fa9e5b1ca87db17451d4401c5))
+
+
+
+
 ## [1.0.0-alpha.36](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.35...@myparcel-pdk/app-builder@1.0.0-alpha.36) "@myparcel-pdk/app-builder" (2023-09-14)
 
 
