@@ -44,12 +44,13 @@ export const useModalStore = defineStore('modal', (): ModalStore => {
     },
 
     open(modal, newContext) {
-      openHooks.value.forEach((hook) => hook(modal, newContext));
       // TODO: fix excessive depth error
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       context.value = newContext;
       opened.value = modal;
+
+      openHooks.value.forEach((hook) => hook(modal, newContext));
     },
 
     close() {
