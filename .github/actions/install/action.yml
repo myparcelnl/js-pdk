@@ -5,7 +5,5 @@ runs:
   using: composite
   steps:
     - uses: myparcelnl/actions/yarn-install@v3
-      env:
-        YARN_CHECKSUM_BEHAVIOR: 'update'
       with:
         node-version: 18
