@@ -1,6 +1,6 @@
+import {type AddressField, type AddressType} from '@myparcel-pdk/checkout-common';
 import {useCheckoutStore} from '../useCheckoutStore';
-import {type AddressType} from '../../types';
-import {type AddressField, useConfig, useUtil, Util} from '../../index';
+import {useConfig, useUtil, Util} from '../../index';
 
 /**
  * Get field by name. Will return element with selector: "#<billing|shipping>_<name>".

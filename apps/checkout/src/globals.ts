@@ -8,13 +8,13 @@ import {
   type getFieldValue,
   type PdkCheckout,
   type PdkCheckoutConfig,
-  type PdkEvent,
   type realCreateStore,
   type setFieldValue,
   type StoreData,
   type triggerEvent,
   type Util,
 } from '@myparcel-pdk/checkout-core';
+import {type PdkEvent} from '@myparcel-pdk/checkout-common';
 import {type isOfType, type PromiseOr} from '@myparcel/ts-utils';
 
 declare global {

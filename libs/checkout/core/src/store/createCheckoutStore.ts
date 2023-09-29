@@ -1,5 +1,6 @@
+import {AddressType} from '@myparcel-pdk/checkout-common';
 import {getFrontendContext, hasAddressType, useUtil, Util} from '../utils';
-import {AddressType, type CheckoutAppContext, type PdkCheckoutForm} from '../types';
+import {type CheckoutAppContext, type PdkCheckoutForm} from '../types';
 import {updateAddressType} from '../listeners';
 import {StoreListener} from './realCreateStore';
 

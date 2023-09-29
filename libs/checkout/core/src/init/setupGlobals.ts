@@ -1,3 +1,4 @@
+import {PdkEvent} from '@myparcel-pdk/checkout-common';
 import {isOfType} from '@myparcel/ts-utils';
 import {
   doRequest,
@@ -10,7 +11,7 @@ import {
   setFieldValue,
   triggerEvent,
 } from '../utils';
-import {type PdkCheckoutConfig, PdkEvent} from '../types';
+import {type PdkCheckoutConfig} from '../types';
 import {realCreateStore} from '../store';
 import {
   createEventName,

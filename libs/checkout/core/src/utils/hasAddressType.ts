@@ -1,4 +1,4 @@
-import {type AddressType} from '../types';
+import {type AddressType} from '@myparcel-pdk/checkout-common';
 import {useConfig} from '../config';
 
 export const hasAddressType = (addressType: AddressType): boolean => {

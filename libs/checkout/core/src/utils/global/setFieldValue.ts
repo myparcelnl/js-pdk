@@ -1,5 +1,5 @@
+import {type AddressField, type AddressType} from '@myparcel-pdk/checkout-common';
 import {useUtil, Util} from '../useUtil';
-import {type AddressField, type AddressType} from '../../types';
 import {useConfig} from '../../config';
 import {getAddressField} from './getAddressField';
 

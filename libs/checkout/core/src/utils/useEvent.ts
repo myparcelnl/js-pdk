@@ -1,4 +1,4 @@
-import {type PdkEvent} from '../types';
+import {type PdkEvent} from '@myparcel-pdk/checkout-common';
 
 export const useEvent = <E extends PdkEvent | string>(event: E): E extends PdkEvent ? MyParcelPdkEvents[E] : string => {
   // @ts-expect-error todo

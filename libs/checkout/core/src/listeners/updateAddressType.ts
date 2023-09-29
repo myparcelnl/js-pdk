@@ -1,5 +1,5 @@
+import {PdkField} from '@myparcel-pdk/checkout-common';
 import {useUtil, Util} from '../utils';
-import {PdkField} from '../types';
 import {type CheckoutStoreState, type StoreCallbackUpdate} from '../store';
 import {useConfig} from '../config';
 

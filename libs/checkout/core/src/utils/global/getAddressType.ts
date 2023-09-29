@@ -1,5 +1,5 @@
+import {type AddressType, PdkField} from '@myparcel-pdk/checkout-common';
 import {useUtil, Util} from '../useUtil';
-import {type AddressType, PdkField} from '../../types';
 import {useConfig} from '../../config';
 
 export const getAddressType = (): AddressType => {

@@ -1,5 +1,6 @@
+import {type AddressType} from '@myparcel-pdk/checkout-common';
 import {useSettings} from '../utils';
-import {type AddressType, type PdkCheckoutConfig, type PdkCheckoutConfigInput} from '../types';
+import {type PdkCheckoutConfig, type PdkCheckoutConfigInput} from '../types';
 import {useConfig} from '../config';
 
 export const createConfig = (config: PdkCheckoutConfigInput): PdkCheckoutConfig => ({

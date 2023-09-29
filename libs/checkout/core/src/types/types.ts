@@ -1,34 +1,15 @@
-import {type FrontendEndpoint, type FrontendPdkEndpointObject} from '@myparcel-pdk/checkout-common';
+import {
+  type AddressFields,
+  type AddressType,
+  type FrontendEndpoint,
+  type FrontendEndpointData,
+  type FrontendEndpointResponse,
+  type FrontendPdkEndpointObject,
+  type PdkField,
+} from '@myparcel-pdk/checkout-common';
 import {type PromiseOr} from '@myparcel/ts-utils';
 import {type MyParcelDeliveryOptions} from '@myparcel/delivery-options';
 import {type CarrierName} from '@myparcel/constants';
-import {type FrontendEndpointResponse} from './endpoints.types';
-
-export enum AddressType {
-  Billing = 'billing',
-  Shipping = 'shipping',
-}
-
-export enum PdkEvent {
-  CheckoutUpdate = 'checkoutUpdate',
-  CheckoutUpdated = 'checkoutUpdated',
-  StoreInitialize = 'storeInitialize',
-  StoreInitialized = 'storeInitialized',
-}
-
-export enum AddressField {
-  Address1 = 'address1',
-  City = 'city',
-  Country = 'country',
-  PostalCode = 'postalCode',
-}
-
-export enum PdkField {
-  AddressType = 'addressType',
-  ShippingMethod = 'shippingMethod',
-}
-
-export type AddressFields = Record<AddressField, string>;
 
 export type PdkCheckoutConfigInput = Omit<
   PdkCheckoutConfig,
@@ -60,9 +41,7 @@ export interface PdkCheckoutConfig {
   /**
    * Do a request to the backend.
    */
-  doRequest<E extends FrontendEndpoint>(
-    endpoint: FrontendPdkEndpointObject[E] & {baseUrl: string},
-  ): Promise<FrontendEndpointResponse<E>>;
+  doRequest<E extends FrontendEndpoint>(endpoint: FrontendEndpointData<E>): Promise<FrontendEndpointResponse<E>>;
 
   /**
    * The handler for the form change event.

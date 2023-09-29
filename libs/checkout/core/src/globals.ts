@@ -1,3 +1,4 @@
+import {type PdkEvent} from '@myparcel-pdk/checkout-common';
 import {type isOfType, type PromiseOr} from '@myparcel/ts-utils';
 import {
   type doRequest,
@@ -10,7 +11,7 @@ import {
   type triggerEvent,
   type Util,
 } from './utils';
-import {type PdkCheckout, type PdkCheckoutConfig, type PdkEvent} from './types';
+import {type PdkCheckout, type PdkCheckoutConfig} from './types';
 import {type createCheckoutStore, type realCreateStore, type StoreData} from './store';
 
 declare global {
