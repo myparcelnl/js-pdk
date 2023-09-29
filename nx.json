@@ -8,6 +8,10 @@
   "namedInputs": {
     "default": [
       "{workspaceRoot}/libs/build-vite/*.js",
+      "!{projectRoot}/src/**/*.spec.ts",
+      "!{projectRoot}/src/**/*.test.ts",
+      "!{projectRoot}/src/__mocks__/**/*",
+      "!{projectRoot}/src/__tests__/**/*",
       "{projectRoot}/package.json",
       "{projectRoot}/src/**/*",
       "{projectRoot}/tsconfig.*",
