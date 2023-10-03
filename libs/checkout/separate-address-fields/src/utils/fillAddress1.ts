@@ -1,4 +1,5 @@
-import {type AddressType, useCheckoutStore} from '@myparcel-pdk/checkout-core';
+import {useCheckoutStore} from '@myparcel-pdk/checkout-core';
+import {type AddressType} from '@myparcel-pdk/checkout-common';
 import {triggerFormChange} from './triggerFormChange';
 import {setFullStreet} from './setFullStreet';
 import {hasSeparateAddressFields} from './hasSeparateAddressFields';

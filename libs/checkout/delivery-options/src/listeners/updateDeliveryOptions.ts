@@ -1,11 +1,5 @@
-import {
-  AddressField,
-  type CheckoutStoreState,
-  PdkField,
-  type StoreCallbackUpdate,
-  useUtil,
-  Util,
-} from '@myparcel-pdk/checkout-core';
+import {type CheckoutStoreState, type StoreCallbackUpdate, useUtil, Util} from '@myparcel-pdk/checkout-core';
+import {AddressField, PdkField} from '@myparcel-pdk/checkout-common';
 import {objectIsEqual} from '@myparcel/ts-utils';
 import {getDeliveryOptionsAddress, shippingMethodHasDeliveryOptions, updateContext} from '../utils';
 import {useDeliveryOptionsStore} from '../store';

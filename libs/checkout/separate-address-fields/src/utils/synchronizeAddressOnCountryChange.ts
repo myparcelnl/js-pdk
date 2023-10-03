@@ -1,11 +1,11 @@
 import {
-  AddressField,
   type CheckoutStoreState,
   type StoreCallbackUpdate,
   useCheckoutStore,
   useUtil,
   Util,
 } from '@myparcel-pdk/checkout-core';
+import {AddressField} from '@myparcel-pdk/checkout-common';
 import {splitAddress1} from './splitAddress1';
 import {hasSeparateAddressFields} from './hasSeparateAddressFields';
 import {getFullStreet} from './getFullStreet';
