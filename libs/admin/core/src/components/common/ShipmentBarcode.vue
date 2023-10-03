@@ -2,12 +2,9 @@
   <span
     v-test="[$.type.__name, shipment.id]"
     :class="[config?.cssUtilities?.whitespaceNoWrap, config?.cssUtilities?.displayFlex]">
-    <PdkImage
+    <CarrierLogo
       v-if="carrier"
-      :alt="carrier?.human"
-      :src="useAssetUrl(carrier?.meta.logo_svg)"
-      :title="carrier?.human"
-      width="20" />
+      :carrier="carrier" />
 
     <template v-if="carrier">&nbsp;</template>
 
@@ -29,6 +26,7 @@
 import {toRefs} from 'vue';
 import {useQueryStore} from '../../stores';
 import {useAdminConfig, useLanguage, useShipmentData} from '../../composables';
+import CarrierLogo from './CarrierLogo.vue';
 
 const props = defineProps<{shipmentId: number}>();
 
@@ -38,6 +36,6 @@ useQueryStore().registerShipmentQueries(shipmentId);
 
 const {translate} = useLanguage();
 
-const {useAssetUrl, carrier, shipment} = useShipmentData(shipmentId);
+const {carrier, shipment} = useShipmentData(shipmentId);
 const config = useAdminConfig();
 </script>

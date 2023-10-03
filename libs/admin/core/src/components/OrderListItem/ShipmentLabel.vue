@@ -16,9 +16,9 @@
     </div>
 
     <div :class="config?.cssUtilities?.displayFlex">
-      <ShipmentPackageType
+      <DeliveryOptionsPackageType
         :class="config?.cssUtilities?.flexGrow"
-        :shipment-id="shipmentId" />
+        :delivery-options="data.deliveryOptions" />
 
       <div :class="config?.cssUtilities?.flexGrow">
         <ShipmentStatus :shipment-id="shipmentId" />
@@ -30,8 +30,8 @@
 <script lang="ts" setup>
 import {toRefs} from 'vue';
 import ShipmentStatus from '../common/ShipmentStatus.vue';
-import ShipmentPackageType from '../common/ShipmentPackageType.vue';
 import ShipmentBarcode from '../common/ShipmentBarcode.vue';
+import DeliveryOptionsPackageType from '../common/DeliveryOptionsPackageType.vue';
 import {useQueryStore} from '../../stores';
 import {useAdminConfig, useShipmentData} from '../../composables';
 
@@ -41,6 +41,6 @@ const {shipmentId} = toRefs(props);
 
 useQueryStore().registerShipmentQueries(shipmentId);
 
-const {loading, actions} = useShipmentData(shipmentId);
+const {loading, actions, shipment: data} = useShipmentData(shipmentId);
 const config = useAdminConfig();
 </script>

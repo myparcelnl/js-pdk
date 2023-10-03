@@ -1,4 +1,6 @@
 <template>
+  <DeliveryOptionsExcerpt />
+
   <PdkButtonGroup v-test="[$.type.__name, order?.externalIdentifier]">
     <template v-if="order?.exported">
       <PdkLink :action="showExportedOrderAction" />
@@ -15,6 +17,7 @@
 </template>
 
 <script lang="ts" setup>
+import DeliveryOptionsExcerpt from '../common/DeliveryOptionsExcerpt.vue';
 import {ActionButton} from '../common';
 import {instantiateAction, instantiateActions} from '../../services';
 import {useOrderData} from '../../composables';

@@ -6,7 +6,7 @@ import {useAssetUrl} from '../useAssetUrl';
 import {type AnyActionDefinition} from '../../types';
 import {useQueryStore} from '../../stores';
 import {instantiateActions} from '../../services';
-import {useCarrier} from '../../sdk';
+import {useFetchCarrier} from '../../sdk';
 import {shipmentActions} from '../../actions';
 import {useShipment} from './useShipment';
 
@@ -35,7 +35,7 @@ export const useShipmentData = (id: MaybeRef<number>): UseShipmentData => {
   ].filter(Boolean);
 
   const carrierName = shipment.value?.carrier?.name;
-  const carriersQuery = carrierName ? useCarrier(carrierName) : undefined;
+  const carriersQuery = carrierName ? useFetchCarrier(carrierName) : undefined;
 
   return {
     actions: instantiateActions(shipmentActions, {

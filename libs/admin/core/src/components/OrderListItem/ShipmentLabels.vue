@@ -1,4 +1,6 @@
 <template>
+  <DeliveryOptionsExcerpt v-if="data?.shipments.length === 0" />
+
   <TransitionGroup
     v-test="$.type.__name"
     :name="config?.transitions?.shipmentBox"
@@ -13,6 +15,7 @@
 <script setup lang="ts">
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
+import DeliveryOptionsExcerpt from '../common/DeliveryOptionsExcerpt.vue';
 import {useAdminConfig, useOrderData} from '../../composables';
 import ShipmentLabel from './ShipmentLabel.vue';
 

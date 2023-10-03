@@ -1,1 +1,1 @@
-export * from './useCarrier';
+export * from './useFetchCarrier';

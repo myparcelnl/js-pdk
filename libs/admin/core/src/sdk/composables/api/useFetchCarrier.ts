@@ -4,7 +4,7 @@ import {type EndpointResponse, type GetCarrier} from '@myparcel/sdk';
 import {type CarrierName} from '@myparcel/constants';
 import {useMyParcelApi} from '../useMyParcelApi';
 
-export const useCarrier = (carrier: CarrierName) => {
+export const useFetchCarrier = (carrier?: CarrierName) => {
   const queryClient = useQueryClient();
   const queryKey = ['carriers', {name: carrier}] as const;
 

@@ -7,7 +7,7 @@ import {getInsuranceOptions, getPackageTypes, updateFieldsDefaults} from '../hel
 import {FIELD_CARRIER, FIELD_INSURANCE, FIELD_PACKAGE_TYPE, PROP_OPTIONS} from '../field';
 import {defineFormField, resolveFormComponent, setFieldProp} from '../../helpers';
 import {AdminContextKey, type RadioGroupOption} from '../../../types';
-import {useCarrier} from '../../../sdk';
+import {useFetchCarrier} from '../../../sdk';
 import {useAssetUrl, useContext, useLanguage, useLocalizedFormatter} from '../../../composables';
 import {createRef} from './createRef';
 
@@ -35,7 +35,7 @@ export const createCarrierField = (
     onBeforeMount: async (field) => {
       const carrierSelectOptions = await Promise.all(
         dynamicContext.carriers.map(async (carrier): Promise<RadioGroupOption> => {
-          const query = useCarrier(carrier.name);
+          const query = useFetchCarrier(carrier.name);
           await query.suspense();
 
           const apiCarrier = get(query.data);
