@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-testing",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -23,7 +23,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin-common": "workspace:^1.0.0-alpha.4",
+    "@myparcel-pdk/admin-common": "workspace:^1.0.0-alpha.5",
     "@testing-library/vue": "^7.0.0",
     "@vue/test-utils": "^2.4.1",
     "vitest": "^0.34.3"

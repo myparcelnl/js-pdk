@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.55](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.54...@myparcel-pdk/common@1.0.0-alpha.55) "@myparcel-pdk/common" (2023-10-03)
+
+
+### Features
+
+* **admin:** show shipment and order details in grid ([9655476](https://github.com/myparcelnl/js-pdk/commit/96554762514bcc7cb282742c1e0ae50afe94be5c))
+
+
+
+
 ## [1.0.0-alpha.54](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.53...@myparcel-pdk/common@1.0.0-alpha.54) "@myparcel-pdk/common" (2023-09-11)
 
 

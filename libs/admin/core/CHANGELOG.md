@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.112](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.111...@myparcel-pdk/admin-core@1.0.0-alpha.112) "@myparcel-pdk/admin-core" (2023-10-03)
+
+
+### Features
+
+* **admin:** show shipment and order details in grid ([9655476](https://github.com/myparcelnl/js-pdk/commit/96554762514bcc7cb282742c1e0ae50afe94be5c))
+
+
+### Bug Fixes
+
+* **admin:** run onOpen hooks after modal open instead of before ([f57eedc](https://github.com/myparcelnl/js-pdk/commit/f57eedc6567ce45ead5d0e5b2d768607a5d692a9))
+
+
+
+
 ## [1.0.0-alpha.111](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.110...@myparcel-pdk/admin-core@1.0.0-alpha.111) "@myparcel-pdk/admin-core" (2023-09-28)
 
 
