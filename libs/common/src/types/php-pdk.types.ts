@@ -721,6 +721,7 @@ export namespace Shipment {
     date?: DateTime;
     deliveryType?: DeliveryTypeName;
     labelAmount: number;
+    digitalStampWeight?: number;
     packageType?: PackageTypeName;
     pickupLocation?: ModelRetailLocation;
     shipmentOptions: ModelShipmentOptions;

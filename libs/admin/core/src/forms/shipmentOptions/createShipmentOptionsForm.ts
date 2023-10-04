@@ -13,6 +13,7 @@ import {useAdminConfig} from '../../composables';
 import {type ShipmentOptionsRefs} from './types';
 import {addBulkEditNotification} from './helpers';
 import {createHideSenderField} from './fields/createHideSenderField';
+import {createDigitalStampWeightField} from './fields/createDigitalStampWeightField';
 import {
   createAgeCheckField,
   createCarrierField,
@@ -55,10 +56,9 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
     ...config.formConfigOverrides?.shipmentOptions,
     fields: [
       createCarrierField(refs, order.inheritedDeliveryOptions),
-
       createPackageTypeField(refs),
-
       createLabelAmountField(refs),
+      createDigitalStampWeightField(refs),
 
       createAgeCheckField(refs),
       createSignatureField(refs),

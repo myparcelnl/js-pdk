@@ -12,6 +12,8 @@ export const CARRIER = 'carrier' satisfies keyof Shipment.ModelDeliveryOptions;
 
 export const LABEL_AMOUNT = 'labelAmount' satisfies keyof Shipment.ModelDeliveryOptions;
 
+export const DIGITAL_STAMP_WEIGHT = 'digitalStampWeight' satisfies keyof Shipment.ModelDeliveryOptions;
+
 export const PACKAGE_TYPE = 'packageType' satisfies keyof Shipment.ModelDeliveryOptions;
 
 export const AGE_CHECK = 'ageCheck' satisfies keyof Shipment.ModelShipmentOptions;
@@ -35,6 +37,8 @@ export const PROP_OPTIONS = 'options';
 export const FIELD_CARRIER: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${CARRIER}`;
 
 export const FIELD_LABEL_AMOUNT: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${LABEL_AMOUNT}`;
+
+export const FIELD_DIGITAL_STAMP_WEIGHT: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${DIGITAL_STAMP_WEIGHT}`;
 
 export const FIELD_PACKAGE_TYPE: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${PACKAGE_TYPE}`;
 
