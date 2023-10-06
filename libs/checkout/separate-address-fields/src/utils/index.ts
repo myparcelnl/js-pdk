@@ -5,7 +5,7 @@ export * from './getFullStreet';
 export * from './hasSeparateAddressFields';
 export * from './prepareFields';
 export * from './setFullStreet';
-export * from './splitAddress1';
+export * from './splitAddress';
 export * from './splitFullStreet';
 export * from './synchronizeAddressOnCountryChange';
 export * from './triggerFormChange';

@@ -12,6 +12,7 @@ export enum PdkEvent {
 
 export enum AddressField {
   Address1 = 'address1',
+  Address2 = 'address2',
   City = 'city',
   Country = 'country',
   PostalCode = 'postalCode',
