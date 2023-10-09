@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.38](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.37...@myparcel-pdk/app-builder@1.0.0-alpha.38) "@myparcel-pdk/app-builder" (2023-10-09)
+
+
+### Features
+
+* **app-builder:** add before and after hooks for commands ([2728928](https://github.com/myparcelnl/js-pdk/commit/272892864c62422d17fa4c0e8e0d486554974922))
+
+
+
+
 ## [1.0.0-alpha.37](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.36...@myparcel-pdk/app-builder@1.0.0-alpha.37) "@myparcel-pdk/app-builder" (2023-09-28)
 
 
