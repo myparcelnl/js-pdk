@@ -6,7 +6,7 @@ import {
   Util,
 } from '@myparcel-pdk/checkout-core';
 import {AddressField} from '@myparcel-pdk/checkout-common';
-import {splitAddress1} from './splitAddress1';
+import {splitAddress} from './splitAddress';
 import {hasSeparateAddressFields} from './hasSeparateAddressFields';
 import {getFullStreet} from './getFullStreet';
 import {fillAddressFields} from './fillAddressFields';
@@ -26,7 +26,7 @@ export const synchronizeAddressOnCountryChange: StoreCallbackUpdate<CheckoutStor
     .filter((addressType) => oldState && !fieldsEqual(newState.form, oldState.form, AddressField.Country, addressType))
     .forEach((addressType) => {
       const newAddress = hasSeparateAddressFields(addressType)
-        ? splitAddress1(addressType)
+        ? splitAddress(addressType)
         : {[AddressField.Address1]: getFullStreet(addressType)};
 
       fillAddressFields(newAddress, addressType);
