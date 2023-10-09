@@ -1,13 +1,9 @@
 import {program} from 'commander';
-import {type CommandCb, type CommandDefinition, type WithConfigParams} from '../types';
+import {type CommandCb, type CommandDefinition} from '../types';
 
-export const registerConfigCommand = (
+export const registerCommand = (
   definition: CommandDefinition,
-  withConfig: (
-    callback: () => Promise<{
-      default: WithConfigParams;
-    }>,
-  ) => CommandCb,
+  callback: (definition: CommandDefinition) => CommandCb,
 ) => {
   const command = program.command(definition.name).description(definition.description);
 
@@ -25,5 +21,5 @@ export const registerConfigCommand = (
     });
   }
 
-  command.action(withConfig(definition.action));
+  command.action(callback(definition));
 };

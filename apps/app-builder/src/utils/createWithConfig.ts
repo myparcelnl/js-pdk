@@ -1,16 +1,16 @@
-import {type CreateHook, type PdkBuilderConfig, type PdkBuilderContext, type WithConfigParams} from '../types';
-import {type CommandName, VerbosityLevel} from '../constants';
+import {type CreateHook, type PdkBuilderConfig, type PdkBuilderContext} from '../types';
+import {VerbosityLevel} from '../constants';
 import {resolveConfig} from './resolveConfig';
 import {parseCommandInput} from './parseCommandInput';
 import {mergeDefaultConfig} from './mergeDefaultConfig';
 
-export const createWithConfig: CreateHook<WithConfigParams> = (env) => {
-  return (callback) => {
+export const createWithConfig: CreateHook = (env) => {
+  return (definition) => {
     return async (...args) => {
       const config = await resolveConfig(env);
-      const {command, context} = await parseCommandInput(callback, args, env);
+      const {command, context} = await parseCommandInput(definition, args, env);
 
-      const commandName = command.name as CommandName;
+      const commandName = definition.name;
 
       const mergedContext: PdkBuilderContext = {
         ...context,

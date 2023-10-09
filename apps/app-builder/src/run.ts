@@ -1,6 +1,6 @@
 import {type LiftoffEnv} from 'liftoff';
 import {program} from 'commander';
-import {registerConfigCommand} from './utils/registerConfigCommand';
+import {registerCommand} from './utils/registerCommand';
 import {createWithConfig, createWithContext, resolveConfig} from './utils';
 import {type CommandDefinition} from './types';
 import {
@@ -29,6 +29,13 @@ const OPTION_DRY_RUN = ['-d, --dry-run', 'Dry run'] as const;
 const OPTION_PARALLEL = ['-p, --parallel', 'Run each platform in parallel'] as const;
 
 const REQUIRES_CONFIG_FILE = 'Requires a config file.';
+
+const COMMAND_INIT: CommandDefinition = {
+  name: COMMAND_INIT_NAME,
+  action: () => import('./commands/init'),
+  description: `Generate a config file in the current directory. Necessary for all other commands.`,
+  options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
+};
 
 const COMMAND_CLEAN: CommandDefinition = {
   name: COMMAND_CLEAN_NAME,
@@ -95,6 +102,8 @@ const COMMAND_ZIP: CommandDefinition = {
   options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
+const WITHOUT_CONFIG_COMMANDS = [COMMAND_INIT] as const;
+
 const CONFIG_COMMANDS = [
   COMMAND_CLEAN,
   COMMAND_COPY,
@@ -130,14 +139,9 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
 
   program.name(TITLE).description('Builds a plugin for MyParcel.');
 
-  program
-    .command(COMMAND_INIT_NAME)
-    .description(`Generate a config file in the current directory. Necessary for all other commands.`)
-    .option(...OPTION_VERBOSITY)
-    .option(...OPTION_QUIET)
-    .action(withContext(() => import('./commands/init')));
+  WITHOUT_CONFIG_COMMANDS.forEach((definition) => registerCommand(definition, withContext));
 
-  CONFIG_COMMANDS.forEach((definition) => registerConfigCommand(definition, withConfig));
+  CONFIG_COMMANDS.forEach((definition) => registerCommand(definition, withConfig));
 
   ALL_BULK_COMMANDS.forEach(([commandName, commands]) => {
     program
@@ -150,7 +154,7 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
       .option(...OPTION_VERSION)
       .action(async (...args) => {
         for (const command of commands) {
-          await withConfig(command.action)(...args);
+          await withConfig(command)(...args);
         }
       });
   });
@@ -165,7 +169,7 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
           action: () => Promise.resolve({default: definition.action}),
         };
 
-        return registerConfigCommand(resolvedDefinition, withConfig);
+        return registerCommand(resolvedDefinition, withConfig);
       });
     }
 

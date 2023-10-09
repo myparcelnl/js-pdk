@@ -4,12 +4,13 @@ import {type LiftoffEnv} from 'liftoff';
 import {type Debugger} from 'debug';
 import {type PromiseOr} from '@myparcel/ts-utils';
 import {type CommandArguments, type ParsedCommand} from '../utils';
+import {type CommandName} from '../constants';
 import {type ResolvedPdkBuilderConfig} from './config';
 
-export type CommandDefinition = {
-  name: string;
+export type CommandDefinition<A = any> = {
+  name: CommandName;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  action: () => Promise<any>;
+  action: (args?: A) => Promise<any>;
   description: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options?: any[];
@@ -43,10 +44,10 @@ export type WithConfigParams = <A extends AnyCommandArgs>(context: PdkBuilderCon
 
 export type CommandCb = (...args: CommandArguments) => void | Promise<void>;
 
-export type CreateHook<T> = (
+export type CreateHook<A = PdkBuilderContext> = (
   env: Liftoff.LiftoffEnv,
   argv: string[],
-) => (callback: () => Promise<{default: T}>) => CommandCb;
+) => (definition: CommandDefinition<A>) => CommandCb;
 
 export interface ExecuteCommandContext {
   env: LiftoffEnv;

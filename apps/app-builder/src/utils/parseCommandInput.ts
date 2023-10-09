@@ -1,23 +1,17 @@
 import type Liftoff from 'liftoff';
-import {
-  type PdkBuilderCommand,
-  type PdkBuilderCommandWithoutConfig,
-  type PdkBuilderContextWithoutConfig,
-} from '../types';
+import {type CommandDefinition, type PdkBuilderContextWithoutConfig} from '../types';
 import {type CommandArguments, parseCommand} from './parseCommand';
 import {createDebugger} from './createDebugger';
 
-export const parseCommandInput = async <O extends PdkBuilderCommandWithoutConfig | PdkBuilderCommand>(
-  callback: () => Promise<{
-    default: O;
-  }>,
+export const parseCommandInput = async <O extends CommandDefinition>(
+  definition: O,
   args: CommandArguments,
   env: Liftoff.LiftoffEnv,
 ): Promise<{
-  command: O;
-  context: PdkBuilderContextWithoutConfig;
+  command: O['action'];
+  context: Parameters<O['action']>[0] & PdkBuilderContextWithoutConfig<Parameters<O['action']>[0]['args']>;
 }> => {
-  const command = (await callback()).default;
+  const command = (await definition.action()).default;
 
   const parsedArgs = parseCommand(args);
 
@@ -25,7 +19,7 @@ export const parseCommandInput = async <O extends PdkBuilderCommandWithoutConfig
     command,
     context: {
       args: parsedArgs,
-      debug: createDebugger(parsedArgs.command.name(), {verbose: parsedArgs.verbose}),
+      debug: createDebugger(definition.name, {verbose: parsedArgs.verbose}),
       env,
     },
   };
