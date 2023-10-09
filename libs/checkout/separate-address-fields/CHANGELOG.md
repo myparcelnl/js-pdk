@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.34](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-separate-address-fields@1.0.0-alpha.33...@myparcel-pdk/checkout-separate-address-fields@1.0.0-alpha.34) "@myparcel-pdk/checkout-separate-address-fields" (2023-10-09)
+
+
+### Bug Fixes
+
+* **checkout:** include address2 in delivery options ([#195](https://github.com/myparcelnl/js-pdk/issues/195)) ([b9590f4](https://github.com/myparcelnl/js-pdk/commit/b9590f4603054e08190c3b8befb0f184a375fc8e))
+
+
+
+
 ## [1.0.0-alpha.33](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-separate-address-fields@1.0.0-alpha.32...@myparcel-pdk/checkout-separate-address-fields@1.0.0-alpha.33) "@myparcel-pdk/checkout-separate-address-fields" (2023-10-03)
 
 
