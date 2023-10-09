@@ -1,8 +1,19 @@
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {type VersionSource} from '../increment';
+import {type CommandName} from '../constants';
 import {type NodePackageManager} from '../commands/upgrade/types';
 import {type PdkPlatformName, type StringGenerator} from './common';
-import {type CommandDefinition} from './command';
+import {
+  type CommandDefinition,
+  type PdkBuilderCommand,
+  type PdkBuilderCommandWithoutConfig,
+  type PdkBuilderContext,
+} from './command';
+
+type CommandHooks = Record<
+  CommandName,
+  (params: {command: PdkBuilderCommandWithoutConfig | PdkBuilderCommand; context: PdkBuilderContext}) => Promise<void>
+>;
 
 export type PdkBuilderConfig = {
   /**
@@ -97,9 +108,16 @@ export type PdkBuilderConfig = {
   };
 
   additionalCommands?: CommandDefinition[];
+
+  hooks?: {
+    [K in CommandName as `before${Capitalize<K>}`]?: CommandHooks[K];
+  } & {
+    [K in CommandName as `after${Capitalize<K>}`]?: CommandHooks[K];
+  };
 };
 
 export type ResolvedPdkBuilderConfig = Required<Omit<PdkBuilderConfig, 'translations'>> & {
+  hooks: {};
   translations: {
     additionalSheet?: number;
     documentId: string;

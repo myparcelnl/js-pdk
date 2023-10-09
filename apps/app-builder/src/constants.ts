@@ -24,6 +24,20 @@ export const COMMAND_UPGRADE_NAME = 'upgrade';
 
 export const COMMAND_ZIP_NAME = 'zip';
 
+export const ALL_COMMAND_NAMES = [
+  COMMAND_CLEAN_NAME,
+  COMMAND_COPY_NAME,
+  COMMAND_INCREMENT_NAME,
+  COMMAND_INIT_NAME,
+  COMMAND_RENAME_NAME,
+  COMMAND_TRANSFORM_NAME,
+  COMMAND_TRANSLATIONS_NAME,
+  COMMAND_UPGRADE_NAME,
+  COMMAND_ZIP_NAME,
+] as const;
+
+export type CommandName = (typeof ALL_COMMAND_NAMES)[number];
+
 export enum VerbosityLevel {
   Verbose = 1,
   VeryVerbose = 2,

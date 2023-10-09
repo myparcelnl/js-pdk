@@ -16,6 +16,9 @@ export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilder
     version: '0.0.0',
     yarnCommand: undefined,
     ...config,
+    hooks: {
+      ...config.hooks,
+    },
     translations: {
       documentId: '1TPE7gwG2GXtX7vlKIaskwMy0Xr4o_ir-lsedWB86xyc',
       outDir: 'config/pdk/translations',
