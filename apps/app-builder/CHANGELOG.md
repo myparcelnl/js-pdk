@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.39](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.38...@myparcel-pdk/app-builder@1.0.0-alpha.39) "@myparcel-pdk/app-builder" (2023-10-09)
+
+
+### Bug Fixes
+
+* **app-builder:** use separate command context in grouped commands ([bf5d96c](https://github.com/myparcelnl/js-pdk/commit/bf5d96c6ffb1d63a59f27bd34180bb295e442d37))
+
+
+
+
 ## [1.0.0-alpha.38](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.37...@myparcel-pdk/app-builder@1.0.0-alpha.38) "@myparcel-pdk/app-builder" (2023-10-09)
 
 
