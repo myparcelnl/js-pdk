@@ -7,34 +7,40 @@
   "defaultBase": "alpha",
   "namedInputs": {
     "default": [
-      "{workspaceRoot}/libs/build-vite/*.js",
       "{workspaceRoot}/tsconfig.base.json",
+      "{projectRoot}/*.cjs",
+      "{projectRoot}/*.js",
+      "{projectRoot}/*.mjs",
+      "{projectRoot}/*.ts",
       "{projectRoot}/package.json",
       "{projectRoot}/src/**/*",
-      "{projectRoot}/tsconfig.*",
-      "{projectRoot}/vite.config.ts"
+      "{projectRoot}/tsconfig.base.json"
     ],
     "prod": [
       "default",
-      "!{projectRoot}/src/**/*.snap",
-      "!{projectRoot}/src/**/*.spec.ts",
-      "!{projectRoot}/src/**/*.test.ts",
-      "!{projectRoot}/src/__mocks__/**/*",
-      "!{projectRoot}/src/__tests__/**/*"
+      "!{projectRoot}/**/*.snap",
+      "!{projectRoot}/**/*.spec.*",
+      "!{projectRoot}/**/*.test.*",
+      "!{projectRoot}/**/__mocks__/**/*",
+      "!{projectRoot}/**/__tests__/**/*"
     ],
     "test": [
       "default",
-      "{projectRoot}/src/**/*.snap",
-      "{projectRoot}/src/**/*.spec.*",
-      "{projectRoot}/src/**/*.test.*",
-      "{projectRoot}/src/__mocks__/**/*",
-      "{projectRoot}/src/__tests__/**/*",
-      "{projectRoot}/vitest.config.ts"
+      "{projectRoot}/**/*.snap",
+      "{projectRoot}/**/*.spec.*",
+      "{projectRoot}/**/*.test.*",
+      "{projectRoot}/**/__mocks__/**/*",
+      "{projectRoot}/**/__tests__/**/*"
+    ],
+    "lint": [
+      "prod",
+      "{workspaceRoot}/.eslintignore",
+      "{workspaceRoot}/.eslintrc*"
     ]
   },
   "targetDefaults": {
     "build": {
-      "inputs": ["prod"],
+      "inputs": ["prod", "^prod"],
       "dependsOn": ["^build"],
       "outputs": [
         "{projectRoot}/dist",
@@ -42,7 +48,7 @@
       ]
     },
     "build:dev": {
-      "inputs": ["prod"],
+      "inputs": ["prod", "^prod"],
       "dependsOn": ["^build:dev"],
       "outputs": [
         "{projectRoot}/dist",
@@ -50,11 +56,11 @@
       ]
     },
     "lint": {
-      "inputs": ["prod"],
+      "inputs": ["lint"],
       "outputs": ["{projectRoot}/.eslintcache"]
     },
     "lint:fix": {
-      "inputs": ["prod"],
+      "inputs": ["lint"],
       "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
     },
     "test:run": {
