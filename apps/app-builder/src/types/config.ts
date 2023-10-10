@@ -15,6 +15,12 @@ type CommandHooks = Record<
   (params: {command: PdkBuilderCommandWithoutConfig | PdkBuilderCommand; context: PdkBuilderContext}) => Promise<void>
 >;
 
+type CommandHooksObject = {
+  [K in CommandName as `before${Capitalize<K>}`]?: CommandHooks[K];
+} & {
+  [K in CommandName as `after${Capitalize<K>}`]?: CommandHooks[K];
+};
+
 export type PdkBuilderConfig = {
   /**
    * Filename for the final compress file. Must include file extension.
@@ -109,15 +115,11 @@ export type PdkBuilderConfig = {
 
   additionalCommands?: CommandDefinition[];
 
-  hooks?: {
-    [K in CommandName as `before${Capitalize<K>}`]?: CommandHooks[K];
-  } & {
-    [K in CommandName as `after${Capitalize<K>}`]?: CommandHooks[K];
-  };
+  hooks?: CommandHooksObject;
 };
 
-export type ResolvedPdkBuilderConfig = Required<Omit<PdkBuilderConfig, 'translations'>> & {
-  hooks: {};
+export type ResolvedPdkBuilderConfig = Required<Omit<PdkBuilderConfig, 'translations' | 'hooks'>> & {
+  hooks?: CommandHooksObject;
   translations: {
     additionalSheet?: number;
     documentId: string;

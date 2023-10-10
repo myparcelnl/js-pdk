@@ -22,24 +22,24 @@ export const createWithConfig: CreateHook = (env) => {
       const beforeHook = `before${capitalizedCommandName}` as keyof PdkBuilderConfig['hooks'];
       const afterHook = `after${capitalizedCommandName}` as keyof PdkBuilderConfig['hooks'];
 
-      if (context.args.verbose >= VerbosityLevel.Verbose && (config.hooks[beforeHook] ?? null)) {
+      if (context.args.verbose >= VerbosityLevel.Verbose && (config.hooks?.[beforeHook] ?? null)) {
         context.debug(`Running hook ${beforeHook}`);
       }
 
       // @ts-expect-error todo
-      await config.hooks[beforeHook]?.({
+      await config.hooks?.[beforeHook]?.({
         command,
         context: mergedContext,
       });
 
       await command(mergedContext);
 
-      if (context.args.verbose >= VerbosityLevel.Verbose && (config.hooks[afterHook] ?? null)) {
+      if (context.args.verbose >= VerbosityLevel.Verbose && (config.hooks?.[afterHook] ?? null)) {
         context.debug(`Running hook ${afterHook}`);
       }
 
       // @ts-expect-error todo
-      await config.hooks[afterHook]?.({
+      await config.hooks?.[afterHook]?.({
         command,
         context: mergedContext,
       });
