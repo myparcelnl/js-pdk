@@ -26,11 +26,13 @@ export const createWithConfig: CreateHook = (env) => {
         context.debug(`Running hook ${beforeHook}`);
       }
 
-      // @ts-expect-error todo
-      await config.hooks[beforeHook]?.({
-        command,
-        context: mergedContext,
-      });
+      if (config.hooks) {
+        // @ts-expect-error todo
+        await config.hooks[beforeHook]?.({
+          command,
+          context: mergedContext,
+        });
+      }
 
       await command(mergedContext);
 
@@ -38,11 +40,13 @@ export const createWithConfig: CreateHook = (env) => {
         context.debug(`Running hook ${afterHook}`);
       }
 
-      // @ts-expect-error todo
-      await config.hooks[afterHook]?.({
-        command,
-        context: mergedContext,
-      });
+      if (config.hooks) {
+        // @ts-expect-error todo
+        await config.hooks[afterHook]?.({
+          command,
+          context: mergedContext,
+        });
+      }
 
       context.debug.logTimeTaken();
     };
