@@ -1,6 +1,7 @@
 import {type AddressField, type AddressFields, type AddressType, PdkField} from '@myparcel-pdk/checkout-common';
 import {isEnumValue} from '@myparcel/ts-utils';
-import {getAddressType, type PdkCheckoutForm} from '../../index';
+import {type PdkCheckoutForm} from '../../types';
+import {getAddressType} from './getAddressType';
 
 type FieldsEqual = {
   (

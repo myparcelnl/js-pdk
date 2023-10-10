@@ -1,13 +1,12 @@
 import {type CheckoutAppContext} from '../types';
+import {ATTRIBUTE_CONTEXT} from '../constants';
 import {useConfig} from '../config';
 import {getElement} from './global';
-
-const ATTRIBUTE_CONTEXT = 'data-context';
 
 export const getFrontendContext = (): CheckoutAppContext['checkout'] => {
   const config = useConfig();
 
-  const wrapper = getElement(config.selectors.deliveryOptionsWrapper);
+  const wrapper = getElement(config.selectors.deliveryOptionsWrapper, false);
   const context = wrapper?.getAttribute(ATTRIBUTE_CONTEXT);
 
   if (!wrapper || !context) {

@@ -1,6 +1,7 @@
 import {type AddressField, AddressType, type PdkField} from '@myparcel-pdk/checkout-common';
-import {useCheckoutStore} from '../utils';
-import {getAddressType, type PdkCheckoutForm, useConfig} from '../index';
+import {getAddressType, useCheckoutStore} from '../utils';
+import {type PdkCheckoutForm} from '../types';
+import {useConfig} from '../config';
 
 function getEntry(data: Record<string, FormDataEntryValue>, value: undefined | string): string {
   return (data[value as string] as string | undefined) ?? '';

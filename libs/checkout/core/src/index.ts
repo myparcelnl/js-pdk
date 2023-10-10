@@ -1,6 +1,9 @@
 import './globals';
 
+export * from './__tests__';
+
 export * from './config';
+export * from './constants';
 export * from './data';
 export * from './events';
 export * from './init';
