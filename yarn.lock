@@ -2068,6 +2068,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.5"
+    "@myparcel/ts-utils": ^1.12.0
   languageName: unknown
   linkType: soft
 
@@ -2263,7 +2264,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel/ts-utils@npm:^1.11.0, @myparcel/ts-utils@npm:^1.6.0, @myparcel/ts-utils@npm:^1.7.0, @myparcel/ts-utils@npm:^1.9.0":
+"@myparcel/ts-utils@npm:^1.11.0, @myparcel/ts-utils@npm:^1.12.0, @myparcel/ts-utils@npm:^1.6.0, @myparcel/ts-utils@npm:^1.7.0, @myparcel/ts-utils@npm:^1.9.0":
   version: 1.12.0
   resolution: "@myparcel/ts-utils@npm:1.12.0"
   checksum: 8627a0946e97f8ece44c3a9e1a762ce3ccdf6f0b68f39f225e02e451a5aa9c520dad018b51efd3e9e58b6bd0a654911f226fc59bef1e6d9e5e9fd287a7df4e7d
