@@ -8,30 +8,33 @@
   "namedInputs": {
     "default": [
       "{workspaceRoot}/libs/build-vite/*.js",
-      "!{projectRoot}/src/**/*.spec.ts",
-      "!{projectRoot}/src/**/*.test.ts",
-      "!{projectRoot}/src/__mocks__/**/*",
-      "!{projectRoot}/src/__tests__/**/*",
+      "{workspaceRoot}/tsconfig.base.json",
       "{projectRoot}/package.json",
       "{projectRoot}/src/**/*",
       "{projectRoot}/tsconfig.*",
-      "{projectRoot}/vite.config.ts",
-      "sharedGlobals"
+      "{projectRoot}/vite.config.ts"
+    ],
+    "prod": [
+      "default",
+      "!{projectRoot}/src/**/*.snap",
+      "!{projectRoot}/src/**/*.spec.ts",
+      "!{projectRoot}/src/**/*.test.ts",
+      "!{projectRoot}/src/__mocks__/**/*",
+      "!{projectRoot}/src/__tests__/**/*"
     ],
     "test": [
       "default",
-      "{projectRoot}/src/**/*.spec.ts",
-      "{projectRoot}/src/**/*.test.ts",
+      "{projectRoot}/src/**/*.snap",
+      "{projectRoot}/src/**/*.spec.*",
+      "{projectRoot}/src/**/*.test.*",
       "{projectRoot}/src/__mocks__/**/*",
       "{projectRoot}/src/__tests__/**/*",
       "{projectRoot}/vitest.config.ts"
-    ],
-    "sharedGlobals": ["{workspaceRoot}/tsconfig.base.json"],
-    "production": ["default"]
+    ]
   },
   "targetDefaults": {
     "build": {
-      "inputs": ["default"],
+      "inputs": ["prod"],
       "dependsOn": ["^build"],
       "outputs": [
         "{projectRoot}/dist",
@@ -39,7 +42,7 @@
       ]
     },
     "build:dev": {
-      "inputs": ["default"],
+      "inputs": ["prod"],
       "dependsOn": ["^build:dev"],
       "outputs": [
         "{projectRoot}/dist",
@@ -47,11 +50,11 @@
       ]
     },
     "lint": {
-      "inputs": ["default"],
-      "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
+      "inputs": ["prod"],
+      "outputs": ["{projectRoot}/.eslintcache"]
     },
     "lint:fix": {
-      "inputs": ["default"],
+      "inputs": ["prod"],
       "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
     },
     "test:run": {
