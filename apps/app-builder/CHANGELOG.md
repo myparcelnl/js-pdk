@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.40](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.39...@myparcel-pdk/app-builder@1.0.0-alpha.40) "@myparcel-pdk/app-builder" (2023-10-10)
+
+
+### Bug Fixes
+
+* **app-builder:** make hooks in config nullable ([d36c7bc](https://github.com/myparcelnl/js-pdk/commit/d36c7bc6daec24ca7fec0a5e728938472e285df8))
+
+
+
+
 ## [1.0.0-alpha.39](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.38...@myparcel-pdk/app-builder@1.0.0-alpha.39) "@myparcel-pdk/app-builder" (2023-10-09)
 
 

@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.112](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.111...@myparcel-pdk/admin-preset-default@1.0.0-alpha.112) "@myparcel-pdk/admin-preset-default" (2023-10-10)
+
+
+### Bug Fixes
+
+* **admin-preset-default:** add missing import to box ([3ff19fe](https://github.com/myparcelnl/js-pdk/commit/3ff19fe4c5b3c55b575be90a9122218b284a14bd))
+
+
+
+
 ## [1.0.0-alpha.107](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.106...@myparcel-pdk/admin-preset-default@1.0.0-alpha.107) "@myparcel-pdk/admin-preset-default" (2023-09-13)
 
 
