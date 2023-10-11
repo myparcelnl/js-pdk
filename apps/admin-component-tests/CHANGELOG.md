@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.117](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.116...@myparcel-pdk/admin-component-tests@1.0.0-alpha.117) "@myparcel-pdk/admin-component-tests" (2023-10-11)
+
+
+### Features
+
+* **admin:** support more complex translations ([aba2d2a](https://github.com/myparcelnl/js-pdk/commit/aba2d2a0f6da5d0eb54b9f93304e1d69e245fb3e))
+
+
+
+
 ## [1.0.0-alpha.114](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.113...@myparcel-pdk/admin-component-tests@1.0.0-alpha.114) "@myparcel-pdk/admin-component-tests" (2023-09-28)
 
 

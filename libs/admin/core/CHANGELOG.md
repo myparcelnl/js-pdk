@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.113](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.112...@myparcel-pdk/admin-core@1.0.0-alpha.113) "@myparcel-pdk/admin-core" (2023-10-11)
+
+
+### Features
+
+* **admin:** support more complex translations ([aba2d2a](https://github.com/myparcelnl/js-pdk/commit/aba2d2a0f6da5d0eb54b9f93304e1d69e245fb3e))
+
+
+### Bug Fixes
+
+* **admin:** fix carrier logo not updating when changing carrier in modal ([269b1b3](https://github.com/myparcelnl/js-pdk/commit/269b1b3a0317bfa4ea70b2c612da5eea1fb05d84))
+
+
+
+
 ## [1.0.0-alpha.112](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.111...@myparcel-pdk/admin-core@1.0.0-alpha.112) "@myparcel-pdk/admin-core" (2023-10-03)
 
 
