@@ -1,12 +1,10 @@
 // @vitest-environment happy-dom
 
 import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, type SpyInstance, vi} from 'vitest';
-import {setActivePinia} from 'pinia';
 import {mount} from '@vue/test-utils';
-import {createTestingPinia} from '@pinia/testing';
-import {useQueryStore} from '../stores';
-import {globalLogger} from '../services';
-import {doComponentTestSetup, doComponentTestTeardown, mockDefaultTranslations} from '../__tests__';
+import {useQueryStore} from '../../stores';
+import {globalLogger} from '../../services';
+import {doComponentTestSetup, doComponentTestTeardown, mockDefaultTranslations} from '../../__tests__';
 import {useLanguage} from './useLanguage';
 
 let warnSpy: SpyInstance;
@@ -17,34 +15,28 @@ const commonSetup = () => {
   return useLanguage();
 };
 
-describe.skip('useLanguage', () => {
+describe('useLanguage', () => {
   beforeAll(() => {
     mockDefaultTranslations.mockReturnValue({
       my_translation: 'My translation',
       my_translation_with_replacement: 'My translation with replacement: {platform.backofficeUrl}',
+      translation_with_custom_replacer: '{platform.name} said {word}',
     });
-
-    doComponentTestSetup();
   });
 
   beforeEach(() => {
-    warnSpy = vi.spyOn(globalLogger, 'warn');
+    doComponentTestSetup();
 
-    setActivePinia(
-      createTestingPinia({
-        createSpy: vi.fn,
-        stubActions: false,
-      }),
-    );
+    warnSpy = vi.spyOn(globalLogger, 'warn');
   });
 
   afterEach(() => {
     warnSpy.mockClear();
+    doComponentTestTeardown();
   });
 
   afterAll(() => {
     mockDefaultTranslations.mockReset();
-    doComponentTestTeardown();
   });
 
   describe('translate', () => {
@@ -79,6 +71,24 @@ describe.skip('useLanguage', () => {
       );
       expect(warnSpy).not.toHaveBeenCalled();
     });
+
+    it('handles non-translatables', () => {
+      const wrapper = mount({
+        setup: commonSetup,
+        template: '<div>{{ translate({text: "plain text"}) }}</div>',
+      });
+
+      expect(wrapper.find('div').element.innerText).toBe('plain text');
+    });
+
+    it('translates translatables', () => {
+      const wrapper = mount({
+        setup: commonSetup,
+        template: '<div>{{ translate({key: "translation_with_custom_replacer", args: {word: "wow" } }) }}</div>',
+      });
+
+      expect(wrapper.find('div').element.innerText).toBe('test said wow');
+    });
   });
 
   describe('has', () => {
@@ -100,6 +110,15 @@ describe.skip('useLanguage', () => {
 
       expect(wrapper.find('div').element.innerText).toBe('false');
       expect(warnSpy).not.toHaveBeenCalled();
+    });
+
+    it('returns true for non-translatables', () => {
+      const wrapper = mount({
+        setup: commonSetup,
+        template: '<div>{{ has({text: "plain text"}) }}</div>',
+      });
+
+      expect(wrapper.find('div').element.innerText).toBe('true');
     });
   });
 });

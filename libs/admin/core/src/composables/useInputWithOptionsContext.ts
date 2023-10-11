@@ -5,8 +5,8 @@ import {toArray} from '@myparcel/ts-utils';
 import {type SelectInputEmits, type SelectInputModelValue, type SelectInputProps} from '../types';
 import {translateSelectOption} from '../helpers';
 import {SortType} from '../data';
-import {useLanguage} from './useLanguage';
 import {type ElementContext, useElementContext} from './useElementContext';
+import {useLanguage} from './language';
 
 type ModelValue<T extends SelectInputModelValue, Multiple extends boolean> = Multiple extends true ? T : ArrayItem<T>;
 

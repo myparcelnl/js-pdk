@@ -1,4 +1,5 @@
 import {type Size} from '@myparcel-pdk/common';
+import {type Translation} from '@myparcel-pdk/admin-common';
 import {type PdkElementProps} from './form.types';
 import {type ActionDefinition} from './actions.types';
 
@@ -20,9 +21,9 @@ export interface DropdownButtonProps {
 export type FormGroupProps = PdkElementProps<
   unknown,
   {
-    label?: string;
-    description?: string;
-    subtext?: string;
+    label?: Translation;
+    description?: Translation;
+    subtext?: Translation;
   }
 >;
 
@@ -33,8 +34,8 @@ export type FormGroupProps = PdkElementProps<
 export type SettingsDividerProps = PdkElementProps<
   unknown,
   {
-    content?: string;
-    heading?: string;
+    content?: Translation;
+    heading?: Translation;
     level?: number | string;
   }
 >;

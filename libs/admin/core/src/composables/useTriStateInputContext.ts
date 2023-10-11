@@ -15,8 +15,8 @@ import {
   type TriStateInputProps,
 } from '../types';
 import {TriState} from '../data';
-import {useLanguage} from './useLanguage';
 import {useElementContext} from './useElementContext';
+import {useLanguage} from './language';
 
 type BoolElInstance = ElementInstance<PdkElementProps<ComponentOrHtmlElement>, ComponentOrHtmlElement, string, boolean>;
 

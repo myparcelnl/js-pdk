@@ -1,5 +1,5 @@
 import {type MaybeRef} from '@vueuse/core';
-import {type AdminIcon, type Variant} from '@myparcel-pdk/admin-common';
+import {type AdminIcon, type Translation, type Variant} from '@myparcel-pdk/admin-common';
 import {type OneOrMore, type PromiseOr} from '@myparcel/ts-utils';
 import {type ActionContext, type ActionContextWithResponse, type QueryHandler} from '../actions';
 import {
@@ -13,7 +13,7 @@ import {
 interface BaseActionDefinition {
   disabled?: MaybeRef<boolean>;
   icon?: AdminIcon;
-  label?: string;
+  label?: Translation;
   notifications?: OneOrMore<Variant>;
   standalone?: boolean;
   variant?: MaybeRef<Variant | undefined>;

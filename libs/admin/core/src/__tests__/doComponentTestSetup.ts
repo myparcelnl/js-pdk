@@ -12,7 +12,10 @@ export const doComponentTestSetup = (): void => {
   globalLogger.level = LogLevel.Off;
 
   config.global.plugins = [
-    createTestingPinia({createSpy: vi.fn}),
+    createTestingPinia({
+      createSpy: vi.fn,
+      stubActions: false,
+    }),
     createVueQueryPlugin(appConfig),
     createContextPlugin(appConfig),
     createLoggerPlugin(appConfig),

@@ -1,4 +1,10 @@
-import {type AdminIcon, type Keyable, type SelectOption, type SelectOptionValue} from '@myparcel-pdk/admin-common';
+import {
+  type AdminIcon,
+  type Keyable,
+  type SelectOption,
+  type SelectOptionValue,
+  type Translation,
+} from '@myparcel-pdk/admin-common';
 import {
   type ComponentOrHtmlElement,
   type ElementName,
@@ -9,9 +15,9 @@ import {type SortType} from '../data';
 
 export type ArrayItem<T> = T extends (infer U)[] ? U : T;
 
-type FieldProps = {
-  description?: string;
-  subtext?: string;
+export type GlobalFieldProps = {
+  description?: Translation;
+  subtext?: Translation;
   value?: unknown;
 };
 
@@ -20,7 +26,7 @@ export type ElementInstance<
   C extends ComponentOrHtmlElement = ComponentOrHtmlElement,
   N extends ElementName = string,
   RT = unknown,
-> = Replace<InteractiveElementInstance<C, N, RT>, 'props', Props & FieldProps & Record<string, unknown>>;
+> = Replace<InteractiveElementInstance<C, N, RT>, 'props', Props & GlobalFieldProps & Record<string, unknown>>;
 
 export type OptionsProp<T extends SelectOptionValue = SelectOptionValue> = {
   options?: SelectOption<T>[];

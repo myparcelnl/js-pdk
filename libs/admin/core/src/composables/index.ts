@@ -1,6 +1,7 @@
 export * from './context';
 export * from './extendAdminInstance';
 export * from './formatter';
+export * from './language';
 export * from './orders';
 export * from './products';
 export * from './shipments';
@@ -14,7 +15,6 @@ export * from './useDropdownData';
 export * from './useElementContext';
 export * from './useGlobalPdkAdmin';
 export * from './useInputWithOptionsContext';
-export * from './useLanguage';
 export * from './useLoading';
 export * from './useLogger';
 export * from './useModalElementContext';

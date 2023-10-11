@@ -1,7 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import {type Component} from 'vue';
 import {afterAll, afterEach, beforeAll, beforeEach, describe, test, vi} from 'vitest';
-import {type QueryKey} from '@tanstack/vue-query';
 import {type AdminInstance, createAdminConfig, createLogger} from '@myparcel-pdk/admin-core';
 import {type AdminComponent, type AdminView} from '@myparcel-pdk/admin-common';
 import {testMap} from './testMap';
@@ -27,17 +26,6 @@ export const executeAdminComponentTest = (name: AdminComponent, component: Omit<
     });
 
     beforeAll(() => {
-      vi.mock('@myparcel-pdk/admin-core', async () => ({
-        // @ts-expect-error this works
-        ...(await vi.importActual('@myparcel-pdk/admin-core')),
-        useQueryStore: () => ({
-          get(queryKey: QueryKey) {
-            return vi.fn(() => queryKey);
-          },
-          has: () => true,
-        }),
-      }));
-
       vi.mock('../usePdkInstance', () => ({
         usePdkInstance: (): AdminInstance => ({
           appName: 'test',

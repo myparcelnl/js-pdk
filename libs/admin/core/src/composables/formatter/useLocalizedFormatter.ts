@@ -1,4 +1,4 @@
-import {useLanguage} from '../useLanguage';
+import {useLanguage} from '../language';
 import {useGlobalContext} from '../context';
 import {useFormatter} from './useFormatter';
 import {type Formatter} from './formatter.types';

@@ -1,6 +1,7 @@
 import {type Component} from 'vue';
 import {type Variant} from '@myparcel-pdk/common';
 import {type OneOrMore} from '@myparcel/ts-utils';
+import {type Translation} from './language.types';
 
 export type NotificationId = number | string;
 
@@ -67,12 +68,12 @@ export type ArrayItem<T> = T extends (infer U)[] ? U : T;
 
 export interface TabDefinition {
   component: string | Component;
-  description?: string;
+  description?: Translation;
   icon?: string;
-  label: string;
+  label: Translation;
   labelSuffix?: string;
   name: string;
-  subtext?: string;
+  subtext?: Translation;
 }
 
 export type WebhookDefinition = {
