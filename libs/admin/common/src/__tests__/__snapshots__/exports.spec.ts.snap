@@ -1,0 +1,24 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`exports > exports from index.ts 1`] = `
+[
+  "ADMIN_COMPONENT_PREFIX",
+  "AdminComponent",
+  "AdminIcon",
+  "AdminView",
+  "BACKEND_ENDPOINTS_ORDERS",
+  "BACKEND_ENDPOINTS_SHIPMENTS",
+  "BACKEND_ENDPOINTS_WEBHOOKS",
+  "BackendEndpoint",
+  "NotificationCategory",
+  "Size",
+  "Status",
+  "Variant",
+  "allAdminComponentNames",
+  "optionalAdminActionContainerComponentNames",
+  "optionalAdminPlainWrapperComponentNames",
+  "prefixComponent",
+  "requiredAdminComponentNames",
+  "unprefixComponent",
+]
+`;
