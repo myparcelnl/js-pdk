@@ -28,20 +28,21 @@
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {useFetchCarrier} from '../../sdk';
-import {useAdminConfig, useLanguage, useOrderData} from '../../composables';
+import {useAdminConfig, useOrderData} from '../../composables';
 import DeliveryOptionsPackageType from './DeliveryOptionsPackageType.vue';
 import DeliveryOptionsDeliveryType from './DeliveryOptionsDeliveryType.vue';
 import DateRelative from './DateRelative.vue';
 import CarrierLogo from './CarrierLogo.vue';
 
 const {query} = useOrderData();
+
 const deliveryOptions = computed(() => get(query.data)?.deliveryOptions);
 
-const carriersQuery = useFetchCarrier(deliveryOptions.value?.carrier?.name);
+const carrier = computed(() => {
+  const carriersQuery = useFetchCarrier(deliveryOptions.value?.carrier?.name);
 
-const carrier = computed(() => get(carriersQuery.data));
+  return get(carriersQuery.data);
+});
 
 const config = useAdminConfig();
-
-const {translate} = useLanguage();
 </script>
