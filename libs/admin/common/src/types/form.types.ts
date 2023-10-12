@@ -1,4 +1,5 @@
 import {type Keyable} from '@myparcel-pdk/common';
+import {type Translation} from './language.types';
 import {type AdminIcon} from './common.types';
 
 interface BaseSelectOption<Value extends SelectOptionValue = SelectOptionValue> {
@@ -10,12 +11,12 @@ interface BaseSelectOption<Value extends SelectOptionValue = SelectOptionValue> 
 
 export interface SelectOptionWithLabel<Value extends SelectOptionValue = SelectOptionValue>
   extends BaseSelectOption<Value> {
-  label: string;
+  label: Translation;
 }
 
 export interface SelectOptionWithPlainLabel<Value extends SelectOptionValue = SelectOptionValue>
   extends BaseSelectOption<Value> {
-  plainLabel: string;
+  plainLabel: Translation;
 }
 
 export type SelectOptionValue = Keyable | boolean;
