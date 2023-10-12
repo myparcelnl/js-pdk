@@ -1,6 +1,6 @@
 import {type Ref, ref} from 'vue';
 import {createGlobalState, useMemoize} from '@vueuse/core';
-import {type NonTranslatable, type Translation} from '@myparcel-pdk/admin-common';
+import {type NonTranslatable, type Translatable, type Translation} from '@myparcel-pdk/admin-common';
 import {isOfType} from '@myparcel/ts-utils';
 import {useGlobalContext} from '../context';
 import {decodeHtmlEntities} from '../../utils';
@@ -78,22 +78,26 @@ const translate: UseLanguage['translate'] = (translation, replacers) => {
 
   const cache = useCache();
 
-  if (memoizedHas(translationKey)) {
-    if (!cache.has(translationKey)) {
+  const cacheKey = [translationKey, isOfType<Translatable>(translation, 'args') ? translation.args : undefined]
+    .filter(Boolean)
+    .join('|');
+
+  if (memoizedHas(translation)) {
+    if (!cache.has(cacheKey)) {
       const translations = memoizedAll();
       const translated = decodeHtmlEntities(translations[translationKey]);
 
-      cache.set(translationKey, resolveTranslatedString(translated, replacers, translation));
+      cache.set(cacheKey, resolveTranslatedString(translated, replacers, translation));
     }
   } else {
     const missingKeys = useMissingKeys();
     // eslint-disable-next-line no-console
     globalLogger.warn(`Missing translation: ${translationKey}`);
     missingKeys.value.push(translationKey);
-    cache.set(translationKey, translationKey);
+    cache.set(cacheKey, translationKey);
   }
 
-  return cache.get(translationKey) as string;
+  return cache.get(cacheKey) as string;
 };
 
 const memoizedAll = useMemoize(all);
