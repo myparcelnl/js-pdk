@@ -406,6 +406,11 @@ export namespace Plugin {
   };
 
   export type ModelContextOrderDataContext = ModelPdkOrder & {
+    digitalStampRanges: {
+      min: number;
+      max: number;
+      average: number;
+    }[];
     inheritedDeliveryOptions: Record<string, Shipment.ModelDeliveryOptions>;
   };
 
@@ -446,6 +451,15 @@ export namespace Plugin {
     values: Settings.ModelProductSettings;
   };
 
+  export type ModelPdkPhysicalProperties = {
+    height?: number;
+    length?: number;
+    width?: number;
+    initialWeight: number;
+    manualWeight: number;
+    totalWeight: number;
+  };
+
   export type ModelPdkOrder = {
     customsDeclaration?: Shipment.ModelCustomsDeclaration;
     deliveryOptions?: Shipment.ModelDeliveryOptions;
@@ -458,6 +472,7 @@ export namespace Plugin {
     billingAddress?: Base.ModelContactDetails;
     shippingAddress: Base.ModelContactDetails;
     senderAddress?: Base.ModelContactDetails;
+    physicalProperties: ModelPdkPhysicalProperties;
     shipmentPrice: number;
     shipmentPriceAfterVat: number;
     shipmentVat: number;

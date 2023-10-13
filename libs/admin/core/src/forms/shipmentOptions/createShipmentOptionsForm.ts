@@ -16,6 +16,7 @@ import {createHideSenderField} from './fields/createHideSenderField';
 import {
   createAgeCheckField,
   createCarrierField,
+  createDigitalStampRangeField,
   createDirectReturnField,
   createInsuranceField,
   createLabelAmountField,
@@ -59,6 +60,8 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
       createPackageTypeField(refs),
 
       createLabelAmountField(refs),
+
+      createDigitalStampRangeField(refs),
 
       createAgeCheckField(refs),
       createSignatureField(refs),
