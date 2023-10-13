@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.115](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.114...@myparcel-pdk/admin-core@1.0.0-alpha.115) "@myparcel-pdk/admin-core" (2023-10-13)
+
+
+### Features
+
+* **admin:** add digital stamp weight range option ([#197](https://github.com/myparcelnl/js-pdk/issues/197)) ([98dab70](https://github.com/myparcelnl/js-pdk/commit/98dab70606f6c2a05e24075c61b6afa604a67ce4))
+
+
+
+
 ## [1.0.0-alpha.114](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.113...@myparcel-pdk/admin-core@1.0.0-alpha.114) "@myparcel-pdk/admin-core" (2023-10-13)
 
 
