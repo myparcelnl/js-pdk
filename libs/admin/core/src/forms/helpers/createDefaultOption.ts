@@ -1,6 +1,6 @@
 import {type Keyable} from '@myparcel-pdk/common/src';
 import {type SelectOption} from '@myparcel-pdk/admin-common';
-import {TriStateValue} from '@myparcel-pdk/admin';
+import {TriState} from '../../data';
 
 export const createDefaultOption = (value?: Keyable | undefined): SelectOption => ({
   label: {
@@ -9,5 +9,5 @@ export const createDefaultOption = (value?: Keyable | undefined): SelectOption =
       value: value ?? '?',
     },
   },
-  value: TriStateValue.Inherit,
+  value: TriState.Inherit,
 });
