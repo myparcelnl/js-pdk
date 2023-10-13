@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.114](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.113...@myparcel-pdk/admin-core@1.0.0-alpha.114) "@myparcel-pdk/admin-core" (2023-10-13)
+
+
+### Bug Fixes
+
+* **admin:** improve translation caching ([61c3a52](https://github.com/myparcelnl/js-pdk/commit/61c3a526d3c5d8e14ead20b96fc6ebf7ef68b475))
+
+
+
+
 ## [1.0.0-alpha.113](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.112...@myparcel-pdk/admin-core@1.0.0-alpha.113) "@myparcel-pdk/admin-core" (2023-10-11)
 
 
