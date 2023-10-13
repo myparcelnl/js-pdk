@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.116](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.115...@myparcel-pdk/admin-core@1.0.0-alpha.116) "@myparcel-pdk/admin-core" (2023-10-13)
+
+
+### Bug Fixes
+
+* **admin:** fix default range hint not including the default weight ([fb253d7](https://github.com/myparcelnl/js-pdk/commit/fb253d7890eb26a748a41b4497cebe95e264318c))
+
+
+
+
 ## [1.0.0-alpha.115](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.114...@myparcel-pdk/admin-core@1.0.0-alpha.115) "@myparcel-pdk/admin-core" (2023-10-13)
 
 
