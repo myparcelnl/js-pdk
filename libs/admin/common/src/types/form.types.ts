@@ -9,14 +9,18 @@ interface BaseSelectOption<Value extends SelectOptionValue = SelectOptionValue> 
   value: Value;
 }
 
-export interface SelectOptionWithLabel<Value extends SelectOptionValue = SelectOptionValue>
-  extends BaseSelectOption<Value> {
-  label: Translation;
+export interface SelectOptionWithLabel<
+  Value extends SelectOptionValue = SelectOptionValue,
+  T extends Translation = Translation,
+> extends BaseSelectOption<Value> {
+  label: T;
 }
 
-export interface SelectOptionWithPlainLabel<Value extends SelectOptionValue = SelectOptionValue>
-  extends BaseSelectOption<Value> {
-  plainLabel: Translation;
+export interface SelectOptionWithPlainLabel<
+  Value extends SelectOptionValue = SelectOptionValue,
+  T extends Translation = Translation,
+> extends BaseSelectOption<Value> {
+  plainLabel: T;
 }
 
 export type SelectOptionValue = Keyable | boolean;

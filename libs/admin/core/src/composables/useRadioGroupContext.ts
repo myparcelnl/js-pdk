@@ -37,6 +37,7 @@ export const useRadioGroupContext = <
       return createFormElement({
         ref: context.model,
         name: `${props.element.name}${value.toString()}`,
+        // @ts-expect-error this works but the form builder does not technically allow it
         label: isOfType<SelectOptionWithLabel<T>>(option, 'label') ? option.label : option.plainLabel,
         props: {
           value: option.value,
