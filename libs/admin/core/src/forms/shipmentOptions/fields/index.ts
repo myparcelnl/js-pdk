@@ -1,5 +1,6 @@
 export * from './createAgeCheckField';
 export * from './createCarrierField';
+export * from './createDigitalStampRangeField';
 export * from './createDirectReturnField';
 export * from './createInsuranceField';
 export * from './createLabelAmountField';

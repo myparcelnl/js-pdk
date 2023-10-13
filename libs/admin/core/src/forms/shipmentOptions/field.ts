@@ -4,6 +4,8 @@ export type FieldName = string;
 
 const DELIVERY_OPTIONS_PREFIX = 'deliveryOptions';
 
+const PHYSICAL_PROPERTIES_PREFIX = 'physicalProperties';
+
 export const SHIPMENT_OPTIONS = `shipmentOptions`;
 
 const SHIPMENT_OPTIONS_PREFIX = `${DELIVERY_OPTIONS_PREFIX}.${SHIPMENT_OPTIONS}`;
@@ -30,6 +32,8 @@ export const SIGNATURE = 'signature' satisfies keyof Shipment.ModelShipmentOptio
 
 export const INSURANCE = 'insurance' satisfies keyof Shipment.ModelShipmentOptions;
 
+export const MANUAL_WEIGHT = 'manualWeight';
+
 export const PROP_OPTIONS = 'options';
 
 export const FIELD_CARRIER: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${CARRIER}`;
@@ -54,16 +58,19 @@ export const FIELD_SIGNATURE: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${SIGNATUR
 
 export const FIELD_INSURANCE: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${INSURANCE}`;
 
+export const FIELD_MANUAL_WEIGHT: FieldName = `${PHYSICAL_PROPERTIES_PREFIX}.${MANUAL_WEIGHT}`;
+
 export const ALL_FIELDS = [
-  FIELD_CARRIER,
-  FIELD_LABEL_AMOUNT,
-  FIELD_PACKAGE_TYPE,
   FIELD_AGE_CHECK,
+  FIELD_CARRIER,
   FIELD_DIRECT_RETURN,
   FIELD_HIDE_SENDER,
+  FIELD_INSURANCE,
+  FIELD_LABEL_AMOUNT,
   FIELD_LARGE_FORMAT,
   FIELD_ONLY_RECIPIENT,
+  FIELD_MANUAL_WEIGHT,
+  FIELD_PACKAGE_TYPE,
   FIELD_SAME_DAY_DELIVERY,
   FIELD_SIGNATURE,
-  FIELD_INSURANCE,
 ] as const;
