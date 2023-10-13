@@ -20,6 +20,8 @@ export const createDigitalStampRangeField = (refs: ShipmentOptionsRefs): Interac
   const {digitalStampRanges} = orderData;
   const {initialWeight, manualWeight} = orderData?.physicalProperties ?? {};
 
+  const totalWeight = Number(initialWeight) + Number(pluginSettings.order.emptyDigitalStampWeight ?? 0);
+
   const ranges: Plugin.ModelContextOrderDataContext['digitalStampRanges'] = digitalStampRanges ?? [];
 
   const rangeOptions = ranges.map((range) => ({
@@ -28,7 +30,7 @@ export const createDigitalStampRangeField = (refs: ShipmentOptionsRefs): Interac
   })) satisfies SelectOption[];
 
   const defaultRange = ranges.find((range) => {
-    return (range.min <= initialWeight && range.max >= initialWeight) ?? first(rangeOptions);
+    return (range.min <= totalWeight && range.max >= totalWeight) ?? first(rangeOptions);
   });
 
   const selectedValue =
@@ -50,7 +52,7 @@ export const createDigitalStampRangeField = (refs: ShipmentOptionsRefs): Interac
         key: 'order_weight',
         args: {
           // eslint-disable-next-line id-length
-          n: Number(initialWeight) + Number(pluginSettings.order.emptyDigitalStampWeight ?? 0),
+          n: totalWeight,
         },
       },
       options: [createDefaultOption(defaultOption?.plainLabel), ...rangeOptions],
