@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.42](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.41...@myparcel-pdk/app-builder@1.0.0-alpha.42) "@myparcel-pdk/app-builder" (2023-10-16)
+
+
+### Features
+
+* **app-builder:** allow passing custom root command via command line ([44689f6](https://github.com/myparcelnl/js-pdk/commit/44689f640ae2200a6b0ec0bccbf66342e23a9417))
+
+
+
+
 ## [1.0.0-alpha.41](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.40...@myparcel-pdk/app-builder@1.0.0-alpha.41) "@myparcel-pdk/app-builder" (2023-10-13)
 
 
