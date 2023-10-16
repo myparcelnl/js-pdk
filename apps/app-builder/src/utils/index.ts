@@ -1,4 +1,5 @@
 export * from './createArchive';
+export * from './createCommand';
 export * from './createDebugger';
 export * from './createWithConfig';
 export * from './createWithContext';

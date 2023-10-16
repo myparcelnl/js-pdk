@@ -7,8 +7,8 @@ import {mergeDefaultConfig} from './mergeDefaultConfig';
 export const createWithConfig: CreateHook = (env) => {
   return (definition) => {
     return async (...args) => {
-      const config = await resolveConfig(env);
       const {command, context} = await parseCommandInput(definition, args, env);
+      const config = await resolveConfig(env, context.args);
 
       const commandName = definition.name;
 

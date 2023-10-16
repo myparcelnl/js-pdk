@@ -40,8 +40,6 @@ export type WithContextParams = <A extends AnyCommandArgs>(
   context: Omit<PdkBuilderContext<A>, 'config'>,
 ) => Promise<void> | void;
 
-export type WithConfigParams = <A extends AnyCommandArgs>(context: PdkBuilderContext<A>) => Promise<void> | void;
-
 export type CommandCb = (...args: CommandArguments) => void | Promise<void>;
 
 export type CreateHook<A = PdkBuilderContext> = (

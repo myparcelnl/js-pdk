@@ -104,6 +104,11 @@ export type PdkBuilderConfig = {
   composerCommand?: OneOrMore<string>;
 
   /**
+   * Command to prepend to all commands.
+   */
+  rootCommand?: OneOrMore<string>;
+
+  /**
    * Translations configuration.
    */
   translations?: {

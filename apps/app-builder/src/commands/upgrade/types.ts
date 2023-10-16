@@ -20,7 +20,10 @@ export type UpgradeCommandArgs = CommandArgs & {
   lockfile?: string;
 };
 
-export type InputUpgradeCommandArgs = MakeOptional<UpgradeCommandArgs, 'composerCommand' | 'yarnCommand'>;
+export type InputUpgradeCommandArgs = MakeOptional<
+  UpgradeCommandArgs,
+  'composerCommand' | 'yarnCommand' | 'rootCommand'
+>;
 
 export interface UpgradeSubContext {
   args: UpgradeCommandArgs;

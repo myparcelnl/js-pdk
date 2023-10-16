@@ -132,6 +132,10 @@ const ALL_BULK_COMMANDS = [
   [COMMAND_BUILD_NAME, BUILD_COMMANDS],
 ] as const;
 
+const BULK_COMMAND_OPTIONS = [OPTION_DRY_RUN, OPTION_PARALLEL, OPTION_VERBOSITY, OPTION_QUIET, OPTION_VERSION] as const;
+
+const CONFIG_OPTIONS = [['--root-command <command>', 'Root command', '']] as const;
+
 // eslint-disable-next-line max-lines-per-function
 export const run = (env: LiftoffEnv, argv: string[]): void => {
   const withContext = createWithContext(env, argv);
@@ -141,22 +145,30 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
 
   WITHOUT_CONFIG_COMMANDS.forEach((definition) => registerCommand(definition, withContext));
 
-  CONFIG_COMMANDS.forEach((definition) => registerCommand(definition, withConfig));
+  CONFIG_COMMANDS.forEach((definition) => {
+    registerCommand(
+      {
+        ...definition,
+        options: [...CONFIG_OPTIONS, ...(definition.options ?? [])],
+      },
+      withConfig,
+    );
+  });
 
   ALL_BULK_COMMANDS.forEach(([commandName, commands]) => {
-    program
+    const command = program
       .command(commandName)
-      .description(`Run ${commands.map(({name}) => name).join(', ')} in sequence. ${REQUIRES_CONFIG_FILE}`)
-      .option(...OPTION_DRY_RUN)
-      .option(...OPTION_PARALLEL)
-      .option(...OPTION_VERBOSITY)
-      .option(...OPTION_QUIET)
-      .option(...OPTION_VERSION)
-      .action(async (...args) => {
-        for (const command of commands) {
-          await withConfig(command)(...args);
-        }
-      });
+      .description(`Run ${commands.map(({name}) => name).join(', ')} in sequence. ${REQUIRES_CONFIG_FILE}`);
+
+    // @ts-expect-error todo
+    BULK_COMMAND_OPTIONS.forEach((option) => command.option(...option));
+    CONFIG_OPTIONS.forEach((option) => command.option(...option));
+
+    command.action(async (...args) => {
+      for (const command of commands) {
+        await withConfig(command)(...args);
+      }
+    });
   });
 
   void (async () => {
@@ -166,6 +178,7 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
       config.additionalCommands?.forEach((definition) => {
         const resolvedDefinition = {
           ...definition,
+          options: [...CONFIG_OPTIONS, ...(definition.options ?? [])],
           action: () => Promise.resolve({default: definition.action}),
         };
 

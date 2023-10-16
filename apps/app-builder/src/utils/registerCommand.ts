@@ -4,7 +4,7 @@ import {type CommandCb, type CommandDefinition} from '../types';
 export const registerCommand = (
   definition: CommandDefinition,
   callback: (definition: CommandDefinition) => CommandCb,
-) => {
+): void => {
   const command = program.command(definition.name).description(definition.description);
 
   if (definition.options) {

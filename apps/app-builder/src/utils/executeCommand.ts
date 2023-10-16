@@ -1,7 +1,8 @@
 import {spawnSync, type SpawnSyncOptions, type SpawnSyncOptionsWithStringEncoding} from 'child_process';
-import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {type ExecuteCommandContext} from '../types';
+import {isOfType, type OneOrMore, toArray} from '@myparcel/ts-utils';
+import {type ExecuteCommandContext, type PdkBuilderContext} from '../types';
 import {VerbosityLevel} from '../constants';
+import {createCommand} from './createCommand';
 
 export const executeCommand = async (
   context: ExecuteCommandContext,
@@ -16,7 +17,11 @@ export const executeCommand = async (
   };
 
   return new Promise((resolve, reject) => {
-    const splitCommand = toArray(command).reduce((acc, command) => [...acc, ...command.split(' ')], [] as string[]);
+    const resolvedCommand = isOfType<PdkBuilderContext>(context, 'config')
+      ? toArray(createCommand(context.config, command))
+      : toArray(command);
+
+    const splitCommand = resolvedCommand.reduce((acc, command) => [...acc, ...command.split(' ')], [] as string[]);
     const allArgs = [...splitCommand, ...(args ?? [])];
 
     const [commandName, ...commandArgs] = allArgs;

@@ -1,20 +1,29 @@
 import {type LiftoffEnv} from 'liftoff';
-import {type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types';
+import {type AnyCommandArgs, type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types';
+import {type ParsedCommand} from './parseCommand';
 
 const configCache = new Map<string, PdkBuilderConfig>();
 
-export async function resolveConfig(env: LiftoffEnv): Promise<ResolvedPdkBuilderConfig> {
+export async function resolveConfig(
+  env: LiftoffEnv,
+  args?: ParsedCommand<AnyCommandArgs>,
+): Promise<ResolvedPdkBuilderConfig> {
   if (!env.configPath) {
     throw new Error('No config file found.');
   }
 
   if (configCache.has(env.configPath)) {
-    return configCache.get(env.configPath) as ResolvedPdkBuilderConfig;
+    return {...configCache.get(env.configPath), ...args} as ResolvedPdkBuilderConfig;
   }
 
   const imported = await import(env.configPath);
 
-  configCache.set(env.configPath, imported.default);
+  const resolvedConfig = {
+    ...imported.default,
+    ...args,
+  };
 
-  return imported.default;
+  configCache.set(env.configPath, resolvedConfig);
+
+  return resolvedConfig;
 }

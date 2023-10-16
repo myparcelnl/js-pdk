@@ -13,6 +13,7 @@ export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilder
     nodePackageManagerCommand: undefined,
     outDir: 'dist',
     platformFolderName: '{{platform}}-{{name}}',
+    rootCommand: '',
     version: '0.0.0',
     yarnCommand: undefined,
     ...config,
