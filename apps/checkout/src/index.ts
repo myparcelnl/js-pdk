@@ -25,7 +25,14 @@ export type {
   StoreCallbackUpdate,
 } from '@myparcel-pdk/checkout-core';
 
-export {DeliveryOptionsMode} from '@myparcel-pdk/checkout-delivery-options';
+export {AddressField, AddressType, FrontendEndpoint, PdkEvent, PdkField} from '@myparcel-pdk/checkout-common';
+
+export {
+  DeliveryOptionsMode,
+  PdkDeliveryOptionsEvent,
+  initializeCheckoutDeliveryOptions,
+  useDeliveryOptionsStore,
+} from '@myparcel-pdk/checkout-delivery-options';
 
 export {
   EVENT_HIDE_DELIVERY_OPTIONS,
@@ -35,14 +42,6 @@ export {
   EVENT_UPDATE_CONFIG,
   EVENT_UPDATE_DELIVERY_OPTIONS,
 } from '@myparcel-pdk/delivery-options';
-
-export {FrontendEndpoint} from '@myparcel-pdk/checkout-common';
-
-export {
-  PdkDeliveryOptionsEvent,
-  initializeCheckoutDeliveryOptions,
-  useDeliveryOptionsStore,
-} from '@myparcel-pdk/checkout-delivery-options';
 
 export {
   StoreListener,
