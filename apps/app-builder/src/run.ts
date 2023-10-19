@@ -134,7 +134,7 @@ const ALL_BULK_COMMANDS = [
 
 const BULK_COMMAND_OPTIONS = [OPTION_DRY_RUN, OPTION_PARALLEL, OPTION_VERBOSITY, OPTION_QUIET, OPTION_VERSION] as const;
 
-const CONFIG_OPTIONS = [['--root-command <command>', 'Root command', '']] as const;
+const CONFIG_OPTIONS = [['--root-command <command>', 'Root command', undefined]] as const;
 
 // eslint-disable-next-line max-lines-per-function
 export const run = (env: LiftoffEnv, argv: string[]): void => {
