@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import {vi} from 'vitest';
 import {isObject, merge} from 'lodash-unified';
-import {createDirectory} from '../utils';
+import {createDirectory, exists} from '../utils';
 import {MOCK_ROOT_DIR} from './constants';
 
 type Directories = Record<string, unknown>;
@@ -48,9 +48,15 @@ export const mockFileSystem = async (fileSystem?: Directories): Promise<void> =>
     'readme.txt': 'Hello world!',
   };
 
+  if (await exists(MOCK_ROOT_DIR)) {
+    await restoreFileSystem();
+  }
+
   await recursiveCreate(merge({}, base, fileSystem));
 
   vi.restoreAllMocks();
 };
 
-export const restoreFileSystem = async (): Promise<void> => {};
+export const restoreFileSystem = async (): Promise<void> => {
+  await fs.promises.rm(MOCK_ROOT_DIR, {recursive: true});
+};

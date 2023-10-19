@@ -19,6 +19,7 @@ export const createTestContext = (context?: Input): PdkBuilderContext => {
   } as CommandArgs;
 
   return {
+    ...context,
     args,
     config: mergeDefaultConfig({
       name: 'test',
@@ -42,6 +43,5 @@ export const createTestContext = (context?: Input): PdkBuilderContext => {
       completion: false,
       ...context?.env,
     },
-    ...context,
   } as PdkBuilderContext;
 };
