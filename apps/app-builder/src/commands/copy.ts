@@ -9,7 +9,7 @@ import {VerbosityLevel} from '../constants';
 const copy: PdkBuilderCommand = async ({env, config, args, debug}) => {
   if (args.dryRun) reportDryRun(debug, 'No files will be copied.');
 
-  const files = glob.sync(config.source);
+  const files = glob.sync(config.source, {cwd: env.cwd});
 
   debug(
     'Copying %s files from %s to %s for platforms %s',

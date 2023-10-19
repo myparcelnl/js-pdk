@@ -23,7 +23,8 @@ const increment: PdkBuilderCommand = async ({env, config, args, debug}) => {
   debug('Incrementing version to %s', chalk.greenBright(newVersion));
 
   const paths = config.versionSource.map((source) => source.path);
-  const files = glob.sync(paths);
+
+  const files = glob.sync(paths, {cwd: env.cwd});
 
   await executePromises(
     args,

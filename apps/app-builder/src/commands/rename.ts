@@ -37,6 +37,7 @@ const rename: PdkBuilderCommand = async ({env, config, args, debug}) => {
 
       const files = glob.sync(`${platformDistPath}/**/*`, {
         ignore: [`${platformDistPath}/node_modules/**/*`, `${platformDistPath}/vendor/**/*`],
+        cwd: env.cwd,
       });
 
       await Promise.all(
