@@ -16,9 +16,7 @@ import {REGEX_VERSION, VerbosityLevel} from '../constants';
 const increment: PdkBuilderCommand = async ({env, config, args, debug}) => {
   const newVersion = args.version ?? config.version;
 
-  if (args.dryRun) {
-    reportDryRun(debug, 'No files will be modified.');
-  }
+  if (args.dryRun) reportDryRun(debug, 'No files will be modified.');
 
   debug('Incrementing version to %s', chalk.greenBright(newVersion));
 
