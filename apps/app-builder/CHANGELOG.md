@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.45](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.44...@myparcel-pdk/app-builder@1.0.0-alpha.45) "@myparcel-pdk/app-builder" (2023-10-19)
+
+
+### Bug Fixes
+
+* **app-builder:** remove default value from root command option ([00bba50](https://github.com/myparcelnl/js-pdk/commit/00bba5032f6b60dccb9f8c7e6a4983bcf61b0f7e))
+
+
+
+
 ## [1.0.0-alpha.44](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.43...@myparcel-pdk/app-builder@1.0.0-alpha.44) "@myparcel-pdk/app-builder" (2023-10-19)
 
 
