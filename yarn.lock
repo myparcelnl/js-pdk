@@ -2089,7 +2089,7 @@ __metadata:
   resolution: "@myparcel-pdk/checkout-js@workspace:apps/checkout-js"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/checkout": "workspace:^1.0.0-alpha.72"
+    "@myparcel-pdk/checkout": "workspace:^1.0.0-alpha.73"
   languageName: unknown
   linkType: soft
 
@@ -2111,7 +2111,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout@workspace:^1.0.0-alpha.72, @myparcel-pdk/checkout@workspace:apps/checkout":
+"@myparcel-pdk/checkout@workspace:^1.0.0-alpha.73, @myparcel-pdk/checkout@workspace:apps/checkout":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/checkout@workspace:apps/checkout"
   dependencies:
