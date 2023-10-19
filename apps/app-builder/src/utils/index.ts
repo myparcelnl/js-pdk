@@ -24,3 +24,4 @@ export * from './resolveFileName';
 export * from './resolveString';
 export * from './transformer';
 export * from './validateDistPath';
+export {createDirectory} from './createDirectory';
