@@ -1,10 +1,35 @@
-# JS-PDK
+# MyParcel JS Plugin Development Kit
 
-This is the JavaScript implementation for the PDK.
+[![Latest version](https://img.shields.io/github/v/release/myparcelnl/js-pdk)](https://github.com/myparcelnl/js-pdk/releases/latest)
+[![NPM downloads](https://img.shields.io/npm/dm/@myparcel-pdk/admin)](https://www.npmjs.com/)
+[![Codacy grade](https://img.shields.io/codacy/grade/6a1332146e7c44c89721b152fb43633c)](https://app.codacy.com/gh/myparcelnl/js-pdk/dashboard)
+[![Code coverage](https://img.shields.io/codecov/c/github/myparcelnl/js-pdk)](https://codecov.io/gh/myparcelnl/js-pdk)
+![License](https://img.shields.io/github/license/myparcelnl/js-pdk)
+[![Chat with us](https://img.shields.io/badge/Slack-Chat%20with%20us-white?logo=slack&labelColor=4a154b)](https://join.slack.com/t/myparcel-dev/shared_invite/enQtNDkyNTg3NzA1MjM4LTM0Y2IzNmZlY2NkOWFlNTIyODY5YjFmNGQyYzZjYmQzMzliNDBjYzBkOGMwYzA0ZDYzNmM1NzAzNDY1ZjEzOTM)
 
-## Prerequisites
+The MyParcel PDK (Plugin Development Kit) is meant for developing entire plugins on E-Commerce platforms. If you're just looking to connect to our API without creating an entire plugin, you should check out our php [SDK].
+
+## Requirements
 
 - [Node.js](https://nodejs.org/en/) (v16 or higher)
+
+## Documentation
+
+For examples, guides and in-depth information, visit our [Plugin Development Kit (PDK) documentation].
+
+## Support
+
+Create an issue or contact us via our [Developer Portal contact page].
+
+## Contributing
+
+View our [contribution guidelines] for information on how to contribute to the PDK.
+
+### Prerequisites
+
+- Node 18
+- Yarn
+- Docker
 
 ## Packages
 
