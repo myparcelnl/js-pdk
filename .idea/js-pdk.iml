@@ -18,6 +18,7 @@
       <excludePattern pattern="coverage" />
       <excludePattern pattern="vite.config.ts.timestamp-*" />
       <excludePattern pattern=".*cache" />
+      <excludePattern pattern=".tmp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
