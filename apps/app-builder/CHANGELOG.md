@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.44](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.43...@myparcel-pdk/app-builder@1.0.0-alpha.44) "@myparcel-pdk/app-builder" (2023-10-19)
+
+
+### Bug Fixes
+
+* **app-builder:** pass correct cwd to glob methods ([43fe25e](https://github.com/myparcelnl/js-pdk/commit/43fe25e4734df90c257af3e0a64f7e9986e550c2))
+
+
+
+
 ## [1.0.0-alpha.43](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.42...@myparcel-pdk/app-builder@1.0.0-alpha.43) "@myparcel-pdk/app-builder" (2023-10-19)
 
 
