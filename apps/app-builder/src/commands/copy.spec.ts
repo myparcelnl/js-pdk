@@ -53,7 +53,6 @@ describe('command: copy', () => {
     expect(await fs.promises.readdir(outDir)).toEqual(platformDirs);
 
     platformDirs.forEach((platformDir) => {
-      console.log(platformDir);
       const files = glob.sync('**/*', {cwd: path.resolve(outDir, platformDir)});
 
       expect(files).toEqual([
