@@ -18,8 +18,6 @@ import {
   TITLE,
 } from './constants';
 
-const OPTION_VERSION = ['--version <version>', 'Version to use. Defaults to version in config.'] as const;
-
 const OPTION_VERBOSITY = ['-v, --verbose', 'Verbosity', (_: string, prev: number) => prev + 1, 0] as const;
 
 const OPTION_QUIET = ['-q, --quiet', 'Quiet'] as const;
@@ -27,6 +25,13 @@ const OPTION_QUIET = ['-q, --quiet', 'Quiet'] as const;
 const OPTION_DRY_RUN = ['-d, --dry-run', 'Dry run'] as const;
 
 const OPTION_PARALLEL = ['-p, --parallel', 'Run each platform in parallel'] as const;
+
+const CONFIG_OPTIONS = [
+  ['--archive-file-name <filename>', 'Archive filename'],
+  ['--platform-folder-name <name>', 'Platform folder name'],
+  ['--root-command <command>', 'Root command'],
+  ['--version <version>', 'New version'],
+] as const;
 
 const REQUIRES_CONFIG_FILE = 'Requires a config file.';
 
@@ -55,7 +60,7 @@ const COMMAND_INCREMENT: CommandDefinition = {
   name: COMMAND_INCREMENT_NAME,
   action: () => import('./commands/increment'),
   description: `Increment version in output files. ${REQUIRES_CONFIG_FILE}`,
-  options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN, OPTION_VERSION],
+  options: [OPTION_VERBOSITY, OPTION_QUIET, OPTION_DRY_RUN],
 };
 
 const COMMAND_RENAME: CommandDefinition = {
@@ -132,9 +137,13 @@ const ALL_BULK_COMMANDS = [
   [COMMAND_BUILD_NAME, BUILD_COMMANDS],
 ] as const;
 
-const BULK_COMMAND_OPTIONS = [OPTION_DRY_RUN, OPTION_PARALLEL, OPTION_VERBOSITY, OPTION_QUIET, OPTION_VERSION] as const;
-
-const CONFIG_OPTIONS = [['--root-command <command>', 'Root command', undefined]] as const;
+const BULK_COMMAND_OPTIONS = [
+  OPTION_DRY_RUN,
+  OPTION_PARALLEL,
+  OPTION_VERBOSITY,
+  OPTION_QUIET,
+  ...CONFIG_OPTIONS,
+] as const;
 
 // eslint-disable-next-line max-lines-per-function
 export const run = (env: LiftoffEnv, argv: string[]): void => {
@@ -162,6 +171,7 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
 
     // @ts-expect-error todo
     BULK_COMMAND_OPTIONS.forEach((option) => command.option(...option));
+    // @ts-expect-error todo
     CONFIG_OPTIONS.forEach((option) => command.option(...option));
 
     command.action(async (...args) => {
