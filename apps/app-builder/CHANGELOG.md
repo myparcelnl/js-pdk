@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.48](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.47...@myparcel-pdk/app-builder@1.0.0-alpha.48) "@myparcel-pdk/app-builder" (2023-10-24)
+
+
+### Bug Fixes
+
+* **app-builder:** allow exempting commands from root command logic ([d103a2d](https://github.com/myparcelnl/js-pdk/commit/d103a2d5f4d267081f997a176e9c3648b0a5f4c0))
+
+
+
+
 ## [1.0.0-alpha.47](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.46...@myparcel-pdk/app-builder@1.0.0-alpha.47) "@myparcel-pdk/app-builder" (2023-10-24)
 
 
