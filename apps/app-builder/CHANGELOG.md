@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.47](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.46...@myparcel-pdk/app-builder@1.0.0-alpha.47) "@myparcel-pdk/app-builder" (2023-10-24)
+
+
+### Bug Fixes
+
+* **app-builder:** normalize config options across commands ([62a1f7e](https://github.com/myparcelnl/js-pdk/commit/62a1f7e35d48ee8107549c61d5031b200af9ebbb))
+
+
+
+
 ## [1.0.0-alpha.46](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.45...@myparcel-pdk/app-builder@1.0.0-alpha.46) "@myparcel-pdk/app-builder" (2023-10-19)
 
 
