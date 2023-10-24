@@ -14,6 +14,7 @@ export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilder
     outDir: 'dist',
     platformFolderName: '{{platform}}-{{name}}',
     rootCommand: '',
+    rootCommands: ['composer', 'php'],
     version: '0.0.0',
     yarnCommand: undefined,
     ...config,

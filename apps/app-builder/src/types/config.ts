@@ -109,6 +109,11 @@ export type PdkBuilderConfig = {
   rootCommand?: OneOrMore<string>;
 
   /**
+   * Commands that should be run with the root command. Defaults to `['composer', 'php']`.
+   */
+  rootCommands?: (string | RegExp)[];
+
+  /**
    * Translations configuration.
    */
   translations?: {
