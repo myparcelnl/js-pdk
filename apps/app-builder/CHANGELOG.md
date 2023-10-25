@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.49](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.48...@myparcel-pdk/app-builder@1.0.0-alpha.49) "@myparcel-pdk/app-builder" (2023-10-25)
+
+
+### Bug Fixes
+
+* **app-builder:** include vendor folder when renaming ([#198](https://github.com/myparcelnl/js-pdk/issues/198)) ([e037e08](https://github.com/myparcelnl/js-pdk/commit/e037e08f2f0b12938a4000cc2fad69099c4917cd))
+
+
+
+
 ## [1.0.0-alpha.48](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.47...@myparcel-pdk/app-builder@1.0.0-alpha.48) "@myparcel-pdk/app-builder" (2023-10-24)
 
 
