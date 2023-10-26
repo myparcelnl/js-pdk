@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.117](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.116...@myparcel-pdk/admin-core@1.0.0-alpha.117) "@myparcel-pdk/admin-core" (2023-10-26)
+
+
+### Features
+
+* **admin:** reduce size of buttons in order list item ([8b387a2](https://github.com/myparcelnl/js-pdk/commit/8b387a279f9d7007b228355791c527cfedb72373))
+
+
+
+
 ## [1.0.0-alpha.116](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-core@1.0.0-alpha.115...@myparcel-pdk/admin-core@1.0.0-alpha.116) "@myparcel-pdk/admin-core" (2023-10-13)
 
 

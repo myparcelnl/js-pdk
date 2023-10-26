@@ -1838,7 +1838,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-component-tests@workspace:apps/admin-component-tests"
   dependencies:
-    "@myparcel-pdk/admin-core": "workspace:^1.0.0-alpha.116"
+    "@myparcel-pdk/admin-core": "workspace:^1.0.0-alpha.117"
     "@myparcel-pdk/admin-testing": "workspace:^1.0.0-alpha.8"
     "@myparcel/vue-form-builder": ^1.0.0-alpha.1
     "@pinia/testing": ">= 0.1.0 < 1"
@@ -1853,7 +1853,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/admin-core@workspace:^1.0.0-alpha.116, @myparcel-pdk/admin-core@workspace:libs/admin/core":
+"@myparcel-pdk/admin-core@workspace:^1.0.0-alpha.117, @myparcel-pdk/admin-core@workspace:libs/admin/core":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-core@workspace:libs/admin/core"
   dependencies:
@@ -1911,7 +1911,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-js@workspace:apps/admin-js"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.116"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.117"
     "@myparcel-pdk/build-vite": "workspace:*"
   peerDependencies:
     vue: ^3
@@ -1922,7 +1922,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-bootstrap4@workspace:apps/admin-preset-bootstrap4"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.116"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.117"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel/ts-utils": ^1.9.0
@@ -1938,7 +1938,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-dashicons@workspace:apps/admin-preset-dashicons"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.116"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.117"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     typescript: ^5.2.2
@@ -1950,7 +1950,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-default@workspace:apps/admin-preset-default"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.116"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.117"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel/ts-utils": ^1.9.0
@@ -1964,7 +1964,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin-preset-fontawesome@workspace:apps/admin-preset-fontawesome"
   dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.116"
+    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.117"
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     typescript: ^5.2.2
@@ -1983,11 +1983,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/admin@workspace:*, @myparcel-pdk/admin@workspace:^1.0.0-alpha.116, @myparcel-pdk/admin@workspace:apps/admin":
+"@myparcel-pdk/admin@workspace:*, @myparcel-pdk/admin@workspace:^1.0.0-alpha.117, @myparcel-pdk/admin@workspace:apps/admin":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/admin@workspace:apps/admin"
   dependencies:
-    "@myparcel-pdk/admin-core": "workspace:^1.0.0-alpha.116"
+    "@myparcel-pdk/admin-core": "workspace:^1.0.0-alpha.117"
   languageName: unknown
   linkType: soft
 
