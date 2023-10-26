@@ -10,6 +10,7 @@
       <ActionButton
         v-for="action in orderActions"
         :key="action.id"
+        :size="Size.Small"
         :action="action"
         hide-text />
     </template>
@@ -17,6 +18,7 @@
 </template>
 
 <script lang="ts" setup>
+import {Size} from '@myparcel-pdk/common';
 import DeliveryOptionsExcerpt from '../common/DeliveryOptionsExcerpt.vue';
 import {ActionButton} from '../common';
 import {instantiateAction, instantiateActions} from '../../services';

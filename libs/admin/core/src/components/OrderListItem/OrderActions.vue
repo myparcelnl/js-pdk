@@ -1,13 +1,14 @@
 <template>
   <PdkDropdownButton
     v-test="[$.type.__name, order?.externalIdentifier]"
+    :size="Size.Small"
     :actions="actions" />
 </template>
 
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {type Shipment} from '@myparcel-pdk/common';
+import {type Shipment, Size} from '@myparcel-pdk/common';
 import {type ActionDefinition, type AnyActionDefinition} from '../../types';
 import {instantiateActions} from '../../services';
 import {useOrderData} from '../../composables';
