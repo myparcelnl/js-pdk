@@ -20,40 +20,41 @@ const increment: PdkBuilderCommand = async ({env, config, args, debug}) => {
 
   debug('Incrementing version to %s', chalk.greenBright(newVersion));
 
-  const paths = config.versionSource.map((source) => source.path);
-
-  const files = glob.sync(paths, {cwd: env.cwd});
+  const matches = config.versionSource.map((source) => ({
+    files: glob.sync(source.path, {cwd: env.cwd}),
+    source,
+  }));
 
   await executePromises(
     args,
-    files.map(async (file) => {
-      const source = path.resolve(env.cwd, file);
+    matches.map(async ({files, source: match}) => {
+      return Promise.all(
+        files.map(async (file) => {
+          const filePath = path.resolve(env.cwd, file);
+          const contents = await getFileContents(filePath);
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const match = config.versionSource.find((source) => source.path === file)!;
+          let output: VersionReplacerOutput;
 
-      const contents = await getFileContents(source);
+          if (args.verbose >= VerbosityLevel.Verbose) {
+            debug('Processing %s', logSourcePath(env, filePath));
+          }
 
-      let output: VersionReplacerOutput;
+          if (isOfType<RegexVersionSource>(match, 'regex')) {
+            output = replaceVersionByRegex({match, contents, newVersion}, {config, args, debug});
+          } else if (filePath.endsWith('.json')) {
+            output = replaceVersionInJson({match, contents, newVersion}, {config, args, debug});
+          } else {
+            output = replaceVersionByRegex(
+              {match: {...match, regex: REGEX_VERSION}, contents, newVersion},
+              {config, args, debug},
+            );
+          }
 
-      if (args.verbose >= VerbosityLevel.Verbose) {
-        debug('Processing %s', logSourcePath(env, source));
-      }
-
-      if (isOfType<RegexVersionSource>(match, 'regex')) {
-        output = replaceVersionByRegex({match, contents, newVersion}, {config, args, debug});
-      } else if (source.endsWith('.json')) {
-        output = replaceVersionInJson({match, contents, newVersion}, {config, args, debug});
-      } else {
-        output = replaceVersionByRegex(
-          {match: {...match, regex: REGEX_VERSION}, contents, newVersion},
-          {config, args, debug},
-        );
-      }
-
-      if (!args.dryRun) {
-        await fs.promises.writeFile(source, output.newContents);
-      }
+          if (!args.dryRun) {
+            await fs.promises.writeFile(filePath, output.newContents);
+          }
+        }),
+      );
     }),
   );
 };
