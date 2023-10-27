@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.50](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.49...@myparcel-pdk/app-builder@1.0.0-alpha.50) "@myparcel-pdk/app-builder" (2023-10-27)
+
+
+### Features
+
+* **app-builder:** support wildcard sources in increment step ([e292c3d](https://github.com/myparcelnl/js-pdk/commit/e292c3df424c2e2e5994c404735b8696daa5a8f4))
+
+
+
+
 ## [1.0.0-alpha.49](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.48...@myparcel-pdk/app-builder@1.0.0-alpha.49) "@myparcel-pdk/app-builder" (2023-10-25)
 
 
