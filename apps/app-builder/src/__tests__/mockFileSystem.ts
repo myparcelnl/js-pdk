@@ -7,7 +7,7 @@ import {MOCK_ROOT_DIR} from './constants';
 
 type Directories = Record<string, unknown>;
 
-const recursiveCreate = async (entries: Record<string, unknown>, rootDir = MOCK_ROOT_DIR): Promise<unknown[]> => {
+const recursiveCreate = async (entries: Record<string, unknown>, rootDir: string): Promise<unknown[]> => {
   return Promise.all(
     Object.entries(entries).map(async ([filePath, contents]) => {
       const fullPath = path.resolve(rootDir, filePath);
@@ -52,7 +52,7 @@ export const mockFileSystem = async (fileSystem?: Directories): Promise<void> =>
     await restoreFileSystem();
   }
 
-  await recursiveCreate(merge({}, base, fileSystem));
+  await recursiveCreate(merge({}, base, fileSystem), MOCK_ROOT_DIR);
 
   vi.restoreAllMocks();
 };

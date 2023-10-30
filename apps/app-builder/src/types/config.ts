@@ -52,6 +52,13 @@ export type PdkBuilderConfig = {
   outDir?: string;
 
   /**
+   * Directory to use for caching and other temporary stuff.
+   *
+   * @default `.tmp`
+   */
+  tmpDir?: string;
+
+  /**
    * Filename for the final folder that will end up in the archive.
    *
    * @default `{{name}}-{{version}}`
@@ -123,6 +130,50 @@ export type PdkBuilderConfig = {
     sheetId?: number;
   };
 
+  /**
+   * Php scoper configuration. If enabled, humbug/php-scoper will be run before copying files.
+   *
+   * Requires a `scoper.inc.php` file in the root of the project.
+   *
+   * @see https://github.com/humbug/php-scoper
+   */
+  phpScoper?: {
+    /**
+     * Whether to prefix php files with humbug/php-scoper. If `null`, it will be enabled if `configFile` is found.
+     *
+     * @default `null`
+     */
+    enabled?: boolean | null;
+
+    /**
+     * Config file to use.
+     *
+     * @default `scoper.inc.php`
+     */
+    configFile?: string;
+
+    /**
+     * Version of humbug/php-scoper to use. Must be a valid version string or range.
+     *
+     * @default `^0.17.5`
+     */
+    version?: string;
+
+    /**
+     * Directory humbug/php-scoper is saved in.
+     *
+     * @default `{tmpDir}/php-scoper`
+     */
+    installDir?: string;
+
+    /**
+     * Directory to save the prefixed files in.
+     *
+     * @default `{tmpDir}/build`
+     */
+    outDir?: string;
+  };
+
   additionalCommands?: CommandDefinition[];
 
   hooks?: CommandHooksObject;
@@ -130,6 +181,7 @@ export type PdkBuilderConfig = {
 
 export type ResolvedPdkBuilderConfig = Required<Omit<PdkBuilderConfig, 'translations' | 'hooks'>> & {
   hooks?: CommandHooksObject;
+  phpScoper: Required<PdkBuilderConfig['phpScoper']>;
   translations: {
     additionalSheet?: number;
     documentId: string;

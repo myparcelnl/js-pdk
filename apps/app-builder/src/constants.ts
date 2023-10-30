@@ -8,6 +8,8 @@ export const COMMAND_CLEAN_NAME = 'clean';
 
 export const COMMAND_COPY_NAME = 'copy';
 
+export const COMMAND_DUMP_AUTOLOAD_NAME = 'dump-autoload';
+
 export const COMMAND_INCREMENT_NAME = 'increment';
 
 export const COMMAND_INIT_NAME = 'init';
@@ -15,6 +17,8 @@ export const COMMAND_INIT_NAME = 'init';
 export const COMMAND_RELEASE_NAME = 'release';
 
 export const COMMAND_RENAME_NAME = 'rename';
+
+export const COMMAND_SCOPE_PHP_NAME = 'scope-php';
 
 export const COMMAND_TRANSFORM_NAME = 'transform';
 
@@ -27,9 +31,11 @@ export const COMMAND_ZIP_NAME = 'zip';
 export const ALL_COMMAND_NAMES = [
   COMMAND_CLEAN_NAME,
   COMMAND_COPY_NAME,
+  COMMAND_DUMP_AUTOLOAD_NAME,
   COMMAND_INCREMENT_NAME,
   COMMAND_INIT_NAME,
   COMMAND_RENAME_NAME,
+  COMMAND_SCOPE_PHP_NAME,
   COMMAND_TRANSFORM_NAME,
   COMMAND_TRANSLATIONS_NAME,
   COMMAND_UPGRADE_NAME,

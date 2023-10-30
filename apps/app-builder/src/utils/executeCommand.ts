@@ -22,7 +22,7 @@ export const executeCommand = async (
       : toArray(command);
 
     const splitCommand = resolvedCommand.reduce((acc, command) => [...acc, ...command.split(' ')], [] as string[]);
-    const allArgs = [...splitCommand, ...(args ?? [])];
+    const allArgs = [...splitCommand, ...(args ?? [])].filter(Boolean);
 
     const [commandName, ...commandArgs] = allArgs;
 

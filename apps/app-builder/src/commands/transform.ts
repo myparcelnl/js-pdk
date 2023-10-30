@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import glob from 'fast-glob';
 import chalk from 'chalk';
+import {addPlatformToContext} from '../utils/addPlatformToContext';
 import {
   executePromises,
   getOccurrences,
@@ -12,7 +13,7 @@ import {
   logTargetPath,
   replaceCaseSensitive,
   reportDryRun,
-  resolveFileName,
+  resolveString,
   validateDistPath,
 } from '../utils';
 import {type PdkBuilderCommand, PdkPlatformName} from '../types';
@@ -20,7 +21,9 @@ import {VerbosityLevel} from '../constants';
 
 const SOURCE_PLATFORM = PdkPlatformName.MyParcelNl;
 
-const transform: PdkBuilderCommand = async ({env, config, args, debug}) => {
+const transform: PdkBuilderCommand = async (context) => {
+  const {env, config, args, debug} = context;
+
   if (args.dryRun) {
     reportDryRun(debug, 'No files will be transformed.');
   }
@@ -37,7 +40,8 @@ const transform: PdkBuilderCommand = async ({env, config, args, debug}) => {
   await executePromises(
     args,
     filteredPlatforms.map(async (platform) => {
-      const platformFolderPath = `${config.outDir}/${resolveFileName(config.platformFolderName, {config, platform})}`;
+      const platformContext = addPlatformToContext(context, platform);
+      const platformFolderPath = `${config.outDir}/${resolveString(config.platformFolderName, platformContext)}`;
       const relativeDistFolderPath = path.relative(env.cwd, platformFolderPath);
 
       debug('Renaming files in %s', chalk.greenBright(relativeDistFolderPath));
@@ -53,11 +57,11 @@ const transform: PdkBuilderCommand = async ({env, config, args, debug}) => {
         ],
       });
 
-      const platformDistPath = getPlatformDistPath({config, env, platform});
+      const platformDistPath = getPlatformDistPath(platformContext);
 
       const promises = await Promise.all(
         files.map(async (file) => {
-          if (!(await validateDistPath({config, env, platform, args}))) {
+          if (!(await validateDistPath(platformContext))) {
             debug('Skipping because %s does not exist.', logRelativePath(env, platformDistPath));
             return;
           }

@@ -2,11 +2,22 @@ import path from 'path';
 import fs from 'fs';
 import glob from 'fast-glob';
 import chalk from 'chalk';
-import {executePromises, getPlatformDistPath, logPlatforms, logSourcePath, logTargetPath, reportDryRun} from '../utils';
+import {addPlatformToContext} from '../utils/addPlatformToContext';
+import {
+  executePromises,
+  getPlatformDistPath,
+  logPlatforms,
+  logSourcePath,
+  logTargetPath,
+  reportDryRun,
+  resolvePath,
+} from '../utils';
 import {type PdkBuilderCommand} from '../types';
 import {VerbosityLevel} from '../constants';
 
-const copy: PdkBuilderCommand = async ({env, config, args, debug}) => {
+const copy: PdkBuilderCommand = async (context) => {
+  const {env, config, args, debug} = context;
+
   if (args.dryRun) reportDryRun(debug, 'No files will be copied.');
 
   const files = glob.sync(config.source, {cwd: env.cwd});
@@ -22,14 +33,14 @@ const copy: PdkBuilderCommand = async ({env, config, args, debug}) => {
   await executePromises(
     args,
     config.platforms.map(async (platform) => {
-      const platformDistPath = getPlatformDistPath({config, env, platform});
+      const platformDistPath = getPlatformDistPath(addPlatformToContext(context, platform));
 
       debug('Copying files to %s', logTargetPath(env, platformDistPath));
 
       const promises = await Promise.all(
         files.map(async (file) => {
-          const source = path.resolve(env.cwd, file);
-          const target = path.resolve(env.cwd, platformDistPath, file);
+          const source = resolvePath(file, context);
+          const target = resolvePath([platformDistPath, file], context);
 
           if (args.verbose > VerbosityLevel.VeryVeryVerbose) {
             debug('%s -> %s', logSourcePath(env, file), logTargetPath(env, [platformDistPath, file].join(path.sep)));

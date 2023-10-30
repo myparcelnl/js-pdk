@@ -38,7 +38,6 @@ describe('command: copy', () => {
       createTestContext({
         args: {dryRun: false},
         config: {
-          name: 'myApp',
           source: ['composer.json', 'package.json', 'src/**/*', 'config/**/*', '!src/index.php'],
           outDir: 'copyResult',
           platforms,
@@ -46,7 +45,7 @@ describe('command: copy', () => {
       }),
     );
 
-    const platformDirs = platforms.map((platform) => `${platform}-myApp`);
+    const platformDirs = platforms.map((platform) => `${platform}-test`);
 
     const outDir = path.resolve(MOCK_ROOT_DIR, 'copyResult');
 

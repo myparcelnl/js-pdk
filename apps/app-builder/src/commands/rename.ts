@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import glob from 'fast-glob';
 import chalk from 'chalk';
+import {addPlatformToContext} from '../utils/addPlatformToContext';
 import {
   executePromises,
   getPlatformDistPath,
@@ -18,7 +19,9 @@ import {VerbosityLevel} from '../constants';
 
 const STRING_TO_REPLACE = 'myparcelnl';
 
-const rename: PdkBuilderCommand = async ({env, config, args, debug}) => {
+const rename: PdkBuilderCommand = async (context) => {
+  const {env, config, args, debug} = context;
+
   if (args.dryRun) reportDryRun(debug, 'No files will be renamed.');
 
   debug('Renaming files for platforms %s', chalk.cyanBright(config.platforms.join(', ')));
@@ -26,9 +29,10 @@ const rename: PdkBuilderCommand = async ({env, config, args, debug}) => {
   await executePromises(
     args,
     config.platforms.map(async (platform) => {
-      const platformDistPath = getPlatformDistPath({config, env, platform});
+      const platformContext = addPlatformToContext(context, platform);
+      const platformDistPath = getPlatformDistPath(platformContext);
 
-      if (!(await validateDistPath({config, env, platform, args}))) {
+      if (!(await validateDistPath(platformContext))) {
         debug('Skipping because %s does not exist.', logRelativePath(env, platformDistPath));
         return;
       }
