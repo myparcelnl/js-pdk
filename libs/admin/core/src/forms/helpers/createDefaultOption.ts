@@ -1,4 +1,4 @@
-import {type Keyable} from '@myparcel-pdk/common/src';
+import {type Keyable} from '@myparcel-pdk/common';
 import {type SelectOption} from '@myparcel-pdk/admin-common';
 import {TriState} from '../../data';
 
