@@ -36,6 +36,7 @@ exports[`exports > exports from index.ts 1`] = `
   "getFrontendContext",
   "getMockFormData",
   "getMockPdkCheckoutConfig",
+  "globals",
   "hasAddressType",
   "hasAddressTypeSpy",
   "initializeCheckoutStore",
