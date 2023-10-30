@@ -1,6 +1,6 @@
 import {EVENT_UPDATED_DELIVERY_OPTIONS} from '@myparcel-pdk/delivery-options';
 import {StoreListener, useCheckoutStore} from '@myparcel-pdk/checkout-core';
-import {injectHiddenInput} from './utils';
+import {initializeHiddenInput} from './utils';
 import {type CheckoutDeliveryOptionsSettingsInput} from './types';
 import {createDeliveryOptionsStore} from './store';
 import {updateDeliveryOptions, updateDeliveryOptionsOutput} from './listeners';
@@ -17,7 +17,7 @@ export const initializeCheckoutDeliveryOptions = (settings?: CheckoutDeliveryOpt
   // @ts-ignore
   window.MyParcelPdk.stores.deliveryOptions = createDeliveryOptionsStore(settings);
 
-  injectHiddenInput();
+  initializeHiddenInput();
 
   const checkout = useCheckoutStore();
 
