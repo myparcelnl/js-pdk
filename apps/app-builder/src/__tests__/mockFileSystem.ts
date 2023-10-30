@@ -58,5 +58,5 @@ export const mockFileSystem = async (fileSystem?: Directories): Promise<void> =>
 };
 
 export const restoreFileSystem = async (): Promise<void> => {
-  await fs.promises.rm(MOCK_ROOT_DIR, {recursive: true});
+  await fs.promises.rm(MOCK_ROOT_DIR, {recursive: true, force: true});
 };
