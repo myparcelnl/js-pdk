@@ -1,22 +1,24 @@
-import path from 'path';
 import fs from 'fs';
 import chalk from 'chalk';
+import {addPlatformToContext} from '../utils/addPlatformToContext';
 import {
   createArchive,
   executePromises,
   exists,
   getPlatformDistPath,
-  getPlatformFolderName,
   logSourcePath,
   logTargetPath,
   reportDryRun,
-  resolveFileName,
+  resolvePath,
+  resolveString,
   validateDistPath,
 } from '../utils';
 import {type PdkBuilderCommand} from '../types';
 import {VerbosityLevel} from '../constants';
 
-const zip: PdkBuilderCommand = async ({env, config, args, debug}) => {
+const zip: PdkBuilderCommand = async (context) => {
+  const {env, config, args, debug} = context;
+
   if (args.dryRun) reportDryRun(debug, 'No archive will be created.');
 
   debug('Compressing files for platforms %s', chalk.cyanBright(config.platforms.join(', ')));
@@ -24,15 +26,15 @@ const zip: PdkBuilderCommand = async ({env, config, args, debug}) => {
   await executePromises(
     args,
     config.platforms.map(async (platform) => {
-      const platformDistPath = getPlatformDistPath({config, env, platform});
+      const platformContext = addPlatformToContext(context, platform);
+      const platformDistPath = getPlatformDistPath(platformContext);
 
-      if (!(await validateDistPath({config, env, platform, args}))) {
+      if (!(await validateDistPath(platformContext))) {
         debug('Skipping because %s does not exist.', logTargetPath(env, platformDistPath));
         return;
       }
 
-      const archiveFilename = resolveFileName(config.archiveFilename, {config, platform, args});
-      const archivePath = path.resolve(env.cwd, config.outDir, archiveFilename);
+      const archivePath = resolvePath([config.outDir, config.archiveFilename], platformContext);
 
       if (await exists(archivePath)) {
         debug('Removing existing file %s...', logSourcePath(env, archivePath));
@@ -49,7 +51,7 @@ const zip: PdkBuilderCommand = async ({env, config, args, debug}) => {
       if (!args.dryRun) {
         const archive = createArchive(archivePath, debug);
 
-        archive.directory(platformDistPath, getPlatformFolderName({config, platform}));
+        archive.directory(platformDistPath, resolveString(config.platformFolderName, platformContext));
 
         await archive.finalize();
       }

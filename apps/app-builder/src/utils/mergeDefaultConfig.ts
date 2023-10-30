@@ -15,9 +15,18 @@ export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilder
     platformFolderName: '{{platform}}-{{name}}',
     rootCommand: '',
     rootCommands: ['composer', 'php'],
+    tmpDir: '.tmp',
     version: '0.0.0',
     yarnCommand: undefined,
     ...config,
+    phpScoper: {
+      configFile: 'scoper.inc.php',
+      enabled: null,
+      installDir: '{{tmpDir}}/php-scoper',
+      outDir: '{{tmpDir}}/build',
+      version: '^0.17.5',
+      ...config.phpScoper,
+    },
     translations: {
       documentId: '1TPE7gwG2GXtX7vlKIaskwMy0Xr4o_ir-lsedWB86xyc',
       outDir: 'config/pdk/translations',

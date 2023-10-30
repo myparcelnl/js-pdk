@@ -1,12 +1,6 @@
-import path from 'path';
-import {type LiftoffEnv} from 'liftoff';
-import {type PdkPlatformName, type ResolvedPdkBuilderConfig} from '../types';
-import {getPlatformFolderName} from './getPlatformFolderName';
+import {type PdkBuilderContext, type PdkPlatformName} from '../types';
+import {resolvePath} from './resolvePath';
 
-export const getPlatformDistPath = (context: {
-  config: ResolvedPdkBuilderConfig;
-  env: LiftoffEnv;
-  platform: PdkPlatformName;
-}): string => {
-  return path.resolve(context.env.cwd, context.config.outDir, getPlatformFolderName(context));
+export const getPlatformDistPath = (context: PdkBuilderContext<{platform: PdkPlatformName}>): string => {
+  return resolvePath([context.config.outDir, context.config.platformFolderName], context);
 };
