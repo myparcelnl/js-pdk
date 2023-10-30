@@ -2072,7 +2072,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout-delivery-options@workspace:^1.0.0-alpha.37, @myparcel-pdk/checkout-delivery-options@workspace:libs/checkout/delivery-options":
+"@myparcel-pdk/checkout-delivery-options@workspace:^1.0.0-alpha.38, @myparcel-pdk/checkout-delivery-options@workspace:libs/checkout/delivery-options":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/checkout-delivery-options@workspace:libs/checkout/delivery-options"
   dependencies:
@@ -2089,7 +2089,7 @@ __metadata:
   resolution: "@myparcel-pdk/checkout-js@workspace:apps/checkout-js"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/checkout": "workspace:^1.0.0-alpha.74"
+    "@myparcel-pdk/checkout": "workspace:^1.0.0-alpha.75"
   languageName: unknown
   linkType: soft
 
@@ -2111,12 +2111,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout@workspace:^1.0.0-alpha.74, @myparcel-pdk/checkout@workspace:apps/checkout":
+"@myparcel-pdk/checkout@workspace:^1.0.0-alpha.75, @myparcel-pdk/checkout@workspace:apps/checkout":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/checkout@workspace:apps/checkout"
   dependencies:
     "@myparcel-pdk/checkout-core": "workspace:^1.0.0-alpha.38"
-    "@myparcel-pdk/checkout-delivery-options": "workspace:^1.0.0-alpha.37"
+    "@myparcel-pdk/checkout-delivery-options": "workspace:^1.0.0-alpha.38"
     "@myparcel-pdk/checkout-separate-address-fields": "workspace:^1.0.0-alpha.38"
     "@myparcel-pdk/checkout-tax-fields": "workspace:^1.0.0-alpha.39"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.57"

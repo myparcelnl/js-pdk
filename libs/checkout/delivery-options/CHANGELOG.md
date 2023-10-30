@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.38](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.37...@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.38) "@myparcel-pdk/checkout-delivery-options" (2023-10-30)
+
+
+### Bug Fixes
+
+* **checkout-delivery-options:** add debounce to events ([40f3030](https://github.com/myparcelnl/js-pdk/commit/40f30300f19e70927c8466aeef95c73686922780))
+
+
+
+
 ## [1.0.0-alpha.37](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.36...@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.37) "@myparcel-pdk/checkout-delivery-options" (2023-10-30)
 
 
