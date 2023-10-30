@@ -59,3 +59,5 @@ declare global {
     MyParcelPdk: MyParcelPdk;
   }
 }
+
+export {};

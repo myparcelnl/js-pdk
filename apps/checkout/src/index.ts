@@ -1,5 +1,3 @@
-import './globals';
-
 export type {
   AddressFields,
   FrontendEndpointData,
@@ -46,6 +44,7 @@ export {
 export {
   StoreListener,
   Util,
+  globals as _,
   createPdkCheckout,
   useCheckoutStore,
   useEvent,

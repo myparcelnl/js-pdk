@@ -6,6 +6,7 @@ export * from './config';
 export * from './constants';
 export * from './data';
 export * from './events';
+export * as globals from './globals';
 export * from './init';
 export * from './listeners';
 export * from './store';
