@@ -1,7 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import {addPlatformToContext} from '../utils/addPlatformToContext';
-import {executeCommand, getPlatformDistPath, logSourcePath, reportDryRun} from '../utils';
+import {addPlatformToContext, executeCommand, getPlatformDistPath, logSourcePath, reportDryRun} from '../utils';
 import {type PdkBuilderCommand} from '../types';
 import {VerbosityLevel} from '../constants';
 

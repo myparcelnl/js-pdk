@@ -153,6 +153,13 @@ export type PdkBuilderConfig = {
     configFile?: string;
 
     /**
+     * Config file to use for vendor files.
+     *
+     * @default `scoper.vendor.inc.php`
+     */
+    vendorConfigFile?: string;
+
+    /**
      * Version of humbug/php-scoper to use. Must be a valid version string or range.
      *
      * @default `^0.17.5`
@@ -162,16 +169,22 @@ export type PdkBuilderConfig = {
     /**
      * Directory humbug/php-scoper is saved in.
      *
-     * @default `{tmpDir}/php-scoper`
+     * @default `{{tmpDir}}/php-scoper`
      */
     installDir?: string;
 
     /**
      * Directory to save the prefixed files in.
      *
-     * @default `{tmpDir}/build`
+     * @default `{{tmpDir}}/scoped/source`
      */
     outDir?: string;
+
+    /**
+     * Directory to save the prefixed vendor files in.
+     * @default `{{tmpDir}}/scoped/vendor`
+     */
+    vendorOutDir?: string;
   };
 
   additionalCommands?: CommandDefinition[];

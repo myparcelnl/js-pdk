@@ -1,9 +1,9 @@
-import scopePhp from './index';
 import * as child_process from 'child_process';
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import {fsModifyingMethodSpies} from '../../__tests__/spies/fs';
 import {mockFileSystem, restoreFileSystem} from '../../__tests__/mockFileSystem';
 import {createTestContext} from '../../__tests__/createTestContext';
+import scopePhp from './scopePhp';
 
 const mockStdout = vi.fn(() => '');
 

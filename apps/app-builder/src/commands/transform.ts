@@ -3,8 +3,8 @@ import path from 'path';
 import fs from 'fs';
 import glob from 'fast-glob';
 import chalk from 'chalk';
-import {addPlatformToContext} from '../utils/addPlatformToContext';
 import {
+  addPlatformToContext,
   executePromises,
   getOccurrences,
   getPlatformDistPath,

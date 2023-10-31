@@ -1,31 +1,31 @@
-import path from 'path';
-import fs from 'fs';
 import glob from 'fast-glob';
 import chalk from 'chalk';
-import {addPlatformToContext} from '../utils/addPlatformToContext';
 import {
+  addPlatformToContext,
+  copyFile,
+  copyScopedFiles,
   executePromises,
   getPlatformDistPath,
   logPlatforms,
-  logSourcePath,
   logTargetPath,
   reportDryRun,
   resolvePath,
+  resolveStrings,
 } from '../utils';
 import {type PdkBuilderCommand} from '../types';
-import {VerbosityLevel} from '../constants';
 
 const copy: PdkBuilderCommand = async (context) => {
   const {env, config, args, debug} = context;
 
   if (args.dryRun) reportDryRun(debug, 'No files will be copied.');
 
-  const files = glob.sync(config.source, {cwd: env.cwd});
+  const resolvedSources = resolveStrings(context, config.source);
+  const files = glob.sync(resolvedSources, {cwd: env.cwd});
 
   debug(
     'Copying %s files from %s to %s for platforms %s',
     chalk.greenBright(files.length),
-    chalk.yellow(config.source),
+    chalk.yellow(resolvedSources),
     logTargetPath(env, config.outDir),
     logPlatforms(config.platforms),
   );
@@ -38,18 +38,11 @@ const copy: PdkBuilderCommand = async (context) => {
       debug('Copying files to %s', logTargetPath(env, platformDistPath));
 
       const promises = await Promise.all(
-        files.map(async (file) => {
+        files.sort().map(async (file) => {
           const source = resolvePath(file, context);
           const target = resolvePath([platformDistPath, file], context);
 
-          if (args.verbose > VerbosityLevel.VeryVeryVerbose) {
-            debug('%s -> %s', logSourcePath(env, file), logTargetPath(env, [platformDistPath, file].join(path.sep)));
-          }
-
-          if (!args.dryRun) {
-            await fs.promises.mkdir(path.dirname(target), {recursive: true});
-            await fs.promises.copyFile(source, target);
-          }
+          await copyFile(source, target, context);
         }),
       );
 
@@ -58,6 +51,8 @@ const copy: PdkBuilderCommand = async (context) => {
       return promises;
     }),
   );
+
+  await copyScopedFiles(context);
 };
 
 export default copy;

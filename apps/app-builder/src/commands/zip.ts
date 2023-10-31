@@ -1,7 +1,7 @@
 import fs from 'fs';
 import chalk from 'chalk';
-import {addPlatformToContext} from '../utils/addPlatformToContext';
 import {
+  addPlatformToContext,
   createArchive,
   executePromises,
   exists,

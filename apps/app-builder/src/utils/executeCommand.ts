@@ -13,6 +13,7 @@ export const executeCommand = async (
   const resolvedOptions: SpawnSyncOptionsWithStringEncoding = {
     encoding: 'utf-8',
     cwd: context.env.cwd,
+    stdio: context.args.verbose >= VerbosityLevel.VeryVerbose ? 'inherit' : 'pipe',
     ...options,
   };
 
@@ -27,7 +28,9 @@ export const executeCommand = async (
     const [commandName, ...commandArgs] = allArgs;
 
     if (context.args.verbose >= VerbosityLevel.VeryVeryVerbose) {
-      context.debug?.(`Executing command: ${commandName} ${commandArgs.join(' ')}`);
+      context.debug?.(
+        `Executing command: ${commandName} ${commandArgs.join(' ')}${options?.cwd ? ` in ${options.cwd}` : ''}`,
+      );
     }
 
     const {status, stdout, stderr} = spawnSync(commandName, commandArgs ?? [], resolvedOptions);

@@ -1,7 +1,6 @@
 import {type LiftoffEnv} from 'liftoff';
 import {program} from 'commander';
-import {registerCommand} from './utils/registerCommand';
-import {createWithConfig, createWithContext, resolveConfig} from './utils';
+import {createWithConfig, createWithContext, registerCommand, resolveConfig} from './utils';
 import {type CommandDefinition} from './types';
 import {
   COMMAND_BUILD_NAME,
@@ -140,15 +139,14 @@ const CONFIG_COMMANDS = [
 
 const CORE_COMMANDS = [
   COMMAND_TRANSLATIONS,
-  COMMAND_SCOPE_PHP,
   COMMAND_COPY,
   COMMAND_RENAME,
   COMMAND_TRANSFORM,
   COMMAND_DUMP_AUTOLOAD,
 ] as const;
 
-const BUILD_COMMANDS = [COMMAND_CLEAN, ...CORE_COMMANDS] as const;
-const RELEASE_COMMANDS = [COMMAND_CLEAN, COMMAND_INCREMENT, ...CORE_COMMANDS, COMMAND_ZIP] as const;
+const BUILD_COMMANDS = [COMMAND_CLEAN, COMMAND_SCOPE_PHP, ...CORE_COMMANDS] as const;
+const RELEASE_COMMANDS = [COMMAND_CLEAN, COMMAND_SCOPE_PHP, COMMAND_INCREMENT, ...CORE_COMMANDS, COMMAND_ZIP] as const;
 
 const ALL_BULK_COMMANDS = [
   [COMMAND_RELEASE_NAME, RELEASE_COMMANDS],
