@@ -1,22 +1,21 @@
 /* eslint-disable max-lines-per-function */
-import path from 'path';
-import fs from 'fs';
 import glob from 'fast-glob';
 import chalk from 'chalk';
 import {
   addPlatformToContext,
   executePromises,
+  getFileContents,
   getOccurrences,
-  getPlatformDistPath,
+  isVeryVeryVerbose,
   logPlatforms,
-  logRelativePath,
+  logSourcePath,
   logTargetPath,
   replaceCaseSensitive,
-  resolveString,
+  resolvePath,
   validateDistPath,
+  writeFile,
 } from '../utils';
 import {type PdkBuilderCommand, PdkPlatformName} from '../types';
-import {VerbosityLevel} from '../constants';
 
 const SOURCE_PLATFORM = PdkPlatformName.MyParcelNl;
 
@@ -36,10 +35,14 @@ const transform: PdkBuilderCommand = async (context) => {
     args,
     filteredPlatforms.map(async (platform) => {
       const platformContext = addPlatformToContext(context, platform);
-      const platformFolderPath = `${config.outDir}/${resolveString(config.platformFolderName, platformContext)}`;
-      const relativeDistFolderPath = path.relative(env.cwd, platformFolderPath);
 
-      debug('Renaming files in %s', chalk.greenBright(relativeDistFolderPath));
+      if (!(await validateDistPath(platformContext))) {
+        return;
+      }
+
+      const platformFolderPath = resolvePath([config.outDir, config.platformFolderName], platformContext);
+
+      debug('Transforming files in %s', logSourcePath(platformFolderPath, platformContext));
 
       const files = glob.sync(`${platformFolderPath}/**/*`, {
         ignore: [
@@ -50,25 +53,18 @@ const transform: PdkBuilderCommand = async (context) => {
           `${platformFolderPath}/**/*.map`,
           `${platformFolderPath}/**/*.d.ts`,
         ],
+        cwd: env.cwd,
       });
-
-      const platformDistPath = getPlatformDistPath(platformContext);
 
       const promises = await Promise.all(
         files.map(async (file) => {
-          if (!(await validateDistPath(platformContext))) {
-            debug('Skipping because %s does not exist.', logRelativePath(platformDistPath, platformContext));
-            return;
-          }
-
-          const source = path.resolve(env.cwd, file);
-
-          const contents = (await fs.promises.readFile(source)).toString('utf-8');
+          const sourcePath = resolvePath(file, platformContext);
+          const contents = await getFileContents(sourcePath);
 
           const occurrences = getOccurrences(contents, SOURCE_PLATFORM);
 
           if (occurrences.length > 0) {
-            if (args.verbose >= VerbosityLevel.VeryVeryVerbose) {
+            if (isVeryVeryVerbose(context)) {
               debug(
                 'Replacing %s occurrences of "%s" with "%s" in %s',
                 chalk.greenBright(occurrences.length),
@@ -78,16 +74,14 @@ const transform: PdkBuilderCommand = async (context) => {
               );
             }
 
-            if (!args.dryRun) {
-              const newContents = replaceCaseSensitive(contents, SOURCE_PLATFORM, platform);
+            const newContents = replaceCaseSensitive(contents, SOURCE_PLATFORM, platform);
 
-              await fs.promises.writeFile(source, newContents);
-            }
+            await writeFile(sourcePath, newContents, platformContext);
           }
         }),
       );
 
-      debug('Finished transforming files in %s', chalk.greenBright(relativeDistFolderPath));
+      debug('Finished transforming files in %s', logSourcePath(platformFolderPath, platformContext));
 
       return promises;
     }),
