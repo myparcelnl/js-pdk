@@ -1,21 +1,17 @@
 import chalk from 'chalk';
+import {getRelativePath} from '../getRelativePath';
 import {isVeryVeryVerbose} from '../command';
 import {type PdkBuilderContext, type StringContaining} from '../../types';
-import {logTargetPath} from './logTargetPath';
 
 const FILE = 'File';
 const DIRECTORY = 'Directory';
 const ALREADY_EXISTS = 'already exists';
 const DOES_NOT_EXIST = 'does not exist';
 
-const reportOnFile = (
-  filePath: string,
-  context: PdkBuilderContext,
-  message: StringContaining<'%s'> = 'File %s does not exist',
-): void => {
+const reportOnFile = (filePath: string, context: PdkBuilderContext, message: StringContaining<'%s'>): void => {
   if (!isVeryVeryVerbose(context)) return;
 
-  context.debug(chalk.redBright(message), logTargetPath(filePath, context));
+  context.debug(chalk.redBright(message), getRelativePath(filePath, context));
 };
 
 export const reportFileExists = (filePath: string, context: PdkBuilderContext): void => {
