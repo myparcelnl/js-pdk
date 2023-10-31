@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.60](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.59...@myparcel-pdk/app-builder@1.0.0-alpha.60) "@myparcel-pdk/app-builder" (2023-10-31)
+
+
+### Bug Fixes
+
+* **app-builder:** fix error in upgrade command ([12c48f5](https://github.com/myparcelnl/js-pdk/commit/12c48f59bc8c07380958595b0e9b389d6745dadd))
+
+
+
+
 ## [1.0.0-alpha.59](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.58...@myparcel-pdk/app-builder@1.0.0-alpha.59) "@myparcel-pdk/app-builder" (2023-10-31)
 
 
