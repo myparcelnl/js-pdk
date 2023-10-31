@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.56](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.55...@myparcel-pdk/app-builder@1.0.0-alpha.56) "@myparcel-pdk/app-builder" (2023-10-31)
+
+
+### Bug Fixes
+
+* **app-builder:** dump autoload in correct folder ([c928be1](https://github.com/myparcelnl/js-pdk/commit/c928be1cd468aabb330feb03d33e91a4d3526c1c))
+
+
+
+
 ## [1.0.0-alpha.55](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.54...@myparcel-pdk/app-builder@1.0.0-alpha.55) "@myparcel-pdk/app-builder" (2023-10-31)
 
 
