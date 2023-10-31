@@ -8,7 +8,6 @@ import {
   getPlatformDistPath,
   logSourcePath,
   logTargetPath,
-  reportDryRun,
   resolvePath,
   resolveString,
   validateDistPath,
@@ -17,9 +16,7 @@ import {type PdkBuilderCommand} from '../types';
 import {VerbosityLevel} from '../constants';
 
 const zip: PdkBuilderCommand = async (context) => {
-  const {env, config, args, debug} = context;
-
-  if (args.dryRun) reportDryRun(debug, 'No archive will be created.');
+  const {config, args, debug} = context;
 
   debug('Compressing files for platforms %s', chalk.cyanBright(config.platforms.join(', ')));
 

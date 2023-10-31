@@ -7,7 +7,6 @@ import {
   exists,
   getFileContents,
   logSourcePath,
-  reportDryRun,
   resolvePath,
   resolveStrings,
   usesPhpScoper,
@@ -24,8 +23,6 @@ import {REGEX_VERSION, VerbosityLevel} from '../constants';
 const increment: PdkBuilderCommand = async (context) => {
   const {env, config, args, debug} = context;
   const newVersion = args.version ?? config.version;
-
-  if (args.dryRun) reportDryRun(debug);
 
   debug('Incrementing version to %s', chalk.greenBright(newVersion));
 

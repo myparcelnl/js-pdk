@@ -12,8 +12,6 @@ interface SheetDefinition {
 }
 
 const translations: PdkBuilderCommand = async ({config, args, debug}) => {
-  if (args.dryRun) reportDryRun(debug, 'No files will be modified.');
-
   const {documentId, outDir, additionalSheet, sheetId} = config.translations;
 
   const items: SheetDefinition[] = [

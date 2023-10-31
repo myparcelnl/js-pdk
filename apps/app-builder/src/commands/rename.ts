@@ -11,7 +11,6 @@ import {
   logSourcePath,
   logTargetPath,
   replaceCaseSensitive,
-  reportDryRun,
   resolvePath,
   validateDistPath,
 } from '../utils';
@@ -22,8 +21,6 @@ const STRING_TO_REPLACE = 'myparcelnl';
 
 const rename: PdkBuilderCommand = async (context) => {
   const {env, config, args, debug} = context;
-
-  if (args.dryRun) reportDryRun(debug, 'No files will be renamed.');
 
   debug('Renaming files for platforms %s', chalk.cyanBright(config.platforms.join(', ')));
 

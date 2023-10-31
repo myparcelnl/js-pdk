@@ -8,7 +8,6 @@ import {
   getPlatformDistPath,
   logPlatforms,
   logTargetPath,
-  reportDryRun,
   resolvePath,
   resolveStrings,
 } from '../utils';
@@ -16,8 +15,6 @@ import {type PdkBuilderCommand} from '../types';
 
 const copy: PdkBuilderCommand = async (context) => {
   const {env, config, args, debug} = context;
-
-  if (args.dryRun) reportDryRun(debug, 'No files will be copied.');
 
   const resolvedSources = resolveStrings(context, config.source);
   const files = glob.sync(resolvedSources, {cwd: env.cwd});

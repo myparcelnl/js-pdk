@@ -5,7 +5,6 @@ import {
   getPlatformDistPath,
   getRelativePath,
   logSourcePath,
-  reportDryRun,
   resolvePath,
 } from '../utils';
 import {type PdkBuilderCommand} from '../types';
@@ -13,8 +12,6 @@ import {VerbosityLevel} from '../constants';
 
 const dumpAutoload: PdkBuilderCommand = async (context) => {
   const {args, config, debug} = context;
-
-  if (args.dryRun) reportDryRun(debug);
 
   debug('Dumping autoload...');
 

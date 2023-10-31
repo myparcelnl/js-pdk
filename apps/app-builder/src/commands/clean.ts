@@ -1,11 +1,9 @@
 import fs from 'fs';
-import {exists, logTargetPath, reportDryRun, resolvePath} from '../utils';
+import {exists, logTargetPath, resolvePath} from '../utils';
 import {type PdkBuilderCommand} from '../types';
 
 const clean: PdkBuilderCommand = async (context) => {
   const {config, args, debug} = context;
-
-  if (args.dryRun) reportDryRun(debug);
 
   const dist = resolvePath(config.outDir, context);
 

@@ -1,6 +1,7 @@
 import {type CreateHook, type PdkBuilderConfig, type PdkBuilderContext} from '../types';
 import {VerbosityLevel} from '../constants';
 import {resolveConfig} from './resolveConfig';
+import {reportDryRun} from './reportDryRun';
 import {parseCommandInput} from './parseCommandInput';
 import {mergeDefaultConfig} from './mergeDefaultConfig';
 
@@ -21,6 +22,10 @@ export const createWithConfig: CreateHook = (env) => {
 
       const beforeHook = `before${capitalizedCommandName}` as keyof PdkBuilderConfig['hooks'];
       const afterHook = `after${capitalizedCommandName}` as keyof PdkBuilderConfig['hooks'];
+
+      if (context.args.dryRun) {
+        reportDryRun(context.debug);
+      }
 
       if (context.args.verbose >= VerbosityLevel.Verbose && (config.hooks?.[beforeHook] ?? null)) {
         context.debug(`Running hook ${beforeHook}`);
