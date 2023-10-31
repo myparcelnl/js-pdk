@@ -1,6 +1,13 @@
-import path from 'path';
 import fs from 'fs';
-import {addPlatformToContext, executeCommand, getPlatformDistPath, logSourcePath, reportDryRun} from '../utils';
+import {
+  addPlatformToContext,
+  executeCommand,
+  getPlatformDistPath,
+  getRelativePath,
+  logSourcePath,
+  reportDryRun,
+  resolvePath,
+} from '../utils';
 import {type PdkBuilderCommand} from '../types';
 import {VerbosityLevel} from '../constants';
 
@@ -16,7 +23,7 @@ const dumpAutoload: PdkBuilderCommand = async (context) => {
       const platformContext = addPlatformToContext(context, platform);
       const platformDistPath = getPlatformDistPath(platformContext);
 
-      const autoloadPath = path.resolve(platformDistPath, 'vendor', 'autoload.php');
+      const autoloadPath = resolvePath([platformDistPath, 'vendor', 'autoload.php'], context);
 
       if (args.verbose >= VerbosityLevel.VeryVeryVerbose) {
         debug(`Removing ${logSourcePath(env, autoloadPath)}`);
@@ -26,9 +33,11 @@ const dumpAutoload: PdkBuilderCommand = async (context) => {
         await fs.promises.rm(autoloadPath, {force: true});
       }
 
-      await executeCommand(platformContext, 'composer', ['dump-autoload', '--classmap-authoritative'], {
-        cwd: platformDistPath,
-      });
+      await executeCommand(platformContext, 'composer', [
+        'dump-autoload',
+        `--working-dir=${getRelativePath({env, filePath: platformDistPath})}`,
+        '--classmap-authoritative',
+      ]);
     }),
   );
 };
