@@ -1,11 +1,11 @@
 /* eslint-disable max-lines-per-function */
-import glob from 'fast-glob';
 import chalk from 'chalk';
 import {
   addPlatformToContext,
   executePromises,
   getFileContents,
   getOccurrences,
+  globFiles,
   isVeryVeryVerbose,
   logPlatforms,
   logSourcePath,
@@ -44,7 +44,7 @@ const transform: PdkBuilderCommand = async (context) => {
 
       debug('Transforming files in %s', logSourcePath(platformFolderPath, platformContext));
 
-      const files = glob.sync(`${platformFolderPath}/**/*`, {
+      const files = globFiles(`${platformFolderPath}/**/*`, context, {
         ignore: [
           `${platformFolderPath}/node_modules/**/*`,
           `${platformFolderPath}/package.json`,
@@ -53,7 +53,6 @@ const transform: PdkBuilderCommand = async (context) => {
           `${platformFolderPath}/**/*.map`,
           `${platformFolderPath}/**/*.d.ts`,
         ],
-        cwd: env.cwd,
       });
 
       const promises = await Promise.all(

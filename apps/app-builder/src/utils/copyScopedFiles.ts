@@ -1,7 +1,7 @@
-import glob from 'fast-glob';
 import {type PdkBuilderContext} from '../types';
 import {usesPhpScoper} from './usesPhpScoper';
 import {resolvePath} from './resolvePath';
+import {globFiles} from './globFiles';
 import {getPlatformDistPath} from './getPlatformDistPath';
 import {copyFile} from './fs';
 import {executePromises} from './executePromises';
@@ -13,7 +13,7 @@ export const copyScopedFiles = async (context: PdkBuilderContext): Promise<void>
     return;
   }
 
-  const {env, config, args, debug} = context;
+  const {config, args, debug} = context;
 
   await executePromises(
     args,
@@ -26,7 +26,7 @@ export const copyScopedFiles = async (context: PdkBuilderContext): Promise<void>
       const scopedVendorDir = resolvePath(config.phpScoper.vendorOutDir, context);
 
       await Promise.all([
-        ...glob.sync(`${scopedVendorDir}/**/*`, {cwd: env.cwd}).map(async (file) => {
+        ...globFiles(`${scopedVendorDir}/**/*`, context).map(async (file) => {
           await copyFile(
             file,
             file.replace(scopedVendorDir, resolvePath([platformDistPath, 'vendor'], context)),
@@ -34,7 +34,7 @@ export const copyScopedFiles = async (context: PdkBuilderContext): Promise<void>
           );
         }),
 
-        ...glob.sync(`${scopedSourceDir}/**/*`, {cwd: env.cwd}).map(async (file) => {
+        ...globFiles(`${scopedSourceDir}/**/*`, context).map(async (file) => {
           await copyFile(file, file.replace(scopedSourceDir, platformDistPath), context);
         }),
       ]);

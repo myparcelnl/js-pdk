@@ -1,15 +1,14 @@
-import glob from 'fast-glob';
 import chalk from 'chalk';
 import {isOfType} from '@myparcel/ts-utils';
 import {
   executePromises,
   exists,
   getFileContents,
+  globFiles,
   isVerbose,
   logSourcePath,
   reportFileDoesNotExist,
   resolvePath,
-  resolveStrings,
   usesPhpScoper,
   writeFile,
 } from '../utils';
@@ -38,7 +37,7 @@ const increment: PdkBuilderCommand = async (context) => {
       sources.push(`${config.phpScoper.vendorOutDir}/${source.path}`);
     }
 
-    return {source, files: glob.sync(resolveStrings(context, sources), {cwd: env.cwd})};
+    return {source, files: globFiles(sources, context)};
   });
 
   await executePromises(

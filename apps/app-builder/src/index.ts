@@ -17,6 +17,7 @@ export {
   getFileContents,
   getPlatformDistPath,
   getRelativePath,
+  globFiles,
   isEmptyDir,
   isVerbose,
   isVeryVerbose,

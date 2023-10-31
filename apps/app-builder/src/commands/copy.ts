@@ -1,4 +1,3 @@
-import glob from 'fast-glob';
 import chalk from 'chalk';
 import {
   addPlatformToContext,
@@ -6,6 +5,7 @@ import {
   copyScopedFiles,
   executePromises,
   getPlatformDistPath,
+  globFiles,
   logPlatforms,
   logTargetPath,
   resolvePath,
@@ -14,15 +14,14 @@ import {
 import {type PdkBuilderCommand} from '../types';
 
 const copy: PdkBuilderCommand = async (context) => {
-  const {env, config, args, debug} = context;
+  const {config, args, debug} = context;
 
-  const resolvedSources = resolveStrings(context, config.source);
-  const files = glob.sync(resolvedSources, {cwd: env.cwd});
+  const files = globFiles(config.source, context);
 
   debug(
     'Copying %s files from %s to %s for platforms %s',
     chalk.greenBright(files.length),
-    chalk.yellow(resolvedSources),
+    chalk.yellow(resolveStrings(context, config.source)),
     logTargetPath(config.outDir, context),
     logPlatforms(config.platforms),
   );

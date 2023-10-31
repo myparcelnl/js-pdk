@@ -12,6 +12,7 @@ exports[`exports > exports from index.ts 1`] = `
   "getFileContents",
   "getPlatformDistPath",
   "getRelativePath",
+  "globFiles",
   "isEmptyDir",
   "isVerbose",
   "isVeryVerbose",

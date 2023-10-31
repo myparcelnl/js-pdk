@@ -1,11 +1,11 @@
 /* eslint-disable max-lines-per-function */
 import path from 'path';
-import glob from 'fast-glob';
 import chalk from 'chalk';
 import {
   addPlatformToContext,
   executePromises,
   getPlatformDistPath,
+  globFiles,
   logRelativePath,
   renameFile,
   replaceCaseSensitive,
@@ -17,7 +17,7 @@ import {type PdkBuilderCommand} from '../types';
 const STRING_TO_REPLACE = 'myparcelnl';
 
 const rename: PdkBuilderCommand = async (context) => {
-  const {env, config, args, debug} = context;
+  const {config, args, debug} = context;
 
   debug('Renaming files for platforms %s', chalk.cyanBright(config.platforms.join(', ')));
 
@@ -33,9 +33,8 @@ const rename: PdkBuilderCommand = async (context) => {
 
       debug('Renaming files in %s', logRelativePath(platformDistPath, platformContext));
 
-      const files = glob.sync(`${platformDistPath}/**/*`, {
+      const files = globFiles(`${platformDistPath}/**/*`, context, {
         ignore: [`${platformDistPath}/node_modules/**/*`, `${platformDistPath}/vendor/**/*`],
-        cwd: env.cwd,
       });
 
       await Promise.all(

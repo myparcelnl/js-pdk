@@ -9,6 +9,7 @@ export * from './executePromises';
 export * from './fs';
 export * from './getPlatformDistPath';
 export * from './getRelativePath';
+export * from './globFiles';
 export * from './mergeDefaultConfig';
 export * from './parseJsonFile';
 export * from './resolveConfig';
