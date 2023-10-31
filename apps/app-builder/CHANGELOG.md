@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.57](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.56...@myparcel-pdk/app-builder@1.0.0-alpha.57) "@myparcel-pdk/app-builder" (2023-10-31)
+
+
+### Bug Fixes
+
+* **app-builder:** make method signatures more consistent ([db7510d](https://github.com/myparcelnl/js-pdk/commit/db7510ddefff3db728464e373b1cc2e7c38319bf))
+* **app-builder:** skip incrementing files that do not exist ([25821f9](https://github.com/myparcelnl/js-pdk/commit/25821f98b46364b26add0f060178abb6b098913f))
+
+
+
+
 ## [1.0.0-alpha.56](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.55...@myparcel-pdk/app-builder@1.0.0-alpha.56) "@myparcel-pdk/app-builder" (2023-10-31)
 
 
