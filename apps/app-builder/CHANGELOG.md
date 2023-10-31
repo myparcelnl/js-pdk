@@ -2,6 +2,20 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.58](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.57...@myparcel-pdk/app-builder@1.0.0-alpha.58) "@myparcel-pdk/app-builder" (2023-10-31)
+
+
+### Bug Fixes
+
+* **app-builder:** add renameFile util ([5ca2333](https://github.com/myparcelnl/js-pdk/commit/5ca2333255437d5b7deb9a69a28d15b1f3278a8e))
+* **app-builder:** improve debug output ([fdacdbc](https://github.com/myparcelnl/js-pdk/commit/fdacdbcda4c8a64378e3d079d5c4abc64647fc04))
+* **app-builder:** improve organization of utils and debug logging ([19e519d](https://github.com/myparcelnl/js-pdk/commit/19e519dbcf3dbb81d44a53faf1358deec0ae2cf6))
+* **app-builder:** move dry run warnings to command wrapper ([4cfea14](https://github.com/myparcelnl/js-pdk/commit/4cfea14232fb06e1cea23f947ce436f754c73f11))
+* **app-builder:** use new utils in transform ([2ad0b65](https://github.com/myparcelnl/js-pdk/commit/2ad0b6584b2e413ba1500510d30e093302cc79dd))
+
+
+
+
 ## [1.0.0-alpha.57](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.56...@myparcel-pdk/app-builder@1.0.0-alpha.57) "@myparcel-pdk/app-builder" (2023-10-31)
 
 
