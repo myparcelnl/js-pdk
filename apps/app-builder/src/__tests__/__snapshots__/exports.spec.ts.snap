@@ -3,9 +3,15 @@
 exports[`exports > exports from index.ts 1`] = `
 [
   "PdkPlatformName",
+  "addPlatformToContext",
+  "copyFile",
+  "createDirectory",
   "defineConfig",
   "executeCommand",
   "executePromises",
+  "exists",
+  "getFileContents",
   "getPlatformDistPath",
+  "mkdirs",
 ]
 `;

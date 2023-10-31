@@ -8,6 +8,16 @@ export type {PdkBuilderConfig};
 
 export {PdkPlatformName} from './types';
 
-export const defineConfig = <C extends PdkBuilderConfig | (() => PdkBuilderConfig)>(config: C): C => config;
+export {
+  addPlatformToContext,
+  copyFile,
+  createDirectory,
+  executeCommand,
+  executePromises,
+  exists,
+  getFileContents,
+  getPlatformDistPath,
+  mkdirs,
+} from './utils';
 
-export {executeCommand, executePromises, getPlatformDistPath} from './utils';
+export const defineConfig = <C extends PdkBuilderConfig | (() => PdkBuilderConfig)>(config: C): C => config;
