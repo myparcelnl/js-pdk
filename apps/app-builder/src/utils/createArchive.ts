@@ -1,5 +1,5 @@
 import path from 'path';
-import fs from 'fs';
+import fs from 'node:fs';
 import {type Debugger} from 'debug';
 import chalk from 'chalk';
 import archiver, {type Archiver} from 'archiver';

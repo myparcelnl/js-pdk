@@ -12,7 +12,6 @@ import {
   logRelativePath,
   logTargetPath,
   replaceCaseSensitive,
-  reportDryRun,
   resolveString,
   validateDistPath,
 } from '../utils';
@@ -23,10 +22,6 @@ const SOURCE_PLATFORM = PdkPlatformName.MyParcelNl;
 
 const transform: PdkBuilderCommand = async (context) => {
   const {env, config, args, debug} = context;
-
-  if (args.dryRun) {
-    reportDryRun(debug, 'No files will be transformed.');
-  }
 
   const filteredPlatforms = config.platforms.filter((platform) => platform !== SOURCE_PLATFORM);
 

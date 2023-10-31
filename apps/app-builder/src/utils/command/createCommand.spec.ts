@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {createTestContext} from '../__tests__/createTestContext';
+import {createTestContext} from '../../__tests__/createTestContext';
 import {createCommand} from './createCommand';
 
 describe('createCommand', () => {

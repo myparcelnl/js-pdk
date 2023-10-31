@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import {vi} from 'vitest';
 import {isObject, merge} from 'lodash-unified';
-import {createDirectory, exists} from '../utils';
+import {exists} from '../utils';
 import {MOCK_ROOT_DIR} from './constants';
 
 type Directories = Record<string, unknown>;
@@ -13,7 +13,9 @@ const recursiveCreate = async (entries: Record<string, unknown>, rootDir: string
       const fullPath = path.resolve(rootDir, filePath);
       const directory = path.dirname(fullPath);
 
-      await createDirectory(directory, {recursive: true});
+      if (!(await exists(directory))) {
+        await fs.promises.mkdir(directory, {recursive: true});
+      }
 
       if (isObject(contents)) {
         return recursiveCreate(contents as Record<string, unknown>, fullPath);

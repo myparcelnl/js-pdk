@@ -2,21 +2,36 @@
 import fs from 'fs';
 import chalk from 'chalk';
 import {importTranslations} from '@edielemoine/google-docs-importer';
-import {executePromises, reportDryRun} from '../utils';
+import {
+  executePromises,
+  getRelativePath,
+  isVerbose,
+  isVeryVerbose,
+  parseJsonFile,
+  resolvePath,
+  rmDir,
+  writeFile,
+} from '../utils';
 import {type PdkBuilderCommand} from '../types';
-import {PLATFORM_SHEET_ID_MAP, VerbosityLevel} from '../constants';
+import {PLATFORM_SHEET_ID_MAP} from '../constants';
 
 interface SheetDefinition {
   name: string;
   sheetId: number;
 }
 
-const translations: PdkBuilderCommand = async ({config, args, debug}) => {
+const DEFAULT_SHEET_NAME = 'default';
+
+const translations: PdkBuilderCommand = async (context) => {
+  const {config, args, debug} = context;
   const {documentId, outDir, additionalSheet, sheetId} = config.translations;
+
+  const resolvedOutDir = resolvePath(outDir, context);
+  const tmpDir = resolvePath([config.tmpDir, 'translations'], context);
 
   const items: SheetDefinition[] = [
     {
-      name: 'default',
+      name: DEFAULT_SHEET_NAME,
       sheetId,
     },
     ...config.platforms.map((platform) => ({
@@ -26,17 +41,13 @@ const translations: PdkBuilderCommand = async ({config, args, debug}) => {
   ];
 
   if (additionalSheet) {
-    items.push({
-      name: 'app',
-      sheetId: additionalSheet,
-    });
+    items.push({name: 'app', sheetId: additionalSheet});
   }
 
-  const promises = items.map(async ({name, sheetId}) => {
+  const importPromises = items.map(async ({name, sheetId}) => {
     debug(`Importing translations sheet "${chalk.green(name)}"`);
 
     if (args.dryRun) {
-      reportDryRun(debug, `Translations sheet "${chalk.green(name)}" will be imported.`);
       return;
     }
 
@@ -44,7 +55,7 @@ const translations: PdkBuilderCommand = async ({config, args, debug}) => {
       config: {
         documentId,
         languageKey: 'lang',
-        outputDir: `${outDir}/.tmp/${name}`,
+        outputDir: getRelativePath([tmpDir, name], context),
         sheetId: String(sheetId),
       },
       debug: debug.extend(`import:${name}`),
@@ -52,56 +63,39 @@ const translations: PdkBuilderCommand = async ({config, args, debug}) => {
     });
   });
 
-  await executePromises(args, promises);
+  await executePromises(args, importPromises);
 
   debug('Merging translations...');
 
-  const languages = (await fs.promises.readdir(`${outDir}/.tmp/default`))
+  const languages = (await fs.promises.readdir(resolvePath([tmpDir, DEFAULT_SHEET_NAME], context)))
     .filter((file) => file.endsWith('.json'))
     .map((file) => file.replace('.json', ''));
 
-  await executePromises(
-    args,
-    languages.map(async (language) => {
-      if (args.verbose >= VerbosityLevel.Verbose) {
-        debug(`Merging translations for language "${chalk.cyan(language)}"`);
+  const mergeTranslations = languages.map(async (language) => {
+    if (isVerbose(context)) {
+      debug(`Merging translations for language "${chalk.cyan(language)}"`);
+    }
+
+    const translations = items.reduce((acc, {name}) => {
+      const filePath = resolvePath([config.tmpDir, 'translations', name, `${language}.json`], context);
+
+      if (isVeryVerbose(context)) {
+        debug(`Merging translations from "${chalk.yellow(name)}" into "${chalk.cyan(language)}"`);
       }
 
-      const translations = items.reduce((acc, {name}) => {
-        const filePath = `${outDir}/.tmp/${name}/${language}.json`;
-        const json = fs.readFileSync(filePath, 'utf8');
-        const parsed = JSON.parse(json);
+      return {...acc, ...parseJsonFile(filePath)};
+    }, {});
 
-        if (args.verbose >= VerbosityLevel.VeryVeryVerbose) {
-          debug(`Merging translations from "${chalk.yellow(name)}" into "${chalk.cyan(language)}"`);
-        }
+    await writeFile(
+      [resolvedOutDir, `${language}.json`],
+      JSON.stringify(translations, null, config.jsonSpaces),
+      context,
+    );
+  });
 
-        return {
-          ...acc,
-          ...parsed,
-        };
-      }, {});
+  await executePromises(args, mergeTranslations);
 
-      if (args.verbose >= VerbosityLevel.VeryVeryVerbose) {
-        debug(`Writing merged translations for language "${chalk.cyan(language)}"`);
-      }
-
-      if (!args.dryRun) {
-        await fs.promises.writeFile(
-          `${outDir}/${language}.json`,
-          JSON.stringify(translations, null, config.jsonSpaces),
-        );
-      }
-    }),
-  );
-
-  if (args.verbose >= VerbosityLevel.VeryVeryVerbose) {
-    debug('Removing temporary files');
-  }
-
-  if (!args.dryRun) {
-    await fs.promises.rm(`${outDir}/.tmp`, {recursive: true});
-  }
+  await rmDir(tmpDir, context);
 };
 
 export default translations;

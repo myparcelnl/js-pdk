@@ -15,3 +15,5 @@ export type NpmInfo = PackageJson & {
       }
     | string;
 };
+
+export type StringContaining<S extends string> = `${string}${S}${string}` | `${string}${S}` | `${S}${string}` | `${S}`;

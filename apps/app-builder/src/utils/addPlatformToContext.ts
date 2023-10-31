@@ -1,5 +1,5 @@
 import {type PdkBuilderContext, type PdkPlatformName} from '../types';
-import {withArgs} from './withArgs';
+import {withArgs} from './command/withArgs';
 
 export const addPlatformToContext = <P extends PdkPlatformName>(
   context: PdkBuilderContext,

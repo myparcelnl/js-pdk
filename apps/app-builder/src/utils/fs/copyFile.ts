@@ -1,21 +1,34 @@
 import path from 'path';
 import fs from 'fs';
-import {logTargetPath} from '../logTargetPath';
-import {logSourcePath} from '../logSourcePath';
-import {type PdkBuilderContext} from '../../types';
-import {VerbosityLevel} from '../../constants';
+import chalk from 'chalk';
+import {type OneOrMore} from '@myparcel/ts-utils';
+import {resolvePath} from '../resolvePath';
+import {logSourcePath, logTargetPath} from '../debug';
+import {isVeryVerbose, shouldModifyFiles} from '../command';
+import {type PdkBuilderContext, type StringGenerator} from '../../types';
 import {mkdirs} from './mkdirs';
 
-export const copyFile = async (source: string, target: string, context: PdkBuilderContext): Promise<void> => {
-  await mkdirs(path.dirname(target), context);
+export const copyFile = async (
+  source: OneOrMore<StringGenerator>,
+  target: OneOrMore<StringGenerator>,
+  context: PdkBuilderContext,
+): Promise<void> => {
+  const resolvedSource = resolvePath(source, context);
+  const resolvedTarget = resolvePath(target, context);
 
-  if (context.args.verbose >= VerbosityLevel.Verbose) {
-    context.debug('%s -> %s', logSourcePath(source, context), logTargetPath(target, context));
+  await mkdirs(path.dirname(resolvedTarget), context);
+
+  if (isVeryVerbose(context)) {
+    context.debug(
+      chalk.yellowBright('Copying %s to %s'),
+      logSourcePath(resolvedSource, context),
+      logTargetPath(resolvedTarget, context),
+    );
   }
 
-  if (context.args.dryRun) {
+  if (!shouldModifyFiles(context)) {
     return;
   }
 
-  await fs.promises.copyFile(source, target);
+  await fs.promises.copyFile(resolvedSource, resolvedTarget);
 };

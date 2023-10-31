@@ -1,4 +1,4 @@
-import {type CreateHook, type WithContextParams} from '../types';
+import {type CreateHook, type WithContextParams} from '../../types';
 import {parseCommandInput} from './parseCommandInput';
 
 export const createWithContext: CreateHook<WithContextParams> = (env) => {

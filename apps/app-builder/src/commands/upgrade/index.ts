@@ -1,5 +1,5 @@
 /* eslint-disable max-lines-per-function */
-import {executeCommand, reportDryRun} from '../../utils';
+import {executeCommand} from '../../utils';
 import {type PdkBuilderCommand} from '../../types';
 import {VerbosityLevel} from '../../constants';
 import {verifyLockfile} from './verifyLockfile';
@@ -12,10 +12,6 @@ import {createCommitMessage} from './createCommitMessage';
 
 const upgrade: PdkBuilderCommand<InputUpgradeCommandArgs> = async ({env, args, config, debug}) => {
   const [packageName] = args.arguments ?? [];
-
-  if (args.dryRun) {
-    reportDryRun(debug, 'No files will be modified.');
-  }
 
   debug('Upgrading package', packageName);
 

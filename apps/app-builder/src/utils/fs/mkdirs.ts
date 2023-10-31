@@ -1,10 +1,12 @@
 import fs from 'fs';
+import chalk from 'chalk';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {resolveString} from '../resolveString';
 import {resolvePath} from '../resolvePath';
-import {exists} from '../exists';
+import {logTargetPath, reportDirectoryExists} from '../debug';
+import {isVeryVeryVerbose} from '../command';
 import {type PdkBuilderContext} from '../../types';
-import {VerbosityLevel} from '../../constants';
+import {exists} from './exists';
 
 export const mkdirs = async (paths: OneOrMore<string>, context: PdkBuilderContext): Promise<void> => {
   const {debug, args} = context;
@@ -14,15 +16,12 @@ export const mkdirs = async (paths: OneOrMore<string>, context: PdkBuilderContex
       const resolvedItem = resolveString(item, context);
 
       if (await exists(resolvedItem)) {
-        if (args.verbose >= VerbosityLevel.VeryVeryVerbose) {
-          debug(`Directory ${resolvedItem} already exists`);
-        }
-
+        reportDirectoryExists(resolvedItem, context);
         return;
       }
 
-      if (args.verbose >= VerbosityLevel.VeryVerbose) {
-        debug(`Creating directory ${resolvedItem}`);
+      if (isVeryVeryVerbose(context)) {
+        debug(chalk.greenBright(`Creating directory %s`), logTargetPath(resolvedItem, context));
       }
 
       if (args.dryRun) {

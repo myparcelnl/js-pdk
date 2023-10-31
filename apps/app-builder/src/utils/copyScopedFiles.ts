@@ -2,10 +2,10 @@ import glob from 'fast-glob';
 import {type PdkBuilderContext} from '../types';
 import {usesPhpScoper} from './usesPhpScoper';
 import {resolvePath} from './resolvePath';
-import {logTargetPath} from './logTargetPath';
 import {getPlatformDistPath} from './getPlatformDistPath';
 import {copyFile} from './fs';
 import {executePromises} from './executePromises';
+import {logTargetPath} from './debug';
 import {addPlatformToContext} from './addPlatformToContext';
 
 export const copyScopedFiles = async (context: PdkBuilderContext): Promise<void> => {
@@ -28,18 +28,14 @@ export const copyScopedFiles = async (context: PdkBuilderContext): Promise<void>
       await Promise.all([
         ...glob.sync(`${scopedVendorDir}/**/*`, {cwd: env.cwd}).map(async (file) => {
           await copyFile(
-            resolvePath(file, context),
-            resolvePath(file.replace(scopedVendorDir, resolvePath([platformDistPath, 'vendor'], context)), context),
+            file,
+            file.replace(scopedVendorDir, resolvePath([platformDistPath, 'vendor'], context)),
             context,
           );
         }),
 
         ...glob.sync(`${scopedSourceDir}/**/*`, {cwd: env.cwd}).map(async (file) => {
-          await copyFile(
-            resolvePath(file, context),
-            resolvePath(file.replace(scopedSourceDir, platformDistPath), context),
-            context,
-          );
+          await copyFile(file, file.replace(scopedSourceDir, platformDistPath), context);
         }),
       ]);
     }),

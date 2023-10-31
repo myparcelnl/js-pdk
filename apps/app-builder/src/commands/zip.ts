@@ -1,19 +1,18 @@
-import fs from 'fs';
 import chalk from 'chalk';
 import {
   addPlatformToContext,
   createArchive,
   executePromises,
-  exists,
   getPlatformDistPath,
-  logSourcePath,
+  isVerbose,
   logTargetPath,
   resolvePath,
   resolveString,
+  rmFile,
+  shouldModifyFiles,
   validateDistPath,
 } from '../utils';
 import {type PdkBuilderCommand} from '../types';
-import {VerbosityLevel} from '../constants';
 
 const zip: PdkBuilderCommand = async (context) => {
   const {config, args, debug} = context;
@@ -27,25 +26,18 @@ const zip: PdkBuilderCommand = async (context) => {
       const platformDistPath = getPlatformDistPath(platformContext);
 
       if (!(await validateDistPath(platformContext))) {
-        debug('Skipping because %s does not exist.', logTargetPath(platformDistPath, platformContext));
         return;
       }
 
       const archivePath = resolvePath([config.outDir, config.archiveFilename], platformContext);
 
-      if (await exists(archivePath)) {
-        debug('Removing existing file %s...', logSourcePath(archivePath, context));
+      await rmFile(archivePath, context);
 
-        if (!args.dryRun) {
-          await fs.promises.rm(archivePath);
-        }
-      }
-
-      if (args.verbose > VerbosityLevel.Verbose) {
+      if (isVerbose(context)) {
         debug('Compressing %s...', logTargetPath(archivePath, platformContext));
       }
 
-      if (!args.dryRun) {
+      if (shouldModifyFiles(context)) {
         const archive = createArchive(archivePath, debug);
 
         archive.directory(platformDistPath, resolveString(config.platformFolderName, platformContext));
@@ -53,7 +45,7 @@ const zip: PdkBuilderCommand = async (context) => {
         await archive.finalize();
       }
 
-      if (args.verbose > VerbosityLevel.Verbose) {
+      if (isVerbose(context)) {
         debug('Compressed %s', logTargetPath(archivePath, platformContext));
       }
     }),

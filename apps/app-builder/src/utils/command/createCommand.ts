@@ -1,5 +1,5 @@
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {type PdkBuilderConfig} from '../types';
+import {type PdkBuilderConfig} from '../../types';
 
 export const createCommand = (config: PdkBuilderConfig, command: OneOrMore<string>): string => {
   const resolvedCommand = toArray(command ?? []);

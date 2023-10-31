@@ -1,6 +1,6 @@
 import {type LiftoffEnv} from 'liftoff';
 import {type AnyCommandArgs, type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types';
-import {type ParsedCommand} from './parseCommand';
+import {type ParsedCommand} from './command';
 
 const configCache = new Map<string, PdkBuilderConfig>();
 

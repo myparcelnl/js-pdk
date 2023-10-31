@@ -1,4 +1,3 @@
-import fs from 'fs';
 import glob from 'fast-glob';
 import chalk from 'chalk';
 import {isOfType} from '@myparcel/ts-utils';
@@ -6,10 +5,13 @@ import {
   executePromises,
   exists,
   getFileContents,
+  isVerbose,
   logSourcePath,
+  reportFileDoesNotExist,
   resolvePath,
   resolveStrings,
   usesPhpScoper,
+  writeFile,
 } from '../utils';
 import {type PdkBuilderCommand} from '../types';
 import {
@@ -18,7 +20,7 @@ import {
   replaceVersionInJson,
   type VersionReplacerOutput,
 } from '../increment';
-import {REGEX_VERSION, VerbosityLevel} from '../constants';
+import {REGEX_VERSION} from '../constants';
 
 const increment: PdkBuilderCommand = async (context) => {
   const {env, config, args, debug} = context;
@@ -47,10 +49,7 @@ const increment: PdkBuilderCommand = async (context) => {
           const filePath = resolvePath(file, context);
 
           if (!(await exists(filePath))) {
-            if (context.args.verbose >= VerbosityLevel.VeryVerbose) {
-              debug('Skipping %s', logSourcePath(filePath, context));
-            }
-
+            reportFileDoesNotExist(filePath, context);
             return;
           }
 
@@ -58,7 +57,7 @@ const increment: PdkBuilderCommand = async (context) => {
 
           let output: VersionReplacerOutput;
 
-          if (args.verbose >= VerbosityLevel.Verbose) {
+          if (isVerbose(context)) {
             debug('Processing %s', logSourcePath(filePath, context));
           }
 
@@ -70,9 +69,7 @@ const increment: PdkBuilderCommand = async (context) => {
             output = replaceVersionByRegex({match: {...match, regex: REGEX_VERSION}, contents, newVersion}, context);
           }
 
-          if (!args.dryRun) {
-            await fs.promises.writeFile(filePath, output.newContents);
-          }
+          await writeFile(filePath, output.newContents, context);
         }),
       );
     }),

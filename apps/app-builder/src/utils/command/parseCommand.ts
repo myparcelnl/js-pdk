@@ -1,6 +1,6 @@
 import {type Command} from 'commander';
 import {isOfType} from '@myparcel/ts-utils';
-import {type AnyCommandArgs, type CommandArgs} from '../types';
+import {type AnyCommandArgs, type CommandArgs} from '../../types';
 
 export type CommandArguments = (string | (CommandArgs & AnyCommandArgs) | Command)[];
 
