@@ -2,7 +2,7 @@ import {spawnSync, type SpawnSyncOptions, type SpawnSyncOptionsWithStringEncodin
 import {isOfType, type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {type ExecuteCommandContext, type PdkBuilderContext} from '../types';
 import {VerbosityLevel} from '../constants';
-import {createCommand} from './command/createCommand';
+import {createCommand} from './command';
 
 export const executeCommand = async (
   context: ExecuteCommandContext,

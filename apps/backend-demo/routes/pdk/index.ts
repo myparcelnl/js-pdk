@@ -1,7 +1,7 @@
 import {type H3Event} from 'h3';
+import {BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {getItemsByParameter} from '../../src/utils/getItemsByParameter';
 import {getContext} from '../../src/utils/getContext';
-import {BackendEndpoint} from "@myparcel-pdk/admin-common";
 
 const resolveAction = async (event: H3Event): Promise<{key: string; response: Record<string, unknown>[]}> => {
   const query = getQuery(event);
