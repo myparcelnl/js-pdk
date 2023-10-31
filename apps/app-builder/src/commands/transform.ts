@@ -62,7 +62,7 @@ const transform: PdkBuilderCommand = async (context) => {
       const promises = await Promise.all(
         files.map(async (file) => {
           if (!(await validateDistPath(platformContext))) {
-            debug('Skipping because %s does not exist.', logRelativePath(env, platformDistPath));
+            debug('Skipping because %s does not exist.', logRelativePath(platformDistPath, platformContext));
             return;
           }
 
@@ -79,7 +79,7 @@ const transform: PdkBuilderCommand = async (context) => {
                 chalk.greenBright(occurrences.length),
                 chalk.red(SOURCE_PLATFORM),
                 chalk.green(platform),
-                logTargetPath(env, file),
+                logTargetPath(file, platformContext),
               );
             }
 

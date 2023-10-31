@@ -20,7 +20,7 @@ export const copyScopedFiles = async (context: PdkBuilderContext): Promise<void>
     config.platforms.map(async (platform) => {
       const platformDistPath = getPlatformDistPath(addPlatformToContext(context, platform));
 
-      debug('Copying scoped files to %s', logTargetPath(env, platformDistPath));
+      debug('Copying scoped files to %s', logTargetPath(platformDistPath, context));
 
       const scopedSourceDir = resolvePath(config.phpScoper.outDir, context);
       const scopedVendorDir = resolvePath(config.phpScoper.vendorOutDir, context);

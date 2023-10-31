@@ -1,19 +1,20 @@
-import path from 'path';
 import fs from 'fs';
-import {exists, logTargetPath, reportDryRun} from '../utils';
+import {exists, logTargetPath, reportDryRun, resolvePath} from '../utils';
 import {type PdkBuilderCommand} from '../types';
 
-const clean: PdkBuilderCommand = async ({env, config, args, debug}) => {
-  if (args.dryRun) reportDryRun(debug, 'No files will be deleted.');
+const clean: PdkBuilderCommand = async (context) => {
+  const {config, args, debug} = context;
 
-  const dist = path.resolve(env.cwd, config.outDir);
+  if (args.dryRun) reportDryRun(debug);
+
+  const dist = resolvePath(config.outDir, context);
 
   if (!(await exists(dist))) {
-    debug('Folder %s does not exist, skipping...', logTargetPath(env, config.outDir));
+    debug('Folder %s does not exist, skipping...', logTargetPath(config.outDir, context));
     return;
   }
 
-  debug('Deleting folder %s', logTargetPath(env, config.outDir));
+  debug('Deleting folder %s', logTargetPath(config.outDir, context));
 
   if (!args.dryRun) {
     await fs.promises.rm(dist, {recursive: true, force: true});

@@ -47,7 +47,7 @@ const increment: PdkBuilderCommand = async (context) => {
           let output: VersionReplacerOutput;
 
           if (args.verbose >= VerbosityLevel.Verbose) {
-            debug('Processing %s', logSourcePath(env, filePath));
+            debug('Processing %s', logSourcePath(filePath, context));
           }
 
           if (isOfType<RegexVersionSource>(match, 'regex')) {

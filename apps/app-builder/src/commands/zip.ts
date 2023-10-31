@@ -30,14 +30,14 @@ const zip: PdkBuilderCommand = async (context) => {
       const platformDistPath = getPlatformDistPath(platformContext);
 
       if (!(await validateDistPath(platformContext))) {
-        debug('Skipping because %s does not exist.', logTargetPath(env, platformDistPath));
+        debug('Skipping because %s does not exist.', logTargetPath(platformDistPath, platformContext));
         return;
       }
 
       const archivePath = resolvePath([config.outDir, config.archiveFilename], platformContext);
 
       if (await exists(archivePath)) {
-        debug('Removing existing file %s...', logSourcePath(env, archivePath));
+        debug('Removing existing file %s...', logSourcePath(archivePath, context));
 
         if (!args.dryRun) {
           await fs.promises.rm(archivePath);
@@ -45,7 +45,7 @@ const zip: PdkBuilderCommand = async (context) => {
       }
 
       if (args.verbose > VerbosityLevel.Verbose) {
-        debug('Compressing %s...', logTargetPath(env, archivePath));
+        debug('Compressing %s...', logTargetPath(archivePath, platformContext));
       }
 
       if (!args.dryRun) {
@@ -57,7 +57,7 @@ const zip: PdkBuilderCommand = async (context) => {
       }
 
       if (args.verbose > VerbosityLevel.Verbose) {
-        debug('Compressed %s', logTargetPath(env, archivePath));
+        debug('Compressed %s', logTargetPath(archivePath, platformContext));
       }
     }),
   );

@@ -12,7 +12,7 @@ import {type PdkBuilderCommand} from '../types';
 import {VerbosityLevel} from '../constants';
 
 const dumpAutoload: PdkBuilderCommand = async (context) => {
-  const {args, config, debug, env} = context;
+  const {args, config, debug} = context;
 
   if (args.dryRun) reportDryRun(debug);
 
@@ -26,7 +26,7 @@ const dumpAutoload: PdkBuilderCommand = async (context) => {
       const autoloadPath = resolvePath([platformDistPath, 'vendor', 'autoload.php'], context);
 
       if (args.verbose >= VerbosityLevel.VeryVeryVerbose) {
-        debug(`Removing ${logSourcePath(env, autoloadPath)}`);
+        debug(`Removing ${logSourcePath(autoloadPath, platformContext)}`);
       }
 
       if (!args.dryRun) {
@@ -35,7 +35,7 @@ const dumpAutoload: PdkBuilderCommand = async (context) => {
 
       await executeCommand(platformContext, 'composer', [
         'dump-autoload',
-        `--working-dir=${getRelativePath({env, filePath: platformDistPath})}`,
+        `--working-dir=${getRelativePath(platformDistPath, platformContext)}`,
         '--classmap-authoritative',
       ]);
     }),

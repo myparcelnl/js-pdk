@@ -12,6 +12,7 @@ import {
   logTargetPath,
   replaceCaseSensitive,
   reportDryRun,
+  resolvePath,
   validateDistPath,
 } from '../utils';
 import {type PdkBuilderCommand} from '../types';
@@ -33,11 +34,11 @@ const rename: PdkBuilderCommand = async (context) => {
       const platformDistPath = getPlatformDistPath(platformContext);
 
       if (!(await validateDistPath(platformContext))) {
-        debug('Skipping because %s does not exist.', logRelativePath(env, platformDistPath));
+        debug('Skipping because %s does not exist.', logRelativePath(platformDistPath, platformContext));
         return;
       }
 
-      debug('Renaming files in %s', logRelativePath(env, platformDistPath));
+      debug('Renaming files in %s', logRelativePath(platformDistPath, platformContext));
 
       const files = glob.sync(`${platformDistPath}/**/*`, {
         ignore: [`${platformDistPath}/node_modules/**/*`, `${platformDistPath}/vendor/**/*`],
@@ -46,8 +47,8 @@ const rename: PdkBuilderCommand = async (context) => {
 
       await Promise.all(
         files.map(async (file) => {
-          const source = path.resolve(env.cwd, file);
-          const target = path.resolve(env.cwd, platformDistPath, file);
+          const source = resolvePath(file, platformContext);
+          const target = resolvePath([platformDistPath, file], platformContext);
 
           const filename = path.basename(file);
 
@@ -60,8 +61,8 @@ const rename: PdkBuilderCommand = async (context) => {
           if (args.verbose > VerbosityLevel.VeryVeryVerbose) {
             debug(
               '%s -> %s',
-              logSourcePath(env, file),
-              logTargetPath(env, [platformDistPath, file.replace(filename, targetFileName)].join(path.sep)),
+              logSourcePath(file, platformContext),
+              logTargetPath([platformDistPath, file.replace(filename, targetFileName)].join(path.sep), platformContext),
             );
           }
 
@@ -71,7 +72,7 @@ const rename: PdkBuilderCommand = async (context) => {
         }),
       );
 
-      debug('Finished renaming files in %s', logRelativePath(env, platformDistPath));
+      debug('Finished renaming files in %s', logRelativePath(platformDistPath, platformContext));
     }),
   );
 };

@@ -26,16 +26,17 @@ const copy: PdkBuilderCommand = async (context) => {
     'Copying %s files from %s to %s for platforms %s',
     chalk.greenBright(files.length),
     chalk.yellow(resolvedSources),
-    logTargetPath(env, config.outDir),
+    logTargetPath(config.outDir, context),
     logPlatforms(config.platforms),
   );
 
   await executePromises(
     args,
     config.platforms.map(async (platform) => {
-      const platformDistPath = getPlatformDistPath(addPlatformToContext(context, platform));
+      const platformContext = addPlatformToContext(context, platform);
+      const platformDistPath = getPlatformDistPath(platformContext);
 
-      debug('Copying files to %s', logTargetPath(env, platformDistPath));
+      debug('Copying files to %s', logTargetPath(platformDistPath, platformContext));
 
       const promises = await Promise.all(
         files.sort().map(async (file) => {
@@ -46,7 +47,7 @@ const copy: PdkBuilderCommand = async (context) => {
         }),
       );
 
-      debug('Finished copying files to %s', logTargetPath(env, platformDistPath));
+      debug('Finished copying files to %s', logTargetPath(platformDistPath, platformContext));
 
       return promises;
     }),

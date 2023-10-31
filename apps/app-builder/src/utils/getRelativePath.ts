@@ -1,6 +1,6 @@
 import path from 'path';
-import {type LiftoffEnv} from 'liftoff';
+import {type PdkBuilderContext} from '../types';
 
-export const getRelativePath = ({env, filePath}: {env: LiftoffEnv; filePath: string}): string => {
-  return path.relative(env.cwd, filePath);
+export const getRelativePath = (filePath: string, context: PdkBuilderContext): string => {
+  return path.relative(context.env.cwd, filePath);
 };
