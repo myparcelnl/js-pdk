@@ -18,6 +18,9 @@ export {
   getFileContents,
   getPlatformDistPath,
   mkdirs,
+  resolvePath,
+  resolveString,
+  resolveStrings,
 } from './utils';
 
 export const defineConfig = <C extends PdkBuilderConfig | (() => PdkBuilderConfig)>(config: C): C => config;

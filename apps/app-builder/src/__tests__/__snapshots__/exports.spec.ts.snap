@@ -13,5 +13,8 @@ exports[`exports > exports from index.ts 1`] = `
   "getFileContents",
   "getPlatformDistPath",
   "mkdirs",
+  "resolvePath",
+  "resolveString",
+  "resolveStrings",
 ]
 `;
