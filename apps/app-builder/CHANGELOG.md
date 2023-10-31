@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.52](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.51...@myparcel-pdk/app-builder@1.0.0-alpha.52) "@myparcel-pdk/app-builder" (2023-10-31)
+
+
+### Features
+
+* **app-builder:** improve php scoping functionality ([faec2f8](https://github.com/myparcelnl/js-pdk/commit/faec2f84880aae4475bb109637e065da871e7baf))
+
+
+
+
 ## [1.0.0-alpha.51](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.50...@myparcel-pdk/app-builder@1.0.0-alpha.51) "@myparcel-pdk/app-builder" (2023-10-30)
 
 
