@@ -5,7 +5,9 @@ import {executeCommand} from '../../../utils';
 export const getComposerPackageVersion = async (context: UpgradeSubContext): Promise<ParsedEntry[]> => {
   const {config, packageName} = context;
 
-  const output = await executeCommand(context, config.composerCommand, ['show', '--format=json', packageName]);
+  const output = await executeCommand(context, config.composerCommand, ['show', '--format=json', packageName], {
+    stdio: 'pipe',
+  });
 
   const json = JSON.parse(output);
 

@@ -7,12 +7,12 @@ export async function getPackageEntriesForYarn(
 ): Promise<ParsedEntry[]> {
   const {config} = context;
 
-  const content = await executeCommand(context, config.nodePackageManagerCommand, [
-    'info',
-    '--all',
-    '--name-only',
-    '--json',
-  ]);
+  const content = await executeCommand(
+    context,
+    config.nodePackageManagerCommand,
+    ['info', '--all', '--name-only', '--json'],
+    {stdio: 'pipe'},
+  );
 
   return content
     .split('\n')

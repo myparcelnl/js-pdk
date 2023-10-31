@@ -5,7 +5,9 @@ export async function getPackageEntriesForBun(
   context: UpgradeSubContextWithLockfile,
   resolvedPackageName: string,
 ): Promise<ParsedEntry[]> {
-  const content = await executeCommand(context, context.config.nodePackageManagerCommand, ['pm', 'ls', '--all']);
+  const content = await executeCommand(context, context.config.nodePackageManagerCommand, ['pm', 'ls', '--all'], {
+    stdio: 'pipe',
+  });
 
   return content
     .split('\n')
@@ -15,9 +17,6 @@ export async function getPackageEntriesForBun(
 
       const [, name, version] = regex.exec(line) ?? [];
 
-      return {
-        name,
-        version,
-      };
+      return {name, version};
     });
 }
