@@ -22,6 +22,7 @@ export * from './mergeDefaultConfig';
 export * from './parseCommand';
 export * from './parseCommandInput';
 export * from './parseJsonFile';
+export * from './composerInstall';
 export * from './registerCommand';
 export * from './reportDryRun';
 export * from './resolveConfig';

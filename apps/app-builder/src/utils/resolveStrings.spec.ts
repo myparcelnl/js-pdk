@@ -24,7 +24,7 @@ describe('resolveStrings', () => {
     },
     {
       input: '{{phpScoper.outDir}}/src/**/*',
-      output: ['.tmp/build/src/**/*'],
+      output: ['.tmp/scoped/source/src/**/*'],
     },
   ] satisfies TestInput[])('resolves strings with $input', ({input, output}) => {
     const result = resolveStrings(createTestContext(), input);

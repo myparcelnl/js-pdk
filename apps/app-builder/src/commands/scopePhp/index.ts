@@ -1,5 +1,5 @@
 import path from 'path';
-import {executeCommand, exists, reportDryRun, resolveString, usesPhpScoper} from '../../utils';
+import {composerInstall, exists, reportDryRun, resolveString, usesPhpScoper} from '../../utils';
 import {type PdkBuilderCommand} from '../../types';
 import {runPhpScoper} from './runPhpScoper';
 import {installPhpScoper} from './installPhpScoper';
@@ -14,8 +14,7 @@ const scopePhp: PdkBuilderCommand = async (context) => {
 
   if (args.dryRun) reportDryRun(debug);
 
-  await executeCommand(context, 'composer', ['install', '--no-dev', '--no-interaction', '--no-progress']);
-
+  await composerInstall(context, ['--no-dev']);
   await installPhpScoper(context);
 
   debug('Scoping php files...');
