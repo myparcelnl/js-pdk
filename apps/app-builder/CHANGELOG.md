@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.54](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.53...@myparcel-pdk/app-builder@1.0.0-alpha.54) "@myparcel-pdk/app-builder" (2023-10-31)
+
+
+### Bug Fixes
+
+* **app-builder:** export even more methods ([66e3845](https://github.com/myparcelnl/js-pdk/commit/66e38458ee0cd8e16f77eed20841aebfe3408afd))
+
+
+
+
 ## [1.0.0-alpha.53](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.52...@myparcel-pdk/app-builder@1.0.0-alpha.53) "@myparcel-pdk/app-builder" (2023-10-31)
 
 
