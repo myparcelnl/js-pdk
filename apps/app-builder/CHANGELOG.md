@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.59](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.58...@myparcel-pdk/app-builder@1.0.0-alpha.59) "@myparcel-pdk/app-builder" (2023-10-31)
+
+
+### Bug Fixes
+
+* **app-builder:** add globFiles util ([8efe70c](https://github.com/myparcelnl/js-pdk/commit/8efe70c7318c0d90743bb109b43ebd9a82f48d86))
+
+
+
+
 ## [1.0.0-alpha.58](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.57...@myparcel-pdk/app-builder@1.0.0-alpha.58) "@myparcel-pdk/app-builder" (2023-10-31)
 
 
