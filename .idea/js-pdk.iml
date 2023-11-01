@@ -16,7 +16,7 @@
       <excludePattern pattern="lib" />
       <excludePattern pattern="dist" />
       <excludePattern pattern="coverage" />
-      <excludePattern pattern="vite.config.ts.timestamp-*" />
+      <excludePattern pattern="*.config.ts.timestamp-*" />
       <excludePattern pattern=".*cache" />
       <excludePattern pattern=".tmp" />
     </content>
