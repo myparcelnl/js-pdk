@@ -22,7 +22,7 @@ import {
 import {REGEX_VERSION} from '../constants';
 
 const increment: PdkBuilderCommand = async (context) => {
-  const {env, config, args, debug} = context;
+  const {config, args, debug} = context;
   const newVersion = args.version ?? config.version;
 
   debug('Incrementing version to %s', chalk.greenBright(newVersion));

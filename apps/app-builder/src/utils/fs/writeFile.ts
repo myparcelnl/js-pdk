@@ -8,7 +8,11 @@ import {isVeryVerbose, shouldModifyFiles} from '../command';
 import {type PdkBuilderContext, type StringGenerator} from '../../types';
 import {mkdirs} from './mkdirs';
 
-export const writeFile = async (filePath: OneOrMore<StringGenerator>, contents: string, context: PdkBuilderContext) => {
+export const writeFile = async (
+  filePath: OneOrMore<StringGenerator>,
+  contents: string,
+  context: PdkBuilderContext,
+): Promise<void> => {
   const resolvedPath = resolvePath(filePath, context);
 
   await mkdirs(path.dirname(resolvedPath), context);
