@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.124](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.123...@myparcel-pdk/admin-component-tests@1.0.0-alpha.124) "@myparcel-pdk/admin-component-tests" (2023-11-01)
+
+
+
+
 ## [1.0.0-alpha.117](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.116...@myparcel-pdk/admin-component-tests@1.0.0-alpha.117) "@myparcel-pdk/admin-component-tests" (2023-10-11)
 
 
