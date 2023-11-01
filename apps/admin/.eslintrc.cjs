@@ -7,7 +7,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['./**/*.ts'],
+      files: ['./src/*.ts'],
       plugins: ['sort-exports'],
       rules: {
         'sort-exports/sort-exports': ['warn', {sortDir: 'asc', sortExportKindFirst: 'type'}],

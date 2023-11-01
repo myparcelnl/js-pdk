@@ -23,7 +23,7 @@
 
 <script lang="ts" setup>
 import {computed, type PropType} from 'vue';
-import {type Notification} from '@myparcel-pdk/admin';
+import {type PdkNotification} from '@myparcel-pdk/admin';
 import {toArray} from '@myparcel/ts-utils';
 
 const props = defineProps({
@@ -31,7 +31,7 @@ const props = defineProps({
    * The notification to display.
    */
   notification: {
-    type: Object as PropType<Notification>,
+    type: Object as PropType<PdkNotification>,
     required: true,
   },
 });

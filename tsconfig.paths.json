@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "paths": {
-      "@myparcel-pdk/admin-*": ["./libs/admin/*/src"],
       "@myparcel-pdk/checkout-*": ["./libs/checkout/*/src"],
       "@myparcel-pdk/backend-*": ["./libs/backend/*/src"],
       "@myparcel-pdk/*": ["./apps/*/src", "./libs/*/src"]

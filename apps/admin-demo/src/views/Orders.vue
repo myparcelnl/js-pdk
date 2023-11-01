@@ -55,7 +55,7 @@ import {
   useModalStore,
   useQueryStore,
   useStoreQuery,
-} from '@myparcel-pdk/admin/integrated';
+} from '@myparcel-pdk/admin';
 
 const queryStore = useQueryStore();
 queryStore.registerOrderQueries();

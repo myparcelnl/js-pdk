@@ -1,5 +1,4 @@
 import {type H3Event} from 'h3';
-import {BackendEndpoint} from '@myparcel-pdk/admin-common';
 import {getItemsByParameter} from '../../src/utils/getItemsByParameter';
 import {getContext} from '../../src/utils/getContext';
 
@@ -11,13 +10,13 @@ const resolveAction = async (event: H3Event): Promise<{key: string; response: Re
   }
 
   switch (query.action) {
-    case BackendEndpoint.FetchOrders:
+    case 'fetchOrders':
       return {
         key: 'orders',
         response: await getItemsByParameter('orders', query.orderIds),
       };
 
-    case BackendEndpoint.FetchContext:
+    case 'fetchContext':
       return {
         key: 'context',
         response: await getContext(event),

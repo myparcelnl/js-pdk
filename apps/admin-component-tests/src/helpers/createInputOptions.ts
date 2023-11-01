@@ -1,5 +1,5 @@
 import {type ComponentMountingOptions} from '@vue/test-utils';
-import {createFormElement, type ElementInstance} from '@myparcel-pdk/admin-core';
+import {createFormElement, type ElementInstance} from '@myparcel-pdk/admin';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 
 export const createInputOptions = <T>(

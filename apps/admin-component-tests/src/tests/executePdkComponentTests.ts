@@ -1,10 +1,9 @@
 import {type Component} from 'vue';
-import {type AdminComponent} from '@myparcel-pdk/admin-common';
-import {doComponentTestSetup} from '../index';
+import {type AdminComponent, testing} from '@myparcel-pdk/admin';
 import {executeAdminComponentTest} from './executeAdminComponentTest';
 
 export const executePdkComponentTests = (components: Partial<Record<AdminComponent, Component>>): void => {
-  doComponentTestSetup();
+  testing.doComponentTestSetup();
 
   Object.entries(components).forEach(([name, component]) => {
     if (!component) {

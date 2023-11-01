@@ -1,7 +1,3 @@
-import {testing} from '@myparcel-pdk/admin-core';
-
-export const {doComponentTestSetup, doComponentTestTeardown} = testing;
+export * from '@myparcel-pdk/admin';
 
 export {executeAdminComponentTest, executePdkComponentTests} from './tests';
-
-export {testing as setup} from '@myparcel-pdk/admin-core';

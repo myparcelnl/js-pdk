@@ -1,8 +1,13 @@
 /* eslint-disable no-magic-numbers */
 import {type Component} from 'vue';
 import {afterAll, afterEach, beforeAll, beforeEach, describe, test, vi} from 'vitest';
-import {type AdminInstance, createAdminConfig, createLogger} from '@myparcel-pdk/admin-core';
-import {type AdminComponent, type AdminView} from '@myparcel-pdk/admin-common';
+import {
+  type AdminComponent,
+  type AdminInstance,
+  type AdminView,
+  createAdminConfig,
+  createLogger,
+} from '@myparcel-pdk/admin';
 import {testMap} from './testMap';
 
 export const executeAdminComponentTest = (name: AdminComponent, component: Omit<Component, 'props'>): void => {

@@ -44,7 +44,7 @@
 
 <script lang="ts" setup>
 import {RouterLink, RouterView, useRouter} from 'vue-router';
-import {ModalsView, NotificationsView} from '@myparcel-pdk/admin/integrated';
+import {ModalsView, NotificationsView} from '@myparcel-pdk/admin';
 
 const routes = useRouter()
   .getRoutes()
