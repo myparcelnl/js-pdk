@@ -1,10 +1,15 @@
 export type {
   AddressFields,
+  CheckoutStoreState,
   FrontendEndpointData,
   FrontendEndpointDefinition,
   FrontendEndpointParameters,
   FrontendEndpointResponse,
   FrontendPdkEndpointObject,
+  PdkCheckoutConfig,
+  PdkCheckoutConfigInput,
+  PdkCheckoutForm,
+  StoreCallbackUpdate,
 } from '@myparcel-pdk/checkout-common';
 
 export type {
@@ -15,15 +20,24 @@ export type {
   DeliveryOptionsStoreState,
 } from '@myparcel-pdk/checkout-delivery-options';
 
-export type {
-  CheckoutStoreState,
-  PdkCheckoutConfig,
-  PdkCheckoutConfigInput,
-  PdkCheckoutForm,
-  StoreCallbackUpdate,
-} from '@myparcel-pdk/checkout-core';
-
-export {AddressField, AddressType, FrontendEndpoint, PdkEvent, PdkField} from '@myparcel-pdk/checkout-common';
+export {
+  AddressField,
+  AddressType,
+  FrontendEndpoint,
+  PdkEvent,
+  PdkField,
+  PdkUtil,
+  StoreListener,
+  /** @deprecated use PdkUtil */
+  PdkUtil as Util,
+  globals as _,
+  createPdkCheckout,
+  useCheckoutStore,
+  useEvent,
+  usePdkCheckout,
+  useSettings,
+  useUtil,
+} from '@myparcel-pdk/checkout-common';
 
 export {
   DeliveryOptionsMode,
@@ -40,18 +54,6 @@ export {
   EVENT_UPDATE_CONFIG,
   EVENT_UPDATE_DELIVERY_OPTIONS,
 } from '@myparcel-pdk/delivery-options';
-
-export {
-  StoreListener,
-  Util,
-  globals as _,
-  createPdkCheckout,
-  useCheckoutStore,
-  useEvent,
-  usePdkCheckout,
-  useSettings,
-  useUtil,
-} from '@myparcel-pdk/checkout-core';
 
 export {initializeCheckoutSeparateAddressFields} from '@myparcel-pdk/checkout-separate-address-fields';
 

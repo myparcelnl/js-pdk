@@ -15,6 +15,7 @@ exports[`exports > exports from index.ts 1`] = `
   "PdkDeliveryOptionsEvent",
   "PdkEvent",
   "PdkField",
+  "PdkUtil",
   "StoreListener",
   "Util",
   "_",

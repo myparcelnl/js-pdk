@@ -1,10 +1,10 @@
 {
-  "name": "@myparcel-pdk/checkout",
-  "version": "1.0.0-alpha.76",
+  "name": "@myparcel-pdk/checkout-common",
+  "version": "1.0.0-alpha.8",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
-    "directory": "apps/checkout"
+    "directory": "libs/checkout-common"
   },
   "license": "MIT",
   "sideEffects": false,
@@ -18,7 +18,6 @@
   "scripts": {
     "build": "run ws:ts:build \"$(pwd)\"",
     "clean": "run ws:clean \"$(pwd)\"",
-    "emit": "run ws:ts:emit \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
     "test": "run ws:test \"$(pwd)\"",
@@ -28,10 +27,6 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.8",
-    "@myparcel-pdk/checkout-delivery-options": "workspace:^1.0.0-alpha.39",
-    "@myparcel-pdk/checkout-separate-address-fields": "workspace:^1.0.0-alpha.39",
-    "@myparcel-pdk/checkout-tax-fields": "workspace:^1.0.0-alpha.40",
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.58"
   },
   "engines": {

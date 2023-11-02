@@ -2011,30 +2011,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout-common@workspace:^1.0.0-alpha.8, @myparcel-pdk/checkout-common@workspace:libs/checkout/common":
+"@myparcel-pdk/checkout-common@workspace:^1.0.0-alpha.8, @myparcel-pdk/checkout-common@workspace:libs/checkout-common":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/checkout-common@workspace:libs/checkout/common"
+  resolution: "@myparcel-pdk/checkout-common@workspace:libs/checkout-common"
   dependencies:
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.58"
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout-core@workspace:^1.0.0-alpha.39, @myparcel-pdk/checkout-core@workspace:libs/checkout/core":
+"@myparcel-pdk/checkout-delivery-options@workspace:^1.0.0-alpha.39, @myparcel-pdk/checkout-delivery-options@workspace:libs/checkout-delivery-options":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/checkout-core@workspace:libs/checkout/core"
+  resolution: "@myparcel-pdk/checkout-delivery-options@workspace:libs/checkout-delivery-options"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.8"
-    "@myparcel/ts-utils": ^1.12.0
-  languageName: unknown
-  linkType: soft
-
-"@myparcel-pdk/checkout-delivery-options@workspace:^1.0.0-alpha.39, @myparcel-pdk/checkout-delivery-options@workspace:libs/checkout/delivery-options":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/checkout-delivery-options@workspace:libs/checkout/delivery-options"
-  dependencies:
-    "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/checkout-core": "workspace:^1.0.0-alpha.39"
     "@myparcel-pdk/delivery-options": "workspace:^1.0.0-alpha.12"
     "@myparcel/delivery-options": ^5.7.2
     "@myparcel/ts-utils": ^1.9.0
@@ -2050,21 +2040,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout-separate-address-fields@workspace:^1.0.0-alpha.39, @myparcel-pdk/checkout-separate-address-fields@workspace:libs/checkout/separate-address-fields":
+"@myparcel-pdk/checkout-separate-address-fields@workspace:^1.0.0-alpha.39, @myparcel-pdk/checkout-separate-address-fields@workspace:libs/checkout-separate-address-fields":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/checkout-separate-address-fields@workspace:libs/checkout/separate-address-fields"
+  resolution: "@myparcel-pdk/checkout-separate-address-fields@workspace:libs/checkout-separate-address-fields"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/checkout-core": "workspace:^1.0.0-alpha.39"
+    "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.8"
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout-tax-fields@workspace:^1.0.0-alpha.40, @myparcel-pdk/checkout-tax-fields@workspace:libs/checkout/tax-fields":
+"@myparcel-pdk/checkout-tax-fields@workspace:^1.0.0-alpha.40, @myparcel-pdk/checkout-tax-fields@workspace:libs/checkout-tax-fields":
   version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/checkout-tax-fields@workspace:libs/checkout/tax-fields"
+  resolution: "@myparcel-pdk/checkout-tax-fields@workspace:libs/checkout-tax-fields"
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/checkout-core": "workspace:^1.0.0-alpha.39"
+    "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.8"
   languageName: unknown
   linkType: soft
 
@@ -2072,7 +2062,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/checkout@workspace:apps/checkout"
   dependencies:
-    "@myparcel-pdk/checkout-core": "workspace:^1.0.0-alpha.39"
+    "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.8"
     "@myparcel-pdk/checkout-delivery-options": "workspace:^1.0.0-alpha.39"
     "@myparcel-pdk/checkout-separate-address-fields": "workspace:^1.0.0-alpha.39"
     "@myparcel-pdk/checkout-tax-fields": "workspace:^1.0.0-alpha.40"
@@ -2221,7 +2211,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel/ts-utils@npm:^1.12.0, @myparcel/ts-utils@npm:^1.6.0, @myparcel/ts-utils@npm:^1.7.0, @myparcel/ts-utils@npm:^1.9.0":
+"@myparcel/ts-utils@npm:^1.6.0, @myparcel/ts-utils@npm:^1.7.0, @myparcel/ts-utils@npm:^1.9.0":
   version: 1.12.0
   resolution: "@myparcel/ts-utils@npm:1.12.0"
   checksum: 8627a0946e97f8ece44c3a9e1a762ce3ccdf6f0b68f39f225e02e451a5aa9c520dad018b51efd3e9e58b6bd0a654911f226fc59bef1e6d9e5e9fd287a7df4e7d
