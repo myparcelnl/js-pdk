@@ -1,11 +1,10 @@
 import scopePhp from './index';
 import * as child_process from 'child_process';
-import {afterEach, describe, expect, it, vi} from 'vitest';
+import {describe, expect, it, vi} from 'vitest';
 import {resolveString} from '../../utils';
 import {type PdkBuilderContext} from '../../types';
 import {fsModifyingMethodSpies} from '../../__tests__/spies/fs';
-import {mockFileSystem, restoreFileSystem} from '../../__tests__/mockFileSystem';
-import {createTestContext} from '../../__tests__/createTestContext';
+import {mockFileSystemAndCreateContext} from '../../__tests__/mockFileSystemAndCreateContext';
 import {MOCK_ROOT_DIR} from '../../__tests__/constants';
 import {PACKAGE_NAME} from './constants';
 
@@ -14,7 +13,7 @@ const mockStdout = vi.fn(() => '');
 const ARGS_COMPOSER_INSTALL = [
   'composer',
   expect.arrayContaining(['install', '--no-dev']),
-  expect.objectContaining({cwd: MOCK_ROOT_DIR}),
+  expect.objectContaining({cwd: expect.stringContaining(MOCK_ROOT_DIR)}),
 ];
 
 const getScoperInstallArgs = (context: PdkBuilderContext) => {
@@ -51,32 +50,29 @@ vi.mock('child_process', () => ({
 }));
 
 describe('command: scopePhp', () => {
-  afterEach(async () => {
-    await restoreFileSystem();
-    vi.restoreAllMocks();
-  });
-
-  it("installs php scoper if it isn't installed yet", async () => {
+  it("installs php scoper if it isn't installed yet", async (ctx) => {
     expect.assertions(4);
     const INSTALL_DIR = '.scoped/php-scoper';
 
-    await mockFileSystem({
-      'scoper2.inc.php': '<?php return [];',
-      'scoper2.vendor.inc.php': '<?php return [];',
-    });
-
-    const context = createTestContext({
-      config: {
-        phpScoper: {
-          configFile: 'scoper2.inc.php',
-          installDir: INSTALL_DIR,
-          outDir: '.scoped/source',
-          vendorConfigFile: 'scoper2.vendor.inc.php',
-          vendorOutDir: '.scoped/vendor',
-          version: '^0.17.0',
+    const context = await mockFileSystemAndCreateContext(
+      ctx,
+      {
+        'scoper2.inc.php': '<?php return [];',
+        'scoper2.vendor.inc.php': '<?php return [];',
+      },
+      {
+        config: {
+          phpScoper: {
+            configFile: 'scoper2.inc.php',
+            installDir: INSTALL_DIR,
+            outDir: '.scoped/source',
+            vendorConfigFile: 'scoper2.vendor.inc.php',
+            vendorOutDir: '.scoped/vendor',
+            version: '^0.17.0',
+          },
         },
       },
-    });
+    );
 
     await scopePhp(context);
     const {outDir, vendorOutDir} = context.config.phpScoper;
@@ -87,24 +83,26 @@ describe('command: scopePhp', () => {
     expect(child_process.spawnSync).toHaveBeenNthCalledWith(4, ...getScoperRunArgs(outDir, context));
   });
 
-  it('skips install if php scoper is already installed', async () => {
+  it('skips install if php scoper is already installed', async (ctx) => {
     expect.assertions(3);
-    await mockFileSystem({
-      '.tmp': {
-        'php-scoper': {
-          'composer.json': '{}',
+    const context = await mockFileSystemAndCreateContext(
+      ctx,
+      {
+        '.tmp': {
+          'php-scoper': {
+            'composer.json': '{}',
+          },
+        },
+        'scoper.inc.php': '<?php return [];',
+      },
+      {
+        config: {
+          phpScoper: {
+            installDir: '.tmp/php-scoper',
+          },
         },
       },
-      'scoper.inc.php': '<?php return [];',
-    });
-
-    const context = createTestContext({
-      config: {
-        phpScoper: {
-          installDir: '.tmp/php-scoper',
-        },
-      },
-    });
+    );
 
     await scopePhp(context);
 
@@ -115,43 +113,55 @@ describe('command: scopePhp', () => {
     expect(child_process.spawnSync).toHaveBeenNthCalledWith(2, ...getScoperRunArgs(outDir, context));
   });
 
-  it('does not do anything if php scoper is disabled', async () => {
+  it('does not do anything if php scoper is disabled', async (ctx) => {
     expect.assertions(1);
-    await mockFileSystem({
-      'scoper.inc.php': '<?php return [];',
-    });
 
-    await scopePhp(createTestContext({config: {phpScoper: {enabled: false}}}));
+    const context = await mockFileSystemAndCreateContext(
+      ctx,
+      {
+        'scoper.inc.php': '<?php return [];',
+      },
+      {config: {phpScoper: {enabled: false}}},
+    );
+
+    await scopePhp(context);
 
     expect(child_process.spawnSync).not.toHaveBeenCalled();
   });
 
-  it('does not do anything if no config is found', async () => {
+  it('does not do anything if no config is found', async (ctx) => {
     expect.assertions(1);
-    await mockFileSystem();
 
-    await scopePhp(createTestContext());
+    const context = await mockFileSystemAndCreateContext(ctx);
+
+    await scopePhp(context);
 
     expect(child_process.spawnSync).not.toHaveBeenCalled();
   });
 
-  it('throws error if php scoper is enabled but config file does not exist', async () => {
+  it('throws error if php scoper is enabled but config file does not exist', async (ctx) => {
     expect.assertions(1);
-    await mockFileSystem({
-      'scoper.inc.php': '<?php return [];',
-    });
+    const context = await mockFileSystemAndCreateContext(
+      ctx,
+      {
+        'scoper.inc.php': '<?php return [];',
+      },
+      {
+        config: {phpScoper: {enabled: true, configFile: 'non-existing-file.php'}},
+      },
+    );
 
-    await expect(() =>
-      scopePhp(createTestContext({config: {phpScoper: {enabled: true, configFile: 'non-existing-file.php'}}})),
-    ).rejects.toThrowError('File non-existing-file.php not found in root of project');
+    await expect(() => scopePhp(context)).rejects.toThrowError(
+      'File non-existing-file.php not found in root of project',
+    );
   });
 
-  it('does nothing when dry run is passed', async () => {
+  it('does nothing when dry run is passed', async (ctx) => {
     expect.assertions(fsModifyingMethodSpies.length);
 
-    await mockFileSystem({dist: {'text.txt': ''}});
+    const context = await mockFileSystemAndCreateContext(ctx, {dist: {'text.txt': ''}}, {args: {dryRun: true}});
 
-    await scopePhp(createTestContext({args: {dryRun: true}}));
+    await scopePhp(context);
 
     fsModifyingMethodSpies.forEach((spy) => {
       expect(spy).not.toHaveBeenCalled();

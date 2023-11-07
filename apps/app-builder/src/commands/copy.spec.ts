@@ -1,53 +1,44 @@
 import path from 'path';
 import fs from 'fs';
-import {afterEach, describe, expect, it, vi} from 'vitest';
+import {describe, expect, it} from 'vitest';
 import glob from 'fast-glob';
 import {PdkPlatformName} from '../types';
 import {fsModifyingMethodSpies} from '../__tests__/spies/fs';
-import {mockFileSystem, restoreFileSystem} from '../__tests__/mockFileSystem';
-import {createTestContext} from '../__tests__/createTestContext';
-import {MOCK_ROOT_DIR} from '../__tests__/constants';
+import {mockFileSystemAndCreateContext} from '../__tests__/mockFileSystemAndCreateContext';
 import copy from './copy';
 
 describe('command: copy', () => {
-  afterEach(async () => {
-    await restoreFileSystem();
-    vi.restoreAllMocks();
-  });
-
-  it('does nothing when dry run is passed', async () => {
+  it('does nothing when dry run is passed', async (ctx) => {
     expect.assertions(fsModifyingMethodSpies.length);
 
-    await mockFileSystem({dist: {'text.txt': ''}});
+    const context = await mockFileSystemAndCreateContext(ctx, {dist: {'text.txt': ''}}, {args: {dryRun: true}});
 
-    await copy(createTestContext({args: {dryRun: true}}));
+    await copy(context);
 
     fsModifyingMethodSpies.forEach((spy) => {
       expect(spy).not.toHaveBeenCalled();
     });
   });
 
-  it('copies files', async () => {
+  it('copies files', async (ctx) => {
     expect.assertions(3);
-
-    await mockFileSystem();
 
     const platforms = [PdkPlatformName.MyParcelBe, PdkPlatformName.MyParcelNl];
 
-    await copy(
-      createTestContext({
-        args: {dryRun: false},
-        config: {
-          source: ['composer.json', 'package.json', 'src/**/*', 'config/**/*', '!src/index.php'],
-          outDir: 'copyResult',
-          platforms,
-        },
-      }),
-    );
+    const context = await mockFileSystemAndCreateContext(ctx, undefined, {
+      args: {dryRun: false},
+      config: {
+        source: ['composer.json', 'package.json', 'src/**/*', 'config/**/*', '!src/index.php'],
+        outDir: 'copyResult',
+        platforms,
+      },
+    });
+
+    await copy(context);
 
     const platformDirs = platforms.map((platform) => `${platform}-test`);
 
-    const outDir = path.resolve(MOCK_ROOT_DIR, 'copyResult');
+    const outDir = path.resolve(context.env.cwd, 'copyResult');
 
     expect(await fs.promises.readdir(outDir)).toEqual(platformDirs);
 

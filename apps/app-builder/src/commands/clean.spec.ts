@@ -1,50 +1,43 @@
-import {afterEach, describe, expect, it, vi} from 'vitest';
+import {describe, expect, it} from 'vitest';
 import {exists} from '../utils';
 import {fsModifyingMethodSpies} from '../__tests__/spies/fs';
-import {mockFileSystem, restoreFileSystem} from '../__tests__/mockFileSystem';
-import {createTestContext} from '../__tests__/createTestContext';
-import {MOCK_ROOT_DIR} from '../__tests__/constants';
+import {mockFileSystemAndCreateContext} from '../__tests__/mockFileSystemAndCreateContext';
 import clean from './clean';
 
 describe('command: clean', () => {
-  afterEach(async () => {
-    await restoreFileSystem();
-    vi.restoreAllMocks();
-  });
-
-  it('does nothing when dry run is passed', async () => {
+  it('does nothing when dry run is passed', async (ctx) => {
     expect.assertions(fsModifyingMethodSpies.length);
 
-    await mockFileSystem({dist: {'text.txt': ''}});
+    const context = await mockFileSystemAndCreateContext(ctx, {dist: {'text.txt': ''}}, {args: {dryRun: true}});
 
-    await clean(createTestContext({args: {dryRun: true}}));
+    await clean(context);
 
     fsModifyingMethodSpies.forEach((spy) => {
       expect(spy).not.toHaveBeenCalled();
     });
   });
 
-  it('does nothing when outDir does not exist', async () => {
+  it('does nothing when outDir does not exist', async (ctx) => {
     expect.assertions(fsModifyingMethodSpies.length);
 
-    await mockFileSystem();
+    const context = await mockFileSystemAndCreateContext(ctx);
 
-    await clean(createTestContext());
+    await clean(context);
 
     fsModifyingMethodSpies.forEach((spy) => {
       expect(spy).not.toHaveBeenCalled();
     });
   });
 
-  it('cleans dir', async () => {
+  it('cleans dir', async (ctx) => {
     expect.assertions(2);
 
-    await mockFileSystem({dist: {'text.txt': ''}});
+    const context = await mockFileSystemAndCreateContext(ctx, {dist: {'text.txt': ''}}, {args: {dryRun: false}});
 
-    expect(await exists(`${MOCK_ROOT_DIR}/dist/text.txt`)).toBe(true);
+    expect(await exists(`${context.env.cwd}/dist/text.txt`)).toBe(true);
 
-    await clean(createTestContext({args: {dryRun: false}}));
+    await clean(context);
 
-    expect(await exists(`${MOCK_ROOT_DIR}/dist/text.txt`)).toBe(false);
+    expect(await exists(`${context.env.cwd}/dist/text.txt`)).toBe(false);
   });
 });

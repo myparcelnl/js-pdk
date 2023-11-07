@@ -4,9 +4,7 @@ import {createDebugger, mergeDefaultConfig} from '../utils';
 import {type CommandArgs, type PdkBuilderContext, PdkPlatformName} from '../types';
 import {MOCK_ROOT_DIR} from './constants';
 
-type Input = RecursivePartial<PdkBuilderContext>;
-
-export const createTestContext = (context?: Input): PdkBuilderContext => {
+export const createTestContext = (context?: RecursivePartial<PdkBuilderContext>): PdkBuilderContext => {
   const args = {
     arguments: [],
     command: new Command(),
