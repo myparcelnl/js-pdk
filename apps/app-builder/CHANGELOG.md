@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.64](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.63...@myparcel-pdk/app-builder@1.0.0-alpha.64) "@myparcel-pdk/app-builder" (2023-11-07)
+
+
+### Bug Fixes
+
+* **app-builder:** fix semver diff import ([0634316](https://github.com/myparcelnl/js-pdk/commit/06343166d1b479819c1e3d4cccdf83b2eed8294f))
+
+
+
+
 ## [1.0.0-alpha.63](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.62...@myparcel-pdk/app-builder@1.0.0-alpha.63) "@myparcel-pdk/app-builder" (2023-11-07)
 
 
