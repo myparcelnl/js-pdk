@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.62](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.61...@myparcel-pdk/app-builder@1.0.0-alpha.62) "@myparcel-pdk/app-builder" (2023-11-07)
+
+
+### Bug Fixes
+
+* **app-builder:** add -R flag to yarn up ([e4e3701](https://github.com/myparcelnl/js-pdk/commit/e4e3701f8df97382acd47b691ea62b17906a6723))
+
+
+
+
 ## [1.0.0-alpha.61](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.60...@myparcel-pdk/app-builder@1.0.0-alpha.61) "@myparcel-pdk/app-builder" (2023-11-01)
 
 
