@@ -12,7 +12,7 @@ export const executeNodeUpgrade = async (context: UpgradeSubContextWithLockfile)
       break;
 
     case NodePackageManager.Yarn:
-      upgradeArgs.push('up', packageName);
+      upgradeArgs.push('up', '-R', packageName);
       break;
   }
 
