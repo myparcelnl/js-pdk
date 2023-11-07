@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.63](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.62...@myparcel-pdk/app-builder@1.0.0-alpha.63) "@myparcel-pdk/app-builder" (2023-11-07)
+
+
+### Features
+
+* **app-builder:** determine commit type based on upgraded versions ([c8353fb](https://github.com/myparcelnl/js-pdk/commit/c8353fb105b2b6fcd950f545bd71e4b586abd168))
+
+
+
+
 ## [1.0.0-alpha.62](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.61...@myparcel-pdk/app-builder@1.0.0-alpha.62) "@myparcel-pdk/app-builder" (2023-11-07)
 
 
