@@ -1,12 +1,12 @@
 import {VerbosityLevel} from '../../constants';
 import {type UpgradedEntry, type UpgradeSubContext} from './types';
+import {getCommitType} from './getCommitType';
 
-export const createCommitMessage = (
-  upgradedVersions: UpgradedEntry[],
-  {packageName, debug, args}: UpgradeSubContext,
-): string => {
+export const createCommitMessage = (upgradedVersions: UpgradedEntry[], context: UpgradeSubContext): string => {
+  const {packageName, debug, args} = context;
+
   const lines: string[] = [];
-  const commitType = args.commitType ?? 'chore';
+  const commitType = getCommitType(context, upgradedVersions);
 
   if (upgradedVersions.length === 1) {
     lines.push(`${commitType}(deps): upgrade ${upgradedVersions[0].name} to v${upgradedVersions[0].version}`);

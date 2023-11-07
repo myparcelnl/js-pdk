@@ -6,6 +6,8 @@ export type {PdkBuilderCommand, StringGenerator} from './types';
 
 export type {PdkBuilderConfig};
 
+export {COMMIT_TYPE_AUTO} from './constants';
+
 export {PdkPlatformName} from './types';
 
 export {

@@ -16,6 +16,7 @@ import {
   COMMAND_TRANSLATIONS_NAME,
   COMMAND_UPGRADE_NAME,
   COMMAND_ZIP_NAME,
+  COMMIT_TYPE_AUTO,
   TITLE,
 } from './constants';
 
@@ -108,7 +109,7 @@ const COMMAND_UPGRADE: CommandDefinition = {
     OPTION_QUIET,
     OPTION_DRY_RUN,
     ['-l, --lockfile <lockfile>', 'Provide an alternative path to a lockfile.'],
-    ['--commit-type <type>', 'Commit type', 'chore'],
+    ['--commit-type <type>', 'Commit type', COMMIT_TYPE_AUTO],
     ['--no-check', 'Skip checking whether the lockfile is modified.'],
     ['--no-commit', 'Skip creating a commit.'],
   ],

@@ -1,6 +1,5 @@
-import {type LiftoffEnv} from 'liftoff';
 import {type MakeOptional, type PromiseOr} from '@myparcel/ts-utils';
-import {type CommandArgs, type PdkDebugger, type ResolvedPdkBuilderConfig} from '../../types';
+import {type CommandArgs, type PdkBuilderContext} from '../../types';
 
 export interface ParsedEntry {
   name: string;
@@ -10,7 +9,7 @@ export interface ParsedEntry {
 
 export interface UpgradedEntry extends ParsedEntry {
   oldVersion: string | undefined;
-  repository: string | undefined;
+  repository?: string | undefined;
 }
 
 export type UpgradeCommandArgs = CommandArgs & {
@@ -25,11 +24,7 @@ export type InputUpgradeCommandArgs = MakeOptional<
   'composerCommand' | 'yarnCommand' | 'rootCommand'
 >;
 
-export interface UpgradeSubContext {
-  args: UpgradeCommandArgs;
-  config: ResolvedPdkBuilderConfig;
-  debug: PdkDebugger;
-  env: LiftoffEnv;
+export interface UpgradeSubContext extends PdkBuilderContext<UpgradeCommandArgs> {
   mode: UpgradeMode;
   packageName: string;
 }

@@ -187,6 +187,12 @@ export type PdkBuilderConfig = {
     vendorOutDir?: string;
   };
 
+  /**
+   * Commit type to use when running the `upgrade` command. Set to auto to compute the commit type based on the
+   * upgraded versions.
+   */
+  commitType?: string | 'auto' | 'chore' | 'feat' | 'fix';
+
   additionalCommands?: CommandDefinition[];
 
   hooks?: CommandHooksObject;

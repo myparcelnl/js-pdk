@@ -2,6 +2,7 @@
 
 exports[`exports > exports from index.ts 1`] = `
 [
+  "COMMIT_TYPE_AUTO",
   "PdkPlatformName",
   "addPlatformToContext",
   "copyFile",

@@ -62,3 +62,5 @@ export const PLATFORM_SHEET_ID_MAP = {
   // eslint-disable-next-line @typescript-eslint/no-magic-numbers
   [PdkPlatformName.MyParcelNl]: 1550017884,
 } satisfies Record<PdkPlatformName, number>;
+
+export const COMMIT_TYPE_AUTO = 'auto';

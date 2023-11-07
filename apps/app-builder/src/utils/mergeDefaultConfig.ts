@@ -1,11 +1,12 @@
 import {type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types';
-import {DEFAULT_JSON_SPACES} from '../constants';
+import {COMMIT_TYPE_AUTO, DEFAULT_JSON_SPACES} from '../constants';
 import {NodePackageManager} from '../commands/upgrade/types';
 
 export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilderConfig => {
   const resolvedConfig = {
     additionalCommands: [],
     archiveFilename: '{{platform}}-{{name}}-{{version}}.zip',
+    commitType: COMMIT_TYPE_AUTO,
     composerCommand: 'composer',
     debug: false,
     jsonSpaces: DEFAULT_JSON_SPACES,
@@ -35,12 +36,12 @@ export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilder
       sheetId: 0,
       ...config.translations,
     },
-  };
+  } satisfies PdkBuilderConfig;
 
   return {
     ...resolvedConfig,
     yarnCommand: resolvedConfig.yarnCommand ?? 'yarn',
     nodePackageManagerCommand:
       resolvedConfig.nodePackageManagerCommand ?? resolvedConfig.yarnCommand ?? resolvedConfig.nodePackageManager,
-  };
+  } satisfies ResolvedPdkBuilderConfig;
 };
