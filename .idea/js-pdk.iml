@@ -12,6 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/apps/backend-demo/.output" />
       <excludeFolder url="file://$MODULE_DIR$/apps/admin-demo/src/translations" />
       <excludeFolder url="file://$MODULE_DIR$/apps/backend-demo/data" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/app-builder/.test" />
       <excludePattern pattern="yarn.lock" />
       <excludePattern pattern="lib" />
       <excludePattern pattern="dist" />
