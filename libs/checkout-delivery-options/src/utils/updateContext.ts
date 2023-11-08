@@ -1,5 +1,5 @@
 import {FrontendEndpoint, PdkField, PdkUtil, useCheckoutStore, useUtil} from '@myparcel-pdk/checkout-common';
-import {useDeliveryOptionsStore} from '../store';
+import {useDeliveryOptionsStore} from './useDeliveryOptionsStore';
 
 /**
  * Fetch and update the delivery options config. For use with changing shipping methods, for example, as doing so

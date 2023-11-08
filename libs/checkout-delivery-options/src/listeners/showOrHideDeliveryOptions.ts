@@ -1,6 +1,6 @@
 import {type StoreCallbackUpdate} from '@myparcel-pdk/checkout-common';
 import {debounce, deliveryOptionsIsRendered, toggleDeliveryOptions} from '../utils';
-import {type DeliveryOptionsStoreState} from '../types/store.types';
+import {type DeliveryOptionsStoreState} from '../types';
 
 export const showOrHideDeliveryOptions: StoreCallbackUpdate<DeliveryOptionsStoreState> = debounce(
   (newState, oldState) => {

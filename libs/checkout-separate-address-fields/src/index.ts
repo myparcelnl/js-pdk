@@ -1,8 +1,8 @@
-import {StoreListener, useCheckoutStore} from '@myparcel-pdk/checkout-common';
-import {fillAddress1, prepareFields, synchronizeAddressOnCountryChange} from './utils';
-import {synchronizeAddress1} from './listeners';
+// noinspection JSUnusedGlobalSymbols
 
-export type {AllAddressFields} from './types';
+import {StoreListener, useCheckoutStore} from '@myparcel-pdk/checkout-common';
+import {fillAddress1, prepareFields} from './utils';
+import {synchronizeAddress1, synchronizeAddressOnCountryChange} from './listeners';
 
 export type {SeparateAddressFields} from './types';
 

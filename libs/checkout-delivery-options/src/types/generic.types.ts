@@ -1,6 +1,6 @@
 import {type Replace} from '@myparcel/ts-utils';
 import {type MyParcelDeliveryOptions} from '@myparcel/delivery-options';
-import {type DeliveryOptionsStoreState} from './types/store.types';
+import {type DeliveryOptionsStoreState} from './store.types';
 
 export enum PdkDeliveryOptionsEvent {
   DeliveryOptionsUpdated = 'deliveryOptionsUpdated',

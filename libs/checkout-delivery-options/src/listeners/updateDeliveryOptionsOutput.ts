@@ -1,6 +1,6 @@
 import {PdkUtil, useEvent, useUtil} from '@myparcel-pdk/checkout-common';
+import {useDeliveryOptionsStore} from '../utils';
 import {PdkDeliveryOptionsEvent} from '../types';
-import {useDeliveryOptionsStore} from '../store';
 
 export const updateDeliveryOptionsOutput = (event: Event): void => {
   const isOfType = useUtil(PdkUtil.IsOfType);

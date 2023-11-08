@@ -4,9 +4,14 @@ exports[`exports > exports from index.ts 1`] = `
 [
   "DeliveryOptionsMode",
   "PdkDeliveryOptionsEvent",
-  "createDeliveryOptionsStore",
+  "debounce",
+  "deliveryOptionsIsRendered",
+  "getDeliveryOptionsAddress",
   "getResolvedSettings",
   "initializeCheckoutDeliveryOptions",
+  "shippingMethodHasDeliveryOptions",
+  "toggleDeliveryOptions",
+  "updateContext",
   "useDeliveryOptionsStore",
 ]
 `;

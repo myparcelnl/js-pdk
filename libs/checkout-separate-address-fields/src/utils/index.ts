@@ -7,5 +7,4 @@ export * from './prepareFields';
 export * from './setFullStreet';
 export * from './splitAddress';
 export * from './splitFullStreet';
-export * from './synchronizeAddressOnCountryChange';
 export * from './triggerFormChange';

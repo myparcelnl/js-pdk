@@ -1,8 +1,8 @@
-import {type DeliveryOptionsStoreState} from '../types/store.types';
 import {
   type CheckoutDeliveryOptionsSettings,
   type CheckoutDeliveryOptionsSettingsInput,
   DeliveryOptionsMode,
+  type DeliveryOptionsStoreState,
 } from '../types';
 
 export const getResolvedSettings = (
