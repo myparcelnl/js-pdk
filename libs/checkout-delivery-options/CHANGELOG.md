@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.41](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.40...@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.41) "@myparcel-pdk/checkout-delivery-options" (2023-11-08)
+
+
+### Features
+
+* **checkout:** export more variables and types ([c1b4d08](https://github.com/myparcelnl/js-pdk/commit/c1b4d08aede0a80b187b657e6b500d37f54da541))
+
+
+
+
 ## [1.0.0-alpha.40](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.39...@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.40) "@myparcel-pdk/checkout-delivery-options" (2023-11-02)
 
 
