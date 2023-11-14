@@ -23,11 +23,11 @@
         </div>
 
         <div
-          v-if="context"
+          v-if="isActive"
           class="modal-body">
           <NotificationContainer :category="NotificationCategory.Modal" />
 
-          <slot :context="context" />
+          <slot :context="modalStore.context" />
         </div>
 
         <div class="modal-footer">
@@ -77,13 +77,18 @@ const {translate} = useLanguage();
 
 const modalStore = useModalStore();
 
-const context = computed(() => {
-  return props.modalKey && props.modalKey === modalStore.opened ? modalStore.context : null;
-});
+const isActive = computed(() => props.modalKey && props.modalKey === modalStore.opened);
 
 const id = `pdk-modal-${props.modalKey}`;
 
 onMounted(() => {
-  jQuery(`#${id}`).modal();
+  const $this = jQuery(`#${id}`);
+
+  // @ts-expect-error show is not in the type definition
+  $this.modal({show: isActive.value});
+
+  $this.on('hidden.bs.modal', () => {
+    modalStore.close();
+  });
 });
 </script>
