@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.123](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.122...@myparcel-pdk/admin@1.0.0-alpha.123) "@myparcel-pdk/admin" (2023-11-14)
+
+
+### Bug Fixes
+
+* **admin:** fix carriers disappearing after switching ([5b13f2c](https://github.com/myparcelnl/js-pdk/commit/5b13f2c1a41fa5dd9a1a13ca0945c901411d723d))
+* **admin:** fix carriers disappearing after switching ([9c419bc](https://github.com/myparcelnl/js-pdk/commit/9c419bc4842b6d499b58b4728a56e53b714937a9))
+
+
+
+
 ## [1.0.0-alpha.122](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.121...@myparcel-pdk/admin@1.0.0-alpha.122) "@myparcel-pdk/admin" (2023-11-14)
 
 
