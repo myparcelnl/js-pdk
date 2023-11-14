@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.122](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.121...@myparcel-pdk/admin@1.0.0-alpha.122) "@myparcel-pdk/admin" (2023-11-14)
+
+
+### Bug Fixes
+
+* **admin:** fix shipment options modals not changing context ([94902f9](https://github.com/myparcelnl/js-pdk/commit/94902f955921d3e740eee9092d5999c22ca94591))
+
+
+
+
 ## [1.0.0-alpha.121](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.120...@myparcel-pdk/admin@1.0.0-alpha.121) "@myparcel-pdk/admin" (2023-11-02)
 
 

@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.125](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.124...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.125) "@myparcel-pdk/admin-preset-bootstrap4" (2023-11-14)
+
+
+### Bug Fixes
+
+* **admin-preset-bootstrap4:** fix modal not initializing on mount ([1e32bf2](https://github.com/myparcelnl/js-pdk/commit/1e32bf27e507d7bf8d0b3ecf0d331e88183b93d3))
+
+
+
+
 ## [1.0.0-alpha.123](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.122...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.123) "@myparcel-pdk/admin-preset-bootstrap4" (2023-11-01)
 
 
