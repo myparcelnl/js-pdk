@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.127](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.126...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.127) "@myparcel-pdk/admin-preset-bootstrap4" (2023-11-14)
+
+
+### Bug Fixes
+
+* **admin-preset-bootstrap4:** improve modal opening and closing logic ([75e73a5](https://github.com/myparcelnl/js-pdk/commit/75e73a57352ca1fb6fe45cd7da89e74ef43f5680))
+
+
+
+
 ## [1.0.0-alpha.125](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.124...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.125) "@myparcel-pdk/admin-preset-bootstrap4" (2023-11-14)
 
 

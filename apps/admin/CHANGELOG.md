@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-alpha.124](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.123...@myparcel-pdk/admin@1.0.0-alpha.124) "@myparcel-pdk/admin" (2023-11-14)
+
+
+### Bug Fixes
+
+* **admin:** fix print options modal not rendering correctly ([fb12829](https://github.com/myparcelnl/js-pdk/commit/fb12829a6a01b35bcb7fd1ca213e27f4953ac3ad))
+
+
+
+
 ## [1.0.0-alpha.123](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.122...@myparcel-pdk/admin@1.0.0-alpha.123) "@myparcel-pdk/admin" (2023-11-14)
 
 
