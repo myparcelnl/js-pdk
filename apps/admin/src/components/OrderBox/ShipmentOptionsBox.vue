@@ -15,7 +15,9 @@
             {{ translate('notification_order_exported') }}
           </template>
 
-          <ShipmentOptionsForm v-else />
+          <ShipmentOptionsForm
+            v-else
+            :order="data?.externalIdentifier" />
         </PdkCol>
       </PdkRow>
     </template>

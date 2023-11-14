@@ -4,7 +4,10 @@
     :actions="actions"
     :modal-key="AdminModalKey.ShipmentOptions"
     title="shipment_options_title">
-    <ShipmentOptionsModalForm />
+    <component
+      :is="ShipmentOptionsModalForm"
+      :key="JSON.stringify(orderIds)"
+      v-bind="{order: orderIds}" />
   </PdkModal>
 </template>
 
@@ -12,7 +15,6 @@
 import {computed, defineAsyncComponent} from 'vue';
 import {get} from '@vueuse/core';
 import {AdminModalKey} from '../../types';
-import {useQueryStore} from '../../stores';
 import {instantiateActions} from '../../services';
 import {useOrdersData, usePluginSettings} from '../../composables';
 import {
@@ -31,16 +33,15 @@ import {
 const ShipmentOptionsModalForm = defineAsyncComponent(() => import('./ShipmentOptionsModalForm.vue'));
 
 const pluginSettings = usePluginSettings();
-const queryStore = useQueryStore();
 
 const {orderMode} = pluginSettings.order;
 
-queryStore.registerOrderQueries();
+const ordersData = computed(() => useOrdersData());
 
-const ordersData = useOrdersData();
+const orderIds = computed(() => get(ordersData).map((data) => get(data.order)?.externalIdentifier));
 
 const actions = computed(() => {
-  const disabled = ordersData.some((data) => get(data.query.isLoading));
+  const disabled = get(ordersData).some((data) => get(data.query.isLoading));
 
   const actions = [
     modalCloseAction,
