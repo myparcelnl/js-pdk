@@ -1,6 +1,6 @@
 <template>
   <div
-    :id="`pdk-modal-${modalKey}`"
+    :id="id"
     class="fade modal"
     role="dialog"
     tabindex="-1">
@@ -25,7 +25,7 @@
         <div
           v-if="context"
           class="modal-body">
-          <NotificationContainer category="modal" />
+          <NotificationContainer :category="NotificationCategory.Modal" />
 
           <slot :context="context" />
         </div>
@@ -44,12 +44,13 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, type PropType} from 'vue';
+import {computed, onMounted, type PropType} from 'vue';
 import {
   ActionButton,
   type ActionDefinition,
   AdminIcon,
   type AdminModalKey,
+  NotificationCategory,
   NotificationContainer,
   useLanguage,
   useModalStore,
@@ -78,5 +79,11 @@ const modalStore = useModalStore();
 
 const context = computed(() => {
   return props.modalKey && props.modalKey === modalStore.opened ? modalStore.context : null;
+});
+
+const id = `pdk-modal-${props.modalKey}`;
+
+onMounted(() => {
+  jQuery(`#${id}`).modal();
 });
 </script>
