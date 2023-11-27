@@ -20,6 +20,7 @@
       <excludePattern pattern="*.config.ts.timestamp-*" />
       <excludePattern pattern=".*cache" />
       <excludePattern pattern=".tmp" />
+      <excludePattern pattern=".nx" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
