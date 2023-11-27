@@ -694,8 +694,6 @@ export namespace Settings {
 }
 
 export namespace Shipment {
-  import ModelCarrier = Carrier.ModelCarrier;
-
   export type CustomsDeclarationItemCollection = ModelCustomsDeclarationItem[];
 
   export type DeliveryTypeCollection = ModelDeliveryType[];
@@ -725,7 +723,7 @@ export namespace Shipment {
   };
 
   export type ModelDeliveryOptions = {
-    carrier?: ModelCarrier;
+    carrier?: Carrier.ModelCarrier;
     date?: DateTime;
     deliveryType?: DeliveryTypeName;
     labelAmount: number;

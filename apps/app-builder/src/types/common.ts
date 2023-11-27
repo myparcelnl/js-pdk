@@ -1,5 +1,3 @@
-import {type PackageJson} from 'nx/src/utils/package-json';
-
 export type StringGenerator = string | ((platform?: PdkPlatformName) => string);
 
 export enum PdkPlatformName {
@@ -8,7 +6,7 @@ export enum PdkPlatformName {
   MyParcelNl = 'myparcelnl',
 }
 
-export type NpmInfo = PackageJson & {
+export type NpmInfo = Record<string, unknown> & {
   repository?:
     | {
         url: string;

@@ -1,11 +1,9 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
     "declaration": true,
-    "importsNotUsedAsValues": "remove",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "noEmitOnError": false,
-    "preserveValueImports": false,
     "types": ["node", "vite/client"]
   },
   "include": [],
