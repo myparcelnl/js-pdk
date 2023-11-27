@@ -14,6 +14,7 @@ libs/**/tsconfig.json
 .vitest-result.json
 stats.html
 node_modules
+.nx
 
 # Temporary build files
 vite.config.ts.timestamp-*
