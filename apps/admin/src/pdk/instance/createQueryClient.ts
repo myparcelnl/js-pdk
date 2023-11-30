@@ -7,15 +7,10 @@ const clearApiNotifications = () => {
   useNotificationStore().remove(NotificationCategory.Api);
 };
 
-const addApiErrorNotification = (error: unknown) => {
-  addErrorToNotifications(error, NotificationCategory.Api);
-};
-
 export const createQueryClient = (): QueryClient =>
   new QueryClient({
     defaultOptions: {
       mutations: {
-        onError: addApiErrorNotification,
         onMutate: clearApiNotifications,
         retry: false,
       },
@@ -24,7 +19,6 @@ export const createQueryClient = (): QueryClient =>
         behavior: {
           onFetch: clearApiNotifications,
         },
-        onError: addApiErrorNotification,
         refetchInterval: false,
         refetchOnMount: false,
         refetchOnReconnect: false,

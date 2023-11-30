@@ -20,7 +20,7 @@ export interface PdkNotification {
   /**
    * Arbitrary tags that can be set to distinguish notifications from each other.
    */
-  tags?: Record<string, unknown>;
+  tags?: Record<string, string>;
   timeout?: boolean | number;
   title?: string;
   variant: Variant;

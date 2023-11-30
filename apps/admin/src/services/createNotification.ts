@@ -1,5 +1,5 @@
 import {type Variant} from '@myparcel-pdk/common';
-import {type PdkNotification} from '../types';
+import {type PdkNotification, NotificationCategory} from '../types';
 import {useLanguage} from '../composables';
 
 const PREFIX = 'notification_';
@@ -21,7 +21,7 @@ export const createNotification = (
     return notification;
   }
 
-  const title = `${PREFIX}${identifier ?? options?.category}_${variant}`;
+  const title = `${PREFIX}${identifier ?? options?.category ?? NotificationCategory.General}_${variant}`;
   const contentKey = `${title}_body`;
 
   const content = language.has(contentKey) ? language.translate(contentKey) : undefined;

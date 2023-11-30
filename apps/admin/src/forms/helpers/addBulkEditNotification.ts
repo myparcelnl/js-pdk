@@ -11,8 +11,8 @@ export const addBulkEditNotification = (isModal: boolean): void => {
   notificationStore.add({
     id: TRANSLATION_KEY,
     variant: Variant.Info,
-    category: isModal ? NotificationCategory.Modal : undefined,
     content: `${TRANSLATION_KEY}_description`,
+    category: isModal ? NotificationCategory.Modal : NotificationCategory.General,
     title: TRANSLATION_KEY,
     timeout: false,
   } as PdkNotification);

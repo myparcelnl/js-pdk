@@ -11,7 +11,9 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script
+  lang="ts"
+  setup>
 import {computed} from 'vue';
 import {type NotificationFilter} from '../../types';
 import {useNotificationStore} from '../../stores';
@@ -19,7 +21,7 @@ import {useAdminConfig} from '../../composables';
 import {NotificationCategory} from "../../data";
 
 const props = defineProps<{
-  category: NotificationCategory;
+  category?: NotificationCategory;
   filter?: NotificationFilter;
 }>();
 
@@ -29,7 +31,7 @@ const notifications = computed(() => {
   const {notifications} = useNotificationStore();
 
   return notifications.filter((notification) => {
-    return notification.category === props.category && (props.filter ? props.filter?.(notification) : true);
+    return props.category === notification.category && (props.filter ? props.filter?.(notification) : true);
   });
 });
 </script>
