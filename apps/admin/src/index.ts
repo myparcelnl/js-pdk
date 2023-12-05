@@ -16,8 +16,6 @@ export type {
   PdkNotification as Notification,
 } from './types';
 
-export * as testing from './__tests__';
-
 export * from './actions';
 export * from './types';
 
