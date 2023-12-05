@@ -1,6 +1,7 @@
 import path from 'path';
 import {type OneOrMore} from '@myparcel/ts-utils';
-import {type PdkBuilderContext, type PdkPlatformName, type StringGenerator} from '../types';
+import {type PdkBuilderContext, type StringGenerator} from '../types';
+import {type PdkPlatformName} from '../constants';
 import {resolveStrings} from './resolveStrings';
 
 export const resolvePath = (

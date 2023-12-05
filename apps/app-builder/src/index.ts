@@ -8,7 +8,7 @@ export type {PdkBuilderConfig};
 
 export {COMMIT_TYPE_AUTO} from './constants';
 
-export {PdkPlatformName} from './types';
+export {PdkPlatformName} from './constants';
 
 export {
   addPlatformToContext,

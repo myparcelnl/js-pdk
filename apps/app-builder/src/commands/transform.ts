@@ -15,7 +15,8 @@ import {
   validateDistPath,
   writeFile,
 } from '../utils';
-import {type PdkBuilderCommand, PdkPlatformName} from '../types';
+import {type PdkBuilderCommand} from '../types';
+import {PdkPlatformName} from '../constants';
 
 const SOURCE_PLATFORM = PdkPlatformName.MyParcelNl;
 

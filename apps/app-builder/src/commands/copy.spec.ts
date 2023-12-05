@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import {describe, expect, it} from 'vitest';
 import glob from 'fast-glob';
-import {PdkPlatformName} from '../types';
+import {PdkPlatformName} from '../constants';
 import {fsModifyingMethodSpies} from '../__tests__/spies/fs';
 import {mockFileSystemAndCreateContext} from '../__tests__/mockFileSystemAndCreateContext';
 import copy from './copy';

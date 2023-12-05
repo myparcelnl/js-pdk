@@ -1,10 +1,6 @@
-export type StringGenerator = string | ((platform?: PdkPlatformName) => string);
+import {type PdkPlatformName} from '../constants';
 
-export enum PdkPlatformName {
-  Flespakket = 'flespakket',
-  MyParcelBe = 'myparcelbe',
-  MyParcelNl = 'myparcelnl',
-}
+export type StringGenerator = string | ((platform?: PdkPlatformName) => string);
 
 export type NpmInfo = Record<string, unknown> & {
   repository?:

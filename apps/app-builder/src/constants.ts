@@ -1,5 +1,3 @@
-import {PdkPlatformName} from './types';
-
 export const TITLE = 'pdk-builder';
 
 export const COMMAND_BUILD_NAME = 'build';
@@ -28,21 +26,18 @@ export const COMMAND_UPGRADE_NAME = 'upgrade';
 
 export const COMMAND_ZIP_NAME = 'zip';
 
-export const ALL_COMMAND_NAMES = [
-  COMMAND_CLEAN_NAME,
-  COMMAND_COPY_NAME,
-  COMMAND_DUMP_AUTOLOAD_NAME,
-  COMMAND_INCREMENT_NAME,
-  COMMAND_INIT_NAME,
-  COMMAND_RENAME_NAME,
-  COMMAND_SCOPE_PHP_NAME,
-  COMMAND_TRANSFORM_NAME,
-  COMMAND_TRANSLATIONS_NAME,
-  COMMAND_UPGRADE_NAME,
-  COMMAND_ZIP_NAME,
-] as const;
-
-export type CommandName = (typeof ALL_COMMAND_NAMES)[number];
+export type CommandName =
+  | typeof COMMAND_CLEAN_NAME
+  | typeof COMMAND_COPY_NAME
+  | typeof COMMAND_DUMP_AUTOLOAD_NAME
+  | typeof COMMAND_INCREMENT_NAME
+  | typeof COMMAND_INIT_NAME
+  | typeof COMMAND_RENAME_NAME
+  | typeof COMMAND_SCOPE_PHP_NAME
+  | typeof COMMAND_TRANSFORM_NAME
+  | typeof COMMAND_TRANSLATIONS_NAME
+  | typeof COMMAND_UPGRADE_NAME
+  | typeof COMMAND_ZIP_NAME;
 
 export enum VerbosityLevel {
   Verbose = 1,
@@ -53,6 +48,12 @@ export enum VerbosityLevel {
 export const REGEX_VERSION = /(v?\d+\.\d+\.\d+(?:-\w+\.\d+)?)/;
 
 export const DEFAULT_JSON_SPACES = 2;
+
+export enum PdkPlatformName {
+  Flespakket = 'flespakket',
+  MyParcelBe = 'myparcelbe',
+  MyParcelNl = 'myparcelnl',
+}
 
 export const PLATFORM_SHEET_ID_MAP = {
   // eslint-disable-next-line @typescript-eslint/no-magic-numbers

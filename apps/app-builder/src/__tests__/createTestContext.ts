@@ -1,7 +1,8 @@
 import {Command} from 'commander';
 import {type RecursivePartial} from '@myparcel/ts-utils';
 import {createDebugger, mergeDefaultConfig} from '../utils';
-import {type CommandArgs, type PdkBuilderContext, PdkPlatformName} from '../types';
+import {type CommandArgs, type PdkBuilderContext} from '../types';
+import {PdkPlatformName} from '../constants';
 import {MOCK_ROOT_DIR} from './constants';
 
 export const createTestContext = (context?: RecursivePartial<PdkBuilderContext>): PdkBuilderContext => {

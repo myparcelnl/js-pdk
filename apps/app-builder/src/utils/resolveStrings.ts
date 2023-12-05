@@ -1,6 +1,7 @@
 import {get} from 'lodash-unified';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {type PdkBuilderContext, type PdkPlatformName, type StringGenerator} from '../types';
+import {type PdkBuilderContext, type StringGenerator} from '../types';
+import {type PdkPlatformName} from '../constants';
 import {resolveString} from './resolveString';
 
 type PdkBuilderContextWithPlatform = PdkBuilderContext<{platform?: PdkPlatformName}>;

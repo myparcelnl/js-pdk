@@ -1,5 +1,5 @@
-import {type PdkBuilderContext, type PdkPlatformName} from '../types';
-import {COMMAND_COPY_NAME} from '../constants';
+import {type PdkBuilderContext} from '../types';
+import {COMMAND_COPY_NAME, type PdkPlatformName} from '../constants';
 import {getPlatformDistPath} from './getPlatformDistPath';
 import {exists} from './fs';
 import {reportDirectoryDoesNotExist} from './debug';
