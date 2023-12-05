@@ -103,7 +103,6 @@ exports[`exports > exports from index.ts 1`] = `
   "shipmentsExportReturnAction",
   "shipmentsPrintAction",
   "shipmentsUpdateAction",
-  "testing",
   "updateAccountAction",
   "useActionStore",
   "useAdminConfig",

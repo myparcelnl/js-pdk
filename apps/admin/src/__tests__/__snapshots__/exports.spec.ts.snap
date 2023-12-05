@@ -101,7 +101,6 @@ exports[`exports > exports from index.ts 1`] = `
   "shipmentsExportReturnAction",
   "shipmentsPrintAction",
   "shipmentsUpdateAction",
-  "testing",
   "updateAccountAction",
   "useActionStore",
   "useAdminConfig",
@@ -155,5 +154,26 @@ exports[`exports > exports from index.ts 1`] = `
   "webhooksCreateAction",
   "webhooksDeleteAction",
   "webhooksFetchAction",
+]
+`;
+
+exports[`exports > exports from testing.ts 1`] = `
+[
+  "doComponentTestSetup",
+  "doComponentTestTeardown",
+  "mockDefaultAccount",
+  "mockDefaultAppConfig",
+  "mockDefaultAppInfo",
+  "mockDefaultCarriers",
+  "mockDefaultConfig",
+  "mockDefaultDynamicContext",
+  "mockDefaultEndpoints",
+  "mockDefaultGlobalContext",
+  "mockDefaultLogger",
+  "mockDefaultPlatform",
+  "mockDefaultPluginSettings",
+  "mockDefaultPrintOptionsView",
+  "mockDefaultShop",
+  "mockDefaultTranslations",
 ]
 `;
