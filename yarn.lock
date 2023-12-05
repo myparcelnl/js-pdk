@@ -1857,6 +1857,7 @@ __metadata:
     rollup-plugin-visualizer: "npm:^5.9.2"
     tailwindcss: "npm:^3.2.7"
     typescript: "npm:^5.2.2"
+    vite: "npm:^4.3.9"
     vite-plugin-custom-tsconfig: "npm:^1.0.4"
     vue: "npm:^3.3.0"
     vue-router: "npm:^4.1.6"
@@ -1998,7 +1999,6 @@ __metadata:
   resolution: "@myparcel-pdk/build-vite@workspace:libs/build-vite"
   dependencies:
     "@myparcel/ts-utils": "npm:^1.9.0"
-    "@pinia/testing": "npm:>= 0.1.0 < 1"
     "@vitejs/plugin-vue": "npm:^4.2.3"
     "@vitest/coverage-v8": "npm:>= 0.30.0 < 1"
     happy-dom: "npm:^12.2.1"
