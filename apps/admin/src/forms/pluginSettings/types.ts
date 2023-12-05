@@ -1,6 +1,7 @@
 import {type Plugin} from '@myparcel-pdk/common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
-import {type AdminAction, type AdminConfiguration, type TabDefinition} from '../../types';
+import {type AdminConfiguration, type TabDefinition} from '../../types';
+import {type AdminAction} from '../../data';
 import {type ActionContext} from '../../actions';
 
 export interface FormTab extends Omit<TabDefinition, 'component'> {

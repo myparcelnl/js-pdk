@@ -1,7 +1,7 @@
 import {QueryClient} from '@tanstack/vue-query';
-import {NotificationCategory} from '../../types';
 import {useNotificationStore} from '../../stores';
 import {addErrorToNotifications} from '../../services';
+import {NotificationCategory} from '../../data';
 
 const clearApiNotifications = () => {
   useNotificationStore().remove(NotificationCategory.Api);

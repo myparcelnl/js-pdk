@@ -49,7 +49,7 @@ import {
   ActionButton,
   type ActionDefinition,
   AdminIcon,
-  type AdminModalKey,
+  AdminModalKey,
   NotificationCategory,
   NotificationContainer,
   useLanguage,

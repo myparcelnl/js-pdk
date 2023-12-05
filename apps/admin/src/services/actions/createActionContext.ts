@@ -7,9 +7,9 @@ import {
   type AdminInstance,
   type AnyActionDefinition,
   type MaybeAdminAction,
-  NotificationCategory,
   type PdkNotification,
 } from '../../types';
+import {NotificationCategory} from '../../data';
 import {useAdminInstance} from '../../composables';
 import {type ActionContext} from '../../actions';
 import {getActionIdentifier} from './getActionIdentifier';

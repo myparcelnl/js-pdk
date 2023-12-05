@@ -1,5 +1,6 @@
-export enum AdminModalKey {
-  PrintOptions = 'printOptions',
-  ReturnOptions = 'returnOptions',
-  ShipmentOptions = 'shipmentOptions',
+export type ModalCallback = (id: string) => Promise<void> | void;
+
+export interface ModalCallbackProps {
+  onCancel: ModalCallback;
+  onSave: ModalCallback;
 }

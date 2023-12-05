@@ -1,7 +1,6 @@
 import {createMutationHandler} from '../executors';
 import {defineAction} from '../defineAction';
-import {AdminAction, AdminContextKey, AdminIcon} from '../../types';
-import {BackendEndpoint} from '../../data';
+import {AdminAction, AdminContextKey, AdminIcon, BackendEndpoint} from '../../data';
 
 /**
  * Update account.

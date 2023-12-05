@@ -1,4 +1,4 @@
-import {AdminModalKey} from '../../types';
+import {AdminModalKey} from '../../data';
 
 export const createShipmentFormName = (orderId?: string): string => {
   if (!orderId) {

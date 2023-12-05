@@ -28,7 +28,6 @@
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
-import {AdminIcon} from '../../types';
 import {instantiateActions} from '../../services';
 import {useLanguage, useOrderData, usePluginSettings} from '../../composables';
 import {
@@ -39,6 +38,7 @@ import {
   ordersUpdateAction,
   orderViewInBackofficeAction,
 } from '../../actions';
+import {AdminIcon} from "../../data";
 
 const {order: data, loading} = useOrderData();
 

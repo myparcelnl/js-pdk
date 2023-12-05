@@ -1,32 +1,5 @@
 import {type ReverseMap} from '@myparcel/ts-utils';
-import {type BackendEndpoint} from '../../data';
-
-export enum AdminAction {
-  ContextFetch = 'contextFetch',
-
-  AccountDelete = 'accountDelete',
-  AccountUpdate = 'accountUpdate',
-
-  OrdersExport = 'ordersExport',
-  OrdersExportPrint = 'ordersExportPrint',
-  OrdersPrint = 'ordersPrint',
-  OrdersFetch = 'ordersFetch',
-  OrdersUpdate = 'ordersUpdate',
-  OrdersEdit = 'ordersEdit',
-
-  ShipmentsDelete = 'shipmentsDelete',
-  ShipmentsPrint = 'shipmentsPrint',
-  ShipmentsUpdate = 'shipmentsUpdate',
-  ShipmentsFetch = 'shipmentsFetch',
-  ShipmentsExportReturn = 'shipmentsExportReturn',
-
-  PluginSettingsUpdate = 'pluginSettingsUpdate',
-  ProductSettingsUpdate = 'productSettingsUpdate',
-
-  WebhooksCreate = 'webhooksCreate',
-  WebhooksDelete = 'webhooksDelete',
-  WebhooksFetch = 'webhooksFetch',
-}
+import {type AdminAction, type BackendEndpoint} from '../../data';
 
 export type MaybeAdminAction = AdminAction | undefined;
 

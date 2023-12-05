@@ -1,7 +1,7 @@
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
+import {INJECT_ADMIN_INSTANCE} from '../../symbols';
 import {createLogger} from '../../services';
 import {createAdminConfig} from '../../pdk';
-import {INJECT_ADMIN_INSTANCE} from '../../data';
 import {useFormatter} from './useFormatter';
 import {Format, type FormatterTranslateFunction} from './formatter.types';
 

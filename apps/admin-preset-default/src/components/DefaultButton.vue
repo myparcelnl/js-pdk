@@ -22,7 +22,8 @@
  */
 
 import {type PropType} from 'vue';
-import {AdminComponent, type AdminIcon, Size, useLanguage} from '@myparcel-pdk/admin';
+import {AdminComponent, AdminIcon, Size, useLanguage} from '@myparcel-pdk/admin';
+
 
 defineProps({
   /**

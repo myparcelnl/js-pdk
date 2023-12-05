@@ -1,19 +1,13 @@
 import {computed, type ComputedRef, type Ref, ref} from 'vue';
 import {useLoading} from '../useLoading';
-import {type AdminModalKey} from '../../types';
+import {type ModalCallback} from '../../types';
 import {useModalStore} from '../../stores';
-
-export type ModalCallback = (id: string) => Promise<void> | void;
-
-export interface ModalCallbackProps {
-  onCancel: ModalCallback;
-  onSave: ModalCallback;
-}
+import {type AdminModalKey} from '../../data';
 
 type UseModalContext = (
   modalId?: Ref<null | AdminModalKey>,
-  onSave?: Ref<null | ModalCallback>,
-  onCancel?: Ref<null | ModalCallback>,
+  onSave?: Ref,
+  onCancel?: Ref,
 ) => null | {
   loading: Ref<boolean>;
   modalData: Ref;

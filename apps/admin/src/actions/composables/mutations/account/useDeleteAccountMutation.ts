@@ -1,9 +1,8 @@
 import {useQueryClient} from '@tanstack/vue-query';
 import {usePdkMutation} from '../usePdkMutation';
-import {AdminContextKey} from '../../../../types';
 import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
-import {BackendEndpoint} from '../../../../data';
+import {AdminContextKey, BackendEndpoint} from '../../../../data';
 
 export const useDeleteAccountMutation = (): ResolvedQuery<BackendEndpoint.DeleteAccount> => {
   const queryClient = useQueryClient();

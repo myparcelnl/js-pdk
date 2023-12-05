@@ -12,9 +12,9 @@ import {
   setFieldProp,
   updateFieldsDefaults,
 } from '../../helpers';
-import {AdminContextKey, type RadioGroupOption} from '../../../types';
+import {type RadioGroupOption} from '../../../types';
 import {useFetchCarrier} from '../../../sdk';
-import {AdminComponent} from '../../../data';
+import {AdminComponent, AdminContextKey} from '../../../data';
 import {useAssetUrl, useContext, useLanguage, useLocalizedFormatter} from '../../../composables';
 import {createRef} from './createRef';
 

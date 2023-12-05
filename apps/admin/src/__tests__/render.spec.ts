@@ -2,7 +2,7 @@
 import {defineComponent, h, inject, onMounted} from 'vue';
 import {describe, expect, it, vi} from 'vitest';
 import {mount} from '@vue/test-utils';
-import {INJECT_GLOBAL_PDK_ADMIN} from '../data';
+import {INJECT_GLOBAL_PDK_ADMIN} from '../symbols';
 
 describe.skip('rendering app pieces', () => {
   it('has unique context per piece', () => {

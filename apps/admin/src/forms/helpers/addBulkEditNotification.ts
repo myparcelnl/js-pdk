@@ -1,6 +1,7 @@
 import {Variant} from '@myparcel-pdk/common';
-import {NotificationCategory, type PdkNotification} from '../../types';
+import {type PdkNotification} from '../../types';
 import {useNotificationStore} from '../../stores';
+import {NotificationCategory} from '../../data';
 
 const TRANSLATION_KEY = 'bulk_orders_warning';
 

@@ -1,6 +1,7 @@
 import {inject} from 'vue';
-import {type AdminContext, type AdminInstanceContextKey, type AnyAdminContext} from '../../types';
-import {INJECT_ADMIN_INSTANCE} from '../../data';
+import {type AdminContext, type AnyAdminContext} from '../../types';
+import {INJECT_ADMIN_INSTANCE} from '../../symbols';
+import {type AdminInstanceContextKey} from '../../data';
 
 interface UseInstanceContext {
   <Key extends AdminInstanceContextKey>(contextKey: Key): AdminContext<Key>;

@@ -9,8 +9,8 @@ import {
   type Shipment,
 } from '@myparcel-pdk/common';
 import {type RecursivePartial} from '@myparcel/ts-utils';
-import {type BackendEndpoint} from '../data';
-import {type AdminContextKey, type AdminContextObject} from './context.types';
+import {type AdminContextKey, type BackendEndpoint} from '../data';
+import {type AdminContextObject} from './context.types';
 import {type WebhookDefinition} from './common.types';
 
 export type PdfUrlResponse = {

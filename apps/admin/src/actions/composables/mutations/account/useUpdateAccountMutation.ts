@@ -4,10 +4,10 @@ import {isOfType} from '@myparcel/ts-utils';
 import {type ApiException} from '@myparcel/sdk';
 import {usePdkMutation} from '../usePdkMutation';
 import {formToBody} from '../../../../utils';
-import {type ActionInput, AdminContextKey, NotificationCategory} from '../../../../types';
+import {type ActionInput} from '../../../../types';
 import {type ResolvedQuery, useNotificationStore} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
-import {BackendEndpoint} from '../../../../data';
+import {AdminContextKey, BackendEndpoint, NotificationCategory} from '../../../../data';
 import {useLanguage} from '../../../../composables';
 
 export const useUpdateAccountMutation = (): ResolvedQuery<BackendEndpoint.UpdateAccount> => {

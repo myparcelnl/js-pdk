@@ -1,6 +1,7 @@
 import {ref, type Ref, type UnwrapNestedRefs} from 'vue';
 import {defineStore} from 'pinia';
-import {type AdminModalContext, type AdminModalKey, NotificationCategory} from '../types';
+import {type AdminModalContext} from '../types';
+import {type AdminModalKey, NotificationCategory} from '../data';
 import {useLoading} from '../composables';
 import {useNotificationStore} from './useNotificationStore';
 

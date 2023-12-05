@@ -1,6 +1,6 @@
 import {type InjectionKey} from 'vue';
-import {type AdminInstance} from '../types';
-import {type PdkAdmin} from '../pdk';
+import {type AdminInstance} from './types';
+import {type PdkAdmin} from './pdk';
 
 export const INJECT_ADMIN_INSTANCE: InjectionKey<AdminInstance> = Symbol('instance');
 

@@ -12,9 +12,8 @@
  */
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {AdminContextKey} from '../types';
 import {useActionStore, useQueryStore} from '../stores';
-import {BackendEndpoint} from '../data';
+import {AdminContextKey, BackendEndpoint} from '../data';
 import {useStoreContextQuery} from '../composables';
 import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForms.vue';
 import AccountSettings from '../components/PluginSettings/AccountSettings.vue';

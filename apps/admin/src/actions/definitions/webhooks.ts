@@ -1,8 +1,7 @@
 import {Variant} from '@myparcel-pdk/common';
 import {createMutationHandler, createQueryHandler} from '../executors';
 import {defineAction} from '../defineAction';
-import {AdminAction, AdminIcon} from '../../types';
-import {BackendEndpoint} from '../../data';
+import {AdminAction, AdminIcon, BackendEndpoint} from '../../data';
 
 export const webhooksFetchAction = defineAction({
   name: AdminAction.WebhooksFetch,

@@ -1,7 +1,7 @@
 import {type Plugin} from '@myparcel-pdk/common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {type OneOrMore, type Replace} from '@myparcel/ts-utils';
-import {type AdminModalKey} from './modal.types';
+import {type AdminContextKey, type AdminInstanceContextKey, type AdminModalKey} from '../data';
 import {type BackendPdkEndpointObject} from './endpoints.types';
 
 export type AdminContextObject = Replace<Plugin.ModelContextContextBag, 'global', GlobalAdminContext> &
@@ -23,19 +23,3 @@ type BaseModalContext = {form?: FormInstance};
 export type AdminModalContext<T extends AdminModalKey = AdminModalKey> =
   | (BaseModalContext & (T extends AdminModalKey.ShipmentOptions ? {orderIds?: OneOrMore<string>} : unknown))
   | null;
-
-export enum AdminContextKey {
-  Global = 'global',
-  Dynamic = 'dynamic',
-  OrderData = 'orderData',
-  PluginSettingsView = 'pluginSettingsView',
-  ProductData = 'productData',
-  ProductSettingsView = 'productSettingsView',
-
-  Instance = 'instance',
-}
-
-export enum AdminInstanceContextKey {
-  OrderIdentifier = 'orderIdentifier',
-  ProductIdentifier = 'productIdentifier',
-}

@@ -1,7 +1,6 @@
 import {createQueryHandler} from '../executors';
 import {defineAction} from '../defineAction';
-import {AdminAction, AdminContextKey} from '../../types';
-import {BackendEndpoint} from '../../data';
+import {AdminAction, AdminContextKey, BackendEndpoint} from '../../data';
 
 /**
  * Retrieve context.

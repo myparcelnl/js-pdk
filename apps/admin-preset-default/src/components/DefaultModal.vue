@@ -51,7 +51,7 @@ import {
   ActionButton,
   type ActionDefinition,
   AdminComponent,
-  type AdminModalKey,
+  AdminModalKey,
   NotificationContainer,
   useLanguage,
   useModalElementContext,

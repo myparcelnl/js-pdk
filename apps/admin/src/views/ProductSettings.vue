@@ -9,11 +9,11 @@
 import {toRefs} from 'vue';
 import {get} from '@vueuse/core';
 import {defineForm, type FormInstance, MagicForm} from '@myparcel/vue-form-builder';
-import {AdminContextKey} from '../types';
 import {useQueryStore} from '../stores';
 import {FORM_KEY_CHILD_PRODUCT_SETTINGS, FORM_KEY_PRODUCT_SETTINGS, generateFormFields} from '../forms';
 import {useAdminConfig, useContext, useProductData} from '../composables';
 import {useUpdateProductSettingsMutation} from '../actions';
+import {AdminContextKey} from "../data";
 
 const props = withDefaults(
   defineProps<{

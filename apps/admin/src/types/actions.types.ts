@@ -1,13 +1,12 @@
 import {type MaybeRef} from '@vueuse/core';
 import {type Variant} from '@myparcel-pdk/common';
 import {type OneOrMore, type PromiseOr} from '@myparcel/ts-utils';
+import {type AdminAction, type AdminIcon} from '../data';
 import {type ActionContext, type ActionContextWithResponse, type QueryHandler} from '../actions';
 import {type Translation} from './language.types';
-import {type AdminIcon} from './common.types';
 import {
   type ActionParameters,
   type ActionResponse,
-  type AdminAction,
   type AdminActionEndpointMap,
   type MaybeAdminAction,
 } from './actions';

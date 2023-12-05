@@ -1,5 +1,5 @@
-import {NotificationCategory} from '../../types';
 import {useModalStore, useNotificationStore} from '../../stores';
+import {NotificationCategory} from '../../data';
 import {MutationMode} from './mutationMode';
 
 type Callback = (() => void) | undefined;

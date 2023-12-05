@@ -1,6 +1,7 @@
 import {type Component} from 'vue';
 import {type Variant} from '@myparcel-pdk/common';
 import {type OneOrMore} from '@myparcel/ts-utils';
+import {type NotificationCategory} from '../data';
 import {type Translation} from './language.types';
 
 export type NotificationId = number | string;
@@ -30,33 +31,6 @@ export type ResolvedNotification = PdkNotification & {
   timeout: boolean | number;
   dismissible: boolean;
 };
-
-export enum NotificationCategory {
-  Action = 'action',
-  Api = 'api',
-  General = 'general',
-  Modal = 'modal',
-}
-
-export enum AdminIcon {
-  Add = 'add',
-  ArrowDown = 'arrow_down',
-  ArrowUp = 'arrow_up',
-  Close = 'close',
-  Delete = 'delete',
-  Download = 'download',
-  Edit = 'edit',
-  Export = 'export',
-  External = 'external',
-  No = 'no',
-  Print = 'print',
-  Refresh = 'refresh',
-  Return = 'return',
-  Save = 'save',
-  Shipment = 'shipment',
-  Spinner = 'spinner',
-  Yes = 'yes',
-}
 
 export type NotificationFilter = (notification: ResolvedNotification) => boolean;
 

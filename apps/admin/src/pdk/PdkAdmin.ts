@@ -2,8 +2,9 @@
 
 import {type App, createApp} from 'vue';
 import {type AdminAppConfig, type AdminConfiguration, type AdminContextObject} from '../types';
+import {INJECT_GLOBAL_PDK_ADMIN} from '../symbols';
 import {createLogger, getElementContext} from '../services';
-import {AdminView, INJECT_GLOBAL_PDK_ADMIN} from '../data';
+import {AdminView} from '../data';
 import {setupAdminApp} from './setupAdminApp';
 import {renderViewComponent} from './renderMap';
 

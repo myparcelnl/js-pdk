@@ -1,5 +1,6 @@
 import {toArray} from '@myparcel/ts-utils';
-import {type ActionDefinition, type ActionParameters, type AdminAction, type AnyActionDefinition} from '../types';
+import {type ActionDefinition, type ActionParameters, type AnyActionDefinition} from '../types';
+import {type AdminAction} from '../data';
 import {instantiateAction} from './instantiateAction';
 
 type InstantiateActions = {

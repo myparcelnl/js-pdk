@@ -3,9 +3,8 @@ import {get} from '@vueuse/core';
 import {useStoreQuery} from '../useStoreQuery';
 import {useInstanceContext} from '../context';
 import {validateId} from '../../utils';
-import {AdminInstanceContextKey} from '../../types';
 import {type ResolvedQuery} from '../../stores';
-import {BackendEndpoint} from '../../data';
+import {AdminInstanceContextKey, BackendEndpoint} from '../../data';
 
 export interface UseProductData {
   product: ComputedRef;

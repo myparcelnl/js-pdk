@@ -12,11 +12,12 @@
 import {computed, ref, watch} from 'vue';
 import {get} from '@vueuse/core';
 import TabNavigation from '../common/TabNavigation.vue';
-import {type AdminAction, AdminContextKey, type TabDefinition} from '../../types';
+import {type TabDefinition} from '../../types';
 import {createActionContext} from '../../services';
 import {createPluginSettingsTabs} from '../../forms';
 import {useAdminConfig, useStoreContextQuery} from '../../composables';
 import {pluginSettingsUpdateAction} from '../../actions';
+import {AdminAction, AdminContextKey} from "../../data";
 
 const config = useAdminConfig();
 

@@ -1,7 +1,8 @@
 import {computed, type ComputedRef, type Ref, ref, toRefs} from 'vue';
 import {get} from '@vueuse/core';
 import {partitionArray} from '@myparcel/ts-utils';
-import {type ActionDefinition, AdminIcon, type DropdownButtonProps} from '../types';
+import {type ActionDefinition, type DropdownButtonProps} from '../types';
+import {AdminIcon} from '../data';
 
 interface DropdownActions {
   standalone: ActionDefinition[];

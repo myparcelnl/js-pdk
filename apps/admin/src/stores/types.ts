@@ -3,12 +3,11 @@ import {type ApiException} from '@myparcel/sdk';
 import {
   type ActionInput,
   type AdminContext,
-  type AdminContextKey,
   type BackendEndpointResponse,
   type BackendMutationEndpoints,
   type BackendQueryEndpoints,
 } from '../types';
-import {type BackendEndpoint} from '../data';
+import {type AdminContextKey, type BackendEndpoint} from '../data';
 import {type QueryModifier} from '../actions';
 
 type EndpointQuery<E extends BackendEndpoint> = E extends BackendMutationEndpoints

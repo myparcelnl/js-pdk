@@ -22,7 +22,7 @@
 
 <script lang="ts" setup>
 import {computed, type PropType} from 'vue';
-import {type AdminIcon, Size, useLanguage} from '@myparcel-pdk/admin';
+import {AdminIcon, Size, useLanguage} from '@myparcel-pdk/admin';
 
 const props = defineProps({
   disabled: {

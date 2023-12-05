@@ -30,7 +30,7 @@
 
 <script lang="ts" setup>
 import {type PropType} from 'vue';
-import {type AdminIcon, type Size, useLanguage} from '@myparcel-pdk/admin';
+import {AdminIcon, type Size, useLanguage} from '@myparcel-pdk/admin';
 import BaseButton from './BaseButton.vue';
 
 defineProps({

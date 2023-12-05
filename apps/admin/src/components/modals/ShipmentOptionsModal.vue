@@ -14,7 +14,6 @@
 <script lang="ts" setup>
 import {computed, defineAsyncComponent} from 'vue';
 import {get} from '@vueuse/core';
-import {AdminModalKey} from '../../types';
 import {instantiateActions} from '../../services';
 import {useOrdersData, usePluginSettings} from '../../composables';
 import {
@@ -24,6 +23,7 @@ import {
   ordersExportPrintShipmentsAction,
   ordersUpdateAction,
 } from '../../actions';
+import {AdminModalKey} from "../../data";
 
 /**
  * Shipment options modal. Opened by clicking the "Create" button in the "Labels" column in the orders list.

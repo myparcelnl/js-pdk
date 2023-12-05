@@ -15,10 +15,9 @@ import {Size, Variant} from '@myparcel-pdk/common';
 import {defineField, defineForm, FormHook, type FormInstance, MagicForm} from '@myparcel/vue-form-builder';
 import NotificationContainer from '../common/NotificationContainer.vue';
 import {ResetButton, SubmitButton} from '../common';
-import {AdminAction, NotificationCategory} from '../../types';
 import {useActionStore} from '../../stores';
 import {defineFormField, FORM_KEY_ACCOUNT_SETTINGS, resolveFormComponent} from '../../forms';
-import {AdminComponent} from '../../data';
+import {AdminAction, AdminComponent, NotificationCategory} from '../../data';
 import {useAdminConfig, usePluginSettings, useStoreContextQuery} from '../../composables';
 
 defineEmits<(e: 'afterSubmit', form: FormInstance) => void>();

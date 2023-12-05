@@ -3,7 +3,6 @@ import {type OneOrMore, type PromiseOr} from '@myparcel/ts-utils';
 import {
   type ActionParameters,
   type ActionResponse,
-  type AdminAction,
   type AdminInstance,
   type AnyActionDefinition,
   type BackendEndpointResponse,
@@ -11,7 +10,7 @@ import {
   type MaybeAdminAction,
   type PdkNotification,
 } from '../../types';
-import {type BackendEndpoint} from '../../data';
+import {type AdminAction, type BackendEndpoint} from '../../data';
 
 export type ResolvedAdminAction<A extends undefined | MaybeAdminAction | BackendEndpoint> = A extends MaybeAdminAction
   ? A

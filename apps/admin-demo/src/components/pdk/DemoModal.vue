@@ -58,7 +58,7 @@ import {type PropType} from 'vue';
 import {
   ActionButton,
   type ActionDefinition,
-  type AdminModalKey,
+  AdminModalKey,
   NotificationContainer,
   useLanguage,
   useModalElementContext,

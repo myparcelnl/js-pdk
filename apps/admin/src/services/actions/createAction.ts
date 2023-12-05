@@ -1,10 +1,5 @@
-import {
-  type ActionParameters,
-  type AdminAction,
-  type AnyActionDefinition,
-  type MaybeAdminAction,
-  type ResolvedAction,
-} from '../../types';
+import {type ActionParameters, type AnyActionDefinition, type MaybeAdminAction, type ResolvedAction} from '../../types';
+import {type AdminAction} from '../../data';
 import {type ActionContext, executeAction} from '../../actions';
 import {getActionIdentifier} from './getActionIdentifier';
 import {createActionContext} from './createActionContext';

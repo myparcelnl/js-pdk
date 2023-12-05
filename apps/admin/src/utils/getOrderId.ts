@@ -1,5 +1,6 @@
 import {type OneOrMore} from '@myparcel/ts-utils';
-import {type AdminInstance, AdminInstanceContextKey} from '../types';
+import {type AdminInstance} from '../types';
+import {AdminInstanceContextKey} from '../data';
 import {useInstanceContext, useModalOrder} from '../composables';
 
 export const getOrderId = (instance?: AdminInstance): undefined | OneOrMore<string> => {

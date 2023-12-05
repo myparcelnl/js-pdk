@@ -2,8 +2,9 @@ import {markRaw} from 'vue';
 import {FormHook, useFormBuilder} from '@myparcel/vue-form-builder';
 import {StopActionHandler} from '../stopActionHandler';
 import {type ActionContext} from '../executors';
-import {type ActionParameters, AdminModalKey, type PrintAction} from '../../types';
+import {type ActionParameters, type PrintAction} from '../../types';
 import {useModalStore} from '../../stores';
+import {AdminModalKey} from '../../data';
 
 export const waitForLabelPrompt = <A extends PrintAction>({
   parameters,

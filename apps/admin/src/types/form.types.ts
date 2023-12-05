@@ -5,9 +5,8 @@ import {
   type InteractiveElementInstance,
 } from '@myparcel/vue-form-builder';
 import {type Replace} from '@myparcel/ts-utils';
-import {type SortType} from '../data';
+import {type AdminIcon, type SortType} from '../data';
 import {type Translation} from './language.types';
-import {type AdminIcon} from './common.types';
 
 export type GlobalFieldProps = {
   description?: Translation;

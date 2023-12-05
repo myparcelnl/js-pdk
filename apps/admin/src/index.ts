@@ -39,16 +39,23 @@ export {
 } from './components';
 
 export {
+  AdminAction,
   AdminComponent,
+  AdminContextKey,
+  AdminIcon,
+  AdminInstanceContextKey,
+  AdminModalKey,
   AdminView,
   BackendEndpoint,
-  INJECT_ADMIN_INSTANCE,
-  INJECT_GLOBAL_PDK_ADMIN,
+  NotificationCategory,
   SortType,
   TriState,
+  TriState as TriStateValue,
   allAdminComponentNames,
   optionalAdminActionContainerComponentNames,
   optionalAdminPlainWrapperComponentNames,
+
+  /** @deprecated use TriState */
   requiredAdminComponentNames,
 } from './data';
 
@@ -66,16 +73,11 @@ export {
 
 export {FormHook, useElement, useForm, useFormBuilder} from '@myparcel/vue-form-builder';
 
+export {INJECT_ADMIN_INSTANCE, INJECT_GLOBAL_PDK_ADMIN} from './symbols';
+
 export {LogLevel, getActionIdentifier} from './services';
 
-export {type ModalCallback, type ModalCallbackProps} from './composables';
-
 export {PdkAdmin, createPdkAdmin} from './pdk';
-
-export {
-  /** @deprecated use TriState */
-  TriState as TriStateValue,
-} from './data';
 
 export {createAdminConfig, createPdkAdminPlugin} from './pdk';
 
