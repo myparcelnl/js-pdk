@@ -29,8 +29,8 @@ jobs:
       - name: 'Rename coverage files'
         shell: bash
         run: |
-          yarn workspaces foreach -pv \
-            --exclude='@myparcel-pdk/monorepo' \
+          yarn workspaces foreach -Apv \
+            --exclude=. \
             exec \
             bash -c 'if [ -f coverage/clover.xml ]; then mv coverage/clover.xml coverage/${npm_package_name//\//-}.xml; fi' -- {}
 
