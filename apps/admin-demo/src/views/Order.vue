@@ -2,8 +2,8 @@
   <!-- Order data page -->
   <div
     v-if="order"
-    class="gap-8 grid grid-cols-2">
-    <div class="col-span-2">
+    class="gap-8 grid grid-cols-1 lg:grid-cols-2">
+    <div class="lg:col-span-2">
       <h1 class="font-bold text-2xl">Order #{{ order.externalIdentifier }}</h1>
     </div>
 
