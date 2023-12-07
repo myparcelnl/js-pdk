@@ -1,16 +1,11 @@
 import {ref} from 'vue';
-import {
-  type ComponentOrHtmlElement,
-  type ElementName,
-  type FormInstance,
-  type InteractiveElementConfiguration,
-} from '@myparcel/vue-form-builder';
+import {type FormInstance, type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {type ElementInstance, type PdkElementProps} from '../../types';
 
-export const createFormElement = <RT = unknown, C extends ComponentOrHtmlElement = 'input'>(
-  config?: Partial<InteractiveElementConfiguration<C, ElementName, RT>>,
+export const createFormElement = <Type = unknown>(
+  config?: Partial<InteractiveElementConfiguration<Type>>,
   formName?: string,
-): ElementInstance<PdkElementProps<C>, C, ElementName, RT> => {
+): ElementInstance<Type, PdkElementProps<Type>> => {
   const form = {
     name: formName ?? 'form',
   } as unknown as FormInstance;
@@ -21,5 +16,5 @@ export const createFormElement = <RT = unknown, C extends ComponentOrHtmlElement
     name: 'element',
     ref: ref(),
     ...config,
-  } as unknown as ElementInstance<PdkElementProps<C>, C, ElementName, RT>;
+  } as unknown as ElementInstance<Type, PdkElementProps<Type>>;
 };

@@ -4,7 +4,7 @@ import {type ElementInstance, type TriStateInputProps} from '../../types';
 import {TriState} from '../../data';
 
 export const triStateFieldIsEnabled = (form: FormInstance, fieldName: string): boolean => {
-  const field = form.getField(fieldName) as unknown as ElementInstance<TriStateInputProps> | undefined;
+  const field = form.getField(fieldName) as unknown as ElementInstance<TriState, TriStateInputProps> | undefined;
 
   if (!field) {
     return false;

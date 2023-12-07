@@ -42,7 +42,7 @@ const createForm = (): FormInstance => {
         name: FIELD_API_KEY,
         optional: true,
         ref: apiKeyRef,
-        isValid: () => Boolean(hasAccount.value),
+        isValid: computed(() => Boolean(hasAccount.value)),
         readOnlyWhen: () => Boolean(hasAccount.value),
       }),
 

@@ -73,6 +73,5 @@ export const useInputWithOptionsContext = <
     );
   });
 
-  // @ts-expect-error todo
   return {id, options, model};
 };

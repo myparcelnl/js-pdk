@@ -1,4 +1,4 @@
-import {type AnyElementConfiguration} from '@myparcel/vue-form-builder';
+import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {isOfType} from '@myparcel/ts-utils';
 import {
   type FormAfterUpdateBuilder,
@@ -14,8 +14,8 @@ export const parseBuilders = (
   builders: FormBuilder[],
   prefix: string,
   customHandlers: HandlerDefinition[] = [],
-): Partial<AnyElementConfiguration> => {
-  const config: Partial<AnyElementConfiguration> = {};
+): Partial<InteractiveElementConfiguration> => {
+  const config: Partial<InteractiveElementConfiguration> = {};
 
   builders?.forEach((builder) => {
     if (isOfType<FormVisibleWhenBuilder>(builder, '$visibleWhen')) {

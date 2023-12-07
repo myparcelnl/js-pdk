@@ -13,7 +13,7 @@ export const setFieldProp: SetFieldProp = (arg1, arg2, arg3, arg4) => {
   let value = arg3;
 
   if (isOfType<FormInstance>(arg1, 'fields')) {
-    const foundField = arg1.getField(arg2);
+    const foundField = arg1.getField<ElementInstance>(arg2);
 
     if (!foundField) {
       throw new Error(`Field ${arg2} not found`);

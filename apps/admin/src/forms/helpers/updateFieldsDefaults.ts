@@ -11,7 +11,7 @@ export const updateFieldsDefaults = (
   {form, name}: InteractiveElementInstance,
   inheritedDeliveryOptions: Record<string, Shipment.ModelDeliveryOptions>,
 ): void => {
-  get(form.fields).forEach((otherField) => {
+  (get(form.fields) as InteractiveElementInstance[]).forEach((otherField) => {
     if (otherField.name === name) {
       return;
     }

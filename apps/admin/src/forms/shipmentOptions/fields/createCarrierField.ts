@@ -38,7 +38,6 @@ export const createCarrierField = (
       options: [],
     },
 
-    // @ts-expect-error todo
     onBeforeMount: async (field) => {
       const carrierSelectOptions = await Promise.all(
         dynamicContext.carriers.map(async (carrier): Promise<RadioGroupOption> => {
@@ -63,9 +62,9 @@ export const createCarrierField = (
 
       setFieldProp(field, PROP_OPTIONS, carrierSelectOptions);
 
-      await field.afterUpdate(field);
+      await field?.afterUpdate?.(field, get(field.ref), undefined);
 
-      updateFieldsDefaults(get(field.ref), field, inheritedDeliveryOptions);
+      updateFieldsDefaults(get(field.ref) as string, field, inheritedDeliveryOptions);
     },
 
     afterUpdate: (field, newCarrier: string) => {

@@ -1,11 +1,6 @@
 import {computed, markRaw, reactive, ref, type Ref, watch, type WritableComputedRef} from 'vue';
 import {get} from '@vueuse/core';
-import {
-  type AnyElementConfiguration,
-  type ComponentOrHtmlElement,
-  defineField,
-  useForm,
-} from '@myparcel/vue-form-builder';
+import {type AnyElementConfiguration, defineField, useForm} from '@myparcel/vue-form-builder';
 import {toTriState, triStateToBoolean} from '../utils';
 import {
   type ElementInstance,
@@ -18,7 +13,7 @@ import {TriState} from '../data';
 import {useElementContext} from './useElementContext';
 import {useLanguage} from './language';
 
-type BoolElInstance = ElementInstance<PdkElementProps<ComponentOrHtmlElement>, ComponentOrHtmlElement, string, boolean>;
+type BoolElInstance = ElementInstance<boolean, PdkElementProps>;
 
 interface TriStateInputContext {
   id: string;
@@ -68,7 +63,7 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
       ref: inheritModel,
       name: `${props.element.name}__inherit`,
       label: translate('settings_use_default_value'),
-    }) as unknown as BoolElInstance,
+    }),
   );
 
   const toggleElement = reactive(
@@ -77,8 +72,9 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
       name: toggleName,
       ref: toggleModel,
       // The toggle is readonly when inherit is enabled or the element itself is set to readonly.
+      // @ts-expect-error todo
       isReadOnly: markRaw(computed(() => get(inheritModel) || get(props.element.isReadOnly))),
-    }) as unknown as BoolElInstance,
+    }),
   );
 
   // When the toggle is changed, the model is updated to 1/0 as long as inherit is disabled.
@@ -122,5 +118,5 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
     model,
     toggleElement,
     toggleModel,
-  };
+  } as unknown as TriStateInputContext;
 };

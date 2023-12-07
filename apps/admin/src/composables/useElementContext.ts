@@ -1,7 +1,7 @@
 import {type WritableComputedRef} from 'vue';
 import {useVModel} from '@vueuse/core';
 import {generateFieldId} from '../utils';
-import {type PdkElementEmits, type PdkElementProps} from '../types';
+import {type ElementInstance, type PdkElementEmits, type PdkElementProps} from '../types';
 
 export type ElementContext<T = unknown> = {
   id: string;
@@ -17,7 +17,7 @@ export const useElementContext = <
   props: Props,
   emit: Emits,
 ): ElementContext<T1> => {
-  const id = generateFieldId(props.element);
+  const id = generateFieldId(props.element as ElementInstance);
   const model = useVModel(props, undefined, emit) as WritableComputedRef<T1>;
 
   return {

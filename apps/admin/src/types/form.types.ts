@@ -1,10 +1,5 @@
 import {type Keyable} from '@myparcel-pdk/common';
-import {
-  type ComponentOrHtmlElement,
-  type ElementName,
-  type InteractiveElementInstance,
-} from '@myparcel/vue-form-builder';
-import {type Replace} from '@myparcel/ts-utils';
+import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {type AdminIcon, type SortType} from '../data';
 import {type Translation} from './language.types';
 
@@ -14,23 +9,20 @@ export type GlobalFieldProps = {
   value?: unknown;
 };
 
-export type ElementInstance<
-  Props extends Record<string, unknown> = Record<string, unknown>,
-  C extends ComponentOrHtmlElement = ComponentOrHtmlElement,
-  N extends ElementName = string,
-  RT = unknown,
-> = Replace<InteractiveElementInstance<C, N, RT>, 'props', Props & GlobalFieldProps & Record<string, unknown>>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ElementInstance<Type = unknown, Props = any> = InteractiveElementInstance<
+  Type,
+  Props & GlobalFieldProps & Record<string, unknown>
+>;
 
 export type OptionsProp<T extends SelectOptionValue = SelectOptionValue> = {
   options?: SelectOption<T>[];
   sort?: SortType;
 };
 
-export type PdkElementProps<
-  ModelValue extends unknown = Keyable,
-  Props extends Record<string, unknown> = Record<string, unknown>,
-> = {
-  element: ElementInstance<Props>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type PdkElementProps<ModelValue extends unknown = Keyable, Props = any> = {
+  element: ElementInstance<ModelValue, Props>;
   modelValue: ModelValue;
 };
 
