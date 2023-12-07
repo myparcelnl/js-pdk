@@ -1,5 +1,7 @@
 <template>
-  <div class="flex">
+  <div
+    v-show="element.isVisible"
+    class="flex">
     <div class="px-2 py-2 text-right w-1/3">
       <label
         :for="id"
@@ -23,13 +25,11 @@
 
 <script lang="ts" setup>
 import {toRefs} from 'vue';
-import {type FormGroupProps, generateFieldId, useLanguage} from '@myparcel-pdk/admin';
+import {type FormGroupProps, generateFieldId} from '@myparcel-pdk/admin';
 
 const props = defineProps<FormGroupProps>();
 
 const propRefs = toRefs(props);
 
 const id = generateFieldId(propRefs.element);
-
-const {translate} = useLanguage();
 </script>
