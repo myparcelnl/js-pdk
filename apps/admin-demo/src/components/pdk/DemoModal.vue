@@ -15,7 +15,7 @@
     <Transition name="slide-up">
       <div
         v-show="isOpen"
-        class="m-auto max-w-md p-8 w-full">
+        class="m-auto max-w-3xl p-8 w-full">
         <NotificationContainer category="modal" />
 
         <div class="bg-white dark:bg-gray-800 relative rounded-lg shadow">
@@ -37,16 +37,18 @@
             <span class="sr-only">Close modal</span>
           </button>
 
-          <div class="lg:px-8 px-6 py-6">
+          <div class="lg:px-8 p-6">
             <PdkHeading level="2">{{ translate(title) }}</PdkHeading>
 
             <slot :context="context" />
           </div>
 
-          <ActionButton
-            v-for="(action, index) in actions"
-            :key="`action_${action.id}_${index}`"
-            :action="action" />
+          <div class="pb-6 px-6">
+            <ActionButton
+              v-for="(action, index) in actions"
+              :key="`action_${action.id}_${index}`"
+              :action="action" />
+          </div>
         </div>
       </div>
     </Transition>
@@ -58,7 +60,7 @@ import {type PropType} from 'vue';
 import {
   ActionButton,
   type ActionDefinition,
-  AdminModalKey,
+  type AdminModalKey,
   NotificationContainer,
   useLanguage,
   useModalElementContext,

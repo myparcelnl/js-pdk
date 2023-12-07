@@ -7,66 +7,22 @@
       <th class="p-4">Actions</th>
     </tr>
 
-    <template
+    <OrderRow
       v-for="(order, index) in orders"
-      :key="`order_${order.externalIdentifier}`">
-      <tr :class="{'bg-gray-900': index % 2 !== 0}">
-        <td class="p-4">
-          <RouterLink :to="`/orders/${order.externalIdentifier}`"> #{{ order.externalIdentifier }} </RouterLink>
-        </td>
-
-        <td class="p-4">{{ order.shippingAddress.address1 }}, {{ order.shippingAddress.city }}</td>
-
-        <td class="p-4">
-          <OrderListItemView :order-identifier="order.externalIdentifier" />
-        </td>
-
-        <td class="p-4">
-          <button
-            type="button"
-            @click="() => toggle(order.externalIdentifier)">
-            toggle
-          </button>
-        </td>
-      </tr>
-
-      <tr>
-        <div
-          v-for="item in ['mypa-OrderBox']"
-          v-show="toggled"
-          :key="item">
-          <div :id="item">
-            {{ `#${item}` }}
-          </div>
-        </div>
-      </tr>
-    </template>
+      :key="`order_${order.externalIdentifier}`"
+      :class="{'bg-gray-900': index % 2 !== 0}"
+      :order="order" />
   </table>
 </template>
 
 <script lang="ts" setup>
-import {RouterLink} from 'vue-router';
-import {computed, ref} from 'vue';
-import {
-  AdminModalKey,
-  BackendEndpoint,
-  OrderListItemView,
-  type Plugin,
-  useModalStore,
-  useQueryStore,
-  useStoreQuery,
-} from '@myparcel-pdk/admin';
+import {computed} from 'vue';
+import {BackendEndpoint, type Plugin, useFetchOrdersQuery, useQueryStore, useStoreQuery} from '@myparcel-pdk/admin';
+import OrderRow from './OrderRow.vue';
 
 const queryStore = useQueryStore();
-queryStore.registerOrderQueries();
 
-const toggled = ref<string | null>(null);
-
-const toggle = (id: string) => {
-  const modalStore = useModalStore();
-
-  modalStore.open(AdminModalKey.ShipmentOptions, {orderIds: id});
-};
+queryStore.register(BackendEndpoint.FetchOrders, useFetchOrdersQuery());
 
 const query = useStoreQuery(BackendEndpoint.FetchOrders);
 

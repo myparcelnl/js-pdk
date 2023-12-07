@@ -28,7 +28,7 @@ import {
 } from '@myparcel-pdk/admin-preset-default';
 import {
   AdminContextKey,
-  type BackendEndpoint,
+  BackendEndpoint,
   type BackendEndpointDefinition,
   createPdkAdminPlugin,
   LogLevel,
@@ -55,26 +55,21 @@ import {
 } from './components';
 import App from './App.vue';
 
+const fetchContext = async <A extends AdminContextKey>(context: A) => {
+  return fetchFromApi<[PdkEndpointResponse<BackendEndpoint.FetchContext, BackendEndpointDefinition>]>(
+    `pdk?action=${BackendEndpoint.FetchContext}&context=${context}`,
+  );
+};
+
 void (async () => {
   // todo allow global context to be loaded dynamically
-  const globalContextPromise = fetchFromApi<
-    [PdkEndpointResponse<BackendEndpoint.FetchContext, BackendEndpointDefinition>]
-  >(`pdk?action=fetchContext&context=global`);
-
+  const globalContextPromise = fetchContext(AdminContextKey.Global);
   // todo allow dynamic context to be loaded dynamically (hehe)
-  const dynamicContextPromise = fetchFromApi<
-    [PdkEndpointResponse<BackendEndpoint.FetchContext, BackendEndpointDefinition>]
-  >(`pdk?action=fetchContext&context=dynamic`);
-
+  const dynamicContextPromise = fetchContext(AdminContextKey.Dynamic);
   // todo allow plugin settings view context to be loaded dynamically
-  const pluginSettingsViewContextPromise = fetchFromApi<
-    [PdkEndpointResponse<BackendEndpoint.FetchContext, BackendEndpointDefinition>]
-  >(`pdk?action=fetchContext&context=pluginSettingsView`);
-
+  const pluginSettingsViewContextPromise = fetchContext(AdminContextKey.PluginSettingsView);
   // todo allow product settings view context to be loaded dynamically
-  const productSettingsViewContextPromise = fetchFromApi<
-    [PdkEndpointResponse<BackendEndpoint.FetchContext, BackendEndpointDefinition>]
-  >(`pdk?action=fetchContext&context=productSettingsView`);
+  const productSettingsViewContextPromise = fetchContext(AdminContextKey.ProductSettingsView);
 
   const app = createApp(App);
 
