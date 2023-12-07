@@ -2,7 +2,7 @@ import {type ComponentMountingOptions} from '@vue/test-utils';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runHasPropTest} from '../common';
 
-export const runTabNavButtonTest: AdminComponentTest = (component) => {
+export const runTabNavButtonTest = ((component) => {
   const options: ComponentMountingOptions<any> = {
     props: {
       tab: {name: 'tab', label: 'Tab'},
@@ -13,4 +13,4 @@ export const runTabNavButtonTest: AdminComponentTest = (component) => {
 
   runHasPropTest(component, options, 'active', false);
   runHasPropTest(component, options, 'tab', {name: 'tab2', label: 'Tab 2'});
-};
+}) satisfies AdminComponentTest;

@@ -3,7 +3,7 @@ import {expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
 import {type PartialComponentTest} from '../types';
 
-export const runCommonComponentTests: PartialComponentTest = (component, options): void => {
+export const runCommonComponentTests = ((component, options = undefined): void => {
   it('can be rendered', () => {
     expect(() => mount(component as any, options as any)).not.toThrow();
   });
@@ -12,4 +12,4 @@ export const runCommonComponentTests: PartialComponentTest = (component, options
     const wrapper = mount(component as any, options as any);
     expect(wrapper.isVisible()).toBeTruthy();
   });
-};
+}) satisfies PartialComponentTest;

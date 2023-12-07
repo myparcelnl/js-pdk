@@ -2,8 +2,9 @@ import {type ComponentMountingOptions} from '@vue/test-utils';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from '../common';
 
-export const runActionContainerTest: AdminComponentTest = (component) => {
-  const options: ComponentMountingOptions<any> = {};
+export const runActionContainerTest = ((component) => {
+  const options = {} satisfies ComponentMountingOptions<any>;
+
   runCommonComponentTests(component, options);
 
   runHasSlotTest(component, options, 'default');
@@ -23,4 +24,4 @@ export const runActionContainerTest: AdminComponentTest = (component) => {
   //       .actionEndpointMap((wrapper) => wrapper.element.value),
   //   ).toEqual(['1', '2']);
   // });
-};
+}) satisfies AdminComponentTest;

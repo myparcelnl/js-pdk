@@ -2,7 +2,7 @@ import {type ComponentMountingOptions} from '@vue/test-utils';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runHasSlotTest} from '../common';
 
-export const runTableTest: AdminComponentTest = (component) => {
+export const runTableTest = ((component) => {
   const options: ComponentMountingOptions<any> = {};
 
   runCommonComponentTests(component, options);
@@ -10,4 +10,4 @@ export const runTableTest: AdminComponentTest = (component) => {
   runHasSlotTest(component, options, 'default');
   runHasSlotTest(component, options, 'header');
   runHasSlotTest(component, options, 'footer');
-};
+}) satisfies AdminComponentTest;

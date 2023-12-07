@@ -5,7 +5,7 @@ import {type PartialComponentTest} from '../types';
 import {runHasPropTest} from './runHasPropTest';
 
 // eslint-disable-next-line max-lines-per-function
-export const runCommonInputTests: PartialComponentTest = (component, options) => {
+export const runCommonInputTests = ((component, options = undefined) => {
   runHasPropTest(component, {}, 'element', options?.props?.element);
 
   it('can be disabled', () => {
@@ -55,4 +55,4 @@ export const runCommonInputTests: PartialComponentTest = (component, options) =>
 
     expect(Object.keys(wrapper.emitted())).toContain(['update:modelValue']);
   });
-};
+}) satisfies PartialComponentTest;

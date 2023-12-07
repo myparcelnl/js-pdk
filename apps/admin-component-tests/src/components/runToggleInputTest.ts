@@ -3,7 +3,7 @@ import {createFormElement, type ElementInstance} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runCommonInputTests, runHasPropTest} from '../common';
 
-export const runToggleInputTest: AdminComponentTest = (component) => {
+export const runToggleInputTest = ((component) => {
   const options: ComponentMountingOptions<{element: ElementInstance}> = {
     props: {
       element: createFormElement({}),
@@ -15,4 +15,4 @@ export const runToggleInputTest: AdminComponentTest = (component) => {
 
   runHasPropTest(component, options, 'labelYes');
   runHasPropTest(component, options, 'labelNo');
-};
+}) satisfies AdminComponentTest;

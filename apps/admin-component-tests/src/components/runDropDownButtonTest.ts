@@ -23,7 +23,7 @@ const DEFAULT_OPTIONS = {
   },
 };
 
-export const runDropDownButtonTest: AdminComponentTest = (component) => {
+export const runDropDownButtonTest = ((component) => {
   const options: ComponentMountingOptions<any> = {};
 
   runCommonComponentTests(component, options);
@@ -69,4 +69,4 @@ export const runDropDownButtonTest: AdminComponentTest = (component) => {
   });
 
   // TODO write more tests
-};
+}) satisfies AdminComponentTest;

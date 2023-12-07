@@ -2,7 +2,7 @@ import {type ComponentMountingOptions} from '@vue/test-utils';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runHasPropTest} from '../common';
 
-export const runImageTest: AdminComponentTest = (component) => {
+export const runImageTest = ((component) => {
   const options: ComponentMountingOptions<any> = {
     props: {
       src: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
@@ -17,4 +17,4 @@ export const runImageTest: AdminComponentTest = (component) => {
   runHasPropTest(component, options, 'height');
 
   // TODO write more tests
-};
+}) satisfies AdminComponentTest;

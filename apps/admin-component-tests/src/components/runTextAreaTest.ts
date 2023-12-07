@@ -1,6 +1,6 @@
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests} from '../common';
 
-export const runTextAreaTest: AdminComponentTest = (component) => {
+export const runTextAreaTest = ((component) => {
   runCommonComponentTests(component);
-};
+}) satisfies AdminComponentTest;

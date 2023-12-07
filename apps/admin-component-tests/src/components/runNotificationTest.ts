@@ -3,7 +3,7 @@ import {type ComponentMountingOptions, mount} from '@vue/test-utils';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests} from '../common';
 
-export const runNotificationTest: AdminComponentTest = (component) => {
+export const runNotificationTest = ((component) => {
   const options: ComponentMountingOptions<any> = {
     props: {
       notification: {
@@ -34,4 +34,4 @@ export const runNotificationTest: AdminComponentTest = (component) => {
     expect(wrapper.findAll('*').map((wrapper) => wrapper.text())).toContain('This is a notification');
     expect(wrapper.findAll('*').map((wrapper) => wrapper.text())).toContain('With multiple strings');
   });
-};
+}) satisfies AdminComponentTest;

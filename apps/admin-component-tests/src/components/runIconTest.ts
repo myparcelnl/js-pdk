@@ -1,14 +1,14 @@
 import {expect, it} from 'vitest';
 import {type ComponentMountingOptions, mount} from '@vue/test-utils';
-import {type AdminComponentTest} from '../tests';
+import {type PartialComponentTest} from '../types';
 import {runCommonComponentTests, runHasPropTest} from '../common';
 
-export const runIconTest: AdminComponentTest = (component) => {
-  const options: ComponentMountingOptions<any> = {
+export const runIconTest = ((component) => {
+  const options = {
     props: {
       icon: 'truck',
     },
-  };
+  } satisfies ComponentMountingOptions<any>;
 
   runCommonComponentTests(component, options);
 
@@ -19,4 +19,4 @@ export const runIconTest: AdminComponentTest = (component) => {
 
     expect(wrapper.props().icon).toBe('truck');
   });
-};
+}) satisfies PartialComponentTest;

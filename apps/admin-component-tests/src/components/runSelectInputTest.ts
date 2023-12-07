@@ -1,7 +1,7 @@
 import {expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
 import {type SelectOption} from '@myparcel-pdk/admin';
-import {type AdminComponentTest} from '../tests';
+import {type PartialComponentTest} from '../types';
 import {createInputOptions} from '../helpers';
 import {runCommonComponentTests, runCommonInputTests} from '../common';
 
@@ -10,8 +10,8 @@ const selectOptions: SelectOption[] = [
   {value: '2', label: 'Two'},
 ];
 
-export const runSelectInputTest: AdminComponentTest = (component) => {
-  const options = createInputOptions('2', {options: selectOptions});
+export const runSelectInputTest = ((component) => {
+  const options = createInputOptions('2', {props: {options: selectOptions}});
 
   runCommonComponentTests(component, options);
   runCommonInputTests(component, options);
@@ -26,4 +26,4 @@ export const runSelectInputTest: AdminComponentTest = (component) => {
         .map((wrapper) => wrapper.element.value),
     ).toEqual(['1', '2']);
   });
-};
+}) satisfies PartialComponentTest;

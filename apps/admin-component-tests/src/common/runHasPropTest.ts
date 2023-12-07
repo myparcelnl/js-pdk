@@ -1,20 +1,17 @@
 import {expect, it} from 'vitest';
-import {type ComponentMountingOptions, mount} from '@vue/test-utils';
+import {mount} from '@vue/test-utils';
 import {type PartialComponentTest} from '../types';
 
-export const runHasPropTest: PartialComponentTest = (component, options, prop, value = 'value') => {
+export const runHasPropTest = ((component, options, prop, value = 'value') => {
   it(`has prop ${prop}`, () => {
-    const wrapper = mount(
-      component as any,
-      {
-        ...options,
-        props: {
-          ...options?.props,
-          [prop as string]: value,
-        },
-      } as ComponentMountingOptions<any>,
-    );
+    const wrapper = mount(component, {
+      ...options,
+      props: {
+        ...(options?.props as any),
+        [prop]: value,
+      },
+    });
 
-    expect(wrapper.props(prop as string)).toBe('value');
+    expect(wrapper.props(prop as any)).toBe('value');
   });
-};
+}) satisfies PartialComponentTest<[string] | [string, unknown]>;

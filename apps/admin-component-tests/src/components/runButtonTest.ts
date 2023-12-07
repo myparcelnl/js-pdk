@@ -3,7 +3,7 @@ import {mount} from '@vue/test-utils';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests} from '../common';
 
-export const runButtonTest: AdminComponentTest = (component) => {
+export const runButtonTest = ((component) => {
   runCommonComponentTests(component);
 
   it('handles click event', async () => {
@@ -31,4 +31,4 @@ export const runButtonTest: AdminComponentTest = (component) => {
     const wrapper = mount(component, {slots: {default: 'Test'}});
     expect(wrapper.findAll('*').map((wrapper) => wrapper.text())).toContain('Test');
   });
-};
+}) satisfies AdminComponentTest;
