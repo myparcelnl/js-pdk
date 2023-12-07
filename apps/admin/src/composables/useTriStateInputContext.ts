@@ -72,7 +72,6 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
       name: toggleName,
       ref: toggleModel,
       // The toggle is readonly when inherit is enabled or the element itself is set to readonly.
-      // @ts-expect-error todo
       isReadOnly: markRaw(computed(() => get(inheritModel) || get(props.element.isReadOnly))),
     }),
   );
