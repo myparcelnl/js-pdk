@@ -1,271 +1,282 @@
 {
   "pluginSettingsView": {
-    "general": {
-      "id": "general",
-      "title": "settings_view_general_title",
-      "description": "settings_view_general_description",
+    "order": {
+      "id": "order",
+      "title": "settings_order_title",
+      "description": "settings_order_description",
       "elements": [
         {
-          "name": "apiLogging",
-          "$component": "ToggleInput",
-          "label": "settings_general_api_logging",
-          "description": "settings_general_api_logging_description"
-        },
-        {
-          "name": "shareCustomerInformation",
-          "$component": "ToggleInput",
-          "label": "settings_general_share_customer_information",
-          "description": "settings_general_share_customer_information_description"
-        },
-        {
-          "name": "conceptShipments",
-          "$component": "ToggleInput",
-          "label": "settings_general_concept_shipments",
-          "description": "settings_general_concept_shipments_description"
+          "$component": "SettingsDivider",
+          "$wrapper": false,
+          "level": 2,
+          "content": "settings_order_general_description",
+          "heading": "settings_order_general_title"
         },
         {
           "name": "orderMode",
+          "$builders": [
+            {
+              "$readOnlyWhen": []
+            }
+          ],
           "$component": "ToggleInput",
-          "label": "settings_general_order_mode",
-          "description": "settings_general_order_mode_description"
+          "subtext": "hint_enable_order_mode_backoffice",
+          "label": "settings_order_order_mode",
+          "description": "settings_order_order_mode_description"
         },
         {
-          "name": "trackTraceInEmail",
+          "name": "conceptShipments",
+          "$builders": [
+            {
+              "$visibleWhen": {
+                "$if": [
+                  {
+                    "$target": "orderMode",
+                    "$eq": false
+                  }
+                ]
+              }
+            }
+          ],
           "$component": "ToggleInput",
-          "label": "settings_general_track_trace_in_email",
-          "description": "settings_general_track_trace_in_email_description"
-        },
-        {
-          "name": "trackTraceInAccount",
-          "$component": "ToggleInput",
-          "label": "settings_general_track_trace_in_account",
-          "description": "settings_general_track_trace_in_account_description"
-        },
-        {
-          "name": "barcodeInNote",
-          "$component": "ToggleInput",
-          "label": "settings_general_barcode_in_note",
-          "description": "settings_general_barcode_in_note_description"
-        },
-        {
-          "name": "barcodeInNoteTitle",
-          "$component": "TextInput",
-          "label": "settings_general_barcode_in_note_title"
+          "label": "settings_order_concept_shipments",
+          "description": "settings_order_concept_shipments_description"
         },
         {
           "name": "processDirectly",
+          "$component": "SelectInput",
+          "label": "settings_order_process_directly",
+          "description": "settings_order_process_directly_description",
+          "options": [
+            {
+              "value": -1,
+              "label": "settings_none"
+            },
+            {
+              "plainLabel": "Pending",
+              "value": "pending"
+            },
+            {
+              "plainLabel": "Paid",
+              "value": "paid"
+            },
+            {
+              "plainLabel": "Shipped",
+              "value": "shipped"
+            },
+            {
+              "plainLabel": "Completed",
+              "value": "completed"
+            },
+            {
+              "plainLabel": "Cancelled",
+              "value": "cancelled"
+            },
+            {
+              "plainLabel": "Refunded",
+              "value": "refunded"
+            }
+          ],
+          "sort": "desc"
+        },
+        {
+          "name": "sendReturnEmail",
           "$component": "ToggleInput",
-          "label": "settings_general_process_directly",
-          "description": "settings_general_process_directly_description"
-        }
-      ],
-      "children": null
-    },
-    "order": {
-      "id": "order",
-      "title": "settings_view_order_title",
-      "description": "settings_view_order_description",
-      "elements": [
-        {
-          "name": "statusOnLabelCreate",
-          "$component": "SelectInput",
-          "options": [
-            {
-              "value": -1,
-              "label": "Geen"
-            },
-            {
-              "value": "wc-pending",
-              "label": "Wachtend op betaling"
-            },
-            {
-              "value": "wc-processing",
-              "label": "In behandeling"
-            },
-            {
-              "value": "wc-on-hold",
-              "label": "In de wacht"
-            },
-            {
-              "value": "wc-completed",
-              "label": "Afgerond"
-            },
-            {
-              "value": "wc-cancelled",
-              "label": "Geannuleerd"
-            },
-            {
-              "value": "wc-refunded",
-              "label": "Terugbetaald"
-            },
-            {
-              "value": "wc-failed",
-              "label": "Mislukt"
-            },
-            {
-              "value": "wc-checkout-draft",
-              "label": "Concept"
-            }
-          ],
-          "label": "settings_order_status_on_label_create",
-          "description": "settings_order_status_on_label_create_description"
-        },
-        {
-          "name": "statusWhenLabelScanned",
-          "$component": "SelectInput",
-          "options": [
-            {
-              "value": -1,
-              "label": "Geen"
-            },
-            {
-              "value": "wc-pending",
-              "label": "Wachtend op betaling"
-            },
-            {
-              "value": "wc-processing",
-              "label": "In behandeling"
-            },
-            {
-              "value": "wc-on-hold",
-              "label": "In de wacht"
-            },
-            {
-              "value": "wc-completed",
-              "label": "Afgerond"
-            },
-            {
-              "value": "wc-cancelled",
-              "label": "Geannuleerd"
-            },
-            {
-              "value": "wc-refunded",
-              "label": "Terugbetaald"
-            },
-            {
-              "value": "wc-failed",
-              "label": "Mislukt"
-            },
-            {
-              "value": "wc-checkout-draft",
-              "label": "Concept"
-            }
-          ],
-          "label": "settings_order_status_when_label_scanned",
-          "description": "settings_order_status_when_label_scanned_description"
-        },
-        {
-          "name": "statusWhenDelivered",
-          "$component": "SelectInput",
-          "options": [
-            {
-              "value": -1,
-              "label": "Geen"
-            },
-            {
-              "value": "wc-pending",
-              "label": "Wachtend op betaling"
-            },
-            {
-              "value": "wc-processing",
-              "label": "In behandeling"
-            },
-            {
-              "value": "wc-on-hold",
-              "label": "In de wacht"
-            },
-            {
-              "value": "wc-completed",
-              "label": "Afgerond"
-            },
-            {
-              "value": "wc-cancelled",
-              "label": "Geannuleerd"
-            },
-            {
-              "value": "wc-refunded",
-              "label": "Terugbetaald"
-            },
-            {
-              "value": "wc-failed",
-              "label": "Mislukt"
-            },
-            {
-              "value": "wc-checkout-draft",
-              "label": "Concept"
-            }
-          ],
-          "label": "settings_order_status_when_delivered",
-          "description": "settings_order_status_when_delivered_description"
-        },
-        {
-          "name": "ignoreOrderStatuses",
-          "$component": "CheckboxInput",
-          "options": [
-            {
-              "value": -1,
-              "label": "Geen"
-            },
-            {
-              "value": "wc-pending",
-              "label": "Wachtend op betaling"
-            },
-            {
-              "value": "wc-processing",
-              "label": "In behandeling"
-            },
-            {
-              "value": "wc-on-hold",
-              "label": "In de wacht"
-            },
-            {
-              "value": "wc-completed",
-              "label": "Afgerond"
-            },
-            {
-              "value": "wc-cancelled",
-              "label": "Geannuleerd"
-            },
-            {
-              "value": "wc-refunded",
-              "label": "Terugbetaald"
-            },
-            {
-              "value": "wc-failed",
-              "label": "Mislukt"
-            },
-            {
-              "value": "wc-checkout-draft",
-              "label": "Concept"
-            }
-          ],
-          "label": "settings_order_ignore_order_statuses",
-          "description": "settings_order_ignore_order_statuses_description"
-        },
-        {
-          "name": "orderStatusMail",
-          "$component": "ToggleInput",
-          "label": "settings_order_order_status_mail",
-          "description": "settings_order_order_status_mail_description"
-        },
-        {
-          "name": "sendNotificationAfter",
-          "$component": "SelectInput",
-          "options": [],
-          "label": "settings_order_send_notification_after",
-          "description": "settings_order_send_notification_after_description"
-        },
-        {
-          "name": "sendOrderStateForDigitalStamp",
-          "$component": "ToggleInput",
-          "label": "settings_order_send_order_state_for_digital_stamp",
-          "description": "settings_order_send_order_state_for_digital_stamp_description"
+          "label": "settings_order_send_return_email",
+          "description": "settings_order_send_return_email_description"
         },
         {
           "name": "saveCustomerAddress",
           "$component": "ToggleInput",
           "label": "settings_order_save_customer_address",
           "description": "settings_order_save_customer_address_description"
+        },
+        {
+          "name": "shareCustomerInformation",
+          "$component": "ToggleInput",
+          "label": "settings_order_share_customer_information",
+          "description": "settings_order_share_customer_information_description"
+        },
+        {
+          "$component": "SettingsDivider",
+          "$wrapper": false,
+          "level": 2,
+          "content": "settings_order_status_description",
+          "heading": "settings_order_status_title"
+        },
+        {
+          "name": "statusOnLabelCreate",
+          "$component": "SelectInput",
+          "label": "settings_order_status_on_label_create",
+          "description": "settings_order_status_on_label_create_description",
+          "options": [
+            {
+              "value": -1,
+              "label": "settings_none"
+            },
+            {
+              "plainLabel": "Pending",
+              "value": "pending"
+            },
+            {
+              "plainLabel": "Paid",
+              "value": "paid"
+            },
+            {
+              "plainLabel": "Shipped",
+              "value": "shipped"
+            },
+            {
+              "plainLabel": "Completed",
+              "value": "completed"
+            },
+            {
+              "plainLabel": "Cancelled",
+              "value": "cancelled"
+            },
+            {
+              "plainLabel": "Refunded",
+              "value": "refunded"
+            }
+          ],
+          "sort": "desc"
+        },
+        {
+          "name": "statusWhenLabelScanned",
+          "$component": "SelectInput",
+          "label": "settings_order_status_when_label_scanned",
+          "description": "settings_order_status_when_label_scanned_description",
+          "options": [
+            {
+              "value": -1,
+              "label": "settings_none"
+            },
+            {
+              "plainLabel": "Pending",
+              "value": "pending"
+            },
+            {
+              "plainLabel": "Paid",
+              "value": "paid"
+            },
+            {
+              "plainLabel": "Shipped",
+              "value": "shipped"
+            },
+            {
+              "plainLabel": "Completed",
+              "value": "completed"
+            },
+            {
+              "plainLabel": "Cancelled",
+              "value": "cancelled"
+            },
+            {
+              "plainLabel": "Refunded",
+              "value": "refunded"
+            }
+          ],
+          "sort": "desc"
+        },
+        {
+          "name": "statusWhenDelivered",
+          "$component": "SelectInput",
+          "label": "settings_order_status_when_delivered",
+          "description": "settings_order_status_when_delivered_description",
+          "options": [
+            {
+              "value": -1,
+              "label": "settings_none"
+            },
+            {
+              "plainLabel": "Pending",
+              "value": "pending"
+            },
+            {
+              "plainLabel": "Paid",
+              "value": "paid"
+            },
+            {
+              "plainLabel": "Shipped",
+              "value": "shipped"
+            },
+            {
+              "plainLabel": "Completed",
+              "value": "completed"
+            },
+            {
+              "plainLabel": "Cancelled",
+              "value": "cancelled"
+            },
+            {
+              "plainLabel": "Refunded",
+              "value": "refunded"
+            }
+          ],
+          "sort": "desc"
+        },
+        {
+          "name": "sendNotificationAfter",
+          "$component": "SelectInput",
+          "label": "settings_order_send_notification_after",
+          "description": "settings_order_send_notification_after_description",
+          "options": [
+            {
+              "value": -1,
+              "label": "settings_none"
+            },
+            {
+              "plainLabel": "Pending",
+              "value": "pending"
+            },
+            {
+              "plainLabel": "Paid",
+              "value": "paid"
+            },
+            {
+              "plainLabel": "Shipped",
+              "value": "shipped"
+            },
+            {
+              "plainLabel": "Completed",
+              "value": "completed"
+            },
+            {
+              "plainLabel": "Cancelled",
+              "value": "cancelled"
+            },
+            {
+              "plainLabel": "Refunded",
+              "value": "refunded"
+            }
+          ],
+          "sort": "desc"
+        },
+        {
+          "$component": "SettingsDivider",
+          "$wrapper": false,
+          "level": 2,
+          "content": "settings_order_track_trace_description",
+          "heading": "settings_order_track_trace_title"
+        },
+        {
+          "name": "trackTraceInEmail",
+          "$component": "ToggleInput",
+          "label": "settings_order_track_trace_in_email",
+          "description": "settings_order_track_trace_in_email_description"
+        },
+        {
+          "name": "trackTraceInAccount",
+          "$component": "ToggleInput",
+          "label": "settings_order_track_trace_in_account",
+          "description": "settings_order_track_trace_in_account_description"
+        },
+        {
+          "$component": "SettingsDivider",
+          "$wrapper": false,
+          "level": 2,
+          "content": "settings_order_weight_description",
+          "heading": "settings_order_weight_title"
         },
         {
           "name": "emptyParcelWeight",
@@ -276,20 +287,52 @@
         {
           "name": "emptyMailboxWeight",
           "$component": "NumberInput",
-          "label": "settings_order_empty_mailbox_weight"
+          "label": "settings_order_empty_mailbox_weight",
+          "description": "settings_order_empty_mailbox_weight_description"
         },
         {
           "name": "emptyDigitalStampWeight",
           "$component": "NumberInput",
-          "label": "settings_order_empty_digital_stamp_weight"
+          "label": "settings_order_empty_digital_stamp_weight",
+          "description": "settings_order_empty_digital_stamp_weight_description"
+        },
+        {
+          "$component": "SettingsDivider",
+          "$wrapper": false,
+          "level": 2,
+          "content": "settings_order_order_notes_description",
+          "heading": "settings_order_order_notes_title"
+        },
+        {
+          "name": "barcodeInNote",
+          "$component": "ToggleInput",
+          "label": "settings_order_barcode_in_note",
+          "description": "settings_order_barcode_in_note_description"
+        },
+        {
+          "name": "barcodeInNoteTitle",
+          "$builders": [
+            {
+              "$visibleWhen": {
+                "$if": [
+                  {
+                    "$target": "barcodeInNote"
+                  }
+                ]
+              }
+            }
+          ],
+          "$component": "TextInput",
+          "label": "settings_order_barcode_in_note_title",
+          "description": "settings_order_barcode_in_note_title_description"
         }
       ],
       "children": null
     },
     "label": {
       "id": "label",
-      "title": "settings_view_label_title",
-      "description": "settings_view_label_description",
+      "title": "settings_label_title",
+      "description": "settings_label_description",
       "elements": [
         {
           "name": "description",
@@ -298,66 +341,85 @@
           "description": "settings_label_description_description"
         },
         {
-          "name": "format",
-          "$component": "SelectInput",
-          "options": [
-            {
-              "value": "A4",
-              "label": "settings_label_format_option_a4"
-            },
-            {
-              "value": "A6",
-              "label": "settings_label_format_option_a6"
-            }
-          ],
-          "label": "settings_label_format",
-          "description": "settings_label_format_description"
-        },
-        {
-          "name": "position",
-          "$component": "SelectInput",
-          "options": [
-            {
-              "value": 1,
-              "label": "settings_label_position_option_1"
-            },
-            {
-              "value": 2,
-              "label": "settings_label_position_option_2"
-            },
-            {
-              "value": 3,
-              "label": "settings_label_position_option_3"
-            },
-            {
-              "value": 4,
-              "label": "settings_label_position_option_4"
-            }
-          ],
-          "label": "settings_label_position",
-          "description": "settings_label_position_description"
-        },
-        {
-          "name": "output",
-          "$component": "SelectInput",
-          "options": [
-            {
-              "value": "open",
-              "label": "settings_label_output_option_open"
-            },
-            {
-              "value": "download",
-              "label": "settings_label_output_option_download"
-            }
-          ],
-          "label": "settings_label_output",
-          "description": "settings_label_output_description"
-        },
-        {
           "name": "prompt",
           "$component": "ToggleInput",
           "label": "settings_label_prompt",
           "description": "settings_label_prompt_description"
+        },
+        {
+          "$component": "SettingsDivider",
+          "$wrapper": false,
+          "level": 2,
+          "content": "settings_label_defaults_description",
+          "heading": "settings_label_defaults_title"
+        },
+        {
+          "name": "output",
+          "$component": "RadioGroup",
+          "label": "settings_label_output",
+          "description": "settings_label_output_description",
+          "options": [
+            {
+              "label": "settings_label_output_option_open",
+              "value": "open"
+            },
+            {
+              "label": "settings_label_output_option_download",
+              "value": "download"
+            }
+          ]
+        },
+        {
+          "name": "format",
+          "$component": "RadioGroup",
+          "label": "settings_label_format",
+          "description": "settings_label_format_description",
+          "options": [
+            {
+              "label": "settings_label_format_option_a4",
+              "value": "a4"
+            },
+            {
+              "label": "settings_label_format_option_a6",
+              "value": "a6"
+            }
+          ]
+        },
+        {
+          "name": "position",
+          "$builders": [
+            {
+              "$visibleWhen": {
+                "$if": [
+                  {
+                    "$target": "format",
+                    "$eq": "a4"
+                  }
+                ]
+              }
+            }
+          ],
+          "$component": "MultiSelectInput",
+          "label": "settings_label_position",
+          "description": "settings_label_position_description",
+          "options": [
+            {
+              "label": "settings_label_position_option_1",
+              "value": 1
+            },
+            {
+              "label": "settings_label_position_option_2",
+              "value": 2
+            },
+            {
+              "label": "settings_label_position_option_3",
+              "value": 3
+            },
+            {
+              "label": "settings_label_position_option_4",
+              "value": 4
+            }
+          ]
         }
       ],
       "children": null
@@ -365,6 +427,7 @@
     "customs": {
       "id": "customs",
       "title": "settings_view_customs_title",
+      "titleSuffix": null,
       "description": "settings_view_customs_description",
       "elements": [
         {
@@ -407,1009 +470,1010 @@
           "options": [
             {
               "value": "AD",
-              "label": "AD"
+              "label": "country_ad"
             },
             {
               "value": "AE",
-              "label": "AE"
+              "label": "country_ae"
             },
             {
               "value": "AF",
-              "label": "AF"
+              "label": "country_af"
             },
             {
               "value": "AG",
-              "label": "AG"
+              "label": "country_ag"
             },
             {
               "value": "AI",
-              "label": "AI"
+              "label": "country_ai"
             },
             {
               "value": "AL",
-              "label": "AL"
+              "label": "country_al"
             },
             {
               "value": "AM",
-              "label": "AM"
+              "label": "country_am"
             },
             {
               "value": "AN",
-              "label": "AN"
+              "label": "country_an"
             },
             {
               "value": "AO",
-              "label": "AO"
+              "label": "country_ao"
             },
             {
               "value": "AQ",
-              "label": "AQ"
+              "label": "country_aq"
             },
             {
               "value": "AR",
-              "label": "AR"
+              "label": "country_ar"
             },
             {
               "value": "AS",
-              "label": "AS"
+              "label": "country_as"
             },
             {
               "value": "AT",
-              "label": "AT"
+              "label": "country_at"
             },
             {
               "value": "AU",
-              "label": "AU"
+              "label": "country_au"
             },
             {
               "value": "AW",
-              "label": "AW"
+              "label": "country_aw"
             },
             {
               "value": "AX",
-              "label": "AX"
+              "label": "country_ax"
             },
             {
               "value": "AZ",
-              "label": "AZ"
+              "label": "country_az"
             },
             {
               "value": "BA",
-              "label": "BA"
+              "label": "country_ba"
             },
             {
               "value": "BB",
-              "label": "BB"
+              "label": "country_bb"
             },
             {
               "value": "BD",
-              "label": "BD"
+              "label": "country_bd"
             },
             {
               "value": "BE",
-              "label": "BE"
+              "label": "country_be"
             },
             {
               "value": "BF",
-              "label": "BF"
+              "label": "country_bf"
             },
             {
               "value": "BG",
-              "label": "BG"
+              "label": "country_bg"
             },
             {
               "value": "BH",
-              "label": "BH"
+              "label": "country_bh"
             },
             {
               "value": "BI",
-              "label": "BI"
+              "label": "country_bi"
             },
             {
               "value": "BJ",
-              "label": "BJ"
+              "label": "country_bj"
             },
             {
               "value": "BL",
-              "label": "BL"
+              "label": "country_bl"
             },
             {
               "value": "BM",
-              "label": "BM"
+              "label": "country_bm"
             },
             {
               "value": "BN",
-              "label": "BN"
+              "label": "country_bn"
             },
             {
               "value": "BO",
-              "label": "BO"
+              "label": "country_bo"
             },
             {
               "value": "BQ",
-              "label": "BQ"
+              "label": "country_bq"
             },
             {
               "value": "BR",
-              "label": "BR"
+              "label": "country_br"
             },
             {
               "value": "BS",
-              "label": "BS"
+              "label": "country_bs"
             },
             {
               "value": "BT",
-              "label": "BT"
+              "label": "country_bt"
             },
             {
               "value": "BV",
-              "label": "BV"
+              "label": "country_bv"
             },
             {
               "value": "BW",
-              "label": "BW"
+              "label": "country_bw"
             },
             {
               "value": "BY",
-              "label": "BY"
+              "label": "country_by"
             },
             {
               "value": "BZ",
-              "label": "BZ"
+              "label": "country_bz"
             },
             {
               "value": "CA",
-              "label": "CA"
+              "label": "country_ca"
             },
             {
               "value": "CC",
-              "label": "CC"
+              "label": "country_cc"
             },
             {
               "value": "CD",
-              "label": "CD"
+              "label": "country_cd"
             },
             {
               "value": "CF",
-              "label": "CF"
+              "label": "country_cf"
             },
             {
               "value": "CG",
-              "label": "CG"
+              "label": "country_cg"
             },
             {
               "value": "CH",
-              "label": "CH"
+              "label": "country_ch"
             },
             {
               "value": "CI",
-              "label": "CI"
+              "label": "country_ci"
             },
             {
               "value": "CK",
-              "label": "CK"
+              "label": "country_ck"
             },
             {
               "value": "CL",
-              "label": "CL"
+              "label": "country_cl"
             },
             {
               "value": "CM",
-              "label": "CM"
+              "label": "country_cm"
             },
             {
               "value": "CN",
-              "label": "CN"
+              "label": "country_cn"
             },
             {
               "value": "CO",
-              "label": "CO"
+              "label": "country_co"
             },
             {
               "value": "CR",
-              "label": "CR"
+              "label": "country_cr"
             },
             {
               "value": "CU",
-              "label": "CU"
+              "label": "country_cu"
             },
             {
               "value": "CV",
-              "label": "CV"
+              "label": "country_cv"
             },
             {
               "value": "CW",
-              "label": "CW"
+              "label": "country_cw"
             },
             {
               "value": "CX",
-              "label": "CX"
+              "label": "country_cx"
             },
             {
               "value": "CY",
-              "label": "CY"
+              "label": "country_cy"
             },
             {
               "value": "CZ",
-              "label": "CZ"
+              "label": "country_cz"
             },
             {
               "value": "DE",
-              "label": "DE"
+              "label": "country_de"
             },
             {
               "value": "DJ",
-              "label": "DJ"
+              "label": "country_dj"
             },
             {
               "value": "DK",
-              "label": "DK"
+              "label": "country_dk"
             },
             {
               "value": "DM",
-              "label": "DM"
+              "label": "country_dm"
             },
             {
               "value": "DO",
-              "label": "DO"
+              "label": "country_do"
             },
             {
               "value": "DZ",
-              "label": "DZ"
+              "label": "country_dz"
             },
             {
               "value": "EC",
-              "label": "EC"
+              "label": "country_ec"
             },
             {
               "value": "EE",
-              "label": "EE"
+              "label": "country_ee"
             },
             {
               "value": "EG",
-              "label": "EG"
+              "label": "country_eg"
             },
             {
               "value": "EH",
-              "label": "EH"
+              "label": "country_eh"
             },
             {
               "value": "ER",
-              "label": "ER"
+              "label": "country_er"
             },
             {
               "value": "ES",
-              "label": "ES"
+              "label": "country_es"
             },
             {
               "value": "ET",
-              "label": "ET"
+              "label": "country_et"
             },
             {
               "value": "FI",
-              "label": "FI"
+              "label": "country_fi"
             },
             {
               "value": "FJ",
-              "label": "FJ"
+              "label": "country_fj"
             },
             {
               "value": "FK",
-              "label": "FK"
+              "label": "country_fk"
             },
             {
               "value": "FM",
-              "label": "FM"
+              "label": "country_fm"
             },
             {
               "value": "FO",
-              "label": "FO"
+              "label": "country_fo"
             },
             {
               "value": "FR",
-              "label": "FR"
+              "label": "country_fr"
             },
             {
               "value": "GA",
-              "label": "GA"
+              "label": "country_ga"
             },
             {
               "value": "GB",
-              "label": "GB"
+              "label": "country_gb"
             },
             {
               "value": "GD",
-              "label": "GD"
+              "label": "country_gd"
             },
             {
               "value": "GE",
-              "label": "GE"
+              "label": "country_ge"
             },
             {
               "value": "GF",
-              "label": "GF"
+              "label": "country_gf"
             },
             {
               "value": "GG",
-              "label": "GG"
+              "label": "country_gg"
             },
             {
               "value": "GH",
-              "label": "GH"
+              "label": "country_gh"
             },
             {
               "value": "GI",
-              "label": "GI"
+              "label": "country_gi"
             },
             {
               "value": "GL",
-              "label": "GL"
+              "label": "country_gl"
             },
             {
               "value": "GM",
-              "label": "GM"
+              "label": "country_gm"
             },
             {
               "value": "GN",
-              "label": "GN"
+              "label": "country_gn"
             },
             {
               "value": "GP",
-              "label": "GP"
+              "label": "country_gp"
             },
             {
               "value": "GQ",
-              "label": "GQ"
+              "label": "country_gq"
             },
             {
               "value": "GR",
-              "label": "GR"
+              "label": "country_gr"
             },
             {
               "value": "GS",
-              "label": "GS"
+              "label": "country_gs"
             },
             {
               "value": "GT",
-              "label": "GT"
+              "label": "country_gt"
             },
             {
               "value": "GU",
-              "label": "GU"
+              "label": "country_gu"
             },
             {
               "value": "GW",
-              "label": "GW"
+              "label": "country_gw"
             },
             {
               "value": "GY",
-              "label": "GY"
+              "label": "country_gy"
             },
             {
               "value": "HK",
-              "label": "HK"
+              "label": "country_hk"
             },
             {
               "value": "HM",
-              "label": "HM"
+              "label": "country_hm"
             },
             {
               "value": "HN",
-              "label": "HN"
+              "label": "country_hn"
             },
             {
               "value": "HR",
-              "label": "HR"
+              "label": "country_hr"
             },
             {
               "value": "HT",
-              "label": "HT"
+              "label": "country_ht"
             },
             {
               "value": "HU",
-              "label": "HU"
+              "label": "country_hu"
             },
             {
               "value": "ID",
-              "label": "ID"
+              "label": "country_id"
             },
             {
               "value": "IE",
-              "label": "IE"
+              "label": "country_ie"
             },
             {
               "value": "IL",
-              "label": "IL"
+              "label": "country_il"
             },
             {
               "value": "IM",
-              "label": "IM"
+              "label": "country_im"
             },
             {
               "value": "IN",
-              "label": "IN"
+              "label": "country_in"
             },
             {
               "value": "IO",
-              "label": "IO"
+              "label": "country_io"
             },
             {
               "value": "IQ",
-              "label": "IQ"
+              "label": "country_iq"
             },
             {
               "value": "IR",
-              "label": "IR"
+              "label": "country_ir"
             },
             {
               "value": "IS",
-              "label": "IS"
+              "label": "country_is"
             },
             {
               "value": "IT",
-              "label": "IT"
+              "label": "country_it"
             },
             {
               "value": "JE",
-              "label": "JE"
+              "label": "country_je"
             },
             {
               "value": "JM",
-              "label": "JM"
+              "label": "country_jm"
             },
             {
               "value": "JO",
-              "label": "JO"
+              "label": "country_jo"
             },
             {
               "value": "JP",
-              "label": "JP"
+              "label": "country_jp"
             },
             {
               "value": "KE",
-              "label": "KE"
+              "label": "country_ke"
             },
             {
               "value": "KG",
-              "label": "KG"
+              "label": "country_kg"
             },
             {
               "value": "KH",
-              "label": "KH"
+              "label": "country_kh"
             },
             {
               "value": "KI",
-              "label": "KI"
+              "label": "country_ki"
             },
             {
               "value": "KM",
-              "label": "KM"
+              "label": "country_km"
             },
             {
               "value": "KN",
-              "label": "KN"
+              "label": "country_kn"
             },
             {
               "value": "KP",
-              "label": "KP"
+              "label": "country_kp"
             },
             {
               "value": "KR",
-              "label": "KR"
+              "label": "country_kr"
             },
             {
               "value": "KW",
-              "label": "KW"
+              "label": "country_kw"
             },
             {
               "value": "KY",
-              "label": "KY"
+              "label": "country_ky"
             },
             {
               "value": "KZ",
-              "label": "KZ"
+              "label": "country_kz"
             },
             {
               "value": "LA",
-              "label": "LA"
+              "label": "country_la"
             },
             {
               "value": "LB",
-              "label": "LB"
+              "label": "country_lb"
             },
             {
               "value": "LC",
-              "label": "LC"
+              "label": "country_lc"
             },
             {
               "value": "LI",
-              "label": "LI"
+              "label": "country_li"
             },
             {
               "value": "LK",
-              "label": "LK"
+              "label": "country_lk"
             },
             {
               "value": "LR",
-              "label": "LR"
+              "label": "country_lr"
             },
             {
               "value": "LS",
-              "label": "LS"
+              "label": "country_ls"
             },
             {
               "value": "LT",
-              "label": "LT"
+              "label": "country_lt"
             },
             {
               "value": "LU",
-              "label": "LU"
+              "label": "country_lu"
             },
             {
               "value": "LV",
-              "label": "LV"
+              "label": "country_lv"
             },
             {
               "value": "LY",
-              "label": "LY"
+              "label": "country_ly"
             },
             {
               "value": "MA",
-              "label": "MA"
+              "label": "country_ma"
             },
             {
               "value": "MC",
-              "label": "MC"
+              "label": "country_mc"
             },
             {
               "value": "MD",
-              "label": "MD"
+              "label": "country_md"
             },
             {
               "value": "ME",
-              "label": "ME"
+              "label": "country_me"
             },
             {
               "value": "MF",
-              "label": "MF"
+              "label": "country_mf"
             },
             {
               "value": "MG",
-              "label": "MG"
+              "label": "country_mg"
             },
             {
               "value": "MH",
-              "label": "MH"
+              "label": "country_mh"
             },
             {
               "value": "MK",
-              "label": "MK"
+              "label": "country_mk"
             },
             {
               "value": "ML",
-              "label": "ML"
+              "label": "country_ml"
             },
             {
               "value": "MM",
-              "label": "MM"
+              "label": "country_mm"
             },
             {
               "value": "MN",
-              "label": "MN"
+              "label": "country_mn"
             },
             {
               "value": "MO",
-              "label": "MO"
+              "label": "country_mo"
             },
             {
               "value": "MP",
-              "label": "MP"
+              "label": "country_mp"
             },
             {
               "value": "MQ",
-              "label": "MQ"
+              "label": "country_mq"
             },
             {
               "value": "MR",
-              "label": "MR"
+              "label": "country_mr"
             },
             {
               "value": "MS",
-              "label": "MS"
+              "label": "country_ms"
             },
             {
               "value": "MT",
-              "label": "MT"
+              "label": "country_mt"
             },
             {
               "value": "MU",
-              "label": "MU"
+              "label": "country_mu"
             },
             {
               "value": "MV",
-              "label": "MV"
+              "label": "country_mv"
             },
             {
               "value": "MW",
-              "label": "MW"
+              "label": "country_mw"
             },
             {
               "value": "MX",
-              "label": "MX"
+              "label": "country_mx"
             },
             {
               "value": "MY",
-              "label": "MY"
+              "label": "country_my"
             },
             {
               "value": "MZ",
-              "label": "MZ"
+              "label": "country_mz"
             },
             {
               "value": "NA",
-              "label": "NA"
+              "label": "country_na"
             },
             {
               "value": "NC",
-              "label": "NC"
+              "label": "country_nc"
             },
             {
               "value": "NE",
-              "label": "NE"
+              "label": "country_ne"
             },
             {
               "value": "NF",
-              "label": "NF"
+              "label": "country_nf"
             },
             {
               "value": "NG",
-              "label": "NG"
+              "label": "country_ng"
             },
             {
               "value": "NI",
-              "label": "NI"
+              "label": "country_ni"
             },
             {
               "value": "NL",
-              "label": "NL"
+              "label": "country_nl"
             },
             {
               "value": "NO",
-              "label": "NO"
+              "label": "country_no"
             },
             {
               "value": "NP",
-              "label": "NP"
+              "label": "country_np"
             },
             {
               "value": "NR",
-              "label": "NR"
+              "label": "country_nr"
             },
             {
               "value": "NU",
-              "label": "NU"
+              "label": "country_nu"
             },
             {
               "value": "NZ",
-              "label": "NZ"
+              "label": "country_nz"
             },
             {
               "value": "OM",
-              "label": "OM"
+              "label": "country_om"
             },
             {
               "value": "PA",
-              "label": "PA"
+              "label": "country_pa"
             },
             {
               "value": "PE",
-              "label": "PE"
+              "label": "country_pe"
             },
             {
               "value": "PF",
-              "label": "PF"
+              "label": "country_pf"
             },
             {
               "value": "PG",
-              "label": "PG"
+              "label": "country_pg"
             },
             {
               "value": "PH",
-              "label": "PH"
+              "label": "country_ph"
             },
             {
               "value": "PK",
-              "label": "PK"
+              "label": "country_pk"
             },
             {
               "value": "PL",
-              "label": "PL"
+              "label": "country_pl"
             },
             {
               "value": "PM",
-              "label": "PM"
+              "label": "country_pm"
             },
             {
               "value": "PN",
-              "label": "PN"
+              "label": "country_pn"
             },
             {
               "value": "PR",
-              "label": "PR"
+              "label": "country_pr"
             },
             {
               "value": "PS",
-              "label": "PS"
+              "label": "country_ps"
             },
             {
               "value": "PT",
-              "label": "PT"
+              "label": "country_pt"
             },
             {
               "value": "PW",
-              "label": "PW"
+              "label": "country_pw"
             },
             {
               "value": "PY",
-              "label": "PY"
+              "label": "country_py"
             },
             {
               "value": "QA",
-              "label": "QA"
+              "label": "country_qa"
             },
             {
               "value": "RE",
-              "label": "RE"
+              "label": "country_re"
             },
             {
               "value": "RO",
-              "label": "RO"
+              "label": "country_ro"
             },
             {
               "value": "RS",
-              "label": "RS"
+              "label": "country_rs"
             },
             {
               "value": "RU",
-              "label": "RU"
+              "label": "country_ru"
             },
             {
               "value": "RW",
-              "label": "RW"
+              "label": "country_rw"
             },
             {
               "value": "SA",
-              "label": "SA"
+              "label": "country_sa"
             },
             {
               "value": "SB",
-              "label": "SB"
+              "label": "country_sb"
             },
             {
               "value": "SC",
-              "label": "SC"
+              "label": "country_sc"
             },
             {
               "value": "SD",
-              "label": "SD"
+              "label": "country_sd"
             },
             {
               "value": "SE",
-              "label": "SE"
+              "label": "country_se"
             },
             {
               "value": "SG",
-              "label": "SG"
+              "label": "country_sg"
             },
             {
               "value": "SH",
-              "label": "SH"
+              "label": "country_sh"
             },
             {
               "value": "SI",
-              "label": "SI"
+              "label": "country_si"
             },
             {
               "value": "SJ",
-              "label": "SJ"
+              "label": "country_sj"
             },
             {
               "value": "SK",
-              "label": "SK"
+              "label": "country_sk"
             },
             {
               "value": "SL",
-              "label": "SL"
+              "label": "country_sl"
             },
             {
               "value": "SM",
-              "label": "SM"
+              "label": "country_sm"
             },
             {
               "value": "SN",
-              "label": "SN"
+              "label": "country_sn"
             },
             {
               "value": "SO",
-              "label": "SO"
+              "label": "country_so"
             },
             {
               "value": "SR",
-              "label": "SR"
+              "label": "country_sr"
             },
             {
               "value": "SS",
-              "label": "SS"
+              "label": "country_ss"
             },
             {
               "value": "ST",
-              "label": "ST"
+              "label": "country_st"
             },
             {
               "value": "SV",
-              "label": "SV"
+              "label": "country_sv"
             },
             {
               "value": "SX",
-              "label": "SX"
+              "label": "country_sx"
             },
             {
               "value": "SY",
-              "label": "SY"
+              "label": "country_sy"
             },
             {
               "value": "SZ",
-              "label": "SZ"
+              "label": "country_sz"
             },
             {
               "value": "TC",
-              "label": "TC"
+              "label": "country_tc"
             },
             {
               "value": "TD",
-              "label": "TD"
+              "label": "country_td"
             },
             {
               "value": "TF",
-              "label": "TF"
+              "label": "country_tf"
             },
             {
               "value": "TG",
-              "label": "TG"
+              "label": "country_tg"
             },
             {
               "value": "TH",
-              "label": "TH"
+              "label": "country_th"
             },
             {
               "value": "TJ",
-              "label": "TJ"
+              "label": "country_tj"
             },
             {
               "value": "TK",
-              "label": "TK"
+              "label": "country_tk"
             },
             {
               "value": "TL",
-              "label": "TL"
+              "label": "country_tl"
             },
             {
               "value": "TM",
-              "label": "TM"
+              "label": "country_tm"
             },
             {
               "value": "TN",
-              "label": "TN"
+              "label": "country_tn"
             },
             {
               "value": "TO",
-              "label": "TO"
+              "label": "country_to"
             },
             {
               "value": "TR",
-              "label": "TR"
+              "label": "country_tr"
             },
             {
               "value": "TT",
-              "label": "TT"
+              "label": "country_tt"
             },
             {
               "value": "TV",
-              "label": "TV"
+              "label": "country_tv"
             },
             {
               "value": "TW",
-              "label": "TW"
+              "label": "country_tw"
             },
             {
               "value": "TZ",
-              "label": "TZ"
+              "label": "country_tz"
             },
             {
               "value": "UA",
-              "label": "UA"
+              "label": "country_ua"
             },
             {
               "value": "UG",
-              "label": "UG"
+              "label": "country_ug"
             },
             {
               "value": "UM",
-              "label": "UM"
+              "label": "country_um"
             },
             {
               "value": "US",
-              "label": "US"
+              "label": "country_us"
             },
             {
               "value": "UY",
-              "label": "UY"
+              "label": "country_uy"
             },
             {
               "value": "UZ",
-              "label": "UZ"
+              "label": "country_uz"
             },
             {
               "value": "VA",
-              "label": "VA"
+              "label": "country_va"
             },
             {
               "value": "VC",
-              "label": "VC"
+              "label": "country_vc"
             },
             {
               "value": "VE",
-              "label": "VE"
+              "label": "country_ve"
             },
             {
               "value": "VG",
-              "label": "VG"
+              "label": "country_vg"
             },
             {
               "value": "VI",
-              "label": "VI"
+              "label": "country_vi"
             },
             {
               "value": "VN",
-              "label": "VN"
+              "label": "country_vn"
             },
             {
               "value": "VU",
-              "label": "VU"
+              "label": "country_vu"
             },
             {
               "value": "WF",
-              "label": "WF"
+              "label": "country_wf"
             },
             {
               "value": "WS",
-              "label": "WS"
+              "label": "country_ws"
             },
             {
               "value": "XK",
-              "label": "XK"
+              "label": "country_xk"
             },
             {
               "value": "YE",
-              "label": "YE"
+              "label": "country_ye"
             },
             {
               "value": "YT",
-              "label": "YT"
+              "label": "country_yt"
             },
             {
               "value": "ZA",
-              "label": "ZA"
+              "label": "country_za"
             },
             {
               "value": "ZM",
-              "label": "ZM"
+              "label": "country_zm"
             },
             {
               "value": "ZW",
-              "label": "ZW"
+              "label": "country_zw"
             }
           ],
+          "sort": "asc",
           "label": "settings_customs_country_of_origin",
           "description": "settings_customs_country_of_origin_description"
         }
@@ -1419,15 +1483,94 @@
     "checkout": {
       "id": "checkout",
       "title": "settings_view_checkout_title",
+      "titleSuffix": null,
       "description": "settings_view_checkout_description",
       "elements": [
         {
           "name": "useSeparateAddressFields",
           "$component": "ToggleInput",
-          "label": "settings_checkout_use_separate_address_fields"
+          "label": "settings_checkout_use_separate_address_fields",
+          "description": "settings_checkout_use_separate_address_fields_description"
+        },
+        {
+          "$component": "SettingsDivider",
+          "$wrapper": false,
+          "content": "settings_checkout_delivery_options_description",
+          "heading": "settings_checkout_delivery_options_title",
+          "level": 2
+        },
+        {
+          "name": "enableDeliveryOptions",
+          "$component": "ToggleInput",
+          "label": "settings_checkout_enable_delivery_options",
+          "description": "settings_checkout_enable_delivery_options_description"
+        },
+        {
+          "name": "enableDeliveryOptionsWhenNotInStock",
+          "$builders": [
+            {
+              "$visibleWhen": {
+                "$if": [
+                  {
+                    "$target": "enableDeliveryOptions"
+                  }
+                ]
+              }
+            }
+          ],
+          "$component": "ToggleInput",
+          "label": "settings_checkout_enable_delivery_options_when_not_in_stock",
+          "description": "settings_checkout_enable_delivery_options_when_not_in_stock_description"
+        },
+        {
+          "name": "deliveryOptionsPosition",
+          "$builders": [
+            {
+              "$visibleWhen": {
+                "$if": [
+                  {
+                    "$target": "enableDeliveryOptions"
+                  }
+                ]
+              }
+            }
+          ],
+          "$component": "SelectInput",
+          "options": [],
+          "label": "settings_checkout_delivery_options_position",
+          "description": "settings_checkout_delivery_options_position_description"
+        },
+        {
+          "name": "allowedShippingMethods",
+          "$builders": [
+            {
+              "$visibleWhen": {
+                "$if": [
+                  {
+                    "$target": "enableDeliveryOptions"
+                  }
+                ]
+              }
+            }
+          ],
+          "$component": "MultiSelectInput",
+          "options": [],
+          "label": "settings_checkout_allowed_shipping_methods",
+          "description": "settings_checkout_allowed_shipping_methods_description"
         },
         {
           "name": "priceType",
+          "$builders": [
+            {
+              "$visibleWhen": {
+                "$if": [
+                  {
+                    "$target": "enableDeliveryOptions"
+                  }
+                ]
+              }
+            }
+          ],
           "$component": "SelectInput",
           "options": [
             {
@@ -1443,25 +1586,38 @@
           "description": "settings_checkout_price_type_description"
         },
         {
-          "name": "enableDeliveryOptions",
-          "$component": "ToggleInput",
-          "label": "settings_checkout_enable_delivery_options"
-        },
-        {
-          "name": "enableDeliveryOptionsWhenNotInStock",
-          "$component": "ToggleInput",
-          "label": "settings_checkout_enable_delivery_options_when_not_in_stock",
-          "description": "settings_checkout_enable_delivery_options_when_not_in_stock_description"
-        },
-        {
           "name": "deliveryOptionsHeader",
+          "$builders": [
+            {
+              "$visibleWhen": {
+                "$if": [
+                  {
+                    "$target": "enableDeliveryOptions"
+                  }
+                ]
+              }
+            }
+          ],
           "$component": "TextInput",
-          "label": "settings_checkout_delivery_options_header"
+          "label": "settings_checkout_delivery_options_header",
+          "description": "settings_checkout_delivery_options_header_description"
         },
         {
           "name": "deliveryOptionsCustomCss",
+          "$builders": [
+            {
+              "$visibleWhen": {
+                "$if": [
+                  {
+                    "$target": "enableDeliveryOptions"
+                  }
+                ]
+              }
+            }
+          ],
           "$component": "CodeEditor",
-          "label": "settings_checkout_delivery_options_custom_css"
+          "label": "settings_checkout_delivery_options_custom_css",
+          "description": "settings_checkout_delivery_options_custom_css_description"
         }
       ],
       "children": null
@@ -1469,6 +1625,7 @@
     "carrier": {
       "id": "carrier",
       "title": "settings_view_carrier_title",
+      "titleSuffix": null,
       "description": "settings_view_carrier_description",
       "elements": null,
       "children": [
@@ -1478,1185 +1635,367 @@
           "description": "settings_view_carrier_postnl_description",
           "elements": [
             {
-              "$component": "Heading",
-              "$slot": "settings_carrier_export"
+              "$component": "SettingsDivider",
+              "$wrapper": false,
+              "content": "settings_carrier_export_description",
+              "heading": "settings_carrier_export_title",
+              "level": 2
             },
             {
-              "name": "exportInsurance",
+              "$component": "SettingsDivider",
+              "$wrapper": false,
+              "content": "settings_carrier_delivery_options_description",
+              "heading": "settings_carrier_delivery_options_title",
+              "level": 2
+            },
+            {
+              "name": "deliveryOptionsEnabled",
               "$component": "ToggleInput",
-              "label": "settings_carrier_export_insurance"
+              "label": "settings_carrier_delivery_options_enabled",
+              "description": "settings_carrier_delivery_options_enabled_description"
             },
             {
-              "name": "exportInsuranceFromAmount",
-              "$component": "NumberInput",
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_from_amount"
-            },
-            {
-              "name": "exportInsuranceUpTo",
-              "$component": "SelectInput",
-              "options": [
+              "$builders": [
                 {
-                  "value": 0,
-                  "label": 0
-                },
-                {
-                  "value": 100,
-                  "label": 100
-                },
-                {
-                  "value": 250,
-                  "label": 250
-                },
-                {
-                  "value": 500,
-                  "label": 500
-                },
-                {
-                  "value": 1000,
-                  "label": 1000
-                },
-                {
-                  "value": 1500,
-                  "label": 1500
-                },
-                {
-                  "value": 2000,
-                  "label": 2000
-                },
-                {
-                  "value": 2500,
-                  "label": 2500
-                },
-                {
-                  "value": 3000,
-                  "label": 3000
-                },
-                {
-                  "value": 3500,
-                  "label": 3500
-                },
-                {
-                  "value": 4000,
-                  "label": 4000
-                },
-                {
-                  "value": 4500,
-                  "label": 4500
-                },
-                {
-                  "value": 5000,
-                  "label": 5000
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$target": "deliveryOptionsEnabled"
+                      }
+                    ]
+                  }
                 }
               ],
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_up_to"
-            },
-            {
-              "name": "exportInsuranceUpToBe",
-              "$component": "SelectInput",
-              "options": [
-                {
-                  "value": 0,
-                  "label": 0
-                },
-                {
-                  "value": 100,
-                  "label": 100
-                },
-                {
-                  "value": 250,
-                  "label": 250
-                },
-                {
-                  "value": 500,
-                  "label": 500
-                },
-                {
-                  "value": 1000,
-                  "label": 1000
-                },
-                {
-                  "value": 1500,
-                  "label": 1500
-                },
-                {
-                  "value": 2000,
-                  "label": 2000
-                },
-                {
-                  "value": 2500,
-                  "label": 2500
-                },
-                {
-                  "value": 3000,
-                  "label": 3000
-                },
-                {
-                  "value": 3500,
-                  "label": 3500
-                },
-                {
-                  "value": 4000,
-                  "label": 4000
-                },
-                {
-                  "value": 4500,
-                  "label": 4500
-                },
-                {
-                  "value": 5000,
-                  "label": 5000
-                }
-              ],
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_up_to_be"
-            },
-            {
-              "name": "exportInsuranceUpToEu",
-              "$component": "SelectInput",
-              "options": [
-                {
-                  "value": 0,
-                  "label": 0
-                },
-                {
-                  "value": 100,
-                  "label": 100
-                },
-                {
-                  "value": 250,
-                  "label": 250
-                },
-                {
-                  "value": 500,
-                  "label": 500
-                },
-                {
-                  "value": 1000,
-                  "label": 1000
-                },
-                {
-                  "value": 1500,
-                  "label": 1500
-                },
-                {
-                  "value": 2000,
-                  "label": 2000
-                },
-                {
-                  "value": 2500,
-                  "label": 2500
-                },
-                {
-                  "value": 3000,
-                  "label": 3000
-                },
-                {
-                  "value": 3500,
-                  "label": 3500
-                },
-                {
-                  "value": 4000,
-                  "label": 4000
-                },
-                {
-                  "value": 4500,
-                  "label": 4500
-                },
-                {
-                  "value": 5000,
-                  "label": 5000
-                }
-              ],
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_up_to_eu"
-            },
-            {
-              "name": "exportAgeCheck",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_age_check"
-            },
-            {
-              "name": "exportOnlyRecipient",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_only_recipient"
-            },
-            {
-              "name": "exportSignature",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_signature"
-            },
-            {
-              "name": "exportLargeFormat",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_large_format"
-            },
-            {
-              "name": "exportReturn",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_return"
-            },
-            {
-              "$component": "Heading",
-              "$slot": "settings_carrier_delivery_options"
+              "$component": "SettingsDivider",
+              "$wrapper": false,
+              "content": "settings_carrier_delivery_options_delivery_description",
+              "heading": "settings_carrier_delivery_options_delivery_title",
+              "level": 3
             },
             {
               "name": "allowDeliveryOptions",
+              "$builders": [
+                {
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$target": "deliveryOptionsEnabled"
+                      }
+                    ]
+                  }
+                }
+              ],
               "$component": "ToggleInput",
-              "label": "settings_carrier_allow_delivery_options"
-            },
-            {
-              "name": "allowMondayDelivery",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_monday_delivery"
-            },
-            {
-              "name": "allowSaturdayDelivery",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_saturday_delivery"
+              "label": "settings_carrier_allow_delivery_options",
+              "description": "settings_carrier_allow_delivery_options_description"
             },
             {
               "name": "defaultPackageType",
+              "$builders": [
+                {
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$and": [
+                          {
+                            "$target": "deliveryOptionsEnabled"
+                          },
+                          {
+                            "$target": "allowDeliveryOptions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
               "$component": "SelectInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "options": ["package", "mailbox", "letter", "digital_stamp"],
-              "label": "settings_carrier_default_package_type"
+              "options": [
+                {
+                  "value": -1,
+                  "label": "settings_default"
+                }
+              ],
+              "label": "settings_carrier_default_package_type",
+              "description": "settings_carrier_default_package_type_description"
             },
             {
-              "name": "pricePackageTypeMailbox",
+              "name": "priceDeliveryTypeStandard",
+              "$builders": [
+                {
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$and": [
+                          {
+                            "$target": "deliveryOptionsEnabled"
+                          },
+                          {
+                            "$target": "allowDeliveryOptions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
               "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_price_package_type_mailbox"
+              "label": "settings_carrier_price_delivery_type_standard",
+              "description": "settings_carrier_price_delivery_type_standard_description"
             },
             {
-              "name": "pricePackageTypeDigitalStamp",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_price_package_type_digital_stamp"
-            },
-            {
-              "name": "allowPickupLocations",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_pickup_locations"
-            },
-            {
-              "name": "priceDeliveryTypePickup",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowPickupLocations": true
-              },
-              "label": "settings_carrier_price_delivery_type_pickup"
-            },
-            {
-              "name": "allowSignature",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_signature"
-            },
-            {
-              "name": "priceSignature",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowSignature": true
-              },
-              "label": "settings_carrier_price_signature"
-            },
-            {
-              "name": "allowOnlyRecipient",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_only_recipient"
-            },
-            {
-              "name": "priceOnlyRecipient",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowOnlyRecipient": true
-              },
-              "label": "settings_carrier_price_only_recipient"
-            },
-            {
-              "name": "allowMorningDelivery",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_morning_delivery"
-            },
-            {
-              "name": "priceDeliveryTypeMorning",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowMorningDelivery": true
-              },
-              "label": "settings_carrier_price_delivery_type_morning"
-            },
-            {
-              "name": "allowEveningDelivery",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_evening_delivery"
-            },
-            {
-              "name": "priceDeliveryTypeEvening",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowEveningDelivery": true
-              },
-              "label": "settings_carrier_price_delivery_type_evening"
-            },
-            {
-              "name": "allowSameDayDelivery",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_same_day_delivery"
-            },
-            {
-              "name": "priceDeliveryTypeSameDay",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowSameDayDelivery": true
-              },
-              "label": "settings_carrier_price_delivery_type_same_day"
-            },
-            {
-              "name": "showDeliveryDay",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_show_delivery_day"
-            },
-            {
-              "name": "dropOffPossibilities",
-              "$component": "DropOffInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_drop_off_possibilities",
-              "description": "settings_carrier_drop_off_possibilities_description"
-            }
-          ],
-          "children": null
-        },
-        {
-          "id": "dhlforyou",
-          "title": "carrier_dhlforyou",
-          "description": "settings_view_carrier_dhlforyou_description",
-          "elements": [
-            {
-              "$component": "Heading",
-              "$slot": "settings_carrier_export"
-            },
-            {
-              "name": "exportInsurance",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_insurance"
-            },
-            {
-              "name": "exportInsuranceFromAmount",
+              "name": "deliveryDaysWindow",
+              "$builders": [
+                {
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$and": [
+                          {
+                            "$target": "deliveryOptionsEnabled"
+                          },
+                          {
+                            "$target": "allowDeliveryOptions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
               "$component": "NumberInput",
-              "$visibleWhen": {
-                "exportInsurance": true
+              "$attributes": {
+                "min": 0,
+                "max": 14
               },
-              "label": "settings_carrier_export_insurance_from_amount"
+              "label": "settings_carrier_delivery_days_window",
+              "description": "settings_carrier_delivery_days_window_description"
             },
             {
-              "name": "exportInsuranceUpTo",
-              "$component": "SelectInput",
-              "options": [
+              "name": "dropOffDelay",
+              "$builders": [
                 {
-                  "value": 0,
-                  "label": 0
-                },
-                {
-                  "value": 500,
-                  "label": 500
-                },
-                {
-                  "value": 1000,
-                  "label": 1000
-                },
-                {
-                  "value": 1500,
-                  "label": 1500
-                },
-                {
-                  "value": 2000,
-                  "label": 2000
-                },
-                {
-                  "value": 2500,
-                  "label": 2500
-                },
-                {
-                  "value": 3000,
-                  "label": 3000
-                },
-                {
-                  "value": 3500,
-                  "label": 3500
-                },
-                {
-                  "value": 4000,
-                  "label": 4000
-                },
-                {
-                  "value": 4500,
-                  "label": 4500
-                },
-                {
-                  "value": 5000,
-                  "label": 5000
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$and": [
+                          {
+                            "$target": "deliveryOptionsEnabled"
+                          },
+                          {
+                            "$target": "allowDeliveryOptions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
                 }
               ],
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_up_to"
-            },
-            {
-              "name": "exportInsuranceUpToBe",
-              "$component": "SelectInput",
-              "options": [
-                {
-                  "value": 0,
-                  "label": 0
-                },
-                {
-                  "value": 500,
-                  "label": 500
-                },
-                {
-                  "value": 1000,
-                  "label": 1000
-                },
-                {
-                  "value": 1500,
-                  "label": 1500
-                },
-                {
-                  "value": 2000,
-                  "label": 2000
-                },
-                {
-                  "value": 2500,
-                  "label": 2500
-                },
-                {
-                  "value": 3000,
-                  "label": 3000
-                },
-                {
-                  "value": 3500,
-                  "label": 3500
-                },
-                {
-                  "value": 4000,
-                  "label": 4000
-                },
-                {
-                  "value": 4500,
-                  "label": 4500
-                },
-                {
-                  "value": 5000,
-                  "label": 5000
-                }
-              ],
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_up_to_be"
-            },
-            {
-              "name": "exportInsuranceUpToEu",
-              "$component": "SelectInput",
-              "options": [
-                {
-                  "value": 0,
-                  "label": 0
-                },
-                {
-                  "value": 500,
-                  "label": 500
-                },
-                {
-                  "value": 1000,
-                  "label": 1000
-                },
-                {
-                  "value": 1500,
-                  "label": 1500
-                },
-                {
-                  "value": 2000,
-                  "label": 2000
-                },
-                {
-                  "value": 2500,
-                  "label": 2500
-                },
-                {
-                  "value": 3000,
-                  "label": 3000
-                },
-                {
-                  "value": 3500,
-                  "label": 3500
-                },
-                {
-                  "value": 4000,
-                  "label": 4000
-                },
-                {
-                  "value": 4500,
-                  "label": 4500
-                },
-                {
-                  "value": 5000,
-                  "label": 5000
-                }
-              ],
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_up_to_eu"
-            },
-            {
-              "name": "exportAgeCheck",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_age_check"
-            },
-            {
-              "name": "exportOnlyRecipient",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_only_recipient"
-            },
-            {
-              "name": "exportSignature",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_signature"
-            },
-            {
-              "name": "exportReturn",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_return"
-            },
-            {
-              "$component": "Heading",
-              "$slot": "settings_carrier_delivery_options"
-            },
-            {
-              "name": "allowDeliveryOptions",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_allow_delivery_options"
-            },
-            {
-              "name": "allowMondayDelivery",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_monday_delivery"
-            },
-            {
-              "name": "allowSaturdayDelivery",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_saturday_delivery"
-            },
-            {
-              "name": "defaultPackageType",
-              "$component": "SelectInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "options": ["package", "mailbox"],
-              "label": "settings_carrier_default_package_type"
-            },
-            {
-              "name": "pricePackageTypeMailbox",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_price_package_type_mailbox"
-            },
-            {
-              "name": "allowPickupLocations",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_pickup_locations"
-            },
-            {
-              "name": "priceDeliveryTypePickup",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowPickupLocations": true
-              },
-              "label": "settings_carrier_price_delivery_type_pickup"
-            },
-            {
-              "name": "allowSignature",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_signature"
-            },
-            {
-              "name": "priceSignature",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowSignature": true
-              },
-              "label": "settings_carrier_price_signature"
-            },
-            {
-              "name": "allowOnlyRecipient",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_only_recipient"
-            },
-            {
-              "name": "priceOnlyRecipient",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowOnlyRecipient": true
-              },
-              "label": "settings_carrier_price_only_recipient"
-            },
-            {
-              "name": "allowSameDayDelivery",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_same_day_delivery"
-            },
-            {
-              "name": "priceDeliveryTypeSameDay",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowSameDayDelivery": true
-              },
-              "label": "settings_carrier_price_delivery_type_same_day"
-            },
-            {
-              "name": "showDeliveryDay",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_show_delivery_day"
-            },
-            {
-              "name": "dropOffPossibilities",
-              "$component": "DropOffInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_drop_off_possibilities",
-              "description": "settings_carrier_drop_off_possibilities_description"
-            }
-          ],
-          "children": null
-        },
-        {
-          "id": "dhlparcelconnect",
-          "title": "carrier_dhlparcelconnect",
-          "description": "settings_view_carrier_dhlparcelconnect_description",
-          "elements": [
-            {
-              "$component": "Heading",
-              "$slot": "settings_carrier_export"
-            },
-            {
-              "name": "exportInsurance",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_insurance"
-            },
-            {
-              "name": "exportInsuranceFromAmount",
               "$component": "NumberInput",
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_from_amount"
-            },
-            {
-              "name": "exportInsuranceUpTo",
-              "$component": "SelectInput",
-              "options": [
-                {
-                  "value": 0,
-                  "label": 0
-                },
-                {
-                  "value": 500,
-                  "label": 500
-                },
-                {
-                  "value": 1000,
-                  "label": 1000
-                },
-                {
-                  "value": 1500,
-                  "label": 1500
-                },
-                {
-                  "value": 2000,
-                  "label": 2000
-                },
-                {
-                  "value": 2500,
-                  "label": 2500
-                },
-                {
-                  "value": 3000,
-                  "label": 3000
-                },
-                {
-                  "value": 3500,
-                  "label": 3500
-                },
-                {
-                  "value": 4000,
-                  "label": 4000
-                },
-                {
-                  "value": 4500,
-                  "label": 4500
-                },
-                {
-                  "value": 5000,
-                  "label": 5000
-                }
-              ],
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_up_to"
-            },
-            {
-              "name": "exportInsuranceUpToBe",
-              "$component": "SelectInput",
-              "options": [
-                {
-                  "value": 0,
-                  "label": 0
-                },
-                {
-                  "value": 500,
-                  "label": 500
-                },
-                {
-                  "value": 1000,
-                  "label": 1000
-                },
-                {
-                  "value": 1500,
-                  "label": 1500
-                },
-                {
-                  "value": 2000,
-                  "label": 2000
-                },
-                {
-                  "value": 2500,
-                  "label": 2500
-                },
-                {
-                  "value": 3000,
-                  "label": 3000
-                },
-                {
-                  "value": 3500,
-                  "label": 3500
-                },
-                {
-                  "value": 4000,
-                  "label": 4000
-                },
-                {
-                  "value": 4500,
-                  "label": 4500
-                },
-                {
-                  "value": 5000,
-                  "label": 5000
-                }
-              ],
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_up_to_be"
-            },
-            {
-              "name": "exportInsuranceUpToEu",
-              "$component": "SelectInput",
-              "options": [
-                {
-                  "value": 0,
-                  "label": 0
-                },
-                {
-                  "value": 500,
-                  "label": 500
-                },
-                {
-                  "value": 1000,
-                  "label": 1000
-                },
-                {
-                  "value": 1500,
-                  "label": 1500
-                },
-                {
-                  "value": 2000,
-                  "label": 2000
-                },
-                {
-                  "value": 2500,
-                  "label": 2500
-                },
-                {
-                  "value": 3000,
-                  "label": 3000
-                },
-                {
-                  "value": 3500,
-                  "label": 3500
-                },
-                {
-                  "value": 4000,
-                  "label": 4000
-                },
-                {
-                  "value": 4500,
-                  "label": 4500
-                },
-                {
-                  "value": 5000,
-                  "label": 5000
-                }
-              ],
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_up_to_eu"
-            },
-            {
-              "name": "exportSignature",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_signature"
-            },
-            {
-              "name": "exportReturn",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_return"
-            },
-            {
-              "$component": "Heading",
-              "$slot": "settings_carrier_delivery_options"
-            },
-            {
-              "name": "allowDeliveryOptions",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_allow_delivery_options"
-            },
-            {
-              "name": "allowMondayDelivery",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_monday_delivery"
-            },
-            {
-              "name": "allowSaturdayDelivery",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_saturday_delivery"
-            },
-            {
-              "name": "defaultPackageType",
-              "$component": "SelectInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "options": ["package"],
-              "label": "settings_carrier_default_package_type"
-            },
-            {
-              "name": "allowPickupLocations",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_pickup_locations"
-            },
-            {
-              "name": "priceDeliveryTypePickup",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowPickupLocations": true
-              },
-              "label": "settings_carrier_price_delivery_type_pickup"
-            },
-            {
-              "name": "allowSignature",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_signature"
-            },
-            {
-              "name": "priceSignature",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowSignature": true
-              },
-              "label": "settings_carrier_price_signature"
-            },
-            {
-              "name": "showDeliveryDay",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_show_delivery_day"
+              "label": "settings_carrier_drop_off_delay",
+              "description": "settings_carrier_drop_off_delay_description"
             },
             {
               "name": "dropOffPossibilities",
+              "$builders": [
+                {
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$and": [
+                          {
+                            "$target": "deliveryOptionsEnabled"
+                          },
+                          {
+                            "$target": "allowDeliveryOptions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
               "$component": "DropOffInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
               "label": "settings_carrier_drop_off_possibilities",
               "description": "settings_carrier_drop_off_possibilities_description"
-            }
-          ],
-          "children": null
-        },
-        {
-          "id": "dhleuroplus",
-          "title": "carrier_dhleuroplus",
-          "description": "settings_view_carrier_dhleuroplus_description",
-          "elements": [
-            {
-              "$component": "Heading",
-              "$slot": "settings_carrier_export"
             },
             {
-              "name": "exportInsurance",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_insurance"
-            },
-            {
-              "name": "exportInsuranceFromAmount",
-              "$component": "NumberInput",
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_from_amount"
-            },
-            {
-              "name": "exportInsuranceUpTo",
-              "$component": "SelectInput",
-              "options": [
+              "$builders": [
                 {
-                  "value": 0,
-                  "label": 0
-                },
-                {
-                  "value": 500,
-                  "label": 500
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$and": [
+                          {
+                            "$target": "deliveryOptionsEnabled"
+                          },
+                          {
+                            "$target": "allowDeliveryOptions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
                 }
               ],
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_up_to"
-            },
-            {
-              "name": "exportInsuranceUpToBe",
-              "$component": "SelectInput",
-              "options": [
-                {
-                  "value": 0,
-                  "label": 0
-                },
-                {
-                  "value": 500,
-                  "label": 500
-                }
-              ],
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_up_to_be"
-            },
-            {
-              "name": "exportInsuranceUpToEu",
-              "$component": "SelectInput",
-              "options": [
-                {
-                  "value": 0,
-                  "label": 0
-                },
-                {
-                  "value": 500,
-                  "label": 500
-                }
-              ],
-              "$visibleWhen": {
-                "exportInsurance": true
-              },
-              "label": "settings_carrier_export_insurance_up_to_eu"
-            },
-            {
-              "name": "exportSignature",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_signature"
-            },
-            {
-              "name": "exportReturn",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_export_return"
-            },
-            {
-              "$component": "Heading",
-              "$slot": "settings_carrier_delivery_options"
-            },
-            {
-              "name": "allowDeliveryOptions",
-              "$component": "ToggleInput",
-              "label": "settings_carrier_allow_delivery_options"
-            },
-            {
-              "name": "allowMondayDelivery",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_monday_delivery"
-            },
-            {
-              "name": "allowSaturdayDelivery",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_saturday_delivery"
-            },
-            {
-              "name": "defaultPackageType",
-              "$component": "SelectInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "options": ["package", "mailbox"],
-              "label": "settings_carrier_default_package_type"
-            },
-            {
-              "name": "pricePackageTypeMailbox",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_price_package_type_mailbox"
-            },
-            {
-              "name": "allowSignature",
-              "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_allow_signature"
-            },
-            {
-              "name": "priceSignature",
-              "$component": "CurrencyInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true,
-                "allowSignature": true
-              },
-              "label": "settings_carrier_price_signature"
+              "$component": "SettingsDivider",
+              "$wrapper": false,
+              "content": "settings_carrier_delivery_moments_description",
+              "heading": "settings_carrier_delivery_moments_title",
+              "level": 4
             },
             {
               "name": "showDeliveryDay",
+              "$builders": [
+                {
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$and": [
+                          {
+                            "$target": "deliveryOptionsEnabled"
+                          },
+                          {
+                            "$target": "allowDeliveryOptions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
               "$component": "ToggleInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_show_delivery_day"
+              "label": "settings_carrier_show_delivery_day",
+              "description": "settings_carrier_show_delivery_day_description"
             },
             {
-              "name": "dropOffPossibilities",
-              "$component": "DropOffInput",
-              "$visibleWhen": {
-                "allowDeliveryOptions": true
-              },
-              "label": "settings_carrier_drop_off_possibilities",
-              "description": "settings_carrier_drop_off_possibilities_description"
+              "name": "allowMondayDelivery",
+              "$builders": [
+                {
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$and": [
+                          {
+                            "$target": "deliveryOptionsEnabled"
+                          },
+                          {
+                            "$target": "allowDeliveryOptions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "$component": "ToggleInput",
+              "label": "settings_carrier_allow_monday_delivery",
+              "description": "settings_carrier_allow_monday_delivery_description"
+            },
+            {
+              "name": "priceDeliveryTypeMonday",
+              "$builders": [
+                {
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$target": "allowMondayDelivery"
+                      },
+                      {
+                        "$and": [
+                          {
+                            "$target": "deliveryOptionsEnabled"
+                          },
+                          {
+                            "$target": "allowDeliveryOptions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "$component": "CurrencyInput",
+              "label": "settings_carrier_price_delivery_type_monday",
+              "description": "settings_carrier_price_delivery_type_monday_description"
+            },
+            {
+              "name": "allowSaturdayDelivery",
+              "$builders": [
+                {
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$and": [
+                          {
+                            "$target": "deliveryOptionsEnabled"
+                          },
+                          {
+                            "$target": "allowDeliveryOptions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "$component": "ToggleInput",
+              "label": "settings_carrier_allow_saturday_delivery",
+              "description": "settings_carrier_allow_saturday_delivery_description"
+            },
+            {
+              "name": "priceDeliveryTypeSaturday",
+              "$builders": [
+                {
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$target": "allowSaturdayDelivery"
+                      },
+                      {
+                        "$and": [
+                          {
+                            "$target": "deliveryOptionsEnabled"
+                          },
+                          {
+                            "$target": "allowDeliveryOptions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "$component": "CurrencyInput",
+              "label": "settings_carrier_price_delivery_type_saturday",
+              "description": "settings_carrier_price_delivery_type_saturday_description"
+            },
+            {
+              "$builders": [
+                {
+                  "$visibleWhen": {
+                    "$if": [
+                      {
+                        "$and": [
+                          {
+                            "$target": "deliveryOptionsEnabled"
+                          },
+                          {
+                            "$target": "allowDeliveryOptions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "$component": "SettingsDivider",
+              "$wrapper": false,
+              "content": "settings_carrier_shipment_options_description",
+              "heading": "settings_carrier_shipment_options_title",
+              "level": 4
             }
-          ],
-          "children": null
+          ]
         }
       ]
     }

@@ -1,173 +1,57 @@
 {
   "dynamic": {
     "account": {
-      "id": 126594,
-      "platformId": 1,
-      "status": 2,
+      "id": 1,
+      "platformId": 3,
       "contactInfo": {
-        "boxNumber": "",
-        "city": "",
-        "number": "",
-        "numberSuffix": "",
-        "postalCode": "",
-        "region": "",
-        "street": "",
-        "streetAdditionalInfo": "",
-        "email": "test@myparcel.nl",
-        "phone": "0612345678",
-        "company": null
+        "address1": "Antareslaan 31",
+        "cc": "NL",
+        "city": "Hoofddorp",
+        "postalCode": "2132 JE",
+        "email": "support@myparcel.nl",
+        "person": "Felicia Parcel",
+        "company": "MyParcel"
       },
       "generalSettings": {
-        "isTest": true,
-        "orderMode": true,
+        "isTest": false,
+        "orderMode": false,
         "hasCarrierContract": false
       },
       "shops": [
         {
-          "id": 86330,
-          "accountId": 126594,
-          "platformId": 1,
-          "name": "php-sdk-1",
+          "accountId": 1,
+          "platformId": 3,
           "hidden": false,
-          "billing": {
-            "address": {
-              "cc": "NL",
-              "postalCode": "2132 JE",
-              "city": "Hoofddorp",
-              "street": "Antareslaan",
-              "number": "31",
-              "numberSuffix": "",
-              "person": "Felicia Parcel",
-              "company": "MyParcel",
-              "email": "test@myparcel.nl",
-              "phone": "0612345678",
-              "streetAdditionalInfo": ""
-            },
-            "billingMethod": 2,
-            "vatTariff": 210,
-            "vatType": "general",
-            "iban": "NL41INGB0001234567",
-            "vatNumber": "dgdsg",
-            "coc": "sgsdgs",
-            "bic": "INGBNL2A",
-            "sendInvoiceReminders": 0,
-            "cycle": "monthly"
-          },
+          "billing": [],
           "deliveryAddress": {
+            "address1": "Antareslaan 31",
             "cc": "NL",
-            "postalCode": "2132 JE",
             "city": "Hoofddorp",
-            "street": "Antareslaan",
-            "number": "31",
-            "numberSuffix": "",
-            "company": "MyParcel",
-            "email": "test@myparcel.nl",
-            "phone": "0612345678",
-            "streetAdditionalInfo": "",
-            "gender": "mrs",
-            "firstName": "Felicia",
-            "lastName": "Parcel"
+            "postalCode": "2132 JE",
+            "email": "support@myparcel.nl",
+            "person": "Felicia Parcel",
+            "company": "MyParcel"
           },
-          "generalSettings": {
-            "weight": 1000,
-            "labelFormat": "A4",
-            "postagePaid": 0,
-            "reminderEmail": 0,
-            "useLogoEmail": 0,
-            "useLogoLabel": 1,
-            "preferredLocale": "nl_NL",
-            "labelDescription": "standaard kenmerk",
-            "autoSaveAddresses": 1,
-            "labelFormatLocked": 0,
-            "totalShipmentsOnOverview": 10,
-            "hasSeenDigitalStampPrintNotification": 1
-          },
-          "return": {
-            "address": {
-              "cc": "NL",
-              "postalCode": "2132 JE",
-              "city": "Hoofddorp",
-              "street": "Antareslaan",
-              "number": "31",
-              "numberSuffix": "",
-              "person": "Felicia Parcel",
-              "company": "MyParcel",
-              "email": "test@myparcel.nl",
-              "phone": "0612345678",
-              "streetAdditionalInfo": ""
-            },
-            "linkExpiresAfter": 3650,
-            "useShopShipmentOptions": 0,
-            "sendTracktraceEmailForReturnShipments": 0,
-            "useCustomDescription": 0,
-            "fromAddressName": "MyParcel",
-            "bcc": 0,
-            "contribution": {
-              "amount": 0,
-              "currency": "EUR"
-            }
-          },
-          "shipmentOptions": {
-            "packageType": 1,
-            "onlyRecipient": 1,
-            "signature": 1,
-            "return": 0,
-            "insurance": {
-              "amount": 100000,
-              "currency": "EUR"
-            },
-            "largeFormat": 0,
-            "cooledDelivery": 0,
-            "labelDescription": "standaard kenmerk",
-            "ageCheck": 0,
-            "saturdayDelivery": 0,
-            "dropOffAtPostalPoint": 0,
-            "collect": 0,
-            "sameDayDelivery": 0,
-            "printerlessReturn": 0,
-            "extraAssurance": 0,
-            "hideSender": 0
-          },
+          "generalSettings": [],
+          "return": [],
+          "shipmentOptions": [],
           "trackTrace": [],
-          "carrierConfigurations": [
-            {
-              "carrier": "instabox",
-              "mondayCutoffTime": null
-            }
-          ],
           "carriers": [
             {
               "externalIdentifier": "postnl",
               "id": 1,
               "name": "postnl",
+              "human": "PostNL",
               "enabled": true,
-              "isDefault": false,
+              "isDefault": true,
               "optional": false,
-              "primary": true,
+              "primary": false,
               "type": "main",
               "capabilities": {
-                "deliveryTypes": ["morning", "standard", "evening", "pickup"],
-                "features": {
-                  "labelDescriptionLength": 45
-                },
-                "packageTypes": [
-                  "package",
-                  "mailbox",
-                  "letter",
-                  "digital_stamp"
-                ],
-                "shipmentOptions": {
-                  "ageCheck": true,
-                  "largeFormat": true,
-                  "onlyRecipient": true,
-                  "return": true,
-                  "sameDayDelivery": true,
-                  "signature": true,
-                  "insurance": [
-                    0, 10000, 25000, 50000, 100000, 150000, 200000, 250000,
-                    300000, 350000, 400000, 450000, 500000
-                  ]
-                }
+                "deliveryTypes": [],
+                "features": [],
+                "packageTypes": [],
+                "shipmentOptions": []
               },
               "returnCapabilities": {
                 "deliveryTypes": ["standard"],
@@ -184,851 +68,34 @@
                   "return": true,
                   "ageCheck": true,
                   "onlyRecipient": true,
-                  "sameDayDelivery": true,
+                  "sameDayDelivery": false,
                   "largeFormat": true
                 }
-              }
-            },
-            {
-              "externalIdentifier": "cheapcargo",
-              "id": 3,
-              "name": "cheapcargo",
-              "enabled": true,
-              "isDefault": false,
-              "optional": false,
-              "primary": true,
-              "type": "main",
-              "capabilities": {
-                "deliveryTypes": [],
-                "features": [],
-                "packageTypes": [],
-                "shipmentOptions": []
-              },
-              "returnCapabilities": {
-                "deliveryTypes": [],
-                "features": [],
-                "packageTypes": [],
-                "shipmentOptions": []
-              }
-            },
-            {
-              "externalIdentifier": "dhl",
-              "id": 6,
-              "name": "dhl",
-              "enabled": true,
-              "isDefault": false,
-              "optional": true,
-              "primary": true,
-              "type": "main",
-              "capabilities": {
-                "deliveryTypes": [],
-                "features": [],
-                "packageTypes": [],
-                "shipmentOptions": []
-              },
-              "returnCapabilities": {
-                "deliveryTypes": [],
-                "features": [],
-                "packageTypes": [],
-                "shipmentOptions": []
-              }
-            },
-            {
-              "externalIdentifier": "bol.com",
-              "id": 7,
-              "name": "bol.com",
-              "enabled": true,
-              "isDefault": false,
-              "optional": false,
-              "primary": true,
-              "type": "main",
-              "capabilities": {
-                "deliveryTypes": [],
-                "features": [],
-                "packageTypes": [],
-                "shipmentOptions": []
-              },
-              "returnCapabilities": {
-                "deliveryTypes": [],
-                "features": [],
-                "packageTypes": [],
-                "shipmentOptions": []
-              }
-            },
-            {
-              "externalIdentifier": "ups",
-              "id": 8,
-              "name": "ups",
-              "enabled": true,
-              "isDefault": false,
-              "optional": true,
-              "primary": true,
-              "type": "main",
-              "capabilities": {
-                "deliveryTypes": [],
-                "features": [],
-                "packageTypes": [],
-                "shipmentOptions": []
-              },
-              "returnCapabilities": {
-                "deliveryTypes": [],
-                "features": [],
-                "packageTypes": [],
-                "shipmentOptions": []
-              }
-            },
-            {
-              "externalIdentifier": "dhlforyou",
-              "id": 9,
-              "name": "dhlforyou",
-              "enabled": true,
-              "isDefault": false,
-              "optional": true,
-              "primary": true,
-              "type": "main",
-              "capabilities": {
-                "deliveryTypes": ["standard", "pickup"],
-                "features": {
-                  "labelDescriptionLength": 45
-                },
-                "packageTypes": ["package", "mailbox"],
-                "shipmentOptions": {
-                  "ageCheck": true,
-                  "largeFormat": false,
-                  "onlyRecipient": true,
-                  "return": true,
-                  "sameDayDelivery": true,
-                  "signature": true,
-                  "saturdayDelivery": true,
-                  "hideSender": true,
-                  "insurance": [
-                    0, 50000, 100000, 150000, 200000, 250000, 300000, 350000,
-                    400000, 450000, 500000
-                  ]
-                }
-              },
-              "returnCapabilities": {
-                "deliveryTypes": ["standard"],
-                "features": {
-                  "labelDescriptionLength": 45
-                },
-                "packageTypes": ["package"],
-                "shipmentOptions": {
-                  "signature": true,
-                  "insurance": [0],
-                  "return": true,
-                  "ageCheck": true,
-                  "onlyRecipient": true,
-                  "sameDayDelivery": true,
-                  "largeFormat": true
-                }
-              }
-            },
-            {
-              "externalIdentifier": "dhlparcelconnect",
-              "id": 10,
-              "name": "dhlparcelconnect",
-              "enabled": true,
-              "isDefault": false,
-              "optional": true,
-              "primary": true,
-              "type": "main",
-              "capabilities": {
-                "deliveryTypes": ["standard", "pickup"],
-                "features": {
-                  "labelDescriptionLength": 45
-                },
-                "packageTypes": ["package"],
-                "shipmentOptions": {
-                  "ageCheck": false,
-                  "onlyRecipient": false,
-                  "return": false,
-                  "sameDayDelivery": false,
-                  "signature": true,
-                  "saturdayDelivery": false,
-                  "hideSender": false,
-                  "insurance": [
-                    0, 50000, 100000, 150000, 200000, 250000, 300000, 350000,
-                    400000, 450000, 500000
-                  ]
-                }
-              },
-              "returnCapabilities": {
-                "deliveryTypes": ["standard"],
-                "features": {
-                  "labelDescriptionLength": 45
-                },
-                "packageTypes": ["package"],
-                "shipmentOptions": {
-                  "signature": false,
-                  "insurance": [50000],
-                  "return": false,
-                  "ageCheck": false,
-                  "onlyRecipient": false,
-                  "sameDayDelivery": false,
-                  "largeFormat": false
-                }
-              }
-            },
-            {
-              "externalIdentifier": "dhleuroplus",
-              "id": 11,
-              "name": "dhleuroplus",
-              "enabled": true,
-              "isDefault": false,
-              "optional": true,
-              "primary": true,
-              "type": "main",
-              "capabilities": {
-                "deliveryTypes": ["standard"],
-                "features": {
-                  "labelDescriptionLength": 45
-                },
-                "packageTypes": ["package", "mailbox"],
-                "shipmentOptions": {
-                  "signature": true,
-                  "insurance": [0, 50000]
-                }
-              },
-              "returnCapabilities": {
-                "deliveryTypes": [],
-                "features": [],
-                "packageTypes": [],
-                "shipmentOptions": []
               }
             }
-          ]
-        }
-      ]
-    },
-    "pluginSettings": {
-      "account": {
-        "id": "account",
-        "apiKey": "64c0afe6463444b1b5ec217f33fe227f3d2215ae"
-      },
-      "general": {
-        "id": "general",
-        "apiLogging": false,
-        "barcodeInNote": false,
-        "conceptShipments": false,
-        "orderMode": false,
-        "processDirectly": false,
-        "shareCustomerInformation": false,
-        "trackTraceInAccount": true,
-        "trackTraceInEmail": false
-      },
-      "order": {
-        "id": "order",
-        "orderStatusMail": true,
-        "saveCustomerAddress": false,
-        "sendOrderStateForDigitalStamp": true,
-        "statusOnLabelCreate": "wc-pending",
-        "statusWhenDelivered": "-1",
-        "statusWhenLabelScanned": "-1"
-      },
-      "label": {
-        "id": "label",
-        "format": "A4",
-        "output": "open",
-        "position": 1,
-        "prompt": false
-      },
-      "customs": {
-        "id": "customs",
-        "customsCode": "0",
-        "packageContents": "1"
-      },
-      "checkout": {
-        "id": "checkout",
-        "deliveryOptionsDisplay": false,
-        "pickupLocationsDefaultView": "list",
-        "priceType": "included",
-        "enableDeliveryOptions": true,
-        "enableDeliveryOptionsWhenNotInStock": true,
-        "useSeparateAddressFields": false
-      },
-      "carrier": {
-        "dhleuroplus": {
-          "id": "dhleuroplus",
-          "allowDeliveryOptions": true,
-          "allowEveningDelivery": true,
-          "allowMondayDelivery": false,
-          "allowMorningDelivery": false,
-          "allowOnlyRecipient": false,
-          "allowPickupLocations": false,
-          "allowSameDayDelivery": false,
-          "allowSaturdayDelivery": false,
-          "allowSignature": true,
-          "defaultPackageType": "package",
-          "deliveryDaysWindow": 7,
-          "deliveryOptionsEnabledForBackorders": false,
-          "digitalStampDefaultWeight": 0,
-          "dropOffDelay": 0,
-          "dropOffPossibilities": {
-            "dropOffDays": [],
-            "dropOffDaysDeviations": []
-          },
-          "exportAgeCheck": false,
-          "exportInsurance": false,
-          "exportInsuranceFromAmount": 0,
-          "exportInsuranceUpTo": 0,
-          "exportInsuranceUpToBe": 0,
-          "exportInsuranceUpToEu": 0,
-          "exportLargeFormat": false,
-          "exportOnlyRecipient": true,
-          "exportReturnLargeFormat": false,
-          "exportReturnPackageType": "package",
-          "exportReturn": false,
-          "exportSignature": false,
-          "priceDeliveryTypeEvening": 0,
-          "priceDeliveryTypeMonday": 0,
-          "priceDeliveryTypeMorning": 0,
-          "priceDeliveryTypeSameDay": 0,
-          "priceDeliveryTypeStandard": 0,
-          "priceOnlyRecipient": 0,
-          "pricePackageTypeDigitalStamp": 0,
-          "pricePackageTypeMailbox": 0,
-          "priceDeliveryTypePickup": 0,
-          "priceSignature": 3,
-          "shippingMethodPackageTypes": [],
-          "showDeliveryDay": true
-        },
-        "postnl": {
-          "id": "postnl",
-          "allowDeliveryOptions": true,
-          "allowEveningDelivery": true,
-          "allowMondayDelivery": false,
-          "allowMorningDelivery": false,
-          "allowOnlyRecipient": false,
-          "allowPickupLocations": false,
-          "allowSameDayDelivery": false,
-          "allowSaturdayDelivery": false,
-          "allowSignature": true,
-          "defaultPackageType": "package",
-          "deliveryDaysWindow": 7,
-          "deliveryOptionsEnabledForBackorders": false,
-          "digitalStampDefaultWeight": 0,
-          "dropOffDelay": 0,
-          "dropOffPossibilities": {
-            "dropOffDays": [],
-            "dropOffDaysDeviations": []
-          },
-          "exportAgeCheck": false,
-          "exportInsurance": false,
-          "exportInsuranceFromAmount": 0,
-          "exportInsuranceUpTo": 0,
-          "exportInsuranceUpToBe": 0,
-          "exportInsuranceUpToEu": 0,
-          "exportLargeFormat": true,
-          "exportOnlyRecipient": true,
-          "exportReturnLargeFormat": false,
-          "exportReturnPackageType": "package",
-          "exportReturn": false,
-          "exportSignature": true,
-          "priceDeliveryTypeEvening": 0,
-          "priceDeliveryTypeMonday": 0,
-          "priceDeliveryTypeMorning": 0,
-          "priceDeliveryTypeSameDay": 0,
-          "priceDeliveryTypeStandard": 0,
-          "priceOnlyRecipient": 0,
-          "pricePackageTypeDigitalStamp": 0,
-          "pricePackageTypeMailbox": 0,
-          "priceDeliveryTypePickup": 0,
-          "priceSignature": 3,
-          "shippingMethodPackageTypes": [],
-          "showDeliveryDay": true
-        },
-        "dhlforyou": {
-          "id": "dhlforyou",
-          "allowDeliveryOptions": true,
-          "allowEveningDelivery": true,
-          "allowMondayDelivery": false,
-          "allowMorningDelivery": false,
-          "allowOnlyRecipient": false,
-          "allowPickupLocations": false,
-          "allowSameDayDelivery": false,
-          "allowSaturdayDelivery": false,
-          "allowSignature": true,
-          "defaultPackageType": "package",
-          "deliveryDaysWindow": 7,
-          "deliveryOptionsEnabledForBackorders": false,
-          "digitalStampDefaultWeight": 0,
-          "dropOffDelay": 0,
-          "dropOffPossibilities": {
-            "dropOffDays": [],
-            "dropOffDaysDeviations": []
-          },
-          "exportAgeCheck": false,
-          "exportInsurance": false,
-          "exportInsuranceFromAmount": 0,
-          "exportInsuranceUpTo": 0,
-          "exportInsuranceUpToBe": 0,
-          "exportInsuranceUpToEu": 0,
-          "exportLargeFormat": false,
-          "exportOnlyRecipient": true,
-          "exportReturnLargeFormat": false,
-          "exportReturnPackageType": "package",
-          "exportReturn": false,
-          "exportSignature": false,
-          "priceDeliveryTypeEvening": 0,
-          "priceDeliveryTypeMonday": 0,
-          "priceDeliveryTypeMorning": 0,
-          "priceDeliveryTypeSameDay": 0,
-          "priceDeliveryTypeStandard": 0,
-          "priceOnlyRecipient": 0,
-          "pricePackageTypeDigitalStamp": 0,
-          "pricePackageTypeMailbox": 0,
-          "priceDeliveryTypePickup": 0,
-          "priceSignature": 3,
-          "shippingMethodPackageTypes": [],
-          "showDeliveryDay": true
-        },
-        "dhlparcelconnect": {
-          "id": "dhlparcelconnect",
-          "allowDeliveryOptions": true,
-          "allowEveningDelivery": true,
-          "allowMondayDelivery": false,
-          "allowMorningDelivery": false,
-          "allowOnlyRecipient": false,
-          "allowPickupLocations": false,
-          "allowSameDayDelivery": false,
-          "allowSaturdayDelivery": false,
-          "allowSignature": true,
-          "defaultPackageType": "package",
-          "deliveryDaysWindow": 7,
-          "deliveryOptionsEnabledForBackorders": false,
-          "digitalStampDefaultWeight": 0,
-          "dropOffDelay": 0,
-          "dropOffPossibilities": {
-            "dropOffDays": [],
-            "dropOffDaysDeviations": []
-          },
-          "exportAgeCheck": false,
-          "exportInsurance": false,
-          "exportInsuranceFromAmount": 0,
-          "exportInsuranceUpTo": 0,
-          "exportInsuranceUpToBe": 0,
-          "exportInsuranceUpToEu": 0,
-          "exportLargeFormat": false,
-          "exportOnlyRecipient": true,
-          "exportReturnLargeFormat": false,
-          "exportReturnPackageType": "package",
-          "exportReturn": false,
-          "exportSignature": false,
-          "priceDeliveryTypeEvening": 0,
-          "priceDeliveryTypeMonday": 0,
-          "priceDeliveryTypeMorning": 0,
-          "priceDeliveryTypeSameDay": 0,
-          "priceDeliveryTypeStandard": 0,
-          "priceOnlyRecipient": 0,
-          "pricePackageTypeDigitalStamp": 0,
-          "pricePackageTypeMailbox": 0,
-          "priceDeliveryTypePickup": 0,
-          "priceSignature": 3,
-          "shippingMethodPackageTypes": [],
-          "showDeliveryDay": true
-        }
-      }
-    },
-    "shop": {
-      "id": 86330,
-      "accountId": 126594,
-      "platformId": 1,
-      "name": "php-sdk-1",
-      "hidden": false,
-      "billing": {
-        "address": {
-          "cc": "NL",
-          "postalCode": "2132 JE",
-          "city": "Hoofddorp",
-          "street": "Antareslaan",
-          "number": "31",
-          "numberSuffix": "",
-          "person": "Felicia Parcel",
-          "company": "MyParcel",
-          "email": "test@myparcel.nl",
-          "phone": "0612345678",
-          "streetAdditionalInfo": ""
-        },
-        "billingMethod": 2,
-        "vatTariff": 210,
-        "vatType": "general",
-        "iban": "NL41INGB0001234567",
-        "vatNumber": "dgdsg",
-        "coc": "sgsdgs",
-        "bic": "INGBNL2A",
-        "sendInvoiceReminders": 0,
-        "cycle": "monthly"
-      },
-      "deliveryAddress": {
-        "cc": "NL",
-        "postalCode": "2132 JE",
-        "city": "Hoofddorp",
-        "street": "Antareslaan",
-        "number": "31",
-        "numberSuffix": "",
-        "company": "MyParcel",
-        "email": "test@myparcel.nl",
-        "phone": "0612345678",
-        "streetAdditionalInfo": "",
-        "gender": "mrs",
-        "firstName": "Felicia",
-        "lastName": "Parcel"
-      },
-      "generalSettings": {
-        "weight": 1000,
-        "labelFormat": "A4",
-        "postagePaid": 0,
-        "reminderEmail": 0,
-        "useLogoEmail": 0,
-        "useLogoLabel": 1,
-        "preferredLocale": "nl_NL",
-        "labelDescription": "standaard kenmerk",
-        "autoSaveAddresses": 1,
-        "labelFormatLocked": 0,
-        "totalShipmentsOnOverview": 10,
-        "hasSeenDigitalStampPrintNotification": 1
-      },
-      "return": {
-        "address": {
-          "cc": "NL",
-          "postalCode": "2132 JE",
-          "city": "Hoofddorp",
-          "street": "Antareslaan",
-          "number": "31",
-          "numberSuffix": "",
-          "person": "Felicia Parcel",
-          "company": "MyParcel",
-          "email": "test@myparcel.nl",
-          "phone": "0612345678",
-          "streetAdditionalInfo": ""
-        },
-        "linkExpiresAfter": 3650,
-        "useShopShipmentOptions": 0,
-        "sendTracktraceEmailForReturnShipments": 0,
-        "useCustomDescription": 0,
-        "fromAddressName": "MyParcel",
-        "bcc": 0,
-        "contribution": {
-          "amount": 0,
-          "currency": "EUR"
-        }
-      },
-      "shipmentOptions": {
-        "packageType": 1,
-        "onlyRecipient": 1,
-        "signature": 1,
-        "return": 0,
-        "insurance": {
-          "amount": 100000,
-          "currency": "EUR"
-        },
-        "largeFormat": 0,
-        "cooledDelivery": 0,
-        "labelDescription": "standaard kenmerk",
-        "ageCheck": 0,
-        "saturdayDelivery": 0,
-        "dropOffAtPostalPoint": 0,
-        "collect": 0,
-        "sameDayDelivery": 0,
-        "printerlessReturn": 0,
-        "extraAssurance": 0,
-        "hideSender": 0
-      },
-      "trackTrace": [],
-      "carrierConfigurations": [
-        {
-          "carrier": "instabox",
-          "mondayCutoffTime": null
+          ],
+          "carrierConfigurations": []
         }
       ],
-      "carriers": [
-        {
-          "externalIdentifier": "postnl",
-          "id": 1,
-          "name": "postnl",
-          "enabled": true,
-          "isDefault": false,
-          "optional": false,
-          "primary": true,
-          "type": "main",
-          "capabilities": {
-            "deliveryTypes": ["morning", "standard", "evening", "pickup"],
-            "features": {
-              "labelDescriptionLength": 45
-            },
-            "packageTypes": ["package", "mailbox", "letter", "digital_stamp"],
-            "shipmentOptions": {
-              "ageCheck": true,
-              "largeFormat": true,
-              "onlyRecipient": true,
-              "return": true,
-              "sameDayDelivery": true,
-              "signature": true,
-              "insurance": [
-                0, 10000, 25000, 50000, 100000, 150000, 200000, 250000, 300000,
-                350000, 400000, 450000, 500000
-              ]
-            }
-          },
-          "returnCapabilities": {
-            "deliveryTypes": ["standard"],
-            "features": {
-              "labelDescriptionLength": 45
-            },
-            "packageTypes": ["package"],
-            "shipmentOptions": {
-              "signature": true,
-              "insurance": [
-                0, 10000, 25000, 50000, 100000, 150000, 200000, 250000, 300000,
-                350000, 400000, 450000, 500000
-              ],
-              "return": true,
-              "ageCheck": true,
-              "onlyRecipient": true,
-              "sameDayDelivery": true,
-              "largeFormat": true
-            }
-          }
-        },
-        {
-          "externalIdentifier": "cheapcargo",
-          "id": 3,
-          "name": "cheapcargo",
-          "enabled": true,
-          "isDefault": false,
-          "optional": false,
-          "primary": true,
-          "type": "main",
-          "capabilities": {
-            "deliveryTypes": [],
-            "features": [],
-            "packageTypes": [],
-            "shipmentOptions": []
-          },
-          "returnCapabilities": {
-            "deliveryTypes": [],
-            "features": [],
-            "packageTypes": [],
-            "shipmentOptions": []
-          }
-        },
-        {
-          "externalIdentifier": "dhl",
-          "id": 6,
-          "name": "dhl",
-          "enabled": true,
-          "isDefault": false,
-          "optional": true,
-          "primary": true,
-          "type": "main",
-          "capabilities": {
-            "deliveryTypes": [],
-            "features": [],
-            "packageTypes": [],
-            "shipmentOptions": []
-          },
-          "returnCapabilities": {
-            "deliveryTypes": [],
-            "features": [],
-            "packageTypes": [],
-            "shipmentOptions": []
-          }
-        },
-        {
-          "externalIdentifier": "bol.com",
-          "id": 7,
-          "name": "bol.com",
-          "enabled": true,
-          "isDefault": false,
-          "optional": false,
-          "primary": true,
-          "type": "main",
-          "capabilities": {
-            "deliveryTypes": [],
-            "features": [],
-            "packageTypes": [],
-            "shipmentOptions": []
-          },
-          "returnCapabilities": {
-            "deliveryTypes": [],
-            "features": [],
-            "packageTypes": [],
-            "shipmentOptions": []
-          }
-        },
-        {
-          "externalIdentifier": "ups",
-          "id": 8,
-          "name": "ups",
-          "enabled": true,
-          "isDefault": false,
-          "optional": true,
-          "primary": true,
-          "type": "main",
-          "capabilities": {
-            "deliveryTypes": [],
-            "features": [],
-            "packageTypes": [],
-            "shipmentOptions": []
-          },
-          "returnCapabilities": {
-            "deliveryTypes": [],
-            "features": [],
-            "packageTypes": [],
-            "shipmentOptions": []
-          }
-        },
-        {
-          "externalIdentifier": "dhlforyou",
-          "id": 9,
-          "name": "dhlforyou",
-          "enabled": true,
-          "isDefault": false,
-          "optional": true,
-          "primary": true,
-          "type": "main",
-          "capabilities": {
-            "deliveryTypes": ["standard", "pickup"],
-            "features": {
-              "labelDescriptionLength": 45
-            },
-            "packageTypes": ["package", "mailbox"],
-            "shipmentOptions": {
-              "ageCheck": true,
-              "largeFormat": false,
-              "onlyRecipient": true,
-              "return": true,
-              "sameDayDelivery": true,
-              "signature": true,
-              "saturdayDelivery": true,
-              "hideSender": true,
-              "insurance": [
-                0, 50000, 100000, 150000, 200000, 250000, 300000, 350000,
-                400000, 450000, 500000
-              ]
-            }
-          },
-          "returnCapabilities": {
-            "deliveryTypes": ["standard"],
-            "features": {
-              "labelDescriptionLength": 45
-            },
-            "packageTypes": ["package"],
-            "shipmentOptions": {
-              "signature": true,
-              "insurance": [0],
-              "return": true,
-              "ageCheck": true,
-              "onlyRecipient": true,
-              "sameDayDelivery": true,
-              "largeFormat": true
-            }
-          }
-        },
-        {
-          "externalIdentifier": "dhlparcelconnect",
-          "id": 10,
-          "name": "dhlparcelconnect",
-          "enabled": true,
-          "isDefault": false,
-          "optional": true,
-          "primary": true,
-          "type": "main",
-          "capabilities": {
-            "deliveryTypes": ["standard", "pickup"],
-            "features": {
-              "labelDescriptionLength": 45
-            },
-            "packageTypes": ["package"],
-            "shipmentOptions": {
-              "ageCheck": false,
-              "onlyRecipient": false,
-              "return": false,
-              "sameDayDelivery": false,
-              "signature": true,
-              "saturdayDelivery": false,
-              "hideSender": false,
-              "insurance": [
-                0, 50000, 100000, 150000, 200000, 250000, 300000, 350000,
-                400000, 450000, 500000
-              ]
-            }
-          },
-          "returnCapabilities": {
-            "deliveryTypes": ["standard"],
-            "features": {
-              "labelDescriptionLength": 45
-            },
-            "packageTypes": ["package"],
-            "shipmentOptions": {
-              "signature": false,
-              "insurance": [50000],
-              "return": false,
-              "ageCheck": false,
-              "onlyRecipient": false,
-              "sameDayDelivery": false,
-              "largeFormat": false
-            }
-          }
-        },
-        {
-          "externalIdentifier": "dhleuroplus",
-          "id": 11,
-          "name": "dhleuroplus",
-          "enabled": true,
-          "isDefault": false,
-          "optional": true,
-          "primary": true,
-          "type": "main",
-          "capabilities": {
-            "deliveryTypes": ["standard"],
-            "features": {
-              "labelDescriptionLength": 45
-            },
-            "packageTypes": ["package", "mailbox"],
-            "shipmentOptions": {
-              "signature": true,
-              "insurance": [0, 50000]
-            }
-          },
-          "returnCapabilities": {
-            "deliveryTypes": [],
-            "features": [],
-            "packageTypes": [],
-            "shipmentOptions": []
-          }
-        }
-      ]
+      "status": 2,
+      "subscriptionFeatures": []
     },
     "carriers": [
       {
         "externalIdentifier": "postnl",
         "id": 1,
         "name": "postnl",
+        "human": "PostNL",
         "enabled": true,
-        "isDefault": false,
+        "isDefault": true,
         "optional": false,
-        "primary": true,
+        "primary": false,
         "type": "main",
         "capabilities": {
-          "deliveryTypes": ["morning", "standard", "evening", "pickup"],
-          "features": {
-            "labelDescriptionLength": 45
-          },
-          "packageTypes": ["package", "mailbox", "letter", "digital_stamp"],
-          "shipmentOptions": {
-            "ageCheck": true,
-            "largeFormat": true,
-            "onlyRecipient": true,
-            "return": true,
-            "sameDayDelivery": true,
-            "signature": true,
-            "insurance": [
-              0, 10000, 25000, 50000, 100000, 150000, 200000, 250000, 300000,
-              350000, 400000, 450000, 500000
-            ]
-          }
+          "deliveryTypes": [],
+          "features": [],
+          "packageTypes": [],
+          "shipmentOptions": []
         },
         "returnCapabilities": {
           "deliveryTypes": ["standard"],
@@ -1045,131 +112,167 @@
             "return": true,
             "ageCheck": true,
             "onlyRecipient": true,
-            "sameDayDelivery": true,
+            "sameDayDelivery": false,
             "largeFormat": true
           }
-        }
-      },
-      {
-        "externalIdentifier": "dhlforyou",
-        "id": 9,
-        "name": "dhlforyou",
-        "enabled": true,
-        "isDefault": false,
-        "optional": true,
-        "primary": true,
-        "type": "main",
-        "capabilities": {
-          "deliveryTypes": ["standard", "pickup"],
-          "features": {
-            "labelDescriptionLength": 45
-          },
-          "packageTypes": ["package", "mailbox"],
-          "shipmentOptions": {
-            "ageCheck": true,
-            "largeFormat": false,
-            "onlyRecipient": true,
-            "return": true,
-            "sameDayDelivery": true,
-            "signature": true,
-            "saturdayDelivery": true,
-            "hideSender": true,
-            "insurance": [
-              0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000,
-              450000, 500000
-            ]
-          }
-        },
-        "returnCapabilities": {
-          "deliveryTypes": ["standard"],
-          "features": {
-            "labelDescriptionLength": 45
-          },
-          "packageTypes": ["package"],
-          "shipmentOptions": {
-            "signature": true,
-            "insurance": [0],
-            "return": true,
-            "ageCheck": true,
-            "onlyRecipient": true,
-            "sameDayDelivery": true,
-            "largeFormat": true
-          }
-        }
-      },
-      {
-        "externalIdentifier": "dhlparcelconnect",
-        "id": 10,
-        "name": "dhlparcelconnect",
-        "enabled": true,
-        "isDefault": false,
-        "optional": true,
-        "primary": true,
-        "type": "main",
-        "capabilities": {
-          "deliveryTypes": ["standard", "pickup"],
-          "features": {
-            "labelDescriptionLength": 45
-          },
-          "packageTypes": ["package"],
-          "shipmentOptions": {
-            "ageCheck": false,
-            "onlyRecipient": false,
-            "return": false,
-            "sameDayDelivery": false,
-            "signature": true,
-            "saturdayDelivery": false,
-            "hideSender": false,
-            "insurance": [
-              0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000,
-              450000, 500000
-            ]
-          }
-        },
-        "returnCapabilities": {
-          "deliveryTypes": ["standard"],
-          "features": {
-            "labelDescriptionLength": 45
-          },
-          "packageTypes": ["package"],
-          "shipmentOptions": {
-            "signature": false,
-            "insurance": [50000],
-            "return": false,
-            "ageCheck": false,
-            "onlyRecipient": false,
-            "sameDayDelivery": false,
-            "largeFormat": false
-          }
-        }
-      },
-      {
-        "externalIdentifier": "dhleuroplus",
-        "id": 11,
-        "name": "dhleuroplus",
-        "enabled": true,
-        "isDefault": false,
-        "optional": true,
-        "primary": true,
-        "type": "main",
-        "capabilities": {
-          "deliveryTypes": ["standard"],
-          "features": {
-            "labelDescriptionLength": 45
-          },
-          "packageTypes": ["package", "mailbox"],
-          "shipmentOptions": {
-            "signature": true,
-            "insurance": [0, 50000]
-          }
-        },
-        "returnCapabilities": {
-          "deliveryTypes": [],
-          "features": [],
-          "packageTypes": [],
-          "shipmentOptions": []
         }
       }
-    ]
+    ],
+    "pluginSettings": {
+      "account": {
+        "id": "account",
+        "apiKeyValid": true
+      },
+      "order": {
+        "id": "order",
+        "barcodeInNote": false,
+        "conceptShipments": true,
+        "emptyDigitalStampWeight": 0,
+        "emptyMailboxWeight": 0,
+        "emptyParcelWeight": 0,
+        "orderMode": false,
+        "processDirectly": "-1",
+        "saveCustomerAddress": false,
+        "sendNotificationAfter": -1,
+        "sendReturnEmail": false,
+        "shareCustomerInformation": false,
+        "statusOnLabelCreate": -1,
+        "statusWhenDelivered": -1,
+        "statusWhenLabelScanned": -1,
+        "trackTraceInAccount": false,
+        "trackTraceInEmail": false
+      },
+      "label": {
+        "id": "label",
+        "format": "a4",
+        "output": "open",
+        "position": [1, 2, 3, 4],
+        "prompt": false
+      },
+      "customs": {
+        "id": "customs",
+        "customsCode": "000000",
+        "packageContents": "1"
+      },
+      "checkout": {
+        "id": "checkout",
+        "allowedShippingMethods": [],
+        "priceType": "included",
+        "enableDeliveryOptions": true,
+        "enableDeliveryOptionsWhenNotInStock": true,
+        "useSeparateAddressFields": false
+      },
+      "carrier": {
+        "postnl": {
+          "id": "postnl",
+          "allowDeliveryOptions": false,
+          "allowEveningDelivery": false,
+          "allowMondayDelivery": false,
+          "allowMorningDelivery": false,
+          "allowOnlyRecipient": false,
+          "allowPickupLocations": false,
+          "allowSameDayDelivery": false,
+          "allowSaturdayDelivery": false,
+          "allowSignature": false,
+          "cutoffTime": "16:00",
+          "cutoffTimeSameDay": "10:00",
+          "defaultPackageType": "package",
+          "deliveryDaysWindow": 7,
+          "deliveryOptionsEnabled": false,
+          "deliveryOptionsEnabledForBackorders": false,
+          "digitalStampDefaultWeight": 0,
+          "dropOffDelay": 0,
+          "dropOffPossibilities": {
+            "dropOffDays": [],
+            "dropOffDaysDeviations": []
+          },
+          "exportAgeCheck": false,
+          "exportHideSender": false,
+          "exportInsurance": false,
+          "exportInsuranceFromAmount": 0,
+          "exportInsurancePricePercentage": 100,
+          "exportInsuranceUpTo": 0,
+          "exportInsuranceUpToEu": 0,
+          "exportInsuranceUpToRow": 0,
+          "exportInsuranceUpToUnique": 0,
+          "exportLargeFormat": false,
+          "exportOnlyRecipient": false,
+          "exportReturn": false,
+          "exportReturnLargeFormat": false,
+          "exportReturnPackageType": "package",
+          "exportSignature": false,
+          "priceDeliveryTypeEvening": 0,
+          "priceDeliveryTypeMonday": 0,
+          "priceDeliveryTypeMorning": 0,
+          "priceDeliveryTypePickup": 0,
+          "priceDeliveryTypeSameDay": 0,
+          "priceDeliveryTypeSaturday": 0,
+          "priceDeliveryTypeStandard": 0,
+          "priceOnlyRecipient": 0,
+          "pricePackageTypeDigitalStamp": 0,
+          "pricePackageTypeMailbox": 0,
+          "priceSignature": 0,
+          "showDeliveryDay": true
+        }
+      }
+    },
+    "shop": {
+      "accountId": 1,
+      "platformId": 3,
+      "hidden": false,
+      "billing": [],
+      "deliveryAddress": {
+        "address1": "Antareslaan 31",
+        "cc": "NL",
+        "city": "Hoofddorp",
+        "postalCode": "2132 JE",
+        "email": "support@myparcel.nl",
+        "person": "Felicia Parcel",
+        "company": "MyParcel"
+      },
+      "generalSettings": [],
+      "return": [],
+      "shipmentOptions": [],
+      "trackTrace": [],
+      "carriers": [
+        {
+          "externalIdentifier": "postnl",
+          "id": 1,
+          "name": "postnl",
+          "human": "PostNL",
+          "enabled": true,
+          "isDefault": true,
+          "optional": false,
+          "primary": false,
+          "type": "main",
+          "capabilities": {
+            "deliveryTypes": [],
+            "features": [],
+            "packageTypes": [],
+            "shipmentOptions": []
+          },
+          "returnCapabilities": {
+            "deliveryTypes": ["standard"],
+            "features": {
+              "labelDescriptionLength": 45
+            },
+            "packageTypes": ["package"],
+            "shipmentOptions": {
+              "signature": true,
+              "insurance": [
+                0, 10000, 25000, 50000, 100000, 150000, 200000, 250000, 300000,
+                350000, 400000, 450000, 500000
+              ],
+              "return": true,
+              "ageCheck": true,
+              "onlyRecipient": true,
+              "sameDayDelivery": false,
+              "largeFormat": true
+            }
+          }
+        }
+      ],
+      "carrierConfigurations": []
+    }
   }
 }
