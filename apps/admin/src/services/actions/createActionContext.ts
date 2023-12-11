@@ -38,7 +38,6 @@ export const createActionContext = <A extends MaybeAdminAction>(
       (acc, variant) => ({
         ...acc,
         [variant]: createNotification(variant, {
-          category: NotificationCategory.General,
           tags: {
             action: identifier,
           },

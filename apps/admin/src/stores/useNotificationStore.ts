@@ -48,7 +48,7 @@ export const useNotificationStore = defineStore('notifications', () => {
     },
 
     /**
-     * Remove one or more notifications from the store by category or id.
+     * Remove one or more notifications from the store by tag or id.
      */
     remove(input: NotificationId | NotificationSource) {
       let filter: (notification: ResolvedNotification) => boolean;

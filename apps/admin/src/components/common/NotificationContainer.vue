@@ -11,9 +11,7 @@
   </div>
 </template>
 
-<script
-  lang="ts"
-  setup>
+<script lang="ts" setup>
 import {computed} from 'vue';
 import {type NotificationFilter} from '../../types';
 import {useNotificationStore} from '../../stores';
