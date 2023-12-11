@@ -12,6 +12,10 @@
           <DeliveryOptionsPackageType :delivery-options="deliveryOptions" />
         </li>
 
+        <li v-if="deliveryOptions.packageType === PackageTypeName.DigitalStamp">
+          <DigitalStampWeightRange :weight-range="dpzRangeWeight" />
+        </li>
+
         <li>
           <DeliveryOptionsDeliveryType :delivery-options="deliveryOptions" />
         </li>
@@ -33,6 +37,9 @@ import DeliveryOptionsPackageType from './DeliveryOptionsPackageType.vue';
 import DeliveryOptionsDeliveryType from './DeliveryOptionsDeliveryType.vue';
 import DateRelative from './DateRelative.vue';
 import CarrierLogo from './CarrierLogo.vue';
+import {PackageTypeName} from '@myparcel/constants';
+import {getDigitalStampRange} from '../../forms/helpers/getDigitalStampRange';
+import DigitalStampWeightRange from './DigitalStampWeightRange.vue';
 
 const {query} = useOrderData();
 
@@ -44,5 +51,6 @@ const carrier = computed(() => {
   return get(carriersQuery.data);
 });
 
+const dpzRangeWeight = getDigitalStampRange();
 const config = useAdminConfig();
 </script>
