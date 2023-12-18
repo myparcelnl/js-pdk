@@ -1,5 +1,5 @@
 <template>
-  <div v-if="deliveryOptions">
+  <div v-if="data && deliveryOptions">
     <span :class="config.cssUtilities?.displayFlex">
       <CarrierLogo
         v-if="carrier"
@@ -9,11 +9,7 @@
 
       <ul :class="config.cssUtilities?.marginYAuto">
         <li>
-          <DeliveryOptionsPackageType :delivery-options="deliveryOptions" />
-        </li>
-
-        <li v-if="deliveryOptions.packageType === PackageTypeName.DigitalStamp">
-          <DigitalStampWeightRange :weight-range="dpzRangeWeight" />
+          <DeliveryOptionsPackageType :shipment-or-order="data" />
         </li>
 
         <li>
@@ -37,13 +33,11 @@ import DeliveryOptionsPackageType from './DeliveryOptionsPackageType.vue';
 import DeliveryOptionsDeliveryType from './DeliveryOptionsDeliveryType.vue';
 import DateRelative from './DateRelative.vue';
 import CarrierLogo from './CarrierLogo.vue';
-import {PackageTypeName} from '@myparcel/constants';
-import {getDigitalStampRange} from '../../forms/helpers/getDigitalStampRange';
-import DigitalStampWeightRange from './DigitalStampWeightRange.vue';
 
 const {query} = useOrderData();
 
-const deliveryOptions = computed(() => get(query.data)?.deliveryOptions);
+const data = computed(() => get(query.data));
+const deliveryOptions = computed(() => data.value?.deliveryOptions);
 
 const carrier = computed(() => {
   const carriersQuery = useFetchCarrier(deliveryOptions.value?.carrier?.name);
@@ -51,6 +45,5 @@ const carrier = computed(() => {
   return get(carriersQuery.data);
 });
 
-const dpzRangeWeight = getDigitalStampRange();
 const config = useAdminConfig();
 </script>

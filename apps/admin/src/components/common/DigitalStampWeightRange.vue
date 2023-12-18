@@ -1,20 +1,14 @@
 <template>
-  <span
-    v-if="weightRange"
-    v-test="[$.type.__name, weightRange]">
-
-    <span
-      :title="translate('digital_stamp_weight_range', {weightRange})"
-      v-text="`${weightRange.min}g - ${weightRange.max}g`" />
-  </span>
+  <span v-text="defaultRange" />
 </template>
 
 <script lang="ts" setup>
-import {useLanguage} from '../../composables';
+import {toRefs} from 'vue';
+import {useDigitalStampRanges} from '../../composables';
 
-defineProps<{
-  weightRange: {min: number; max: number; average: number};
-}>();
+const props = defineProps<{weight: number}>();
 
-const {translate} = useLanguage();
+const propRefs = toRefs(props);
+
+const {defaultRange} = useDigitalStampRanges(propRefs.weight);
 </script>
