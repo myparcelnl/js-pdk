@@ -42,6 +42,10 @@ export enum NotificationCategory {
   Modal = 'modal',
 }
 
+export enum NotificationSource {
+  Api = 'api',
+}
+
 export enum AdminIcon {
   Add = 'add',
   ArrowDown = 'arrow_down',

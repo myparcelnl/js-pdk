@@ -2,7 +2,7 @@ import {ref} from 'vue';
 import {defineStore} from 'pinia';
 import {isEnumValue} from '@myparcel/ts-utils';
 import {type NotificationId, type PdkNotification, type ResolvedNotification} from '../types';
-import {NotificationCategory} from '../data';
+import {NotificationSource} from '../data';
 
 let autoId = 0;
 
@@ -17,11 +17,10 @@ export const useNotificationStore = defineStore('notifications', () => {
     /**
      * Add a notification to the store.
      */
-    add(notification: PdkNotification, tags?: object | Record<string, unknown>) {
+    add(notification: PdkNotification, tags?: object | Record<string, string>) {
       const resolvedNotification: ResolvedNotification = {
         timeout: true,
         dismissible: notification.timeout === false,
-        category: NotificationCategory.General,
         id: notification.id ?? autoId++,
         ...notification,
         tags: {
@@ -49,13 +48,13 @@ export const useNotificationStore = defineStore('notifications', () => {
     },
 
     /**
-     * Remove one or more notifications from the store by category or id.
+     * Remove one or more notifications from the store by tag or id.
      */
-    remove(input: NotificationId | NotificationCategory) {
+    remove(input: NotificationId | NotificationSource) {
       let filter: (notification: ResolvedNotification) => boolean;
 
-      if (isEnumValue(input, NotificationCategory)) {
-        filter = (notification) => notification.category !== input;
+      if (isEnumValue(input, NotificationSource)) {
+        filter = (notification) => notification.tags?.source === input;
       } else {
         filter = (notification) => notification.id !== input;
       }

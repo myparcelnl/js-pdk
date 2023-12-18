@@ -48,7 +48,7 @@ export const useUpdateAccountMutation = (): ResolvedQuery<BackendEndpoint.Update
         const translation = 'error_invalid_api_key';
 
         notificationStore.add({
-          category: NotificationCategory.Api,
+          category: NotificationCategory.General,
           content: translate(`${translation}_content`),
           title: translate(translation),
           timeout: false,
