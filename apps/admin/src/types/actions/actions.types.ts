@@ -1,5 +1,6 @@
+import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {type ReverseMap} from '@myparcel/ts-utils';
-import {type AdminAction, type BackendEndpoint} from '../../data';
+import {type AdminAction} from '../../data';
 
 export type MaybeAdminAction = AdminAction | undefined;
 

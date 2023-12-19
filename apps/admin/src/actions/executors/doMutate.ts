@@ -1,5 +1,5 @@
+import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {type BackendEndpointResponse} from '../../types';
-import {type BackendEndpoint} from '../../data';
 import {useStoreQuery} from '../../composables';
 import {type ActionContext, type QueryModifier} from './types';
 import {resolveQuerySuffix} from './resolveQuerySuffix';

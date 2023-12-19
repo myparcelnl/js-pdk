@@ -1,14 +1,14 @@
 import {ref} from 'vue';
 import {first, get, last} from 'lodash-unified';
 import {get as vuGet} from '@vueuse/core';
-import {type Plugin} from '@myparcel-pdk/common';
+import {type Plugin, TriState} from '@myparcel-pdk/common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from '../field';
 import {createDefaultOption, defineFormField, resolveFormComponent} from '../../helpers';
 import {type GlobalFieldProps, type OptionsProp, type SelectOption} from '../../../types';
-import {AdminComponent, TriState} from '../../../data';
+import {AdminComponent} from '../../../data';
 import {useOrderData, usePluginSettings} from '../../../composables';
 
 export const createDigitalStampRangeField = (refs: ShipmentOptionsRefs): InteractiveElementConfiguration => {

@@ -1,9 +1,8 @@
-import {type EndpointObject} from '@myparcel-pdk/common';
+import {type BackendEndpoint, type EndpointObject} from '@myparcel-pdk/common';
 import {
   type BACKEND_ENDPOINTS_ORDERS,
   type BACKEND_ENDPOINTS_SHIPMENTS,
   type BACKEND_ENDPOINTS_WEBHOOKS,
-  type BackendEndpoint,
 } from '../data';
 
 export type BackendPdkEndpointObject = EndpointObject<BackendEndpoint>;

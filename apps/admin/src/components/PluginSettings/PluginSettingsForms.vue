@@ -17,7 +17,8 @@ import {createActionContext} from '../../services';
 import {createPluginSettingsTabs} from '../../forms';
 import {useAdminConfig, useStoreContextQuery} from '../../composables';
 import {pluginSettingsUpdateAction} from '../../actions';
-import {AdminAction, AdminContextKey} from "../../data";
+import {AdminAction} from "../../data";
+import {AdminContextKey} from "@myparcel-pdk/common";
 
 const config = useAdminConfig();
 

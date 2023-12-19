@@ -1,6 +1,5 @@
-import {type Keyable} from '@myparcel-pdk/common';
+import {type Keyable, TriState} from '@myparcel-pdk/common';
 import {type SelectOption} from '../../types';
-import {TriState} from '../../data';
 
 export const createDefaultOption = (value?: Keyable | undefined): SelectOption => ({
   label: {

@@ -1,7 +1,7 @@
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {usePdkMutation} from '../usePdkMutation';
 import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
-import {BackendEndpoint} from '../../../../data';
 
 export const useUpdateProductSettingsMutation = (): ResolvedQuery<BackendEndpoint.UpdateProductSettings> => {
   return usePdkMutation(BackendEndpoint.UpdateProductSettings, ({form, productIds}) => {

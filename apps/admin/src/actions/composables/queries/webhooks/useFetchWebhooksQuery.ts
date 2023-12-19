@@ -1,7 +1,7 @@
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
-import {BackendEndpoint} from '../../../../data';
 
 export const useFetchWebhooksQuery = (): ResolvedQuery<BackendEndpoint.FetchWebhooks> => {
   const queryKey = [BackendEndpoint.FetchWebhooks] as const;

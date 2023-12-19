@@ -1,7 +1,7 @@
 import {get} from '@vueuse/core';
+import {TriState} from '@myparcel-pdk/common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {type ElementInstance, type TriStateInputProps} from '../../types';
-import {TriState} from '../../data';
 
 export const triStateFieldIsEnabled = (form: FormInstance, fieldName: string): boolean => {
   const field = form.getField(fieldName) as unknown as ElementInstance<TriState, TriStateInputProps> | undefined;

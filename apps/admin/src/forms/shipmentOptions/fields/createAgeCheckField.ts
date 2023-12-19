@@ -1,10 +1,10 @@
+import {TriState} from '@myparcel-pdk/common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {type PromiseOr} from '@myparcel/ts-utils';
 import {CarrierName} from '@myparcel/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_AGE_CHECK, FIELD_ONLY_RECIPIENT, FIELD_SIGNATURE} from '../field';
 import {getFormCarrierName, triStateFieldIsEnabled} from '../../helpers';
-import {TriState} from '../../../data';
 import {createShipmentOptionField} from './createShipmentOptionField';
 
 export const createAgeCheckField = (refs: ShipmentOptionsRefs): InteractiveElementConfiguration => {

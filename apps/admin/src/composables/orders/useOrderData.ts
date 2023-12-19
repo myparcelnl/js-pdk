@@ -1,8 +1,8 @@
 import {computed, type ComputedRef} from 'vue';
 import {get} from '@vueuse/core';
+import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {getOrderId, validateId} from '../../utils';
 import {type ResolvedQuery, useQueryStore} from '../../stores';
-import {type BackendEndpoint} from '../../data';
 import {useOrder} from './useOrder';
 
 export interface UseOrderData {

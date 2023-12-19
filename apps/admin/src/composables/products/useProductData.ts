@@ -1,10 +1,11 @@
 import {computed, type ComputedRef} from 'vue';
 import {get} from '@vueuse/core';
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {useStoreQuery} from '../useStoreQuery';
 import {useInstanceContext} from '../context';
 import {validateId} from '../../utils';
 import {type ResolvedQuery} from '../../stores';
-import {AdminInstanceContextKey, BackendEndpoint} from '../../data';
+import {AdminInstanceContextKey} from '../../data';
 
 export interface UseProductData {
   product: ComputedRef;

@@ -1,6 +1,6 @@
 import {vi} from 'vitest';
+import {FrontendEndpoint} from '@myparcel-pdk/common';
 import {type CheckoutAppContext} from '../types';
-import {FrontendEndpoint} from '../data';
 
 export const getMockCheckoutContext = vi.fn(
   (context?: Partial<CheckoutAppContext['checkout']>): CheckoutAppContext['checkout'] => {

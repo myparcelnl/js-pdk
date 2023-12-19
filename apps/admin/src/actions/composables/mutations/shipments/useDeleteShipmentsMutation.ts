@@ -1,11 +1,11 @@
 import {type QueryKey, useMutation, useQueryClient} from '@tanstack/vue-query';
+import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {QUERY_KEY_ORDER, QUERY_KEY_SHIPMENT} from '../../queries';
 import {encodeArrayParameter, setQueryOrder} from '../../../../utils';
 import {type ActionInput, type BackendEndpointResponse} from '../../../../types';
 import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
-import {type BackendEndpoint} from '../../../../data';
 
 // eslint-disable-next-line max-lines-per-function
 export const useDeleteShipmentsMutation = (

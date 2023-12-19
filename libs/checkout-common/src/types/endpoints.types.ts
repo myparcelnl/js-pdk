@@ -1,11 +1,11 @@
 import {
   type EndpointObject,
+  type FrontendEndpoint,
   type PdkEndpointDefinition,
   type PdkEndpointParameters,
   type PdkEndpointResponse,
   type Plugin,
 } from '@myparcel-pdk/common';
-import {type FrontendEndpoint} from '../data';
 
 export type FrontendPdkEndpointObject = EndpointObject<FrontendEndpoint>;
 

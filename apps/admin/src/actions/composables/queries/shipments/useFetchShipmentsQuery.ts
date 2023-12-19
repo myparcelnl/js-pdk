@@ -1,5 +1,5 @@
 import {type QueryKey, useQuery, useQueryClient} from '@tanstack/vue-query';
-import {type Shipment} from '@myparcel-pdk/common';
+import {type BackendEndpoint, type Shipment} from '@myparcel-pdk/common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {QUERY_KEY_SHIPMENT} from '../queryKeys';
 import {encodeArrayParameter} from '../../../../utils';
@@ -7,7 +7,6 @@ import {type BackendEndpointResponse} from '../../../../types';
 import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
 import {fillShipmentsQueryData} from '../../../../pdk';
-import {type BackendEndpoint} from '../../../../data';
 
 export const useFetchShipmentsQuery = <I extends number>(
   orderIds?: OneOrMore<string>,

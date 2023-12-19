@@ -1,5 +1,6 @@
 import {computed, markRaw, reactive, ref, type Ref, watch, type WritableComputedRef} from 'vue';
 import {get} from '@vueuse/core';
+import {TriState} from '@myparcel-pdk/common';
 import {type AnyElementConfiguration, defineField, useForm} from '@myparcel/vue-form-builder';
 import {toTriState, triStateToBoolean} from '../utils';
 import {
@@ -9,7 +10,6 @@ import {
   type TriStateInputModelValue,
   type TriStateInputProps,
 } from '../types';
-import {TriState} from '../data';
 import {useElementContext} from './useElementContext';
 import {useLanguage} from './language';
 

@@ -1,5 +1,5 @@
+import {TriState} from '@myparcel-pdk/common';
 import {type ElementInstance, type SelectOption} from '../../types';
-import {TriState} from '../../data';
 import {Format, type Formatter} from '../../composables';
 import {getCarrier} from './getCarrier';
 

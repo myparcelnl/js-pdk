@@ -1,6 +1,6 @@
 import {vi} from 'vitest';
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {type GlobalAdminContext} from '../../types';
-import {BackendEndpoint} from '../../data';
 
 export const mockDefaultEndpoints = vi.fn((): GlobalAdminContext['endpoints'] =>
   Object.values(BackendEndpoint).reduce((acc, endpoint) => {

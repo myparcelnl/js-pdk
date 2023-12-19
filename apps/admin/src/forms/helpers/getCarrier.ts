@@ -1,7 +1,6 @@
-import {type Carrier} from '@myparcel-pdk/common';
+import {AdminContextKey, type Carrier} from '@myparcel-pdk/common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {FIELD_CARRIER} from '../shipmentOptions';
-import {AdminContextKey} from '../../data';
 import {useContext} from '../../composables';
 
 export const getCarrier = (form: FormInstance): Carrier.ModelCarrier | undefined => {

@@ -1,5 +1,6 @@
 import {computed, type ComputedRef, onMounted, type UnwrapRef, watch, type WritableComputedRef} from 'vue';
 import {get} from '@vueuse/core';
+import {SortType} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {translateSelectOption} from '../utils';
 import {
@@ -9,7 +10,6 @@ import {
   type SelectInputProps,
   type SelectOptionWithLabel,
 } from '../types';
-import {SortType} from '../data';
 import {type ElementContext, useElementContext} from './useElementContext';
 import {useLanguage} from './language';
 

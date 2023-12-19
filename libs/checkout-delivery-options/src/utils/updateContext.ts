@@ -1,4 +1,5 @@
-import {FrontendEndpoint, PdkField, PdkUtil, useCheckoutStore, useUtil} from '@myparcel-pdk/checkout-common';
+import {FrontendEndpoint} from '@myparcel-pdk/common';
+import {PdkField, PdkUtil, useCheckoutStore, useUtil} from '@myparcel-pdk/checkout-common';
 import {useDeliveryOptionsStore} from './useDeliveryOptionsStore';
 
 /**

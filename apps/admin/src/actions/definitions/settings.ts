@@ -1,6 +1,7 @@
+import {BackendEndpoint} from '@myparcel-pdk/common';
 import {createMutationHandler} from '../executors';
 import {defineAction} from '../defineAction';
-import {AdminAction, AdminIcon, BackendEndpoint} from '../../data';
+import {AdminAction, AdminIcon} from '../../data';
 
 export const pluginSettingsUpdateAction = defineAction({
   name: AdminAction.PluginSettingsUpdate,

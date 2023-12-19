@@ -1,10 +1,10 @@
 import {snakeCase} from 'lodash-unified';
-import {type Shipment} from '@myparcel-pdk/common';
+import {type Shipment, TriState} from '@myparcel-pdk/common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {type ShipmentOptionsRefs} from '../types';
 import {type FieldName, SHIPMENT_OPTIONS} from '../field';
 import {createHasShipmentOptionWatcher, defineFormField, resolveFormComponent} from '../../helpers';
-import {AdminComponent, TriState} from '../../../data';
+import {AdminComponent} from '../../../data';
 import {createRef} from './createRef';
 
 export const createShipmentOptionField = (

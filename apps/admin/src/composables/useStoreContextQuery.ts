@@ -1,5 +1,5 @@
+import {AdminContextKey, BackendEndpoint} from '@myparcel-pdk/common';
 import {type ContextQuery} from '../stores';
-import {AdminContextKey, BackendEndpoint} from '../data';
 import {useStoreQuery} from './useStoreQuery';
 
 export const useStoreContextQuery = <C extends AdminContextKey = AdminContextKey.Dynamic>(

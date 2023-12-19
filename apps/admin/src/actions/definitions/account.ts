@@ -1,6 +1,7 @@
+import {AdminContextKey, BackendEndpoint} from '@myparcel-pdk/common';
 import {createMutationHandler} from '../executors';
 import {defineAction} from '../defineAction';
-import {AdminAction, AdminContextKey, AdminIcon, BackendEndpoint} from '../../data';
+import {AdminAction, AdminIcon} from '../../data';
 
 /**
  * Update account.

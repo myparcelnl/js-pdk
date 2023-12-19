@@ -1,4 +1,4 @@
-import {TriState} from '../data';
+import {TriState} from '@myparcel-pdk/common';
 
 export const toTriState = (value?: unknown): TriState => {
   if (TriState.Inherit === value) {

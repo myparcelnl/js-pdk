@@ -23,7 +23,6 @@ export * from '@myparcel-pdk/delivery-options';
 export {
   AddressField,
   AddressType,
-  FrontendEndpoint,
   PdkEvent,
   PdkField,
   PdkUtil,

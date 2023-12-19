@@ -1,5 +1,5 @@
 import {beforeEach, describe, expect, it} from 'vitest';
-import {FrontendEndpoint} from '../../data';
+import {FrontendEndpoint} from '@myparcel-pdk/common';
 import {doRequestSpy, mockPdkCheckout} from '../../__tests__';
 import {doRequest} from './doRequest';
 

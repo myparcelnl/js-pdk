@@ -13,7 +13,8 @@ import {useQueryStore} from '../stores';
 import {FORM_KEY_CHILD_PRODUCT_SETTINGS, FORM_KEY_PRODUCT_SETTINGS, generateFormFields} from '../forms';
 import {useAdminConfig, useContext, useProductData} from '../composables';
 import {useUpdateProductSettingsMutation} from '../actions';
-import {AdminContextKey} from "../data";
+
+import {AdminContextKey} from "@myparcel-pdk/common";
 
 const props = withDefaults(
   defineProps<{

@@ -1,8 +1,9 @@
 import {useQuery, useQueryClient} from '@tanstack/vue-query';
+import {AdminContextKey, BackendEndpoint} from '@myparcel-pdk/common';
 import {encodeArrayParameter} from '../../../../utils';
 import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
-import {AdminContextKey, AdminView, BackendEndpoint} from '../../../../data';
+import {AdminView} from '../../../../data';
 import {useAdminInstance} from '../../../../composables';
 
 export const useFetchContextQuery = <C extends AdminContextKey = AdminContextKey.Dynamic>(

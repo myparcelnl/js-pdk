@@ -1,7 +1,7 @@
 import {get} from '@vueuse/core';
+import {AdminContextKey} from '@myparcel-pdk/common';
 import {useStoreContextQuery} from '../useStoreContextQuery';
 import {type AdminContext} from '../../types';
-import {AdminContextKey} from '../../data';
 
 export const useContext = <C extends AdminContextKey = AdminContextKey.Dynamic>(
   // @ts-expect-error typescript is being very pedantic here

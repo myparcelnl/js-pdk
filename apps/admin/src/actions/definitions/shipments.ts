@@ -1,8 +1,8 @@
-import {Variant} from '@myparcel-pdk/common';
+import {BackendEndpoint, Variant} from '@myparcel-pdk/common';
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
 import {createShipmentsMutationHandler, executeNextAction} from '../executors';
 import {defineAction} from '../defineAction';
-import {AdminAction, AdminIcon, BackendEndpoint} from '../../data';
+import {AdminAction, AdminIcon} from '../../data';
 
 export const shipmentsExportReturnAction = defineAction({
   name: AdminAction.ShipmentsExportReturn,

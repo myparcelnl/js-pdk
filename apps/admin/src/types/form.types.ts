@@ -1,6 +1,6 @@
-import {type Keyable} from '@myparcel-pdk/common';
+import {type Keyable, type SortType} from '@myparcel-pdk/common';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {type AdminIcon, type SortType} from '../data';
+import {type AdminIcon} from '../data';
 import {type Translation} from './language.types';
 
 export type GlobalFieldProps = {

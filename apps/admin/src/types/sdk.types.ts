@@ -1,4 +1,6 @@
 import {
+  type AdminContextKey,
+  type BackendEndpoint,
   type ExtractEndpointDefinition,
   type LabelFormat,
   type LabelOutput,
@@ -9,7 +11,6 @@ import {
   type Shipment,
 } from '@myparcel-pdk/common';
 import {type RecursivePartial} from '@myparcel/ts-utils';
-import {type AdminContextKey, type BackendEndpoint} from '../data';
 import {type AdminContextObject} from './context.types';
 import {type WebhookDefinition} from './common.types';
 

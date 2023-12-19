@@ -1,5 +1,5 @@
 import {get} from '@vueuse/core';
-import {type Plugin} from '@myparcel-pdk/common';
+import {AdminContextKey, type Plugin} from '@myparcel-pdk/common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
 import {type ShipmentOptionsRefs} from '../types';
@@ -14,7 +14,7 @@ import {
 } from '../../helpers';
 import {type RadioGroupOption} from '../../../types';
 import {useFetchCarrier} from '../../../sdk';
-import {AdminComponent, AdminContextKey} from '../../../data';
+import {AdminComponent} from '../../../data';
 import {useAssetUrl, useContext, useLanguage, useLocalizedFormatter} from '../../../composables';
 import {createRef} from './createRef';
 

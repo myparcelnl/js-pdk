@@ -1,7 +1,8 @@
+import {type FrontendEndpoint} from '@myparcel-pdk/common';
 import {type PromiseOr} from '@myparcel/ts-utils';
 import {type MyParcelDeliveryOptions} from '@myparcel/delivery-options';
 import {type CarrierName} from '@myparcel/constants';
-import {type AddressType, type FrontendEndpoint, type PdkField} from '../data';
+import {type AddressType, type PdkField} from '../data';
 import {
   type FrontendEndpointData,
   type FrontendEndpointResponse,

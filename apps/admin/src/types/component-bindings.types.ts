@@ -1,5 +1,4 @@
-import {type Keyable, type Settings} from '@myparcel-pdk/common';
-import {type TriState} from '../data';
+import {type Keyable, type Settings, type TriState} from '@myparcel-pdk/common';
 import {type OptionsProp, type PdkElementEmits, type PdkElementProps, type SelectOptionValue} from './form.types';
 import {type ArrayItem} from './common.types';
 

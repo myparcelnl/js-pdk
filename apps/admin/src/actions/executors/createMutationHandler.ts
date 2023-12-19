@@ -1,4 +1,4 @@
-import {type BackendEndpoint} from '../../data';
+import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {type QueryHandler, type QueryModifier} from './types';
 import {doMutate} from './doMutate';
 
