@@ -1,14 +1,21 @@
 <template>
-  <span v-text="defaultRange" />
+  <span v-text="label" />
 </template>
 
 <script lang="ts" setup>
-import {toRefs} from 'vue';
+import {toRefs, computed} from 'vue';
 import {useDigitalStampRanges} from '../../composables';
 
 const props = defineProps<{weight: number}>();
 
 const propRefs = toRefs(props);
 
-const {defaultRange} = useDigitalStampRanges(propRefs.weight);
+const {currentRange} = useDigitalStampRanges(propRefs.weight);
+const label = computed(() => {
+  if (currentRange?.value?.plainLabel) {
+    return ` (${currentRange.value.plainLabel})`;
+  }
+
+  return '';
+});
 </script>
