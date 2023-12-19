@@ -1,4 +1,4 @@
-export const useAssetUrl = (path?: string): string => {
+export const createAssetUrl = (path?: string): string => {
   path ??= '';
 
   if (path.startsWith('/')) {

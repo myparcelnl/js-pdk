@@ -3,8 +3,9 @@
 </template>
 
 <script lang="ts" setup>
+import {toRefs} from 'vue';
 import OrderBox from '../OrderBox.vue';
-import {extendAdminInstance} from '../../composables';
+import {extendAdminInstance} from '../../utils';
 
 const props = defineProps({
   orderIdentifier: {
@@ -13,5 +14,7 @@ const props = defineProps({
   },
 });
 
-extendAdminInstance({context: {orderIdentifier: props.orderIdentifier}});
+const propRefs = toRefs(props);
+
+extendAdminInstance({context: {orderIdentifier: propRefs.orderIdentifier?.value}});
 </script>

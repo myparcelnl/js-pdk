@@ -2,7 +2,6 @@ import {computed, type ComputedRef, type Ref, ref, unref} from 'vue';
 import {get, type MaybeRef} from '@vueuse/core';
 import {type Shipment} from '@myparcel-pdk/common';
 import {type Carrier} from '@myparcel/sdk';
-import {useAssetUrl} from '../useAssetUrl';
 import {type AnyActionDefinition} from '../../types';
 import {useQueryStore} from '../../stores';
 import {instantiateActions} from '../../services';
@@ -15,7 +14,6 @@ export type UseShipmentData = {
   carrier: Ref<Carrier | undefined>;
   loading: Ref<boolean>;
   shipment: ComputedRef<Shipment.ModelShipment>;
-  useAssetUrl: typeof useAssetUrl;
 };
 
 export const useShipmentData = (id: MaybeRef<number>): UseShipmentData => {
@@ -50,6 +48,5 @@ export const useShipmentData = (id: MaybeRef<number>): UseShipmentData => {
       );
     }),
     shipment,
-    useAssetUrl,
   };
 };

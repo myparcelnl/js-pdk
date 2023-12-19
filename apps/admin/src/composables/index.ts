@@ -1,5 +1,4 @@
 export * from './context';
-export * from './extendAdminInstance';
 export * from './formatter';
 export * from './language';
 export * from './orders';
@@ -7,7 +6,6 @@ export * from './products';
 export * from './shipments';
 export * from './useAdminConfig';
 export * from './useAdminInstance';
-export * from './useAssetUrl';
 export * from './useBulkSelectCheckbox';
 export * from './useCheckboxGroupContext';
 export * from './useDropOffInputContext';

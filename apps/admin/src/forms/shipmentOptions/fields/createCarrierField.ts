@@ -12,10 +12,11 @@ import {
   setFieldProp,
   updateFieldsDefaults,
 } from '../../helpers';
+import {createAssetUrl} from '../../../utils';
 import {type RadioGroupOption} from '../../../types';
 import {useFetchCarrier} from '../../../sdk';
 import {AdminComponent} from '../../../data';
-import {useAssetUrl, useContext, useLanguage, useLocalizedFormatter} from '../../../composables';
+import {useContext, useLanguage, useLocalizedFormatter} from '../../../composables';
 import {createRef} from './createRef';
 
 // eslint-disable-next-line max-lines-per-function
@@ -55,7 +56,7 @@ export const createCarrierField = (
           return {
             plainLabel,
             value: carrier.externalIdentifier ?? apiCarrier?.name ?? '',
-            image: apiCarrier?.meta.logo_svg ? useAssetUrl(apiCarrier.meta.logo_svg) : undefined,
+            image: apiCarrier?.meta.logo_svg ? createAssetUrl(apiCarrier.meta.logo_svg) : undefined,
           };
         }),
       );
