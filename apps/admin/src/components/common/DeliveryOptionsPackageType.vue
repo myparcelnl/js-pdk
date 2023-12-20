@@ -9,7 +9,7 @@
       v-text="translate(getPackageTypeTranslation(resolved.deliveryOptions.packageType))" />
 
     <DigitalStampWeightRange
-      v-if="resolved.deliveryOptions?.packageType === PackageTypeName.DigitalStamp"
+      v-if="weight && resolved.deliveryOptions?.packageType === PackageTypeName.DigitalStamp"
       :weight="weight" />
   </span>
 </template>
@@ -34,6 +34,6 @@ const resolved = computed(() => get(props.shipmentOrOrder));
 const weight = computed(() => {
   return isOfType<Shipment.ModelPhysicalProperties>(resolved.value.physicalProperties, 'weight')
     ? resolved.value.physicalProperties.weight
-    : resolved.value.physicalProperties?.totalWeight ?? 0;
+    : resolved.value.physicalProperties?.totalWeight;
 });
 </script>

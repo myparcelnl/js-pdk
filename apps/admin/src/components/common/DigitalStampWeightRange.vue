@@ -12,10 +12,6 @@ const propRefs = toRefs(props);
 
 const {currentRange} = useDigitalStampRanges(propRefs.weight);
 const label = computed(() => {
-  if (currentRange?.value?.plainLabel) {
-    return ` (${currentRange.value.plainLabel})`;
-  }
-
-  return '';
+  return currentRange?.value?.plainLabel ? ` (${currentRange.value.plainLabel})` : '';
 });
 </script>
