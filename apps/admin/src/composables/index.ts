@@ -8,6 +8,7 @@ export * from './useAdminConfig';
 export * from './useAdminInstance';
 export * from './useBulkSelectCheckbox';
 export * from './useCheckboxGroupContext';
+export * from './useDigitalStampRanges';
 export * from './useDropOffInputContext';
 export * from './useDropdownData';
 export * from './useElementContext';

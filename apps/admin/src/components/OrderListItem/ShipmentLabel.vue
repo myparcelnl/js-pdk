@@ -18,7 +18,7 @@
     <div :class="config?.cssUtilities?.displayFlex">
       <DeliveryOptionsPackageType
         :class="config?.cssUtilities?.flexGrow"
-        :delivery-options="data.deliveryOptions" />
+        :shipment-or-order="data" />
 
       <div :class="config?.cssUtilities?.flexGrow">
         <ShipmentStatus :shipment-id="shipmentId" />

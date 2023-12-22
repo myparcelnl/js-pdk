@@ -1,5 +1,5 @@
 <template>
-  <div v-if="deliveryOptions">
+  <div v-if="data && deliveryOptions">
     <span :class="config.cssUtilities?.displayFlex">
       <CarrierLogo
         v-if="carrier"
@@ -9,7 +9,7 @@
 
       <ul :class="config.cssUtilities?.marginYAuto">
         <li>
-          <DeliveryOptionsPackageType :delivery-options="deliveryOptions" />
+          <DeliveryOptionsPackageType :shipment-or-order="data" />
         </li>
 
         <li>
@@ -36,7 +36,8 @@ import CarrierLogo from './CarrierLogo.vue';
 
 const {query} = useOrderData();
 
-const deliveryOptions = computed(() => get(query.data)?.deliveryOptions);
+const data = computed(() => get(query.data));
+const deliveryOptions = computed(() => data.value?.deliveryOptions);
 
 const carrier = computed(() => {
   const carriersQuery = useFetchCarrier(deliveryOptions.value?.carrier?.name);

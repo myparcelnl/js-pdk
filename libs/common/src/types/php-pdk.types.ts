@@ -405,12 +405,14 @@ export namespace Plugin {
     shop: Account.ModelShop;
   };
 
+  export interface DigitalStampRange {
+    min: number;
+    max: number;
+    average: number;
+  }
+
   export type ModelContextOrderDataContext = ModelPdkOrder & {
-    digitalStampRanges: {
-      min: number;
-      max: number;
-      average: number;
-    }[];
+    digitalStampRanges: DigitalStampRange[];
     inheritedDeliveryOptions: Record<string, Shipment.ModelDeliveryOptions>;
   };
 
