@@ -17,8 +17,7 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get, type MaybeRef} from '@vueuse/core';
-import {type Shipment} from '@myparcel-pdk/common';
-import {type Plugin} from '@myparcel-pdk/admin';
+import {type Plugin, type Shipment} from '@myparcel-pdk/common';
 import {isOfType} from '@myparcel/ts-utils';
 import {PackageTypeName} from '@myparcel/constants';
 import {getPackageTypeTranslation} from '../../utils';

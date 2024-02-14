@@ -27,7 +27,9 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.58"
+    "@myparcel-pdk/common": "workspace:^1.0.0-alpha.58",
+    "@myparcel/constants": "^2.0.0",
+    "@myparcel/delivery-options": "^5.7.2"
   },
   "engines": {
     "node": ">=16"

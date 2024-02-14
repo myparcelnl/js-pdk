@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.58",
+    "@myparcel/constants": "^2.0.0",
     "@myparcel/sdk": "^3.0.0",
     "@tanstack/vue-query": "^4.0.0",
     "@vueuse/core": "^10.0.0",

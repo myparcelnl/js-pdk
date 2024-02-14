@@ -1848,7 +1848,7 @@ __metadata:
     "@myparcel-pdk/admin": "workspace:*"
     "@myparcel-pdk/admin-preset-default": "workspace:*"
     "@myparcel-pdk/admin-preset-fontawesome": "workspace:*"
-    "@myparcel/constants": "npm:^1.0.0"
+    "@myparcel/constants": "npm:^2.0.0"
     "@myparcel/ts-utils": "npm:^1.9.0"
     "@tanstack/vue-query": "npm:^4.0.0"
     "@vitejs/plugin-vue": "npm:^4.2.3"
@@ -1935,6 +1935,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.58"
+    "@myparcel/constants": "npm:^2.0.0"
     "@myparcel/sdk": "npm:^3.0.0"
     "@tanstack/vue-query": "npm:^4.0.0"
     "@types/lodash-es": "npm:^4.17.6"
@@ -2017,6 +2018,8 @@ __metadata:
   resolution: "@myparcel-pdk/checkout-common@workspace:libs/checkout-common"
   dependencies:
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.58"
+    "@myparcel/constants": "npm:^2.0.0"
+    "@myparcel/delivery-options": "npm:^5.7.2"
   languageName: unknown
   linkType: soft
 
@@ -2056,6 +2059,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.9"
+    "@myparcel/constants": "npm:^2.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2075,6 +2079,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/common@workspace:libs/common"
   dependencies:
+    "@myparcel/constants": "npm:^2.0.0"
     vue: "npm:^3.3.0"
   languageName: unknown
   linkType: soft
@@ -2161,6 +2166,15 @@ __metadata:
   dependencies:
     "@myparcel/ts-utils": "npm:^1.7.0"
   checksum: 108acdc9eb6149132a353f0365068f1ba2d83b8e17929134e8c8f78238aab1c66ffb7112205a55fd47ecf4294a22fb63ed75f8bd233364c158415ab52aa2c690
+  languageName: node
+  linkType: hard
+
+"@myparcel/constants@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@myparcel/constants@npm:2.0.0"
+  dependencies:
+    "@myparcel/ts-utils": "npm:^1.7.0"
+  checksum: 77e190badd762e0d862afe09bf351ca3d7a57b2f9c98c835e94f26ff71d551cba6748bd6c9e40b2ccc44cf05982798527982448a56b67e0756daa16c746a72f0
   languageName: node
   linkType: hard
 

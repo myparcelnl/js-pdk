@@ -28,7 +28,8 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.9"
+    "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.9",
+    "@myparcel/constants": "^2.0.0"
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*"
