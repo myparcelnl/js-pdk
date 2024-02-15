@@ -33,7 +33,7 @@
     "@pinia/testing": ">= 0.1.0 < 1",
     "@vitest/coverage-v8": "^1.0.0",
     "@vue/test-utils": "^2.0.0",
-    "happy-dom": "^12.2.1",
+    "happy-dom": "^13.0.0",
     "pinia": "^2.0.0",
     "vitest": "^1.0.0"
   },
