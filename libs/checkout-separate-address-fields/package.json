@@ -31,7 +31,8 @@
     "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.9"
   },
   "devDependencies": {
-    "@myparcel-pdk/build-vite": "workspace:*"
+    "@myparcel-pdk/build-vite": "workspace:*",
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=16"

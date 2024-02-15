@@ -52,7 +52,8 @@
     "@types/inquirer": "^9.0.3",
     "@types/interpret": "^1.1.1",
     "@types/liftoff": "^4.0.0",
-    "tsup": "^7.1.0"
+    "tsup": "^7.1.0",
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=16"

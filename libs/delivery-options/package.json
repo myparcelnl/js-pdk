@@ -28,7 +28,8 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "devDependencies": {
-    "@myparcel-pdk/build-vite": "workspace:*"
+    "@myparcel-pdk/build-vite": "workspace:*",
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=16"

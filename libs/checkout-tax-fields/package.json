@@ -32,7 +32,8 @@
     "@myparcel/constants": "^2.0.0"
   },
   "devDependencies": {
-    "@myparcel-pdk/build-vite": "workspace:*"
+    "@myparcel-pdk/build-vite": "workspace:*",
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=16"

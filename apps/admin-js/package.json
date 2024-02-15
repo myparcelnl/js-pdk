@@ -31,7 +31,9 @@
     "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.124"
   },
   "devDependencies": {
-    "@myparcel-pdk/build-vite": "workspace:*"
+    "@myparcel-pdk/build-vite": "workspace:*",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0"
   },
   "peerDependencies": {
     "vue": "^3"

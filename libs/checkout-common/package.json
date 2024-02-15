@@ -29,12 +29,16 @@
   "dependencies": {
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.58",
     "@myparcel/constants": "^2.0.0",
-    "@myparcel/delivery-options": "^5.7.2"
+    "@myparcel/delivery-options": "^5.7.2",
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=16"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
   }
 }
