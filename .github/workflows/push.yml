@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-22.04
     needs: test
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           persist-credentials: false
           token: ${{ secrets.GH_REPO_TOKEN }}
@@ -29,20 +29,19 @@ jobs:
         with:
           token: ${{ secrets.GH_REPO_TOKEN }}
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_REPO_TOKEN }}
 
-      - uses: ./.github/actions/install
-
       - uses: ./.github/actions/build
 
-      - uses: actions/upload-pages-artifact@v1
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: ./apps/admin-demo/dist
 
       - name: 'Run monodeploy'
+        #language=bash
         run: |
           yarn monodeploy \
             --config-file monodeploy.config.cjs \
@@ -56,13 +55,13 @@ jobs:
     if: always()
     runs-on: ubuntu-22.04
     steps:
-      - uses: myparcelnl/actions/setup-git-credentials@v3
+      - uses: myparcelnl/actions/setup-git-credentials@v4
         id: credentials
         with:
           app-id: ${{ secrets.MYPARCEL_APP_ID }}
           private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
 
-      - uses: peter-evans/rebase@v2
+      - uses: peter-evans/rebase@v3
         with:
           token: ${{ steps.credentials.outputs.token }}
           base: ${{ github.ref_name }}
@@ -80,4 +79,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4

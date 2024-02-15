@@ -9,9 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: ./.github/actions/install
+      - uses: actions/checkout@v4
 
       - uses: ./.github/actions/build
 
@@ -19,6 +17,7 @@ jobs:
         shell: bash
         env:
           NX_BRANCH: ${{ github.event.inputs.branch || github.head_ref || github.ref }}
+        #language=bash
         run: |
           yarn nx run-many \
             --runner=cloud \
@@ -28,13 +27,15 @@ jobs:
 
       - name: 'Rename coverage files'
         shell: bash
+        #language=bash
         run: |
           yarn workspaces foreach -Apv \
             --exclude=. \
             exec \
             bash -c 'if [ -f coverage/clover.xml ]; then mv coverage/clover.xml coverage/${npm_package_name//\//-}.xml; fi' -- {}
 
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v4
         with:
           files: coverage/*.xml
           flags: unit
+          token: ${{ secrets.CODECOV_TOKEN }}

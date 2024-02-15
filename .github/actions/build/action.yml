@@ -4,8 +4,13 @@ description: 'Sets up environment and creates a build'
 runs:
   using: composite
   steps:
+    - uses: myparcelnl/actions/yarn-install@v4
+      with:
+        node-version: ${{ vars.NODE_VERSION }}
+
     - name: 'Build packages'
       shell: bash
+      #language=bash
       run: |
         NX_BRANCH=production yarn nx run-many \
           --runner=cloud \
