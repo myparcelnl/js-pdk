@@ -11,7 +11,7 @@ type FilteredOrder = Replace<Plugin.ModelPdkOrder, 'shipments', FilteredShipment
 export const setQueryOrder = (queryClient: QueryClient, order: Plugin.ModelPdkOrder | FilteredOrder): void => {
   let filteredOrder: FilteredOrder;
 
-  if (isOfType<Shipment.ModelShipment>(order.shipments[0], 'orderId')) {
+  if (order.shipments?.length && isOfType<Shipment.ModelShipment>(order.shipments[0], 'orderId')) {
     filteredOrder = {
       ...order,
       shipments: (order as Plugin.ModelPdkOrder).shipments
