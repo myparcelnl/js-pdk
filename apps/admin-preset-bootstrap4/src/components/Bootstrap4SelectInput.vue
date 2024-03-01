@@ -6,6 +6,7 @@
     :class="{
       disabled: options.length === 1 || element.isDisabled || element.isSuspended,
     }"
+    :disabled="options.length === 1 || element.isDisabled || element.isSuspended"
     class="custom-select form-control">
     <option
       v-for="(item, index) in options"

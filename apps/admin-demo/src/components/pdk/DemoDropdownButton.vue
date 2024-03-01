@@ -9,6 +9,7 @@
       :class="{
         'rounded-r-none': index === dropdownActions.standalone.length - 1,
       }"
+      :disabled="disabled"
       :hide-text="hideText"
       :size="size" />
 

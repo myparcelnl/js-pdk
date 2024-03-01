@@ -8,16 +8,11 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, type PropType} from 'vue';
-import {AdminComponent, AdminIcon} from '@myparcel-pdk/admin';
+import {computed} from 'vue';
+import {AdminComponent, type AdminIcon} from '@myparcel-pdk/admin';
 import {convertToDashIcon} from '../convertToDashIcon';
 
-const props = defineProps({
-  icon: {
-    type: String as PropType<AdminIcon>,
-    required: true,
-  },
-});
+const props = defineProps<{icon: AdminIcon}>();
 
 const dashIcon = computed(() => convertToDashIcon(props.icon));
 </script>
