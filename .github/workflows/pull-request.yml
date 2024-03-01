@@ -24,6 +24,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: ./.github/actions/build
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
 
       - uses: myparcelnl/actions/setup-git-credentials@v4
         id: credentials

@@ -1,12 +1,17 @@
 name: 'Create build'
 description: 'Sets up environment and creates a build'
 
+inputs:
+  node-version:
+    description: 'Node version to use'
+    required: true
+
 runs:
   using: composite
   steps:
     - uses: myparcelnl/actions/yarn-install@v4
       with:
-        node-version: ${{ vars.NODE_VERSION }}
+        node-version: ${{ inputs.node-version }}
 
     - name: 'Build packages'
       shell: bash
