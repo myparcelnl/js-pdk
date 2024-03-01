@@ -1,4 +1,5 @@
 import {vi} from 'vitest';
+import {AdminContextKey} from '@myparcel-pdk/common';
 import {type AdminAppConfig} from '../../types';
 import {AdminView} from '../../data';
 import {mockDefaultLogger} from './mockDefaultLogger';
@@ -11,8 +12,8 @@ export const mockDefaultAppConfig = vi.fn((): AdminAppConfig => {
     appName: 'test',
     config: mockDefaultConfig(),
     context: {
-      dynamic: mockDefaultDynamicContext(),
-      global: mockDefaultGlobalContext(),
+      [AdminContextKey.Dynamic]: mockDefaultDynamicContext(),
+      [AdminContextKey.Global]: mockDefaultGlobalContext(),
     },
     logger: mockDefaultLogger(),
     view: AdminView.OrderBox,

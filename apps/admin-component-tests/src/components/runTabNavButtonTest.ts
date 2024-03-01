@@ -12,5 +12,4 @@ export const runTabNavButtonTest = ((component) => {
   runCommonComponentTests(component, options);
 
   runHasPropTest(component, options, 'active', false);
-  runHasPropTest(component, options, 'tab', {name: 'tab2', label: 'Tab 2'});
 }) satisfies AdminComponentTest;

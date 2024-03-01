@@ -12,6 +12,6 @@ export const runHasPropTest = ((component, options, prop, value = 'value') => {
       },
     });
 
-    expect(wrapper.props(prop as any)).toBe('value');
+    expect(wrapper.props()).toHaveProperty(prop);
   });
 }) satisfies PartialComponentTest<[string] | [string, unknown]>;

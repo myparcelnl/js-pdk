@@ -5,10 +5,10 @@ import {type PartialComponentTest} from '../types';
 import {createInputOptions} from '../helpers';
 import {runCommonComponentTests, runCommonInputTests} from '../common';
 
-const selectOptions: SelectOption[] = [
+const selectOptions = [
   {value: '1', label: 'One'},
   {value: '2', label: 'Two'},
-];
+] satisfies SelectOption[];
 
 export const runSelectInputTest = ((component) => {
   const options = createInputOptions('2', {props: {options: selectOptions}});

@@ -11,6 +11,6 @@ export const createInputOptions = <T>(
 }> => ({
   props: {
     element: createFormElement(options),
-    ...(modelValue !== undefined && {modelValue}),
+    ...(modelValue === undefined ? {} : {modelValue}),
   },
 });

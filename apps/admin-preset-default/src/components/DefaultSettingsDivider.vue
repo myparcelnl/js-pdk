@@ -15,6 +15,7 @@
 <script lang="ts" setup>
 import {AdminComponent, type SettingsDividerProps, useLanguage} from '@myparcel-pdk/admin';
 
+// eslint-disable-next-line vue/no-unused-properties
 defineProps<SettingsDividerProps>();
 
 const {translate, has} = useLanguage();

@@ -1,16 +1,11 @@
-import {type ComponentMountingOptions} from '@vue/test-utils';
-import {createFormElement, type ElementInstance} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
+import {createInputOptions} from '../helpers';
 import {runCommonComponentTests, runCommonInputTests} from '../common';
 
 export const runTimeInputTest = ((component) => {
-  const options: ComponentMountingOptions<{element: ElementInstance}> = {
-    props: {
-      element: createFormElement({}),
-    },
-  };
+  const options = createInputOptions('12:00');
 
   runCommonComponentTests(component, options);
-  runCommonInputTests(component, options);
+  runCommonInputTests(component, options, {value: '13:00'});
   // TODO write more tests
 }) satisfies AdminComponentTest;

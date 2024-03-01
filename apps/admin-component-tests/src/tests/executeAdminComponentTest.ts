@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import {type Component} from 'vue';
-import {afterAll, afterEach, beforeAll, beforeEach, describe, vi} from 'vitest';
+import {afterAll, beforeAll, beforeEach, describe, vi} from 'vitest';
 import {
   type AdminComponent,
   type AdminInstance,
@@ -21,13 +21,7 @@ export const executeAdminComponentTest = (name: AdminComponent, component: Omit<
 
   describe(name, () => {
     beforeEach(() => {
-      vi.spyOn(console, 'log');
-      vi.spyOn(console, 'warn');
-      vi.spyOn(console, 'error');
-    });
-
-    afterEach(() => {
-      vi.restoreAllMocks();
+      vi.spyOn(console, 'warn').mockImplementation(() => undefined);
     });
 
     beforeAll(() => {

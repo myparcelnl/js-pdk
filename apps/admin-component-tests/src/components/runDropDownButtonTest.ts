@@ -37,7 +37,7 @@ export const runDropDownButtonTest = ((component) => {
     const wrapper = mount(component, DEFAULT_OPTIONS);
     const button = wrapper.find('button');
 
-    button.element.click();
+    await button.trigger('click');
     await wrapper.vm.$nextTick();
     expect(wrapper.emitted().click).toHaveLength(1);
   });
@@ -48,7 +48,7 @@ export const runDropDownButtonTest = ((component) => {
     const button = wrapper.find('button');
     expect(button.attributes('disabled')).toBeDefined();
 
-    button.element.click();
+    await button.trigger('click');
     await wrapper.vm.$nextTick();
     expect(wrapper.emitted().click).toBeUndefined();
   });

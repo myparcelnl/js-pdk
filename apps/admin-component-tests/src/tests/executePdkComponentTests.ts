@@ -4,7 +4,7 @@ import {type AdminComponent} from '@myparcel-pdk/admin';
 import {executeAdminComponentTest} from './executeAdminComponentTest';
 
 export const executePdkComponentTests = (components: Partial<Record<AdminComponent, Component>>): void => {
-  doComponentTestSetup();
+  doComponentTestSetup(components);
 
   Object.entries(components).forEach(([name, component]) => {
     if (!component) {

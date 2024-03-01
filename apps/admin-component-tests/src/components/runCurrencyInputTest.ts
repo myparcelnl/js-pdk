@@ -6,6 +6,8 @@ export const runCurrencyInputTest = ((component) => {
   const options = createInputOptions(1.42);
 
   runCommonComponentTests(component, options);
-  runCommonInputTests(component, options);
+  runCommonInputTests(component, options, {
+    value: 1.5,
+  });
   // TODO write more tests
 }) satisfies AdminComponentTest;

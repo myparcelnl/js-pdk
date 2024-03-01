@@ -1,15 +1,29 @@
 import {expect, it} from 'vitest';
 import {merge} from 'lodash-unified';
-import {mount} from '@vue/test-utils';
+import {flushPromises, mount} from '@vue/test-utils';
 import {type PartialComponentTest} from '../types';
 import {runHasPropTest} from './runHasPropTest';
 
+interface AdditionalOptions {
+  value?: unknown;
+}
+
 // eslint-disable-next-line max-lines-per-function
-export const runCommonInputTests = ((component, options = undefined) => {
+export const runCommonInputTests = ((component, options = undefined, additionalOptions: AdditionalOptions = {}) => {
   runHasPropTest(component, {}, 'element', options?.props?.element);
 
   it('can be disabled', () => {
-    const wrapper = mount(component, merge({}, options, {props: {element: {isDisabled: true}}}));
+    const wrapper = mount(
+      component,
+      merge({}, options, {
+        props: {
+          element: {
+            ...options?.props?.element,
+            isDisabled: true,
+          },
+        },
+      }),
+    );
 
     const select = wrapper.find('select');
     const input = wrapper.find('input');
@@ -30,11 +44,11 @@ export const runCommonInputTests = ((component, options = undefined) => {
     const input = wrapper.find('input');
 
     if (select.exists()) {
-      expect(select.element.value).toBe(options?.props?.modelValue);
+      expect(select.element.value).toEqual(options?.props?.modelValue);
     }
 
     if (input.exists()) {
-      expect(input.element.value).toBe(options?.props?.modelValue);
+      expect(input.element.value).toEqual(options?.props?.modelValue);
     }
   });
 
@@ -46,13 +60,15 @@ export const runCommonInputTests = ((component, options = undefined) => {
     const input = wrapper.find('input');
 
     if (select.exists()) {
-      await select.setValue('2');
+      await select.setValue(additionalOptions?.value ?? '2');
     }
 
     if (input.exists()) {
-      await input.setValue('new text');
+      await input.setValue(additionalOptions?.value ?? 'new text');
     }
 
-    expect(Object.keys(wrapper.emitted())).toContain(['update:modelValue']);
+    await flushPromises();
+
+    expect(Object.keys(wrapper.emitted())).toContain('update:modelValue');
   });
-}) satisfies PartialComponentTest;
+}) satisfies PartialComponentTest<[AdditionalOptions]>;

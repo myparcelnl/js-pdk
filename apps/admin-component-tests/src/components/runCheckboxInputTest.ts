@@ -6,6 +6,6 @@ export const runCheckboxInputTest = ((component) => {
   const options = createInputOptions(true);
 
   runCommonComponentTests(component, options);
-  runCommonInputTests(component);
+  runCommonInputTests(component, options, {value: false});
   // TODO write more tests
 }) satisfies AdminComponentTest;
