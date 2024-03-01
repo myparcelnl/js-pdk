@@ -34,13 +34,17 @@
     "@myparcel-pdk/checkout-tax-fields": "workspace:^1.0.0-alpha.41",
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.58"
   },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vitest": "^1.0.0"
+  },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
+  },
+  "volta": {
+    "extends": "../../package.json"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "typescript": "^5.2.2"
   }
 }

@@ -2006,6 +2006,7 @@ __metadata:
     typescript: "npm:^5.2.2"
     vite: "npm:^5.0.0"
     vite-plugin-custom-tsconfig: "npm:^1.0.4"
+    vitest: "npm:^1.0.0"
     vue: "npm:^3.3.0"
     vue-router: "npm:^4.1.6"
   languageName: unknown
@@ -2019,6 +2020,7 @@ __metadata:
     "@myparcel-pdk/build-vite": "workspace:*"
     typescript: "npm:^5.2.2"
     vite: "npm:^5.0.0"
+    vitest: "npm:^1.0.0"
   peerDependencies:
     vue: ^3
   languageName: unknown
@@ -2036,7 +2038,10 @@ __metadata:
     "@types/jquery": "npm:^3.5.16"
     pinia: "npm:^2.0.0"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.0.0"
+    vitest: "npm:^1.0.0"
     vue: "npm:^3.3.0"
+    vue-tsc: "npm:^1.8.3"
   languageName: unknown
   linkType: soft
 
@@ -2048,7 +2053,10 @@ __metadata:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.0.0"
+    vitest: "npm:^1.0.0"
     vue: "npm:^3.3.0"
+    vue-tsc: "npm:^1.8.0"
   languageName: unknown
   linkType: soft
 
@@ -2062,7 +2070,10 @@ __metadata:
     "@myparcel/ts-utils": "npm:^1.9.0"
     "@vueuse/core": "npm:^10.0.0"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.0.0"
+    vitest: "npm:^1.0.0"
     vue: "npm:^3.3.0"
+    vue-tsc: "npm:^1.8.3"
   languageName: unknown
   linkType: soft
 
@@ -2074,7 +2085,10 @@ __metadata:
     "@myparcel-pdk/admin-component-tests": "workspace:*"
     "@myparcel-pdk/build-vite": "workspace:*"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.0.0"
+    vitest: "npm:^1.0.0"
     vue: "npm:^3.3.0"
+    vue-tsc: "npm:^1.8.3"
   languageName: unknown
   linkType: soft
 
@@ -2095,6 +2109,8 @@ __metadata:
     lodash-unified: "npm:^1.0.3"
     pinia: "npm:^2.0.0"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.0.0"
+    vitest: "npm:^1.0.0"
     vue: "npm:^3.3.0"
     vue-tsc: "npm:^1.8.3"
   languageName: unknown
@@ -2123,6 +2139,7 @@ __metadata:
     supports-color: "npm:^9.3.1"
     tsup: "npm:^7.1.0"
     typescript: "npm:^5.2.2"
+    vitest: "npm:^1.0.0"
   bin:
     pdk-builder: ./bin/index.js
   languageName: unknown
@@ -2143,6 +2160,7 @@ __metadata:
     serverless: "npm:^3.28.1"
     serverless-plugin-typescript: "npm:^2.1.4"
     typescript: "npm:^5.2.2"
+    vitest: "npm:^1.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2172,6 +2190,7 @@ __metadata:
     "@myparcel/constants": "npm:^2.0.0"
     "@myparcel/delivery-options": "npm:^5.7.2"
     typescript: "npm:^5.2.2"
+    vitest: "npm:^1.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2185,6 +2204,7 @@ __metadata:
     "@myparcel/delivery-options": "npm:^5.7.2"
     "@myparcel/ts-utils": "npm:^1.9.0"
     typescript: "npm:^5.2.2"
+    vitest: "npm:^1.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2196,6 +2216,7 @@ __metadata:
     "@myparcel-pdk/checkout": "workspace:^1.0.0-alpha.78"
     typescript: "npm:^5.2.2"
     vite: "npm:^5.0.0"
+    vitest: "npm:^1.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2206,6 +2227,7 @@ __metadata:
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.9"
     typescript: "npm:^5.2.2"
+    vitest: "npm:^1.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2217,6 +2239,7 @@ __metadata:
     "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.9"
     "@myparcel/constants": "npm:^2.0.0"
     typescript: "npm:^5.2.2"
+    vitest: "npm:^1.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2230,6 +2253,7 @@ __metadata:
     "@myparcel-pdk/checkout-tax-fields": "workspace:^1.0.0-alpha.41"
     "@myparcel-pdk/common": "workspace:^1.0.0-alpha.58"
     typescript: "npm:^5.2.2"
+    vitest: "npm:^1.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2239,6 +2263,7 @@ __metadata:
   dependencies:
     "@myparcel/constants": "npm:^2.0.0"
     typescript: "npm:^5.2.2"
+    vitest: "npm:^1.0.0"
     vue: "npm:^3.3.0"
   languageName: unknown
   linkType: soft
@@ -2249,6 +2274,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
     typescript: "npm:^5.2.2"
+    vitest: "npm:^1.0.0"
   languageName: unknown
   linkType: soft
 
@@ -15628,7 +15654,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-tsc@npm:^1.8.26, vue-tsc@npm:^1.8.3":
+"vue-tsc@npm:^1.8.0, vue-tsc@npm:^1.8.26, vue-tsc@npm:^1.8.3":
   version: 1.8.27
   resolution: "vue-tsc@npm:1.8.27"
   dependencies:

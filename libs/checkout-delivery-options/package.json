@@ -35,10 +35,14 @@
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vitest": "^1.0.0"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
+  },
+  "volta": {
+    "extends": "../../package.json"
   },
   "publishConfig": {
     "access": "public"

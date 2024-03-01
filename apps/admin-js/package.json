@@ -33,13 +33,17 @@
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*",
     "typescript": "^5.2.2",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
   },
   "peerDependencies": {
     "vue": "^3"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
+  },
+  "volta": {
+    "extends": "../../package.json"
   },
   "publishConfig": {
     "access": "public"
