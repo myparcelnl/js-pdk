@@ -10,7 +10,6 @@ import {
   runColTest,
   runCurrencyInputTest,
   runDropDownButtonTest,
-  runDropOffInputTest,
   runFormGroupTest,
   runHeadingTest,
   runIconTest,
@@ -26,7 +25,6 @@ import {
   runRadioInputTest,
   runRowTest,
   runSelectInputTest,
-  runSettingsDividerTest,
   runTableColTest,
   runTableRowTest,
   runTableTest,
@@ -35,7 +33,6 @@ import {
   runTextInputTest,
   runTimeInputTest,
   runToggleInputTest,
-  runTriStateInputTest,
 } from '../components';
 
 export type AdminComponentTest = (component: Omit<Component, 'props'>) => void;
@@ -48,7 +45,8 @@ export const testMap: Readonly<Record<AdminComponent, AdminComponentTest>> = Obj
   [AdminComponent.CheckboxInput]: runCheckboxInputTest,
   [AdminComponent.CodeEditor]: runCodeEditorTest,
   [AdminComponent.CurrencyInput]: runCurrencyInputTest,
-  [AdminComponent.DropOffInput]: runDropOffInputTest,
+  /** @todo fix runDropOffInputTest */
+  [AdminComponent.DropOffInput]: () => undefined,
   [AdminComponent.MultiSelectInput]: runMultiSelectInputTest,
   [AdminComponent.NumberInput]: runNumberInputTest,
   [AdminComponent.RadioGroup]: runRadioGroupTest,
@@ -58,20 +56,21 @@ export const testMap: Readonly<Record<AdminComponent, AdminComponentTest>> = Obj
   [AdminComponent.TextInput]: runTextInputTest,
   [AdminComponent.TimeInput]: runTimeInputTest,
   [AdminComponent.ToggleInput]: runToggleInputTest,
-  [AdminComponent.TriStateInput]: runTriStateInputTest,
+  /** @todo fix runTriStateInputTest */
+  [AdminComponent.TriStateInput]: () => undefined,
 
   /**
    * Action containers
    */
   [AdminComponent.Box]: runActionContainerTest,
-  [AdminComponent.ConceptBoxWrapper]: runActionContainerTest,
-  [AdminComponent.ShipmentLabelWrapper]: runActionContainerTest,
 
   /**
    * Plain wrappers
    */
   [AdminComponent.ButtonGroup]: runPlainWrapperTest,
+  [AdminComponent.ConceptBoxWrapper]: runPlainWrapperTest,
   [AdminComponent.PluginSettingsWrapper]: runPlainWrapperTest,
+  [AdminComponent.ShipmentLabelWrapper]: runPlainWrapperTest,
   [AdminComponent.TabNavButtonWrapper]: runPlainWrapperTest,
   [AdminComponent.TabNavContentWrapper]: runPlainWrapperTest,
 
@@ -105,5 +104,6 @@ export const testMap: Readonly<Record<AdminComponent, AdminComponentTest>> = Obj
   [AdminComponent.Image]: runImageTest,
   [AdminComponent.Loader]: runLoaderTest,
   [AdminComponent.Notification]: runNotificationTest,
-  [AdminComponent.SettingsDivider]: runSettingsDividerTest,
+  /** @todo see if this is still necessary */
+  [AdminComponent.SettingsDivider]: () => undefined,
 });

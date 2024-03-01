@@ -1,4 +1,3 @@
-import {type Component} from 'vue';
 import {vi} from 'vitest';
 import {config} from '@vue/test-utils';
 import {createTestingPinia} from '@pinia/testing';
@@ -7,10 +6,10 @@ import {type AdminAppConfig, type AdminComponentMap} from '../types';
 import {useQueryStore} from '../stores';
 import {globalLogger, LogLevel} from '../services';
 import {createContextPlugin, createLoggerPlugin, createRegisterComponentsPlugin, createVueQueryPlugin} from '../pdk';
-import {type AdminComponent, allAdminComponentNames} from '../data';
+import {allAdminComponentNames} from '../data';
 import {mockDefaultAppConfig, mockDefaultConfig, mockDefaultLogger} from './mocks';
 
-export const doComponentTestSetup = (components?: Partial<Record<AdminComponent, Component>>): void => {
+export const doComponentTestSetup = (components?: Partial<AdminComponentMap>): void => {
   const logger = mockDefaultLogger();
   logger.level = LogLevel.Off;
 
@@ -18,7 +17,7 @@ export const doComponentTestSetup = (components?: Partial<Record<AdminComponent,
     ...mockDefaultAppConfig(),
     config: {
       ...mockDefaultConfig(),
-      components: components as AdminComponentMap,
+      components: (components ?? {}) as AdminComponentMap,
     },
     logger,
   };

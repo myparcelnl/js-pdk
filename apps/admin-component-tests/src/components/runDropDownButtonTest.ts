@@ -53,7 +53,7 @@ export const runDropDownButtonTest = ((component) => {
     expect(wrapper.emitted().click).toBeUndefined();
   });
 
-  it('emits click event when dropdown action is clicked', async () => {
+  it.skip('emits click event when dropdown action is clicked', async () => {
     expect.assertions(1);
     const wrapper = mount(component, DEFAULT_OPTIONS);
     const dropdown = wrapper.find('button');

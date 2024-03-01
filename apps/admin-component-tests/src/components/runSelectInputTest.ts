@@ -14,10 +14,10 @@ export const runSelectInputTest = ((component) => {
   const options = createInputOptions('2', {props: {options: selectOptions}});
 
   runCommonComponentTests(component, options);
-  runCommonInputTests(component, options);
+  runCommonInputTests(component, options, {value: '1'});
 
   it('sets options from props', () => {
-    const wrapper = mount(component, {props: {options}});
+    const wrapper = mount(component, options);
 
     expect(
       wrapper

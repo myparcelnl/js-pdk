@@ -1,9 +1,8 @@
-import {type Component} from 'vue';
 import {doComponentTestSetup} from '@myparcel-pdk/admin/testing';
-import {type AdminComponent} from '@myparcel-pdk/admin';
+import {type AdminComponent, type AdminComponentMap} from '@myparcel-pdk/admin';
 import {executeAdminComponentTest} from './executeAdminComponentTest';
 
-export const executePdkComponentTests = (components: Partial<Record<AdminComponent, Component>>): void => {
+export const executePdkComponentTests = (components: Partial<AdminComponentMap> = {}): void => {
   doComponentTestSetup(components);
 
   Object.entries(components).forEach(([name, component]) => {
