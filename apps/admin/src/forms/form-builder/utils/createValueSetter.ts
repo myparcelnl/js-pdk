@@ -1,3 +1,4 @@
+import {isRef} from 'vue';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {type AnyVal} from '../types';
 
@@ -8,6 +9,11 @@ export const createValueSetter = (instance: InteractiveElementInstance, prefix: 
     if (target) {
       instance.form.setValue(`${prefix}${target}`, value);
     } else {
+      if (isRef(instance.ref)) {
+        instance.ref.value = value;
+        return;
+      }
+
       // @ts-expect-error todo
       instance.ref = value;
     }

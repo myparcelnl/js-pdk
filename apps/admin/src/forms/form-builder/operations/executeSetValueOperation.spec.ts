@@ -1,6 +1,6 @@
 import {ref} from 'vue';
 import {afterEach, describe, expect, it} from 'vitest';
-import {mount} from '@vue/test-utils';
+import {flushPromises, mount} from '@vue/test-utils';
 import {defineForm, MagicForm, useFormBuilder} from '@myparcel/vue-form-builder';
 import {type AnyVal, type FormSetValueOperation} from '../types';
 import {buildAfterUpdate} from '../builders';
@@ -190,16 +190,12 @@ describe('executeSetValueOperation', () => {
       ],
     });
 
-    const wrapper = mount(MagicForm, {props: {form}});
+    mount(MagicForm, {props: {form}});
 
     form.setValue('test', 'test');
 
-    const testField = form.getField('test');
-    // todo remove this when afterUpdate is properly triggered
-    testField?.afterUpdate(testField);
+    await flushPromises();
 
-    await wrapper.vm.$nextTick();
-
-    expect(form.getValues()).toEqual(result);
+    expect(form.values).toEqual(result);
   });
 });
