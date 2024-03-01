@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import {type Component} from 'vue';
-import {afterAll, afterEach, beforeAll, beforeEach, describe, test, vi} from 'vitest';
+import {afterAll, afterEach, beforeAll, beforeEach, describe, vi} from 'vitest';
 import {
   type AdminComponent,
   type AdminInstance,
@@ -42,7 +42,7 @@ export const executeAdminComponentTest = (name: AdminComponent, component: Omit<
       }));
     });
 
-    test(name, () => {
+    describe(name, () => {
       componentTest(component);
     });
 
