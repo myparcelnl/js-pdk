@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="apps/admin-component-tests" type="JavaScriptTestRunnerVitest">
+    <config value="$PROJECT_DIR$/apps/admin-component-tests/vitest.config.ts" />
+    <node-interpreter value="project" />
+    <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
+    <working-dir value="$PROJECT_DIR$/apps/admin-component-tests" />
+    <envs />
+    <scope-kind value="ALL" />
+    <method v="2" />
+  </configuration>
+</component>

@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="libs/checkout/core" type="JavaScriptTestRunnerVitest">
-    <config value="$PROJECT_DIR$/libs/checkout/core/vitest.config.ts" />
+  <configuration default="false" name="apps/admin-demo" type="JavaScriptTestRunnerVitest">
+    <config value="$PROJECT_DIR$/apps/admin-demo/vite.config.ts" />
     <node-interpreter value="project" />
     <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-    <working-dir value="$PROJECT_DIR$/libs/checkout/core" />
+    <working-dir value="$PROJECT_DIR$/apps/admin-demo" />
     <envs />
     <scope-kind value="ALL" />
     <method v="2" />
