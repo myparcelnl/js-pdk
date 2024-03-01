@@ -28,8 +28,8 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/checkout-common": "workspace:^1.0.0-alpha.9",
-    "@myparcel-pdk/delivery-options": "workspace:^1.0.0-alpha.12",
+    "@myparcel-pdk/checkout-common": "workspace:*",
+    "@myparcel-pdk/delivery-options": "workspace:*",
     "@myparcel/delivery-options": "^5.7.2",
     "@myparcel/ts-utils": "^1.9.0"
   },

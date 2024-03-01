@@ -28,7 +28,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.124",
+    "@myparcel-pdk/admin": "workspace:*",
     "@myparcel/vue-form-builder": "^1.0.0-alpha.1",
     "@pinia/testing": ">= 0.1.0 < 1",
     "@vitest/coverage-v8": "^1.0.0",

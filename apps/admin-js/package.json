@@ -28,7 +28,7 @@
     "test:update": "run ws:test:update \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^1.0.0-alpha.124"
+    "@myparcel-pdk/admin": "workspace:*"
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*",
