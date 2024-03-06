@@ -5,6 +5,7 @@
     <ActionButton
       v-for="(action, index) in dropdownActions.standalone"
       :key="action.id"
+      v-test="[AdminComponent.DropdownButton, 'standalone']"
       :action="action"
       :class="{
         'rounded-r-none': index === dropdownActions.standalone.length - 1,
@@ -15,6 +16,7 @@
 
     <PdkButton
       v-if="dropdownActions.hidden.length > 0"
+      v-test="[AdminComponent.DropdownButton, 'button']"
       :aria-expanded="toggled"
       :aria-label="translate('toggle_dropdown')"
       :class="{
@@ -37,6 +39,7 @@
         <ActionButton
           v-for="(action, index) in dropdownActions.hidden"
           :key="`${index}_${action.id}`"
+          v-test="[AdminComponent.DropdownButton, 'item']"
           :action="action"
           :disabled="disabled"
           :icon="action.icon"

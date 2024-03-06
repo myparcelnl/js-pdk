@@ -34,6 +34,7 @@ export default defineConfig((env) => {
         enabled: false,
         reporter: ['clover'],
       },
+      setupFiles: ['@myparcel-pdk/admin-component-tests/setup'],
     },
   };
 });

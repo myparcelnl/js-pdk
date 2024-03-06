@@ -18,30 +18,18 @@
     </div>
 
     <div
-      v-if="$slots.footer || actions?.length"
+      v-if="$slots.footer"
       class="card-footer">
-      <slot name="footer">
-        <PdkButtonGroup v-if="actions?.length">
-          <ActionButton
-            v-for="action in actions"
-            :key="action.id"
-            :action="action" />
-        </PdkButtonGroup>
-      </slot>
+      <slot name="footer" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import {computed, type PropType} from 'vue';
-import {ActionButton, type ActionDefinition, Size, useLanguage} from '@myparcel-pdk/admin';
+import {Size, useLanguage} from '@myparcel-pdk/admin';
 
 const props = defineProps({
-  actions: {
-    type: Array as PropType<ActionDefinition[]>,
-    default: () => [],
-  },
-
   loading: {
     type: Boolean,
   },

@@ -5,6 +5,6 @@ export default createViteConfig({
   plugins: [vue()],
 
   test: {
-    setupFiles: ['./src/__tests__/vitest-setup.ts'],
+    setupFiles: ['./src/__tests__/vitest-setup.ts', '@myparcel-pdk/admin-component-tests/setup'],
   },
 });

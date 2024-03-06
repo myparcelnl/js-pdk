@@ -1,8 +1,8 @@
 import {type Component} from 'vue';
 import {AdminComponent} from '@myparcel-pdk/admin';
 import {
-  runActionContainerTest,
   runBadgeTest,
+  runBoxTest,
   runButtonTest,
   runCheckboxGroupTest,
   runCheckboxInputTest,
@@ -59,11 +59,6 @@ export const testMap: Readonly<Record<AdminComponent, AdminComponentTest>> = Obj
   [AdminComponent.TriStateInput]: () => undefined,
 
   /**
-   * Action containers
-   */
-  [AdminComponent.Box]: runActionContainerTest,
-
-  /**
    * Plain wrappers
    */
   [AdminComponent.ButtonGroup]: runPlainWrapperTest,
@@ -76,6 +71,7 @@ export const testMap: Readonly<Record<AdminComponent, AdminComponentTest>> = Obj
   /**
    * Layout
    */
+  [AdminComponent.Box]: runBoxTest,
   [AdminComponent.Col]: runColTest,
   [AdminComponent.Row]: runRowTest,
 

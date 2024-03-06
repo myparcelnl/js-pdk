@@ -1,5 +1,5 @@
-export * from './runActionContainerTest';
 export * from './runBadgeTest';
+export * from './runBoxTest';
 export * from './runButtonTest';
 export * from './runCheckboxGroupTest';
 export * from './runCheckboxInputTest';

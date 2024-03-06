@@ -18,16 +18,9 @@
       <slot />
     </div>
 
-    <div v-if="$slots.footer || actions?.length">
+    <div v-if="$slots.footer">
       <!-- Box footer. -->
-      <slot name="footer">
-        <PdkButtonGroup v-if="actions?.length">
-          <ActionButton
-            v-for="action in actions"
-            :key="action.id"
-            :action="action" />
-        </PdkButtonGroup>
-      </slot>
+      <slot name="footer" />
     </div>
   </div>
 </template>
@@ -38,17 +31,9 @@
  */
 
 import {type PropType} from 'vue';
-import {ActionButton, type ActionDefinition, AdminComponent, Size, useLanguage} from '@myparcel-pdk/admin';
+import {AdminComponent, Size, useLanguage} from '@myparcel-pdk/admin';
 
 defineProps({
-  /**
-   * Actions that can be performed on the box.
-   */
-  actions: {
-    type: Array as PropType<ActionDefinition[]>,
-    default: () => [],
-  },
-
   /**
    * Used to control loading state.
    */

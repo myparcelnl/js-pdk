@@ -1,29 +1,38 @@
 /* eslint-disable no-console */
-import {expect, it} from 'vitest';
+import {expect, it, vi} from 'vitest';
 import {type ComponentMountingOptions, mount} from '@vue/test-utils';
+import {AdminComponent, type DropdownButtonProps} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
 import {runCommonComponentTests, runHasPropTest} from '../common';
 
-const DEFAULT_OPTIONS = {
-  props: {
-    actions: [
-      {
-        label: 'Action 1',
-        onClick: () => {
-          console.log('Action 1 clicked');
-        },
-      },
-      {
-        label: 'Action 2',
-        onClick: () => {
-          console.log('Action 2 clicked');
-        },
-      },
-    ],
-  },
-};
-
 export const runDropDownButtonTest = ((component) => {
+  const action1Handler = vi.fn();
+  const action2Handler = vi.fn();
+  const action3Handler = vi.fn();
+
+  const DEFAULT_OPTIONS = {
+    props: {
+      actions: [
+        {
+          label: 'Action 1',
+          id: 'action1',
+          standalone: true,
+          handler: action1Handler,
+        },
+        {
+          label: 'Action 2',
+          id: 'action2',
+          handler: action2Handler,
+        },
+        {
+          label: 'Action 3',
+          id: 'action3',
+          handler: action3Handler,
+        },
+      ],
+    },
+  } satisfies ComponentMountingOptions<any, DropdownButtonProps>;
+
   const options: ComponentMountingOptions<any> = {};
 
   runCommonComponentTests(component, options);
@@ -32,40 +41,40 @@ export const runDropDownButtonTest = ((component) => {
   runHasPropTest(component, options, 'actions', DEFAULT_OPTIONS.props.actions);
   runHasPropTest(component, options, 'disabled', true);
 
-  it('emits click event when action is clicked', async () => {
+  it('emits click event when standalone action is clicked', async () => {
     expect.assertions(1);
     const wrapper = mount(component, DEFAULT_OPTIONS);
-    const button = wrapper.find('button');
-
+    const button = wrapper.findByTestId([AdminComponent.DropdownButton, 'standalone']);
     await button.trigger('click');
-    await wrapper.vm.$nextTick();
+
+    expect(wrapper.emitted().click).toHaveLength(1);
+  });
+
+  it('emits click event when dropdown action is clicked', async () => {
+    expect.assertions(1);
+    const wrapper = mount(component, DEFAULT_OPTIONS);
+    const button = wrapper.findByTestId([AdminComponent.DropdownButton, 'item']);
+    await button.trigger('click');
+
     expect(wrapper.emitted().click).toHaveLength(1);
   });
 
   it('can be disabled', async () => {
     expect.assertions(2);
-    const wrapper = mount(component, {props: {disabled: true}});
-    const button = wrapper.find('button');
+    const wrapper = mount(component, {
+      ...DEFAULT_OPTIONS,
+      props: {
+        ...DEFAULT_OPTIONS.props,
+        disabled: true,
+      },
+    });
+
+    const button = wrapper.findByTestId([AdminComponent.DropdownButton, 'button']);
     expect(button.attributes('disabled')).toBeDefined();
 
     await button.trigger('click');
     await wrapper.vm.$nextTick();
     expect(wrapper.emitted().click).toBeUndefined();
-  });
-
-  it.skip('emits click event when dropdown action is clicked', async () => {
-    expect.assertions(1);
-    const wrapper = mount(component, DEFAULT_OPTIONS);
-    const dropdown = wrapper.find('button');
-
-    dropdown.element.click();
-    await wrapper.vm.$nextTick();
-    const action = wrapper.find('.dropdown-item');
-
-    action.element.parentElement?.click();
-    await wrapper.vm.$nextTick();
-
-    expect(wrapper.emitted().click).toHaveLength(2);
   });
 
   // TODO write more tests

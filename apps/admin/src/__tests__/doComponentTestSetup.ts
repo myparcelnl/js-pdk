@@ -5,7 +5,13 @@ import {prefixComponent} from '../utils';
 import {type AdminAppConfig, type AdminComponentMap} from '../types';
 import {useQueryStore} from '../stores';
 import {globalLogger, LogLevel} from '../services';
-import {createContextPlugin, createLoggerPlugin, createRegisterComponentsPlugin, createVueQueryPlugin} from '../pdk';
+import {
+  createContextPlugin,
+  createLoggerPlugin,
+  createRegisterComponentsPlugin,
+  createVueQueryPlugin,
+  testIdDirective,
+} from '../pdk';
 import {allAdminComponentNames} from '../data';
 import {mockDefaultAppConfig, mockDefaultConfig, mockDefaultLogger} from './mocks';
 
@@ -40,7 +46,7 @@ export const doComponentTestSetup = (components?: Partial<AdminComponentMap>): v
     },
   ];
 
-  config.global.directives.test = vi.fn();
+  config.global.directives.test = testIdDirective;
 
   const stubsArray = allAdminComponentNames.map((name) => [prefixComponent(name), true]);
 

@@ -4,7 +4,7 @@ import {type AnyElementInstance} from '@myparcel/vue-form-builder';
 
 const SEPARATOR = '--';
 
-type TestIdBinding = string | string[] | [string, AnyElementInstance | string];
+type TestIdBinding = string | string[] | [string, AnyElementInstance];
 
 export const testIdDirective: Directive<Element, TestIdBinding> = (el, binding) => {
   if (import.meta.env.MODE !== 'test') {
@@ -14,10 +14,10 @@ export const testIdDirective: Directive<Element, TestIdBinding> = (el, binding) 
   let testId: string;
 
   if (Array.isArray(binding.value)) {
+    const filtered = binding.value.filter(isDefined);
+
     const bindings =
-      typeof binding.value[1] === 'string'
-        ? (binding.value as string[])
-        : [binding.value[0], binding.value[1].name as string];
+      typeof filtered[1] === 'string' ? (filtered as string[]) : [filtered[0], filtered[1]?.name as string];
 
     testId = bindings.filter(isDefined).join(SEPARATOR);
   } else {

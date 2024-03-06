@@ -3,6 +3,7 @@
     <ActionButton
       v-for="action in dropdownActions.standalone"
       :key="`dropdown_${action.id}`"
+      v-test="[AdminComponent.DropdownButton, 'standalone']"
       :action="action"
       :class="adminConfig.cssUtilities?.whitespaceNoWrap"
       :disabled="disabled"
@@ -12,6 +13,7 @@
     <PdkButton
       v-if="dropdownActions.hidden.length > 0"
       ref="dropdown"
+      v-test="[AdminComponent.DropdownButton, 'button']"
       :aria-label="translate('toggle_dropdown')"
       :disabled="disabled"
       :size="size"
@@ -27,6 +29,7 @@
         <ActionButton
           v-for="(action, index) in dropdownActions.hidden"
           :key="`${index}_${action.id}`"
+          v-test="[AdminComponent.DropdownButton, 'item']"
           :action="action"
           :component="BaseButton"
           :disabled="disabled"
