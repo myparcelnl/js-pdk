@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-common@1.0.0-alpha.1...@myparcel-pdk/checkout-common@1.0.0-beta.0) "@myparcel-pdk/checkout-common" (2024-03-06)
+
+
+### Features
+
+* update @myparcelnl/constants to v2.0.0 ([022c980](https://github.com/myparcelnl/js-pdk/commit/022c980950dd37b6e750c04f65e57c6435f01279))
+
+
+
+
 ## [1.0.0-alpha.9](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-common@1.0.0-alpha.8...@myparcel-pdk/checkout-common@1.0.0-alpha.9) "@myparcel-pdk/checkout-common" (2023-11-02)
 
 

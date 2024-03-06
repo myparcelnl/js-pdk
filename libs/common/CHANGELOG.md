@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.1...@myparcel-pdk/common@1.0.0-beta.0) "@myparcel-pdk/common" (2024-03-06)
+
+
+### Features
+
+* **order-card:** show digital stamp range weight ([#200](https://github.com/myparcelnl/js-pdk/issues/200)) ([c5f2b6f](https://github.com/myparcelnl/js-pdk/commit/c5f2b6f832a2e80a715d55fe5bc3f3ff04c0503d))
+* update @myparcelnl/constants to v2.0.0 ([022c980](https://github.com/myparcelnl/js-pdk/commit/022c980950dd37b6e750c04f65e57c6435f01279))
+
+
+
+
 ## [1.0.0-alpha.58](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0-alpha.57...@myparcel-pdk/common@1.0.0-alpha.58) "@myparcel-pdk/common" (2023-11-01)
 
 

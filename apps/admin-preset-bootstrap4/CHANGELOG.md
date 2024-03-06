@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.1...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-beta.0) "@myparcel-pdk/admin-preset-bootstrap4" (2024-03-06)
+
+
+### Bug Fixes
+
+* clean up type and constant imports ([f29b3c0](https://github.com/myparcelnl/js-pdk/commit/f29b3c077d42c45f6bc50a96177bb3e4c2037bf9))
+
+
+
+
 ## [1.0.0-alpha.127](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.126...@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.127) "@myparcel-pdk/admin-preset-bootstrap4" (2023-11-14)
 
 

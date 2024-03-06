@@ -2,6 +2,29 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.1...@myparcel-pdk/admin@1.0.0-beta.0) "@myparcel-pdk/admin" (2024-03-06)
+
+
+### Features
+
+* **notifications:** show api errors in general container ([#199](https://github.com/myparcelnl/js-pdk/issues/199)) ([7321ee9](https://github.com/myparcelnl/js-pdk/commit/7321ee9a0e75e558c8631298e396ae93047434d9))
+* **order-card:** show digital stamp range weight ([#200](https://github.com/myparcelnl/js-pdk/issues/200)) ([c5f2b6f](https://github.com/myparcelnl/js-pdk/commit/c5f2b6f832a2e80a715d55fe5bc3f3ff04c0503d))
+* update @myparcelnl/constants to v2.0.0 ([022c980](https://github.com/myparcelnl/js-pdk/commit/022c980950dd37b6e750c04f65e57c6435f01279))
+
+
+### Bug Fixes
+
+* **admin-component-tests:** fix more failing tests ([927bc9d](https://github.com/myparcelnl/js-pdk/commit/927bc9d5dcca7f378591ea95a26b66ed2de5f786))
+* **admin-component-tests:** fix some errors in component tests ([550a8ed](https://github.com/myparcelnl/js-pdk/commit/550a8ed1d3fa8a3f129175b40ab1fbcc0a7a31c2))
+* **admin:** fix generated value setter not working ([4fbc2f6](https://github.com/myparcelnl/js-pdk/commit/4fbc2f69b4ff57121ba5e02c743cb811998a6b29))
+* clean up type and constant imports ([f29b3c0](https://github.com/myparcelnl/js-pdk/commit/f29b3c077d42c45f6bc50a96177bb3e4c2037bf9))
+* **deps:** update @myparcel/vue-form-builder ([11f5576](https://github.com/myparcelnl/js-pdk/commit/11f55763c281fa2311092ef745c84b02abfc09f6))
+* fix error on exporting order with no shipments ([231752e](https://github.com/myparcelnl/js-pdk/commit/231752edbbab9c28d42a237f0505c5cb3af69e1e))
+* split testing to separate export path ([ff576af](https://github.com/myparcelnl/js-pdk/commit/ff576af362791571f9b2e074d956d0f45316e882))
+
+
+
+
 ## [1.0.0-alpha.124](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.123...@myparcel-pdk/admin@1.0.0-alpha.124) "@myparcel-pdk/admin" (2023-11-14)
 
 

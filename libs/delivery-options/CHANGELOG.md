@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/delivery-options@1.0.0-alpha.11...@myparcel-pdk/delivery-options@1.0.0-beta.0) "@myparcel-pdk/delivery-options" (2024-03-06)
+
+
+
+
 ## [1.0.0-alpha.12](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/delivery-options@1.0.0-alpha.11...@myparcel-pdk/delivery-options@1.0.0-alpha.12) "@myparcel-pdk/delivery-options" (2023-10-13)
 
 

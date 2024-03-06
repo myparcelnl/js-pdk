@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-dashicons@1.0.0-alpha.11...@myparcel-pdk/admin-preset-dashicons@1.0.0-beta.0) "@myparcel-pdk/admin-preset-dashicons" (2024-03-06)
+
+
+### Bug Fixes
+
+* clean up type and constant imports ([f29b3c0](https://github.com/myparcelnl/js-pdk/commit/f29b3c077d42c45f6bc50a96177bb3e4c2037bf9))
+
+
+
+
 ## [1.0.0-alpha.107](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-dashicons@1.0.0-alpha.106...@myparcel-pdk/admin-preset-dashicons@1.0.0-alpha.107) "@myparcel-pdk/admin-preset-dashicons" (2023-09-08)
 
 

@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-tax-fields@1.0.0-alpha.29...@myparcel-pdk/checkout-tax-fields@1.0.0-beta.0) "@myparcel-pdk/checkout-tax-fields" (2024-03-06)
+
+
+### Features
+
+* update @myparcelnl/constants to v2.0.0 ([022c980](https://github.com/myparcelnl/js-pdk/commit/022c980950dd37b6e750c04f65e57c6435f01279))
+
+
+
+
 ## [1.0.0-alpha.41](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-tax-fields@1.0.0-alpha.40...@myparcel-pdk/checkout-tax-fields@1.0.0-alpha.41) "@myparcel-pdk/checkout-tax-fields" (2023-11-02)
 
 

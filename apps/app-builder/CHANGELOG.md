@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.1...@myparcel-pdk/app-builder@1.0.0-beta.0) "@myparcel-pdk/app-builder" (2024-03-06)
+
+
+### Bug Fixes
+
+* **app-builder:** reorganize enums ([9a5ab23](https://github.com/myparcelnl/js-pdk/commit/9a5ab23ab1acd5d3255a3aa37ebe0bc94b4241e3))
+
+
+
+
 ## [1.0.0-alpha.64](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.63...@myparcel-pdk/app-builder@1.0.0-alpha.64) "@myparcel-pdk/app-builder" (2023-11-07)
 
 

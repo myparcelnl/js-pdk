@@ -2,6 +2,19 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.1...@myparcel-pdk/admin-component-tests@1.0.0-beta.0) "@myparcel-pdk/admin-component-tests" (2024-03-06)
+
+
+### Bug Fixes
+
+* **admin-component-tests:** fix more failing tests ([927bc9d](https://github.com/myparcelnl/js-pdk/commit/927bc9d5dcca7f378591ea95a26b66ed2de5f786))
+* **admin-component-tests:** fix some errors in component tests ([550a8ed](https://github.com/myparcelnl/js-pdk/commit/550a8ed1d3fa8a3f129175b40ab1fbcc0a7a31c2))
+* **admin-component-tests:** fix vitest error about using nested test() ([75b7a42](https://github.com/myparcelnl/js-pdk/commit/75b7a42340d981d01007eda02fa07c6849b1a5a4))
+* split testing to separate export path ([ff576af](https://github.com/myparcelnl/js-pdk/commit/ff576af362791571f9b2e074d956d0f45316e882))
+
+
+
+
 ## [1.0.0-alpha.124](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.123...@myparcel-pdk/admin-component-tests@1.0.0-alpha.124) "@myparcel-pdk/admin-component-tests" (2023-11-01)
 
 

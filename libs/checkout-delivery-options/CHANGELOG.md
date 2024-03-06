@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.27...@myparcel-pdk/checkout-delivery-options@1.0.0-beta.0) "@myparcel-pdk/checkout-delivery-options" (2024-03-06)
+
+
+### Bug Fixes
+
+* **app-builder:** reorganize enums ([9a5ab23](https://github.com/myparcelnl/js-pdk/commit/9a5ab23ab1acd5d3255a3aa37ebe0bc94b4241e3))
+
+
+
+
 ## [1.0.0-alpha.41](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.40...@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.41) "@myparcel-pdk/checkout-delivery-options" (2023-11-08)
 
 

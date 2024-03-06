@@ -2,6 +2,11 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-separate-address-fields@1.0.0-alpha.28...@myparcel-pdk/checkout-separate-address-fields@1.0.0-beta.0) "@myparcel-pdk/checkout-separate-address-fields" (2024-03-06)
+
+
+
+
 ## [1.0.0-alpha.41](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-separate-address-fields@1.0.0-alpha.40...@myparcel-pdk/checkout-separate-address-fields@1.0.0-alpha.41) "@myparcel-pdk/checkout-separate-address-fields" (2023-11-08)
 
 

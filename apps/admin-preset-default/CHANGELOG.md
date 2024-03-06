@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.36...@myparcel-pdk/admin-preset-default@1.0.0-beta.0) "@myparcel-pdk/admin-preset-default" (2024-03-06)
+
+
+### Bug Fixes
+
+* **admin-component-tests:** fix some errors in component tests ([550a8ed](https://github.com/myparcelnl/js-pdk/commit/550a8ed1d3fa8a3f129175b40ab1fbcc0a7a31c2))
+* clean up type and constant imports ([f29b3c0](https://github.com/myparcelnl/js-pdk/commit/f29b3c077d42c45f6bc50a96177bb3e4c2037bf9))
+
+
+
+
 ## [1.0.0-alpha.120](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0-alpha.119...@myparcel-pdk/admin-preset-default@1.0.0-alpha.120) "@myparcel-pdk/admin-preset-default" (2023-11-01)
 
 
