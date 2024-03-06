@@ -10,8 +10,10 @@ import {
   runColTest,
   runCurrencyInputTest,
   runDropDownButtonTest,
+  runDropOffInputTest,
   runFormGroupTest,
   runHeadingTest,
+  runIconTest,
   runImageTest,
   runLinkTest,
   runLoaderTest,
@@ -24,6 +26,7 @@ import {
   runRadioInputTest,
   runRowTest,
   runSelectInputTest,
+  runSettingsDividerTest,
   runTableColTest,
   runTableRowTest,
   runTableTest,
@@ -32,6 +35,7 @@ import {
   runTextInputTest,
   runTimeInputTest,
   runToggleInputTest,
+  runTriStateInputTest,
 } from '../components';
 
 export type AdminComponentTest = (component: Omit<Component, 'props'>) => void;
@@ -44,8 +48,7 @@ export const testMap: Readonly<Record<AdminComponent, AdminComponentTest>> = Obj
   [AdminComponent.CheckboxInput]: runCheckboxInputTest,
   [AdminComponent.CodeEditor]: runCodeEditorTest,
   [AdminComponent.CurrencyInput]: runCurrencyInputTest,
-  /** @todo fix runDropOffInputTest */
-  [AdminComponent.DropOffInput]: () => undefined,
+  [AdminComponent.DropOffInput]: runDropOffInputTest,
   [AdminComponent.MultiSelectInput]: runMultiSelectInputTest,
   [AdminComponent.NumberInput]: runNumberInputTest,
   [AdminComponent.RadioGroup]: runRadioGroupTest,
@@ -55,8 +58,7 @@ export const testMap: Readonly<Record<AdminComponent, AdminComponentTest>> = Obj
   [AdminComponent.TextInput]: runTextInputTest,
   [AdminComponent.TimeInput]: runTimeInputTest,
   [AdminComponent.ToggleInput]: runToggleInputTest,
-  /** @todo fix runTriStateInputTest */
-  [AdminComponent.TriStateInput]: () => undefined,
+  [AdminComponent.TriStateInput]: runTriStateInputTest,
 
   /**
    * Plain wrappers
@@ -95,11 +97,9 @@ export const testMap: Readonly<Record<AdminComponent, AdminComponentTest>> = Obj
    */
   [AdminComponent.Badge]: runBadgeTest,
   [AdminComponent.Heading]: runHeadingTest,
-  /** @todo fix runIconTest */
-  [AdminComponent.Icon]: () => undefined,
+  [AdminComponent.Icon]: runIconTest,
   [AdminComponent.Image]: runImageTest,
   [AdminComponent.Loader]: runLoaderTest,
   [AdminComponent.Notification]: runNotificationTest,
-  /** @todo see if this is still necessary */
-  [AdminComponent.SettingsDivider]: () => undefined,
+  [AdminComponent.SettingsDivider]: runSettingsDividerTest,
 });
