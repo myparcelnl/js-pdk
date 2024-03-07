@@ -10,6 +10,7 @@
   "type": "module",
   "scripts": {
     "build": "run translations:init && nitropack build",
+    "clean": "run ws:clean \"$(pwd)\"",
     "postinstall": "npx nitropack prepare",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",

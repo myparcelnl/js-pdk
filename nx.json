@@ -22,16 +22,10 @@
       "!{projectRoot}/**/*.spec.*",
       "!{projectRoot}/**/*.test.*",
       "!{projectRoot}/**/__mocks__/**/*",
-      "!{projectRoot}/**/__tests__/**/*"
+      "!{projectRoot}/**/__tests__/**/*",
+      "!{projectRoot}/vitest.config.*"
     ],
-    "test": [
-      "default",
-      "{projectRoot}/**/*.snap",
-      "{projectRoot}/**/*.spec.*",
-      "{projectRoot}/**/*.test.*",
-      "{projectRoot}/**/__mocks__/**/*",
-      "{projectRoot}/**/__tests__/**/*"
-    ],
+    "test": ["default"],
     "lint": [
       "prod",
       "{workspaceRoot}/.eslintignore",
