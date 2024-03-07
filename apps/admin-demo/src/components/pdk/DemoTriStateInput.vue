@@ -16,12 +16,12 @@
   </div>
 </template>
 
-<script setup lang="ts" generic="T extends TriStateValue">
+<script setup lang="ts" generic="T extends TriState">
 import {
   AdminComponent,
+  type TriState,
   type TriStateInputEmits,
   type TriStateInputProps,
-  type TriStateValue,
   useTriStateInputContext,
 } from '@myparcel-pdk/admin';
 
