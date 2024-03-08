@@ -13,7 +13,7 @@ import {
   writeFile,
 } from '../utils';
 import {type PdkBuilderCommand} from '../types';
-import {PLATFORM_SHEET_ID_MAP} from '../constants';
+import {PLATFORM_SHEET_ID_MAP, PdkPlatformName} from '../constants';
 
 interface SheetDefinition {
   name: string;
@@ -76,15 +76,18 @@ const translations: PdkBuilderCommand = async (context) => {
       debug(`Merging translations for language "${chalk.cyan(language)}"`);
     }
 
-    const translations = items.reduce((acc, {name}) => {
-      const filePath = resolvePath([config.tmpDir, 'translations', name, `${language}.json`], context);
+    const translations = items
+      // Find way to get platform where translations are imported for
+      .filter((item) => item.name === PdkPlatformName.MyParcelNl)
+      .reduce((acc, {name}) => {
+        const filePath = resolvePath([config.tmpDir, 'translations', name, `${language}.json`], context);
 
-      if (isVeryVerbose(context)) {
-        debug(`Merging translations from "${chalk.yellow(name)}" into "${chalk.cyan(language)}"`);
-      }
+        if (isVeryVerbose(context)) {
+          debug(`Merging translations from "${chalk.yellow(name)}" into "${chalk.cyan(language)}"`);
+        }
 
-      return {...acc, ...parseJsonFile(filePath)};
-    }, {});
+        return {...acc, ...parseJsonFile(filePath)};
+      }, {});
 
     await writeFile(
       [resolvedOutDir, `${language}.json`],
