@@ -2355,7 +2355,6 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/checkout-common": "workspace:^1.0.0-beta.0"
-    "@myparcel-pdk/delivery-options": "workspace:^1.0.0-beta.0"
     "@myparcel/delivery-options": "npm:^6.0.0-beta.6"
     "@myparcel/ts-utils": "npm:^1.9.0"
     typescript: "npm:^5.2.2"
@@ -2420,16 +2419,6 @@ __metadata:
     typescript: "npm:^5.2.2"
     vitest: "npm:^1.0.0"
     vue: "npm:^3.3.0"
-  languageName: unknown
-  linkType: soft
-
-"@myparcel-pdk/delivery-options@workspace:^1.0.0-beta.0, @myparcel-pdk/delivery-options@workspace:libs/delivery-options":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/delivery-options@workspace:libs/delivery-options"
-  dependencies:
-    "@myparcel-pdk/build-vite": "workspace:*"
-    typescript: "npm:^5.2.2"
-    vitest: "npm:^1.0.0"
   languageName: unknown
   linkType: soft
 

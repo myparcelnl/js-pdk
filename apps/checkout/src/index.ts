@@ -18,8 +18,6 @@ export * from '@myparcel-pdk/checkout-separate-address-fields';
 
 export * from '@myparcel-pdk/checkout-tax-fields';
 
-export * from '@myparcel-pdk/delivery-options';
-
 export {
   AddressField,
   AddressType,
@@ -37,3 +35,12 @@ export {
   useSettings,
   useUtil,
 } from '@myparcel-pdk/checkout-common';
+
+export {
+  HIDE_DELIVERY_OPTIONS as EVENT_HIDE_DELIVERY_OPTIONS,
+  SHOW_DELIVERY_OPTIONS as EVENT_SHOW_DELIVERY_OPTIONS,
+  UPDATED_ADDRESS as EVENT_UPDATED_ADDRESS,
+  UPDATED_DELIVERY_OPTIONS as EVENT_UPDATED_DELIVERY_OPTIONS,
+  UPDATE_CONFIG_IN as EVENT_UPDATE_CONFIG,
+  UPDATE_DELIVERY_OPTIONS as EVENT_UPDATE_DELIVERY_OPTIONS,
+} from '@myparcel/delivery-options';

@@ -1,6 +1,6 @@
-import {EVENT_UPDATE_CONFIG, EVENT_UPDATE_DELIVERY_OPTIONS} from '@myparcel-pdk/delivery-options';
 import {PdkUtil, type StoreCallbackUpdate, useUtil} from '@myparcel-pdk/checkout-common';
 import {objectIsEqual} from '@myparcel/ts-utils';
+import {UPDATE_CONFIG_IN, UPDATE_DELIVERY_OPTIONS} from '@myparcel/delivery-options';
 import {debounce, deliveryOptionsIsRendered} from '../utils';
 import {type DeliveryOptionsStoreState} from '../types';
 
@@ -18,9 +18,9 @@ export const updateConfigOrAddress: StoreCallbackUpdate<DeliveryOptionsStoreStat
 
   if (isRendered && oldConfig && !objectIsEqual(newConfig, oldConfig)) {
     // If the delivery options are rendered and config has changed, send 'update_config' event
-    triggerEvent(EVENT_UPDATE_CONFIG, newState.configuration);
+    triggerEvent(UPDATE_CONFIG_IN, newState.configuration);
   } else if (newState.enabled && (!isRendered || !oldConfig || !objectIsEqual(newAddress, oldAddress))) {
     // If the delivery options are enabled and either the address has changed or the delivery options are not rendered yet, send 'update_delivery_options' event
-    triggerEvent(EVENT_UPDATE_DELIVERY_OPTIONS, newState.configuration);
+    triggerEvent(UPDATE_DELIVERY_OPTIONS, newState.configuration);
   }
 });

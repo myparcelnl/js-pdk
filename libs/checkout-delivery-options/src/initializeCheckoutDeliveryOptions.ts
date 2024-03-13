@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
-import {EVENT_UPDATED_DELIVERY_OPTIONS} from '@myparcel-pdk/delivery-options';
 import {StoreListener, useCheckoutStore} from '@myparcel-pdk/checkout-common';
+import {UPDATED_DELIVERY_OPTIONS} from '@myparcel/delivery-options';
 import {type CheckoutDeliveryOptionsSettingsInput} from './types';
 import {createDeliveryOptionsStore} from './store';
 import {updateDeliveryOptions, updateDeliveryOptionsOutput} from './listeners';
@@ -21,5 +21,5 @@ export const initializeCheckoutDeliveryOptions = (settings?: CheckoutDeliveryOpt
 
   checkout.on(StoreListener.Update, updateDeliveryOptions);
 
-  document.addEventListener(EVENT_UPDATED_DELIVERY_OPTIONS, updateDeliveryOptionsOutput);
+  document.addEventListener(UPDATED_DELIVERY_OPTIONS, updateDeliveryOptionsOutput);
 };

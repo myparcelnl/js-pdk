@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "@myparcel-pdk/checkout-common": "workspace:^1.0.0-beta.0",
-    "@myparcel-pdk/delivery-options": "workspace:^1.0.0-beta.0",
     "@myparcel/delivery-options": "^6.0.0-beta.6",
     "@myparcel/ts-utils": "^1.9.0"
   },
