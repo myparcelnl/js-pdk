@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/build
+      - uses: myparcelnl/actions/yarn-install@v4
         with:
           node-version: ${{ vars.NODE_VERSION }}
 
