@@ -2,20 +2,19 @@
 
 <!-- MONODEPLOY:BELOW -->
 
-## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-common@1.0.0-alpha.1...@myparcel-pdk/checkout-common@1.0.0-beta.0) "@myparcel-pdk/checkout-common" (2024-03-06)
-
+## [1.0.0-beta.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-common@1.0.0-beta.0...@myparcel-pdk/checkout-common@1.0.0-beta.1) "@myparcel-pdk/checkout-common" (2024-03-13)
 
 ### Features
 
-* update @myparcelnl/constants to v2.0.0 ([022c980](https://github.com/myparcelnl/js-pdk/commit/022c980950dd37b6e750c04f65e57c6435f01279))
+- **deps:** upgrade to new delivery options ([28c6c22](https://github.com/myparcelnl/js-pdk/commit/28c6c22fc2e13a3fe422a63e023b0b78b7637dd3))
 
+## [1.0.0-beta.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-common@1.0.0-alpha.1...@myparcel-pdk/checkout-common@1.0.0-beta.0) "@myparcel-pdk/checkout-common" (2024-03-06)
 
+### Features
 
+- update @myparcelnl/constants to v2.0.0 ([022c980](https://github.com/myparcelnl/js-pdk/commit/022c980950dd37b6e750c04f65e57c6435f01279))
 
 ## [1.0.0-alpha.9](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-common@1.0.0-alpha.8...@myparcel-pdk/checkout-common@1.0.0-alpha.9) "@myparcel-pdk/checkout-common" (2023-11-02)
-
-
-
 
 ## [1.0.0-alpha.6](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-common@1.0.0-alpha.5...@myparcel-pdk/checkout-common@1.0.0-alpha.6) "@myparcel-pdk/checkout-common" (2023-10-13)
 
