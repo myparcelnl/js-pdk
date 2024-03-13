@@ -2416,6 +2416,7 @@ __metadata:
   resolution: "@myparcel-pdk/common@workspace:libs/common"
   dependencies:
     "@myparcel/constants": "npm:^2.0.0"
+    "@myparcel/delivery-options": "npm:^6.0.0-beta.6"
     typescript: "npm:^5.2.2"
     vitest: "npm:^1.0.0"
     vue: "npm:^3.3.0"

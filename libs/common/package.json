@@ -28,7 +28,8 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel/constants": "^2.0.0"
+    "@myparcel/constants": "^2.0.0",
+    "@myparcel/delivery-options": "^6.0.0-beta.6"
   },
   "devDependencies": {
     "typescript": "^5.2.2",

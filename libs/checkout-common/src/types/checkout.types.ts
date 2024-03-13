@@ -89,10 +89,12 @@ export interface PdkCheckout {
   onInitialize(callback: InitializeCallback): void;
 }
 
+export interface CheckoutAppCheckoutContext extends InputDeliveryOptionsConfiguration {
+  settings: CheckoutSettings;
+}
+
 export interface CheckoutAppContext {
-  checkout: InputDeliveryOptionsConfiguration & {
-    settings: CheckoutSettings;
-  };
+  checkout: CheckoutAppCheckoutContext;
 }
 
 export type CheckoutSettings = {
