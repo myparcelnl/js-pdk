@@ -23,7 +23,6 @@
 </template>
 
 <script lang="ts" setup>
-import {toRefs} from 'vue';
 import {
   AdminComponent,
   type DropOffInputEmits,
@@ -31,13 +30,9 @@ import {
   useDropOffInputContext,
 } from '@myparcel-pdk/admin';
 
+// eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<DropOffInputProps>();
 const emit = defineEmits<DropOffInputEmits>();
 
-const propRefs = toRefs(props);
-
-const {weekdaysObject, cutoffElements, toggleElements, toggleRefs, cutoffRefs} = useDropOffInputContext(
-  propRefs.modelValue?.value,
-  emit,
-);
+const {weekdaysObject, cutoffElements, toggleElements, toggleRefs, cutoffRefs} = useDropOffInputContext(props, emit);
 </script>

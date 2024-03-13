@@ -1,10 +1,11 @@
 import {reactive, watch} from 'vue';
 import {type Settings, type Shipment} from '@myparcel-pdk/common';
 import {createFormElement, createObjectWithKeys} from '../utils';
+import {type DropOffInputProps} from '../types';
 import {useWeekdays, type Weekday, type Weekdays} from './useWeekdays';
 
 type UseDropOffInputContext = (
-  possibilities?: Settings.ModelDropOffPossibilities,
+  props: DropOffInputProps,
   emit?: (name: 'update:modelValue', ...args: unknown[]) => void,
 ) => {
   weekdaysObject: Record<Weekday, string>;
@@ -16,7 +17,8 @@ type UseDropOffInputContext = (
 };
 
 // eslint-disable-next-line max-lines-per-function
-export const useDropOffInputContext: UseDropOffInputContext = (possibilities, emit) => {
+// @ts-expect-error todo
+export const useDropOffInputContext: UseDropOffInputContext = (props, emit) => {
   const {weekdaysObject, weekdays} = useWeekdays();
 
   const createReactiveObject = <K extends keyof Required<Shipment.ModelDropOffDay>>(
@@ -25,7 +27,7 @@ export const useDropOffInputContext: UseDropOffInputContext = (possibilities, em
   ) => {
     return reactive(
       createObjectWithKeys(weekdays, (day) => {
-        return possibilities?.dropOffDays.find(({weekday}) => weekday === day)?.[property] ?? defaultValue;
+        return props.modelValue?.dropOffDays.find(({weekday}) => weekday === day)?.[property] ?? defaultValue;
       }),
     );
   };
@@ -33,9 +35,12 @@ export const useDropOffInputContext: UseDropOffInputContext = (possibilities, em
   const toggleRefs = createReactiveObject('dispatch', false);
   const cutoffRefs = createReactiveObject('cutoffTime', '16:00');
 
+  const {component: _, ...restElement} = props.element;
+
   const createElements = (reactiveObject: Record<Weekday, unknown>, name: string) =>
     createObjectWithKeys(weekdays, (day) =>
       createFormElement({
+        ...restElement,
         // @ts-expect-error Not worth the effort
         ref: reactiveObject[day],
         name: `${name}${day.toString()}`,
