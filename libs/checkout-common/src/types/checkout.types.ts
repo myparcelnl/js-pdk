@@ -1,6 +1,6 @@
 import {type FrontendEndpoint} from '@myparcel-pdk/common';
 import {type PromiseOr} from '@myparcel/ts-utils';
-import {type MyParcelDeliveryOptions} from '@myparcel/delivery-options';
+import {type InputDeliveryOptionsConfiguration} from '@myparcel/delivery-options';
 import {type CarrierName} from '@myparcel/constants';
 import {type AddressType, type PdkField} from '../data';
 import {
@@ -90,9 +90,7 @@ export interface PdkCheckout {
 }
 
 export interface CheckoutAppContext {
-  checkout: {
-    config: MyParcelDeliveryOptions.Config;
-    strings: MyParcelDeliveryOptions.Strings;
+  checkout: InputDeliveryOptionsConfiguration & {
     settings: CheckoutSettings;
   };
 }

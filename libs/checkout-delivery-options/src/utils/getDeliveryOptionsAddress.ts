@@ -1,7 +1,7 @@
 import {AddressField, type AddressType, PdkUtil, useUtil} from '@myparcel-pdk/checkout-common';
-import {type DeliveryOptionsConfiguration} from '../types';
+import {type InputDeliveryOptionsConfiguration} from '@myparcel/delivery-options';
 
-export const getDeliveryOptionsAddress = (type?: AddressType): DeliveryOptionsConfiguration['address'] => {
+export const getDeliveryOptionsAddress = (type?: AddressType): InputDeliveryOptionsConfiguration['address'] => {
   const getAddressFieldValue = useUtil(PdkUtil.GetAddressFieldValue);
   const address1 = getAddressFieldValue(AddressField.Address1, type) ?? '';
   const address2 = getAddressFieldValue(AddressField.Address2, type) ?? '';
