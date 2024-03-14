@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.0-beta.2...@myparcel-pdk/checkout-delivery-options@1.0.0-beta.3) "@myparcel-pdk/checkout-delivery-options" (2024-03-14)
+
+
+### Features
+
+* **deps:** upgrade to new delivery options ([28c6c22](https://github.com/myparcelnl/js-pdk/commit/28c6c22fc2e13a3fe422a63e023b0b78b7637dd3))
+
+
+### Bug Fixes
+
+* **checkout:** fix unnecessary updates with delivery options 6.x ([fa87c31](https://github.com/myparcelnl/js-pdk/commit/fa87c3116358857e4a02cdf318bf02013a4bce1e))
+
+
+
+
 ## [1.0.0-beta.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.0-beta.0...@myparcel-pdk/checkout-delivery-options@1.0.0-beta.1) "@myparcel-pdk/checkout-delivery-options" (2024-03-13)
 
 ### Features

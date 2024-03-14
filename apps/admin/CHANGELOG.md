@@ -2,6 +2,20 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-beta.2...@myparcel-pdk/admin@1.0.0-beta.3) "@myparcel-pdk/admin" (2024-03-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **admin:** input of useDropOffInputContext has changed
+
+### Bug Fixes
+
+* **admin:** fix drop off inputs not inheriting from parent element ([3b1bea7](https://github.com/myparcelnl/js-pdk/commit/3b1bea763be5e01daa8fb726cb09f1a7f56c2e05))
+
+
+
+
 ## [1.0.0-beta.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-beta.0...@myparcel-pdk/admin@1.0.0-beta.1) "@myparcel-pdk/admin" (2024-03-13)
 
 ### ⚠ BREAKING CHANGES

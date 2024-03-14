@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-beta.2...@myparcel-pdk/admin-component-tests@1.0.0-beta.3) "@myparcel-pdk/admin-component-tests" (2024-03-14)
+
+
+### Bug Fixes
+
+* **admin-component-tests:** disable broken test ([68d1500](https://github.com/myparcelnl/js-pdk/commit/68d1500b8f6ff72d59e49f01c4e6c426c12b56a2))
+* **admin-component-tests:** fix settings divider test ([3a01b62](https://github.com/myparcelnl/js-pdk/commit/3a01b62ee4ddc2b979777489b7e2ad49a5f27b09))
+
+
+
+
 ## [1.0.0-beta.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-beta.0...@myparcel-pdk/admin-component-tests@1.0.0-beta.1) "@myparcel-pdk/admin-component-tests" (2024-03-13)
 
 ### Bug Fixes
