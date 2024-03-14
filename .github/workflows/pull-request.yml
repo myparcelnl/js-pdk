@@ -27,7 +27,13 @@ jobs:
         with:
           node-version: ${{ vars.NODE_VERSION }}
 
-      - uses: ./.github/actions/build
+      - uses: myparcelnl/actions/nx-run-many@v4
+        env:
+          NX_BRANCH: production
+        with:
+          prefix: 'yarn'
+          target: 'build'
+          args: '--runner=cloud'
 
       - uses: myparcelnl/actions/setup-git-credentials@v4
         id: credentials

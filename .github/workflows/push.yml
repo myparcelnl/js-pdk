@@ -34,7 +34,13 @@ jobs:
         with:
           node-version: ${{ vars.NODE_VERSION }}
 
-      - uses: ./.github/actions/build
+      - uses: myparcelnl/actions/nx-run-many@v4
+        env:
+          NX_BRANCH: production
+        with:
+          prefix: 'yarn'
+          target: 'build'
+          args: '--runner=cloud'
 
       - uses: actions/upload-pages-artifact@v3
         with:
