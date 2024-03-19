@@ -77,7 +77,7 @@ const translations: PdkBuilderCommand = async (context) => {
     }
 
     const translations = items
-      // Find way to get platform where translations are imported for
+      // TODO: Find way to get platform where translations are imported for
       .filter((item) => item.name === PdkPlatformName.MyParcelNl)
       .reduce((acc, {name}) => {
         const filePath = resolvePath([config.tmpDir, 'translations', name, `${language}.json`], context);
