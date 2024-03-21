@@ -26,7 +26,12 @@ export const createCommitMessage = (upgradedVersions: UpgradedEntry[], context: 
     lines.push('Compare changes:');
 
     versionsWithRepository.forEach((updatedVersion) => {
-      lines.push(`- ${updatedVersion.repository}compare/v${updatedVersion.oldVersion}...v${updatedVersion.version}`);
+      lines.push(
+        `- ${updatedVersion.repository}/compare/v${updatedVersion.oldVersion}...v${updatedVersion.version}`.replace(
+          /^https?:\/\/[^/]+/,
+          '/',
+        ),
+      );
     });
   }
 

@@ -10,7 +10,7 @@ describe('createCommitMessage', () => {
         name: 'vue',
         version: '3.3.0',
         oldVersion: '3.2.0',
-        repository: 'https://github.com/vuejs/vue/',
+        repository: 'https://github.com/vuejs/vue',
       },
     ] satisfies UpgradedEntry[];
 
