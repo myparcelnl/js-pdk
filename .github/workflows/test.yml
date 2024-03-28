@@ -19,9 +19,8 @@ jobs:
         env:
           NX_BRANCH: ${{ github.event.inputs.branch || github.head_ref || github.ref }}
         with:
-          prefix: 'yarn'
           target: 'test:coverage'
-          args: '--runner=cloud --parallel=1'
+          args: '--parallel=1'
 
       - name: 'Rename coverage files'
         shell: bash

@@ -38,9 +38,7 @@ jobs:
         env:
           NX_BRANCH: production
         with:
-          prefix: 'yarn'
           target: 'build'
-          args: '--runner=cloud'
 
       - uses: actions/upload-pages-artifact@v3
         with:

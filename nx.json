@@ -84,14 +84,6 @@
           "test:coverage"
         ]
       }
-    },
-    "cloud": {
-      "runner": "@nrwl/nx-cloud",
-      "options": {
-        "parallel": 10,
-        "cacheableOperations": ["build", "test:coverage"],
-        "accessToken": "ZDk5NTE5ZWItMmYxYy00ZjNmLThjMzItMmM0MjIwZTU1M2Y3fHJlYWQtd3JpdGU="
-      }
     }
   },
   "workspaceLayout": {
