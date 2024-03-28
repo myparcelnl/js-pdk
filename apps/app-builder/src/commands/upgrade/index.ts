@@ -47,7 +47,7 @@ const upgrade: PdkBuilderCommand<InputUpgradeCommandArgs> = async ({env, args, c
 
   if (upgradedEntries.length === 0) {
     debug('No packages were updated.');
-    process.exit(0);
+    return;
   }
 
   logVersions(upgradedEntries, debug);

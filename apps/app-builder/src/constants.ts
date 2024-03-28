@@ -12,6 +12,8 @@ export const COMMAND_INCREMENT_NAME = 'increment';
 
 export const COMMAND_INIT_NAME = 'init';
 
+export const COMMAND_PRERELEASE_NAME = 'prerelease';
+
 export const COMMAND_RELEASE_NAME = 'release';
 
 export const COMMAND_RENAME_NAME = 'rename';
@@ -23,6 +25,8 @@ export const COMMAND_TRANSFORM_NAME = 'transform';
 export const COMMAND_TRANSLATIONS_NAME = 'translations';
 
 export const COMMAND_UPGRADE_NAME = 'upgrade';
+
+export const COMMAND_UPGRADE_ALL_NAME = 'upgrade-all';
 
 export const COMMAND_ZIP_NAME = 'zip';
 
@@ -65,3 +69,30 @@ export const PLATFORM_SHEET_ID_MAP = {
 } satisfies Record<PdkPlatformName, number>;
 
 export const COMMIT_TYPE_AUTO = 'auto';
+
+export const OPTION_VERBOSITY = ['-v, --verbose', 'Verbosity', (_: string, prev: number) => prev + 1, 0] as const;
+
+export const OPTION_QUIET = ['-q, --quiet', 'Quiet'] as const;
+
+export const OPTION_DRY_RUN = ['-d, --dry-run', 'Dry run'] as const;
+
+export const OPTION_PARALLEL = ['-p, --parallel', 'Run each platform in parallel'] as const;
+
+export const CONFIG_OPTIONS = [
+  ['--archive-file-name <filename>', 'Archive filename'],
+  ['--platform-folder-name <name>', 'Platform folder name'],
+  ['--root-command <command>', 'Root command'],
+  ['--version <version>', 'New version'],
+] as const;
+
+export const BULK_COMMAND_OPTIONS = [
+  OPTION_DRY_RUN,
+  OPTION_PARALLEL,
+  OPTION_VERBOSITY,
+  OPTION_QUIET,
+  ...CONFIG_OPTIONS,
+] as const;
+
+export const MYPARCEL_PDK_PACKAGIST_NAME = 'myparcelnl/pdk';
+
+export const MYPARCEL_PDK_NPM_GLOB = '@myparcel-pdk/*';

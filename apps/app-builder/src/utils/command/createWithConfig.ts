@@ -10,14 +10,12 @@ export const createWithConfig: CreateHook = (env) => {
   return (definition) => {
     return async (...args) => {
       const {command, context} = await parseCommandInput(definition, args, env);
+
       const config = await resolveConfig(env, context.args);
 
       const commandName = definition.name;
 
-      const mergedContext: PdkBuilderContext = {
-        ...context,
-        config: mergeDefaultConfig(config),
-      };
+      const mergedContext = {...context, config: mergeDefaultConfig(config)} satisfies PdkBuilderContext;
 
       if (!shouldModifyFiles(mergedContext)) {
         reportDryRun(mergedContext.debug);

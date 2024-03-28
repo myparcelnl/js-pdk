@@ -1,7 +1,7 @@
-import {type CreateHook, type WithContextParams} from '../../types';
+import {type CreateHook, type PdkBuilderContext} from '../../types';
 import {parseCommandInput} from './parseCommandInput';
 
-export const createWithContext: CreateHook<WithContextParams> = (env) => {
+export const createWithContext: CreateHook<Omit<PdkBuilderContext, 'config'>> = (env) => {
   return (definition) => {
     return async (...args) => {
       const {command, context} = await parseCommandInput(definition, args, env);
