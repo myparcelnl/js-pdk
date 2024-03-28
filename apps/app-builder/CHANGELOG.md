@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0-beta.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-beta.2...@myparcel-pdk/app-builder@1.0.0-beta.3) "@myparcel-pdk/app-builder" (2024-03-28)
+
+
+### Features
+
+* **app-builder:** add upgrade-all and prerelease bulk commands ([db5e9c2](https://github.com/myparcelnl/js-pdk/commit/db5e9c2ed3b43a5b09f522ca443f3350dde9dba1))
+
+
+### Bug Fixes
+
+* **app-builder:** fix missing slash in compare url in commit ([f7d1358](https://github.com/myparcelnl/js-pdk/commit/f7d1358d3fdebb3cfaa0408bd53fe3baf84f5a6a))
+
+
+
+
 ## [1.0.0-beta.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-beta.1...@myparcel-pdk/app-builder@1.0.0-beta.2) "@myparcel-pdk/app-builder" (2024-03-14)
 
 
