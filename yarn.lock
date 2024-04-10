@@ -961,9 +961,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@edielemoine/google-docs-importer@npm:^1.1.1":
-  version: 1.1.2
-  resolution: "@edielemoine/google-docs-importer@npm:1.1.2"
+"@edielemoine/google-docs-importer@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@edielemoine/google-docs-importer@npm:2.2.0"
   dependencies:
     csv-parse: "npm:^5.3.0"
     debug: "npm:^4.3.4"
@@ -971,7 +971,7 @@ __metadata:
     yargs: "npm:^17.5.1"
   bin:
     google-docs-importer: dist/bin.js
-  checksum: e4886a21331958b84507580dbe53784526a9cdc7c0a11a6b6ea546b9db316c3958782a1f7db70dd10ddf786ffdee930131c1884ba90b3bbbf23de8ff343c0bee
+  checksum: ac985c9811a81aa48225ec7cc8ebe35259a8d0934dacc4b5168c58bf658d6208115e0bfeec1913936e89c3a4d45f7634263eb0f5d7934333f5669b68bb550dfe
   languageName: node
   linkType: hard
 
@@ -2275,7 +2275,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/app-builder@workspace:apps/app-builder"
   dependencies:
-    "@edielemoine/google-docs-importer": "npm:^1.1.1"
+    "@edielemoine/google-docs-importer": "npm:^2.2.0"
     "@myparcel/ts-utils": "npm:^1.9.0"
     "@types/archiver": "npm:^5.3.1"
     "@types/commander": "npm:^2.12.2"

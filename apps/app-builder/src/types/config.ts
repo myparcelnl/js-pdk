@@ -124,10 +124,35 @@ export type PdkBuilderConfig = {
    * Translations configuration.
    */
   translations?: {
-    additionalSheet?: number;
+    /**
+     * The document ID for the pdk translations sheet.
+     */
     documentId?: string;
-    outDir?: string;
+
+    /**
+     * The sheet ID for the pdk translations sheet.
+     */
     sheetId?: number;
+
+    /**
+     * An additional sheet to import translations from the pdk translations sheet.
+     */
+    additionalSheet?: number;
+
+    /**
+     * Directory to save the pdk translations in.
+     */
+    outDir?: string;
+
+    /**
+     * The document ID for the delivery options sheet.
+     */
+    documentIdDeliveryOptions?: string;
+
+    /**
+     * The sheet ID for the delivery options sheet.
+     */
+    sheetIdDeliveryOptions?: number;
   };
 
   /**
@@ -202,9 +227,11 @@ export type ResolvedPdkBuilderConfig = Required<Omit<PdkBuilderConfig, 'translat
   hooks?: CommandHooksObject;
   phpScoper: Required<PdkBuilderConfig['phpScoper']>;
   translations: {
-    additionalSheet?: number;
     documentId: string;
-    outDir: string;
     sheetId: number;
+    additionalSheet?: number;
+    outDir: string;
+    documentIdDeliveryOptions: string;
+    sheetIdDeliveryOptions: number;
   };
 };

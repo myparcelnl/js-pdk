@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function,@typescript-eslint/no-magic-numbers */
 import fs from 'fs';
 import chalk from 'chalk';
-import {importTranslations} from '@edielemoine/google-docs-importer';
+import {type ImportSheetConfig, importTranslations} from '@edielemoine/google-docs-importer';
 import {
   executePromises,
   getRelativePath,
@@ -15,16 +15,19 @@ import {
 import {type PdkBuilderCommand} from '../types';
 import {PLATFORM_SHEET_ID_MAP} from '../constants';
 
-interface SheetDefinition {
+interface SheetDefinition extends ImportSheetConfig {
   name: string;
   sheetId: number;
+  documentId?: string;
 }
 
 const DEFAULT_SHEET_NAME = 'default';
+const DELIVERY_OPTIONS = 'delivery-options';
 
 const translations: PdkBuilderCommand = async (context) => {
   const {config, args, debug} = context;
-  const {documentId, outDir, additionalSheet, sheetId} = config.translations;
+  const {additionalSheet, documentId, documentIdDeliveryOptions, outDir, sheetId, sheetIdDeliveryOptions} =
+    config.translations;
 
   const resolvedOutDir = resolvePath(outDir, context);
   const tmpDir = resolvePath([config.tmpDir, 'translations'], context);
@@ -38,26 +41,38 @@ const translations: PdkBuilderCommand = async (context) => {
       name: platform,
       sheetId: PLATFORM_SHEET_ID_MAP[platform],
     })),
+    {
+      name: DELIVERY_OPTIONS,
+      sheetId: sheetIdDeliveryOptions,
+      documentId: documentIdDeliveryOptions,
+      prefix: 'delivery_options_',
+    },
   ];
 
   if (additionalSheet) {
     items.push({name: 'app', sheetId: additionalSheet});
   }
 
-  const importPromises = items.map(async ({name, sheetId}) => {
+  const importPromises = items.map(async (config) => {
+    const {name} = config;
     debug(`Importing translations sheet "${chalk.green(name)}"`);
 
     if (args.dryRun) {
       return;
     }
 
+    const resolvedConfig = {
+      columnKey: 'lang',
+      documentId,
+      filenamePrefix: '',
+      prefix: '',
+      outputDir: getRelativePath([tmpDir, name], context),
+      ...config,
+      sheetId: String(config.sheetId),
+    };
+
     return importTranslations({
-      config: {
-        documentId,
-        languageKey: 'lang',
-        outputDir: getRelativePath([tmpDir, name], context),
-        sheetId: String(sheetId),
-      },
+      config: resolvedConfig,
       debug: debug.extend(`import:${name}`),
       verbosity: args.verbose,
     });

@@ -32,8 +32,10 @@ export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilder
     },
     translations: {
       documentId: '1TPE7gwG2GXtX7vlKIaskwMy0Xr4o_ir-lsedWB86xyc',
-      outDir: 'config/pdk/translations',
       sheetId: 0,
+      outDir: 'config/pdk/translations',
+      documentIdDeliveryOptions: '1FjcT_eNLkbUXFpcm4nskdkBSsFWG7wAX9FDxrJwpOuc',
+      sheetIdDeliveryOptions: 0,
       ...config.translations,
     },
   } satisfies PdkBuilderConfig;
