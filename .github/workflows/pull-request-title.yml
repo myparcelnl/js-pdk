@@ -3,11 +3,13 @@ name: 'Lint pull request title'
 on:
   pull_request:
     types:
-      - opened
       - edited
+      - opened
+      - reopened
+      - synchronize
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  group: '${{ github.workflow }}-${{ github.event.pull_request.number }}'
   cancel-in-progress: true
 
 jobs:
