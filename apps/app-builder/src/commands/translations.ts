@@ -24,9 +24,18 @@ const DEFAULT_SHEET_NAME = 'default';
 
 const translations: PdkBuilderCommand = async (context) => {
   const {config, args, debug} = context;
-  const {documentId, outDir, additionalSheet, sheetId} = config.translations;
+  const {
+    additionalSheet,
+    documentId,
+    documentIdDeliveryOptions,
+    outDir,
+    outDirDeliveryOptions,
+    sheetId,
+    sheetIdDeliveryOptions,
+  } = config.translations;
 
   const resolvedOutDir = resolvePath(outDir, context);
+  const resolvedDeliveryOptionsOutDir = resolvePath(outDirDeliveryOptions, context);
   const tmpDir = resolvePath([config.tmpDir, 'translations'], context);
 
   const items: SheetDefinition[] = [
@@ -94,6 +103,19 @@ const translations: PdkBuilderCommand = async (context) => {
   });
 
   await executePromises(args, mergeTranslations);
+
+  debug(`Importing translations sheet "${chalk.green('delivery-options')}"`);
+
+  await importTranslations({
+    config: {
+      documentId: documentIdDeliveryOptions,
+      languageKey: 'lang',
+      outputDir: resolvedDeliveryOptionsOutDir,
+      sheetId: String(sheetIdDeliveryOptions),
+    },
+    debug: debug.extend('import:delivery-options'),
+    verbosity: args.verbose,
+  });
 
   await rmDir(tmpDir, context);
 };
