@@ -25,7 +25,6 @@ export const useFetchContextQuery = <C extends AdminContextKey = AdminContextKey
         },
       });
 
-      // @ts-expect-error get first context item that matches requested context.
       return context[0][contextKey] ?? {};
     },
     {
