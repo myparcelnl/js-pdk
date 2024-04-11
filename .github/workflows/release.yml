@@ -56,7 +56,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   rebase-prs:
-    needs: test
+    needs: release
     uses: ./.github/workflows/rebase-prs.yml
     secrets: inherit
 
