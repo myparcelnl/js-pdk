@@ -1781,11 +1781,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel-do/shared@npm:^6.0.1":
-  version: 6.0.1
-  resolution: "@myparcel-do/shared@npm:6.0.1"
+"@myparcel-do/shared@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "@myparcel-do/shared@npm:6.0.2"
   dependencies:
-    "@myparcel-do/shared": "npm:^6.0.1"
+    "@myparcel-do/shared": "npm:^6.0.2"
     "@myparcel/constants": "npm:^2.0.0"
     "@myparcel/sdk": "npm:^3.3.1"
     "@myparcel/ts-utils": "npm:^1.12.0"
@@ -1796,7 +1796,7 @@ __metadata:
     radash: "npm:^12.0.0"
     vue: "npm:^3.3.0"
     vue-tsc: "npm:^2.0.0"
-  checksum: 10c0/74867508c3101efee0c1bd6ae0728587928b4debac78dd1d7d78b6958debef378a20b85c03d0ec3e1f547ce45caeb3577e2e9f5f919cd5ad2aa874892c6dab3f
+  checksum: 10c0/f13d94e2e330db886683278038d63158e7207717bd25a041634b8c2d9a6726a1efff126c7bd728b4961d02be8386a798d6e8b0011d2db93af80acec62e3b5535
   languageName: node
   linkType: hard
 
@@ -2191,7 +2191,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/common": "workspace:^1.0.0-beta.3"
     "@myparcel/constants": "npm:^2.0.0"
-    "@myparcel/delivery-options": "npm:^6.0.0-beta.6"
+    "@myparcel/delivery-options": "npm:^6.0.0"
     typescript: "npm:^5.2.2"
     vitest: "npm:^1.0.0"
   languageName: unknown
@@ -2203,7 +2203,7 @@ __metadata:
   dependencies:
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/checkout-common": "workspace:^1.0.0-beta.3"
-    "@myparcel/delivery-options": "npm:^6.0.0-beta.6"
+    "@myparcel/delivery-options": "npm:^6.0.0"
     "@myparcel/ts-utils": "npm:^1.9.0"
     typescript: "npm:^5.2.2"
     vitest: "npm:^1.0.0"
@@ -2264,7 +2264,7 @@ __metadata:
   resolution: "@myparcel-pdk/common@workspace:libs/common"
   dependencies:
     "@myparcel/constants": "npm:^2.0.0"
-    "@myparcel/delivery-options": "npm:^6.0.0-beta.6"
+    "@myparcel/delivery-options": "npm:^6.0.0"
     typescript: "npm:^5.2.2"
     vitest: "npm:^1.0.0"
     vue: "npm:^3.3.0"
@@ -2357,11 +2357,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel/delivery-options@npm:^6.0.0-beta.6":
-  version: 6.0.1
-  resolution: "@myparcel/delivery-options@npm:6.0.1"
+"@myparcel/delivery-options@npm:^6.0.0":
+  version: 6.0.2
+  resolution: "@myparcel/delivery-options@npm:6.0.2"
   dependencies:
-    "@myparcel-do/shared": "npm:^6.0.1"
+    "@myparcel-do/shared": "npm:^6.0.2"
     "@myparcel/constants": "npm:^2.0.0"
     "@myparcel/sdk": "npm:^3.0.0"
     "@myparcel/ts-utils": "npm:^1.12.0"
@@ -2369,9 +2369,9 @@ __metadata:
     "@vueuse/core": "npm:^10.0.0"
     leaflet: "npm:^1.9.4"
     pinia: "npm:^2.1.7"
-    radash: "npm:^11.0.0"
+    radash: "npm:^12.0.0"
     vue: "npm:^3.3.0"
-  checksum: 10c0/b193b4a70730656593cb509c7e9ecc9444b881fc667cdd5ad39e73af42ce94c7cd494ae06732004051faba0faf240b8080ecd5ee688f5938371293fdaa882948
+  checksum: 10c0/fa99b780d07ae3b2a0367365fabf678c65ac91e4eb406e1716176bb631ac506795802ae11eb5e209e4e2ab26ab580533a1ad960e9f75262b346e66fdb8efc912
   languageName: node
   linkType: hard
 
@@ -13017,13 +13017,6 @@ __metadata:
   bin:
     qunit: bin/qunit.js
   checksum: 10c0/3af0cff0765323b804799ba0ac1253cdbb869c6151100008775f0f3e0a1fbc84ad496c3ba79229fc50ccb5bd7e085a749c049942182a3761f61c1c69757a4730
-  languageName: node
-  linkType: hard
-
-"radash@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "radash@npm:11.0.0"
-  checksum: 10c0/5bfb5c44b9cb12b6242a51d93facf32fac217e0e2c86f229ae11a5d12b33e558c3d771e81415f08b88790c2384ed297e3b83d2735bc631f858312ca9c9323afa
   languageName: node
   linkType: hard
 
