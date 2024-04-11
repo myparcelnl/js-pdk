@@ -2,6 +2,20 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-alpha.1...@myparcel-pdk/admin-component-tests@1.0.0) "@myparcel-pdk/admin-component-tests" (2024-04-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* update node requirement to 20
+
+### Miscellaneous Chores
+
+* update node requirement to 20 ([e3f867f](https://github.com/myparcelnl/js-pdk/commit/e3f867fd3e19245154748a6858dbad4b56673fa3))
+
+
+
+
 ## [1.0.0-beta.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0-beta.2...@myparcel-pdk/admin-component-tests@1.0.0-beta.3) "@myparcel-pdk/admin-component-tests" (2024-03-14)
 
 
