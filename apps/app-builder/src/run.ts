@@ -36,8 +36,6 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
 
     // @ts-expect-error todo
     BULK_COMMAND_OPTIONS.forEach((option) => command.option(...option));
-    // @ts-expect-error todo
-    CONFIG_OPTIONS.forEach((option) => command.option(...option));
 
     command.action(async (args, originalCommand) => {
       for (const command of commands) {

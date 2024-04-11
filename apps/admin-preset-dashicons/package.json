@@ -30,7 +30,7 @@
     "@myparcel-pdk/admin": "workspace:^1.0.0-beta.3",
     "vite": "^5.0.0",
     "vue": "^3.3.0",
-    "vue-tsc": "^1.8.3"
+    "vue-tsc": "^2.0.0"
   },
   "devDependencies": {
     "@myparcel-pdk/admin-component-tests": "workspace:*",
