@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.1.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0...@myparcel-pdk/app-builder@1.1.0) "@myparcel-pdk/app-builder" (2024-04-12)
+
+
+### Features
+
+* **app-builder:** add options from each command to bulk command ([7b7b719](https://github.com/myparcelnl/js-pdk/commit/7b7b7192845161d865ef96fb21824e697e01d1be))
+* **app-builder:** add upgrade-self command ([384981f](https://github.com/myparcelnl/js-pdk/commit/384981f3adfe57899fcbb421125f0875959689a8))
+
+
+
+
 ## [1.0.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0-alpha.1...@myparcel-pdk/app-builder@1.0.0) "@myparcel-pdk/app-builder" (2024-04-11)
 
 
