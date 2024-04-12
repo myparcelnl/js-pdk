@@ -10,7 +10,7 @@ module.exports = {
   changelogFilename: '<packageDir>/CHANGELOG.md',
   conventionalChangelogConfig: 'conventional-changelog-conventionalcommits',
   persistVersions: true,
-  plugins: ['@monodeploy/plugin-github'],
+  plugins: ['@monodeploy/plugin-github', '@edielemoine/monodeploy-plugin-github-actions'],
   prerelease: prereleaseBranches.includes(branch),
   prereleaseId: branch,
   prereleaseNPMTag: branch,

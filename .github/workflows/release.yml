@@ -19,6 +19,8 @@ jobs:
   release:
     runs-on: ubuntu-22.04
     needs: test
+    outputs:
+      released: ${{ steps.release.outputs.released }}
     steps:
       - uses: myparcelnl/actions/setup-git-credentials@v4
         id: credentials
@@ -46,6 +48,7 @@ jobs:
           path: ./apps/admin-demo/dist
 
       - name: 'Run monodeploy'
+        id: release
         #language=bash
         run: |
           yarn monodeploy \
@@ -72,3 +75,18 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  trigger:
+    needs: release
+    if: needs.release.outputs.released == 'true'
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        repo: ${{ fromJSON(vars.PDK_DEPENDENT_REPOS) }}
+    steps:
+      - uses: myparcelnl/actions/repository-dispatch@v4
+        with:
+          app-id: ${{ secrets.MYPARCEL_APP_ID }}
+          private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
+          repository: ${{ matrix.repo }}
+          event-type: 'pdk-update'

@@ -982,6 +982,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@edielemoine/monodeploy-plugin-github-actions@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@edielemoine/monodeploy-plugin-github-actions@npm:1.0.0"
+  dependencies:
+    "@monodeploy/types": "npm:^5.0.0"
+  checksum: 10c0/e52c61867b55b0670ae5ae6f577536a753bbaebdfc059ebb10793ac97ba1a21efe6547a135ad5eaa91b0ce2f600f099255674db28080d0c70a2e34cb3daa7397
+  languageName: node
+  linkType: hard
+
 "@esbuild/aix-ppc64@npm:0.20.2":
   version: 0.20.2
   resolution: "@esbuild/aix-ppc64@npm:0.20.2"
@@ -1746,7 +1755,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@monodeploy/types@npm:^5.0.1":
+"@monodeploy/types@npm:^5.0.0, @monodeploy/types@npm:^5.0.1":
   version: 5.0.1
   resolution: "@monodeploy/types@npm:5.0.1"
   dependencies:
@@ -2275,6 +2284,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/monorepo@workspace:."
   dependencies:
+    "@edielemoine/monodeploy-plugin-github-actions": "npm:^1.0.0"
     "@monodeploy/plugin-github": "npm:^2.0.0"
     "@myparcel-eslint/eslint-config-esnext": "npm:^1.2.0"
     "@myparcel-eslint/eslint-config-import": "npm:^1.0.0"
