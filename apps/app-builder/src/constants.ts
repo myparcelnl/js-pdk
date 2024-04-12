@@ -28,6 +28,8 @@ export const COMMAND_UPGRADE_NAME = 'upgrade';
 
 export const COMMAND_UPGRADE_ALL_NAME = 'upgrade-all';
 
+export const COMMAND_UPGRADE_SELF_NAME = 'upgrade-self';
+
 export const COMMAND_ZIP_NAME = 'zip';
 
 export type CommandName =
@@ -94,5 +96,7 @@ export const BULK_COMMAND_OPTIONS = [
 ] as const;
 
 export const MYPARCEL_PDK_PACKAGIST_NAME = 'myparcelnl/pdk';
+
+export const MYPARCEL_PDK_APP_BUILDER = '@myparcel-pdk/app-builder';
 
 export const MYPARCEL_PDK_NPM_GLOB = '@myparcel-pdk/*';

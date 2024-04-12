@@ -16,8 +16,10 @@ import {
   COMMAND_TRANSLATIONS_NAME,
   COMMAND_UPGRADE_ALL_NAME,
   COMMAND_UPGRADE_NAME,
+  COMMAND_UPGRADE_SELF_NAME,
   COMMAND_ZIP_NAME,
   COMMIT_TYPE_AUTO,
+  MYPARCEL_PDK_APP_BUILDER,
   MYPARCEL_PDK_NPM_GLOB,
   MYPARCEL_PDK_PACKAGIST_NAME,
 } from './constants';
@@ -119,18 +121,19 @@ export const upgradeAllBulkCommand = defineBulkCommand({
   ],
 });
 
+/**
+ * The "upgrade self" command is a special case of the upgrade command that upgrades the app-builder. It's not possible to update the app builder together with the other dependencies because the app builder is used to run the commands.
+ */
+export const upgradeSelfCommand = defineBulkCommand({
+  name: COMMAND_UPGRADE_SELF_NAME,
+  description: `Upgrade ${MYPARCEL_PDK_APP_BUILDER} dependency.`,
+  commands: [[upgradeCommand, {arguments: [MYPARCEL_PDK_APP_BUILDER]}]],
+});
+
 export const preReleaseBulkCommand = defineBulkCommand({
   name: COMMAND_PRERELEASE_NAME,
   description: 'Prepare a release.',
-  commands: [
-    cleanCommand,
-    [upgradeCommand, {arguments: [MYPARCEL_PDK_PACKAGIST_NAME], commit: false}],
-    [upgradeCommand, {arguments: [MYPARCEL_PDK_NPM_GLOB], commit: false}],
-    scopePhpCommand,
-    incrementCommand,
-    ...CORE_COMMANDS,
-    zipCommand,
-  ],
+  commands: [cleanCommand, scopePhpCommand, incrementCommand, ...CORE_COMMANDS, zipCommand],
 });
 
 export const releaseBulkCommand = defineBulkCommand({
@@ -154,6 +157,7 @@ export const ALL_COMMANDS: readonly CommandDefinition[] = Object.freeze([
 
 export const ALL_BULK_COMMANDS: readonly BulkCommandDefinition[] = Object.freeze([
   buildBulkCommand,
+  upgradeSelfCommand,
   upgradeAllBulkCommand,
   preReleaseBulkCommand,
   releaseBulkCommand,
