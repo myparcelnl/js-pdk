@@ -24,18 +24,28 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
   });
 
   ALL_BULK_COMMANDS.forEach(({name, description, commands}) => {
-    const commandNames = commands
-      .map((definition) => {
-        return (toArray(definition)[0] as CommandDefinition).name;
-      })
-      .join(', ');
+    const commandDefinitions = commands.map((definition) => {
+      return toArray(definition)[0] as CommandDefinition;
+    });
+
+    const commandNames = commandDefinitions.map((definition) => definition.name).join(', ');
 
     const defaultDescription = `Run ${commandNames} in sequence.`;
 
     const command = program.command(name).description(`${description ?? defaultDescription} Requires a config file.`);
 
-    // @ts-expect-error todo
-    BULK_COMMAND_OPTIONS.forEach((option) => command.option(...option));
+    const allOptions = [
+      ...commandDefinitions.flatMap((definition) => definition.options ?? []),
+      ...BULK_COMMAND_OPTIONS,
+    ];
+
+    allOptions
+      .filter(([name], index) => {
+        // remove duplicates
+        return allOptions.findIndex((option) => option[0] === name) === index;
+      })
+      // @ts-expect-error todo
+      .forEach((option) => command.option(...option));
 
     command.action(async (args, originalCommand) => {
       for (const command of commands) {
