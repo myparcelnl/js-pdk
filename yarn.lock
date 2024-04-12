@@ -983,11 +983,11 @@ __metadata:
   linkType: hard
 
 "@edielemoine/monodeploy-plugin-github-actions@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@edielemoine/monodeploy-plugin-github-actions@npm:1.0.0"
+  version: 1.0.1
+  resolution: "@edielemoine/monodeploy-plugin-github-actions@npm:1.0.1"
   dependencies:
     "@monodeploy/types": "npm:^5.0.0"
-  checksum: 10c0/e52c61867b55b0670ae5ae6f577536a753bbaebdfc059ebb10793ac97ba1a21efe6547a135ad5eaa91b0ce2f600f099255674db28080d0c70a2e34cb3daa7397
+  checksum: 10c0/b2693964648917b43c91c829fbf0a6127bf26c2885f68af1226daf71e4e18067f77ad39875f2eed9c723ec520876e63d934a81d6fa217fad5d14af7e23403e9f
   languageName: node
   linkType: hard
 
