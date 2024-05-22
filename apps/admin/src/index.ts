@@ -27,6 +27,7 @@ export {
   ActionButton,
   BulkSelectCheckbox,
   NotificationContainer,
+  PackageType,
   PlainElement,
   ResetButton,
   ReturnsForm,
@@ -64,6 +65,7 @@ export {
   FORM_KEY_MODAL_SHIPMENT_OPTIONS,
   FORM_KEY_PLUGIN_SETTINGS,
   FORM_KEY_PRODUCT_SETTINGS,
+  resolveFormComponent,
 } from './forms';
 
 export {FormHook, useElement, useForm, useFormBuilder} from '@myparcel/vue-form-builder';
@@ -91,6 +93,7 @@ export {
   useDropOffInputContext,
   useDropdownData,
   useElementContext,
+  useElementOptions,
   useFormatter,
   useGlobalContext,
   useGlobalPdkAdmin,
@@ -104,6 +107,7 @@ export {
   useProductData,
   useRadioGroupContext,
   useSelectInputContext,
+  useShippingMethodsInputContext,
   useStoreQuery,
   useTriStateInputContext,
   useWeekdays,

@@ -1,24 +1,16 @@
-import {computed, type ComputedRef, onMounted, type UnwrapRef, watch, type WritableComputedRef} from 'vue';
+import {onMounted, watch, type WritableComputedRef} from 'vue';
 import {get} from '@vueuse/core';
-import {SortType} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
-import {translateSelectOption} from '../utils';
-import {
-  type ArrayItem,
-  type SelectInputEmits,
-  type SelectInputModelValue,
-  type SelectInputProps,
-  type SelectOptionWithLabel,
-} from '../types';
+import {type ArrayItem, type SelectInputEmits, type SelectInputModelValue, type SelectInputProps} from '../types';
+import {type ElementOptionsContext, useElementOptions} from './useElementOptions';
 import {type ElementContext, useElementContext} from './useElementContext';
-import {useLanguage} from './language';
 
 type ModelValue<T extends SelectInputModelValue, Multiple extends boolean> = Multiple extends true ? T : ArrayItem<T>;
 
-export interface InputWithOptionsContext<T extends SelectInputModelValue, Multiple extends boolean> {
+export interface InputWithOptionsContext<T extends SelectInputModelValue, Multiple extends boolean>
+  extends ElementOptionsContext<T> {
   id: string;
   model: WritableComputedRef<ModelValue<T, Multiple>>;
-  options: ComputedRef<SelectOptionWithLabel<UnwrapRef<T>>[]>;
 }
 
 export const useInputWithOptionsContext = <
@@ -31,29 +23,7 @@ export const useInputWithOptionsContext = <
   multiple?: Multiple,
 ): InputWithOptionsContext<T, Multiple> => {
   const {id, model} = useElementContext<T>(props, emit) as ElementContext<ModelValue<T, Multiple>>;
-  const sort = computed(() => props.element.props.sort);
-
-  const {translate} = useLanguage();
-
-  const options = computed(() => {
-    return (props.element.props.options ?? [])
-      .map((option) => translateSelectOption(option, translate))
-      .sort((a, b) => {
-        if (b.value === -1) {
-          return 1;
-        }
-
-        switch (sort.value) {
-          case SortType.Ascending:
-            return a.label.localeCompare(b.label);
-
-          case SortType.Descending:
-            return b.label.localeCompare(a.label);
-        }
-
-        return 0;
-      });
-  });
+  const {options} = useElementOptions<T>(props);
 
   onMounted(() => {
     watch(
