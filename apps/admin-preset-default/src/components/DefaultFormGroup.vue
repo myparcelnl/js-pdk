@@ -11,8 +11,9 @@
         </slot>
       </label>
 
-      <small v-if="element.props?.description">
-        {{ translate(element.props.description) }}
+      <small
+        v-if="element.props?.description"
+        v-html="translate(element.props.description)">
       </small>
     </PdkCol>
 
