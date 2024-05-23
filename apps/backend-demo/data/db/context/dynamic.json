@@ -156,7 +156,14 @@
       },
       "checkout": {
         "id": "checkout",
-        "allowedShippingMethods": [],
+        "allowedShippingMethods": {
+          "-1": ["free_shipping:1"],
+          "package": ["flat_rate:2", "local_pickup:5"],
+          "package_small": [],
+          "mailbox": [],
+          "digital_stamp": ["flat_rate:3"],
+          "letter": []
+        },
         "priceType": "included",
         "enableDeliveryOptions": true,
         "enableDeliveryOptionsWhenNotInStock": true,

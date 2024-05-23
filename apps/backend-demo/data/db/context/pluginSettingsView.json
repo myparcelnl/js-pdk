@@ -1553,8 +1553,29 @@
               }
             }
           ],
-          "$component": "MultiSelectInput",
-          "options": [],
+          "$component": "ShippingMethodsInput",
+          "options": [
+            {
+              "value": "flat_rate:1",
+              "label": "Flat rate 1"
+            },
+            {
+              "value": "flat_rate:2",
+              "label": "Flat rate 2"
+            },
+            {
+              "value": "flat_rate:3",
+              "label": "Flat rate 3"
+            },
+            {
+              "value": "local_pickup:5",
+              "label": "Local pickup"
+            },
+            {
+              "value": "free_shipping:2",
+              "label": "Free shipping"
+            }
+          ],
           "label": "settings_checkout_allowed_shipping_methods",
           "description": "settings_checkout_allowed_shipping_methods_description"
         },
