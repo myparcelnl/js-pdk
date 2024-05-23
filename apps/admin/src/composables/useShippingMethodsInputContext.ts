@@ -1,119 +1,106 @@
-import {computed, type ComputedRef, onUnmounted, reactive, toRaw, useModel, watch} from 'vue';
+import {type ComputedRef, onUnmounted, reactive, type Ref, toRaw, watch} from 'vue';
+import {useVModel} from '@vueuse/core';
+import {type ShippingMethodId, type ShippingMethodType, TriState} from '@myparcel-pdk/admin';
 import {PackageTypeName} from '@myparcel/constants';
 import {createFormElement, createObjectWithKeys} from '../utils';
-import {type ShippingMethodsInputModelValue, type ShippingMethodsInputProps} from '../types';
+import {
+  type SelectOptionWithLabel,
+  type ShippingMethodsInputModelValue,
+  type ShippingMethodsInputProps,
+} from '../types';
 import {AdminComponent} from '../data';
-import {type ElementOptionsContext, useElementOptions} from './useElementOptions';
+import {useElementOptions} from './useElementOptions';
 import {useLanguage} from './language';
 
-export enum ShippingMethodOption {
-  None = 'none',
-  Auto = 'auto',
+const SHIPPING_METHOD_TYPES = Object.freeze([
+  {label: 'option_none', value: TriState.Off},
+  {label: 'option_inherit', value: TriState.Inherit},
+  {label: PackageTypeName.Package, value: PackageTypeName.Package},
+  {label: PackageTypeName.PackageSmall, value: PackageTypeName.PackageSmall},
+  {label: PackageTypeName.Mailbox, value: PackageTypeName.Mailbox},
+  {label: PackageTypeName.DigitalStamp, value: PackageTypeName.DigitalStamp},
+  {label: PackageTypeName.Letter, value: PackageTypeName.Letter},
+] satisfies SelectOptionWithLabel<ShippingMethodType>[]);
+
+interface ShippingMethodsInputContext {
+  elements: Record<ShippingMethodId, Record<ShippingMethodType, ReturnType<typeof createFormElement>>>;
+  refs: Record<ShippingMethodId, ShippingMethodType>;
+  shippingMethodTypes: readonly SelectOptionWithLabel<ShippingMethodType>[];
+  shippingMethods: ComputedRef<SelectOptionWithLabel<ShippingMethodId>[]>;
 }
 
-type ShippingMethodType = ShippingMethodOption | PackageTypeName;
-
-type ValuesObj = Record<ShippingMethodType, string[]>;
-
-interface ShippingMethodsInputContext<T extends ShippingMethodsInputModelValue> extends ElementOptionsContext<T> {
-  elements: Record<string, Record<ShippingMethodType, ReturnType<typeof createFormElement>>>;
-  shippingMethodOptions: readonly string[];
-  model: ComputedRef<ValuesObj>;
-  refs: Record<string, Record<ShippingMethodType, any>>;
-}
-
-const SHIPPING_METHOD_OPTIONS = Object.freeze([
-  ShippingMethodOption.None,
-  ShippingMethodOption.Auto,
-  PackageTypeName.Package,
-  PackageTypeName.PackageSmall,
-  PackageTypeName.Mailbox,
-  PackageTypeName.DigitalStamp,
-]);
-
+// eslint-disable-next-line max-lines-per-function
 export const useShippingMethodsInputContext = <T extends ShippingMethodsInputModelValue>(
   props: ShippingMethodsInputProps<T>,
-  emit?: (name: 'update:modelValue', ...args: unknown[]) => void,
-): ShippingMethodsInputContext<T> => {
-  const {options: shippingMethods} = useElementOptions<T>(props);
-  // TODO: currently flat_rate:3 is not showing up
-
+  emit?: (name: 'update:modelValue', value: T) => void,
+): ShippingMethodsInputContext => {
   const {translate} = useLanguage();
 
-  console.log(shippingMethods.value);
+  const {options: shippingMethods} = useElementOptions<string, ShippingMethodsInputProps<T>>(props);
+  const model = useVModel(props, 'modelValue', emit);
 
-  // const {options, id, model} = useSelectInputContext(props, emit);
-  const model = useModel(props, 'modelValue', {
-    get(value) {
-      const resolvedValue: ValuesObj = Array.isArray(value)
-        ? {...createObjectWithKeys(SHIPPING_METHOD_OPTIONS, () => []), [PackageTypeName.Package]: toRaw(value)}
-        : value;
-
-      return resolvedValue;
-    },
-  });
-
-  const refs = reactive(
+  const refs = reactive<Record<ShippingMethodId, ShippingMethodType>>(
     shippingMethods.value.reduce((acc, shippingMethod) => {
       const shippingMethodId = shippingMethod.value.toString();
       const current = Object.entries(model.value).find(([, value]) => value.includes(shippingMethodId));
 
       return {
         ...acc,
-        [shippingMethodId]: current?.[0] ?? ShippingMethodOption.None,
+        [shippingMethodId]: current?.[0] ?? TriState.Off,
       };
     }, {}),
   );
 
-  const elements = computed(() => {
-    return shippingMethods.value.reduce((acc, shippingMethod) => {
+  const elements = reactive(
+    shippingMethods.value.reduce((acc, shippingMethod) => {
       const shippingMethodId = shippingMethod.value.toString();
 
       return {
         ...acc,
-        [shippingMethodId]: SHIPPING_METHOD_OPTIONS.reduce((acc, option) => {
+        [shippingMethodId]: SHIPPING_METHOD_TYPES.reduce((acc, option) => {
           const fieldName = `${props.element.name}__${shippingMethodId}`;
-          const {component: _, ...restElement} = props.element;
 
           return {
             ...acc,
-            [option]: toRaw(
+            [option.value]: toRaw(
               createFormElement({
-                ...restElement,
-                ref: refs[option],
+                component: AdminComponent.RadioInput,
+                ref: refs[option.value] as unknown as Ref<boolean>,
                 name: fieldName,
-                label: '', // remove label
+                // remove label from individual radio buttons
+                label: '',
+                props: {
+                  value: option.value,
+                },
                 attributes: {
                   title: translate(shippingMethod.label),
-                },
-                component: AdminComponent.RadioInput,
-                props: {
-                  value: option,
                 },
               }),
             ),
           };
         }, {}),
       };
-    }, {} satisfies Record<string, Record<ShippingMethodOption, ReturnType<typeof createFormElement>>>);
-  });
+    }, {} satisfies Record<ShippingMethodId, Record<ShippingMethodType, ReturnType<typeof createFormElement>>>),
+  );
 
+  /**
+   * Update model value with the correct format when refs change
+   */
   onUnmounted(
     watch(
       refs,
       () => {
-        model.value = Object.entries(refs).reduce(
-          (acc, [key, value]) => {
-            if (!acc[value]) {
-              acc[value] = [];
-            }
+        const keys = SHIPPING_METHOD_TYPES.map(({value}) => value).filter((type) => type !== TriState.Off);
 
+        model.value = Object.entries(refs)
+          // Remove off state from model
+          .filter(([, value]) => value !== TriState.Off)
+          .reduce((acc, [key, value]) => {
+            acc[value] ??= [];
             acc[value].push(key);
 
             return acc;
-          },
-          createObjectWithKeys(SHIPPING_METHOD_OPTIONS, () => []),
-        );
+          }, createObjectWithKeys(keys, () => []) as T);
       },
       {deep: true, immediate: true},
     ),
@@ -121,9 +108,8 @@ export const useShippingMethodsInputContext = <T extends ShippingMethodsInputMod
 
   return {
     refs,
-    model,
     elements,
-    options: shippingMethods,
-    shippingMethodOptions: SHIPPING_METHOD_OPTIONS,
+    shippingMethods,
+    shippingMethodTypes: SHIPPING_METHOD_TYPES,
   };
 };

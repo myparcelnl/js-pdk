@@ -1,40 +1,43 @@
 <template>
   <div v-test="[AdminComponent.ShippingMethodsInput, element]">
     <PdkTable>
-      <tr>
-        <th>Shipping method</th>
+      <PdkTableRow>
+        <PdkTableCol component="th" />
 
-        <th
-          v-for="option in shippingMethodOptions"
-          :key="option">
+        <PdkTableCol
+          v-for="shippingMethodType in shippingMethodTypes"
+          :key="shippingMethodType"
+          component="th"
+          :class="config?.cssUtilities?.whitespaceNoWrap">
           <PackageType
-            v-if="isEnumValue(option, PackageTypeName)"
-            :package-type="option" />
+            v-if="isEnumValue(shippingMethodType.value, PackageTypeName)"
+            :package-type="shippingMethodType.value" />
 
           <span
             v-else
-            v-text="translate(option)" />
-        </th>
-      </tr>
+            v-text="translate(shippingMethodType.label)" />
+        </PdkTableCol>
+      </PdkTableRow>
 
-      <tr
-        v-for="option in options"
-        :key="option.value">
-        <th
-          :class="config?.cssUtilities?.whitespaceNoWrap"
-          v-text="option.label" />
+      <PdkTableRow
+        v-for="shippingMethod in shippingMethods"
+        :key="shippingMethod.value">
+        <PdkTableCol
+          component="th"
+          :class="config?.cssUtilities?.whitespaceNoWrap">
+          {{ translate(shippingMethod.label) }}
+        </PdkTableCol>
 
-        <td
-          v-for="packageType in shippingMethodOptions"
-          :key="`${option.value}-${packageType}}`">
+        <PdkTableCol
+          v-for="shippingMethodType in shippingMethodTypes"
+          :key="`${shippingMethod.value}-${shippingMethodType.value}}`"
+          :class="config?.cssUtilities?.textCenter">
           <PdkRadioInput
-            v-model="refs[option.value]"
-            :element="elements[option.value][packageType]" />
-        </td>
-      </tr>
+            v-model="refs[shippingMethod.value]"
+            :element="elements[shippingMethod.value][shippingMethodType.value]" />
+        </PdkTableCol>
+      </PdkTableRow>
     </PdkTable>
-
-    <pre v-text="model"></pre>
   </div>
 </template>
 
@@ -49,9 +52,8 @@ import {
   useLanguage,
   useShippingMethodsInputContext,
 } from '@myparcel-pdk/admin';
-import {useForm} from '@myparcel/vue-form-builder';
 import {isEnumValue} from '@myparcel/ts-utils';
-import {PackageTypeName} from '@myparcel/constants'; // eslint-disable-next-line vue/no-unused-properties
+import {PackageTypeName} from '@myparcel/constants';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<ShippingMethodsInputProps<T>>();
@@ -60,11 +62,6 @@ const emit = defineEmits<ShippingMethodsInputEmits<T>>();
 const {translate} = useLanguage();
 
 const config = useAdminConfig();
-const form = useForm();
 
-const {options, elements, shippingMethodOptions, refs, model} = useShippingMethodsInputContext(props, emit);
-
-const onChange = (...args) => {
-  console.log(...args);
-};
+const {shippingMethods, elements, shippingMethodTypes, refs} = useShippingMethodsInputContext(props, emit);
 </script>

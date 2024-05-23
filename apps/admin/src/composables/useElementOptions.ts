@@ -1,7 +1,7 @@
 import {computed, type ComputedRef, type UnwrapRef} from 'vue';
 import {SortType} from '@myparcel-pdk/common';
 import {translateSelectOption} from '../utils';
-import {type SelectInputModelValue, type SelectInputProps, type SelectOptionWithLabel} from '../types';
+import {type OptionsProp, type PdkElementProps, type SelectInputModelValue, type SelectOptionWithLabel} from '../types';
 import {useLanguage} from './language';
 
 export interface ElementOptionsContext<T extends SelectInputModelValue> {
@@ -10,7 +10,8 @@ export interface ElementOptionsContext<T extends SelectInputModelValue> {
 
 export const useElementOptions = <
   T extends SelectInputModelValue = SelectInputModelValue,
-  Props extends SelectInputProps<T> = SelectInputProps<T>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Props extends PdkElementProps<any, OptionsProp<T>> = PdkElementProps<any, OptionsProp<T>>,
 >(
   props: Props,
 ): ElementOptionsContext<T> => {
