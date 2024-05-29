@@ -11,8 +11,9 @@
         <li
           v-for="error in element.errors"
           :key="error"
-          class="text-red-500 text-xs"
-          v-html="error"></li>
+          class="text-red-500 text-xs">
+          {{ error }}
+        </li>
       </ul>
     </div>
 
