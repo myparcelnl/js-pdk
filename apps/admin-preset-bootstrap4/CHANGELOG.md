@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.1.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0...@myparcel-pdk/admin-preset-bootstrap4@1.1.0) "@myparcel-pdk/admin-preset-bootstrap4" (2024-06-01)
+
+
+### Features
+
+* allow html in forms ([#209](https://github.com/myparcelnl/js-pdk/issues/209)) ([67bfea5](https://github.com/myparcelnl/js-pdk/commit/67bfea5b9dc5ebe6bc1d56550cdc6fdc3a3cfdb5))
+
+
+
+
 ## [1.0.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-bootstrap4@1.0.0-alpha.1...@myparcel-pdk/admin-preset-bootstrap4@1.0.0) "@myparcel-pdk/admin-preset-bootstrap4" (2024-04-11)
 
 
