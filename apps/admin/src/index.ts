@@ -99,6 +99,7 @@ export {
   useGlobalPdkAdmin,
   useInputWithOptionsContext,
   useLanguage,
+  useLoadMore,
   useLogger,
   useModalContext,
   useModalElementContext,

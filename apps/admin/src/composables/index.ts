@@ -15,6 +15,7 @@ export * from './useElementContext';
 export * from './useElementOptions';
 export * from './useGlobalPdkAdmin';
 export * from './useInputWithOptionsContext';
+export * from './useLoadMore';
 export * from './useLoading';
 export * from './useLogger';
 export * from './useModalElementContext';

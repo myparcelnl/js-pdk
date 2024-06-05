@@ -6,11 +6,16 @@
     </thead>
 
     <TransitionGroup
-      :name="config?.transitions?.tableRow"
+      v-if="transitionName"
+      :name="transitionName"
       tag="tbody">
       <!-- Table body -->
       <slot />
     </TransitionGroup>
+
+    <tbody v-else>
+      <slot />
+    </tbody>
 
     <tfoot v-if="$slots.footer">
       <!-- Table footer -->
@@ -23,7 +28,14 @@
 /**
  * A table component that can be used to render data via slots.
  */
+import {computed} from 'vue';
 import {AdminComponent, useAdminConfig} from '@myparcel-pdk/admin';
 
+const props = defineProps<{transition?: false | string}>();
+
 const config = useAdminConfig();
+
+const transitionName = computed(() => {
+  return props.transition === false ? undefined : props.transition ?? config.transitions?.tableRow;
+});
 </script>

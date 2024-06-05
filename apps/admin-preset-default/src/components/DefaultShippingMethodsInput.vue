@@ -20,7 +20,7 @@
       </PdkTableRow>
 
       <PdkTableRow
-        v-for="shippingMethod in shippingMethods"
+        v-for="shippingMethod in items"
         :key="shippingMethod.value">
         <PdkTableCol
           component="th"
@@ -38,6 +38,12 @@
         </PdkTableCol>
       </PdkTableRow>
     </PdkTable>
+
+    <a
+      v-if="hasMore"
+      href="#"
+      @click.prevent="loadMore"
+      v-text="translate('load_more')" />
   </div>
 </template>
 
@@ -49,6 +55,7 @@ import {
   type ShippingMethodsInputProps,
   useAdminConfig,
   useLanguage,
+  useLoadMore,
   useShippingMethodsInputContext,
 } from '@myparcel-pdk/admin';
 import {isEnumValue} from '@myparcel/ts-utils';
@@ -63,4 +70,6 @@ const {translate} = useLanguage();
 const config = useAdminConfig();
 
 const {shippingMethods, elements, shippingMethodTypes, refs} = useShippingMethodsInputContext(props, emit);
+
+const {items, hasMore, loadMore} = useLoadMore({items: shippingMethods, step: 5});
 </script>

@@ -10,7 +10,6 @@ import {
 } from '../types';
 import {AdminComponent} from '../data';
 import {useElementOptions} from './useElementOptions';
-import {useLanguage} from './language';
 
 const SHIPPING_METHOD_TYPES = Object.freeze([
   {label: 'option_none', value: TriState.Off},
@@ -35,8 +34,6 @@ export const useShippingMethodsInputContext = <T extends ShippingMethodsInputMod
   props: ShippingMethodsInputProps<T>,
   emit?: (name: 'update:modelValue', value: T) => void,
 ): ShippingMethodsInputContext => {
-  const {translate} = useLanguage();
-
   const {options: shippingMethods} = useElementOptions<string, ShippingMethodsInputProps<T>>(props);
   const model = useVModel(props, 'modelValue', emit);
 
