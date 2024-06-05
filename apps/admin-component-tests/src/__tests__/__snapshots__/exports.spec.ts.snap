@@ -133,6 +133,7 @@ exports[`exports > exports from index.ts 1`] = `
   "useGlobalPdkAdmin",
   "useInputWithOptionsContext",
   "useLanguage",
+  "useLoadMore",
   "useLogger",
   "useModalContext",
   "useModalElementContext",
