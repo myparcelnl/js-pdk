@@ -1,9 +1,11 @@
 import {defineComponent, h} from 'vue';
-import {describe, expect, it} from 'vitest';
+import {beforeEach, describe, expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
+import {type ShippingMethodTypeMap, TriState} from '@myparcel-pdk/common';
 import {PackageTypeName} from '@myparcel/constants';
 import {createFormElement} from '../utils';
-import {type ShippingMethodsInputModelValue, type ShippingMethodsInputProps} from '../types';
+import {type ShippingMethodsInputProps} from '../types';
+import {doComponentTestSetup} from '../__tests__';
 import {useShippingMethodsInputContext} from './useShippingMethodsInputContext';
 
 const FLAT_RATE_1 = 'flat_rate:1';
@@ -20,68 +22,72 @@ const INPUT_OPTIONS = Object.freeze([
   {label: 'Free shipping', value: FREE_SHIPPING},
 ]);
 
-const createWrapper = <T extends ShippingMethodsInputModelValue>(modelValue: T) => {
-  const props = {
-    modelValue,
-    element: createFormElement({
-      name: 'test',
-      props: {
-        options: INPUT_OPTIONS,
-      },
-    }),
-  } satisfies ShippingMethodsInputProps<T>;
-
-  const component = defineComponent({
-    props: {
-      modelValue: {
-        type: [Array, Object],
-      },
-      element: {
-        type: Object,
-      },
-    },
-    render() {
-      return h('div');
-    },
-    setup(props, ctx) {
-      return useShippingMethodsInputContext(props, ctx.emit);
-    },
-  });
-
-  return mount(component, {props});
-};
+interface TestInput {
+  input: ShippingMethodTypeMap;
+  output: ShippingMethodTypeMap;
+}
 
 describe('useShippingMethodsInputContext', () => {
-  it('converts plain array to object model', () => {
-    const wrapper = createWrapper([FLAT_RATE_1, FLAT_RATE_2]);
-
-    expect(wrapper.vm.model).toEqual({
-      none: [FLAT_RATE_3, FLAT_RATE_4],
-      auto: [],
-      [PackageTypeName.Package]: [FLAT_RATE_1, FLAT_RATE_2],
-      [PackageTypeName.PackageSmall]: [],
-      [PackageTypeName.Mailbox]: [],
-      [PackageTypeName.DigitalStamp]: [],
-    });
+  beforeEach(() => {
+    doComponentTestSetup();
   });
 
-  it('handles input object model', () => {
-    const wrapper = createWrapper({
-      none: [],
-      auto: [FLAT_RATE_3],
-      [PackageTypeName.Package]: [],
-      [PackageTypeName.PackageSmall]: [],
-      [PackageTypeName.Mailbox]: [FLAT_RATE_1],
-      [PackageTypeName.DigitalStamp]: [FLAT_RATE_2],
+  it.each([
+    {
+      input: {
+        [TriState.Off]: [],
+        [TriState.Inherit]: [FLAT_RATE_3],
+        [PackageTypeName.Package]: [],
+        [PackageTypeName.PackageSmall]: [],
+        [PackageTypeName.Mailbox]: [FLAT_RATE_1],
+        [PackageTypeName.DigitalStamp]: [FLAT_RATE_2],
+        [PackageTypeName.Letter]: [],
+      },
+      output: {
+        // off is always empty
+        [TriState.Off]: [],
+        [TriState.Inherit]: [FLAT_RATE_3],
+        [PackageTypeName.Package]: [],
+        [PackageTypeName.PackageSmall]: [],
+        [PackageTypeName.Mailbox]: [FLAT_RATE_1],
+        [PackageTypeName.DigitalStamp]: [FLAT_RATE_2],
+        [PackageTypeName.Letter]: [],
+      },
+    },
+  ] satisfies TestInput[])('handles input object model', async ({input, output}) => {
+    expect.assertions(1);
+
+    const props = {
+      modelValue: input,
+      element: createFormElement({
+        name: 'test',
+        props: {
+          options: INPUT_OPTIONS,
+        },
+      }),
+    } satisfies ShippingMethodsInputProps;
+
+    const component = defineComponent({
+      props: {
+        modelValue: {
+          type: [Array, Object],
+        },
+        element: {
+          type: Object,
+        },
+      },
+      render() {
+        return h('div');
+      },
+      setup(props, ctx) {
+        return useShippingMethodsInputContext(props, ctx.emit);
+      },
     });
 
-    expect(wrapper.vm.model).toEqual({
-      none: [FLAT_RATE_4],
-      auto: [FLAT_RATE_3],
-      [PackageTypeName.Package]: [],
-      [PackageTypeName.PackageSmall]: [],
-      [PackageTypeName.Mailbox]: [FLAT_RATE_1],
-      [PackageTypeName.DigitalStamp]: [FLAT_RATE_2],
-    });
+    const wrapper = mount(component, {props});
+
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.vm.model).toEqual(output);
   });
 });

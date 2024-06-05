@@ -24,6 +24,7 @@ const SHIPPING_METHOD_TYPES = Object.freeze([
 
 interface ShippingMethodsInputContext {
   elements: Record<ShippingMethodId, Record<ShippingMethodType, ReturnType<typeof createFormElement>>>;
+  model: Ref<ShippingMethodsInputModelValue>;
   refs: Record<ShippingMethodId, ShippingMethodType>;
   shippingMethodTypes: readonly SelectOptionWithLabel<ShippingMethodType>[];
   shippingMethods: ComputedRef<SelectOptionWithLabel<ShippingMethodId>[]>;
@@ -107,9 +108,10 @@ export const useShippingMethodsInputContext = <T extends ShippingMethodsInputMod
   );
 
   return {
-    refs,
     elements,
-    shippingMethods,
+    model,
+    refs,
     shippingMethodTypes: SHIPPING_METHOD_TYPES,
+    shippingMethods,
   };
 };
