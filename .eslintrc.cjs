@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   overrides: [
     {
-      files: ['./**/index.ts'],
+      files: ['**/index.ts'],
       plugins: ['sort-exports'],
       rules: {
         'sort-exports/sort-exports': ['warn', {sortDir: 'asc', sortExportKindFirst: 'type'}],
@@ -10,7 +10,7 @@ module.exports = {
     },
     {
       extends: ['@myparcel-eslint/eslint-config-prettier-typescript-vue', '@myparcel-eslint/eslint-config-import'],
-      files: ['./**/*.vue'],
+      files: ['**/*.vue'],
       rules: {
         '@typescript-eslint/no-misused-promises': 'off',
         // Disabled because import messes with multiple component blocks, like when using script setup and inheritAttrs.
@@ -28,7 +28,7 @@ module.exports = {
       },
     },
     {
-      files: ['./**/*.ts', './**/*.tsx'],
+      files: ['**/*.ts', '**/*.tsx'],
       extends: ['@myparcel-eslint/eslint-config-prettier-typescript', '@myparcel-eslint/eslint-config-import'],
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
@@ -37,13 +37,13 @@ module.exports = {
       },
     },
     {
-      files: ['./**/*.js', './**/*.mjs'],
+      files: ['**/*.js', '**/*.mjs'],
       parserOptions: {
         sourceType: 'module',
       },
     },
     {
-      files: ['./**/*.js', './**/*.cjs', './**/*.mjs'],
+      files: ['**/*.js', '**/*.cjs', '**/*.mjs'],
       extends: [
         '@myparcel-eslint/eslint-config-node',
         '@myparcel-eslint/eslint-config-esnext',
@@ -52,7 +52,7 @@ module.exports = {
       ],
     },
     {
-      files: ['./**/*.spec.*', './**/*.test.*', './**/__tests__/**', './**/*Test.*'],
+      files: ['**/*.spec.*', '**/*.test.*', '**/__tests__/**', '**/*Test.*'],
       rules: {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-magic-numbers': 'off',

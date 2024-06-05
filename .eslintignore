@@ -1,4 +1,4 @@
 **/dist
 **/tsup.config.bundled_*.mjs
-**/vite.config.ts.timestamp-*
+**/vite.config.ts.timestamp-*.mjs
 node_modules
