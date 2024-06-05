@@ -19,7 +19,7 @@ jobs:
     secrets: inherit
 
   bundlewatch:
-    runs-on: ubuntu-22.04-arm
+    runs-on: ubuntu-arm
     steps:
       - uses: actions/checkout@v4
 
