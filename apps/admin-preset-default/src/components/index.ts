@@ -50,6 +50,8 @@ export {default as DefaultSelectInput} from './DefaultSelectInput.vue';
 
 export {default as DefaultSettingsDivider} from './DefaultSettingsDivider.vue';
 
+export {default as DefaultShippingMethodsInput} from './DefaultShippingMethodsInput.vue';
+
 export {default as DefaultTabNavButton} from './DefaultTabNavButton.vue';
 
 export {default as DefaultTable} from './DefaultTable.vue';

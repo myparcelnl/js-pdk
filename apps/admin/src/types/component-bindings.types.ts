@@ -1,4 +1,4 @@
-import {type Keyable, type Settings, type TriState} from '@myparcel-pdk/common';
+import {type Keyable, type Settings, type ShippingMethodTypeMap, type TriState} from '@myparcel-pdk/common';
 import {type OptionsProp, type PdkElementEmits, type PdkElementProps, type SelectOptionValue} from './form.types';
 import {type ArrayItem} from './common.types';
 
@@ -152,3 +152,15 @@ export type TriStateInputProps = PdkElementProps<
 >;
 
 export type TriStateInputEmits = PdkElementEmits<TriStateInputModelValue>;
+
+/**
+ * @see AdminComponent.ShippingMethodsInput
+ */
+
+export type ShippingMethodsInputModelValue = ShippingMethodTypeMap;
+
+export type ShippingMethodsInputProps<T extends ShippingMethodsInputModelValue = ShippingMethodsInputModelValue> =
+  PdkElementProps<T, OptionsProp<string>>;
+
+export type ShippingMethodsInputEmits<T extends ShippingMethodsInputModelValue = ShippingMethodsInputModelValue> =
+  PdkElementEmits<T>;

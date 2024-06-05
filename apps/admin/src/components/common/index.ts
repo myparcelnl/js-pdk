@@ -4,6 +4,8 @@ export {default as BulkSelectCheckbox} from './BulkSelectCheckbox.vue';
 
 export {default as NotificationContainer} from './NotificationContainer.vue';
 
+export {default as PackageType} from './PackageType.vue';
+
 export {default as PlainElement} from './PlainElement';
 
 export {default as ResetButton} from './ResetButton.vue';

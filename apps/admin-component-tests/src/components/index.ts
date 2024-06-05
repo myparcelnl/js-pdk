@@ -24,6 +24,7 @@ export * from './runRadioInputTest';
 export * from './runRowTest';
 export * from './runSelectInputTest';
 export * from './runSettingsDividerTest';
+export * from './runShippingMethodsInputTest';
 export * from './runTabNavButtonTest';
 export * from './runTableColTest';
 export * from './runTableRowTest';
