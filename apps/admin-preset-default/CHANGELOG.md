@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.2.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.1.0...@myparcel-pdk/admin-preset-default@1.2.0) "@myparcel-pdk/admin-preset-default" (2024-06-05)
+
+
+### Features
+
+* **admin:** add shipping methods input ([#210](https://github.com/myparcelnl/js-pdk/issues/210)) ([79758ad](https://github.com/myparcelnl/js-pdk/commit/79758ad39bd9c0dd5d2258d79f379ac5f1ccc790))
+
+
+
+
 ## [1.1.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.0.0...@myparcel-pdk/admin-preset-default@1.1.0) "@myparcel-pdk/admin-preset-default" (2024-06-01)
 
 

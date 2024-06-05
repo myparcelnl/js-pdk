@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.1.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0...@myparcel-pdk/admin@1.1.0) "@myparcel-pdk/admin" (2024-06-05)
+
+
+### Features
+
+* **admin:** add shipping methods input ([#210](https://github.com/myparcelnl/js-pdk/issues/210)) ([79758ad](https://github.com/myparcelnl/js-pdk/commit/79758ad39bd9c0dd5d2258d79f379ac5f1ccc790))
+
+
+### Bug Fixes
+
+* **admin:** fix vue-query error in order list ([115e103](https://github.com/myparcelnl/js-pdk/commit/115e1034585dd87a59ab350fb416707941492d52))
+
+
+
+
 ## [1.0.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0-alpha.1...@myparcel-pdk/admin@1.0.0) "@myparcel-pdk/admin" (2024-04-11)
 
 
