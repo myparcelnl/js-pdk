@@ -58,14 +58,14 @@
       "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
     },
     "test:coverage": {
-      "inputs": ["test"],
+      "inputs": ["^test"],
       "outputs": ["{projectRoot}/coverage"]
     },
     "test:run": {
-      "inputs": ["test"]
+      "inputs": ["^test"]
     },
     "test:update": {
-      "inputs": ["test"],
+      "inputs": ["^test"],
       "outputs": ["{projectRoot}/src/__tests__/__snapshots__"]
     }
   },
