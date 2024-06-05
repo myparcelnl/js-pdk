@@ -41,12 +41,11 @@
   </div>
 </template>
 
-<script generic="T extends ShippingMethodsInputModelValue" lang="ts" setup>
+<script lang="ts" setup>
 import {
   AdminComponent,
   PackageType,
   type ShippingMethodsInputEmits,
-  type ShippingMethodsInputModelValue,
   type ShippingMethodsInputProps,
   useAdminConfig,
   useLanguage,
@@ -56,8 +55,8 @@ import {isEnumValue} from '@myparcel/ts-utils';
 import {PackageTypeName} from '@myparcel/constants';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<ShippingMethodsInputProps<T>>();
-const emit = defineEmits<ShippingMethodsInputEmits<T>>();
+const props = defineProps<ShippingMethodsInputProps>();
+const emit = defineEmits<ShippingMethodsInputEmits>();
 
 const {translate} = useLanguage();
 
