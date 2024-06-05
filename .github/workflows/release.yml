@@ -17,7 +17,7 @@ jobs:
     secrets: inherit
 
   release:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-22.04-arm
     needs: test
     outputs:
       released: ${{ steps.release.outputs.released }}
@@ -65,7 +65,7 @@ jobs:
 
   deploy:
     needs: release
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-22.04-arm
     permissions:
       pages: write
       id-token: write
@@ -79,7 +79,7 @@ jobs:
   trigger:
     needs: release
     if: needs.release.outputs.released == 'true'
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-22.04-arm
     strategy:
       matrix:
         repo: ${{ fromJSON(vars.PDK_DEPENDENT_REPOS) }}
