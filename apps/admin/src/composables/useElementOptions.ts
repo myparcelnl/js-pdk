@@ -5,7 +5,7 @@ import {type OptionsProp, type PdkElementProps, type SelectInputModelValue, type
 import {useLanguage} from './language';
 
 export interface ElementOptionsContext<T extends SelectInputModelValue> {
-  options: ComputedRef<SelectOptionWithLabel<UnwrapRef<T>>[]>;
+  options: ComputedRef<SelectOptionWithLabel<UnwrapRef<T>, string>[]>;
 }
 
 export const useElementOptions = <

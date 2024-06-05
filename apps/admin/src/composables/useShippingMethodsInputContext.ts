@@ -74,7 +74,7 @@ export const useShippingMethodsInputContext = <T extends ShippingMethodsInputMod
                   value: option.value,
                 },
                 attributes: {
-                  title: translate(shippingMethod.label),
+                  title: shippingMethod.label,
                 },
               }),
             ),

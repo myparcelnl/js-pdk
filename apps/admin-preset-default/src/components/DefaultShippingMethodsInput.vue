@@ -25,7 +25,7 @@
         <PdkTableCol
           component="th"
           :class="config?.cssUtilities?.whitespaceNoWrap">
-          {{ translate(shippingMethod.label) }}
+          {{ shippingMethod.label }}
         </PdkTableCol>
 
         <PdkTableCol
