@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.2.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.2.0...@myparcel-pdk/app-builder@1.2.1) "@myparcel-pdk/app-builder" (2024-06-28)
+
+
+### Bug Fixes
+
+* **app-builder:** make upgrade-self create commit type build by default ([2092c5f](https://github.com/myparcelnl/js-pdk/commit/2092c5fec37239df0c6fe0b25f40b15f1945ca1d))
+
+
+
+
 ## [1.2.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.1.0...@myparcel-pdk/app-builder@1.2.0) "@myparcel-pdk/app-builder" (2024-06-28)
 
 
