@@ -129,7 +129,15 @@ export const upgradeAllBulkCommand = defineBulkCommand({
 export const upgradeSelfCommand = defineBulkCommand({
   name: COMMAND_UPGRADE_SELF_NAME,
   description: `Upgrade ${MYPARCEL_PDK_APP_BUILDER} dependency.`,
-  commands: [[upgradeCommand, {arguments: [MYPARCEL_PDK_APP_BUILDER]}]],
+  commands: [
+    [
+      upgradeCommand,
+      {
+        arguments: [MYPARCEL_PDK_APP_BUILDER],
+        commitType: 'build',
+      },
+    ],
+  ],
 });
 
 export const preReleaseBulkCommand = defineBulkCommand({
