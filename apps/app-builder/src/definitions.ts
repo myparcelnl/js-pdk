@@ -89,6 +89,8 @@ export const upgradeCommand = defineCommand<UpgradeCommandArgs>({
     ['--commit-type <type>', 'Commit type', COMMIT_TYPE_AUTO],
     ['--no-check', 'Skip checking whether the lockfile is modified.'],
     ['--no-commit', 'Skip creating a commit.'],
+    ['--report', 'Output a report of the changes.'],
+    ['--report-file <filename', 'Filename for the report.', 'upgrade-report.json'],
   ],
   args: [['[package]', 'Package to upgrade']],
 });

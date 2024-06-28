@@ -1,4 +1,5 @@
 /* eslint-disable max-lines-per-function */
+import fs from 'fs';
 import {executeCommand} from '../../utils';
 import {type PdkBuilderCommand} from '../../types';
 import {VerbosityLevel} from '../../constants';
@@ -51,6 +52,14 @@ const upgrade: PdkBuilderCommand<InputUpgradeCommandArgs> = async ({env, args, c
   }
 
   logVersions(upgradedEntries, debug);
+
+  if (context.args.report) {
+    debug('Writing report to', context.args.reportFile);
+
+    if (!context.args.dryRun) {
+      fs.writeFileSync(context.args.reportFile, JSON.stringify(upgradedEntries, null, 2), 'utf8');
+    }
+  }
 
   if (args.commit) {
     const commit = createCommitMessage(upgradedEntries, context);

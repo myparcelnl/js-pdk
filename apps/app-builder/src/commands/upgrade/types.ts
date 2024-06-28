@@ -17,6 +17,8 @@ export type UpgradeCommandArgs = CommandArgs & {
   commit?: boolean;
   commitType?: string;
   lockfile?: string;
+  report?: boolean;
+  reportFile: string;
 };
 
 export type InputUpgradeCommandArgs = MakeOptional<
