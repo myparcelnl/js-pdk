@@ -1,4 +1,4 @@
-import {type isOfType, type PromiseOr} from '@myparcel/ts-utils';
+import {type isEnumValue, type isOfType, type PromiseOr} from '@myparcel/ts-utils';
 import {
   type doRequest,
   type fieldsEqual,
@@ -33,6 +33,7 @@ export interface PdkUtils extends AdditionalUtils {
   [PdkUtil.GetAddressField]: typeof getAddressField;
   [PdkUtil.GetElement]: typeof getElement;
   [PdkUtil.GetFieldValue]: typeof getFieldValue;
+  [PdkUtil.IsEnumValue]: typeof isEnumValue;
   [PdkUtil.IsOfType]: typeof isOfType;
   [PdkUtil.SetFieldValue]: typeof setFieldValue;
   [PdkUtil.TriggerEvent]: typeof triggerEvent;

@@ -1,4 +1,4 @@
-import {type FrontendEndpoint} from '@myparcel-pdk/common';
+import {type FrontendEndpoint, type ShippingMethodTypeMap} from '@myparcel-pdk/common';
 import {type PromiseOr} from '@myparcel/ts-utils';
 import {type InputDeliveryOptionsConfiguration} from '@myparcel/delivery-options';
 import {type CarrierName} from '@myparcel/constants';
@@ -10,13 +10,15 @@ import {
 } from './endpoints.types';
 import {type AddressFields} from './address.types';
 
+export type PdkFormData = Record<string, FormDataEntryValue | undefined>;
+
 export type PdkCheckoutConfigInput = Omit<
   PdkCheckoutConfig,
   'selectors' | 'formChange' | 'getFormData' | 'getAddressType' | 'hasDeliveryOptions'
 > & {
   formChange?(callback: () => void): void;
   getAddressType?(value: unknown): AddressType;
-  getFormData?(): Record<string, FormDataEntryValue>;
+  getFormData?(): PdkFormData;
   hasDeliveryOptions?(shippingMethod: string): PromiseOr<boolean>;
   selectors: Omit<PdkCheckoutConfig['selectors'], 'deliveryOptions'> & {
     deliveryOptions?: string;
@@ -60,7 +62,7 @@ export interface PdkCheckoutConfig {
   /**
    * Get the form data.
    */
-  getFormData(): Record<string, FormDataEntryValue>;
+  getFormData(): PdkFormData;
 
   /**
    * Check if the address type is available.
@@ -104,7 +106,7 @@ export type CheckoutSettings = {
   };
 
   // Delivery options
-  allowedShippingMethods: string[];
+  allowedShippingMethods: ShippingMethodTypeMap;
   hasDeliveryOptions: boolean;
   hiddenInputName: string;
 

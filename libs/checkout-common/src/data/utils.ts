@@ -6,6 +6,7 @@ export enum PdkUtil {
   GetAddressFieldValue = 'getAddressFieldValue',
   GetElement = 'getElement',
   GetFieldValue = 'getFieldValue',
+  IsEnumValue = 'isEnumValue',
   IsOfType = 'isOfType',
   SetFieldValue = 'setFieldValue',
   TriggerEvent = 'triggerEvent',

@@ -8,6 +8,7 @@ export const mockDeliveryOptionsElement = (): void => {
   const wrapper = document.createElement('div');
   const element = document.createElement('div');
 
+  form.id = 'test-wrapper';
   wrapper.id = 'delivery-options-wrapper';
   element.id = 'delivery-options';
 

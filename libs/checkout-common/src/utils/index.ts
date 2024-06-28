@@ -1,3 +1,4 @@
+export * from './getEnabledShippingMethods';
 export * from './getFrontendContext';
 export * from './global';
 export * from './hasAddressType';

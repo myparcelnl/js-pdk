@@ -1,5 +1,5 @@
 // eslint-disable-next-line max-lines-per-function
-import {isOfType} from '@myparcel/ts-utils';
+import {isEnumValue, isOfType} from '@myparcel/ts-utils';
 import {
   doRequest,
   fieldsEqual,
@@ -66,6 +66,7 @@ export const setupGlobals = (config: PdkCheckoutConfig): void => {
       getAddressFieldValue,
       getElement,
       getFieldValue,
+      isEnumValue,
       isOfType,
       setFieldValue,
       triggerEvent,
