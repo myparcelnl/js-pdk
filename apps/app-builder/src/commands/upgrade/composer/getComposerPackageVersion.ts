@@ -14,7 +14,7 @@ export const getComposerPackageVersion = async (context: UpgradeSubContext): Pro
   return [
     {
       name: json.name,
-      repository: parseGitHubUrl(json.source.url),
+      repository: parseGitHubUrl(json.source?.url ?? ''),
       version: json.versions[0],
     },
   ] satisfies ParsedEntry[];
