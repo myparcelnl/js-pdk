@@ -2,6 +2,21 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.2.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.1.0...@myparcel-pdk/app-builder@1.2.0) "@myparcel-pdk/app-builder" (2024-06-28)
+
+
+### Features
+
+* **app-builder:** add flag to output a file with applied updates ([7c63a55](https://github.com/myparcelnl/js-pdk/commit/7c63a553182caf81de0b566efc47ec76dc9e3743))
+
+
+### Bug Fixes
+
+* **app-builder:** fix error on update with missing composer source field ([0334013](https://github.com/myparcelnl/js-pdk/commit/033401364699d50f3a889038ff221ad5d05b2141))
+
+
+
+
 ## [1.1.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.0.0...@myparcel-pdk/app-builder@1.1.0) "@myparcel-pdk/app-builder" (2024-04-12)
 
 
