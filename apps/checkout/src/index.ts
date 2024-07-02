@@ -9,6 +9,7 @@ export type {
   PdkCheckoutConfig,
   PdkCheckoutConfigInput,
   PdkCheckoutForm,
+  PdkFormData,
   StoreCallbackUpdate,
 } from '@myparcel-pdk/checkout-common';
 
@@ -29,6 +30,7 @@ export {
   PdkUtil as Util,
   globals as _,
   createPdkCheckout,
+  getEnabledShippingMethods,
   useCheckoutStore,
   useEvent,
   usePdkCheckout,

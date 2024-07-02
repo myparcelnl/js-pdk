@@ -1,5 +1,6 @@
 import {vi} from 'vitest';
 import {FrontendEndpoint} from '@myparcel-pdk/common';
+import {PackageTypeName} from '@myparcel/constants';
 import {type CheckoutAppCheckoutContext} from '../types';
 
 export const getMockCheckoutContext = vi.fn(
@@ -22,7 +23,14 @@ export const getMockCheckoutContext = vi.fn(
           },
           ...context?.settings?.actions,
         },
-        allowedShippingMethods: [],
+        allowedShippingMethods: {
+          '-1': ['standard', 'free_shipping'],
+          [PackageTypeName.Package]: ['flat_rate:1'],
+          [PackageTypeName.PackageSmall]: ['flat_rate:2'],
+          [PackageTypeName.Mailbox]: ['flat_rate:3', 'flat_rate:4'],
+          [PackageTypeName.DigitalStamp]: ['flat_rate:5'],
+          [PackageTypeName.Letter]: ['flat_rate:6'],
+        },
         carriersWithTaxFields: [],
         countriesWithSeparateAddressFields: [],
         hiddenInputName: '',

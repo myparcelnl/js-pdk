@@ -2,6 +2,7 @@ export * as tests from './__tests__';
 export * from './constants';
 export * from './createPdkCheckout';
 export * from './data';
+export * from './defaults';
 export * as globals from './globals';
 export * from './init';
 export * from './listeners';
