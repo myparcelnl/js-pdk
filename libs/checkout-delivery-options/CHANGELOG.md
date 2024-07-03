@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.1...@myparcel-pdk/checkout-delivery-options@1.0.2) "@myparcel-pdk/checkout-delivery-options" (2024-07-03)
+
+
+### Bug Fixes
+
+* **checkout:** correctly switch package type based on shipping methods ([#212](https://github.com/myparcelnl/js-pdk/issues/212)) ([f25ebed](https://github.com/myparcelnl/js-pdk/commit/f25ebedbb0f6e9d5601af3d4c46f995fc08019ef))
+
+
+
+
 ## [1.0.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.0-alpha.27...@myparcel-pdk/checkout-delivery-options@1.0.0) "@myparcel-pdk/checkout-delivery-options" (2024-04-11)
 
 
