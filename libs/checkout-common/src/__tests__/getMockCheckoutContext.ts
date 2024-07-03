@@ -1,7 +1,9 @@
 import {vi} from 'vitest';
 import {FrontendEndpoint} from '@myparcel-pdk/common';
+import {KEY_CONFIG} from '@myparcel/delivery-options';
 import {PackageTypeName} from '@myparcel/constants';
 import {type CheckoutAppCheckoutContext} from '../types';
+import {getMockDeliveryOptionsConfig} from './getMockDeliveryOptionsConfig';
 
 export const getMockCheckoutContext = vi.fn(
   (context?: Partial<CheckoutAppCheckoutContext>): CheckoutAppCheckoutContext => {
@@ -36,6 +38,7 @@ export const getMockCheckoutContext = vi.fn(
         hiddenInputName: '',
         ...context?.settings,
       },
+      [KEY_CONFIG]: getMockDeliveryOptionsConfig(),
       ...context,
     } as CheckoutAppCheckoutContext;
   },

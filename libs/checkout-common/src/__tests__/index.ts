@@ -1,5 +1,6 @@
 export * from './constants';
 export * from './getMockCheckoutContext';
+export * from './getMockDeliveryOptionsConfig';
 export * from './getMockFormData';
 export * from './getMockPdkCheckoutConfig';
 export * from './mockDeliveryOptionsElement';

@@ -2201,6 +2201,7 @@ __metadata:
     "@myparcel-pdk/common": "workspace:^1.1.0"
     "@myparcel/constants": "npm:^2.0.0"
     "@myparcel/delivery-options": "npm:^6.0.0"
+    radash: "npm:^12.1.0"
     typescript: "npm:^5.2.2"
     vitest: "npm:^1.0.0"
   languageName: unknown
@@ -13030,7 +13031,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"radash@npm:^12.0.0":
+"radash@npm:^12.0.0, radash@npm:^12.1.0":
   version: 12.1.0
   resolution: "radash@npm:12.1.0"
   checksum: 10c0/c89e2345e06017aa6ecc090c1a72d18720b70ad73608dd2a80b8994789acb1108b5b481bef18e4b489eb541a76dd8e0924d6ec9717939cc8634179a1153ad07c
