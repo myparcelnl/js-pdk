@@ -28,12 +28,15 @@ export const updateDeliveryOptions: StoreCallbackUpdate<CheckoutStoreState> = as
     await updateContext();
   }
 
-  await deliveryOptions.set({
-    enabled: await shippingMethodHasDeliveryOptions(newState.form[PdkField.ShippingMethod]),
-    configuration: {
-      address: getDeliveryOptionsAddress(),
-      config: deliveryOptions.state.settings.updateDeliveryOptions(deliveryOptions.state),
-      strings: deliveryOptions.state.configuration.strings,
-    },
-  });
+  const enabled = await shippingMethodHasDeliveryOptions(newState.form[PdkField.ShippingMethod]);
+
+  const config = deliveryOptions.state.settings.updateDeliveryOptions(deliveryOptions.state);
+
+  const configuration = {
+    address: getDeliveryOptionsAddress(),
+    config,
+    strings: deliveryOptions.state.configuration.strings,
+  };
+
+  await deliveryOptions.set({enabled, configuration});
 };
