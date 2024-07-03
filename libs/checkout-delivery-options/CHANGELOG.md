@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.0.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.2...@myparcel-pdk/checkout-delivery-options@1.0.3) "@myparcel-pdk/checkout-delivery-options" (2024-07-03)
+
+
+### Bug Fixes
+
+* **checkout:** fix package type getting stuck ([07dee7e](https://github.com/myparcelnl/js-pdk/commit/07dee7e48336399460b45b294c431ce55742c5b6))
+
+
+
+
 ## [1.0.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.0.1...@myparcel-pdk/checkout-delivery-options@1.0.2) "@myparcel-pdk/checkout-delivery-options" (2024-07-03)
 
 
