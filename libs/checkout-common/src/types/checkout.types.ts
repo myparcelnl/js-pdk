@@ -1,4 +1,4 @@
-import {type FrontendEndpoint, type ShippingMethodTypeMap} from '@myparcel-pdk/common';
+import {type FrontendEndpoint, type ShippingMethodTypeMap, type TriState} from '@myparcel-pdk/common';
 import {type PromiseOr} from '@myparcel/ts-utils';
 import {type InputDeliveryOptionsConfiguration} from '@myparcel/delivery-options';
 import {type CarrierName} from '@myparcel/constants';
@@ -106,7 +106,7 @@ export type CheckoutSettings = {
   };
 
   // Delivery options
-  allowedShippingMethods: ShippingMethodTypeMap;
+  allowedShippingMethods: Omit<ShippingMethodTypeMap, TriState.Off>;
   hasDeliveryOptions: boolean;
   hiddenInputName: string;
 

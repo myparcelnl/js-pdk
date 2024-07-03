@@ -39,7 +39,7 @@ export const createDeliveryOptionsStore = (settings?: CheckoutDeliveryOptionsSet
         /**
          * The original package type that was passed initially. Used to reset the package type when the shipping method changes.
          */
-        originalPackageType: config[CarrierSetting.PackageType],
+        originalPackageType: config?.[CarrierSetting.PackageType],
 
         /**
          * Output data
