@@ -21,6 +21,7 @@
       <excludePattern pattern=".*cache" />
       <excludePattern pattern=".tmp" />
       <excludePattern pattern=".nx" />
+      <excludePattern pattern="dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
