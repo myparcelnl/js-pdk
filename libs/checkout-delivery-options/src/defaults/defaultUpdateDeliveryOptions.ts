@@ -6,13 +6,13 @@ export const defaultUpdateDeliveryOptions = ((state) => {
   const deliveryOptions = useDeliveryOptionsStore();
   const baseConfig = state.configuration.config;
 
-  return {
-    ...Object.create(baseConfig),
+  /**
+   * Try to get the package type based on shipping method. If it's not found, use the original package type.
+   */
+  const packageType = deliveryOptions.state.settings.getPackageType() ?? deliveryOptions.state.originalPackageType;
 
-    /**
-     * Try to get the package type based on shipping method. If it's not found, use the passed package type.
-     */
-    [CarrierSetting.PackageType]:
-      deliveryOptions.state.settings.getPackageType() ?? baseConfig[CarrierSetting.PackageType],
+  return {
+    ...baseConfig,
+    [CarrierSetting.PackageType]: packageType,
   };
 }) satisfies CheckoutDeliveryOptionsSettings['updateDeliveryOptions'];

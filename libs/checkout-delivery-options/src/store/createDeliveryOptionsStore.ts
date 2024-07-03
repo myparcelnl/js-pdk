@@ -1,4 +1,5 @@
 import {PdkUtil, StoreListener, useCheckoutStore, useUtil} from '@myparcel-pdk/checkout-common';
+import {CarrierSetting} from '@myparcel/delivery-options';
 import {getDeliveryOptionsAddress, getResolvedSettings} from '../utils';
 import {type CheckoutDeliveryOptionsSettingsInput, type DeliveryOptionsStoreState} from '../types';
 import {showOrHideDeliveryOptions, updateConfigOrAddress} from '../listeners';
@@ -34,6 +35,11 @@ export const createDeliveryOptionsStore = (settings?: CheckoutDeliveryOptionsSet
          * Hidden input that is used to pass the output data to the backend.
          */
         hiddenInput: undefined,
+
+        /**
+         * The original package type that was passed initially. Used to reset the package type when the shipping method changes.
+         */
+        originalPackageType: config[CarrierSetting.PackageType],
 
         /**
          * Output data
