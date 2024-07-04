@@ -25,7 +25,11 @@
         <PdkTableCol
           component="th"
           :class="config?.cssUtilities?.whitespaceNoWrap">
-          {{ shippingMethod.label }}
+          <p v-text="shippingMethod.label" />
+
+          <small
+            v-if="shippingMethod.description"
+            v-html="translate(shippingMethod.description)" />
         </PdkTableCol>
 
         <PdkTableCol
@@ -59,7 +63,7 @@ import {
   useShippingMethodsInputContext,
 } from '@myparcel-pdk/admin';
 import {isEnumValue} from '@myparcel/ts-utils';
-import {PackageTypeName} from '@myparcel/constants';
+import {PackageTypeName} from '@myparcel/constants'; // eslint-disable-next-line vue/no-unused-properties
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<ShippingMethodsInputProps>();

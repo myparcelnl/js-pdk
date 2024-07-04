@@ -1,7 +1,7 @@
 import {type Keyable, type SortType} from '@myparcel-pdk/common';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {type AdminIcon} from '../data';
-import {type Translation} from './language.types';
+import {type Translatable, type Translation} from './language.types';
 
 export type GlobalFieldProps = {
   description?: Translation;
@@ -40,6 +40,7 @@ interface BaseSelectOption<Value extends SelectOptionValue = SelectOptionValue> 
   disabled?: boolean;
   icon?: string | AdminIcon;
   image?: string;
+  description?: Translatable;
   value: Value;
 }
 
