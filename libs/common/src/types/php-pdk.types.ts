@@ -345,8 +345,9 @@ export namespace Plugin {
   export type GetOrdersEndpointRequest = AbstractEndpointRequest;
 
   export type ModelContextContextBag = {
-    global: ModelContextGlobalContext;
+    checkout?: ModelContextCheckoutContext;
     dynamic?: ModelContextDynamicContext;
+    global: ModelContextGlobalContext;
     orderData?: OrderDataContextCollection;
     pluginSettingsView?: ModelContextPluginSettingsViewContext;
     productData?: ProductDataContextCollection;
