@@ -19,6 +19,7 @@ export type UpgradeCommandArgs = CommandArgs & {
   lockfile?: string;
   report?: boolean;
   reportFile: string;
+  reportOverwrite?: boolean;
 };
 
 export type InputUpgradeCommandArgs = MakeOptional<

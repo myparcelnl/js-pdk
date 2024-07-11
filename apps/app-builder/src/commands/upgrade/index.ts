@@ -53,11 +53,20 @@ const upgrade: PdkBuilderCommand<InputUpgradeCommandArgs> = async ({env, args, c
 
   logVersions(upgradedEntries, debug);
 
-  if (context.args.report) {
-    debug('Writing report to', context.args.reportFile);
+  const {dryRun, report, reportOverwrite, reportFile} = context.args;
 
-    if (!context.args.dryRun) {
-      fs.writeFileSync(context.args.reportFile, JSON.stringify(upgradedEntries, null, 2), 'utf8');
+  if (report) {
+    debug('Writing report to', reportFile);
+
+    if (!dryRun) {
+      if (!reportOverwrite && fs.existsSync(reportFile) && fs.statSync(reportFile).isFile()) {
+        const existingFile = fs.readFileSync(reportFile, 'utf8');
+        const existingReport = JSON.parse(existingFile);
+
+        upgradedEntries.push(...existingReport);
+      }
+
+      fs.writeFileSync(reportFile, JSON.stringify(upgradedEntries, null, 2), 'utf8');
     }
   }
 

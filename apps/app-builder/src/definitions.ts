@@ -90,7 +90,8 @@ export const upgradeCommand = defineCommand<UpgradeCommandArgs>({
     ['--no-check', 'Skip checking whether the lockfile is modified.'],
     ['--no-commit', 'Skip creating a commit.'],
     ['--report', 'Output a report of the changes.'],
-    ['--report-file <filename', 'Filename for the report.', 'upgrade-report.json'],
+    ['--report-file <filename>', 'Filename for the report.', 'upgrade-report.json'],
+    ['--report-overwrite', 'Overwrite existing report file'],
   ],
   args: [['[package]', 'Package to upgrade']],
 });
