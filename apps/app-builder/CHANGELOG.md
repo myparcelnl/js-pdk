@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.3.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.2.1...@myparcel-pdk/app-builder@1.3.0) "@myparcel-pdk/app-builder" (2024-07-11)
+
+
+### Features
+
+* **app-builder:** add option to overwrite reports ([fc3040b](https://github.com/myparcelnl/js-pdk/commit/fc3040bf59cafad8cacc0ab660b8e4900507549d))
+
+
+
+
 ## [1.2.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.2.0...@myparcel-pdk/app-builder@1.2.1) "@myparcel-pdk/app-builder" (2024-06-28)
 
 
