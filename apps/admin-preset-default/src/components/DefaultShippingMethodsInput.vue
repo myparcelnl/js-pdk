@@ -63,7 +63,7 @@ import {
   useShippingMethodsInputContext,
 } from '@myparcel-pdk/admin';
 import {isEnumValue} from '@myparcel/ts-utils';
-import {PackageTypeName} from '@myparcel/constants'; // eslint-disable-next-line vue/no-unused-properties
+import {PackageTypeName} from '@myparcel/constants';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<ShippingMethodsInputProps>();
