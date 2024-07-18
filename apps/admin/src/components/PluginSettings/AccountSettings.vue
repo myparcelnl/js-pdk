@@ -38,6 +38,8 @@ import {instantiateAction} from '../../services';
 import {AdminComponent} from '../../data';
 import {useLanguage, useStoreContextQuery} from '../../composables';
 import {
+  debugDownloadLogsAction,
+  debugSendLogsAction,
   deleteAccountAction,
   refreshAccountAction,
   updateAccountAction,
@@ -46,10 +48,11 @@ import {
 } from '../../actions';
 import WebhooksStatus from './WebhooksStatus.vue';
 import EditApiKeyForm from './EditApiKeyForm.vue';
+import DebuggingSettings from './DebuggingSettings.vue';
 
 const actionStore = useActionStore();
 
-actionStore.register([updateAccountAction, deleteAccountAction]);
+actionStore.register([updateAccountAction, deleteAccountAction, debugDownloadLogsAction, debugSendLogsAction]);
 
 const contextQuery = useStoreContextQuery();
 
@@ -81,6 +84,12 @@ const tabs = computed(() => {
       name: 'webhooks',
       component: WebhooksStatus,
       label: 'button_webhooks_edit',
+    });
+
+    array.push({
+      name: 'debugging',
+      component: DebuggingSettings,
+      label: 'button_debugging_edit',
     });
   }
 

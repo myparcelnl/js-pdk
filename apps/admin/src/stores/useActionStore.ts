@@ -34,6 +34,7 @@ export const useActionStore = defineStore('actions', () => {
       .filter((action) => !get(getActionIdentifier(action)))
       .forEach((action) => {
         const resolvedAction = createAction(action);
+        console.warn(action.name, resolvedAction);
 
         // @ts-expect-error todo
         actions.value.push(resolvedAction);
@@ -45,6 +46,7 @@ export const useActionStore = defineStore('actions', () => {
   };
 
   const dispatch = <A extends string | AdminAction>(action: A, parameters?: ActionParameters<A>): PromiseOr<void> => {
+    console.log(action, parameters);
     const resolvedAction = get(action);
 
     if (!resolvedAction) {

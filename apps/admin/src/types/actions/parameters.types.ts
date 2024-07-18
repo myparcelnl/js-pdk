@@ -69,6 +69,9 @@ export interface EndpointMutationInputMap extends Record<BackendEndpoint, object
   [BackendEndpoint.CreateWebhooks]: HooksParameters;
   [BackendEndpoint.DeleteWebhooks]: HooksParameters;
   [BackendEndpoint.FetchWebhooks]: never;
+
+  [BackendEndpoint.DebugDownloadLogs]: never;
+  [BackendEndpoint.DebugSendLogs]: never;
 }
 
 export type ActionInput<E extends BackendEndpoint> = EndpointMutationInputMap[E];

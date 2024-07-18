@@ -170,6 +170,17 @@ interface DeleteWebhooksDefinition extends PdkEndpointDefinition {
   response: WebhookDefinition[];
 }
 
+interface DebugDownloadLogsDefinition extends PdkEndpointDefinition {
+  name: BackendEndpoint.DebugDownloadLogs;
+  response: Blob;
+  formattedResponse: Blob;
+}
+
+interface DebugSendLogsDefinition extends PdkEndpointDefinition {
+  name: BackendEndpoint.DebugSendLogs;
+  response: undefined;
+}
+
 export type BackendEndpointDefinition =
   | CreateWebhooksDefinition
   | DeleteAccountDefinition
@@ -187,7 +198,9 @@ export type BackendEndpointDefinition =
   | UpdateOrdersDefinition
   | UpdatePluginSettingsDefinition
   | UpdateProductSettingsDefinition
-  | UpdateShipmentsDefinition;
+  | UpdateShipmentsDefinition
+  | DebugDownloadLogsDefinition
+  | DebugSendLogsDefinition;
 
 export type BackendEndpointOptions<N extends BackendEndpoint> = Omit<
   ExtractEndpointDefinition<N, BackendEndpointDefinition>,

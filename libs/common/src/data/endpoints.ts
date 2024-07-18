@@ -83,6 +83,9 @@ export enum BackendEndpoint {
   CreateWebhooks = 'createWebhooks',
   DeleteWebhooks = 'deleteWebhooks',
   FetchWebhooks = 'fetchWebhooks',
+
+  DebugDownloadLogs = 'debugDownloadLogs',
+  DebugSendLogs = 'debugSendLogs',
 }
 
 /**
