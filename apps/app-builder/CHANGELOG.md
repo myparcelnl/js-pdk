@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.3.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.3.0...@myparcel-pdk/app-builder@1.3.1) "@myparcel-pdk/app-builder" (2024-07-24)
+
+
+### Bug Fixes
+
+* **app-builder:** remove composer install from scope php action ([4e476b5](https://github.com/myparcelnl/js-pdk/commit/4e476b5d83bd5af60a8e763eced0190cf25b4874))
+
+
+
+
 ## [1.3.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.2.1...@myparcel-pdk/app-builder@1.3.0) "@myparcel-pdk/app-builder" (2024-07-11)
 
 
