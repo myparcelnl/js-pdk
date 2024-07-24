@@ -5,16 +5,9 @@ import {resolveString} from '../../utils';
 import {type PdkBuilderContext} from '../../types';
 import {fsModifyingMethodSpies} from '../../__tests__/spies/fs';
 import {mockFileSystemAndCreateContext} from '../../__tests__/mockFileSystemAndCreateContext';
-import {MOCK_ROOT_DIR} from '../../__tests__/constants';
 import {PACKAGE_NAME} from './constants';
 
 const mockStdout = vi.fn(() => '');
-
-const ARGS_COMPOSER_INSTALL = [
-  'composer',
-  expect.arrayContaining(['install', '--no-dev']),
-  expect.objectContaining({cwd: expect.stringContaining(MOCK_ROOT_DIR)}),
-];
 
 const getScoperInstallArgs = (context: PdkBuilderContext) => {
   const {installDir, version} = context.config.phpScoper;
@@ -51,7 +44,7 @@ vi.mock('child_process', () => ({
 
 describe('command: scopePhp', () => {
   it("installs php scoper if it isn't installed yet", async (ctx) => {
-    expect.assertions(4);
+    expect.assertions(3);
     const INSTALL_DIR = '.scoped/php-scoper';
 
     const context = await mockFileSystemAndCreateContext(
@@ -77,14 +70,13 @@ describe('command: scopePhp', () => {
     await scopePhp(context);
     const {outDir, vendorOutDir} = context.config.phpScoper;
 
-    expect(child_process.spawnSync).toHaveBeenNthCalledWith(1, ...ARGS_COMPOSER_INSTALL);
-    expect(child_process.spawnSync).toHaveBeenNthCalledWith(2, ...getScoperInstallArgs(context));
-    expect(child_process.spawnSync).toHaveBeenNthCalledWith(3, ...getScoperRunArgs(vendorOutDir, context));
-    expect(child_process.spawnSync).toHaveBeenNthCalledWith(4, ...getScoperRunArgs(outDir, context));
+    expect(child_process.spawnSync).toHaveBeenNthCalledWith(1, ...getScoperInstallArgs(context));
+    expect(child_process.spawnSync).toHaveBeenNthCalledWith(2, ...getScoperRunArgs(vendorOutDir, context));
+    expect(child_process.spawnSync).toHaveBeenNthCalledWith(3, ...getScoperRunArgs(outDir, context));
   });
 
   it('skips install if php scoper is already installed', async (ctx) => {
-    expect.assertions(3);
+    expect.assertions(2);
     const context = await mockFileSystemAndCreateContext(
       ctx,
       {
@@ -109,8 +101,7 @@ describe('command: scopePhp', () => {
     const {outDir} = context.config.phpScoper;
 
     expect(child_process.spawnSync).not.toHaveBeenCalledWith(...getScoperInstallArgs(context));
-    expect(child_process.spawnSync).toHaveBeenNthCalledWith(1, ...ARGS_COMPOSER_INSTALL);
-    expect(child_process.spawnSync).toHaveBeenNthCalledWith(2, ...getScoperRunArgs(outDir, context));
+    expect(child_process.spawnSync).toHaveBeenNthCalledWith(1, ...getScoperRunArgs(outDir, context));
   });
 
   it('does not do anything if php scoper is disabled', async (ctx) => {

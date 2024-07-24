@@ -1,18 +1,17 @@
 import path from 'path';
-import {composerInstall, exists, resolveString, usesPhpScoper} from '../../utils';
+import {exists, resolveString, usesPhpScoper} from '../../utils';
 import {type PdkBuilderCommand} from '../../types';
 import {runPhpScoper} from './runPhpScoper';
 import {installPhpScoper} from './installPhpScoper';
 
 const scopePhp: PdkBuilderCommand = async (context) => {
-  const {env, config, args, debug} = context;
+  const {env, config, debug} = context;
   const {vendorConfigFile, outDir, vendorOutDir} = config.phpScoper;
 
   if (!(await usesPhpScoper(context))) {
     return;
   }
 
-  await composerInstall(context, ['--no-dev']);
   await installPhpScoper(context);
 
   debug('Scoping php files...');
