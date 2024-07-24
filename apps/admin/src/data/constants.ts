@@ -71,5 +71,4 @@ export enum AdminAction {
   WebhooksFetch = 'webhooksFetch',
 
   DebugDownloadLogs = 'debugDownloadLogs',
-  DebugSendLogs = 'debugSendLogs',
 }

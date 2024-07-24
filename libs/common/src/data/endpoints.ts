@@ -85,7 +85,6 @@ export enum BackendEndpoint {
   FetchWebhooks = 'fetchWebhooks',
 
   DebugDownloadLogs = 'debugDownloadLogs',
-  DebugSendLogs = 'debugSendLogs',
 }
 
 /**

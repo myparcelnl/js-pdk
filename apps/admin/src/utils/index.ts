@@ -18,3 +18,4 @@ export * from './translations';
 export * from './triStateToBoolean';
 export * from './unprefixComponent';
 export * from './validateId';
+export {downloadBlob} from './downloadBlob';

@@ -27,5 +27,4 @@ export type BackendQueryEndpoints =
   | BackendEndpoint.FetchProducts
   | BackendEndpoint.FetchShipments
   | BackendEndpoint.FetchWebhooks
-  | BackendEndpoint.DebugDownloadLogs
-  | BackendEndpoint.DebugSendLogs;
+  | BackendEndpoint.DebugDownloadLogs;

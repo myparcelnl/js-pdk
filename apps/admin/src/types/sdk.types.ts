@@ -176,11 +176,6 @@ interface DebugDownloadLogsDefinition extends PdkEndpointDefinition {
   formattedResponse: Blob;
 }
 
-interface DebugSendLogsDefinition extends PdkEndpointDefinition {
-  name: BackendEndpoint.DebugSendLogs;
-  response: undefined;
-}
-
 export type BackendEndpointDefinition =
   | CreateWebhooksDefinition
   | DeleteAccountDefinition
@@ -199,8 +194,7 @@ export type BackendEndpointDefinition =
   | UpdatePluginSettingsDefinition
   | UpdateProductSettingsDefinition
   | UpdateShipmentsDefinition
-  | DebugDownloadLogsDefinition
-  | DebugSendLogsDefinition;
+  | DebugDownloadLogsDefinition;
 
 export type BackendEndpointOptions<N extends BackendEndpoint> = Omit<
   ExtractEndpointDefinition<N, BackendEndpointDefinition>,

@@ -39,7 +39,6 @@ import {AdminComponent} from '../../data';
 import {useLanguage, useStoreContextQuery} from '../../composables';
 import {
   debugDownloadLogsAction,
-  debugSendLogsAction,
   deleteAccountAction,
   refreshAccountAction,
   updateAccountAction,
@@ -52,7 +51,7 @@ import DebuggingSettings from './DebuggingSettings.vue';
 
 const actionStore = useActionStore();
 
-actionStore.register([updateAccountAction, deleteAccountAction, debugDownloadLogsAction, debugSendLogsAction]);
+actionStore.register([updateAccountAction, deleteAccountAction, debugDownloadLogsAction]);
 
 const contextQuery = useStoreContextQuery();
 

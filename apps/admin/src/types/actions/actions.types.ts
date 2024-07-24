@@ -35,7 +35,6 @@ export interface AdminActionEndpointMap extends Record<AdminAction, BackendEndpo
   [AdminAction.WebhooksDelete]: BackendEndpoint.DeleteWebhooks;
   [AdminAction.WebhooksFetch]: BackendEndpoint.FetchWebhooks;
   [AdminAction.DebugDownloadLogs]: BackendEndpoint.DebugDownloadLogs;
-  [AdminAction.DebugSendLogs]: BackendEndpoint.DebugSendLogs;
 }
 
 export type EndpointAdminActionMap = ReverseMap<AdminActionEndpointMap>;
