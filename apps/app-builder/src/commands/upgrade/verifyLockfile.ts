@@ -1,5 +1,5 @@
 import {UpgradeMode, type UpgradeSubContext} from './types';
-import {getDefaultNodeLockfilePath} from './node/getDefaultNodeLockfilePath';
+import {getDefaultNodeLockfilePath} from './node';
 import {ensureCleanLockfile} from './ensureCleanLockfile';
 
 export const verifyLockfile = async (context: UpgradeSubContext): Promise<string> => {
