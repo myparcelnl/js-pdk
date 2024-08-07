@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.1.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.1.0...@myparcel-pdk/admin-component-tests@1.1.1) "@myparcel-pdk/admin-component-tests" (2024-08-07)
+
+
+### Bug Fixes
+
+* **tests:** install missing vtu wrapper plugin ([e36ce0a](https://github.com/myparcelnl/js-pdk/commit/e36ce0a0450cfec6aac178bb09c0b94933d206c1))
+
+
+
+
 ## [1.1.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-component-tests@1.0.0...@myparcel-pdk/admin-component-tests@1.1.0) "@myparcel-pdk/admin-component-tests" (2024-06-05)
 
 
