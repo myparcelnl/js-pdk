@@ -15,7 +15,9 @@ import {
   COMMAND_TRANSFORM_NAME,
   COMMAND_TRANSLATIONS_NAME,
   COMMAND_UPGRADE_ALL_NAME,
+  COMMAND_UPGRADE_JS_NAME,
   COMMAND_UPGRADE_NAME,
+  COMMAND_UPGRADE_PHP_NAME,
   COMMAND_UPGRADE_SELF_NAME,
   COMMAND_ZIP_NAME,
   COMMIT_TYPE_AUTO,
@@ -115,6 +117,18 @@ export const buildBulkCommand = defineBulkCommand({
   commands: [cleanCommand, scopePhpCommand, ...CORE_COMMANDS],
 });
 
+export const upgradePhpBulkCommand = defineBulkCommand({
+  name: COMMAND_UPGRADE_PHP_NAME,
+  description: 'Upgrade php pdk dependencies.',
+  commands: [[upgradeCommand, {arguments: [MYPARCEL_PDK_PACKAGIST_NAME]}]],
+});
+
+export const upgradeJsBulkCommand = defineBulkCommand({
+  name: COMMAND_UPGRADE_JS_NAME,
+  description: 'Upgrade js pdk dependencies.',
+  commands: [[upgradeCommand, {arguments: [MYPARCEL_PDK_NPM_GLOB]}]],
+});
+
 export const upgradeAllBulkCommand = defineBulkCommand({
   name: COMMAND_UPGRADE_ALL_NAME,
   description: 'Upgrade all pdk dependencies.',
@@ -168,8 +182,10 @@ export const ALL_COMMANDS: readonly CommandDefinition[] = Object.freeze([
 
 export const ALL_BULK_COMMANDS: readonly BulkCommandDefinition[] = Object.freeze([
   buildBulkCommand,
-  upgradeSelfCommand,
-  upgradeAllBulkCommand,
   preReleaseBulkCommand,
   releaseBulkCommand,
+  upgradeAllBulkCommand,
+  upgradeJsBulkCommand,
+  upgradePhpBulkCommand,
+  upgradeSelfCommand,
 ]);

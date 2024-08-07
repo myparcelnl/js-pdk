@@ -26,6 +26,10 @@ export const COMMAND_TRANSLATIONS_NAME = 'translations';
 
 export const COMMAND_UPGRADE_NAME = 'upgrade';
 
+export const COMMAND_UPGRADE_PHP_NAME = 'upgrade-php';
+
+export const COMMAND_UPGRADE_JS_NAME = 'upgrade-js';
+
 export const COMMAND_UPGRADE_ALL_NAME = 'upgrade-all';
 
 export const COMMAND_UPGRADE_SELF_NAME = 'upgrade-self';
