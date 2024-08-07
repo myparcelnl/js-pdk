@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.4.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.3.1...@myparcel-pdk/app-builder@1.4.0) "@myparcel-pdk/app-builder" (2024-08-07)
+
+
+### Features
+
+* **app-builder:** add separate php and js upgrade commands ([6070597](https://github.com/myparcelnl/js-pdk/commit/6070597e815a66f464ef32760ba17762e4e0f187))
+
+
+
+
 ## [1.3.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.3.0...@myparcel-pdk/app-builder@1.3.1) "@myparcel-pdk/app-builder" (2024-07-24)
 
 
