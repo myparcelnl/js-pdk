@@ -1,15 +1,16 @@
-import {type ComponentMountingOptions} from '@vue/test-utils';
-import {AdminIcon} from '@myparcel-pdk/admin';
+import {AdminComponent, AdminIcon} from '@myparcel-pdk/admin';
 import {type PartialComponentTest} from '../types';
-import {runCommonComponentTests, runHasPropTest} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runIconTest = ((component) => {
-  const options = {
+  const suite = new TestSuite(AdminComponent.Icon, component);
+
+  suite.setOptions({
     props: {
       icon: AdminIcon.ArrowUp,
     },
-  } satisfies ComponentMountingOptions<any>;
+  });
 
-  runCommonComponentTests(component, options);
-  runHasPropTest(component, options, 'icon');
+  suite.runCommonComponentTests();
+  suite.runHasPropTest('icon');
 }) satisfies PartialComponentTest;

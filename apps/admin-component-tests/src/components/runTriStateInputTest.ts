@@ -1,13 +1,15 @@
 import {TriState} from '@myparcel-pdk/common';
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests, runCommonInputTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runTriStateInputTest = ((component) => {
-  const options = createInputOptions(TriState.On);
+  const suite = new TestSuite(AdminComponent.SelectInput, component);
 
-  runCommonComponentTests(component, options);
-  runCommonInputTests(component, options);
+  suite.createInputOptions(TriState.On);
+
+  suite.runCommonComponentTests();
+  suite.runCommonInputTests();
 
   // TODO: write more tests
 }) satisfies AdminComponentTest;

@@ -1,9 +1,8 @@
 import {expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
-import {type SelectOption} from '@myparcel-pdk/admin';
+import {AdminComponent, type SelectOption} from '@myparcel-pdk/admin';
 import {type PartialComponentTest} from '../types';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests, runCommonInputTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 const selectOptions = [
   {value: '1', label: 'One'},
@@ -11,10 +10,12 @@ const selectOptions = [
 ] satisfies SelectOption[];
 
 export const runSelectInputTest = ((component) => {
-  const options = createInputOptions('2', {props: {options: selectOptions}});
+  const suite = new TestSuite(AdminComponent.SelectInput, component);
 
-  runCommonComponentTests(component, options);
-  runCommonInputTests(component, options, {value: '1'});
+  const options = suite.createInputOptions('2', {props: {options: selectOptions}});
+
+  suite.runCommonComponentTests();
+  suite.runCommonInputTests({value: '1'});
 
   it('sets options from props', () => {
     const wrapper = mount(component, options);

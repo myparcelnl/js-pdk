@@ -1,9 +1,11 @@
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runCodeEditorTest = ((component) => {
-  const options = createInputOptions('test');
+  const suite = new TestSuite(AdminComponent.CodeEditor, component);
 
-  runCommonComponentTests(component, options);
+  suite.createInputOptions('test');
+
+  suite.runCommonComponentTests();
 }) satisfies AdminComponentTest;

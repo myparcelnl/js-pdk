@@ -1,6 +1,9 @@
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runLoaderTest = ((component) => {
-  runCommonComponentTests(component);
+  const suite = new TestSuite(AdminComponent.Loader, component);
+
+  suite.runCommonComponentTests();
 }) satisfies AdminComponentTest;

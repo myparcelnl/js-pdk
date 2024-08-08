@@ -1,10 +1,11 @@
-import {type DropOffInputModelValue} from '@myparcel-pdk/admin';
+import {AdminComponent, type DropOffInputModelValue} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests, runCommonInputTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runDropOffInputTest = ((component) => {
-  const options = createInputOptions({
+  const suite = new TestSuite(AdminComponent.DropOffInput, component);
+
+  suite.setOptions({
     dropOffDays: [
       {
         date: {date: '', timezone: '', timezone_type: 3},
@@ -17,8 +18,8 @@ export const runDropOffInputTest = ((component) => {
     dropOffDaysDeviations: [],
   } satisfies DropOffInputModelValue);
 
-  runCommonComponentTests(component, options);
-  runCommonInputTests(component, options, {
+  suite.runCommonComponentTests();
+  suite.runCommonInputTests({
     value: {
       date: {date: '1234', timezone: '', timezone_type: 3},
       cutoffTime: '15:00',

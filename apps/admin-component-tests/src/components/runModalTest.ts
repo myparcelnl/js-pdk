@@ -1,27 +1,28 @@
-import {type ComponentMountingOptions} from '@vue/test-utils';
-import {AdminModalKey, useModalStore} from '@myparcel-pdk/admin';
+import {AdminComponent, AdminModalKey, useModalStore} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runModalTest = ((component) => {
+  const suite = new TestSuite(AdminComponent.Modal, component);
+
   const modalStore = useModalStore();
 
-  const options = {
+  modalStore.$patch({opened: AdminModalKey.ShipmentOptions});
+
+  suite.setOptions({
     props: {
       // todo
       actions: [],
       modalKey: AdminModalKey.ShipmentOptions,
       title: 'title',
     },
-  } satisfies ComponentMountingOptions<any>;
+  });
 
-  modalStore.$patch({opened: AdminModalKey.ShipmentOptions});
+  suite.runCommonComponentTests();
 
-  runCommonComponentTests(component, options);
+  suite.runHasSlotTest();
 
-  runHasSlotTest(component, options);
-
-  runHasPropTest(component, options, 'modalKey');
-  runHasPropTest(component, options, 'title');
-  runHasPropTest(component, options, 'actions');
+  suite.runHasPropTest('modalKey');
+  suite.runHasPropTest('title');
+  suite.runHasPropTest('actions');
 }) satisfies AdminComponentTest;

@@ -1,10 +1,11 @@
-import {type SelectOption} from '@myparcel-pdk/admin';
+import {AdminComponent, type SelectOption} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runCheckboxGroupTest = ((component) => {
-  const options = createInputOptions(['appel', 'boom'], {
+  const suite = new TestSuite(AdminComponent.CheckboxGroup, component);
+
+  suite.createInputOptions(['appel', 'boom'], {
     props: {
       options: [
         {
@@ -23,6 +24,6 @@ export const runCheckboxGroupTest = ((component) => {
     },
   });
 
-  runCommonComponentTests(component, options);
+  suite.runCommonComponentTests();
   // TODO: write more tests
 }) satisfies AdminComponentTest;

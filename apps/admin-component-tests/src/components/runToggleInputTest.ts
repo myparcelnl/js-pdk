@@ -1,15 +1,16 @@
-import {type ComponentMountingOptions} from '@vue/test-utils';
-import {createFormElement, type ElementInstance} from '@myparcel-pdk/admin';
+import {AdminComponent, createFormElement} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests, runCommonInputTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runToggleInputTest = ((component) => {
-  const options: ComponentMountingOptions<{element: ElementInstance}> = {
+  const suite = new TestSuite(AdminComponent.SelectInput, component);
+
+  suite.setOptions({
     props: {
       element: createFormElement({}),
     },
-  };
+  });
 
-  runCommonComponentTests(component, options);
-  runCommonInputTests(component, options);
+  suite.runCommonComponentTests();
+  suite.runCommonInputTests();
 }) satisfies AdminComponentTest;

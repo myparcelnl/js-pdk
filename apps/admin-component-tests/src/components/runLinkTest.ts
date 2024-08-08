@@ -1,12 +1,12 @@
-import {type ComponentMountingOptions} from '@vue/test-utils';
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests, runHasSlotTest} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runLinkTest = ((component) => {
-  const options: ComponentMountingOptions<any> = {};
+  const suite = new TestSuite(AdminComponent.Link, component);
 
-  runCommonComponentTests(component, options);
-  runHasSlotTest(component, options);
+  suite.runCommonComponentTests();
+  suite.runHasSlotTest();
 
   // TODO write more tests
 }) satisfies AdminComponentTest;

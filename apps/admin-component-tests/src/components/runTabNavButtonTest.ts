@@ -1,15 +1,17 @@
-import {type ComponentMountingOptions} from '@vue/test-utils';
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests, runHasPropTest} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runTabNavButtonTest = ((component) => {
-  const options: ComponentMountingOptions<any> = {
+  const suite = new TestSuite(AdminComponent.SelectInput, component);
+
+  suite.setOptions({
     props: {
       tab: {name: 'tab', label: 'Tab'},
     },
-  };
+  });
 
-  runCommonComponentTests(component, options);
+  suite.runCommonComponentTests();
 
-  runHasPropTest(component, options, 'active', false);
+  suite.runHasPropTest('active', false);
 }) satisfies AdminComponentTest;

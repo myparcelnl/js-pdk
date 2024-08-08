@@ -1,10 +1,12 @@
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runTextAreaTest = ((component) => {
-  const options = createInputOptions('test');
+  const suite = new TestSuite(AdminComponent.SelectInput, component);
 
-  runCommonComponentTests(component, options);
+  suite.createInputOptions('test');
+
+  suite.runCommonComponentTests();
   // runCommonInputTests(component, options);
 }) satisfies AdminComponentTest;

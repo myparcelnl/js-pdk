@@ -1,7 +1,6 @@
-import {type SelectOption} from '@myparcel-pdk/admin';
+import {AdminComponent, type SelectOption} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 const SELECT_OPTIONS = Object.freeze([
   {value: '1', label: 'One'},
@@ -12,9 +11,11 @@ const SELECT_OPTIONS = Object.freeze([
 ] satisfies SelectOption[]);
 
 export const runShippingMethodsInputTest = ((component) => {
-  const options = createInputOptions('2', {props: {options: SELECT_OPTIONS}});
+  const suite = new TestSuite(AdminComponent.ShippingMethodsInput, component);
 
-  runCommonComponentTests(component, options);
+  suite.createInputOptions('2', {props: {options: SELECT_OPTIONS}});
+
+  suite.runCommonComponentTests();
   // TODO: figure out why this throws an undefined import error on AdminComponent
   // runCommonInputTests(component, options, {value: '1'});
 

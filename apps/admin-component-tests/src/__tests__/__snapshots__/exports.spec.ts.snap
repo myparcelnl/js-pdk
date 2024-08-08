@@ -52,6 +52,7 @@ exports[`exports > exports from index.ts 1`] = `
   "StopActionHandler",
   "SubmitButton",
   "TabNavigation",
+  "TestSuite",
   "TriState",
   "Variant",
   "allAdminComponentNames",

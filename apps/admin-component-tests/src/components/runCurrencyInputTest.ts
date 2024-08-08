@@ -1,13 +1,13 @@
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests, runCommonInputTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runCurrencyInputTest = ((component) => {
-  const options = createInputOptions(1.42);
+  const suite = new TestSuite(AdminComponent.CurrencyInput, component);
 
-  runCommonComponentTests(component, options);
-  runCommonInputTests(component, options, {
-    value: 1.5,
-  });
+  suite.createInputOptions(1.42);
+
+  suite.runCommonComponentTests();
+  suite.runCommonInputTests({value: 1.5});
   // TODO write more tests
 }) satisfies AdminComponentTest;

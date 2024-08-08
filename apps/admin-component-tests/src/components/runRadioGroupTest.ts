@@ -1,10 +1,11 @@
-import {type SelectOption} from '@myparcel-pdk/admin';
+import {AdminComponent, type SelectOption} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests, runCommonInputTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runRadioGroupTest = ((component) => {
-  const options = createInputOptions('test1', {
+  const suite = new TestSuite(AdminComponent.RadioGroup, component);
+
+  suite.createInputOptions('test1', {
     props: {
       options: [
         {
@@ -19,7 +20,7 @@ export const runRadioGroupTest = ((component) => {
     },
   });
 
-  runCommonComponentTests(component, options);
-  runCommonInputTests(component, options);
+  suite.runCommonComponentTests();
+  suite.runCommonInputTests();
   // TODO write more tests
 }) satisfies AdminComponentTest;

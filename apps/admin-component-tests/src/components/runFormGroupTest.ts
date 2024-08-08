@@ -1,16 +1,17 @@
-import {type ComponentMountingOptions} from '@vue/test-utils';
-import {createFormElement, type ElementInstance} from '@myparcel-pdk/admin';
+import {AdminComponent, createFormElement} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests, runHasSlotTest} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runFormGroupTest = ((component) => {
-  const options: ComponentMountingOptions<{element: ElementInstance}> = {
+  const suite = new TestSuite(AdminComponent.FormGroup, component);
+
+  suite.setOptions({
     props: {
       element: createFormElement({}),
     },
-  };
+  });
 
-  runCommonComponentTests(component, options);
-  runHasSlotTest(component, options);
+  suite.runCommonComponentTests();
+  suite.runHasSlotTest();
   // TODO write more tests
 }) satisfies AdminComponentTest;

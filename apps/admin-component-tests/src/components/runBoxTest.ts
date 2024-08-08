@@ -1,15 +1,17 @@
-import {type ComponentMountingOptions} from '@vue/test-utils';
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runBoxTest = ((component) => {
-  const options = {} satisfies ComponentMountingOptions<any>;
+  const suite = new TestSuite(AdminComponent.Box, component);
 
-  runCommonComponentTests(component, options);
+  suite.createInputOptions();
 
-  runHasSlotTest(component, options, 'default');
-  runHasSlotTest(component, options, 'header');
-  runHasSlotTest(component, options, 'footer');
+  suite.runCommonComponentTests();
 
-  runHasPropTest(component, options, 'loading', true);
+  suite.runHasSlotTest('default');
+  suite.runHasSlotTest('header');
+  suite.runHasSlotTest('footer');
+
+  suite.runHasPropTest('loading', true);
 }) satisfies AdminComponentTest;

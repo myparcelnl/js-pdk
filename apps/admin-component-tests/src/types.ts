@@ -2,7 +2,7 @@ import {type Component} from 'vue';
 import {type ComponentMountingOptions} from '@vue/test-utils';
 
 export type ComponentTestOptions = {
-  $slots: Record<string, unknown>;
+  $slots?: Record<string, unknown>;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/ban-types
@@ -13,3 +13,7 @@ export type PartialComponentTest<Args extends unknown[] = unknown[]> = <
   options?: ComponentMountingOptions<T>,
   ...args: Args
 ) => void;
+
+export interface AdditionalOptions {
+  value?: unknown;
+}

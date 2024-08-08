@@ -1,11 +1,13 @@
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests, runCommonInputTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runCheckboxInputTest = ((component) => {
-  const options = createInputOptions(true);
+  const suite = new TestSuite(AdminComponent.CheckboxInput, component);
 
-  runCommonComponentTests(component, options);
-  runCommonInputTests(component, options, {value: false});
+  suite.createInputOptions(true);
+
+  suite.runCommonComponentTests();
+  suite.runCommonInputTests({value: false});
   // TODO write more tests
 }) satisfies AdminComponentTest;

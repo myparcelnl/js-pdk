@@ -1,7 +1,6 @@
-import {type SelectOption} from '@myparcel-pdk/admin';
+import {AdminComponent, type SelectOption} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests, runCommonInputTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 const selectOptions = [
   {value: 'one', label: 'One'},
@@ -9,8 +8,10 @@ const selectOptions = [
 ] satisfies SelectOption[];
 
 export const runMultiSelectInputTest = ((component) => {
-  const options = createInputOptions('two', {props: {options: selectOptions}});
+  const suite = new TestSuite(AdminComponent.MultiSelectInput, component);
 
-  runCommonComponentTests(component, options);
-  runCommonInputTests(component, options, {value: 'one'});
+  suite.createInputOptions('two', {props: {options: selectOptions}});
+
+  suite.runCommonComponentTests();
+  suite.runCommonInputTests({value: 'one'});
 }) satisfies AdminComponentTest;

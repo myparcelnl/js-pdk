@@ -3,9 +3,11 @@ import {expect, it, vi} from 'vitest';
 import {type ComponentMountingOptions, mount} from '@vue/test-utils';
 import {AdminComponent, type DropdownButtonProps} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests, runHasPropTest} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runDropDownButtonTest = ((component) => {
+  const suite = new TestSuite(AdminComponent.DropdownButton, component);
+
   const action1Handler = vi.fn();
   const action2Handler = vi.fn();
   const action3Handler = vi.fn();
@@ -33,13 +35,11 @@ export const runDropDownButtonTest = ((component) => {
     },
   } satisfies ComponentMountingOptions<any, DropdownButtonProps>;
 
-  const options: ComponentMountingOptions<any> = {};
+  suite.runCommonComponentTests();
+  suite.runCommonComponentTests(DEFAULT_OPTIONS);
 
-  runCommonComponentTests(component, options);
-  runCommonComponentTests(component, DEFAULT_OPTIONS);
-
-  runHasPropTest(component, options, 'actions', DEFAULT_OPTIONS.props.actions);
-  runHasPropTest(component, options, 'disabled', true);
+  suite.runHasPropTest('actions', DEFAULT_OPTIONS.props.actions);
+  suite.runHasPropTest('disabled', true);
 
   it('emits click event when standalone action is clicked', async () => {
     expect.assertions(1);

@@ -1,11 +1,13 @@
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests, runCommonInputTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runRadioInputTest = ((component) => {
-  const options = createInputOptions(true);
+  const suite = new TestSuite(AdminComponent.RadioInput, component);
 
-  runCommonComponentTests(component, options);
-  runCommonInputTests(component, options);
+  suite.createInputOptions(true);
+
+  suite.runCommonComponentTests();
+  suite.runCommonInputTests();
   // TODO write more tests
 }) satisfies AdminComponentTest;

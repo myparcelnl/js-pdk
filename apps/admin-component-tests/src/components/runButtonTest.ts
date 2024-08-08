@@ -1,10 +1,13 @@
 import {expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runButtonTest = ((component) => {
-  runCommonComponentTests(component);
+  const suite = new TestSuite(AdminComponent.Button, component);
+
+  suite.runCommonComponentTests();
 
   it('handles click event', async () => {
     expect.assertions(1);

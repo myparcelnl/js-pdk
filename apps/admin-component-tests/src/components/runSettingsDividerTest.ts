@@ -1,14 +1,16 @@
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {createInputOptions} from '../helpers';
-import {runCommonComponentTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runSettingsDividerTest = ((component) => {
-  const options = createInputOptions('text', {
+  const suite = new TestSuite(AdminComponent.SettingsDivider, component);
+
+  suite.createInputOptions('text', {
     props: {
       level: 2,
       heading: 'test',
     },
   });
 
-  runCommonComponentTests(component, options);
+  suite.runCommonComponentTests();
 }) satisfies AdminComponentTest;

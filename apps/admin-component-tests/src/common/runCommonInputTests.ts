@@ -3,14 +3,10 @@ import {ref} from 'vue';
 import {expect, it} from 'vitest';
 import {merge} from 'lodash-unified';
 import {flushPromises, mount} from '@vue/test-utils';
-import {type PartialComponentTest} from '../types';
+import {type AdditionalOptions, type PartialComponentTest} from '../types';
 import {runHasPropTest} from './runHasPropTest';
 
 const UPDATE_EVENT = 'update:modelValue';
-
-interface AdditionalOptions {
-  value?: unknown;
-}
 
 // eslint-disable-next-line max-lines-per-function
 export const runCommonInputTests = ((component, options = undefined, additionalOptions: AdditionalOptions = {}) => {

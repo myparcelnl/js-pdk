@@ -1,9 +1,12 @@
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runColTest = ((component) => {
-  runCommonComponentTests(component);
+  const suite = new TestSuite(AdminComponent.Col, component);
 
-  runHasSlotTest(component, {});
-  runHasPropTest(component, {}, 'span', 3);
+  suite.runCommonComponentTests();
+
+  suite.runHasSlotTest();
+  suite.runHasPropTest('span', 3);
 }) satisfies AdminComponentTest;

@@ -1,10 +1,12 @@
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests, runHasSlotTest} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runPlainWrapperTest = ((component) => {
-  runCommonComponentTests(component);
+  const suite = new TestSuite('PlainWrapper', component);
 
-  runHasSlotTest(component);
+  suite.runCommonComponentTests();
+
+  suite.runHasSlotTest();
 
   // TODO write more tests
 }) satisfies AdminComponentTest;

@@ -1,19 +1,22 @@
 import {expect, it} from 'vitest';
-import {type ComponentMountingOptions, mount} from '@vue/test-utils';
+import {mount} from '@vue/test-utils';
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runNotificationTest = ((component) => {
-  const options: ComponentMountingOptions<any> = {
+  const suite = new TestSuite(AdminComponent.Notification, component);
+
+  const options = suite.setOptions({
     props: {
       notification: {
         variant: 'error',
         content: 'This is a plain string',
       },
     },
-  };
+  });
 
-  runCommonComponentTests(component, options);
+  suite.runCommonComponentTests();
 
   it('renders notification with string content', () => {
     const wrapper = mount(component, options);

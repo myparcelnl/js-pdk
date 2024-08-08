@@ -1,20 +1,22 @@
-import {type ComponentMountingOptions} from '@vue/test-utils';
+import {AdminComponent} from '@myparcel-pdk/admin';
 import {type AdminComponentTest} from '../tests';
-import {runCommonComponentTests, runHasPropTest} from '../common';
+import {TestSuite} from '../TestSuite';
 
 export const runImageTest = ((component) => {
-  const options: ComponentMountingOptions<any> = {
+  const suite = new TestSuite(AdminComponent.Image, component);
+
+  suite.setOptions({
     props: {
       src: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
       alt: 'Google Logo',
     },
-  };
+  });
 
-  runCommonComponentTests(component, options);
-  runHasPropTest(component, options, 'src');
-  runHasPropTest(component, options, 'alt');
-  runHasPropTest(component, options, 'width');
-  runHasPropTest(component, options, 'height');
+  suite.runCommonComponentTests();
+  suite.runHasPropTest('src');
+  suite.runHasPropTest('alt');
+  suite.runHasPropTest('width');
+  suite.runHasPropTest('height');
 
   // TODO write more tests
 }) satisfies AdminComponentTest;
