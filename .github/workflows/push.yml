@@ -24,7 +24,6 @@ jobs:
   notify-on-failure:
     needs:
       - test
-      - rebase-prs
     if: always() && contains(needs.*.result, 'failure')
     uses: myparcelnl/actions/.github/workflows/notify-on-failure.yml@v4
     secrets: inherit
