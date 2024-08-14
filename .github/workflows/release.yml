@@ -90,3 +90,13 @@ jobs:
           private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
           repository: ${{ matrix.repo }}
           event-type: 'pdk-update'
+
+  notify-on-failure:
+    needs:
+      - test
+      - release
+      - rebase-prs
+      - deploy
+    if: always() && contains(needs.*.result, 'failure')
+    uses: myparcelnl/actions/.github/workflows/notify-on-failure.yml@v4
+    secrets: inherit
