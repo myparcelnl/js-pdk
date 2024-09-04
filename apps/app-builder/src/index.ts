@@ -44,4 +44,4 @@ export {
   writeFile,
 } from './utils';
 
-export const defineConfig = <C extends PdkBuilderConfig | (() => PdkBuilderConfig)>(config: C): C => config;
+export {defineConfig} from './defineConfig';
