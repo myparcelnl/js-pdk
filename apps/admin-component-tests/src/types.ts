@@ -1,4 +1,4 @@
-import {type Component} from 'vue';
+import {type Component as ComponentType, type Component} from 'vue';
 import {type ComponentMountingOptions} from '@vue/test-utils';
 
 export type ComponentTestOptions = {
@@ -17,3 +17,8 @@ export type PartialComponentTest<Args extends unknown[] = unknown[]> = <
 export interface AdditionalOptions {
   value?: unknown;
 }
+
+export type TestComponentMountingOptions<
+  Component extends ComponentType = ComponentType,
+  Options extends ComponentTestOptions = ComponentTestOptions,
+> = ComponentMountingOptions<Component> & Options;
