@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.3.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.2.0...@myparcel-pdk/admin-preset-default@1.3.0) "@myparcel-pdk/admin-preset-default" (2024-09-04)
+
+
+### Features
+
+* **tests:** add test suite class for more streamlined test writing ([2129c48](https://github.com/myparcelnl/js-pdk/commit/2129c484ba895591716f06ce96315368aaff1db6))
+
+
+
+
 ## [1.2.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.1.0...@myparcel-pdk/admin-preset-default@1.2.0) "@myparcel-pdk/admin-preset-default" (2024-06-05)
 
 
