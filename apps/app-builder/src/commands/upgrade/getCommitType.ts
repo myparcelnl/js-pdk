@@ -1,5 +1,5 @@
 import diff from 'semver/functions/diff.js';
-import {type PdkBuilderContext} from '../../types';
+import {type PdkBuilderContext} from '../../types/command';
 import {COMMIT_TYPE_AUTO} from '../../constants';
 import {type UpgradedEntry} from './types';
 

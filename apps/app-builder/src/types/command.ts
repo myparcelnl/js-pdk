@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type Liftoff from 'liftoff';
 // eslint-disable-next-line no-duplicate-imports
 import {type LiftoffEnv} from 'liftoff';
 import {type Debugger} from 'debug';
 import {type PromiseOr} from '@myparcel/ts-utils';
-import {type CommandArguments, type ParsedCommand} from '../utils';
+import {type CommandArguments, type ParsedCommand} from '../utils/command/parseCommand';
 import {type CommandName} from '../constants';
 import {type ResolvedPdkBuilderConfig} from './config';
 

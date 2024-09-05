@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import {type PdkBuilderCommandWithoutConfig} from '../types';
+import {type PdkBuilderCommandWithoutConfig} from '../types/command';
 
 const TEMPLATE = `import type {PdkBuilderConfig} from '@myparcel-pdk/app-builder';
 import {name, version} from './package.json' assert {type: 'json'};

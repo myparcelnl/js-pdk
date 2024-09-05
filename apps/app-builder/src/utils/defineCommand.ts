@@ -1,5 +1,5 @@
 import {isOfType} from '@myparcel/ts-utils';
-import {type AnyCommandArgs, type CommandDefinition, type CommandDefinitionWithoutConfig} from '../types';
+import {type AnyCommandArgs, type CommandDefinition, type CommandDefinitionWithoutConfig} from '../types/command';
 import {CONFIG_OPTIONS, OPTION_DRY_RUN, OPTION_QUIET, OPTION_VERBOSITY} from '../constants';
 
 export const defineCommand = <

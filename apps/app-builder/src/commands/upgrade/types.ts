@@ -1,5 +1,5 @@
 import {type MakeOptional, type PromiseOr} from '@myparcel/ts-utils';
-import {type CommandArgs, type PdkBuilderContext} from '../../types';
+import {type CommandArgs, type PdkBuilderContext} from '../../types/command';
 
 export interface ParsedEntry {
   name: string;

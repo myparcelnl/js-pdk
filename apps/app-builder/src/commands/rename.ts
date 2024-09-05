@@ -1,18 +1,15 @@
-/* eslint-disable max-lines-per-function */
 import path from 'path';
 import chalk from 'chalk';
-import {
-  addPlatformToContext,
-  executePromises,
-  getPlatformDistPath,
-  globFiles,
-  logRelativePath,
-  renameFile,
-  replaceCaseSensitive,
-  resolvePath,
-  validateDistPath,
-} from '../utils';
-import {type PdkBuilderCommand} from '../types';
+import {validateDistPath} from '../utils/validateDistPath';
+import {replaceCaseSensitive} from '../utils/transformer/replaceCaseSensitive';
+import {resolvePath} from '../utils/resolvePath';
+import {globFiles} from '../utils/globFiles';
+import {getPlatformDistPath} from '../utils/getPlatformDistPath';
+import {renameFile} from '../utils/fs/renameFile';
+import {executePromises} from '../utils/executePromises';
+import {logRelativePath} from '../utils/debug/logRelativePath';
+import {addPlatformToContext} from '../utils/addPlatformToContext';
+import {type PdkBuilderCommand} from '../types/command';
 
 const STRING_TO_REPLACE = 'myparcelnl';
 

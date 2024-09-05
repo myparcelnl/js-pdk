@@ -1,5 +1,5 @@
 import {type Debugger} from 'debug';
-import {type CommandArgs} from '../../types';
+import {type CommandArgs} from '../../types/command';
 import {createDebugger} from './createDebugger';
 
 export const initializeCommand = (

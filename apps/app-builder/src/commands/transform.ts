@@ -1,21 +1,18 @@
-/* eslint-disable max-lines-per-function */
 import chalk from 'chalk';
-import {
-  addPlatformToContext,
-  executePromises,
-  getFileContents,
-  getOccurrences,
-  globFiles,
-  isVeryVeryVerbose,
-  logPlatforms,
-  logSourcePath,
-  logTargetPath,
-  replaceCaseSensitive,
-  resolvePath,
-  validateDistPath,
-  writeFile,
-} from '../utils';
-import {type PdkBuilderCommand} from '../types';
+import {validateDistPath} from '../utils/validateDistPath';
+import {replaceCaseSensitive} from '../utils/transformer/replaceCaseSensitive';
+import {getOccurrences} from '../utils/transformer/getOccurrences';
+import {resolvePath} from '../utils/resolvePath';
+import {globFiles} from '../utils/globFiles';
+import {writeFile} from '../utils/fs/writeFile';
+import {getFileContents} from '../utils/fs/getFileContents';
+import {executePromises} from '../utils/executePromises';
+import {logTargetPath} from '../utils/debug/logTargetPath';
+import {logSourcePath} from '../utils/debug/logSourcePath';
+import {logPlatforms} from '../utils/debug/logPlatforms';
+import {isVeryVeryVerbose} from '../utils/command/isVeryVeryVerbose';
+import {addPlatformToContext} from '../utils/addPlatformToContext';
+import {type PdkBuilderCommand} from '../types/command';
 import {PdkPlatformName} from '../constants';
 
 const SOURCE_PLATFORM = PdkPlatformName.MyParcelNl;

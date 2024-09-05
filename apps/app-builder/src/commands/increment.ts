@@ -1,24 +1,19 @@
 import chalk from 'chalk';
 import {isOfType} from '@myparcel/ts-utils';
-import {
-  executePromises,
-  exists,
-  getFileContents,
-  globFiles,
-  isVerbose,
-  logSourcePath,
-  reportFileDoesNotExist,
-  resolvePath,
-  usesPhpScoper,
-  writeFile,
-} from '../utils';
-import {type PdkBuilderCommand} from '../types';
-import {
-  type RegexVersionSource,
-  replaceVersionByRegex,
-  replaceVersionInJson,
-  type VersionReplacerOutput,
-} from '../increment';
+import {usesPhpScoper} from '../utils/usesPhpScoper';
+import {resolvePath} from '../utils/resolvePath';
+import {globFiles} from '../utils/globFiles';
+import {writeFile} from '../utils/fs/writeFile';
+import {getFileContents} from '../utils/fs/getFileContents';
+import {exists} from '../utils/fs/exists';
+import {executePromises} from '../utils/executePromises';
+import {reportFileDoesNotExist} from '../utils/debug/reportOnFile';
+import {logSourcePath} from '../utils/debug/logSourcePath';
+import {isVerbose} from '../utils/command/isVerbose';
+import {type PdkBuilderCommand} from '../types/command';
+import {type RegexVersionSource, type VersionReplacerOutput} from '../increment/types';
+import {replaceVersionInJson} from '../increment/replaceVersionInJson';
+import {replaceVersionByRegex} from '../increment/replaceVersionByRegex';
 import {REGEX_VERSION} from '../constants';
 
 const increment: PdkBuilderCommand = async (context) => {

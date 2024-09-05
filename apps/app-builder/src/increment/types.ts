@@ -1,5 +1,6 @@
 import {type Debugger} from 'debug';
-import {type CommandArgs, type PdkBuilderConfig} from '../types';
+import {type PdkBuilderConfig} from '../types/config';
+import {type CommandArgs} from '../types/command';
 
 export interface BaseVersionSource<P extends string = string> {
   /**

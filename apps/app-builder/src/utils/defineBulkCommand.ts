@@ -1,5 +1,5 @@
 import {toArray} from '@myparcel/ts-utils';
-import {type CommandDefinition} from '../types';
+import {type CommandDefinition} from '../types/command';
 
 type CommandArguments<Cd extends CommandDefinition> = Cd extends CommandDefinition<infer Args> ? Args : never;
 

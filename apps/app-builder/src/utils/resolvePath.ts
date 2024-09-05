@@ -1,6 +1,7 @@
 import path from 'path';
 import {type OneOrMore} from '@myparcel/ts-utils';
-import {type PdkBuilderContext, type StringGenerator} from '../types';
+import {type StringGenerator} from '../types/common';
+import {type PdkBuilderContext} from '../types/command';
 import {type PdkPlatformName} from '../constants';
 import {resolveStrings} from './resolveStrings';
 

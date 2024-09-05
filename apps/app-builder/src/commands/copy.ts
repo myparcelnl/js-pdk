@@ -1,17 +1,15 @@
 import chalk from 'chalk';
-import {
-  addPlatformToContext,
-  copyFile,
-  copyScopedFiles,
-  executePromises,
-  getPlatformDistPath,
-  globFiles,
-  logPlatforms,
-  logTargetPath,
-  resolvePath,
-  resolveStrings,
-} from '../utils';
-import {type PdkBuilderCommand} from '../types';
+import {resolveStrings} from '../utils/resolveStrings';
+import {resolvePath} from '../utils/resolvePath';
+import {globFiles} from '../utils/globFiles';
+import {getPlatformDistPath} from '../utils/getPlatformDistPath';
+import {copyFile} from '../utils/fs/copyFile';
+import {executePromises} from '../utils/executePromises';
+import {logTargetPath} from '../utils/debug/logTargetPath';
+import {logPlatforms} from '../utils/debug/logPlatforms';
+import {copyScopedFiles} from '../utils/copyScopedFiles';
+import {addPlatformToContext} from '../utils/addPlatformToContext';
+import {type PdkBuilderCommand} from '../types/command';
 
 const copy: PdkBuilderCommand = async (context) => {
   const {config, args, debug} = context;

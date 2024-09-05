@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {exists} from '../utils';
+import {exists} from '../utils/fs/exists';
 import {fsModifyingMethodSpies} from '../__tests__/spies/fs';
 import {mockFileSystemAndCreateContext} from '../__tests__/mockFileSystemAndCreateContext';
 import clean from './clean';

@@ -1,5 +1,5 @@
 import {type RecursivePartial} from '@myparcel/ts-utils';
-import {type PdkBuilderContext} from '../types';
+import {type PdkBuilderContext} from '../types/command';
 import {createTestContext} from './createTestContext';
 
 export const createTestContextWithMockedFs = (

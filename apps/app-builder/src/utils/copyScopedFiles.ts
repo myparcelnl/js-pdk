@@ -1,11 +1,11 @@
-import {type PdkBuilderContext} from '../types';
+import {type PdkBuilderContext} from '../types/command';
 import {usesPhpScoper} from './usesPhpScoper';
 import {resolvePath} from './resolvePath';
 import {globFiles} from './globFiles';
 import {getPlatformDistPath} from './getPlatformDistPath';
-import {copyFile} from './fs';
+import {copyFile} from './fs/copyFile';
 import {executePromises} from './executePromises';
-import {logTargetPath} from './debug';
+import {logTargetPath} from './debug/logTargetPath';
 import {addPlatformToContext} from './addPlatformToContext';
 
 export const copyScopedFiles = async (context: PdkBuilderContext): Promise<void> => {

@@ -1,8 +1,8 @@
 import {spawnSync, type SpawnSyncOptions, type SpawnSyncOptionsWithStringEncoding} from 'child_process';
 import {isOfType, type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {type ExecuteCommandContext, type PdkBuilderContext} from '../types';
+import {type ExecuteCommandContext, type PdkBuilderContext} from '../types/command';
 import {VerbosityLevel} from '../constants';
-import {createCommand} from './command';
+import {createCommand} from './command/createCommand';
 
 export const executeCommand = async (
   context: ExecuteCommandContext,

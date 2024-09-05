@@ -3,9 +3,10 @@ import chalk from 'chalk';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {resolveString} from '../resolveString';
 import {resolvePath} from '../resolvePath';
-import {logTargetPath, reportDirectoryExists} from '../debug';
-import {isVeryVeryVerbose} from '../command';
-import {type PdkBuilderContext} from '../../types';
+import {reportDirectoryExists} from '../debug/reportOnFile';
+import {logTargetPath} from '../debug/logTargetPath';
+import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';
+import {type PdkBuilderContext} from '../../types/command';
 import {exists} from './exists';
 
 export const mkdirs = async (paths: OneOrMore<string>, context: PdkBuilderContext): Promise<void> => {

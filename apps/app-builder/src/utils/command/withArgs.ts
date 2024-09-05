@@ -1,4 +1,4 @@
-import {type AnyCommandArgs, type PdkBuilderContext} from '../../types';
+import {type AnyCommandArgs, type PdkBuilderContext} from '../../types/command';
 
 export const withArgs = <Args1 extends AnyCommandArgs, Args2 extends AnyCommandArgs>(
   context: PdkBuilderContext<Args2>,

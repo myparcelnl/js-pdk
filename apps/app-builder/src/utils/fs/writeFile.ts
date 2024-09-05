@@ -3,9 +3,11 @@ import fs from 'fs';
 import chalk from 'chalk';
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {resolvePath} from '../resolvePath';
-import {logTargetPath} from '../debug';
-import {isVeryVerbose, shouldModifyFiles} from '../command';
-import {type PdkBuilderContext, type StringGenerator} from '../../types';
+import {logTargetPath} from '../debug/logTargetPath';
+import {shouldModifyFiles} from '../command/shouldModifyFiles';
+import {isVeryVerbose} from '../command/isVeryVerbose';
+import {type StringGenerator} from '../../types/common';
+import {type PdkBuilderContext} from '../../types/command';
 import {mkdirs} from './mkdirs';
 
 export const writeFile = async (

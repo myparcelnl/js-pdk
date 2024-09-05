@@ -1,5 +1,5 @@
 import {NodePackageManager, type UpgradeSubContextWithLockfile} from '../types';
-import {executeCommand} from '../../../utils';
+import {executeCommand} from '../../../utils/executeCommand';
 
 export const executeNodeUpgrade = async (context: UpgradeSubContextWithLockfile): Promise<void> => {
   const {config, packageName} = context;

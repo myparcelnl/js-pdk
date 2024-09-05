@@ -1,5 +1,5 @@
 import {type OneOrMore} from '@myparcel/ts-utils';
-import {type VersionSource} from '../increment';
+import {type VersionSource} from '../increment/types';
 import {type CommandName, type PdkPlatformName} from '../constants';
 import {type NodePackageManager} from '../commands/upgrade/types';
 import {type StringGenerator} from './common';

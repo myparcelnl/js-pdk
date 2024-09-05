@@ -1,5 +1,5 @@
 import {type ParsedEntry, type UpgradeSubContextWithLockfile} from '../types';
-import {executeCommand} from '../../../utils';
+import {executeCommand} from '../../../utils/executeCommand';
 
 export async function getPackageEntriesForYarn(
   context: UpgradeSubContextWithLockfile,

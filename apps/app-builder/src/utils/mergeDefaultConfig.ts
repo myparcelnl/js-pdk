@@ -1,4 +1,4 @@
-import {type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types';
+import {type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types/config';
 import {COMMIT_TYPE_AUTO, DEFAULT_JSON_SPACES} from '../constants';
 import {NodePackageManager} from '../commands/upgrade/types';
 

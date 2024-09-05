@@ -1,7 +1,8 @@
 import {resolveConfig} from '../resolveConfig';
 import {mergeDefaultConfig} from '../mergeDefaultConfig';
-import {reportDryRun} from '../debug';
-import {type CreateHook, type PdkBuilderConfig, type PdkBuilderContext} from '../../types';
+import {reportDryRun} from '../debug/reportDryRun';
+import {type PdkBuilderConfig} from '../../types/config';
+import {type CreateHook, type PdkBuilderContext} from '../../types/command';
 import {VerbosityLevel} from '../../constants';
 import {shouldModifyFiles} from './shouldModifyFiles';
 import {parseCommandInput} from './parseCommandInput';

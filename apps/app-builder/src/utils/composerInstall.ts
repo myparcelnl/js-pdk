@@ -1,4 +1,4 @@
-import {type PdkBuilderContext} from '../types';
+import {type PdkBuilderContext} from '../types/command';
 import {executeCommand} from './executeCommand';
 
 export const composerInstall = (context: PdkBuilderContext, args: string[] = []) => {

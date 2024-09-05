@@ -1,5 +1,5 @@
 import {program} from 'commander';
-import {type AnyCommandArgs, type CommandCb, type CommandDefinition} from '../../types';
+import {type AnyCommandArgs, type CommandCb, type CommandDefinition} from '../../types/command';
 
 export const registerCommand = <Args extends AnyCommandArgs = AnyCommandArgs>(
   definition: CommandDefinition<Args>,

@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import {describe, expect, it} from 'vitest';
-import {parseJsonFile} from '../utils';
+import {parseJsonFile} from '../utils/parseJsonFile';
 import {fsModifyingMethodSpies} from '../__tests__/spies/fs';
 import {mockFileSystemAndCreateContext} from '../__tests__/mockFileSystemAndCreateContext';
 import increment from './increment';

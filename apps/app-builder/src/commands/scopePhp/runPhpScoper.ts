@@ -1,5 +1,10 @@
-import {executeCommand, exists, isEmptyDir, mkdirs, resolvePath, resolveString} from '../../utils';
-import {type PdkBuilderContext} from '../../types';
+import {resolveString} from '../../utils/resolveString';
+import {resolvePath} from '../../utils/resolvePath';
+import {mkdirs} from '../../utils/fs/mkdirs';
+import {isEmptyDir} from '../../utils/fs/isEmptyDir';
+import {exists} from '../../utils/fs/exists';
+import {executeCommand} from '../../utils/executeCommand';
+import {type PdkBuilderContext} from '../../types/command';
 
 export const runPhpScoper = async (context: PdkBuilderContext, outDir: string, config?: string): Promise<void> => {
   const {debug} = context;

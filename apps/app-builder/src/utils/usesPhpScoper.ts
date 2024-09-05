@@ -1,7 +1,7 @@
-import {type PdkBuilderContext} from '../types';
+import {type PdkBuilderContext} from '../types/command';
 import {resolveString} from './resolveString';
 import {resolvePath} from './resolvePath';
-import {exists} from './fs';
+import {exists} from './fs/exists';
 
 export const usesPhpScoper = async (context: PdkBuilderContext): Promise<boolean> => {
   const {config} = context;

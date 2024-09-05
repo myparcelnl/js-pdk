@@ -1,9 +1,9 @@
-import {type PdkBuilderContext} from '../types';
+import {type PdkBuilderContext} from '../types/command';
 import {COMMAND_COPY_NAME, type PdkPlatformName} from '../constants';
 import {getPlatformDistPath} from './getPlatformDistPath';
-import {exists} from './fs';
-import {reportDirectoryDoesNotExist} from './debug';
-import {shouldModifyFiles} from './command';
+import {exists} from './fs/exists';
+import {reportDirectoryDoesNotExist} from './debug/reportOnFile';
+import {shouldModifyFiles} from './command/shouldModifyFiles';
 
 export const validateDistPath = async (context: PdkBuilderContext<{platform: PdkPlatformName}>): Promise<boolean> => {
   const platformDistPath = getPlatformDistPath(context);

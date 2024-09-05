@@ -1,5 +1,5 @@
 import {type UpgradeSubMethod} from '../types';
-import {executeCommand} from '../../../utils';
+import {executeCommand} from '../../../utils/executeCommand';
 import {getComposerPackageVersion} from './getComposerPackageVersion';
 
 export const upgradeComposerPackage: UpgradeSubMethod = async (context) => {

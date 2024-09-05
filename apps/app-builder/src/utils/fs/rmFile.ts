@@ -1,8 +1,10 @@
 import fs from 'fs';
 import chalk from 'chalk';
-import {logSourcePath, reportFileDoesNotExist} from '../debug';
-import {isVeryVerbose, shouldModifyFiles} from '../command';
-import {type PdkBuilderContext} from '../../types';
+import {reportFileDoesNotExist} from '../debug/reportOnFile';
+import {logSourcePath} from '../debug/logSourcePath';
+import {shouldModifyFiles} from '../command/shouldModifyFiles';
+import {isVeryVerbose} from '../command/isVeryVerbose';
+import {type PdkBuilderContext} from '../../types/command';
 import {exists} from './exists';
 
 export const rmFile = async (filePath: string, context: PdkBuilderContext) => {

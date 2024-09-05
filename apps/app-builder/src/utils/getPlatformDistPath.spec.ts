@@ -1,6 +1,6 @@
 import {describe, expect, it} from 'vitest';
 import {type RecursivePartial} from '@myparcel/ts-utils';
-import {type PdkBuilderContext} from '../types';
+import {type PdkBuilderContext} from '../types/command';
 import {PdkPlatformName} from '../constants';
 import {createTestContext} from '../__tests__/createTestContext';
 import {getPlatformDistPath} from './getPlatformDistPath';

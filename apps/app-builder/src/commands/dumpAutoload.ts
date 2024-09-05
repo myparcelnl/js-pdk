@@ -1,12 +1,10 @@
-import {
-  addPlatformToContext,
-  executeCommand,
-  getPlatformDistPath,
-  getRelativePath,
-  resolvePath,
-  rmFile,
-} from '../utils';
-import {type PdkBuilderCommand} from '../types';
+import {resolvePath} from '../utils/resolvePath';
+import {getRelativePath} from '../utils/getRelativePath';
+import {getPlatformDistPath} from '../utils/getPlatformDistPath';
+import {rmFile} from '../utils/fs/rmFile';
+import {executeCommand} from '../utils/executeCommand';
+import {addPlatformToContext} from '../utils/addPlatformToContext';
+import {type PdkBuilderCommand} from '../types/command';
 
 const dumpAutoload: PdkBuilderCommand = async (context) => {
   const {config, debug} = context;

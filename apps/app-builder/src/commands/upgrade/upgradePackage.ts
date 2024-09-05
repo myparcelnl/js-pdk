@@ -1,7 +1,7 @@
 import {type PromiseOr} from '@myparcel/ts-utils';
 import {UpgradeMode, type UpgradeSubContextWithLockfile, type UpgradeSubResult} from './types';
-import {upgradeNodePackage} from './node';
-import {upgradeComposerPackage} from './composer';
+import {upgradeNodePackage} from './node/upgradeNodePackage';
+import {upgradeComposerPackage} from './composer/upgradeComposerPackage';
 
 export const upgradePackage = (context: UpgradeSubContextWithLockfile): PromiseOr<UpgradeSubResult> => {
   switch (context.mode) {

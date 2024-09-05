@@ -1,4 +1,4 @@
-import {type PdkBuilderContext} from '../types';
+import {type PdkBuilderContext} from '../types/command';
 import {type PdkPlatformName} from '../constants';
 import {resolvePath} from './resolvePath';
 

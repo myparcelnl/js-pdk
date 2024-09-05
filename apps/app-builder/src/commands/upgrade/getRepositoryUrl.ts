@@ -1,6 +1,5 @@
-/* eslint-disable no-case-declarations */
-import {executeCommand} from '../../utils';
-import {type NpmInfo} from '../../types';
+import {executeCommand} from '../../utils/executeCommand';
+import {type NpmInfo} from '../../types/common';
 import {VerbosityLevel} from '../../constants';
 import {NodePackageManager, type ParsedEntry, UpgradeMode, type UpgradeSubContext} from './types';
 import {parseGitHubUrl} from './parseGitHubUrl';

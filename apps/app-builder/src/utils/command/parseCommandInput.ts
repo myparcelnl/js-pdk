@@ -1,5 +1,5 @@
 import type Liftoff from 'liftoff';
-import {type CommandDefinition, type PdkBuilderContextWithoutConfig} from '../../types';
+import {type CommandDefinition, type PdkBuilderContextWithoutConfig} from '../../types/command';
 import {type CommandArguments, parseCommand} from './parseCommand';
 import {createDebugger} from './createDebugger';
 

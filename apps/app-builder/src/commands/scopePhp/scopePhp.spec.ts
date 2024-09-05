@@ -1,8 +1,8 @@
 import scopePhp from './index';
 import * as child_process from 'child_process';
 import {describe, expect, it, vi} from 'vitest';
-import {resolveString} from '../../utils';
-import {type PdkBuilderContext} from '../../types';
+import {resolveString} from '../../utils/resolveString';
+import {type PdkBuilderContext} from '../../types/command';
 import {fsModifyingMethodSpies} from '../../__tests__/spies/fs';
 import {mockFileSystemAndCreateContext} from '../../__tests__/mockFileSystemAndCreateContext';
 import {PACKAGE_NAME} from './constants';

@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import {type TestContext, vi} from 'vitest';
 import {isObject, merge} from 'lodash-unified';
-import {exists} from '../utils';
+import {exists} from '../utils/fs/exists';
 import {MOCK_ROOT_DIR} from './constants';
 
 const DEFAULT_FILE_SYSTEM = Object.freeze({

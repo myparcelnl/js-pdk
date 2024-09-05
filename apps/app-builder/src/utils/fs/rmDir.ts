@@ -1,9 +1,11 @@
 import fs from 'fs';
 import chalk from 'chalk';
 import {resolvePath} from '../resolvePath';
-import {logSourcePath, reportDirectoryDoesNotExist} from '../debug';
-import {isVeryVerbose, shouldModifyFiles} from '../command';
-import {type PdkBuilderContext} from '../../types';
+import {reportDirectoryDoesNotExist} from '../debug/reportOnFile';
+import {logSourcePath} from '../debug/logSourcePath';
+import {shouldModifyFiles} from '../command/shouldModifyFiles';
+import {isVeryVerbose} from '../command/isVeryVerbose';
+import {type PdkBuilderContext} from '../../types/command';
 import {exists} from './exists';
 
 export const rmDir = async (dirPath: string, context: PdkBuilderContext): Promise<void> => {

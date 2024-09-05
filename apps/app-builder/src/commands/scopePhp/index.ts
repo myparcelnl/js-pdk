@@ -1,6 +1,8 @@
 import path from 'path';
-import {exists, resolveString, usesPhpScoper} from '../../utils';
-import {type PdkBuilderCommand} from '../../types';
+import {usesPhpScoper} from '../../utils/usesPhpScoper';
+import {resolveString} from '../../utils/resolveString';
+import {exists} from '../../utils/fs/exists';
+import {type PdkBuilderCommand} from '../../types/command';
 import {runPhpScoper} from './runPhpScoper';
 import {installPhpScoper} from './installPhpScoper';
 

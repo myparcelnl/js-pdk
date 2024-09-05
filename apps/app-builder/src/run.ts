@@ -1,8 +1,11 @@
 import {type LiftoffEnv} from 'liftoff';
 import {program} from 'commander';
 import {isOfType, partitionArray, toArray} from '@myparcel/ts-utils';
-import {createWithConfig, createWithContext, registerCommand, resolveConfig} from './utils';
-import {type CommandArgs, type CommandDefinition, type CommandDefinitionWithoutConfig} from './types';
+import {resolveConfig} from './utils/resolveConfig';
+import {registerCommand} from './utils/command/registerCommand';
+import {createWithContext} from './utils/command/createWithContext';
+import {createWithConfig} from './utils/command/createWithConfig';
+import {type CommandArgs, type CommandDefinition, type CommandDefinitionWithoutConfig} from './types/command';
 import {ALL_BULK_COMMANDS, ALL_COMMANDS} from './definitions';
 import {BULK_COMMAND_OPTIONS, CONFIG_OPTIONS, TITLE} from './constants';
 

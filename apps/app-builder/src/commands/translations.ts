@@ -1,18 +1,15 @@
-/* eslint-disable max-lines-per-function,@typescript-eslint/no-magic-numbers */
 import fs from 'fs';
 import chalk from 'chalk';
 import {type ImportSheetConfig, importTranslations} from '@edielemoine/google-docs-importer';
-import {
-  executePromises,
-  getRelativePath,
-  isVerbose,
-  isVeryVerbose,
-  parseJsonFile,
-  resolvePath,
-  rmDir,
-  writeFile,
-} from '../utils';
-import {type PdkBuilderCommand} from '../types';
+import {resolvePath} from '../utils/resolvePath';
+import {parseJsonFile} from '../utils/parseJsonFile';
+import {getRelativePath} from '../utils/getRelativePath';
+import {writeFile} from '../utils/fs/writeFile';
+import {rmDir} from '../utils/fs/rmDir';
+import {executePromises} from '../utils/executePromises';
+import {isVeryVerbose} from '../utils/command/isVeryVerbose';
+import {isVerbose} from '../utils/command/isVerbose';
+import {type PdkBuilderCommand} from '../types/command';
 import {PLATFORM_SHEET_ID_MAP} from '../constants';
 
 interface SheetDefinition extends ImportSheetConfig {

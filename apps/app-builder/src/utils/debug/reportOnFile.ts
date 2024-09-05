@@ -1,7 +1,8 @@
 import chalk from 'chalk';
 import {getRelativePath} from '../getRelativePath';
-import {isVeryVeryVerbose} from '../command';
-import {type PdkBuilderContext, type StringContaining} from '../../types';
+import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';
+import {type StringContaining} from '../../types/common';
+import {type PdkBuilderContext} from '../../types/command';
 
 const FILE = 'File';
 const DIRECTORY = 'Directory';

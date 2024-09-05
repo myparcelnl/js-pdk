@@ -1,5 +1,5 @@
-import {rmDir} from '../utils';
-import {type PdkBuilderCommand} from '../types';
+import {rmDir} from '../utils/fs/rmDir';
+import {type PdkBuilderCommand} from '../types/command';
 
 const clean: PdkBuilderCommand = async (context) => {
   await rmDir(context.config.outDir, context);

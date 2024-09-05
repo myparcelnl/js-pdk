@@ -1,6 +1,6 @@
 import {defineCommand} from './utils/defineCommand';
 import {type BulkCommandDefinition, defineBulkCommand} from './utils/defineBulkCommand';
-import {type CommandDefinition} from './types';
+import {type CommandDefinition} from './types/command';
 import {
   COMMAND_BUILD_NAME,
   COMMAND_CLEAN_NAME,

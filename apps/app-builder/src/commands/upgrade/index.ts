@@ -1,7 +1,6 @@
-/* eslint-disable max-lines-per-function */
 import fs from 'fs';
-import {executeCommand} from '../../utils';
-import {type PdkBuilderCommand} from '../../types';
+import {executeCommand} from '../../utils/executeCommand';
+import {type PdkBuilderCommand} from '../../types/command';
 import {VerbosityLevel} from '../../constants';
 import {verifyLockfile} from './verifyLockfile';
 import {upgradePackage} from './upgradePackage';

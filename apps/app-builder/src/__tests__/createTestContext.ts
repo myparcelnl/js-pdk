@@ -1,7 +1,8 @@
 import {Command} from 'commander';
 import {type RecursivePartial} from '@myparcel/ts-utils';
-import {createDebugger, mergeDefaultConfig} from '../utils';
-import {type CommandArgs, type PdkBuilderContext} from '../types';
+import {mergeDefaultConfig} from '../utils/mergeDefaultConfig';
+import {createDebugger} from '../utils/command/createDebugger';
+import {type CommandArgs, type PdkBuilderContext} from '../types/command';
 import {PdkPlatformName} from '../constants';
 import {MOCK_ROOT_DIR} from './constants';
 
