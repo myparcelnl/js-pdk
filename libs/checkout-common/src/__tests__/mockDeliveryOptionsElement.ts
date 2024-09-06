@@ -1,4 +1,3 @@
-import {type CheckoutAppContext} from '../types';
 import {ATTRIBUTE_CONTEXT} from '../constants';
 import {getMockCheckoutContext} from './getMockCheckoutContext';
 
@@ -12,10 +11,7 @@ export const mockDeliveryOptionsElement = (): void => {
   wrapper.id = 'delivery-options-wrapper';
   element.id = 'delivery-options';
 
-  wrapper.setAttribute(
-    ATTRIBUTE_CONTEXT,
-    JSON.stringify({checkout: getMockCheckoutContext()} satisfies CheckoutAppContext),
-  );
+  wrapper.setAttribute(ATTRIBUTE_CONTEXT, JSON.stringify({checkout: getMockCheckoutContext()}));
 
   wrapper.appendChild(element);
   form.appendChild(wrapper);

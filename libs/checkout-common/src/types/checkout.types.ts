@@ -1,13 +1,7 @@
-import {type FrontendEndpoint, type ShippingMethodTypeMap, type TriState} from '@myparcel-pdk/common';
+import {type FrontendEndpoint} from '@myparcel-pdk/common';
 import {type PromiseOr} from '@myparcel/ts-utils';
-import {type InputDeliveryOptionsConfiguration} from '@myparcel/delivery-options';
-import {type CarrierName} from '@myparcel/constants';
 import {type AddressType, type PdkField} from '../data';
-import {
-  type FrontendEndpointData,
-  type FrontendEndpointResponse,
-  type FrontendPdkEndpointObject,
-} from './endpoints.types';
+import {type FrontendEndpointData, type FrontendEndpointResponse} from './endpoints.types';
 import {type AddressFields} from './address.types';
 
 export type PdkFormData = Record<string, FormDataEntryValue | undefined>;
@@ -90,29 +84,3 @@ export type InitializeCallback = () => void;
 export interface PdkCheckout {
   onInitialize(callback: InitializeCallback): void;
 }
-
-export interface CheckoutAppCheckoutContext extends InputDeliveryOptionsConfiguration {
-  settings: CheckoutSettings;
-}
-
-export interface CheckoutAppContext {
-  checkout: CheckoutAppCheckoutContext;
-}
-
-export type CheckoutSettings = {
-  actions: {
-    baseUrl: string;
-    endpoints: FrontendPdkEndpointObject;
-  };
-
-  // Delivery options
-  allowedShippingMethods: Omit<ShippingMethodTypeMap, TriState.Off>;
-  hasDeliveryOptions: boolean;
-  hiddenInputName: string;
-
-  // Separate address fields
-  countriesWithSeparateAddressFields: string[];
-
-  // Tax fields
-  carriersWithTaxFields: CarrierName[];
-};

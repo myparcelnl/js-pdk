@@ -1,9 +1,9 @@
-import {type CheckoutAppContext} from '../types';
+import {type Plugin} from '@myparcel-pdk/common';
 import {ATTRIBUTE_CONTEXT} from '../constants';
 import {useConfig} from './useConfig';
 import {getElement} from './global';
 
-export const getFrontendContext = (): CheckoutAppContext['checkout'] => {
+export const getFrontendContext = (): Plugin.ModelContextCheckoutContext => {
   const config = useConfig();
 
   const wrapper = getElement(config.selectors.deliveryOptionsWrapper, false);
@@ -15,7 +15,8 @@ export const getFrontendContext = (): CheckoutAppContext['checkout'] => {
 
   wrapper.removeAttribute(ATTRIBUTE_CONTEXT);
 
-  const {checkout} = JSON.parse(context) as CheckoutAppContext;
+  const {checkout} = JSON.parse(context) as Plugin.ModelContextContextBag;
 
-  return checkout;
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  return checkout!;
 };
