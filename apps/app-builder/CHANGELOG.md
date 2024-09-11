@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.4.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.4.2...@myparcel-pdk/app-builder@1.4.3) "@myparcel-pdk/app-builder" (2024-09-11)
+
+
+### Bug Fixes
+
+* **app-builder:** add --ignore-platform-req flag to composer commands ([f4fad21](https://github.com/myparcelnl/js-pdk/commit/f4fad2168e68e4ac098a0acedc95b01cd0033fda))
+
+
+
+
 ## [1.4.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.4.1...@myparcel-pdk/app-builder@1.4.2) "@myparcel-pdk/app-builder" (2024-09-05)
 
 
