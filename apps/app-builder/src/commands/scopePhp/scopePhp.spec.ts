@@ -18,6 +18,7 @@ const getScoperInstallArgs = (context: PdkBuilderContext) => {
       'require',
       `--working-dir=${resolveString(installDir, context)}`,
       `${PACKAGE_NAME}:${version}`,
+      '--ignore-platform-req=ext-*',
     ]),
     expect.any(Object),
   ] as const;

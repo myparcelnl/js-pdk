@@ -35,6 +35,7 @@ export const installPhpScoper = async (context: PdkBuilderContext): Promise<void
       'require',
       `--working-dir=${resolvedInstallDir}`,
       `${PACKAGE_NAME}:${version}`,
+      '--ignore-platform-req=ext-*',
       '--no-interaction',
       '--no-progress',
     ],
