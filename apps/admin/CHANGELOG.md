@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.2.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.1.0...@myparcel-pdk/admin@1.2.0) "@myparcel-pdk/admin" (2024-09-19)
+
+
+### Features
+
+* **admin:** allow rendering description in shipping methods ([#214](https://github.com/myparcelnl/js-pdk/issues/214)) ([9ba240d](https://github.com/myparcelnl/js-pdk/commit/9ba240d50c87a9d90209c6a5e3e27054704265c6))
+
+
+
+
 ## [1.1.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.0.0...@myparcel-pdk/admin@1.1.0) "@myparcel-pdk/admin" (2024-06-05)
 
 
