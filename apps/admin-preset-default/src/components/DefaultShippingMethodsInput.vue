@@ -25,7 +25,11 @@
         <PdkTableCol
           component="th"
           :class="config?.cssUtilities?.whitespaceNoWrap">
-          {{ shippingMethod.label }}
+          <p v-text="shippingMethod.label" />
+
+          <small
+            v-if="shippingMethod.description"
+            v-html="translate(shippingMethod.description)" />
         </PdkTableCol>
 
         <PdkTableCol
