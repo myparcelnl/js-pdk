@@ -6,6 +6,7 @@ import {type AdminComponentMap, type PrefixedAdminComponent} from '../../../type
 import {
   AdminComponent,
   optionalAdminActionContainerComponentNames,
+  optionalAdminComponentNames,
   optionalAdminPlainWrapperComponentNames,
   requiredAdminComponentNames,
 } from '../../../data';
@@ -27,6 +28,7 @@ const getOptionalComponents = (app: App): Record<string, Component | AdminCompon
   };
 
   return {
+    ...createComponentMap(optionalAdminComponentNames, PlainElement),
     ...createComponentMap(optionalAdminPlainWrapperComponentNames, PlainElement),
     ...createComponentMap(optionalAdminActionContainerComponentNames, AdminComponent.Box),
   };
@@ -47,13 +49,7 @@ export const createRegisterComponentsPlugin: PdkAppPlugin = ({config, logger}) =
       );
 
       const requiredComponents = {
-        ...requiredAdminComponentNames.reduce(
-          (acc, name) => ({
-            ...acc,
-            [name]: null,
-          }),
-          {},
-        ),
+        ...requiredAdminComponentNames.reduce((acc, name) => ({...acc, [name]: null}), {}),
         ...componentsFromConfig,
       };
 
