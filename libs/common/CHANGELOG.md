@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.2.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.1.0...@myparcel-pdk/common@1.2.0) "@myparcel-pdk/common" (2024-09-26)
+
+
+### Features
+
+* **checkout:** improve shipping logic and expose default methods ([#216](https://github.com/myparcelnl/js-pdk/issues/216)) ([e860ba2](https://github.com/myparcelnl/js-pdk/commit/e860ba2bf14dc3dbffd7fb599bad514087c4667e))
+
+
+
+
 ## [1.1.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.0.0...@myparcel-pdk/common@1.1.0) "@myparcel-pdk/common" (2024-06-05)
 
 
