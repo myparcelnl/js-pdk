@@ -5,7 +5,10 @@
 
 import {type SupportedDeliveryTypeName, type SupportedPackageTypeName} from '@myparcel/delivery-options';
 import {type CarrierId, type CarrierName} from '@myparcel/constants';
+import {type FrontendEndpoint, type TriState} from '../data';
+import {type ShippingMethodTypeMap} from './pluginSettings.types';
 import {type DateTime, type DateTimeImmutable} from './generic.types';
+import {type EndpointObject} from './endpoints.types';
 
 export namespace Account {
   export type GetAccountsRequest = Base.Request;
@@ -345,8 +348,9 @@ export namespace Plugin {
   export type GetOrdersEndpointRequest = AbstractEndpointRequest;
 
   export type ModelContextContextBag = {
-    global: ModelContextGlobalContext;
+    checkout?: ModelContextCheckoutContext;
     dynamic?: ModelContextDynamicContext;
+    global: ModelContextGlobalContext;
     orderData?: OrderDataContextCollection;
     pluginSettingsView?: ModelContextPluginSettingsViewContext;
     productData?: ProductDataContextCollection;
@@ -366,10 +370,29 @@ export namespace Plugin {
     carrierSettings: unknown[];
   };
 
+  export type ModelContextCheckoutContextSettings = {
+    actions: {
+      baseUrl: string;
+      endpoints: EndpointObject<FrontendEndpoint>;
+    };
+
+    // Delivery options
+    allowedShippingMethods: Omit<ShippingMethodTypeMap, TriState.Off>;
+    hasDeliveryOptions: boolean;
+    hiddenInputName: string;
+
+    // Separate address fields
+    countriesWithSeparateAddressFields: string[];
+
+    // Tax fields
+    carriersWithTaxFields: CarrierName[];
+  };
+
   export type ModelContextCheckoutContext = {
+    config: Shipment.ModelDeliveryOptions;
+    endpoints: EndpointRequestCollection;
+    settings: ModelContextCheckoutContextSettings;
     strings: Record<string, string>;
-    config?: Shipment.ModelDeliveryOptions;
-    settings: Record<string, unknown>;
   };
 
   export type ModelContextGlobalContext = {

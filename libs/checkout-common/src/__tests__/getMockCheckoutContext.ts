@@ -1,12 +1,11 @@
 import {vi} from 'vitest';
-import {FrontendEndpoint} from '@myparcel-pdk/common';
+import {FrontendEndpoint, type Plugin} from '@myparcel-pdk/common';
 import {KEY_CONFIG} from '@myparcel/delivery-options';
 import {PackageTypeName} from '@myparcel/constants';
-import {type CheckoutAppCheckoutContext} from '../types';
 import {getMockDeliveryOptionsConfig} from './getMockDeliveryOptionsConfig';
 
 export const getMockCheckoutContext = vi.fn(
-  (context?: Partial<CheckoutAppCheckoutContext>): CheckoutAppCheckoutContext => {
+  (context?: Partial<Plugin.ModelContextCheckoutContext>): Plugin.ModelContextCheckoutContext => {
     return {
       settings: {
         hasDeliveryOptions: true,
@@ -40,6 +39,6 @@ export const getMockCheckoutContext = vi.fn(
       },
       [KEY_CONFIG]: getMockDeliveryOptionsConfig(),
       ...context,
-    } as CheckoutAppCheckoutContext;
+    } as Plugin.ModelContextCheckoutContext;
   },
 );

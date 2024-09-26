@@ -1,7 +1,7 @@
-import {type Keyable} from '@myparcel-pdk/common';
+import {type Keyable, type Plugin} from '@myparcel-pdk/common';
 import {type PromiseOr} from '@myparcel/ts-utils';
 import {type AddressType, type StoreListener} from '../data';
-import {type CheckoutAppCheckoutContext, type PdkCheckoutForm} from './checkout.types';
+import {type PdkCheckoutForm} from './checkout.types';
 
 type StoreListeners<T extends StoreState> = {
   [StoreListener.Update]: StoreCallbackUpdate<T>;
@@ -32,7 +32,7 @@ export type Store<S extends StoreState = StoreState> = {
 export type CheckoutStoreState = {
   addressType: AddressType;
   addressTypes: AddressType[];
-  context: CheckoutAppCheckoutContext;
+  context: Plugin.ModelContextCheckoutContext;
   form: PdkCheckoutForm;
 };
 

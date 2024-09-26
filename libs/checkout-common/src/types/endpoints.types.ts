@@ -21,12 +21,11 @@ export type FrontendEndpointParameters<E extends FrontendEndpoint> = PdkEndpoint
 >;
 
 interface FetchCheckoutContextDefinition extends PdkEndpointDefinition {
-  formattedResponse: Plugin.ModelContextCheckoutContext;
   name: FrontendEndpoint.FetchCheckoutContext;
   parameters: {
     shippingMethod?: string;
   };
-  response: [Plugin.ModelContextCheckoutContext];
+  response: {data: {context: [Plugin.ModelContextContextBag]}};
 }
 
 export type FrontendEndpointDefinition = FetchCheckoutContextDefinition;

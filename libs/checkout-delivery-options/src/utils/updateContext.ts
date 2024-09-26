@@ -1,24 +1,19 @@
-import {FrontendEndpoint} from '@myparcel-pdk/common';
-import {PdkField, PdkUtil, useCheckoutStore, useUtil} from '@myparcel-pdk/checkout-common';
+import {useCheckoutStore} from '@myparcel-pdk/checkout-common';
 import {useDeliveryOptionsStore} from './useDeliveryOptionsStore';
+import {fetchCheckoutContext} from './fetchCheckoutContext';
 
 /**
  * Fetch and update the delivery options config. For use with changing shipping methods, for example, as doing so
  *  changes the prices of delivery and any extra options.
  */
 export const updateContext = async (): Promise<void> => {
-  const doRequest = useUtil(PdkUtil.DoRequest);
-  const getFieldValue = useUtil(PdkUtil.GetFieldValue);
-
-  const context = await doRequest(FrontendEndpoint.FetchCheckoutContext, {
-    shippingMethod: getFieldValue(PdkField.ShippingMethod),
-  });
+  const context = await fetchCheckoutContext();
 
   const checkout = useCheckoutStore();
   const deliveryOptions = useDeliveryOptionsStore();
 
   await Promise.all([
-    checkout.set(context.settings),
+    checkout.set({context}),
     deliveryOptions.set({
       configuration: {
         ...deliveryOptions.state.configuration,
