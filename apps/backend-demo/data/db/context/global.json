@@ -190,6 +190,15 @@
         },
         "path": "",
         "property": "context"
+      },
+      "downloadLogs": {
+        "headers": [],
+        "method": "GET",
+        "parameters": {
+          "action": "downloadLogs"
+        },
+        "path": "",
+        "property": "logs"
       }
     },
     "eventPing": "myparcel_pdk_ping",
@@ -199,6 +208,7 @@
     "platform": {
       "name": "myparcel",
       "human": "MyParcel",
+      "supportUrl": "https://developer.myparcel.nl/contact",
       "backofficeUrl": "https://backoffice.myparcel.nl",
       "localCountry": "NL",
       "defaultCarrier": "postnl",
