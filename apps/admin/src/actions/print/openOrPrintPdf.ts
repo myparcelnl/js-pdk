@@ -2,7 +2,7 @@ import {isOfType} from '@myparcel/ts-utils';
 import {type ActionContextWithResponse} from '../executors';
 import {generateLabelFilename} from '../../utils';
 import {type PdfDataResponse, type PrintAction} from '../../types';
-import {downloadPdf, openPdfInNewWindow} from '../../services';
+import {downloadFile, openPdfInNewWindow} from '../../services';
 
 export const openOrPrintPdf = async <A extends PrintAction>({
   response,
@@ -12,5 +12,5 @@ export const openOrPrintPdf = async <A extends PrintAction>({
     return openPdfInNewWindow(response.data);
   }
 
-  await downloadPdf(response.url, generateLabelFilename(parameters));
+  await downloadFile(response.url, generateLabelFilename(parameters));
 };

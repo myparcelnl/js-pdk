@@ -172,7 +172,7 @@ interface DeleteWebhooksDefinition extends PdkEndpointDefinition {
 
 interface DebugDownloadLogsDefinition extends PdkEndpointDefinition {
   name: BackendEndpoint.DownloadLogs;
-  response: void;
+  response: Blob;
 }
 
 export type BackendEndpointDefinition =
