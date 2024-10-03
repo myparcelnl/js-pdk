@@ -10,6 +10,7 @@ import {
   getPackageTypes,
   resolveFormComponent,
   setFieldProp,
+  setPostNlAgeCheckSubtext,
   updateFieldsDefaults,
 } from '../../helpers';
 import {createAssetUrl} from '../../../utils';
@@ -73,6 +74,8 @@ export const createCarrierField = (
 
       setFieldProp(field.form, FIELD_INSURANCE, PROP_OPTIONS, getInsuranceOptions(field, formatter));
       setFieldProp(field.form, FIELD_PACKAGE_TYPE, PROP_OPTIONS, getPackageTypes(field.form));
+
+      setPostNlAgeCheckSubtext(field);
     },
   });
 };

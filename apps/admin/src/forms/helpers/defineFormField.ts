@@ -1,4 +1,6 @@
 import {defineField, type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
+import {KEY_DESCRIPTION, KEY_SUBTEXT} from '../shipmentOptions';
+import {createLabel} from './createLabel';
 
 export const defineFormField = (config: InteractiveElementConfiguration): InteractiveElementConfiguration => {
   const {props, label} = config;
@@ -9,8 +11,8 @@ export const defineFormField = (config: InteractiveElementConfiguration): Intera
   return defineField({
     ...config,
     props: {
-      description: `${label}_description`,
-      subtext: `${label}_subtext`,
+      description: createLabel(label, KEY_DESCRIPTION),
+      subtext: createLabel(label, KEY_SUBTEXT),
       ...props,
     },
   });

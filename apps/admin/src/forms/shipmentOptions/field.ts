@@ -36,6 +36,10 @@ export const MANUAL_WEIGHT = 'manualWeight';
 
 export const PROP_OPTIONS = 'options';
 
+export const KEY_DESCRIPTION = 'description';
+
+export const KEY_SUBTEXT = 'subtext';
+
 export const FIELD_CARRIER: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${CARRIER}`;
 
 export const FIELD_LABEL_AMOUNT: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${LABEL_AMOUNT}`;
