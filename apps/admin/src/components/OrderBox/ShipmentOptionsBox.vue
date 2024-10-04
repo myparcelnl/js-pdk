@@ -27,8 +27,9 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
+import {ShipmentOptionsForm} from '../common';
 import {instantiateActions} from '../../services';
+import {AdminIcon} from '../../data';
 import {useLanguage, useOrderData, usePluginSettings} from '../../composables';
 import {
   orderExportAction,
@@ -38,7 +39,6 @@ import {
   ordersUpdateAction,
   orderViewInBackofficeAction,
 } from '../../actions';
-import {AdminIcon} from "../../data";
 
 const {order: data, loading} = useOrderData();
 

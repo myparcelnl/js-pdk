@@ -11,14 +11,14 @@
 <script lang="ts" setup>
 import {computed, ref, watch} from 'vue';
 import {get} from '@vueuse/core';
-import TabNavigation from '../common/TabNavigation.vue';
+import {AdminContextKey} from '@myparcel-pdk/common';
+import {TabNavigation} from '../common';
 import {type TabDefinition} from '../../types';
 import {createActionContext} from '../../services';
 import {createPluginSettingsTabs} from '../../forms';
+import {type AdminAction} from '../../data';
 import {useAdminConfig, useStoreContextQuery} from '../../composables';
 import {pluginSettingsUpdateAction} from '../../actions';
-import {AdminAction} from "../../data";
-import {AdminContextKey} from "@myparcel-pdk/common";
 
 const config = useAdminConfig();
 

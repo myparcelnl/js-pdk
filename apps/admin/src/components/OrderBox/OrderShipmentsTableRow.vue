@@ -33,8 +33,7 @@
 import {computed, toRefs} from 'vue';
 import {useVModel} from '@vueuse/core';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import ShipmentStatus from '../common/ShipmentStatus.vue';
-import ShipmentBarcode from '../common/ShipmentBarcode.vue';
+import {ShipmentBarcode, ShipmentStatus} from '../common';
 import {createClasses} from '../../utils';
 import {useQueryStore} from '../../stores';
 import {Format, useAdminConfig, useLocalizedFormatter, useShipmentData} from '../../composables';

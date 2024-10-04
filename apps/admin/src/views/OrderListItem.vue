@@ -1,12 +1,8 @@
 <template>
   <div v-if="!query.isLoading">
-    <OrderModeActions v-if="orderMode" />
+    <OrderModeOrderListItem v-if="orderMode" />
 
-    <template v-else>
-      <ShipmentLabels v-if="!orderMode" />
-
-      <OrderActions />
-    </template>
+    <ShipmentModeOrderListItem v-else />
   </div>
 
   <NotificationContainer
@@ -22,14 +18,18 @@ import {defineAsyncComponent} from 'vue';
 import {get} from '@vueuse/core';
 import {type NotificationFilter} from '../types';
 import {useActionStore, useQueryStore} from '../stores';
+import {NotificationCategory} from '../data';
 import {useOrderData, usePluginSettings} from '../composables';
 import {NotificationContainer} from '../components';
-import {NotificationCategory} from "../data";
 
 /* eslint-disable @typescript-eslint/naming-convention */
-const ShipmentLabels = defineAsyncComponent(() => import('../components/OrderListItem/ShipmentLabels.vue'));
-const OrderModeActions = defineAsyncComponent(() => import('../components/OrderListItem/OrderModeActions.vue'));
-const OrderActions = defineAsyncComponent(() => import('../components/OrderListItem/OrderActions.vue'));
+const OrderModeOrderListItem = defineAsyncComponent(() => {
+  return import('../components/OrderListItem/OrderModeOrderListItem.vue');
+});
+
+const ShipmentModeOrderListItem = defineAsyncComponent(() => {
+  return import('../components/OrderListItem/ShipmentModeOrderListItem.vue');
+});
 /* eslint-enable @typescript-eslint/naming-convention */
 
 const queryStore = useQueryStore();

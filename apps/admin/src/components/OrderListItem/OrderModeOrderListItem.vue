@@ -10,8 +10,8 @@
       <ActionButton
         v-for="action in orderActions"
         :key="action.id"
-        :size="Size.Small"
         :action="action"
+        :size="Size.Small"
         hide-text />
     </template>
   </PdkButtonGroup>
@@ -19,8 +19,7 @@
 
 <script lang="ts" setup>
 import {Size} from '@myparcel-pdk/common';
-import DeliveryOptionsExcerpt from '../common/DeliveryOptionsExcerpt.vue';
-import {ActionButton} from '../common';
+import {ActionButton, DeliveryOptionsExcerpt} from '../common';
 import {instantiateAction, instantiateActions} from '../../services';
 import {useOrderData} from '../../composables';
 import {orderExportAction, ordersEditAction, orderViewInBackofficeAction} from '../../actions';

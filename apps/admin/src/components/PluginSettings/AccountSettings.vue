@@ -7,18 +7,18 @@
     </p>
 
     <TabNavigation
-      :button-wrapper="prefixComponent(AdminComponent.ButtonGroup)"
       :button="prefixComponent(AdminComponent.Button)"
-      :initial-tab="!hasAccount"
+      :button-wrapper="prefixComponent(AdminComponent.ButtonGroup)"
       :closeable="hasAccount"
+      :initial-tab="!hasAccount"
       :tabs="tabs">
       <template
         v-if="refreshAction"
         #button-wrapper>
         <ActionButton
           :action="refreshAction"
-          :variant="Variant.Secondary"
-          :size="Size.Small" />
+          :size="Size.Small"
+          :variant="Variant.Secondary" />
       </template>
     </TabNavigation>
   </PdkBox>
@@ -28,9 +28,7 @@
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {Size, Status, Variant} from '@myparcel-pdk/common';
-import TabNavigation from '../common/TabNavigation.vue';
-import StatusIndicator from '../common/StatusIndicator.vue';
-import ActionButton from '../common/ActionButton.vue';
+import {ActionButton, StatusIndicator, TabNavigation} from '../common';
 import {prefixComponent} from '../../utils';
 import {type TabDefinition} from '../../types';
 import {useActionStore} from '../../stores';

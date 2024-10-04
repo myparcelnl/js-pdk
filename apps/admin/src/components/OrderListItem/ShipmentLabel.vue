@@ -29,9 +29,7 @@
 
 <script lang="ts" setup>
 import {toRefs} from 'vue';
-import ShipmentStatus from '../common/ShipmentStatus.vue';
-import ShipmentBarcode from '../common/ShipmentBarcode.vue';
-import DeliveryOptionsPackageType from '../common/DeliveryOptionsPackageType.vue';
+import {DeliveryOptionsPackageType, ShipmentBarcode, ShipmentStatus} from '../common';
 import {useQueryStore} from '../../stores';
 import {useAdminConfig, useShipmentData} from '../../composables';
 

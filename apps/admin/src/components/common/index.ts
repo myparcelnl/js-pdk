@@ -2,6 +2,20 @@ export {default as ActionButton} from './ActionButton.vue';
 
 export {default as BulkSelectCheckbox} from './BulkSelectCheckbox.vue';
 
+export {default as CarrierLogo} from './CarrierLogo.vue';
+
+export {default as DateRelative} from './DateRelative.vue';
+
+export {default as DeliveryOptionsDeliveryType} from './DeliveryOptionsDeliveryType.vue';
+
+export {default as DeliveryOptionsExcerpt} from './DeliveryOptionsExcerpt.vue';
+
+export {default as DeliveryOptionsExcerptCarrierName} from './DeliveryOptionsExcerptCarrierName.vue';
+
+export {default as DeliveryOptionsPackageType} from './DeliveryOptionsPackageType.vue';
+
+export {default as DigitalStampWeightRange} from './DigitalStampWeightRange.vue';
+
 export {default as NotificationContainer} from './NotificationContainer.vue';
 
 export {default as PackageType} from './PackageType.vue';

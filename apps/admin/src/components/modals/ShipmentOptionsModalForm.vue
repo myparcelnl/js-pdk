@@ -5,11 +5,11 @@
     :order="orderIds" />
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {type OneOrMore} from '@myparcel/ts-utils';
-import ShipmentOptionsForm from '../common/ShipmentOptionsForm.vue';
+import {ShipmentOptionsForm} from '../common';
 import {useOrdersData} from '../../composables';
 
 const props = defineProps<{order: OneOrMore<string>}>();
