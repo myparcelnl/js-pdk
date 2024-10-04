@@ -8,10 +8,10 @@
   },
   "include": [],
   "exclude": [
-    "**/node_modules/**/*",
-    "**/dist",
-    "**/cypress/**/*",
-    "**/__tests__/*",
-    "**/*.spec.*"
+    "./**/node_modules/**/*",
+    "./**/dist",
+    "./**/cypress/**/*",
+    "./**/__tests__/*",
+    "./**/*.spec.*"
   ]
 }
