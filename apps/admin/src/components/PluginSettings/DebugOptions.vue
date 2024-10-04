@@ -22,7 +22,7 @@ import {ActionButton} from '../common';
 import {useActionStore, useQueryStore} from '../../stores';
 import {instantiateAction} from '../../services';
 import {useLanguage} from '../../composables';
-import {downloadLogsAction, refreshAccountAction, updateAccountAction, useDownloadLogsMutation,} from '../../actions';
+import {downloadLogsAction, refreshAccountAction, updateAccountAction, useDownloadLogsMutation} from '../../actions';
 
 const {translate} = useLanguage();
 
