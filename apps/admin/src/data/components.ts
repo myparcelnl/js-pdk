@@ -95,6 +95,7 @@ export const optionalAdminActionContainerComponentNames = [
 
 export const allAdminComponentNames = [
   ...requiredAdminComponentNames,
+  ...optionalAdminComponentNames,
   ...optionalAdminPlainWrapperComponentNames,
   ...optionalAdminActionContainerComponentNames,
 ] as const;
