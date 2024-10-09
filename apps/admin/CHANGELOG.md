@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.3.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.2.2...@myparcel-pdk/admin@1.3.0) "@myparcel-pdk/admin" (2024-10-09)
+
+
+### Features
+
+* **order:** add helpful text when using postnl age check ([#222](https://github.com/myparcelnl/js-pdk/issues/222)) ([f05022d](https://github.com/myparcelnl/js-pdk/commit/f05022dd5becde9e2cca9921ba1df6d8cc8ea88d))
+
+
+
+
 ## [1.2.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.2.1...@myparcel-pdk/admin@1.2.2) "@myparcel-pdk/admin" (2024-10-04)
 
 
