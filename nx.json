@@ -7,6 +7,7 @@
   "defaultBase": "alpha",
   "namedInputs": {
     "default": [
+      "{workspaceRoot}/libs/build-vite/index.js",
       "{workspaceRoot}/tsconfig.base.json",
       "{projectRoot}/*.cjs",
       "{projectRoot}/*.js",
@@ -59,7 +60,7 @@
     },
     "test:coverage": {
       "inputs": ["^test"],
-      "outputs": ["{projectRoot}/coverage"]
+      "outputs": ["{projectRoot}/coverage", "{projectRoot}/junit.xml"]
     },
     "test:run": {
       "inputs": ["^test"]
