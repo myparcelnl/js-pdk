@@ -2,7 +2,7 @@ import {computed, markRaw, reactive, ref, type Ref, watch, type WritableComputed
 import {get} from '@vueuse/core';
 import {TriState} from '@myparcel-pdk/common';
 import {type AnyElementConfiguration, defineField, useForm} from '@myparcel/vue-form-builder';
-import {toTriState, triStateToBoolean} from '../utils';
+import {booleanToTriState, triStateToBoolean} from '../utils';
 import {
   type ElementInstance,
   type PdkElementProps,
@@ -33,8 +33,6 @@ type UseTriStateInputContext = (props: TriStateInputProps, emit: TriStateInputEm
 export const useTriStateInputContext: UseTriStateInputContext = (props, emit) => {
   const {translate} = useLanguage();
   const form = useForm();
-
-  const toggleName = `${props.element.name}__toggle`;
 
   const inheritModel = ref<boolean>(TriState.Inherit === get(props.modelValue));
   const toggleModel = ref<boolean>(triStateToBoolean(get(props.modelValue)));
@@ -69,7 +67,7 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
   const toggleElement = reactive(
     defineField({
       ...commonFieldProperties,
-      name: toggleName,
+      name: `${props.element.name}__toggle`,
       ref: toggleModel,
       // The toggle is readonly when inherit is enabled or the element itself is set to readonly.
       isReadOnly: markRaw(computed(() => get(inheritModel) || get(props.element.isReadOnly))),
@@ -82,7 +80,7 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
       return;
     }
 
-    model.value = toTriState(toggle);
+    model.value = booleanToTriState(toggle);
   });
 
   // When inherit is disabled, the model is updated to the current toggle value
@@ -93,7 +91,7 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
     }
 
     if (!inherit) {
-      model.value = toTriState(toggleModel.value);
+      model.value = booleanToTriState(toggleModel.value);
       return;
     }
 
