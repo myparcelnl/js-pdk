@@ -125,9 +125,11 @@ export class TestSuite<
     element: string,
     wrapper: VueWrapper<Component>,
   ): DOMWrapper<NodeType> {
-    const byComponentName = wrapper.findByTestId([this.componentName, element]);
+    const byComponentName = wrapper.findByTestId(this.componentName);
 
-    return (byComponentName.exists() ? byComponentName : wrapper.find(element)) as unknown as DOMWrapper<NodeType>;
+    return (byComponentName.exists()
+      ? byComponentName?.find(element)
+      : wrapper.find(element)) as unknown as DOMWrapper<NodeType>;
   }
 
   private resolveOptions(

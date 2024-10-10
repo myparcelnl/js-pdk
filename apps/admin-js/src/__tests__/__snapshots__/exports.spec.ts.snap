@@ -148,6 +148,7 @@ exports[`exports > exports from index.ts 1`] = `
   "useSelectInputContext",
   "useShippingMethodsInputContext",
   "useStoreQuery",
+  "useToggleInputContext",
   "useTriStateInputContext",
   "useUpdateAccountMutation",
   "useUpdateOrdersMutation",

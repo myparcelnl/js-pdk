@@ -1,3 +1,4 @@
+export * from './booleanToTriState';
 export * from './convertDotNotationToObject';
 export * from './createAssetUrl';
 export * from './createClasses';
@@ -13,7 +14,6 @@ export * from './openUrl';
 export * from './prefixComponent';
 export * from './query';
 export * from './resolveCarrier';
-export * from './toTriState';
 export * from './translations';
 export * from './triStateToBoolean';
 export * from './unprefixComponent';

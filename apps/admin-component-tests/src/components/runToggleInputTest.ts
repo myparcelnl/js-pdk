@@ -3,7 +3,7 @@ import {type AdminComponentTest} from '../tests';
 import {TestSuite} from '../TestSuite';
 
 export const runToggleInputTest = ((component) => {
-  const suite = new TestSuite(AdminComponent.SelectInput, component);
+  const suite = new TestSuite(AdminComponent.ToggleInput, component);
 
   suite.setOptions({
     props: {

@@ -24,5 +24,6 @@ export * from './useSelectInputContext';
 export * from './useShippingMethodsInputContext';
 export * from './useStoreContextQuery';
 export * from './useStoreQuery';
+export * from './useToggleInputContext';
 export * from './useTriStateInputContext';
 export * from './useWeekdays';
