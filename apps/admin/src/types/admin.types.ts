@@ -5,6 +5,7 @@ import {
   type AdminComponent,
   type AdminView,
   type optionalAdminActionContainerComponentNames,
+  type optionalAdminComponentNames,
   type optionalAdminPlainWrapperComponentNames,
   type requiredAdminComponentNames,
 } from '../data';
@@ -14,6 +15,7 @@ import {type AdminConfiguration} from './configuration.types';
 export type RequiredAdminComponentName = (typeof requiredAdminComponentNames)[number];
 
 export type OptionalAdminComponentName =
+  | (typeof optionalAdminComponentNames)[number]
   | (typeof optionalAdminPlainWrapperComponentNames)[number]
   | (typeof optionalAdminActionContainerComponentNames)[number];
 
