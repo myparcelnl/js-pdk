@@ -66,7 +66,6 @@ export const requiredAdminComponentNames = [
   AdminComponent.RadioInput,
   AdminComponent.Row,
   AdminComponent.SelectInput,
-  AdminComponent.ShippingMethodsInput,
   AdminComponent.TabNavButton,
   AdminComponent.Table,
   AdminComponent.TextArea,
@@ -75,6 +74,8 @@ export const requiredAdminComponentNames = [
   AdminComponent.ToggleInput,
   AdminComponent.TriStateInput,
 ] as const;
+
+export const optionalAdminComponentNames = [AdminComponent.ShippingMethodsInput] as const;
 
 export const optionalAdminPlainWrapperComponentNames = [
   AdminComponent.Badge,
@@ -94,6 +95,7 @@ export const optionalAdminActionContainerComponentNames = [
 
 export const allAdminComponentNames = [
   ...requiredAdminComponentNames,
+  ...optionalAdminComponentNames,
   ...optionalAdminPlainWrapperComponentNames,
   ...optionalAdminActionContainerComponentNames,
 ] as const;

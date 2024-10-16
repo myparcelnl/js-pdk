@@ -81,6 +81,7 @@ exports[`exports > exports from index.ts 1`] = `
   "modalSubmitFormAction",
   "openOrPrintPdf",
   "optionalAdminActionContainerComponentNames",
+  "optionalAdminComponentNames",
   "optionalAdminPlainWrapperComponentNames",
   "orderExportAction",
   "orderExportToShipmentsAction",

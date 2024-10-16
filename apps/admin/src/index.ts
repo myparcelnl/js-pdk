@@ -49,9 +49,8 @@ export {
   NotificationCategory,
   allAdminComponentNames,
   optionalAdminActionContainerComponentNames,
+  optionalAdminComponentNames,
   optionalAdminPlainWrapperComponentNames,
-
-  /** @deprecated use TriState */
   requiredAdminComponentNames,
 } from './data';
 
