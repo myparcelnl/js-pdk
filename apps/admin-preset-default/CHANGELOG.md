@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.5.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.4.3...@myparcel-pdk/admin-preset-default@1.5.0) "@myparcel-pdk/admin-preset-default" (2024-10-16)
+
+
+### Features
+
+* **admin:** add useToggleInputContext composable ([#223](https://github.com/myparcelnl/js-pdk/issues/223)) ([c0e1f59](https://github.com/myparcelnl/js-pdk/commit/c0e1f59604e406cefa46451b756f4331f01c93bf))
+
+
+
+
 ## [1.4.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.4.1...@myparcel-pdk/admin-preset-default@1.4.2) "@myparcel-pdk/admin-preset-default" (2024-10-04)
 
 
