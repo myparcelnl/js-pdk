@@ -132,7 +132,7 @@ export type TimeInputEmits = PdkElementEmits<TimeInputModelValue>;
  * @see AdminComponent.ToggleInput
  */
 
-export type ToggleInputModelValue = boolean;
+export type ToggleInputModelValue = TriState.On | TriState.Off;
 
 export type ToggleInputProps = PdkElementProps<ToggleInputModelValue>;
 

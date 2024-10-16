@@ -109,6 +109,7 @@ export {
   useSelectInputContext,
   useShippingMethodsInputContext,
   useStoreQuery,
+  useToggleInputContext,
   useTriStateInputContext,
   useWeekdays,
 } from './composables';
