@@ -10,7 +10,7 @@ export * from './forms';
 export * from './generateLabelFilename';
 export * from './getOrderId';
 export * from './getOrderShipmentIds';
-export * from './openUrl';
+export * from './openUrlInNewTab';
 export * from './prefixComponent';
 export * from './query';
 export * from './resolveCarrier';
@@ -18,3 +18,6 @@ export * from './translations';
 export * from './triStateToBoolean';
 export * from './unprefixComponent';
 export * from './validateId';
+export {downloadFileFromUrl} from './downloadFileFromUrl';
+
+export {fakeLinkClick} from './fakeLinkClick';

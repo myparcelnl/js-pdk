@@ -11,39 +11,29 @@
       :button-wrapper="prefixComponent(AdminComponent.ButtonGroup)"
       :closeable="hasAccount"
       :initial-tab="!hasAccount"
-      :tabs="tabs">
-      <template
-        v-if="refreshAction"
-        #button-wrapper>
-        <ActionButton
-          :action="refreshAction"
-          :size="Size.Small"
-          :variant="Variant.Secondary" />
-      </template>
-    </TabNavigation>
+      :tabs="tabs" />
   </PdkBox>
 </template>
 
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {Size, Status, Variant} from '@myparcel-pdk/common';
-import {ActionButton, StatusIndicator, TabNavigation} from '../common';
+import {Status} from '@myparcel-pdk/common';
+import {StatusIndicator, TabNavigation} from '../common';
 import {prefixComponent} from '../../utils';
 import {type TabDefinition} from '../../types';
 import {useActionStore} from '../../stores';
-import {instantiateAction} from '../../services';
 import {AdminComponent} from '../../data';
 import {useLanguage, useStoreContextQuery} from '../../composables';
 import {
   deleteAccountAction,
-  refreshAccountAction,
   updateAccountAction,
   useDeleteAccountMutation,
   useUpdateAccountMutation,
 } from '../../actions';
 import WebhooksStatus from './WebhooksStatus.vue';
 import EditApiKeyForm from './EditApiKeyForm.vue';
+import DebugOptions from './DebugOptions.vue';
 
 const actionStore = useActionStore();
 
@@ -60,8 +50,6 @@ const loading =
 const hasApiKey = computed(() => Boolean(get(contextQuery.data)?.pluginSettings.account.apiKey));
 
 const hasAccount = computed(() => !get(loading) && hasApiKey.value && Boolean(get(contextQuery.data)?.account));
-
-const refreshAction = instantiateAction(refreshAccountAction);
 
 const {translate} = useLanguage();
 
@@ -81,6 +69,12 @@ const tabs = computed(() => {
       label: 'button_webhooks_edit',
     });
   }
+
+  array.push({
+    name: 'debug',
+    component: DebugOptions,
+    label: 'button_debug',
+  });
 
   return array;
 });
