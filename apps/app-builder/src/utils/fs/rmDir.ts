@@ -4,7 +4,7 @@ import {resolvePath} from '../resolvePath';
 import {reportDirectoryDoesNotExist} from '../debug/reportOnFile';
 import {logSourcePath} from '../debug/logSourcePath';
 import {shouldModifyFiles} from '../command/shouldModifyFiles';
-import {isVeryVerbose} from '../command/isVeryVerbose';
+import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';
 import {type PdkBuilderContext} from '../../types/command';
 import {exists} from './exists';
 
@@ -16,7 +16,7 @@ export const rmDir = async (dirPath: string, context: PdkBuilderContext): Promis
     return;
   }
 
-  if (isVeryVerbose(context)) {
+  if (isVeryVeryVerbose(context)) {
     context.debug(chalk.redBright('Deleting folder %s'), logSourcePath(dirPath, context));
   }
 

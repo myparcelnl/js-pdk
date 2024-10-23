@@ -6,7 +6,7 @@ import {resolvePath} from '../resolvePath';
 import {logTargetPath} from '../debug/logTargetPath';
 import {logSourcePath} from '../debug/logSourcePath';
 import {shouldModifyFiles} from '../command/shouldModifyFiles';
-import {isVeryVerbose} from '../command/isVeryVerbose';
+import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';
 import {type StringGenerator} from '../../types/common';
 import {type PdkBuilderContext} from '../../types/command';
 import {mkdirs} from './mkdirs';
@@ -21,7 +21,7 @@ export const copyFile = async (
 
   await mkdirs(path.dirname(resolvedTarget), context);
 
-  if (isVeryVerbose(context)) {
+  if (isVeryVeryVerbose(context)) {
     context.debug(
       chalk.yellowBright('Copying %s to %s'),
       logSourcePath(resolvedSource, context),

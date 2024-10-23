@@ -5,7 +5,7 @@ import {type OneOrMore} from '@myparcel/ts-utils';
 import {resolvePath} from '../resolvePath';
 import {logTargetPath} from '../debug/logTargetPath';
 import {shouldModifyFiles} from '../command/shouldModifyFiles';
-import {isVeryVerbose} from '../command/isVeryVerbose';
+import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';
 import {type StringGenerator} from '../../types/common';
 import {type PdkBuilderContext} from '../../types/command';
 import {mkdirs} from './mkdirs';
@@ -19,7 +19,7 @@ export const writeFile = async (
 
   await mkdirs(path.dirname(resolvedPath), context);
 
-  if (isVeryVerbose(context)) {
+  if (isVeryVeryVerbose(context)) {
     context.debug(chalk.yellowBright('Writing file %s'), logTargetPath(resolvedPath, context));
   }
 
