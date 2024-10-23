@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-js",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -29,7 +29,7 @@
     "test:update": "run ws:test:update \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^1.4.0"
+    "@myparcel-pdk/admin": "workspace:^1.5.0"
   },
   "devDependencies": {
     "@myparcel-pdk/build-vite": "workspace:*",

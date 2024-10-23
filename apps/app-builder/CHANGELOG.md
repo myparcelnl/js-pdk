@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.4.5](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.4.4...@myparcel-pdk/app-builder@1.4.5) "@myparcel-pdk/app-builder" (2024-10-23)
+
+
+### Bug Fixes
+
+* **app-builder:** increase verbosity level of file logs ([19f67a5](https://github.com/myparcelnl/js-pdk/commit/19f67a503a3980b8a660ce396e80d2f7a3c43d25))
+
+
+
+
 ## [1.4.4](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.4.3...@myparcel-pdk/app-builder@1.4.4) "@myparcel-pdk/app-builder" (2024-10-04)
 
 

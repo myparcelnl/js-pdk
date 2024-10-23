@@ -2,6 +2,16 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.5.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.4.0...@myparcel-pdk/admin@1.5.0) "@myparcel-pdk/admin" (2024-10-23)
+
+
+### Features
+
+* **admin:** add download logs action ([#221](https://github.com/myparcelnl/js-pdk/issues/221)) ([ac60e73](https://github.com/myparcelnl/js-pdk/commit/ac60e734127fd94df454f002c632f43a48d2eb06))
+
+
+
+
 ## [1.4.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.3.0...@myparcel-pdk/admin@1.4.0) "@myparcel-pdk/admin" (2024-10-16)
 
 
