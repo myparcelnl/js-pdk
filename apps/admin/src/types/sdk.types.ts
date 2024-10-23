@@ -170,8 +170,14 @@ interface DeleteWebhooksDefinition extends PdkEndpointDefinition {
   response: WebhookDefinition[];
 }
 
+interface DebugDownloadLogsDefinition extends PdkEndpointDefinition {
+  name: BackendEndpoint.DownloadLogs;
+  response: Blob;
+}
+
 export type BackendEndpointDefinition =
   | CreateWebhooksDefinition
+  | DebugDownloadLogsDefinition
   | DeleteAccountDefinition
   | DeleteShipmentsDefinition
   | DeleteWebhooksDefinition

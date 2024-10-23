@@ -20,3 +20,5 @@ export const BACKEND_ENDPOINTS_WEBHOOKS = [
   BackendEndpoint.DeleteWebhooks,
   BackendEndpoint.FetchWebhooks,
 ] as const;
+
+export const BACKEND_ENDPOINTS_DEBUG = [BackendEndpoint.DownloadLogs] as const;

@@ -417,6 +417,7 @@ export namespace Plugin {
       human: string;
       localCountry: string;
       name: string;
+      supportUrl: string;
     };
     translations: Record<string, string>;
   };

@@ -69,4 +69,6 @@ export enum AdminAction {
   WebhooksCreate = 'webhooksCreate',
   WebhooksDelete = 'webhooksDelete',
   WebhooksFetch = 'webhooksFetch',
+
+  DownloadLogs = 'downloadLogs',
 }

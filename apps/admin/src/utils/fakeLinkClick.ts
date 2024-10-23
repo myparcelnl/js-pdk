@@ -1,17 +1,17 @@
 /**
- * Opens a new tab with the given URL. Avoids popup blockers by creating a hidden link.
+ * Creates and clicks a link with the given URL. Avoids popup blockers by creating a hidden link element.
  */
-export const openUrl = (url: string, attributes: Record<string, string> = {}): void => {
+export const fakeLinkClick = (url: string, attributes: Record<string, string>): void => {
   const link = document.createElement('a');
 
   link.href = url;
-  link.target = '_blank';
 
   Object.entries(attributes).forEach(([key, value]) => {
     link.setAttribute(key, value);
   });
 
   document.body.appendChild(link);
+
   link.click();
   link.remove();
 };

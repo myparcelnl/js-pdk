@@ -121,6 +121,7 @@
     "pluginSettings": {
       "account": {
         "id": "account",
+        "apiKey": "test_1234567890",
         "apiKeyValid": true
       },
       "order": {

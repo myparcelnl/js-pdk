@@ -18,6 +18,7 @@ export interface AdminActionEndpointMap extends Record<AdminAction, BackendEndpo
   [AdminAction.AccountDelete]: BackendEndpoint.DeleteAccount;
   [AdminAction.AccountUpdate]: BackendEndpoint.UpdateAccount;
   [AdminAction.ContextFetch]: BackendEndpoint.FetchContext;
+  [AdminAction.DownloadLogs]: BackendEndpoint.DownloadLogs;
   [AdminAction.OrdersEdit]: BackendEndpoint.UpdateOrders;
   [AdminAction.OrdersExportPrint]: BackendEndpoint.ExportOrders;
   [AdminAction.OrdersExport]: BackendEndpoint.ExportOrders;
