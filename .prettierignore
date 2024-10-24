@@ -1,0 +1,8 @@
+# Automatically generated
+**/CHANGELOG.md
+
+.husky/
+.nx/
+.yarn/
+junit/
+coverage/
