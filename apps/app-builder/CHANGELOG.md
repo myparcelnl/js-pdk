@@ -2,6 +2,17 @@
 
 <!-- MONODEPLOY:BELOW -->
 
+## [1.4.6](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.4.5...@myparcel-pdk/app-builder@1.4.6) "@myparcel-pdk/app-builder" (2024-10-24)
+
+
+### Bug Fixes
+
+* **app-builder:** fix not being able to disable debugger ([deb5fde](https://github.com/myparcelnl/js-pdk/commit/deb5fdea8af1bcd495dca876020bd804d8ddf5f8))
+* **app-builder:** support slashes in archive filename ([870d00a](https://github.com/myparcelnl/js-pdk/commit/870d00aa442be73dd331677b09de0fd44f745ca9))
+
+
+
+
 ## [1.4.5](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.4.4...@myparcel-pdk/app-builder@1.4.5) "@myparcel-pdk/app-builder" (2024-10-23)
 
 
