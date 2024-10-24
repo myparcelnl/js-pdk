@@ -7,7 +7,7 @@ export const createDebugger = (name: string, args: CommandArgs): PdkDebugger => 
 
   const timeStart = Date.now();
 
-  debug.enabled = args.quiet !== false;
+  debug.enabled = !args.quiet;
 
   // eslint-disable-next-line no-console
   debug.log = console.log.bind(console);
