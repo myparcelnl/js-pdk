@@ -38,6 +38,7 @@
   "volta": {
     "extends": "../../package.json"
   },
+  "deployGroup": "demo",
   "nx": {
     "targets": {
       "build": {

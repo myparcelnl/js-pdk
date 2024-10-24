@@ -9,6 +9,7 @@ module.exports = {
   autoCommitMessage: 'chore: release [skip ci]',
   changelogFilename: '<packageDir>/CHANGELOG.md',
   conventionalChangelogConfig: 'conventional-changelog-conventionalcommits',
+  packageGroupManifestField: 'deployGroup',
   persistVersions: true,
   plugins: ['@monoweave/plugin-github', '@edielemoine/monodeploy-plugin-github-actions'],
   prerelease: prereleaseBranches.includes(branch),
