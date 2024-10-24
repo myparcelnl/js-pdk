@@ -22,21 +22,7 @@ jobs:
           target: 'test:coverage'
           parallel: 1
 
-      - name: 'Rename coverage files'
-        shell: bash
-        #language=bash
-        run: |
-          mkdir -p coverage junit
-
-          yarn workspaces foreach -Apv --exclude=. exec \
-            bash -c \
-              'if [ -f "coverage/clover.xml" ]; then \
-                cp -f "coverage/clover.xml" "'$PWD'/coverage/$(basename $PWD).xml"; \
-               fi; \
-               if [[ -f "junit.xml" && -s "junit.xml" ]]; then \
-                 sed -i "" "s|<testsuites name=\".*\">|<testsuites name=\"${npm_package_name}\">|" "junit.xml"; \
-                 cp -f "junit.xml" "'$PWD'/junit/$(basename $PWD).xml"; \
-               fi'
+      - uses: myparcelnl/actions/collect-test-results@v4
 
       - uses: myparcelnl/actions/codecov-coverage@v4
         with:
