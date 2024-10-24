@@ -27,7 +27,8 @@ const zip: PdkBuilderCommand = async (context) => {
         return;
       }
 
-      const archivePath = resolvePath([config.outDir, config.archiveFilename], platformContext);
+      const archiveFilename = resolveString(config.archiveFilename, platformContext).replace(/\//g, '-');
+      const archivePath = resolvePath([config.outDir, archiveFilename], platformContext);
 
       await rmFile(archivePath, context);
 
