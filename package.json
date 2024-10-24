@@ -77,12 +77,13 @@
     "rimraf": "^5.0.0",
     "typescript": "^5.2.2"
   },
-  "packageManager": "yarn@4.1.1",
+  "packageManager": "yarn@4.5.1",
   "engines": {
     "node": ">=20"
   },
   "volta": {
-    "node": "20.12.2"
+    "node": "20.12.2",
+    "yarn": "4.5.1"
   },
   "bundlewatch": {
     "files": [
