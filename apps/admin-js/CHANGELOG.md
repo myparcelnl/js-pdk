@@ -2,6 +2,11 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.5.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-js@1.3.1...@myparcel-pdk/admin-js@1.5.3) "@myparcel-pdk/admin-js" (2024-10-24)
+
+
+
+
 ## [1.3.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-js@1.3.0...@myparcel-pdk/admin-js@1.3.1) "@myparcel-pdk/admin-js" (2024-10-24)
 
 

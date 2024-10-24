@@ -2,6 +2,11 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.5.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-dashicons@1.0.8...@myparcel-pdk/admin-preset-dashicons@1.5.3) "@myparcel-pdk/admin-preset-dashicons" (2024-10-24)
+
+
+
+
 ## [1.0.8](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-dashicons@1.0.7...@myparcel-pdk/admin-preset-dashicons@1.0.8) "@myparcel-pdk/admin-preset-dashicons" (2024-10-24)
 
 
