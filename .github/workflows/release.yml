@@ -47,12 +47,12 @@ jobs:
         with:
           path: ./apps/admin-demo/dist
 
-      - name: 'Run monodeploy'
+      - name: 'Run monoweave'
         id: release
         #language=bash
         run: |
-          yarn monodeploy \
-            --config-file monodeploy.config.cjs \
+          yarn monoweave \
+            --config-file monoweave.config.cjs \
             --log-level 0
         env:
           GH_TOKEN: ${{ steps.credentials.outputs.token }}

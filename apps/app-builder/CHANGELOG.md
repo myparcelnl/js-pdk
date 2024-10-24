@@ -1,6 +1,6 @@
 # Changelog
 
-<!-- MONODEPLOY:BELOW -->
+<!-- MONOWEAVE:BELOW -->
 
 ## [1.4.6](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.4.5...@myparcel-pdk/app-builder@1.4.6) "@myparcel-pdk/app-builder" (2024-10-24)
 

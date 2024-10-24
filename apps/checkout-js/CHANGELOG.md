@@ -1,6 +1,6 @@
 # Changelog
 
-<!-- MONODEPLOY:BELOW -->
+<!-- MONOWEAVE:BELOW -->
 
 ## [1.1.4](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-js@1.1.3...@myparcel-pdk/checkout-js@1.1.4) "@myparcel-pdk/checkout-js" (2024-10-24)
 

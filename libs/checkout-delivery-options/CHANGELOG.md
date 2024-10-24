@@ -1,6 +1,6 @@
 # Changelog
 
-<!-- MONODEPLOY:BELOW -->
+<!-- MONOWEAVE:BELOW -->
 
 ## [1.1.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.1.2...@myparcel-pdk/checkout-delivery-options@1.1.3) "@myparcel-pdk/checkout-delivery-options" (2024-10-24)
 
