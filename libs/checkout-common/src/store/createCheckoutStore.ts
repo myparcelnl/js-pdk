@@ -1,7 +1,12 @@
-import {getFrontendContext, hasAddressType, useUtil} from '../utils';
-import {type CheckoutStoreState, type PdkCheckoutForm} from '../types';
-import {updateAddressType} from '../listeners';
-import {AddressType, PdkUtil, StoreListener} from '../data';
+import {useUtil} from '../utils/useUtil';
+import {hasAddressType} from '../utils/hasAddressType';
+import {getFrontendContext} from '../utils/getFrontendContext';
+import {type CheckoutStoreState} from '../types/store.types';
+import {type PdkCheckoutForm} from '../types/checkout.types';
+import {updateAddressType} from '../listeners/updateAddressType';
+import {PdkUtil} from '../data/utils';
+import {StoreListener} from '../data/store';
+import {AddressType} from '../data/address';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createCheckoutStore = () => {

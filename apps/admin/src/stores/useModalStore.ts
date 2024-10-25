@@ -1,8 +1,8 @@
 import {ref, type Ref, type UnwrapNestedRefs} from 'vue';
 import {defineStore} from 'pinia';
-import {type AdminModalContext} from '../types';
-import {type AdminModalKey, NotificationCategory} from '../data';
-import {useLoading} from '../composables';
+import {type AdminModalContext} from '../types/context.types';
+import {type AdminModalKey, NotificationCategory} from '../data/constants';
+import {useLoading} from '../composables/useLoading';
 import {useNotificationStore} from './useNotificationStore';
 
 type ModalOpenFn = <K extends AdminModalKey>(modal: K, context?: AdminModalContext<K>) => void;

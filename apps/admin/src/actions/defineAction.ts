@@ -1,5 +1,5 @@
-import {type GenericActionDefinition, type NamedActionDefinition} from '../types';
-import {type AdminAction} from '../data';
+import {type GenericActionDefinition, type NamedActionDefinition} from '../types/actions.types';
+import {type AdminAction} from '../data/constants';
 
 type DefineAction = {
   <A extends AdminAction>(input: NamedActionDefinition<A>): NamedActionDefinition<A>;

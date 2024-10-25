@@ -4,7 +4,7 @@ import {
   type BACKEND_ENDPOINTS_ORDERS,
   type BACKEND_ENDPOINTS_SHIPMENTS,
   type BACKEND_ENDPOINTS_WEBHOOKS,
-} from '../data';
+} from '../data/endpoints';
 
 export type BackendPdkEndpointObject = EndpointObject<BackendEndpoint>;
 

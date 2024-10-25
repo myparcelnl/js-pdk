@@ -8,13 +8,15 @@
  */
 import {toRefs} from 'vue';
 import {get} from '@vueuse/core';
+import {AdminContextKey} from '@myparcel-pdk/common';
 import {defineForm, type FormInstance, MagicForm} from '@myparcel/vue-form-builder';
-import {useQueryStore} from '../stores';
-import {FORM_KEY_CHILD_PRODUCT_SETTINGS, FORM_KEY_PRODUCT_SETTINGS, generateFormFields} from '../forms';
-import {useAdminConfig, useContext, useProductData} from '../composables';
-import {useUpdateProductSettingsMutation} from '../actions';
-
-import {AdminContextKey} from "@myparcel-pdk/common";
+import {useQueryStore} from '../stores/useQueryStore';
+import {generateFormFields} from '../forms/pluginSettings/generateFormFields';
+import {FORM_KEY_CHILD_PRODUCT_SETTINGS, FORM_KEY_PRODUCT_SETTINGS} from '../forms/formKeys';
+import {useAdminConfig} from '../composables/useAdminConfig';
+import {useProductData} from '../composables/products/useProductData';
+import {useContext} from '../composables/context/useContext';
+import {useUpdateProductSettingsMutation} from '../actions/composables/mutations/settings/useUpdateProductSettingsMutation';
 
 const props = withDefaults(
   defineProps<{

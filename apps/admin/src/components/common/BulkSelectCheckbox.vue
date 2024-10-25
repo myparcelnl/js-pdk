@@ -9,8 +9,8 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {type Keyable} from '@myparcel-pdk/common';
-import {createFormElement} from '../../utils';
-import {useLanguage} from '../../composables';
+import {createFormElement} from '../../utils/forms/createFormElement';
+import {useLanguage} from '../../composables/language/useLanguage';
 
 const NAME_BULK = 'bulk';
 

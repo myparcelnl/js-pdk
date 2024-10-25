@@ -2,11 +2,11 @@ import {computed, type ComputedRef, type Ref, ref, unref} from 'vue';
 import {get, type MaybeRef} from '@vueuse/core';
 import {type Shipment} from '@myparcel-pdk/common';
 import {type Carrier} from '@myparcel/sdk';
-import {type AnyActionDefinition} from '../../types';
-import {useQueryStore} from '../../stores';
-import {instantiateActions} from '../../services';
-import {useFetchCarrier} from '../../sdk';
-import {shipmentActions} from '../../actions';
+import {type AnyActionDefinition} from '../../types/actions.types';
+import {useQueryStore} from '../../stores/useQueryStore';
+import {instantiateActions} from '../../services/instantiateActions';
+import {useFetchCarrier} from '../../sdk/composables/api/useFetchCarrier';
+import {shipmentActions} from '../../actions/definitions/shipments';
 import {useShipment} from './useShipment';
 
 export type UseShipmentData = {

@@ -1,7 +1,8 @@
 import {useUtil} from '../useUtil';
 import {useConfig} from '../useConfig';
 import {useCheckoutStore} from '../useCheckoutStore';
-import {type AddressField, type AddressType, PdkUtil} from '../../data';
+import {PdkUtil} from '../../data/utils';
+import {type AddressField, type AddressType} from '../../data/address';
 
 /**
  * Get field by name. Will return element with selector: "#<billing|shipping>_<name>".

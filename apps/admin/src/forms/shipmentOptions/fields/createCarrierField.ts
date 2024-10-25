@@ -4,20 +4,20 @@ import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_CARRIER, FIELD_INSURANCE, FIELD_PACKAGE_TYPE, PROP_OPTIONS} from '../field';
-import {
-  defineFormField,
-  getInsuranceOptions,
-  getPackageTypes,
-  resolveFormComponent,
-  setFieldProp,
-  setPostNlAgeCheckSubtext,
-  updateFieldsDefaults,
-} from '../../helpers';
-import {createAssetUrl} from '../../../utils';
-import {type RadioGroupOption} from '../../../types';
-import {useFetchCarrier} from '../../../sdk';
-import {AdminComponent} from '../../../data';
-import {useContext, useLanguage, useLocalizedFormatter} from '../../../composables';
+import {updateFieldsDefaults} from '../../helpers/updateFieldsDefaults';
+import {setPostNlAgeCheckSubtext} from '../../helpers/setPostNlAgeCheckSubtext';
+import {setFieldProp} from '../../helpers/setFieldProp';
+import {resolveFormComponent} from '../../helpers/resolveFormComponent';
+import {getPackageTypes} from '../../helpers/getPackageTypes';
+import {getInsuranceOptions} from '../../helpers/getInsuranceOptions';
+import {defineFormField} from '../../helpers/defineFormField';
+import {createAssetUrl} from '../../../utils/createAssetUrl';
+import {type RadioGroupOption} from '../../../types/form.types';
+import {useFetchCarrier} from '../../../sdk/composables/api/useFetchCarrier';
+import {AdminComponent} from '../../../data/components';
+import {useLanguage} from '../../../composables/language/useLanguage';
+import {useLocalizedFormatter} from '../../../composables/formatter/useLocalizedFormatter';
+import {useContext} from '../../../composables/context/useContext';
 import {createRef} from './createRef';
 
 // eslint-disable-next-line max-lines-per-function

@@ -1,18 +1,16 @@
 import {vi} from 'vitest';
 import {config} from '@vue/test-utils';
 import {createTestingPinia} from '@pinia/testing';
-import {prefixComponent} from '../utils';
-import {type AdminAppConfig, type AdminComponentMap} from '../types';
-import {useQueryStore} from '../stores';
-import {globalLogger, LogLevel} from '../services';
-import {
-  createContextPlugin,
-  createLoggerPlugin,
-  createRegisterComponentsPlugin,
-  createVueQueryPlugin,
-  testIdDirective,
-} from '../pdk';
-import {allAdminComponentNames} from '../data';
+import {prefixComponent} from '../utils/prefixComponent';
+import {type AdminAppConfig, type AdminComponentMap} from '../types/admin.types';
+import {useQueryStore} from '../stores/useQueryStore';
+import {globalLogger, LogLevel} from '../services/logger';
+import {testIdDirective} from '../pdk/testIdDirective';
+import {createVueQueryPlugin} from '../pdk/instance/plugins/createVueQueryPlugin';
+import {createRegisterComponentsPlugin} from '../pdk/instance/plugins/createRegisterComponentsPlugin';
+import {createLoggerPlugin} from '../pdk/instance/plugins/createLoggerPlugin';
+import {createContextPlugin} from '../pdk/instance/plugins/createContextPlugin';
+import {allAdminComponentNames} from '../data/components';
 import {mockDefaultAppConfig, mockDefaultConfig, mockDefaultLogger} from './mocks';
 
 export const doComponentTestSetup = (components?: Partial<AdminComponentMap>): void => {

@@ -1,9 +1,9 @@
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {usePdkMutation} from '../usePdkMutation';
-import {encodeArrayParameter} from '../../../../utils';
-import {type ResolvedQuery} from '../../../../stores';
-import {usePdkAdminApi} from '../../../../sdk';
+import {encodeArrayParameter} from '../../../../utils/encodeArrayParameter';
+import {type ResolvedQuery} from '../../../../stores/types';
+import {usePdkAdminApi} from '../../../../sdk/composables/usePdkAdminApi';
 
 export const usePrintOrdersMutation = (orderIds?: OneOrMore<string>): ResolvedQuery<BackendEndpoint.PrintOrders> => {
   return usePdkMutation(BackendEndpoint.PrintOrders, (input) => {

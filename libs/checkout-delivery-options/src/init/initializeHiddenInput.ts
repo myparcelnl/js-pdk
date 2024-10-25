@@ -1,4 +1,4 @@
-import {useDeliveryOptionsStore} from '../utils';
+import {useDeliveryOptionsStore} from '../utils/useDeliveryOptionsStore';
 import {createHiddenInput} from './createHiddenInput';
 
 /**

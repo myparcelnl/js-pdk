@@ -25,7 +25,8 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {useAdminConfig, useOrderData} from '../../composables';
+import {useOrderData} from '../../composables/orders/useOrderData';
+import {useAdminConfig} from '../../composables/useAdminConfig';
 import DeliveryOptionsPackageType from './DeliveryOptionsPackageType.vue';
 import DeliveryOptionsExcerptCarrierName from './DeliveryOptionsExcerptCarrierName.vue';
 import DeliveryOptionsDeliveryType from './DeliveryOptionsDeliveryType.vue';

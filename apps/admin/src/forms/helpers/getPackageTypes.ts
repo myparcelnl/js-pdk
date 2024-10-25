@@ -1,7 +1,7 @@
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
-import {getPackageTypeTranslation} from '../../utils';
-import {type SelectOption} from '../../types';
+import {getPackageTypeTranslation} from '../../utils/translations/getPackageTypeTranslation';
+import {type SelectOption} from '../../types/form.types';
 import {getCarrier} from './getCarrier';
 
 export const getPackageTypes = (form?: FormInstance): SelectOption[] => {

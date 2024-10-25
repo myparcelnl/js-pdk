@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
 import {type Ref, ref} from 'vue';
 import {useAdminConfig} from '../useAdminConfig';
 import {type Formatter, type FormatterTranslateFunction, type LocaleFormatterObject} from './formatter.types';
 import {
-  createDefaultCurrencyFormatter,
   createDefaultDateLongFormatter,
   createDefaultDateRelativeFormatter,
   createDefaultWeekdayFormatter,
-} from './default';
+} from './default/defaultDateFormatters';
+import {createDefaultCurrencyFormatter} from './default/defaultCurrencyFormatters';
 
 let formats: Ref<LocaleFormatterObject>;
 

@@ -1,5 +1,6 @@
 import {describe, expect, it} from 'vitest';
-import {ADMIN_COMPONENT_PREFIX, AdminComponent} from '../data';
+import {ADMIN_COMPONENT_PREFIX} from '../data/constants';
+import {AdminComponent} from '../data/components';
 import {prefixComponent} from './prefixComponent';
 
 describe('prefixComponent', () => {

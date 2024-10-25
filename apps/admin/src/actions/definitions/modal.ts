@@ -1,6 +1,6 @@
-import {executeNextAction} from '../executors';
+import {executeNextAction} from '../executors/executeNextAction';
 import {defineAction} from '../defineAction';
-import {useModalStore} from '../../stores';
+import {useModalStore} from '../../stores/useModalStore';
 
 /**
  * Close current modal.

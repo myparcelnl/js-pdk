@@ -1,5 +1,6 @@
 import {isOfType} from '@myparcel/ts-utils';
-import {fillAddressFields, splitFullStreet} from '../utils';
+import {splitFullStreet} from '../utils/splitFullStreet';
+import {fillAddressFields} from '../utils/fillAddressFields';
 
 /**
  * Autofill helper for layout with separate number field.

@@ -1,4 +1,4 @@
-import {type MyParcelPdk} from '../types';
+import {type MyParcelPdk} from '../types/global.types';
 
 export const realUseUtil: MyParcelPdk['useUtil'] = (name) => {
   const util = window.MyParcelPdk?.utils?.[name];

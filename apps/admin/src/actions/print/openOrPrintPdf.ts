@@ -1,8 +1,10 @@
 import {isOfType} from '@myparcel/ts-utils';
-import {type ActionContextWithResponse} from '../executors';
-import {generateLabelFilename} from '../../utils';
-import {type PdfDataResponse, type PrintAction} from '../../types';
-import {downloadFile, openPdfInNewWindow} from '../../services';
+import {type ActionContextWithResponse} from '../executors/types';
+import {generateLabelFilename} from '../../utils/generateLabelFilename';
+import {type PdfDataResponse} from '../../types/sdk.types';
+import {type PrintAction} from '../../types/actions/actions.types';
+import {openPdfInNewWindow} from '../../services/print/openPdfInNewWindow';
+import {downloadFile} from '../../services/actions/downloadFile';
 
 export const openOrPrintPdf = async <A extends PrintAction>({
   response,

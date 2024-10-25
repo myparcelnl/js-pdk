@@ -2,12 +2,16 @@ import {useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {usePdkMutation} from '../usePdkMutation';
-import {encodeArrayParameter, formToBody} from '../../../../utils';
-import {type BackendEndpointOptions} from '../../../../types';
-import {type ResolvedQuery, useModalStore} from '../../../../stores';
-import {getCallbackForMutationMode, getModalMutationOptions, MutationMode} from '../../../../services';
-import {usePdkAdminApi} from '../../../../sdk';
-import {fillShipmentsQueryData} from '../../../../pdk';
+import {formToBody} from '../../../../utils/forms/formToBody';
+import {encodeArrayParameter} from '../../../../utils/encodeArrayParameter';
+import {type BackendEndpointOptions} from '../../../../types/sdk.types';
+import {useModalStore} from '../../../../stores/useModalStore';
+import {type ResolvedQuery} from '../../../../stores/types';
+import {MutationMode} from '../../../../services/mutations/mutationMode';
+import {getModalMutationOptions} from '../../../../services/mutations/getModalMutationOptions';
+import {getCallbackForMutationMode} from '../../../../services/mutations/getCallbackForMutationMode';
+import {usePdkAdminApi} from '../../../../sdk/composables/usePdkAdminApi';
+import {fillShipmentsQueryData} from '../../../../pdk/fillShipmentsQueryData';
 
 export const useExportOrdersMutation = (
   orderIds?: OneOrMore<string>,

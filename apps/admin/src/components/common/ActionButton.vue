@@ -16,11 +16,11 @@
 <script lang="ts" setup>
 import {type Component} from 'vue';
 import {Size, Variant} from '@myparcel-pdk/common';
-import {prefixComponent} from '../../utils';
-import {type ActionDefinition} from '../../types';
-import {useActionStore} from '../../stores';
-import {AdminComponent} from '../../data';
-import {useLoading} from '../../composables';
+import {prefixComponent} from '../../utils/prefixComponent';
+import type {ActionDefinition} from '../../types/actions.types';
+import {useActionStore} from '../../stores/useActionStore';
+import {AdminComponent} from '../../data/components';
+import {useLoading} from '../../composables/useLoading';
 
 const props = withDefaults(
   defineProps<{

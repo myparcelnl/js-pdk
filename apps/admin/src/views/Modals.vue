@@ -12,8 +12,10 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {useActionStore, useQueryStore} from '../stores';
-import {useModalOrder, usePluginSettings} from '../composables';
+import {useActionStore} from '../stores/useActionStore';
+import {useQueryStore} from '../stores/useQueryStore';
+import {useModalOrder} from '../composables/context/useModalOrder';
+import {usePluginSettings} from '../composables/context/usePluginSettings';
 import ShipmentOptionsModal from '../components/modals/ShipmentOptionsModal.vue';
 import PrintOptionsModal from '../components/modals/PrintOptionsModal.vue';
 

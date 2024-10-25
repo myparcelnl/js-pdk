@@ -1,11 +1,11 @@
 import {useMutation} from '@tanstack/vue-query';
 import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {type OneOrMore} from '@myparcel/ts-utils';
-import {QUERY_KEY_SHIPMENT} from '../../queries';
-import {encodeArrayParameter} from '../../../../utils';
-import {type ResolvedQuery} from '../../../../stores';
-import {usePdkAdminApi} from '../../../../sdk';
-import {usePluginSettings} from '../../../../composables';
+import {QUERY_KEY_SHIPMENT} from '../../queries/queryKeys';
+import {encodeArrayParameter} from '../../../../utils/encodeArrayParameter';
+import {type ResolvedQuery} from '../../../../stores/types';
+import {usePdkAdminApi} from '../../../../sdk/composables/usePdkAdminApi';
+import {usePluginSettings} from '../../../../composables/context/usePluginSettings';
 
 export const usePrintShipmentsMutation = (
   orderIds?: OneOrMore<string>,

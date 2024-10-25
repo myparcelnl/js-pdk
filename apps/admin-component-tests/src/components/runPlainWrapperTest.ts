@@ -1,4 +1,4 @@
-import {type AdminComponentTest} from '../tests';
+import {type AdminComponentTest} from '../tests/testMap';
 import {TestSuite} from '../TestSuite';
 
 export const runPlainWrapperTest = ((component) => {

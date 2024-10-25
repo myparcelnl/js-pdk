@@ -1,5 +1,5 @@
-import {useConfig} from '../utils';
-import {updateCheckoutForm} from '../listeners';
+import {useConfig} from '../utils/useConfig';
+import {updateCheckoutForm} from '../listeners/updateCheckoutForm';
 
 export const addFormListeners = (): void => {
   const config = useConfig();

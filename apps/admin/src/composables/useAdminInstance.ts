@@ -1,5 +1,5 @@
 import {inject} from 'vue';
-import {type AdminInstance} from '../types';
+import {type AdminInstance} from '../types/admin.types';
 import {INJECT_ADMIN_INSTANCE} from '../symbols';
 
 export const useAdminInstance = (): AdminInstance => {

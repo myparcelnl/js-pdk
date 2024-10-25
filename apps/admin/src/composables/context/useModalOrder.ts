@@ -1,5 +1,5 @@
-import {useModalStore} from '../../stores';
-import {AdminModalKey} from '../../data';
+import {useModalStore} from '../../stores/useModalStore';
+import {AdminModalKey} from '../../data/constants';
 
 export const useModalOrder = (): string | null => {
   const store = useModalStore();

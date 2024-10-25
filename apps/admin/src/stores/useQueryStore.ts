@@ -4,29 +4,29 @@ import {get as vuGet, type MaybeRef} from '@vueuse/core';
 import {type QueryClient, useQueryClient} from '@tanstack/vue-query';
 import {AdminContextKey, BackendEndpoint} from '@myparcel-pdk/common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {getOrderId, validateId} from '../utils';
-import {globalLogger, MutationMode} from '../services';
-import {AdminInstanceContextKey, BACKEND_ENDPOINTS_ORDERS, BACKEND_ENDPOINTS_SHIPMENTS} from '../data';
-import {useInstanceContext} from '../composables';
-import {
-  type PlainModifier,
-  QUERY_KEY_ORDER,
-  QUERY_KEY_SHIPMENT,
-  useCreateWebhooksMutation,
-  useDeleteShipmentsMutation,
-  useDeleteWebhooksMutation,
-  useExportOrdersMutation,
-  useExportReturnMutation,
-  useFetchContextQuery,
-  useFetchOrdersQuery,
-  useFetchProductsQuery,
-  useFetchShipmentsQuery,
-  useFetchWebhooksQuery,
-  usePrintOrdersMutation,
-  usePrintShipmentsMutation,
-  useUpdateOrdersMutation,
-  useUpdateShipmentsMutation,
-} from '../actions';
+import {validateId} from '../utils/validateId';
+import {getOrderId} from '../utils/getOrderId';
+import {MutationMode} from '../services/mutations/mutationMode';
+import {globalLogger} from '../services/logger';
+import {BACKEND_ENDPOINTS_ORDERS, BACKEND_ENDPOINTS_SHIPMENTS} from '../data/endpoints';
+import {AdminInstanceContextKey} from '../data/constants';
+import {useInstanceContext} from '../composables/context/useInstanceContext';
+import {type PlainModifier} from '../actions/executors/types';
+import {useFetchWebhooksQuery} from '../actions/composables/queries/webhooks/useFetchWebhooksQuery';
+import {useFetchShipmentsQuery} from '../actions/composables/queries/shipments/useFetchShipmentsQuery';
+import {QUERY_KEY_ORDER, QUERY_KEY_SHIPMENT} from '../actions/composables/queries/queryKeys';
+import {useFetchProductsQuery} from '../actions/composables/queries/products/useFetchProductsQuery';
+import {useFetchOrdersQuery} from '../actions/composables/queries/orders/useFetchOrdersQuery';
+import {useFetchContextQuery} from '../actions/composables/queries/account/useFetchContextQuery';
+import {useDeleteWebhooksMutation} from '../actions/composables/mutations/webhooks/useDeleteWebhooksMutation';
+import {useCreateWebhooksMutation} from '../actions/composables/mutations/webhooks/useCreateWebhooksMutation';
+import {useUpdateShipmentsMutation} from '../actions/composables/mutations/shipments/useUpdateShipmentsMutation';
+import {usePrintShipmentsMutation} from '../actions/composables/mutations/shipments/usePrintShipmentsMutation';
+import {useExportReturnMutation} from '../actions/composables/mutations/shipments/useExportReturnMutation';
+import {useDeleteShipmentsMutation} from '../actions/composables/mutations/shipments/useDeleteShipmentsMutation';
+import {useUpdateOrdersMutation} from '../actions/composables/mutations/orders/useUpdateOrdersMutation';
+import {usePrintOrdersMutation} from '../actions/composables/mutations/orders/usePrintOrdersMutation';
+import {useExportOrdersMutation} from '../actions/composables/mutations/orders/useExportOrdersMutation';
 import {type RegisterQuery, type ResolvedQuery} from './types';
 import {createQueryCacheKey} from './createQueryCacheKey';
 

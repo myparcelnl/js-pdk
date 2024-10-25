@@ -1,6 +1,7 @@
-import {useConfig} from './utils';
-import {type InitializeCallback, type PdkCheckoutConfigInput} from './types';
-import {createConfig, setupGlobals} from './init';
+import {useConfig} from './utils/useConfig';
+import {type InitializeCallback, type PdkCheckoutConfigInput} from './types/checkout.types';
+import {setupGlobals} from './init/setupGlobals';
+import {createConfig} from './init/createConfig';
 
 const execute = (callback: InitializeCallback): void => {
   if (window.MyParcelPdk.initialized) {

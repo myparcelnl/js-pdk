@@ -1,10 +1,9 @@
-/* eslint-disable max-nested-callbacks,@typescript-eslint/no-non-null-asserted-optional-chain */
 import {type App, type Component} from 'vue';
 import {describe, expect, it, vi} from 'vitest';
-import {prefixComponent} from '../../../utils';
-import {type AdminComponentMap} from '../../../types';
-import {allAdminComponentNames, requiredAdminComponentNames} from '../../../data';
-import {mockDefaultAppConfig} from '../../../__tests__';
+import {prefixComponent} from '../../../utils/prefixComponent';
+import {type AdminComponentMap} from '../../../types/admin.types';
+import {allAdminComponentNames, requiredAdminComponentNames} from '../../../data/components';
+import {mockDefaultAppConfig} from '../../../__tests__/mocks/mockDefaultAppConfig';
 import {createRegisterComponentsPlugin} from './createRegisterComponentsPlugin';
 
 describe('createRegisterComponentsPlugin', () => {

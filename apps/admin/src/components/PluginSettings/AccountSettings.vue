@@ -20,17 +20,15 @@ import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {Status} from '@myparcel-pdk/common';
 import {StatusIndicator, TabNavigation} from '../common';
-import {prefixComponent} from '../../utils';
-import {type TabDefinition} from '../../types';
-import {useActionStore} from '../../stores';
-import {AdminComponent} from '../../data';
-import {useLanguage, useStoreContextQuery} from '../../composables';
-import {
-  deleteAccountAction,
-  updateAccountAction,
-  useDeleteAccountMutation,
-  useUpdateAccountMutation,
-} from '../../actions';
+import {prefixComponent} from '../../utils/prefixComponent';
+import type {TabDefinition} from '../../types/common.types';
+import {useActionStore} from '../../stores/useActionStore';
+import {AdminComponent} from '../../data/components';
+import {useLanguage} from '../../composables/language/useLanguage';
+import {useStoreContextQuery} from '../../composables/useStoreContextQuery';
+import {useDeleteAccountMutation} from '../../actions/composables/mutations/account/useDeleteAccountMutation';
+import {useUpdateAccountMutation} from '../../actions/composables/mutations/account/useUpdateAccountMutation';
+import {deleteAccountAction, updateAccountAction} from '../../actions/definitions/account';
 import WebhooksStatus from './WebhooksStatus.vue';
 import EditApiKeyForm from './EditApiKeyForm.vue';
 import DebugOptions from './DebugOptions.vue';

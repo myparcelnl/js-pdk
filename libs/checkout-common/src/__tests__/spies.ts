@@ -1,5 +1,5 @@
 import {vi} from 'vitest';
-import {type PdkFormData} from '../types';
+import {type PdkFormData} from '../types/checkout.types';
 import {DEFAULT_MOCK_FORM_DATA} from './constants';
 
 export const doRequestSpy = vi.fn();

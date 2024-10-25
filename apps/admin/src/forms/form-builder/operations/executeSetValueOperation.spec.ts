@@ -2,8 +2,9 @@ import {ref} from 'vue';
 import {afterEach, describe, expect, it} from 'vitest';
 import {flushPromises, mount} from '@vue/test-utils';
 import {defineForm, MagicForm, useFormBuilder} from '@myparcel/vue-form-builder';
-import {type AnyVal, type FormSetValueOperation} from '../types';
-import {buildAfterUpdate} from '../builders';
+import {type AnyVal} from '../types/common.types';
+import {type FormSetValueOperation} from '../types/FormOperations.types';
+import {buildAfterUpdate} from '../builders/buildAfterUpdate';
 
 interface TestInput {
   name: string;

@@ -6,10 +6,14 @@ import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from '../field';
-import {createDefaultOption, defineFormField, resolveFormComponent} from '../../helpers';
-import {type GlobalFieldProps, type OptionsProp} from '../../../types';
-import {AdminComponent} from '../../../data';
-import {useDigitalStampRanges, useOrderData, usePluginSettings} from '../../../composables';
+import {resolveFormComponent} from '../../helpers/resolveFormComponent';
+import {defineFormField} from '../../helpers/defineFormField';
+import {createDefaultOption} from '../../helpers/createDefaultOption';
+import {type GlobalFieldProps, type OptionsProp} from '../../../types/form.types';
+import {AdminComponent} from '../../../data/components';
+import {useDigitalStampRanges} from '../../../composables/useDigitalStampRanges';
+import {useOrderData} from '../../../composables/orders/useOrderData';
+import {usePluginSettings} from '../../../composables/context/usePluginSettings';
 
 export const createDigitalStampRangeField = (refs: ShipmentOptionsRefs): InteractiveElementConfiguration => {
   const pluginSettings = usePluginSettings();

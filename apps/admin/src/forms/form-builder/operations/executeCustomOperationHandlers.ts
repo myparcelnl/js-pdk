@@ -1,5 +1,6 @@
-import {type FormOperation, type FormOperationMethods, type HandlerDefinition} from '../types';
-import {validateIfConditions} from '../conditions';
+import {type FormOperation, type FormOperationMethods} from '../types/common.types';
+import {type HandlerDefinition} from '../types/FormOperations.types';
+import {validateIfConditions} from '../conditions/validateIfConditions';
 
 export const executeCustomOperationHandlers = (
   operation: FormOperation,

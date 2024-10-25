@@ -14,10 +14,10 @@
  */
 
 import {defineAsyncComponent} from 'vue';
-import {useActionStore} from '../../stores';
-import {instantiateActions} from '../../services';
-import {modalCloseAction, modalSubmitFormAction} from '../../actions';
-import {AdminModalKey} from "../../data";
+import {useActionStore} from '../../stores/useActionStore';
+import {instantiateActions} from '../../services/instantiateActions';
+import {modalCloseAction, modalSubmitFormAction} from '../../actions/definitions/modal';
+import {AdminModalKey} from '../../data/constants';
 
 const modalKey = AdminModalKey.PrintOptions;
 

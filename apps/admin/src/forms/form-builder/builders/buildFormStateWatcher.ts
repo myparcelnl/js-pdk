@@ -1,7 +1,7 @@
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {createValueGetter} from '../utils';
-import {type WhenArguments} from '../types';
-import {validateIfConditions} from '../conditions';
+import {createValueGetter} from '../utils/createValueGetter';
+import {type WhenArguments} from '../types/SubOperationBuilder.types';
+import {validateIfConditions} from '../conditions/validateIfConditions';
 
 export const buildFormStateWatcher = (
   input: WhenArguments,

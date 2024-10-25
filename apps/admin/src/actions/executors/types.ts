@@ -1,16 +1,12 @@
 import {type BackendEndpoint, type Variant} from '@myparcel-pdk/common';
 import {type OneOrMore, type PromiseOr} from '@myparcel/ts-utils';
-import {
-  type ActionParameters,
-  type ActionResponse,
-  type AdminInstance,
-  type AnyActionDefinition,
-  type BackendEndpointResponse,
-  type EndpointAdminActionMap,
-  type MaybeAdminAction,
-  type PdkNotification,
-} from '../../types';
-import {type AdminAction} from '../../data';
+import {type PdkNotification} from '../../types/common.types';
+import {type AdminInstance} from '../../types/admin.types';
+import {type AnyActionDefinition} from '../../types/actions.types';
+import {type ActionResponse, type BackendEndpointResponse} from '../../types/actions/response.types';
+import {type ActionParameters} from '../../types/actions/parameters.types';
+import {type EndpointAdminActionMap, type MaybeAdminAction} from '../../types/actions/actions.types';
+import {type AdminAction} from '../../data/constants';
 
 export type ResolvedAdminAction<A extends undefined | MaybeAdminAction | BackendEndpoint> = A extends MaybeAdminAction
   ? A

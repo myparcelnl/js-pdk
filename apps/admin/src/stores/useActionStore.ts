@@ -1,13 +1,20 @@
 import {ref} from 'vue';
 import {defineStore} from 'pinia';
 import {type OneOrMore, type PromiseOr, toArray} from '@myparcel/ts-utils';
-import {type ActionParameters, type AnyActionDefinition, type ResolvedAction} from '../types';
-import {createAction, getActionIdentifier} from '../services';
-import {type AdminAction} from '../data';
-import {usePluginSettings} from '../composables';
+import {type AnyActionDefinition, type ResolvedAction} from '../types/actions.types';
+import {type ActionParameters} from '../types/actions/parameters.types';
+import {getActionIdentifier} from '../services/actions/getActionIdentifier';
+import {createAction} from '../services/actions/createAction';
+import {type AdminAction} from '../data/constants';
+import {usePluginSettings} from '../composables/context/usePluginSettings';
+import {webhooksCreateAction, webhooksDeleteAction, webhooksFetchAction} from '../actions/definitions/webhooks';
 import {
-  modalCloseAction,
-  modalSubmitFormAction,
+  shipmentsDeleteAction,
+  shipmentsExportReturnAction,
+  shipmentsPrintAction,
+  shipmentsUpdateAction,
+} from '../actions/definitions/shipments';
+import {
   orderExportAction,
   orderExportToShipmentsAction,
   ordersEditAction,
@@ -16,14 +23,8 @@ import {
   ordersPrintAction,
   ordersUpdateAction,
   orderViewInBackofficeAction,
-  shipmentsDeleteAction,
-  shipmentsExportReturnAction,
-  shipmentsPrintAction,
-  shipmentsUpdateAction,
-  webhooksCreateAction,
-  webhooksDeleteAction,
-  webhooksFetchAction,
-} from '../actions';
+} from '../actions/definitions/orders';
+import {modalCloseAction, modalSubmitFormAction} from '../actions/definitions/modal';
 
 // eslint-disable-next-line max-lines-per-function
 export const useActionStore = defineStore('actions', () => {

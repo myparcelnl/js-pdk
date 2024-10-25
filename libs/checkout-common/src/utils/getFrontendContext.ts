@@ -1,7 +1,7 @@
 import {type Plugin} from '@myparcel-pdk/common';
 import {ATTRIBUTE_CONTEXT} from '../constants';
 import {useConfig} from './useConfig';
-import {getElement} from './global';
+import {getElement} from './global/getElement';
 
 export const getFrontendContext = (): Plugin.ModelContextCheckoutContext => {
   const config = useConfig();

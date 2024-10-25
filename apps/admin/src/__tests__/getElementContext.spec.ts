@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {getElementContext} from '../services';
+import {getElementContext} from '../services/context/getElementContext';
 
 describe('get element context', () => {
   it('gets context from an element', () => {

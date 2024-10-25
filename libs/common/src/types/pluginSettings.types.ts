@@ -1,5 +1,5 @@
 import {type PackageTypeName} from '@myparcel/constants';
-import {type TriState} from '../data';
+import {type TriState} from '../data/constants';
 
 export type LabelFormat = 'a4' | 'a6';
 

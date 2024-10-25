@@ -12,19 +12,17 @@
  */
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
-import {useActionStore, useQueryStore} from '../stores';
-import {useStoreContextQuery} from '../composables';
+import {AdminContextKey, BackendEndpoint} from '@myparcel-pdk/common';
+import {useQueryStore} from '../stores/useQueryStore';
+import {useActionStore} from '../stores/useActionStore';
+import {useStoreContextQuery} from '../composables/useStoreContextQuery';
 import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForms.vue';
 import AccountSettings from '../components/PluginSettings/AccountSettings.vue';
-import {
-  fetchDynamicContextAction,
-  fetchPluginSettingsViewContextAction,
-  pluginSettingsUpdateAction,
-  useDeleteAccountMutation,
-  useUpdateAccountMutation,
-  useUpdatePluginSettingsMutation,
-} from '../actions';
-import {AdminContextKey, BackendEndpoint} from "@myparcel-pdk/common";
+import {pluginSettingsUpdateAction} from '../actions/definitions/settings';
+import {fetchDynamicContextAction, fetchPluginSettingsViewContextAction} from '../actions/definitions/context';
+import {useUpdatePluginSettingsMutation} from '../actions/composables/mutations/settings/useUpdatePluginSettingsMutation';
+import {useUpdateAccountMutation} from '../actions/composables/mutations/account/useUpdateAccountMutation';
+import {useDeleteAccountMutation} from '../actions/composables/mutations/account/useDeleteAccountMutation';
 
 const queryStore = useQueryStore();
 

@@ -1,8 +1,9 @@
 import {computed, type ComputedRef, type UnwrapRef} from 'vue';
 import {SortType} from '@myparcel-pdk/common';
-import {translateSelectOption} from '../utils';
-import {type OptionsProp, type PdkElementProps, type SelectInputModelValue, type SelectOptionWithLabel} from '../types';
-import {useLanguage} from './language';
+import {translateSelectOption} from '../utils/translations/translateSelectOption';
+import {type OptionsProp, type PdkElementProps, type SelectOptionWithLabel} from '../types/form.types';
+import {type SelectInputModelValue} from '../types/component-bindings.types';
+import {useLanguage} from './language/useLanguage';
 
 export interface ElementOptionsContext<T extends SelectInputModelValue> {
   options: ComputedRef<SelectOptionWithLabel<UnwrapRef<T>, string>[]>;

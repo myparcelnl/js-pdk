@@ -1,11 +1,10 @@
-// noinspection JSUnusedGlobalSymbols
-
 import {StoreListener, useCheckoutStore} from '@myparcel-pdk/checkout-common';
 import {UPDATED_DELIVERY_OPTIONS} from '@myparcel/delivery-options';
-import {type CheckoutDeliveryOptionsSettingsInput} from './types';
-import {createDeliveryOptionsStore} from './store';
-import {updateDeliveryOptions, updateDeliveryOptionsOutput} from './listeners';
-import {initializeHiddenInput} from './init';
+import {type CheckoutDeliveryOptionsSettingsInput} from './types/generic.types';
+import {createDeliveryOptionsStore} from './store/createDeliveryOptionsStore';
+import {updateDeliveryOptionsOutput} from './listeners/updateDeliveryOptionsOutput';
+import {updateDeliveryOptions} from './listeners/updateDeliveryOptions';
+import {initializeHiddenInput} from './init/initializeHiddenInput';
 
 /**
  * Initializes the checkout delivery options module.

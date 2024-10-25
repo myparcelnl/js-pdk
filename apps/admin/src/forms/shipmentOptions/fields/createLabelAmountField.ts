@@ -2,8 +2,9 @@ import {snakeCase} from 'lodash-unified';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_LABEL_AMOUNT, LABEL_AMOUNT} from '../field';
-import {defineFormField, resolveFormComponent} from '../../helpers';
-import {AdminComponent} from '../../../data';
+import {resolveFormComponent} from '../../helpers/resolveFormComponent';
+import {defineFormField} from '../../helpers/defineFormField';
+import {AdminComponent} from '../../../data/components';
 import {createRef} from './createRef';
 
 export const createLabelAmountField = (refs: ShipmentOptionsRefs): InteractiveElementConfiguration => {

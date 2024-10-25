@@ -8,8 +8,9 @@
 
 <script lang="ts" setup>
 import {toRefs} from 'vue';
-import {useQueryStore} from '../../stores';
-import {useLanguage, useShipmentData} from '../../composables';
+import {useQueryStore} from '../../stores/useQueryStore';
+import {useLanguage} from '../../composables/language/useLanguage';
+import {useShipmentData} from '../../composables/shipments/useShipmentData';
 
 const props = defineProps<{shipmentId: number}>();
 

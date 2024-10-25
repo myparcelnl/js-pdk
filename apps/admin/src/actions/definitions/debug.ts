@@ -1,8 +1,8 @@
 import {BackendEndpoint} from '@myparcel-pdk/common';
-import {createMutationHandler} from '../executors';
+import {createMutationHandler} from '../executors/createMutationHandler';
 import {defineAction} from '../defineAction';
 import {downloadBlob} from '../../utils/downloadBlob';
-import {AdminAction, AdminIcon} from '../../data';
+import {AdminAction, AdminIcon} from '../../data/constants';
 
 /**
  * Download zip with logs.

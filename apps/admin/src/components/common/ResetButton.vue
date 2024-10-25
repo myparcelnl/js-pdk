@@ -12,7 +12,7 @@
 import {Variant} from '@myparcel-pdk/common';
 import {useForm} from '@myparcel/vue-form-builder';
 
-import {AdminIcon} from "../../data";
+import {AdminIcon} from '../../data/constants';
 
 defineProps<{
   disabled?: boolean;

@@ -1,7 +1,7 @@
 import {type Component} from 'vue';
 import {type Variant} from '@myparcel-pdk/common';
 import {type OneOrMore} from '@myparcel/ts-utils';
-import {type NotificationCategory} from '../data';
+import {type NotificationCategory} from '../data/constants';
 import {type Translation} from './language.types';
 
 export type NotificationId = number | string;

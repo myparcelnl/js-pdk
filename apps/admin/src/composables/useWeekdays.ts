@@ -1,5 +1,6 @@
-import {createObjectWithKeys} from '../utils';
-import {Format, useLocalizedFormatter} from './formatter';
+import {createObjectWithKeys} from '../utils/createObjectWithKeys';
+import {useLocalizedFormatter} from './formatter/useLocalizedFormatter';
+import {Format} from './formatter/formatter.types';
 
 // eslint-disable-next-line no-magic-numbers,@typescript-eslint/no-magic-numbers
 const WEEKDAYS = [0, 1, 2, 3, 4, 5, 6] as const;

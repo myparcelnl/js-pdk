@@ -1,4 +1,8 @@
-import {type CheckboxGroupEmits, type CheckboxGroupModelValue, type CheckboxGroupProps} from '../types';
+import {
+  type CheckboxGroupEmits,
+  type CheckboxGroupModelValue,
+  type CheckboxGroupProps,
+} from '../types/component-bindings.types';
 import {type InputWithOptionsContext, useInputWithOptionsContext} from './useInputWithOptionsContext';
 
 export type UseCheckboxGroupContext<

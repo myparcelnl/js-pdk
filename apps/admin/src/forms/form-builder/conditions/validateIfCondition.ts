@@ -1,6 +1,6 @@
 import {isOfType} from '@myparcel/ts-utils';
+import {type AnyVal, type WithTarget} from '../types/common.types';
 import {
-  type AnyVal,
   type EqualMatcher,
   type GreaterThanMatcher,
   type GreaterThanOrEqualMatcher,
@@ -10,8 +10,7 @@ import {
   type NotEqualMatcher,
   type NotInMatcher,
   type SingleIfMatcher,
-  type WithTarget,
-} from '../types';
+} from '../types/FormCondition.types';
 import {validateIsTruthy} from './validateIsTruthy';
 
 export const validateIfCondition = ($if: SingleIfMatcher, getValue: (target?: string) => AnyVal): boolean => {

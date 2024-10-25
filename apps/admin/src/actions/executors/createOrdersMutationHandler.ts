@@ -1,4 +1,5 @@
-import {type BackendOrderEndpoint, type OrderIds} from '../../types';
+import {type BackendOrderEndpoint} from '../../types/endpoints.types';
+import {type OrderIds} from '../../types/common.types';
 import {type QueryHandler} from './types';
 import {createHandlerWithParameters} from './createHandlerWithParameters';
 

@@ -1,5 +1,5 @@
-import {useLanguage} from '../language';
-import {useGlobalContext} from '../context';
+import {useLanguage} from '../language/useLanguage';
+import {useGlobalContext} from '../context/useGlobalContext';
 import {useFormatter} from './useFormatter';
 import {type Formatter} from './formatter.types';
 

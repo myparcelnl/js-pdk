@@ -1,5 +1,5 @@
-import {usePdkCheckout} from '../utils';
-import {type PdkCheckoutConfigInput} from '../types';
+import {usePdkCheckout} from '../utils/usePdkCheckout';
+import {type PdkCheckoutConfigInput} from '../types/checkout.types';
 import {createPdkCheckout} from '../createPdkCheckout';
 import {mockDeliveryOptionsElement} from './mockDeliveryOptionsElement';
 import {getMockPdkCheckoutConfig} from './getMockPdkCheckoutConfig';

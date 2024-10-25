@@ -7,8 +7,10 @@
 <script lang="ts" setup>
 import {computed, defineAsyncComponent} from 'vue';
 import {get} from '@vueuse/core';
-import {useActionStore, useQueryStore} from '../stores';
-import {useOrderData, usePluginSettings} from '../composables';
+import {useQueryStore} from '../stores/useQueryStore';
+import {useActionStore} from '../stores/useActionStore';
+import {useOrderData} from '../composables/orders/useOrderData';
+import {usePluginSettings} from '../composables/context/usePluginSettings';
 import ShipmentOptionsBox from '../components/OrderBox/ShipmentOptionsBox.vue';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

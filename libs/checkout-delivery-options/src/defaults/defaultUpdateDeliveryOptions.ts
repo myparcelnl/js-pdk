@@ -1,6 +1,6 @@
 import {CarrierSetting} from '@myparcel/delivery-options';
-import {useDeliveryOptionsStore} from '../utils';
-import {type CheckoutDeliveryOptionsSettings} from '../types';
+import {useDeliveryOptionsStore} from '../utils/useDeliveryOptionsStore';
+import {type CheckoutDeliveryOptionsSettings} from '../types/generic.types';
 
 export const defaultUpdateDeliveryOptions = ((state) => {
   const deliveryOptions = useDeliveryOptionsStore();

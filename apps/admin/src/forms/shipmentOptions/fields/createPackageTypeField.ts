@@ -3,8 +3,9 @@ import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_PACKAGE_TYPE, SHIPMENT_OPTIONS} from '../field';
-import {defineFormField, resolveFormComponent} from '../../helpers';
-import {AdminComponent} from '../../../data';
+import {resolveFormComponent} from '../../helpers/resolveFormComponent';
+import {defineFormField} from '../../helpers/defineFormField';
+import {AdminComponent} from '../../../data/components';
 import {createRef} from './createRef';
 
 export const createPackageTypeField = (refs: ShipmentOptionsRefs): InteractiveElementConfiguration => {

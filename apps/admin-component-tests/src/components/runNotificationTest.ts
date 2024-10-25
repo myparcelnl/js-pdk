@@ -1,7 +1,7 @@
 import {expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
 import {AdminComponent} from '@myparcel-pdk/admin';
-import {type AdminComponentTest} from '../tests';
+import {type AdminComponentTest} from '../tests/testMap';
 import {TestSuite} from '../TestSuite';
 
 export const runNotificationTest = ((component) => {

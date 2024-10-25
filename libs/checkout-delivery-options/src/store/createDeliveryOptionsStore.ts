@@ -1,8 +1,11 @@
 import {PdkUtil, StoreListener, useCheckoutStore, useUtil} from '@myparcel-pdk/checkout-common';
 import {CarrierSetting} from '@myparcel/delivery-options';
-import {getDeliveryOptionsAddress, getResolvedSettings} from '../utils';
-import {type CheckoutDeliveryOptionsSettingsInput, type DeliveryOptionsStoreState} from '../types';
-import {showOrHideDeliveryOptions, updateConfigOrAddress} from '../listeners';
+import {getResolvedSettings} from '../utils/getResolvedSettings';
+import {getDeliveryOptionsAddress} from '../utils/getDeliveryOptionsAddress';
+import {type DeliveryOptionsStoreState} from '../types/store.types';
+import {type CheckoutDeliveryOptionsSettingsInput} from '../types/generic.types';
+import {updateConfigOrAddress} from '../listeners/updateConfigOrAddress';
+import {showOrHideDeliveryOptions} from '../listeners/showOrHideDeliveryOptions';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createDeliveryOptionsStore = (settings?: CheckoutDeliveryOptionsSettingsInput) => {

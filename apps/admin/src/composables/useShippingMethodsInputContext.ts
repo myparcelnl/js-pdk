@@ -2,13 +2,11 @@ import {type ComputedRef, onUnmounted, reactive, type Ref, toRaw, watch} from 'v
 import {useVModel} from '@vueuse/core';
 import {type ShippingMethodId, type ShippingMethodType, TriState} from '@myparcel-pdk/common';
 import {PackageTypeName} from '@myparcel/constants';
-import {createFormElement, createObjectWithKeys} from '../utils';
-import {
-  type SelectOptionWithLabel,
-  type ShippingMethodsInputModelValue,
-  type ShippingMethodsInputProps,
-} from '../types';
-import {AdminComponent} from '../data';
+import {createFormElement} from '../utils/forms/createFormElement';
+import {createObjectWithKeys} from '../utils/createObjectWithKeys';
+import {type SelectOptionWithLabel} from '../types/form.types';
+import {type ShippingMethodsInputModelValue, type ShippingMethodsInputProps} from '../types/component-bindings.types';
+import {AdminComponent} from '../data/components';
 import {useElementOptions} from './useElementOptions';
 
 const SHIPPING_METHOD_TYPES = Object.freeze([

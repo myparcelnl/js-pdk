@@ -1,4 +1,4 @@
-import {type AdminContextObject} from '../../types';
+import {type AdminContextObject} from '../../types/context.types';
 import {useGlobalContext} from './useGlobalContext';
 
 export const useAppInfo = (): AdminContextObject['global']['appInfo'] => {

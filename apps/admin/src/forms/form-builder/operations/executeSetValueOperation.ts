@@ -1,5 +1,6 @@
-import {type FormOperationMethods, type FormSetValueOperation} from '../types';
-import {validateIfConditions} from '../conditions';
+import {type FormOperationMethods} from '../types/common.types';
+import {type FormSetValueOperation} from '../types/FormOperations.types';
+import {validateIfConditions} from '../conditions/validateIfConditions';
 
 export const executeSetValueOperation = (
   operation: FormSetValueOperation,

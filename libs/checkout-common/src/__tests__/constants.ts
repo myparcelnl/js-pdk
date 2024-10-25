@@ -1,5 +1,5 @@
-import {type PdkFormData} from '../types';
-import {AddressType} from '../data';
+import {type PdkFormData} from '../types/checkout.types';
+import {AddressType} from '../data/address';
 
 export const DEFAULT_MOCK_FORM_DATA = Object.freeze({
   'address-type': AddressType.Billing,

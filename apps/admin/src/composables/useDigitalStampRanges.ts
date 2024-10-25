@@ -1,8 +1,8 @@
 import {computed, type ComputedRef} from 'vue';
 import {get, type MaybeRef} from '@vueuse/core';
 import {type Plugin} from '@myparcel-pdk/common';
-import {type SelectOptionWithPlainLabel} from '../types';
-import {useOrderData} from './orders';
+import {type SelectOptionWithPlainLabel} from '../types/form.types';
+import {useOrderData} from './orders/useOrderData';
 
 interface UseDigitalStampRanges {
   ranges: ComputedRef<SelectOptionWithPlainLabel<number, string>[]>;

@@ -2,7 +2,7 @@ import {ref} from 'vue';
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import {mount} from '@vue/test-utils';
 import {defineForm, MagicForm, useFormBuilder} from '@myparcel/vue-form-builder';
-import {buildAfterUpdate} from '../builders';
+import {buildAfterUpdate} from '../builders/buildAfterUpdate';
 
 describe('executeOperations', () => {
   afterEach(() => {

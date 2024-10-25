@@ -1,6 +1,6 @@
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {CarrierName} from '@myparcel/constants';
-import {FIELD_AGE_CHECK} from '../shipmentOptions';
+import {FIELD_AGE_CHECK} from '../shipmentOptions/field';
 import {triStateFieldIsEnabled} from './triStateFieldIsEnabled';
 import {getFormCarrierName} from './getFormCarrierName';
 

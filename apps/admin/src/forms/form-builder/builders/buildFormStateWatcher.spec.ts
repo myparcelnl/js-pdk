@@ -1,7 +1,7 @@
 import {ref} from 'vue';
 import {describe, expect, it} from 'vitest';
 import {type FormInstance, type InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {type OperationArguments} from '../types';
+import {type OperationArguments} from '../types/common.types';
 import {buildFormStateWatcher} from './buildFormStateWatcher';
 
 const createFakeElementInstance = (): InteractiveElementInstance => {

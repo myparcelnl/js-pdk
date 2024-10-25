@@ -1,9 +1,9 @@
 import {type PiniaPluginContext} from 'pinia';
 import {type FormConfiguration, type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {type MakeOptional} from '@myparcel/ts-utils';
-import {type LogLevel} from '../services';
-import {type FORM_KEYS} from '../forms';
-import {type FormatterObject} from '../composables';
+import {type LogLevel} from '../services/logger';
+import {type FORM_KEYS} from '../forms/formKeys';
+import {type FormatterObject} from '../composables/formatter/formatter.types';
 import {type AdminContextObject} from './context.types';
 import {type AdminComponentMap, type PrefixedAdminComponentMap} from './admin.types';
 

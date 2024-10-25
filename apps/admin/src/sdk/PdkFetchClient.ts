@@ -10,8 +10,8 @@ import {
   type Options,
   type ResponseWrapper,
 } from '@myparcel/sdk';
-import {type PdkNotification} from '../types';
-import {useNotificationStore} from '../stores';
+import {type PdkNotification} from '../types/common.types';
+import {useNotificationStore} from '../stores/useNotificationStore';
 
 type EndpointResponseBodyWithNotifications = {
   notifications: PdkNotification[];

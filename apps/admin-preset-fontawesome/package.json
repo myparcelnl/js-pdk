@@ -9,14 +9,15 @@
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "exports": "./src/index.ts",
+  "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "./src",
     "./dist"
   ],
   "scripts": {
-    "build": "run ws:vue:build \"$(pwd)\" || true",
+    "build": "vite build",
+    "build:dev": "vite build --mode development",
     "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
@@ -36,6 +37,7 @@
     "@myparcel-pdk/admin-component-tests": "workspace:*",
     "@myparcel-pdk/build-vite": "workspace:*",
     "typescript": "^5.2.2",
+    "vite": "^5.4.10",
     "vitest": "^2.1.3"
   },
   "engines": {

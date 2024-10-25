@@ -1,5 +1,7 @@
-import {type ActionDefinition, type ActionParameters, type AnyActionDefinition, type MaybeAdminAction} from '../types';
-import {getActionIdentifier} from './actions';
+import {type ActionDefinition, type AnyActionDefinition} from '../types/actions.types';
+import {type ActionParameters} from '../types/actions/parameters.types';
+import {type MaybeAdminAction} from '../types/actions/actions.types';
+import {getActionIdentifier} from './actions/getActionIdentifier';
 
 export const instantiateAction = <A extends MaybeAdminAction>(
   action: AnyActionDefinition<A>,

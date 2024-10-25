@@ -1,8 +1,7 @@
-/* eslint-disable no-console */
 import {expect, it, vi} from 'vitest';
 import {type ComponentMountingOptions, mount} from '@vue/test-utils';
 import {AdminComponent, type DropdownButtonProps} from '@myparcel-pdk/admin';
-import {type AdminComponentTest} from '../tests';
+import {type AdminComponentTest} from '../tests/testMap';
 import {TestSuite} from '../TestSuite';
 
 export const runDropDownButtonTest = ((component) => {

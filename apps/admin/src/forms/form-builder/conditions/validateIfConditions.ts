@@ -1,5 +1,6 @@
 import {isOfType} from '@myparcel/ts-utils';
-import {type AnyVal, type IfAndMatcher, type IfOrMatcher, type WithCondition, type WithTarget} from '../types';
+import {type AnyVal, type WithTarget} from '../types/common.types';
+import {type IfAndMatcher, type IfOrMatcher, type WithCondition} from '../types/FormCondition.types';
 import {validateIsTruthy} from './validateIsTruthy';
 import {validateIfCondition} from './validateIfCondition';
 

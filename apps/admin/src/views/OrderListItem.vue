@@ -16,11 +16,13 @@
  */
 import {defineAsyncComponent} from 'vue';
 import {get} from '@vueuse/core';
-import {type NotificationFilter} from '../types';
-import {useActionStore, useQueryStore} from '../stores';
-import {NotificationCategory} from '../data';
-import {useOrderData, usePluginSettings} from '../composables';
-import {NotificationContainer} from '../components';
+import {type NotificationFilter} from '../types/common.types';
+import {useQueryStore} from '../stores/useQueryStore';
+import {useActionStore} from '../stores/useActionStore';
+import {NotificationCategory} from '../data/constants';
+import {useOrderData} from '../composables/orders/useOrderData';
+import {usePluginSettings} from '../composables/context/usePluginSettings';
+import {NotificationContainer} from '../components/common';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 const OrderModeOrderListItem = defineAsyncComponent(() => {

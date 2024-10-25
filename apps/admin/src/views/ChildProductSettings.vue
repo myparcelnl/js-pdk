@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts" setup>
-import {FORM_KEY_CHILD_PRODUCT_SETTINGS} from '../forms';
-import {useInstanceContext} from '../composables';
+import {FORM_KEY_CHILD_PRODUCT_SETTINGS} from '../forms/formKeys';
+import {useInstanceContext} from '../composables/context/useInstanceContext';
 import ProductSettings from './ProductSettings.vue';
-import {AdminInstanceContextKey} from "../data";
+import {AdminInstanceContextKey} from '../data/constants';
 
 const productId = useInstanceContext(AdminInstanceContextKey.ProductIdentifier);
 </script>

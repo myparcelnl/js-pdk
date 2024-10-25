@@ -980,7 +980,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/parser@npm:^7.23.9, @babel/parser@npm:^7.25.4":
+"@babel/parser@npm:^7.25.3, @babel/parser@npm:^7.25.4":
   version: 7.25.9
   resolution: "@babel/parser@npm:7.25.9"
   dependencies:
@@ -2443,6 +2443,7 @@ __metadata:
   resolution: "@myparcel-pdk/admin-component-tests@workspace:apps/admin-component-tests"
   dependencies:
     "@myparcel-pdk/admin": "workspace:^1.5.1"
+    "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel/vue-form-builder": "npm:^1.0.0-alpha.1"
     "@pinia/testing": "npm:>= 0.1.0 < 1"
     "@vitest/coverage-v8": "npm:^2.1.3"
@@ -2450,10 +2451,11 @@ __metadata:
     happy-dom: "npm:^14.0.0"
     pinia: "npm:^2.0.0"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.4.10"
     vitest: "npm:^2.1.3"
     vue: "npm:^3.3.0"
   peerDependencies:
-    vue: ^3
+    vue: ^3.3.0
   languageName: unknown
   linkType: soft
 
@@ -2465,6 +2467,7 @@ __metadata:
     "@myparcel-pdk/admin": "workspace:*"
     "@myparcel-pdk/admin-preset-default": "workspace:*"
     "@myparcel-pdk/admin-preset-fontawesome": "workspace:*"
+    "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel/constants": "npm:^2.0.0"
     "@myparcel/ts-utils": "npm:^1.9.0"
     "@tanstack/vue-query": "npm:^4.0.0"
@@ -2479,20 +2482,6 @@ __metadata:
     vitest: "npm:^2.1.3"
     vue: "npm:^3.3.0"
     vue-router: "npm:^4.1.6"
-  languageName: unknown
-  linkType: soft
-
-"@myparcel-pdk/admin-js@workspace:apps/admin-js":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/admin-js@workspace:apps/admin-js"
-  dependencies:
-    "@myparcel-pdk/admin": "workspace:^1.5.1"
-    "@myparcel-pdk/build-vite": "workspace:*"
-    typescript: "npm:^5.2.2"
-    vite: "npm:^5.4.10"
-    vitest: "npm:^2.1.3"
-  peerDependencies:
-    vue: ^3
   languageName: unknown
   linkType: soft
 
@@ -2580,6 +2569,7 @@ __metadata:
     pinia: "npm:^2.0.0"
     typescript: "npm:^5.2.2"
     vite: "npm:^5.4.10"
+    vite-plugin-dts: "npm:^4.3.0"
     vitest: "npm:^2.1.3"
     vue: "npm:^3.3.0"
     vue-tsc: "npm:^2.0.0"
@@ -2591,6 +2581,7 @@ __metadata:
   resolution: "@myparcel-pdk/app-builder@workspace:apps/app-builder"
   dependencies:
     "@edielemoine/google-docs-importer": "npm:^2.2.0"
+    "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel/ts-utils": "npm:^1.9.0"
     "@types/archiver": "npm:^6.0.0"
     "@types/commander": "npm:^2.12.2"
@@ -2610,6 +2601,7 @@ __metadata:
     supports-color: "npm:^9.3.1"
     tsup: "npm:^7.1.0"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.4.10"
     vitest: "npm:^2.1.3"
   bin:
     pdk-builder: ./bin/index.js
@@ -2622,6 +2614,7 @@ __metadata:
   dependencies:
     "@apollo/server": "npm:^4.4.1"
     "@myparcel-pdk/app-builder": "workspace:*"
+    "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/common": "workspace:*"
     "@myparcel/ts-utils": "npm:^1.9.0"
     "@types/node": "npm:^20.0.0"
@@ -2631,6 +2624,7 @@ __metadata:
     serverless: "npm:^3.28.1"
     serverless-plugin-typescript: "npm:^2.1.4"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.4.10"
     vitest: "npm:^2.1.3"
   languageName: unknown
   linkType: soft
@@ -2644,6 +2638,7 @@ __metadata:
     "@vitejs/plugin-vue": "npm:^5.1.4"
     "@vitest/coverage-v8": "npm:^2.1.3"
     happy-dom: "npm:^14.0.0"
+    rollup-plugin-node-externals: "npm:^7.0.0"
     typescript: "npm:^5.2.2"
     vite: "npm:^5.4.10"
     vite-plugin-custom-tsconfig: "npm:^1.0.4"
@@ -2658,11 +2653,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/checkout-common@workspace:libs/checkout-common"
   dependencies:
+    "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/common": "workspace:^1.3.1"
     "@myparcel/constants": "npm:^2.0.0"
     "@myparcel/delivery-options": "npm:^6.0.0"
     radash: "npm:^12.1.0"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.4.10"
     vitest: "npm:^2.1.3"
   languageName: unknown
   linkType: soft
@@ -2676,17 +2673,6 @@ __metadata:
     "@myparcel/delivery-options": "npm:^6.0.0"
     "@myparcel/ts-utils": "npm:^1.9.0"
     typescript: "npm:^5.2.2"
-    vitest: "npm:^2.1.3"
-  languageName: unknown
-  linkType: soft
-
-"@myparcel-pdk/checkout-js@workspace:apps/checkout-js":
-  version: 0.0.0-use.local
-  resolution: "@myparcel-pdk/checkout-js@workspace:apps/checkout-js"
-  dependencies:
-    "@myparcel-pdk/build-vite": "workspace:*"
-    "@myparcel-pdk/checkout": "workspace:^1.1.3"
-    typescript: "npm:^5.2.2"
     vite: "npm:^5.4.10"
     vitest: "npm:^2.1.3"
   languageName: unknown
@@ -2699,6 +2685,7 @@ __metadata:
     "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/checkout-common": "workspace:^1.1.3"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.4.10"
     vitest: "npm:^2.1.3"
   languageName: unknown
   linkType: soft
@@ -2711,20 +2698,23 @@ __metadata:
     "@myparcel-pdk/checkout-common": "workspace:^1.1.3"
     "@myparcel/constants": "npm:^2.0.0"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.4.10"
     vitest: "npm:^2.1.3"
   languageName: unknown
   linkType: soft
 
-"@myparcel-pdk/checkout@workspace:^1.1.3, @myparcel-pdk/checkout@workspace:apps/checkout":
+"@myparcel-pdk/checkout@workspace:apps/checkout":
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/checkout@workspace:apps/checkout"
   dependencies:
+    "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel-pdk/checkout-common": "workspace:^1.1.3"
     "@myparcel-pdk/checkout-delivery-options": "workspace:^1.1.3"
     "@myparcel-pdk/checkout-separate-address-fields": "workspace:^1.0.7"
     "@myparcel-pdk/checkout-tax-fields": "workspace:^1.0.7"
     "@myparcel-pdk/common": "workspace:^1.3.1"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.4.10"
     vitest: "npm:^2.1.3"
   languageName: unknown
   linkType: soft
@@ -2733,11 +2723,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-pdk/common@workspace:libs/common"
   dependencies:
+    "@myparcel-pdk/build-vite": "workspace:*"
     "@myparcel/constants": "npm:^2.0.0"
     "@myparcel/delivery-options": "npm:^6.0.0"
     typescript: "npm:^5.2.2"
+    vite: "npm:^5.4.10"
     vitest: "npm:^2.1.3"
-    vue: "npm:^3.3.0"
   languageName: unknown
   linkType: soft
 
@@ -5210,11 +5201,11 @@ __metadata:
   version: 3.4.21
   resolution: "@vue/compiler-core@npm:3.4.21"
   dependencies:
-    "@babel/parser": "npm:^7.23.9"
+    "@babel/parser": "npm:^7.25.3"
     "@vue/shared": "npm:3.4.21"
     entities: "npm:^4.5.0"
     estree-walker: "npm:^2.0.2"
-    source-map-js: "npm:^1.0.2"
+    source-map-js: "npm:^1.2.0"
   checksum: 10c0/3ee871b95e17948d10375093c8dd3265923f844528a24ac67512c201ddb9b628021c010565f3e50f2e551b217c502e80a7901384f616a977a04f81e68c64a37c
   languageName: node
   linkType: hard
@@ -5233,15 +5224,15 @@ __metadata:
   version: 3.4.21
   resolution: "@vue/compiler-sfc@npm:3.4.21"
   dependencies:
-    "@babel/parser": "npm:^7.23.9"
+    "@babel/parser": "npm:^7.25.3"
     "@vue/compiler-core": "npm:3.4.21"
     "@vue/compiler-dom": "npm:3.4.21"
     "@vue/compiler-ssr": "npm:3.4.21"
     "@vue/shared": "npm:3.4.21"
     estree-walker: "npm:^2.0.2"
-    magic-string: "npm:^0.30.7"
-    postcss: "npm:^8.4.35"
-    source-map-js: "npm:^1.0.2"
+    magic-string: "npm:^0.30.11"
+    postcss: "npm:^8.4.47"
+    source-map-js: "npm:^1.2.0"
   checksum: 10c0/8d9a6ee07a9c542528f09b7a99e5d40e9752dca39251994e4309cb6121997c47db6818be75555aa69fb4f0bd54820bc7675c0c6e2ea5afe339f09d40890d26a9
   languageName: node
   linkType: hard
@@ -5267,9 +5258,9 @@ __metadata:
   linkType: hard
 
 "@vue/devtools-api@npm:^6.4.2, @vue/devtools-api@npm:^6.5.0, @vue/devtools-api@npm:^6.5.1":
-  version: 6.6.1
-  resolution: "@vue/devtools-api@npm:6.6.1"
-  checksum: 10c0/ab9a1e09baae514b0d3a8bf1d670ecb7724f7e55b82eea30aa2e7255e6200b45c1086c1376560f243cf86e98c0726e94d69cefe0ad23dfd50c7c49dfcb1fbf21
+  version: 6.6.4
+  resolution: "@vue/devtools-api@npm:6.6.4"
+  checksum: 10c0/0a993ae23618166e1bee5a7c14cebd8312752b93c143cbdd48fb2d0f7ade070d0e6baf757cd920d4681fef8f9acf29515162160f38cc7410f9a684d2df21b6de
   languageName: node
   linkType: hard
 
@@ -5377,6 +5368,7 @@ __metadata:
   version: 3.4.21
   resolution: "@vue/runtime-dom@npm:3.4.21"
   dependencies:
+    "@vue/reactivity": "npm:3.4.21"
     "@vue/runtime-core": "npm:3.4.21"
     "@vue/shared": "npm:3.4.21"
     csstype: "npm:^3.1.3"
@@ -5404,12 +5396,12 @@ __metadata:
   linkType: hard
 
 "@vue/test-utils@npm:^2.0.0":
-  version: 2.4.5
-  resolution: "@vue/test-utils@npm:2.4.5"
+  version: 2.4.6
+  resolution: "@vue/test-utils@npm:2.4.6"
   dependencies:
     js-beautify: "npm:^1.14.9"
     vue-component-type-helpers: "npm:^2.0.0"
-  checksum: 10c0/a4f452068adba3fe0f079023d2f6424b837959a56790341681e7b8ae9d75f12fc422ec7146e0fc3c9229b759d7fac2376af53d0517d372c36d20132a43ca1972
+  checksum: 10c0/37fa46cb6b98f90affb2faf5aa41422617bbd23ff35bc714d08035334e593ae31d18757d5ae688f778dd8b4c28de431601c0b9b7ca17fc1b55f1401a5577375e
   languageName: node
   linkType: hard
 
@@ -11911,7 +11903,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"magic-string@npm:^0.30.0, magic-string@npm:^0.30.11, magic-string@npm:^0.30.3, magic-string@npm:^0.30.5, magic-string@npm:^0.30.7, magic-string@npm:^0.30.8":
+"magic-string@npm:^0.30.0, magic-string@npm:^0.30.11, magic-string@npm:^0.30.3, magic-string@npm:^0.30.5, magic-string@npm:^0.30.8":
   version: 0.30.12
   resolution: "magic-string@npm:0.30.12"
   dependencies:
@@ -13549,7 +13541,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.21, postcss@npm:^8.4.23, postcss@npm:^8.4.35, postcss@npm:^8.4.43":
+"postcss@npm:^8.4.21, postcss@npm:^8.4.23, postcss@npm:^8.4.43, postcss@npm:^8.4.47":
   version: 8.4.47
   resolution: "postcss@npm:8.4.47"
   dependencies:
@@ -14144,6 +14136,15 @@ __metadata:
   bin:
     rimraf: dist/esm/bin.mjs
   checksum: 10c0/d50dbe724f33835decd88395b25ed35995077c60a50ae78ded06e0185418914e555817aad1b4243edbff2254548c2f6ad6f70cc850040bebb4da9e8cc016f586
+  languageName: node
+  linkType: hard
+
+"rollup-plugin-node-externals@npm:^7.0.0":
+  version: 7.1.3
+  resolution: "rollup-plugin-node-externals@npm:7.1.3"
+  peerDependencies:
+    rollup: ^3.0.0 || ^4.0.0
+  checksum: 10c0/79d0a964cb488d442f571dd7ce29c53099ca40a76cb71fd985b9978d52efad31346b11138dced9c974e9881b4a56dce384afc0e6d42d9740cebb58120028a37a
   languageName: node
   linkType: hard
 
@@ -14790,7 +14791,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map-js@npm:^1.0.2, source-map-js@npm:^1.2.0, source-map-js@npm:^1.2.1":
+"source-map-js@npm:^1.2.0, source-map-js@npm:^1.2.1":
   version: 1.2.1
   resolution: "source-map-js@npm:1.2.1"
   checksum: 10c0/7bda1fc4c197e3c6ff17de1b8b2c20e60af81b63a52cb32ec5a5d67a20a7d42651e2cb34ebe93833c5a2a084377e17455854fee3e21e7925c64a51b6a52b0faf

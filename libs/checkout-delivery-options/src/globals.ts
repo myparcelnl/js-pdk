@@ -1,4 +1,5 @@
-import {type DeliveryOptionsStore, type PdkDeliveryOptionsEvent} from './types';
+import {type DeliveryOptionsStore} from './types/store.types';
+import {type PdkDeliveryOptionsEvent} from './types/generic.types';
 
 declare global {
   interface AdditionalEvents {

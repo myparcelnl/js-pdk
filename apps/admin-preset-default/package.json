@@ -9,14 +9,15 @@
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "exports": "./src/index.ts",
+  "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "./src",
     "./dist"
   ],
   "scripts": {
-    "build": "run ws:vue:build \"$(pwd)\" || true",
+    "build": "vite build",
+    "build:dev": "vite build --mode development",
     "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",

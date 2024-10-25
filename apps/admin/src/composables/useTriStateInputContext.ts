@@ -2,16 +2,16 @@ import {computed, markRaw, reactive, ref, type Ref, watch, type WritableComputed
 import {get} from '@vueuse/core';
 import {TriState} from '@myparcel-pdk/common';
 import {type AnyElementConfiguration, defineField, useForm} from '@myparcel/vue-form-builder';
-import {booleanToTriState, triStateToBoolean} from '../utils';
+import {triStateToBoolean} from '../utils/triStateToBoolean';
+import {booleanToTriState} from '../utils/booleanToTriState';
+import {type ElementInstance, type PdkElementProps} from '../types/form.types';
 import {
-  type ElementInstance,
-  type PdkElementProps,
   type TriStateInputEmits,
   type TriStateInputModelValue,
   type TriStateInputProps,
-} from '../types';
+} from '../types/component-bindings.types';
 import {useElementContext} from './useElementContext';
-import {useLanguage} from './language';
+import {useLanguage} from './language/useLanguage';
 
 type BoolElInstance = ElementInstance<boolean, PdkElementProps>;
 

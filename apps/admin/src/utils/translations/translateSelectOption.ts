@@ -1,6 +1,6 @@
 import {isOfType} from '@myparcel/ts-utils';
-import {type SelectOption, type SelectOptionValue, type SelectOptionWithLabel} from '../../types';
-import {type useLanguage} from '../../composables';
+import {type SelectOption, type SelectOptionValue, type SelectOptionWithLabel} from '../../types/form.types';
+import {type useLanguage} from '../../composables/language/useLanguage';
 
 export const translateSelectOption = <T extends SelectOptionValue = SelectOptionValue>(
   option: SelectOption<T>,

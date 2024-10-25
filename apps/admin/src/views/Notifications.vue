@@ -4,6 +4,6 @@
 
 <!-- The notification container. Used to display notifications. -->
 <script lang="ts" setup>
-import {NotificationContainer} from '../components';
-import {NotificationCategory} from "../data";
+import {NotificationCategory} from '../data/constants';
+import {NotificationContainer} from '../components/common';
 </script>

@@ -1,14 +1,11 @@
 import {type UseMutationReturnType, type UseQueryReturnType} from '@tanstack/vue-query';
 import {type AdminContextKey, type BackendEndpoint} from '@myparcel-pdk/common';
 import {type ApiException} from '@myparcel/sdk';
-import {
-  type ActionInput,
-  type AdminContext,
-  type BackendEndpointResponse,
-  type BackendMutationEndpoints,
-  type BackendQueryEndpoints,
-} from '../types';
-import {type QueryModifier} from '../actions';
+import {type AdminContext} from '../types/context.types';
+import {type BackendEndpointResponse} from '../types/actions/response.types';
+import {type ActionInput} from '../types/actions/parameters.types';
+import {type BackendMutationEndpoints, type BackendQueryEndpoints} from '../types/actions/endpoints.types';
+import {type QueryModifier} from '../actions/executors/types';
 
 type EndpointQuery<E extends BackendEndpoint> = E extends BackendMutationEndpoints
   ? UseMutationReturnType<BackendEndpointResponse<E>, ApiException, ActionInput<E>, unknown>

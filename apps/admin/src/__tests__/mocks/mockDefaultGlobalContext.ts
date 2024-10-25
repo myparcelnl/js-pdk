@@ -1,5 +1,5 @@
 import {vi} from 'vitest';
-import {type GlobalAdminContext} from '../../types';
+import {type GlobalAdminContext} from '../../types/context.types';
 import {mockDefaultTranslations} from './mockDefaultTranslations';
 import {mockDefaultPlatform} from './mockDefaultPlatform';
 import {mockDefaultEndpoints} from './mockDefaultEndpoints';

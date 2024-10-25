@@ -1,5 +1,6 @@
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {getOrderId, validateId} from '../../utils';
+import {validateId} from '../../utils/validateId';
+import {getOrderId} from '../../utils/getOrderId';
 import {type UseOrderData, useOrderData} from './useOrderData';
 
 export const useOrdersData = (externalIdentifiers?: OneOrMore<string>): UseOrderData[] => {

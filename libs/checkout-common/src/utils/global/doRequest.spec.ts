@@ -1,6 +1,7 @@
 import {beforeEach, describe, expect, it} from 'vitest';
 import {FrontendEndpoint} from '@myparcel-pdk/common';
-import {doRequestSpy, mockPdkCheckout} from '../../__tests__';
+import {doRequestSpy} from '../../__tests__/spies';
+import {mockPdkCheckout} from '../../__tests__/mockPdkCheckout';
 import {doRequest} from './doRequest';
 
 describe('doRequest', () => {

@@ -14,16 +14,17 @@
 <script lang="ts" setup>
 import {computed, defineAsyncComponent} from 'vue';
 import {get} from '@vueuse/core';
-import {instantiateActions} from '../../services';
-import {useOrdersData, usePluginSettings} from '../../composables';
+import {instantiateActions} from '../../services/instantiateActions';
+import {usePluginSettings} from '../../composables/context/usePluginSettings';
+import {useOrdersData} from '../../composables/orders/useOrdersData';
+import {modalCloseAction} from '../../actions/definitions/modal';
 import {
-  modalCloseAction,
   orderExportAction,
   orderExportToShipmentsAction,
   ordersExportPrintShipmentsAction,
   ordersUpdateAction,
-} from '../../actions';
-import {AdminModalKey} from "../../data";
+} from '../../actions/definitions/orders';
+import {AdminModalKey} from '../../data/constants';
 
 /**
  * Shipment options modal. Opened by clicking the "Create" button in the "Labels" column in the orders list.

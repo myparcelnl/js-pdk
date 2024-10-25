@@ -1,6 +1,6 @@
 import {set} from 'lodash-unified';
 import {type AnyElementInstance, type InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {type PropVal} from '../types';
+import {type PropVal} from '../types/common.types';
 
 export type FormPropSetter = (prop: string, value: PropVal, target?: string) => void;
 

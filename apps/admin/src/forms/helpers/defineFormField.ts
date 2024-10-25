@@ -1,5 +1,5 @@
 import {defineField, type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
-import {KEY_DESCRIPTION, KEY_SUBTEXT} from '../shipmentOptions';
+import {KEY_DESCRIPTION, KEY_SUBTEXT} from '../shipmentOptions/field';
 import {createLabel} from './createLabel';
 
 export const defineFormField = (config: InteractiveElementConfiguration): InteractiveElementConfiguration => {

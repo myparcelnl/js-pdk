@@ -1,5 +1,5 @@
-import {getEnabledShippingMethods} from '../utils';
-import {type PdkCheckoutConfig} from '../types';
+import {getEnabledShippingMethods} from '../utils/getEnabledShippingMethods';
+import {type PdkCheckoutConfig} from '../types/checkout.types';
 
 export const defaultHasDeliveryOptions = ((shippingMethod: string): boolean => {
   const enabledShippingMethods = getEnabledShippingMethods();

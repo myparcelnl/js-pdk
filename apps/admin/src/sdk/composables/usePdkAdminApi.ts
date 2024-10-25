@@ -1,9 +1,9 @@
 import {createGlobalState} from '@vueuse/core';
 import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {createMyParcelSdk, type HttpMethod, type MyParcelSdk} from '@myparcel/sdk';
-import {AbstractPdkEndpoint} from '../endpoints';
+import {AbstractPdkEndpoint} from '../endpoints/abstractPdkEndpoint';
 import {PdkFetchClient} from '../PdkFetchClient';
-import {useGlobalContext} from '../../composables';
+import {useGlobalContext} from '../../composables/context/useGlobalContext';
 
 /**
  * Do requests to the PDK admin Api.

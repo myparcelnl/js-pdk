@@ -1,6 +1,7 @@
-import {type ActionResponse, type MaybeAdminAction} from '../../types';
-import {useNotificationStore} from '../../stores';
-import {NotificationCategory} from '../../data';
+import {type ActionResponse} from '../../types/actions/response.types';
+import {type MaybeAdminAction} from '../../types/actions/actions.types';
+import {useNotificationStore} from '../../stores/useNotificationStore';
+import {NotificationCategory} from '../../data/constants';
 import {type ActionContext} from './types';
 
 const HANDLER = 'handler';

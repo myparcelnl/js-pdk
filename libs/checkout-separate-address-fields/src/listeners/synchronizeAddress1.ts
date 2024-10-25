@@ -6,7 +6,9 @@ import {
   useCheckoutStore,
   useUtil,
 } from '@myparcel-pdk/checkout-common';
-import {getAddressFields, getFullStreet, triggerFormChange} from '../utils';
+import {triggerFormChange} from '../utils/triggerFormChange';
+import {getFullStreet} from '../utils/getFullStreet';
+import {getAddressFields} from '../utils/getAddressFields';
 import {SEPARATE_ADDRESS_FIELDS} from '../constants';
 
 /**

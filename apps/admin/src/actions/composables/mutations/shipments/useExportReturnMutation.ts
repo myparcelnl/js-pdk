@@ -1,10 +1,11 @@
 import {useMutation, useQueryClient} from '@tanstack/vue-query';
 import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {QUERY_KEY_SHIPMENT} from '../../queries';
-import {encodeArrayParameter, setQueryOrder} from '../../../../utils';
-import {type ResolvedQuery} from '../../../../stores';
-import {usePdkAdminApi} from '../../../../sdk';
+import {QUERY_KEY_SHIPMENT} from '../../queries/queryKeys';
+import {setQueryOrder} from '../../../../utils/query/setQueryOrder';
+import {encodeArrayParameter} from '../../../../utils/encodeArrayParameter';
+import {type ResolvedQuery} from '../../../../stores/types';
+import {usePdkAdminApi} from '../../../../sdk/composables/usePdkAdminApi';
 
 export const useExportReturnMutation = (
   orderIds?: OneOrMore<string>,

@@ -1,5 +1,5 @@
-import {type AdminContextObject} from '../types';
-import {globalLogger} from '../services';
+import {type AdminContextObject} from '../types/context.types';
+import {globalLogger} from '../services/logger';
 import {sendBootEvent} from './sendBootEvent';
 import {type PdkAdmin} from './PdkAdmin';
 

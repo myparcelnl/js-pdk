@@ -3,7 +3,8 @@ import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {CarrierName} from '@myparcel/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_AGE_CHECK, FIELD_ONLY_RECIPIENT} from '../field';
-import {getFormCarrierName, hasPostNlAgeCheck} from '../../helpers';
+import {hasPostNlAgeCheck} from '../../helpers/hasPostNlAgeCheck';
+import {getFormCarrierName} from '../../helpers/getFormCarrierName';
 import {createShipmentOptionField} from './createShipmentOptionField';
 
 export const createOnlyRecipientField = (refs: ShipmentOptionsRefs): InteractiveElementConfiguration => {

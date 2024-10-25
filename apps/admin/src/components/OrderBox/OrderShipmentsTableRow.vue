@@ -34,9 +34,12 @@ import {computed, toRefs} from 'vue';
 import {useVModel} from '@vueuse/core';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {ShipmentBarcode, ShipmentStatus} from '../common';
-import {createClasses} from '../../utils';
-import {useQueryStore} from '../../stores';
-import {Format, useAdminConfig, useLocalizedFormatter, useShipmentData} from '../../composables';
+import {createClasses} from '../../utils/createClasses';
+import {useQueryStore} from '../../stores/useQueryStore';
+import {Format} from '../../composables/formatter/formatter.types';
+import {useLocalizedFormatter} from '../../composables/formatter/useLocalizedFormatter';
+import {useShipmentData} from '../../composables/shipments/useShipmentData';
+import {useAdminConfig} from '../../composables/useAdminConfig';
 
 const props = defineProps<{
   shipmentId: number;

@@ -1,6 +1,7 @@
 import {type Keyable, type Plugin} from '@myparcel-pdk/common';
 import {type PromiseOr} from '@myparcel/ts-utils';
-import {type AddressType, type StoreListener} from '../data';
+import {type StoreListener} from '../data/store';
+import {type AddressType} from '../data/address';
 import {type PdkCheckoutForm} from './checkout.types';
 
 type StoreListeners<T extends StoreState> = {

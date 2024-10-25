@@ -1,7 +1,10 @@
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {createPropSetter, createValueGetter, createValueSetter} from '../utils';
-import {type FormOperation, type HandlerDefinition} from '../types';
-import {executeOperations} from '../operations';
+import {createValueSetter} from '../utils/createValueSetter';
+import {createValueGetter} from '../utils/createValueGetter';
+import {createPropSetter} from '../utils/createPropSetter';
+import {type FormOperation} from '../types/common.types';
+import {type HandlerDefinition} from '../types/FormOperations.types';
+import {executeOperations} from '../operations/executeOperations';
 
 export const buildAfterUpdate = (
   operations: FormOperation[],

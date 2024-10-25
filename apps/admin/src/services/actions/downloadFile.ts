@@ -1,4 +1,4 @@
-import {downloadFileFromUrl} from '../../utils';
+import {downloadFileFromUrl} from '../../utils/downloadFileFromUrl';
 
 /**
  * Try to get a file from an url. An error means the file is not ready yet. Retry until it is.

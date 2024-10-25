@@ -1,5 +1,6 @@
-import {type InputAdminConfiguration} from '../types';
-import {getElementContext, globalLogger} from '../services';
+import {type InputAdminConfiguration} from '../types/configuration.types';
+import {globalLogger} from '../services/logger';
+import {getElementContext} from '../services/context/getElementContext';
 import {createAdminConfig} from './createAdminConfig';
 import {boot} from './boot';
 import {PdkAdmin} from './PdkAdmin';

@@ -6,6 +6,9 @@
     "noEmitOnError": false,
     "types": ["node", "vite/client"]
   },
+  "vueCompilerOptions": {
+    "skipTemplateCodegen": true
+  },
   "include": [],
   "exclude": [
     "./**/node_modules/**/*",

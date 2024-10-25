@@ -1,6 +1,9 @@
-import {type ActionParameters, type AnyActionDefinition, type MaybeAdminAction, type ResolvedAction} from '../../types';
-import {type AdminAction} from '../../data';
-import {type ActionContext, executeAction} from '../../actions';
+import {type AnyActionDefinition, type ResolvedAction} from '../../types/actions.types';
+import {type ActionParameters} from '../../types/actions/parameters.types';
+import {type MaybeAdminAction} from '../../types/actions/actions.types';
+import {type AdminAction} from '../../data/constants';
+import {type ActionContext} from '../../actions/executors/types';
+import {executeAction} from '../../actions/executors/executeAction';
 import {getActionIdentifier} from './getActionIdentifier';
 import {createActionContext} from './createActionContext';
 

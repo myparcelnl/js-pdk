@@ -1,18 +1,15 @@
-// eslint-disable-next-line max-lines-per-function
 import {isEnumValue, isOfType} from '@myparcel/ts-utils';
-import {
-  doRequest,
-  fieldsEqual,
-  getAddressField,
-  getAddressFieldValue,
-  getElement,
-  getFieldValue,
-  realUseUtil,
-  setFieldValue,
-  triggerEvent,
-} from '../utils';
-import {type PdkCheckoutConfig} from '../types';
-import {realCreateStore} from '../store';
+import {realUseUtil} from '../utils/realUseUtil';
+import {triggerEvent} from '../utils/global/triggerEvent';
+import {setFieldValue} from '../utils/global/setFieldValue';
+import {getFieldValue} from '../utils/global/getFieldValue';
+import {getElement} from '../utils/global/getElement';
+import {getAddressFieldValue} from '../utils/global/getAddressFieldValue';
+import {getAddressField} from '../utils/global/getAddressField';
+import {fieldsEqual} from '../utils/global/fieldsEqual';
+import {doRequest} from '../utils/global/doRequest';
+import {type PdkCheckoutConfig} from '../types/checkout.types';
+import {realCreateStore} from '../store/realCreateStore';
 import {
   createEventName,
   EVENT_CHECKOUT,
@@ -22,7 +19,7 @@ import {
   EVENT_TYPE_UPDATE,
   EVENT_TYPE_UPDATED,
   PdkEvent,
-} from '../data';
+} from '../data/events';
 import {initializeCheckoutStore} from './initializeCheckoutStore';
 import {addFormListeners} from './addFormListeners';
 

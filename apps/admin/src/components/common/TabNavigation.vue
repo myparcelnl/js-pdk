@@ -41,10 +41,13 @@
 <script lang="ts" setup>
 import {computed, type PropType, ref, watch} from 'vue';
 import {type ComponentOrHtmlElement} from '@myparcel/vue-form-builder';
-import {prefixComponent} from '../../utils';
-import {type PrefixedAdminComponent, type TabDefinition} from '../../types';
-import {AdminComponent, HASH_SEPARATOR} from '../../data';
-import {useAdminConfig, useLanguage} from '../../composables';
+import {prefixComponent} from '../../utils/prefixComponent';
+import type {PrefixedAdminComponent} from '../../types/admin.types';
+import type {TabDefinition} from '../../types/common.types';
+import {AdminComponent} from '../../data/components';
+import {HASH_SEPARATOR} from '../../data/constants';
+import {useLanguage} from '../../composables/language/useLanguage';
+import {useAdminConfig} from '../../composables/useAdminConfig';
 
 const props = defineProps({
   button: {

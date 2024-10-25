@@ -12,6 +12,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "build:dev": "vite build --mode=development",
     "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
@@ -33,6 +34,7 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@myparcel-pdk/build-vite": "workspace:*",
     "@vitejs/plugin-vue": "^5.1.4",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",

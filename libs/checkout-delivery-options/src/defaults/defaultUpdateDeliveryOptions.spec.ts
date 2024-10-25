@@ -1,22 +1,27 @@
 import {describe, expect, it} from 'vitest';
-import {tests, useCheckoutStore, usePdkCheckout} from '@myparcel-pdk/checkout-common';
+import {
+  getMockCheckoutContext,
+  getMockDeliveryOptionsConfig,
+  mockPdkCheckout,
+} from '@myparcel-pdk/checkout-common/testing';
+import {useCheckoutStore, usePdkCheckout} from '@myparcel-pdk/checkout-common';
 import {CarrierSetting} from '@myparcel/delivery-options';
 import {PackageTypeName} from '@myparcel/constants';
-import {useDeliveryOptionsStore} from '../utils';
+import {useDeliveryOptionsStore} from '../utils/useDeliveryOptionsStore';
 import {initializeCheckoutDeliveryOptions} from '../initializeCheckoutDeliveryOptions';
 import {defaultUpdateDeliveryOptions} from './defaultUpdateDeliveryOptions';
 
 /** @vitest-environment happy-dom */
 
 const doTestSetup = async (originalPackageType?: PackageTypeName): Promise<void> => {
-  tests.getMockDeliveryOptionsConfig.mockReturnValueOnce({
-    ...tests.getMockDeliveryOptionsConfig(),
+  getMockDeliveryOptionsConfig.mockReturnValueOnce({
+    ...getMockDeliveryOptionsConfig(),
     packageType: originalPackageType,
   });
 
-  const mockCheckoutContext = tests.getMockCheckoutContext();
+  const mockCheckoutContext = getMockCheckoutContext();
 
-  tests.getMockCheckoutContext.mockReturnValueOnce({
+  getMockCheckoutContext.mockReturnValueOnce({
     ...mockCheckoutContext,
     settings: {
       ...mockCheckoutContext?.settings,
@@ -31,7 +36,7 @@ const doTestSetup = async (originalPackageType?: PackageTypeName): Promise<void>
     },
   });
 
-  await tests.mockPdkCheckout();
+  await mockPdkCheckout();
 
   usePdkCheckout().onInitialize(() => initializeCheckoutDeliveryOptions());
 };
@@ -85,12 +90,12 @@ describe('defaultUpdateDeliveryOptions', () => {
       expect(firstResult[CarrierSetting.PackageType]).toBe(originalPackageType);
 
       // Change the shipping method
-      checkout.set({form: {...checkout.state.form, shippingMethod}});
+      await checkout.set({form: {...checkout.state.form, shippingMethod}});
 
       const newResult = defaultUpdateDeliveryOptions(deliveryOptions.state);
       expect(newResult[CarrierSetting.PackageType]).toBe(expectedPackageType);
 
-      checkout.set({form: {...checkout.state.form, shippingMethod: 'sm_default'}});
+      await checkout.set({form: {...checkout.state.form, shippingMethod: 'sm_default'}});
 
       const finalResult = defaultUpdateDeliveryOptions(deliveryOptions.state);
       expect(finalResult[CarrierSetting.PackageType]).toBe(originalPackageType);

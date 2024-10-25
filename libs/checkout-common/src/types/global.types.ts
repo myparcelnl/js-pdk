@@ -1,16 +1,15 @@
 import {type isEnumValue, type isOfType, type PromiseOr} from '@myparcel/ts-utils';
-import {
-  type doRequest,
-  type fieldsEqual,
-  type getAddressField,
-  type getAddressFieldValue,
-  type getElement,
-  type getFieldValue,
-  type setFieldValue,
-  type triggerEvent,
-} from '../utils';
-import {type realCreateStore} from '../store';
-import {type PdkEvent, type PdkUtil} from '../data';
+import {type triggerEvent} from '../utils/global/triggerEvent';
+import {type setFieldValue} from '../utils/global/setFieldValue';
+import {type getFieldValue} from '../utils/global/getFieldValue';
+import {type getElement} from '../utils/global/getElement';
+import {type getAddressFieldValue} from '../utils/global/getAddressFieldValue';
+import {type getAddressField} from '../utils/global/getAddressField';
+import {type fieldsEqual} from '../utils/global/fieldsEqual';
+import {type doRequest} from '../utils/global/doRequest';
+import {type realCreateStore} from '../store/realCreateStore';
+import {type PdkUtil} from '../data/utils';
+import {type PdkEvent} from '../data/events';
 import {type CheckoutStore, type StoreData} from './store.types';
 import {type PdkCheckout, type PdkCheckoutConfig} from './checkout.types';
 

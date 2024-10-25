@@ -1,5 +1,5 @@
-import {useConfig} from '../utils';
-import {type PdkCheckoutConfig} from '../types';
+import {useConfig} from '../utils/useConfig';
+import {type PdkCheckoutConfig} from '../types/checkout.types';
 
 export const defaultGetFormData = (() => {
   const config = useConfig();

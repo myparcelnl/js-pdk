@@ -1,4 +1,4 @@
-import {openUrlInNewTab} from '../../utils';
+import {openUrlInNewTab} from '../../utils/openUrlInNewTab';
 
 /**
  * Opens a new window with the given base64 encoded pdf.

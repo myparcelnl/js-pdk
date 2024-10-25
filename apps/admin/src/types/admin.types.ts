@@ -1,14 +1,14 @@
 import {type Component} from 'vue';
-import {type PdkLogger} from '../services';
+import {type PdkLogger} from '../services/logger';
+import {type AdminView} from '../data/view';
+import {type ADMIN_COMPONENT_PREFIX} from '../data/constants';
 import {
-  type ADMIN_COMPONENT_PREFIX,
   type AdminComponent,
-  type AdminView,
   type optionalAdminActionContainerComponentNames,
   type optionalAdminComponentNames,
   type optionalAdminPlainWrapperComponentNames,
   type requiredAdminComponentNames,
-} from '../data';
+} from '../data/components';
 import {type AdminContextObject, type AdminInstanceContext} from './context.types';
 import {type AdminConfiguration} from './configuration.types';
 

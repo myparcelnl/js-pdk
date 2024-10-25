@@ -1,8 +1,8 @@
 import {ref} from 'vue';
 import {defineStore} from 'pinia';
 import {isEnumValue} from '@myparcel/ts-utils';
-import {type NotificationId, type PdkNotification, type ResolvedNotification} from '../types';
-import {NotificationSource} from '../data';
+import {type NotificationId, type PdkNotification, type ResolvedNotification} from '../types/common.types';
+import {NotificationSource} from '../data/constants';
 
 let autoId = 0;
 

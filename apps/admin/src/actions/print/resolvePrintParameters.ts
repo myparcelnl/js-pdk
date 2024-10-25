@@ -1,7 +1,8 @@
 import {toArray} from '@myparcel/ts-utils';
-import {type ActionContext} from '../executors';
-import {type ActionParameters, type PrintAction} from '../../types';
-import {usePluginSettings} from '../../composables';
+import {type ActionContext} from '../executors/types';
+import {type ActionParameters} from '../../types/actions/parameters.types';
+import {type PrintAction} from '../../types/actions/actions.types';
+import {usePluginSettings} from '../../composables/context/usePluginSettings';
 import {waitForLabelPrompt} from './waitForLabelPrompt';
 
 export const resolvePrintParameters = <A extends PrintAction>(

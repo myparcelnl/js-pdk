@@ -2,8 +2,11 @@ import {type Shipment, TriState} from '@myparcel-pdk/common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {type ShipmentOptionsRefs} from '../types';
 import {type FieldName} from '../field';
-import {createHasShipmentOptionWatcher, defineFormField, getFieldLabel, resolveFormComponent} from '../../helpers';
-import {AdminComponent} from '../../../data';
+import {resolveFormComponent} from '../../helpers/resolveFormComponent';
+import {getFieldLabel} from '../../helpers/getFieldLabel';
+import {defineFormField} from '../../helpers/defineFormField';
+import {createHasShipmentOptionWatcher} from '../../helpers/createHasShipmentOptionWatcher';
+import {AdminComponent} from '../../../data/components';
 import {createRef} from './createRef';
 
 export const createShipmentOptionField = (

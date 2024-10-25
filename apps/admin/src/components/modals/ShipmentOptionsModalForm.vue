@@ -10,7 +10,7 @@ import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {ShipmentOptionsForm} from '../common';
-import {useOrdersData} from '../../composables';
+import {useOrdersData} from '../../composables/orders/useOrdersData';
 
 const props = defineProps<{order: OneOrMore<string>}>();
 

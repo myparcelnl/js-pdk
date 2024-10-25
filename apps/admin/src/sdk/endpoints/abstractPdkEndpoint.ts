@@ -1,6 +1,6 @@
 import {type BackendEndpoint, type ExtractEndpointDefinition} from '@myparcel-pdk/common';
 import {AbstractEndpoint} from '@myparcel/sdk';
-import {type BackendEndpointDefinition} from '../../types';
+import {type BackendEndpointDefinition} from '../../types/sdk.types';
 
 export abstract class AbstractPdkEndpoint<N extends BackendEndpoint = BackendEndpoint> extends AbstractEndpoint<
   ExtractEndpointDefinition<N, BackendEndpointDefinition>

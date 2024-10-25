@@ -1,13 +1,12 @@
-// @vitest-environment happy-dom
-
-import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, type SpyInstance, vi} from 'vitest';
+import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {mount} from '@vue/test-utils';
-import {useQueryStore} from '../../stores';
-import {globalLogger} from '../../services';
+import {type MockInstance} from '@vitest/spy';
+import {useQueryStore} from '../../stores/useQueryStore';
+import {globalLogger} from '../../services/logger';
 import {doComponentTestSetup, doComponentTestTeardown, mockDefaultTranslations} from '../../__tests__';
 import {useLanguage} from './useLanguage';
 
-let warnSpy: SpyInstance;
+let warnSpy: MockInstance;
 
 const commonSetup = () => {
   useQueryStore().registerContextQueries();

@@ -7,12 +7,10 @@ import {
   useUtil,
 } from '@myparcel-pdk/checkout-common';
 import {objectIsEqual} from '@myparcel/ts-utils';
-import {
-  getDeliveryOptionsAddress,
-  shippingMethodHasDeliveryOptions,
-  updateContext,
-  useDeliveryOptionsStore,
-} from '../utils';
+import {useDeliveryOptionsStore} from '../utils/useDeliveryOptionsStore';
+import {updateContext} from '../utils/updateContext';
+import {shippingMethodHasDeliveryOptions} from '../utils/shippingMethodHasDeliveryOptions';
+import {getDeliveryOptionsAddress} from '../utils/getDeliveryOptionsAddress';
 
 export const updateDeliveryOptions: StoreCallbackUpdate<CheckoutStoreState> = async (newState, oldState) => {
   const fieldsEqual = useUtil(PdkUtil.FieldsEqual);

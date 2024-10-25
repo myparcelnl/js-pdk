@@ -1,6 +1,8 @@
-import {useConfig, useUtil} from '../utils';
-import {type CheckoutStoreState, type StoreCallbackUpdate} from '../types';
-import {PdkField, PdkUtil} from '../data';
+import {useUtil} from '../utils/useUtil';
+import {useConfig} from '../utils/useConfig';
+import {type CheckoutStoreState, type StoreCallbackUpdate} from '../types/store.types';
+import {PdkUtil} from '../data/utils';
+import {PdkField} from '../data/address';
 
 export const updateAddressType: StoreCallbackUpdate<CheckoutStoreState> = (newState, oldState) => {
   const fieldsEqual = useUtil(PdkUtil.FieldsEqual);

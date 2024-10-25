@@ -38,7 +38,9 @@
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {BulkSelectCheckbox} from '../common';
-import {type PdkBulkSelectCheckboxEmits, useBulkSelectCheckbox, useLanguage, useOrderData} from '../../composables';
+import {useLanguage} from '../../composables/language/useLanguage';
+import {useOrderData} from '../../composables/orders/useOrderData';
+import {type PdkBulkSelectCheckboxEmits, useBulkSelectCheckbox} from '../../composables/useBulkSelectCheckbox';
 import OrderShipmentsTableRow from './OrderShipmentsTableRow.vue';
 
 const emit = defineEmits<PdkBulkSelectCheckboxEmits>();

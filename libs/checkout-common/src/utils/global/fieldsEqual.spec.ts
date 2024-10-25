@@ -1,6 +1,7 @@
 import {beforeEach, describe, expect, it} from 'vitest';
-import {AddressField, AddressType, PdkField} from '../../data';
-import {getMockFormData, mockPdkCheckout} from '../../__tests__';
+import {AddressField, AddressType, PdkField} from '../../data/address';
+import {mockPdkCheckout} from '../../__tests__/mockPdkCheckout';
+import {getMockFormData} from '../../__tests__/getMockFormData';
 import {fieldsEqual} from './fieldsEqual';
 
 describe('fieldsEqual', () => {

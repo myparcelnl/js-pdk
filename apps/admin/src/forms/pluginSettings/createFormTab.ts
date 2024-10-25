@@ -1,7 +1,7 @@
 import {h, type VNode} from 'vue';
 import {MagicForm} from '@myparcel/vue-form-builder';
-import {type TabDefinition} from '../../types';
-import {useLanguage} from '../../composables';
+import {type TabDefinition} from '../../types/common.types';
+import {useLanguage} from '../../composables/language/useLanguage';
 import {type FormTab} from './types';
 
 export const createFormTab = (tab: FormTab): TabDefinition => {

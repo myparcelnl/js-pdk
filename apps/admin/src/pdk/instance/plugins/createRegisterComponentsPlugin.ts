@@ -1,17 +1,18 @@
 import {type App, type Component, markRaw} from 'vue';
 import {mergeWith} from 'lodash-unified';
 import {type FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder';
-import {prefixComponent, unprefixComponent} from '../../../utils';
-import {type AdminComponentMap, type PrefixedAdminComponent} from '../../../types';
+import {unprefixComponent} from '../../../utils/unprefixComponent';
+import {prefixComponent} from '../../../utils/prefixComponent';
+import {type AdminComponentMap, type PrefixedAdminComponent} from '../../../types/admin.types';
 import {
   AdminComponent,
   optionalAdminActionContainerComponentNames,
   optionalAdminComponentNames,
   optionalAdminPlainWrapperComponentNames,
   requiredAdminComponentNames,
-} from '../../../data';
-import {useLanguage} from '../../../composables';
-import {PlainElement} from '../../../components';
+} from '../../../data/components';
+import {useLanguage} from '../../../composables/language/useLanguage';
+import {PlainElement} from '../../../components/common';
 import {type PdkAppPlugin} from './plugins.types';
 
 const getOptionalComponents = (app: App): Record<string, Component | AdminComponent> => {

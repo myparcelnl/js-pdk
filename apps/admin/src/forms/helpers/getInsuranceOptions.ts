@@ -1,6 +1,6 @@
 import {TriState} from '@myparcel-pdk/common';
-import {type ElementInstance, type SelectOption} from '../../types';
-import {Format, type Formatter} from '../../composables';
+import {type ElementInstance, type SelectOption} from '../../types/form.types';
+import {Format, type Formatter} from '../../composables/formatter/formatter.types';
 import {getCarrier} from './getCarrier';
 
 export const getInsuranceOptions = (field: ElementInstance, formatter: Formatter): SelectOption[] => {

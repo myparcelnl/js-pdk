@@ -1,8 +1,9 @@
 import {PdkUtil, type StoreCallbackUpdate, useUtil} from '@myparcel-pdk/checkout-common';
 import {objectIsEqual} from '@myparcel/ts-utils';
 import {UPDATE_CONFIG_IN, UPDATE_DELIVERY_OPTIONS} from '@myparcel/delivery-options';
-import {debounce, deliveryOptionsIsRendered} from '../utils';
-import {type DeliveryOptionsStoreState} from '../types';
+import {deliveryOptionsIsRendered} from '../utils/deliveryOptionsIsRendered';
+import {debounce} from '../utils/debounce';
+import {type DeliveryOptionsStoreState} from '../types/store.types';
 
 /**
  * Send events to the delivery options when the configuration or address has changed.

@@ -10,8 +10,8 @@
 
 <script lang="ts" setup>
 import {useForm} from '@myparcel/vue-form-builder';
-import {useLoading} from '../../composables';
-import {AdminIcon} from "../../data";
+import {useLoading} from '../../composables/useLoading';
+import {AdminIcon} from '../../data/constants';
 
 defineProps<{
   disabled?: boolean;

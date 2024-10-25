@@ -1,6 +1,6 @@
 import {get} from '@vueuse/core';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {type AnyVal} from '../types';
+import {type AnyVal} from '../types/common.types';
 
 export type FormValueGetter = (target?: string) => AnyVal;
 

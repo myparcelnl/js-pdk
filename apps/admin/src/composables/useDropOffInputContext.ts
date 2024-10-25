@@ -1,7 +1,8 @@
 import {reactive, watch} from 'vue';
 import {type Settings, type Shipment} from '@myparcel-pdk/common';
-import {createFormElement, createObjectWithKeys} from '../utils';
-import {type DropOffInputProps} from '../types';
+import {createFormElement} from '../utils/forms/createFormElement';
+import {createObjectWithKeys} from '../utils/createObjectWithKeys';
+import {type DropOffInputProps} from '../types/component-bindings.types';
 import {useWeekdays, type Weekday, type Weekdays} from './useWeekdays';
 
 type UseDropOffInputContext = (

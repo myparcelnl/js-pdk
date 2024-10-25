@@ -21,16 +21,17 @@ import {computed, toValue} from 'vue';
 import {get} from '@vueuse/core';
 import {type Shipment, Size} from '@myparcel-pdk/common';
 import {DeliveryOptionsExcerpt} from '../common';
-import {type ActionDefinition, type AnyActionDefinition} from '../../types';
-import {instantiateActions} from '../../services';
-import {useAdminConfig, useOrderData} from '../../composables';
+import type {ActionDefinition, AnyActionDefinition} from '../../types/actions.types';
+import {instantiateActions} from '../../services/instantiateActions';
+import {useOrderData} from '../../composables/orders/useOrderData';
+import {useAdminConfig} from '../../composables/useAdminConfig';
 import {
   orderExportAction,
   ordersEditAction,
   ordersExportPrintShipmentsAction,
   ordersFetchAction,
   ordersPrintAction,
-} from '../../actions';
+} from '../../actions/definitions/orders';
 import ShipmentLabel from './ShipmentLabel.vue';
 
 const config = useAdminConfig();

@@ -1,31 +1,26 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
-// noinspection JSUnusedGlobalSymbols
-
 import {toRaw} from 'vue';
 import {get} from 'lodash-unified';
 import {type Plugin} from '@myparcel-pdk/common';
 import {defineForm, type FormInstance} from '@myparcel/vue-form-builder';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {addBulkEditNotification} from '../helpers';
-import {createShipmentFormName} from '../../utils';
-import {useModalStore} from '../../stores';
-import {AdminModalKey} from '../../data';
-import {useAdminConfig} from '../../composables';
+import {addBulkEditNotification} from '../helpers/addBulkEditNotification';
+import {createShipmentFormName} from '../../utils/forms/createShipmentFormName';
+import {useModalStore} from '../../stores/useModalStore';
+import {AdminModalKey} from '../../data/constants';
+import {useAdminConfig} from '../../composables/useAdminConfig';
 import {type ShipmentOptionsRefs} from './types';
+import {createSignatureField} from './fields/createSignatureField';
+import {createSameDayDeliveryField} from './fields/createSameDayDeliveryField';
+import {createPackageTypeField} from './fields/createPackageTypeField';
+import {createOnlyRecipientField} from './fields/createOnlyRecipientField';
+import {createLargeFormatField} from './fields/createLargeFormatField';
+import {createLabelAmountField} from './fields/createLabelAmountField';
+import {createInsuranceField} from './fields/createInsuranceField';
 import {createHideSenderField} from './fields/createHideSenderField';
-import {
-  createAgeCheckField,
-  createCarrierField,
-  createDigitalStampRangeField,
-  createDirectReturnField,
-  createInsuranceField,
-  createLabelAmountField,
-  createLargeFormatField,
-  createOnlyRecipientField,
-  createPackageTypeField,
-  createSameDayDeliveryField,
-  createSignatureField,
-} from './fields';
+import {createDirectReturnField} from './fields/createDirectReturnField';
+import {createDigitalStampRangeField} from './fields/createDigitalStampRangeField';
+import {createCarrierField} from './fields/createCarrierField';
+import {createAgeCheckField} from './fields/createAgeCheckField';
 import {ALL_FIELDS, FIELD_CARRIER} from './field';
 
 export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrder>): FormInstance => {

@@ -9,8 +9,8 @@ import {toRefs} from 'vue';
 import {get, isDef} from '@vueuse/core';
 import {MagicForm} from '@myparcel/vue-form-builder';
 import {type OneOrMore} from '@myparcel/ts-utils';
-import {createShipmentOptionsForm} from '../../forms';
-import {useOrdersData} from '../../composables';
+import {createShipmentOptionsForm} from '../../forms/shipmentOptions/createShipmentOptionsForm';
+import {useOrdersData} from '../../composables/orders/useOrdersData';
 
 const props = defineProps<{order: OneOrMore<string>}>();
 

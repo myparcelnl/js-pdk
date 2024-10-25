@@ -1,10 +1,11 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import {type App, createApp} from 'vue';
-import {type AdminAppConfig, type AdminConfiguration, type AdminContextObject} from '../types';
+import {type AdminContextObject} from '../types/context.types';
+import {type AdminConfiguration} from '../types/configuration.types';
+import {type AdminAppConfig} from '../types/admin.types';
 import {INJECT_GLOBAL_PDK_ADMIN} from '../symbols';
-import {createLogger, getElementContext} from '../services';
-import {AdminView} from '../data';
+import {createLogger} from '../services/logger';
+import {getElementContext} from '../services/context/getElementContext';
+import {AdminView} from '../data/view';
 import {setupAdminApp} from './setupAdminApp';
 import {renderViewComponent} from './renderMap';
 

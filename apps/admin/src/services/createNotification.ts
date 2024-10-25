@@ -1,7 +1,7 @@
 import {type Variant} from '@myparcel-pdk/common';
-import {type PdkNotification} from '../types';
-import {NotificationCategory} from '../data';
-import {useLanguage} from '../composables';
+import {type PdkNotification} from '../types/common.types';
+import {NotificationCategory} from '../data/constants';
+import {useLanguage} from '../composables/language/useLanguage';
 
 const PREFIX = 'notification_';
 

@@ -12,8 +12,8 @@
 
 <script lang="ts" setup>
 import {type Shipment} from '@myparcel-pdk/common';
-import {getDeliveryTypeTranslation} from '../../utils';
-import {useLanguage} from '../../composables';
+import {getDeliveryTypeTranslation} from '../../utils/translations/getDeliveryTypeTranslation';
+import {useLanguage} from '../../composables/language/useLanguage';
 
 defineProps<{
   deliveryOptions: Shipment.ModelDeliveryOptions;

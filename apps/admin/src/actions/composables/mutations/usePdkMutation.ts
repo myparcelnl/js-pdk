@@ -3,7 +3,8 @@ import {useMutation, type UseMutationOptions, type UseMutationReturnType} from '
 import {type MutationFunction} from '@tanstack/query-core';
 import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {type ApiException} from '@myparcel/sdk';
-import {type ActionInput, type BackendEndpointResponse} from '../../../types';
+import {type BackendEndpointResponse} from '../../../types/actions/response.types';
+import {type ActionInput} from '../../../types/actions/parameters.types';
 
 type MaybeRefDeep<T> = MaybeRef<
   // eslint-disable-next-line @typescript-eslint/ban-types

@@ -1,5 +1,7 @@
 import {type OneOrMore} from '@myparcel/ts-utils';
-import {type FormPropSetter, type FormValueGetter, type FormValueSetter} from '../utils';
+import {type FormValueSetter} from '../utils/createValueSetter';
+import {type FormValueGetter} from '../utils/createValueGetter';
+import {type FormPropSetter} from '../utils/createPropSetter';
 import {
   type FormAfterUpdateBuilder,
   type FormDisabledWhenBuilder,

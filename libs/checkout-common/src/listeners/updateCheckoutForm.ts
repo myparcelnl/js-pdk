@@ -1,6 +1,8 @@
-import {getAddressType, useCheckoutStore, useConfig} from '../utils';
-import {type PdkCheckoutForm, type PdkFormData} from '../types';
-import {type AddressField, AddressType, type PdkField} from '../data';
+import {useConfig} from '../utils/useConfig';
+import {useCheckoutStore} from '../utils/useCheckoutStore';
+import {getAddressType} from '../utils/global/getAddressType';
+import {type PdkCheckoutForm, type PdkFormData} from '../types/checkout.types';
+import {type AddressField, AddressType, type PdkField} from '../data/address';
 
 const getEntry = (data: PdkFormData, value: undefined | string): string => {
   return (data[value as string] as string | undefined) ?? '';

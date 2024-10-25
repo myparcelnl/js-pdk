@@ -1,14 +1,15 @@
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {isOfType} from '@myparcel/ts-utils';
+import {type FormBuilder} from '../types/common.types';
 import {
   type FormAfterUpdateBuilder,
-  type FormBuilder,
   type FormDisabledWhenBuilder,
   type FormReadOnlyWhenBuilder,
   type FormVisibleWhenBuilder,
-  type HandlerDefinition,
-} from '../types';
-import {buildAfterUpdate, buildFormStateWatcher} from '../builders';
+} from '../types/SubOperationBuilder.types';
+import {type HandlerDefinition} from '../types/FormOperations.types';
+import {buildFormStateWatcher} from '../builders/buildFormStateWatcher';
+import {buildAfterUpdate} from '../builders/buildAfterUpdate';
 
 export const parseBuilders = (
   builders: FormBuilder[],

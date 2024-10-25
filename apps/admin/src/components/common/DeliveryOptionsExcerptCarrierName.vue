@@ -10,7 +10,7 @@
 import {computed, toRefs} from 'vue';
 import {get} from '@vueuse/core';
 import {type Carrier} from '@myparcel-pdk/common';
-import {useFetchCarrier} from '../../sdk';
+import {useFetchCarrier} from '../../sdk/composables/api/useFetchCarrier';
 import CarrierLogo from './CarrierLogo.vue';
 
 const props = defineProps<{carrier: Carrier.ModelCarrier}>();

@@ -1,9 +1,9 @@
 import {unref} from 'vue';
 import {type MaybeRef} from '@vueuse/core';
 import {type InteractiveElementInstance, useElement} from '@myparcel/vue-form-builder';
-import {type ElementInstance} from '../../types';
-import {type FORM_KEYS} from '../../forms';
-import {useAdminConfig} from '../../composables';
+import {type ElementInstance} from '../../types/form.types';
+import {type FORM_KEYS} from '../../forms/formKeys';
+import {useAdminConfig} from '../../composables/useAdminConfig';
 
 export const generateFieldId = (element?: MaybeRef<ElementInstance>): string => {
   const config = useAdminConfig();

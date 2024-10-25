@@ -1,6 +1,7 @@
 import {beforeEach, describe, expect, it} from 'vitest';
-import {AddressType} from '../data';
-import {hasAddressTypeSpy, mockPdkCheckout} from '../__tests__';
+import {AddressType} from '../data/address';
+import {hasAddressTypeSpy} from '../__tests__/spies';
+import {mockPdkCheckout} from '../__tests__/mockPdkCheckout';
 import {hasAddressType} from './hasAddressType';
 
 describe('hasAddressType', () => {

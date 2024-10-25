@@ -6,7 +6,10 @@ import {
   useCheckoutStore,
   useUtil,
 } from '@myparcel-pdk/checkout-common';
-import {fillAddressFields, getFullStreet, hasSeparateAddressFields, splitAddress} from '../utils';
+import {splitAddress} from '../utils/splitAddress';
+import {hasSeparateAddressFields} from '../utils/hasSeparateAddressFields';
+import {getFullStreet} from '../utils/getFullStreet';
+import {fillAddressFields} from '../utils/fillAddressFields';
 
 /**
  * Sync addresses between split and non-split address fields.

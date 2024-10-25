@@ -1,7 +1,7 @@
 import {computed, type ComputedRef} from 'vue';
-import {type AdminModalContext} from '../types';
-import {useModalStore} from '../stores';
-import {type AdminModalKey} from '../data';
+import {type AdminModalContext} from '../types/context.types';
+import {useModalStore} from '../stores/useModalStore';
+import {type AdminModalKey} from '../data/constants';
 
 type UseModalElementContext = <K extends AdminModalKey>(
   modalKey: K | undefined,

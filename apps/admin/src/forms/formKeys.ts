@@ -1,4 +1,4 @@
-import {AdminModalKey} from '../data';
+import {AdminModalKey} from '../data/constants';
 
 export const FORM_KEY_ACCOUNT_SETTINGS = 'accountSettings';
 

@@ -1,9 +1,9 @@
 import {Variant} from '@myparcel-pdk/common';
 import {isOfType} from '@myparcel/ts-utils';
 import {type ApiException} from '@myparcel/sdk';
-import {type PdkNotification} from '../types';
-import {useNotificationStore} from '../stores';
-import {type NotificationCategory} from '../data';
+import {type PdkNotification} from '../types/common.types';
+import {useNotificationStore} from '../stores/useNotificationStore';
+import {type NotificationCategory} from '../data/constants';
 import {createNotification} from './createNotification';
 
 export const addErrorToNotifications = (

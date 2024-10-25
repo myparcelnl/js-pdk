@@ -3,12 +3,13 @@ import {AdminContextKey, BackendEndpoint, Variant} from '@myparcel-pdk/common';
 import {isOfType} from '@myparcel/ts-utils';
 import {type ApiException} from '@myparcel/sdk';
 import {usePdkMutation} from '../usePdkMutation';
-import {formToBody} from '../../../../utils';
-import {type ActionInput} from '../../../../types';
-import {type ResolvedQuery, useNotificationStore} from '../../../../stores';
-import {usePdkAdminApi} from '../../../../sdk';
-import {NotificationCategory} from '../../../../data';
-import {useLanguage} from '../../../../composables';
+import {formToBody} from '../../../../utils/forms/formToBody';
+import {type ActionInput} from '../../../../types/actions/parameters.types';
+import {useNotificationStore} from '../../../../stores/useNotificationStore';
+import {type ResolvedQuery} from '../../../../stores/types';
+import {usePdkAdminApi} from '../../../../sdk/composables/usePdkAdminApi';
+import {NotificationCategory} from '../../../../data/constants';
+import {useLanguage} from '../../../../composables/language/useLanguage';
 
 export const useUpdateAccountMutation = (): ResolvedQuery<BackendEndpoint.UpdateAccount> => {
   const queryClient = useQueryClient();

@@ -1,5 +1,5 @@
-import {type BackendQueryEndpoints} from '../../types';
-import {useStoreQuery} from '../../composables';
+import {type BackendQueryEndpoints} from '../../types/actions/endpoints.types';
+import {useStoreQuery} from '../../composables/useStoreQuery';
 import {type QueryHandler, type QueryModifier} from './types';
 import {resolveQuerySuffix} from './resolveQuerySuffix';
 

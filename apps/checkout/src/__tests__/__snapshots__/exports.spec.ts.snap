@@ -18,7 +18,6 @@ exports[`exports > exports from index.ts 1`] = `
   "SPLIT_STREET_REGEX",
   "StoreListener",
   "Util",
-  "_",
   "createPdkCheckout",
   "debounce",
   "defaultGetPackageType",

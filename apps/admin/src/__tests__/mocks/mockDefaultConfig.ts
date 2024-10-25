@@ -1,6 +1,7 @@
 import {vi} from 'vitest';
-import {type AdminComponentMap, type AdminConfiguration} from '../../types';
-import {LogLevel} from '../../services';
+import {type AdminConfiguration} from '../../types/configuration.types';
+import {type AdminComponentMap} from '../../types/admin.types';
+import {LogLevel} from '../../services/logger';
 
 export const mockDefaultConfig = vi.fn(
   (): AdminConfiguration => ({

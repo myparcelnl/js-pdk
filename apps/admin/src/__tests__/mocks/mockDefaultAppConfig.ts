@@ -1,7 +1,7 @@
 import {vi} from 'vitest';
 import {AdminContextKey} from '@myparcel-pdk/common';
-import {type AdminAppConfig} from '../../types';
-import {AdminView} from '../../data';
+import {type AdminAppConfig} from '../../types/admin.types';
+import {AdminView} from '../../data/view';
 import {mockDefaultLogger} from './mockDefaultLogger';
 import {mockDefaultGlobalContext} from './mockDefaultGlobalContext';
 import {mockDefaultDynamicContext} from './mockDefaultDynamicContext';

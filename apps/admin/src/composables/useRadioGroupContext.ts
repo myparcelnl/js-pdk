@@ -1,16 +1,11 @@
 import {computed, type ComputedRef, type WritableComputedRef} from 'vue';
 import {get} from '@vueuse/core';
 import {isOfType} from '@myparcel/ts-utils';
-import {createFormElement, createObjectWithKeys} from '../utils';
-import {
-  type ArrayItem,
-  type ElementInstance,
-  type RadioGroupEmits,
-  type RadioGroupModelValue,
-  type RadioGroupProps,
-  type SelectOption,
-  type SelectOptionWithLabel,
-} from '../types';
+import {createFormElement} from '../utils/forms/createFormElement';
+import {createObjectWithKeys} from '../utils/createObjectWithKeys';
+import {type ElementInstance, type SelectOption, type SelectOptionWithLabel} from '../types/form.types';
+import {type RadioGroupEmits, type RadioGroupModelValue, type RadioGroupProps} from '../types/component-bindings.types';
+import {type ArrayItem} from '../types/common.types';
 import {useInputWithOptionsContext} from './useInputWithOptionsContext';
 
 interface RadioGroupContext<T extends RadioGroupModelValue> {

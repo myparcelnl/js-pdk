@@ -1,10 +1,10 @@
 import {type Ref, ref} from 'vue';
 import {createGlobalState, useMemoize} from '@vueuse/core';
 import {isOfType} from '@myparcel/ts-utils';
-import {useGlobalContext} from '../context';
-import {decodeHtmlEntities} from '../../utils';
-import {type NonTranslatable, type Translatable, type Translation} from '../../types';
-import {globalLogger} from '../../services';
+import {useGlobalContext} from '../context/useGlobalContext';
+import {decodeHtmlEntities} from '../../utils/decodeHtmlEntities';
+import {type NonTranslatable, type Translatable, type Translation} from '../../types/language.types';
+import {globalLogger} from '../../services/logger';
 import {type Replacers} from './types';
 import {resolveTranslationKey} from './resolveTranslationKey';
 import {resolveTranslatedString} from './resolveTranslatedString';

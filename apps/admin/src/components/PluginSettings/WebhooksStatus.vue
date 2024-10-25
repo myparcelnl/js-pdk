@@ -31,11 +31,13 @@ import {get} from '@vueuse/core';
 import {Status} from '@myparcel-pdk/common';
 import {partitionArray} from '@myparcel/ts-utils';
 import {ActionButton, StatusIndicator} from '../common';
-import {type ActionDefinition, type WebhookDefinition} from '../../types';
-import {useActionStore, useQueryStore} from '../../stores';
-import {instantiateAction} from '../../services';
-import {useLanguage} from '../../composables';
-import {webhooksCreateAction, webhooksDeleteAction} from '../../actions';
+import type {ActionDefinition} from '../../types/actions.types';
+import type {WebhookDefinition} from '../../types/common.types';
+import {useActionStore} from '../../stores/useActionStore';
+import {useQueryStore} from '../../stores/useQueryStore';
+import {instantiateAction} from '../../services/instantiateAction';
+import {useLanguage} from '../../composables/language/useLanguage';
+import {webhooksCreateAction, webhooksDeleteAction} from '../../actions/definitions/webhooks';
 
 const {fetchWebhooks, createWebhooks, deleteWebhooks} = useQueryStore().registerWebhookQueries();
 

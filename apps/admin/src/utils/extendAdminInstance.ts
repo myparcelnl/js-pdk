@@ -1,6 +1,6 @@
 import {inject, provide} from 'vue';
 import {merge} from 'lodash-unified';
-import {type AdminInstance} from '../types';
+import {type AdminInstance} from '../types/admin.types';
 import {INJECT_ADMIN_INSTANCE} from '../symbols';
 
 export const extendAdminInstance = (data: Partial<AdminInstance>): void => {

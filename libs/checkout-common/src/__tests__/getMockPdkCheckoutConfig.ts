@@ -1,6 +1,6 @@
 import {vi} from 'vitest';
-import {type PdkCheckoutConfigInput} from '../types';
-import {AddressField, AddressType, PdkField} from '../data';
+import {type PdkCheckoutConfigInput} from '../types/checkout.types';
+import {AddressField, AddressType, PdkField} from '../data/address';
 import {doRequestSpy, getFormDataSpy, getFormSpy, hasAddressTypeSpy, initializeSpy, toggleFieldSpy} from './spies';
 import {getMockFormData} from './getMockFormData';
 

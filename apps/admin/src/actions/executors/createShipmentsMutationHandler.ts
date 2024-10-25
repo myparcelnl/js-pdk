@@ -1,4 +1,5 @@
-import {type BackendShipmentEndpoint, type ShipmentIds} from '../../types';
+import {type BackendShipmentEndpoint} from '../../types/endpoints.types';
+import {type ShipmentIds} from '../../types/common.types';
 import {type QueryHandler} from './types';
 import {createHandlerWithParameters} from './createHandlerWithParameters';
 

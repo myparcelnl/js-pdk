@@ -28,9 +28,11 @@
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
 import {ShipmentOptionsForm} from '../common';
-import {instantiateActions} from '../../services';
-import {AdminIcon} from '../../data';
-import {useLanguage, useOrderData, usePluginSettings} from '../../composables';
+import {instantiateActions} from '../../services/instantiateActions';
+import {AdminIcon} from '../../data/constants';
+import {usePluginSettings} from '../../composables/context/usePluginSettings';
+import {useLanguage} from '../../composables/language/useLanguage';
+import {useOrderData} from '../../composables/orders/useOrderData';
 import {
   orderExportAction,
   orderExportToShipmentsAction,
@@ -38,7 +40,7 @@ import {
   ordersPrintAction,
   ordersUpdateAction,
   orderViewInBackofficeAction,
-} from '../../actions';
+} from '../../actions/definitions/orders';
 
 const {order: data, loading} = useOrderData();
 

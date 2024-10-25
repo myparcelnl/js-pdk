@@ -1,5 +1,5 @@
-import {type MyParcelPdk} from '../types';
-import {type PdkEvent} from '../data';
+import {type MyParcelPdk} from '../types/global.types';
+import {type PdkEvent} from '../data/events';
 
 export const useEvent = <E extends PdkEvent | string>(
   event: E,

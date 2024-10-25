@@ -19,10 +19,13 @@
 <script lang="ts" setup>
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {ActionButton} from '../common';
-import {useActionStore, useQueryStore} from '../../stores';
-import {instantiateAction} from '../../services';
-import {useLanguage} from '../../composables';
-import {downloadLogsAction, refreshAccountAction, updateAccountAction, useDownloadLogsMutation} from '../../actions';
+import {useActionStore} from '../../stores/useActionStore';
+import {useQueryStore} from '../../stores/useQueryStore';
+import {instantiateAction} from '../../services/instantiateAction';
+import {useLanguage} from '../../composables/language/useLanguage';
+import {useDownloadLogsMutation} from '../../actions/composables/mutations/debug/useDownloadLogsMutation';
+import {downloadLogsAction} from '../../actions/definitions/debug';
+import {refreshAccountAction, updateAccountAction} from '../../actions/definitions/account';
 
 const {translate} = useLanguage();
 

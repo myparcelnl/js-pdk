@@ -7,7 +7,8 @@
 <script lang="ts" setup>
 import {computed} from 'vue';
 import {type DateTime} from '@myparcel-pdk/common';
-import {Format, useLocalizedFormatter} from '../../composables';
+import {Format} from '../../composables/formatter/formatter.types';
+import {useLocalizedFormatter} from '../../composables/formatter/useLocalizedFormatter';
 
 const props = defineProps<{
   date: string | DateTime;

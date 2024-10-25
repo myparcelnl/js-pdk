@@ -1,7 +1,7 @@
 import {AdminContextKey, type Carrier} from '@myparcel-pdk/common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
-import {FIELD_CARRIER} from '../shipmentOptions';
-import {useContext} from '../../composables';
+import {FIELD_CARRIER} from '../shipmentOptions/field';
+import {useContext} from '../../composables/context/useContext';
 
 export const getCarrier = (form: FormInstance): Carrier.ModelCarrier | undefined => {
   const dynamicContext = useContext(AdminContextKey.Dynamic);

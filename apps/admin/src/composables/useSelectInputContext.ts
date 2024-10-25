@@ -1,4 +1,8 @@
-import {type SelectInputEmits, type SelectInputModelValue, type SelectInputProps} from '../types';
+import {
+  type SelectInputEmits,
+  type SelectInputModelValue,
+  type SelectInputProps,
+} from '../types/component-bindings.types';
 import {type InputWithOptionsContext, useInputWithOptionsContext} from './useInputWithOptionsContext';
 
 export type UseSelectInputContext<

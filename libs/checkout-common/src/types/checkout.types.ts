@@ -1,6 +1,6 @@
 import {type FrontendEndpoint} from '@myparcel-pdk/common';
 import {type PromiseOr} from '@myparcel/ts-utils';
-import {type AddressType, type PdkField} from '../data';
+import {type AddressType, type PdkField} from '../data/address';
 import {type FrontendEndpointData, type FrontendEndpointResponse} from './endpoints.types';
 import {type AddressFields} from './address.types';
 

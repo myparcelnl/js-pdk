@@ -1,5 +1,5 @@
+import * as testIndex from './index';
 import {describe, expect, it} from 'vitest';
-import * as testing from '../testing';
 import * as index from '../index';
 
 describe('exports', () => {
@@ -7,7 +7,7 @@ describe('exports', () => {
     expect(Object.keys(index).sort()).toMatchSnapshot();
   });
 
-  it('exports from testing.ts', () => {
-    expect(Object.keys(testing).sort()).toMatchSnapshot();
+  it('exports from __tests__/index.ts', () => {
+    expect(Object.keys(testIndex).sort()).toMatchSnapshot();
   });
 });

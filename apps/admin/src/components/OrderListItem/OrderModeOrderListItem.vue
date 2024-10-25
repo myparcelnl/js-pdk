@@ -20,9 +20,10 @@
 <script lang="ts" setup>
 import {Size} from '@myparcel-pdk/common';
 import {ActionButton, DeliveryOptionsExcerpt} from '../common';
-import {instantiateAction, instantiateActions} from '../../services';
-import {useOrderData} from '../../composables';
-import {orderExportAction, ordersEditAction, orderViewInBackofficeAction} from '../../actions';
+import {instantiateAction} from '../../services/instantiateAction';
+import {instantiateActions} from '../../services/instantiateActions';
+import {useOrderData} from '../../composables/orders/useOrderData';
+import {orderExportAction, ordersEditAction, orderViewInBackofficeAction} from '../../actions/definitions/orders';
 
 const {order} = useOrderData();
 

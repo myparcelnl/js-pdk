@@ -1,7 +1,12 @@
 import {ref, type Ref, watch, type WritableComputedRef} from 'vue';
 import {get} from '@vueuse/core';
-import {booleanToTriState, triStateToBoolean} from '../utils';
-import {type ToggleInputEmits, type ToggleInputModelValue, type ToggleInputProps} from '../types';
+import {triStateToBoolean} from '../utils/triStateToBoolean';
+import {booleanToTriState} from '../utils/booleanToTriState';
+import {
+  type ToggleInputEmits,
+  type ToggleInputModelValue,
+  type ToggleInputProps,
+} from '../types/component-bindings.types';
 import {useElementContext} from './useElementContext';
 
 interface ToggleInputContext {

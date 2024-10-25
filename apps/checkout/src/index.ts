@@ -28,7 +28,6 @@ export {
   StoreListener,
   /** @deprecated use PdkUtil */
   PdkUtil as Util,
-  globals as _,
   createPdkCheckout,
   getEnabledShippingMethods,
   useCheckoutStore,

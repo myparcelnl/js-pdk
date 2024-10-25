@@ -13,10 +13,10 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {type NotificationFilter} from '../../types';
-import {useNotificationStore} from '../../stores';
-import {useAdminConfig} from '../../composables';
-import {NotificationCategory} from "../../data";
+import type {NotificationFilter} from '../../types/common.types';
+import {useNotificationStore} from '../../stores/useNotificationStore';
+import {useAdminConfig} from '../../composables/useAdminConfig';
+import {NotificationCategory} from '../../data/constants';
 
 const props = defineProps<{
   category?: NotificationCategory;

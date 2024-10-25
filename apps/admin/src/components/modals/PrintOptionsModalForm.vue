@@ -8,9 +8,11 @@
 <script lang="ts" setup>
 import {markRaw, onMounted, ref} from 'vue';
 import {defineForm, MagicForm} from '@myparcel/vue-form-builder';
-import {generateFormFields} from '../../forms';
-import {useAdminConfig, useContext, usePluginSettings} from '../../composables';
-import {AdminModalKey} from "../../data";
+import {generateFormFields} from '../../forms/pluginSettings/generateFormFields';
+import {useContext} from '../../composables/context/useContext';
+import {usePluginSettings} from '../../composables/context/usePluginSettings';
+import {useAdminConfig} from '../../composables/useAdminConfig';
+import {AdminModalKey} from '../../data/constants';
 
 const context = useContext();
 const pluginSettings = usePluginSettings();

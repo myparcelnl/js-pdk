@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {type IfAndMatcher} from '../types';
+import {type IfAndMatcher} from '../types/FormCondition.types';
 import {validateIfConditions} from './validateIfConditions';
 
 describe('validateIfConditions', () => {

@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import {toRefs} from 'vue';
 import OrderBox from '../OrderBox.vue';
-import {extendAdminInstance} from '../../utils';
+import {extendAdminInstance} from '../../utils/extendAdminInstance';
 
 const props = defineProps({
   orderIdentifier: {

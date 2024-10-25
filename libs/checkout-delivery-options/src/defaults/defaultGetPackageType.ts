@@ -1,6 +1,6 @@
 import {useCheckoutStore} from '@myparcel-pdk/checkout-common';
-import {getPackageTypeFromShippingMethod} from '../utils';
-import {type CheckoutDeliveryOptionsSettings} from '../types';
+import {getPackageTypeFromShippingMethod} from '../utils/getPackageTypeFromShippingMethod';
+import {type CheckoutDeliveryOptionsSettings} from '../types/generic.types';
 
 export const defaultGetPackageType = (() => {
   const checkout = useCheckoutStore();

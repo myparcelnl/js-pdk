@@ -1,8 +1,9 @@
 import {type QueryClient} from '@tanstack/vue-query';
 import {type Plugin, type Shipment} from '@myparcel-pdk/common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {setQueryOrder, setQueryShipment} from '../utils';
-import {QUERY_KEY_ORDER} from '../actions';
+import {setQueryShipment} from '../utils/query/setQueryShipment';
+import {setQueryOrder} from '../utils/query/setQueryOrder';
+import {QUERY_KEY_ORDER} from '../actions/composables/queries/queryKeys';
 
 export const fillShipmentsQueryData = (
   queryClient: QueryClient,

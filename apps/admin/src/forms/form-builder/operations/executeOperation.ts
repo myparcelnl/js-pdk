@@ -1,11 +1,10 @@
 import {isOfType} from '@myparcel/ts-utils';
+import {type FormOperation, type FormOperationMethods} from '../types/common.types';
 import {
-  type FormOperation,
-  type FormOperationMethods,
   type FormSetPropOperation,
   type FormSetValueOperation,
   type HandlerDefinition,
-} from '../types';
+} from '../types/FormOperations.types';
 import {executeSetValueOperation} from './executeSetValueOperation';
 import {executeSetPropOperation} from './executeSetPropOperation';
 import {executeCustomOperationHandlers} from './executeCustomOperationHandlers';

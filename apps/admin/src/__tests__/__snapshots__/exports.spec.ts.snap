@@ -1,5 +1,48 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`exports > exports from __tests__/index.ts 1`] = `
+[
+  "doComponentTestSetup",
+  "doComponentTestTeardown",
+  "mockDefaultAccount",
+  "mockDefaultAppConfig",
+  "mockDefaultAppInfo",
+  "mockDefaultCarriers",
+  "mockDefaultConfig",
+  "mockDefaultDynamicContext",
+  "mockDefaultEndpoints",
+  "mockDefaultGlobalContext",
+  "mockDefaultLogger",
+  "mockDefaultPlatform",
+  "mockDefaultPluginSettings",
+  "mockDefaultPrintOptionsView",
+  "mockDefaultShop",
+  "mockDefaultTranslations",
+  "mockLinkElement",
+]
+`;
+
+exports[`exports > exports from exports from __tests__/index.ts 1`] = `
+[
+  "doComponentTestSetup",
+  "doComponentTestTeardown",
+  "mockDefaultAccount",
+  "mockDefaultAppConfig",
+  "mockDefaultAppInfo",
+  "mockDefaultCarriers",
+  "mockDefaultConfig",
+  "mockDefaultDynamicContext",
+  "mockDefaultEndpoints",
+  "mockDefaultGlobalContext",
+  "mockDefaultLogger",
+  "mockDefaultPlatform",
+  "mockDefaultPluginSettings",
+  "mockDefaultPrintOptionsView",
+  "mockDefaultShop",
+  "mockDefaultTranslations",
+]
+`;
+
 exports[`exports > exports from index.ts 1`] = `
 [
   "ActionButton",
@@ -163,26 +206,5 @@ exports[`exports > exports from index.ts 1`] = `
   "webhooksCreateAction",
   "webhooksDeleteAction",
   "webhooksFetchAction",
-]
-`;
-
-exports[`exports > exports from testing.ts 1`] = `
-[
-  "doComponentTestSetup",
-  "doComponentTestTeardown",
-  "mockDefaultAccount",
-  "mockDefaultAppConfig",
-  "mockDefaultAppInfo",
-  "mockDefaultCarriers",
-  "mockDefaultConfig",
-  "mockDefaultDynamicContext",
-  "mockDefaultEndpoints",
-  "mockDefaultGlobalContext",
-  "mockDefaultLogger",
-  "mockDefaultPlatform",
-  "mockDefaultPluginSettings",
-  "mockDefaultPrintOptionsView",
-  "mockDefaultShop",
-  "mockDefaultTranslations",
 ]
 `;

@@ -1,4 +1,5 @@
-import {type AnyVal, type WithCondition, type WithTarget} from '../types';
+import {type AnyVal, type WithTarget} from '../types/common.types';
+import {type WithCondition} from '../types/FormCondition.types';
 import {validateIfCondition} from './validateIfCondition';
 
 export const validateIsTruthy = (

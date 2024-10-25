@@ -13,12 +13,13 @@ import {computed, ref, watch} from 'vue';
 import {get} from '@vueuse/core';
 import {AdminContextKey} from '@myparcel-pdk/common';
 import {TabNavigation} from '../common';
-import {type TabDefinition} from '../../types';
-import {createActionContext} from '../../services';
-import {createPluginSettingsTabs} from '../../forms';
-import {type AdminAction} from '../../data';
-import {useAdminConfig, useStoreContextQuery} from '../../composables';
-import {pluginSettingsUpdateAction} from '../../actions';
+import type {TabDefinition} from '../../types/common.types';
+import {createActionContext} from '../../services/actions/createActionContext';
+import {createPluginSettingsTabs} from '../../forms/pluginSettings/createPluginSettingsTabs';
+import type {AdminAction} from '../../data/constants';
+import {useAdminConfig} from '../../composables/useAdminConfig';
+import {useStoreContextQuery} from '../../composables/useStoreContextQuery';
+import {pluginSettingsUpdateAction} from '../../actions/definitions/settings';
 
 const config = useAdminConfig();
 

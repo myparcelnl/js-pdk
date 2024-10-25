@@ -1,6 +1,6 @@
 import {AddressField, PdkUtil, useCheckoutStore, useUtil} from '@myparcel-pdk/checkout-common';
 import {SeparateAddressField} from '../types';
-import {fillSeparateAddressFields} from '../listeners';
+import {fillSeparateAddressFields} from '../listeners/fillSeparateAddressFields';
 import {ATTRIBUTE_AUTOCOMPLETE} from '../constants';
 import {triggerFormChange} from './triggerFormChange';
 import {setFullStreet} from './setFullStreet';

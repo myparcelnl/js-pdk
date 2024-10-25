@@ -14,10 +14,15 @@ import {get} from '@vueuse/core';
 import {Size, Variant} from '@myparcel-pdk/common';
 import {defineField, defineForm, FormHook, type FormInstance, MagicForm} from '@myparcel/vue-form-builder';
 import {NotificationContainer, ResetButton, SubmitButton} from '../common';
-import {useActionStore} from '../../stores';
-import {defineFormField, FORM_KEY_ACCOUNT_SETTINGS, resolveFormComponent} from '../../forms';
-import {AdminAction, AdminComponent, NotificationCategory} from '../../data';
-import {useAdminConfig, usePluginSettings, useStoreContextQuery} from '../../composables';
+import {useActionStore} from '../../stores/useActionStore';
+import {FORM_KEY_ACCOUNT_SETTINGS} from '../../forms/formKeys';
+import {defineFormField} from '../../forms/helpers/defineFormField';
+import {resolveFormComponent} from '../../forms/helpers/resolveFormComponent';
+import {AdminComponent} from '../../data/components';
+import {AdminAction, NotificationCategory} from '../../data/constants';
+import {usePluginSettings} from '../../composables/context/usePluginSettings';
+import {useAdminConfig} from '../../composables/useAdminConfig';
+import {useStoreContextQuery} from '../../composables/useStoreContextQuery';
 
 defineEmits<(e: 'afterSubmit', form: FormInstance) => void>();
 

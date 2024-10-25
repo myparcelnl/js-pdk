@@ -5,9 +5,11 @@ import {
   defineField,
   type InteractiveElementConfiguration,
 } from '@myparcel/vue-form-builder';
-import {defineFormField, resolveFormComponent} from '../helpers';
-import {type FormBuilder, parseBuilders} from '../form-builder';
-import {type AdminComponent} from '../../data';
+import {resolveFormComponent} from '../helpers/resolveFormComponent';
+import {defineFormField} from '../helpers/defineFormField';
+import {type FormBuilder} from '../form-builder/types/common.types';
+import {parseBuilders} from '../form-builder/operations/parseBuilders';
+import {type AdminComponent} from '../../data/components';
 
 type GenerateFormFields = (
   config: {

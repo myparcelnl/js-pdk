@@ -9,14 +9,24 @@
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "exports": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./testing": {
+      "types": "./dist/__tests__/index.d.ts",
+      "default": "./src/__tests__/index.ts"
+    }
+  },
   "types": "./dist/index.d.ts",
   "files": [
     "./src",
     "./dist"
   ],
   "scripts": {
-    "build": "run ws:ts:build \"$(pwd)\"",
+    "build": "run clean && vite build --config vite-testing.config.ts && vite build",
+    "build:dev": "run clean && vite build --config vite-testing.config.ts --mode=development && vite build --mode=development",
     "clean": "run ws:clean \"$(pwd)\"",
     "lint": "run ws:lint \"$(pwd)\"",
     "lint:fix": "run ws:lint:fix \"$(pwd)\"",
@@ -33,8 +43,10 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
+    "@myparcel-pdk/build-vite": "workspace:*",
     "radash": "^12.1.0",
     "typescript": "^5.2.2",
+    "vite": "^5.4.10",
     "vitest": "^2.1.3"
   },
   "engines": {

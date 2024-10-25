@@ -1,5 +1,5 @@
 import {type QueryClient, type QueryKey} from '@tanstack/vue-query';
-import {globalLogger} from '../../services';
+import {globalLogger} from '../../services/logger';
 
 export const setQueryData = (queryClient: QueryClient, queryKey: QueryKey, data: unknown): void => {
   globalLogger.debug('QUERY UPDATE:', JSON.stringify(queryKey));

@@ -2,8 +2,9 @@ import {
   type CheckoutDeliveryOptionsSettings,
   type CheckoutDeliveryOptionsSettingsInput,
   DeliveryOptionsMode,
-} from '../types';
-import {defaultGetPackageType, defaultUpdateDeliveryOptions} from '../defaults';
+} from '../types/generic.types';
+import {defaultUpdateDeliveryOptions} from '../defaults/defaultUpdateDeliveryOptions';
+import {defaultGetPackageType} from '../defaults/defaultGetPackageType';
 
 export const getResolvedSettings = (
   settings: CheckoutDeliveryOptionsSettingsInput | undefined,

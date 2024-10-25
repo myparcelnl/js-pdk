@@ -1,7 +1,7 @@
 import {get} from 'lodash-unified';
 import {isOfType} from '@myparcel/ts-utils';
-import {useGlobalContext} from '../context';
-import {type Translatable} from '../../types';
+import {useGlobalContext} from '../context/useGlobalContext';
+import {type Translatable} from '../../types/language.types';
 import {type Replacers} from './types';
 
 export const resolveTranslatedString = (

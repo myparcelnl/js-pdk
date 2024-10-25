@@ -15,11 +15,11 @@
       ref="dropdown"
       v-test="[AdminComponent.DropdownButton, 'button']"
       :aria-label="translate('toggle_dropdown')"
-      :disabled="disabled"
-      :size="size"
       :class="{
         'p-0': dropdownActions.standalone.length === 0,
       }"
+      :disabled="disabled"
+      :size="size"
       aria-haspopup="true"
       class="dropdown-toggle dropdown-toggle-split"
       data-toggle="dropdown">
@@ -63,7 +63,6 @@ const {dropdownActions} = useDropdownData(props);
 const {translate} = useLanguage();
 
 const adminConfig = useAdminConfig();
-
 const dropdown = ref<ComponentPublicInstance | null>(null);
 
 onMounted(() => {

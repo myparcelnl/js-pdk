@@ -1,4 +1,4 @@
-import {type AdminConfiguration} from '../types';
+import {type AdminConfiguration} from '../types/configuration.types';
 import {useAdminInstance} from './useAdminInstance';
 
 export const useAdminConfig = (): AdminConfiguration => {

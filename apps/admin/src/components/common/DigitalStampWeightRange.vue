@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 import {toRefs} from 'vue';
-import {useDigitalStampRanges} from '../../composables';
+import {useDigitalStampRanges} from '../../composables/useDigitalStampRanges';
 
 const props = defineProps<{weight: number}>();
 

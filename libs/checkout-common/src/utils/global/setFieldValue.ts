@@ -1,6 +1,7 @@
 import {useUtil} from '../useUtil';
 import {useConfig} from '../useConfig';
-import {type AddressField, type AddressType, PdkUtil} from '../../data';
+import {PdkUtil} from '../../data/utils';
+import {type AddressField, type AddressType} from '../../data/address';
 import {getAddressField} from './getAddressField';
 
 export const setFieldValue = (

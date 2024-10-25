@@ -1,12 +1,16 @@
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
-import {openOrPrintPdf, resolvePrintParameters} from '../print';
-import {createOrdersMutationHandler, createQueryHandler, executeNextAction, resolveOrderParameters} from '../executors';
+import {resolvePrintParameters} from '../print/resolvePrintParameters';
+import {openOrPrintPdf} from '../print/openOrPrintPdf';
+import {resolveOrderParameters} from '../executors/resolveOrderParameters';
+import {executeNextAction} from '../executors/executeNextAction';
+import {createQueryHandler} from '../executors/createQueryHandler';
+import {createOrdersMutationHandler} from '../executors/createOrdersMutationHandler';
 import {defineAction} from '../defineAction';
-import {getOrderShipmentIds} from '../../utils';
-import {type OrderIds} from '../../types';
-import {useModalStore} from '../../stores';
-import {AdminAction, AdminIcon, AdminModalKey} from '../../data';
+import {getOrderShipmentIds} from '../../utils/getOrderShipmentIds';
+import {type OrderIds} from '../../types/common.types';
+import {useModalStore} from '../../stores/useModalStore';
+import {AdminAction, AdminIcon, AdminModalKey} from '../../data/constants';
 import {shipmentsUpdateAction} from './shipments';
 
 /**

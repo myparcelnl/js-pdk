@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import {type Component as ComponentType, ref} from 'vue';
 import {expect, it} from 'vitest';
 import {merge} from 'lodash-unified';
@@ -6,8 +5,10 @@ import {type DOMWrapper, flushPromises, mount, type VueWrapper} from '@vue/test-
 import {type AdminComponent} from '@myparcel-pdk/admin';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {type AdditionalOptions, type ComponentTestOptions, type TestComponentMountingOptions} from './types';
-import {createInputOptions} from './helpers';
-import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from './common';
+import {createInputOptions} from './helpers/createInputOptions';
+import {runHasSlotTest} from './common/runHasSlotTest';
+import {runHasPropTest} from './common/runHasPropTest';
+import {runCommonComponentTests} from './common/runCommonComponentTests';
 
 const UPDATE_EVENT = 'update:modelValue';
 

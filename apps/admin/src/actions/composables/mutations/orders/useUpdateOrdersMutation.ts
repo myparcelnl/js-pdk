@@ -2,10 +2,12 @@ import {useQueryClient} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
 import {usePdkMutation} from '../usePdkMutation';
-import {encodeArrayParameter, formToBody, setQueryOrder} from '../../../../utils';
-import {type BackendEndpointOptions} from '../../../../types';
-import {type ResolvedQuery} from '../../../../stores';
-import {usePdkAdminApi} from '../../../../sdk';
+import {setQueryOrder} from '../../../../utils/query/setQueryOrder';
+import {formToBody} from '../../../../utils/forms/formToBody';
+import {encodeArrayParameter} from '../../../../utils/encodeArrayParameter';
+import {type BackendEndpointOptions} from '../../../../types/sdk.types';
+import {type ResolvedQuery} from '../../../../stores/types';
+import {usePdkAdminApi} from '../../../../sdk/composables/usePdkAdminApi';
 
 export const useUpdateOrdersMutation = (orderIds?: OneOrMore<string>): ResolvedQuery<BackendEndpoint.UpdateOrders> => {
   const queryClient = useQueryClient();

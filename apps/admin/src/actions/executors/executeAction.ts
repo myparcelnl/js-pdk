@@ -1,5 +1,6 @@
 import {StopActionHandler} from '../stopActionHandler';
-import {type MaybeActionResponse, type MaybeAdminAction} from '../../types';
+import {type MaybeActionResponse} from '../../types/actions/response.types';
+import {type MaybeAdminAction} from '../../types/actions/actions.types';
 import {type ActionContext} from './types';
 import {executeHandler} from './executeHandler';
 import {executeBeforeHandle} from './executeBeforeHandle';

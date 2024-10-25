@@ -1,6 +1,6 @@
 import {type RecursivePartial} from '@myparcel/ts-utils';
-import {type PdkCheckoutConfigInput} from '../types';
-import {AddressField, AddressType, PdkField} from '../data';
+import {type PdkCheckoutConfigInput} from '../types/checkout.types';
+import {AddressField, AddressType, PdkField} from '../data/address';
 
 export const getMockFormData = (
   formData?: RecursivePartial<PdkCheckoutConfigInput['formData']>,

@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {AdminComponent} from '../data';
+import {AdminComponent} from '../data/components';
 import {unprefixComponent} from './unprefixComponent';
 
 describe('unprefixComponent', () => {

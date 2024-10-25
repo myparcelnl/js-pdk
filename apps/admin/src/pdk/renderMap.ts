@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import {type Component} from 'vue';
-import {type ComponentImportFunction} from '../types';
-import {AdminView} from '../data';
+import {type ComponentImportFunction} from '../types/admin.types';
+import {AdminView} from '../data/view';
 
 /**
  * Maps components to render methods.

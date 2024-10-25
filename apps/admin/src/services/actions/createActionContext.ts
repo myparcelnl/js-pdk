@@ -2,16 +2,14 @@ import {Variant} from '@myparcel-pdk/common';
 import {toArray} from '@myparcel/ts-utils';
 import {createLogger} from '../logger';
 import {createNotification} from '../createNotification';
-import {
-  type ActionParameters,
-  type AdminInstance,
-  type AnyActionDefinition,
-  type MaybeAdminAction,
-  type PdkNotification,
-} from '../../types';
-import {NotificationCategory} from '../../data';
-import {useAdminInstance} from '../../composables';
-import {type ActionContext} from '../../actions';
+import {type PdkNotification} from '../../types/common.types';
+import {type AdminInstance} from '../../types/admin.types';
+import {type AnyActionDefinition} from '../../types/actions.types';
+import {type ActionParameters} from '../../types/actions/parameters.types';
+import {type MaybeAdminAction} from '../../types/actions/actions.types';
+import {NotificationCategory} from '../../data/constants';
+import {useAdminInstance} from '../../composables/useAdminInstance';
+import {type ActionContext} from '../../actions/executors/types';
 import {getActionIdentifier} from './getActionIdentifier';
 
 export const createActionContext = <A extends MaybeAdminAction>(

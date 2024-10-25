@@ -1,5 +1,5 @@
 import {StoreListener, useCheckoutStore} from '@myparcel-pdk/checkout-common';
-import {toggleTaxFields} from './utils';
+import {toggleTaxFields} from './utils/toggleTaxFields';
 
 /**
  * Initializes the checkout tax fields module.

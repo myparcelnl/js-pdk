@@ -4,7 +4,9 @@ import {type PromiseOr} from '@myparcel/ts-utils';
 import {CarrierName} from '@myparcel/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_AGE_CHECK, FIELD_ONLY_RECIPIENT, FIELD_SIGNATURE} from '../field';
-import {getFormCarrierName, setPostNlAgeCheckSubtext, triStateFieldIsEnabled} from '../../helpers';
+import {triStateFieldIsEnabled} from '../../helpers/triStateFieldIsEnabled';
+import {setPostNlAgeCheckSubtext} from '../../helpers/setPostNlAgeCheckSubtext';
+import {getFormCarrierName} from '../../helpers/getFormCarrierName';
 import {createShipmentOptionField} from './createShipmentOptionField';
 
 export const createAgeCheckField = (refs: ShipmentOptionsRefs): InteractiveElementConfiguration => {

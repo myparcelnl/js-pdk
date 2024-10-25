@@ -1,5 +1,3 @@
-// noinspection JSUnusedGlobalSymbols
-
-import {type PdkCheckout} from '../types';
+import {type PdkCheckout} from '../types/checkout.types';
 
 export const usePdkCheckout = (): PdkCheckout => window.MyParcelPdk.instance;
