@@ -1,16 +1,10 @@
-import {type Debugger} from 'debug';
 import {executeCommand} from '../../utils/executeCommand';
-import {type ExecuteCommandContext} from '../../types/command';
+import {type PdkBuilderUpgradeContext} from './types';
 
-export const ensureCleanLockfile = async (
-  lockfilePath: string,
-  debug: Debugger,
-  context: ExecuteCommandContext,
-): Promise<void> => {
-  const stdout = await executeCommand(context, 'git', ['status', '--porcelain', lockfilePath], {stdio: 'pipe'});
+export const ensureCleanLockfile = async (context: PdkBuilderUpgradeContext): Promise<void> => {
+  const stdout = await executeCommand(context, 'git', ['status', '--porcelain', context.lockfilePath], {stdio: 'pipe'});
 
   if (stdout) {
-    debug('Lockfile is already changed, please commit or stash your changes first.');
-    process.exit(1);
+    throw new Error('Lockfile is already changed, please commit or stash your changes first.');
   }
 };

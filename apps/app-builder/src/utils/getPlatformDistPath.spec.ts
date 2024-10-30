@@ -45,7 +45,7 @@ describe('getPlatformDistPath', () => {
     ],
   ] satisfies [RecursivePartial<PdkBuilderContext>, string][])('creates dist path with %s -> %s', (context, result) => {
     const path = getPlatformDistPath(
-      createTestContext({
+      createTestContext<PdkBuilderContext<{platform: PdkPlatformName}>>({
         ...context,
         args: {
           platform: PdkPlatformName.MyParcelNl,
@@ -55,7 +55,7 @@ describe('getPlatformDistPath', () => {
         env: {
           cwd: '/mock-root-dir',
         },
-      }) as PdkBuilderContext<{platform: PdkPlatformName}>,
+      }),
     );
 
     expect(path).toBe(result);

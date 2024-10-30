@@ -2,7 +2,7 @@ import {type UpgradeSubMethod} from '../types';
 import {executeCommand} from '../../../utils/executeCommand';
 import {getComposerPackageVersion} from './getComposerPackageVersion';
 
-export const upgradeComposerPackage: UpgradeSubMethod = async (context) => {
+export const upgradeComposerPackage = (async (context) => {
   const {args, packageName, config} = context;
 
   if (packageName.includes('*')) {
@@ -12,11 +12,11 @@ export const upgradeComposerPackage: UpgradeSubMethod = async (context) => {
   const oldVersions = await getComposerPackageVersion(context);
 
   if (!args.dryRun) {
-    await executeCommand(context, config.composerCommand, ['update', packageName]);
+    await executeCommand(context, config.composerCommand, ['require', packageName]);
   }
 
   return {
     oldVersions,
     newVersions: await getComposerPackageVersion(context),
   };
-};
+}) satisfies UpgradeSubMethod;

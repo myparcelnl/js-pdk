@@ -4,12 +4,12 @@ import {type PdkBuilderContext} from '../types/command';
 import {mockFileSystem} from './mockFileSystem';
 import {createTestContextWithMockedFs} from './createTestContextWithMockedFs';
 
-export const mockFileSystemAndCreateContext = async (
+export const mockFileSystemAndCreateContext = async <Context extends PdkBuilderContext = PdkBuilderContext>(
   ctx: TaskContext,
   fileSystem?: Record<string, unknown>,
-  config?: RecursivePartial<PdkBuilderContext>,
-): Promise<PdkBuilderContext> => {
+  config?: RecursivePartial<Context>,
+): Promise<Context> => {
   const rootDir = await mockFileSystem(ctx, fileSystem);
 
-  return createTestContextWithMockedFs(rootDir, config);
+  return createTestContextWithMockedFs<Context>(rootDir, config);
 };

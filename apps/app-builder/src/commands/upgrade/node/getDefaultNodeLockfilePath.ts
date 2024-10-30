@@ -1,6 +1,7 @@
-import {NodePackageManager, type UpgradeSubContext} from '../types';
+import {NodePackageManager} from '../types';
+import {type PdkBuilderContext} from '../../../types/command';
 
-export const getDefaultNodeLockfilePath = (context: UpgradeSubContext): string => {
+export const getDefaultNodeLockfilePath = (context: PdkBuilderContext): string => {
   switch (context.config.nodePackageManager) {
     case NodePackageManager.Yarn:
       return 'yarn.lock';
