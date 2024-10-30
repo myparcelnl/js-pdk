@@ -9,7 +9,8 @@ export const getComposerPackageVersion = async (context: PdkBuilderUpgradeContex
     stdio: 'pipe',
   });
 
-  const json = JSON.parse(output);
+  // Output may contain plain text composer warnings even when using json format, so ignore everything until the first opening curly brace
+  const json = JSON.parse(output.slice(output.indexOf('{')));
 
   return [
     {
