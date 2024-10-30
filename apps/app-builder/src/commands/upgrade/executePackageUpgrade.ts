@@ -3,7 +3,7 @@ import {UpgradeMode, type UpgradeSubContextWithLockfile, type UpgradeSubResult} 
 import {upgradeNodePackage} from './node/upgradeNodePackage';
 import {upgradeComposerPackage} from './composer/upgradeComposerPackage';
 
-export const upgradePackage = (context: UpgradeSubContextWithLockfile): PromiseOr<UpgradeSubResult> => {
+export const executePackageUpgrade = (context: UpgradeSubContextWithLockfile): PromiseOr<UpgradeSubResult> => {
   switch (context.mode) {
     case UpgradeMode.Node:
       return upgradeNodePackage(context);

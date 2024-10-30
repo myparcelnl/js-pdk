@@ -1,10 +1,13 @@
 import {executeCommand} from '../../utils/executeCommand';
 import {type NpmInfo} from '../../types/common';
 import {VerbosityLevel} from '../../constants';
-import {NodePackageManager, type ParsedEntry, UpgradeMode, type UpgradeSubContext} from './types';
+import {NodePackageManager, type ParsedEntry, type PdkBuilderUpgradeContext, UpgradeMode} from './types';
 import {parseGitHubUrl} from './parseGitHubUrl';
 
-export const getRepositoryUrl = async (entry: ParsedEntry, context: UpgradeSubContext): Promise<undefined | string> => {
+export const getRepositoryUrl = async (
+  entry: ParsedEntry,
+  context: PdkBuilderUpgradeContext,
+): Promise<undefined | string> => {
   if (entry.repository) {
     return entry.repository;
   }

@@ -27,12 +27,13 @@ export type InputUpgradeCommandArgs = MakeOptional<
   'composerCommand' | 'yarnCommand' | 'rootCommand'
 >;
 
-export interface UpgradeSubContext extends PdkBuilderContext<UpgradeCommandArgs> {
+export interface PdkBuilderUpgradeContext extends PdkBuilderContext<UpgradeCommandArgs> {
   mode: UpgradeMode;
   packageName: string;
+  lockfilePath: string;
 }
 
-export interface UpgradeSubContextWithLockfile extends UpgradeSubContext {
+export interface UpgradeSubContextWithLockfile extends PdkBuilderUpgradeContext {
   lockfilePath: string;
 }
 

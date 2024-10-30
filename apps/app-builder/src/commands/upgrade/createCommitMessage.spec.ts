@@ -1,6 +1,6 @@
 import {describe, expect, it} from 'vitest';
 import {createTestContext} from '../../__tests__/createTestContext';
-import {type UpgradedEntry, UpgradeMode} from './types';
+import {type PdkBuilderUpgradeContext, type UpgradedEntry, UpgradeMode} from './types';
 import {createCommitMessage} from './createCommitMessage';
 
 describe('createCommitMessage', () => {
@@ -14,13 +14,12 @@ describe('createCommitMessage', () => {
       },
     ] satisfies UpgradedEntry[];
 
-    const context = createTestContext();
-
-    const commitMessage = createCommitMessage(upgradedVersions, {
-      ...context,
+    const context = createTestContext<PdkBuilderUpgradeContext>({
       mode: UpgradeMode.Node,
       packageName: 'vue',
     });
+
+    const commitMessage = createCommitMessage(context, upgradedVersions);
 
     expect(commitMessage).toEqual(`feat(deps): upgrade vue to v3.3.0
 
@@ -29,7 +28,7 @@ Compare changes:
   });
 
   it('creates commit message for multiple node dependencies', () => {
-    const upgradedVersions = [
+    const entries = [
       {
         name: '@myparcel-pdk/app-builder',
         version: '1.1.5',
@@ -42,13 +41,12 @@ Compare changes:
       },
     ] satisfies UpgradedEntry[];
 
-    const context = createTestContext();
-
-    const commitMessage = createCommitMessage(upgradedVersions, {
-      ...context,
+    const context = createTestContext<PdkBuilderUpgradeContext>({
       mode: UpgradeMode.Node,
       packageName: '@myparcel-pdk/*',
     });
+
+    const commitMessage = createCommitMessage(context, entries);
 
     expect(commitMessage).toEqual(`fix(deps): upgrade @myparcel-pdk/*
 

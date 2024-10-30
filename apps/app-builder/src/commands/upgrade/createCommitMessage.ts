@@ -1,45 +1,35 @@
-import {VerbosityLevel} from '../../constants';
-import {type UpgradedEntry, type UpgradeSubContext} from './types';
+import {type PdkBuilderUpgradeContext, type UpgradedEntry} from './types';
 import {getCommitType} from './getCommitType';
 
-export const createCommitMessage = (upgradedVersions: UpgradedEntry[], context: UpgradeSubContext): string => {
-  const {packageName, debug, args} = context;
+export const createCommitMessage = (context: PdkBuilderUpgradeContext, entries: UpgradedEntry[]): string => {
+  const {packageName} = context;
 
   const lines: string[] = [];
-  const commitType = getCommitType(context, upgradedVersions);
+  const commitType = getCommitType(context, entries);
 
-  if (upgradedVersions.length === 1) {
-    lines.push(`${commitType}(deps): upgrade ${upgradedVersions[0].name} to v${upgradedVersions[0].version}`);
+  if (entries.length === 1) {
+    const {name, version} = entries[0];
+
+    lines.push(`${commitType}(deps): upgrade ${name} to v${version}`);
   } else {
     lines.push(`${commitType}(deps): upgrade ${packageName}`);
     lines.push('');
 
-    upgradedVersions.forEach((updatedVersion) => {
-      lines.push(`- upgrade ${updatedVersion.name} to v${updatedVersion.version}`);
+    entries.forEach((entry) => {
+      lines.push(`- upgrade ${entry.name} to v${entry.version}`);
     });
   }
 
-  const versionsWithRepository = upgradedVersions.filter((updatedVersion) => updatedVersion.repository);
+  const entriesWithRepository = entries.filter((updatedVersion) => updatedVersion.repository);
 
-  if (versionsWithRepository.length) {
+  if (entriesWithRepository.length) {
     lines.push('');
     lines.push('Compare changes:');
 
-    versionsWithRepository.forEach((updatedVersion) => {
-      lines.push(
-        `- ${updatedVersion.repository}/compare/v${updatedVersion.oldVersion}...v${updatedVersion.version}`.replace(
-          /^https?:\/\/[^/]+/,
-          '/',
-        ),
-      );
+    entriesWithRepository.forEach(({oldVersion, repository, version}) => {
+      lines.push(`- ${repository}/compare/v${oldVersion}...v${version}`.replace(/^https?:\/\/[^/]+/, '/'));
     });
   }
 
-  const commitMessage = lines.join('\n');
-
-  if (args.verbose >= VerbosityLevel.Verbose) {
-    debug('Commit message:', commitMessage);
-  }
-
-  return commitMessage;
+  return lines.join('\n');
 };

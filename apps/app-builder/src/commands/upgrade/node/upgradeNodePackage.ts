@@ -2,7 +2,7 @@ import {type UpgradeSubMethod} from '../types';
 import {getNodePackageVersion} from './getNodePackageVersion';
 import {executeNodeUpgrade} from './executeNodeUpgrade';
 
-export const upgradeNodePackage: UpgradeSubMethod = async (context) => {
+export const upgradeNodePackage = (async (context) => {
   const {args} = context;
 
   const oldVersions = await getNodePackageVersion(context);
@@ -17,4 +17,4 @@ export const upgradeNodePackage: UpgradeSubMethod = async (context) => {
     oldVersions,
     newVersions,
   };
-};
+}) satisfies UpgradeSubMethod;

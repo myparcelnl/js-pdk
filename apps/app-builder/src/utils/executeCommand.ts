@@ -4,8 +4,8 @@ import {type ExecuteCommandContext, type PdkBuilderContext} from '../types/comma
 import {VerbosityLevel} from '../constants';
 import {createCommand} from './command/createCommand';
 
-export const executeCommand = async (
-  context: ExecuteCommandContext,
+export const executeCommand = async <Context extends ExecuteCommandContext>(
+  context: Context,
   command: OneOrMore<string>,
   args?: string[],
   options?: Omit<SpawnSyncOptions, 'encoding'>,
