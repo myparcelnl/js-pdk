@@ -2,6 +2,21 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.5.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.4.7...@myparcel-pdk/app-builder@1.5.0) "@myparcel-pdk/app-builder" (2024-10-31)
+
+
+### Features
+
+* **app-builder:** use composer require for upgrading ([c2845d7](https://github.com/myparcelnl/js-pdk/commit/c2845d71593d71004655140231f23287ef2a4a5d))
+
+
+### Bug Fixes
+
+* **app-builder:** handle warnings in composer show output ([7c516e0](https://github.com/myparcelnl/js-pdk/commit/7c516e0134a85eff81d8eacc63e790128c19432f))
+
+
+
+
 ## [1.4.7](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.4.6...@myparcel-pdk/app-builder@1.4.7) "@myparcel-pdk/app-builder" (2024-10-24)
 
 
