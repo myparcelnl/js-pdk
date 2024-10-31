@@ -1,27 +1,36 @@
-import {type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types/config';
-import {COMMIT_TYPE_AUTO, DEFAULT_JSON_SPACES} from '../constants';
-import {NodePackageManager} from '../commands/upgrade/types';
+// noinspection SpellCheckingInspection
 
+import {type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types/config.types';
+import {COMMIT_TYPE_AUTO, DEFAULT_JSON_SPACES, RUN_COMPOSER, RUN_PHP} from '../constants';
+import {NodePackageManager} from '../commands/upgrade/enums';
+import {PHP_SCOPER_CONFIG_FILE} from '../commands/scopePhp/constants';
+
+// eslint-disable-next-line max-lines-per-function
 export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilderConfig => {
   const resolvedConfig = {
     additionalCommands: [],
     archiveFilename: '{{platform}}-{{name}}-{{version}}.zip',
     commitType: COMMIT_TYPE_AUTO,
-    composerCommand: 'composer',
     debug: false,
     jsonSpaces: DEFAULT_JSON_SPACES,
     nodePackageManager: NodePackageManager.Yarn,
-    nodePackageManagerCommand: undefined,
     outDir: 'dist',
     platformFolderName: '{{platform}}-{{name}}',
-    rootCommand: '',
-    rootCommands: ['composer', 'php'],
+    dockerCommand: undefined,
+    dockerCommands: undefined,
     tmpDir: '.tmp',
     version: '0.0.0',
+
+    // TODO: Remove deprecated properties in v2.0.0
+    composerCommand: RUN_COMPOSER,
+    nodePackageManagerCommand: undefined,
+    rootCommand: undefined,
+    rootCommands: undefined,
     yarnCommand: undefined,
+
     ...config,
     phpScoper: {
-      configFile: 'scoper.inc.php',
+      configFile: PHP_SCOPER_CONFIG_FILE,
       enabled: null,
       installDir: '{{tmpDir}}/php-scoper',
       outDir: '{{tmpDir}}/scoped/source',
@@ -40,10 +49,20 @@ export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilder
     },
   } satisfies PdkBuilderConfig;
 
+  const {
+    dockerCommand,
+    dockerCommands,
+    nodePackageManager,
+    nodePackageManagerCommand,
+    rootCommand,
+    rootCommands,
+    yarnCommand,
+  } = resolvedConfig;
+
   return {
     ...resolvedConfig,
-    yarnCommand: resolvedConfig.yarnCommand ?? 'yarn',
-    nodePackageManagerCommand:
-      resolvedConfig.nodePackageManagerCommand ?? resolvedConfig.yarnCommand ?? resolvedConfig.nodePackageManager,
+    dockerCommand: dockerCommand ?? rootCommand ?? '',
+    dockerCommands: dockerCommands ?? rootCommands ?? [RUN_COMPOSER, RUN_PHP],
+    nodePackageManagerCommand: nodePackageManagerCommand ?? yarnCommand ?? nodePackageManager,
   } satisfies ResolvedPdkBuilderConfig;
 };

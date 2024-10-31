@@ -1,6 +1,7 @@
 import {describe, expect, it} from 'vitest';
 import {createTestContext} from '../../__tests__/createTestContext';
-import {type PdkBuilderUpgradeContext, type UpgradedEntry, UpgradeMode} from './types';
+import {type PdkBuilderUpgradeContext, type UpgradedEntry} from './upgrade.types';
+import {UpgradeMode} from './enums';
 import {createCommitMessage} from './createCommitMessage';
 
 describe('createCommitMessage', () => {

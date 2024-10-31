@@ -1,0 +1,34 @@
+import {defineConfig, PdkPlatformName} from '@myparcel-pdk/app-builder';
+import packageJson from './package.json';
+
+export default defineConfig({
+  name: packageJson.name,
+
+  platforms: [PdkPlatformName.MyParcelNl, PdkPlatformName.MyParcelBe],
+  /**
+   * TODO: Add globs to source files here
+   */
+  source: [
+    // '!**/node_modules/**',
+    // 'views/**/dist/**/*',
+  ],
+
+  /**
+   * TODO: Add any other files here that contain the version number
+   *
+   * @example of non-json file using a regex:  {path: ENTRY_FILE, regex: /Version:\s*(.+)/},
+   */
+  versionSource: [{path: 'package.json'}, {path: 'composer.json'}],
+
+  /**
+   * TODO: Set root command. This is the docker command that will be used.
+   */
+  // dockerCommand: 'docker compose run --rm -T php',
+
+  translations: {
+    // TODO: Put the sheet ID of the cms-specific sheet inside the translations document here.
+    // additionalSheet: <sheetId>,
+  },
+
+  hooks: {},
+});

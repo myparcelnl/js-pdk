@@ -1,8 +1,8 @@
-import {type ParsedEntry, type UpgradeSubContextWithLockfile} from '../types';
+import {type ParsedEntry, type PdkBuilderUpgradeContext} from '../upgrade.types';
 import {executeCommand} from '../../../utils/executeCommand';
 
 export async function getPackageEntriesForYarn(
-  context: UpgradeSubContextWithLockfile,
+  context: PdkBuilderUpgradeContext,
   resolvedPackageName: string,
 ): Promise<ParsedEntry[]> {
   const {config} = context;

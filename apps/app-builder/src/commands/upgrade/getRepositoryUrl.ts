@@ -1,8 +1,7 @@
-import {executeCommand} from '../../utils/executeCommand';
-import {type NpmInfo} from '../../types/common';
 import {VerbosityLevel} from '../../constants';
-import {NodePackageManager, type ParsedEntry, type PdkBuilderUpgradeContext, UpgradeMode} from './types';
-import {parseGitHubUrl} from './parseGitHubUrl';
+import {type ParsedEntry, type PdkBuilderUpgradeContext} from './upgrade.types';
+import {getNodeRepositoryUrl} from './getNodeRepositoryUrl';
+import {UpgradeMode} from './enums';
 
 export const getRepositoryUrl = async (
   entry: ParsedEntry,
@@ -16,39 +15,11 @@ export const getRepositoryUrl = async (
     context.debug(`Getting repository URL for ${entry.name}`);
   }
 
-  const {config, mode} = context;
+  const {mode} = context;
 
   switch (mode) {
     case UpgradeMode.Node:
-      let stdout: string;
-
-      switch (config.nodePackageManager) {
-        case NodePackageManager.Yarn:
-          stdout = await executeCommand(
-            context,
-            config.nodePackageManagerCommand,
-            ['npm', 'info', entry.name, '--json'],
-            {},
-          );
-          break;
-
-        case NodePackageManager.Bun:
-          // TODO: Change this when bun has a command that can do this
-          stdout = await executeCommand(context, 'npm', ['info', entry.name, '--json'], {});
-          break;
-      }
-
-      if (!stdout) {
-        return;
-      }
-
-      const npmInfo: NpmInfo = JSON.parse(stdout);
-
-      if (!npmInfo?.repository) {
-        return;
-      }
-
-      return parseGitHubUrl(typeof npmInfo.repository === 'string' ? npmInfo.repository : npmInfo.repository.url);
+      return getNodeRepositoryUrl(context, entry);
   }
 
   throw new Error(`Unsupported upgrade mode: ${mode}`);

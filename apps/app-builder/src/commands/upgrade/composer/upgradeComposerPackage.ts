@@ -1,8 +1,8 @@
-import {type UpgradeSubMethod} from '../types';
+import {type ParsedVersions, type PdkBuilderUpgradeContext} from '../upgrade.types';
 import {executeCommand} from '../../../utils/executeCommand';
 import {getComposerPackageVersion} from './getComposerPackageVersion';
 
-export const upgradeComposerPackage = (async (context) => {
+export const upgradeComposerPackage = async (context: PdkBuilderUpgradeContext): Promise<ParsedVersions> => {
   const {args, packageName, config} = context;
 
   if (packageName.includes('*')) {
@@ -19,4 +19,4 @@ export const upgradeComposerPackage = (async (context) => {
     oldVersions,
     newVersions: await getComposerPackageVersion(context),
   };
-}) satisfies UpgradeSubMethod;
+};

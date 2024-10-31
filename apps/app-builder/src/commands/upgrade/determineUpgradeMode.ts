@@ -1,4 +1,4 @@
-import {UpgradeMode} from './types';
+import {UpgradeMode} from './enums';
 
 export const determineUpgradeMode = (packageName: string): UpgradeMode => {
   const isComposerPackage = /^\w+\/\w+$/.exec(packageName);

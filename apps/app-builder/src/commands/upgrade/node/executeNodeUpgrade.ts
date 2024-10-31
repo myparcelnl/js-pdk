@@ -1,7 +1,8 @@
-import {NodePackageManager, type UpgradeSubContextWithLockfile} from '../types';
+import {type PdkBuilderUpgradeContext} from '../upgrade.types';
+import {NodePackageManager} from '../enums';
 import {executeCommand} from '../../../utils/executeCommand';
 
-export const executeNodeUpgrade = async (context: UpgradeSubContextWithLockfile): Promise<void> => {
+export const executeNodeUpgrade = async (context: PdkBuilderUpgradeContext): Promise<void> => {
   const {config, packageName} = context;
 
   const upgradeArgs = [];

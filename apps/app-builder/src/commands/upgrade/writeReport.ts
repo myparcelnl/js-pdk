@@ -1,9 +1,9 @@
-import fs from 'fs';
-import {type PdkBuilderUpgradeContext, type UpgradedEntry} from './types';
+import fs from 'node:fs';
+import {type PdkBuilderUpgradeContext, type UpgradedEntry} from './upgrade.types';
 
 export const writeReport = (context: PdkBuilderUpgradeContext, upgradedEntries: UpgradedEntry[]): void => {
-  const {dryRun, reportOverwrite, reportFile} = context.args;
-  const {debug} = context;
+  const {config, debug, args} = context;
+  const {dryRun, reportOverwrite, reportFile} = args;
 
   debug('Writing report to', reportFile);
 
@@ -18,5 +18,5 @@ export const writeReport = (context: PdkBuilderUpgradeContext, upgradedEntries: 
     upgradedEntries.push(...existingReport);
   }
 
-  fs.writeFileSync(reportFile, JSON.stringify(upgradedEntries, null, 2), 'utf8');
+  fs.writeFileSync(reportFile, JSON.stringify(upgradedEntries, null, config.jsonSpaces), 'utf8');
 };

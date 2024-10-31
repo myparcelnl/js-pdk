@@ -1,10 +1,11 @@
 import scopePhp from './index';
-import * as child_process from 'child_process';
+import child_process from 'node:child_process';
 import {describe, expect, it, vi} from 'vitest';
 import {resolveString} from '../../utils/resolveString';
-import {type PdkBuilderContext} from '../../types/command';
-import {fsModifyingMethodSpies} from '../../__tests__/spies/fs';
+import {type PdkBuilderContext} from '../../types/command.types';
+import {fsModifyingMethods} from '../../__tests__/spies/fs';
 import {mockFileSystemAndCreateContext} from '../../__tests__/mockFileSystemAndCreateContext';
+import {expectNoFileChanges} from '../../__tests__/expectNoFileChanges';
 import {PACKAGE_NAME} from './constants';
 
 const mockStdout = vi.fn(() => '');
@@ -36,12 +37,16 @@ const getScoperRunArgs = (outDir: string, context: PdkBuilderContext) => {
   ] as const;
 };
 
-vi.mock('child_process', () => ({
-  spawnSync: vi.fn(() => ({
-    status: 0,
-    stdout: mockStdout(),
-  })),
-}));
+vi.mock('child_process', () => {
+  const mocked = {
+    spawnSync: vi.fn(() => ({
+      status: 0,
+      stdout: mockStdout(),
+    })),
+  };
+
+  return {...mocked, default: mocked};
+});
 
 describe('command: scopePhp', () => {
   it("installs php scoper if it isn't installed yet", async (ctx) => {
@@ -149,14 +154,12 @@ describe('command: scopePhp', () => {
   });
 
   it('does nothing when dry run is passed', async (ctx) => {
-    expect.assertions(fsModifyingMethodSpies.length);
+    expect.assertions(fsModifyingMethods.length);
 
     const context = await mockFileSystemAndCreateContext(ctx, {dist: {'text.txt': ''}}, {args: {dryRun: true}});
 
     await scopePhp(context);
 
-    fsModifyingMethodSpies.forEach((spy) => {
-      expect(spy).not.toHaveBeenCalled();
-    });
+    expectNoFileChanges();
   });
 });

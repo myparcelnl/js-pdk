@@ -1,10 +1,20 @@
-import {type PdkBuilderContext} from '../types/command';
+import {
+  type AnyCommandArgs,
+  type PdkBuilderContext,
+  type PdkBuilderContextWithPlatformArgs,
+} from '../types/command.types';
 import {type PdkPlatformName} from '../constants';
+import {resolvePath} from './resolvePath';
 import {withArgs} from './command/withArgs';
 
-export const addPlatformToContext = <P extends PdkPlatformName>(
-  context: PdkBuilderContext,
-  platform: P,
-): PdkBuilderContext<{platform: P}> => {
-  return withArgs(context, {platform});
+export const addPlatformToContext = <Platform extends PdkPlatformName, Args extends AnyCommandArgs = AnyCommandArgs>(
+  context: PdkBuilderContext<Args>,
+  platform: Platform,
+): PdkBuilderContextWithPlatformArgs<Args, Platform> => {
+  const {config} = context;
+
+  const withPlatform = withArgs(context, {platform});
+  const platformOutDir = resolvePath([config.outDir, config.platformFolderName], withPlatform);
+
+  return withArgs(withPlatform, {platformOutDir});
 };

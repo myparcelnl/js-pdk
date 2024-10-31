@@ -1,7 +1,8 @@
 /* eslint-disable max-nested-callbacks */
 import {describe, expect, it, vi} from 'vitest';
 import {toArray} from '@myparcel/ts-utils';
-import {NodePackageManager, UpgradeMode, type UpgradeSubContextWithLockfile} from '../types';
+import {type PdkBuilderUpgradeContext} from '../upgrade.types';
+import {NodePackageManager, UpgradeMode} from '../enums';
 import {createTestContext} from '../../../__tests__/createTestContext';
 import {getNodePackageVersion} from './getNodePackageVersion';
 
@@ -48,18 +49,14 @@ describe('getNodePackageVersion', () => {
   ] satisfies TestInput[])(
     'should return the correct package version for $packageManager',
     async ({packageManager, stdout}) => {
-      const testContext = createTestContext();
-
-      const context = {
-        ...testContext,
+      const context = createTestContext<PdkBuilderUpgradeContext>({
         config: {
-          ...testContext.config,
           nodePackageManager: packageManager,
         },
         lockfilePath: 'yarn.lock',
         mode: UpgradeMode.Node,
         packageName: '@myparcel-pdk/*',
-      } satisfies UpgradeSubContextWithLockfile;
+      });
 
       mockStdout.mockImplementationOnce(() => toArray(stdout).join('\n'));
 

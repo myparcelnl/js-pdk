@@ -1,15 +1,15 @@
-import {type PdkBuilderContext} from '../types/command';
-import {COMMAND_COPY_NAME, type PdkPlatformName} from '../constants';
+import {type PdkBuilderContextWithPlatformArgs} from '../types/command.types';
+import {COMMAND_COPY_NAME} from '../constants';
 import {getPlatformDistPath} from './getPlatformDistPath';
 import {exists} from './fs/exists';
 import {reportDirectoryDoesNotExist} from './debug/reportOnFile';
-import {shouldModifyFiles} from './command/shouldModifyFiles';
+import {isDryRun} from './command/isDryRun';
 
-export const validateDistPath = async (context: PdkBuilderContext<{platform: PdkPlatformName}>): Promise<boolean> => {
+export const validateDistPath = async (context: PdkBuilderContextWithPlatformArgs): Promise<boolean> => {
   const platformDistPath = getPlatformDistPath(context);
 
   if (!(await exists(platformDistPath))) {
-    if (!shouldModifyFiles(context)) {
+    if (isDryRun(context)) {
       reportDirectoryDoesNotExist(platformDistPath, context);
       return false;
     }

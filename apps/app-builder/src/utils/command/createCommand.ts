@@ -1,22 +1,22 @@
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {type PdkBuilderConfig} from '../../types/config';
+import {type PdkBuilderConfig} from '../../types/config.types';
 
 export const createCommand = (config: PdkBuilderConfig, command: OneOrMore<string>): string => {
   const resolvedCommand = toArray(command ?? []);
   const [firstCommand] = resolvedCommand;
 
-  const rootCommands = toArray(config.rootCommands ?? []);
+  const dockerCommands = toArray(config.dockerCommands ?? []);
 
-  const present = rootCommands.some((rootCommand) => {
-    return typeof rootCommand === 'string' ? rootCommand === firstCommand : rootCommand.test(firstCommand);
+  const isDockerCommand = dockerCommands.some((dockerCommand) => {
+    return typeof dockerCommand === 'string' ? dockerCommand === firstCommand : dockerCommand.test(firstCommand);
   });
 
   const commandList = [];
 
-  if (present) {
-    const resolvedRootCommand = toArray(config.rootCommand ?? []);
+  if (isDockerCommand) {
+    const resolvedDockerCommand = toArray(config.dockerCommand ?? []);
 
-    commandList.push(...resolvedRootCommand);
+    commandList.push(...resolvedDockerCommand);
   }
 
   commandList.push(...resolvedCommand);

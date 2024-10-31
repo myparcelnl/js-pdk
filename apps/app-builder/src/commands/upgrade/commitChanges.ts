@@ -1,6 +1,6 @@
 import {executeCommand} from '../../utils/executeCommand';
 import {VerbosityLevel} from '../../constants';
-import {type PdkBuilderUpgradeContext, type UpgradedEntry} from './types';
+import {type PdkBuilderUpgradeContext, type UpgradedEntry} from './upgrade.types';
 import {getFilesToCommit} from './getFilesToCommit';
 import {createCommitMessage} from './createCommitMessage';
 

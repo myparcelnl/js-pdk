@@ -1,8 +1,9 @@
-import {NodePackageManager, type ParsedEntry, type UpgradeSubContextWithLockfile} from '../types';
+import {type ParsedEntry, type PdkBuilderUpgradeContext} from '../upgrade.types';
+import {NodePackageManager} from '../enums';
 import {getPackageEntriesForYarn} from './getPackageEntriesForYarn';
 import {getPackageEntriesForBun} from './getPackageEntriesForBun';
 
-export const getNodePackageVersion = async (context: UpgradeSubContextWithLockfile): Promise<ParsedEntry[]> => {
+export const getNodePackageVersion = async (context: PdkBuilderUpgradeContext): Promise<ParsedEntry[]> => {
   const {lockfilePath, packageName, config} = context;
 
   const matches: ParsedEntry[] = [];

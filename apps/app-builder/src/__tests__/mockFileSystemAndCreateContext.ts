@@ -1,6 +1,6 @@
 import {type TaskContext} from 'vitest';
 import {type RecursivePartial} from '@myparcel/ts-utils';
-import {type PdkBuilderContext} from '../types/command';
+import {type PdkBuilderContext} from '../types/command.types';
 import {mockFileSystem} from './mockFileSystem';
 import {createTestContextWithMockedFs} from './createTestContextWithMockedFs';
 

@@ -1,10 +1,10 @@
 import {spawnSync, type SpawnSyncOptions, type SpawnSyncOptionsWithStringEncoding} from 'child_process';
 import {isOfType, type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {type ExecuteCommandContext, type PdkBuilderContext} from '../types/command';
-import {VerbosityLevel} from '../constants';
+import {type BaseCommandContext, type PdkBuilderContext} from '../types/command.types';
+import {isVeryVeryVerbose} from './command/isVeryVeryVerbose';
 import {createCommand} from './command/createCommand';
 
-export const executeCommand = async <Context extends ExecuteCommandContext>(
+export const executeCommand = async <Context extends BaseCommandContext>(
   context: Context,
   command: OneOrMore<string>,
   args?: string[],
@@ -13,7 +13,7 @@ export const executeCommand = async <Context extends ExecuteCommandContext>(
   const resolvedOptions: SpawnSyncOptionsWithStringEncoding = {
     encoding: 'utf-8',
     cwd: context.env.cwd,
-    stdio: context.args.verbose >= VerbosityLevel.VeryVerbose ? 'inherit' : 'pipe',
+    stdio: isVeryVeryVerbose(context) ? 'inherit' : 'pipe',
     ...options,
   };
 
@@ -27,7 +27,7 @@ export const executeCommand = async <Context extends ExecuteCommandContext>(
 
     const [commandName, ...commandArgs] = allArgs;
 
-    if (context.args.verbose >= VerbosityLevel.VeryVeryVerbose) {
+    if (isVeryVeryVerbose(context)) {
       context.debug?.(
         `Executing command: ${commandName} ${commandArgs.join(' ')}${options?.cwd ? ` in ${options.cwd}` : ''}`,
       );

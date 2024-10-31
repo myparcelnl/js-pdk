@@ -1,4 +1,5 @@
-import {type PdkBuilderUpgradeContext, UpgradeMode} from './types';
+import {type PdkBuilderUpgradeContext} from './upgrade.types';
+import {UpgradeMode} from './enums';
 
 export const getFilesToCommit = (context: PdkBuilderUpgradeContext): string[] => {
   const filesToCommit = [];

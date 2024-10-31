@@ -2,10 +2,11 @@ import {type LiftoffEnv} from 'liftoff';
 import {program} from 'commander';
 import {isOfType, partitionArray, toArray} from '@myparcel/ts-utils';
 import {resolveConfig} from './utils/resolveConfig';
+import {getBulkCommandDescription} from './utils/getBulkCommandDescription';
 import {registerCommand} from './utils/command/registerCommand';
 import {createWithContext} from './utils/command/createWithContext';
 import {createWithConfig} from './utils/command/createWithConfig';
-import {type CommandArgs, type CommandDefinition, type CommandDefinitionWithoutConfig} from './types/command';
+import {type CommandArgs, type CommandDefinition, type CommandDefinitionWithoutConfig} from './types/command.types';
 import {ALL_BULK_COMMANDS, ALL_COMMANDS} from './definitions';
 import {BULK_COMMAND_OPTIONS, CONFIG_OPTIONS, TITLE} from './constants';
 
@@ -31,11 +32,7 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
       return toArray(definition)[0] as CommandDefinition;
     });
 
-    const commandNames = commandDefinitions.map((definition) => definition.name).join(', ');
-
-    const defaultDescription = `Run ${commandNames} in sequence.`;
-
-    const command = program.command(name).description(`${description ?? defaultDescription} Requires a config file.`);
+    const command = program.command(name).description(getBulkCommandDescription(commandDefinitions, description));
 
     const allOptions = [
       ...commandDefinitions.flatMap((definition) => definition.options ?? []),

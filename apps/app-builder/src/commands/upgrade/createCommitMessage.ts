@@ -1,4 +1,4 @@
-import {type PdkBuilderUpgradeContext, type UpgradedEntry} from './types';
+import {type PdkBuilderUpgradeContext, type UpgradedEntry} from './upgrade.types';
 import {getCommitType} from './getCommitType';
 
 export const createCommitMessage = (context: PdkBuilderUpgradeContext, entries: UpgradedEntry[]): string => {

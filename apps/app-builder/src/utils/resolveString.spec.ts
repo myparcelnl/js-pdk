@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {type StringGenerator} from '../types/common';
+import {type StringGenerator} from '../types/common.types';
 import {PdkPlatformName} from '../constants';
 import {createTestContext} from '../__tests__/createTestContext';
 import {resolveString} from './resolveString';

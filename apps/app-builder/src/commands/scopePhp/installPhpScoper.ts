@@ -1,10 +1,10 @@
 import {resolveString} from '../../utils/resolveString';
 import {resolvePath} from '../../utils/resolvePath';
-import {mkdirs} from '../../utils/fs/mkdirs';
 import {exists} from '../../utils/fs/exists';
+import {createDirectories} from '../../utils/fs/createDirectories';
 import {executeCommand} from '../../utils/executeCommand';
-import {type PdkBuilderContext} from '../../types/command';
-import {VerbosityLevel} from '../../constants';
+import {type PdkBuilderContext} from '../../types/command.types';
+import {RUN_COMPOSER, VerbosityLevel} from '../../constants';
 import {PACKAGE_NAME} from './constants';
 
 export const installPhpScoper = async (context: PdkBuilderContext): Promise<void> => {
@@ -13,7 +13,7 @@ export const installPhpScoper = async (context: PdkBuilderContext): Promise<void
 
   const resolvedInstallDir = resolveString(installDir, context);
 
-  await mkdirs(installDir, context);
+  await createDirectories(context, installDir);
 
   const isInstalled = await exists(resolvePath([installDir, 'composer.json'], context));
 
@@ -29,9 +29,9 @@ export const installPhpScoper = async (context: PdkBuilderContext): Promise<void
 
   await executeCommand(
     context,
-    config.rootCommand,
+    config.dockerCommand,
     [
-      'composer',
+      RUN_COMPOSER,
       'require',
       `--working-dir=${resolvedInstallDir}`,
       `${PACKAGE_NAME}:${version}`,

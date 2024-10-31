@@ -1,9 +1,9 @@
-import {type ParsedEntry, type PdkBuilderUpgradeContext} from '../types';
+import {type ParsedEntry, type PdkBuilderUpgradeContext} from '../upgrade.types';
 import {parseGitHubUrl} from '../parseGitHubUrl';
 import {executeCommand} from '../../../utils/executeCommand';
 
 export const getComposerPackageVersion = async (context: PdkBuilderUpgradeContext): Promise<ParsedEntry[]> => {
-  const {config, packageName} = context;
+  const {packageName, config} = context;
 
   const output = await executeCommand(context, config.composerCommand, ['show', '--format=json', packageName], {
     stdio: 'pipe',

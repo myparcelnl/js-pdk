@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
 export const isEmptyDir = async (dir: string): Promise<boolean> => {
   const files = await fs.promises.readdir(dir);

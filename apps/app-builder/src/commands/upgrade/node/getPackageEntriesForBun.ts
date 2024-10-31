@@ -1,8 +1,8 @@
-import {type ParsedEntry, type UpgradeSubContextWithLockfile} from '../types';
+import {type ParsedEntry, type PdkBuilderUpgradeContext} from '../upgrade.types';
 import {executeCommand} from '../../../utils/executeCommand';
 
 export async function getPackageEntriesForBun(
-  context: UpgradeSubContextWithLockfile,
+  context: PdkBuilderUpgradeContext,
   resolvedPackageName: string,
 ): Promise<ParsedEntry[]> {
   const content = await executeCommand(context, context.config.nodePackageManagerCommand, ['pm', 'ls', '--all'], {

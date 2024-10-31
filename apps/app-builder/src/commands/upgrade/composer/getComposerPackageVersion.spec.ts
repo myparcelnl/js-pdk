@@ -1,5 +1,6 @@
-import {afterEach, describe, expect, it, vi} from 'vitest';
-import {type PdkBuilderUpgradeContext, UpgradeMode} from '../types';
+import {describe, expect, it, vi} from 'vitest';
+import {type PdkBuilderUpgradeContext} from '../upgrade.types';
+import {UpgradeMode} from '../enums';
 import * as executeCommandModule from '../../../utils/executeCommand';
 import {MYPARCEL_PDK_PACKAGIST_NAME} from '../../../constants';
 import {createTestContext} from '../../../__tests__/createTestContext';
@@ -15,10 +16,6 @@ const COMPOSER_SHOW_RETURN = JSON.stringify({
 });
 
 describe('getComposerPackageVersion', () => {
-  afterEach(() => {
-    vi.restoreAllMocks();
-  });
-
   it.each([
     '',
     // Composer warnings are output before the json, so we need to check if that's handled correctly

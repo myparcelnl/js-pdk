@@ -1,6 +1,6 @@
-import {type CommandArgs} from '../types/command';
+import {type CommandArgs} from '../types/command.types';
 
-export async function executePromises(args: CommandArgs, promises: Promise<unknown>[]): Promise<void> {
+export const executePromises = async (args: CommandArgs, promises: Promise<unknown>[]): Promise<void> => {
   if (args.parallel) {
     await Promise.all(promises);
 
@@ -10,4 +10,4 @@ export async function executePromises(args: CommandArgs, promises: Promise<unkno
   for (const promise of promises) {
     await promise;
   }
-}
+};

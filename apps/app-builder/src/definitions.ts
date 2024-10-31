@@ -1,11 +1,11 @@
 import {defineCommand} from './utils/defineCommand';
-import {type BulkCommandDefinition, defineBulkCommand} from './utils/defineBulkCommand';
-import {type CommandDefinition} from './types/command';
+import {defineBulkCommand} from './utils/defineBulkCommand';
+import {type CommandDefinition} from './types/command.types';
+import {type BulkCommandDefinition} from './types/bulkCommand.types';
 import {
   COMMAND_BUILD_NAME,
   COMMAND_CLEAN_NAME,
   COMMAND_COPY_NAME,
-  COMMAND_DUMP_AUTOLOAD_NAME,
   COMMAND_INCREMENT_NAME,
   COMMAND_INIT_NAME,
   COMMAND_PRERELEASE_NAME,
@@ -25,12 +25,13 @@ import {
   MYPARCEL_PDK_NPM_GLOB,
   MYPARCEL_PDK_PACKAGIST_NAME,
 } from './constants';
-import {type UpgradeCommandArgs} from './commands/upgrade/types';
+import {type UpgradeCommandArgs} from './commands/upgrade/upgrade.types';
 
 export const initCommand = defineCommand({
   name: COMMAND_INIT_NAME,
   action: () => import('./commands/init'),
-  description: 'Generate a config file in the current directory. Necessary for all other commands.',
+  description:
+    'Initialize the pdk builder by generating a config file in the current directory. A config file is needed to run all other commands.',
   hasConfig: false,
 });
 
@@ -43,13 +44,7 @@ export const cleanCommand = defineCommand({
 export const copyCommand = defineCommand({
   name: COMMAND_COPY_NAME,
   action: () => import('./commands/copy'),
-  description: 'Copy source files to output directory.',
-});
-
-export const dumpAutoloadCommand = defineCommand({
-  name: COMMAND_DUMP_AUTOLOAD_NAME,
-  action: () => import('./commands/dumpAutoload'),
-  description: 'Dump autoload.',
+  description: 'Copy source files to output directory per platform.',
 });
 
 export const incrementCommand = defineCommand({
@@ -61,7 +56,7 @@ export const incrementCommand = defineCommand({
 export const renameCommand = defineCommand({
   name: COMMAND_RENAME_NAME,
   action: () => import('./commands/rename'),
-  description: 'Transform output files.',
+  description: 'Rename output files.',
 });
 
 export const scopePhpCommand = defineCommand({
@@ -73,7 +68,8 @@ export const scopePhpCommand = defineCommand({
 export const transformCommand = defineCommand({
   name: COMMAND_TRANSFORM_NAME,
   action: () => import('./commands/transform'),
-  description: 'Transform output files.',
+  description:
+    'Transform output files for the target platform. Replaces "MyParcelNL" with "<platform>" in names and contents of all source files.',
 });
 
 export const translationsCommand = defineCommand({
@@ -87,13 +83,20 @@ export const upgradeCommand = defineCommand<UpgradeCommandArgs>({
   action: () => import('./commands/upgrade'),
   description: 'Upgrade a dependency.',
   options: [
-    ['-l, --lockfile <lockfile>', 'Provide an alternative path to a lockfile.'],
-    ['--commit-type <type>', 'Commit type', COMMIT_TYPE_AUTO],
+    [
+      '--commit-type <type>',
+      'Commit type. Set to "auto" to infer from the version increase of the upgraded dependency. If set manually, should be a conventional commit type.',
+      COMMIT_TYPE_AUTO,
+    ],
     ['--no-check', 'Skip checking whether the lockfile is modified.'],
-    ['--no-commit', 'Skip creating a commit.'],
-    ['--report', 'Output a report of the changes.'],
-    ['--report-file <filename>', 'Filename for the report.', 'upgrade-report.json'],
-    ['--report-overwrite', 'Overwrite existing report file'],
+    ['--no-commit', 'Skip creating a commit for the changes.'],
+    ['--report', 'Output a JSON report of the changes.'],
+    ['--report-file <filename>', 'Filename for the JSON report.', 'upgrade-report.json'],
+    ['--report-overwrite', 'Overwrite the report file if it already exists. Default is to append.'],
+    [
+      '-l, --lockfile <lockfile>',
+      'Provide an alternative path to a lockfile. Defaults to the default lockfile for the inferred dependency type.',
+    ],
   ],
   args: [['[package]', 'Package to upgrade']],
 });
@@ -109,7 +112,6 @@ const CORE_COMMANDS = Object.freeze([
   copyCommand,
   renameCommand,
   transformCommand,
-  dumpAutoloadCommand,
 ] satisfies CommandDefinition[]);
 
 export const buildBulkCommand = defineBulkCommand({
@@ -170,7 +172,6 @@ export const ALL_COMMANDS: readonly CommandDefinition[] = Object.freeze([
   initCommand,
   cleanCommand,
   copyCommand,
-  dumpAutoloadCommand,
   incrementCommand,
   renameCommand,
   scopePhpCommand,

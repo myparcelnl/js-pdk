@@ -1,7 +1,7 @@
-import path from 'path';
-import fs from 'fs';
+import path from 'node:path';
+import fs from 'node:fs';
 import {type TaskContext, vi} from 'vitest';
-import {isObject, merge} from 'lodash-unified';
+import {assign, isObject} from 'radash';
 import {exists} from '../utils/fs/exists';
 import {DEFAULT_FILE_SYSTEM, MOCK_ROOT_DIR} from './constants';
 
@@ -27,11 +27,13 @@ const recursiveCreate = async (entries: Record<string, unknown>, rootDir: string
 };
 
 export const mockFileSystem = async (ctx: TaskContext, fileSystem?: Record<string, unknown>): Promise<string> => {
-  const rootDir = path.resolve(MOCK_ROOT_DIR, ctx.task.id);
+  const rootDir = path.resolve(MOCK_ROOT_DIR, `${ctx.task.name}-${ctx.task.id}`.replace(/\s/g, '-'));
+  const mergedFileSystem = assign(DEFAULT_FILE_SYSTEM, fileSystem ?? {});
 
-  await recursiveCreate(merge({}, DEFAULT_FILE_SYSTEM, fileSystem), rootDir);
+  await recursiveCreate(mergedFileSystem, rootDir);
 
-  vi.restoreAllMocks();
+  // Clear the calls to the filesystem methods before continuing
+  vi.clearAllMocks();
 
   return rootDir;
 };

@@ -1,6 +1,7 @@
-import {type PdkBuilderContext} from '../../types/command';
-import {type UpgradeCommandArgs, UpgradeMode} from './types';
+import {type PdkBuilderContext} from '../../types/command.types';
+import {type UpgradeCommandArgs} from './upgrade.types';
 import {getDefaultNodeLockfilePath} from './node/getDefaultNodeLockfilePath';
+import {UpgradeMode} from './enums';
 
 export const getLockfilePath = (context: PdkBuilderContext<UpgradeCommandArgs>, mode: UpgradeMode): string => {
   let lockfilePath: string | undefined = context.args.lockfile;

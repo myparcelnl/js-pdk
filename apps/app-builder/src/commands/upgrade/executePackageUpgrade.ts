@@ -1,9 +1,9 @@
-import {type PromiseOr} from '@myparcel/ts-utils';
-import {UpgradeMode, type UpgradeSubContextWithLockfile, type UpgradeSubResult} from './types';
+import {type ParsedVersions, type PdkBuilderUpgradeContext} from './upgrade.types';
 import {upgradeNodePackage} from './node/upgradeNodePackage';
+import {UpgradeMode} from './enums';
 import {upgradeComposerPackage} from './composer/upgradeComposerPackage';
 
-export const executePackageUpgrade = (context: UpgradeSubContextWithLockfile): PromiseOr<UpgradeSubResult> => {
+export const executePackageUpgrade = (context: PdkBuilderUpgradeContext): Promise<ParsedVersions> => {
   switch (context.mode) {
     case UpgradeMode.Node:
       return upgradeNodePackage(context);

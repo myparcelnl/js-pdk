@@ -1,5 +1,5 @@
-import {NodePackageManager} from '../types';
-import {type PdkBuilderContext} from '../../../types/command';
+import {NodePackageManager} from '../enums';
+import {type PdkBuilderContext} from '../../../types/command.types';
 
 export const getDefaultNodeLockfilePath = (context: PdkBuilderContext): string => {
   switch (context.config.nodePackageManager) {

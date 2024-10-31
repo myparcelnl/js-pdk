@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import fs from 'node:fs';
 import {type Debugger} from 'debug';
 import chalk from 'chalk';
@@ -6,7 +6,7 @@ import archiver, {type Archiver} from 'archiver';
 
 const ZLIB_COMPRESSION_MAX = 9;
 
-export function createArchive(zipFile: string, debug: Debugger): Archiver {
+export const createArchive = (zipFile: string, debug: Debugger): Archiver => {
   const output = fs.createWriteStream(zipFile);
 
   const archive: Archiver = archiver('zip', {
@@ -56,4 +56,4 @@ export function createArchive(zipFile: string, debug: Debugger): Archiver {
   }
 
   return archive;
-}
+};

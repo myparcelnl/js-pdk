@@ -1,8 +1,10 @@
-export type {PdkBuilderCommand} from './types/command';
+export type {PdkBuilderCommand} from './types/command.types';
 
-export type {PdkBuilderConfig} from './types/config';
+export type {PdkBuilderConfig} from './types/config.types';
 
-export type {StringGenerator} from './types/common';
+export type {StringGenerator} from './types/common.types';
+
+export * from './deprecated';
 
 export {COMMIT_TYPE_AUTO} from './constants';
 
@@ -12,9 +14,17 @@ export {addPlatformToContext} from './utils/addPlatformToContext';
 
 export {copyFile} from './utils/fs/copyFile';
 
+export {createDirectories} from './utils/fs/createDirectories';
+
 export {defineConfig} from './defineConfig';
 
+export {deleteDirectory} from './utils/fs/deleteDirectory';
+
+export {deleteFile} from './utils/fs/deleteFile';
+
 export {executeCommand} from './utils/executeCommand';
+
+export {executePerPlatform} from './utils/command/executePerPlatform';
 
 export {executePromises} from './utils/executePromises';
 
@@ -44,8 +54,6 @@ export {logSourcePath} from './utils/debug/logSourcePath';
 
 export {logTargetPath} from './utils/debug/logTargetPath';
 
-export {mkdirs} from './utils/fs/mkdirs';
-
 export {parseJsonFile} from './utils/parseJsonFile';
 
 export {renameFile} from './utils/fs/renameFile';
@@ -62,10 +70,6 @@ export {resolvePath} from './utils/resolvePath';
 export {resolveString} from './utils/resolveString';
 
 export {resolveStrings} from './utils/resolveStrings';
-
-export {rmDir} from './utils/fs/rmDir';
-
-export {rmFile} from './utils/fs/rmFile';
 
 export {shouldModifyFiles} from './utils/command/shouldModifyFiles';
 

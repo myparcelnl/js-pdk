@@ -1,4 +1,4 @@
-import {type PdkBuilderUpgradeContext, type UpgradedEntry} from './types';
+import {type PdkBuilderUpgradeContext, type UpgradedEntry} from './upgrade.types';
 import {getRepositoryUrl} from './getRepositoryUrl';
 import {executePackageUpgrade} from './executePackageUpgrade';
 
@@ -19,9 +19,6 @@ export const upgradePackages = async (context: PdkBuilderUpgradeContext): Promis
 
         return acc;
       }, [] as Omit<UpgradedEntry, 'repository'>[])
-      .map(async (entry) => ({
-        ...entry,
-        repository: await getRepositoryUrl(entry, context),
-      })),
+      .map(async (entry) => ({...entry, repository: await getRepositoryUrl(entry, context)})),
   );
 };

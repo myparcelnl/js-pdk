@@ -1,14 +1,6 @@
 import {type Command} from 'commander';
 import {isOfType} from '@myparcel/ts-utils';
-import {type AnyCommandArgs, type CommandArgs} from '../../types/command';
-
-export type CommandArguments = (string | (CommandArgs & AnyCommandArgs) | Command)[];
-
-export type ParsedCommand<A extends Record<string, unknown> = Record<string, unknown>> = CommandArgs &
-  A & {
-    arguments?: string[];
-    command: Command;
-  };
+import {type CommandArguments, type ParsedCommand} from '../../types/command.types';
 
 export const parseCommand = (args: CommandArguments): ParsedCommand =>
   args.reduce((acc: ParsedCommand, arg) => {

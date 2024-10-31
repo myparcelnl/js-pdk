@@ -1,11 +1,11 @@
+import chalk from 'chalk';
 import {resolveConfig} from '../resolveConfig';
 import {mergeDefaultConfig} from '../mergeDefaultConfig';
-import {reportDryRun} from '../debug/reportDryRun';
-import {type PdkBuilderConfig} from '../../types/config';
-import {type CreateHook, type PdkBuilderContext} from '../../types/command';
+import {type PdkBuilderConfig} from '../../types/config.types';
+import {type CreateHook, type PdkBuilderContext} from '../../types/command.types';
 import {VerbosityLevel} from '../../constants';
-import {shouldModifyFiles} from './shouldModifyFiles';
 import {parseCommandInput} from './parseCommandInput';
+import {isDryRun} from './isDryRun';
 
 export const createWithConfig: CreateHook = (env) => {
   return (definition) => {
@@ -18,8 +18,8 @@ export const createWithConfig: CreateHook = (env) => {
 
       const mergedContext = {...context, config: mergeDefaultConfig(config)} satisfies PdkBuilderContext;
 
-      if (!shouldModifyFiles(mergedContext)) {
-        reportDryRun(mergedContext.debug);
+      if (isDryRun(mergedContext)) {
+        mergedContext.debug(chalk.redBright(`The command was run with --dry-run. No files will be modified`));
       }
 
       const capitalizedCommandName = commandName.charAt(0).toUpperCase() + commandName.slice(1);

@@ -18,19 +18,19 @@ describe('createCommand', () => {
   it('should prepend the command with the root command', () => {
     const context = createTestContext({
       config: {
-        rootCommand: 'root command',
-        rootCommands: ['foo'],
+        dockerCommand: 'root command',
+        dockerCommands: ['foo'],
       },
     });
 
     expect(createCommand(context.config, 'foo')).toEqual('root command foo');
   });
 
-  it('should not prepend the command with the root command when the command is not in the rootCommands array', () => {
+  it('should not prepend the command with the root command when the command is not in the dockerCommands array', () => {
     const context = createTestContext({
       config: {
-        rootCommand: 'root command',
-        rootCommands: [],
+        dockerCommand: 'root command',
+        dockerCommands: [],
       },
     });
 

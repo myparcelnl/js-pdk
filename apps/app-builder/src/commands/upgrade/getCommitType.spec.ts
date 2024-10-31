@@ -1,7 +1,7 @@
 import {describe, expect, it} from 'vitest';
 import {COMMIT_TYPE_AUTO} from '../../constants';
 import {createTestContext} from '../../__tests__/createTestContext';
-import {type UpgradedEntry} from './types';
+import {type UpgradedEntry} from './upgrade.types';
 import {getCommitType} from './getCommitType';
 
 type TestInput = {

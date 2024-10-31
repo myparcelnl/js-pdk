@@ -1,4 +1,4 @@
-import {type PdkBuilderContext} from '../types/command';
+import {type PdkBuilderContext} from '../types/command.types';
 import {resolveString} from './resolveString';
 import {resolvePath} from './resolvePath';
 import {exists} from './fs/exists';

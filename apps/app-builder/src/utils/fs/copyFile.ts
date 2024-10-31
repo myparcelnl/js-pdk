@@ -1,15 +1,15 @@
-import path from 'path';
-import fs from 'fs';
+import path from 'node:path';
+import fs from 'node:fs';
 import chalk from 'chalk';
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {resolvePath} from '../resolvePath';
 import {logTargetPath} from '../debug/logTargetPath';
 import {logSourcePath} from '../debug/logSourcePath';
-import {shouldModifyFiles} from '../command/shouldModifyFiles';
 import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';
-import {type StringGenerator} from '../../types/common';
-import {type PdkBuilderContext} from '../../types/command';
-import {mkdirs} from './mkdirs';
+import {isDryRun} from '../command/isDryRun';
+import {type StringGenerator} from '../../types/common.types';
+import {type PdkBuilderContext} from '../../types/command.types';
+import {createDirectories} from './createDirectories';
 
 export const copyFile = async (
   source: OneOrMore<StringGenerator>,
@@ -19,7 +19,7 @@ export const copyFile = async (
   const resolvedSource = resolvePath(source, context);
   const resolvedTarget = resolvePath(target, context);
 
-  await mkdirs(path.dirname(resolvedTarget), context);
+  await createDirectories(context, path.dirname(resolvedTarget));
 
   if (isVeryVeryVerbose(context)) {
     context.debug(
@@ -29,7 +29,7 @@ export const copyFile = async (
     );
   }
 
-  if (!shouldModifyFiles(context)) {
+  if (isDryRun(context)) {
     return;
   }
 

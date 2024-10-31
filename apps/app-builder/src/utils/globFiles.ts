@@ -1,7 +1,7 @@
 import glob, {type Options} from 'fast-glob';
 import {type OneOrMore} from '@myparcel/ts-utils';
-import {type StringGenerator} from '../types/common';
-import {type PdkBuilderContext} from '../types/command';
+import {type StringGenerator} from '../types/common.types';
+import {type PdkBuilderContext} from '../types/command.types';
 import {resolveStrings} from './resolveStrings';
 
 export const globFiles = (

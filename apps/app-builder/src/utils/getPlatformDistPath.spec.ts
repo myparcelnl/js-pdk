@@ -1,6 +1,6 @@
 import {describe, expect, it} from 'vitest';
 import {type RecursivePartial} from '@myparcel/ts-utils';
-import {type PdkBuilderContext} from '../types/command';
+import {type PdkBuilderContext, type PdkBuilderContextWithPlatformArgs} from '../types/command.types';
 import {PdkPlatformName} from '../constants';
 import {createTestContext} from '../__tests__/createTestContext';
 import {getPlatformDistPath} from './getPlatformDistPath';
@@ -45,7 +45,7 @@ describe('getPlatformDistPath', () => {
     ],
   ] satisfies [RecursivePartial<PdkBuilderContext>, string][])('creates dist path with %s -> %s', (context, result) => {
     const path = getPlatformDistPath(
-      createTestContext<PdkBuilderContext<{platform: PdkPlatformName}>>({
+      createTestContext<PdkBuilderContextWithPlatformArgs>({
         ...context,
         args: {
           platform: PdkPlatformName.MyParcelNl,

@@ -1,14 +1,14 @@
-import {type PdkBuilderCommand} from '../../types/command';
+import {type PdkBuilderCommand} from '../../types/command.types';
 import {writeReport} from './writeReport';
 import {upgradePackages} from './upgradePackages';
-import {type InputUpgradeCommandArgs, type PdkBuilderUpgradeContext} from './types';
+import {type PdkBuilderUpgradeContext, type UpgradeCommandArgs} from './upgrade.types';
 import {logVersions} from './logVersions';
 import {getLockfilePath} from './getLockfilePath';
 import {ensureCleanLockfile} from './ensureCleanLockfile';
 import {determineUpgradeMode} from './determineUpgradeMode';
 import {commitChanges} from './commitChanges';
 
-const upgrade: PdkBuilderCommand<InputUpgradeCommandArgs> = async (inputContext) => {
+const upgrade: PdkBuilderCommand<UpgradeCommandArgs> = async (inputContext) => {
   const {args, debug} = inputContext;
   const [packageName] = args.arguments ?? [];
 

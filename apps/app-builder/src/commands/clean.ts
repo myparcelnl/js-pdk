@@ -1,8 +1,8 @@
-import {rmDir} from '../utils/fs/rmDir';
-import {type PdkBuilderCommand} from '../types/command';
+import {deleteDirectory} from '../utils/fs/deleteDirectory';
+import {type PdkBuilderCommand} from '../types/command.types';
 
-const clean: PdkBuilderCommand = async (context) => {
-  await rmDir(context.config.outDir, context);
-};
+const clean = (async (context) => {
+  await deleteDirectory(context, context.config.outDir);
+}) satisfies PdkBuilderCommand;
 
 export default clean;

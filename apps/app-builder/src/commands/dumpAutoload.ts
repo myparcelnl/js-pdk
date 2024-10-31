@@ -1,30 +1,29 @@
 import {resolvePath} from '../utils/resolvePath';
 import {getRelativePath} from '../utils/getRelativePath';
-import {getPlatformDistPath} from '../utils/getPlatformDistPath';
-import {rmFile} from '../utils/fs/rmFile';
+import {deleteFile} from '../utils/fs/deleteFile';
 import {executeCommand} from '../utils/executeCommand';
-import {addPlatformToContext} from '../utils/addPlatformToContext';
-import {type PdkBuilderCommand} from '../types/command';
+import {executePerPlatform} from '../utils/command/executePerPlatform';
+import {type PdkBuilderCommand} from '../types/command.types';
 
-const dumpAutoload: PdkBuilderCommand = async (context) => {
-  const {config, debug} = context;
+const dumpAutoload = (async (context) => {
+  const {debug} = context;
 
   debug('Dumping autoload...');
 
-  await Promise.all(
-    config.platforms.map(async (platform) => {
-      const platformContext = addPlatformToContext(context, platform);
-      const platformDistPath = getPlatformDistPath(platformContext);
+  await executePerPlatform(context, async (platformContext) => {
+    const {args} = platformContext;
 
-      await rmFile(resolvePath([platformDistPath, 'vendor', 'autoload.php'], context), platformContext);
+    const autoloadPath = resolvePath([args.platformOutDir, 'vendor', 'autoload.php'], platformContext);
 
-      await executeCommand(platformContext, 'composer', [
-        'dump-autoload',
-        `--working-dir=${getRelativePath(platformDistPath, platformContext)}`,
-        '--classmap-authoritative',
-      ]);
-    }),
-  );
-};
+    await deleteFile(platformContext, autoloadPath);
 
+    await executeCommand(platformContext, 'composer', [
+      'dump-autoload',
+      `--working-dir=${getRelativePath(args.platformOutDir, platformContext)}`,
+      '--classmap-authoritative',
+    ]);
+  });
+}) satisfies PdkBuilderCommand;
+
+// noinspection JSUnusedGlobalSymbols
 export default dumpAutoload;

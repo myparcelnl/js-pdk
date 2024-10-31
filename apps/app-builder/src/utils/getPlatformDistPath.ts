@@ -1,7 +1,6 @@
-import {type PdkBuilderContext} from '../types/command';
-import {type PdkPlatformName} from '../constants';
+import {type PdkBuilderContextWithPlatformArgs} from '../types/command.types';
 import {resolvePath} from './resolvePath';
 
-export const getPlatformDistPath = (context: PdkBuilderContext<{platform: PdkPlatformName}>): string => {
+export const getPlatformDistPath = (context: PdkBuilderContextWithPlatformArgs): string => {
   return resolvePath([context.config.outDir, context.config.platformFolderName], context);
 };

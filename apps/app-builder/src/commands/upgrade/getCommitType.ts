@@ -1,7 +1,7 @@
 import diff from 'semver/functions/diff.js';
-import {type PdkBuilderContext} from '../../types/command';
+import {type PdkBuilderContext} from '../../types/command.types';
 import {COMMIT_TYPE_AUTO} from '../../constants';
-import {type UpgradedEntry} from './types';
+import {type UpgradedEntry} from './upgrade.types';
 
 export const getCommitType = (context: PdkBuilderContext, upgradedVersions: UpgradedEntry[]): string => {
   if (context.config.commitType === COMMIT_TYPE_AUTO) {

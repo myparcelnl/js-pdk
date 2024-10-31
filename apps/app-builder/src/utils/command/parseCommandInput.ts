@@ -1,6 +1,10 @@
 import type Liftoff from 'liftoff';
-import {type CommandDefinition, type PdkBuilderContextWithoutConfig} from '../../types/command';
-import {type CommandArguments, parseCommand} from './parseCommand';
+import {
+  type CommandArguments,
+  type CommandDefinition,
+  type PdkBuilderContextWithoutConfig,
+} from '../../types/command.types';
+import {parseCommand} from './parseCommand';
 import {createDebugger} from './createDebugger';
 
 export const parseCommandInput = async <O extends CommandDefinition>(
@@ -9,6 +13,7 @@ export const parseCommandInput = async <O extends CommandDefinition>(
   env: Liftoff.LiftoffEnv,
 ): Promise<{
   command: O['action'];
+  // eslint-disable-next-line @typescript-eslint/no-magic-numbers
   context: Parameters<O['action']>[0] & PdkBuilderContextWithoutConfig<Parameters<O['action']>[0]['args']>;
 }> => {
   const command = (await definition.action()).default;
