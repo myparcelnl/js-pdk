@@ -91,9 +91,15 @@ export const OPTION_DOCKER_COMMAND = [
   'Prefix to run a command in a Docker container.',
 ] as const;
 
+/**
+ * @deprecated Use OPTION_DOCKER_COMMAND instead.
+ * @TODO Remove in v2.0.0
+ */
+export const OPTION_ROOT_COMMAND = ['--root-command <command>', 'Deprecated. Use --docker-command instead.'] as const;
+
 export const OPTION_VERSION = ['--version <version>', 'The new version string. Example: "1.2.3".'] as const;
 
-export const CONFIG_OPTIONS = [OPTION_DOCKER_COMMAND, OPTION_VERSION] as const;
+export const CONFIG_OPTIONS = [OPTION_DOCKER_COMMAND, OPTION_ROOT_COMMAND, OPTION_VERSION] as const;
 
 export const BULK_COMMAND_OPTIONS = [OPTION_DRY_RUN, OPTION_PARALLEL, OPTION_VERBOSITY, OPTION_QUIET] as const;
 
