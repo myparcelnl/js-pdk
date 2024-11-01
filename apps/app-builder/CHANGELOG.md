@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.5.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.5.0...@myparcel-pdk/app-builder@1.5.1) "@myparcel-pdk/app-builder" (2024-11-01)
+
+
+### Bug Fixes
+
+* **app-builder:** re-add deprecated root command argument ([d8de29c](https://github.com/myparcelnl/js-pdk/commit/d8de29c4464589dbdcfad2d3e84127b333d09544))
+
+
+
+
 ## [1.5.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.4.7...@myparcel-pdk/app-builder@1.5.0) "@myparcel-pdk/app-builder" (2024-10-31)
 
 
