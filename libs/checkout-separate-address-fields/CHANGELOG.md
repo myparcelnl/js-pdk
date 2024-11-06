@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.2.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-separate-address-fields@1.1.5...@myparcel-pdk/checkout-separate-address-fields@1.2.0) "@myparcel-pdk/checkout-separate-address-fields" (2024-11-06)
+
+
+### Features
+
+* **checkout:** export more variables ([82e843c](https://github.com/myparcelnl/js-pdk/commit/82e843c442198268661881ac1cd1c8a0e7a9f449))
+
+
+
+
 ## [1.1.5](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-separate-address-fields@1.0.7...@myparcel-pdk/checkout-separate-address-fields@1.1.5) "@myparcel-pdk/checkout-separate-address-fields" (2024-10-24)
 
 
