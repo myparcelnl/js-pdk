@@ -1,4 +1,3 @@
-export enum TaxField {
-  EoriNumber = 'eoriNumber',
-  VatNumber = 'vatNumber',
-}
+import {type TaxField} from './constants';
+
+export type TaxFields = Record<TaxField, string>;

@@ -1,5 +1,5 @@
 import {PdkUtil, useCheckoutStore, useConfig, useUtil} from '@myparcel-pdk/checkout-common';
-import {TaxField} from '../types';
+import {TaxField} from '../constants';
 import {hasTaxFields} from './hasTaxFields';
 
 export const toggleTaxFields = (): void => {

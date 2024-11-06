@@ -1,6 +1,10 @@
 import {StoreListener, useCheckoutStore} from '@myparcel-pdk/checkout-common';
 import {toggleTaxFields} from './utils';
 
+export type {TaxFields} from './types';
+
+export {TaxField} from './constants';
+
 /**
  * Initializes the checkout tax fields module.
  */

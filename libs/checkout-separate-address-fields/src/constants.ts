@@ -1,4 +1,8 @@
-import {SeparateAddressField} from './types';
+export enum SeparateAddressField {
+  Street = 'street',
+  Number = 'number',
+  NumberSuffix = 'numberSuffix',
+}
 
 export const ATTRIBUTE_AUTOCOMPLETE = 'autocomplete';
 

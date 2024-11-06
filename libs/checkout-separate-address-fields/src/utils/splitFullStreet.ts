@@ -1,5 +1,5 @@
-import {SeparateAddressField, type SeparateAddressFields} from '../types';
-import {SPLIT_STREET_REGEX} from '../constants';
+import {type SeparateAddressFields} from '../types';
+import {SeparateAddressField, SPLIT_STREET_REGEX} from '../constants';
 
 export const splitFullStreet = (address?: string): SeparateAddressFields => {
   const parts = address?.split(SPLIT_STREET_REGEX);

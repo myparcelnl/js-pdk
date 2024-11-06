@@ -2,6 +2,7 @@
 
 exports[`exports > exports from index.ts 1`] = `
 [
+  "TaxField",
   "initializeCheckoutTaxFields",
 ]
 `;

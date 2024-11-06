@@ -1,10 +1,5 @@
 import {type AddressField, type AddressFields} from '@myparcel-pdk/checkout-common';
-
-export enum SeparateAddressField {
-  Street = 'street',
-  Number = 'number',
-  NumberSuffix = 'numberSuffix',
-}
+import {type SeparateAddressField} from './constants';
 
 export type AnyAddressField = AddressField | SeparateAddressField;
 
