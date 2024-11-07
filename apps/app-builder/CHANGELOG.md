@@ -2,6 +2,21 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.6.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.5.1...@myparcel-pdk/app-builder@1.6.0) "@myparcel-pdk/app-builder" (2024-11-07)
+
+
+### Features
+
+* **app-builder:** improve error handling ([c5bd584](https://github.com/myparcelnl/js-pdk/commit/c5bd5840e568e73bc1e3960bb536f7d692587b99))
+
+
+### Bug Fixes
+
+* **app-builder:** fix npm commands ([340f12a](https://github.com/myparcelnl/js-pdk/commit/340f12a31c8a55f423dc962cfe64bddbd5c9ef34))
+
+
+
+
 ## [1.5.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.5.0...@myparcel-pdk/app-builder@1.5.1) "@myparcel-pdk/app-builder" (2024-11-01)
 
 
