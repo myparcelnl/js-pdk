@@ -1,9 +1,14 @@
 import {program} from 'commander';
-import {type AnyCommandArgs, type CommandCb, type CommandDefinition} from '../../types/command.types';
+import {
+  type AnyCommandArgs,
+  type AnyCommandDefinition,
+  type CommandCb,
+  type DefaultCommandArgs,
+} from '../../types/command.types';
 
-export const registerCommand = <Args extends AnyCommandArgs = AnyCommandArgs>(
-  definition: CommandDefinition<Args>,
-  callback: (definition: CommandDefinition<Args>) => CommandCb,
+export const registerCommand = <Args extends AnyCommandArgs = DefaultCommandArgs>(
+  definition: AnyCommandDefinition<Args>,
+  callback: (definition: AnyCommandDefinition<Args>) => CommandCb,
 ): void => {
   const command = program.command(definition.name).description(definition.description);
 

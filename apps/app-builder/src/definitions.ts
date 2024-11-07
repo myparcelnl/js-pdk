@@ -1,6 +1,6 @@
 import {defineCommand} from './utils/defineCommand';
 import {defineBulkCommand} from './utils/defineBulkCommand';
-import {type CommandDefinition} from './types/command.types';
+import {type AnyCommandDefinition} from './types/command.types';
 import {type BulkCommandDefinition} from './types/bulkCommand.types';
 import {
   COMMAND_BUILD_NAME,
@@ -112,7 +112,7 @@ const CORE_COMMANDS = Object.freeze([
   copyCommand,
   renameCommand,
   transformCommand,
-] satisfies CommandDefinition[]);
+] satisfies AnyCommandDefinition[]);
 
 export const buildBulkCommand = defineBulkCommand({
   name: COMMAND_BUILD_NAME,
@@ -168,7 +168,7 @@ export const releaseBulkCommand = defineBulkCommand({
   commands: [cleanCommand, scopePhpCommand, incrementCommand, ...CORE_COMMANDS, zipCommand],
 });
 
-export const ALL_COMMANDS: readonly CommandDefinition[] = Object.freeze([
+export const ALL_COMMANDS: readonly AnyCommandDefinition[] = Object.freeze([
   initCommand,
   cleanCommand,
   copyCommand,

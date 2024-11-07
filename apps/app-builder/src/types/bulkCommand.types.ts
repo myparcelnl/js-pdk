@@ -1,11 +1,11 @@
-import {type CommandDefinition} from './command.types';
+import {type AnyCommandDefinition} from './command.types';
 
-type CommandArguments<Cd extends CommandDefinition> = Cd extends CommandDefinition<infer Args> ? Args : never;
+type CommandArguments<Cd extends AnyCommandDefinition> = Cd extends AnyCommandDefinition<infer Args> ? Args : never;
 
-export type CommandWithArguments<Command extends CommandDefinition = CommandDefinition> =
+export type CommandWithArguments<Command extends AnyCommandDefinition = AnyCommandDefinition> =
   | [Command, Partial<CommandArguments<Command>>];
 
-export type CommandWithOrWithoutArguments<Command extends CommandDefinition = CommandDefinition> =
+export type CommandWithOrWithoutArguments<Command extends AnyCommandDefinition = AnyCommandDefinition> =
   | Command
   | CommandWithArguments<Command>;
 

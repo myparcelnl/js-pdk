@@ -1,6 +1,6 @@
-import {type CommandArgs} from '../types/command.types';
+import {type DefaultCommandArgs} from '../types/command.types';
 
-export const executePromises = async (args: CommandArgs, promises: Promise<unknown>[]): Promise<void> => {
+export const executePromises = async (args: DefaultCommandArgs, promises: Promise<unknown>[]): Promise<void> => {
   if (args.parallel) {
     await Promise.all(promises);
 

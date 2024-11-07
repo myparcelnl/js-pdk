@@ -2,14 +2,14 @@ import {type RecursivePartial} from '@myparcel/ts-utils';
 import {mergeDefaultConfig} from '../utils/mergeDefaultConfig';
 import {createDebugger} from '../utils/command/createDebugger';
 import {type PdkBuilderConfig} from '../types/config.types';
-import {type CommandArgs, type PdkBuilderContext} from '../types/command.types';
+import {type DefaultCommandArgs, type PdkBuilderContext} from '../types/command.types';
 import {PdkPlatformName} from '../constants';
 import {MOCK_ROOT_DIR} from './constants';
 
 export const createTestContext = <Context extends PdkBuilderContext = PdkBuilderContext>(
   context?: RecursivePartial<Context>,
 ): Context => {
-  const args: CommandArgs = {
+  const args: DefaultCommandArgs = {
     arguments: [],
     dryRun: false,
     parallel: false,

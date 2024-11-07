@@ -1,12 +1,12 @@
 import {type LiftoffEnv} from 'liftoff';
 import {type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types/config.types';
-import {type AnyCommandArgs, type ParsedCommand} from '../types/command.types';
+import {type AnyCommandArgs, type ParsedCommandArguments} from '../types/command.types';
 
 const configCache = new Map<string, PdkBuilderConfig>();
 
-export async function resolveConfig(
+export async function resolveConfig<Args extends AnyCommandArgs>(
   env: LiftoffEnv,
-  args?: ParsedCommand<AnyCommandArgs>,
+  args?: ParsedCommandArguments<Args>,
 ): Promise<ResolvedPdkBuilderConfig> {
   if (!env.configPath) {
     throw new Error('No config file found.');

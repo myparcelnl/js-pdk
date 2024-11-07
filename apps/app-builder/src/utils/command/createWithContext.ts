@@ -1,7 +1,7 @@
-import {type CreateHook, type PdkBuilderContext} from '../../types/command.types';
+import {type CommandDefinitionWithoutConfig, type CreateHook} from '../../types/command.types';
 import {parseCommandInput} from './parseCommandInput';
 
-export const createWithContext: CreateHook<Omit<PdkBuilderContext, 'config'>> = (env) => {
+export const createWithContext = ((env) => {
   return (definition) => {
     return async (...args) => {
       const {command, context} = await parseCommandInput(definition, args, env);
@@ -11,4 +11,4 @@ export const createWithContext: CreateHook<Omit<PdkBuilderContext, 'config'>> = 
       context.debug.logTimeTaken();
     };
   };
-};
+}) satisfies CreateHook<CommandDefinitionWithoutConfig>;

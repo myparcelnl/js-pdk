@@ -1,8 +1,8 @@
 import {type Debugger} from 'debug';
 import {type PdkBuilderConfig} from '../../types/config.types';
-import {type CommandArgs} from '../../types/command.types';
+import {type DefaultCommandArgs} from '../../types/command.types';
 
-export type IncrementCommandArgs = CommandArgs & {
+export type IncrementCommandArgs = DefaultCommandArgs & {
   version?: string;
 };
 
@@ -42,7 +42,7 @@ export interface VersionReplacerInput<T extends VersionSource = VersionSource> {
 
 export interface VersionReplacerContext {
   config: PdkBuilderConfig;
-  args: CommandArgs;
+  args: DefaultCommandArgs;
   debug: Debugger;
 }
 

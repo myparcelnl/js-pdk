@@ -4,7 +4,7 @@ import {type NodePackageManager} from '../commands/upgrade/enums';
 import {type VersionSource} from '../commands/increment/increment.types';
 import {type StringGenerator} from './common.types';
 import {
-  type CommandDefinition,
+  type AdditionalCommandDefinition,
   type PdkBuilderCommand,
   type PdkBuilderCommandWithoutConfig,
   type PdkBuilderContext,
@@ -208,7 +208,7 @@ export type PdkBuilderConfig = {
   /**
    * Define additional custom commands on the pdk builder.
    */
-  additionalCommands?: CommandDefinition[];
+  additionalCommands?: AdditionalCommandDefinition[];
 
   /**
    * Hooks to execute before or after other commands. Works with custom commands added with `additionalCommands` as well.

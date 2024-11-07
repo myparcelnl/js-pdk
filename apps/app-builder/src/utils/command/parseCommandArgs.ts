@@ -1,9 +1,16 @@
 import {type Command} from 'commander';
 import {isOfType} from '@myparcel/ts-utils';
-import {type CommandArguments, type ParsedCommand} from '../../types/command.types';
+import {
+  type AnyCommandArgs,
+  type DefaultCommandArgs,
+  type InputCommandArguments,
+  type ParsedCommandArguments,
+} from '../../types/command.types';
 
-export const parseCommand = (args: CommandArguments): ParsedCommand =>
-  args.reduce((acc: ParsedCommand, arg) => {
+export const parseCommandArgs = <Args extends AnyCommandArgs = DefaultCommandArgs>(
+  args: InputCommandArguments<Args>,
+): ParsedCommandArguments<Args> =>
+  args.reduce((acc: ParsedCommandArguments<Args>, arg) => {
     if (isOfType<Command>(arg, 'on')) {
       const command = arg;
 
@@ -24,4 +31,4 @@ export const parseCommand = (args: CommandArguments): ParsedCommand =>
     }
 
     return acc;
-  }, {} as ParsedCommand);
+  }, {} as ParsedCommandArguments<Args>);

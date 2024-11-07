@@ -1,24 +1,30 @@
 import type Liftoff from 'liftoff';
 import {
-  type CommandArguments,
-  type CommandDefinition,
-  type PdkBuilderContextWithoutConfig,
+  type AnyCommandArgs,
+  type AnyCommandDefinition,
+  type BasePdkBuilderContext,
+  type DefaultCommandArgs,
+  type InputCommandArguments,
+  type PdkBuilderCommandWithoutConfig,
 } from '../../types/command.types';
-import {parseCommand} from './parseCommand';
+import {parseCommandArgs} from './parseCommandArgs';
 import {createDebugger} from './createDebugger';
 
-export const parseCommandInput = async <O extends CommandDefinition>(
-  definition: O,
-  args: CommandArguments,
-  env: Liftoff.LiftoffEnv,
-): Promise<{
-  command: O['action'];
-  // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-  context: Parameters<O['action']>[0] & PdkBuilderContextWithoutConfig<Parameters<O['action']>[0]['args']>;
-}> => {
-  const command = (await definition.action()).default;
+type ParsedCommandInput<Args extends AnyCommandArgs = DefaultCommandArgs> = {
+  command: PdkBuilderCommandWithoutConfig<Args>;
+  context: BasePdkBuilderContext<Args>;
+};
 
-  const parsedArgs = parseCommand(args);
+export const parseCommandInput = async <
+  Args extends AnyCommandArgs = DefaultCommandArgs,
+  Definition extends AnyCommandDefinition<Args> = AnyCommandDefinition<Args>,
+>(
+  definition: Definition,
+  args: InputCommandArguments<Args>,
+  env: Liftoff.LiftoffEnv,
+): Promise<ParsedCommandInput<Args>> => {
+  const command = (await definition.action()).default;
+  const parsedArgs = parseCommandArgs(args);
 
   return {
     command,

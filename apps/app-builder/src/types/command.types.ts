@@ -4,35 +4,46 @@ import type Liftoff from 'liftoff';
 import {type LiftoffEnv} from 'liftoff';
 import {type Debugger} from 'debug';
 import {type Command} from 'commander';
-import {type PromiseOr} from '@myparcel/ts-utils';
+import {type PromiseOr, type Replace} from '@myparcel/ts-utils';
 import {type CommandName, type PdkPlatformName} from '../constants';
 import {type ResolvedPdkBuilderConfig} from './config.types';
 
-export interface BaseCommandDefinition<Args = any> {
+export interface BaseCommandDefinition<Args extends AnyCommandArgs = DefaultCommandArgs> {
   name: CommandName;
-  action: (args?: Args & AnyCommandArgs) => Promise<any>;
   description: string;
   options?: any[];
   args?: string[][];
+
+  action(): Promise<{default: PdkBuilderCommand<Args>}>;
 }
 
-export interface CommandDefinitionWithoutConfig<Args = any> extends BaseCommandDefinition<Args> {
+export interface CommandDefinitionWithoutConfig<Args extends AnyCommandArgs = DefaultCommandArgs>
+  extends BaseCommandDefinition<Args> {
   hasConfig?: false;
 }
 
-export type CommandDefinition<Args = any> = BaseCommandDefinition<Args> | CommandDefinitionWithoutConfig<Args>;
+export type AnyCommandDefinition<Args extends AnyCommandArgs = DefaultCommandArgs> =
+  | BaseCommandDefinition<Args>
+  | CommandDefinitionWithoutConfig<Args>;
 
-export type PdkBuilderCommand<Args extends AnyCommandArgs = CommandArgs> = (
-  context: PdkBuilderContext<Args>,
-) => PromiseOr<void>;
+export type AdditionalCommandDefinition<Args extends AnyCommandArgs = DefaultCommandArgs> = Replace<
+  AnyCommandDefinition<Args>,
+  'action',
+  PdkBuilderCommand<Args>
+>;
 
-export type PdkBuilderCommandWithoutConfig<Args extends AnyCommandArgs = CommandArgs> = (
-  context: PdkBuilderContextWithoutConfig<Args>,
+export type PdkBuilderCommand<
+  Args extends AnyCommandArgs = DefaultCommandArgs,
+  Context extends BasePdkBuilderContext<Args> = BasePdkBuilderContext<Args>,
+> = (context: Context) => PromiseOr<void>;
+
+export type PdkBuilderCommandWithoutConfig<Args extends AnyCommandArgs = DefaultCommandArgs> = (
+  context: BasePdkBuilderContext<Args>,
 ) => PromiseOr<void>;
 
 export type AnyCommandArgs = Record<string, unknown>;
 
-export type CommandArgs = {
+export type DefaultCommandArgs = {
   arguments?: string[];
   dryRun?: boolean;
   parallel?: boolean;
@@ -40,47 +51,50 @@ export type CommandArgs = {
   verbose: number;
 };
 
-type PlatformArgs<Platform extends PdkPlatformName = PdkPlatformName> = {
+export type PlatformCommandArgs<Platform extends PdkPlatformName = PdkPlatformName> = {
   platform: Platform;
   platformOutDir: string;
 };
 
-export type CommandArguments = (string | (CommandArgs & AnyCommandArgs) | Command)[];
+export type InputCommandArguments<Args extends AnyCommandArgs = DefaultCommandArgs> = (
+  | string
+  | (DefaultCommandArgs & Args)
+  | Command
+)[];
 
-export type ParsedCommand<A extends Record<string, unknown> = Record<string, unknown>> = CommandArgs &
-  A & {
+export type ParsedCommandArguments<Args extends AnyCommandArgs = DefaultCommandArgs> = DefaultCommandArgs &
+  Args & {
     arguments?: string[];
     command: Command;
   };
 
-export type CommandCb = (...args: CommandArguments) => void | Promise<void>;
+export type CommandCb = (...args: InputCommandArguments) => void | Promise<void>;
 
-export type CreateHook<Args extends AnyCommandArgs = CommandArgs> = (
+export type CreateHook<Definition extends AnyCommandDefinition> = (
   env: Liftoff.LiftoffEnv,
-  argv: string[],
-) => (definition: CommandDefinition<Args>) => CommandCb;
+) => (definition: Definition) => CommandCb;
 
-export type BaseCommandContext<Args extends AnyCommandArgs = CommandArgs> = {
+export type BaseCommandContext<Args extends AnyCommandArgs = DefaultCommandArgs> = {
   env: LiftoffEnv;
   args: Args;
   debug?: PdkDebugger;
 };
 
-export type PdkBuilderContextWithoutConfig<Args extends AnyCommandArgs = CommandArgs> = BaseCommandContext<Args> & {
-  args: ParsedCommand<Args>;
+export type BasePdkBuilderContext<Args extends AnyCommandArgs = DefaultCommandArgs> = BaseCommandContext<Args> & {
+  args: ParsedCommandArguments<Args>;
   debug: PdkDebugger;
 };
 
-export type PdkBuilderContext<Args extends AnyCommandArgs = CommandArgs> = PdkBuilderContextWithoutConfig<
-  Args & Partial<PlatformArgs>
+export type PdkBuilderContext<Args extends AnyCommandArgs = DefaultCommandArgs> = BasePdkBuilderContext<
+  Args & Partial<PlatformCommandArgs>
 > & {
   config: ResolvedPdkBuilderConfig;
 };
 
 export type PdkBuilderContextWithPlatformArgs<
-  Args extends AnyCommandArgs = CommandArgs,
+  Args extends AnyCommandArgs = DefaultCommandArgs,
   Platform extends PdkPlatformName = PdkPlatformName,
-> = PdkBuilderContext<PlatformArgs<Platform> & Args>;
+> = PdkBuilderContext<PlatformCommandArgs<Platform> & Args>;
 
 export type PdkDebugger = Debugger & {
   logTimeTaken(): void;

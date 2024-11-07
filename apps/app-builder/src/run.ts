@@ -6,14 +6,18 @@ import {getBulkCommandDescription} from './utils/getBulkCommandDescription';
 import {registerCommand} from './utils/command/registerCommand';
 import {createWithContext} from './utils/command/createWithContext';
 import {createWithConfig} from './utils/command/createWithConfig';
-import {type CommandArgs, type CommandDefinition, type CommandDefinitionWithoutConfig} from './types/command.types';
+import {
+  type AnyCommandDefinition,
+  type CommandDefinitionWithoutConfig,
+  type DefaultCommandArgs,
+} from './types/command.types';
 import {ALL_BULK_COMMANDS, ALL_COMMANDS} from './definitions';
 import {BULK_COMMAND_OPTIONS, CONFIG_OPTIONS, TITLE} from './constants';
 
 // eslint-disable-next-line max-lines-per-function
 export const run = (env: LiftoffEnv, argv: string[]): void => {
-  const withContext = createWithContext(env, argv);
-  const withConfig = createWithConfig(env, argv);
+  const withContext = createWithContext(env);
+  const withConfig = createWithConfig(env);
 
   program.name(TITLE).description('Builds a plugin for MyParcel.');
 
@@ -29,7 +33,7 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
 
   ALL_BULK_COMMANDS.forEach(({name, description, commands}) => {
     const commandDefinitions = commands.map((definition) => {
-      return toArray(definition)[0] as CommandDefinition;
+      return toArray(definition)[0] as AnyCommandDefinition;
     });
 
     const command = program.command(name).description(getBulkCommandDescription(commandDefinitions, description));
@@ -51,7 +55,7 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
       for (const command of commands) {
         const [resolvedCommand, commandOptions] = command;
 
-        const resolvedArgs: CommandArgs = {...args, ...commandOptions};
+        const resolvedArgs: DefaultCommandArgs = {...args, ...commandOptions};
 
         await withConfig(resolvedCommand)(resolvedArgs, originalCommand);
       }
@@ -63,13 +67,14 @@ export const run = (env: LiftoffEnv, argv: string[]): void => {
       const config = await resolveConfig(env);
 
       config.additionalCommands?.forEach((definition) => {
-        const resolvedDefinition = {
-          ...definition,
-          options: [...CONFIG_OPTIONS, ...(definition.options ?? [])],
-          action: () => Promise.resolve({default: definition.action}),
-        };
-
-        return registerCommand(resolvedDefinition, withConfig);
+        return registerCommand(
+          {
+            ...definition,
+            options: [...CONFIG_OPTIONS, ...(definition.options ?? [])],
+            action: () => Promise.resolve({default: definition.action}),
+          },
+          withConfig,
+        );
       });
     }
 

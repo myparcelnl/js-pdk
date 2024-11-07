@@ -1,7 +1,7 @@
-import {type CommandArgs, type PdkBuilderContext} from '../../types/command.types';
+import {type DefaultCommandArgs, type PdkBuilderContext} from '../../types/command.types';
 import {type UpgradeMode} from './enums';
 
-export type UpgradeCommandArgs = CommandArgs & {
+export type UpgradeCommandArgs = DefaultCommandArgs & {
   check?: boolean;
   commit?: boolean;
   commitType?: string;
