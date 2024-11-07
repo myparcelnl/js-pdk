@@ -113,7 +113,7 @@ export const RUN_COMPOSER = 'composer';
 
 export const RUN_YARN = 'yarn';
 
-export const RUN_NPM = 'yarn';
+export const RUN_NPM = 'npm';
 
 export const RUN_PHP = 'php';
 
