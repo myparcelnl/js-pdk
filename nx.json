@@ -63,11 +63,15 @@
       "outputs": ["{projectRoot}/coverage", "{projectRoot}/junit.xml"]
     },
     "test:run": {
-      "inputs": ["^test"]
+      "inputs": ["^test"],
+      "outputs": ["{projectRoot}/junit.xml"]
     },
     "test:update": {
       "inputs": ["^test"],
-      "outputs": ["{projectRoot}/src/__tests__/__snapshots__"]
+      "outputs": [
+        "{projectRoot}/src/__tests__/__snapshots__",
+        "{projectRoot}/junit.xml"
+      ]
     }
   },
   "tasksRunnerOptions": {
