@@ -1,5 +1,6 @@
 <template>
   <div
+    v-test="AdminComponent.Box"
     :class="{
       'text-muted': loading,
     }"
@@ -7,7 +8,6 @@
     <div
       v-if="$slots.header || title"
       class="card-header">
-      <!-- Box header. -->
       <slot name="header">
         {{ translate(title) }}
       </slot>
@@ -26,28 +26,20 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, type PropType} from 'vue';
-import {Size, useLanguage} from '@myparcel-pdk/admin';
+import {computed} from 'vue';
+import {AdminComponent, type BoxEmits, type BoxProps, type BoxSlots, Size, useLanguage} from '@myparcel-pdk/admin';
 
-const props = defineProps({
-  loading: {
-    type: Boolean,
-  },
-
-  size: {
-    type: String as PropType<Size>,
-    default: Size.Medium,
-  },
-
-  title: {
-    type: String,
-    default: null,
-  },
+// eslint-disable-next-line vue/no-unused-properties
+const props = withDefaults(defineProps<BoxProps>(), {
+  loading: false,
+  size: Size.Medium,
 });
+defineEmits<BoxEmits>();
+defineSlots<BoxSlots>();
 
 const bodyClass = computed(() => ({
-  'card-body': [Size.Medium, Size.Large, Size.ExtraLarge].includes(props.size),
-  'p-1': [Size.Small, Size.ExtraSmall].includes(props.size),
+  'card-body': ([Size.Medium, Size.Large, Size.ExtraLarge] as Size[]).includes(props.size),
+  'p-1': ([Size.Small, Size.ExtraSmall] as Size[]).includes(props.size),
 }));
 
 const {translate} = useLanguage();

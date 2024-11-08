@@ -1,15 +1,22 @@
 <template>
   <div class="table-responsive">
-    <table class="table table-sm table-striped">
+    <table
+      v-test="AdminComponent.Table"
+      class="table table-sm table-striped">
       <thead v-if="$slots.header">
         <slot name="header" />
       </thead>
 
       <TransitionGroup
-        :name="config?.transitions?.tableRow"
+        v-if="transition"
+        :name="transition"
         tag="tbody">
         <slot />
       </TransitionGroup>
+
+      <tbody v-else>
+        <slot />
+      </tbody>
 
       <tfoot v-if="$slots.footer">
         <slot name="footer" />
@@ -19,7 +26,12 @@
 </template>
 
 <script lang="ts" setup>
-import {useAdminConfig} from '@myparcel-pdk/admin';
+import {useTableContext} from '@myparcel-pdk/admin';
+import {AdminComponent, type TableProps, type TableSlots} from '@myparcel-pdk/admin';
 
-const config = useAdminConfig();
+const props = defineProps<TableProps>();
+
+defineSlots<TableSlots>();
+
+const {transition} = useTableContext(props);
 </script>

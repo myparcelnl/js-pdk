@@ -5,16 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import {type PropType} from 'vue';
-import {AdminComponent, type AdminIcon} from '@myparcel-pdk/admin';
+import {AdminComponent, type IconProps} from '@myparcel-pdk/admin';
 
-defineProps({
-  /**
-   * The icon to display.
-   */
-  icon: {
-    type: String as PropType<AdminIcon>,
-    required: true,
-  },
-});
+defineProps<IconProps>();
 </script>

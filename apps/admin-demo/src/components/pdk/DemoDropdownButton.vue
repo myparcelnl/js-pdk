@@ -56,14 +56,14 @@ import {
   ActionButton,
   AdminComponent,
   type DropdownButtonProps,
-  useDropdownData,
+  useDropdownButtonContext,
   useLanguage,
 } from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<DropdownButtonProps>();
 
-const {toggled, dropdownActions, dropdownIcon} = useDropdownData(props);
+const {toggled, dropdownActions, dropdownIcon} = useDropdownButtonContext(props);
 
 const {translate} = useLanguage();
 </script>

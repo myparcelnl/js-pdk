@@ -1,10 +1,12 @@
 <template>
-  <div class="form-check">
+  <div
+    v-test="AdminComponent.CheckboxInput"
+    class="form-check">
     <input
       :id="id"
       v-model="model"
+      :disabled="element.isDisabled || element.isSuspended || element.isReadOnly"
       :name="id"
-      :disabled="element.isDisabled || element.isSuspended"
       class="form-check-input"
       type="checkbox" />
     <label
@@ -16,6 +18,7 @@
 
 <script generic="T extends CheckboxInputModelValue" lang="ts" setup>
 import {
+  AdminComponent,
   type CheckboxInputEmits,
   type CheckboxInputModelValue,
   type CheckboxInputProps,

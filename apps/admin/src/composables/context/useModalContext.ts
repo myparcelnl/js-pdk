@@ -1,6 +1,5 @@
 import {computed, type ComputedRef, type Ref, ref} from 'vue';
 import {useLoading} from '../useLoading';
-import {type ModalCallback} from '../../types';
 import {useModalStore} from '../../stores';
 import {type AdminModalKey} from '../../data';
 

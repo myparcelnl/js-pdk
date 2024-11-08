@@ -46,43 +46,25 @@
 </template>
 
 <script lang="ts" setup>
-import {type PropType} from 'vue';
+import {toRefs} from 'vue';
 import {
   ActionButton,
-  type ActionDefinition,
   AdminComponent,
-  type AdminModalKey,
+  type ModalProps,
+  type ModalSlots,
   NotificationContainer,
   useLanguage,
   useModalElementContext,
 } from '@myparcel-pdk/admin';
 
-const props = defineProps({
-  /**
-   * Available actions in the modal.
-   */
-  actions: {
-    type: Array as PropType<ActionDefinition[]>,
-    default: () => [],
-  },
-
-  /**
-   * Modal key.
-   */
-  modalKey: {
-    type: String as PropType<AdminModalKey>,
-    default: null,
-  },
-
-  /**
-   * Modal title.
-   */
-  title: {
-    type: String,
-    required: true,
-  },
+const props = withDefaults(defineProps<ModalProps>(), {
+  actions: () => [],
+  title: '',
 });
+defineSlots<ModalSlots>();
 
-const {isOpen, context, close} = useModalElementContext(props.modalKey);
+const propRefs = toRefs(props);
+
+const {isOpen, context, close} = useModalElementContext(propRefs.modalKey);
 const {translate} = useLanguage();
 </script>

@@ -8,5 +8,4 @@ export const runColTest = ((component) => {
   suite.runCommonComponentTests();
 
   suite.runHasSlotTest();
-  suite.runHasPropTest('span', 3);
 }) satisfies AdminComponentTest;

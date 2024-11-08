@@ -2,25 +2,13 @@
   <component
     :is="component"
     v-test="AdminComponent.TableCol">
-    <!-- Table column content -->
     <slot />
   </component>
 </template>
 
 <script lang="ts" setup>
-/**
- * The component that is used to render a table column in a PdkTable.
- */
+import {AdminComponent, type TableColProps, type TableColSlots} from '@myparcel-pdk/admin';
 
-import {AdminComponent} from '@myparcel-pdk/admin';
-
-defineProps({
-  /**
-   * Component to use as the table column.
-   */
-  component: {
-    type: String,
-    default: 'td',
-  },
-});
+withDefaults(defineProps<TableColProps>(), {component: 'td'});
+defineSlots<TableColSlots>();
 </script>

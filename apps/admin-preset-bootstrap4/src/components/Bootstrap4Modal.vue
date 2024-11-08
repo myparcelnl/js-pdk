@@ -5,6 +5,7 @@
     role="dialog"
     tabindex="-1">
     <div
+      v-test="AdminComponent.Modal"
       class="modal-dialog"
       role="document">
       <div class="modal-content">
@@ -44,34 +45,24 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, onMounted, type PropType} from 'vue';
+import {computed, onMounted, toValue} from 'vue';
 import {
   ActionButton,
-  type ActionDefinition,
+  AdminComponent,
   AdminIcon,
-  type AdminModalKey,
+  type ModalProps,
+  type ModalSlots,
   NotificationCategory,
   NotificationContainer,
   useLanguage,
   useModalStore,
 } from '@myparcel-pdk/admin';
 
-const props = defineProps({
-  actions: {
-    type: Array as PropType<ActionDefinition[]>,
-    default: () => [],
-  },
-
-  modalKey: {
-    type: String as PropType<AdminModalKey>,
-    default: null,
-  },
-
-  title: {
-    type: String,
-    default: null,
-  },
+const props = withDefaults(defineProps<ModalProps>(), {
+  actions: () => [],
+  title: '',
 });
+defineSlots<ModalSlots>();
 
 const {translate} = useLanguage();
 
@@ -79,10 +70,10 @@ const modalStore = useModalStore();
 
 const isActive = computed(() => props.modalKey && props.modalKey === modalStore.opened);
 
-const id = `pdk-modal-${props.modalKey}`;
+const id = computed(() => `pdk-modal-${props.modalKey}`);
 
 onMounted(() => {
-  const $this = jQuery(`#${id}`);
+  const $this = jQuery(`#${toValue(id)}`);
 
   // @ts-expect-error show is not in the type definition
   $this.modal({show: isActive.value});

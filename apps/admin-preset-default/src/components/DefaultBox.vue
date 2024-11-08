@@ -26,40 +26,15 @@
 </template>
 
 <script lang="ts" setup>
-/**
- * A "box" component that can be used to wrap content in a block.
- */
+import {AdminComponent, type BoxEmits, type BoxProps, type BoxSlots, Size, useLanguage} from '@myparcel-pdk/admin';
 
-import {type PropType} from 'vue';
-import {AdminComponent, Size, useLanguage} from '@myparcel-pdk/admin';
-
-defineProps({
-  /**
-   * Used to control loading state.
-   */
-  loading: {
-    type: Boolean,
-  },
-
-  /**
-   * Size of the box.
-   */
-  // eslint-disable-next-line vue/no-unused-properties
-  size: {
-    type: String as PropType<Size>,
-    default: Size.Medium,
-  },
-
-  /**
-   * Title of the box.
-   */
-  title: {
-    type: String,
-    default: null,
-  },
+// eslint-disable-next-line vue/no-unused-properties
+withDefaults(defineProps<BoxProps>(), {
+  loading: false,
+  size: Size.Medium,
 });
-
-defineEmits<(event: 'clickHeader') => void>();
+defineEmits<BoxEmits>();
+defineSlots<BoxSlots>();
 
 const {translate} = useLanguage();
 </script>

@@ -15,11 +15,11 @@
       ref="dropdown"
       v-test="[AdminComponent.DropdownButton, 'button']"
       :aria-label="translate('toggle_dropdown')"
-      :disabled="disabled"
-      :size="size"
       :class="{
         'p-0': dropdownActions.standalone.length === 0,
       }"
+      :disabled="disabled"
+      :size="size"
       aria-haspopup="true"
       class="dropdown-toggle dropdown-toggle-split"
       data-toggle="dropdown">
@@ -49,8 +49,9 @@ import {
   ActionButton,
   AdminComponent,
   type DropdownButtonProps,
+  type DropdownButtonSlots,
   useAdminConfig,
-  useDropdownData,
+  useDropdownButtonContext,
   useLanguage,
 } from '@myparcel-pdk/admin';
 import BaseButton from './common/BaseButton.vue';
@@ -58,7 +59,9 @@ import BaseButton from './common/BaseButton.vue';
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<DropdownButtonProps>();
 
-const {dropdownActions} = useDropdownData(props);
+defineSlots<DropdownButtonSlots>();
+
+const {dropdownActions} = useDropdownButtonContext(props);
 
 const {translate} = useLanguage();
 

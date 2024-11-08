@@ -1,12 +1,12 @@
 <template>
-  <div v-test="AdminComponent.Col"><slot /></div>
+  <div v-test="AdminComponent.Col">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent} from '@myparcel-pdk/admin';
+import {AdminComponent, type ColProps, type ColSlots} from '@myparcel-pdk/admin';
 
-defineProps<{
-  // eslint-disable-next-line vue/no-unused-properties
-  span?: number;
-}>();
+defineProps<ColProps>();
+defineSlots<ColSlots>();
 </script>

@@ -11,14 +11,9 @@ export type {
   ResolvedElementConfiguration,
 } from '@myparcel/vue-form-builder';
 
-export type {
-  /** @deprecated use PdkNotification */
-  PdkNotification as Notification,
-} from './types';
-
 export * from './actions';
+export * from './deprecated';
 export * from './types';
-
 export * from './views/integrated';
 
 export * from '@myparcel-pdk/common';
@@ -90,7 +85,7 @@ export {
   useAppInfo,
   useCheckboxGroupContext,
   useDropOffInputContext,
-  useDropdownData,
+  useDropdownButtonContext,
   useElementContext,
   useElementOptions,
   useFormatter,
@@ -102,6 +97,7 @@ export {
   useLogger,
   useModalContext,
   useModalElementContext,
+  useMultiSelectInputContext,
   useOrderData,
   useOrdersData,
   useProductData,
@@ -109,6 +105,7 @@ export {
   useSelectInputContext,
   useShippingMethodsInputContext,
   useStoreQuery,
+  useTableContext,
   useToggleInputContext,
   useTriStateInputContext,
   useWeekdays,

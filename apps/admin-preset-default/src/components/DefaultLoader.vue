@@ -7,13 +7,10 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, useLanguage} from '@myparcel-pdk/admin';
+import {AdminComponent, type LoaderProps, useLanguage} from '@myparcel-pdk/admin';
 
-defineProps({
-  tag: {
-    type: String,
-    default: 'div',
-  },
+withDefaults(defineProps<LoaderProps>(), {
+  tag: 'div',
 });
 
 const {translate} = useLanguage();

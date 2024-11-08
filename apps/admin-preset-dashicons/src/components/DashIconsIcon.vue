@@ -9,10 +9,10 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {AdminComponent, type AdminIcon} from '@myparcel-pdk/admin';
+import {AdminComponent, type IconProps} from '@myparcel-pdk/admin';
 import {convertToDashIcon} from '../convertToDashIcon';
 
-const props = defineProps<{icon: AdminIcon}>();
+const props = defineProps<IconProps>();
 
 const dashIcon = computed(() => convertToDashIcon(props.icon));
 </script>

@@ -1,13 +1,13 @@
 <template>
-  <div v-test="[AdminComponent.RadioInput, element]">
+  <div v-test="AdminComponent.RadioInput">
     <input
       :id="id"
       v-model="model"
-      :name="id"
       :class="{
         'form-required': !element.isValid,
       }"
       :disabled="element.isDisabled || element.isSuspended"
+      :name="id"
       :readonly="element.isReadOnly"
       :value="element.props?.value"
       type="radio"
@@ -16,12 +16,12 @@
     <label :for="id">
       <PdkIcon
         v-if="element.props?.icon"
-        :icon="element.props?.icon" />
+        :icon="element.props.icon" />
 
       <PdkImage
         v-if="element.props?.image"
-        :alt="element.label"
-        :src="element.props?.image"
+        :alt="element.label ?? ''"
+        :src="element.props.image"
         width="24" />
 
       {{ element.label }}

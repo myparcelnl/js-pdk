@@ -2,9 +2,9 @@
   <select
     :id="id"
     v-model="model"
-    v-test="[AdminComponent.SelectInput, element]"
-    :name="id"
-    :disabled="options.length === 1 || element.isDisabled || element.isSuspended">
+    v-test="AdminComponent.SelectInput"
+    :disabled="options.length === 1 || element.isDisabled || element.isSuspended"
+    :name="id">
     <option
       v-for="(item, index) in options"
       :key="index"
@@ -15,10 +15,6 @@
 </template>
 
 <script generic="T extends SelectInputModelValue" lang="ts" setup>
-/**
- * A select box. Renders a list of options which each have their own value.
- */
-
 import {
   AdminComponent,
   type SelectInputEmits,

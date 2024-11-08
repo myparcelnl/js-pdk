@@ -34,13 +34,17 @@
 </template>
 
 <script lang="ts" setup>
-/**
- * A form group is used to render a label and a form element.
- */
 import {toRefs} from 'vue';
-import {AdminComponent, type FormGroupProps, generateFieldId, useLanguage} from '@myparcel-pdk/admin';
+import {
+  AdminComponent,
+  type FormGroupProps,
+  type FormGroupSlots,
+  generateFieldId,
+  useLanguage,
+} from '@myparcel-pdk/admin';
 
 const props = defineProps<FormGroupProps>();
+defineSlots<FormGroupSlots>();
 
 const propRefs = toRefs(props);
 

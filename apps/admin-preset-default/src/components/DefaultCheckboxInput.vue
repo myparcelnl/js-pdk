@@ -1,12 +1,11 @@
 <template>
-  <label v-test="[AdminComponent.CheckboxInput, element]">
+  <label v-test="AdminComponent.CheckboxInput">
     {{ element.label }}
     <input
       :id="id"
       v-model="model"
-      :name="id"
       :disabled="element.isDisabled || element.isSuspended || element.isReadOnly"
-      :readonly="element.isReadOnly"
+      :name="id"
       :value="element.props?.value"
       type="checkbox" />
     <i />

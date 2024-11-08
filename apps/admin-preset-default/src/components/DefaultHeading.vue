@@ -7,19 +7,10 @@
 </template>
 
 <script lang="ts" setup>
-import {type PropType} from 'vue';
-import {AdminComponent, type ElementInstance} from '@myparcel-pdk/admin';
+import {AdminComponent, type HeadingProps, type HeadingSlots} from '@myparcel-pdk/admin';
 
-defineProps({
-  // eslint-disable-next-line vue/no-unused-properties
-  element: {
-    type: Object as PropType<ElementInstance>,
-    default: null,
-  },
-
-  level: {
-    type: [Number, String],
-    default: 1,
-  },
+withDefaults(defineProps<HeadingProps>(), {
+  level: 1,
 });
+defineSlots<HeadingSlots>();
 </script>

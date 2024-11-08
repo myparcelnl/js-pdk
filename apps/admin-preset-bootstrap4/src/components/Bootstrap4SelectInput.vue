@@ -2,11 +2,12 @@
   <select
     :id="id"
     v-model="model"
-    :name="id"
+    v-test="AdminComponent.SelectInput"
     :class="{
       disabled: options.length === 1 || element.isDisabled || element.isSuspended,
     }"
     :disabled="options.length === 1 || element.isDisabled || element.isSuspended"
+    :name="id"
     class="custom-select form-control">
     <option
       v-for="(item, index) in options"
@@ -19,6 +20,7 @@
 
 <script generic="T extends SelectInputModelValue" lang="ts" setup>
 import {
+  AdminComponent,
   type SelectInputEmits,
   type SelectInputModelValue,
   type SelectInputProps,

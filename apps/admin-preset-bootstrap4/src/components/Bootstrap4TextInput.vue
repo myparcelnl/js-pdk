@@ -2,13 +2,14 @@
   <input
     :id="id"
     v-model.trim="model"
-    :name="id"
+    v-test="AdminComponent.TextInput"
     :disabled="element.isDisabled || element.isSuspended"
+    :name="id"
     class="form-control" />
 </template>
 
 <script lang="ts" setup>
-import {type TextInputEmits, type TextInputProps, useElementContext} from '@myparcel-pdk/admin';
+import {AdminComponent, type TextInputEmits, type TextInputProps, useElementContext} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<TextInputProps>();

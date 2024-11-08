@@ -1,6 +1,6 @@
 <template>
   <div
-    v-test="[AdminComponent.TriStateInput, element]"
+    v-test="AdminComponent.TriStateInput"
     class="gap-4 grid-cols-2 inline-grid items-center">
     <input
       v-model="model"
@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script setup lang="ts" generic="T extends TriState">
+<script generic="T extends TriState" lang="ts" setup>
 import {
   AdminComponent,
   type TriState,

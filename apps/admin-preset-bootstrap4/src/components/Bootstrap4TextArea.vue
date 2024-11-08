@@ -2,13 +2,14 @@
   <textarea
     :id="id"
     v-model.trim="model"
-    :name="id"
+    v-test="AdminComponent.TextArea"
     :disabled="element.isDisabled || element.isSuspended"
+    :name="id"
     class="form-control" />
 </template>
 
 <script lang="ts" setup>
-import {type TextAreaEmits, type TextAreaProps, useElementContext} from '@myparcel-pdk/admin';
+import {AdminComponent, type TextAreaEmits, type TextAreaProps, useElementContext} from '@myparcel-pdk/admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<TextAreaProps>();

@@ -55,3 +55,12 @@ export type WebhookDefinition = {
   hook: string;
   url: null | string;
 };
+
+export type DefaultSlot = {
+  default(): never;
+};
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type PlainComponentProps = {};
+
+export type PlainComponentSlots = DefaultSlot;

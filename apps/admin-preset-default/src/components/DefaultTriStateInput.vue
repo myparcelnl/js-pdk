@@ -1,5 +1,5 @@
 <template>
-  <div v-test="[AdminComponent.TriStateInput, element]">
+  <div v-test="AdminComponent.TriStateInput">
     <input
       v-model="model"
       type="hidden" />

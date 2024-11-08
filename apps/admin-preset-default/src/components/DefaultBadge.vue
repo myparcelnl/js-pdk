@@ -3,5 +3,8 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent} from '@myparcel-pdk/admin';
+import {AdminComponent, type BadgeProps, type BadgeSlots} from '@myparcel-pdk/admin';
+
+defineProps<BadgeProps>();
+defineSlots<BadgeSlots>();
 </script>

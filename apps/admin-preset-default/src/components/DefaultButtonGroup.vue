@@ -1,7 +1,12 @@
 <template>
-  <div v-test="AdminComponent.ButtonGroup"><slot /></div>
+  <div v-test="AdminComponent.ButtonGroup">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent} from '@myparcel-pdk/admin';
+import {AdminComponent, type ButtonGroupProps, type ButtonGroupSlots} from '@myparcel-pdk/admin';
+
+defineProps<ButtonGroupProps>();
+defineSlots<ButtonGroupSlots>();
 </script>

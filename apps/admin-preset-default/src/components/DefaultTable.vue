@@ -1,15 +1,13 @@
 <template>
   <table v-test="AdminComponent.Table">
     <thead v-if="$slots.header">
-      <!-- Table header -->
       <slot name="header" />
     </thead>
 
     <TransitionGroup
-      v-if="transitionName"
-      :name="transitionName"
+      v-if="transition"
+      :name="transition"
       tag="tbody">
-      <!-- Table body -->
       <slot />
     </TransitionGroup>
 
@@ -18,24 +16,18 @@
     </tbody>
 
     <tfoot v-if="$slots.footer">
-      <!-- Table footer -->
       <slot name="footer" />
     </tfoot>
   </table>
 </template>
 
 <script lang="ts" setup>
-/**
- * A table component that can be used to render data via slots.
- */
-import {computed} from 'vue';
-import {AdminComponent, useAdminConfig} from '@myparcel-pdk/admin';
+import {useTableContext} from '@myparcel-pdk/admin';
+import {AdminComponent, type TableProps, type TableSlots} from '@myparcel-pdk/admin';
 
-const props = defineProps<{transition?: false | string}>();
+const props = defineProps<TableProps>();
 
-const config = useAdminConfig();
+defineSlots<TableSlots>();
 
-const transitionName = computed(() => {
-  return props.transition === false ? undefined : props.transition ?? config.transitions?.tableRow;
-});
+const {transition} = useTableContext(props);
 </script>

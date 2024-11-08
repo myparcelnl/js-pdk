@@ -1,7 +1,7 @@
 import {computed, type ComputedRef, type WritableComputedRef} from 'vue';
 import {get} from '@vueuse/core';
 import {isOfType} from '@myparcel/ts-utils';
-import {createFormElement, createObjectWithKeys} from '../utils';
+import {createFormElement, createObjectWithKeys} from '../../utils';
 import {
   type ArrayItem,
   type ElementInstance,
@@ -10,7 +10,7 @@ import {
   type RadioGroupProps,
   type SelectOption,
   type SelectOptionWithLabel,
-} from '../types';
+} from '../../types';
 import {useInputWithOptionsContext} from './useInputWithOptionsContext';
 
 interface RadioGroupContext<T extends RadioGroupModelValue> {

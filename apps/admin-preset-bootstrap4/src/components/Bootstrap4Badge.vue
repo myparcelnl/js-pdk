@@ -1,7 +1,14 @@
 <template>
-  <span class="badge badge-light">
+  <span
+    v-test="AdminComponent.Badge"
+    class="badge badge-light">
     <slot />
   </span>
 </template>
 
-<script lang="ts" setup />
+<script lang="ts" setup>
+import {AdminComponent, type BadgeProps, type BadgeSlots} from '@myparcel-pdk/admin';
+
+defineProps<BadgeProps>();
+defineSlots<BadgeSlots>();
+</script>

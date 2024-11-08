@@ -1,7 +1,7 @@
 import {onMounted, watch, type WritableComputedRef} from 'vue';
 import {get} from '@vueuse/core';
 import {toArray} from '@myparcel/ts-utils';
-import {type ArrayItem, type SelectInputEmits, type SelectInputModelValue, type SelectInputProps} from '../types';
+import {type ArrayItem, type SelectInputEmits, type SelectInputModelValue, type SelectInputProps} from '../../types';
 import {type ElementOptionsContext, useElementOptions} from './useElementOptions';
 import {type ElementContext, useElementContext} from './useElementContext';
 

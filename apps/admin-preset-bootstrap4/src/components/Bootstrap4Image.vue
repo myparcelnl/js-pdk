@@ -1,5 +1,6 @@
 <template>
   <img
+    v-test="AdminComponent.Image"
     :alt="alt"
     :height="height"
     :src="src"
@@ -8,12 +9,8 @@
     class="img-responsive" />
 </template>
 
-<script setup lang="ts">
-defineProps<{
-  src: string;
-  alt: string;
-  title?: string;
-  width?: number | string;
-  height?: number | string;
-}>();
+<script lang="ts" setup>
+import {AdminComponent, type ImageProps} from '@myparcel-pdk/admin';
+
+defineProps<ImageProps>();
 </script>

@@ -38,45 +38,21 @@
 </template>
 
 <script lang="ts" setup>
-/**
- * This component is used to render a dropdown button. The dropdown button is a
- * button that can be clicked to open a dropdown menu. The dropdown menu can
- * contain multiple items.
- */
-
 import {
   ActionButton,
-  type ActionDefinition,
   AdminComponent,
-  type Size,
-  useDropdownData,
+  type DropdownButtonProps,
+  type DropdownButtonSlots,
+  useDropdownButtonContext,
   useLanguage,
 } from '@myparcel-pdk/admin';
 
-const props = defineProps<{
-  /**
-   * List of actions.
-   */
-  // eslint-disable-next-line vue/no-unused-properties
-  actions: ActionDefinition[];
+// eslint-disable-next-line vue/no-unused-properties
+const props = defineProps<DropdownButtonProps>();
 
-  /**
-   * Controls disabled state.
-   */
-  disabled?: boolean;
+defineSlots<DropdownButtonSlots>();
 
-  /**
-   * To hide the text of the standalone actions.
-   */
-  hideText?: boolean;
-
-  /**
-   * Size of the button.
-   */
-  size?: Size;
-}>();
-
-const {toggled, dropdownActions, dropdownIcon} = useDropdownData(props);
+const {toggled, dropdownActions, dropdownIcon} = useDropdownButtonContext(props);
 
 const {translate} = useLanguage();
 </script>

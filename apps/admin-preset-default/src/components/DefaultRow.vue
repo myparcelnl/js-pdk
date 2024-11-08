@@ -5,13 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent} from '@myparcel-pdk/admin';
+import {AdminComponent, type RowProps, type RowSlots} from '@myparcel-pdk/admin';
 
-defineProps<{
-  /**
-   * The width of the row.
-   */
-  // eslint-disable-next-line vue/no-unused-properties
-  width?: string;
-}>();
+defineProps<RowProps>();
+defineSlots<RowSlots>();
 </script>

@@ -3,6 +3,7 @@
     appear
     name="fade">
     <div
+      v-test="AdminComponent.Notification"
       :class="alertClasses"
       class="alert"
       role="alert">
@@ -22,23 +23,13 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, type PropType} from 'vue';
-import {type PdkNotification} from '@myparcel-pdk/admin';
+import {computed} from 'vue';
+import {AdminComponent, type NotificationProps} from '@myparcel-pdk/admin';
 import {toArray} from '@myparcel/ts-utils';
 
-const props = defineProps({
-  /**
-   * The notification to display.
-   */
-  notification: {
-    type: Object as PropType<PdkNotification>,
-    required: true,
-  },
-});
+const props = defineProps<NotificationProps>();
 
-const contentArray = computed(() => {
-  return toArray(props.notification.content);
-});
+const contentArray = computed(() => toArray(props.notification.content));
 
 const alertClasses = computed(() => {
   switch (props.notification?.variant) {

@@ -12,19 +12,12 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, type PropType} from 'vue';
-import {AdminComponent, Size, useLanguage} from '@myparcel-pdk/admin';
+import {computed} from 'vue';
+import {AdminComponent, type LoaderProps, Size, useLanguage} from '@myparcel-pdk/admin';
 
-const props = defineProps({
-  size: {
-    type: String as PropType<Size>,
-    default: Size.Medium,
-  },
-
-  tag: {
-    type: String,
-    default: 'div',
-  },
+const props = withDefaults(defineProps<LoaderProps>(), {
+  size: Size.Medium,
+  tag: 'div',
 });
 
 const {translate} = useLanguage();

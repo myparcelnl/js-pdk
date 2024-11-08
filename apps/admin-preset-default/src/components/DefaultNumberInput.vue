@@ -1,7 +1,7 @@
 <template>
   <PdkTextInput
     v-model.number="model"
-    v-test="[AdminComponent.NumberInput, element]"
+    v-test="AdminComponent.NumberInput"
     :element="element"
     type="number" />
 </template>

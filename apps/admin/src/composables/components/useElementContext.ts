@@ -1,7 +1,7 @@
 import {type WritableComputedRef} from 'vue';
 import {useVModel} from '@vueuse/core';
-import {generateFieldId} from '../utils';
-import {type ElementInstance, type PdkElementEmits, type PdkElementProps} from '../types';
+import {generateFieldId} from '../../utils';
+import {type ElementInstance, type PdkElementEmits, type PdkElementProps} from '../../types';
 
 export type ElementContext<T = unknown> = {
   id: string;

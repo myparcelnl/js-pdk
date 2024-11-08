@@ -8,8 +8,8 @@
       :is="button"
       v-for="tab in tabs"
       :key="`tab_button_${tab.name}`"
-      role="tab"
       :active="tab.name === activeTab"
+      role="tab"
       @click="() => handleClick(tab)">
       <PdkIcon
         v-if="tab.icon"

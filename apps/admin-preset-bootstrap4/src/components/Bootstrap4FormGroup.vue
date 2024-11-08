@@ -1,6 +1,7 @@
 <template>
   <div
     v-if="isInteractive"
+    v-test="AdminComponent.FormGroup"
     class="form-group row">
     <label
       :class="{
@@ -47,11 +48,18 @@
 
 <script lang="ts" setup>
 import {computed, toRefs} from 'vue';
-import {type FormGroupProps, generateFieldId, useLanguage} from '@myparcel-pdk/admin';
+import {
+  AdminComponent,
+  type FormGroupProps,
+  type FormGroupSlots,
+  generateFieldId,
+  useLanguage,
+} from '@myparcel-pdk/admin';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {isOfType} from '@myparcel/ts-utils';
 
 const props = defineProps<FormGroupProps>();
+defineSlots<FormGroupSlots>();
 
 const propRefs = toRefs(props);
 

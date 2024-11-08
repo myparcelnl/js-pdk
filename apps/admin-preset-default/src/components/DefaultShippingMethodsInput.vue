@@ -1,5 +1,5 @@
 <template>
-  <div v-test="[AdminComponent.ShippingMethodsInput, element]">
+  <div v-test="AdminComponent.ShippingMethodsInput">
     <PdkTable>
       <PdkTableRow>
         <PdkTableCol component="th" />
@@ -7,8 +7,8 @@
         <PdkTableCol
           v-for="shippingMethodType in shippingMethodTypes"
           :key="shippingMethodType"
-          component="th"
-          :class="config?.cssUtilities?.whitespaceNoWrap">
+          :class="config?.cssUtilities?.whitespaceNoWrap"
+          component="th">
           <PackageType
             v-if="isEnumValue(shippingMethodType.value, PackageTypeName)"
             :package-type="shippingMethodType.value" />
@@ -23,8 +23,8 @@
         v-for="shippingMethod in items"
         :key="shippingMethod.value">
         <PdkTableCol
-          component="th"
-          :class="config?.cssUtilities?.whitespaceNoWrap">
+          :class="config?.cssUtilities?.whitespaceNoWrap"
+          component="th">
           <p v-text="shippingMethod.label" />
 
           <small

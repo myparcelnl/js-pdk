@@ -12,6 +12,7 @@
  */
 import {computed} from 'vue';
 import {get} from '@vueuse/core';
+import {AdminContextKey, BackendEndpoint} from '@myparcel-pdk/common';
 import {useActionStore, useQueryStore} from '../stores';
 import {useStoreContextQuery} from '../composables';
 import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForms.vue';
@@ -24,7 +25,6 @@ import {
   useUpdateAccountMutation,
   useUpdatePluginSettingsMutation,
 } from '../actions';
-import {AdminContextKey, BackendEndpoint} from "@myparcel-pdk/common";
 
 const queryStore = useQueryStore();
 

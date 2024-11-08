@@ -2,9 +2,9 @@
   <select
     :id="id"
     v-model="model"
-    v-test="[AdminComponent.SelectInput, element]"
-    :name="id"
+    v-test="AdminComponent.SelectInput"
     :disabled="options.length === 1 || element.isDisabled || element.isSuspended"
+    :name="id"
     class="border flex-grow px-2 py-1 rounded">
     <option
       v-for="(item, index) in options"

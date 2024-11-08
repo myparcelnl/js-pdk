@@ -1,15 +1,15 @@
 <template>
   <div
-    v-test="[AdminComponent.RadioInput, element]"
+    v-test="AdminComponent.RadioInput"
     class="form-check">
     <input
       :id="id"
       v-model="model"
-      :name="id"
       :class="{
         'form-required': !element.isValid,
       }"
       :disabled="element.isDisabled || element.isSuspended"
+      :name="id"
       :value="element.props?.value"
       type="radio"
       v-bind="$attrs" />
@@ -22,7 +22,7 @@
 
       <PdkImage
         v-if="element.props?.image"
-        :alt="element.label"
+        :alt="element.label ?? ''"
         :src="element.props.image"
         width="24" />
 

@@ -1,6 +1,8 @@
 <template>
   <BaseButton
+    v-test="AdminComponent.Button"
     :class="sizeClasses"
+    :disabled="disabled"
     class="btn btn-primary text-nowrap"
     v-bind="$props"
     @click="$emit('click')">
@@ -10,36 +12,16 @@
 
 <script lang="ts" setup>
 /* eslint-disable vue/no-unused-properties */
-import {computed, type PropType} from 'vue';
-import {type AdminIcon, Size} from '@myparcel-pdk/admin';
+import {computed} from 'vue';
+import {AdminComponent, type ButtonEmits, type ButtonProps, type ButtonSlots, Size} from '@myparcel-pdk/admin';
 import BaseButton from './common/BaseButton.vue';
 
-const props = defineProps({
-  disabled: {
-    type: Boolean,
-  },
-
-  icon: {
-    type: String as PropType<AdminIcon>,
-    default: null,
-  },
-
-  label: {
-    type: String,
-    default: null,
-  },
-
-  loading: {
-    type: Boolean,
-  },
-
-  size: {
-    type: String as PropType<Size>,
-    default: Size.Medium,
-  },
+const props = withDefaults(defineProps<ButtonProps>(), {
+  label: 'action_save',
+  size: Size.Medium,
 });
-
-defineEmits(['click']);
+defineEmits<ButtonEmits>();
+defineSlots<ButtonSlots>();
 
 const sizeClasses = computed(() => {
   switch (props.size) {

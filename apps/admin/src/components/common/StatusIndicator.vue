@@ -9,11 +9,12 @@
   </span>
 </template>
 
+
 <script lang="ts" setup>
 import {computed, type PropType} from 'vue';
 import {Status} from '@myparcel-pdk/common';
+import {AdminIcon} from '../../data';
 import {useAdminConfig} from '../../composables';
-import {AdminIcon} from "../../data";
 
 const props = defineProps({
   status: {

@@ -5,7 +5,6 @@
     <PdkIcon
       v-if="action?.icon"
       :icon="action?.icon" />
-    <!-- Link content. Can be used instead of `label` prop. -->
     <slot v-if="!hideText">
       {{ translate(action?.label) }}
     </slot>
@@ -13,35 +12,24 @@
 </template>
 
 <script lang="ts" setup>
-/**
- * This component is used to render a link. The link can be used to trigger an action.
- */
-import {type AnchorHTMLAttributes, computed, type PropType} from 'vue';
+import {type AnchorHTMLAttributes, computed} from 'vue';
 import {
-  type ActionDefinition,
   AdminComponent,
   getActionIdentifier,
+  type LinkEmits,
+  type LinkProps,
+  type LinkSlots,
   useActionStore,
   useLanguage,
 } from '@myparcel-pdk/admin';
 
-const props = defineProps({
-  action: {
-    type: Object as PropType<ActionDefinition>,
-    default: null,
-  },
-
-  hideText: {
-    type: Boolean,
-  },
-
-  href: {
-    type: String,
-    default: '#',
-  },
+const props = withDefaults(defineProps<LinkProps>(), {
+  href: '#',
 });
 
-const emit = defineEmits(['click']);
+const emit = defineEmits<LinkEmits>();
+
+defineSlots<LinkSlots>();
 
 const actionStore = useActionStore();
 

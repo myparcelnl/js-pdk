@@ -1,7 +1,7 @@
 <template>
   <PdkTextInput
     v-model="model"
-    v-test="[AdminComponent.TimeInput, element]"
+    v-test="AdminComponent.TimeInput"
     :element="element"
     type="time" />
 </template>

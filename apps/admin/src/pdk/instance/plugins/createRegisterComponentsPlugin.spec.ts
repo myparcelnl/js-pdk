@@ -1,6 +1,6 @@
 /* eslint-disable max-nested-callbacks,@typescript-eslint/no-non-null-asserted-optional-chain */
 import {type App, type Component} from 'vue';
-import {describe, expect, it, vi} from 'vitest';
+import {beforeEach, describe, expect, it, vi} from 'vitest';
 import {prefixComponent} from '../../../utils';
 import {type AdminComponentMap} from '../../../types';
 import {allAdminComponentNames, requiredAdminComponentNames} from '../../../data';

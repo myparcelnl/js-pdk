@@ -3,9 +3,9 @@ import {beforeEach, describe, expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
 import {type ShippingMethodTypeMap, TriState} from '@myparcel-pdk/common';
 import {PackageTypeName} from '@myparcel/constants';
-import {createFormElement} from '../utils';
-import {type ShippingMethodsInputProps} from '../types';
-import {doComponentTestSetup} from '../__tests__';
+import {createFormElement} from '../../utils';
+import {type ShippingMethodsInputProps} from '../../types';
+import {doComponentTestSetup} from '../../__tests__';
 import {useShippingMethodsInputContext} from './useShippingMethodsInputContext';
 
 const FLAT_RATE_1 = 'flat_rate:1';

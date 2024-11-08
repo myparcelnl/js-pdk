@@ -7,9 +7,9 @@ import {type ArrayItem} from './common.types';
  */
 export type CheckboxGroupModelValue = string | boolean;
 
-export type CheckboxGroupProps<T extends CheckboxGroupModelValue> = PdkElementProps<T>;
+export type CheckboxGroupProps<T extends CheckboxGroupModelValue = CheckboxGroupModelValue> = PdkElementProps<T>;
 
-export type CheckboxGroupEmits<T extends CheckboxGroupModelValue> = PdkElementEmits<T>;
+export type CheckboxGroupEmits<T extends CheckboxGroupModelValue = CheckboxGroupModelValue> = PdkElementEmits<T>;
 
 /**
  * @see AdminComponent.CurrencyInput
@@ -26,9 +26,9 @@ export type CurrencyInputEmits = PdkElementEmits<number>;
 
 export type CheckboxInputModelValue = Keyable | boolean;
 
-export type CheckboxInputProps<T extends CheckboxInputModelValue> = PdkElementProps<T>;
+export type CheckboxInputProps<T extends CheckboxInputModelValue = CheckboxInputModelValue> = PdkElementProps<T>;
 
-export type CheckboxInputEmits<T extends CheckboxInputModelValue> = PdkElementEmits<T>;
+export type CheckboxInputEmits<T extends CheckboxInputModelValue = CheckboxInputModelValue> = PdkElementEmits<T>;
 
 /**
  * @see AdminComponent.CodeEditor
@@ -55,9 +55,12 @@ export type DropOffInputEmits = PdkElementEmits<DropOffInputModelValue>;
 
 export type SelectInputModelValue = SelectOptionValue;
 
-export type SelectInputProps<T extends SelectInputModelValue> = PdkElementProps<T, OptionsProp<T>>;
+export type SelectInputProps<T extends SelectInputModelValue = SelectInputModelValue> = PdkElementProps<
+  T,
+  OptionsProp<T>
+>;
 
-export type SelectInputEmits<T extends SelectInputModelValue> = PdkElementEmits<T>;
+export type SelectInputEmits<T extends SelectInputModelValue = SelectInputModelValue> = PdkElementEmits<T>;
 
 /**
  * @see AdminComponent.MultiSelectInput
@@ -65,9 +68,13 @@ export type SelectInputEmits<T extends SelectInputModelValue> = PdkElementEmits<
 
 export type MultiSelectInputModelValue = SelectOptionValue[];
 
-export type MultiSelectInputProps<T extends MultiSelectInputModelValue> = SelectInputProps<ArrayItem<T>>;
+export type MultiSelectInputProps<T extends MultiSelectInputModelValue = MultiSelectInputModelValue> = SelectInputProps<
+  ArrayItem<T>
+>;
 
-export type MultiSelectInputEmits<T extends MultiSelectInputModelValue> = SelectInputEmits<ArrayItem<T>>;
+export type MultiSelectInputEmits<T extends MultiSelectInputModelValue = MultiSelectInputModelValue> = SelectInputEmits<
+  ArrayItem<T>
+>;
 
 /**
  * @see AdminComponent.NumberInput
@@ -85,9 +92,9 @@ export type NumberInputEmits = PdkElementEmits<number>;
 
 export type RadioGroupModelValue = Keyable;
 
-export type RadioGroupProps<T extends RadioGroupModelValue> = PdkElementProps<T, OptionsProp<T>>;
+export type RadioGroupProps<T extends RadioGroupModelValue = RadioGroupModelValue> = PdkElementProps<T, OptionsProp<T>>;
 
-export type RadioGroupEmits<T extends RadioGroupModelValue> = PdkElementEmits<T>;
+export type RadioGroupEmits<T extends RadioGroupModelValue = RadioGroupModelValue> = PdkElementEmits<T>;
 /**
  * @see AdminComponent.RadioInput
  */

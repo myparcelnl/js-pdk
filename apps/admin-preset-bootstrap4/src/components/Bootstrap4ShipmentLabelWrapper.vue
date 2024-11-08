@@ -1,5 +1,6 @@
 <template>
   <PdkBox
+    v-test="AdminComponent.ShipmentLabelWrapper"
     :class="{
       'text-muted': loading,
     }"
@@ -12,8 +13,14 @@
 </template>
 
 <script lang="ts" setup>
-import {type ShipmentLabelWrapperProps, Size} from '@myparcel-pdk/admin';
+import {
+  AdminComponent,
+  type ShipmentLabelWrapperProps,
+  type ShipmentLabelWrapperSlots,
+  Size,
+} from '@myparcel-pdk/admin';
 import LoadingOverlay from './common/LoadingOverlay.vue';
 
 defineProps<ShipmentLabelWrapperProps>();
+defineSlots<ShipmentLabelWrapperSlots>();
 </script>

@@ -1,18 +1,14 @@
 <template>
-  <div :class="classes">
-    <slot></slot>
+  <div
+    v-test="AdminComponent.Row"
+    class="row">
+    <slot />
   </div>
 </template>
 
-<script setup lang="ts">
-import {computed} from 'vue';
+<script lang="ts" setup>
+import {AdminComponent, type RowProps, type RowSlots} from '@myparcel-pdk/admin';
 
-const props = defineProps<{
-  columns?: number | string;
-  collapseGutters?: boolean;
-}>();
-
-const classes = computed(() => {
-  return [props.columns ? `row-cols-${props.columns}` : 'row', props.collapseGutters ? 'no-gutters' : ''];
-});
+defineProps<RowProps>();
+defineSlots<RowSlots>();
 </script>
