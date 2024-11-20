@@ -1,6 +1,5 @@
 import fs from 'node:fs';
 import chalk from 'chalk';
-import {reportFileDoesNotExist} from '../debug/reportOnFile';
 import {logSourcePath} from '../debug/logSourcePath';
 import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';
 import {isDryRun} from '../command/isDryRun';
@@ -9,8 +8,6 @@ import {exists} from './exists';
 
 export const deleteFile = async (context: PdkBuilderContext, filePath: string): Promise<void> => {
   if (!(await exists(filePath))) {
-    reportFileDoesNotExist(filePath, context);
-
     return;
   }
 

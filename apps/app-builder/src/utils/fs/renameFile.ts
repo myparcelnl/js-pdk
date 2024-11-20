@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {resolvePath} from '../resolvePath';
-import {reportFileDoesNotExist, reportFileExists} from '../debug/reportOnFile';
 import {logTargetPath} from '../debug/logTargetPath';
 import {logSourcePath} from '../debug/logSourcePath';
 import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';
@@ -19,12 +18,10 @@ export const renameFile = async (
   const resolvedTarget = resolvePath(target, context);
 
   if (!(await exists(resolvedSource))) {
-    reportFileDoesNotExist(resolvedSource, context);
     return;
   }
 
   if (await exists(resolvedTarget)) {
-    reportFileExists(resolvedTarget, context);
     return;
   }
 

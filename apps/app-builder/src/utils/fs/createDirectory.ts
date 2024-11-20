@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import chalk from 'chalk';
 import {resolveString} from '../resolveString';
 import {resolvePath} from '../resolvePath';
-import {reportDirectoryExists} from '../debug/reportOnFile';
 import {logTargetPath} from '../debug/logTargetPath';
 import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';
 import {isDryRun} from '../command/isDryRun';
@@ -15,7 +14,6 @@ export const createDirectory = async (context: PdkBuilderContext, item: StringGe
   const resolvedPath = resolveString(item, context);
 
   if (await exists(resolvedPath)) {
-    reportDirectoryExists(resolvedPath, context);
     return;
   }
 

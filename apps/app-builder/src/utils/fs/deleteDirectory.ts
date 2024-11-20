@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import chalk from 'chalk';
 import {resolvePath} from '../resolvePath';
-import {reportDirectoryDoesNotExist} from '../debug/reportOnFile';
 import {logSourcePath} from '../debug/logSourcePath';
 import {shouldModifyFiles} from '../command/shouldModifyFiles';
 import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';
@@ -12,7 +11,6 @@ export const deleteDirectory = async (context: PdkBuilderContext, directoryPath:
   const resolvedPath = resolvePath(directoryPath, context);
 
   if (!(await exists(resolvedPath))) {
-    reportDirectoryDoesNotExist(resolvedPath, context);
     return;
   }
 
