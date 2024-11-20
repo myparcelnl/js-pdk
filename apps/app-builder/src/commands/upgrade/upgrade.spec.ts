@@ -11,13 +11,13 @@ import {type UpgradeCommandArgs} from './upgrade.types';
 
 describe('command: upgrade', () => {
   const composerShowSpy = vi.fn(() => '{"name":"myparcelnl/pdk","source":{"url":""},"versions":["1.0.0"]}');
-  const composerRequireSpy = vi.fn(() => '');
+  const composerUpdateSpy = vi.fn(() => '');
   const yarnInfoSpy = vi.fn(() => '{}');
   const yarnUpgradeSpy = vi.fn(() => '');
 
   const spyMap = {
     'composer show': composerShowSpy,
-    'composer require': composerRequireSpy,
+    'composer update': composerUpdateSpy,
     'yarn info': yarnInfoSpy,
     'yarn up': yarnUpgradeSpy,
   };
@@ -63,7 +63,7 @@ describe('command: upgrade', () => {
     await upgrade(context);
 
     expect(composerShowSpy).toHaveBeenCalledWith('composer', ['show', '--format=json', MYPARCEL_PDK_PACKAGIST_NAME]);
-    expect(composerRequireSpy).toHaveBeenCalledWith('composer', ['require', MYPARCEL_PDK_PACKAGIST_NAME]);
+    expect(composerUpdateSpy).toHaveBeenCalledWith('composer', ['update', MYPARCEL_PDK_PACKAGIST_NAME]);
 
     expect(yarnInfoSpy).not.toHaveBeenCalled();
     expect(yarnUpgradeSpy).not.toHaveBeenCalled();
@@ -87,7 +87,7 @@ describe('command: upgrade', () => {
 
     expect(yarnInfoSpy).toHaveBeenCalledWith('yarn', ['info', '--all', '--name-only', '--json']);
     expect(yarnUpgradeSpy).toHaveBeenCalledWith('yarn', ['up', '-R', packageName]);
-    expect(composerRequireSpy).not.toHaveBeenCalled();
+    expect(composerUpdateSpy).not.toHaveBeenCalled();
     expect(composerShowSpy).not.toHaveBeenCalled();
   });
 });

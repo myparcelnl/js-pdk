@@ -12,7 +12,7 @@ export const upgradeComposerPackage = async (context: PdkBuilderUpgradeContext):
   const oldVersions = await getComposerPackageVersion(context);
 
   if (!args.dryRun) {
-    await executeCommand(context, config.composerCommand, ['require', packageName]);
+    await executeCommand(context, config.composerCommand, ['update', packageName]);
   }
 
   return {
