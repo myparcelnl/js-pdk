@@ -1,5 +1,4 @@
-import {computed, type ComputedRef} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, type ComputedRef, toValue} from 'vue';
 import {type BackendEndpoint} from '@myparcel-pdk/common';
 import {getOrderId, validateId} from '../../utils';
 import {type ResolvedQuery, useQueryStore} from '../../stores';
@@ -21,8 +20,10 @@ export const useOrderData = (externalIdentifier?: string): UseOrderData => {
   const allQueries = queryStore.getQueriesForOrder(orderId);
 
   return {
-    loading: computed(() => Object.values(get(allQueries)).some((item) => (item ? get(item.isLoading) : false))),
-    order: computed(() => get(fetchQuery.data)),
+    loading: computed(() => {
+      return Object.values(toValue(allQueries)).some((item) => (item ? toValue(item.isLoading) : false));
+    }),
+    order: computed(() => toValue(fetchQuery.data)),
     query: fetchQuery,
   };
 };

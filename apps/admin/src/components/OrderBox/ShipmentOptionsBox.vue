@@ -25,8 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import {computed} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, toValue} from 'vue';
 import {ShipmentOptionsForm} from '../common';
 import {instantiateActions} from '../../services';
 import {AdminIcon} from '../../data';
@@ -47,7 +46,7 @@ const pluginSettings = usePluginSettings();
 
 const {orderMode} = pluginSettings.order;
 
-const isExported = computed(() => pluginSettings.order.orderMode && get(data)?.exported);
+const isExported = computed(() => pluginSettings.order.orderMode && toValue(data)?.exported);
 
 const actions = computed(() => {
   if (isExported.value) {
@@ -61,7 +60,7 @@ const actions = computed(() => {
         ? [orderExportAction]
         : [orderExportToShipmentsAction, ordersPrintAction, ordersExportPrintShipmentsAction]),
     ],
-    {orderIds: get(data)?.externalIdentifier},
+    {orderIds: toValue(data)?.externalIdentifier},
   );
 });
 </script>

@@ -1,5 +1,4 @@
-import {computed, type ComputedRef, type Ref, ref, toRefs} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, type ComputedRef, type Ref, ref, toRefs, toValue} from 'vue';
 import {partitionArray} from '@myparcel/ts-utils';
 import {type ActionDefinition, type DropdownButtonProps} from '../../types';
 import {AdminIcon} from '../../data';
@@ -24,7 +23,7 @@ export const useDropdownButtonContext = (props: DropdownButtonProps): DropdownDa
 
   return {
     dropdownActions: computed(() => {
-      const [standalone, hidden] = partitionArray(get(propRefs.actions), (action) => action.standalone === true);
+      const [standalone, hidden] = partitionArray(toValue(propRefs.actions), (action) => action.standalone === true);
 
       return {
         standalone,

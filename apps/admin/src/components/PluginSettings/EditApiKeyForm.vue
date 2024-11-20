@@ -9,8 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import {type Component, computed, markRaw, ref, watch} from 'vue';
-import {get} from '@vueuse/core';
+import {type Component, computed, markRaw, ref, toValue, watch} from 'vue';
 import {Size, Variant} from '@myparcel-pdk/common';
 import {defineField, defineForm, FormHook, type FormInstance, MagicForm} from '@myparcel/vue-form-builder';
 import {NotificationContainer, ResetButton, SubmitButton} from '../common';
@@ -77,7 +76,7 @@ const contextQuery = useStoreContextQuery();
 
 const form = ref<FormInstance>();
 
-const hasAccount = computed(() => Boolean(get(contextQuery.data)?.account));
+const hasAccount = computed(() => Boolean(toValue(contextQuery.data)?.account));
 
 watch(
   contextQuery.data,

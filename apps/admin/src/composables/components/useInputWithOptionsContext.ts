@@ -1,5 +1,4 @@
-import {onMounted, watch, type WritableComputedRef} from 'vue';
-import {get} from '@vueuse/core';
+import {onMounted, toValue, watch, type WritableComputedRef} from 'vue';
 import {toArray} from '@myparcel/ts-utils';
 import {type ArrayItem, type SelectInputEmits, type SelectInputModelValue, type SelectInputProps} from '../../types';
 import {type ElementOptionsContext, useElementOptions} from './useElementOptions';
@@ -29,7 +28,7 @@ export const useInputWithOptionsContext = <
     watch(
       options,
       (newOptions) => {
-        const values = toArray(get(model));
+        const values = toArray(toValue(model));
         const hasExistingValue =
           values.length && newOptions.some((option) => values.includes(option.value as ModelValue<T, Multiple>));
 
@@ -39,7 +38,7 @@ export const useInputWithOptionsContext = <
 
         model.value = (multiple ? [newOptions[0].value] : newOptions[0].value) as ModelValue<T, Multiple>;
       },
-      {immediate: Number(get(options)?.length) > 0},
+      {immediate: Number(toValue(options)?.length) > 0},
     );
   });
 

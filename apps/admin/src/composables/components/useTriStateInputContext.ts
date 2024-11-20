@@ -1,5 +1,4 @@
-import {computed, markRaw, reactive, ref, type Ref, watch, type WritableComputedRef} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, markRaw, reactive, ref, type Ref, toValue, watch, type WritableComputedRef} from 'vue';
 import {TriState} from '@myparcel-pdk/common';
 import {type AnyElementConfiguration, defineField, useForm} from '@myparcel/vue-form-builder';
 import {useLanguage} from '../language';
@@ -34,8 +33,8 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
   const {translate} = useLanguage();
   const form = useForm();
 
-  const inheritModel = ref<boolean>(TriState.Inherit === get(props.modelValue));
-  const toggleModel = ref<boolean>(triStateToBoolean(get(props.modelValue)));
+  const inheritModel = ref<boolean>(TriState.Inherit === toValue(props.modelValue));
+  const toggleModel = ref<boolean>(triStateToBoolean(toValue(props.modelValue)));
 
   const {id, model} = useElementContext<TriStateInputModelValue>(props, emit);
 
@@ -70,7 +69,7 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
       name: `${props.element.name}__toggle`,
       ref: toggleModel,
       // The toggle is readonly when inherit is enabled or the element itself is set to readonly.
-      isReadOnly: markRaw(computed(() => get(inheritModel) || get(props.element.isReadOnly))),
+      isReadOnly: markRaw(computed(() => toValue(inheritModel) || toValue(props.element.isReadOnly))),
     }),
   );
 

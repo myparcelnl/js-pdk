@@ -1,4 +1,4 @@
-import {get} from '@vueuse/core';
+import {toValue} from 'vue';
 import {AdminContextKey} from '@myparcel-pdk/common';
 import {useStoreContextQuery} from '../useStoreContextQuery';
 import {type AdminContext} from '../../types';
@@ -8,7 +8,7 @@ export const useContext = <C extends AdminContextKey = AdminContextKey.Dynamic>(
   contextKey: C = AdminContextKey.Dynamic,
 ): NonNullable<AdminContext<C>> => {
   const query = useStoreContextQuery(contextKey);
-  const data = get(query.data);
+  const data = toValue(query.data);
 
   if (!data) {
     throw new Error(`Context ${contextKey} not found`);

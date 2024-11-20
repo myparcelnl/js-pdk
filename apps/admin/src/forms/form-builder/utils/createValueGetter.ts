@@ -1,4 +1,4 @@
-import {get} from '@vueuse/core';
+import {toValue} from 'vue';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 import {type AnyVal} from '../types';
 
@@ -11,6 +11,6 @@ export const createValueGetter = (instance: InteractiveElementInstance, prefix: 
     }
 
     // @ts-expect-error todo
-    return get(instance.ref);
+    return toValue(instance.ref);
   };
 };

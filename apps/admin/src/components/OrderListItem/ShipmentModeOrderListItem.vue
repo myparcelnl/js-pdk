@@ -18,7 +18,6 @@
 
 <script lang="ts" setup>
 import {computed, toValue} from 'vue';
-import {get} from '@vueuse/core';
 import {type Shipment, Size} from '@myparcel-pdk/common';
 import {DeliveryOptionsExcerpt} from '../common';
 import {type ActionDefinition, type AnyActionDefinition} from '../../types';
@@ -38,12 +37,12 @@ const {query, order} = useOrderData();
 
 const data = computed(() => toValue(query.data));
 
-const shipments = computed(() => get(data)?.shipments ?? []);
+const shipments = computed(() => toValue(data)?.shipments ?? []);
 
 const actions = computed<ActionDefinition[]>(() => {
   const actions: AnyActionDefinition[] = [];
 
-  if (get(order)?.shipments?.some((item: Shipment.ModelShipment) => !item.deleted)) {
+  if (toValue(order)?.shipments?.some((item: Shipment.ModelShipment) => !item.deleted)) {
     actions.push(orderExportAction);
     actions.push({
       ...ordersPrintAction,
@@ -61,7 +60,7 @@ const actions = computed<ActionDefinition[]>(() => {
   actions.push(ordersEditAction);
 
   return instantiateActions(actions, {
-    orderIds: get(order)?.externalIdentifier,
+    orderIds: toValue(order)?.externalIdentifier,
     form: false,
   });
 });

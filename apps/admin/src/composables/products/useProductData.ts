@@ -1,5 +1,4 @@
-import {computed, type ComputedRef} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, type ComputedRef, toValue} from 'vue';
 import {BackendEndpoint} from '@myparcel-pdk/common';
 import {useStoreQuery} from '../useStoreQuery';
 import {useInstanceContext} from '../context';
@@ -18,7 +17,7 @@ export const useProductData = (externalIdentifier?: string): UseProductData => {
   const fetchQuery = useStoreQuery(BackendEndpoint.FetchProducts, productId);
 
   return {
-    product: computed(() => get(fetchQuery.data)),
+    product: computed(() => toValue(fetchQuery.data)),
     query: fetchQuery,
   };
 };

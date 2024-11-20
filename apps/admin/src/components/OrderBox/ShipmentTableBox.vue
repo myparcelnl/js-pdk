@@ -23,14 +23,14 @@
   </PdkBox>
 </template>
 
-<script setup lang="ts">
-import {computed, ref, toRaw} from 'vue';
-import {get, isDef} from '@vueuse/core';
+<script lang="ts" setup>
+import {computed, ref, toRaw, toValue} from 'vue';
+import {isDef} from '@vueuse/core';
 import {instantiateActions} from '../../services';
+import {AdminIcon} from '../../data';
 import {useLanguage, useOrderData} from '../../composables';
 import {shipmentActions} from '../../actions';
 import OrderShipmentsTable from './OrderShipmentsTable.vue';
-import {AdminIcon} from "../../data";
 
 const {order} = useOrderData();
 
@@ -38,7 +38,7 @@ const selectedLabels = ref<(string | number)[]>([]);
 
 const bulkActions = computed(() => {
   return instantiateActions(shipmentActions, {
-    orderIds: get(order)?.externalIdentifier,
+    orderIds: toValue(order)?.externalIdentifier,
     shipmentIds: toRaw(selectedLabels.value),
   });
 });

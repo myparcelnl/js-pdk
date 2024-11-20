@@ -9,8 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, ref, watch} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, ref, toValue, watch} from 'vue';
 import {AdminContextKey} from '@myparcel-pdk/common';
 import {TabNavigation} from '../common';
 import {type TabDefinition} from '../../types';
@@ -34,12 +33,12 @@ const loading = computed(() => dynamicContextQuery.isLoading || pluginSettingsCo
 watch(
   () => pluginSettingsContextQuery.dataUpdatedAt,
   () => {
-    if (get(loading)) {
+    if (toValue(loading)) {
       return;
     }
 
-    const pluginSettingsView = get(pluginSettingsContextQuery.data);
-    const dynamicContext = get(dynamicContextQuery.data);
+    const pluginSettingsView = toValue(pluginSettingsContextQuery.data);
+    const dynamicContext = toValue(dynamicContextQuery.data);
 
     if (!pluginSettingsView || !dynamicContext?.pluginSettings) {
       tabs.value = [];

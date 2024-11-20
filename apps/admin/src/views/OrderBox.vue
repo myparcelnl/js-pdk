@@ -1,12 +1,11 @@
 <template>
   <ShipmentOptionsBox />
 
-  <ShipmentTableBox v-if="!orderMode && data?.shipments?.some((item) => !item.deleted)" />
+  <ShipmentTableBox v-if="!orderMode && data?.shipments.some((item) => !item.deleted)" />
 </template>
 
 <script lang="ts" setup>
-import {computed, defineAsyncComponent} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, defineAsyncComponent, toValue} from 'vue';
 import {useActionStore, useQueryStore} from '../stores';
 import {useOrderData, usePluginSettings} from '../composables';
 import ShipmentOptionsBox from '../components/OrderBox/ShipmentOptionsBox.vue';
@@ -27,7 +26,7 @@ const pluginSettings = usePluginSettings();
 
 const {query} = useOrderData();
 
-const data = computed(() => get(query.data));
+const data = computed(() => toValue(query.data));
 
 const {orderMode} = pluginSettings.order;
 </script>

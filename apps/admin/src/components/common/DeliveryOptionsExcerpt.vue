@@ -23,8 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import {computed} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, toValue} from 'vue';
 import {useAdminConfig, useOrderData} from '../../composables';
 import DeliveryOptionsPackageType from './DeliveryOptionsPackageType.vue';
 import DeliveryOptionsExcerptCarrierName from './DeliveryOptionsExcerptCarrierName.vue';
@@ -33,8 +32,8 @@ import DateRelative from './DateRelative.vue';
 
 const {query} = useOrderData();
 
-const data = computed(() => get(query.data));
-const deliveryOptions = computed(() => data.value?.deliveryOptions);
+const data = computed(() => toValue(query.data));
+const deliveryOptions = computed(() => toValue(data)?.deliveryOptions);
 
 const config = useAdminConfig();
 </script>

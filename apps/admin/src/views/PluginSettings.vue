@@ -10,8 +10,7 @@
 /**
  * Plugin settings screen.
  */
-import {computed} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, toValue} from 'vue';
 import {AdminContextKey, BackendEndpoint} from '@myparcel-pdk/common';
 import {useActionStore, useQueryStore} from '../stores';
 import {useStoreContextQuery} from '../composables';
@@ -40,5 +39,5 @@ actionStore.register([pluginSettingsUpdateAction, fetchPluginSettingsViewContext
 
 const dynamicContextQuery = useStoreContextQuery();
 
-const hasAccount = computed(() => Boolean(get(dynamicContextQuery.data)?.account));
+const hasAccount = computed(() => Boolean(toValue(dynamicContextQuery.data)?.account));
 </script>

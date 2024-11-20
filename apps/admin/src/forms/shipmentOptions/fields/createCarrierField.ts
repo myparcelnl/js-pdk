@@ -1,4 +1,4 @@
-import {get} from '@vueuse/core';
+import {toValue} from 'vue';
 import {AdminContextKey, type Plugin} from '@myparcel-pdk/common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
@@ -46,7 +46,7 @@ export const createCarrierField = (
           const query = useFetchCarrier(carrier.name);
           await query.suspense();
 
-          const apiCarrier = get(query.data);
+          const apiCarrier = toValue(query.data);
 
           let plainLabel = apiCarrier?.human ?? carrier.human ?? '';
 
@@ -64,9 +64,9 @@ export const createCarrierField = (
 
       setFieldProp(field, PROP_OPTIONS, carrierSelectOptions);
 
-      await field?.afterUpdate?.(field, get(field.ref), undefined);
+      await field?.afterUpdate?.(field, toValue(field.ref), undefined);
 
-      updateFieldsDefaults(get(field.ref) as string, field, inheritedDeliveryOptions);
+      updateFieldsDefaults(toValue(field.ref) as string, field, inheritedDeliveryOptions);
     },
 
     afterUpdate: (field, newCarrier: string) => {

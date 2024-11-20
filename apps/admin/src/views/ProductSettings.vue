@@ -6,15 +6,13 @@
 /**
  * Product settings.
  */
-import {toRefs} from 'vue';
-import {get} from '@vueuse/core';
+import {toRefs, toValue} from 'vue';
+import {AdminContextKey} from '@myparcel-pdk/common';
 import {defineForm, type FormInstance, MagicForm} from '@myparcel/vue-form-builder';
 import {useQueryStore} from '../stores';
 import {FORM_KEY_CHILD_PRODUCT_SETTINGS, FORM_KEY_PRODUCT_SETTINGS, generateFormFields} from '../forms';
 import {useAdminConfig, useContext, useProductData} from '../composables';
 import {useUpdateProductSettingsMutation} from '../actions';
-
-import {AdminContextKey} from "@myparcel-pdk/common";
 
 const props = withDefaults(
   defineProps<{
@@ -41,21 +39,21 @@ const updateProductSettingsMutation = useUpdateProductSettingsMutation();
 const adminConfig = useAdminConfig();
 
 const createProductSettingsForm = (): FormInstance => {
-  const resolvedProduct = get(product);
+  const resolvedProduct = toValue(product);
 
   if (!resolvedProduct || !viewContext.view) {
     throw new Error('Product settings not loaded');
   }
 
   const overrides =
-    FORM_KEY_CHILD_PRODUCT_SETTINGS === get(propRefs.formKey)
+    FORM_KEY_CHILD_PRODUCT_SETTINGS === toValue(propRefs.formKey)
       ? {
           ...adminConfig.formConfigOverrides?.[FORM_KEY_PRODUCT_SETTINGS],
           ...adminConfig.formConfigOverrides?.[FORM_KEY_CHILD_PRODUCT_SETTINGS],
         }
       : adminConfig.formConfigOverrides?.[FORM_KEY_PRODUCT_SETTINGS];
 
-  return defineForm(get(propRefs.formName), {
+  return defineForm(toValue(propRefs.formName), {
     ...overrides,
     fields: [
       ...generateFormFields({

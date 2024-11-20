@@ -1,6 +1,6 @@
-import {computed, type ComputedRef, type Ref, ref, unref} from 'vue';
+import {computed, type ComputedRef, type Ref, ref, toValue, unref} from 'vue';
 import {defineStore} from 'pinia';
-import {get as vuGet, type MaybeRef} from '@vueuse/core';
+import {type MaybeRef} from '@vueuse/core';
 import {type QueryClient, useQueryClient} from '@tanstack/vue-query';
 import {AdminContextKey, BackendEndpoint} from '@myparcel-pdk/common';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
@@ -136,7 +136,7 @@ export const useQueryStore = defineStore('query', () => {
 
       toArray(id).forEach((orderId) => {
         const ordersQuery = register(BackendEndpoint.FetchOrders, orderId, useFetchOrdersQuery(orderId));
-        vuGet(ordersQuery.data)?.shipments?.forEach((shipment) => registerShipmentQueries(shipment.id, orderId));
+        toValue(ordersQuery.data)?.shipments?.forEach((shipment) => registerShipmentQueries(shipment.id, orderId));
         register(BackendEndpoint.FetchOrders, orderId, useFetchOrdersQuery(orderId));
         register(BackendEndpoint.ExportOrders, orderId, useExportOrdersMutation(orderId, mode));
         register(BackendEndpoint.PrintOrders, orderId, usePrintOrdersMutation(orderId));

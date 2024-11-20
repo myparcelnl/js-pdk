@@ -7,8 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, toRefs} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, toRefs, toValue} from 'vue';
 import {type Carrier} from '@myparcel-pdk/common';
 import {useFetchCarrier} from '../../sdk';
 import CarrierLogo from './CarrierLogo.vue';
@@ -18,5 +17,5 @@ const propRefs = toRefs(props);
 
 const carriersQuery = useFetchCarrier(propRefs.carrier.value.name);
 
-const carrierData = computed(() => get(carriersQuery.data));
+const carrierData = computed(() => toValue(carriersQuery.data));
 </script>

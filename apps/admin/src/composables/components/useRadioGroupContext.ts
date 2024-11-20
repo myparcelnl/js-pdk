@@ -1,5 +1,4 @@
-import {computed, type ComputedRef, type WritableComputedRef} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, type ComputedRef, toValue, type WritableComputedRef} from 'vue';
 import {isOfType} from '@myparcel/ts-utils';
 import {createFormElement, createObjectWithKeys} from '../../utils';
 import {
@@ -30,10 +29,10 @@ export const useRadioGroupContext = <
   const context = useInputWithOptionsContext<T, Props>(props, emit);
 
   const elements = computed(() => {
-    const optionValues = (get(context.options) ?? []).map((option) => option.value);
+    const optionValues = (toValue(context.options) ?? []).map((option) => option.value);
 
     return createObjectWithKeys(optionValues, (value) => {
-      const option = (get(context.options) ?? []).find((option) => option.value === value) as SelectOption<T>;
+      const option = (toValue(context.options) ?? []).find((option) => option.value === value) as SelectOption<T>;
 
       return createFormElement({
         ref: context.model,

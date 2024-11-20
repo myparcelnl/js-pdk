@@ -16,8 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import {computed} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, toValue} from 'vue';
 import {Status} from '@myparcel-pdk/common';
 import {StatusIndicator, TabNavigation} from '../common';
 import {prefixComponent} from '../../utils';
@@ -45,11 +44,12 @@ const updateAccount = useUpdateAccountMutation();
 const deleteAccount = useDeleteAccountMutation();
 
 const loading =
-  computed(() => get(contextQuery.isLoading) || get(updateAccount.isLoading)) || get(deleteAccount.isLoading);
+  computed(() => toValue(contextQuery.isLoading) || toValue(updateAccount.isLoading)) ||
+  toValue(deleteAccount.isLoading);
 
-const hasApiKey = computed(() => Boolean(get(contextQuery.data)?.pluginSettings.account.apiKey));
+const hasApiKey = computed(() => Boolean(toValue(contextQuery.data)?.pluginSettings.account.apiKey));
 
-const hasAccount = computed(() => !get(loading) && hasApiKey.value && Boolean(get(contextQuery.data)?.account));
+const hasAccount = computed(() => !toValue(loading) && hasApiKey.value && Boolean(toValue(contextQuery.data)?.account));
 
 const {translate} = useLanguage();
 
@@ -62,7 +62,7 @@ const tabs = computed(() => {
     },
   ];
 
-  if (get(hasAccount)) {
+  if (toValue(hasAccount)) {
     array.push({
       name: 'webhooks',
       component: WebhooksStatus,

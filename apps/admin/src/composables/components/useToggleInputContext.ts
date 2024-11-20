@@ -1,5 +1,4 @@
-import {ref, type Ref, watch, type WritableComputedRef} from 'vue';
-import {get} from '@vueuse/core';
+import {ref, type Ref, toValue, watch, type WritableComputedRef} from 'vue';
 import {booleanToTriState, triStateToBoolean} from '../../utils';
 import {type ToggleInputEmits, type ToggleInputModelValue, type ToggleInputProps} from '../../types';
 import {useElementContext} from './useElementContext';
@@ -14,7 +13,7 @@ interface ToggleInputContext {
 type UseToggleInputContext = (props: ToggleInputProps, emit: ToggleInputEmits) => ToggleInputContext;
 
 export const useToggleInputContext: UseToggleInputContext = (props, emit) => {
-  const toggleModel = ref<boolean>(triStateToBoolean(get(props.modelValue)));
+  const toggleModel = ref<boolean>(triStateToBoolean(toValue(props.modelValue)));
   const {id, model} = useElementContext<ToggleInputModelValue>(props, emit);
 
   // When the toggle is changed, the model is updated to 1/0

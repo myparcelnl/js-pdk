@@ -1,5 +1,5 @@
-import {computed, type ComputedRef, type Ref, ref, unref} from 'vue';
-import {get, type MaybeRef} from '@vueuse/core';
+import {computed, type ComputedRef, type Ref, ref, toValue, unref} from 'vue';
+import {type MaybeRef} from '@vueuse/core';
 import {type Shipment} from '@myparcel-pdk/common';
 import {type Carrier} from '@myparcel/sdk';
 import {type AnyActionDefinition} from '../../types';
@@ -23,9 +23,9 @@ export const useShipmentData = (id: MaybeRef<number>): UseShipmentData => {
   const fetchQuery = useShipment(shipmentId);
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const shipment = computed(() => get(fetchQuery.data)!);
+  const shipment = computed(() => toValue(fetchQuery.data)!);
 
-  const orderId = get(shipment)?.orderId;
+  const orderId = toValue(shipment)?.orderId;
 
   const allQueries = [
     queryStore.getQueriesForShipment(shipmentId),
@@ -44,7 +44,7 @@ export const useShipmentData = (id: MaybeRef<number>): UseShipmentData => {
     carrier: carriersQuery?.data ?? ref(),
     loading: computed(() => {
       return allQueries.some((obj) =>
-        Object.values(get(obj) ?? {}).some((item) => (item ? get(item.isLoading) : false)),
+        Object.values(toValue(obj) ?? {}).some((item) => (item ? toValue(item.isLoading) : false)),
       );
     }),
     shipment,

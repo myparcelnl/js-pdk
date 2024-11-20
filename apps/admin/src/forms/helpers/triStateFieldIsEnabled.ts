@@ -1,4 +1,4 @@
-import {get} from '@vueuse/core';
+import {toValue} from 'vue';
 import {TriState} from '@myparcel-pdk/common';
 import {type FormInstance} from '@myparcel/vue-form-builder';
 import {type ElementInstance, type TriStateInputProps} from '../../types';
@@ -10,7 +10,7 @@ export const triStateFieldIsEnabled = (form: FormInstance, fieldName: string): b
     return false;
   }
 
-  const value = get(field.ref);
+  const value = toValue(field.ref);
 
   if (TriState.Inherit === value) {
     return TriState.On === field.props.defaultValue;

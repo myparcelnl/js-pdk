@@ -12,9 +12,9 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, defineAsyncComponent} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, defineAsyncComponent, toValue} from 'vue';
 import {instantiateActions} from '../../services';
+import {AdminModalKey} from '../../data';
 import {useOrdersData, usePluginSettings} from '../../composables';
 import {
   modalCloseAction,
@@ -23,7 +23,6 @@ import {
   ordersExportPrintShipmentsAction,
   ordersUpdateAction,
 } from '../../actions';
-import {AdminModalKey} from "../../data";
 
 /**
  * Shipment options modal. Opened by clicking the "Create" button in the "Labels" column in the orders list.
@@ -38,10 +37,10 @@ const {orderMode} = pluginSettings.order;
 
 const ordersData = computed(() => useOrdersData());
 
-const orderIds = computed(() => get(ordersData).map((data) => get(data.order)?.externalIdentifier));
+const orderIds = computed(() => toValue(ordersData).map((data) => toValue(data.order)?.externalIdentifier));
 
 const actions = computed(() => {
-  const disabled = get(ordersData).some((data) => get(data.query.isLoading));
+  const disabled = toValue(ordersData).some((data) => toValue(data.query.isLoading));
 
   const actions = [
     modalCloseAction,

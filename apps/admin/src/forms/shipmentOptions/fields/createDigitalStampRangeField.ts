@@ -1,6 +1,5 @@
-import {ref} from 'vue';
+import {ref, toValue} from 'vue';
 import {get} from 'lodash-unified';
-import {get as vuGet} from '@vueuse/core';
 import {TriState} from '@myparcel-pdk/common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
@@ -15,7 +14,7 @@ export const createDigitalStampRangeField = (refs: ShipmentOptionsRefs): Interac
   const pluginSettings = usePluginSettings();
   const {order} = useOrderData();
 
-  const orderData = vuGet(order);
+  const orderData = toValue(order);
 
   const {initialWeight, manualWeight} = orderData?.physicalProperties ?? {};
 

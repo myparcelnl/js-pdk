@@ -1,5 +1,5 @@
+import {toValue} from 'vue';
 import {get as lodashGet} from 'lodash-unified';
-import {get} from '@vueuse/core';
 import {type Shipment} from '@myparcel-pdk/common';
 import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
 
@@ -11,7 +11,7 @@ export const updateFieldsDefaults = (
   {form, name}: InteractiveElementInstance,
   inheritedDeliveryOptions: Record<string, Shipment.ModelDeliveryOptions>,
 ): void => {
-  (get(form.fields) as InteractiveElementInstance[]).forEach((otherField) => {
+  (toValue(form.fields) as InteractiveElementInstance[]).forEach((otherField) => {
     if (otherField.name === name) {
       return;
     }

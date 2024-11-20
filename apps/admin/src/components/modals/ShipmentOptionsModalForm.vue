@@ -6,8 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import {computed} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, toValue} from 'vue';
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {ShipmentOptionsForm} from '../common';
 import {useOrdersData} from '../../composables';
@@ -16,7 +15,7 @@ const props = defineProps<{order: OneOrMore<string>}>();
 
 const orderIds = computed(() => {
   return useOrdersData(props.order)
-    .filter((data) => get(data.order))
-    .map((data) => get(data.order)?.externalIdentifier);
+    .filter((data) => toValue(data.order))
+    .map((data) => toValue(data.order)?.externalIdentifier);
 });
 </script>

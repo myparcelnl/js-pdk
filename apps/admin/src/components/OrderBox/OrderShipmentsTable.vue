@@ -35,8 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-import {computed} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, toValue} from 'vue';
 import {BulkSelectCheckbox} from '../common';
 import {type PdkBulkSelectCheckboxEmits, useBulkSelectCheckbox, useLanguage, useOrderData} from '../../composables';
 import OrderShipmentsTableRow from './OrderShipmentsTableRow.vue';
@@ -44,7 +43,7 @@ import OrderShipmentsTableRow from './OrderShipmentsTableRow.vue';
 const emit = defineEmits<PdkBulkSelectCheckboxEmits>();
 
 const {query} = useOrderData();
-const data = computed(() => get(query.data));
+const data = computed(() => toValue(query.data));
 
 const {bulkModel, bulkOptions} = useBulkSelectCheckbox(query.data.value?.shipments?.map(({id}) => id) ?? [], emit);
 

@@ -14,8 +14,7 @@
 /**
  * This is the main entry point for the order list column.
  */
-import {defineAsyncComponent} from 'vue';
-import {get} from '@vueuse/core';
+import {defineAsyncComponent, toValue} from 'vue';
 import {type NotificationFilter} from '../types';
 import {useActionStore, useQueryStore} from '../stores';
 import {NotificationCategory} from '../data';
@@ -48,6 +47,6 @@ const {orderMode} = pluginSettings.order;
 const {query} = useOrderData();
 
 const notificationFilter: NotificationFilter = (notification) => {
-  return notification.tags?.orderIds === get(query.data)?.externalIdentifier;
+  return notification.tags?.orderIds === toValue(query.data)?.externalIdentifier;
 };
 </script>

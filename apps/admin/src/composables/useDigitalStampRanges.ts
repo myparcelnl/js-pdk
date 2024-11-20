@@ -1,5 +1,5 @@
-import {computed, type ComputedRef} from 'vue';
-import {get, type MaybeRef} from '@vueuse/core';
+import {computed, type ComputedRef, toValue} from 'vue';
+import {type MaybeRef} from '@vueuse/core';
 import {type Plugin} from '@myparcel-pdk/common';
 import {type SelectOptionWithPlainLabel} from '../types';
 import {useOrderData} from './orders';
@@ -14,7 +14,7 @@ export const useDigitalStampRanges = (weight: MaybeRef<number>): UseDigitalStamp
   // todo: move this to global context
   const {order} = useOrderData();
 
-  const allRanges = computed<Plugin.DigitalStampRange[]>(() => get(order).digitalStampRanges ?? []);
+  const allRanges = computed<Plugin.DigitalStampRange[]>(() => toValue(order).digitalStampRanges ?? []);
 
   const ranges = computed<SelectOptionWithPlainLabel<number, string>[]>(() => {
     return allRanges.value.map((range) => ({
@@ -24,7 +24,7 @@ export const useDigitalStampRanges = (weight: MaybeRef<number>): UseDigitalStamp
   });
 
   const currentRange = computed(() => {
-    const resolvedWeight = get(weight);
+    const resolvedWeight = toValue(weight);
 
     const matchingRange = allRanges.value.find((range) => range.min <= resolvedWeight && range.max >= resolvedWeight);
 

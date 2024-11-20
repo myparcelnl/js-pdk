@@ -26,8 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import {computed} from 'vue';
-import {get} from '@vueuse/core';
+import {computed, toValue} from 'vue';
 import {Status} from '@myparcel-pdk/common';
 import {partitionArray} from '@myparcel/ts-utils';
 import {ActionButton, StatusIndicator} from '../common';
@@ -41,13 +40,13 @@ const {fetchWebhooks, createWebhooks, deleteWebhooks} = useQueryStore().register
 
 useActionStore().registerWebhookActions();
 
-const data = computed(() => get(fetchWebhooks.data) ?? []);
+const data = computed(() => toValue(fetchWebhooks.data) ?? []);
 
 const webhooks = computed<(WebhookDefinition & {status: Status})[]>(() => {
   return data.value.map((webhook) => {
     let status = Status.Pending;
 
-    if (!get(fetchWebhooks.isLoading) && !get(createWebhooks.isLoading) && !get(deleteWebhooks.isLoading)) {
+    if (!toValue(fetchWebhooks.isLoading) && !toValue(createWebhooks.isLoading) && !toValue(deleteWebhooks.isLoading)) {
       status = webhook.connected ? Status.Success : Status.Error;
     }
 
