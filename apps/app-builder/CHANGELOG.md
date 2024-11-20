@@ -2,6 +2,17 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.6.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.6.0...@myparcel-pdk/app-builder@1.6.1) "@myparcel-pdk/app-builder" (2024-11-20)
+
+
+### Bug Fixes
+
+* **app-builder:** remove some extremely verbose logging ([6a5cf1e](https://github.com/myparcelnl/js-pdk/commit/6a5cf1ed8cfa503b670fc784cb4f53f02e35b38d))
+* **app-builder:** replace composer require with update ([f2fd451](https://github.com/myparcelnl/js-pdk/commit/f2fd4511ecf27a0496e3961e606ce1766be4bda6))
+
+
+
+
 ## [1.6.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.5.1...@myparcel-pdk/app-builder@1.6.0) "@myparcel-pdk/app-builder" (2024-11-07)
 
 
