@@ -844,6 +844,7 @@ export namespace Shipment {
     return?: boolean;
     sameDayDelivery?: boolean;
     signature?: boolean;
+    receiptCode?: boolean;
   };
 
   export type PostReturnShipmentsRequest = Base.Request;
