@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-preset-bootstrap4",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -27,7 +27,7 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^1.5.4",
+    "@myparcel-pdk/admin": "workspace:^1.5.5",
     "@myparcel/ts-utils": "^1.9.0",
     "vue": "^3.3.0"
   },

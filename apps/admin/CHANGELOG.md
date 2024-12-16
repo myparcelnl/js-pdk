@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.5.5](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.5.4...@myparcel-pdk/admin@1.5.5) "@myparcel-pdk/admin" (2024-12-16)
+
+
+### Bug Fixes
+
+* **ordermode:** show shipment label when printed from backoffice ([#227](https://github.com/myparcelnl/js-pdk/issues/227)) ([32b3368](https://github.com/myparcelnl/js-pdk/commit/32b336854ff07e9d43bb825206e23b6c67895d63))
+
+
+
+
 ## [1.5.4](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.5.3...@myparcel-pdk/admin@1.5.4) "@myparcel-pdk/admin" (2024-11-20)
 
 
