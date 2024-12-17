@@ -18,6 +18,7 @@ export const PACKAGE_TYPE = 'packageType' satisfies keyof Shipment.ModelDelivery
 
 export const AGE_CHECK = 'ageCheck' satisfies keyof Shipment.ModelShipmentOptions;
 
+export const RECEIPT_CODE = 'receiptCode' satisfies keyof Shipment.ModelShipmentOptions;
 export const DIRECT_RETURN = 'return' satisfies keyof Shipment.ModelShipmentOptions;
 
 export const HIDE_SENDER = 'hideSender' satisfies keyof Shipment.ModelShipmentOptions;
@@ -64,6 +65,8 @@ export const FIELD_INSURANCE: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${INSURANC
 
 export const FIELD_MANUAL_WEIGHT: FieldName = `${PHYSICAL_PROPERTIES_PREFIX}.${MANUAL_WEIGHT}`;
 
+export const FIELD_RECEIPT_CODE: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${RECEIPT_CODE}`;
+
 export const ALL_FIELDS = [
   FIELD_AGE_CHECK,
   FIELD_CARRIER,
@@ -77,4 +80,5 @@ export const ALL_FIELDS = [
   FIELD_PACKAGE_TYPE,
   FIELD_SAME_DAY_DELIVERY,
   FIELD_SIGNATURE,
+  FIELD_RECEIPT_CODE,
 ] as const;

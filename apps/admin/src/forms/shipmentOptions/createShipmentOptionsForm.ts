@@ -25,6 +25,7 @@ import {
   createPackageTypeField,
   createSameDayDeliveryField,
   createSignatureField,
+  createReceiptCodeField,
 } from './fields';
 import {ALL_FIELDS, FIELD_CARRIER} from './field';
 
@@ -70,7 +71,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
       createLargeFormatField(refs),
       createHideSenderField(refs),
       createSameDayDeliveryField(refs),
-
+      createReceiptCodeField(refs),
       createInsuranceField(refs),
     ],
   });
