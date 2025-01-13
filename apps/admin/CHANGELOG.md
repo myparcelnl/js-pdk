@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.6.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.5.5...@myparcel-pdk/admin@1.6.0) "@myparcel-pdk/admin" (2025-01-13)
+
+
+### Features
+
+* add receipt code to admin ([#228](https://github.com/myparcelnl/js-pdk/issues/228)) ([d1cc74f](https://github.com/myparcelnl/js-pdk/commit/d1cc74f54701f2a4a17d5f577b2fd8ef1109df70))
+
+
+
+
 ## [1.5.5](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.5.4...@myparcel-pdk/admin@1.5.5) "@myparcel-pdk/admin" (2024-12-16)
 
 
