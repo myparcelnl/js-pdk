@@ -11,3 +11,4 @@ export * from './createRef';
 export * from './createSameDayDeliveryField';
 export * from './createShipmentOptionField';
 export * from './createSignatureField';
+export * from './createReceiptCodeField';
