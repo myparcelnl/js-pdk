@@ -384,6 +384,9 @@ export namespace Plugin {
     // Separate address fields
     countriesWithSeparateAddressFields: string[];
 
+    // Address widget
+    checkoutAddressHiddenInputName: string;
+
     // Tax fields
     carriersWithTaxFields: CarrierName[];
   };
