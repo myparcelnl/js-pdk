@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.5.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.4.0...@myparcel-pdk/common@1.5.0) "@myparcel-pdk/common" (2025-04-16)
+
+
+### Features
+
+* **address:** add hidden input name to php-pdk types ([#231](https://github.com/myparcelnl/js-pdk/issues/231)) ([c429f2d](https://github.com/myparcelnl/js-pdk/commit/c429f2d505ca991e8bd2d181f49a765691a66675))
+
+
+
+
 ## [1.4.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.3.2...@myparcel-pdk/common@1.4.0) "@myparcel-pdk/common" (2025-01-13)
 
 

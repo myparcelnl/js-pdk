@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-preset-default",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -27,7 +27,7 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^1.6.0",
+    "@myparcel-pdk/admin": "workspace:^1.6.1",
     "@myparcel/ts-utils": "^1.9.0",
     "@vueuse/core": "^10.0.0",
     "vue": "^3.3.0"
