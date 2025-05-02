@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.3.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-separate-address-fields@1.2.2...@myparcel-pdk/checkout-separate-address-fields@1.3.0) "@myparcel-pdk/checkout-separate-address-fields" (2025-05-02)
+
+
+### Features
+
+* **address:** export the splitFullStreet function ([18188f3](https://github.com/myparcelnl/js-pdk/commit/18188f3dcd8bfc5400f0aca3b2caedbbbc481520))
+
+
+
+
 ## [1.2.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-separate-address-fields@1.1.5...@myparcel-pdk/checkout-separate-address-fields@1.2.0) "@myparcel-pdk/checkout-separate-address-fields" (2024-11-06)
 
 
