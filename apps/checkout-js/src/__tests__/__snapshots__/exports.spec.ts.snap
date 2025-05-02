@@ -35,6 +35,7 @@ exports[`exports > exports from index.ts 1`] = `
   "initializeCheckoutSeparateAddressFields",
   "initializeCheckoutTaxFields",
   "shippingMethodHasDeliveryOptions",
+  "splitFullStreet",
   "toggleDeliveryOptions",
   "updateContext",
   "useCheckoutStore",

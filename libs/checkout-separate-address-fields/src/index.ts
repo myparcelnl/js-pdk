@@ -20,3 +20,5 @@ export const initializeCheckoutSeparateAddressFields = (): void => {
   prepareFields();
   fillAddress1();
 };
+
+export {splitFullStreet} from './utils/splitFullStreet';
