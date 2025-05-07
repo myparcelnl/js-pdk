@@ -101,4 +101,12 @@ export enum FrontendEndpoint {
    * Get checkout context.
    */
   FetchCheckoutContext = 'fetchCheckoutContext',
+  /**
+   * Proxy for listing addresses through the Microservice.
+   */
+  ProxyAddressesList = 'proxyAddresses',
+  /**
+   * Proxy for validating addresses through the Microservice.
+   */
+  ProxyAddressValidate = 'proxyAddressValidate',
 }
