@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.6.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.5.0...@myparcel-pdk/common@1.6.0) "@myparcel-pdk/common" (2025-05-07)
+
+
+### Features
+
+* **address:** add address proxies to the endpoint type ([6eeba04](https://github.com/myparcelnl/js-pdk/commit/6eeba04260a1bb053daf470a5f95f504b4516f63))
+
+
+
+
 ## [1.5.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.4.0...@myparcel-pdk/common@1.5.0) "@myparcel-pdk/common" (2025-04-16)
 
 
