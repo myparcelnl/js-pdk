@@ -104,7 +104,7 @@ export enum FrontendEndpoint {
   /**
    * Proxy for listing addresses through the Microservice.
    */
-  ProxyAddressesList = 'proxyAddresses',
+  ProxyAddressesList = 'proxyAddressList',
   /**
    * Proxy for validating addresses through the Microservice.
    */
