@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.6.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.6.0...@myparcel-pdk/common@1.6.1) "@myparcel-pdk/common" (2025-05-08)
+
+
+### Bug Fixes
+
+* incorrect endpoint definition for FrontendEndpoint.ProxyAddressesList ([8e9c98f](https://github.com/myparcelnl/js-pdk/commit/8e9c98f08fde4ea1e347df624e037d6ddd82a461))
+
+
+
+
 ## [1.6.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.5.0...@myparcel-pdk/common@1.6.0) "@myparcel-pdk/common" (2025-05-07)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -36,7 +36,7 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.6.0",
+    "@myparcel-pdk/common": "workspace:^1.6.1",
     "@myparcel/constants": "^2.0.0",
     "@myparcel/sdk": "^3.0.0",
     "@tanstack/vue-query": "^4.0.0",
