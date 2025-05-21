@@ -13,6 +13,7 @@ import {AdminModalKey} from '../../data';
 import {useAdminConfig} from '../../composables';
 import {type ShipmentOptionsRefs} from './types';
 import {createHideSenderField} from './fields/createHideSenderField';
+import {createDeliveryTypeField} from './fields/createDeliveryTypeField';
 import {
   createAgeCheckField,
   createCarrierField,
@@ -56,14 +57,19 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
     ...(isModal ? config.formConfigOverrides?.modal : null),
     ...config.formConfigOverrides?.shipmentOptions,
     fields: [
+      // General delivery options
       createCarrierField(refs, order.inheritedDeliveryOptions),
 
       createPackageTypeField(refs),
+
+      createDeliveryTypeField(refs),
+      // TODO: add pickup location obj. (read only? conditional on delivery type)
 
       createLabelAmountField(refs),
 
       createDigitalStampRangeField(refs),
 
+      // Actual shipment options
       createAgeCheckField(refs),
       createSignatureField(refs),
       createOnlyRecipientField(refs),
@@ -72,7 +78,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
       createHideSenderField(refs),
       createSameDayDeliveryField(refs),
       createReceiptCodeField(refs),
-      createInsuranceField(refs),
+      createInsuranceField(refs), // FIXME: not saved or rendered correctly
     ],
   });
 };
