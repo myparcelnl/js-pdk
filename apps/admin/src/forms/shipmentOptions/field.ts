@@ -16,9 +16,12 @@ export const LABEL_AMOUNT = 'labelAmount' satisfies keyof Shipment.ModelDelivery
 
 export const PACKAGE_TYPE = 'packageType' satisfies keyof Shipment.ModelDeliveryOptions;
 
+export const DELIVERY_TYPE = 'deliveryType' satisfies keyof Shipment.ModelDeliveryOptions;
+
 export const AGE_CHECK = 'ageCheck' satisfies keyof Shipment.ModelShipmentOptions;
 
 export const RECEIPT_CODE = 'receiptCode' satisfies keyof Shipment.ModelShipmentOptions;
+
 export const DIRECT_RETURN = 'return' satisfies keyof Shipment.ModelShipmentOptions;
 
 export const HIDE_SENDER = 'hideSender' satisfies keyof Shipment.ModelShipmentOptions;
@@ -46,6 +49,8 @@ export const FIELD_CARRIER: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${CARRIER}`;
 export const FIELD_LABEL_AMOUNT: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${LABEL_AMOUNT}`;
 
 export const FIELD_PACKAGE_TYPE: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${PACKAGE_TYPE}`;
+
+export const FIELD_DELIVERY_TYPE: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${DELIVERY_TYPE}`;
 
 export const FIELD_AGE_CHECK: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${AGE_CHECK}`;
 
@@ -78,6 +83,7 @@ export const ALL_FIELDS = [
   FIELD_ONLY_RECIPIENT,
   FIELD_MANUAL_WEIGHT,
   FIELD_PACKAGE_TYPE,
+  FIELD_DELIVERY_TYPE,
   FIELD_SAME_DAY_DELIVERY,
   FIELD_SIGNATURE,
   FIELD_RECEIPT_CODE,
