@@ -63,7 +63,6 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
       createPackageTypeField(refs),
 
       createDeliveryTypeField(refs),
-      // TODO: add pickup location obj. (read only? conditional on delivery type)
 
       createLabelAmountField(refs),
 
@@ -78,7 +77,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
       createHideSenderField(refs),
       createSameDayDeliveryField(refs),
       createReceiptCodeField(refs),
-      createInsuranceField(refs), // FIXME: not saved or rendered correctly
+      createInsuranceField(refs),
     ],
   });
 };

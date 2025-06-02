@@ -1,5 +1,5 @@
 import {type FormInstance} from '@myparcel/vue-form-builder';
-import {DeliveryTypeName, PackageTypeName} from '@myparcel/constants';
+import {DeliveryTypeName} from '@myparcel/constants';
 import {getDynamicTranslation} from '../../utils';
 import {type SelectOption} from '../../types';
 import {getCarrier} from './getCarrier';
