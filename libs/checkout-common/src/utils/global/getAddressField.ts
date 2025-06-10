@@ -16,6 +16,5 @@ export const getAddressField = (
   const config = useConfig();
   const getElement = useUtil(PdkUtil.GetElement);
 
-  // @ts-expect-error todo
   return getElement(config.fields[resolvedAddressType][name], warn);
 };
