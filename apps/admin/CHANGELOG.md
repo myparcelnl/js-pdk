@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.6.4](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.6.3...@myparcel-pdk/admin@1.6.4) "@myparcel-pdk/admin" (2025-06-11)
+
+
+### Bug Fixes
+
+* **admin:** fix modals sometimes exporting incorrect shipment ([#233](https://github.com/myparcelnl/js-pdk/issues/233)) ([a98946b](https://github.com/myparcelnl/js-pdk/commit/a98946bc5a67ad6c648b8b61c218dc7b205d9ae5))
+
+
+
+
 ## [1.6.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.5.5...@myparcel-pdk/admin@1.6.0) "@myparcel-pdk/admin" (2025-01-13)
 
 
