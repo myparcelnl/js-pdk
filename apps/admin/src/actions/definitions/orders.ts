@@ -8,6 +8,7 @@ import {type OrderIds} from '../../types';
 import {useModalStore} from '../../stores';
 import {AdminAction, AdminIcon, AdminModalKey} from '../../data';
 import {shipmentsUpdateAction} from './shipments';
+import {useGlobalContext} from '../../composables/context/useGlobalContext';
 
 /**
  * Open modal to edit order shipment options.
@@ -116,6 +117,7 @@ export const orderViewInBackofficeAction = defineAction({
   icon: AdminIcon.External,
   label: 'order_view_in_backoffice',
   handler() {
-    window.open('https://backoffice.myparcel.nl/orders', '_blank');
+    const {platform} = useGlobalContext();
+    window.open(`${platform.backofficeUrl}/orders`, '_blank');
   },
 });
