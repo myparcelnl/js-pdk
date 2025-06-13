@@ -9,7 +9,6 @@ export const getPackageTypes = (form?: FormInstance): SelectOption[] => {
 
   if (form) {
     const carrier = getCarrier(form);
-
     array = array.filter((name) => carrier?.capabilities.packageTypes.includes(name));
   }
 

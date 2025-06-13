@@ -20,6 +20,13 @@
             :order="data?.externalIdentifier" />
         </PdkCol>
       </PdkRow>
+
+      <PdkRow>
+        <PdkCol>
+          <NotificationContainer
+            :category="NotificationCategory.Action" />
+        </PdkCol>
+      </PdkRow>
     </template>
   </PdkConceptBoxWrapper>
 </template>
@@ -28,7 +35,7 @@
 import {computed, toValue} from 'vue';
 import {ShipmentOptionsForm} from '../common';
 import {instantiateActions} from '../../services';
-import {AdminIcon} from '../../data';
+import {AdminIcon, NotificationCategory} from '../../data';
 import {useLanguage, useOrderData, usePluginSettings} from '../../composables';
 import {
   orderExportAction,
@@ -38,6 +45,7 @@ import {
   ordersUpdateAction,
   orderViewInBackofficeAction,
 } from '../../actions';
+import {NotificationContainer} from '../../components';
 
 const {order: data, loading} = useOrderData();
 
