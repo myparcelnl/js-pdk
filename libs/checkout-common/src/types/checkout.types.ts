@@ -19,9 +19,12 @@ export type PdkCheckoutConfigInput = Omit<
   };
 };
 
+/**
+ * Includes our own address fields, and any additional fields described by optional packages.
+ */
 export type PdkCheckoutForm = Record<PdkField, string> & {
-  [AddressType.Billing]: AddressFields;
-  [AddressType.Shipping]: AddressFields;
+  [AddressType.Billing]: AddressFields & Record<string, string>;
+  [AddressType.Shipping]: AddressFields & Record<string, string>;
 };
 
 export interface PdkCheckoutConfig {
