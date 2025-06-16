@@ -118,6 +118,11 @@ export const orderViewInBackofficeAction = defineAction({
   label: 'order_view_in_backoffice',
   handler() {
     const {platform} = useGlobalContext();
-    window.open(`${platform.backofficeUrl}/orders`, '_blank');
+    const backofficeUrls = {
+      NL: 'https://backoffice.myparcel.nl/orders',
+      BE: 'https://backoffice.sendmyparcel.be/orders',
+    };
+    const url = backofficeUrls[platform.localCountry] || backofficeUrls['NL'];
+    window.open(url, '_blank');
   },
 });
