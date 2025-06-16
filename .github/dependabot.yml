@@ -1,6 +1,14 @@
 version: 2
 updates:
-  - package-ecosystem: 'github-actions'
+  - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'daily'
+    reviewers: ['myparcelnl/integration']
+    versioning-strategy: increase-if-necessary
+    groups:
+      minor-js-updates:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
