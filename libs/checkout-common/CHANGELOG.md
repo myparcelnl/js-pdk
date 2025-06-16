@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.3.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-common@1.3.2...@myparcel-pdk/checkout-common@1.3.3) "@myparcel-pdk/checkout-common" (2025-06-16)
+
+
+### Bug Fixes
+
+* **checkout:** fix pdk checkout form type to allow additional fields ([#234](https://github.com/myparcelnl/js-pdk/issues/234)) ([78a9f3c](https://github.com/myparcelnl/js-pdk/commit/78a9f3cdcd1cdcfbc847b2a3de92f198def9c9d9))
+
+
+
+
 ## [1.1.5](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-common@1.1.3...@myparcel-pdk/checkout-common@1.1.5) "@myparcel-pdk/checkout-common" (2024-10-24)
 
 
