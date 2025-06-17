@@ -122,7 +122,7 @@ export const orderViewInBackofficeAction = defineAction({
       NL: 'https://backoffice.myparcel.nl/orders',
       BE: 'https://backoffice.sendmyparcel.be/orders',
     };
-    const url = backofficeUrls[platform.localCountry] || backofficeUrls['NL'];
+    const url = backofficeUrls[platform.localCountry as 'NL' | 'BE'] || backofficeUrls['NL'];
     window.open(url, '_blank');
   },
 });
