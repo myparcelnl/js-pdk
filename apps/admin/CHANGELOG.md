@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.6.5](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.6.4...@myparcel-pdk/admin@1.6.5) "@myparcel-pdk/admin" (2025-06-19)
+
+
+### Bug Fixes
+
+* **js-pdk:** open correct NL or BE BackOffice URL based on platform ([#241](https://github.com/myparcelnl/js-pdk/issues/241)) ([3dbeb3e](https://github.com/myparcelnl/js-pdk/commit/3dbeb3e11cb86aca80a1dbf590909062fedfe369))
+
+
+
+
 ## [1.6.4](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.6.3...@myparcel-pdk/admin@1.6.4) "@myparcel-pdk/admin" (2025-06-11)
 
 

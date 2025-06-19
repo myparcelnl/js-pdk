@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-pdk/admin-preset-dashicons",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -27,7 +27,7 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^1.6.4",
+    "@myparcel-pdk/admin": "workspace:^1.6.5",
     "vite": "^5.4.10",
     "vue": "^3.3.0",
     "vue-tsc": "^2.0.0"
