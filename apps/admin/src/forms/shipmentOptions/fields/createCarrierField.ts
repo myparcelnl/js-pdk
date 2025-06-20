@@ -3,7 +3,8 @@ import {AdminContextKey, type Plugin} from '@myparcel-pdk/common';
 import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
 import {PackageTypeName} from '@myparcel/constants';
 import {type ShipmentOptionsRefs} from '../types';
-import {FIELD_CARRIER, FIELD_INSURANCE, FIELD_PACKAGE_TYPE, PROP_OPTIONS} from '../field';
+import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_INSURANCE, FIELD_PACKAGE_TYPE, PROP_OPTIONS} from '../field';
+import {getDeliveryTypes} from '../../helpers/getDeliveryTypes';
 import {
   defineFormField,
   getInsuranceOptions,
@@ -74,6 +75,7 @@ export const createCarrierField = (
 
       setFieldProp(field.form, FIELD_INSURANCE, PROP_OPTIONS, getInsuranceOptions(field, formatter));
       setFieldProp(field.form, FIELD_PACKAGE_TYPE, PROP_OPTIONS, getPackageTypes(field.form));
+      setFieldProp(field.form, FIELD_DELIVERY_TYPE, PROP_OPTIONS, getDeliveryTypes(field.form));
 
       setPostNlAgeCheckSubtext(field);
     },
