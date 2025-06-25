@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@myparcel-pdk/admin": "workspace:^1.7.0",
-    "vite": "^5.4.10",
+    "vite": "^7.0.0",
     "vue": "^3.3.0",
     "vue-tsc": "^2.0.0"
   },
