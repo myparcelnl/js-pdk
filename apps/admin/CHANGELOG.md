@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.7.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.6.5...@myparcel-pdk/admin@1.7.0) "@myparcel-pdk/admin" (2025-06-25)
+
+
+### Features
+
+* **admin:** show additional details when exporting shipments from individual order pages ([#232](https://github.com/myparcelnl/js-pdk/issues/232)) ([0ef3943](https://github.com/myparcelnl/js-pdk/commit/0ef394348759794981a723b44cf6fbffa937bd7f))
+
+
+
+
 ## [1.6.5](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.6.4...@myparcel-pdk/admin@1.6.5) "@myparcel-pdk/admin" (2025-06-19)
 
 
