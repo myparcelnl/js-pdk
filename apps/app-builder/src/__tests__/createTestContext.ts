@@ -20,7 +20,7 @@ export const createTestContext = <Context extends PdkBuilderContext = PdkBuilder
 
   const config = mergeDefaultConfig({
     name: 'test',
-    platforms: [PdkPlatformName.MyParcelNl, PdkPlatformName.MyParcelBe, PdkPlatformName.Flespakket],
+    platforms: [PdkPlatformName.MyParcelNl, PdkPlatformName.MyParcelBe],
     source: [],
     versionSource: [],
     ...context?.config,
