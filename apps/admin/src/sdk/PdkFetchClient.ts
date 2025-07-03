@@ -31,6 +31,14 @@ export class PdkFetchClient extends FetchClient {
     const response = (await this.request(endpoint, newOptions)) as ResponseWrapper<PdkEndpointResponseBody<E>>;
 
     if (isOfType<ErrorResponse>(response, 'errors')) {
+      if (isOfType<EndpointResponseBodyWithNotifications>(response, 'notifications')) {
+        const notificationStore = useNotificationStore();
+
+        response.notifications.forEach((notification) => {
+          notificationStore.add(notification);
+        });
+      }
+
       throw new ApiException(response);
     }
 

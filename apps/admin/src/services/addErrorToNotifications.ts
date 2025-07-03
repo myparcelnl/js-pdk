@@ -14,13 +14,15 @@ export const addErrorToNotifications = (
   const store = useNotificationStore();
   const options: Partial<PdkNotification> = {category, timeout};
 
-  if (isOfType<ApiException>(error, 'data')) {
-    options.content = error.data.errors.map((error) => `${error.title} (code: ${error.code})`);
-  }
-
   if (isOfType<Error>(error, 'message')) {
     options.title = error.message;
+
     options.content = error.stack;
+  }
+
+  // Override stacktrace if the error is an ApiException
+  if (isOfType<ApiException>(error, 'data')) {
+    options.content = error.data.errors.map((error) => `${error.title} (code: ${error.code})`);
   }
 
   const notification = createNotification(Variant.Error, options);
