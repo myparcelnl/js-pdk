@@ -3,6 +3,7 @@ import {defineBulkCommand} from './utils/defineBulkCommand';
 import {type AnyCommandDefinition} from './types/command.types';
 import {type BulkCommandDefinition} from './types/bulkCommand.types';
 import {
+  COMMAND_AUTOLOAD_NAME,
   COMMAND_BUILD_NAME,
   COMMAND_CLEAN_NAME,
   COMMAND_COPY_NAME,
@@ -101,6 +102,12 @@ export const upgradeCommand = defineCommand<UpgradeCommandArgs>({
   args: [['[package]', 'Package to upgrade']],
 });
 
+export const dumpAutoloadCommand = defineCommand({
+  name: COMMAND_AUTOLOAD_NAME,
+  action: () => import('./commands/dumpAutoload'),
+  description: 'Run composer autoload command.',
+});
+
 export const zipCommand = defineCommand({
   name: COMMAND_ZIP_NAME,
   action: () => import('./commands/zip'),
@@ -160,12 +167,12 @@ export const upgradeSelfCommand = defineBulkCommand({
 export const preReleaseBulkCommand = defineBulkCommand({
   name: COMMAND_PRERELEASE_NAME,
   description: 'Prepare a release.',
-  commands: [cleanCommand, scopePhpCommand, incrementCommand, ...CORE_COMMANDS, zipCommand],
+  commands: [cleanCommand, scopePhpCommand, incrementCommand, ...CORE_COMMANDS, dumpAutoloadCommand, zipCommand],
 });
 
 export const releaseBulkCommand = defineBulkCommand({
   name: COMMAND_RELEASE_NAME,
-  commands: [cleanCommand, scopePhpCommand, incrementCommand, ...CORE_COMMANDS, zipCommand],
+  commands: [cleanCommand, scopePhpCommand, incrementCommand, ...CORE_COMMANDS, dumpAutoloadCommand, zipCommand],
 });
 
 export const ALL_COMMANDS: readonly AnyCommandDefinition[] = Object.freeze([

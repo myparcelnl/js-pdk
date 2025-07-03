@@ -34,6 +34,8 @@ export const COMMAND_UPGRADE_SELF_NAME = 'upgrade-self';
 
 export const COMMAND_ZIP_NAME = 'zip';
 
+export const COMMAND_AUTOLOAD_NAME = 'dump-autoload';
+
 export type CommandName =
   | typeof COMMAND_CLEAN_NAME
   | typeof COMMAND_COPY_NAME
@@ -44,7 +46,8 @@ export type CommandName =
   | typeof COMMAND_TRANSFORM_NAME
   | typeof COMMAND_TRANSLATIONS_NAME
   | typeof COMMAND_UPGRADE_NAME
-  | typeof COMMAND_ZIP_NAME;
+  | typeof COMMAND_ZIP_NAME
+  | typeof COMMAND_AUTOLOAD_NAME;
 
 export enum VerbosityLevel {
   Verbose = 1,
