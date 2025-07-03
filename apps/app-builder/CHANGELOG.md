@@ -2,6 +2,11 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.6.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.6.1...@myparcel-pdk/app-builder@1.6.2) "@myparcel-pdk/app-builder" (2025-07-03)
+
+
+
+
 ## [1.6.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.6.0...@myparcel-pdk/app-builder@1.6.1) "@myparcel-pdk/app-builder" (2024-11-20)
 
 
