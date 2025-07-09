@@ -2,7 +2,6 @@
 
 [![Latest version](https://img.shields.io/github/v/release/myparcelnl/js-pdk)](https://github.com/myparcelnl/js-pdk/releases/latest)
 [![NPM downloads](https://img.shields.io/npm/dm/@myparcel-pdk/admin)](https://www.npmjs.com/)
-[![Codacy grade](https://img.shields.io/codacy/grade/6a1332146e7c44c89721b152fb43633c)](https://app.codacy.com/gh/myparcelnl/js-pdk/dashboard)
 [![Code coverage](https://img.shields.io/codecov/c/github/myparcelnl/js-pdk)](https://codecov.io/gh/myparcelnl/js-pdk)
 ![License](https://img.shields.io/github/license/myparcelnl/js-pdk)
 [![Chat with us](https://img.shields.io/badge/Slack-Chat%20with%20us-white?logo=slack&labelColor=4a154b)](https://join.slack.com/t/myparcel-dev/shared_invite/enQtNDkyNTg3NzA1MjM4LTM0Y2IzNmZlY2NkOWFlNTIyODY5YjFmNGQyYzZjYmQzMzliNDBjYzBkOGMwYzA0ZDYzNmM1NzAzNDY1ZjEzOTM)
