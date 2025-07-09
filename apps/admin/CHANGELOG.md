@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.8.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.7.0...@myparcel-pdk/admin@1.8.0) "@myparcel-pdk/admin" (2025-07-09)
+
+
+### Features
+
+* **admin:** support showing error notifications passed by PDK ([#247](https://github.com/myparcelnl/js-pdk/issues/247)) ([b4f7050](https://github.com/myparcelnl/js-pdk/commit/b4f70508c49bea016199cb15b5b476cae29927f7))
+
+
+
+
 ## [1.7.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.6.5...@myparcel-pdk/admin@1.7.0) "@myparcel-pdk/admin" (2025-06-25)
 
 
