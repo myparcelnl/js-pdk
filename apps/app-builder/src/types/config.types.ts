@@ -1,8 +1,7 @@
 import {type OneOrMore} from '@myparcel/ts-utils';
-import {type CommandName, type PdkPlatformName} from '../constants';
+import {type CommandName} from '../constants';
 import {type NodePackageManager} from '../commands/upgrade/enums';
 import {type VersionSource} from '../commands/increment/increment.types';
-import {type StringGenerator} from './common.types';
 import {
   type AdditionalCommandDefinition,
   type PdkBuilderCommand,
@@ -25,9 +24,9 @@ export type PdkBuilderConfig = {
   /**
    * Filename for the final compress file. Must include file extension.
    *
-   * @default `{{platform}}-{{name}}-{{version}}.zip`
+   * @default `{{name}}-{{version}}.zip`
    */
-  archiveFilename?: StringGenerator;
+  archiveFilename?: string;
 
   /**
    * Enable debug logging.
@@ -42,7 +41,7 @@ export type PdkBuilderConfig = {
   /**
    * Name of the plugin.
    */
-  name: StringGenerator;
+  name: string;
 
   /**
    * Output directory for the created folders and archives.
@@ -57,18 +56,6 @@ export type PdkBuilderConfig = {
    * @default `.tmp`
    */
   tmpDir?: string;
-
-  /**
-   * Filename for the final folder that will end up in the archive.
-   *
-   * @default `{{name}}-{{version}}`
-   */
-  platformFolderName?: StringGenerator;
-
-  /**
-   * Platforms to build for.
-   */
-  platforms: PdkPlatformName[];
 
   /**
    * Glob patterns to include in final folder.
@@ -222,52 +209,9 @@ export type PdkBuilderConfig = {
    *  }
    */
   hooks?: CommandHooksObject;
-
-  /**
-   * Command to use when running composer.
-   * @deprecated Will be removed in v2.0.0.
-   * @TODO: Remove in v2.0.0
-   */
-  composerCommand?: OneOrMore<string>;
-
-  /**
-   * Command to use when running the node package manager. Has a default value based on `nodePackageManager`.
-   * @deprecated Will be removed in v2.0.0.
-   */
-  nodePackageManagerCommand?: OneOrMore<string>;
-
-  /**
-   * Command to run a docker container.
-   * @deprecated use `dockerCommand` instead. Will be removed in v2.0.0.
-   * @TODO: Remove in v2.0.0
-   */
-  rootCommand?: OneOrMore<string>;
-
-  /**
-   * Commands that should be run with the docker command. Defaults to `['composer', 'php']`.
-   * @deprecated use `dockerCommands` instead. Will be removed in v2.0.0.
-   */
-  rootCommands?: (string | RegExp)[];
-
-  /**
-   * Command to use when running yarn.
-   * @deprecated Use `nodePackageManagerCommand` instead. Will be removed in v2.0.0.
-   * @TODO: Remove in v2.0.0
-   */
-  yarnCommand?: OneOrMore<string>;
 };
 
-export type ResolvedPdkBuilderConfig = Required<
-  Omit<
-    PdkBuilderConfig,
-    | 'hooks'
-    | 'translations'
-    // TODO: Remove deprecated properties in v2.0.0
-    | 'rootCommand'
-    | 'rootCommands'
-    | 'yarnCommand'
-  >
-> & {
+export type ResolvedPdkBuilderConfig = Required<Omit<PdkBuilderConfig, 'hooks' | 'translations'>> & {
   hooks?: CommandHooksObject;
   phpScoper: Required<PdkBuilderConfig['phpScoper']>;
   translations: {

@@ -1,14 +1,12 @@
-import chalk from 'chalk';
-import {executePerPlatform} from '../../utils/command/executePerPlatform';
 import {type PdkBuilderCommand} from '../../types/command.types';
-import {executeZipForPlatform} from './executeZipForPlatform';
+import {executeZip} from './executeZip';
 
 const zip = (async (context) => {
-  const {config, debug} = context;
+  const {debug} = context;
 
-  debug('Compressing files for platforms %s', chalk.cyanBright(config.platforms.join(', ')));
+  debug('Compressing files');
 
-  await executePerPlatform(context, executeZipForPlatform);
+  await executeZip(context);
 }) satisfies PdkBuilderCommand;
 
 export default zip;
