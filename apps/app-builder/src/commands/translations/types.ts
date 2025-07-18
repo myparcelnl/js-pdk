@@ -1,4 +1,4 @@
-import {type ImportSheetConfig} from '@edielemoine/google-docs-importer';
+import {type ImportSheetConfig} from 'mypa-google-docs-importer';
 import {type PdkBuilderContext} from '../../types/command.types';
 
 export interface SheetDefinition extends ImportSheetConfig {

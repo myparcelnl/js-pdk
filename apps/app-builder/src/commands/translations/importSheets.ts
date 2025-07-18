@@ -1,5 +1,5 @@
+import {importTranslations} from 'mypa-google-docs-importer';
 import chalk from 'chalk';
-import {importTranslations} from '@edielemoine/google-docs-importer';
 import {getRelativePath} from '../../utils/getRelativePath';
 import {executePromises} from '../../utils/executePromises';
 import {isDryRun} from '../../utils/command/isDryRun';

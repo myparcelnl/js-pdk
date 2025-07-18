@@ -33,7 +33,6 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@edielemoine/google-docs-importer": "^2.2.0",
     "@myparcel/ts-utils": "^1.9.0",
     "@yarnpkg/parsers": "^3.0.0",
     "archiver": "^7.0.0",
@@ -43,6 +42,7 @@
     "inquirer": "^9.1.4",
     "interpret": "^3.1.1",
     "liftoff": "^5.0.0",
+    "mypa-google-docs-importer": "^1.0.0",
     "radash": "^12.1.0",
     "semver": "^7.5.4",
     "supports-color": "^9.3.1"
