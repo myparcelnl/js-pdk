@@ -28,7 +28,7 @@ describe('command: copy', () => {
 
     await copy(context);
 
-    const outDir = path.resolve(context.env.cwd, 'copyResult');
+    const outDir = path.resolve(context.env.cwd, 'copyResult/test');
 
     const files = glob.sync('**/*', {cwd: outDir});
 

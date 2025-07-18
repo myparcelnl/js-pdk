@@ -28,13 +28,6 @@ export type PdkBuilderConfig = {
   archiveFilename?: string;
 
   /**
-   * The subfolder within `config.outDir` to save the archive in.
-   *
-   * @default `{{name}}`
-   */
-  archiveFolderName?: string;
-
-  /**
    * Enable debug logging.
    */
   debug?: boolean;
@@ -55,6 +48,13 @@ export type PdkBuilderConfig = {
    * @default `dist`
    */
   outDir?: string;
+
+  /**
+   * Directory name where the built files are stored.
+   * These are stored in a subfolder of `outDir`.
+   * @default `{{name}}`
+   */
+  buildFolderName?: string;
 
   /**
    * Directory to use for caching and other temporary stuff.
