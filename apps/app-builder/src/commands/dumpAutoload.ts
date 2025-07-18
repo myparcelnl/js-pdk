@@ -6,17 +6,17 @@ import {type PdkBuilderCommand} from '../types/command.types';
 import {RUN_COMPOSER} from '../constants';
 
 const dumpAutoload = (async (context) => {
-  const {debug, args} = context;
+  const {debug, config} = context;
 
   debug('Dumping autoload...');
 
-  const autoloadPath = resolvePath([args.outDir, 'vendor', 'autoload.php'], context);
+  const autoloadPath = resolvePath([config.outDir, 'vendor', 'autoload.php'], context);
 
   await deleteFile(context, autoloadPath);
 
   await executeCommand(context, RUN_COMPOSER, [
     'dump-autoload',
-    `--working-dir=${getRelativePath(args.outDir, context)}`,
+    `--working-dir=${getRelativePath(config.outDir, context)}`,
     '--classmap-authoritative',
   ]);
 }) satisfies PdkBuilderCommand;
