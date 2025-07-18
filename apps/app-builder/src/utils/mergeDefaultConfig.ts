@@ -2,7 +2,6 @@
 
 import {type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types/config.types';
 import {COMMIT_TYPE_AUTO, DEFAULT_JSON_SPACES, RUN_COMPOSER, RUN_PHP} from '../constants';
-import {NodePackageManager} from '../commands/upgrade/enums';
 import {PHP_SCOPER_CONFIG_FILE} from '../commands/scopePhp/constants';
 
 // eslint-disable-next-line max-lines-per-function
@@ -13,8 +12,8 @@ export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilder
     commitType: COMMIT_TYPE_AUTO,
     debug: false,
     jsonSpaces: DEFAULT_JSON_SPACES,
-    nodePackageManager: NodePackageManager.Yarn,
     outDir: 'dist',
+    archiveFolderName: '{{name}}',
     dockerCommand: undefined,
     dockerCommands: undefined,
     tmpDir: '.tmp',

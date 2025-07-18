@@ -1,6 +1,5 @@
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {type CommandName} from '../constants';
-import {type NodePackageManager} from '../commands/upgrade/enums';
 import {type VersionSource} from '../commands/increment/increment.types';
 import {
   type AdditionalCommandDefinition,
@@ -27,6 +26,13 @@ export type PdkBuilderConfig = {
    * @default `{{name}}-{{version}}.zip`
    */
   archiveFilename?: string;
+
+  /**
+   * The subfolder within `config.outDir` to save the archive in.
+   *
+   * @default `{{name}}`
+   */
+  archiveFolderName?: string;
 
   /**
    * Enable debug logging.
@@ -71,15 +77,6 @@ export type PdkBuilderConfig = {
    * Glob patterns to replace version numbers in. Optionally pass a regex to match only a part of the file.
    */
   versionSource: VersionSource[];
-
-  /**
-   * Node package manager to use. Defaults to `yarn`.
-   *
-   * Supported package managers:
-   * - yarn >= 3.0.0 (berry)
-   * - bun
-   */
-  nodePackageManager?: NodePackageManager;
 
   /**
    * Command to run the docker container that contains binaries for `dockerCommands`.

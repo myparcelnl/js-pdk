@@ -4,18 +4,18 @@ import {logTargetPath} from '../../utils/debug/logTargetPath';
 import {type PdkBuilderContext} from '../../types/command.types';
 
 export const copyFiles = async (context: PdkBuilderContext, sourceFiles: string[]): Promise<void> => {
-  const {args, debug} = context;
+  const {config, debug} = context;
 
-  debug('Copying files to %s', logTargetPath(args.outDir, context));
+  debug('Copying files to %s', logTargetPath(config.outDir, context));
 
   await Promise.all(
     sourceFiles.map(async (file) => {
       const source = resolvePath(file, context);
-      const target = resolvePath([args.outDir, file], context);
+      const target = resolvePath([config.outDir, file], context);
 
       await copyFile(source, target, context);
     }),
   );
 
-  debug('Finished copying files to %s', logTargetPath(args.outDir, context));
+  debug('Finished copying files to %s', logTargetPath(config.outDir, context));
 };

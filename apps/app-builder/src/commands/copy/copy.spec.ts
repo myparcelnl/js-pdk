@@ -1,6 +1,5 @@
 import copy from './index';
 import path from 'node:path';
-import fs from 'node:fs';
 import {describe, expect, it} from 'vitest';
 import glob from 'fast-glob';
 import {fsModifyingMethods} from '../../__tests__/spies/fs';
@@ -19,8 +18,6 @@ describe('command: copy', () => {
   });
 
   it('copies files', async (ctx) => {
-    expect.assertions(3);
-
     const context = await mockFileSystemAndCreateContext(ctx, undefined, {
       args: {dryRun: false},
       config: {

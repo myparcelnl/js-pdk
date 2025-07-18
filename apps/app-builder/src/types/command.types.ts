@@ -49,7 +49,6 @@ export type DefaultCommandArgs = {
   parallel?: boolean;
   quiet?: boolean;
   verbose: number;
-  outDir: string;
 };
 
 export type InputCommandArguments<Args extends AnyCommandArgs = DefaultCommandArgs> = (
