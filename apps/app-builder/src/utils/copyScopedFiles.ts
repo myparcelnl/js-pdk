@@ -11,16 +11,16 @@ export const copyScopedFiles = async (context: PdkBuilderContext): Promise<void>
 
   const scopedSourceDir = resolvePath(config.phpScoper.outDir, context);
   const scopedVendorDir = resolvePath(config.phpScoper.vendorOutDir, context);
-
+  const scopedDestDir = resolvePath([config.outDir, config.buildFolderName], context);
   await Promise.all([
     ...globFiles(`${scopedVendorDir}/**/*`, context).map(async (file) => {
-      const target = file.replace(scopedVendorDir, resolvePath([config.outDir, 'vendor'], context));
+      const target = file.replace(scopedVendorDir, resolvePath([scopedDestDir, 'vendor'], context));
 
       await copyFile(file, target, context);
     }),
 
     ...globFiles(`${scopedSourceDir}/**/*`, context).map(async (file) => {
-      const target = file.replace(scopedSourceDir, config.outDir);
+      const target = file.replace(scopedSourceDir, scopedDestDir);
 
       await copyFile(file, target, context);
     }),

@@ -13,7 +13,7 @@ export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilder
     debug: false,
     jsonSpaces: DEFAULT_JSON_SPACES,
     outDir: 'dist',
-    archiveFolderName: '{{name}}',
+    buildFolderName: '{{name}}',
     dockerCommand: undefined,
     dockerCommands: undefined,
     tmpDir: '.tmp',

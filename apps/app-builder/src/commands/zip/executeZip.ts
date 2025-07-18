@@ -12,9 +12,9 @@ import {type PdkBuilderContext} from '../../types/command.types';
 export const executeZip = async (context: PdkBuilderContext): Promise<void> => {
   const {config, debug} = context;
 
-  const archiveOutDir = resolvePath([config.outDir, config.archiveFolderName], context);
+  const archiveOutDir = resolvePath(config.outDir, context);
   // Create the archive output directory if it doesn't exist
-  await createDirectories(context, resolvePath([config.outDir, config.archiveFolderName], context));
+  await createDirectories(context, archiveOutDir);
   const archiveFilename = resolveString(config.archiveFilename, context).replace(/\//g, '-');
 
   const archivePath = resolvePath([archiveOutDir, archiveFilename], context);
@@ -28,7 +28,10 @@ export const executeZip = async (context: PdkBuilderContext): Promise<void> => {
   if (shouldModifyFiles(context)) {
     const archive = createArchive(archivePath, debug);
 
-    archive.directory(config.outDir, resolveString(config.archiveFolderName, context));
+    archive.directory(
+      resolvePath([config.outDir, config.buildFolderName], context),
+      resolveString(config.buildFolderName, context),
+    );
 
     await archive.finalize();
   }
