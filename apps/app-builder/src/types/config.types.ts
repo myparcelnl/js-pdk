@@ -50,8 +50,7 @@ export type PdkBuilderConfig = {
   outDir?: string;
 
   /**
-   * Directory name where the built files are stored.
-   * These are stored in a subfolder of `outDir`.
+   * Directory name where the built files are stored within the `outDir`.
    * @default `{{name}}`
    */
   buildFolderName?: string;
