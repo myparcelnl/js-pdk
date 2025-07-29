@@ -2592,7 +2592,7 @@ __metadata:
     inquirer: "npm:^9.1.4"
     interpret: "npm:^3.1.1"
     liftoff: "npm:^5.0.0"
-    mypa-google-docs-importer: "npm:^1.0.0"
+    mypa-google-docs-importer: "npm:^1.0.1"
     radash: "npm:^12.1.0"
     semver: "npm:^7.5.4"
     supports-color: "npm:^9.3.1"
@@ -12304,7 +12304,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mypa-google-docs-importer@npm:^1.0.0":
+"mypa-google-docs-importer@npm:^1.0.1":
   version: 1.0.1
   resolution: "mypa-google-docs-importer@npm:1.0.1"
   dependencies:
