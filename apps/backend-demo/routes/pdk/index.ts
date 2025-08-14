@@ -35,6 +35,12 @@ const resolveAction = async (event: H3Event): Promise<{key: string; response: Re
         key: 'success',
         response: [{success: true, message: 'Switched to acceptance API'}],
       };
+
+    case BackendEndpoint.SwitchToProductionApi:
+      return {
+        key: 'success',
+        response: [{success: true, message: 'Switched to production API'}],
+      };
   }
 
   throw new Error(`Unknown action: ${query.action}`);

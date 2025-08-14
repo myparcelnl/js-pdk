@@ -208,6 +208,15 @@
         },
         "path": "",
         "property": "success"
+      },
+      "switchToProductionApi": {
+        "headers": [],
+        "method": "POST",
+        "parameters": {
+          "action": "switchToProductionApi"
+        },
+        "path": "",
+        "property": "success"
       }
     },
     "eventPing": "myparcel_pdk_ping",
