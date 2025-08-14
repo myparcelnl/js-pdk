@@ -88,6 +88,7 @@ export enum BackendEndpoint {
    * Debug actions.
    */
   DownloadLogs = 'downloadLogs',
+  SwitchToAcceptanceApi = 'switchToAcceptanceApi',
 }
 
 /**

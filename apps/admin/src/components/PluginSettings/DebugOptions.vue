@@ -13,6 +13,12 @@
 
       <ActionButton :action="downloadLogsInstance" />
     </div>
+
+    <div>
+      <p v-text="translate('debug_switch_to_acceptance_api_description')" />
+
+      <ActionButton :action="switchToAcceptanceApiInstance" />
+    </div>
   </div>
 </template>
 
@@ -22,7 +28,7 @@ import {ActionButton} from '../common';
 import {useActionStore, useQueryStore} from '../../stores';
 import {instantiateAction} from '../../services';
 import {useLanguage} from '../../composables';
-import {downloadLogsAction, refreshAccountAction, updateAccountAction, useDownloadLogsMutation} from '../../actions';
+import {downloadLogsAction, refreshAccountAction, switchToAcceptanceApiAction, updateAccountAction, useDownloadLogsMutation, useSwitchToAcceptanceApiMutation} from '../../actions';
 
 const {translate} = useLanguage();
 
@@ -30,8 +36,10 @@ const queryStore = useQueryStore();
 const actionStore = useActionStore();
 
 queryStore.register(BackendEndpoint.DownloadLogs, useDownloadLogsMutation());
-actionStore.register([updateAccountAction, downloadLogsAction]);
+queryStore.register(BackendEndpoint.SwitchToAcceptanceApi, useSwitchToAcceptanceApiMutation());
+actionStore.register([updateAccountAction, downloadLogsAction, switchToAcceptanceApiAction, refreshAccountAction]);
 
 const refreshAccountInstance = instantiateAction(refreshAccountAction);
 const downloadLogsInstance = instantiateAction(downloadLogsAction);
+const switchToAcceptanceApiInstance = instantiateAction(switchToAcceptanceApiAction);
 </script>
