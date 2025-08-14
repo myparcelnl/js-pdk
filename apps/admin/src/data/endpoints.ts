@@ -21,4 +21,8 @@ export const BACKEND_ENDPOINTS_WEBHOOKS = [
   BackendEndpoint.FetchWebhooks,
 ] as const;
 
-export const BACKEND_ENDPOINTS_DEBUG = [BackendEndpoint.DownloadLogs, BackendEndpoint.SwitchToAcceptanceApi] as const;
+export const BACKEND_ENDPOINTS_DEBUG = [
+  BackendEndpoint.DownloadLogs,
+  BackendEndpoint.SwitchToAcceptanceApi,
+  BackendEndpoint.SwitchToProductionApi,
+] as const;
