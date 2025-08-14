@@ -72,4 +72,5 @@ export enum AdminAction {
 
   DownloadLogs = 'downloadLogs',
   SwitchToAcceptanceApi = 'switchToAcceptanceApi',
+  SwitchToProductionApi = 'switchToProductionApi',
 }

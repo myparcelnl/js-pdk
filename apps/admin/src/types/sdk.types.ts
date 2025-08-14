@@ -180,10 +180,16 @@ interface DebugSwitchToAcceptanceApiDefinition extends PdkEndpointDefinition {
   response: void;
 }
 
+interface DebugSwitchToProductionApiDefinition extends PdkEndpointDefinition {
+  name: BackendEndpoint.SwitchToProductionApi;
+  response: void;
+}
+
 export type BackendEndpointDefinition =
   | CreateWebhooksDefinition
   | DebugDownloadLogsDefinition
   | DebugSwitchToAcceptanceApiDefinition
+  | DebugSwitchToProductionApiDefinition
   | DeleteAccountDefinition
   | DeleteShipmentsDefinition
   | DeleteWebhooksDefinition
