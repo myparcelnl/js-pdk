@@ -19,81 +19,47 @@
       </button>
     </div>
     <div class="shipping-method-details">
-      <h1>{{ translate(selectedShippingMethodType.label) }}</h1>
+      <h1>
+        <PackageType
+          v-if="isEnumValue(selectedShippingMethodType.value, PackageTypeName)"
+          :package-type="selectedShippingMethodType.value"></PackageType>
+        <span
+          v-else
+          v-text="translate(selectedShippingMethodType.label)"></span>
+      </h1>
       <div class="search-box">
         <span class="icon"></span>
         <input
+          v-model="searchQuery"
           type="text"
-          placeholder="Zoek verzendmethode..." />
+          :placeholder="translate('search_shipping_method')" />
       </div>
       <label
-        v-for="shippingMethod in shippingMethods"
+        v-for="shippingMethod in filteredShippingMethods"
         :key="shippingMethod.value"
         :class="['shipping-method']">
-        <PdkRadioInput
-          v-model="refs[shippingMethod.value]"
+        <PdkCheckboxInput
+          v-model="elements[shippingMethod.value][selectedShippingMethodType.value].ref"
           :element="elements[shippingMethod.value][selectedShippingMethodType.value]" />
         <span class="shipping-method-value">
           <p>
-            <b>{{ translate(shippingMethod.label) }}</b>
+            <b>{{ shippingMethod.label }}</b>
           </p>
-          <p>{{ translate(shippingMethod.description) }}</p>
+          <p>{{ shippingMethod.description }}</p>
+          <p
+            v-if="refs[shippingMethod.value] && refs[shippingMethod.value] !== selectedShippingMethodType.value"
+            class="already-selected-note">
+            {{ translate('already_selected_under') }}
+            {{ getShippingMethodTypeLabel(refs[shippingMethod.value]) }}
+          </p>
         </span>
       </label>
     </div>
-    <!--    <PdkTable> -->
-    <!--      <PdkTableRow> -->
-    <!--        <PdkTableCol component="th" /> -->
-
-    <!--        <PdkTableCol -->
-    <!--          v-for="shippingMethodType in shippingMethodTypes" -->
-    <!--          :key="shippingMethodType" -->
-    <!--          :class="config?.cssUtilities?.whitespaceNoWrap" -->
-    <!--          component="th"> -->
-    <!--          <PackageType -->
-    <!--            v-if="isEnumValue(shippingMethodType.value, PackageTypeName)" -->
-    <!--            :package-type="shippingMethodType.value" /> -->
-
-    <!--          <span -->
-    <!--            v-else -->
-    <!--            v-text="translate(shippingMethodType.label)" /> -->
-    <!--        </PdkTableCol> -->
-    <!--      </PdkTableRow> -->
-
-    <!--      <PdkTableRow -->
-    <!--        v-for="shippingMethod in items" -->
-    <!--        :key="shippingMethod.value"> -->
-    <!--        <PdkTableCol -->
-    <!--          :class="config?.cssUtilities?.whitespaceNoWrap" -->
-    <!--          component="th"> -->
-    <!--          <p v-text="shippingMethod.label" /> -->
-
-    <!--          <small -->
-    <!--            v-if="shippingMethod.description" -->
-    <!--            v-html="translate(shippingMethod.description)" /> -->
-    <!--        </PdkTableCol> -->
-
-    <!--        <PdkTableCol -->
-    <!--          v-for="shippingMethodType in shippingMethodTypes" -->
-    <!--          :key="`${shippingMethod.value}-${shippingMethodType.value}}`" -->
-    <!--          :class="config?.cssUtilities?.textCenter"> -->
-    <!--          <PdkRadioInput -->
-    <!--            v-model="refs[shippingMethod.value]" -->
-    <!--            :element="elements[shippingMethod.value][shippingMethodType.value]" /> -->
-    <!--        </PdkTableCol> -->
-    <!--      </PdkTableRow> -->
-    <!--    </PdkTable> -->
-
-    <!--    <a -->
-    <!--      v-if="hasMore" -->
-    <!--      href="#" -->
-    <!--      @click.prevent="loadMore" -->
-    <!--      v-text="translate('load_more')" /> -->
   </div>
 </template>
 
 <script lang="ts" setup>
-import {ref} from 'vue';
+import {ref, computed} from 'vue';
 import {
   AdminComponent,
   PackageType,
@@ -101,9 +67,7 @@ import {
   type ShippingMethodsInputEmits,
   type ShippingMethodsInputProps,
   type ShippingMethodType,
-  useAdminConfig,
   useLanguage,
-  useLoadMore,
   useShippingMethodsInputContext,
 } from '@myparcel-pdk/admin';
 import {isEnumValue} from '@myparcel/ts-utils';
@@ -115,17 +79,38 @@ const emit = defineEmits<ShippingMethodsInputEmits>();
 
 const {translate} = useLanguage();
 
-const config = useAdminConfig();
-
 const {shippingMethods, elements, shippingMethodTypes, refs} = useShippingMethodsInputContext(props, emit);
-console.log({shippingMethods}, {elements}, {shippingMethodTypes}, {refs});
-
-const {items, hasMore, loadMore} = useLoadMore({items: shippingMethods, step: 5});
 
 const selectedShippingMethodType = ref<SelectOptionWithLabel<ShippingMethodType>>(shippingMethodTypes[0]);
+const searchQuery = ref('');
+
+// Filter shipping methods based on search query
+const filteredShippingMethods = computed(() => {
+  if (!searchQuery.value.trim()) {
+    return shippingMethods.value;
+  }
+
+  const query = searchQuery.value.toLowerCase().trim();
+  return shippingMethods.value.filter((shippingMethod) => {
+    const label = String(shippingMethod.label).toLowerCase();
+    const description = shippingMethod.description ? String(shippingMethod.description).toLowerCase() : '';
+    const value = shippingMethod.value.toString().toLowerCase();
+
+    return label.includes(query) || description.includes(query) || value.includes(query);
+  });
+});
 
 function selectShippingMethodType(selected: SelectOptionWithLabel<ShippingMethodType>): void {
   selectedShippingMethodType.value = selected;
+}
+
+function getShippingMethodTypeLabel(type: ShippingMethodType): string {
+  const typeOption = shippingMethodTypes.find((t) => t.value === type);
+  return typeOption 
+    ? isEnumValue(typeOption.value, PackageTypeName)
+      ? translate(`package_type_${typeOption.label}`)
+      : translate(typeOption.label)
+    : String(type);
 }
 </script>
 
@@ -247,6 +232,13 @@ function selectShippingMethodType(selected: SelectOptionWithLabel<ShippingMethod
             color: #666;
             font-size: 14px;
           }
+        }
+
+        .already-selected-note {
+          color: #999;
+          font-size: 12px;
+          font-style: italic;
+          margin-top: 2px;
         }
       }
     }
