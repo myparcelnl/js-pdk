@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.7.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.6.2...@myparcel-pdk/app-builder@1.7.0) "@myparcel-pdk/app-builder" (2025-09-02)
+
+
+### Features
+
+* change translation importer package ([#261](https://github.com/myparcelnl/js-pdk/issues/261)) ([16fe32c](https://github.com/myparcelnl/js-pdk/commit/16fe32cabf11002affd589a947bb121cc6b1ea16))
+
+
+
+
 ## [1.6.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.6.1...@myparcel-pdk/app-builder@1.6.2) "@myparcel-pdk/app-builder" (2025-07-03)
 
 
