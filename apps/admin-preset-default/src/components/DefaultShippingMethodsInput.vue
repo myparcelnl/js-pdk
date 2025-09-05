@@ -19,14 +19,24 @@
       </button>
     </div>
     <div class="shipping-method-details">
-      <h1>
-        <PackageType
-          v-if="isEnumValue(selectedShippingMethodType.value, PackageTypeName)"
-          :package-type="selectedShippingMethodType.value"></PackageType>
-        <span
-          v-else
-          v-text="translate(selectedShippingMethodType.label)"></span>
-      </h1>
+      <div class="shipping-method-details-header">
+        <h1>
+          <PackageType
+            v-if="isEnumValue(selectedShippingMethodType.value, PackageTypeName)"
+            :package-type="selectedShippingMethodType.value"></PackageType>
+          <span
+            v-else
+            v-text="translate(selectedShippingMethodType.label)"></span>
+        </h1>
+        <label class="filter-checkbox">
+          <input
+            v-model="showAssigned"
+            type="checkbox"
+            class="filter-checkbox-input" />
+          <span class="filter-checkbox-label">{{ translate('show_assigned') }}</span>
+        </label>
+      </div>
+
       <div class="search-box">
         <span class="icon"></span>
         <input
@@ -60,6 +70,7 @@
 
 <script lang="ts" setup>
 import {ref, computed} from 'vue';
+import {TriState} from '@myparcel-pdk/common';
 import {
   AdminComponent,
   PackageType,
@@ -83,21 +94,33 @@ const {shippingMethods, elements, shippingMethodTypes, refs} = useShippingMethod
 
 const selectedShippingMethodType = ref<SelectOptionWithLabel<ShippingMethodType>>(shippingMethodTypes[0]);
 const searchQuery = ref('');
+const showAssigned = ref(true);
 
-// Filter shipping methods based on search query
+// Filter shipping methods based on search query and unassigned filter
 const filteredShippingMethods = computed(() => {
-  if (!searchQuery.value.trim()) {
-    return shippingMethods.value;
+  let filtered = shippingMethods.value;
+
+  // Filter by search query
+  if (searchQuery.value.trim()) {
+    const query = searchQuery.value.toLowerCase().trim();
+    filtered = filtered.filter((shippingMethod) => {
+      const label = String(shippingMethod.label).toLowerCase();
+      const description = shippingMethod.description ? String(shippingMethod.description).toLowerCase() : '';
+      const value = shippingMethod.value.toString().toLowerCase();
+
+      return label.includes(query) || description.includes(query) || value.includes(query);
+    });
   }
 
-  const query = searchQuery.value.toLowerCase().trim();
-  return shippingMethods.value.filter((shippingMethod) => {
-    const label = String(shippingMethod.label).toLowerCase();
-    const description = shippingMethod.description ? String(shippingMethod.description).toLowerCase() : '';
-    const value = shippingMethod.value.toString().toLowerCase();
+  // Filter by assigned status (hide unassigned methods when showAssigned is false)
+  if (!showAssigned.value) {
+    filtered = filtered.filter((shippingMethod) => {
+      const shippingMethodId = shippingMethod.value.toString();
+      return refs[shippingMethodId] === TriState.Off;
+    });
+  }
 
-    return label.includes(query) || description.includes(query) || value.includes(query);
-  });
+  return filtered;
 });
 
 function selectShippingMethodType(selected: SelectOptionWithLabel<ShippingMethodType>): void {
@@ -106,7 +129,7 @@ function selectShippingMethodType(selected: SelectOptionWithLabel<ShippingMethod
 
 function getShippingMethodTypeLabel(type: ShippingMethodType): string {
   const typeOption = shippingMethodTypes.find((t) => t.value === type);
-  return typeOption 
+  return typeOption
     ? isEnumValue(typeOption.value, PackageTypeName)
       ? translate(`package_type_${typeOption.label}`)
       : translate(typeOption.label)
@@ -166,9 +189,39 @@ function getShippingMethodTypeLabel(type: ShippingMethodType): string {
     overflow-y: auto;
     height: 360px;
 
-    h1 {
-      padding: 0;
-      margin: 0 0 16px 0;
+    .shipping-method-details-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h1 {
+        padding: 0;
+        margin: 0 0 16px 0;
+      }
+
+      .filter-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 16px;
+
+        .filter-checkbox-input {
+          margin: 0;
+          cursor: pointer;
+        }
+
+        .filter-checkbox-label {
+          cursor: pointer;
+          user-select: none;
+        }
+
+        &:hover {
+          color: #333;
+        }
+      }
     }
 
     .search-box {
