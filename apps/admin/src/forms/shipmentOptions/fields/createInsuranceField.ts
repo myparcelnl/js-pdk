@@ -16,7 +16,6 @@ export const createInsuranceField = (refs: ShipmentOptionsRefs): InteractiveElem
     component: DefaultSelectInput,
     onBeforeMount(field: ElementInstance) {
       const insurancePossibilities = getInsuranceOptions(field, formatter);
-
       setFieldProp(field, PROP_OPTIONS, insurancePossibilities);
     },
   });
