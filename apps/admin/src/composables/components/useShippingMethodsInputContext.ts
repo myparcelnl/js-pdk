@@ -44,7 +44,7 @@ export const useShippingMethodsInputContext = <T extends ShippingMethodsInputMod
 
       return {
         ...acc,
-        [shippingMethodId]: current?.[0] ?? TriState.Off,
+        [shippingMethodId]: (current?.[0] ? Number(current[0]) || current[0] : TriState.Off) as ShippingMethodType,
       };
     }, {}),
   );
