@@ -171,3 +171,13 @@ export type ShippingMethodsInputProps<T extends ShippingMethodsInputModelValue =
 
 export type ShippingMethodsInputEmits<T extends ShippingMethodsInputModelValue = ShippingMethodsInputModelValue> =
   PdkElementEmits<T>;
+
+/**
+ * @see AdminComponent.MultiDatesInput
+ */
+
+export type MultiDatesInputModelValue = Date[];
+
+export type MultiDatesInputProps = PdkElementProps<MultiDatesInputModelValue>;
+
+export type MultiDatesInputEmits = PdkElementEmits<Date[]>;
