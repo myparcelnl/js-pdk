@@ -34,6 +34,8 @@ export {default as DefaultLoader} from './DefaultLoader.vue';
 
 export {default as DefaultModal} from './DefaultModal.vue';
 
+export {default as DefaultMultiDatesInput} from './DefaultMultiDatesInput.vue';
+
 export {default as DefaultMultiSelectInput} from './DefaultMultiSelectInput.vue';
 
 export {default as DefaultNotification} from './DefaultNotification.vue';

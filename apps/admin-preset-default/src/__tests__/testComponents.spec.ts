@@ -37,6 +37,7 @@ import {
   DefaultTimeInput,
   DefaultToggleInput,
   DefaultTriStateInput,
+  DefaultMultiDatesInput,
 } from '../components';
 
 executePdkComponentTests({
@@ -77,4 +78,5 @@ executePdkComponentTests({
   [AdminComponent.TimeInput]: DefaultTimeInput,
   [AdminComponent.ToggleInput]: DefaultToggleInput,
   [AdminComponent.TriStateInput]: DefaultTriStateInput,
+  [AdminComponent.MultiDatesInput]: DefaultMultiDatesInput,
 });
