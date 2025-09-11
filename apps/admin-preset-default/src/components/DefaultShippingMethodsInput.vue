@@ -3,11 +3,12 @@
     v-test="AdminComponent.ShippingMethodsInput"
     class="shipping-methods">
     <div class="shipping-method-types">
-      <button
+      <PdkTabNavButton
         v-for="shippingMethodType in shippingMethodTypes"
         :key="shippingMethodType.value"
+        class="tab-nav-button"
+        :active="shippingMethodType.value === selectedShippingMethodType.value"
         type="button"
-        :class="['package-type-option', {selected: selectedShippingMethodType.value === shippingMethodType.value}]"
         @click="selectShippingMethodType(shippingMethodType)">
         <PackageType
           v-if="isEnumValue(shippingMethodType.value, PackageTypeName)"
@@ -16,9 +17,9 @@
         <span
           v-else
           v-text="translate(shippingMethodType.label)" />
-      </button>
+      </PdkTabNavButton>
     </div>
-    <div class="shipping-method-details">
+    <PdkBox class="shipping-method-details">
       <div class="shipping-method-details-header">
         <h1>
           <PackageType
@@ -29,8 +30,9 @@
             v-text="translate(selectedShippingMethodType.label)"></span>
         </h1>
         <label class="filter-checkbox">
-          <input
+          <PdkCheckboxInput
             v-model="showAssigned"
+            :element="element"
             type="checkbox"
             class="filter-checkbox-input" />
           <span class="filter-checkbox-label">{{ translate('show_assigned') }}</span>
@@ -39,8 +41,10 @@
 
       <div class="search-box">
         <span class="icon"></span>
-        <input
+        <PdkTextInput
           v-model="searchQuery"
+          class="search-input"
+          :element="element"
           type="text"
           :placeholder="translate('search_shipping_method')" />
       </div>
@@ -48,7 +52,7 @@
         v-for="shippingMethod in filteredShippingMethods"
         :key="shippingMethod.value"
         :class="['shipping-method']">
-        <PdkCheckboxInput
+        <PdkToggleInput
           v-model="elements[shippingMethod.value][selectedShippingMethodType.value].ref"
           :element="elements[shippingMethod.value][selectedShippingMethodType.value]" />
         <span class="shipping-method-value">
@@ -64,7 +68,7 @@
           </p>
         </span>
       </label>
-    </div>
+    </PdkBox>
   </div>
 </template>
 
@@ -148,43 +152,13 @@ function getShippingMethodTypeLabel(type: ShippingMethodType): string {
     gap: 8px;
     flex-shrink: 0;
 
-    button {
-      padding: 12px 16px;
-      border: none;
-      border-radius: 3px;
-      background-color: #ffffff;
-      color: #333333;
-      font-size: 14px;
-      font-weight: 500;
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-      width: 200px;
-
-      &:hover {
-        background-color: #f0f0f0;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-      }
-
-      &.selected {
-        background-color: #f4f9ff;
-        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.2);
-
-        &:hover {
-          background-color: #bbdefb;
-        }
-      }
+    .tab-nav-button {
+      border-bottom: 1px solid #c3c4c7;
     }
   }
 
   .shipping-method-details {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 16px;
     margin-left: 0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease;
     width: 100%;
     overflow-y: auto;
     height: 360px;
@@ -208,6 +182,10 @@ function getShippingMethodTypeLabel(type: ShippingMethodType): string {
         color: #666;
         margin-bottom: 16px;
 
+        label {
+          display: none;
+        }
+
         .filter-checkbox-input {
           margin: 0;
           cursor: pointer;
@@ -227,35 +205,20 @@ function getShippingMethodTypeLabel(type: ShippingMethodType): string {
     .search-box {
       display: flex;
       align-items: center;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 2px 6px;
-      background-color: #fff;
       margin-bottom: 16px;
+      position: relative;
 
       .icon {
         width: 16px;
         height: 16px;
-        margin-right: 8px;
         background: url('../assets/icons/magnifying-glass-solid-full.svg') no-repeat center;
         background-size: contain;
+        position: absolute;
+        left: 8px;
       }
 
-      input {
-        border: none;
-        outline: none;
-        flex: 1;
-        font-size: 14px;
-        color: #333;
-
-        &:focus {
-          outline: none;
-          box-shadow: none;
-        }
-
-        &::placeholder {
-          color: #aaa;
-        }
+      .search-input {
+        padding-left: 32px !important;
       }
     }
 
