@@ -94,5 +94,8 @@
         "path": "apps/checkout-js/dist/**/*.js"
       }
     ]
+  },
+  "dependencies": {
+    "@vuepic/vue-datepicker": "^11.0.2"
   }
 }
