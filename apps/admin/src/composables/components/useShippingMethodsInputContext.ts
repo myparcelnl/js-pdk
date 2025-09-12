@@ -1,4 +1,4 @@
-import {type ComputedRef, onUnmounted, reactive, type Ref, toRaw, watch} from 'vue';
+import {type ComputedRef, onUnmounted, reactive, type Ref, toRaw, watch, ref, nextTick, computed} from 'vue';
 import {useVModel} from '@vueuse/core';
 import {type ShippingMethodId, type ShippingMethodType, TriState} from '@myparcel-pdk/common';
 import {PackageTypeName} from '@myparcel/constants';
@@ -44,41 +44,9 @@ export const useShippingMethodsInputContext = <T extends ShippingMethodsInputMod
 
       return {
         ...acc,
-        [shippingMethodId]: current?.[0] ?? TriState.Off,
+        [shippingMethodId]: (current?.[0] ? Number(current[0]) || current[0] : TriState.Off) as ShippingMethodType,
       };
     }, {}),
-  );
-
-  const elements = reactive(
-    shippingMethods.value.reduce((acc, shippingMethod) => {
-      const shippingMethodId = shippingMethod.value.toString();
-
-      return {
-        ...acc,
-        [shippingMethodId]: SHIPPING_METHOD_TYPES.reduce((acc, option) => {
-          const fieldName = `${props.element.name}__${shippingMethodId}`;
-
-          return {
-            ...acc,
-            [option.value]: toRaw(
-              createFormElement({
-                component: AdminComponent.RadioInput,
-                ref: refs[option.value] as unknown as Ref<boolean>,
-                name: fieldName,
-                // remove label from individual radio buttons
-                label: '',
-                props: {
-                  value: option.value,
-                },
-                attributes: {
-                  title: shippingMethod.label,
-                },
-              }),
-            ),
-          };
-        }, {}),
-      };
-    }, {} satisfies Record<ShippingMethodId, Record<ShippingMethodType, ReturnType<typeof createFormElement>>>),
   );
 
   /**
@@ -102,6 +70,54 @@ export const useShippingMethodsInputContext = <T extends ShippingMethodsInputMod
       },
       {deep: true, immediate: true},
     ),
+  );
+
+  const elements = reactive(
+    shippingMethods.value.reduce((acc, shippingMethod) => {
+      const shippingMethodId = shippingMethod.value.toString();
+
+      return {
+        ...acc,
+        [shippingMethodId]: SHIPPING_METHOD_TYPES.reduce((acc, option) => {
+          const fieldName = `${props.element.name}__${shippingMethodId}__${option.value}`;
+
+          // Create a computed ref that automatically reflects the current checkbox state
+          const checkboxRef = computed({
+            get: () => refs[shippingMethodId] === option.value,
+            set: (checked: boolean) => {
+              if (checked) {
+                // When checked, set this shipping method to this type
+                refs[shippingMethodId] = option.value;
+              } else {
+                // When unchecked, if this was the current type, set to Off
+                if (refs[shippingMethodId] === option.value) {
+                  refs[shippingMethodId] = TriState.Off;
+                }
+              }
+            },
+          });
+
+          return {
+            ...acc,
+            [option.value]: toRaw(
+              createFormElement({
+                component: AdminComponent.CheckboxInput,
+                ref: checkboxRef,
+                name: fieldName,
+                // remove label from individual checkbox buttons
+                label: '',
+                props: {
+                  value: option.value,
+                },
+                attributes: {
+                  title: shippingMethod.label,
+                },
+              }),
+            ),
+          };
+        }, {}),
+      };
+    }, {} satisfies Record<ShippingMethodId, Record<ShippingMethodType, ReturnType<typeof createFormElement>>>),
   );
 
   return {
