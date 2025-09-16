@@ -120,7 +120,10 @@ const filteredShippingMethods = computed(() => {
   if (!showAssigned.value) {
     filtered = filtered.filter((shippingMethod) => {
       const shippingMethodId = shippingMethod.value.toString();
-      return refs[shippingMethodId] === TriState.Off;
+      // Show unassigned methods OR methods assigned to the current selected shipping method type
+      return (
+        refs[shippingMethodId] === TriState.Off || refs[shippingMethodId] === selectedShippingMethodType.value.value
+      );
     });
   }
 
@@ -162,6 +165,7 @@ function getShippingMethodTypeLabel(type: ShippingMethodType): string {
     width: 100%;
     overflow-y: auto;
     height: 360px;
+    max-width: 800px;
 
     .shipping-method-details-header {
       display: flex;
