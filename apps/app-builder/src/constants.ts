@@ -60,14 +60,11 @@ export const REGEX_VERSION = /(v?\d+\.\d+\.\d+(?:-\w+\.\d+)?)/;
 export const DEFAULT_JSON_SPACES = 2;
 
 export enum PdkPlatformName {
-  Flespakket = 'flespakket',
   MyParcelBe = 'myparcelbe',
   MyParcelNl = 'myparcelnl',
 }
 
 export const PLATFORM_SHEET_ID_MAP = {
-  // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-  [PdkPlatformName.Flespakket]: 286749530,
   // eslint-disable-next-line @typescript-eslint/no-magic-numbers
   [PdkPlatformName.MyParcelBe]: 286749530,
   // eslint-disable-next-line @typescript-eslint/no-magic-numbers
