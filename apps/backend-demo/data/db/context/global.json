@@ -199,6 +199,24 @@
         },
         "path": "",
         "property": "logs"
+      },
+      "switchToAcceptanceApi": {
+        "headers": [],
+        "method": "POST",
+        "parameters": {
+          "action": "switchToAcceptanceApi"
+        },
+        "path": "",
+        "property": "success"
+      },
+      "switchToProductionApi": {
+        "headers": [],
+        "method": "POST",
+        "parameters": {
+          "action": "switchToProductionApi"
+        },
+        "path": "",
+        "property": "success"
       }
     },
     "eventPing": "myparcel_pdk_ping",
