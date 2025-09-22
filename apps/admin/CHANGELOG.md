@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.9.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.8.0...@myparcel-pdk/admin@1.9.0) "@myparcel-pdk/admin" (2025-09-12)
+
+
+### Features
+
+* shipping method UI ([#260](https://github.com/myparcelnl/js-pdk/issues/260)) ([5eece3b](https://github.com/myparcelnl/js-pdk/commit/5eece3b359bcb3872b16e9c0b0e648e5da20d0e8))
+
+
+
+
 ## [1.8.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.7.0...@myparcel-pdk/admin@1.8.0) "@myparcel-pdk/admin" (2025-07-09)
 
 
