@@ -3,13 +3,12 @@ import fs from 'node:fs';
 import {type OneOrMore} from '@myparcel/ts-utils';
 import {resolvePath} from '../resolvePath';
 import {isDryRun} from '../command/isDryRun';
-import {type StringGenerator} from '../../types/common.types';
 import {type PdkBuilderContext} from '../../types/command.types';
 import {createDirectories} from './createDirectories';
 
 export const copyFile = async (
-  source: OneOrMore<StringGenerator>,
-  target: OneOrMore<StringGenerator>,
+  source: OneOrMore<string>,
+  target: OneOrMore<string>,
   context: PdkBuilderContext,
 ): Promise<void> => {
   const resolvedSource = resolvePath(source, context);

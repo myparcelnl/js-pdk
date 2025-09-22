@@ -15,10 +15,6 @@ describe('resolveStrings', () => {
       output: ['dist/src'],
     },
     {
-      input: '{{outDir}}/src/{{platforms}}',
-      output: ['dist/src/myparcelnl', 'dist/src/myparcelbe', 'dist/src/flespakket'],
-    },
-    {
       input: ['{{outDir}}/src/**/*', '{{tmpDir}}/src'],
       output: ['dist/src/**/*', '.tmp/src'],
     },

@@ -1,10 +1,9 @@
-import {defineConfig, PdkPlatformName} from '@myparcel-pdk/app-builder';
+import {defineConfig} from '@myparcel-pdk/app-builder';
 import packageJson from './package.json';
 
 export default defineConfig({
   name: packageJson.name,
 
-  platforms: [PdkPlatformName.MyParcelNl, PdkPlatformName.MyParcelBe],
   /**
    * TODO: Add globs to source files here
    */
