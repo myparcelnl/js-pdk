@@ -14,13 +14,17 @@
       <ActionButton :action="downloadLogsInstance" />
     </div>
 
-    <div v-if="isConnectedToAcceptance">
+    <div
+      v-if="isConnectedToAcceptance"
+      class="debug-hidden">
       <p v-text="translate('debug_switch_to_production_api_description')" />
 
       <ActionButton :action="switchToProductionApiInstance" />
     </div>
 
-    <div v-else>
+    <div
+      v-else
+      class="debug-hidden">
       <p v-text="translate('debug_switch_to_acceptance_api_description')" />
 
       <ActionButton :action="switchToAcceptanceApiInstance" />
@@ -35,7 +39,16 @@ import {ActionButton} from '../common';
 import {useActionStore, useQueryStore} from '../../stores';
 import {instantiateAction} from '../../services';
 import {useLanguage, useStoreContextQuery} from '../../composables';
-import {downloadLogsAction, refreshAccountAction, switchToAcceptanceApiAction, switchToProductionApiAction, updateAccountAction, useDownloadLogsMutation, useSwitchToAcceptanceApiMutation, useSwitchToProductionApiMutation} from '../../actions';
+import {
+  downloadLogsAction,
+  refreshAccountAction,
+  switchToAcceptanceApiAction,
+  switchToProductionApiAction,
+  updateAccountAction,
+  useDownloadLogsMutation,
+  useSwitchToAcceptanceApiMutation,
+  useSwitchToProductionApiMutation,
+} from '../../actions';
 
 const {translate} = useLanguage();
 
@@ -46,7 +59,13 @@ const contextQuery = useStoreContextQuery();
 queryStore.register(BackendEndpoint.DownloadLogs, useDownloadLogsMutation());
 queryStore.register(BackendEndpoint.SwitchToAcceptanceApi, useSwitchToAcceptanceApiMutation());
 queryStore.register(BackendEndpoint.SwitchToProductionApi, useSwitchToProductionApiMutation());
-actionStore.register([updateAccountAction, downloadLogsAction, switchToAcceptanceApiAction, switchToProductionApiAction, refreshAccountAction]);
+actionStore.register([
+  updateAccountAction,
+  downloadLogsAction,
+  switchToAcceptanceApiAction,
+  switchToProductionApiAction,
+  refreshAccountAction,
+]);
 
 const refreshAccountInstance = instantiateAction(refreshAccountAction);
 const downloadLogsInstance = instantiateAction(downloadLogsAction);
@@ -59,3 +78,9 @@ const isConnectedToAcceptance = computed(() => {
   return account?.generalSettings?.isTest === true;
 });
 </script>
+
+<style scoped>
+.debug-hidden {
+  display: none;
+}
+</style>
