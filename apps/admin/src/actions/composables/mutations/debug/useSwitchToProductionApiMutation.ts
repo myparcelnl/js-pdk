@@ -4,5 +4,7 @@ import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
 
 export const useSwitchToProductionApiMutation = (): ResolvedQuery<BackendEndpoint.SwitchToProductionApi> => {
-  return usePdkMutation(BackendEndpoint.SwitchToProductionApi, () => usePdkAdminApi().switchToProductionApi());
+  return usePdkMutation(BackendEndpoint.SwitchToProductionApi, () =>
+    (usePdkAdminApi() as {switchToProductionApi: () => Promise<void>}).switchToProductionApi(),
+  );
 };
