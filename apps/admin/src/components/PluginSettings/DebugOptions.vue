@@ -14,20 +14,15 @@
       <ActionButton :action="downloadLogsInstance" />
     </div>
 
-    <div
-      v-if="isConnectedToAcceptance"
-      class="debug-hidden">
-      <p v-text="translate('debug_switch_to_production_api_description')" />
+    <div class="debug-hidden">
+      <p v-text="switchButtonDescription" />
 
-      <ActionButton :action="switchToProductionApiInstance" />
-    </div>
-
-    <div
-      v-else
-      class="debug-hidden">
-      <p v-text="translate('debug_switch_to_acceptance_api_description')" />
-
-      <ActionButton :action="switchToAcceptanceApiInstance" />
+      <ActionButton
+        v-if="isConnectedToAcceptance"
+        :action="switchToProductionApiInstance" />
+      <ActionButton
+        v-else
+        :action="switchToAcceptanceApiInstance" />
     </div>
   </div>
 </template>
@@ -72,10 +67,18 @@ const downloadLogsInstance = instantiateAction(downloadLogsAction);
 const switchToAcceptanceApiInstance = instantiateAction(switchToAcceptanceApiAction);
 const switchToProductionApiInstance = instantiateAction(switchToProductionApiAction);
 
-// Determine if connected to acceptance API based on isTest flag
+// Determine if connected to acceptance API based on environment setting
 const isConnectedToAcceptance = computed(() => {
-  const account = toValue(contextQuery.data)?.account;
-  return account?.generalSettings?.isTest === true;
+  const context = toValue(contextQuery.data);
+  const environment = context?.pluginSettings?.account?.environment;
+  return environment === 'acceptance';
+});
+
+// Dynamic button description based on current environment
+const switchButtonDescription = computed(() => {
+  return isConnectedToAcceptance.value
+    ? translate('debug_switch_to_production_api_description')
+    : translate('debug_switch_to_acceptance_api_description');
 });
 </script>
 
