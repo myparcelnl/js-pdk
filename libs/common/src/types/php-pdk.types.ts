@@ -550,6 +550,7 @@ export namespace Settings {
 
   export type ModelAccountSettings = {
     apiKey: string;
+    environment?: string;
   };
 
   export type ModelCarrierSettings = {
