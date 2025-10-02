@@ -35,6 +35,7 @@
   "devDependencies": {
     "@myparcel-pdk/admin-component-tests": "workspace:*",
     "@myparcel-pdk/build-vite": "workspace:*",
+    "@vuepic/vue-datepicker": "^11.0.2",
     "typescript": "^5.2.2",
     "vite": "^5.4.10",
     "vitest": "^2.1.3",
