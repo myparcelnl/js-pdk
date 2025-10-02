@@ -1,5 +1,6 @@
 import {type Component} from 'vue';
 import {AdminComponent} from '@myparcel-pdk/admin';
+import {runMultiDateInputTest} from '../components/runMultiDateInputTest';
 import {
   runBadgeTest,
   runBoxTest,
@@ -59,6 +60,7 @@ export const testMap: Readonly<Record<AdminComponent, AdminComponentTest>> = Obj
   [AdminComponent.TextInput]: runTextInputTest,
   [AdminComponent.TimeInput]: runTimeInputTest,
   [AdminComponent.ToggleInput]: runToggleInputTest,
+  [AdminComponent.MultiDateInput]: runMultiDateInputTest,
   /**
    * @TODO: fix test for TriStateInput
    */
