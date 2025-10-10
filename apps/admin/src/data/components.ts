@@ -222,6 +222,11 @@ export enum AdminComponent {
    * @see TriStateInputProps
    */
   TriStateInput = 'TriStateInput',
+
+  /**
+   * @see MultiDateInputProps
+   */
+  MultiDateInput = 'MultiDateInput',
 }
 
 export const requiredAdminComponentNames = [
@@ -255,6 +260,7 @@ export const requiredAdminComponentNames = [
   AdminComponent.TimeInput,
   AdminComponent.ToggleInput,
   AdminComponent.TriStateInput,
+  AdminComponent.MultiDateInput,
 ] as const;
 
 export const optionalAdminComponentNames = [AdminComponent.ShippingMethodsInput] as const;
