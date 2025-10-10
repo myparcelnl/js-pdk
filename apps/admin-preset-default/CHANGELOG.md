@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.11.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.10.0...@myparcel-pdk/admin-preset-default@1.11.0) "@myparcel-pdk/admin-preset-default" (2025-10-10)
+
+
+### Features
+
+* **js-pdk:** add option to list closed days for shop ([#271](https://github.com/myparcelnl/js-pdk/issues/271)) ([10fc030](https://github.com/myparcelnl/js-pdk/commit/10fc030bc1c9249ec1f788250eaa471ac170f3bb))
+
+
+
+
 ## [1.10.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin-preset-default@1.9.0...@myparcel-pdk/admin-preset-default@1.10.0) "@myparcel-pdk/admin-preset-default" (2025-09-16)
 
 
