@@ -6,6 +6,8 @@ import {type BackendEndpoint} from '@myparcel-pdk/common';
 export type BackendMutationEndpoints =
   | BackendEndpoint.CreateWebhooks
   | BackendEndpoint.DownloadLogs
+  | BackendEndpoint.SwitchToAcceptanceApi
+  | BackendEndpoint.SwitchToProductionApi
   | BackendEndpoint.DeleteAccount
   | BackendEndpoint.DeleteShipments
   | BackendEndpoint.DeleteWebhooks
