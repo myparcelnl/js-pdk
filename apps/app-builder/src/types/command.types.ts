@@ -5,7 +5,7 @@ import {type LiftoffEnv} from 'liftoff';
 import {type Debugger} from 'debug';
 import {type Command} from 'commander';
 import {type PromiseOr, type Replace} from '@myparcel/ts-utils';
-import {type CommandName, type PdkPlatformName} from '../constants';
+import {type CommandName} from '../constants';
 import {type ResolvedPdkBuilderConfig} from './config.types';
 
 export interface BaseCommandDefinition<Args extends AnyCommandArgs = DefaultCommandArgs> {
@@ -34,7 +34,7 @@ export type AdditionalCommandDefinition<Args extends AnyCommandArgs = DefaultCom
 
 export type PdkBuilderCommand<
   Args extends AnyCommandArgs = DefaultCommandArgs,
-  Context extends BasePdkBuilderContext<Args> = BasePdkBuilderContext<Args>,
+  Context extends BasePdkBuilderContext<Args> = PdkBuilderContext<Args>,
 > = (context: Context) => PromiseOr<void>;
 
 export type PdkBuilderCommandWithoutConfig<Args extends AnyCommandArgs = DefaultCommandArgs> = (
@@ -49,11 +49,6 @@ export type DefaultCommandArgs = {
   parallel?: boolean;
   quiet?: boolean;
   verbose: number;
-};
-
-export type PlatformCommandArgs<Platform extends PdkPlatformName = PdkPlatformName> = {
-  platform: Platform;
-  platformOutDir: string;
 };
 
 export type InputCommandArguments<Args extends AnyCommandArgs = DefaultCommandArgs> = (
@@ -85,16 +80,9 @@ export type BasePdkBuilderContext<Args extends AnyCommandArgs = DefaultCommandAr
   debug: PdkDebugger;
 };
 
-export type PdkBuilderContext<Args extends AnyCommandArgs = DefaultCommandArgs> = BasePdkBuilderContext<
-  Args & Partial<PlatformCommandArgs>
-> & {
+export type PdkBuilderContext<Args extends AnyCommandArgs = DefaultCommandArgs> = BasePdkBuilderContext<Args> & {
   config: ResolvedPdkBuilderConfig;
 };
-
-export type PdkBuilderContextWithPlatformArgs<
-  Args extends AnyCommandArgs = DefaultCommandArgs,
-  Platform extends PdkPlatformName = PdkPlatformName,
-> = PdkBuilderContext<PlatformCommandArgs<Platform> & Args>;
 
 export type PdkDebugger = Debugger & {
   logTimeTaken(): void;

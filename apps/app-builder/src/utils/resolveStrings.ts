@@ -1,14 +1,9 @@
 import {get} from 'radash';
 import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {type StringGenerator} from '../types/common.types';
 import {type PdkBuilderContext} from '../types/command.types';
 import {resolveString} from './resolveString';
 
 const MARKER_SIZE = 2;
-
-const resolveStringGenerator = (context: PdkBuilderContext, stringGenerator: StringGenerator): string => {
-  return typeof stringGenerator === 'function' ? stringGenerator(context.args?.platform) : stringGenerator;
-};
 
 const getMarkers = (item: string) => item.match(/\{\{\s*([\w.]+)\s*}}/g) ?? [];
 
@@ -19,9 +14,7 @@ const resolveMarker = (context: PdkBuilderContext, marker: string): string | str
 
 const hasMarkers = (string: string) => string.includes('{{');
 
-const resolveOne = (context: PdkBuilderContext, stringGenerator: StringGenerator) => {
-  const string = resolveStringGenerator(context, stringGenerator);
-
+const resolveOne = (context: PdkBuilderContext, string: string) => {
   if (!hasMarkers(string)) {
     return string;
   }
@@ -33,9 +26,7 @@ const resolveOne = (context: PdkBuilderContext, stringGenerator: StringGenerator
   }, string);
 };
 
-const resolveMultiple = (context: PdkBuilderContext, stringGenerator: StringGenerator): string[] => {
-  const string = resolveStringGenerator(context, stringGenerator);
-
+const resolveMultiple = (context: PdkBuilderContext, string: string): string[] => {
   if (!hasMarkers(string)) {
     return [string];
   }
@@ -49,7 +40,7 @@ const resolveMultiple = (context: PdkBuilderContext, stringGenerator: StringGene
   }, [] as string[]);
 };
 
-const resolve = (context: PdkBuilderContext, item: StringGenerator): string[] => {
+const resolve = (context: PdkBuilderContext, item: string): string[] => {
   const firstPass = resolveOne(context, item);
   const secondPass = resolveMultiple(context, firstPass);
 
@@ -69,7 +60,7 @@ const resolve = (context: PdkBuilderContext, item: StringGenerator): string[] =>
  *
  * @example `{{outDir}}/src` => `dist/src` (if `config.outDir` is `dist`)
  */
-export const resolveStrings = (context: PdkBuilderContext, strings: OneOrMore<StringGenerator>): string[] => {
+export const resolveStrings = (context: PdkBuilderContext, strings: OneOrMore<string>): string[] => {
   return toArray(strings)
     .filter(Boolean)
     .reduce((acc, item) => {

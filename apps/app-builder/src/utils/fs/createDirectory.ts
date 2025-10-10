@@ -5,11 +5,10 @@ import {resolvePath} from '../resolvePath';
 import {logTargetPath} from '../debug/logTargetPath';
 import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';
 import {isDryRun} from '../command/isDryRun';
-import {type StringGenerator} from '../../types/common.types';
 import {type PdkBuilderContext} from '../../types/command.types';
 import {exists} from './exists';
 
-export const createDirectory = async (context: PdkBuilderContext, item: StringGenerator): Promise<void> => {
+export const createDirectory = async (context: PdkBuilderContext, item: string): Promise<void> => {
   const {debug} = context;
   const resolvedPath = resolveString(item, context);
 

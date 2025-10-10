@@ -6,13 +6,12 @@ import {resolvePath} from '../resolvePath';
 import {logTargetPath} from '../debug/logTargetPath';
 import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';
 import {isDryRun} from '../command/isDryRun';
-import {type StringGenerator} from '../../types/common.types';
 import {type PdkBuilderContext} from '../../types/command.types';
 import {createDirectories} from './createDirectories';
 
 export const writeFile = async (
   context: PdkBuilderContext,
-  filePath: OneOrMore<StringGenerator>,
+  filePath: OneOrMore<string>,
   contents: string,
 ): Promise<void> => {
   const resolvedPath = resolvePath(filePath, context);
