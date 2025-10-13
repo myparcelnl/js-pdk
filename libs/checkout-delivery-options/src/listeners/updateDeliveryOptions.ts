@@ -33,6 +33,7 @@ export const updateDeliveryOptions: StoreCallbackUpdate<CheckoutStoreState> = as
   const config = deliveryOptions.state.settings.updateDeliveryOptions(deliveryOptions.state);
 
   const configuration = {
+    ...deliveryOptions.state.configuration,
     address: getDeliveryOptionsAddress(),
     config,
     strings: deliveryOptions.state.configuration.strings,

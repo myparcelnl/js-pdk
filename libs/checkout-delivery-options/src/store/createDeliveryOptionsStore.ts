@@ -10,7 +10,7 @@ export const createDeliveryOptionsStore = (settings?: CheckoutDeliveryOptionsSet
 
   const checkout = useCheckoutStore();
 
-  const {config, strings} = checkout.state.context;
+  const {config, strings, platformConfig} = checkout.state.context;
 
   return createStore<DeliveryOptionsStoreState>(Symbol('deliveryOptions'), () => {
     return {
@@ -24,6 +24,7 @@ export const createDeliveryOptionsStore = (settings?: CheckoutDeliveryOptionsSet
           address: getDeliveryOptionsAddress(),
           config,
           strings,
+          platformConfig,
         },
 
         /**
