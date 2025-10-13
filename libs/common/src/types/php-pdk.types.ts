@@ -393,6 +393,7 @@ export namespace Plugin {
 
   export type ModelContextCheckoutContext = {
     config: Shipment.ModelDeliveryOptions;
+    platformConfig: Record<'carriers', unknown[]>; // @todo this is a temporary generic type, until capabilities is implemented in the deliveryOptions
     endpoints: EndpointRequestCollection;
     settings: ModelContextCheckoutContextSettings;
     strings: Record<string, string>;
