@@ -3,7 +3,6 @@ import {mergeDefaultConfig} from '../utils/mergeDefaultConfig';
 import {createDebugger} from '../utils/command/createDebugger';
 import {type PdkBuilderConfig} from '../types/config.types';
 import {type DefaultCommandArgs, type PdkBuilderContext} from '../types/command.types';
-import {PdkPlatformName} from '../constants';
 import {MOCK_ROOT_DIR} from './constants';
 
 export const createTestContext = <Context extends PdkBuilderContext = PdkBuilderContext>(
@@ -20,7 +19,6 @@ export const createTestContext = <Context extends PdkBuilderContext = PdkBuilder
 
   const config = mergeDefaultConfig({
     name: 'test',
-    platforms: [PdkPlatformName.MyParcelNl, PdkPlatformName.MyParcelBe, PdkPlatformName.Flespakket],
     source: [],
     versionSource: [],
     ...context?.config,

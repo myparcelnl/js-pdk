@@ -2,31 +2,22 @@
 
 import {type PdkBuilderConfig, type ResolvedPdkBuilderConfig} from '../types/config.types';
 import {COMMIT_TYPE_AUTO, DEFAULT_JSON_SPACES, RUN_COMPOSER, RUN_PHP} from '../constants';
-import {NodePackageManager} from '../commands/upgrade/enums';
 import {PHP_SCOPER_CONFIG_FILE} from '../commands/scopePhp/constants';
 
 // eslint-disable-next-line max-lines-per-function
 export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilderConfig => {
   const resolvedConfig = {
     additionalCommands: [],
-    archiveFilename: '{{platform}}-{{name}}-{{version}}.zip',
+    archiveFilename: '{{name}}-{{version}}.zip',
     commitType: COMMIT_TYPE_AUTO,
     debug: false,
     jsonSpaces: DEFAULT_JSON_SPACES,
-    nodePackageManager: NodePackageManager.Yarn,
     outDir: 'dist',
-    platformFolderName: '{{platform}}-{{name}}',
+    buildFolderName: '{{name}}',
     dockerCommand: undefined,
     dockerCommands: undefined,
     tmpDir: '.tmp',
     version: '0.0.0',
-
-    // TODO: Remove deprecated properties in v2.0.0
-    composerCommand: RUN_COMPOSER,
-    nodePackageManagerCommand: undefined,
-    rootCommand: undefined,
-    rootCommands: undefined,
-    yarnCommand: undefined,
 
     ...config,
     phpScoper: {
@@ -49,20 +40,11 @@ export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilder
     },
   } satisfies PdkBuilderConfig;
 
-  const {
-    dockerCommand,
-    dockerCommands,
-    nodePackageManager,
-    nodePackageManagerCommand,
-    rootCommand,
-    rootCommands,
-    yarnCommand,
-  } = resolvedConfig;
+  const {dockerCommand, dockerCommands} = resolvedConfig;
 
   return {
     ...resolvedConfig,
-    dockerCommand: dockerCommand ?? rootCommand ?? '',
-    dockerCommands: dockerCommands ?? rootCommands ?? [RUN_COMPOSER, RUN_PHP],
-    nodePackageManagerCommand: nodePackageManagerCommand ?? yarnCommand ?? nodePackageManager,
+    dockerCommand: dockerCommand ?? '',
+    dockerCommands: dockerCommands ?? [RUN_COMPOSER, RUN_PHP],
   } satisfies ResolvedPdkBuilderConfig;
 };

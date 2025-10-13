@@ -1,21 +1,20 @@
 import {usesPhpScoper} from '../../utils/usesPhpScoper';
 import {globFiles} from '../../utils/globFiles';
-import {copyScopedFilesForPlatform} from '../../utils/copyScopedFilesForPlatform';
-import {executePerPlatform} from '../../utils/command/executePerPlatform';
+import {copyScopedFiles} from '../../utils/copyScopedFiles';
 import {type PdkBuilderCommand} from '../../types/command.types';
-import {copyForPlatform} from './copyForPlatform';
+import {copyFiles} from './copyFiles';
 
 const copy = (async (context) => {
   const {debug, config} = context;
 
   const files = globFiles(config.source, context).sort();
 
-  await executePerPlatform(context, (context) => copyForPlatform(context, files));
+  await copyFiles(context, files);
 
   debug('Finished copying files');
 
   if (await usesPhpScoper(context)) {
-    await executePerPlatform(context, copyScopedFilesForPlatform);
+    await copyScopedFiles(context);
 
     debug('Finished copying scoped files');
   }
