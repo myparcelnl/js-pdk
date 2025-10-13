@@ -2,6 +2,20 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.0.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.7.0...@myparcel-pdk/app-builder@2.0.0) "@myparcel-pdk/app-builder" (2025-10-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* major v2 refactor to simplify and streamline the pdk-builder (#252)
+
+### Code Refactoring
+
+* major v2 refactor to simplify and streamline the pdk-builder ([#252](https://github.com/myparcelnl/js-pdk/issues/252)) ([6fdb4a3](https://github.com/myparcelnl/js-pdk/commit/6fdb4a34a5d99fdcb220ed5af0feb5f28a829e24))
+
+
+
+
 ## [1.7.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.6.2...@myparcel-pdk/app-builder@1.7.0) "@myparcel-pdk/app-builder" (2025-09-02)
 
 
