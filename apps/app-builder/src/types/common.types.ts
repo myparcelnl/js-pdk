@@ -1,7 +1,3 @@
-import {type PdkPlatformName} from '../constants';
-
-export type StringGenerator = string | ((platform?: PdkPlatformName) => string);
-
 export type NpmInfo = Record<string, unknown> & {
   repository?:
     | {

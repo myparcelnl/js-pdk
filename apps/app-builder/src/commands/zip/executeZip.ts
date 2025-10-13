@@ -1,22 +1,23 @@
-import {validateDistPath} from '../../utils/validateDistPath';
+import path from 'node:path';
 import {resolveString} from '../../utils/resolveString';
 import {resolvePath} from '../../utils/resolvePath';
 import {deleteFile} from '../../utils/fs/deleteFile';
+import {createDirectories} from '../../utils/fs/createDirectories';
 import {logTargetPath} from '../../utils/debug/logTargetPath';
 import {createArchive} from '../../utils/createArchive';
 import {shouldModifyFiles} from '../../utils/command/shouldModifyFiles';
 import {isVerbose} from '../../utils/command/isVerbose';
-import {type PdkBuilderContextWithPlatformArgs} from '../../types/command.types';
+import {type PdkBuilderContext} from '../../types/command.types';
 
-export const executeZipForPlatform = async (context: PdkBuilderContextWithPlatformArgs): Promise<void> => {
-  const {config, debug, args} = context;
+export const executeZip = async (context: PdkBuilderContext): Promise<void> => {
+  const {config, debug} = context;
 
-  if (!(await validateDistPath(context))) {
-    return;
-  }
-
+  const archiveOutDir = resolvePath(config.outDir, context);
+  // Create the archive output directory if it doesn't exist
+  await createDirectories(context, archiveOutDir);
   const archiveFilename = resolveString(config.archiveFilename, context).replace(/\//g, '-');
-  const archivePath = resolvePath([config.outDir, archiveFilename], context);
+
+  const archivePath = resolvePath([archiveOutDir, archiveFilename], context);
 
   await deleteFile(context, archivePath);
 
@@ -27,7 +28,10 @@ export const executeZipForPlatform = async (context: PdkBuilderContextWithPlatfo
   if (shouldModifyFiles(context)) {
     const archive = createArchive(archivePath, debug);
 
-    archive.directory(args.platformOutDir, resolveString(config.platformFolderName, context));
+    archive.directory(
+      resolvePath([config.outDir, config.buildFolderName], context),
+      resolveString(config.buildFolderName, context),
+    );
 
     await archive.finalize();
   }
