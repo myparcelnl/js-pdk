@@ -17,3 +17,23 @@ export const downloadLogsAction = defineAction({
     downloadBlob(response.response, 'logs.zip');
   },
 });
+
+/**
+ * Switch to acceptance API.
+ */
+export const switchToAcceptanceApiAction = defineAction({
+  name: AdminAction.SwitchToAcceptanceApi,
+  icon: AdminIcon.Refresh,
+  label: 'action_switch_to_acceptance_api',
+  handler: createMutationHandler(BackendEndpoint.SwitchToAcceptanceApi),
+});
+
+/**
+ * Switch to production API.
+ */
+export const switchToProductionApiAction = defineAction({
+  name: AdminAction.SwitchToProductionApi,
+  icon: AdminIcon.Refresh,
+  label: 'action_switch_to_production_api',
+  handler: createMutationHandler(BackendEndpoint.SwitchToProductionApi),
+});
