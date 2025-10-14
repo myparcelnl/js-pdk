@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.11.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.11.1...@myparcel-pdk/admin@1.11.2) "@myparcel-pdk/admin" (2025-10-14)
+
+
+### Bug Fixes
+
+* **js-pdk:** add acceptance api ([#257](https://github.com/myparcelnl/js-pdk/issues/257)) ([d95cf37](https://github.com/myparcelnl/js-pdk/commit/d95cf37c612680ca31cc6c57d8689e080847a169))
+
+
+
+
 ## [1.11.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.9.0...@myparcel-pdk/admin@1.11.0) "@myparcel-pdk/admin" (2025-10-10)
 
 

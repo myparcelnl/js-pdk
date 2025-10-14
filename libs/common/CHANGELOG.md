@@ -2,6 +2,26 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.7.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.7.0...@myparcel-pdk/common@1.7.1) "@myparcel-pdk/common" (2025-10-14)
+
+
+### Bug Fixes
+
+* **js-pdk:** add acceptance api ([#257](https://github.com/myparcelnl/js-pdk/issues/257)) ([d95cf37](https://github.com/myparcelnl/js-pdk/commit/d95cf37c612680ca31cc6c57d8689e080847a169))
+
+
+
+
+## [1.7.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.6.1...@myparcel-pdk/common@1.7.0) "@myparcel-pdk/common" (2025-10-13)
+
+
+### Features
+
+* add platformConfig to delivery options config definition ([#273](https://github.com/myparcelnl/js-pdk/issues/273)) ([0a9857e](https://github.com/myparcelnl/js-pdk/commit/0a9857e4b45f866c36751c062603d461421f39cf))
+
+
+
+
 ## [1.6.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.6.0...@myparcel-pdk/common@1.6.1) "@myparcel-pdk/common" (2025-05-08)
 
 
