@@ -713,6 +713,7 @@ export namespace Settings {
     fitInMailbox: number;
     packageType: string;
     returnShipments: 0 | 1 | -1;
+    excludeParcelLocker: 0 | 1 | -1;
   };
 
   export type ModelSettings = {
