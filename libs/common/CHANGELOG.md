@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.8.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.7.1...@myparcel-pdk/common@1.8.0) "@myparcel-pdk/common" (2025-11-03)
+
+
+### Features
+
+* **js-pdk:** add feature exclude parcel lockers ([#277](https://github.com/myparcelnl/js-pdk/issues/277)) ([dd801ea](https://github.com/myparcelnl/js-pdk/commit/dd801eae1806dcd82c16d57c3140c92740f20f3d))
+
+
+
+
 ## [1.7.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.7.0...@myparcel-pdk/common@1.7.1) "@myparcel-pdk/common" (2025-10-14)
 
 
