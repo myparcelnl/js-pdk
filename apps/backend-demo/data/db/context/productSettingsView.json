@@ -71,6 +71,12 @@
           "description": "settings_product_disable_delivery_options_description"
         },
         {
+          "name": "excludeParcelLocker",
+          "$component": "TriStateInput",
+          "label": "settings_product_exclude_parcel_locker",
+          "description": "settings_product_exclude_parcel_locker_description"
+        },
+        {
           "$component": "SettingsDivider",
           "$wrapper": false,
           "content": "settings_product_customs_options_description",
@@ -1128,19 +1134,19 @@
           "description": "settings_product_export_large_format_description"
         },
         {
-          "name": "exportOnlyRecipient",
+          "name": "allowOnlyRecipient",
           "$component": "TriStateInput",
           "label": "settings_product_export_only_recipient",
           "description": "settings_product_export_only_recipient_description"
         },
         {
-          "name": "exportSignature",
+          "name": "allowSignature",
           "$component": "TriStateInput",
           "label": "settings_product_export_signature",
           "description": "settings_product_export_signature_description"
         },
         {
-          "name": "exportReturn",
+          "name": "returnShipments",
           "$component": "TriStateInput",
           "label": "settings_product_export_return",
           "description": "settings_product_export_return_description"

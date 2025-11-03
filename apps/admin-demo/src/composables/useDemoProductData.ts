@@ -21,6 +21,7 @@ export const useDemoProductData = (): Plugin.ModelPdkProduct[] => {
         fitInMailbox: -1,
         packageType: PackageTypeName.Package,
         returnShipments: -1,
+        excludeParcelLocker: -1,
       },
     },
   ];
