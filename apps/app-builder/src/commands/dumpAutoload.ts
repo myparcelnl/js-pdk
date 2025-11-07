@@ -10,13 +10,13 @@ const dumpAutoload = (async (context) => {
 
   debug('Dumping autoload...');
 
-  const autoloadPath = resolvePath([config.outDir, 'vendor', 'autoload.php'], context);
+  const autoloadPath = resolvePath([config.outDir, config.buildFolderName, 'vendor', 'autoload.php'], context);
 
   await deleteFile(context, autoloadPath);
 
   await executeCommand(context, RUN_COMPOSER, [
     'dump-autoload',
-    `--working-dir=${getRelativePath(config.outDir, context)}`,
+    `--working-dir=${getRelativePath(`${config.outDir}/${config.buildFolderName}`, context)}`,
     '--classmap-authoritative',
   ]);
 }) satisfies PdkBuilderCommand;
