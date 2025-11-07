@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.0.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@2.0.0...@myparcel-pdk/app-builder@2.0.1) "@myparcel-pdk/app-builder" (2025-11-07)
+
+
+### Bug Fixes
+
+* **app-builder:** fix path for composer commands ([f0e5f92](https://github.com/myparcelnl/js-pdk/commit/f0e5f92bc267cbd2bdbe7fba59fa75fe5eac0bb1))
+
+
+
+
 ## [2.0.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@1.7.0...@myparcel-pdk/app-builder@2.0.0) "@myparcel-pdk/app-builder" (2025-10-13)
 
 
