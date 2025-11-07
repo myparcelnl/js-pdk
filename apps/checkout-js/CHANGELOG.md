@@ -2,6 +2,11 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.5.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-js@1.4.2...@myparcel-pdk/checkout-js@1.5.0) "@myparcel-pdk/checkout-js" (2025-11-07)
+
+
+
+
 ## [1.1.5](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-js@1.1.4...@myparcel-pdk/checkout-js@1.1.5) "@myparcel-pdk/checkout-js" (2024-10-24)
 
 

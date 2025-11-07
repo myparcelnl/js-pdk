@@ -2,6 +2,22 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.9.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.8.0...@myparcel-pdk/common@1.9.0) "@myparcel-pdk/common" (2025-11-07)
+
+
+### Features
+
+* add platformConfig to delivery options config definition ([#273](https://github.com/myparcelnl/js-pdk/issues/273)) ([0a9857e](https://github.com/myparcelnl/js-pdk/commit/0a9857e4b45f866c36751c062603d461421f39cf))
+* **js-pdk:** add feature exclude parcel lockers ([#277](https://github.com/myparcelnl/js-pdk/issues/277)) ([34135a9](https://github.com/myparcelnl/js-pdk/commit/34135a92ce131e8cd14c1cf25fc1b48fa9990741))
+
+
+### Bug Fixes
+
+* **js-pdk:** add acceptance api ([#257](https://github.com/myparcelnl/js-pdk/issues/257)) ([41dad85](https://github.com/myparcelnl/js-pdk/commit/41dad854c192b670e4b2cff23b4077a0f8a4c77e))
+
+
+
+
 ## [1.8.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.7.1...@myparcel-pdk/common@1.8.0) "@myparcel-pdk/common" (2025-11-03)
 
 
