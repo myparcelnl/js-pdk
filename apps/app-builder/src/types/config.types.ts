@@ -21,13 +21,6 @@ type CommandHooksObject = {
 
 export type PdkBuilderConfig = {
   /**
-   * Filename for the final compress file. Must include file extension.
-   *
-   * @default `{{name}}-{{version}}.zip`
-   */
-  archiveFilename?: string;
-
-  /**
    * Enable debug logging.
    */
   debug?: boolean;
@@ -43,7 +36,7 @@ export type PdkBuilderConfig = {
   name: string;
 
   /**
-   * Output directory for the created folders and archives.
+   * Output directory for the created folders.
    *
    * @default `dist`
    */

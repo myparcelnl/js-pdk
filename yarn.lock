@@ -2586,14 +2586,12 @@ __metadata:
   resolution: "@myparcel-pdk/app-builder@workspace:apps/app-builder"
   dependencies:
     "@myparcel/ts-utils": "npm:^1.9.0"
-    "@types/archiver": "npm:^6.0.0"
     "@types/commander": "npm:^2.12.2"
     "@types/debug": "npm:^4.1.7"
     "@types/inquirer": "npm:^9.0.3"
     "@types/interpret": "npm:^1.1.1"
     "@types/liftoff": "npm:^4.0.0"
     "@yarnpkg/parsers": "npm:^3.0.0"
-    archiver: "npm:^7.0.0"
     chalk: "npm:^5.2.0"
     commander: "npm:^12.0.0"
     debug: "npm:^4.3.4"
@@ -4458,15 +4456,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/archiver@npm:^6.0.0":
-  version: 6.0.2
-  resolution: "@types/archiver@npm:6.0.2"
-  dependencies:
-    "@types/readdir-glob": "npm:*"
-  checksum: 10c0/01ca91d76c57b38ae030a24a07b46664bf3ae9d303c0cdd2b342e06a4b53dccd0d0c375ff3f9af966a93512554f82ef97c515fcc47536e7dbb29a7d9bc09a540
-  languageName: node
-  linkType: hard
-
 "@types/argparse@npm:1.0.38":
   version: 1.0.38
   resolution: "@types/argparse@npm:1.0.38"
@@ -4774,15 +4763,6 @@ __metadata:
   version: 1.2.7
   resolution: "@types/range-parser@npm:1.2.7"
   checksum: 10c0/361bb3e964ec5133fa40644a0b942279ed5df1949f21321d77de79f48b728d39253e5ce0408c9c17e4e0fd95ca7899da36841686393b9f7a1e209916e9381a3c
-  languageName: node
-  linkType: hard
-
-"@types/readdir-glob@npm:*":
-  version: 1.1.5
-  resolution: "@types/readdir-glob@npm:1.1.5"
-  dependencies:
-    "@types/node": "npm:*"
-  checksum: 10c0/46849136a3b5246105bca0303aab80552a9ff67e024e77ef1845a806a24c1a621dfcba0e4ee5a00ebad17f51edb80928f2dd6dc510a1d9897f3bc22ed64e5cbd
   languageName: node
   linkType: hard
 
@@ -6394,7 +6374,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"archiver@npm:^7.0.0, archiver@npm:^7.0.1":
+"archiver@npm:^7.0.1":
   version: 7.0.1
   resolution: "archiver@npm:7.0.1"
   dependencies:

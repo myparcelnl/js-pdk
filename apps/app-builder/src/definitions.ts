@@ -13,7 +13,6 @@ import {
   COMMAND_RELEASE_NAME,
   COMMAND_SCOPE_PHP_NAME,
   COMMAND_TRANSLATIONS_NAME,
-  COMMAND_ZIP_NAME,
 } from './constants';
 
 export const initCommand = defineCommand({
@@ -60,12 +59,6 @@ export const dumpAutoloadCommand = defineCommand({
   description: 'Run composer autoload command.',
 });
 
-export const zipCommand = defineCommand({
-  name: COMMAND_ZIP_NAME,
-  action: () => import('./commands/zip'),
-  description: 'Compress output files into an archive.',
-});
-
 const CORE_COMMANDS = Object.freeze([translationsCommand, copyCommand] satisfies AnyCommandDefinition[]);
 
 export const buildBulkCommand = defineBulkCommand({
@@ -76,12 +69,12 @@ export const buildBulkCommand = defineBulkCommand({
 export const preReleaseBulkCommand = defineBulkCommand({
   name: COMMAND_PRERELEASE_NAME,
   description: 'Prepare a release.',
-  commands: [cleanCommand, scopePhpCommand, incrementCommand, ...CORE_COMMANDS, dumpAutoloadCommand, zipCommand],
+  commands: [cleanCommand, scopePhpCommand, incrementCommand, ...CORE_COMMANDS, dumpAutoloadCommand],
 });
 
 export const releaseBulkCommand = defineBulkCommand({
   name: COMMAND_RELEASE_NAME,
-  commands: [cleanCommand, scopePhpCommand, incrementCommand, ...CORE_COMMANDS, dumpAutoloadCommand, zipCommand],
+  commands: [cleanCommand, scopePhpCommand, incrementCommand, ...CORE_COMMANDS, dumpAutoloadCommand],
 });
 
 export const ALL_COMMANDS: readonly AnyCommandDefinition[] = Object.freeze([
@@ -91,7 +84,6 @@ export const ALL_COMMANDS: readonly AnyCommandDefinition[] = Object.freeze([
   incrementCommand,
   scopePhpCommand,
   translationsCommand,
-  zipCommand,
 ]);
 
 export const ALL_BULK_COMMANDS: readonly BulkCommandDefinition[] = Object.freeze([
