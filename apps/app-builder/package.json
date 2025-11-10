@@ -35,7 +35,6 @@
   "dependencies": {
     "@myparcel/ts-utils": "^1.9.0",
     "@yarnpkg/parsers": "^3.0.0",
-    "archiver": "^7.0.0",
     "chalk": "^5.2.0",
     "commander": "^12.0.0",
     "debug": "^4.3.4",
@@ -48,7 +47,6 @@
     "supports-color": "^9.3.1"
   },
   "devDependencies": {
-    "@types/archiver": "^6.0.0",
     "@types/commander": "^2.12.2",
     "@types/debug": "^4.1.7",
     "@types/inquirer": "^9.0.3",
