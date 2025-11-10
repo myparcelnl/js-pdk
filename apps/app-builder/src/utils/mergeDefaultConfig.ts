@@ -8,7 +8,6 @@ import {PHP_SCOPER_CONFIG_FILE} from '../commands/scopePhp/constants';
 export const mergeDefaultConfig = (config: PdkBuilderConfig): ResolvedPdkBuilderConfig => {
   const resolvedConfig = {
     additionalCommands: [],
-    archiveFilename: '{{name}}-{{version}}.zip',
     commitType: COMMIT_TYPE_AUTO,
     debug: false,
     jsonSpaces: DEFAULT_JSON_SPACES,

@@ -18,8 +18,6 @@ export const COMMAND_SCOPE_PHP_NAME = 'scope-php';
 
 export const COMMAND_TRANSLATIONS_NAME = 'translations';
 
-export const COMMAND_ZIP_NAME = 'zip';
-
 export const COMMAND_AUTOLOAD_NAME = 'dump-autoload';
 
 export type CommandName =
@@ -29,7 +27,6 @@ export type CommandName =
   | typeof COMMAND_INIT_NAME
   | typeof COMMAND_SCOPE_PHP_NAME
   | typeof COMMAND_TRANSLATIONS_NAME
-  | typeof COMMAND_ZIP_NAME
   | typeof COMMAND_AUTOLOAD_NAME;
 
 export enum VerbosityLevel {
