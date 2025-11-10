@@ -2,6 +2,11 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.6.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-tax-fields@1.5.0...@myparcel-pdk/checkout-tax-fields@1.6.0) "@myparcel-pdk/checkout-tax-fields" (2025-11-10)
+
+
+
+
 ## [1.2.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-tax-fields@1.1.5...@myparcel-pdk/checkout-tax-fields@1.2.0) "@myparcel-pdk/checkout-tax-fields" (2024-11-06)
 
 

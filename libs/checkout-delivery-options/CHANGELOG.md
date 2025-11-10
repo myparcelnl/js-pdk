@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.6.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.5.0...@myparcel-pdk/checkout-delivery-options@1.6.0) "@myparcel-pdk/checkout-delivery-options" (2025-11-10)
+
+
+### Features
+
+* add platformConfig to delivery options config definition ([#273](https://github.com/myparcelnl/js-pdk/issues/273)) ([0a9857e](https://github.com/myparcelnl/js-pdk/commit/0a9857e4b45f866c36751c062603d461421f39cf))
+
+
+
+
 ## [1.4.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/checkout-delivery-options@1.3.3...@myparcel-pdk/checkout-delivery-options@1.4.0) "@myparcel-pdk/checkout-delivery-options" (2025-10-13)
 
 
