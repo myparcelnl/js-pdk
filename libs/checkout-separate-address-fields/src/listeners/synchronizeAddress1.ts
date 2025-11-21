@@ -9,6 +9,9 @@ import {
 import {getAddressFields, getFullStreet, triggerFormChange} from '../utils';
 import {SEPARATE_ADDRESS_FIELDS} from '../constants';
 
+// Track last written address1 values to prevent infinite loops
+const lastWrittenAddress1: Record<string, string> = {};
+
 /**
  * Fill address1 field when separate address fields are changed.
  */
@@ -21,7 +24,7 @@ export const synchronizeAddress1: StoreCallbackUpdate<CheckoutStoreState> = (new
 
   const addressTypesToUpdate = checkout.state.addressTypes.filter((addressType) => {
     return SEPARATE_ADDRESS_FIELDS.some((fieldName) => {
-      return oldState && fieldsEqual(newState.form, oldState.form, fieldName, addressType);
+      return oldState && !fieldsEqual(newState.form, oldState.form, fieldName, addressType);
     });
   });
 
@@ -34,7 +37,14 @@ export const synchronizeAddress1: StoreCallbackUpdate<CheckoutStoreState> = (new
       return;
     }
 
-    setFieldValue(AddressField.Address1, getFullStreet(addressType), addressType, false);
+    // Prevent infinite update loop: only write when value actually changes
+    const newAddress1 = getFullStreet(addressType);
+    if (lastWrittenAddress1[addressType] === newAddress1) {
+      return;
+    }
+
+    lastWrittenAddress1[addressType] = newAddress1;
+    setFieldValue(AddressField.Address1, newAddress1, addressType, false);
   });
 
   if (addressTypesToUpdate.length) {
