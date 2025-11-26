@@ -1,13 +1,13 @@
-import {useQueryClient} from '@tanstack/vue-query';
-import {BackendEndpoint} from '@myparcel-pdk/common';
-import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {usePdkMutation} from '../usePdkMutation';
-import {encodeArrayParameter, formToBody} from '../../../../utils';
-import {type BackendEndpointOptions} from '../../../../types';
-import {type ResolvedQuery, useModalStore} from '../../../../stores';
-import {getCallbackForMutationMode, getModalMutationOptions, MutationMode} from '../../../../services';
-import {usePdkAdminApi} from '../../../../sdk';
-import {fillShipmentsQueryData} from '../../../../pdk';
+import { useQueryClient } from '@tanstack/vue-query';
+import { BackendEndpoint } from '@myparcel-pdk/common';
+import { type OneOrMore, toArray } from '@myparcel/ts-utils';
+import { usePdkMutation } from '../usePdkMutation';
+import { encodeArrayParameter, formToBody } from '../../../../utils';
+import { type BackendEndpointOptions } from '../../../../types';
+import { type ResolvedQuery, useModalStore } from '../../../../stores';
+import { getCallbackForMutationMode, getModalMutationOptions, MutationMode } from '../../../../services';
+import { usePdkAdminApi } from '../../../../sdk';
+import { fillShipmentsQueryData } from '../../../../pdk';
 
 export const useExportOrdersMutation = (
   orderIds?: OneOrMore<string>,
@@ -27,6 +27,12 @@ export const useExportOrdersMutation = (
         },
         body: [formToBody(input.form)],
       };
+
+      console.log('[useExportOrdersMutation]', {
+        orderIds,
+        body: options.body,
+        insurance: options.body[0]?.deliveryOptions?.shipmentOptions?.insurance,
+      });
 
       // @ts-expect-error custom endpoints are not typed correctly
       return pdk.exportOrders(options);

@@ -1,11 +1,11 @@
-import {useQueryClient} from '@tanstack/vue-query';
-import {BackendEndpoint} from '@myparcel-pdk/common';
-import {type OneOrMore, toArray} from '@myparcel/ts-utils';
-import {usePdkMutation} from '../usePdkMutation';
-import {encodeArrayParameter, formToBody, setQueryOrder} from '../../../../utils';
-import {type BackendEndpointOptions} from '../../../../types';
-import {type ResolvedQuery} from '../../../../stores';
-import {usePdkAdminApi} from '../../../../sdk';
+import { useQueryClient } from '@tanstack/vue-query';
+import { BackendEndpoint } from '@myparcel-pdk/common';
+import { type OneOrMore, toArray } from '@myparcel/ts-utils';
+import { usePdkMutation } from '../usePdkMutation';
+import { encodeArrayParameter, formToBody, setQueryOrder } from '../../../../utils';
+import { type BackendEndpointOptions } from '../../../../types';
+import { type ResolvedQuery } from '../../../../stores';
+import { usePdkAdminApi } from '../../../../sdk';
 
 export const useUpdateOrdersMutation = (orderIds?: OneOrMore<string>): ResolvedQuery<BackendEndpoint.UpdateOrders> => {
   const queryClient = useQueryClient();
@@ -20,6 +20,12 @@ export const useUpdateOrdersMutation = (orderIds?: OneOrMore<string>): ResolvedQ
         },
         body: [formToBody(input.form)],
       };
+
+      console.log('[useUpdateOrdersMutation]', {
+        orderIds,
+        body: options.body,
+        insurance: options.body[0]?.deliveryOptions?.shipmentOptions?.insurance,
+      });
 
       // @ts-expect-error custom endpoints are not typed correctly
       return pdk.updateOrders(options);

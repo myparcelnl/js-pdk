@@ -11,6 +11,8 @@ export * from './getPackageTypes';
 export * from './hasPostNlAgeCheck';
 export * from './hasShipmentOption';
 export * from './isPackageTypePackage';
+export * from './isPackageTypePackageOrSmall';
+export * from './isPackageTypeSmallPackage';
 export * from './resolveFormComponent';
 export * from './setFieldProp';
 export * from './setPostNlAgeCheckSubtext';
