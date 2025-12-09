@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.12.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.11.5...@myparcel-pdk/admin@1.12.0) "@myparcel-pdk/admin" (2025-12-09)
+
+
+### Features
+
+* **js-pdk:** allow insurance small package ([#287](https://github.com/myparcelnl/js-pdk/issues/287)) ([86a39d1](https://github.com/myparcelnl/js-pdk/commit/86a39d1cf1f8792383ae741d991bfaa01333ff1f))
+
+
+
+
 ## [1.11.5](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/admin@1.11.4...@myparcel-pdk/admin@1.11.5) "@myparcel-pdk/admin" (2025-11-10)
 
 
