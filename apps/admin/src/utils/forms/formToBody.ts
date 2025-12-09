@@ -9,7 +9,8 @@ export const formToBody = <T extends Record<string, unknown> = Record<string, un
     return form ? form : ({} as T);
   }
 
-  return convertDotNotationToObject(form.getValues(), (value) => {
+  const formValues = form.getValues();
+  return convertDotNotationToObject(formValues, (value) => {
     return typeof value === 'boolean' ? Number(value) : value;
   }) as T;
 };
