@@ -28,7 +28,7 @@
 
 <script lang="ts" setup>
 import {computed, type PropType, useSlots} from 'vue';
-import {Size} from '@myparcel-pdk/admin';
+import {Size} from '@myparcel-dev/pdk-admin';
 
 const slots = useSlots();
 

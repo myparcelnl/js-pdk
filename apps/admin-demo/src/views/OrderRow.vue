@@ -32,7 +32,7 @@
 
 <script lang="ts" setup>
 import {ref} from 'vue';
-import {AdminModalKey, OrderListItemView, type Plugin, useModalStore, useQueryStore} from '@myparcel-pdk/admin';
+import {AdminModalKey, OrderListItemView, type Plugin, useModalStore, useQueryStore} from '@myparcel-dev/pdk-admin';
 
 const props = defineProps<{order: Plugin.ModelPdkOrder}>();
 

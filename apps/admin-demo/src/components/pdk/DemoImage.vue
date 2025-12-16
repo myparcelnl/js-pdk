@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 /* eslint-disable vue/no-unused-properties */
 /**
- * @see import('@myparcel-pdk/admin-preset-default').DefaultImage
+ * @see import('@myparcel-dev/pdk-admin-preset-default').DefaultImage
  */
 defineProps<{
   src: string;

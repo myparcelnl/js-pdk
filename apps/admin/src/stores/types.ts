@@ -1,6 +1,6 @@
 import {type UseMutationReturnType, type UseQueryReturnType} from '@tanstack/vue-query';
-import {type AdminContextKey, type BackendEndpoint} from '@myparcel-pdk/common';
-import {type ApiException} from '@myparcel/sdk';
+import {type AdminContextKey, type BackendEndpoint} from '@myparcel-dev/pdk-common';
+import {type ApiException} from '@myparcel-dev/sdk';
 import {
   type ActionInput,
   type AdminContext,

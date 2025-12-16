@@ -1,5 +1,5 @@
 import {markRaw} from 'vue';
-import {FormHook, useFormBuilder} from '@myparcel/vue-form-builder';
+import {FormHook, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {StopActionHandler} from '../stopActionHandler';
 import {type ActionContext} from '../executors';
 import {type ActionParameters, type PrintAction} from '../../types';

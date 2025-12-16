@@ -53,7 +53,7 @@ import {
   useAdminConfig,
   useDropdownButtonContext,
   useLanguage,
-} from '@myparcel-pdk/admin';
+} from '@myparcel-dev/pdk-admin';
 import BaseButton from './common/BaseButton.vue';
 
 // eslint-disable-next-line vue/no-unused-properties

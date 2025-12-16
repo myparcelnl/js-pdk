@@ -1,6 +1,6 @@
 import {config} from '@vue/test-utils';
-import {doComponentTestSetup} from '@myparcel-pdk/admin/testing';
-import {type AdminComponent, type AdminComponentMap} from '@myparcel-pdk/admin';
+import {doComponentTestSetup} from '@myparcel-dev/pdk-admin/testing';
+import {type AdminComponent, type AdminComponentMap} from '@myparcel-dev/pdk-admin';
 import {wrapperPlugin} from '../helpers/wrapperPlugin';
 import {executeAdminComponentTest} from './executeAdminComponentTest';
 

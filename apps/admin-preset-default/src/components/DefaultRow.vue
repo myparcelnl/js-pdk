@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, type RowProps, type RowSlots} from '@myparcel-pdk/admin';
+import {AdminComponent, type RowProps, type RowSlots} from '@myparcel-dev/pdk-admin';
 
 defineProps<RowProps>();
 defineSlots<RowSlots>();

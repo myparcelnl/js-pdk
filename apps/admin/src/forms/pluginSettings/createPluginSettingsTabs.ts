@@ -1,5 +1,5 @@
 import {h, markRaw} from 'vue';
-import {type Plugin} from '@myparcel-pdk/common';
+import {type Plugin} from '@myparcel-dev/pdk-common';
 import {type TabDefinition} from '../../types';
 import {useLanguage} from '../../composables';
 import {type PluginSettingsTabsContext} from './types';

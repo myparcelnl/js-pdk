@@ -1,4 +1,4 @@
-import {CarrierSetting} from '@myparcel/delivery-options';
+import {CarrierSetting} from '@myparcel-dev/delivery-options';
 import {useDeliveryOptionsStore} from '../utils';
 import {type CheckoutDeliveryOptionsSettings} from '../types';
 

@@ -1,4 +1,4 @@
-import {toArray} from '@myparcel/ts-utils';
+import {toArray} from '@myparcel-dev/ts-utils';
 import {
   type BulkCommandDefinition,
   type CommandWithArguments,

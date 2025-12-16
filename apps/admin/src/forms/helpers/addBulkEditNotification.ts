@@ -1,4 +1,4 @@
-import {Variant} from '@myparcel-pdk/common';
+import {Variant} from '@myparcel-dev/pdk-common';
 import {KEY_DESCRIPTION} from '../shipmentOptions';
 import {type PdkNotification} from '../../types';
 import {useNotificationStore} from '../../stores';

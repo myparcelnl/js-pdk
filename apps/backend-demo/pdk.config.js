@@ -1,4 +1,4 @@
-import { defineConfig } from '@myparcel-pdk/app-builder';
+import { defineConfig } from '@myparcel-dev/pdk-app-builder';
 
 export default defineConfig({
   name: 'backend-demo',

@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import {useAdminConfig} from '@myparcel-pdk/admin';
+import {useAdminConfig} from '@myparcel-dev/pdk-admin';
 
 const adminConfig = useAdminConfig();
 </script>

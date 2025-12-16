@@ -1,5 +1,5 @@
 import {toValue} from 'vue';
-import {useFormBuilder} from '@myparcel/vue-form-builder';
+import {useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {createShipmentFormName, getOrderId} from '../../utils';
 import {type ActionParameters, type OrderAction} from '../../types';
 import {type ActionContext} from './types';

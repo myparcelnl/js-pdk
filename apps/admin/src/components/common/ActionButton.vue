@@ -15,7 +15,7 @@
 
 <script lang="ts" setup>
 import {type Component} from 'vue';
-import {Size, Variant} from '@myparcel-pdk/common';
+import {Size, Variant} from '@myparcel-dev/pdk-common';
 import {prefixComponent} from '../../utils';
 import {type ActionDefinition} from '../../types';
 import {useActionStore} from '../../stores';

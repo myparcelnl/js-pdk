@@ -19,7 +19,7 @@ export const DEFAULT_FILE_SYSTEM: Readonly<Record<string, unknown>> = Object.fre
     version: '1.0.0',
   }),
   'package.json': JSON.stringify({
-    name: '@myparcel/app',
+    name: '@myparcel-dev/app',
     version: '1.0.0',
   }),
   'readme.txt': 'Hello world!',

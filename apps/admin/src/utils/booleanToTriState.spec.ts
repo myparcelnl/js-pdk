@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {TriState} from '@myparcel-pdk/common';
+import {TriState} from '@myparcel-dev/pdk-common';
 import {booleanToTriState} from './booleanToTriState';
 
 describe('booleanToTriState', () => {

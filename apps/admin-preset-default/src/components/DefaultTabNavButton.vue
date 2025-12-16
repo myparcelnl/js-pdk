@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, type TabNavButtonEmits, type TabNavButtonProps} from '@myparcel-pdk/admin';
+import {AdminComponent, type TabNavButtonEmits, type TabNavButtonProps} from '@myparcel-dev/pdk-admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 defineProps<TabNavButtonProps>();

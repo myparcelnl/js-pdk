@@ -1,4 +1,4 @@
-import {type OneOrMore, toArray} from '@myparcel/ts-utils';
+import {type OneOrMore, toArray} from '@myparcel-dev/ts-utils';
 import {type PdkBuilderContext} from '../../types/command.types';
 import {createDirectory} from './createDirectory';
 

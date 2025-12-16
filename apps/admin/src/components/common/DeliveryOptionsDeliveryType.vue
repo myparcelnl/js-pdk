@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import {type Shipment} from '@myparcel-pdk/common';
+import {type Shipment} from '@myparcel-dev/pdk-common';
 import {getDeliveryTypeTranslation} from '../../utils';
 import {useLanguage} from '../../composables';
 

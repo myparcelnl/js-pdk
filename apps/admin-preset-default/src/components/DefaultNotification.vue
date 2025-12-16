@@ -19,8 +19,8 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {AdminComponent, type NotificationProps} from '@myparcel-pdk/admin';
-import {toArray} from '@myparcel/ts-utils';
+import {AdminComponent, type NotificationProps} from '@myparcel-dev/pdk-admin';
+import {toArray} from '@myparcel-dev/ts-utils';
 
 const props = defineProps<NotificationProps>();
 

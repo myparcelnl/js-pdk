@@ -18,7 +18,7 @@ import {
   type ShipmentLabelWrapperProps,
   type ShipmentLabelWrapperSlots,
   Size,
-} from '@myparcel-pdk/admin';
+} from '@myparcel-dev/pdk-admin';
 import LoadingOverlay from './common/LoadingOverlay.vue';
 
 defineProps<ShipmentLabelWrapperProps>();

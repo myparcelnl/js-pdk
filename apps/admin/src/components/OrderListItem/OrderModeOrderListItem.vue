@@ -24,7 +24,7 @@
 
 <script lang="ts" setup>
 import {computed, toValue} from 'vue';
-import {Size} from '@myparcel-pdk/common';
+import {Size} from '@myparcel-dev/pdk-common';
 import {ActionButton, DeliveryOptionsExcerpt} from '../common';
 import {instantiateAction, instantiateActions} from '../../services';
 import {useOrderData} from '../../composables';

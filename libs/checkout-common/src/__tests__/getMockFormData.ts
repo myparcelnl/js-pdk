@@ -1,4 +1,4 @@
-import {type RecursivePartial} from '@myparcel/ts-utils';
+import {type RecursivePartial} from '@myparcel-dev/ts-utils';
 import {type PdkCheckoutConfigInput} from '../types';
 import {AddressField, AddressType, PdkField} from '../data';
 

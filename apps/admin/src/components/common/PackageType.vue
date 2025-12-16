@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import {type PackageTypeName} from '@myparcel/constants';
+import {type PackageTypeName} from '@myparcel-dev/constants';
 import {getPackageTypeTranslation} from '../../utils';
 import {useLanguage} from '../../composables';
 

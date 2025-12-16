@@ -1,4 +1,4 @@
-import {StoreListener, useCheckoutStore} from '@myparcel-pdk/checkout-common';
+import {StoreListener, useCheckoutStore} from '@myparcel-dev/pdk-checkout-common';
 import {toggleTaxFields} from './utils';
 
 export type {TaxFields} from './types';

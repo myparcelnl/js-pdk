@@ -4,9 +4,9 @@ import {
   type LabelFormat,
   type LabelOutput,
   type LabelPosition,
-} from '@myparcel-pdk/common';
-import {type FormInstance} from '@myparcel/vue-form-builder';
-import {type OneOrMore} from '@myparcel/ts-utils';
+} from '@myparcel-dev/pdk-common';
+import {type FormInstance} from '@myparcel-dev/vue-form-builder';
+import {type OneOrMore} from '@myparcel-dev/ts-utils';
 import {type OrderIds, type ShipmentIds} from '../common.types';
 import {type AdminAction} from '../../data';
 import {type AdminActionEndpointMap, type MaybeAdminAction} from './actions.types';

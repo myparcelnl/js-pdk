@@ -1,6 +1,6 @@
 import {expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
-import {AdminComponent, type SelectOption} from '@myparcel-pdk/admin';
+import {AdminComponent, type SelectOption} from '@myparcel-dev/pdk-admin';
 import {type PartialComponentTest} from '../types';
 import {TestSuite} from '../TestSuite';
 

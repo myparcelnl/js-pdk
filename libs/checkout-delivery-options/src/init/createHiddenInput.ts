@@ -1,4 +1,4 @@
-import {useConfig, useSettings} from '@myparcel-pdk/checkout-common';
+import {useConfig, useSettings} from '@myparcel-dev/pdk-checkout-common';
 
 export const createHiddenInput = (): HTMLInputElement => {
   const settings = useSettings();

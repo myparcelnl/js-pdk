@@ -1,4 +1,4 @@
-import {type PackageTypeName} from '@myparcel/constants';
+import {type PackageTypeName} from '@myparcel-dev/constants';
 import {getDynamicTranslation} from './getDynamicTranslation';
 
 export const getPackageTypeTranslation = (name?: PackageTypeName | string): string =>

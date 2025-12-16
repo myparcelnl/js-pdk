@@ -27,7 +27,7 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {AdminComponent, type BoxEmits, type BoxProps, type BoxSlots, Size, useLanguage} from '@myparcel-pdk/admin';
+import {AdminComponent, type BoxEmits, type BoxProps, type BoxSlots, Size, useLanguage} from '@myparcel-dev/pdk-admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = withDefaults(defineProps<BoxProps>(), {

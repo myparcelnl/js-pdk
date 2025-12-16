@@ -1,5 +1,5 @@
 import {afterEach, describe, expect, it} from 'vitest';
-import {type AnyElementConfiguration, useFormBuilder} from '@myparcel/vue-form-builder';
+import {type AnyElementConfiguration, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {type FormBuilder} from '../types';
 import {parseBuilders} from './parseBuilders';
 

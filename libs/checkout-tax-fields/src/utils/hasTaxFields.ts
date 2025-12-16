@@ -1,5 +1,5 @@
-import {useSettings} from '@myparcel-pdk/checkout-common';
-import {type CarrierName} from '@myparcel/constants';
+import {useSettings} from '@myparcel-dev/pdk-checkout-common';
+import {type CarrierName} from '@myparcel-dev/constants';
 
 export const hasTaxFields = (): boolean => {
   const settings = useSettings();

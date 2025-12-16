@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import {computed, type PropType} from 'vue';
-import {Status} from '@myparcel-pdk/common';
+import {Status} from '@myparcel-dev/pdk-common';
 import {AdminIcon} from '../../data';
 import {useAdminConfig} from '../../composables';
 

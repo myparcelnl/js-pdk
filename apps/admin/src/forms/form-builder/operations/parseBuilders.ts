@@ -1,5 +1,5 @@
-import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
-import {isOfType} from '@myparcel/ts-utils';
+import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
+import {isOfType} from '@myparcel-dev/ts-utils';
 import {
   type FormAfterUpdateBuilder,
   type FormBuilder,

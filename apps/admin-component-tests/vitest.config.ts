@@ -1,5 +1,5 @@
 import vue from '@vitejs/plugin-vue';
-import {createViteConfig} from '@myparcel-pdk/build-vite';
+import {createViteConfig} from '@myparcel-dev/pdk-build-vite';
 
 export default createViteConfig({
   plugins: [vue()],

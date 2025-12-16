@@ -1,4 +1,4 @@
-import {useCheckoutStore} from '@myparcel-pdk/checkout-common';
+import {useCheckoutStore} from '@myparcel-dev/pdk-checkout-common';
 import {useDeliveryOptionsStore} from './useDeliveryOptionsStore';
 import {fetchCheckoutContext} from './fetchCheckoutContext';
 

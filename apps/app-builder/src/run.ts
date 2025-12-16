@@ -1,6 +1,6 @@
 import {type LiftoffEnv} from 'liftoff';
 import {program} from 'commander';
-import {isOfType, partitionArray, toArray} from '@myparcel/ts-utils';
+import {isOfType, partitionArray, toArray} from '@myparcel-dev/ts-utils';
 import {resolveConfig} from './utils/resolveConfig';
 import {getBulkCommandDescription} from './utils/getBulkCommandDescription';
 import {registerCommand} from './utils/command/registerCommand';

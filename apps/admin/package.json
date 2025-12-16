@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/admin",
+  "name": "@myparcel-dev/pdk-admin",
   "version": "1.12.0",
   "repository": {
     "type": "git",
@@ -36,9 +36,9 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.10.0",
-    "@myparcel/constants": "^2.0.0",
-    "@myparcel/sdk": "^3.0.0",
+    "@myparcel-dev/constants": "^2.7.0",
+    "@myparcel-dev/pdk-common": "workspace:^1.10.0",
+    "@myparcel-dev/sdk": "^5.0.0",
     "@tanstack/vue-query": "^4.0.0",
     "@vueuse/core": "^10.0.0",
     "lodash": "^4.17.21",
@@ -50,7 +50,7 @@
     "vue-tsc": "^2.0.0"
   },
   "devDependencies": {
-    "@myparcel-pdk/build-vite": "workspace:*",
+    "@myparcel-dev/pdk-build-vite": "workspace:*",
     "@types/lodash-es": "^4.17.6",
     "@vue/test-utils": "^2.0.0",
     "typescript": "^5.2.2",

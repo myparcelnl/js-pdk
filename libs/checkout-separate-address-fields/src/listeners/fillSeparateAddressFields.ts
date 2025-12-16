@@ -1,4 +1,4 @@
-import {isOfType} from '@myparcel/ts-utils';
+import {isOfType} from '@myparcel-dev/ts-utils';
 import {fillAddressFields, splitFullStreet} from '../utils';
 
 /**

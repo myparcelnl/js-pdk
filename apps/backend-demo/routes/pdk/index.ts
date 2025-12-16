@@ -1,5 +1,5 @@
 import {type H3Event} from 'h3';
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {getItemsByParameter} from '../../src/utils/getItemsByParameter';
 import {getContext} from '../../src/utils/getContext';
 import {exportOrders} from '../../src/utils/exportOrders';

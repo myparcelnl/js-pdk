@@ -1,5 +1,5 @@
-import {type BackendEndpoint} from '@myparcel-pdk/common';
-import {type OneOrMore, toArray} from '@myparcel/ts-utils';
+import {type BackendEndpoint} from '@myparcel-dev/pdk-common';
+import {type OneOrMore, toArray} from '@myparcel-dev/ts-utils';
 import {type BackendEndpointResponse} from '../../types';
 import {type ActionContext} from './types';
 import {doMutate} from './doMutate';

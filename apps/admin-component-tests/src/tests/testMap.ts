@@ -1,5 +1,5 @@
 import {type Component} from 'vue';
-import {AdminComponent} from '@myparcel-pdk/admin';
+import {AdminComponent} from '@myparcel-dev/pdk-admin';
 import {runMultiDateInputTest} from '../components/runMultiDateInputTest';
 import {
   runBadgeTest,

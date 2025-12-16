@@ -1,5 +1,5 @@
-import {type Keyable} from '@myparcel-pdk/common';
-import {type ReadonlyOr} from '@myparcel/ts-utils';
+import {type Keyable} from '@myparcel-dev/pdk-common';
+import {type ReadonlyOr} from '@myparcel-dev/ts-utils';
 
 export const createObjectWithKeys = <K extends ReadonlyOr<Keyable[]>, V>(
   keys: K,

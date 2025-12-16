@@ -1,5 +1,5 @@
 import {computed, type ComputedRef, toValue, type WritableComputedRef} from 'vue';
-import {isOfType} from '@myparcel/ts-utils';
+import {isOfType} from '@myparcel-dev/ts-utils';
 import {createFormElement, createObjectWithKeys} from '../../utils';
 import {
   type ArrayItem,

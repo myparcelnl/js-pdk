@@ -1,4 +1,4 @@
-import {AdminComponent, createFormElement} from '@myparcel-pdk/admin';
+import {AdminComponent, createFormElement} from '@myparcel-dev/pdk-admin';
 import {type AdminComponentTest} from '../tests';
 import {TestSuite} from '../TestSuite';
 

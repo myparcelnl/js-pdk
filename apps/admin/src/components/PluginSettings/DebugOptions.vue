@@ -29,7 +29,7 @@
 
 <script lang="ts" setup>
 import {computed, toValue} from 'vue';
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {ActionButton} from '../common';
 import {useActionStore, useQueryStore} from '../../stores';
 import {instantiateAction} from '../../services';

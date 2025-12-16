@@ -13,7 +13,7 @@
 import {useVModel} from '@vueuse/core';
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-import {AdminComponent, type MultiDateInputEmits, type MultiDateInputProps} from '@myparcel-pdk/admin';
+import {AdminComponent, type MultiDateInputEmits, type MultiDateInputProps} from '@myparcel-dev/pdk-admin';
 
 const props = defineProps<MultiDateInputProps>();
 const emit = defineEmits<MultiDateInputEmits>();

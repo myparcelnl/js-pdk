@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/app-builder",
+  "name": "@myparcel-dev/pdk-app-builder",
   "version": "4.0.0",
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel/ts-utils": "^1.9.0",
+    "@myparcel-dev/ts-utils": "^1.15.0",
     "@yarnpkg/parsers": "^3.0.0",
     "chalk": "^5.2.0",
     "commander": "^12.0.0",

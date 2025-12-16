@@ -7,8 +7,8 @@
 <script lang="ts" setup>
 import {toRefs, toValue} from 'vue';
 import {isDef} from '@vueuse/core';
-import {MagicForm} from '@myparcel/vue-form-builder';
-import {type OneOrMore} from '@myparcel/ts-utils';
+import {MagicForm} from '@myparcel-dev/vue-form-builder';
+import {type OneOrMore} from '@myparcel-dev/ts-utils';
 import {createShipmentOptionsForm} from '../../forms';
 import {useOrdersData} from '../../composables';
 

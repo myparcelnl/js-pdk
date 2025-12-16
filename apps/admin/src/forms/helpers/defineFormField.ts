@@ -1,4 +1,4 @@
-import {defineField, type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
+import {defineField, type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {KEY_DESCRIPTION, KEY_SUBTEXT} from '../shipmentOptions';
 import {createLabel} from './createLabel';
 

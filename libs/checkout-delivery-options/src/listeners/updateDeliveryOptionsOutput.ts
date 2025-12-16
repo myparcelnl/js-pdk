@@ -1,4 +1,4 @@
-import {PdkUtil, useEvent, useUtil} from '@myparcel-pdk/checkout-common';
+import {PdkUtil, useEvent, useUtil} from '@myparcel-dev/pdk-checkout-common';
 import {useDeliveryOptionsStore} from '../utils';
 import {PdkDeliveryOptionsEvent} from '../types';
 

@@ -1,5 +1,5 @@
 import {spawnSync, type SpawnSyncOptions, type SpawnSyncOptionsWithStringEncoding} from 'child_process';
-import {isOfType, type OneOrMore, toArray} from '@myparcel/ts-utils';
+import {isOfType, type OneOrMore, toArray} from '@myparcel-dev/ts-utils';
 import {type BaseCommandContext, type PdkBuilderContext} from '../types/command.types';
 import {isVeryVeryVerbose} from './command/isVeryVeryVerbose';
 import {createCommand} from './command/createCommand';

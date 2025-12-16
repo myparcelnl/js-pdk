@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, type TableColProps, type TableColSlots} from '@myparcel-pdk/admin';
+import {AdminComponent, type TableColProps, type TableColSlots} from '@myparcel-dev/pdk-admin';
 
 withDefaults(defineProps<TableColProps>(), {component: 'td'});
 defineSlots<TableColSlots>();

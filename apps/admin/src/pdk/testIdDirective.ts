@@ -1,6 +1,6 @@
 import {type Directive} from 'vue';
 import {isDefined} from '@vueuse/core';
-import {type AnyElementInstance} from '@myparcel/vue-form-builder';
+import {type AnyElementInstance} from '@myparcel-dev/vue-form-builder';
 
 const SEPARATOR = '--';
 

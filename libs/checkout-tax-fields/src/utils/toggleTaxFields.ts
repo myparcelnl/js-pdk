@@ -1,4 +1,4 @@
-import {PdkUtil, useCheckoutStore, useConfig, useUtil} from '@myparcel-pdk/checkout-common';
+import {PdkUtil, useCheckoutStore, useConfig, useUtil} from '@myparcel-dev/pdk-checkout-common';
 import {TaxField} from '../constants';
 import {hasTaxFields} from './hasTaxFields';
 

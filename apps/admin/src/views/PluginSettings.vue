@@ -11,7 +11,7 @@
  * Plugin settings screen.
  */
 import {computed, toValue} from 'vue';
-import {AdminContextKey, BackendEndpoint} from '@myparcel-pdk/common';
+import {AdminContextKey, BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {useActionStore, useQueryStore} from '../stores';
 import {useStoreContextQuery} from '../composables';
 import PluginSettingsForms from '../components/PluginSettings/PluginSettingsForms.vue';

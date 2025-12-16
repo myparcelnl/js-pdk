@@ -10,7 +10,7 @@
 
 <script lang="ts" setup>
 import {computed, ref, toValue, watch} from 'vue';
-import {AdminContextKey} from '@myparcel-pdk/common';
+import {AdminContextKey} from '@myparcel-dev/pdk-common';
 import {TabNavigation} from '../common';
 import {type TabDefinition} from '../../types';
 import {createActionContext} from '../../services';

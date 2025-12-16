@@ -1,5 +1,5 @@
 import {vi} from 'vitest';
-import {type Plugin} from '@myparcel-pdk/common';
+import {type Plugin} from '@myparcel-dev/pdk-common';
 import {mockDefaultShop} from './mockDefaultShop';
 import {mockDefaultPrintOptionsView} from './mockDefaultPrintOptionsView';
 import {mockDefaultPluginSettings} from './mockDefaultPluginSettings';

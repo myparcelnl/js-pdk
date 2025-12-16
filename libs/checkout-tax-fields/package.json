@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/checkout-tax-fields",
+  "name": "@myparcel-dev/pdk-checkout-tax-fields",
   "version": "1.6.0",
   "repository": {
     "type": "git",
@@ -28,11 +28,11 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/checkout-common": "workspace:^1.6.0",
-    "@myparcel/constants": "^2.0.0"
+    "@myparcel-dev/constants": "^2.7.0",
+    "@myparcel-dev/pdk-checkout-common": "workspace:^1.6.0"
   },
   "devDependencies": {
-    "@myparcel-pdk/build-vite": "workspace:*",
+    "@myparcel-dev/pdk-build-vite": "workspace:*",
     "typescript": "^5.2.2",
     "vitest": "^2.1.3"
   },

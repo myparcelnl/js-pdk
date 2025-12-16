@@ -1,4 +1,4 @@
-import {type OneOrMore} from '@myparcel/ts-utils';
+import {type OneOrMore} from '@myparcel-dev/ts-utils';
 import {type CommandName} from '../constants';
 import {type VersionSource} from '../commands/increment/increment.types';
 import {

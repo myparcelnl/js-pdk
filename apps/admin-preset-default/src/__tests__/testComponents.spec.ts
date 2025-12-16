@@ -1,5 +1,5 @@
-import {executePdkComponentTests} from '@myparcel-pdk/admin-component-tests';
-import {AdminComponent} from '@myparcel-pdk/admin';
+import {executePdkComponentTests} from '@myparcel-dev/pdk-admin-component-tests';
+import {AdminComponent} from '@myparcel-dev/pdk-admin';
 import {
   DefaultBadge,
   DefaultBox,

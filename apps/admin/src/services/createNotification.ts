@@ -1,4 +1,4 @@
-import {type Variant} from '@myparcel-pdk/common';
+import {type Variant} from '@myparcel-dev/pdk-common';
 import {type PdkNotification} from '../types';
 import {NotificationCategory} from '../data';
 import {useLanguage} from '../composables';

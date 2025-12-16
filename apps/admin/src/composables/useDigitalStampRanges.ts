@@ -1,6 +1,6 @@
 import {computed, type ComputedRef, toValue} from 'vue';
 import {type MaybeRef} from '@vueuse/core';
-import {type Plugin} from '@myparcel-pdk/common';
+import {type Plugin} from '@myparcel-dev/pdk-common';
 import {type SelectOptionWithPlainLabel} from '../types';
 import {useOrderData} from './orders';
 

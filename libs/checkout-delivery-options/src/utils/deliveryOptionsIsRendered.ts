@@ -1,4 +1,4 @@
-import {PdkUtil, useConfig, useUtil} from '@myparcel-pdk/checkout-common';
+import {PdkUtil, useConfig, useUtil} from '@myparcel-dev/pdk-checkout-common';
 
 /**
  * In delivery options 5.x, checking if the element exists is enough. In 6.x, the element is always present, so we need

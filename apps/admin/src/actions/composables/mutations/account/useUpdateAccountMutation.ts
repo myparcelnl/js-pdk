@@ -1,7 +1,7 @@
 import {useQueryClient} from '@tanstack/vue-query';
-import {AdminContextKey, BackendEndpoint, Variant} from '@myparcel-pdk/common';
-import {isOfType} from '@myparcel/ts-utils';
-import {type ApiException} from '@myparcel/sdk';
+import {AdminContextKey, BackendEndpoint, Variant} from '@myparcel-dev/pdk-common';
+import {isOfType} from '@myparcel-dev/ts-utils';
+import {type ApiException} from '@myparcel-dev/sdk';
 import {usePdkMutation} from '../usePdkMutation';
 import {formToBody} from '../../../../utils';
 import {type ActionInput} from '../../../../types';

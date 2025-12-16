@@ -4,8 +4,8 @@ import './assets/css/global.css';
 import './assets/css/transitions.css';
 import './assets/css/forms.css';
 import {createApp} from 'vue';
-import {type PdkEndpointResponse} from '@myparcel-pdk/common';
-import {FontAwesomeIcon} from '@myparcel-pdk/admin-preset-fontawesome';
+import {type PdkEndpointResponse} from '@myparcel-dev/pdk-common';
+import {FontAwesomeIcon} from '@myparcel-dev/pdk-admin-preset-fontawesome';
 import {
   DefaultButtonGroup,
   DefaultCheckboxGroup,
@@ -26,14 +26,14 @@ import {
   DefaultTableRow,
   DefaultTextArea,
   DefaultTimeInput,
-} from '@myparcel-pdk/admin-preset-default';
+} from '@myparcel-dev/pdk-admin-preset-default';
 import {
   AdminContextKey,
   BackendEndpoint,
   type BackendEndpointDefinition,
   createPdkAdminPlugin,
   LogLevel,
-} from '@myparcel-pdk/admin';
+} from '@myparcel-dev/pdk-admin';
 import {fetchFromApi} from './utils';
 import {createRouterInstance} from './router';
 import {

@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import {type Carrier} from '@myparcel/sdk';
+import {type Carrier} from '@myparcel-dev/sdk';
 import {createAssetUrl} from '../../utils';
 
 defineProps<{carrier: Carrier}>();

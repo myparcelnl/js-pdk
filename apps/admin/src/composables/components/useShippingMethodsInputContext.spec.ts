@@ -1,8 +1,8 @@
 import {defineComponent, h} from 'vue';
 import {beforeEach, describe, expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
-import {type ShippingMethodTypeMap, TriState} from '@myparcel-pdk/common';
-import {PackageTypeName} from '@myparcel/constants';
+import {type ShippingMethodTypeMap, TriState} from '@myparcel-dev/pdk-common';
+import {PackageTypeName} from '@myparcel-dev/constants';
 import {createFormElement} from '../../utils';
 import {type ShippingMethodsInputProps} from '../../types';
 import {doComponentTestSetup} from '../../__tests__';

@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
-import {StoreListener, useCheckoutStore} from '@myparcel-pdk/checkout-common';
-import {UPDATED_DELIVERY_OPTIONS} from '@myparcel/delivery-options';
+import {StoreListener, useCheckoutStore} from '@myparcel-dev/pdk-checkout-common';
+import {UPDATED_DELIVERY_OPTIONS} from '@myparcel-dev/delivery-options';
 import {type CheckoutDeliveryOptionsSettingsInput} from './types';
 import {createDeliveryOptionsStore} from './store';
 import {updateDeliveryOptions, updateDeliveryOptionsOutput} from './listeners';

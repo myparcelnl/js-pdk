@@ -1,5 +1,5 @@
-import {type Plugin} from '@myparcel-pdk/admin';
-import {PackageTypeName} from '@myparcel/constants';
+import {type Plugin} from '@myparcel-dev/pdk-admin';
+import {PackageTypeName} from '@myparcel-dev/constants';
 
 export const useDemoProductData = (): Plugin.ModelPdkProduct[] => {
   return [

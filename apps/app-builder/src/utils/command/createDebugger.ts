@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import {type DefaultCommandArgs, type PdkDebugger} from '../../types/command.types';
 
 export const createDebugger = (name: string, args: DefaultCommandArgs): PdkDebugger => {
-  const debug = debugFactory(`@myparcel-pdk/app-builder:${name}`) as PdkDebugger;
+  const debug = debugFactory(`@myparcel-dev/pdk-app-builder:${name}`) as PdkDebugger;
 
   const timeStart = Date.now();
 

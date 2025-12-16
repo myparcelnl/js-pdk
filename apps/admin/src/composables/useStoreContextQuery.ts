@@ -1,4 +1,4 @@
-import {AdminContextKey, BackendEndpoint} from '@myparcel-pdk/common';
+import {AdminContextKey, BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {type ContextQuery} from '../stores';
 import {useStoreQuery} from './useStoreQuery';
 

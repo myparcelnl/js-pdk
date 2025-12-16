@@ -1,4 +1,4 @@
-import {isOfType} from '@myparcel/ts-utils';
+import {isOfType} from '@myparcel-dev/ts-utils';
 import {type ActionContextWithResponse} from '../executors';
 import {generateLabelFilename} from '../../utils';
 import {type PdfDataResponse, type PrintAction} from '../../types';

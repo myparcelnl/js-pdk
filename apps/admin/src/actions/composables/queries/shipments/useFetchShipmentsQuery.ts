@@ -1,6 +1,6 @@
 import {type QueryKey, useQuery, useQueryClient} from '@tanstack/vue-query';
-import {type BackendEndpoint, type Shipment} from '@myparcel-pdk/common';
-import {type OneOrMore, toArray} from '@myparcel/ts-utils';
+import {type BackendEndpoint, type Shipment} from '@myparcel-dev/pdk-common';
+import {type OneOrMore, toArray} from '@myparcel-dev/ts-utils';
 import {QUERY_KEY_SHIPMENT} from '../queryKeys';
 import {encodeArrayParameter} from '../../../../utils';
 import {type BackendEndpointResponse} from '../../../../types';

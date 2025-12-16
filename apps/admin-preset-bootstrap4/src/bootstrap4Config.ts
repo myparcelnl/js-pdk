@@ -1,7 +1,7 @@
 /// <reference types="jquery" />
 /// <reference types="bootstrap" />
 
-import {type AdminConfigurationPreset, type AdminModalKey, useModalStore} from '@myparcel-pdk/admin';
+import {type AdminConfigurationPreset, type AdminModalKey, useModalStore} from '@myparcel-dev/pdk-admin';
 
 // noinspection JSUnusedGlobalSymbols
 export const bootstrap4Config: AdminConfigurationPreset = {

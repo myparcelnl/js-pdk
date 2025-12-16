@@ -1,4 +1,4 @@
-import {type FrontendEndpoint} from '@myparcel-pdk/common';
+import {type FrontendEndpoint} from '@myparcel-dev/pdk-common';
 import {useSettings} from '../useSettings';
 import {useConfig} from '../useConfig';
 import {type FrontendEndpointParameters, type FrontendEndpointResponse} from '../../types';

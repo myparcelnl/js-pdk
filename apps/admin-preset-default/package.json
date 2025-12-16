@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/admin-preset-default",
+  "name": "@myparcel-dev/pdk-admin-preset-default",
   "version": "1.12.0",
   "repository": {
     "type": "git",
@@ -27,15 +27,15 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^1.12.0",
-    "@myparcel/ts-utils": "^1.9.0",
+    "@myparcel-dev/pdk-admin": "workspace:^1.12.0",
+    "@myparcel-dev/ts-utils": "^1.15.0",
     "@vuepic/vue-datepicker": "^11.0.2",
     "@vueuse/core": "^10.0.0",
     "vue": "^3.3.0"
   },
   "devDependencies": {
-    "@myparcel-pdk/admin-component-tests": "workspace:*",
-    "@myparcel-pdk/build-vite": "workspace:*",
+    "@myparcel-dev/pdk-admin-component-tests": "workspace:*",
+    "@myparcel-dev/pdk-build-vite": "workspace:*",
     "typescript": "^5.2.2",
     "vite": "^5.4.10",
     "vitest": "^2.1.3",

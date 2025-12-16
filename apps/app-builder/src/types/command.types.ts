@@ -4,7 +4,7 @@ import type Liftoff from 'liftoff';
 import {type LiftoffEnv} from 'liftoff';
 import {type Debugger} from 'debug';
 import {type Command} from 'commander';
-import {type PromiseOr, type Replace} from '@myparcel/ts-utils';
+import {type PromiseOr, type Replace} from '@myparcel-dev/ts-utils';
 import {type CommandName} from '../constants';
 import {type ResolvedPdkBuilderConfig} from './config.types';
 

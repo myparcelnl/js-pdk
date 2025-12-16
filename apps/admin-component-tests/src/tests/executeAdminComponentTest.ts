@@ -7,7 +7,7 @@ import {
   type AdminView,
   createAdminConfig,
   createLogger,
-} from '@myparcel-pdk/admin';
+} from '@myparcel-dev/pdk-admin';
 import {testMap} from './testMap';
 
 export const executeAdminComponentTest = (name: AdminComponent, component: Omit<Component, 'props'>): void => {

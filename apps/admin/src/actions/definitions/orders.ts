@@ -1,5 +1,5 @@
-import {BackendEndpoint} from '@myparcel-pdk/common';
-import {toArray} from '@myparcel/ts-utils';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
+import {toArray} from '@myparcel-dev/ts-utils';
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
 import {createOrdersMutationHandler, createQueryHandler, executeNextAction, resolveOrderParameters} from '../executors';
 import {defineAction} from '../defineAction';

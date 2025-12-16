@@ -1,5 +1,5 @@
 import {onMounted, toValue, watch, type WritableComputedRef} from 'vue';
-import {toArray} from '@myparcel/ts-utils';
+import {toArray} from '@myparcel-dev/ts-utils';
 import {type ArrayItem, type SelectInputEmits, type SelectInputModelValue, type SelectInputProps} from '../../types';
 import {type ElementOptionsContext, useElementOptions} from './useElementOptions';
 import {type ElementContext, useElementContext} from './useElementContext';

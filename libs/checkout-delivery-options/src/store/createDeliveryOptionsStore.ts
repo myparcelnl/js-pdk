@@ -1,5 +1,5 @@
-import {PdkUtil, StoreListener, useCheckoutStore, useUtil} from '@myparcel-pdk/checkout-common';
-import {CarrierSetting} from '@myparcel/delivery-options';
+import {PdkUtil, StoreListener, useCheckoutStore, useUtil} from '@myparcel-dev/pdk-checkout-common';
+import {CarrierSetting} from '@myparcel-dev/delivery-options';
 import {getDeliveryOptionsAddress, getResolvedSettings} from '../utils';
 import {type CheckoutDeliveryOptionsSettingsInput, type DeliveryOptionsStoreState} from '../types';
 import {showOrHideDeliveryOptions, updateConfigOrAddress} from '../listeners';

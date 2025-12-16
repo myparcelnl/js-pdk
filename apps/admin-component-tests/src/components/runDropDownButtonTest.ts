@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import {expect, it, vi} from 'vitest';
 import {type ComponentMountingOptions, mount} from '@vue/test-utils';
-import {AdminComponent, type DropdownButtonProps} from '@myparcel-pdk/admin';
+import {AdminComponent, type DropdownButtonProps} from '@myparcel-dev/pdk-admin';
 import {type AdminComponentTest} from '../tests';
 import {TestSuite} from '../TestSuite';
 

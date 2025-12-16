@@ -1,7 +1,7 @@
 import {ref} from 'vue';
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import {mount} from '@vue/test-utils';
-import {defineForm, MagicForm, useFormBuilder} from '@myparcel/vue-form-builder';
+import {defineForm, MagicForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {buildAfterUpdate} from './buildAfterUpdate';
 
 describe('buildAfterUpdate', () => {

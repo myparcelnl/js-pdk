@@ -3,9 +3,9 @@
 
 import {toRaw} from 'vue';
 import {get} from 'lodash-unified';
-import {type Plugin} from '@myparcel-pdk/common';
-import {defineForm, type FormInstance} from '@myparcel/vue-form-builder';
-import {type OneOrMore, toArray} from '@myparcel/ts-utils';
+import {type Plugin} from '@myparcel-dev/pdk-common';
+import {defineForm, type FormInstance} from '@myparcel-dev/vue-form-builder';
+import {type OneOrMore, toArray} from '@myparcel-dev/ts-utils';
 import {addBulkEditNotification} from '../helpers';
 import {createShipmentFormName} from '../../utils';
 import {useModalStore} from '../../stores';

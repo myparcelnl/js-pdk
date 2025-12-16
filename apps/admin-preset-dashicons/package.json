@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/admin-preset-dashicons",
+  "name": "@myparcel-dev/pdk-admin-preset-dashicons",
   "version": "1.12.0",
   "repository": {
     "type": "git",
@@ -27,14 +27,14 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/admin": "workspace:^1.12.0",
+    "@myparcel-dev/pdk-admin": "workspace:^1.12.0",
     "vite": "^5.4.10",
     "vue": "^3.3.0",
     "vue-tsc": "^2.0.0"
   },
   "devDependencies": {
-    "@myparcel-pdk/admin-component-tests": "workspace:*",
-    "@myparcel-pdk/build-vite": "workspace:*",
+    "@myparcel-dev/pdk-admin-component-tests": "workspace:*",
+    "@myparcel-dev/pdk-build-vite": "workspace:*",
     "typescript": "^5.2.2",
     "vitest": "^2.1.3",
     "vue-tsc": "^2.0.0"

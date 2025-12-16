@@ -1,5 +1,5 @@
 import {useQueryClient} from '@tanstack/vue-query';
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {usePdkMutation} from '../usePdkMutation';
 import {usePdkAdminApi} from '../../../../sdk';
 

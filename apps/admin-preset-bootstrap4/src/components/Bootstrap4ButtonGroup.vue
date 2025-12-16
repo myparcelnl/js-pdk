@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, type ButtonGroupProps, type ButtonGroupSlots} from '@myparcel-pdk/admin';
+import {AdminComponent, type ButtonGroupProps, type ButtonGroupSlots} from '@myparcel-dev/pdk-admin';
 
 defineProps<ButtonGroupProps>();
 defineSlots<ButtonGroupSlots>();

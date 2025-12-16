@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 import {useVModel} from '@vueuse/core';
-import {AdminComponent, type TimeInputEmits, type TimeInputProps} from '@myparcel-pdk/admin';
+import {AdminComponent, type TimeInputEmits, type TimeInputProps} from '@myparcel-dev/pdk-admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<TimeInputProps>();

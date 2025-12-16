@@ -5,8 +5,8 @@ import {
   ConfigSetting,
   type InputDeliveryOptionsConfig,
   KEY_CARRIER_SETTINGS,
-} from '@myparcel/delivery-options';
-import {CarrierName, PackageTypeName, PlatformName} from '@myparcel/constants';
+} from '@myparcel-dev/delivery-options';
+import {CarrierName, PackageTypeName, PlatformName} from '@myparcel-dev/constants';
 
 export const getMockDeliveryOptionsConfig = vi.fn(
   (config?: Partial<InputDeliveryOptionsConfig>): InputDeliveryOptionsConfig => {

@@ -1,5 +1,5 @@
-import {type InputDeliveryOptionsConfig} from '@myparcel/delivery-options';
-import {type PackageTypeName} from '@myparcel/constants';
+import {type InputDeliveryOptionsConfig} from '@myparcel-dev/delivery-options';
+import {type PackageTypeName} from '@myparcel-dev/constants';
 import {type DeliveryOptionsStoreState} from './store.types';
 
 export enum PdkDeliveryOptionsEvent {

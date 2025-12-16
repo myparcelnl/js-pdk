@@ -1,10 +1,10 @@
 import {ref, toRaw} from 'vue';
-import {type Plugin} from '@myparcel-pdk/common';
+import {type Plugin} from '@myparcel-dev/pdk-common';
 import {
   type AnyElementConfiguration,
   defineField,
   type InteractiveElementConfiguration,
-} from '@myparcel/vue-form-builder';
+} from '@myparcel-dev/vue-form-builder';
 import {defineFormField, resolveFormComponent} from '../helpers';
 import {type FormBuilder, parseBuilders} from '../form-builder';
 import {type AdminComponent} from '../../data';

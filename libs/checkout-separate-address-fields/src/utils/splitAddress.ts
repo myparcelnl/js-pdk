@@ -1,4 +1,4 @@
-import {AddressField, type AddressType, PdkUtil, useUtil} from '@myparcel-pdk/checkout-common';
+import {AddressField, type AddressType, PdkUtil, useUtil} from '@myparcel-dev/pdk-checkout-common';
 import {type SeparateAddressFields} from '../types';
 import {splitFullStreet} from './splitFullStreet';
 

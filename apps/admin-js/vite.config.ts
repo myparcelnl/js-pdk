@@ -1,8 +1,8 @@
 import isCi from 'is-ci';
 import {type BaseElementNode, type Node} from '@vue/compiler-core';
 import vue from '@vitejs/plugin-vue';
-import {createViteConfig} from '@myparcel-pdk/build-vite';
-import {isOfType} from '@myparcel/ts-utils';
+import {createViteConfig} from '@myparcel-dev/pdk-build-vite';
+import {isOfType} from '@myparcel-dev/ts-utils';
 import {codecovVitePlugin} from '@codecov/vite-plugin';
 import {name} from './package.json';
 

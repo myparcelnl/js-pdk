@@ -1,4 +1,4 @@
-import {type AddressField, type AddressFields} from '@myparcel-pdk/checkout-common';
+import {type AddressField, type AddressFields} from '@myparcel-dev/pdk-checkout-common';
 import {type SeparateAddressField} from './constants';
 
 export type AnyAddressField = AddressField | SeparateAddressField;

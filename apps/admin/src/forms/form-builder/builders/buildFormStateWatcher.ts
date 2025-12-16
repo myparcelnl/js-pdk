@@ -1,4 +1,4 @@
-import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {createValueGetter} from '../utils';
 import {type WhenArguments} from '../types';
 import {validateIfConditions} from '../conditions';

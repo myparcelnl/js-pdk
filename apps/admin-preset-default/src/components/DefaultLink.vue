@@ -21,7 +21,7 @@ import {
   type LinkSlots,
   useActionStore,
   useLanguage,
-} from '@myparcel-pdk/admin';
+} from '@myparcel-dev/pdk-admin';
 
 const props = withDefaults(defineProps<LinkProps>(), {
   href: '#',

@@ -1,6 +1,6 @@
 import {toValue} from 'vue';
-import {TriState} from '@myparcel-pdk/common';
-import {type FormInstance} from '@myparcel/vue-form-builder';
+import {TriState} from '@myparcel-dev/pdk-common';
+import {type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {type ElementInstance, type TriStateInputProps} from '../../types';
 
 export const triStateFieldIsEnabled = (form: FormInstance, fieldName: string): boolean => {

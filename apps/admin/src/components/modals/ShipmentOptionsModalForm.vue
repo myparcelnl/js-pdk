@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
 import {computed, toValue} from 'vue';
-import {type OneOrMore} from '@myparcel/ts-utils';
+import {type OneOrMore} from '@myparcel-dev/ts-utils';
 import {ShipmentOptionsForm} from '../common';
 import {useOrdersData} from '../../composables';
 

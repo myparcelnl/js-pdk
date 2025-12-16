@@ -13,7 +13,7 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {AdminComponent, type LoaderProps, Size, useLanguage} from '@myparcel-pdk/admin';
+import {AdminComponent, type LoaderProps, Size, useLanguage} from '@myparcel-dev/pdk-admin';
 
 const props = withDefaults(defineProps<LoaderProps>(), {
   size: Size.Medium,

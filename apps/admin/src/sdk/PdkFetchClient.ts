@@ -1,4 +1,4 @@
-import {isOfType} from '@myparcel/ts-utils';
+import {isOfType} from '@myparcel-dev/ts-utils';
 import {
   type AbstractEndpoint,
   ApiException,
@@ -9,7 +9,7 @@ import {
   FetchClient,
   type Options,
   type ResponseWrapper,
-} from '@myparcel/sdk';
+} from '@myparcel-dev/sdk';
 import {type PdkNotification} from '../types';
 import {useNotificationStore} from '../stores';
 

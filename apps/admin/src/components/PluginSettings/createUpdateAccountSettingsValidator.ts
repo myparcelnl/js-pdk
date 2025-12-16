@@ -1,5 +1,5 @@
 import {memoize} from 'lodash-unified';
-import {type FormInstance, type InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {type FormInstance, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {type AdminAction} from '../../data';
 import {type ActionContext, executeAction} from '../../actions';
 

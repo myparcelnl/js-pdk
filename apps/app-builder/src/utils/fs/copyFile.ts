@@ -1,6 +1,6 @@
 import path from 'node:path';
 import fs from 'node:fs';
-import {type OneOrMore} from '@myparcel/ts-utils';
+import {type OneOrMore} from '@myparcel-dev/ts-utils';
 import {resolvePath} from '../resolvePath';
 import {isDryRun} from '../command/isDryRun';
 import {type PdkBuilderContext} from '../../types/command.types';

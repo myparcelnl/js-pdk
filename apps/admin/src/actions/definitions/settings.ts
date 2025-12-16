@@ -1,4 +1,4 @@
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {createMutationHandler} from '../executors';
 import {defineAction} from '../defineAction';
 import {AdminAction, AdminIcon} from '../../data';

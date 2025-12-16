@@ -1,4 +1,4 @@
-import {type FormInstance} from '@myparcel/vue-form-builder';
+import {type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {FIELD_CARRIER} from '../shipmentOptions';
 import {resolveCarrier} from '../../utils';
 

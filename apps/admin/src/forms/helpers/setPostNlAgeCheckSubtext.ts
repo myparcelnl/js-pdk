@@ -1,5 +1,5 @@
-import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {CarrierName} from '@myparcel/constants';
+import {type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
+import {CarrierName} from '@myparcel-dev/constants';
 import {AGE_CHECK, FIELD_AGE_CHECK, KEY_SUBTEXT} from '../shipmentOptions';
 import {setFieldProp} from './setFieldProp';
 import {hasPostNlAgeCheck} from './hasPostNlAgeCheck';

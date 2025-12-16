@@ -32,7 +32,7 @@
 <script lang="ts" setup>
 import {computed, toRefs} from 'vue';
 import {useVModel} from '@vueuse/core';
-import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {ShipmentBarcode, ShipmentStatus} from '../common';
 import {createClasses} from '../../utils';
 import {useQueryStore} from '../../stores';

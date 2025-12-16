@@ -1,4 +1,4 @@
-import {isEnumValue} from '@myparcel/ts-utils';
+import {isEnumValue} from '@myparcel-dev/ts-utils';
 import {type AddressFields, type PdkCheckoutForm} from '../../types';
 import {type AddressField, type AddressType, PdkField} from '../../data';
 import {getAddressType} from './getAddressType';

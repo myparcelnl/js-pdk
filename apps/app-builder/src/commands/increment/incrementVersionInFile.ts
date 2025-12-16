@@ -1,4 +1,4 @@
-import {isOfType} from '@myparcel/ts-utils';
+import {isOfType} from '@myparcel-dev/ts-utils';
 import {resolvePath} from '../../utils/resolvePath';
 import {writeFile} from '../../utils/fs/writeFile';
 import {getFileContents} from '../../utils/fs/getFileContents';

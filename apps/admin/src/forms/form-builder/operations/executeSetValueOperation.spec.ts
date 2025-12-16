@@ -1,7 +1,7 @@
 import {ref} from 'vue';
 import {afterEach, describe, expect, it} from 'vitest';
 import {flushPromises, mount} from '@vue/test-utils';
-import {defineForm, MagicForm, useFormBuilder} from '@myparcel/vue-form-builder';
+import {defineForm, MagicForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {type AnyVal, type FormSetValueOperation} from '../types';
 import {buildAfterUpdate} from '../builders';
 

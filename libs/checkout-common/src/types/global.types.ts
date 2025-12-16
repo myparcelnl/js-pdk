@@ -1,4 +1,4 @@
-import {type isEnumValue, type isOfType, type PromiseOr} from '@myparcel/ts-utils';
+import {type isEnumValue, type isOfType, type PromiseOr} from '@myparcel-dev/ts-utils';
 import {
   type doRequest,
   type fieldsEqual,

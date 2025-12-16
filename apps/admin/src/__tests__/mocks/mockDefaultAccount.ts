@@ -1,5 +1,5 @@
 import {vi} from 'vitest';
-import {type Account} from '@myparcel-pdk/common';
+import {type Account} from '@myparcel-dev/pdk-common';
 import {mockDefaultShop} from './mockDefaultShop';
 
 export const mockDefaultAccount = vi.fn((): Account.ModelAccount => {

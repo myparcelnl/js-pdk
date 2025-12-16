@@ -36,7 +36,7 @@ export default {inheritAttrs: false};
 </script>
 
 <script lang="ts" setup>
-import {AdminComponent, type RadioInputEmits, type RadioInputProps, useElementContext} from '@myparcel-pdk/admin';
+import {AdminComponent, type RadioInputEmits, type RadioInputProps, useElementContext} from '@myparcel-dev/pdk-admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<RadioInputProps>();

@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/common",
+  "name": "@myparcel-dev/pdk-common",
   "version": "1.10.0",
   "repository": {
     "type": "git",
@@ -28,8 +28,8 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel/constants": "^2.0.0",
-    "@myparcel/delivery-options": "^6.0.0"
+    "@myparcel-dev/constants": "^2.7.0",
+    "@myparcel-dev/delivery-options": "^6.23.0"
   },
   "devDependencies": {
     "typescript": "^5.2.2",

@@ -1,4 +1,4 @@
-import {AdminComponent, AdminIcon} from '@myparcel-pdk/admin';
+import {AdminComponent, AdminIcon} from '@myparcel-dev/pdk-admin';
 import {type PartialComponentTest} from '../types';
 import {TestSuite} from '../TestSuite';
 
