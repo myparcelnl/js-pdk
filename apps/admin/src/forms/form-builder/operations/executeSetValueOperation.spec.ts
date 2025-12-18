@@ -169,32 +169,34 @@ describe('executeSetValueOperation', () => {
   it.each(datasets)('should set value with $name', async ({input, result}) => {
     expect.assertions(1);
 
-    const form = defineForm('test', {
-      fields: [
-        {
-          name: 'test',
-          component: 'input',
-          ref: ref(''),
-          afterUpdate: buildAfterUpdate(input, ''),
-        },
-        {
-          name: 'test2',
-          component: 'input',
-          ref: ref(''),
-        },
-        {
-          name: 'test3',
-          component: 'input',
-          ref: ref(''),
-        },
-      ],
+    const form = defineForm('test', {});
+
+    await form.addElement({
+      name: 'test',
+      component: 'input',
+      ref: ref(''),
+      afterUpdate: buildAfterUpdate(input, ''),
+    });
+    await form.addElement({
+      name: 'test2',
+      component: 'input',
+      ref: ref(''),
+    });
+    await form.addElement({
+      name: 'test3',
+      component: 'input',
+      ref: ref(''),
     });
 
-    mount(MagicForm, {props: {form}});
+    const wrapper = mount(MagicForm, {props: {form}});
 
     form.setValue('test', 'test');
 
-    await flushPromises();
+    const testField = form.getField('test');
+    // Trigger afterUpdate via hooks manager (new vue-form-builder API)
+    await testField?.hooks.execute('afterUpdate', testField, 'test', '');
+
+    await wrapper.vm.$nextTick();
 
     expect(form.values).toEqual(result);
   });

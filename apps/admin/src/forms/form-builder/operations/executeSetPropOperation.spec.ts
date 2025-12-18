@@ -123,28 +123,26 @@ describe('executeSetPropOperation', () => {
   it.each(datasets)('should set value with $name', async ({input, result}) => {
     expect.assertions(1);
 
-    const form = defineForm('test', {
-      fields: [
-        {
-          name: 'aardbei',
-          component: 'input',
-          ref: ref(''),
-          afterUpdate: buildAfterUpdate(input, ''),
-        },
-        {
-          name: 'banaan',
-          component: 'input',
-          ref: ref(''),
-          props: {
-            subtext: 'world',
-          },
-        },
-        {
-          name: 'appel',
-          component: 'input',
-          ref: ref(''),
-        },
-      ],
+    const form = defineForm('test', {});
+
+    await form.addElement({
+      name: 'aardbei',
+      component: 'input',
+      ref: ref(''),
+      afterUpdate: buildAfterUpdate(input, ''),
+    });
+    await form.addElement({
+      name: 'banaan',
+      component: 'input',
+      ref: ref(''),
+      props: {
+        subtext: 'world',
+      },
+    });
+    await form.addElement({
+      name: 'appel',
+      component: 'input',
+      ref: ref(''),
     });
 
     const wrapper = mount(MagicForm, {props: {form}});
@@ -152,8 +150,8 @@ describe('executeSetPropOperation', () => {
     form.setValue('aardbei', 'test');
 
     const testField = form.getField('aardbei');
-    // todo remove this when afterUpdate is properly triggered
-    testField?.afterUpdate(testField);
+    // Trigger afterUpdate via hooks manager (new vue-form-builder API)
+    await testField?.hooks.execute('afterUpdate', testField, 'test', '');
 
     await wrapper.vm.$nextTick();
 
