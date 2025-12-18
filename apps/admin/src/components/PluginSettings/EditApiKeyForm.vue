@@ -40,17 +40,18 @@ const createForm = (): FormInstance => {
         name: FIELD_API_KEY,
         optional: true,
         ref: apiKeyRef,
-        isValid: computed(() => Boolean(hasAccount.value)),
         readOnlyWhen: () => Boolean(hasAccount.value),
       }),
 
       defineField({
+        name: 'submitButton',
         component: SubmitButton as Component,
         visibleWhen: () => !hasAccount.value,
         readOnlyWhen: () => !apiKeyRef.value,
       }),
 
       defineField({
+        name: 'resetButton',
         component: ResetButton as Component,
         attributes: {
           label: 'action_delete',

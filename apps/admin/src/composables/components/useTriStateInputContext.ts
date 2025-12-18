@@ -46,13 +46,12 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
   });
 
   const commonFieldProperties = Object.freeze({
-    form,
     component: 'input',
     wrapper: false,
     attributes: {
       hidden: true,
     },
-  }) satisfies FieldConfiguration;
+  }) satisfies Partial<FieldConfiguration>;
 
   const inheritElement = reactive(
     defineField({
