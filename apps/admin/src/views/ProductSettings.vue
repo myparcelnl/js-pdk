@@ -8,7 +8,7 @@
  */
 import {toRefs, toValue} from 'vue';
 import {AdminContextKey} from '@myparcel-dev/pdk-common';
-import {defineForm, type FormInstance, MagicForm} from '@myparcel-dev/vue-form-builder';
+import MagicForm, {defineForm, type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {useQueryStore} from '../stores';
 import {FORM_KEY_CHILD_PRODUCT_SETTINGS, FORM_KEY_PRODUCT_SETTINGS, generateFormFields} from '../forms';
 import {useAdminConfig, useContext, useProductData} from '../composables';

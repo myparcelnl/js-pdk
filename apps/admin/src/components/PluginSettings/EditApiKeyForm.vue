@@ -11,7 +11,7 @@
 <script lang="ts" setup>
 import {type Component, computed, markRaw, ref, toValue, watch} from 'vue';
 import {Size, Variant} from '@myparcel-dev/pdk-common';
-import {defineField, defineForm, FormHook, type FormInstance, MagicForm} from '@myparcel-dev/vue-form-builder';
+import MagicForm, {defineField, defineForm, FormHook, type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {NotificationContainer, ResetButton, SubmitButton} from '../common';
 import {useActionStore} from '../../stores';
 import {defineFormField, FORM_KEY_ACCOUNT_SETTINGS, resolveFormComponent} from '../../forms';

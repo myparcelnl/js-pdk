@@ -1,12 +1,12 @@
 import {afterEach, describe, expect, it} from 'vitest';
-import {type AnyElementConfiguration, useFormBuilder} from '@myparcel-dev/vue-form-builder';
+import {type FieldConfiguration, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {type FormBuilder} from '../types';
 import {parseBuilders} from './parseBuilders';
 
 interface TestInput {
   name: string;
   input: FormBuilder[];
-  result: Partial<AnyElementConfiguration>;
+  result: Partial<FieldConfiguration>;
 }
 
 const datasets: TestInput[] = [

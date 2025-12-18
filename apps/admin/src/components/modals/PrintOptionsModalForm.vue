@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
 import {markRaw, onMounted, ref} from 'vue';
-import {defineForm, MagicForm} from '@myparcel-dev/vue-form-builder';
+import MagicForm, {defineForm} from '@myparcel-dev/vue-form-builder';
 import {generateFormFields} from '../../forms';
 import {useAdminConfig, useContext, usePluginSettings} from '../../composables';
 import {AdminModalKey} from "../../data";
