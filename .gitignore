@@ -51,3 +51,7 @@ lerna-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# Local IDE files (do not commit)
+.idea/copilot.data.migration.ask2agent.xml
+.idea/nx-angular-config.xml
