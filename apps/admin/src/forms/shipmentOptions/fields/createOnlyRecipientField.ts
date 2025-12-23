@@ -1,6 +1,6 @@
-import {TriState} from '@myparcel-pdk/common';
-import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
-import {CarrierName} from '@myparcel/constants';
+import {TriState} from '@myparcel-dev/pdk-common';
+import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
+import {CarrierName} from '@myparcel-dev/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_AGE_CHECK, FIELD_ONLY_RECIPIENT} from '../field';
 import {getFormCarrierName, hasPostNlAgeCheck} from '../../helpers';

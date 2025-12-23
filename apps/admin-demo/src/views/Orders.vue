@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {BackendEndpoint, type Plugin, useFetchOrdersQuery, useQueryStore, useStoreQuery} from '@myparcel-pdk/admin';
+import {BackendEndpoint, type Plugin, useFetchOrdersQuery, useQueryStore, useStoreQuery} from '@myparcel-dev/pdk-admin';
 import OrderRow from './OrderRow.vue';
 
 const queryStore = useQueryStore();

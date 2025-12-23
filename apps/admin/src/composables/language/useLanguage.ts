@@ -1,6 +1,6 @@
 import {type Ref, ref} from 'vue';
 import {createGlobalState, useMemoize} from '@vueuse/core';
-import {isOfType} from '@myparcel/ts-utils';
+import {isOfType} from '@myparcel-dev/ts-utils';
 import {useGlobalContext} from '../context';
 import {decodeHtmlEntities} from '../../utils';
 import {type NonTranslatable, type Translatable, type Translation} from '../../types';

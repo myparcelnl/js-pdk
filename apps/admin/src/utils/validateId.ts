@@ -1,4 +1,4 @@
-import {type OneOrMore} from '@myparcel/ts-utils';
+import {type OneOrMore} from '@myparcel-dev/ts-utils';
 
 export const validateId = <O extends undefined | OneOrMore<string | number>, A extends boolean = false>(
   id?: O,

@@ -1,5 +1,5 @@
 import {isRef} from 'vue';
-import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {type AnyVal} from '../types';
 
 export type FormValueSetter = (value: AnyVal, target?: string) => void;

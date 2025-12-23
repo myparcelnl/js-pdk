@@ -1,4 +1,4 @@
-import {type StoreCallbackUpdate} from '@myparcel-pdk/checkout-common';
+import {type StoreCallbackUpdate} from '@myparcel-dev/pdk-checkout-common';
 import {debounce, deliveryOptionsIsRendered, toggleDeliveryOptions} from '../utils';
 import {type DeliveryOptionsStoreState} from '../types';
 

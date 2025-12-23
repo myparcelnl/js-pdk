@@ -1,5 +1,5 @@
 import {toValue} from 'vue';
-import {AdminContextKey} from '@myparcel-pdk/common';
+import {AdminContextKey} from '@myparcel-dev/pdk-common';
 import {useStoreContextQuery} from '../useStoreContextQuery';
 import {type AdminContext} from '../../types';
 

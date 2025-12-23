@@ -22,8 +22,8 @@
 </template>
 
 <script lang="ts" setup>
-import {useTableContext} from '@myparcel-pdk/admin';
-import {AdminComponent, type TableProps, type TableSlots} from '@myparcel-pdk/admin';
+import {useTableContext} from '@myparcel-dev/pdk-admin';
+import {AdminComponent, type TableProps, type TableSlots} from '@myparcel-dev/pdk-admin';
 
 const props = defineProps<TableProps>();
 

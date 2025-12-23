@@ -54,9 +54,9 @@ import {
   type FormGroupSlots,
   generateFieldId,
   useLanguage,
-} from '@myparcel-pdk/admin';
-import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {isOfType} from '@myparcel/ts-utils';
+} from '@myparcel-dev/pdk-admin';
+import {type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
+import {isOfType} from '@myparcel-dev/ts-utils';
 
 const props = defineProps<FormGroupProps>();
 defineSlots<FormGroupSlots>();

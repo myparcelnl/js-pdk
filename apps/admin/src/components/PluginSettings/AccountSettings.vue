@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import {computed, toValue} from 'vue';
-import {Status} from '@myparcel-pdk/common';
+import {Status} from '@myparcel-dev/pdk-common';
 import {StatusIndicator, TabNavigation} from '../common';
 import {prefixComponent} from '../../utils';
 import {type TabDefinition} from '../../types';

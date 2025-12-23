@@ -1,6 +1,6 @@
 import {unref} from 'vue';
 import {type MaybeRef} from '@vueuse/core';
-import {type InteractiveElementInstance, useElement} from '@myparcel/vue-form-builder';
+import {type InteractiveElementInstance, useElement} from '@myparcel-dev/vue-form-builder';
 import {type ElementInstance} from '../../types';
 import {type FORM_KEYS} from '../../forms';
 import {useAdminConfig} from '../../composables';

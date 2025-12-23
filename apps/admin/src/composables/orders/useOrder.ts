@@ -1,4 +1,4 @@
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {useStoreQuery} from '../useStoreQuery';
 import {getOrderId, validateId} from '../../utils';
 import {type ResolvedQuery} from '../../stores';

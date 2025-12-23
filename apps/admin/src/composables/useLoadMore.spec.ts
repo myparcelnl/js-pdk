@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {useLoadMore} from '@myparcel-do/shared';
+import {useLoadMore} from '@myparcel-dev/do-shared';
 
 describe('useLoadMore', () => {
   it('shows an initial set of items', () => {

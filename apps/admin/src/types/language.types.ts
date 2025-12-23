@@ -1,4 +1,4 @@
-import {type Keyable} from '@myparcel-pdk/common';
+import {type Keyable} from '@myparcel-dev/pdk-common';
 
 export interface NonTranslatable {
   text: string;

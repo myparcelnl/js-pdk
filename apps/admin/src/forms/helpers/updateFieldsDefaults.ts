@@ -1,7 +1,7 @@
 import {toValue} from 'vue';
 import {get as lodashGet} from 'lodash-unified';
-import {type Shipment} from '@myparcel-pdk/common';
-import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {type Shipment} from '@myparcel-dev/pdk-common';
+import {type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 
 /**
  * Update the default values of the fields based on the carrier, so the tri-state defaults are correct.

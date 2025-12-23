@@ -1,8 +1,8 @@
 import {ref, toValue} from 'vue';
 import {get} from 'lodash-unified';
-import {TriState} from '@myparcel-pdk/common';
-import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
-import {PackageTypeName} from '@myparcel/constants';
+import {TriState} from '@myparcel-dev/pdk-common';
+import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
+import {PackageTypeName} from '@myparcel-dev/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from '../field';
 import {createDefaultOption, defineFormField, resolveFormComponent} from '../../helpers';

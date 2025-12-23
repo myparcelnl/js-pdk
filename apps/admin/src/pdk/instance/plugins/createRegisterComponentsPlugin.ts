@@ -1,6 +1,6 @@
 import {type App, type Component, markRaw} from 'vue';
 import {mergeWith} from 'lodash-unified';
-import {type FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel/vue-form-builder';
+import {type FormConfiguration, MyParcelFormBuilderPlugin} from '@myparcel-dev/vue-form-builder';
 import {prefixComponent, unprefixComponent} from '../../../utils';
 import {type AdminComponentMap, type PrefixedAdminComponent} from '../../../types';
 import {
@@ -56,7 +56,7 @@ export const createRegisterComponentsPlugin: PdkAppPlugin = ({config, logger}) =
       Object.entries(requiredComponents).forEach(([componentName, component]) => {
         if (!component) {
           logger.error(
-            `Missing component: "${componentName}". You must provide your own, or use one provided by one of the @myparcel-pdk/admin-preset-* packages.`,
+            `Missing component: "${componentName}". You must provide your own, or use one provided by one of the @myparcel-dev/pdk-admin-preset-* packages.`,
           );
           return;
         }

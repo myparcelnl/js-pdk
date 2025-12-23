@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, type LoaderProps, useLanguage} from '@myparcel-pdk/admin';
+import {AdminComponent, type LoaderProps, useLanguage} from '@myparcel-dev/pdk-admin';
 
 withDefaults(defineProps<LoaderProps>(), {
   tag: 'div',

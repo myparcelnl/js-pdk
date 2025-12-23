@@ -1,5 +1,5 @@
 import {computed, type ComputedRef, type Ref, ref, toRefs, toValue} from 'vue';
-import {partitionArray} from '@myparcel/ts-utils';
+import {partitionArray} from '@myparcel-dev/ts-utils';
 import {type ActionDefinition, type DropdownButtonProps} from '../../types';
 import {AdminIcon} from '../../data';
 

@@ -1,7 +1,7 @@
 import {computed, type ComputedRef, type Ref, ref, toValue, unref} from 'vue';
 import {type MaybeRef} from '@vueuse/core';
-import {type Shipment} from '@myparcel-pdk/common';
-import {type Carrier} from '@myparcel/sdk';
+import {type Shipment} from '@myparcel-dev/pdk-common';
+import {type Carrier} from '@myparcel-dev/sdk';
 import {type AnyActionDefinition} from '../../types';
 import {useQueryStore} from '../../stores';
 import {instantiateActions} from '../../services';

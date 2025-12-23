@@ -1,4 +1,4 @@
-import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {createPropSetter, createValueGetter, createValueSetter} from '../utils';
 import {type FormOperation, type HandlerDefinition} from '../types';
 import {executeOperations} from '../operations';

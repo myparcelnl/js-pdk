@@ -1,5 +1,5 @@
 import {type Command} from 'commander';
-import {isOfType} from '@myparcel/ts-utils';
+import {isOfType} from '@myparcel-dev/ts-utils';
 import {
   type AnyCommandArgs,
   type DefaultCommandArgs,

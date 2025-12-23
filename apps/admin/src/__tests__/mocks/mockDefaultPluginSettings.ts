@@ -1,5 +1,5 @@
 import {vi} from 'vitest';
-import {type Plugin} from '@myparcel-pdk/common';
+import {type Plugin} from '@myparcel-dev/pdk-common';
 
 export const mockDefaultPluginSettings = vi.fn((): Plugin.ModelContextDynamicContext['pluginSettings'] => {
   return {

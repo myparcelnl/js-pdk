@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/checkout-js",
+  "name": "@myparcel-dev/pdk-checkout-js",
   "version": "1.6.0",
   "repository": {
     "type": "git",
@@ -20,10 +20,10 @@
     "test:update": "run ws:test:update \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/checkout": "workspace:^1.6.0"
+    "@myparcel-dev/pdk-checkout": "workspace:^1.6.0"
   },
   "devDependencies": {
-    "@myparcel-pdk/build-vite": "workspace:*",
+    "@myparcel-dev/pdk-build-vite": "workspace:*",
     "typescript": "^5.2.2",
     "vite": "^5.4.10",
     "vitest": "^2.1.3"

@@ -5,8 +5,8 @@ import {
   PdkUtil,
   type StoreCallbackUpdate,
   useUtil,
-} from '@myparcel-pdk/checkout-common';
-import {objectIsEqual} from '@myparcel/ts-utils';
+} from '@myparcel-dev/pdk-checkout-common';
+import {objectIsEqual} from '@myparcel-dev/ts-utils';
 import {
   getDeliveryOptionsAddress,
   shippingMethodHasDeliveryOptions,

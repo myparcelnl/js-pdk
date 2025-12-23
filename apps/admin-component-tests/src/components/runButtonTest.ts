@@ -1,6 +1,6 @@
 import {expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
-import {AdminComponent} from '@myparcel-pdk/admin';
+import {AdminComponent} from '@myparcel-dev/pdk-admin';
 import {type AdminComponentTest} from '../tests';
 import {TestSuite} from '../TestSuite';
 

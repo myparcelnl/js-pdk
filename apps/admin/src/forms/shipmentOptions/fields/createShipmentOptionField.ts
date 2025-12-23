@@ -1,5 +1,5 @@
-import {type Shipment, TriState} from '@myparcel-pdk/common';
-import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
+import {type Shipment, TriState} from '@myparcel-dev/pdk-common';
+import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {type ShipmentOptionsRefs} from '../types';
 import {type FieldName} from '../field';
 import {createHasShipmentOptionWatcher, defineFormField, getFieldLabel, resolveFormComponent} from '../../helpers';

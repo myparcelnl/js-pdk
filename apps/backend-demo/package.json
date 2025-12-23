@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/backend-demo",
+  "name": "@myparcel-dev/pdk-backend-demo",
   "version": "1.0.0",
   "private": true,
   "repository": {
@@ -20,9 +20,9 @@
   },
   "devDependencies": {
     "@apollo/server": "^4.4.1",
-    "@myparcel-pdk/app-builder": "workspace:*",
-    "@myparcel-pdk/common": "workspace:*",
-    "@myparcel/ts-utils": "^1.9.0",
+    "@myparcel-dev/pdk-app-builder": "workspace:*",
+    "@myparcel-dev/pdk-common": "workspace:*",
+    "@myparcel-dev/ts-utils": "^1.15.0",
     "@types/node": "^20.0.0",
     "graphql": "^16.6.0",
     "h3": "^1.5.0",

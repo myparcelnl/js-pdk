@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 /* eslint-disable vue/no-unused-properties */
-import {AdminComponent, type ImageProps} from '@myparcel-pdk/admin';
+import {AdminComponent, type ImageProps} from '@myparcel-dev/pdk-admin';
 
 defineProps<ImageProps>();
 </script>

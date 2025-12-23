@@ -1,6 +1,6 @@
-import {Variant} from '@myparcel-pdk/common';
-import {isOfType} from '@myparcel/ts-utils';
-import {type ApiException} from '@myparcel/sdk';
+import {Variant} from '@myparcel-dev/pdk-common';
+import {isOfType} from '@myparcel-dev/ts-utils';
+import {type ApiException} from '@myparcel-dev/sdk';
 import {type PdkNotification} from '../types';
 import {useNotificationStore} from '../stores';
 import {type NotificationCategory} from '../data';

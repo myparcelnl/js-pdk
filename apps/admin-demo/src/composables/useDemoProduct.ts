@@ -1,5 +1,5 @@
-import {type Plugin} from '@myparcel-pdk/admin';
-import {type OneOrMore} from '@myparcel/ts-utils';
+import {type Plugin} from '@myparcel-dev/pdk-admin';
+import {type OneOrMore} from '@myparcel-dev/ts-utils';
 import {useDemoProductData} from './useDemoProductData';
 
 export const useDemoProduct = (productId: OneOrMore<string>): Plugin.ModelPdkProduct => {

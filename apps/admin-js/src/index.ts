@@ -1,1 +1,1 @@
-export * from '@myparcel-pdk/admin';
+export * from '@myparcel-dev/pdk-admin';

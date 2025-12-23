@@ -1,4 +1,4 @@
-import { type InteractiveElementConfiguration } from '@myparcel/vue-form-builder';
+import { type InteractiveElementConfiguration } from '@myparcel-dev/vue-form-builder';
 import { type ShipmentOptionsRefs } from '../types';
 import { FIELD_INSURANCE, PROP_OPTIONS, INSURANCE } from '../field';
 import {

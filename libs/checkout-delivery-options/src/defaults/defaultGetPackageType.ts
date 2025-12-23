@@ -1,4 +1,4 @@
-import {useCheckoutStore} from '@myparcel-pdk/checkout-common';
+import {useCheckoutStore} from '@myparcel-dev/pdk-checkout-common';
 import {getPackageTypeFromShippingMethod} from '../utils';
 import {type CheckoutDeliveryOptionsSettings} from '../types';
 

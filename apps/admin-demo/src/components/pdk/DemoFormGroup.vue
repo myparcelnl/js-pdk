@@ -25,7 +25,7 @@
 
 <script lang="ts" setup>
 import {toRefs} from 'vue';
-import {type FormGroupProps, generateFieldId} from '@myparcel-pdk/admin';
+import {type FormGroupProps, generateFieldId} from '@myparcel-dev/pdk-admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<FormGroupProps>();

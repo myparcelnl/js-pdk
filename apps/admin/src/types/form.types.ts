@@ -1,5 +1,5 @@
-import {type Keyable, type SortType} from '@myparcel-pdk/common';
-import {type InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {type Keyable, type SortType} from '@myparcel-dev/pdk-common';
+import {type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {type AdminIcon} from '../data';
 import {type Translatable, type Translation} from './language.types';
 

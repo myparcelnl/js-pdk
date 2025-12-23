@@ -1,5 +1,5 @@
-import {type Plugin} from '@myparcel-pdk/common';
-import {type FormInstance} from '@myparcel/vue-form-builder';
+import {type Plugin} from '@myparcel-dev/pdk-common';
+import {type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {type AdminConfiguration, type TabDefinition} from '../../types';
 import {type AdminAction} from '../../data';
 import {type ActionContext} from '../../actions';

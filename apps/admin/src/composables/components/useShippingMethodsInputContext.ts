@@ -1,7 +1,7 @@
 import {type ComputedRef, onUnmounted, reactive, type Ref, toRaw, watch, ref, nextTick, computed} from 'vue';
 import {useVModel} from '@vueuse/core';
-import {type ShippingMethodId, type ShippingMethodType, TriState} from '@myparcel-pdk/common';
-import {PackageTypeName} from '@myparcel/constants';
+import {type ShippingMethodId, type ShippingMethodType, TriState} from '@myparcel-dev/pdk-common';
+import {PackageTypeName} from '@myparcel-dev/constants';
 import {createFormElement, createObjectWithKeys} from '../../utils';
 import {
   type SelectOptionWithLabel,

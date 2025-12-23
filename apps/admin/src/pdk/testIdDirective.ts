@@ -1,10 +1,10 @@
 import {type Directive} from 'vue';
 import {isDefined} from '@vueuse/core';
-import {type AnyElementInstance} from '@myparcel/vue-form-builder';
+import {type FieldInstance} from '@myparcel-dev/vue-form-builder';
 
 const SEPARATOR = '--';
 
-type TestIdBinding = string | string[] | [string, AnyElementInstance];
+type TestIdBinding = string | string[] | [string, FieldInstance];
 
 export const testIdDirective: Directive<Element, TestIdBinding> = (el, binding) => {
   if (import.meta.env.MODE !== 'test') {

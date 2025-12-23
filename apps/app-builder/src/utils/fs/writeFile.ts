@@ -1,7 +1,7 @@
 import path from 'node:path';
 import fs from 'node:fs';
 import chalk from 'chalk';
-import {type OneOrMore} from '@myparcel/ts-utils';
+import {type OneOrMore} from '@myparcel-dev/ts-utils';
 import {resolvePath} from '../resolvePath';
 import {logTargetPath} from '../debug/logTargetPath';
 import {isVeryVeryVerbose} from '../command/isVeryVeryVerbose';

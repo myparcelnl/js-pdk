@@ -1,6 +1,6 @@
-import {type AdminContextKey, type Plugin} from '@myparcel-pdk/common';
-import {type FormInstance} from '@myparcel/vue-form-builder';
-import {type OneOrMore, type Replace} from '@myparcel/ts-utils';
+import {type AdminContextKey, type Plugin} from '@myparcel-dev/pdk-common';
+import {type FormInstance} from '@myparcel-dev/vue-form-builder';
+import {type OneOrMore, type Replace} from '@myparcel-dev/ts-utils';
 import {type AdminInstanceContextKey, type AdminModalKey} from '../data';
 import {type BackendPdkEndpointObject} from './endpoints.types';
 

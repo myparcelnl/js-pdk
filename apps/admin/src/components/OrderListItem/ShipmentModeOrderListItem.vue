@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
 import {computed, toValue} from 'vue';
-import {type Shipment, Size} from '@myparcel-pdk/common';
+import {type Shipment, Size} from '@myparcel-dev/pdk-common';
 import {DeliveryOptionsExcerpt} from '../common';
 import {type ActionDefinition, type AnyActionDefinition} from '../../types';
 import {instantiateActions} from '../../services';

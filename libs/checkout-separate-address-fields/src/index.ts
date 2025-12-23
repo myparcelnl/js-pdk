@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import {StoreListener, useCheckoutStore} from '@myparcel-pdk/checkout-common';
+import {StoreListener, useCheckoutStore} from '@myparcel-dev/pdk-checkout-common';
 import {fillAddress1, prepareFields} from './utils';
 import {synchronizeAddress1, synchronizeAddressOnCountryChange} from './listeners';
 

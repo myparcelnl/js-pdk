@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {type PromiseOr} from '@myparcel/ts-utils';
+import {type PromiseOr} from '@myparcel-dev/ts-utils';
 
 export function debounce<Cb extends (...args: any[]) => PromiseOr<any>>(fn: Cb, delay = 100): Cb {
   let timer: NodeJS.Timeout;

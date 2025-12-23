@@ -1,8 +1,8 @@
 import {type MaybeRef} from '@vueuse/core';
 import {useMutation, type UseMutationOptions, type UseMutationReturnType} from '@tanstack/vue-query';
 import {type MutationFunction} from '@tanstack/query-core';
-import {type BackendEndpoint} from '@myparcel-pdk/common';
-import {type ApiException} from '@myparcel/sdk';
+import {type BackendEndpoint} from '@myparcel-dev/pdk-common';
+import {type ApiException} from '@myparcel-dev/sdk';
 import {type ActionInput, type BackendEndpointResponse} from '../../../types';
 
 type MaybeRefDeep<T> = MaybeRef<

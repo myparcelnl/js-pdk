@@ -1,4 +1,4 @@
-import {type BackendEndpoint} from '@myparcel-pdk/common';
+import {type BackendEndpoint} from '@myparcel-dev/pdk-common';
 
 /**
  * All backend endpoints that are mutations.

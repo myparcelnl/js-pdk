@@ -1,7 +1,7 @@
 import {ref} from 'vue';
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import {mount} from '@vue/test-utils';
-import {defineForm, MagicForm, useFormBuilder} from '@myparcel/vue-form-builder';
+import MagicForm, {defineForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {buildAfterUpdate} from '../builders';
 
 describe('executeOperations', () => {
@@ -13,51 +13,47 @@ describe('executeOperations', () => {
     expect.assertions(3);
     const method = vi.fn();
 
-    const form = defineForm('test', {
-      fields: [
-        {
-          name: 'test',
-          component: 'input',
-          ref: ref(''),
-          afterUpdate: buildAfterUpdate(
-            [
-              {
-                $custom: {$value: 'hello'},
-              },
-              {
-                $custom: {
-                  $value: 'hello',
-                  $if: [
-                    {
-                      $eq: '123',
-                    },
-                  ],
+    const form = defineForm('test', {});
+
+    await form.addElement({
+      name: 'test',
+      component: 'input',
+      ref: ref(''),
+      afterUpdate: buildAfterUpdate(
+        [
+          {
+            $custom: {$value: 'hello'},
+          },
+          {
+            $custom: {
+              $value: 'hello',
+              $if: [
+                {
+                  $eq: '123',
                 },
-              },
-            ],
-            '',
-            [
-              {
-                name: '$custom',
-                callback: (operation) => {
-                  method(operation);
-                },
-              },
-            ],
-          ),
-        },
-      ],
+              ],
+            },
+          },
+        ],
+        '',
+        [
+          {
+            name: '$custom',
+            callback: (operation) => {
+              method(operation);
+            },
+          },
+        ],
+      ),
     });
 
     const wrapper = mount(MagicForm, {props: {form}});
 
     expect(method).not.toHaveBeenCalled();
 
-    form.setValue('test', 'test');
-
     const testField = form.getField('test');
-    // todo remove this when afterUpdate is properly triggered
-    testField?.afterUpdate(testField);
+    // Trigger afterUpdate via hooks manager (new vue-form-builder API)
+    await testField?.hooks.execute('afterUpdate', testField, 'test', '');
 
     await wrapper.vm.$nextTick();
 

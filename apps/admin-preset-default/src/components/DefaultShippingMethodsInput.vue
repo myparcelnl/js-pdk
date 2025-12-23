@@ -74,7 +74,7 @@
 
 <script lang="ts" setup>
 import {ref, computed} from 'vue';
-import {TriState} from '@myparcel-pdk/common';
+import {TriState} from '@myparcel-dev/pdk-common';
 import {
   AdminComponent,
   PackageType,
@@ -84,9 +84,9 @@ import {
   type ShippingMethodType,
   useLanguage,
   useShippingMethodsInputContext,
-} from '@myparcel-pdk/admin';
-import {isEnumValue} from '@myparcel/ts-utils';
-import {PackageTypeName} from '@myparcel/constants';
+} from '@myparcel-dev/pdk-admin';
+import {isEnumValue} from '@myparcel-dev/ts-utils';
+import {PackageTypeName} from '@myparcel-dev/constants';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<ShippingMethodsInputProps>();

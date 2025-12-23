@@ -40,7 +40,7 @@
 
 <script lang="ts" setup>
 import {computed, type PropType, ref, watch} from 'vue';
-import {type ComponentOrHtmlElement} from '@myparcel/vue-form-builder';
+import {type ComponentOrHtmlElement} from '@myparcel-dev/vue-form-builder';
 import {prefixComponent} from '../../utils';
 import {type PrefixedAdminComponent, type TabDefinition} from '../../types';
 import {AdminComponent, HASH_SEPARATOR} from '../../data';

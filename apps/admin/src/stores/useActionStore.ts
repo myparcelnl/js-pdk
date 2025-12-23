@@ -1,6 +1,6 @@
 import {ref} from 'vue';
 import {defineStore} from 'pinia';
-import {type OneOrMore, type PromiseOr, toArray} from '@myparcel/ts-utils';
+import {type OneOrMore, type PromiseOr, toArray} from '@myparcel-dev/ts-utils';
 import {type ActionParameters, type AnyActionDefinition, type ResolvedAction} from '../types';
 import {createAction, getActionIdentifier} from '../services';
 import {type AdminAction} from '../data';

@@ -1,5 +1,5 @@
 import {snakeCase} from 'lodash-unified';
-import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
+import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_LABEL_AMOUNT, LABEL_AMOUNT} from '../field';
 import {defineFormField, resolveFormComponent} from '../../helpers';

@@ -1,4 +1,4 @@
-import {AdminContextKey} from '@myparcel-pdk/common';
+import {AdminContextKey} from '@myparcel-dev/pdk-common';
 import {type AdminContextObject} from '../../types';
 import {useContext} from './useContext';
 

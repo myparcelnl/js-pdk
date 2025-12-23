@@ -1,6 +1,6 @@
 import {type QueryKey, useQuery, useQueryClient} from '@tanstack/vue-query';
-import {type BackendEndpoint} from '@myparcel-pdk/common';
-import {toArray} from '@myparcel/ts-utils';
+import {type BackendEndpoint} from '@myparcel-dev/pdk-common';
+import {toArray} from '@myparcel-dev/ts-utils';
 import {QUERY_KEY_ORDER} from '../queryKeys';
 import {encodeArrayParameter} from '../../../../utils';
 import {type ResolvedQuery} from '../../../../stores';

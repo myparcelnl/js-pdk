@@ -12,9 +12,9 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {type Plugin, type Shipment} from '@myparcel-pdk/common';
-import {isOfType} from '@myparcel/ts-utils';
-import {PackageTypeName} from '@myparcel/constants';
+import {type Plugin, type Shipment} from '@myparcel-dev/pdk-common';
+import {isOfType} from '@myparcel-dev/ts-utils';
+import {PackageTypeName} from '@myparcel-dev/constants';
 import PackageType from './PackageType.vue';
 import DigitalStampWeightRange from './DigitalStampWeightRange.vue';
 

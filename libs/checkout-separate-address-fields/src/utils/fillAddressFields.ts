@@ -1,4 +1,4 @@
-import {type AddressType, PdkUtil, useUtil} from '@myparcel-pdk/checkout-common';
+import {type AddressType, PdkUtil, useUtil} from '@myparcel-dev/pdk-checkout-common';
 import {type AllAddressFields, type AnyAddressField} from '../types';
 import {triggerFormChange} from './triggerFormChange';
 

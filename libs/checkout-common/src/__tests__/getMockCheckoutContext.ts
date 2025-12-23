@@ -1,7 +1,7 @@
 import {vi} from 'vitest';
-import {FrontendEndpoint, type Plugin} from '@myparcel-pdk/common';
-import {KEY_CONFIG} from '@myparcel/delivery-options';
-import {PackageTypeName} from '@myparcel/constants';
+import {FrontendEndpoint, type Plugin} from '@myparcel-dev/pdk-common';
+import {KEY_CONFIG} from '@myparcel-dev/delivery-options';
+import {PackageTypeName} from '@myparcel-dev/constants';
 import {getMockDeliveryOptionsConfig} from './getMockDeliveryOptionsConfig';
 
 export const getMockCheckoutContext = vi.fn(

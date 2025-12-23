@@ -1,5 +1,5 @@
 import path from 'node:path';
-import {type OneOrMore} from '@myparcel/ts-utils';
+import {type OneOrMore} from '@myparcel-dev/ts-utils';
 import {type PdkBuilderContext} from '../types/command.types';
 import {resolvePath} from './resolvePath';
 

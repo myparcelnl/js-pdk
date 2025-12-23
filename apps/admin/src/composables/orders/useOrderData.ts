@@ -1,5 +1,5 @@
 import {computed, type ComputedRef, toValue} from 'vue';
-import {type BackendEndpoint} from '@myparcel-pdk/common';
+import {type BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {getOrderId, validateId} from '../../utils';
 import {type ResolvedQuery, useQueryStore} from '../../stores';
 import {useOrder} from './useOrder';

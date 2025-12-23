@@ -18,7 +18,7 @@ import {
   type RadioGroupModelValue,
   type RadioGroupProps,
   useRadioGroupContext,
-} from '@myparcel-pdk/admin';
+} from '@myparcel-dev/pdk-admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<RadioGroupProps<T>>();

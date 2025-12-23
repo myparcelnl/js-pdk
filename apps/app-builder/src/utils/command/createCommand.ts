@@ -1,4 +1,4 @@
-import {type OneOrMore, toArray} from '@myparcel/ts-utils';
+import {type OneOrMore, toArray} from '@myparcel-dev/ts-utils';
 import {type PdkBuilderConfig} from '../../types/config.types';
 
 export const createCommand = (config: PdkBuilderConfig, command: OneOrMore<string>): string => {

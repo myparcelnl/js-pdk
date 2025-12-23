@@ -1,5 +1,5 @@
-import {type Keyable, type Plugin} from '@myparcel-pdk/common';
-import {type PromiseOr} from '@myparcel/ts-utils';
+import {type Keyable, type Plugin} from '@myparcel-dev/pdk-common';
+import {type PromiseOr} from '@myparcel-dev/ts-utils';
 import {type AddressType, type StoreListener} from '../data';
 import {type PdkCheckoutForm} from './checkout.types';
 

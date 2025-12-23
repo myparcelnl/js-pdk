@@ -1,4 +1,4 @@
-import {type Plugin} from '@myparcel-pdk/common';
+import {type Plugin} from '@myparcel-dev/pdk-common';
 import {ATTRIBUTE_CONTEXT} from '../constants';
 import {useConfig} from './useConfig';
 import {getElement} from './global';

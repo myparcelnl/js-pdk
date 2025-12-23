@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import {useForm} from '@myparcel/vue-form-builder';
+import {useForm} from '@myparcel-dev/vue-form-builder';
 import {useLoading} from '../../composables';
 import {AdminIcon} from "../../data";
 

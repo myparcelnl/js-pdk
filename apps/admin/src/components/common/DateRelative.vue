@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {type DateTime} from '@myparcel-pdk/common';
+import {type DateTime} from '@myparcel-dev/pdk-common';
 import {Format, useLocalizedFormatter} from '../../composables';
 
 const props = defineProps<{

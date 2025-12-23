@@ -1,5 +1,5 @@
-import {FrontendEndpoint, type Plugin} from '@myparcel-pdk/common';
-import {PdkField, PdkUtil, useUtil} from '@myparcel-pdk/checkout-common';
+import {FrontendEndpoint, type Plugin} from '@myparcel-dev/pdk-common';
+import {PdkField, PdkUtil, useUtil} from '@myparcel-dev/pdk-checkout-common';
 
 export const fetchCheckoutContext = async (): Promise<Plugin.ModelContextCheckoutContext> => {
   const doRequest = useUtil(PdkUtil.DoRequest);

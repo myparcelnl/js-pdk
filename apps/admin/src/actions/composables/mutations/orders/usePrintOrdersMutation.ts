@@ -1,5 +1,5 @@
-import {BackendEndpoint} from '@myparcel-pdk/common';
-import {type OneOrMore} from '@myparcel/ts-utils';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
+import {type OneOrMore} from '@myparcel-dev/ts-utils';
 import {usePdkMutation} from '../usePdkMutation';
 import {encodeArrayParameter} from '../../../../utils';
 import {type ResolvedQuery} from '../../../../stores';

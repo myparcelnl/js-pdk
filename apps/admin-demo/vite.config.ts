@@ -25,7 +25,7 @@ export default defineConfig((env) => {
 
     optimizeDeps: {
       // Optimizing this dependency causes the element and form injection keys to be mismatched.
-      exclude: ['@myparcel/vue-form-builder'],
+      exclude: ['@myparcel-dev/vue-form-builder'],
     },
 
     test: {
@@ -34,7 +34,7 @@ export default defineConfig((env) => {
         enabled: false,
         reporter: ['clover'],
       },
-      setupFiles: ['@myparcel-pdk/admin-component-tests/setup'],
+      setupFiles: ['@myparcel-dev/pdk-admin-component-tests/setup'],
     },
   };
 });

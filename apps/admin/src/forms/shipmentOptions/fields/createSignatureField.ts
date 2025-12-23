@@ -1,4 +1,4 @@
-import {type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
+import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_SIGNATURE} from '../field';
 import {hasPostNlAgeCheck} from '../../helpers';

@@ -1,4 +1,4 @@
-import {type BackendEndpoint, type EndpointObject} from '@myparcel-pdk/common';
+import {type BackendEndpoint, type EndpointObject} from '@myparcel-dev/pdk-common';
 import {
   type BACKEND_ENDPOINTS_DEBUG,
   type BACKEND_ENDPOINTS_ORDERS,

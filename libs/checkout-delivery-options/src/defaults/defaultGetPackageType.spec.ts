@@ -1,8 +1,8 @@
 // @vitest-environment happy-dom
 
 import {describe, expect, it} from 'vitest';
-import {tests, useCheckoutStore} from '@myparcel-pdk/checkout-common';
-import {PackageTypeName} from '@myparcel/constants';
+import {tests, useCheckoutStore} from '@myparcel-dev/pdk-checkout-common';
+import {PackageTypeName} from '@myparcel-dev/constants';
 import {defaultGetPackageType} from './defaultGetPackageType';
 
 type TestInput = [string, PackageTypeName | undefined];

@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, type BadgeProps, type BadgeSlots} from '@myparcel-pdk/admin';
+import {AdminComponent, type BadgeProps, type BadgeSlots} from '@myparcel-dev/pdk-admin';
 
 defineProps<BadgeProps>();
 defineSlots<BadgeSlots>();

@@ -30,7 +30,7 @@
 
 <script lang="ts" setup>
 import {useRoute} from 'vue-router';
-import {OrderBoxView, useOrderData, useQueryStore} from '@myparcel-pdk/admin';
+import {OrderBoxView, useOrderData, useQueryStore} from '@myparcel-dev/pdk-admin';
 
 const route = useRoute();
 const {id} = route.params as {id: string};

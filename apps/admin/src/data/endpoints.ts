@@ -1,4 +1,4 @@
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 
 export const BACKEND_ENDPOINTS_ORDERS = [
   BackendEndpoint.ExportOrders,

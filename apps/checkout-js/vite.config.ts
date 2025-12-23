@@ -1,5 +1,5 @@
 import isCi from 'is-ci';
-import {createViteConfig} from '@myparcel-pdk/build-vite';
+import {createViteConfig} from '@myparcel-dev/pdk-build-vite';
 import {codecovVitePlugin} from '@codecov/vite-plugin';
 import {name} from './package.json';
 

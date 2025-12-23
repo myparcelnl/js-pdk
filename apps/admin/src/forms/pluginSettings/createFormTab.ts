@@ -1,5 +1,5 @@
 import {h, type VNode} from 'vue';
-import {MagicForm} from '@myparcel/vue-form-builder';
+import MagicForm from '@myparcel-dev/vue-form-builder';
 import {type TabDefinition} from '../../types';
 import {useLanguage} from '../../composables';
 import {type FormTab} from './types';

@@ -9,8 +9,8 @@ import {
   type Plugin,
   type Settings,
   type Shipment,
-} from '@myparcel-pdk/common';
-import {type RecursivePartial} from '@myparcel/ts-utils';
+} from '@myparcel-dev/pdk-common';
+import {type RecursivePartial} from '@myparcel-dev/ts-utils';
 import {type AdminContextObject} from './context.types';
 import {type WebhookDefinition} from './common.types';
 

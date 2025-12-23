@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/build-vite",
+  "name": "@myparcel-dev/pdk-build-vite",
   "version": "1.0.0-alpha.0",
   "private": true,
   "repository": {
@@ -29,7 +29,7 @@
     "vue-tsc": "^2.0.0"
   },
   "devDependencies": {
-    "@myparcel/ts-utils": "^1.9.0",
+    "@myparcel-dev/ts-utils": "^1.15.0",
     "typescript": "^5.2.2"
   },
   "engines": {

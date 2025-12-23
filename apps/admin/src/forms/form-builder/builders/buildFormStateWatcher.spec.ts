@@ -1,6 +1,6 @@
 import {ref} from 'vue';
 import {describe, expect, it} from 'vitest';
-import {type FormInstance, type InteractiveElementInstance} from '@myparcel/vue-form-builder';
+import {type FormInstance, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {type OperationArguments} from '../types';
 import {buildFormStateWatcher} from './buildFormStateWatcher';
 

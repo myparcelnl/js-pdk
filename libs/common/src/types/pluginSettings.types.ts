@@ -1,4 +1,4 @@
-import {type PackageTypeName} from '@myparcel/constants';
+import {type PackageTypeName} from '@myparcel-dev/constants';
 import {type TriState} from '../data';
 
 export type LabelFormat = 'a4' | 'a6';

@@ -5,5 +5,5 @@
 </template>
 
 <script lang="ts" setup>
-import {PluginSettingsView} from '@myparcel-pdk/admin';
+import {PluginSettingsView} from '@myparcel-dev/pdk-admin';
 </script>

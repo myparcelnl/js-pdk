@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, type ColProps, type ColSlots} from '@myparcel-pdk/admin';
+import {AdminComponent, type ColProps, type ColSlots} from '@myparcel-dev/pdk-admin';
 
 defineProps<ColProps>();
 defineSlots<ColSlots>();

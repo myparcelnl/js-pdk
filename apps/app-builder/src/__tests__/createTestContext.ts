@@ -1,4 +1,4 @@
-import {type RecursivePartial} from '@myparcel/ts-utils';
+import {type RecursivePartial} from '@myparcel-dev/ts-utils';
 import {mergeDefaultConfig} from '../utils/mergeDefaultConfig';
 import {createDebugger} from '../utils/command/createDebugger';
 import {type PdkBuilderConfig} from '../types/config.types';

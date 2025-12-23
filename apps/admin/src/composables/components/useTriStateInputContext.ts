@@ -1,6 +1,6 @@
 import {computed, markRaw, reactive, ref, type Ref, toValue, watch, type WritableComputedRef} from 'vue';
-import {TriState} from '@myparcel-pdk/common';
-import {type AnyElementConfiguration, defineField, useForm} from '@myparcel/vue-form-builder';
+import {TriState} from '@myparcel-dev/pdk-common';
+import {type FieldConfiguration, defineField, useForm} from '@myparcel-dev/vue-form-builder';
 import {useLanguage} from '../language';
 import {booleanToTriState, triStateToBoolean} from '../../utils';
 import {
@@ -46,13 +46,12 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
   });
 
   const commonFieldProperties = Object.freeze({
-    form,
     component: 'input',
     wrapper: false,
     attributes: {
       hidden: true,
     },
-  }) satisfies AnyElementConfiguration;
+  }) satisfies Partial<FieldConfiguration>;
 
   const inheritElement = reactive(
     defineField({

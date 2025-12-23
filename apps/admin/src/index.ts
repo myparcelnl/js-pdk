@@ -1,22 +1,24 @@
 export type {
-  AnyElementConfiguration,
-  AnyElementInstance,
   ComponentOrHtmlElement,
+  FieldConfiguration,
+  FieldConfiguration as AnyElementConfiguration,
+  FieldConfiguration as PlainElementConfiguration,
+  FieldConfiguration as ResolvedElementConfiguration,
+  FieldInstance,
+  FieldInstance as AnyElementInstance,
+  FieldInstance as PlainElementInstance,
   FormConfiguration,
   FormInstance,
   InteractiveElementConfiguration,
   InteractiveElementInstance,
-  PlainElementConfiguration,
-  PlainElementInstance,
-  ResolvedElementConfiguration,
-} from '@myparcel/vue-form-builder';
+} from '@myparcel-dev/vue-form-builder';
 
 export * from './actions';
 export * from './deprecated';
 export * from './types';
 export * from './views/integrated';
 
-export * from '@myparcel-pdk/common';
+export * from '@myparcel-dev/pdk-common';
 
 export {
   ActionButton,
@@ -62,7 +64,7 @@ export {
   resolveFormComponent,
 } from './forms';
 
-export {FormHook, useElement, useForm, useFormBuilder} from '@myparcel/vue-form-builder';
+export {FormHook, useElement, useForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 
 export {INJECT_ADMIN_INSTANCE, INJECT_GLOBAL_PDK_ADMIN} from './symbols';
 

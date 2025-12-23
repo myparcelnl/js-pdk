@@ -1,6 +1,6 @@
-import {PdkUtil, type StoreCallbackUpdate, useUtil} from '@myparcel-pdk/checkout-common';
-import {objectIsEqual} from '@myparcel/ts-utils';
-import {UPDATE_CONFIG_IN, UPDATE_DELIVERY_OPTIONS} from '@myparcel/delivery-options';
+import {PdkUtil, type StoreCallbackUpdate, useUtil} from '@myparcel-dev/pdk-checkout-common';
+import {objectIsEqual} from '@myparcel-dev/ts-utils';
+import {UPDATE_CONFIG_IN, UPDATE_DELIVERY_OPTIONS} from '@myparcel-dev/delivery-options';
 import {debounce, deliveryOptionsIsRendered} from '../utils';
 import {type DeliveryOptionsStoreState} from '../types';
 

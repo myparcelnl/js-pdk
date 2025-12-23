@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/checkout-common",
+  "name": "@myparcel-dev/pdk-checkout-common",
   "version": "1.6.0",
   "repository": {
     "type": "git",
@@ -27,9 +27,9 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-pdk/common": "workspace:^1.10.0",
-    "@myparcel/constants": "^2.0.0",
-    "@myparcel/delivery-options": "^6.0.0",
+    "@myparcel-dev/constants": "^2.7.0",
+    "@myparcel-dev/delivery-options": "^6.23.0",
+    "@myparcel-dev/pdk-common": "workspace:^1.10.0",
     "typescript": "^5.2.2"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 import {computed, type ComputedRef, toValue} from 'vue';
-import {BackendEndpoint} from '@myparcel-pdk/common';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {useStoreQuery} from '../useStoreQuery';
 import {useInstanceContext} from '../context';
 import {validateId} from '../../utils';

@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, type HeadingProps, type HeadingSlots} from '@myparcel-pdk/admin';
+import {AdminComponent, type HeadingProps, type HeadingSlots} from '@myparcel-dev/pdk-admin';
 
 withDefaults(defineProps<HeadingProps>(), {
   level: 1,

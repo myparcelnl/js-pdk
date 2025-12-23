@@ -1,5 +1,5 @@
 import {computed, type ComputedRef, type UnwrapRef} from 'vue';
-import {SortType} from '@myparcel-pdk/common';
+import {SortType} from '@myparcel-dev/pdk-common';
 import {useLanguage} from '../language';
 import {translateSelectOption} from '../../utils';
 import {

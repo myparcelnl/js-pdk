@@ -1,4 +1,4 @@
-import {AdminComponent, AdminModalKey, useModalStore} from '@myparcel-pdk/admin';
+import {AdminComponent, AdminModalKey, useModalStore} from '@myparcel-dev/pdk-admin';
 import {type AdminComponentTest} from '../tests';
 import {TestSuite} from '../TestSuite';
 

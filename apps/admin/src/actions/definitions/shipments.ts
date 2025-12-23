@@ -1,4 +1,4 @@
-import {BackendEndpoint, Variant} from '@myparcel-pdk/common';
+import {BackendEndpoint, Variant} from '@myparcel-dev/pdk-common';
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
 import {createShipmentsMutationHandler, executeNextAction} from '../executors';
 import {defineAction} from '../defineAction';

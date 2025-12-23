@@ -1,5 +1,5 @@
-import {Variant} from '@myparcel-pdk/common';
-import {toArray} from '@myparcel/ts-utils';
+import {Variant} from '@myparcel-dev/pdk-common';
+import {toArray} from '@myparcel-dev/ts-utils';
 import {createLogger} from '../logger';
 import {createNotification} from '../createNotification';
 import {

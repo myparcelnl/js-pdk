@@ -56,7 +56,7 @@ import {
   NotificationContainer,
   useLanguage,
   useModalStore,
-} from '@myparcel-pdk/admin';
+} from '@myparcel-dev/pdk-admin';
 
 const props = withDefaults(defineProps<ModalProps>(), {
   actions: () => [],

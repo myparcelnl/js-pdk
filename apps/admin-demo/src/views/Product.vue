@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import {useRoute} from 'vue-router';
-import {AdminContextKey, BackendEndpoint, type Plugin, ProductSettingsView} from '@myparcel-pdk/admin';
+import {AdminContextKey, BackendEndpoint, type Plugin, ProductSettingsView} from '@myparcel-dev/pdk-admin';
 import {patchQueryData} from '../utils';
 import {useDemoProduct} from '../composables';
 

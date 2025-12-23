@@ -1,5 +1,5 @@
 import {ref} from 'vue';
-import {type FormInstance, type InteractiveElementConfiguration} from '@myparcel/vue-form-builder';
+import {type FormInstance, type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {type ElementInstance, type PdkElementProps} from '../../types';
 
 export const createFormElement = <Type = unknown>(

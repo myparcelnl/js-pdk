@@ -1,5 +1,5 @@
 import {computed, type ComputedRef, type MaybeRef, ref, type Ref, toValue} from 'vue';
-import {type ReadonlyOr} from '@myparcel/ts-utils';
+import {type ReadonlyOr} from '@myparcel-dev/ts-utils';
 
 export type UseLoadMoreOptions<Item = unknown> = {
   step?: number;

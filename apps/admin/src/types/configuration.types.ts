@@ -1,6 +1,6 @@
 import {type PiniaPluginContext} from 'pinia';
-import {type FormConfiguration, type InteractiveElementInstance} from '@myparcel/vue-form-builder';
-import {type MakeOptional} from '@myparcel/ts-utils';
+import {type FormConfiguration, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
+import {type MakeOptional} from '@myparcel-dev/ts-utils';
 import {type LogLevel} from '../services';
 import {type FORM_KEYS} from '../forms';
 import {type FormatterObject} from '../composables';
@@ -30,7 +30,7 @@ export type AdminConfiguration = {
   logLevel: LogLevel;
 
   /**
-   * Configuration to pass to @myparcel/vue-form-builder.
+   * Configuration to pass to @myparcel-dev/vue-form-builder.
    */
   formConfig?: Omit<FormConfiguration, 'fields'>;
 

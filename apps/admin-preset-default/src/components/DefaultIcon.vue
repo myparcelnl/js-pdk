@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, type IconProps} from '@myparcel-pdk/admin';
+import {AdminComponent, type IconProps} from '@myparcel-dev/pdk-admin';
 
 defineProps<IconProps>();
 </script>

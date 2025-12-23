@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel-pdk/monorepo",
+  "name": "@myparcel-dev/pdk-monorepo",
   "version": "1.0.0-alpha.0",
   "private": true,
   "repository": {
@@ -21,8 +21,8 @@
     "prepare": "is-ci || husky",
     "serve": "run build:dev --output-style=stream npx concurrently yarn:watch yarn:serve:demo",
     "serve:demo": "npx -q concurrently yarn:serve:demo:frontend yarn:serve:demo:backend",
-    "serve:demo:backend": "nx serve @myparcel-pdk/backend-demo",
-    "serve:demo:frontend": "nx serve @myparcel-pdk/admin-demo",
+    "serve:demo:backend": "nx serve @myparcel-dev/pdk-backend-demo",
+    "serve:demo:frontend": "nx serve @myparcel-dev/pdk-admin-demo",
     "test": "nx run-many -t test --parallel=99 --output-style=stream",
     "test:affected": "nx affected -t test:run --output-style=stream",
     "test:coverage": "nx run-many -t test:coverage --output-style=stream",
@@ -47,7 +47,7 @@
     "*.{ts,vue,js,cjs,mjs}": "yarn run ws:lint:fix",
     "package.json": "npx sort-package-json"
   },
-  "prettier": "@myparcel/prettier-config",
+  "prettier": "@myparcel-dev/prettier-config",
   "resolutions": {
     "eslint-plugin-prettier": "^4.2.1"
   },
@@ -55,13 +55,13 @@
     "@edielemoine/monodeploy-plugin-github-actions": "^1.0.0",
     "@monoweave/cli": "^1.9.0",
     "@monoweave/plugin-github": "^2.0.0",
-    "@myparcel-eslint/eslint-config-esnext": "^1.2.0",
-    "@myparcel-eslint/eslint-config-import": "^1.0.0",
-    "@myparcel-eslint/eslint-config-node": "^1.2.0",
-    "@myparcel-eslint/eslint-config-prettier": "^1.2.0",
-    "@myparcel-eslint/eslint-config-prettier-typescript": "^1.2.0",
-    "@myparcel-eslint/eslint-config-prettier-typescript-vue": "^1.2.0",
-    "@myparcel/prettier-config": "^1.1.0",
+    "@myparcel-dev/eslint-config-esnext": "^1.2.0",
+    "@myparcel-dev/eslint-config-import": "^1.0.0",
+    "@myparcel-dev/eslint-config-node": "^1.2.0",
+    "@myparcel-dev/eslint-config-prettier": "^1.2.0",
+    "@myparcel-dev/eslint-config-prettier-typescript": "^1.2.0",
+    "@myparcel-dev/eslint-config-prettier-typescript-vue": "^1.2.0",
+    "@myparcel-dev/prettier-config": "^2.0.0",
     "@types/is-ci": "^3",
     "@vue/tsconfig": "^0.5.0",
     "array.prototype.flatmap": "^1.3.1",

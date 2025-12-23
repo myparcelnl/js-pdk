@@ -1,4 +1,4 @@
-import {type EndpointDefinition} from '@myparcel/sdk';
+import {type EndpointDefinition} from '@myparcel-dev/sdk';
 import {type Plugin} from './php-pdk.types';
 
 export interface PdkEndpointDefinition extends EndpointDefinition {

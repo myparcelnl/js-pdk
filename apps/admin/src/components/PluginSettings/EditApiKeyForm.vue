@@ -10,8 +10,8 @@
 
 <script lang="ts" setup>
 import {type Component, computed, markRaw, ref, toValue, watch} from 'vue';
-import {Size, Variant} from '@myparcel-pdk/common';
-import {defineField, defineForm, FormHook, type FormInstance, MagicForm} from '@myparcel/vue-form-builder';
+import {Size, Variant} from '@myparcel-dev/pdk-common';
+import MagicForm, {defineField, defineForm, FormHook, type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {NotificationContainer, ResetButton, SubmitButton} from '../common';
 import {useActionStore} from '../../stores';
 import {defineFormField, FORM_KEY_ACCOUNT_SETTINGS, resolveFormComponent} from '../../forms';
@@ -40,17 +40,18 @@ const createForm = (): FormInstance => {
         name: FIELD_API_KEY,
         optional: true,
         ref: apiKeyRef,
-        isValid: computed(() => Boolean(hasAccount.value)),
         readOnlyWhen: () => Boolean(hasAccount.value),
       }),
 
       defineField({
+        name: 'submitButton',
         component: SubmitButton as Component,
         visibleWhen: () => !hasAccount.value,
         readOnlyWhen: () => !apiKeyRef.value,
       }),
 
       defineField({
+        name: 'resetButton',
         component: ResetButton as Component,
         attributes: {
           label: 'action_delete',

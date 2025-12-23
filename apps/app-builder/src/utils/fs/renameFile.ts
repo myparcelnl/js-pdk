@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import {type OneOrMore} from '@myparcel/ts-utils';
+import {type OneOrMore} from '@myparcel-dev/ts-utils';
 import {resolvePath} from '../resolvePath';
 import {logTargetPath} from '../debug/logTargetPath';
 import {logSourcePath} from '../debug/logSourcePath';

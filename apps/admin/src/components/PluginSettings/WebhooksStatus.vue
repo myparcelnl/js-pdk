@@ -27,8 +27,8 @@
 
 <script lang="ts" setup>
 import {computed, toValue} from 'vue';
-import {Status} from '@myparcel-pdk/common';
-import {partitionArray} from '@myparcel/ts-utils';
+import {Status} from '@myparcel-dev/pdk-common';
+import {partitionArray} from '@myparcel-dev/ts-utils';
 import {ActionButton, StatusIndicator} from '../common';
 import {type ActionDefinition, type WebhookDefinition} from '../../types';
 import {useActionStore, useQueryStore} from '../../stores';

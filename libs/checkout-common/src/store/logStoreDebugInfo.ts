@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import {type Keyable} from '@myparcel-pdk/common';
+import {type Keyable} from '@myparcel-dev/pdk-common';
 import {type StoreState} from '../types';
 
 export const logStoreDebugInfo = (

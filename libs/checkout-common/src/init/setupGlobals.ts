@@ -1,5 +1,5 @@
 // eslint-disable-next-line max-lines-per-function
-import {isEnumValue, isOfType} from '@myparcel/ts-utils';
+import {isEnumValue, isOfType} from '@myparcel-dev/ts-utils';
 import {
   doRequest,
   fieldsEqual,

@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 /* eslint-disable vue/no-unused-properties */
 import {computed} from 'vue';
-import {AdminComponent, type ButtonEmits, type ButtonProps, type ButtonSlots, Size} from '@myparcel-pdk/admin';
+import {AdminComponent, type ButtonEmits, type ButtonProps, type ButtonSlots, Size} from '@myparcel-dev/pdk-admin';
 import BaseButton from './common/BaseButton.vue';
 
 const props = withDefaults(defineProps<ButtonProps>(), {

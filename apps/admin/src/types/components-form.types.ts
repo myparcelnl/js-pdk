@@ -1,4 +1,4 @@
-import {type Keyable, type Settings, type ShippingMethodTypeMap, type TriState} from '@myparcel-pdk/common';
+import {type Keyable, type Settings, type ShippingMethodTypeMap, type TriState} from '@myparcel-dev/pdk-common';
 import {type OptionsProp, type PdkElementEmits, type PdkElementProps, type SelectOptionValue} from './form.types';
 import {type ArrayItem} from './common.types';
 

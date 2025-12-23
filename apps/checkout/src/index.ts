@@ -11,13 +11,13 @@ export type {
   PdkCheckoutForm,
   PdkFormData,
   StoreCallbackUpdate,
-} from '@myparcel-pdk/checkout-common';
+} from '@myparcel-dev/pdk-checkout-common';
 
-export * from '@myparcel-pdk/checkout-delivery-options';
+export * from '@myparcel-dev/pdk-checkout-delivery-options';
 
-export * from '@myparcel-pdk/checkout-separate-address-fields';
+export * from '@myparcel-dev/pdk-checkout-separate-address-fields';
 
-export * from '@myparcel-pdk/checkout-tax-fields';
+export * from '@myparcel-dev/pdk-checkout-tax-fields';
 
 export {
   AddressField,
@@ -36,7 +36,7 @@ export {
   usePdkCheckout,
   useSettings,
   useUtil,
-} from '@myparcel-pdk/checkout-common';
+} from '@myparcel-dev/pdk-checkout-common';
 
 export {
   HIDE_DELIVERY_OPTIONS as EVENT_HIDE_DELIVERY_OPTIONS,
@@ -45,4 +45,4 @@ export {
   UPDATED_DELIVERY_OPTIONS as EVENT_UPDATED_DELIVERY_OPTIONS,
   UPDATE_CONFIG_IN as EVENT_UPDATE_CONFIG,
   UPDATE_DELIVERY_OPTIONS as EVENT_UPDATE_DELIVERY_OPTIONS,
-} from '@myparcel/delivery-options';
+} from '@myparcel-dev/delivery-options';

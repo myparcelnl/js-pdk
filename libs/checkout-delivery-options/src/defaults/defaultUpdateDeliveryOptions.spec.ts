@@ -1,7 +1,7 @@
 import {describe, expect, it} from 'vitest';
-import {tests, useCheckoutStore, usePdkCheckout} from '@myparcel-pdk/checkout-common';
-import {CarrierSetting} from '@myparcel/delivery-options';
-import {PackageTypeName} from '@myparcel/constants';
+import {tests, useCheckoutStore, usePdkCheckout} from '@myparcel-dev/pdk-checkout-common';
+import {CarrierSetting} from '@myparcel-dev/delivery-options';
+import {PackageTypeName} from '@myparcel-dev/constants';
 import {useDeliveryOptionsStore} from '../utils';
 import {initializeCheckoutDeliveryOptions} from '../initializeCheckoutDeliveryOptions';
 import {defaultUpdateDeliveryOptions} from './defaultUpdateDeliveryOptions';

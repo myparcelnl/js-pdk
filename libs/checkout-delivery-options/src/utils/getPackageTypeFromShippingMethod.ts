@@ -1,6 +1,6 @@
-import {type ShippingMethodId} from '@myparcel-pdk/common';
-import {PdkUtil, useSettings, useUtil} from '@myparcel-pdk/checkout-common';
-import {PackageTypeName} from '@myparcel/constants';
+import {type ShippingMethodId} from '@myparcel-dev/pdk-common';
+import {PdkUtil, useSettings, useUtil} from '@myparcel-dev/pdk-checkout-common';
+import {PackageTypeName} from '@myparcel-dev/constants';
 
 export const getPackageTypeFromShippingMethod = (shippingMethod: string): PackageTypeName | undefined => {
   const isEnumValue = useUtil(PdkUtil.IsEnumValue);

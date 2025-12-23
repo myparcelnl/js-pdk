@@ -41,7 +41,7 @@ import {
   type FormGroupSlots,
   generateFieldId,
   useLanguage,
-} from '@myparcel-pdk/admin';
+} from '@myparcel-dev/pdk-admin';
 
 const props = defineProps<FormGroupProps>();
 defineSlots<FormGroupSlots>();

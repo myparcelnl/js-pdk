@@ -1,5 +1,5 @@
 import {type SlotsType} from 'vue';
-import {type Size} from '@myparcel-pdk/common';
+import {type Size} from '@myparcel-dev/pdk-common';
 import {type AdminIcon, type AdminModalKey} from '../data';
 import {type Translation} from './language.types';
 import {type PdkElementProps} from './form.types';

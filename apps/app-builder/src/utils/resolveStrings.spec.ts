@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {type OneOrMore} from '@myparcel/ts-utils';
+import {type OneOrMore} from '@myparcel-dev/ts-utils';
 import {createTestContext} from '../__tests__/createTestContext';
 import {resolveStrings} from './resolveStrings';
 

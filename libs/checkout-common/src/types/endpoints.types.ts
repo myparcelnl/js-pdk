@@ -5,7 +5,7 @@ import {
   type PdkEndpointParameters,
   type PdkEndpointResponse,
   type Plugin,
-} from '@myparcel-pdk/common';
+} from '@myparcel-dev/pdk-common';
 
 export type FrontendPdkEndpointObject = EndpointObject<FrontendEndpoint>;
 

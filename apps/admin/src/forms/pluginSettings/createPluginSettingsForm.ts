@@ -1,6 +1,6 @@
 import {get as lodashGet} from 'lodash-unified';
-import {BackendEndpoint, type Plugin} from '@myparcel-pdk/common';
-import {defineForm, type FormInstance} from '@myparcel/vue-form-builder';
+import {BackendEndpoint, type Plugin} from '@myparcel-dev/pdk-common';
+import {defineForm, type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {useStoreQuery} from '../../composables';
 import {SubmitButton} from '../../components';
 import {executeAction} from '../../actions';

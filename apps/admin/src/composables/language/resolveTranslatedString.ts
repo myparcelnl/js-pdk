@@ -1,5 +1,5 @@
 import {get} from 'lodash-unified';
-import {isOfType} from '@myparcel/ts-utils';
+import {isOfType} from '@myparcel-dev/ts-utils';
 import {useGlobalContext} from '../context';
 import {type Translatable} from '../../types';
 import {type Replacers} from './types';

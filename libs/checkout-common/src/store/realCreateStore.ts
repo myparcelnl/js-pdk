@@ -1,5 +1,5 @@
-import {type Keyable} from '@myparcel-pdk/common';
-import {objectIsEqual} from '@myparcel/ts-utils';
+import {type Keyable} from '@myparcel-dev/pdk-common';
+import {objectIsEqual} from '@myparcel-dev/ts-utils';
 import {type InitialStoreData, type StoreData, type StoreListenerObject, type StoreState} from '../types';
 import {StoreListener} from '../data'; // eslint-disable-next-line max-lines-per-function
 import {logStoreDebugInfo} from './logStoreDebugInfo';

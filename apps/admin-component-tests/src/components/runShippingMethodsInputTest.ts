@@ -1,4 +1,4 @@
-import {AdminComponent, type SelectOption} from '@myparcel-pdk/admin';
+import {AdminComponent, type SelectOption} from '@myparcel-dev/pdk-admin';
 import {type AdminComponentTest} from '../tests';
 import {TestSuite} from '../TestSuite';
 

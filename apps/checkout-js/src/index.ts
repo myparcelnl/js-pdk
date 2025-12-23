@@ -1,1 +1,1 @@
-export * from '@myparcel-pdk/checkout';
+export * from '@myparcel-dev/pdk-checkout';
