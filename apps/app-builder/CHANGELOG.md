@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [4.1.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-app-builder@4.0.0...@myparcel-dev/pdk-app-builder@4.1.0) "@myparcel-dev/pdk-app-builder" (2025-12-23)
+
+
+### Features
+
+* migrate to [@myparcel-dev](https://github.com/myparcel-dev) scope ([#289](https://github.com/myparcelnl/js-pdk/issues/289)) ([ca169be](https://github.com/myparcelnl/js-pdk/commit/ca169bec42dcf7174ce20b1bfb392ae620b6c7fd))
+
+
+
+
 ## [4.0.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/app-builder@3.0.1...@myparcel-pdk/app-builder@4.0.0) "@myparcel-pdk/app-builder" (2025-11-10)
 
 

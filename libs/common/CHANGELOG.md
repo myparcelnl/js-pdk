@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.11.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-common@1.10.0...@myparcel-dev/pdk-common@1.11.0) "@myparcel-dev/pdk-common" (2025-12-23)
+
+
+### Features
+
+* migrate to [@myparcel-dev](https://github.com/myparcel-dev) scope ([#289](https://github.com/myparcelnl/js-pdk/issues/289)) ([ca169be](https://github.com/myparcelnl/js-pdk/commit/ca169bec42dcf7174ce20b1bfb392ae620b6c7fd))
+
+
+
+
 ## [1.10.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-pdk/common@1.9.0...@myparcel-pdk/common@1.10.0) "@myparcel-pdk/common" (2025-11-10)
 
 
