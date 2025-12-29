@@ -9,9 +9,6 @@ import {
 import {getAddressFields, getFullStreet, triggerFormChange} from '../utils';
 import {SEPARATE_ADDRESS_FIELDS} from '../constants';
 
-// Track last written address1 values to prevent infinite loops
-const lastWrittenAddress1: Record<string, string> = {};
-
 /**
  * Fill address1 field when separate address fields are changed.
  */
@@ -39,11 +36,11 @@ export const synchronizeAddress1: StoreCallbackUpdate<CheckoutStoreState> = (new
 
     // Prevent infinite update loop: only write when value actually changes
     const newAddress1 = getFullStreet(addressType);
-    if (lastWrittenAddress1[addressType] === newAddress1) {
+
+    if (hasAddress1 === newAddress1) {
       return;
     }
 
-    lastWrittenAddress1[addressType] = newAddress1;
     setFieldValue(AddressField.Address1, newAddress1, addressType, false);
   });
 
