@@ -14,7 +14,7 @@ const {mockFieldsEqual, mockSetFieldValue, mockGetAddressFieldValue, mockGetAddr
   };
 });
 
-vi.mock('@myparcel-pdk/checkout-common', () => ({
+vi.mock('@myparcel-dev/pdk-checkout-common', () => ({
   AddressField: {Address1: 'address1', Street: 'street', Number: 'number'},
   PdkUtil: {
     FieldsEqual: 'fieldsEqual',
@@ -70,22 +70,23 @@ describe('synchronizeAddress1', () => {
     expect(mockTriggerFormChange).not.toHaveBeenCalled();
   });
 
-  it('prevents writing address1 when cache matches', () => {
+  it('prevents writing address1 when value matches new address', () => {
     mockFieldsEqual.mockReturnValue(false);
-    mockGetAddressFieldValue.mockReturnValue('existing');
     mockGetAddressFields.mockReturnValue({street: 'Test', number: '1'});
     mockGetFullStreet.mockReturnValue('Test 1');
 
     const newState = {form: {}};
     const oldState = {form: {}};
 
-    // First call - should write
+    // Case 1: Values differ -> Should write
+    mockGetAddressFieldValue.mockReturnValue('Old Address');
     synchronizeAddress1(newState as any, oldState as any);
     expect(mockSetFieldValue).toHaveBeenCalledTimes(1);
 
-    // Second call with same value - should not write due to cache
+    // Case 2: Values are equal -> Should NOT write
+    mockGetAddressFieldValue.mockReturnValue('Test 1'); // Simulate update
     synchronizeAddress1(newState as any, oldState as any);
-    expect(mockSetFieldValue).toHaveBeenCalledTimes(1); // Still 1
+    expect(mockSetFieldValue).toHaveBeenCalledTimes(1); // Still 1 (no new call)
   });
 
 
