@@ -21,7 +21,7 @@ export const synchronizeAddress1: StoreCallbackUpdate<CheckoutStoreState> = (new
 
   const addressTypesToUpdate = checkout.state.addressTypes.filter((addressType) => {
     return SEPARATE_ADDRESS_FIELDS.some((fieldName) => {
-      return oldState && fieldsEqual(newState.form, oldState.form, fieldName, addressType);
+      return oldState && !fieldsEqual(newState.form, oldState.form, fieldName, addressType);
     });
   });
 
@@ -34,7 +34,14 @@ export const synchronizeAddress1: StoreCallbackUpdate<CheckoutStoreState> = (new
       return;
     }
 
-    setFieldValue(AddressField.Address1, getFullStreet(addressType), addressType, false);
+    // Prevent infinite update loop: only write when value actually changes
+    const newAddress1 = getFullStreet(addressType);
+
+    if (hasAddress1 === newAddress1) {
+      return;
+    }
+
+    setFieldValue(AddressField.Address1, newAddress1, addressType, false);
   });
 
   if (addressTypesToUpdate.length) {
