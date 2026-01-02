@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.7.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-separate-address-fields@1.7.0...@myparcel-dev/pdk-checkout-separate-address-fields@1.7.1) "@myparcel-dev/pdk-checkout-separate-address-fields" (2026-01-02)
+
+
+### Bug Fixes
+
+* prevent infinite loop in separate address fields ([#286](https://github.com/myparcelnl/js-pdk/issues/286)) ([71b1943](https://github.com/myparcelnl/js-pdk/commit/71b194313f6b2bbcff471812f9f4cbe019fd023e))
+
+
+
+
 ## [1.7.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-separate-address-fields@1.6.0...@myparcel-dev/pdk-checkout-separate-address-fields@1.7.0) "@myparcel-dev/pdk-checkout-separate-address-fields" (2025-12-23)
 
 
