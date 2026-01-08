@@ -7,6 +7,7 @@ export * from './createLabelAmountField';
 export * from './createLargeFormatField';
 export * from './createOnlyRecipientField';
 export * from './createPackageTypeField';
+export * from './createPriorityDeliveryField';
 export * from './createRef';
 export * from './createSameDayDeliveryField';
 export * from './createShipmentOptionField';
