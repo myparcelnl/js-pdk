@@ -10,6 +10,7 @@ export * from './getInsuranceOptions';
 export * from './getPackageTypes';
 export * from './hasPostNlAgeCheck';
 export * from './hasShipmentOption';
+export * from './isPackageTypeMailbox';
 export * from './isPackageTypePackage';
 export * from './isPackageTypePackageOrSmall';
 export * from './isPackageTypeSmallPackage';
