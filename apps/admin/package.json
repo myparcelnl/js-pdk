@@ -49,6 +49,10 @@
     "vue": "^3.3.0",
     "vue-tsc": "^2.0.0"
   },
+  "peerDependencies": {
+    "@myparcel-dev/vue-form-builder": ">=1.0.0-beta.53",
+    "vue": ">=3.3.0"
+  },
   "devDependencies": {
     "@myparcel-dev/pdk-build-vite": "workspace:*",
     "@types/lodash-es": "^4.17.6",
