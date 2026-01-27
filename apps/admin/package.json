@@ -39,6 +39,7 @@
     "@myparcel-dev/constants": "^2.7.0",
     "@myparcel-dev/pdk-common": "workspace:^1.11.0",
     "@myparcel-dev/sdk": "^5.0.0",
+    "@myparcel-dev/vue-form-builder": "^1.0.0-beta.54",
     "@tanstack/vue-query": "^4.0.0",
     "@vueuse/core": "^10.0.0",
     "lodash": "^4.17.21",
