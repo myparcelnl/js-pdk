@@ -12,6 +12,7 @@ export * from './hasPostNlAgeCheck';
 export * from './hasShipmentOption';
 export * from './isPackageTypeMailbox';
 export * from './isPackageTypePackage';
+export * from './isPackageTypePackageOrMailbox';
 export * from './isPackageTypePackageOrSmall';
 export * from './isPackageTypeSmallPackage';
 export * from './resolveFormComponent';
