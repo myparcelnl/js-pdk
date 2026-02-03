@@ -847,6 +847,7 @@ export namespace Shipment {
     labelDescription?: string;
     largeFormat?: boolean;
     onlyRecipient?: boolean;
+    priority_delivery?: boolean;
     return?: boolean;
     sameDayDelivery?: boolean;
     signature?: boolean;
