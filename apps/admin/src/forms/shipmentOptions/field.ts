@@ -30,6 +30,8 @@ export const LARGE_FORMAT = 'largeFormat' satisfies keyof Shipment.ModelShipment
 
 export const ONLY_RECIPIENT = 'onlyRecipient' satisfies keyof Shipment.ModelShipmentOptions;
 
+export const PRIORITY_DELIVERY = 'priorityDelivery' satisfies keyof Shipment.ModelShipmentOptions;
+
 export const SAME_DAY_DELIVERY = 'sameDayDelivery' satisfies keyof Shipment.ModelShipmentOptions;
 
 export const SIGNATURE = 'signature' satisfies keyof Shipment.ModelShipmentOptions;
@@ -62,6 +64,8 @@ export const FIELD_LARGE_FORMAT: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${LARGE
 
 export const FIELD_ONLY_RECIPIENT: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${ONLY_RECIPIENT}`;
 
+export const FIELD_PRIORITY_DELIVERY: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${PRIORITY_DELIVERY}`;
+
 export const FIELD_SAME_DAY_DELIVERY: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${SAME_DAY_DELIVERY}`;
 
 export const FIELD_SIGNATURE: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${SIGNATURE}`;
@@ -84,6 +88,7 @@ export const ALL_FIELDS = [
   FIELD_MANUAL_WEIGHT,
   FIELD_PACKAGE_TYPE,
   FIELD_DELIVERY_TYPE,
+  FIELD_PRIORITY_DELIVERY,
   FIELD_SAME_DAY_DELIVERY,
   FIELD_SIGNATURE,
   FIELD_RECEIPT_CODE,
