@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.7.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-common@1.7.0...@myparcel-dev/pdk-checkout-common@1.7.2) "@myparcel-dev/pdk-checkout-common" (2026-02-05)
+
+
+### Bug Fixes
+
+* **admin:** fix  issues with forms not displaying on some environments ([#294](https://github.com/myparcelnl/js-pdk/issues/294)) ([96f889b](https://github.com/myparcelnl/js-pdk/commit/96f889bf197cfba32493d1a800119b68003a2c69))
+
+
+
+
 ## [1.7.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-common@1.6.0...@myparcel-dev/pdk-checkout-common@1.7.0) "@myparcel-dev/pdk-checkout-common" (2025-12-23)
 
 

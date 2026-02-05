@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-dev/pdk-admin",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@myparcel-dev/constants": "^2.7.0",
-    "@myparcel-dev/pdk-common": "workspace:^1.11.0",
+    "@myparcel-dev/pdk-common": "workspace:^1.11.1",
     "@myparcel-dev/sdk": "^5.0.0",
     "@myparcel-dev/vue-form-builder": "1.0.0-beta.42.6",
     "@tanstack/vue-query": "~4.43.0",

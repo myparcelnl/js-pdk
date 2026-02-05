@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-dev/pdk-checkout-separate-address-fields",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -28,7 +28,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-dev/pdk-checkout-common": "workspace:^1.7.0"
+    "@myparcel-dev/pdk-checkout-common": "workspace:^1.7.2"
   },
   "devDependencies": {
     "@myparcel-dev/pdk-build-vite": "workspace:*",

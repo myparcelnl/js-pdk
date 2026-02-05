@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-dev/pdk-admin-preset-default",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -27,7 +27,7 @@
     "typecheck": "run ws:vue:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-dev/pdk-admin": "workspace:^1.13.0",
+    "@myparcel-dev/pdk-admin": "workspace:^1.13.1",
     "@myparcel-dev/ts-utils": "^1.15.0",
     "@vuepic/vue-datepicker": "^11.0.2",
     "@vueuse/core": "^10.0.0",
