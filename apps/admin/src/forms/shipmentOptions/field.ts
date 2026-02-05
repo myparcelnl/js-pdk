@@ -36,7 +36,7 @@ export const SIGNATURE = 'signature' satisfies keyof Shipment.ModelShipmentOptio
 
 export const INSURANCE = 'insurance' satisfies keyof Shipment.ModelShipmentOptions;
 
-export const PRIORITY_DELIVERY = 'priority_delivery' satisfies keyof Shipment.ModelShipmentOptions;
+export const PRIORITY_DELIVERY = 'priorityDelivery' satisfies keyof Shipment.ModelShipmentOptions;
 
 export const MANUAL_WEIGHT = 'manualWeight';
 
