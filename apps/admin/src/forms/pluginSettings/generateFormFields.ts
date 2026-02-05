@@ -1,10 +1,10 @@
 import {ref, toRaw} from 'vue';
-import {type Plugin} from '@myparcel-dev/pdk-common';
 import {
-  type FieldConfiguration,
+  type AnyElementConfiguration,
   defineField,
   type InteractiveElementConfiguration,
 } from '@myparcel-dev/vue-form-builder';
+import {type Plugin} from '@myparcel-dev/pdk-common';
 import {defineFormField, resolveFormComponent} from '../helpers';
 import {type FormBuilder, parseBuilders} from '../form-builder';
 import {type AdminComponent} from '../../data';
@@ -15,7 +15,7 @@ type GenerateFormFields = (
     values: Record<string, unknown>;
   },
   prefix?: string,
-) => FieldConfiguration[];
+) => AnyElementConfiguration[];
 
 export const generateFormFields: GenerateFormFields = ({fields, values}, prefix = '') => {
   if (!fields) {
@@ -33,7 +33,7 @@ export const generateFormFields: GenerateFormFields = ({fields, values}, prefix 
       slots: $slot ? {default: () => $slot} : undefined,
       wrapper: $wrapper && typeof $wrapper === 'string' ? resolveFormComponent($wrapper as AdminComponent) : undefined,
       ...parseBuilders(($builders ?? []) as FormBuilder[], prefix),
-    } as FieldConfiguration;
+    } as AnyElementConfiguration;
 
     // Plain element
     if (!label || !name) {

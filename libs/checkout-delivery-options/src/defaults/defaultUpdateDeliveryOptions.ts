@@ -2,7 +2,9 @@ import {CarrierSetting} from '@myparcel-dev/delivery-options';
 import {useDeliveryOptionsStore} from '../utils';
 import {type CheckoutDeliveryOptionsSettings} from '../types';
 
-export const defaultUpdateDeliveryOptions = ((state) => {
+export const defaultUpdateDeliveryOptions: NonNullable<CheckoutDeliveryOptionsSettings['updateDeliveryOptions']> = ((
+  state,
+) => {
   const deliveryOptions = useDeliveryOptionsStore();
   const baseConfig = state.configuration.config;
 

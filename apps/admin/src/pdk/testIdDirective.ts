@@ -1,10 +1,10 @@
 import {type Directive} from 'vue';
 import {isDefined} from '@vueuse/core';
-import {type FieldInstance} from '@myparcel-dev/vue-form-builder';
+import {type AnyElementInstance} from '@myparcel-dev/vue-form-builder';
 
 const SEPARATOR = '--';
 
-type TestIdBinding = string | string[] | [string, FieldInstance];
+type TestIdBinding = string | string[] | [string, AnyElementInstance];
 
 export const testIdDirective: Directive<Element, TestIdBinding> = (el, binding) => {
   if (import.meta.env.MODE !== 'test') {
@@ -16,8 +16,7 @@ export const testIdDirective: Directive<Element, TestIdBinding> = (el, binding) 
   if (Array.isArray(binding.value)) {
     const filtered = binding.value.filter(isDefined);
 
-    const bindings =
-      typeof filtered[1] === 'string' ? (filtered as string[]) : [filtered[0], filtered[1]?.name as string];
+    const bindings = typeof filtered[1] === 'string' ? (filtered as string[]) : [filtered[0], filtered[1]?.name];
 
     testId = bindings.filter(isDefined).join(SEPARATOR);
   } else {
