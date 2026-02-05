@@ -1,7 +1,7 @@
 import {ref} from 'vue';
 import {afterEach, describe, expect, it} from 'vitest';
 import {flushPromises, mount} from '@vue/test-utils';
-import MagicForm, {defineForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
+import {defineForm, MagicForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {type AnyVal, type FormSetValueOperation} from '../types';
 import {buildAfterUpdate} from '../builders';
 
@@ -169,34 +169,32 @@ describe('executeSetValueOperation', () => {
   it.each(datasets)('should set value with $name', async ({input, result}) => {
     expect.assertions(1);
 
-    const form = defineForm('test', {});
+    const form = defineForm('test', {
+      fields: [
+        {
+          name: 'test',
+          component: 'input',
+          ref: ref(''),
+          afterUpdate: buildAfterUpdate(input, ''),
+        },
+        {
+          name: 'test2',
+          component: 'input',
+          ref: ref(''),
+        },
+        {
+          name: 'test3',
+          component: 'input',
+          ref: ref(''),
+        },
+      ],
+    });
 
-    await form.addElement({
-      name: 'test',
-      component: 'input',
-      ref: ref(''),
-      afterUpdate: buildAfterUpdate(input, ''),
-    });
-    await form.addElement({
-      name: 'test2',
-      component: 'input',
-      ref: ref(''),
-    });
-    await form.addElement({
-      name: 'test3',
-      component: 'input',
-      ref: ref(''),
-    });
-
-    const wrapper = mount(MagicForm, {props: {form}});
+    mount(MagicForm, {props: {form}});
 
     form.setValue('test', 'test');
 
-    const testField = form.getField('test');
-    // Trigger afterUpdate via hooks manager (new vue-form-builder API)
-    await testField?.hooks.execute('afterUpdate', testField, 'test', '');
-
-    await wrapper.vm.$nextTick();
+    await flushPromises();
 
     expect(form.values).toEqual(result);
   });

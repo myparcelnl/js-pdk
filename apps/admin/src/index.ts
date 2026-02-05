@@ -1,16 +1,14 @@
 export type {
+  AnyElementConfiguration,
+  AnyElementInstance,
   ComponentOrHtmlElement,
-  FieldConfiguration,
-  FieldConfiguration as AnyElementConfiguration,
-  FieldConfiguration as PlainElementConfiguration,
-  FieldConfiguration as ResolvedElementConfiguration,
-  FieldInstance,
-  FieldInstance as AnyElementInstance,
-  FieldInstance as PlainElementInstance,
   FormConfiguration,
   FormInstance,
   InteractiveElementConfiguration,
   InteractiveElementInstance,
+  PlainElementConfiguration,
+  PlainElementInstance,
+  ResolvedElementConfiguration,
 } from '@myparcel-dev/vue-form-builder';
 
 export * from './actions';

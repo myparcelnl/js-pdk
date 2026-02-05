@@ -28,7 +28,7 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-dev/delivery-options": "^6.23.0",
+    "@myparcel-dev/delivery-options": "^6.25.0",
     "@myparcel-dev/pdk-checkout-common": "workspace:^1.7.0",
     "@myparcel-dev/ts-utils": "^1.15.0"
   },

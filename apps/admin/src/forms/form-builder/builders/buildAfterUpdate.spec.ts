@@ -1,7 +1,7 @@
 import {ref} from 'vue';
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import {mount} from '@vue/test-utils';
-import MagicForm, {defineForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
+import {defineForm, MagicForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {buildAfterUpdate} from './buildAfterUpdate';
 
 describe('buildAfterUpdate', () => {
@@ -20,13 +20,15 @@ describe('buildAfterUpdate', () => {
 
     const afterUpdate = vi.fn(buildAfterUpdate([{$setValue: {$value: 'hello'}}], ''));
 
-    const form = defineForm('test', {});
-
-    await form.addElement({
-      name: 'test',
-      component: 'input',
-      ref: ref(''),
-      afterUpdate,
+    const form = defineForm('test', {
+      fields: [
+        {
+          name: 'test',
+          component: 'input',
+          ref: ref(''),
+          afterUpdate,
+        },
+      ],
     });
 
     const wrapper = mount(MagicForm, {props: {form}});
@@ -36,13 +38,12 @@ describe('buildAfterUpdate', () => {
     form.setValue('test', 'test');
 
     const testField = form.getField('test');
-    // afterUpdate must be triggered manually via hooks.execute in new vue-form-builder API
-    await testField?.hooks.execute('afterUpdate', testField, 'test', '');
+    // todo remove this when afterUpdate is properly triggered
+    testField?.afterUpdate(testField);
 
     await wrapper.vm.$nextTick();
 
-    // The spy is called once when we execute the hook
-    expect(afterUpdate).toHaveBeenCalled();
+    expect(afterUpdate).toHaveBeenCalledTimes(1);
     expect(form.getValue('test')).toBe('hello');
   });
 });

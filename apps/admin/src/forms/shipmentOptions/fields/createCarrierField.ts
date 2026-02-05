@@ -1,6 +1,6 @@
 import {toValue} from 'vue';
-import {AdminContextKey, type Plugin} from '@myparcel-dev/pdk-common';
 import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
+import {AdminContextKey, type Plugin} from '@myparcel-dev/pdk-common';
 import {PackageTypeName} from '@myparcel-dev/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_INSURANCE, FIELD_PACKAGE_TYPE, PROP_OPTIONS} from '../field';

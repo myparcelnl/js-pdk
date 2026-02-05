@@ -2,9 +2,11 @@
 
 import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, type MockInstance, vi} from 'vitest';
 import {mount} from '@vue/test-utils';
+import {AdminComponent} from '@myparcel-dev/pdk-admin-component-tests';
 import {useQueryStore} from '../../stores';
 import {globalLogger} from '../../services';
 import {doComponentTestSetup, doComponentTestTeardown, mockDefaultTranslations} from '../../__tests__';
+import DefaultBox from '../../../../admin-preset-default/src/components/DefaultBox.vue';
 import {useLanguage} from './useLanguage';
 
 let warnSpy: MockInstance;
@@ -25,7 +27,9 @@ describe('useLanguage', () => {
   });
 
   beforeEach(() => {
-    doComponentTestSetup();
+    doComponentTestSetup({
+      [AdminComponent.Box]: DefaultBox,
+    });
 
     warnSpy = vi.spyOn(globalLogger, 'warn');
   });
