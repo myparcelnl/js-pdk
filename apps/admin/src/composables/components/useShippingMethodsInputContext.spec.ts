@@ -2,6 +2,8 @@ import {defineComponent, h} from 'vue';
 import {beforeEach, describe, expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
 import {type ShippingMethodTypeMap, TriState} from '@myparcel-dev/pdk-common';
+import {DefaultBox} from '@myparcel-dev/pdk-admin-preset-default';
+import {AdminComponent} from '@myparcel-dev/pdk-admin-component-tests';
 import {PackageTypeName} from '@myparcel-dev/constants';
 import {createFormElement} from '../../utils';
 import {type ShippingMethodsInputProps} from '../../types';
@@ -29,7 +31,9 @@ interface TestInput {
 
 describe('useShippingMethodsInputContext', () => {
   beforeEach(() => {
-    doComponentTestSetup();
+    doComponentTestSetup({
+      [AdminComponent.Box]: DefaultBox,
+    });
   });
 
   it.each([
