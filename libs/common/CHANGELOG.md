@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.12.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-common@1.11.1...@myparcel-dev/pdk-common@1.12.0) "@myparcel-dev/pdk-common" (2026-02-06)
+
+
+### Features
+
+* add priority mailbox delivery fields ([#290](https://github.com/myparcelnl/js-pdk/issues/290)) ([1bea145](https://github.com/myparcelnl/js-pdk/commit/1bea1454676e33f1364c401724b203f71404b672))
+
+
+
+
 ## [1.11.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-common@1.11.0...@myparcel-dev/pdk-common@1.11.1) "@myparcel-dev/pdk-common" (2026-02-05)
 
 

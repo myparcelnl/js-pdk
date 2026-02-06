@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-dev/pdk-checkout-js",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -20,7 +20,7 @@
     "test:update": "run ws:test:update \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-dev/pdk-checkout": "workspace:^1.7.2"
+    "@myparcel-dev/pdk-checkout": "workspace:^1.7.3"
   },
   "devDependencies": {
     "@myparcel-dev/pdk-build-vite": "workspace:*",
