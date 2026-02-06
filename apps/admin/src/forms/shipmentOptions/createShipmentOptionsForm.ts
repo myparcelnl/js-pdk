@@ -20,6 +20,7 @@ import {
   createDigitalStampRangeField,
   createDirectReturnField,
   createInsuranceField,
+  createPriorityDeliveryField,
   createLabelAmountField,
   createLargeFormatField,
   createOnlyRecipientField,
@@ -78,6 +79,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
       createSameDayDeliveryField(refs),
       createReceiptCodeField(refs),
       createInsuranceField(refs),
+      createPriorityDeliveryField(refs),
     ],
   });
 };

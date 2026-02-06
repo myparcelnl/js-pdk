@@ -48,10 +48,24 @@
               "primary": false,
               "type": "main",
               "capabilities": {
-                "deliveryTypes": [],
-                "features": [],
-                "packageTypes": [],
-                "shipmentOptions": []
+                "deliveryTypes": ["standard", "morning", "evening"],
+                "features": {
+                  "labelDescriptionLength": 45
+                },
+                "packageTypes": ["package", "mailbox", "package_small"],
+                "shipmentOptions": {
+                  "signature": true,
+                  "insurance": [
+                    0, 10000, 25000, 50000, 100000, 150000, 200000, 250000,
+                    300000, 350000, 400000, 450000, 500000
+                  ],
+                  "return": true,
+                  "ageCheck": true,
+                  "onlyRecipient": true,
+                  "sameDayDelivery": false,
+                  "largeFormat": true,
+                  "priority_delivery": true
+                }
               },
               "returnCapabilities": {
                 "deliveryTypes": ["standard"],
@@ -92,10 +106,24 @@
         "primary": false,
         "type": "main",
         "capabilities": {
-          "deliveryTypes": [],
-          "features": [],
-          "packageTypes": [],
-          "shipmentOptions": []
+          "deliveryTypes": ["standard", "morning", "evening"],
+          "features": {
+            "labelDescriptionLength": 45
+          },
+          "packageTypes": ["package", "mailbox", "package_small"],
+          "shipmentOptions": {
+            "signature": true,
+            "insurance": [
+              0, 10000, 25000, 50000, 100000, 150000, 200000, 250000, 300000,
+              350000, 400000, 450000, 500000
+            ],
+            "return": true,
+            "ageCheck": true,
+            "onlyRecipient": true,
+            "sameDayDelivery": false,
+            "largeFormat": true,
+            "priority_delivery": true
+          }
         },
         "returnCapabilities": {
           "deliveryTypes": ["standard"],
@@ -254,10 +282,24 @@
           "primary": false,
           "type": "main",
           "capabilities": {
-            "deliveryTypes": [],
-            "features": [],
-            "packageTypes": [],
-            "shipmentOptions": []
+            "deliveryTypes": ["standard", "morning", "evening"],
+            "features": {
+              "labelDescriptionLength": 45
+            },
+            "packageTypes": ["package", "mailbox", "package_small"],
+            "shipmentOptions": {
+              "signature": true,
+              "insurance": [
+                0, 10000, 25000, 50000, 100000, 150000, 200000, 250000, 300000,
+                350000, 400000, 450000, 500000
+              ],
+              "return": true,
+              "ageCheck": true,
+              "onlyRecipient": true,
+              "sameDayDelivery": false,
+              "largeFormat": true,
+              "priority_delivery": true
+            }
           },
           "returnCapabilities": {
             "deliveryTypes": ["standard"],

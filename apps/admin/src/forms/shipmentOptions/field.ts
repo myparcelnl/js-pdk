@@ -36,6 +36,8 @@ export const SIGNATURE = 'signature' satisfies keyof Shipment.ModelShipmentOptio
 
 export const INSURANCE = 'insurance' satisfies keyof Shipment.ModelShipmentOptions;
 
+export const PRIORITY_DELIVERY = 'priorityDelivery' satisfies keyof Shipment.ModelShipmentOptions;
+
 export const MANUAL_WEIGHT = 'manualWeight';
 
 export const PROP_OPTIONS = 'options';
@@ -68,6 +70,8 @@ export const FIELD_SIGNATURE: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${SIGNATUR
 
 export const FIELD_INSURANCE: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${INSURANCE}`;
 
+export const FIELD_PRIORITY_DELIVERY: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${PRIORITY_DELIVERY}`;
+
 export const FIELD_MANUAL_WEIGHT: FieldName = `${PHYSICAL_PROPERTIES_PREFIX}.${MANUAL_WEIGHT}`;
 
 export const FIELD_RECEIPT_CODE: FieldName = `${SHIPMENT_OPTIONS_PREFIX}.${RECEIPT_CODE}`;
@@ -78,6 +82,7 @@ export const ALL_FIELDS = [
   FIELD_DIRECT_RETURN,
   FIELD_HIDE_SENDER,
   FIELD_INSURANCE,
+  FIELD_PRIORITY_DELIVERY,
   FIELD_LABEL_AMOUNT,
   FIELD_LARGE_FORMAT,
   FIELD_ONLY_RECIPIENT,
