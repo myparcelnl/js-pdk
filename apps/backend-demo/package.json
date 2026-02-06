@@ -19,7 +19,7 @@
     "translations:init": "test -f data/translations/en.json || yarn translations:import"
   },
   "devDependencies": {
-    "@apollo/server": "^4.4.1",
+    "@apollo/server": "^5.4.0",
     "@myparcel-dev/pdk-app-builder": "workspace:*",
     "@myparcel-dev/pdk-common": "workspace:*",
     "@myparcel-dev/ts-utils": "^1.15.0",
