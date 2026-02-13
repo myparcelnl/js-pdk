@@ -3,9 +3,9 @@
 
 import {toRaw} from 'vue';
 import {get} from 'lodash-unified';
-import {type Plugin} from '@myparcel-dev/pdk-common';
 import {defineForm, type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {type OneOrMore, toArray} from '@myparcel-dev/ts-utils';
+import {type Plugin} from '@myparcel-dev/pdk-common';
 import {addBulkEditNotification} from '../helpers';
 import {createShipmentFormName} from '../../utils';
 import {useModalStore} from '../../stores';
@@ -67,7 +67,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
 
       createLabelAmountField(refs),
 
-      createDigitalStampRangeField(refs),
+      createDigitalStampRangeField(refs, order),
 
       // Actual shipment options
       createAgeCheckField(refs),
