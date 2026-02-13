@@ -1,7 +1,7 @@
 import {ref, toValue} from 'vue';
 import {get} from 'lodash-unified';
-import {TriState} from '@myparcel-dev/pdk-common';
 import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
+import {type Plugin, TriState} from '@myparcel-dev/pdk-common';
 import {PackageTypeName} from '@myparcel-dev/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from '../field';
@@ -10,17 +10,19 @@ import {type GlobalFieldProps, type OptionsProp} from '../../../types';
 import {AdminComponent} from '../../../data';
 import {useDigitalStampRanges, useOrderData, usePluginSettings} from '../../../composables';
 
-export const createDigitalStampRangeField = (refs: ShipmentOptionsRefs): InteractiveElementConfiguration => {
+export const createDigitalStampRangeField = (
+  refs: ShipmentOptionsRefs,
+  order?: Plugin.ModelContextOrderDataContext,
+): InteractiveElementConfiguration => {
   const pluginSettings = usePluginSettings();
-  const {order} = useOrderData();
-
-  const orderData = toValue(order);
+  const fallbackOrderData = order ? undefined : toValue(useOrderData().order);
+  const orderData = order ?? fallbackOrderData;
 
   const {initialWeight, manualWeight} = orderData?.physicalProperties ?? {};
 
   const totalWeight = Number(initialWeight) + Number(pluginSettings.order.emptyDigitalStampWeight ?? 0);
 
-  const {ranges, currentRange} = useDigitalStampRanges(orderData);
+  const {ranges, currentRange} = useDigitalStampRanges(totalWeight, orderData);
 
   const selectedValue =
     TriState.Inherit === manualWeight
