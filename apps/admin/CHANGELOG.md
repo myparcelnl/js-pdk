@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.14.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@1.14.0...@myparcel-dev/pdk-admin@1.14.1) "@myparcel-dev/pdk-admin" (2026-02-16)
+
+
+### Bug Fixes
+
+* **admin:** handle bulk order ids in digital stamp range field ([#301](https://github.com/myparcelnl/js-pdk/issues/301)) ([3794ab7](https://github.com/myparcelnl/js-pdk/commit/3794ab7d65ee6ab70ac26376fc9ddc094d0002ce))
+
+
+
+
 ## [1.14.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@1.13.1...@myparcel-dev/pdk-admin@1.14.0) "@myparcel-dev/pdk-admin" (2026-02-06)
 
 
