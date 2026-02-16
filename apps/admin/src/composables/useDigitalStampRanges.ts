@@ -10,11 +10,15 @@ interface UseDigitalStampRanges {
   currentRange: ComputedRef<SelectOptionWithPlainLabel<number, string>>;
 }
 
-export const useDigitalStampRanges = (weight: MaybeRef<number>): UseDigitalStampRanges => {
-  // todo: move this to global context
-  const {order} = useOrderData();
+export const useDigitalStampRanges = (
+  weight: MaybeRef<number>,
+  order?: MaybeRef<null | {digitalStampRanges?: Plugin.DigitalStampRange[]}>,
+): UseDigitalStampRanges => {
+  const fallbackOrder = order ? null : useOrderData().order;
 
-  const allRanges = computed<Plugin.DigitalStampRange[]>(() => toValue(order).digitalStampRanges ?? []);
+  const allRanges = computed<Plugin.DigitalStampRange[]>(() => {
+    return toValue(order ?? fallbackOrder)?.digitalStampRanges ?? [];
+  });
 
   const ranges = computed<SelectOptionWithPlainLabel<number, string>[]>(() => {
     return allRanges.value.map((range) => ({
