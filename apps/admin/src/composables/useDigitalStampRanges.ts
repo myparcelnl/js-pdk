@@ -12,7 +12,7 @@ interface UseDigitalStampRanges {
 
 export const useDigitalStampRanges = (
   weight: MaybeRef<number>,
-  order?: MaybeRef<null | Pick<Plugin.ModelPdkOrder, 'digitalStampRanges'>>,
+  order?: MaybeRef<null | {digitalStampRanges?: Plugin.DigitalStampRange[]}>,
 ): UseDigitalStampRanges => {
   const fallbackOrder = order ? null : useOrderData().order;
 
