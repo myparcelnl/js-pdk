@@ -8110,7 +8110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:^4.3.7, debug@npm:^4.4.1":
+"debug@npm:^4.3.7, debug@npm:^4.4.0, debug@npm:^4.4.1":
   version: 4.4.3
   resolution: "debug@npm:4.4.3"
   dependencies:
@@ -15091,13 +15091,13 @@ __metadata:
   linkType: hard
 
 "simple-git@npm:^3.16.0":
-  version: 3.24.0
-  resolution: "simple-git@npm:3.24.0"
+  version: 3.33.0
+  resolution: "simple-git@npm:3.33.0"
   dependencies:
     "@kwsites/file-exists": "npm:^1.1.1"
     "@kwsites/promise-deferred": "npm:^1.1.1"
-    debug: "npm:^4.3.4"
-  checksum: 10c0/4329e5be1a7af1ebb476354ed6edf6d2828dc221e15d22ce3e5e8028f537d5e9ac059d813911516f78e22dfa2ee4db4c8cf30bf912bd284e530b733bd6b5c3a0
+    debug: "npm:^4.4.0"
+  checksum: 10c0/463e91f3ee04b7fc445284c64502a4ee3d607f626f18c8bcc036815a30fe178d2216976e683c6368edd7b3093801d6e534deeb8e700a4863a76ef23f881a0712
   languageName: node
   linkType: hard
 
