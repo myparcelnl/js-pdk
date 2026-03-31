@@ -3,6 +3,7 @@ import {afterEach, describe, expect, it} from 'vitest';
 import {mount} from '@vue/test-utils';
 import {defineForm, MagicForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {type FormSetPropOperation, type PropVal} from '../types';
+import {patchSetValue} from '../test/patchSetValue';
 import {buildAfterUpdate} from '../builders';
 
 interface TestInput {
@@ -148,6 +149,7 @@ describe('executeSetPropOperation', () => {
     });
 
     const wrapper = mount(MagicForm, {props: {form}});
+    patchSetValue(form);
 
     form.setValue('aardbei', 'test');
 
