@@ -40,7 +40,12 @@
 </template>
 
 <script lang="ts" setup>
-import {AdminComponent, type ToggleInputEmits, type ToggleInputProps, useToggleInputContext} from '@myparcel-dev/pdk-admin';
+import {
+  AdminComponent,
+  type ToggleInputEmits,
+  type ToggleInputProps,
+  useToggleInputContext,
+} from '@myparcel-dev/pdk-admin';
 
 // eslint-disable-next-line vue/no-unused-properties
 const props = defineProps<ToggleInputProps>();

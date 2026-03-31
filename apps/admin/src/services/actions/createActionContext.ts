@@ -1,5 +1,5 @@
-import {Variant} from '@myparcel-dev/pdk-common';
 import {toArray} from '@myparcel-dev/ts-utils';
+import {Variant} from '@myparcel-dev/pdk-common';
 import {createLogger} from '../logger';
 import {createNotification} from '../createNotification';
 import {
@@ -9,7 +9,6 @@ import {
   type MaybeAdminAction,
   type PdkNotification,
 } from '../../types';
-import {NotificationCategory} from '../../data';
 import {useAdminInstance} from '../../composables';
 import {type ActionContext} from '../../actions';
 import {getActionIdentifier} from './getActionIdentifier';

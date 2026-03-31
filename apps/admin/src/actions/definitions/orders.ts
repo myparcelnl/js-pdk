@@ -1,5 +1,5 @@
-import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {toArray} from '@myparcel-dev/ts-utils';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {openOrPrintPdf, resolvePrintParameters} from '../print';
 import {createOrdersMutationHandler, createQueryHandler, executeNextAction, resolveOrderParameters} from '../executors';
 import {defineAction} from '../defineAction';
@@ -7,8 +7,8 @@ import {getOrderShipmentIds} from '../../utils';
 import {type OrderIds} from '../../types';
 import {useModalStore} from '../../stores';
 import {AdminAction, AdminIcon, AdminModalKey} from '../../data';
+import {useGlobalContext} from '../../composables';
 import {shipmentsUpdateAction} from './shipments';
-import {useGlobalContext} from '../../composables/context/useGlobalContext';
 
 /**
  * Open modal to edit order shipment options.
@@ -122,7 +122,7 @@ export const orderViewInBackofficeAction = defineAction({
       NL: 'https://backoffice.myparcel.nl/orders',
       BE: 'https://backoffice.sendmyparcel.be/orders',
     };
-    const url = backofficeUrls[platform.localCountry as 'NL' | 'BE'] || backofficeUrls['NL'];
+    const url = backofficeUrls[platform.localCountry as 'NL' | 'BE'] || backofficeUrls.NL;
     window.open(url, '_blank');
   },
 });

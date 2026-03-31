@@ -1,6 +1,6 @@
-import {TriState} from '@myparcel-dev/pdk-common';
 import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {type PromiseOr} from '@myparcel-dev/ts-utils';
+import {TriState} from '@myparcel-dev/pdk-common';
 import {CarrierName} from '@myparcel-dev/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_AGE_CHECK, FIELD_ONLY_RECIPIENT, FIELD_SIGNATURE} from '../field';
