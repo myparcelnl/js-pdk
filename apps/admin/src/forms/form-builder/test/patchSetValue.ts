@@ -7,11 +7,16 @@ import {type FormInstance} from '@myparcel-dev/vue-form-builder';
  */
 export const patchSetValue = (form: FormInstance): void => {
   const original = form.setValue.bind(form);
-  form.setValue = (name: string, value: unknown) => {
+  form.setValue = (name: string | number | symbol, value: unknown) => {
+    if (typeof name !== 'string') {
+      original(name, value);
+      return;
+    }
+
     const field = form.getField(name);
 
-    if (field && !isRef(field.ref)) {
-      (field as Record<string, unknown>).ref = value;
+    if (field && 'ref' in field && !isRef(field.ref)) {
+      (field as unknown as Record<string, unknown>).ref = value;
       return;
     }
 
