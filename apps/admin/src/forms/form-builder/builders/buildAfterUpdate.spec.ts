@@ -2,6 +2,7 @@ import {ref} from 'vue';
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import {mount} from '@vue/test-utils';
 import {defineForm, MagicForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
+import {patchSetValue} from '../test/patchSetValue';
 import {buildAfterUpdate} from './buildAfterUpdate';
 
 describe('buildAfterUpdate', () => {
@@ -32,6 +33,7 @@ describe('buildAfterUpdate', () => {
     });
 
     const wrapper = mount(MagicForm, {props: {form}});
+    patchSetValue(form);
 
     expect(afterUpdate).not.toHaveBeenCalled();
 
