@@ -3,7 +3,14 @@ import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-build
 import {type ShipmentOptionsRefs} from '../types';
 import {type CarrierOptionData} from '../carrierOptionData.types';
 import {getFieldDependencies} from '../fieldDependencies';
-import {createHasShipmentOptionWatcher, defineFormField, getFieldLabel, resolveFormComponent} from '../../helpers';
+import {
+  createHasShipmentOptionWatcher,
+  defineFormField,
+  getCarrier,
+  getFieldLabel,
+  hasShipmentOption,
+  resolveFormComponent,
+} from '../../helpers';
 import {getFormCarrierName} from '../../helpers/getFormCarrierName';
 import {AdminComponent} from '../../../data';
 import {createRef} from './createRef';
@@ -28,21 +35,40 @@ export const createShipmentOptionField = (
   config?: Partial<InteractiveElementConfiguration>,
 ): InteractiveElementConfiguration => {
   const name = fieldName.split('.').pop() ?? fieldName;
-  const defaultValue = optionData.isSelectedByDefault ? TriState.On : TriState.Inherit;
-  const refValue = optionData.isRequired ? TriState.On : defaultValue;
 
   return defineFormField({
     name: fieldName,
     component: resolveFormComponent(AdminComponent.TriStateInput),
-    ref: createRef(refs, fieldName, refValue),
+    ref: createRef(refs, fieldName, TriState.Inherit),
     label: getFieldLabel(name),
     visibleWhen: createHasShipmentOptionWatcher(name),
-    disabledWhen: optionData.isRequired ? () => true : createHasShipmentOptionWatcher(name, true),
+    // Disabled when the carrier doesn't support this option, or when the
+    // carrier marks it as required (preventing user overrides).
+    disabledWhen: ({form}) => {
+      if (!hasShipmentOption(form, name)) {
+        return true;
+      }
+
+      return getCarrier(form)?.options?.[name]?.isRequired === true;
+    },
+    // Read-only prevents the TriState "inherit" toggle from being used,
+    // fully locking the field when the carrier requires this option.
+    readOnlyWhen: ({form}) => {
+      return getCarrier(form)?.options?.[name]?.isRequired === true;
+    },
 
     afterUpdate(field, value) {
-      const carrierName = getFormCarrierName(field.form);
+      const carrier = getCarrier(field.form);
+      const carrierName = carrier?.carrier;
 
       if (!carrierName) {
+        return;
+      }
+
+      // Enforce isRequired: revert any user change back to TriState.On.
+      if (carrier.options?.[name]?.isRequired === true && value !== TriState.On) {
+        field.form.setValue(fieldName, TriState.On);
+
         return;
       }
 
