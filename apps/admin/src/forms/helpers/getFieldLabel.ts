@@ -1,6 +1,11 @@
 import {snakeCase} from 'lodash-unified';
-import {type Shipment} from '@myparcel-dev/pdk-common';
 import {SHIPMENT_OPTIONS} from '../shipmentOptions';
 
-export const getFieldLabel = (name: keyof Shipment.ModelShipmentOptions): string =>
+/**
+ * Generates a translation key for a shipment option field label.
+ *
+ * Accepts `string` because option names come from the carrier context at
+ * runtime. Converts to snake_case for the translation lookup.
+ */
+export const getFieldLabel = (name: string): string =>
   snakeCase(`${SHIPMENT_OPTIONS}_${name}`);
