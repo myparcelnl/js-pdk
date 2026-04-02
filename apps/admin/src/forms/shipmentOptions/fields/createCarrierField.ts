@@ -1,4 +1,5 @@
 import {toValue} from 'vue';
+import {snakeCase} from 'lodash-unified';
 import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {AdminContextKey, type Plugin} from '@myparcel-dev/pdk-common';
 import {PackageTypeName} from '@myparcel-dev/constants';
@@ -44,20 +45,16 @@ export const createCarrierField = (
     onBeforeMount: async (field) => {
       const carrierSelectOptions = await Promise.all(
         dynamicContext.carriers.map(async (carrier): Promise<RadioGroupOption> => {
-          const query = useFetchCarrier(carrier.name);
+          const query = useFetchCarrier(carrier.carrier);
           await query.suspense();
 
           const apiCarrier = toValue(query.data);
 
-          let plainLabel = apiCarrier?.human ?? carrier.human ?? '';
-
-          if (!carrier.isDefault) {
-            plainLabel += ` ${carrier.label ?? translate(`carrier_type_${carrier.type}`)}`;
-          }
+          const plainLabel = apiCarrier?.human ?? translate(`carrier_${snakeCase(carrier.carrier)}`) ?? '';
 
           return {
             plainLabel,
-            value: carrier.externalIdentifier ?? apiCarrier?.name ?? '',
+            value: carrier.carrier ?? '',
             image: apiCarrier?.meta.logo_svg ? createAssetUrl(apiCarrier.meta.logo_svg) : undefined,
           };
         }),
@@ -77,6 +74,7 @@ export const createCarrierField = (
       setFieldProp(field.form, FIELD_PACKAGE_TYPE, PROP_OPTIONS, getPackageTypes(field.form));
       setFieldProp(field.form, FIELD_DELIVERY_TYPE, PROP_OPTIONS, getDeliveryTypes(field.form));
 
+      // @TODO make generic?
       setPostNlAgeCheckSubtext(field);
     },
   });
