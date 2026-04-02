@@ -1,7 +1,7 @@
 import {type FormInstance} from '@myparcel-dev/vue-form-builder';
-import {PackageTypeName} from '@myparcel-dev/constants';
 import {FIELD_PACKAGE_TYPE} from '../shipmentOptions';
 
+// @TODO Remove package type validators when the context provides visibility restrictions per option.
 export const isPackageTypeSmallPackage = (form: FormInstance): boolean => {
-  return PackageTypeName.PackageSmall === form.getValue(FIELD_PACKAGE_TYPE);
+  return form.getValue(FIELD_PACKAGE_TYPE) === 'SMALL_PACKAGE';
 };

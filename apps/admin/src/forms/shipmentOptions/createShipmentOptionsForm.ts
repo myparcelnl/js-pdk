@@ -3,33 +3,24 @@
 
 import {toRaw} from 'vue';
 import {get} from 'lodash-unified';
-import {defineForm, type FormInstance} from '@myparcel-dev/vue-form-builder';
+import {defineForm, type FormInstance, type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {type OneOrMore, toArray} from '@myparcel-dev/ts-utils';
-import {type Plugin} from '@myparcel-dev/pdk-common';
+import {AdminContextKey, type Plugin} from '@myparcel-dev/pdk-common';
 import {addBulkEditNotification} from '../helpers';
 import {createShipmentFormName} from '../../utils';
 import {useModalStore} from '../../stores';
 import {AdminModalKey} from '../../data';
-import {useAdminConfig} from '../../composables';
+import {useAdminConfig, useContext} from '../../composables';
 import {type ShipmentOptionsRefs} from './types';
-import {createHideSenderField} from './fields/createHideSenderField';
+import {createShipmentOptionField} from './fields/createShipmentOptionField';
 import {createDeliveryTypeField} from './fields/createDeliveryTypeField';
-import {
-  createAgeCheckField,
-  createCarrierField,
-  createDigitalStampRangeField,
-  createDirectReturnField,
-  createInsuranceField,
-  createPriorityDeliveryField,
-  createLabelAmountField,
-  createLargeFormatField,
-  createOnlyRecipientField,
-  createPackageTypeField,
-  createSameDayDeliveryField,
-  createSignatureField,
-  createReceiptCodeField,
-} from './fields';
-import {ALL_FIELDS, FIELD_CARRIER} from './field';
+import {createCarrierField} from './fields/createCarrierField';
+import {createDigitalStampRangeField, createLabelAmountField, createPackageTypeField} from './fields';
+import {fieldFactoryRegistry} from './fieldFactoryRegistry';
+import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_LABEL_AMOUNT, FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from './field';
+import {type CarrierOptionData} from './carrierOptionData.types';
+
+const SHIPMENT_OPTIONS_PREFIX = 'deliveryOptions.shipmentOptions';
 
 export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrder>): FormInstance => {
   const ordersArray = toArray(orders ?? []).map(toRaw);
@@ -46,40 +37,98 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
 
   const order = ((isBulk ? undefined : ordersArray[0]) ?? {}) as Plugin.ModelContextOrderDataContext;
 
-  const refs = ALL_FIELDS.reduce((acc, fieldName) => {
-    acc[fieldName] = get(order, fieldName);
-
-    return acc;
-  }, {} as ShipmentOptionsRefs);
-
-  refs[FIELD_CARRIER] = get(order, `${FIELD_CARRIER}.externalIdentifier`);
+  const dynamicContext = useContext(AdminContextKey.Dynamic);
+  const allCarrierOptions = collectAllCarrierOptions(dynamicContext.carriers);
+  const refs = buildDynamicRefs(order, allCarrierOptions);
 
   return defineForm(createShipmentFormName(order.externalIdentifier), {
     ...(isModal ? config.formConfigOverrides?.modal : null),
     ...config.formConfigOverrides?.shipmentOptions,
-    fields: [
-      // General delivery options
-      createCarrierField(refs, order.inheritedDeliveryOptions),
-
-      createPackageTypeField(refs),
-
-      createDeliveryTypeField(refs),
-
-      createLabelAmountField(refs),
-
-      createDigitalStampRangeField(refs, order),
-
-      // Actual shipment options
-      createAgeCheckField(refs),
-      createSignatureField(refs),
-      createOnlyRecipientField(refs),
-      createDirectReturnField(refs),
-      createLargeFormatField(refs),
-      createHideSenderField(refs),
-      createSameDayDeliveryField(refs),
-      createReceiptCodeField(refs),
-      createInsuranceField(refs),
-      createPriorityDeliveryField(refs),
-    ],
+    fields: createShipmentOptionsFields(refs, order, allCarrierOptions),
   });
+};
+
+/**
+ * Collect the union of all option keys across all carriers from the dynamic context.
+ *
+ * Fields are created for every unique option key so they exist when the user
+ * switches carriers. Visibility is controlled by `createHasShipmentOptionWatcher`
+ * which checks whether the currently selected carrier supports each option.
+ *
+ * The returned optionData per key uses the first carrier's data as a representative
+ * — it's only used by custom factories (e.g., insurance needs `insuredAmount`).
+ * Default values and required state come from `inheritedDeliveryOptions`, not from
+ * optionData.
+ */
+const collectAllCarrierOptions = (
+  carriers: {options: Record<string, CarrierOptionData>}[],
+): Record<string, CarrierOptionData> => {
+  const allOptions: Record<string, CarrierOptionData> = {};
+
+  for (const carrier of carriers) {
+    for (const [key, optionData] of Object.entries(carrier.options)) {
+      if (!allOptions[key]) {
+        allOptions[key] = optionData;
+      }
+    }
+  }
+
+  return allOptions;
+};
+
+/**
+ * Build refs dynamically from carrier options and static fields.
+ *
+ * Instead of a hardcoded ALL_FIELDS list, refs are built from the union of
+ * all carrier options in the dynamic context.
+ */
+const buildDynamicRefs = (
+  order: Plugin.ModelContextOrderDataContext,
+  carrierOptions: Record<string, CarrierOptionData>,
+): ShipmentOptionsRefs => {
+  const refs: ShipmentOptionsRefs = {};
+
+  // Static field refs
+  refs[FIELD_CARRIER] = get(order, `${FIELD_CARRIER}.externalIdentifier`);
+  refs[FIELD_LABEL_AMOUNT] = get(order, FIELD_LABEL_AMOUNT);
+  refs[FIELD_PACKAGE_TYPE] = get(order, FIELD_PACKAGE_TYPE);
+  refs[FIELD_DELIVERY_TYPE] = get(order, FIELD_DELIVERY_TYPE);
+  refs[FIELD_MANUAL_WEIGHT] = get(order, FIELD_MANUAL_WEIGHT);
+
+  // Dynamic shipment option refs from carrier options
+  for (const key of Object.keys(carrierOptions)) {
+    const fieldName = `${SHIPMENT_OPTIONS_PREFIX}.${key}`;
+    refs[fieldName] = get(order, fieldName);
+  }
+
+  return refs;
+};
+
+const createShipmentOptionsFields = (
+  refs: ShipmentOptionsRefs,
+  order: Plugin.ModelContextOrderDataContext,
+  carrierOptions: Record<string, CarrierOptionData>,
+): InteractiveElementConfiguration[] => {
+  // Static fields — always present
+  const staticFields = [
+    createCarrierField(refs, order.inheritedDeliveryOptions),
+    createPackageTypeField(refs),
+    createDeliveryTypeField(refs),
+    createLabelAmountField(refs),
+    createDigitalStampRangeField(refs, order),
+  ];
+
+  // Dynamic shipment option fields — driven by carrier.options
+  const dynamicFields = Object.entries(carrierOptions).map(([key, optionData]) => {
+    const fieldName = `${SHIPMENT_OPTIONS_PREFIX}.${key}`;
+    const factory = fieldFactoryRegistry[key];
+
+    if (factory) {
+      return factory(refs, fieldName, optionData);
+    }
+
+    return createShipmentOptionField(refs, fieldName, optionData);
+  });
+
+  return [...staticFields, ...dynamicFields];
 };

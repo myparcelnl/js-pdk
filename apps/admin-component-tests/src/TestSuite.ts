@@ -105,11 +105,11 @@ export class TestSuite<
     return this.resolveOptions();
   }
 
-  public getInputWrapper<NodeType extends Node>(wrapper: VueWrapper<Component>): DOMWrapper<NodeType> {
+  public getInputWrapper<NodeType extends Node>(wrapper: VueWrapper<any>): DOMWrapper<NodeType> {
     return this.getElementWrapper('input', wrapper);
   }
 
-  public getSelectWrapper<NodeType extends Node>(wrapper: VueWrapper<Component>): DOMWrapper<NodeType> {
+  public getSelectWrapper<NodeType extends Node>(wrapper: VueWrapper<any>): DOMWrapper<NodeType> {
     return this.getElementWrapper('select', wrapper);
   }
 
@@ -123,7 +123,7 @@ export class TestSuite<
 
   private getElementWrapper<NodeType extends Node>(
     element: string,
-    wrapper: VueWrapper<Component>,
+    wrapper: VueWrapper<any>,
   ): DOMWrapper<NodeType> {
     const byComponentName = wrapper.findByTestId(this.componentName);
 
