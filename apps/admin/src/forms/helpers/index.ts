@@ -5,6 +5,7 @@ export * from './createLabel';
 export * from './defineFormField';
 export * from './getCarrier';
 export * from './getFieldLabel';
+export * from './getFormCarrierName';
 export * from './getInsuranceOptions';
 export * from './getPackageTypes';
 export * from './hasShipmentOption';
