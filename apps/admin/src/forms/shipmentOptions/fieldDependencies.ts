@@ -20,6 +20,8 @@ export type OptionDependencies = {
   excludes?: string[];
 };
 
+// Keys must match the carrier name and option names from `carrier.options`
+// in the order context (not the legacy constants in `field.ts`).
 const fieldDependencies: Record<string, Record<string, OptionDependencies>> = {
   POSTNL: {
     requiresAgeVerification: {
