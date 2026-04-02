@@ -52,7 +52,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
  * Returns an empty object if no carrier or options are found.
  */
 const getCarrierOptions = (order: Plugin.ModelContextOrderDataContext): Record<string, CarrierOptionData> => {
-  return (get(order, 'deliveryOptions.options') ?? {}) as Record<string, CarrierOptionData>;
+  return (get(order, 'deliveryOptions.carrier.options') ?? {}) as Record<string, CarrierOptionData>;
 };
 
 /**
