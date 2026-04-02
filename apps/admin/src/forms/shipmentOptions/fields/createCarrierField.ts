@@ -4,22 +4,20 @@ import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-build
 import {AdminContextKey, type Plugin} from '@myparcel-dev/pdk-common';
 import {PackageTypeName} from '@myparcel-dev/constants';
 import {type ShipmentOptionsRefs} from '../types';
-import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_INSURANCE, FIELD_PACKAGE_TYPE, PROP_OPTIONS} from '../field';
+import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_PACKAGE_TYPE, PROP_OPTIONS} from '../field';
 import {getDeliveryTypes} from '../../helpers/getDeliveryTypes';
 import {
   defineFormField,
-  getInsuranceOptions,
   getPackageTypes,
   resolveFormComponent,
   setFieldProp,
-  setPostNlAgeCheckSubtext,
   updateFieldsDefaults,
 } from '../../helpers';
 import {createAssetUrl} from '../../../utils';
 import {type RadioGroupOption} from '../../../types';
 import {useFetchCarrier} from '../../../sdk';
 import {AdminComponent} from '../../../data';
-import {useContext, useLanguage, useLocalizedFormatter} from '../../../composables';
+import {useContext, useLanguage} from '../../../composables';
 import {createRef} from './createRef';
 
 // eslint-disable-next-line max-lines-per-function
@@ -28,8 +26,6 @@ export const createCarrierField = (
   inheritedDeliveryOptions: Plugin.ModelContextOrderDataContext['inheritedDeliveryOptions'],
 ): InteractiveElementConfiguration => {
   const dynamicContext = useContext(AdminContextKey.Dynamic);
-
-  const formatter = useLocalizedFormatter();
 
   const {translate} = useLanguage();
 
@@ -70,12 +66,8 @@ export const createCarrierField = (
     afterUpdate: (field, newCarrier: string) => {
       updateFieldsDefaults(newCarrier, field, inheritedDeliveryOptions);
 
-      setFieldProp(field.form, FIELD_INSURANCE, PROP_OPTIONS, getInsuranceOptions(field, formatter));
       setFieldProp(field.form, FIELD_PACKAGE_TYPE, PROP_OPTIONS, getPackageTypes(field.form));
       setFieldProp(field.form, FIELD_DELIVERY_TYPE, PROP_OPTIONS, getDeliveryTypes(field.form));
-
-      // @TODO make generic?
-      setPostNlAgeCheckSubtext(field);
     },
   });
 };
