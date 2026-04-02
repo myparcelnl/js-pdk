@@ -1,3 +1,4 @@
+export * from './carrier.types';
 export * from './endpoints.types';
 export * from './generic.types';
 export * from './php-pdk.types';
