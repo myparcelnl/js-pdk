@@ -55,14 +55,15 @@ export const createShipmentOptionField = (
       const isEnabled = TriState.On === value;
 
       for (const requiredOption of deps.requires ?? []) {
-        const targetField = field.form.getField(`${SHIPMENT_OPTIONS_PREFIX}.${requiredOption}`);
+        const targetFieldName = `${SHIPMENT_OPTIONS_PREFIX}.${requiredOption}`;
+        const targetField = field.form.getField(targetFieldName);
 
         if (!targetField) {
           continue;
         }
 
         if (isEnabled) {
-          field.form.setValue(targetField.name, TriState.On);
+          field.form.setValue(targetFieldName, TriState.On);
           targetField.props.readOnly = true;
         } else {
           targetField.props.readOnly = false;
@@ -70,14 +71,15 @@ export const createShipmentOptionField = (
       }
 
       for (const excludedOption of deps.excludes ?? []) {
-        const targetField = field.form.getField(`${SHIPMENT_OPTIONS_PREFIX}.${excludedOption}`);
+        const targetFieldName = `${SHIPMENT_OPTIONS_PREFIX}.${excludedOption}`;
+        const targetField = field.form.getField(targetFieldName);
 
         if (!targetField) {
           continue;
         }
 
         if (isEnabled) {
-          field.form.setValue(targetField.name, TriState.Off);
+          field.form.setValue(targetFieldName, TriState.Off);
           targetField.props.readOnly = true;
         } else {
           targetField.props.readOnly = false;
