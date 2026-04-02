@@ -2,7 +2,6 @@ import {toValue} from 'vue';
 import {snakeCase} from 'lodash-unified';
 import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {AdminContextKey, type Plugin} from '@myparcel-dev/pdk-common';
-import {PackageTypeName} from '@myparcel-dev/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_PACKAGE_TYPE, PROP_OPTIONS} from '../field';
 import {getDeliveryTypes} from '../../helpers/getDeliveryTypes';
@@ -32,7 +31,7 @@ export const createCarrierField = (
   return defineFormField({
     name: FIELD_CARRIER,
     label: 'carrier',
-    ref: createRef<string>(refs, FIELD_CARRIER, PackageTypeName.Package),
+    ref: createRef<string>(refs, FIELD_CARRIER, 'PACKAGE'),
     component: resolveFormComponent(AdminComponent.RadioGroup),
     props: {
       options: [],
