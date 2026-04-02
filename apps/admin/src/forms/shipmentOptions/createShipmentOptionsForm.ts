@@ -12,17 +12,13 @@ import {useModalStore} from '../../stores';
 import {AdminModalKey} from '../../data';
 import {useAdminConfig} from '../../composables';
 import {type ShipmentOptionsRefs} from './types';
+import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_LABEL_AMOUNT, FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from './field';
+import {createCarrierField} from './fields/createCarrierField';
+import {createDeliveryTypeField} from './fields/createDeliveryTypeField';
+import {createShipmentOptionField} from './fields/createShipmentOptionField';
+import {createDigitalStampRangeField, createLabelAmountField, createPackageTypeField} from './fields';
 import {type CarrierOptionData} from './carrierOptionData.types';
 import {fieldFactoryRegistry} from './fieldFactoryRegistry';
-import {createShipmentOptionField} from './fields/createShipmentOptionField';
-import {createDeliveryTypeField} from './fields/createDeliveryTypeField';
-import {createCarrierField} from './fields/createCarrierField';
-import {
-  createDigitalStampRangeField,
-  createLabelAmountField,
-  createPackageTypeField,
-} from './fields';
-import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_LABEL_AMOUNT, FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from './field';
 
 const SHIPMENT_OPTIONS_PREFIX = 'deliveryOptions.shipmentOptions';
 
@@ -55,9 +51,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
  * Extract the options object from the carrier on the order's delivery options.
  * Returns an empty object if no carrier or options are found.
  */
-const getCarrierOptions = (
-  order: Plugin.ModelContextOrderDataContext,
-): Record<string, CarrierOptionData> => {
+const getCarrierOptions = (order: Plugin.ModelContextOrderDataContext): Record<string, CarrierOptionData> => {
   return (get(order, 'deliveryOptions.options') ?? {}) as Record<string, CarrierOptionData>;
 };
 
