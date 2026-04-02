@@ -5,20 +5,20 @@ import {toRaw} from 'vue';
 import {get} from 'lodash-unified';
 import {defineForm, type FormInstance, type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {type OneOrMore, toArray} from '@myparcel-dev/ts-utils';
-import {type Plugin} from '@myparcel-dev/pdk-common';
+import {AdminContextKey, type Plugin} from '@myparcel-dev/pdk-common';
 import {addBulkEditNotification} from '../helpers';
 import {createShipmentFormName} from '../../utils';
 import {useModalStore} from '../../stores';
 import {AdminModalKey} from '../../data';
-import {useAdminConfig} from '../../composables';
+import {useAdminConfig, useContext} from '../../composables';
 import {type ShipmentOptionsRefs} from './types';
-import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_LABEL_AMOUNT, FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from './field';
-import {createCarrierField} from './fields/createCarrierField';
-import {createDeliveryTypeField} from './fields/createDeliveryTypeField';
 import {createShipmentOptionField} from './fields/createShipmentOptionField';
+import {createDeliveryTypeField} from './fields/createDeliveryTypeField';
+import {createCarrierField} from './fields/createCarrierField';
 import {createDigitalStampRangeField, createLabelAmountField, createPackageTypeField} from './fields';
-import {type CarrierOptionData} from './carrierOptionData.types';
 import {fieldFactoryRegistry} from './fieldFactoryRegistry';
+import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_LABEL_AMOUNT, FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from './field';
+import {type CarrierOptionData} from './carrierOptionData.types';
 
 const SHIPMENT_OPTIONS_PREFIX = 'deliveryOptions.shipmentOptions';
 
@@ -37,29 +37,50 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
 
   const order = ((isBulk ? undefined : ordersArray[0]) ?? {}) as Plugin.ModelContextOrderDataContext;
 
-  const carrierOptions = getCarrierOptions(order);
-  const refs = buildDynamicRefs(order, carrierOptions);
+  const dynamicContext = useContext(AdminContextKey.Dynamic);
+  const allCarrierOptions = collectAllCarrierOptions(dynamicContext.carriers);
+  const refs = buildDynamicRefs(order, allCarrierOptions);
 
   return defineForm(createShipmentFormName(order.externalIdentifier), {
     ...(isModal ? config.formConfigOverrides?.modal : null),
     ...config.formConfigOverrides?.shipmentOptions,
-    fields: createShipmentOptionsFields(refs, order, carrierOptions),
+    fields: createShipmentOptionsFields(refs, order, allCarrierOptions),
   });
 };
 
 /**
- * Extract the options object from the carrier on the order's delivery options.
- * Returns an empty object if no carrier or options are found.
+ * Collect the union of all option keys across all carriers from the dynamic context.
+ *
+ * Fields are created for every unique option key so they exist when the user
+ * switches carriers. Visibility is controlled by `createHasShipmentOptionWatcher`
+ * which checks whether the currently selected carrier supports each option.
+ *
+ * The returned optionData per key uses the first carrier's data as a representative
+ * — it's only used by custom factories (e.g., insurance needs `insuredAmount`).
+ * Default values and required state come from `inheritedDeliveryOptions`, not from
+ * optionData.
  */
-const getCarrierOptions = (order: Plugin.ModelContextOrderDataContext): Record<string, CarrierOptionData> => {
-  return (get(order, 'deliveryOptions.carrier.options') ?? {}) as Record<string, CarrierOptionData>;
+const collectAllCarrierOptions = (
+  carriers: {options: Record<string, CarrierOptionData>}[],
+): Record<string, CarrierOptionData> => {
+  const allOptions: Record<string, CarrierOptionData> = {};
+
+  for (const carrier of carriers) {
+    for (const [key, optionData] of Object.entries(carrier.options)) {
+      if (!allOptions[key]) {
+        allOptions[key] = optionData;
+      }
+    }
+  }
+
+  return allOptions;
 };
 
 /**
  * Build refs dynamically from carrier options and static fields.
  *
- * Instead of a hardcoded ALL_FIELDS list, refs are built from the actual
- * carrier options present in the context.
+ * Instead of a hardcoded ALL_FIELDS list, refs are built from the union of
+ * all carrier options in the dynamic context.
  */
 const buildDynamicRefs = (
   order: Plugin.ModelContextOrderDataContext,
