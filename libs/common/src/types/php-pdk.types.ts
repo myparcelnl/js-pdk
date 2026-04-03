@@ -35,6 +35,8 @@ export namespace Account {
   export type ModelAccountGeneralSettings = {
     isTest: boolean;
     orderMode: boolean;
+    orderV1: boolean;
+    orderV2: boolean;
     hasCarrierContract: boolean;
   };
 

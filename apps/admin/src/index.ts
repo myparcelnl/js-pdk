@@ -42,11 +42,13 @@ export {
   AdminModalKey,
   AdminView,
   NotificationCategory,
+  OrderMode,
   allAdminComponentNames,
   optionalAdminActionContainerComponentNames,
   optionalAdminComponentNames,
   optionalAdminPlainWrapperComponentNames,
   requiredAdminComponentNames,
+  resolveOrderMode,
 } from './data';
 
 export {
@@ -99,6 +101,7 @@ export {
   useModalElementContext,
   useMultiSelectInputContext,
   useOrderData,
+  useOrderMode,
   useOrdersData,
   useProductData,
   useRadioGroupContext,

@@ -6,6 +6,8 @@ export enum OrderMode {
 
 export const resolveOrderMode = (orderV1: boolean, orderV2: boolean): OrderMode => {
   if (orderV2) return OrderMode.OrderV2;
+
   if (orderV1) return OrderMode.OrderV1;
+
   return OrderMode.Shipments;
 };
