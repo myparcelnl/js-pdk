@@ -8,7 +8,7 @@ export const useOrderMode = (): OrderMode => {
   const context = useContext();
   const {generalSettings} = context.account;
 
-  const orderMode = resolveOrderMode(generalSettings[ORDER_V1_KEY] ?? false, generalSettings[ORDER_V2_KEY] ?? false);
+  const orderMode = resolveOrderMode(generalSettings[ORDER_V1_KEY], generalSettings[ORDER_V2_KEY]);
 
   // eslint-disable-next-line no-console
   console.info('[OrderMode] resolved:', orderMode);
