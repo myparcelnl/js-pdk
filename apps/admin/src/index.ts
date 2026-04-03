@@ -48,7 +48,6 @@ export {
   optionalAdminComponentNames,
   optionalAdminPlainWrapperComponentNames,
   requiredAdminComponentNames,
-  resolveOrderMode,
 } from './data';
 
 export {
