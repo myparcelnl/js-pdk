@@ -1,3 +1,4 @@
+import {type RecursivePartial} from '@myparcel-dev/ts-utils';
 import {
   type AdminContextKey,
   type BackendEndpoint,
@@ -10,7 +11,6 @@ import {
   type Settings,
   type Shipment,
 } from '@myparcel-dev/pdk-common';
-import {type RecursivePartial} from '@myparcel-dev/ts-utils';
 import {type AdminContextObject} from './context.types';
 import {type WebhookDefinition} from './common.types';
 

@@ -25,8 +25,8 @@ import {
 } from '@myparcel-dev/pdk-admin';
 
 // eslint-disable-next-line vue/no-unused-properties
-const props = defineProps<SelectInputProps<T>>();
-const emit = defineEmits<SelectInputEmits<T>>();
+const props = defineProps<SelectInputProps>();
+const emit = defineEmits<SelectInputEmits>();
 
 const {id, model, options} = useSelectInputContext(props, emit);
 </script>

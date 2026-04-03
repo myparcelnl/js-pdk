@@ -1,6 +1,6 @@
 import {createGlobalState} from '@vueuse/core';
-import {type BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {createMyParcelSdk, type HttpMethod, type MyParcelSdk} from '@myparcel-dev/sdk';
+import {type BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {AbstractPdkEndpoint} from '../endpoints';
 import {PdkFetchClient} from '../PdkFetchClient';
 import {useGlobalContext} from '../../composables';

@@ -1,7 +1,18 @@
 import {describe, expect, it, vi, beforeEach} from 'vitest';
+// Import after mocks are set up
+import {synchronizeAddress1} from '../listeners/synchronizeAddress1';
 
 // Use vi.hoisted to ensure mocks are available during hoisting
-const {mockFieldsEqual, mockSetFieldValue, mockGetAddressFieldValue, mockGetAddressFields, mockGetFullStreet, mockTriggerFormChange, mockUseCheckoutStore, mockUseUtil} = vi.hoisted(() => {
+const {
+  mockFieldsEqual,
+  mockSetFieldValue,
+  mockGetAddressFieldValue,
+  mockGetAddressFields,
+  mockGetFullStreet,
+  mockTriggerFormChange,
+  mockUseCheckoutStore,
+  mockUseUtil,
+} = vi.hoisted(() => {
   return {
     mockFieldsEqual: vi.fn(),
     mockSetFieldValue: vi.fn(),
@@ -35,17 +46,17 @@ vi.mock('../constants', () => ({
   SEPARATE_ADDRESS_FIELDS: ['street', 'number'],
 }));
 
-// Import after mocks are set up
-import {synchronizeAddress1} from '../listeners/synchronizeAddress1';
-
 describe('synchronizeAddress1', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    
+
     mockUseUtil.mockImplementation((token: string) => {
       if (token === 'fieldsEqual') return mockFieldsEqual;
+
       if (token === 'setFieldValue') return mockSetFieldValue;
+
       if (token === 'getAddressFieldValue') return mockGetAddressFieldValue;
+
       return vi.fn();
     });
 
@@ -88,7 +99,6 @@ describe('synchronizeAddress1', () => {
     synchronizeAddress1(newState as any, oldState as any);
     expect(mockSetFieldValue).toHaveBeenCalledTimes(1); // Still 1 (no new call)
   });
-
 
   it('does not write when address1 is empty and fields are incomplete', () => {
     mockFieldsEqual.mockReturnValue(false);

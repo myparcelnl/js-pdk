@@ -1,5 +1,5 @@
-import {type BackendEndpoint, type Variant} from '@myparcel-dev/pdk-common';
 import {type OneOrMore, type PromiseOr} from '@myparcel-dev/ts-utils';
+import {type BackendEndpoint, type Variant} from '@myparcel-dev/pdk-common';
 import {
   type ActionParameters,
   type ActionResponse,

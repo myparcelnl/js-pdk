@@ -1,5 +1,5 @@
-import {type BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {isOfType, toArray} from '@myparcel-dev/ts-utils';
+import {type BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {type ActionInput} from '../types';
 
 export const generateLabelFilename = (

@@ -1,3 +1,4 @@
+import {objectIsEqual} from '@myparcel-dev/ts-utils';
 import {
   AddressField,
   type CheckoutStoreState,
@@ -6,7 +7,6 @@ import {
   type StoreCallbackUpdate,
   useUtil,
 } from '@myparcel-dev/pdk-checkout-common';
-import {objectIsEqual} from '@myparcel-dev/ts-utils';
 import {
   getDeliveryOptionsAddress,
   shippingMethodHasDeliveryOptions,

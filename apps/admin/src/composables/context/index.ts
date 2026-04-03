@@ -4,4 +4,5 @@ export * from './useGlobalContext';
 export * from './useInstanceContext';
 export * from './useModalContext';
 export * from './useModalOrder';
+export * from './useOrderMode';
 export * from './usePluginSettings';

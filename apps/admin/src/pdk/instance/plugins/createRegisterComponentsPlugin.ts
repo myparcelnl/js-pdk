@@ -67,6 +67,8 @@ export const createRegisterComponentsPlugin: PdkAppPlugin = ({config, logger}) =
       Object.entries(getOptionalComponents(app)).forEach(([componentName, component]) => {
         const componentToRegister = typeof component === 'string' ? componentsFromConfig[component] : component;
 
+        if (!componentToRegister) return;
+
         app.component(prefixComponent(componentName), markRaw(componentToRegister));
       });
 

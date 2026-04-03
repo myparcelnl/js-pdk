@@ -44,8 +44,8 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {type ResolvedNotification, useNotificationStore} from '@myparcel-dev/pdk-admin';
 import {toArray} from '@myparcel-dev/ts-utils';
+import {type ResolvedNotification, useNotificationStore} from '@myparcel-dev/pdk-admin';
 
 const props = defineProps<{
   notification: ResolvedNotification;

@@ -1,6 +1,6 @@
-import { type InteractiveElementConfiguration } from '@myparcel-dev/vue-form-builder';
-import { type ShipmentOptionsRefs } from '../types';
-import { FIELD_INSURANCE, PROP_OPTIONS, INSURANCE } from '../field';
+import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
+import {type ShipmentOptionsRefs} from '../types';
+import {FIELD_INSURANCE, PROP_OPTIONS, INSURANCE} from '../field';
 import {
   createHasShipmentOptionWatcher,
   getInsuranceOptions,
@@ -8,11 +8,11 @@ import {
   resolveFormComponent,
   setFieldProp,
 } from '../../helpers';
-import { type ElementInstance } from '../../../types';
-import { AdminComponent } from '../../../data';
-import { useLocalizedFormatter } from '../../../composables';
-import { createShipmentOptionField } from './createShipmentOptionField';
-import { createRef } from './createRef';
+import {type ElementInstance} from '../../../types';
+import {AdminComponent} from '../../../data';
+import {useLocalizedFormatter} from '../../../composables';
+import {createShipmentOptionField} from './createShipmentOptionField';
+import {createRef} from './createRef';
 
 export const createInsuranceField = (refs: ShipmentOptionsRefs): InteractiveElementConfiguration => {
   const formatter = useLocalizedFormatter();

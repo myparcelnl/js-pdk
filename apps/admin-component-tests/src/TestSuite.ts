@@ -3,8 +3,8 @@ import {type Component as ComponentType, ref} from 'vue';
 import {expect, it} from 'vitest';
 import {merge} from 'lodash-unified';
 import {type DOMWrapper, flushPromises, mount, type VueWrapper} from '@vue/test-utils';
-import {type AdminComponent} from '@myparcel-dev/pdk-admin';
 import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
+import {type AdminComponent} from '@myparcel-dev/pdk-admin';
 import {type AdditionalOptions, type ComponentTestOptions, type TestComponentMountingOptions} from './types';
 import {createInputOptions} from './helpers';
 import {runCommonComponentTests, runHasPropTest, runHasSlotTest} from './common';
@@ -69,6 +69,7 @@ export class TestSuite<
     });
 
     it(`emits ${UPDATE_EVENT} event`, async () => {
+      // eslint-disable-next-line @typescript-eslint/no-magic-numbers
       expect.assertions(2);
       const wrapper = mount(this.component, resolvedOptions);
 
