@@ -21,8 +21,8 @@ describe('useLanguage', () => {
   beforeAll(() => {
     mockDefaultTranslations.mockReturnValue({
       my_translation: 'My translation',
-      my_translation_with_replacement: 'My translation with replacement: {platform.backofficeUrl}',
-      translation_with_custom_replacer: '{platform.name} said {word}',
+      my_translation_with_replacement: 'My translation with replacement: {proposition.backofficeUrl}',
+      translation_with_custom_replacer: '{proposition.name} said {word}',
     });
   });
 
