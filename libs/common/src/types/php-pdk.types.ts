@@ -366,14 +366,13 @@ export namespace Plugin {
     eventPong: string;
     language: string;
     mode: string;
-    platform: {
-      backofficeUrl: string;
-      defaultCarrier: string;
-      defaultCarrierId: number;
-      human: string;
-      localCountry: string;
+    proposition: {
       name: string;
+      human?: string;
+      backofficeUrl: string;
       supportUrl: string;
+      localCountry: string;
+      defaultCarrier: string;
     };
     translations: Record<string, string>;
   };

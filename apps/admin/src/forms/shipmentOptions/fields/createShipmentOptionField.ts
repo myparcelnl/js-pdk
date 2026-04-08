@@ -1,5 +1,6 @@
+import {toRaw} from 'vue';
 import {TriState} from '@myparcel-dev/pdk-common';
-import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
+import {type InteractiveElementConfiguration, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {type ShipmentOptionsRefs} from '../types';
 import {type CarrierOptionData} from '../carrierOptionData.types';
 import {getFieldDependencies} from '../fieldDependencies';
@@ -16,6 +17,14 @@ import {AdminComponent} from '../../../data';
 import {createRef} from './createRef';
 
 const SHIPMENT_OPTIONS_PREFIX = 'deliveryOptions.shipmentOptions';
+
+/**
+ * Set the ref value of a form field, working around vue-form-builder's
+ * reactive proxy auto-unwrapping refs (which breaks `form.setValue()`).
+ */
+const setFieldValue = (field: InteractiveElementInstance, value: TriState): void => {
+  toRaw(field).ref.value = value;
+};
 
 /**
  * Creates a generic shipment option field as a TriState toggle.
@@ -67,7 +76,7 @@ export const createShipmentOptionField = (
 
       // Enforce isRequired: revert any user change back to TriState.On.
       if (carrier.options?.[name]?.isRequired === true && value !== TriState.On) {
-        field.form.setValue(fieldName, TriState.On);
+        setFieldValue(field, TriState.On);
 
         return;
       }
@@ -89,7 +98,7 @@ export const createShipmentOptionField = (
         }
 
         if (isEnabled) {
-          field.form.setValue(targetFieldName, TriState.On);
+          setFieldValue(targetField as InteractiveElementInstance, TriState.On);
           targetField.props.readOnly = true;
         } else {
           targetField.props.readOnly = false;
@@ -105,7 +114,7 @@ export const createShipmentOptionField = (
         }
 
         if (isEnabled) {
-          field.form.setValue(targetFieldName, TriState.Off);
+          setFieldValue(targetField as InteractiveElementInstance, TriState.Off);
           targetField.props.readOnly = true;
         } else {
           targetField.props.readOnly = false;
