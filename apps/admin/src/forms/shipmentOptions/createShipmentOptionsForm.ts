@@ -89,7 +89,7 @@ const buildDynamicRefs = (
   const refs: ShipmentOptionsRefs = {};
 
   // Static field refs
-  refs[FIELD_CARRIER] = get(order, `${FIELD_CARRIER}.externalIdentifier`);
+  refs[FIELD_CARRIER] = get(order, `${FIELD_CARRIER}.carrier`);
   refs[FIELD_LABEL_AMOUNT] = get(order, FIELD_LABEL_AMOUNT);
   refs[FIELD_PACKAGE_TYPE] = get(order, FIELD_PACKAGE_TYPE);
   refs[FIELD_DELIVERY_TYPE] = get(order, FIELD_DELIVERY_TYPE);
