@@ -2,7 +2,6 @@ import {toRaw} from 'vue';
 import {TriState} from '@myparcel-dev/pdk-common';
 import {type InteractiveElementConfiguration, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {type ShipmentOptionsRefs} from '../types';
-import {type CarrierOptionData} from '../carrierOptionData.types';
 import {getFieldDependencies} from '../fieldDependencies';
 import {
   createHasShipmentOptionWatcher,
@@ -12,7 +11,6 @@ import {
   hasShipmentOption,
   resolveFormComponent,
 } from '../../helpers';
-import {getFormCarrierName} from '../../helpers/getFormCarrierName';
 import {AdminComponent} from '../../../data';
 import {createRef} from './createRef';
 
@@ -34,13 +32,11 @@ const setFieldValue = (field: InteractiveElementInstance, value: TriState): void
  *
  * @param refs - current form field refs built from order data
  * @param fieldName - full dotted path, e.g. `deliveryOptions.shipmentOptions.requiresSignature`
- * @param optionData - metadata from the carrier context (`isRequired`, `isSelectedByDefault`)
  * @param config - optional overrides (used by custom factories that extend this base)
  */
 export const createShipmentOptionField = (
   refs: ShipmentOptionsRefs,
   fieldName: string,
-  optionData: CarrierOptionData,
   config?: Partial<InteractiveElementConfiguration>,
 ): InteractiveElementConfiguration => {
   const name = fieldName.split('.').pop() ?? fieldName;
@@ -51,15 +47,10 @@ export const createShipmentOptionField = (
     ref: createRef(refs, fieldName, TriState.Inherit),
     label: getFieldLabel(name),
     visibleWhen: createHasShipmentOptionWatcher(name),
-    // Disabled when the carrier doesn't support this option, or when the
-    // carrier marks it as required (preventing user overrides).
-    disabledWhen: ({form}) => {
-      if (!hasShipmentOption(form, name)) {
-        return true;
-      }
-
-      return getCarrier(form)?.options?.[name]?.isRequired === true;
-    },
+    // Disabled when the carrier doesn't support this option.
+    // Required options use readOnlyWhen instead, keeping them enabled
+    // so their value is included in the form body by getEnabledValues().
+    disabledWhen: ({form}) => !hasShipmentOption(form, name),
     // Read-only prevents the TriState "inherit" toggle from being used,
     // fully locking the field when the carrier requires this option.
     readOnlyWhen: ({form}) => {

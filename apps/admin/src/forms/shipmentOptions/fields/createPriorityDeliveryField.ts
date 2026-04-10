@@ -1,6 +1,5 @@
 import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {type ShipmentOptionsRefs} from '../types';
-import {type CarrierOptionData} from '../carrierOptionData.types';
 import {createHasShipmentOptionWatcher, isPackageTypeMailbox} from '../../helpers';
 import {createShipmentOptionField} from './createShipmentOptionField';
 
@@ -16,11 +15,10 @@ import {createShipmentOptionField} from './createShipmentOptionField';
 export const createPriorityDeliveryField = (
   refs: ShipmentOptionsRefs,
   fieldName: string,
-  optionData: CarrierOptionData,
 ): InteractiveElementConfiguration => {
   const optionKey = fieldName.split('.').pop() ?? fieldName;
 
-  return createShipmentOptionField(refs, fieldName, optionData, {
+  return createShipmentOptionField(refs, fieldName, {
     visibleWhen: createHasShipmentOptionWatcher(optionKey, false, isPackageTypeMailbox),
     disabledWhen: createHasShipmentOptionWatcher(optionKey, true, isPackageTypeMailbox),
   });

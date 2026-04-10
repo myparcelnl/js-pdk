@@ -1,24 +1,27 @@
+import {type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {TriState} from '@myparcel-dev/pdk-common';
 import {type SelectOption} from '../../types';
 import {Format, type Formatter} from '../../composables';
-import {type CarrierOptionData} from '../shipmentOptions/carrierOptionData.types';
+import {getCarrier} from './getCarrier';
 
-type InsuranceOptionData = CarrierOptionData & {
+interface InsuranceAmountData {
   insuredAmount?: {
     min: {amount: number; currency: string};
     max: {amount: number; currency: string};
     default: {amount: number; currency: string};
   };
-};
+}
 
 /**
- * Generate insurance amount bracket options from carrier option data.
+ * Generate insurance amount bracket options from the currently selected
+ * carrier's insurance data.
  *
- * Reads `insuredAmount.min` and `insuredAmount.max` from the option data
- * to produce select options. Amounts in the context are in cents.
+ * Reads `insuredAmount.min` and `insuredAmount.max` from the carrier's
+ * options to produce select options. Amounts in the context are in cents.
  */
-export const getInsuranceOptions = (optionData: CarrierOptionData, formatter: Formatter): SelectOption[] => {
-  const insuranceData = optionData as InsuranceOptionData;
+export const getInsuranceOptions = (form: FormInstance, formatter: Formatter): SelectOption[] => {
+  const carrier = getCarrier(form);
+  const insuranceData = (carrier?.options?.insurance ?? {}) as InsuranceAmountData;
   const insurancePossibilities: number[] = [];
 
   const min = insuranceData.insuredAmount?.min.amount

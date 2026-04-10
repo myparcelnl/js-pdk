@@ -2,7 +2,6 @@ import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-build
 import {type ShipmentOptionsRefs} from './types';
 import {createPriorityDeliveryField} from './fields/createPriorityDeliveryField';
 import {createInsuranceField} from './fields/createInsuranceField';
-import {type CarrierOptionData} from './carrierOptionData.types';
 
 /**
  * Factory function signature for custom shipment option field creators.
@@ -13,7 +12,6 @@ import {type CarrierOptionData} from './carrierOptionData.types';
 export type FieldFactory = (
   refs: ShipmentOptionsRefs,
   fieldName: string,
-  optionData: CarrierOptionData,
 ) => InteractiveElementConfiguration;
 
 /**

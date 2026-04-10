@@ -18,7 +18,6 @@ import {createCarrierField} from './fields/createCarrierField';
 import {createDigitalStampRangeField, createLabelAmountField, createPackageTypeField} from './fields';
 import {fieldFactoryRegistry} from './fieldFactoryRegistry';
 import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_LABEL_AMOUNT, FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from './field';
-import {type CarrierOptionData} from './carrierOptionData.types';
 
 const SHIPMENT_OPTIONS_PREFIX = 'deliveryOptions.shipmentOptions';
 
@@ -38,13 +37,13 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
   const order = ((isBulk ? undefined : ordersArray[0]) ?? {}) as Plugin.ModelContextOrderDataContext;
 
   const dynamicContext = useContext(AdminContextKey.Dynamic);
-  const allCarrierOptions = collectAllCarrierOptions(dynamicContext.carriers);
-  const refs = buildDynamicRefs(order, allCarrierOptions);
+  const allOptionKeys = collectAllOptionKeys(dynamicContext.carriers);
+  const refs = buildDynamicRefs(order, allOptionKeys);
 
   return defineForm(createShipmentFormName(order.externalIdentifier), {
     ...(isModal ? config.formConfigOverrides?.modal : null),
     ...config.formConfigOverrides?.shipmentOptions,
-    fields: createShipmentOptionsFields(refs, order, allCarrierOptions),
+    fields: createShipmentOptionsFields(refs, order, allOptionKeys),
   });
 };
 
@@ -55,25 +54,22 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
  * switches carriers. Visibility is controlled by `createHasShipmentOptionWatcher`
  * which checks whether the currently selected carrier supports each option.
  *
- * The returned optionData per key uses the first carrier's data as a representative
- * — it's only used by custom factories (e.g., insurance needs `insuredAmount`).
- * Default values and required state come from `inheritedDeliveryOptions`, not from
- * optionData.
+ * Runtime carrier-specific data (isRequired, insuredAmount, etc.) is read
+ * from the currently selected carrier via `getCarrier(form)`, not from
+ * creation-time option data.
  */
-const collectAllCarrierOptions = (
-  carriers: {options: Record<string, CarrierOptionData>}[],
-): Record<string, CarrierOptionData> => {
-  const allOptions: Record<string, CarrierOptionData> = {};
+const collectAllOptionKeys = (
+  carriers: {options: Record<string, unknown>}[],
+): string[] => {
+  const keys = new Set<string>();
 
   for (const carrier of carriers) {
-    for (const [key, optionData] of Object.entries(carrier.options)) {
-      if (!allOptions[key]) {
-        allOptions[key] = optionData;
-      }
+    for (const key of Object.keys(carrier.options)) {
+      keys.add(key);
     }
   }
 
-  return allOptions;
+  return [...keys];
 };
 
 /**
@@ -84,7 +80,7 @@ const collectAllCarrierOptions = (
  */
 const buildDynamicRefs = (
   order: Plugin.ModelContextOrderDataContext,
-  carrierOptions: Record<string, CarrierOptionData>,
+  optionKeys: string[],
 ): ShipmentOptionsRefs => {
   const refs: ShipmentOptionsRefs = {};
 
@@ -96,7 +92,7 @@ const buildDynamicRefs = (
   refs[FIELD_MANUAL_WEIGHT] = get(order, FIELD_MANUAL_WEIGHT);
 
   // Dynamic shipment option refs from carrier options
-  for (const key of Object.keys(carrierOptions)) {
+  for (const key of optionKeys) {
     const fieldName = `${SHIPMENT_OPTIONS_PREFIX}.${key}`;
     refs[fieldName] = get(order, fieldName);
   }
@@ -107,7 +103,7 @@ const buildDynamicRefs = (
 const createShipmentOptionsFields = (
   refs: ShipmentOptionsRefs,
   order: Plugin.ModelContextOrderDataContext,
-  carrierOptions: Record<string, CarrierOptionData>,
+  optionKeys: string[],
 ): InteractiveElementConfiguration[] => {
   // Static fields — always present
   const staticFields = [
@@ -119,15 +115,15 @@ const createShipmentOptionsFields = (
   ];
 
   // Dynamic shipment option fields — driven by carrier.options
-  const dynamicFields = Object.entries(carrierOptions).map(([key, optionData]) => {
+  const dynamicFields = optionKeys.map((key) => {
     const fieldName = `${SHIPMENT_OPTIONS_PREFIX}.${key}`;
     const factory = fieldFactoryRegistry[key];
 
     if (factory) {
-      return factory(refs, fieldName, optionData);
+      return factory(refs, fieldName);
     }
 
-    return createShipmentOptionField(refs, fieldName, optionData);
+    return createShipmentOptionField(refs, fieldName);
   });
 
   return [...staticFields, ...dynamicFields];

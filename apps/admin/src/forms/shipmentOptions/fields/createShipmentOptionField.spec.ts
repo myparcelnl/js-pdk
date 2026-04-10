@@ -15,22 +15,11 @@ vi.mock('../../helpers', async (importOriginal) => {
 describe('createShipmentOptionField', () => {
   const createRefs = (fieldName: string, value?: unknown) => ({[fieldName]: value});
 
-  it('creates a field with TriState.Inherit default when isSelectedByDefault is false', () => {
+  it('creates a field with TriState.Inherit default', () => {
     const fieldName = 'deliveryOptions.shipmentOptions.testOption';
     const refs = createRefs(fieldName);
-    const optionData = {isRequired: false, isSelectedByDefault: false};
 
-    const field = createShipmentOptionField(refs, fieldName, optionData);
-
-    expect(field.name).toBe(fieldName);
-  });
-
-  it('sets isRequired option data on the field', () => {
-    const fieldName = 'deliveryOptions.shipmentOptions.testOption';
-    const refs = createRefs(fieldName);
-    const optionData = {isRequired: true, isSelectedByDefault: false};
-
-    const field = createShipmentOptionField(refs, fieldName, optionData);
+    const field = createShipmentOptionField(refs, fieldName);
 
     expect(field.name).toBe(fieldName);
   });
