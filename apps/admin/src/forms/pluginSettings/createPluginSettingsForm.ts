@@ -1,4 +1,3 @@
-import {get as lodashGet} from 'lodash-unified';
 import {BackendEndpoint, type Plugin} from '@myparcel-dev/pdk-common';
 import {defineForm, type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {useStoreQuery} from '../../composables';
@@ -6,6 +5,7 @@ import {SubmitButton} from '../../components';
 import {executeAction} from '../../actions';
 import {type PluginSettingsTabsContext} from './types';
 import {generateFormFields} from './generateFormFields';
+import {resolveSettingsValues} from './resolveSettingsValues';
 
 export const createPluginSettingsForm = (
   id: string,
@@ -16,7 +16,7 @@ export const createPluginSettingsForm = (
 
   const mutation = useStoreQuery(BackendEndpoint.UpdatePluginSettings);
 
-  const values = lodashGet(pluginSettings, id, {});
+  const values = resolveSettingsValues(pluginSettings, id);
 
   const generatedFields = generateFormFields({fields: view.elements, values}, `${id}.`);
 

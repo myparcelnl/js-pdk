@@ -92,7 +92,12 @@ export const createShipmentOptionField = (
           setFieldValue(targetField as InteractiveElementInstance, TriState.On);
           targetField.props.readOnly = true;
         } else {
-          targetField.props.readOnly = false;
+          // Only clear readOnly if the carrier doesn't independently require this option.
+          const isRequiredByCarrier = carrier.options?.[requiredOption]?.isRequired === true;
+
+          if (!isRequiredByCarrier) {
+            targetField.props.readOnly = false;
+          }
         }
       }
 
@@ -108,7 +113,11 @@ export const createShipmentOptionField = (
           setFieldValue(targetField as InteractiveElementInstance, TriState.Off);
           targetField.props.readOnly = true;
         } else {
-          targetField.props.readOnly = false;
+          const isRequiredByCarrier = carrier.options?.[excludedOption]?.isRequired === true;
+
+          if (!isRequiredByCarrier) {
+            targetField.props.readOnly = false;
+          }
         }
       }
     },
