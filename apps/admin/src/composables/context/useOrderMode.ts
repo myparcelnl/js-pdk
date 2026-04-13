@@ -1,14 +1,14 @@
-import {type OrderMode, resolveOrderMode} from '../../data';
+import {type OrderMode, SubscriptionFeature, resolveOrderMode} from '../../data';
 import {useContext} from './useContext';
-
-const ORDER_V1_KEY = 'orderV1';
-const ORDER_V2_KEY = 'orderV2';
 
 export const useOrderMode = (): OrderMode => {
   const context = useContext();
-  const {generalSettings} = context.account;
+  const {subscriptionFeatures} = context.account;
 
-  const orderMode = resolveOrderMode(generalSettings[ORDER_V1_KEY], generalSettings[ORDER_V2_KEY]);
+  const orderV1 = subscriptionFeatures.includes(SubscriptionFeature.LegacyOrderManagement);
+  const orderV2 = subscriptionFeatures.includes(SubscriptionFeature.OrderManagement);
+
+  const orderMode = resolveOrderMode(orderV1, orderV2);
 
   // eslint-disable-next-line no-console
   console.info('[OrderMode] resolved:', orderMode);
