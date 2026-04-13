@@ -30,14 +30,13 @@ export namespace Account {
     status: number;
     contactInfo: Base.ModelContactDetails;
     generalSettings: ModelAccountGeneralSettings;
+    subscriptionFeatures: string[];
     shops: ShopCollection;
   };
 
   export type ModelAccountGeneralSettings = {
     isTest: boolean;
     orderMode: boolean;
-    orderV1: boolean;
-    orderV2: boolean;
     hasCarrierContract: boolean;
   };
 
