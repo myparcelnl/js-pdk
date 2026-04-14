@@ -63,14 +63,13 @@ const filterGeneralSection = (section: Section, orderMode: OrderMode): Section =
 };
 
 const filterOrderElements = (elements: Plugin.Field[], orderMode: OrderMode): Plugin.Field[] => {
-  return parseIntoSections(elements)
-    .flatMap((section) => {
-      if (isGeneralDivider(section[0])) {
-        return filterGeneralSection(section, orderMode);
-      }
+  return parseIntoSections(elements).flatMap((section) => {
+    if (isGeneralDivider(section[0])) {
+      return filterGeneralSection(section, orderMode);
+    }
 
-      return section;
-    });
+    return section;
+  });
 };
 
 export const filterPluginSettingsView = (

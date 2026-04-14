@@ -1,9 +1,11 @@
 // @vitest-environment happy-dom
 
+import {computed, defineComponent, h, ref} from 'vue';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {config, mount} from '@vue/test-utils';
-import {computed, defineComponent, h, ref} from 'vue';
 import {AdminAction, OrderMode} from '../../data';
+import {useOrderData} from '../../composables/orders/useOrderData';
+import {useOrderMode} from '../../composables/context/useOrderMode';
 import {doComponentTestSetup, doComponentTestTeardown} from '../../__tests__';
 import ShipmentOptionsBox from './ShipmentOptionsBox.vue';
 
@@ -20,11 +22,6 @@ vi.mock('../../composables/language/useLanguage', () => ({
     translate: (key: string) => key,
   })),
 }));
-
-// eslint-disable-next-line import/first
-import {useOrderMode} from '../../composables/context/useOrderMode';
-// eslint-disable-next-line import/first
-import {useOrderData} from '../../composables/orders/useOrderData';
 
 const mockedUseOrderMode = vi.mocked(useOrderMode);
 const mockedUseOrderData = vi.mocked(useOrderData);
@@ -52,7 +49,7 @@ const mockOrderData = (exported = false) => {
 
 const getActionIds = (wrapper: ReturnType<typeof mount>): string[] => {
   const box = wrapper.findComponent(PdkConceptBoxWrapperStub);
-  const actions = box.props('actions') as Array<{id: string}>;
+  const actions = box.props('actions') as {id: string}[];
 
   return actions.map((a) => a.id);
 };

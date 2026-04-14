@@ -1,7 +1,7 @@
 // @vitest-environment happy-dom
 
-import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {defineComponent, h} from 'vue';
+import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {mount} from '@vue/test-utils';
 import {AdminAction, OrderMode} from '../data';
 import {doComponentTestSetup, doComponentTestTeardown} from '../__tests__';

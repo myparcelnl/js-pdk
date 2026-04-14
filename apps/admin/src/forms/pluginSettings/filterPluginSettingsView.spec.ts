@@ -16,7 +16,7 @@ const createDivider = (heading: string): Plugin.Field =>
     level: 2,
     heading,
     content: `${heading}_description`,
-  }) as Plugin.Field;
+  } as Plugin.Field);
 
 const createSettingsView = (overrides: Partial<Plugin.SettingsView> = {}): Plugin.SettingsView => ({
   id: 'test',
@@ -53,7 +53,7 @@ const createFullView = (): Plugin.ModelContextPluginSettingsViewContext =>
     customs: createSettingsView({id: 'customs', title: 'Customs'}),
     checkout: createSettingsView({id: 'checkout', title: 'Checkout'}),
     carrier: createSettingsView({id: 'carrier', title: 'Carriers'}),
-  }) as Plugin.ModelContextPluginSettingsViewContext;
+  } as Plugin.ModelContextPluginSettingsViewContext);
 
 const getFieldNames = (elements: Plugin.Field[] | null): string[] =>
   (elements ?? []).filter((el) => el.name).map((el) => el.name!);

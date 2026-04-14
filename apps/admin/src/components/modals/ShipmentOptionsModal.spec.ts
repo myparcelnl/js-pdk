@@ -1,8 +1,8 @@
 // @vitest-environment happy-dom
 
+import {defineComponent, h} from 'vue';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {config, mount} from '@vue/test-utils';
-import {defineComponent, h} from 'vue';
 import {AdminAction, OrderMode} from '../../data';
 import {doComponentTestSetup, doComponentTestTeardown} from '../../__tests__';
 import ShipmentOptionsModal from './ShipmentOptionsModal.vue';
@@ -33,7 +33,7 @@ const PdkModalStub = defineComponent({
 
 const getActionIds = (wrapper: ReturnType<typeof mount>): string[] => {
   const modal = wrapper.findComponent(PdkModalStub);
-  const actions = modal.props('actions') as Array<{id: string}>;
+  const actions = modal.props('actions') as {id: string}[];
 
   return actions.map((a) => a.id);
 };
