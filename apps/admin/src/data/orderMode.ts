@@ -5,8 +5,8 @@ export enum OrderMode {
 }
 
 export enum SubscriptionFeature {
-  LegacyOrderManagement = 'legacy_order_management',
-  OrderManagement = 'order_management',
+  LegacyOrderManagement = 'LEGACY_ORDER_MANAGEMENT',
+  OrderManagement = 'ORDER_MANAGEMENT',
 }
 
 export const resolveOrderMode = (orderV1: boolean, orderV2: boolean): OrderMode => {
