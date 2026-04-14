@@ -1,9 +1,11 @@
 // @vitest-environment happy-dom
 
-import {defineComponent, h} from 'vue';
+import {computed, defineComponent, h} from 'vue';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {mount} from '@vue/test-utils';
 import {AdminAction, OrderMode} from '../data';
+import {useOrderMode} from '../composables/context/useOrderMode';
+import {ORDER_VIEW_IN_BACKOFFICE_ID} from '../actions';
 import {doComponentTestSetup, doComponentTestTeardown} from '../__tests__';
 import {useActionStore} from './useActionStore';
 
@@ -11,12 +13,7 @@ vi.mock('../composables/context/useOrderMode', () => ({
   useOrderMode: vi.fn(),
 }));
 
-// eslint-disable-next-line import/first
-import {useOrderMode} from '../composables/context/useOrderMode';
-
 const mockedUseOrderMode = vi.mocked(useOrderMode);
-
-const BACKOFFICE_ACTION_ID = 'show-exported-order';
 
 describe('useActionStore', () => {
   beforeEach(() => {
@@ -25,12 +22,11 @@ describe('useActionStore', () => {
 
   afterEach(() => {
     doComponentTestTeardown();
-    vi.restoreAllMocks();
   });
 
   describe('registerOrderActions', () => {
     const mountWithStore = (mode: OrderMode) => {
-      mockedUseOrderMode.mockReturnValue(mode);
+      mockedUseOrderMode.mockReturnValue(computed(() => mode));
 
       let store!: ReturnType<typeof useActionStore>;
 
@@ -67,14 +63,14 @@ describe('useActionStore', () => {
       expect(store.get(AdminAction.ShipmentsDelete)).toBeDefined();
       expect(store.get(AdminAction.ShipmentsUpdate)).toBeDefined();
       expect(store.get(AdminAction.ShipmentsPrint)).toBeDefined();
-      expect(store.get(BACKOFFICE_ACTION_ID)).toBeUndefined();
+      expect(store.get(ORDER_VIEW_IN_BACKOFFICE_ID)).toBeUndefined();
     });
 
     it('registers order export and backoffice actions in OrderV1 mode', () => {
       const store = mountWithStore(OrderMode.OrderV1);
 
       expect(store.get(AdminAction.OrdersExport)).toBeDefined();
-      expect(store.get(BACKOFFICE_ACTION_ID)).toBeDefined();
+      expect(store.get(ORDER_VIEW_IN_BACKOFFICE_ID)).toBeDefined();
       expect(store.get(AdminAction.OrdersExportPrint)).toBeUndefined();
       expect(store.get(AdminAction.ShipmentsExportReturn)).toBeUndefined();
       expect(store.get(AdminAction.ShipmentsDelete)).toBeUndefined();
@@ -88,7 +84,7 @@ describe('useActionStore', () => {
       expect(store.get(AdminAction.OrdersPrint)).toBeUndefined();
       expect(store.get(AdminAction.OrdersExport)).toBeUndefined();
       expect(store.get(AdminAction.OrdersExportPrint)).toBeUndefined();
-      expect(store.get(BACKOFFICE_ACTION_ID)).toBeUndefined();
+      expect(store.get(ORDER_VIEW_IN_BACKOFFICE_ID)).toBeUndefined();
       expect(store.get(AdminAction.ShipmentsExportReturn)).toBeUndefined();
       expect(store.get(AdminAction.ShipmentsDelete)).toBeUndefined();
       expect(store.get(AdminAction.ShipmentsUpdate)).toBeUndefined();

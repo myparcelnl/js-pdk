@@ -1,18 +1,18 @@
 // @vitest-environment happy-dom
 
-import {computed, defineComponent, h, ref} from 'vue';
+import {defineComponent, h} from 'vue';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {config, mount} from '@vue/test-utils';
 import {AdminAction} from '../../data';
+import {useOrderData} from '../../composables/orders/useOrderData';
+import {ORDER_VIEW_IN_BACKOFFICE_ID} from '../../actions';
+import {mockOrderData} from '../../__tests__/utils/mockOrderData';
 import {doComponentTestSetup, doComponentTestTeardown} from '../../__tests__';
 import OrderV2ModeOrderListItem from './OrderV2ModeOrderListItem.vue';
 
 vi.mock('../../composables/orders/useOrderData', () => ({
   useOrderData: vi.fn(),
 }));
-
-// eslint-disable-next-line import/first
-import {useOrderData} from '../../composables/orders/useOrderData';
 
 const mockedUseOrderData = vi.mocked(useOrderData);
 
@@ -25,16 +25,6 @@ const ShipmentLabelStub = defineComponent({
   },
 });
 
-const mockOrderData = (shipments: {id: number; deleted?: boolean}[] = []) => {
-  const orderData = {externalIdentifier: 'TEST-1', exported: false, shipments};
-
-  mockedUseOrderData.mockReturnValue({
-    order: computed(() => orderData),
-    loading: computed(() => false),
-    query: {data: ref(orderData), isLoading: ref(false)} as any,
-  });
-};
-
 describe('OrderV2ModeOrderListItem', () => {
   beforeEach(() => {
     doComponentTestSetup();
@@ -43,11 +33,10 @@ describe('OrderV2ModeOrderListItem', () => {
 
   afterEach(() => {
     doComponentTestTeardown();
-    vi.restoreAllMocks();
   });
 
   it('shows only the edit action', () => {
-    mockOrderData();
+    mockOrderData(mockedUseOrderData);
     const wrapper = mount(OrderV2ModeOrderListItem);
     const html = wrapper.html();
 
@@ -55,14 +44,14 @@ describe('OrderV2ModeOrderListItem', () => {
   });
 
   it('shows DeliveryOptionsExcerpt when there are no shipments', () => {
-    mockOrderData([]);
+    mockOrderData(mockedUseOrderData, {shipments: []});
     const wrapper = mount(OrderV2ModeOrderListItem);
 
     expect(wrapper.findComponent({name: 'DeliveryOptionsExcerpt'}).exists()).toBe(true);
   });
 
   it('renders a ShipmentLabel for each shipment', () => {
-    mockOrderData([{id: 1}, {id: 2}, {id: 3}]);
+    mockOrderData(mockedUseOrderData, {shipments: [{id: 1}, {id: 2}, {id: 3}]});
     const wrapper = mount(OrderV2ModeOrderListItem);
     const labels = wrapper.findAllComponents(ShipmentLabelStub);
 
@@ -70,13 +59,13 @@ describe('OrderV2ModeOrderListItem', () => {
   });
 
   it('does not show export, print, or backoffice actions', () => {
-    mockOrderData();
+    mockOrderData(mockedUseOrderData);
     const wrapper = mount(OrderV2ModeOrderListItem);
     const html = wrapper.html();
 
     expect(html).not.toContain(AdminAction.OrdersExport);
     expect(html).not.toContain(AdminAction.OrdersPrint);
     expect(html).not.toContain(AdminAction.OrdersExportPrint);
-    expect(html).not.toContain('show-exported-order');
+    expect(html).not.toContain(ORDER_VIEW_IN_BACKOFFICE_ID);
   });
 });

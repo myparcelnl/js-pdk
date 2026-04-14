@@ -1,12 +1,9 @@
-import {type OrderMode, resolveOrderMode, SubscriptionFeature} from '../../data';
+import {type ComputedRef, computed} from 'vue';
+import {type OrderMode, resolveOrderMode} from '../../data';
 import {useContext} from './useContext';
 
-export const useOrderMode = (): OrderMode => {
+export const useOrderMode = (): ComputedRef<OrderMode> => {
   const context = useContext();
-  const subscriptionFeatures = context.account?.subscriptionFeatures ?? [];
 
-  const orderV1 = subscriptionFeatures.includes(SubscriptionFeature.LegacyOrderManagement);
-  const orderV2 = subscriptionFeatures.includes(SubscriptionFeature.OrderManagement);
-
-  return resolveOrderMode(orderV1, orderV2);
+  return computed(() => resolveOrderMode(context.account?.subscriptionFeatures ?? []));
 };

@@ -1,9 +1,10 @@
 // @vitest-environment happy-dom
 
-import {defineComponent, h} from 'vue';
+import {computed, defineComponent, h} from 'vue';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {config, mount} from '@vue/test-utils';
 import {AdminAction, OrderMode} from '../../data';
+import {useOrderMode} from '../../composables/context/useOrderMode';
 import {getActionIds} from '../../__tests__/utils/getActionIds';
 import {doComponentTestSetup, doComponentTestTeardown} from '../../__tests__';
 import ShipmentOptionsModal from './ShipmentOptionsModal.vue';
@@ -15,9 +16,6 @@ vi.mock('../../composables/context/useOrderMode', () => ({
 vi.mock('../../composables/orders/useOrdersData', () => ({
   useOrdersData: vi.fn(() => []),
 }));
-
-// eslint-disable-next-line import/first
-import {useOrderMode} from '../../composables/context/useOrderMode';
 
 const mockedUseOrderMode = vi.mocked(useOrderMode);
 
@@ -42,11 +40,10 @@ describe('ShipmentOptionsModal', () => {
 
   afterEach(() => {
     doComponentTestTeardown();
-    vi.restoreAllMocks();
   });
 
   it('shows close, update, export-to-shipments, and export-print in Shipments mode', () => {
-    mockedUseOrderMode.mockReturnValue(OrderMode.Shipments);
+    mockedUseOrderMode.mockReturnValue(computed(() => OrderMode.Shipments));
     const wrapper = mount(ShipmentOptionsModal);
     const ids = getModalActionIds(wrapper);
 
@@ -57,7 +54,7 @@ describe('ShipmentOptionsModal', () => {
   });
 
   it('shows close, update, and export in OrderV1 mode', () => {
-    mockedUseOrderMode.mockReturnValue(OrderMode.OrderV1);
+    mockedUseOrderMode.mockReturnValue(computed(() => OrderMode.OrderV1));
     const wrapper = mount(ShipmentOptionsModal);
     const ids = getModalActionIds(wrapper);
 
@@ -68,7 +65,7 @@ describe('ShipmentOptionsModal', () => {
   });
 
   it('shows only close and update in OrderV2 mode', () => {
-    mockedUseOrderMode.mockReturnValue(OrderMode.OrderV2);
+    mockedUseOrderMode.mockReturnValue(computed(() => OrderMode.OrderV2));
     const wrapper = mount(ShipmentOptionsModal);
     const ids = getModalActionIds(wrapper);
 

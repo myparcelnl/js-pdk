@@ -1,8 +1,13 @@
 import {describe, expect, it} from 'vitest';
 import {AdminAction, OrderMode} from '../data';
-import {BOX_MODE_ACTIONS, MODAL_MODE_ACTIONS, STORE_MODE_ACTIONS} from './orderModeActions';
+import {
+  BOX_MODE_ACTIONS,
+  MODAL_MODE_ACTIONS,
+  ORDER_VIEW_IN_BACKOFFICE_ID,
+  STORE_MODE_ACTIONS,
+} from './orderModeActions';
 
-const getActionIds = (actions: {name?: string; id?: string}[]): string[] =>
+const getDefinitionIds = (actions: {name?: string; id?: string}[]): string[] =>
   actions.map((a) => a.name ?? a.id ?? '');
 
 describe('orderModeActions', () => {
@@ -20,14 +25,14 @@ describe('orderModeActions', () => {
 
   describe('STORE_MODE_ACTIONS', () => {
     it('registers export and backoffice actions for OrderV1', () => {
-      const ids = getActionIds(STORE_MODE_ACTIONS[OrderMode.OrderV1]);
+      const ids = getDefinitionIds(STORE_MODE_ACTIONS[OrderMode.OrderV1]);
 
       expect(ids).toContain(AdminAction.OrdersExport);
-      expect(ids).toContain('show-exported-order');
+      expect(ids).toContain(ORDER_VIEW_IN_BACKOFFICE_ID);
     });
 
     it('registers all shipment actions for Shipments mode', () => {
-      const ids = getActionIds(STORE_MODE_ACTIONS[OrderMode.Shipments]);
+      const ids = getDefinitionIds(STORE_MODE_ACTIONS[OrderMode.Shipments]);
 
       expect(ids).toContain(AdminAction.OrdersPrint);
       expect(ids).toContain(AdminAction.OrdersExport);
@@ -45,13 +50,13 @@ describe('orderModeActions', () => {
 
   describe('BOX_MODE_ACTIONS', () => {
     it('includes export for OrderV1', () => {
-      const ids = getActionIds(BOX_MODE_ACTIONS[OrderMode.OrderV1]);
+      const ids = getDefinitionIds(BOX_MODE_ACTIONS[OrderMode.OrderV1]);
 
       expect(ids).toEqual([AdminAction.OrdersExport]);
     });
 
     it('includes export-to-shipments, print, and export-print for Shipments', () => {
-      const ids = getActionIds(BOX_MODE_ACTIONS[OrderMode.Shipments]);
+      const ids = getDefinitionIds(BOX_MODE_ACTIONS[OrderMode.Shipments]);
 
       expect(ids).toContain(AdminAction.OrdersExport);
       expect(ids).toContain(AdminAction.OrdersPrint);
@@ -65,13 +70,13 @@ describe('orderModeActions', () => {
 
   describe('MODAL_MODE_ACTIONS', () => {
     it('includes export for OrderV1', () => {
-      const ids = getActionIds(MODAL_MODE_ACTIONS[OrderMode.OrderV1]);
+      const ids = getDefinitionIds(MODAL_MODE_ACTIONS[OrderMode.OrderV1]);
 
       expect(ids).toEqual([AdminAction.OrdersExport]);
     });
 
     it('includes export-to-shipments and export-print for Shipments (no standalone print)', () => {
-      const ids = getActionIds(MODAL_MODE_ACTIONS[OrderMode.Shipments]);
+      const ids = getDefinitionIds(MODAL_MODE_ACTIONS[OrderMode.Shipments]);
 
       expect(ids).toContain(AdminAction.OrdersExport);
       expect(ids).toContain(AdminAction.OrdersExportPrint);
@@ -86,8 +91,8 @@ describe('orderModeActions', () => {
   describe('consistency between mappings', () => {
     it('BOX actions are a subset of STORE actions for each mode', () => {
       for (const mode of Object.values(OrderMode)) {
-        const storeIds = getActionIds(STORE_MODE_ACTIONS[mode]);
-        const boxIds = getActionIds(BOX_MODE_ACTIONS[mode]);
+        const storeIds = getDefinitionIds(STORE_MODE_ACTIONS[mode]);
+        const boxIds = getDefinitionIds(BOX_MODE_ACTIONS[mode]);
 
         for (const id of boxIds) {
           expect(storeIds, `BOX action ${id} in ${mode} mode should also be in STORE`).toContain(id);
@@ -97,8 +102,8 @@ describe('orderModeActions', () => {
 
     it('MODAL actions are a subset of STORE actions for each mode', () => {
       for (const mode of Object.values(OrderMode)) {
-        const storeIds = getActionIds(STORE_MODE_ACTIONS[mode]);
-        const modalIds = getActionIds(MODAL_MODE_ACTIONS[mode]);
+        const storeIds = getDefinitionIds(STORE_MODE_ACTIONS[mode]);
+        const modalIds = getDefinitionIds(MODAL_MODE_ACTIONS[mode]);
 
         for (const id of modalIds) {
           expect(storeIds, `MODAL action ${id} in ${mode} mode should also be in STORE`).toContain(id);
