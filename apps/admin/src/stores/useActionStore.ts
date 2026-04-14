@@ -72,15 +72,15 @@ export const useActionStore = defineStore('actions', () => {
         ...(orderMode === OrderMode.OrderV1
           ? [orderExportAction, orderViewInBackofficeAction]
           : orderMode === OrderMode.Shipments
-            ? [
-                orderExportToShipmentsAction,
-                ordersExportPrintShipmentsAction,
-                shipmentsExportReturnAction,
-                shipmentsDeleteAction,
-                shipmentsUpdateAction,
-                shipmentsPrintAction,
-              ]
-            : []),
+          ? [
+              orderExportToShipmentsAction,
+              ordersExportPrintShipmentsAction,
+              shipmentsExportReturnAction,
+              shipmentsDeleteAction,
+              shipmentsUpdateAction,
+              shipmentsPrintAction,
+            ]
+          : []),
       ]);
     },
 

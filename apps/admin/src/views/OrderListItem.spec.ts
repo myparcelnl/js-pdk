@@ -1,8 +1,8 @@
 // @vitest-environment happy-dom
 
+import {computed, defineComponent, h, reactive} from 'vue';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {mount} from '@vue/test-utils';
-import {computed, defineComponent, h, reactive} from 'vue';
 import {OrderMode} from '../data';
 import {doComponentTestSetup, doComponentTestTeardown} from '../__tests__';
 
@@ -47,8 +47,8 @@ describe('OrderListItem component selection', () => {
       orderMode === OrderMode.OrderV2
         ? 'OrderV2ModeOrderListItem'
         : orderMode === OrderMode.OrderV1
-          ? 'OrderModeOrderListItem'
-          : 'ShipmentModeOrderListItem';
+        ? 'OrderModeOrderListItem'
+        : 'ShipmentModeOrderListItem';
 
     expect(selectedComponent).toBe(expected);
   });
