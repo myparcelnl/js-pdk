@@ -3,15 +3,10 @@ import {useContext} from './useContext';
 
 export const useOrderMode = (): OrderMode => {
   const context = useContext();
-  const {subscriptionFeatures} = context.account;
+  const subscriptionFeatures = context.account?.subscriptionFeatures ?? [];
 
   const orderV1 = subscriptionFeatures.includes(SubscriptionFeature.LegacyOrderManagement);
   const orderV2 = subscriptionFeatures.includes(SubscriptionFeature.OrderManagement);
 
-  const orderMode = resolveOrderMode(orderV1, orderV2);
-
-  // eslint-disable-next-line no-console
-  console.info('[OrderMode] resolved:', orderMode);
-
-  return orderMode;
+  return resolveOrderMode(orderV1, orderV2);
 };

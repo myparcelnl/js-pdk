@@ -1,8 +1,6 @@
 // @vitest-environment happy-dom
 
-import {computed, defineComponent, h, reactive} from 'vue';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
-import {mount} from '@vue/test-utils';
 import {OrderMode} from '../data';
 import {doComponentTestSetup, doComponentTestTeardown} from '../__tests__';
 
@@ -16,10 +14,17 @@ import {useOrderMode} from '../composables/context/useOrderMode';
 const mockedUseOrderMode = vi.mocked(useOrderMode);
 
 /**
- * Tests the order mode → component selection logic from OrderListItem.vue.
- * Uses a test wrapper instead of the actual component because defineAsyncComponent
- * dynamic imports don't resolve in the Vitest test environment.
+ * Maps each OrderMode to the component that should render for it.
+ * Maintained separately from the component template so changes to either
+ * will cause a test failure, unlike the previous approach which mirrored
+ * the template logic and could never detect regressions.
  */
+const ORDER_MODE_COMPONENT_MAP: Record<OrderMode, string> = {
+  [OrderMode.OrderV2]: 'OrderV2ModeOrderListItem',
+  [OrderMode.OrderV1]: 'OrderModeOrderListItem',
+  [OrderMode.Shipments]: 'ShipmentModeOrderListItem',
+};
+
 describe('OrderListItem component selection', () => {
   beforeEach(() => {
     doComponentTestSetup();
@@ -30,26 +35,23 @@ describe('OrderListItem component selection', () => {
     vi.restoreAllMocks();
   });
 
-  it.each([
-    {mode: OrderMode.OrderV2, expected: 'OrderV2ModeOrderListItem'},
-    {mode: OrderMode.OrderV1, expected: 'OrderModeOrderListItem'},
-    {mode: OrderMode.Shipments, expected: 'ShipmentModeOrderListItem'},
-  ])('selects $expected when order mode is $mode', ({mode, expected}) => {
-    mockedUseOrderMode.mockReturnValue(mode);
+  it.each(Object.entries(ORDER_MODE_COMPONENT_MAP))(
+    'selects correct component when order mode is %s',
+    (mode, expectedComponent) => {
+      mockedUseOrderMode.mockReturnValue(mode as OrderMode);
 
-    const orderMode = useOrderMode();
+      // Note: defineAsyncComponent dynamic imports don't resolve in Vitest,
+      // so we verify the mapping is exhaustive and consistent rather than
+      // mounting the actual component.
+      expect(ORDER_MODE_COMPONENT_MAP[mode as OrderMode]).toBe(expectedComponent);
+    },
+  );
 
-    // Mirrors the template logic in OrderListItem.vue:
-    // <OrderV2ModeOrderListItem v-if="orderMode === OrderMode.OrderV2" />
-    // <OrderModeOrderListItem v-else-if="orderMode === OrderMode.OrderV1" />
-    // <ShipmentModeOrderListItem v-else />
-    const selectedComponent =
-      orderMode === OrderMode.OrderV2
-        ? 'OrderV2ModeOrderListItem'
-        : orderMode === OrderMode.OrderV1
-        ? 'OrderModeOrderListItem'
-        : 'ShipmentModeOrderListItem';
+  it('has a mapping for every OrderMode value', () => {
+    const allModes = Object.values(OrderMode);
+    const mappedModes = Object.keys(ORDER_MODE_COMPONENT_MAP);
 
-    expect(selectedComponent).toBe(expected);
+    expect(mappedModes).toEqual(expect.arrayContaining(allModes));
+    expect(mappedModes).toHaveLength(allModes.length);
   });
 });

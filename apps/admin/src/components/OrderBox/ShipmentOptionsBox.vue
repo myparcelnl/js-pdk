@@ -37,14 +37,7 @@ import {ShipmentOptionsForm} from '../common';
 import {instantiateActions} from '../../services';
 import {AdminIcon, NotificationCategory, OrderMode} from '../../data';
 import {useLanguage, useOrderData, useOrderMode} from '../../composables';
-import {
-  orderExportAction,
-  orderExportToShipmentsAction,
-  ordersExportPrintShipmentsAction,
-  ordersPrintAction,
-  ordersUpdateAction,
-  orderViewInBackofficeAction,
-} from '../../actions';
+import {BOX_MODE_ACTIONS, ordersUpdateAction, orderViewInBackofficeAction} from '../../actions';
 import {NotificationContainer} from '../../components';
 
 const {order: data, loading} = useOrderData();
@@ -59,16 +52,8 @@ const actions = computed(() => {
     return instantiateActions(orderViewInBackofficeAction);
   }
 
-  return instantiateActions(
-    [
-      ordersUpdateAction,
-      ...(orderMode === OrderMode.OrderV1
-        ? [orderExportAction]
-        : orderMode === OrderMode.Shipments
-          ? [orderExportToShipmentsAction, ordersPrintAction, ordersExportPrintShipmentsAction]
-          : []),
-    ],
-    {orderIds: toValue(data)?.externalIdentifier},
-  );
+  return instantiateActions([ordersUpdateAction, ...BOX_MODE_ACTIONS[orderMode]], {
+    orderIds: toValue(data)?.externalIdentifier,
+  });
 });
 </script>

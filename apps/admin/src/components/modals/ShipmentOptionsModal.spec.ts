@@ -4,6 +4,7 @@ import {defineComponent, h} from 'vue';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {config, mount} from '@vue/test-utils';
 import {AdminAction, OrderMode} from '../../data';
+import {getActionIds} from '../../__tests__/utils/getActionIds';
 import {doComponentTestSetup, doComponentTestTeardown} from '../../__tests__';
 import ShipmentOptionsModal from './ShipmentOptionsModal.vue';
 
@@ -31,12 +32,7 @@ const PdkModalStub = defineComponent({
   },
 });
 
-const getActionIds = (wrapper: ReturnType<typeof mount>): string[] => {
-  const modal = wrapper.findComponent(PdkModalStub);
-  const actions = modal.props('actions') as {id: string}[];
-
-  return actions.map((a) => a.id);
-};
+const getModalActionIds = (wrapper: ReturnType<typeof mount>) => getActionIds(wrapper, PdkModalStub);
 
 describe('ShipmentOptionsModal', () => {
   beforeEach(() => {
@@ -52,7 +48,7 @@ describe('ShipmentOptionsModal', () => {
   it('shows close, update, export-to-shipments, and export-print in Shipments mode', () => {
     mockedUseOrderMode.mockReturnValue(OrderMode.Shipments);
     const wrapper = mount(ShipmentOptionsModal);
-    const ids = getActionIds(wrapper);
+    const ids = getModalActionIds(wrapper);
 
     expect(ids).toContain(MODAL_CLOSE_ID);
     expect(ids).toContain(AdminAction.OrdersUpdate);
@@ -63,7 +59,7 @@ describe('ShipmentOptionsModal', () => {
   it('shows close, update, and export in OrderV1 mode', () => {
     mockedUseOrderMode.mockReturnValue(OrderMode.OrderV1);
     const wrapper = mount(ShipmentOptionsModal);
-    const ids = getActionIds(wrapper);
+    const ids = getModalActionIds(wrapper);
 
     expect(ids).toContain(MODAL_CLOSE_ID);
     expect(ids).toContain(AdminAction.OrdersUpdate);
@@ -74,7 +70,7 @@ describe('ShipmentOptionsModal', () => {
   it('shows only close and update in OrderV2 mode', () => {
     mockedUseOrderMode.mockReturnValue(OrderMode.OrderV2);
     const wrapper = mount(ShipmentOptionsModal);
-    const ids = getActionIds(wrapper);
+    const ids = getModalActionIds(wrapper);
 
     expect(ids).toEqual([MODAL_CLOSE_ID, AdminAction.OrdersUpdate]);
   });
