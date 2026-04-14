@@ -14,15 +14,9 @@
 <script lang="ts" setup>
 import {computed, defineAsyncComponent, toValue} from 'vue';
 import {instantiateActions} from '../../services';
-import {AdminModalKey, OrderMode} from '../../data';
+import {AdminModalKey} from '../../data';
 import {useOrderMode, useOrdersData} from '../../composables';
-import {
-  modalCloseAction,
-  orderExportAction,
-  orderExportToShipmentsAction,
-  ordersExportPrintShipmentsAction,
-  ordersUpdateAction,
-} from '../../actions';
+import {modalCloseAction, MODAL_MODE_ACTIONS, ordersUpdateAction} from '../../actions';
 
 /**
  * Shipment options modal. Opened by clicking the "Create" button in the "Labels" column in the orders list.
@@ -40,19 +34,7 @@ const orderIds = computed(() => toValue(ordersData).map((data) => toValue(data.o
 const actions = computed(() => {
   const disabled = toValue(ordersData).some((data) => toValue(data.query.isLoading));
 
-  const actions = [
-    modalCloseAction,
-    ordersUpdateAction,
-    ...(orderMode === OrderMode.OrderV1
-      ? [orderExportAction]
-      : orderMode === OrderMode.Shipments
-        ? [orderExportToShipmentsAction, ordersExportPrintShipmentsAction]
-        : []),
-  ];
-
-  // TODO: figure out why this throws an error in build
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  return instantiateActions(actions, {disabled});
+  // @ts-expect-error instantiateActions overload does not accept the union of single/array parameter types
+  return instantiateActions([modalCloseAction, ordersUpdateAction, ...MODAL_MODE_ACTIONS[orderMode]], {disabled});
 });
 </script>

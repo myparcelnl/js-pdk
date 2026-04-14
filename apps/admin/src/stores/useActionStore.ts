@@ -3,23 +3,15 @@ import {defineStore} from 'pinia';
 import {type OneOrMore, type PromiseOr, toArray} from '@myparcel-dev/ts-utils';
 import {type ActionParameters, type AnyActionDefinition, type ResolvedAction} from '../types';
 import {createAction, getActionIdentifier} from '../services';
-import {type AdminAction, OrderMode} from '../data';
+import {type AdminAction} from '../data';
 import {useOrderMode} from '../composables';
 import {
   modalCloseAction,
   modalSubmitFormAction,
-  orderExportAction,
-  orderExportToShipmentsAction,
   ordersEditAction,
-  ordersExportPrintShipmentsAction,
   ordersFetchAction,
-  ordersPrintAction,
   ordersUpdateAction,
-  orderViewInBackofficeAction,
-  shipmentsDeleteAction,
-  shipmentsExportReturnAction,
-  shipmentsPrintAction,
-  shipmentsUpdateAction,
+  STORE_MODE_ACTIONS,
   webhooksCreateAction,
   webhooksDeleteAction,
   webhooksFetchAction,
@@ -64,24 +56,7 @@ export const useActionStore = defineStore('actions', () => {
     registerOrderActions: () => {
       const orderMode = useOrderMode();
 
-      register([
-        ordersEditAction,
-        ordersFetchAction,
-        ordersPrintAction,
-        ordersUpdateAction,
-        ...(orderMode === OrderMode.OrderV1
-          ? [orderExportAction, orderViewInBackofficeAction]
-          : orderMode === OrderMode.Shipments
-          ? [
-              orderExportToShipmentsAction,
-              ordersExportPrintShipmentsAction,
-              shipmentsExportReturnAction,
-              shipmentsDeleteAction,
-              shipmentsUpdateAction,
-              shipmentsPrintAction,
-            ]
-          : []),
-      ]);
+      register([ordersEditAction, ordersFetchAction, ordersUpdateAction, ...STORE_MODE_ACTIONS[orderMode]]);
     },
 
     registerModalActions: () => {

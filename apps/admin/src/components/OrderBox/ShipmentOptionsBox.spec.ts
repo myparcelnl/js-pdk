@@ -6,6 +6,7 @@ import {config, mount} from '@vue/test-utils';
 import {AdminAction, OrderMode} from '../../data';
 import {useOrderData} from '../../composables/orders/useOrderData';
 import {useOrderMode} from '../../composables/context/useOrderMode';
+import {getActionIds} from '../../__tests__/utils/getActionIds';
 import {doComponentTestSetup, doComponentTestTeardown} from '../../__tests__';
 import ShipmentOptionsBox from './ShipmentOptionsBox.vue';
 
@@ -47,12 +48,7 @@ const mockOrderData = (exported = false) => {
   });
 };
 
-const getActionIds = (wrapper: ReturnType<typeof mount>): string[] => {
-  const box = wrapper.findComponent(PdkConceptBoxWrapperStub);
-  const actions = box.props('actions') as {id: string}[];
-
-  return actions.map((a) => a.id);
-};
+const getBoxActionIds = (wrapper: ReturnType<typeof mount>) => getActionIds(wrapper, PdkConceptBoxWrapperStub);
 
 describe('ShipmentOptionsBox', () => {
   beforeEach(() => {
@@ -69,7 +65,7 @@ describe('ShipmentOptionsBox', () => {
     mockedUseOrderMode.mockReturnValue(OrderMode.Shipments);
     mockOrderData();
     const wrapper = mount(ShipmentOptionsBox);
-    const ids = getActionIds(wrapper);
+    const ids = getBoxActionIds(wrapper);
 
     expect(ids).toContain(AdminAction.OrdersUpdate);
     expect(ids).toContain(AdminAction.OrdersExport);
@@ -82,7 +78,7 @@ describe('ShipmentOptionsBox', () => {
     mockedUseOrderMode.mockReturnValue(OrderMode.OrderV1);
     mockOrderData(false);
     const wrapper = mount(ShipmentOptionsBox);
-    const ids = getActionIds(wrapper);
+    const ids = getBoxActionIds(wrapper);
 
     expect(ids).toContain(AdminAction.OrdersUpdate);
     expect(ids).toContain(AdminAction.OrdersExport);
@@ -94,7 +90,7 @@ describe('ShipmentOptionsBox', () => {
     mockedUseOrderMode.mockReturnValue(OrderMode.OrderV1);
     mockOrderData(true);
     const wrapper = mount(ShipmentOptionsBox);
-    const ids = getActionIds(wrapper);
+    const ids = getBoxActionIds(wrapper);
 
     expect(ids).toEqual([BACKOFFICE_ACTION_ID]);
   });
@@ -103,7 +99,7 @@ describe('ShipmentOptionsBox', () => {
     mockedUseOrderMode.mockReturnValue(OrderMode.OrderV2);
     mockOrderData();
     const wrapper = mount(ShipmentOptionsBox);
-    const ids = getActionIds(wrapper);
+    const ids = getBoxActionIds(wrapper);
 
     expect(ids).toEqual([AdminAction.OrdersUpdate]);
   });
@@ -112,7 +108,7 @@ describe('ShipmentOptionsBox', () => {
     mockedUseOrderMode.mockReturnValue(OrderMode.OrderV2);
     mockOrderData(true);
     const wrapper = mount(ShipmentOptionsBox);
-    const ids = getActionIds(wrapper);
+    const ids = getBoxActionIds(wrapper);
 
     expect(ids).toEqual([AdminAction.OrdersUpdate]);
     expect(ids).not.toContain(BACKOFFICE_ACTION_ID);

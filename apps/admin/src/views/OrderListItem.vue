@@ -4,7 +4,7 @@
 
     <OrderModeOrderListItem v-else-if="orderMode === OrderMode.OrderV1" />
 
-    <ShipmentModeOrderListItem v-else />
+    <ShipmentModeOrderListItem v-else-if="orderMode === OrderMode.Shipments" />
   </div>
 
   <NotificationContainer

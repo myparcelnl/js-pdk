@@ -48,12 +48,7 @@ describe('useActionStore', () => {
       return store;
     };
 
-    const commonActions = [
-      AdminAction.OrdersEdit,
-      AdminAction.OrdersFetch,
-      AdminAction.OrdersPrint,
-      AdminAction.OrdersUpdate,
-    ];
+    const commonActions = [AdminAction.OrdersEdit, AdminAction.OrdersFetch, AdminAction.OrdersUpdate];
 
     it.each(commonActions)('registers common action %s regardless of mode', (action) => {
       for (const mode of [OrderMode.Shipments, OrderMode.OrderV1, OrderMode.OrderV2]) {
@@ -65,6 +60,7 @@ describe('useActionStore', () => {
     it('registers shipment-specific actions in Shipments mode', () => {
       const store = mountWithStore(OrderMode.Shipments);
 
+      expect(store.get(AdminAction.OrdersPrint)).toBeDefined();
       expect(store.get(AdminAction.OrdersExport)).toBeDefined();
       expect(store.get(AdminAction.OrdersExportPrint)).toBeDefined();
       expect(store.get(AdminAction.ShipmentsExportReturn)).toBeDefined();
@@ -89,6 +85,7 @@ describe('useActionStore', () => {
     it('registers no export or print actions in OrderV2 mode', () => {
       const store = mountWithStore(OrderMode.OrderV2);
 
+      expect(store.get(AdminAction.OrdersPrint)).toBeUndefined();
       expect(store.get(AdminAction.OrdersExport)).toBeUndefined();
       expect(store.get(AdminAction.OrdersExportPrint)).toBeUndefined();
       expect(store.get(BACKOFFICE_ACTION_ID)).toBeUndefined();
