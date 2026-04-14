@@ -34,7 +34,6 @@ const orderIds = computed(() => toValue(ordersData).map((data) => toValue(data.o
 const actions = computed(() => {
   const disabled = toValue(ordersData).some((data) => toValue(data.query.isLoading));
 
-  // @ts-expect-error instantiateActions overload does not accept the union of single/array parameter types
   return instantiateActions([modalCloseAction, ordersUpdateAction, ...MODAL_MODE_ACTIONS[orderMode]], {disabled});
 });
 </script>
