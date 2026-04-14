@@ -12,6 +12,8 @@ import {
   shipmentsUpdateAction,
 } from './definitions';
 
+export {ORDER_VIEW_IN_BACKOFFICE_ID} from './definitions';
+
 /**
  * Mode-specific actions for global store registration (superset of all available actions per mode).
  */

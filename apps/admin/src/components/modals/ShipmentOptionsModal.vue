@@ -34,6 +34,6 @@ const orderIds = computed(() => toValue(ordersData).map((data) => toValue(data.o
 const actions = computed(() => {
   const disabled = toValue(ordersData).some((data) => toValue(data.query.isLoading));
 
-  return instantiateActions([modalCloseAction, ordersUpdateAction, ...MODAL_MODE_ACTIONS[orderMode]], {disabled});
+  return instantiateActions([modalCloseAction, ordersUpdateAction, ...MODAL_MODE_ACTIONS[orderMode.value]], {disabled});
 });
 </script>

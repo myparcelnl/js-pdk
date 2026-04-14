@@ -56,7 +56,7 @@ export const useActionStore = defineStore('actions', () => {
     registerOrderActions: () => {
       const orderMode = useOrderMode();
 
-      register([ordersEditAction, ordersFetchAction, ordersUpdateAction, ...STORE_MODE_ACTIONS[orderMode]]);
+      register([ordersEditAction, ordersFetchAction, ordersUpdateAction, ...STORE_MODE_ACTIONS[orderMode.value]]);
     },
 
     registerModalActions: () => {

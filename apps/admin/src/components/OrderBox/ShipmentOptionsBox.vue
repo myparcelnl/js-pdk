@@ -23,8 +23,7 @@
 
       <PdkRow>
         <PdkCol>
-          <NotificationContainer
-            :category="NotificationCategory.Action" />
+          <NotificationContainer :category="NotificationCategory.Action" />
         </PdkCol>
       </PdkRow>
     </template>
@@ -37,22 +36,22 @@ import {ShipmentOptionsForm} from '../common';
 import {instantiateActions} from '../../services';
 import {AdminIcon, NotificationCategory, OrderMode} from '../../data';
 import {useLanguage, useOrderData, useOrderMode} from '../../composables';
-import {BOX_MODE_ACTIONS, ordersUpdateAction, orderViewInBackofficeAction} from '../../actions';
 import {NotificationContainer} from '../../components';
+import {BOX_MODE_ACTIONS, ordersUpdateAction, orderViewInBackofficeAction} from '../../actions';
 
 const {order: data, loading} = useOrderData();
 
 const {translate} = useLanguage();
 const orderMode = useOrderMode();
 
-const isExported = computed(() => orderMode === OrderMode.OrderV1 && toValue(data)?.exported);
+const isExported = computed(() => orderMode.value === OrderMode.OrderV1 && toValue(data)?.exported);
 
 const actions = computed(() => {
   if (isExported.value) {
     return instantiateActions(orderViewInBackofficeAction);
   }
 
-  return instantiateActions([ordersUpdateAction, ...BOX_MODE_ACTIONS[orderMode]], {
+  return instantiateActions([ordersUpdateAction, ...BOX_MODE_ACTIONS[orderMode.value]], {
     orderIds: toValue(data)?.externalIdentifier,
   });
 });

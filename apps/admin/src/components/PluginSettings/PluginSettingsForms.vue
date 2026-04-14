@@ -46,7 +46,7 @@ watch(
       return;
     }
 
-    const pluginSettingsView = filterPluginSettingsView(rawPluginSettingsView, orderMode);
+    const pluginSettingsView = filterPluginSettingsView(rawPluginSettingsView, orderMode.value);
 
     tabs.value = createPluginSettingsTabs(pluginSettingsView, {
       pluginSettings: dynamicContext.pluginSettings,
