@@ -1,6 +1,8 @@
 <template>
   <div v-if="!query.isLoading">
-    <OrderModeOrderListItem v-if="orderMode" />
+    <OrderV2ModeOrderListItem v-if="orderMode === OrderMode.OrderV2" />
+
+    <OrderModeOrderListItem v-else-if="orderMode === OrderMode.OrderV1" />
 
     <ShipmentModeOrderListItem v-else />
   </div>
@@ -17,11 +19,15 @@
 import {defineAsyncComponent, toValue} from 'vue';
 import {type NotificationFilter} from '../types';
 import {useActionStore, useQueryStore} from '../stores';
-import {NotificationCategory} from '../data';
-import {useOrderData, usePluginSettings} from '../composables';
+import {NotificationCategory, OrderMode} from '../data';
+import {useOrderData, useOrderMode} from '../composables';
 import {NotificationContainer} from '../components';
 
 /* eslint-disable @typescript-eslint/naming-convention */
+const OrderV2ModeOrderListItem = defineAsyncComponent(() => {
+  return import('../components/OrderListItem/OrderV2ModeOrderListItem.vue');
+});
+
 const OrderModeOrderListItem = defineAsyncComponent(() => {
   return import('../components/OrderListItem/OrderModeOrderListItem.vue');
 });
@@ -40,9 +46,7 @@ const actionStore = useActionStore();
 
 actionStore.registerOrderActions();
 
-const pluginSettings = usePluginSettings();
-
-const {orderMode} = pluginSettings.order;
+const orderMode = useOrderMode();
 
 const {query} = useOrderData();
 

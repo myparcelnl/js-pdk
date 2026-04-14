@@ -14,8 +14,8 @@
 <script lang="ts" setup>
 import {computed, defineAsyncComponent, toValue} from 'vue';
 import {instantiateActions} from '../../services';
-import {AdminModalKey} from '../../data';
-import {useOrdersData, usePluginSettings} from '../../composables';
+import {AdminModalKey, OrderMode} from '../../data';
+import {useOrderMode, useOrdersData} from '../../composables';
 import {
   modalCloseAction,
   orderExportAction,
@@ -31,9 +31,7 @@ import {
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const ShipmentOptionsModalForm = defineAsyncComponent(() => import('./ShipmentOptionsModalForm.vue'));
 
-const pluginSettings = usePluginSettings();
-
-const {orderMode} = pluginSettings.order;
+const orderMode = useOrderMode();
 
 const ordersData = computed(() => useOrdersData());
 
@@ -45,7 +43,11 @@ const actions = computed(() => {
   const actions = [
     modalCloseAction,
     ordersUpdateAction,
-    ...(orderMode ? [orderExportAction] : [orderExportToShipmentsAction, ordersExportPrintShipmentsAction]),
+    ...(orderMode === OrderMode.OrderV1
+      ? [orderExportAction]
+      : orderMode === OrderMode.Shipments
+        ? [orderExportToShipmentsAction, ordersExportPrintShipmentsAction]
+        : []),
   ];
 
   // TODO: figure out why this throws an error in build

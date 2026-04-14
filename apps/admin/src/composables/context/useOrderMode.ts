@@ -1,4 +1,4 @@
-import {type OrderMode, SubscriptionFeature, resolveOrderMode} from '../../data';
+import {type OrderMode, resolveOrderMode, SubscriptionFeature} from '../../data';
 import {useContext} from './useContext';
 
 export const useOrderMode = (): OrderMode => {

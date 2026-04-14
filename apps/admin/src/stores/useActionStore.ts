@@ -3,8 +3,8 @@ import {defineStore} from 'pinia';
 import {type OneOrMore, type PromiseOr, toArray} from '@myparcel-dev/ts-utils';
 import {type ActionParameters, type AnyActionDefinition, type ResolvedAction} from '../types';
 import {createAction, getActionIdentifier} from '../services';
-import {type AdminAction} from '../data';
-import {usePluginSettings} from '../composables';
+import {type AdminAction, OrderMode} from '../data';
+import {useOrderMode} from '../composables';
 import {
   modalCloseAction,
   modalSubmitFormAction,
@@ -62,24 +62,25 @@ export const useActionStore = defineStore('actions', () => {
     dispatch,
 
     registerOrderActions: () => {
-      const pluginSettings = usePluginSettings();
+      const orderMode = useOrderMode();
 
       register([
         ordersEditAction,
         ordersFetchAction,
         ordersPrintAction,
         ordersUpdateAction,
-        ...(pluginSettings.order.orderMode
+        ...(orderMode === OrderMode.OrderV1
           ? [orderExportAction, orderViewInBackofficeAction]
-          : [
-              orderExportToShipmentsAction,
-              ordersExportPrintShipmentsAction,
-              shipmentsExportReturnAction,
-              shipmentsExportReturnAction,
-              shipmentsDeleteAction,
-              shipmentsUpdateAction,
-              shipmentsPrintAction,
-            ]),
+          : orderMode === OrderMode.Shipments
+            ? [
+                orderExportToShipmentsAction,
+                ordersExportPrintShipmentsAction,
+                shipmentsExportReturnAction,
+                shipmentsDeleteAction,
+                shipmentsUpdateAction,
+                shipmentsPrintAction,
+              ]
+            : []),
       ]);
     },
 

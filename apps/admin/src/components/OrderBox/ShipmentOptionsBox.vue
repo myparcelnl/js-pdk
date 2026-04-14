@@ -35,8 +35,8 @@
 import {computed, toValue} from 'vue';
 import {ShipmentOptionsForm} from '../common';
 import {instantiateActions} from '../../services';
-import {AdminIcon, NotificationCategory} from '../../data';
-import {useLanguage, useOrderData, usePluginSettings} from '../../composables';
+import {AdminIcon, NotificationCategory, OrderMode} from '../../data';
+import {useLanguage, useOrderData, useOrderMode} from '../../composables';
 import {
   orderExportAction,
   orderExportToShipmentsAction,
@@ -50,11 +50,9 @@ import {NotificationContainer} from '../../components';
 const {order: data, loading} = useOrderData();
 
 const {translate} = useLanguage();
-const pluginSettings = usePluginSettings();
+const orderMode = useOrderMode();
 
-const {orderMode} = pluginSettings.order;
-
-const isExported = computed(() => pluginSettings.order.orderMode && toValue(data)?.exported);
+const isExported = computed(() => orderMode === OrderMode.OrderV1 && toValue(data)?.exported);
 
 const actions = computed(() => {
   if (isExported.value) {
@@ -64,9 +62,11 @@ const actions = computed(() => {
   return instantiateActions(
     [
       ordersUpdateAction,
-      ...(orderMode
+      ...(orderMode === OrderMode.OrderV1
         ? [orderExportAction]
-        : [orderExportToShipmentsAction, ordersPrintAction, ordersExportPrintShipmentsAction]),
+        : orderMode === OrderMode.Shipments
+          ? [orderExportToShipmentsAction, ordersPrintAction, ordersExportPrintShipmentsAction]
+          : []),
     ],
     {orderIds: toValue(data)?.externalIdentifier},
   );
