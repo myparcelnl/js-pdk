@@ -1,6 +1,7 @@
 import {type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {isOfType} from '@myparcel-dev/ts-utils';
 import {convertDotNotationToObject} from '../convertDotNotationToObject';
+import {getEnabledValues} from './getEnabledValues';
 
 export const formToBody = <T extends Record<string, unknown> = Record<string, unknown>>(
   form?: false | FormInstance | T,
@@ -9,7 +10,7 @@ export const formToBody = <T extends Record<string, unknown> = Record<string, un
     return form ? form : ({} as T);
   }
 
-  const formValues = form.getValues();
+  const formValues = getEnabledValues(form);
   return convertDotNotationToObject(formValues, (value) => {
     return typeof value === 'boolean' ? Number(value) : value;
   }) as T;

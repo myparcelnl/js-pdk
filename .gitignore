@@ -51,3 +51,5 @@ lerna-debug.log*
 
 # Local Netlify folder
 .netlify
+
+.claude/settings.local.json

@@ -186,9 +186,9 @@ exports[`exports > exports from testing.ts 1`] = `
   "mockDefaultEndpoints",
   "mockDefaultGlobalContext",
   "mockDefaultLogger",
-  "mockDefaultPlatform",
   "mockDefaultPluginSettings",
   "mockDefaultPrintOptionsView",
+  "mockDefaultProposition",
   "mockDefaultShop",
   "mockDefaultTranslations",
 ]

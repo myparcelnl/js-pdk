@@ -42,7 +42,7 @@ export const useExportOrdersMutation = (
           fillShipmentsQueryData(queryClient, order.shipments?.slice(-1) ?? [], order);
         });
 
-        if (input.form) {
+        if (mode === MutationMode.Modal && input.form) {
           await input.form?.reset();
         }
       },

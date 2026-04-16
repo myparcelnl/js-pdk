@@ -2,7 +2,6 @@ import {ref, toValue} from 'vue';
 import {get} from 'lodash-unified';
 import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {type Plugin, TriState} from '@myparcel-dev/pdk-common';
-import {PackageTypeName} from '@myparcel-dev/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from '../field';
 import {createDefaultOption, defineFormField, resolveFormComponent} from '../../helpers';
@@ -34,8 +33,9 @@ export const createDigitalStampRangeField = (
     label: 'weight_range',
     ref: ref(selectedValue ?? TriState.Inherit),
     component: resolveFormComponent(AdminComponent.SelectInput),
-    visibleWhen: (field) => PackageTypeName.DigitalStamp === field.form.getValue(FIELD_PACKAGE_TYPE),
-    disabledWhen: (field) => PackageTypeName.DigitalStamp !== field.form.getValue(FIELD_PACKAGE_TYPE),
+    // @TODO Remove package type checks when the context provides visibility restrictions per option.
+    visibleWhen: (field) => field.form.getValue(FIELD_PACKAGE_TYPE) === 'DIGITAL_STAMP',
+    disabledWhen: (field) => field.form.getValue(FIELD_PACKAGE_TYPE) !== 'DIGITAL_STAMP',
     props: {
       subtext: {
         key: 'order_weight',
