@@ -1,7 +1,7 @@
 import {vi} from 'vitest';
 import {type GlobalAdminContext} from '../../types';
 import {mockDefaultTranslations} from './mockDefaultTranslations';
-import {mockDefaultPlatform} from './mockDefaultPlatform';
+import {mockDefaultProposition} from './mockDefaultProposition';
 import {mockDefaultEndpoints} from './mockDefaultEndpoints';
 import {mockDefaultAppInfo} from './mockDefaultAppInfo';
 
@@ -15,7 +15,7 @@ export const mockDefaultGlobalContext = vi.fn((): GlobalAdminContext => {
     eventPong: 'test2',
     language: 'en-US',
     mode: '',
-    platform: mockDefaultPlatform(),
+    proposition: mockDefaultProposition(),
     translations: mockDefaultTranslations(),
   };
 });

@@ -1,18 +1,16 @@
 import {type FormInstance} from '@myparcel-dev/vue-form-builder';
-import {DeliveryTypeName} from '@myparcel-dev/constants';
 import {getDynamicTranslation} from '../../utils';
 import {type SelectOption} from '../../types';
 import {getCarrier} from './getCarrier';
 
-export const getDeliveryTypes = (form?: FormInstance): SelectOption[] => {
-  let array = Object.values(DeliveryTypeName);
+export const getDeliveryTypes = (form: FormInstance): SelectOption[] => {
+  const carrier = getCarrier(form);
 
-  if (form) {
-    const carrier = getCarrier(form);
-    array = array.filter((name) => carrier?.capabilities.deliveryTypes.includes(name));
+  if (!carrier) {
+    return [];
   }
 
-  return array.map((name) => ({
+  return carrier.deliveryTypes.map((name) => ({
     label: getDynamicTranslation('delivery_type', name),
     value: name,
   }));

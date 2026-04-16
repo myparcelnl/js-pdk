@@ -99,12 +99,12 @@ export const useTriStateInputContext: UseTriStateInputContext = (props, emit) =>
   });
 
   // When the model is changed manually, like from another element, the toggle is updated if inherit is disabled.
-  watch(model, (model) => {
+  watch(model, (modelVal) => {
     if (inheritModel.value) {
       return;
     }
 
-    toggleModel.value = triStateToBoolean(model);
+    toggleModel.value = triStateToBoolean(modelVal);
   });
 
   return {
