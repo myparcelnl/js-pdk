@@ -111,4 +111,8 @@ export enum FrontendEndpoint {
    * Proxy for validating addresses through the Microservice.
    */
   ProxyAddressValidate = 'proxyAddressValidate',
+  /**
+   * Proxy for fetching carrier capabilities through the Microservice.
+   */
+  ProxyCapabilities = 'proxyCapabilities',
 }
