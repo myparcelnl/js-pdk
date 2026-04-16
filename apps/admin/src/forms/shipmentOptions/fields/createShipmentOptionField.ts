@@ -4,7 +4,6 @@ import {type InteractiveElementConfiguration, type InteractiveElementInstance} f
 import {type ShipmentOptionsRefs} from '../types';
 import {getFieldDependencies} from '../fieldDependencies';
 import {
-  createHasShipmentOptionWatcher,
   defineFormField,
   getCarrier,
   getFieldLabel,
@@ -46,7 +45,7 @@ export const createShipmentOptionField = (
     component: resolveFormComponent(AdminComponent.TriStateInput),
     ref: createRef(refs, fieldName, TriState.Inherit),
     label: getFieldLabel(name),
-    visibleWhen: createHasShipmentOptionWatcher(name),
+    visibleWhen: ({form}) => hasShipmentOption(form, name),
     // Disabled when the carrier doesn't support this option.
     // Required options use readOnlyWhen instead, keeping them enabled
     // so their value is included in the form body by getEnabledValues().
