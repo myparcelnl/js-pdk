@@ -7,11 +7,10 @@ export type FormValueSetter = (value: AnyVal, target?: string) => void;
 /**
  * Set a field's ref value, handling both Vue Ref and raw value cases.
  *
- * The vue-form-builder component render replaces `field.ref` with a raw
- * value after the first render cycle, so we can't always rely on
- * `field.ref.value = x` — we need to check and fall back to direct assignment.
+ * vue-form-builder replaces `field.ref` with a raw value after the first
+ * render cycle, so we can't always rely on `field.ref.value = x`.
  */
-const setFieldRef = (field: InteractiveElementInstance, value: AnyVal): void => {
+export const setFieldRef = (field: InteractiveElementInstance, value: AnyVal): void => {
   if (isRef(field.ref)) {
     field.ref.value = value;
   } else {

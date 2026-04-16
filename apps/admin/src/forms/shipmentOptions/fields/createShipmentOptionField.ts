@@ -1,27 +1,12 @@
-import {toRaw} from 'vue';
-import {TriState} from '@myparcel-dev/pdk-common';
 import {type InteractiveElementConfiguration, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
+import {TriState} from '@myparcel-dev/pdk-common';
 import {type ShipmentOptionsRefs} from '../types';
 import {getFieldDependencies} from '../fieldDependencies';
-import {
-  defineFormField,
-  getCarrier,
-  getFieldLabel,
-  hasShipmentOption,
-  resolveFormComponent,
-} from '../../helpers';
+import {FIELD_SHIPMENT_OPTIONS_PREFIX} from '../field';
+import {defineFormField, getCarrier, getFieldLabel, hasShipmentOption, resolveFormComponent} from '../../helpers';
+import {setFieldRef} from '../../form-builder/utils/createValueSetter';
 import {AdminComponent} from '../../../data';
 import {createRef} from './createRef';
-
-const SHIPMENT_OPTIONS_PREFIX = 'deliveryOptions.shipmentOptions';
-
-/**
- * Set the ref value of a form field, working around vue-form-builder's
- * reactive proxy auto-unwrapping refs (which breaks `form.setValue()`).
- */
-const setFieldValue = (field: InteractiveElementInstance, value: TriState): void => {
-  toRaw(field).ref.value = value;
-};
 
 /**
  * Creates a generic shipment option field as a TriState toggle.
@@ -66,7 +51,7 @@ export const createShipmentOptionField = (
 
       // Enforce isRequired: revert any user change back to TriState.On.
       if (carrier.options?.[name]?.isRequired === true && value !== TriState.On) {
-        setFieldValue(field, TriState.On);
+        setFieldRef(field, TriState.On);
 
         return;
       }
@@ -80,7 +65,7 @@ export const createShipmentOptionField = (
       const isEnabled = TriState.On === value;
 
       for (const requiredOption of deps.requires ?? []) {
-        const targetFieldName = `${SHIPMENT_OPTIONS_PREFIX}.${requiredOption}`;
+        const targetFieldName = `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${requiredOption}`;
         const targetField = field.form.getField(targetFieldName);
 
         if (!targetField) {
@@ -88,7 +73,7 @@ export const createShipmentOptionField = (
         }
 
         if (isEnabled) {
-          setFieldValue(targetField as InteractiveElementInstance, TriState.On);
+          setFieldRef(targetField as InteractiveElementInstance, TriState.On);
           targetField.props.readOnly = true;
         } else {
           // Only clear readOnly if the carrier doesn't independently require this option.
@@ -101,7 +86,7 @@ export const createShipmentOptionField = (
       }
 
       for (const excludedOption of deps.excludes ?? []) {
-        const targetFieldName = `${SHIPMENT_OPTIONS_PREFIX}.${excludedOption}`;
+        const targetFieldName = `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${excludedOption}`;
         const targetField = field.form.getField(targetFieldName);
 
         if (!targetField) {
@@ -109,7 +94,7 @@ export const createShipmentOptionField = (
         }
 
         if (isEnabled) {
-          setFieldValue(targetField as InteractiveElementInstance, TriState.Off);
+          setFieldRef(targetField as InteractiveElementInstance, TriState.Off);
           targetField.props.readOnly = true;
         } else {
           const isRequiredByCarrier = carrier.options?.[excludedOption]?.isRequired === true;

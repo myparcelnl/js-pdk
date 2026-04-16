@@ -17,9 +17,7 @@ import {createDeliveryTypeField} from './fields/createDeliveryTypeField';
 import {createCarrierField} from './fields/createCarrierField';
 import {createDigitalStampRangeField, createLabelAmountField, createPackageTypeField} from './fields';
 import {fieldFactoryRegistry} from './fieldFactoryRegistry';
-import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_LABEL_AMOUNT, FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from './field';
-
-const SHIPMENT_OPTIONS_PREFIX = 'deliveryOptions.shipmentOptions';
+import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_LABEL_AMOUNT, FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE, FIELD_SHIPMENT_OPTIONS_PREFIX} from './field';
 
 export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrder>): FormInstance => {
   const ordersArray = toArray(orders ?? []).map(toRaw);
@@ -51,8 +49,9 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
  * Collect the union of all option keys across all carriers from the dynamic context.
  *
  * Fields are created for every unique option key so they exist when the user
- * switches carriers. Visibility is controlled by `createHasShipmentOptionWatcher`
- * which checks whether the currently selected carrier supports each option.
+ * switches carriers. Visibility and disabled state are controlled by
+ * `hasShipmentOption`, which checks whether the currently selected carrier
+ * supports each option.
  *
  * Runtime carrier-specific data (isRequired, insuredAmount, etc.) is read
  * from the currently selected carrier via `getCarrier(form)`, not from
@@ -93,7 +92,7 @@ const buildDynamicRefs = (
 
   // Dynamic shipment option refs from carrier options
   for (const key of optionKeys) {
-    const fieldName = `${SHIPMENT_OPTIONS_PREFIX}.${key}`;
+    const fieldName = `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${key}`;
     refs[fieldName] = get(order, fieldName);
   }
 
@@ -116,7 +115,7 @@ const createShipmentOptionsFields = (
 
   // Dynamic shipment option fields — driven by carrier.options
   const dynamicFields = optionKeys.map((key) => {
-    const fieldName = `${SHIPMENT_OPTIONS_PREFIX}.${key}`;
+    const fieldName = `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${key}`;
     const factory = fieldFactoryRegistry[key];
 
     if (factory) {

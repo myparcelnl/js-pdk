@@ -16,7 +16,7 @@ import {createAssetUrl} from '../../../utils';
 import {type RadioGroupOption} from '../../../types';
 import {useFetchCarrier} from '../../../sdk';
 import {AdminComponent} from '../../../data';
-import {useContext, useLanguage} from '../../../composables';
+import {useContext, useGlobalContext, useLanguage} from '../../../composables';
 import {createRef} from './createRef';
 
 // eslint-disable-next-line max-lines-per-function
@@ -31,7 +31,7 @@ export const createCarrierField = (
   return defineFormField({
     name: FIELD_CARRIER,
     label: 'carrier',
-    ref: createRef<string>(refs, FIELD_CARRIER, 'PACKAGE'),
+    ref: createRef<string>(refs, FIELD_CARRIER, useGlobalContext().proposition.defaultCarrier),
     component: resolveFormComponent(AdminComponent.RadioGroup),
     props: {
       options: [],
