@@ -22,8 +22,8 @@ export const useToggleInputContext: UseToggleInputContext = (props, emit) => {
   });
 
   // When the model is changed manually, like from another element, the toggle is updated
-  watch(model, (model) => {
-    toggleModel.value = triStateToBoolean(model);
+  watch(model, (modelVal) => {
+    toggleModel.value = triStateToBoolean(modelVal);
   });
 
   return {
