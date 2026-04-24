@@ -37,7 +37,6 @@ describe('OrderListItem component selection', () => {
   beforeEach(() => {
     doComponentTestSetup();
 
-    config.global.stubs.OrderV2ModeOrderListItem = true;
     config.global.stubs.OrderModeOrderListItem = true;
     config.global.stubs.ShipmentModeOrderListItem = true;
   });
@@ -47,7 +46,7 @@ describe('OrderListItem component selection', () => {
   });
 
   it.each([
-    [OrderMode.OrderV2, 'order-v2-mode-order-list-item-stub'],
+    [OrderMode.OrderV2, 'order-mode-order-list-item-stub'],
     [OrderMode.OrderV1, 'order-mode-order-list-item-stub'],
     [OrderMode.Shipments, 'shipment-mode-order-list-item-stub'],
   ] as const)('renders the correct component for %s mode', (mode, expectedStubTag) => {

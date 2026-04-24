@@ -3,6 +3,7 @@ import {OrderMode} from '../data';
 import {
   orderExportAction,
   orderExportToShipmentsAction,
+  ordersEditAction,
   ordersExportPrintShipmentsAction,
   ordersPrintAction,
   orderViewInBackofficeAction,
@@ -47,4 +48,14 @@ export const MODAL_MODE_ACTIONS: Record<OrderMode, AnyActionDefinition[]> = {
   [OrderMode.OrderV1]: [orderExportAction],
   [OrderMode.Shipments]: [orderExportToShipmentsAction, ordersExportPrintShipmentsAction],
   [OrderMode.OrderV2]: [],
+};
+
+/**
+ * Mode-specific actions rendered in the order-list-item button group.
+ * Shipments mode uses its own computed action logic in ShipmentModeOrderListItem.vue.
+ */
+export const LIST_ITEM_MODE_ACTIONS: Record<OrderMode, AnyActionDefinition[]> = {
+  [OrderMode.OrderV1]: [ordersEditAction, orderExportAction],
+  [OrderMode.OrderV2]: [ordersEditAction],
+  [OrderMode.Shipments]: [],
 };

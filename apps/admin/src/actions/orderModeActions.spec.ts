@@ -2,6 +2,7 @@ import {describe, expect, it} from 'vitest';
 import {AdminAction, OrderMode} from '../data';
 import {
   BOX_MODE_ACTIONS,
+  LIST_ITEM_MODE_ACTIONS,
   MODAL_MODE_ACTIONS,
   ORDER_VIEW_IN_BACKOFFICE_ID,
   STORE_MODE_ACTIONS,
@@ -18,8 +19,27 @@ describe('orderModeActions', () => {
       {name: 'STORE_MODE_ACTIONS', mapping: STORE_MODE_ACTIONS},
       {name: 'BOX_MODE_ACTIONS', mapping: BOX_MODE_ACTIONS},
       {name: 'MODAL_MODE_ACTIONS', mapping: MODAL_MODE_ACTIONS},
+      {name: 'LIST_ITEM_MODE_ACTIONS', mapping: LIST_ITEM_MODE_ACTIONS},
     ])('$name has an entry for every OrderMode', ({mapping}) => {
       expect(Object.keys(mapping)).toEqual(expect.arrayContaining(allModes));
+    });
+  });
+
+  describe('LIST_ITEM_MODE_ACTIONS', () => {
+    it('includes edit and export for OrderV1', () => {
+      const ids = getDefinitionIds(LIST_ITEM_MODE_ACTIONS[OrderMode.OrderV1]);
+
+      expect(ids).toEqual([AdminAction.OrdersEdit, AdminAction.OrdersExport]);
+    });
+
+    it('includes only edit for OrderV2', () => {
+      const ids = getDefinitionIds(LIST_ITEM_MODE_ACTIONS[OrderMode.OrderV2]);
+
+      expect(ids).toEqual([AdminAction.OrdersEdit]);
+    });
+
+    it('has no actions for Shipments mode', () => {
+      expect(LIST_ITEM_MODE_ACTIONS[OrderMode.Shipments]).toHaveLength(0);
     });
   });
 

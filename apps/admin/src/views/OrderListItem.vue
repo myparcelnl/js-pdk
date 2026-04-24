@@ -1,8 +1,7 @@
 <template>
   <div v-if="!query.isLoading">
-    <OrderV2ModeOrderListItem v-if="orderMode === OrderMode.OrderV2" />
-
-    <OrderModeOrderListItem v-else-if="orderMode === OrderMode.OrderV1" />
+    <OrderModeOrderListItem
+      v-if="orderMode === OrderMode.OrderV1 || orderMode === OrderMode.OrderV2" />
 
     <ShipmentModeOrderListItem v-else-if="orderMode === OrderMode.Shipments" />
   </div>
@@ -24,10 +23,6 @@ import {useOrderData, useOrderMode} from '../composables';
 import {NotificationContainer} from '../components';
 
 /* eslint-disable @typescript-eslint/naming-convention */
-const OrderV2ModeOrderListItem = defineAsyncComponent(() => {
-  return import('../components/OrderListItem/OrderV2ModeOrderListItem.vue');
-});
-
 const OrderModeOrderListItem = defineAsyncComponent(() => {
   return import('../components/OrderListItem/OrderModeOrderListItem.vue');
 });
