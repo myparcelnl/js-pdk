@@ -14,12 +14,13 @@ import {AdminContextKey} from '@myparcel-dev/pdk-common';
 import {TabNavigation} from '../common';
 import {type TabDefinition} from '../../types';
 import {createActionContext} from '../../services';
-import {createPluginSettingsTabs} from '../../forms';
+import {createPluginSettingsTabs, filterPluginSettingsView} from '../../forms';
 import {type AdminAction} from '../../data';
-import {useAdminConfig, useStoreContextQuery} from '../../composables';
+import {useAdminConfig, useOrderMode, useStoreContextQuery} from '../../composables';
 import {pluginSettingsUpdateAction} from '../../actions';
 
 const config = useAdminConfig();
+const orderMode = useOrderMode();
 
 const dynamicContextQuery = useStoreContextQuery();
 const pluginSettingsContextQuery = useStoreContextQuery(AdminContextKey.PluginSettingsView);
@@ -37,13 +38,15 @@ watch(
       return;
     }
 
-    const pluginSettingsView = toValue(pluginSettingsContextQuery.data);
+    const rawPluginSettingsView = toValue(pluginSettingsContextQuery.data);
     const dynamicContext = toValue(dynamicContextQuery.data);
 
-    if (!pluginSettingsView || !dynamicContext?.pluginSettings) {
+    if (!rawPluginSettingsView || !dynamicContext?.pluginSettings) {
       tabs.value = [];
       return;
     }
+
+    const pluginSettingsView = filterPluginSettingsView(rawPluginSettingsView, orderMode.value);
 
     tabs.value = createPluginSettingsTabs(pluginSettingsView, {
       pluginSettings: dynamicContext.pluginSettings,

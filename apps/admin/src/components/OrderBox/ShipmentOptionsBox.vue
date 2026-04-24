@@ -23,8 +23,7 @@
 
       <PdkRow>
         <PdkCol>
-          <NotificationContainer
-            :category="NotificationCategory.Action" />
+          <NotificationContainer :category="NotificationCategory.Action" />
         </PdkCol>
       </PdkRow>
     </template>
@@ -35,40 +34,25 @@
 import {computed, toValue} from 'vue';
 import {ShipmentOptionsForm} from '../common';
 import {instantiateActions} from '../../services';
-import {AdminIcon, NotificationCategory} from '../../data';
-import {useLanguage, useOrderData, usePluginSettings} from '../../composables';
-import {
-  orderExportAction,
-  orderExportToShipmentsAction,
-  ordersExportPrintShipmentsAction,
-  ordersPrintAction,
-  ordersUpdateAction,
-  orderViewInBackofficeAction,
-} from '../../actions';
+import {AdminIcon, NotificationCategory, OrderMode} from '../../data';
+import {useLanguage, useOrderData, useOrderMode} from '../../composables';
 import {NotificationContainer} from '../../components';
+import {BOX_MODE_ACTIONS, ordersUpdateAction, orderViewInBackofficeAction} from '../../actions';
 
 const {order: data, loading} = useOrderData();
 
 const {translate} = useLanguage();
-const pluginSettings = usePluginSettings();
+const orderMode = useOrderMode();
 
-const {orderMode} = pluginSettings.order;
-
-const isExported = computed(() => pluginSettings.order.orderMode && toValue(data)?.exported);
+const isExported = computed(() => orderMode.value === OrderMode.OrderV1 && toValue(data)?.exported);
 
 const actions = computed(() => {
   if (isExported.value) {
     return instantiateActions(orderViewInBackofficeAction);
   }
 
-  return instantiateActions(
-    [
-      ordersUpdateAction,
-      ...(orderMode
-        ? [orderExportAction]
-        : [orderExportToShipmentsAction, ordersPrintAction, ordersExportPrintShipmentsAction]),
-    ],
-    {orderIds: toValue(data)?.externalIdentifier},
-  );
+  return instantiateActions([ordersUpdateAction, ...BOX_MODE_ACTIONS[orderMode.value]], {
+    orderIds: toValue(data)?.externalIdentifier,
+  });
 });
 </script>

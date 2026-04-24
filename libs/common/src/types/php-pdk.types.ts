@@ -30,6 +30,7 @@ export namespace Account {
     status: number;
     contactInfo: Base.ModelContactDetails;
     generalSettings: ModelAccountGeneralSettings;
+    subscriptionFeatures: string[];
     shops: ShopCollection;
   };
 
