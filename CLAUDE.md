@@ -49,7 +49,7 @@ yarn typecheck                # Typecheck all packages
 
 - **Yarn 4 workspaces** with **Nx** for task orchestration, caching, and dependency-aware builds
 - Nx default base branch `main`
-- Package manager: `yarn@4.12.0`, Node >= 22
+- Package manager: `yarn@4.12.0`, Node >= 24
 
 ### Workspace Layout
 
