@@ -1,8 +1,8 @@
 import {ref} from 'vue';
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import {mount} from '@vue/test-utils';
-import {defineForm, MagicForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
-import {patchSetValue} from '../test/patchSetValue';
+import {type InteractiveElementInstance, defineForm, MagicForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
+import {setFieldRef} from '../utils';
 import {buildAfterUpdate} from '../builders';
 
 describe('executeOperations', () => {
@@ -51,11 +51,10 @@ describe('executeOperations', () => {
     });
 
     const wrapper = mount(MagicForm, {props: {form}});
-    patchSetValue(form);
 
     expect(method).not.toHaveBeenCalled();
 
-    form.setValue('test', 'test');
+    setFieldRef(form.getField('test') as InteractiveElementInstance, 'test');
 
     const testField = form.getField('test');
     // todo remove this when afterUpdate is properly triggered
