@@ -10,33 +10,35 @@ Draft
 
 ## Description
 
-The admin frontend (`apps/admin`, Vue 3) receives application configuration as context when the Vue app initializes. This config contains properties indicating the active order mode for the webshop owner's account. The exact property names are TBD.
+The admin frontend (`apps/admin`, Vue 3) receives application configuration as context when the Vue app initializes. The account section of that context carries a `subscriptionFeatures: string[]` array, with each entry identifying a feature enabled on the webshop owner's subscription. The active order mode is derived from which order-management features are present in that array.
 
-This FR covers reading the order mode from the existing app config and exposing it as a reactive value that other components and composables can consume.
+This FR covers reading those subscription features and exposing the resolved order mode as a reactive value that other components and composables can consume.
 
 ## Functional Details
 
-- Read order mode state from the existing Vue application config context.
-- The backend provides two boolean properties in the config (exact names TBD, e.g. `orderV1` and `orderV2`).
-- Derive a single `OrderMode` enum value from these booleans using the following precedence:
-  1. If `orderV2` is `true` → `OrderMode.OrderV2` (regardless of `orderV1` value)
-  2. If `orderV1` is `true` (and `orderV2` is `false`) → `OrderMode.OrderV1`
-  3. If both are `false` → `OrderMode.Shipments`
+- Read `account.subscriptionFeatures` from the existing Vue application context (dynamic context, not global config).
+- Derive a single `OrderMode` enum value from the feature array using the following precedence:
+  1. If the array includes `SubscriptionFeature.OrderManagement` (`'ORDER_MANAGEMENT'`) → `OrderMode.OrderV2` (regardless of which other features are present)
+  2. Else if the array includes `SubscriptionFeature.LegacyOrderManagement` (`'LEGACY_ORDER_MANAGEMENT'`) → `OrderMode.OrderV1`
+  3. Otherwise (including missing array, missing account, or only unrelated features) → `OrderMode.Shipments`
 - Expose a reactive composable that returns the resolved `OrderMode` enum value, consumable by other components and composables.
-- The config property name mapping must be centralized so that renaming the backend properties is a one-line change.
-- No backend changes are required. This FR only covers reading what the backend already provides in the config.
-- This replaces the current `pluginSettings.order.orderMode` boolean pattern, which only distinguished between order v1 (`true`) and shipments (`false`).
+- The feature-key constants are centralized in a single `SubscriptionFeature` enum so that renaming a backend feature identifier is a one-line change.
+- No backend changes are required. This FR only covers reading what the backend already provides in the account context.
+- This replaces the prior `pluginSettings.order.orderMode` boolean pattern, which only distinguished between order v1 (`true`) and shipments (`false`).
 
 ## Acceptance Criteria
 
-1. Given `orderV2=true` and `orderV1=true`, when the admin app initializes, then the order mode is `OrderMode.OrderV2`.
-2. Given `orderV2=true` and `orderV1=false`, when the admin app initializes, then the order mode is `OrderMode.OrderV2`.
-3. Given `orderV2=false` and `orderV1=true`, when the admin app initializes, then the order mode is `OrderMode.OrderV1`.
-4. Given `orderV2=false` and `orderV1=false`, when the admin app initializes, then the order mode is `OrderMode.Shipments`.
-5. The order mode value is reactive and available to all components that need it.
-6. Changing the config property names requires modification in exactly one location.
-7. Existing code that uses `pluginSettings.order.orderMode` as a boolean is migrated to use the new `OrderMode` enum.
-8. Unit tests cover the precedence logic for all four boolean combinations (`orderV2`/`orderV1` true/false).
+1. Given `subscriptionFeatures` contains both `ORDER_MANAGEMENT` and `LEGACY_ORDER_MANAGEMENT`, when the admin app initializes, then the order mode is `OrderMode.OrderV2`.
+2. Given `subscriptionFeatures` contains only `ORDER_MANAGEMENT`, when the admin app initializes, then the order mode is `OrderMode.OrderV2`.
+3. Given `subscriptionFeatures` contains only `LEGACY_ORDER_MANAGEMENT`, when the admin app initializes, then the order mode is `OrderMode.OrderV1`.
+4. Given `subscriptionFeatures` is empty, when the admin app initializes, then the order mode is `OrderMode.Shipments`.
+5. Given `subscriptionFeatures` contains only unrelated feature keys, when the admin app initializes, then the order mode is `OrderMode.Shipments`.
+6. Given `subscriptionFeatures` is undefined on the account, when the admin app initializes, then the order mode is `OrderMode.Shipments`.
+7. Given the `account` object is undefined in the context, when the admin app initializes, then the order mode is `OrderMode.Shipments`.
+8. The order mode value is reactive and available to all components that need it.
+9. Renaming a backend feature identifier requires modification in exactly one location (the `SubscriptionFeature` enum).
+10. Existing code that used `pluginSettings.order.orderMode` as a boolean is migrated to use the new `OrderMode` enum.
+11. Unit tests cover the precedence logic for every case listed in criteria 1–7.
 
 ## Priority
 
@@ -44,13 +46,15 @@ This FR covers reading the order mode from the existing app config and exposing 
 
 ## Technical Considerations
 
-No Technical Requirements or Architectural Decision Records exist yet for this feature area. If decisions are made about the composable API shape, state management approach, or naming conventions, those should be captured as separate TR or ADR documents and referenced here.
+No Technical Requirements or Architectural Decision Records exist yet for this feature area. If further decisions are made about the composable API shape, state management approach, or naming conventions, those should be captured as separate TR or ADR documents and referenced here.
+
+Implementation landed in:
+
+- `apps/admin/src/data/orderMode.ts` — `OrderMode` enum, `SubscriptionFeature` enum, and `resolveOrderMode(features)` pure function.
+- `apps/admin/src/composables/context/useOrderMode.ts` — reactive composable wrapping `resolveOrderMode` over the dynamic context.
+- `apps/admin/src/composables/context/useOrderMode.spec.ts` — unit tests covering every acceptance criterion.
 
 ## Dependencies
 
-- The backend must provide order mode flags in the application config context. This is assumed to already be in place or in progress (out of scope for this FR).
+- The backend must populate `account.subscriptionFeatures` with the relevant feature keys. This is assumed to already be in place (out of scope for this FR).
 - Other FRs in the BR-000001 decomposition (action gating, settings gating, regression prevention) depend on this FR being implemented first.
-
-## Open Questions
-
-- What are the exact property names in the application config for the order mode boolean flags?
