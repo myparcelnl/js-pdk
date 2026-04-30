@@ -57,12 +57,12 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
  * from the currently selected carrier via `getCarrier(form)`, not from
  * creation-time option data.
  */
-const collectAllOptionKeys = (
-  carriers: {options: Record<string, unknown>}[],
-): string[] => {
+const collectAllOptionKeys = (carriers: {options?: Record<string, unknown> | null}[]): string[] => {
   const keys = new Set<string>();
 
   for (const carrier of carriers) {
+    if (!carrier.options) continue;
+
     for (const key of Object.keys(carrier.options)) {
       keys.add(key);
     }
