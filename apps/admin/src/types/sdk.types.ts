@@ -1,6 +1,7 @@
 import {
   type AdminContextKey,
   type BackendEndpoint,
+  type CarrierModel,
   type ExtractEndpointDefinition,
   type LabelFormat,
   type LabelOutput,
@@ -185,6 +186,27 @@ interface DebugSwitchToProductionApiDefinition extends PdkEndpointDefinition {
   response: void;
 }
 
+interface ProxyCapabilitiesDefinition extends PdkEndpointDefinition {
+  name: BackendEndpoint.ProxyCapabilities;
+  parameters: undefined;
+  body: {
+    cc: string;
+    weight?: number;
+    carrier?: string;
+    packageType?: string;
+    deliveryType?: string;
+    options?: string[];
+    /**
+     * Opt-in: when true, the action applies the registered-option allowlist server-side
+     * (Carrier::filterRegisteredOptions). Default behavior (flag absent or false) is
+     * unfiltered SDK passthrough.
+     */
+    filterOptions?: boolean;
+  };
+  response: {results: CarrierModel[]};
+  formattedResponse: CarrierModel[];
+}
+
 export type BackendEndpointDefinition =
   | CreateWebhooksDefinition
   | DebugDownloadLogsDefinition
@@ -201,6 +223,7 @@ export type BackendEndpointDefinition =
   | FetchWebhooksDefinition
   | PrintOrdersDefinition
   | PrintShipmentsDefinition
+  | ProxyCapabilitiesDefinition
   | UpdateAccountDefinition
   | UpdateOrdersDefinition
   | UpdatePluginSettingsDefinition
