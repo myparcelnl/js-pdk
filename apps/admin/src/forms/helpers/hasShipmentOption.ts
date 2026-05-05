@@ -1,14 +1,18 @@
 import {type FormInstance} from '@myparcel-dev/vue-form-builder';
-import {getCarrier} from './getCarrier';
+import {getCarrierForShipment} from './getCarrierForShipment';
 
 /**
- * Check whether the selected carrier supports a given shipment option.
+ * Check whether the chosen shipment configuration supports a given shipment option.
  *
- * Accepts `string` (not a narrower type) because option names are dynamic —
- * they come from `carrier.options` in the context and are not a fixed set.
+ * Reads from the shipment-scoped carrier (full selection narrows the option set); falls
+ * through to order-level data when shipment data isn't available yet (see
+ * {@link getCarrierForShipment}).
+ *
+ * Accepts `string` (not a narrower type) because option names are dynamic — they come from
+ * `carrier.options` in the response and are not a fixed set.
  */
 export const hasShipmentOption = (form: FormInstance, option: string): boolean => {
-  const carrier = getCarrier(form);
+  const carrier = getCarrierForShipment(form);
 
   return Object.hasOwn(carrier?.options ?? {}, option);
 };

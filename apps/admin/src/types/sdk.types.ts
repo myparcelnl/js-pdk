@@ -188,20 +188,34 @@ interface DebugSwitchToProductionApiDefinition extends PdkEndpointDefinition {
 
 interface ProxyCapabilitiesDefinition extends PdkEndpointDefinition {
   name: BackendEndpoint.ProxyCapabilities;
-  parameters: undefined;
+  /**
+   * Action-control parameters live in the query string so the request body stays a clean
+   * mirror of the actual capabilities API contract.
+   *
+   * `filterOptions` (opt-in): when `'true'`, the action applies the registered-option allowlist
+   * server-side (`Carrier::filterRegisteredOptions`). Absent / any other value preserves the
+   * unfiltered SDK passthrough for existing callers.
+   */
+  parameters?: {filterOptions?: 'true'};
+  /**
+   * Body shape mirrors the actual capabilities API request: camelCase keys at every level
+   * matching the SDK's attribute maps (`countryCode`, `physicalProperties`, `packageType`,
+   * `deliveryType`). The PHP action translates these top-level camelCase keys to the
+   * snake_case names the SDK PHP model uses internally — generic translation read from the
+   * SDK's own attribute map.
+   *
+   * `physicalProperties.weight` is an object `{value, unit}`, not a primitive — that's how the
+   * SDK's `PhysicalPropertiesWeightV2` model defines it on the wire.
+   */
   body: {
-    cc: string;
-    weight?: number;
+    recipient: {countryCode: string};
+    physicalProperties?: {
+      weight?: {value: number; unit: 'g' | 'kg'};
+    };
     carrier?: string;
     packageType?: string;
     deliveryType?: string;
     options?: string[];
-    /**
-     * Opt-in: when true, the action applies the registered-option allowlist server-side
-     * (Carrier::filterRegisteredOptions). Default behavior (flag absent or false) is
-     * unfiltered SDK passthrough.
-     */
-    filterOptions?: boolean;
   };
   response: {results: CarrierModel[]};
   formattedResponse: CarrierModel[];

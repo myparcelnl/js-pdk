@@ -2,7 +2,7 @@ import {type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {TriState} from '@myparcel-dev/pdk-common';
 import {type SelectOption} from '../../types';
 import {Format, type Formatter} from '../../composables';
-import {getCarrier} from './getCarrier';
+import {getCarrierForShipment} from './getCarrierForShipment';
 
 interface InsuranceAmountData {
   insuredAmount?: {
@@ -20,7 +20,7 @@ interface InsuranceAmountData {
  * options to produce select options. Amounts in the context are in cents.
  */
 export const getInsuranceOptions = (form: FormInstance, formatter: Formatter): SelectOption[] => {
-  const carrier = getCarrier(form);
+  const carrier = getCarrierForShipment(form);
   const insuranceData = (carrier?.options?.insurance ?? {}) as InsuranceAmountData;
   const insurancePossibilities: number[] = [];
 

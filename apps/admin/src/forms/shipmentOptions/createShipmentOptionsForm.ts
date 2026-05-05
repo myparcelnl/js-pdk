@@ -11,6 +11,7 @@ import {createShipmentFormName} from '../../utils';
 import {useModalStore} from '../../stores';
 import {AdminModalKey} from '../../data';
 import {useAdminConfig, useContext} from '../../composables';
+import {useCapabilitiesAutoClear} from './useCapabilitiesAutoClear';
 import {wireProxyCapabilities} from './wireProxyCapabilities';
 import {type ShipmentOptionsRefs} from './types';
 import {createShipmentOptionField} from './fields/createShipmentOptionField';
@@ -47,6 +48,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
 
   if (!isBulk) {
     wireProxyCapabilities(form, order);
+    useCapabilitiesAutoClear(form);
   }
 
   return form;

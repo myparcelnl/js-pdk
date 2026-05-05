@@ -1,9 +1,14 @@
 import {type InteractiveElementConfiguration, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {TriState} from '@myparcel-dev/pdk-common';
 import {type ShipmentOptionsRefs} from '../types';
-import {getFieldDependencies} from '../fieldDependencies';
 import {FIELD_SHIPMENT_OPTIONS_PREFIX} from '../field';
-import {defineFormField, getCarrier, getFieldLabel, hasShipmentOption, resolveFormComponent} from '../../helpers';
+import {
+  defineFormField,
+  getCarrierForShipment,
+  getFieldLabel,
+  hasShipmentOption,
+  resolveFormComponent,
+} from '../../helpers';
 import {setFieldRef} from '../../form-builder/utils/createValueSetter';
 import {AdminComponent} from '../../../data';
 import {createRef} from './createRef';
@@ -11,8 +16,13 @@ import {createRef} from './createRef';
 /**
  * Creates a generic shipment option field as a TriState toggle.
  *
- * This is the default factory for any option from `carrier.options` that
- * does not have a custom factory in the field factory registry.
+ * This is the default factory for any option from `carrier.options` that does not have a
+ * custom factory in the field factory registry.
+ *
+ * `requires` / `excludes` are sourced from the shipment-scoped capabilities response
+ * (`getCarrierForShipment`). They're undefined while the shipment query is loading or when
+ * the helper is falling back to order-level data — locking simply doesn't run in those
+ * windows. Once shipment data arrives, the next `afterUpdate` call will apply the rules.
  *
  * @param refs - current form field refs built from order data
  * @param fieldName - full dotted path, e.g. `deliveryOptions.shipmentOptions.requiresSignature`
@@ -38,33 +48,27 @@ export const createShipmentOptionField = (
     // Read-only prevents the TriState "inherit" toggle from being used,
     // fully locking the field when the carrier requires this option.
     readOnlyWhen: ({form}) => {
-      return getCarrier(form)?.options?.[name]?.isRequired === true;
+      return getCarrierForShipment(form)?.options?.[name]?.isRequired === true;
     },
 
     afterUpdate(field, value) {
-      const carrier = getCarrier(field.form);
-      const carrierName = carrier?.carrier;
+      const carrier = getCarrierForShipment(field.form);
+      const option = carrier?.options?.[name];
 
-      if (!carrierName) {
+      if (!option) {
         return;
       }
 
       // Enforce isRequired: revert any user change back to TriState.On.
-      if (carrier.options?.[name]?.isRequired === true && value !== TriState.On) {
+      if (option.isRequired === true && value !== TriState.On) {
         setFieldRef(field, TriState.On);
 
         return;
       }
 
-      const deps = getFieldDependencies(carrierName, name);
-
-      if (!deps) {
-        return;
-      }
-
       const isEnabled = TriState.On === value;
 
-      for (const requiredOption of deps.requires ?? []) {
+      for (const requiredOption of option.requires ?? []) {
         const targetFieldName = `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${requiredOption}`;
         const targetField = field.form.getField(targetFieldName);
 
@@ -77,7 +81,7 @@ export const createShipmentOptionField = (
           targetField.props.readOnly = true;
         } else {
           // Only clear readOnly if the carrier doesn't independently require this option.
-          const isRequiredByCarrier = carrier.options?.[requiredOption]?.isRequired === true;
+          const isRequiredByCarrier = carrier?.options?.[requiredOption]?.isRequired === true;
 
           if (!isRequiredByCarrier) {
             targetField.props.readOnly = false;
@@ -85,7 +89,7 @@ export const createShipmentOptionField = (
         }
       }
 
-      for (const excludedOption of deps.excludes ?? []) {
+      for (const excludedOption of option.excludes ?? []) {
         const targetFieldName = `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${excludedOption}`;
         const targetField = field.form.getField(targetFieldName);
 
@@ -97,7 +101,7 @@ export const createShipmentOptionField = (
           setFieldRef(targetField as InteractiveElementInstance, TriState.Off);
           targetField.props.readOnly = true;
         } else {
-          const isRequiredByCarrier = carrier.options?.[excludedOption]?.isRequired === true;
+          const isRequiredByCarrier = carrier?.options?.[excludedOption]?.isRequired === true;
 
           if (!isRequiredByCarrier) {
             targetField.props.readOnly = false;
