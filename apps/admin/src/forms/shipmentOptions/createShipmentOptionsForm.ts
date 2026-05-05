@@ -11,6 +11,7 @@ import {createShipmentFormName} from '../../utils';
 import {useModalStore} from '../../stores';
 import {AdminModalKey} from '../../data';
 import {useAdminConfig, useContext} from '../../composables';
+import {wireProxyCapabilities} from './wireProxyCapabilities';
 import {type ShipmentOptionsRefs} from './types';
 import {createShipmentOptionField} from './fields/createShipmentOptionField';
 import {createDeliveryTypeField} from './fields/createDeliveryTypeField';
@@ -38,11 +39,17 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
   const allOptionKeys = collectAllOptionKeys(dynamicContext.carriers);
   const refs = buildDynamicRefs(order, allOptionKeys);
 
-  return defineForm(createShipmentFormName(order.externalIdentifier), {
+  const form = defineForm(createShipmentFormName(order.externalIdentifier), {
     ...(isModal ? config.formConfigOverrides?.modal : null),
     ...config.formConfigOverrides?.shipmentOptions,
     fields: createShipmentOptionsFields(refs, order, allOptionKeys),
   });
+
+  if (!isBulk) {
+    wireProxyCapabilities(form, order);
+  }
+
+  return form;
 };
 
 /**

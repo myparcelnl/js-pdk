@@ -5,7 +5,7 @@ import {type CapabilitiesSelection} from '../../actions/composables/queries/acco
 const DEBOUNCE_MS = 300;
 
 export type OrderInput = {cc?: string; weight?: number};
-export type FormInput = {carrier?: string; packageType?: string; deliveryType?: string; options?: string[]};
+export type FormInput = {carrier?: string; packageType?: string; deliveryType?: string};
 
 /**
  * Merge an order source and a shipment-options form source into a single debounced selection ref

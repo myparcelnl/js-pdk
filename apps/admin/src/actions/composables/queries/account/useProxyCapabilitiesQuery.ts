@@ -22,8 +22,13 @@ type ProxyCapabilitiesBody = NonNullable<ProxyCapabilitiesDefinition['body']>;
  * because the form may not have all values yet (e.g. draft order without shipping address).
  * The composable owns `filterOptions` (always set to `true`) so it's not part of the selection.
  * The query gates on `cc` via `enabled` and only fires once a destination is known.
+ *
+ * `options` is intentionally excluded from this type so individual shipment-option toggles
+ * don't trigger refetches — option interactions (excludes / requires / defaults) are resolved
+ * client-side from the capabilities response. The server-side body still accepts `options`
+ * (`ProxyCapabilitiesBody`) so other callers can opt in if they ever need to.
  */
-export type CapabilitiesSelection = Partial<Omit<ProxyCapabilitiesBody, 'filterOptions'>>;
+export type CapabilitiesSelection = Partial<Omit<ProxyCapabilitiesBody, 'filterOptions' | 'options'>>;
 
 /**
  * Typed view of `pdk.proxyCapabilities` — the shared `MyParcelSdk` helper widens every
