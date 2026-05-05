@@ -7,7 +7,7 @@
     :shipment-id="shipment.id" />
 
   <PdkButtonGroup v-test="[$.type.__name, order?.externalIdentifier]">
-    <template v-if="order?.exported">
+    <template v-if="orderMode === OrderMode.OrderV1 && order?.exported">
       <PdkLink :action="showExportedOrderAction" />
     </template>
 
@@ -27,11 +27,13 @@ import {computed, toValue} from 'vue';
 import {Size} from '@myparcel-dev/pdk-common';
 import {ActionButton, DeliveryOptionsExcerpt} from '../common';
 import {instantiateAction, instantiateActions} from '../../services';
-import {useOrderData} from '../../composables';
-import {orderExportAction, ordersEditAction, orderViewInBackofficeAction} from '../../actions';
+import {useOrderData, useOrderMode} from '../../composables';
+import {OrderMode} from '../../data';
+import {LIST_ITEM_MODE_ACTIONS, orderViewInBackofficeAction} from '../../actions';
 import ShipmentLabel from './ShipmentLabel.vue';
 
 const {query, order} = useOrderData();
+const orderMode = useOrderMode();
 
 const data = computed(() => toValue(query.data));
 
@@ -39,7 +41,9 @@ const shipments = computed(() => toValue(data)?.shipments ?? []);
 
 const showExportedOrderAction = instantiateAction(orderViewInBackofficeAction);
 
-const orderActions = instantiateActions([ordersEditAction, orderExportAction], {
-  orderIds: order.value?.externalIdentifier,
-});
+const orderActions = computed(() =>
+  instantiateActions(LIST_ITEM_MODE_ACTIONS[orderMode.value], {
+    orderIds: order.value?.externalIdentifier,
+  }),
+);
 </script>
