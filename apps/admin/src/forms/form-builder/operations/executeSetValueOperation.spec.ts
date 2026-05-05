@@ -1,8 +1,9 @@
 import {ref} from 'vue';
 import {afterEach, describe, expect, it} from 'vitest';
 import {flushPromises, mount} from '@vue/test-utils';
-import {defineForm, MagicForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
+import {type InteractiveElementInstance, defineForm, MagicForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {type AnyVal, type FormSetValueOperation} from '../types';
+import {setFieldRef} from '../utils';
 import {buildAfterUpdate} from '../builders';
 
 interface TestInput {
@@ -192,7 +193,7 @@ describe('executeSetValueOperation', () => {
 
     mount(MagicForm, {props: {form}});
 
-    form.setValue('test', 'test');
+    setFieldRef(form.getField('test') as InteractiveElementInstance, 'test');
 
     await flushPromises();
 
