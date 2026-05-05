@@ -18,10 +18,12 @@ type ProxyCapabilitiesDefinition = ExtractEndpointDefinition<
 type ProxyCapabilitiesBody = NonNullable<ProxyCapabilitiesDefinition['body']>;
 
 /**
- * The selection input for {@link useProxyCapabilitiesQuery}: the request body minus the
- * action-control `filterOptions` flag (which the composable always sets to `true`).
+ * The selection input for {@link useProxyCapabilitiesQuery}: every body field is optional
+ * because the form may not have all values yet (e.g. draft order without shipping address).
+ * The composable owns `filterOptions` (always set to `true`) so it's not part of the selection.
+ * The query gates on `cc` via `enabled` and only fires once a destination is known.
  */
-export type CapabilitiesSelection = Omit<ProxyCapabilitiesBody, 'filterOptions'>;
+export type CapabilitiesSelection = Partial<Omit<ProxyCapabilitiesBody, 'filterOptions'>>;
 
 /**
  * Typed view of `pdk.proxyCapabilities` — the shared `MyParcelSdk` helper widens every
@@ -50,11 +52,17 @@ export const useProxyCapabilitiesQuery = (
   return useQuery(
     queryKey,
     async () => {
+      // The `enabled` gate above guarantees `cc` is present when this runs; TypeScript can't
+      // see through the runtime check, so we narrow explicitly here.
+      const {cc} = selection.value;
+
+      if (!cc) return [];
+
       const pdk = usePdkAdminApi();
       const proxyCapabilities = pdk.proxyCapabilities as unknown as ProxyCapabilitiesCall;
 
       const response = await proxyCapabilities({
-        body: {...selection.value, filterOptions: true},
+        body: {...selection.value, cc, filterOptions: true},
       });
 
       return response.results ?? [];
