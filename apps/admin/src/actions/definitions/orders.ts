@@ -112,17 +112,15 @@ export const ordersPrintAction = defineAction({
 /**
  * Shown on orders that have been exported to MyParcel using order mode.
  */
+export const ORDER_VIEW_IN_BACKOFFICE_ID = 'show-exported-order';
+
 export const orderViewInBackofficeAction = defineAction({
-  id: 'show-exported-order',
+  id: ORDER_VIEW_IN_BACKOFFICE_ID,
   icon: AdminIcon.External,
   label: 'order_view_in_backoffice',
   handler() {
     const {proposition} = useGlobalContext();
-    const backofficeUrls = {
-      NL: 'https://backoffice.myparcel.nl/orders',
-      BE: 'https://backoffice.sendmyparcel.be/orders',
-    };
-    const url = backofficeUrls[proposition.localCountry as 'NL' | 'BE'] || backofficeUrls['NL'];
-    window.open(url, '_blank');
+    const baseUrl = proposition.backofficeUrl.replace(/\/$/, '');
+    window.open(`${baseUrl}/orders`, '_blank');
   },
 });
