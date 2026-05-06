@@ -2,7 +2,11 @@ import {toValue, watch, type Ref} from 'vue';
 import {snakeCase} from 'lodash-unified';
 import {type FormInstance, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {BackendEndpoint, type CarrierModel, type Plugin, TriState} from '@myparcel-dev/pdk-common';
-import {addCapabilitiesClearNotification, useFormCapabilities} from '../helpers';
+import {
+  addCapabilitiesClearNotification,
+  CAPABILITIES_CLEARED_NOTIFICATION_ID,
+  useFormCapabilities,
+} from '../helpers';
 import {setFieldRef} from '../form-builder/utils/createValueSetter';
 import {useLanguage} from '../../composables';
 import {useNotificationStore, useQueryStore} from '../../stores';
@@ -156,13 +160,17 @@ export const useCapabilitiesAutoClear = (
    * to the user (turning every auto-clear into a self-perpetuating "user just touched X"
    * signal). Pairs with the `suppressTracking` flag the axis-tracking watcher reads.
    */
-  const setSilently = (fieldName: string, value: string | number | boolean | undefined): void => {
+  const setSilently = (fieldName: string, value: string | number | boolean | undefined): boolean => {
+    if (form.getValue(fieldName) === value) return false;
+
     suppressTracking = true;
     try {
       setFieldValue(form, fieldName, value);
     } finally {
       suppressTracking = false;
     }
+
+    return true;
   };
 
   const previousAxisValues: Record<AxisField, unknown> = {
@@ -170,6 +178,25 @@ export const useCapabilitiesAutoClear = (
     [FIELD_PACKAGE_TYPE]: form.getValue(FIELD_PACKAGE_TYPE),
     [FIELD_DELIVERY_TYPE]: form.getValue(FIELD_DELIVERY_TYPE),
   };
+
+  // Drop the rolling "capabilities cleared" notification on any form change. The order- and
+  // shipment-watchers later in the same tick will re-add it via `notifyClears` if the new
+  // selection is still invalid; otherwise the notification stays cleared, so a successful
+  // re-pick doesn't leave a stale toast on screen. `flush: 'sync'` so the remove fires before
+  // any pre-flush watcher's add path on the same tick — the add then wins and the user sees
+  // the up-to-date message instead of the previous attempt's.
+  watch(
+    [
+      () => form.getValue(FIELD_CARRIER),
+      () => form.getValue(FIELD_PACKAGE_TYPE),
+      () => form.getValue(FIELD_DELIVERY_TYPE),
+      ...allOptionKeys.map((key) => () => form.getValue(optionFieldName(key))),
+    ],
+    () => {
+      notificationStore.remove(CAPABILITIES_CLEARED_NOTIFICATION_ID);
+    },
+    {flush: 'sync'},
+  );
 
   watch(
     [
@@ -201,6 +228,14 @@ export const useCapabilitiesAutoClear = (
       previousAxisValues[FIELD_PACKAGE_TYPE] = packageTypeValue;
       previousAxisValues[FIELD_DELIVERY_TYPE] = deliveryTypeValue;
     },
+    // `sync` flush is essential here: `suppressTracking` is set inside `setSilently`'s
+    // `try`/`finally`, which is synchronous. With Vue's default (`pre`) flush, the watcher
+    // callback runs LATER — by which time `suppressTracking` has been reset to `false`, and
+    // the silent write gets attributed to the user. That makes `lastModifiedPreviousValue`
+    // capture the value the auto-clear just overwrote, and the next `revertAxis` reverts to
+    // it — producing a flip-flop cycle visible to the merchant. Sync flush fires the callback
+    // inside the ref setter so it observes `suppressTracking === true`.
+    {flush: 'sync'},
   );
 
   /**
@@ -211,12 +246,11 @@ export const useCapabilitiesAutoClear = (
    * modal), clear the field. Returns whether a previous value was actually restored so the
    * caller can pick the right notification line.
    */
-  const revertAxis = (axis: AxisField): {restored: boolean} => {
+  const revertAxis = (axis: AxisField): {restored: boolean; changed: boolean} => {
     const target = lastModifiedAxis === axis ? lastModifiedPreviousValue : undefined;
+    const changed = setSilently(axis, target as string | number | boolean | undefined);
 
-    setSilently(axis, target as string | number | boolean | undefined);
-
-    return {restored: target !== undefined};
+    return {restored: target !== undefined, changed};
   };
 
   /**
@@ -240,21 +274,20 @@ export const useCapabilitiesAutoClear = (
    */
   const applyCarrierDefaults = (): void => {
     const carrierName = form.getValue<string | undefined>(FIELD_CARRIER);
+    const pkgDefault = carrierName ? inheritedDefault(carrierName, FIELD_PACKAGE_TYPE) : undefined;
+    const dtDefault = carrierName ? inheritedDefault(carrierName, FIELD_DELIVERY_TYPE) : undefined;
 
-    if (carrierName) {
-      setSilently(FIELD_PACKAGE_TYPE, inheritedDefault(carrierName, FIELD_PACKAGE_TYPE) as
-        | string
-        | number
-        | boolean
-        | undefined);
-      setSilently(FIELD_DELIVERY_TYPE, inheritedDefault(carrierName, FIELD_DELIVERY_TYPE) as
-        | string
-        | number
-        | boolean
-        | undefined);
-    } else {
-      setSilently(FIELD_PACKAGE_TYPE, undefined);
-      setSilently(FIELD_DELIVERY_TYPE, undefined);
+    // Only write fields when an inherited default exists. Writing `undefined` triggers
+    // form-builder's RadioGroup `defaultValue` fallback, which then re-emits the default
+    // value as if the user had clicked it — looks like a user change to the axis-tracker
+    // and re-attributes `lastModifiedAxis` away from CARRIER, which spirals into a cycle
+    // where each auto-clear write produces another "user-like" change that triggers the
+    // shipment query again with the same invalid combo.
+    if (pkgDefault !== undefined) {
+      setSilently(FIELD_PACKAGE_TYPE, pkgDefault as string | number | boolean | undefined);
+    }
+    if (dtDefault !== undefined) {
+      setSilently(FIELD_DELIVERY_TYPE, dtDefault as string | number | boolean | undefined);
     }
   };
 
@@ -304,14 +337,14 @@ export const useCapabilitiesAutoClear = (
     }
 
     if (lastModifiedAxis === FIELD_PACKAGE_TYPE || lastModifiedAxis === FIELD_DELIVERY_TYPE) {
-      const {restored} = revertAxis(lastModifiedAxis);
+      const {restored, changed} = revertAxis(lastModifiedAxis);
 
-      return [lineForAxisClear(lastModifiedAxis, restored)];
+      return changed ? [lineForAxisClear(lastModifiedAxis, restored)] : [];
     }
 
-    setSilently(FIELD_DELIVERY_TYPE, undefined);
+    const wrote = setSilently(FIELD_DELIVERY_TYPE, undefined);
 
-    return [lineForAxisClear(FIELD_DELIVERY_TYPE, false)];
+    return wrote ? [lineForAxisClear(FIELD_DELIVERY_TYPE, false)] : [];
   };
 
   /**
@@ -363,16 +396,16 @@ export const useCapabilitiesAutoClear = (
 
       if (packageTypeInvalid) {
         const target = pickAxisToClear();
-        const {restored} = revertAxis(target);
+        const {restored, changed} = revertAxis(target);
 
-        lines.push(lineForAxisClear(target, restored));
+        if (changed) lines.push(lineForAxisClear(target, restored));
       }
 
       if (deliveryTypeInvalid) {
         const target = pickAxisToClear();
-        const {restored} = revertAxis(target);
+        const {restored, changed} = revertAxis(target);
 
-        lines.push(lineForAxisClear(target, restored));
+        if (changed) lines.push(lineForAxisClear(target, restored));
       }
 
       notifyClears(lines);

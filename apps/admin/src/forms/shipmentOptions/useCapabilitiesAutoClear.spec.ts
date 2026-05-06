@@ -56,6 +56,7 @@ vi.mock('../../composables', () => ({
 
 vi.mock('../helpers', () => ({
   addCapabilitiesClearNotification: addCapabilitiesClearNotificationMock,
+  CAPABILITIES_CLEARED_NOTIFICATION_ID: 'capabilities_cleared',
   useFormCapabilities: () => ({getCarrierForOrder: getCarrierForOrderMock}),
 }));
 
