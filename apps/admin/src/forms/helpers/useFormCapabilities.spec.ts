@@ -75,7 +75,7 @@ describe('useFormCapabilities', () => {
     mockOrderId = 'order-1';
   });
 
-  describe('getCarrierForOrder', () => {
+  describe('getCarrierCapabilitiesForOrder', () => {
     it('returns the order-query carrier when the query is success and the chosen carrier is in the results', async () => {
       const order = buildCarrier({carrier: 'POSTNL', packageTypes: ['PACKAGE']});
       const dynamic = buildCarrier({carrier: 'POSTNL', packageTypes: ['DIGITAL_STAMP']});
@@ -83,9 +83,9 @@ describe('useFormCapabilities', () => {
       queryStore.setDynamicCarriers([dynamic]);
 
       const {useFormCapabilities} = await import('./useFormCapabilities');
-      const caps = useFormCapabilities();
+      const capabilities = useFormCapabilities();
 
-      expect(caps.getCarrierForOrder(formStub('POSTNL'))).toEqual(order);
+      expect(capabilities.getCarrierCapabilitiesForOrder(formStub('POSTNL'))).toEqual(order);
     });
 
     it('falls back to dynamic carriers when the query is loading', async () => {
@@ -95,7 +95,7 @@ describe('useFormCapabilities', () => {
 
       const {useFormCapabilities} = await import('./useFormCapabilities');
 
-      expect(useFormCapabilities().getCarrierForOrder(formStub('POSTNL'))).toEqual(dynamic);
+      expect(useFormCapabilities().getCarrierCapabilitiesForOrder(formStub('POSTNL'))).toEqual(dynamic);
     });
 
     it('falls back to dynamic carriers when the query is errored (loading-state masquerade is intentional)', async () => {
@@ -105,7 +105,7 @@ describe('useFormCapabilities', () => {
 
       const {useFormCapabilities} = await import('./useFormCapabilities');
 
-      expect(useFormCapabilities().getCarrierForOrder(formStub('POSTNL'))).toEqual(dynamic);
+      expect(useFormCapabilities().getCarrierCapabilitiesForOrder(formStub('POSTNL'))).toEqual(dynamic);
     });
 
     it('falls back to dynamic carriers when the orderId is missing (bulk path)', async () => {
@@ -115,11 +115,11 @@ describe('useFormCapabilities', () => {
 
       const {useFormCapabilities} = await import('./useFormCapabilities');
 
-      expect(useFormCapabilities().getCarrierForOrder(formStub('POSTNL'))).toEqual(dynamic);
+      expect(useFormCapabilities().getCarrierCapabilitiesForOrder(formStub('POSTNL'))).toEqual(dynamic);
     });
   });
 
-  describe('getCarrierForShipment tri-state', () => {
+  describe('getCarrierCapabilitiesForShipment tri-state', () => {
     it('returns the narrow shipment carrier when the query is success and the carrier matches', async () => {
       const shipment = buildCarrier({
         carrier: 'POSTNL',
@@ -129,7 +129,7 @@ describe('useFormCapabilities', () => {
 
       const {useFormCapabilities} = await import('./useFormCapabilities');
 
-      expect(useFormCapabilities().getCarrierForShipment(formStub('POSTNL'))).toEqual(shipment);
+      expect(useFormCapabilities().getCarrierCapabilitiesForShipment(formStub('POSTNL'))).toEqual(shipment);
     });
 
     it('falls back to order data when the shipment query is loading', async () => {
@@ -139,7 +139,7 @@ describe('useFormCapabilities', () => {
 
       const {useFormCapabilities} = await import('./useFormCapabilities');
 
-      expect(useFormCapabilities().getCarrierForShipment(formStub('POSTNL'))).toEqual(order);
+      expect(useFormCapabilities().getCarrierCapabilitiesForShipment(formStub('POSTNL'))).toEqual(order);
     });
 
     it('returns undefined when the shipment query is success but the chosen carrier is not in the results (invalid combo)', async () => {
@@ -147,7 +147,7 @@ describe('useFormCapabilities', () => {
 
       const {useFormCapabilities} = await import('./useFormCapabilities');
 
-      expect(useFormCapabilities().getCarrierForShipment(formStub('POSTNL'))).toBeUndefined();
+      expect(useFormCapabilities().getCarrierCapabilitiesForShipment(formStub('POSTNL'))).toBeUndefined();
     });
   });
 

@@ -34,7 +34,7 @@ export const createCarrierField = (
   inheritedDeliveryOptions: Plugin.ModelContextOrderDataContext['inheritedDeliveryOptions'],
 ): InteractiveElementConfiguration => {
   const dynamicContext = useContext(AdminContextKey.Dynamic);
-  const caps = useFormCapabilities();
+  const capabilities = useFormCapabilities();
   const queryStore = useQueryStore();
   const orderId = getOrderId();
   const orderModifier = typeof orderId === 'string' ? `${orderId}.order` : undefined;
@@ -45,10 +45,10 @@ export const createCarrierField = (
 
   /**
    * Read the order-capabilities query state. Returns:
-   * - `undefined` when there's no query (bulk path, or pre-wire) → fallback: enable all carriers.
-   * - `'loading'` while the query hasn't resolved → render no options to avoid a misleading
-   *   enabled-then-disabled flash.
-   * - `CarrierModel[]` on success → enable only carriers in this list, disable the rest.
+   * - `undefined` when there's no query (bulk path, or pre-wire) → fallback: render all carriers.
+   * - `'loading'` while the query hasn't resolved → render no options to avoid a flash where
+   *   carriers appear and then a subset disappears once the response lands.
+   * - `CarrierModel[]` on success → render only the carriers in this list (others are hidden).
    * - On error: treated as `undefined` so the merchant can still operate the form, accepting
    *   that a stale or empty filter is better than an empty radio.
    */
@@ -103,7 +103,7 @@ export const createCarrierField = (
     onBeforeMount: async (field) => {
       // Fetch per-carrier metadata (logo + localized human name) once. Stored in `staticMeta`
       // so the reactive options watcher below can stitch label/image together with the
-      // disabled flag derived from the order-capabilities query.
+      // current order-capabilities filter without re-fetching.
       await Promise.all(
         dynamicContext.carriers.map(async (carrier) => {
           const query = useFetchCarrier(carrier.carrier);
@@ -121,10 +121,11 @@ export const createCarrierField = (
 
       // Reactively rebuild the carrier radio options whenever the order-capabilities query
       // changes state (loading → success, or weight/cc edits triggering a refetch). Carriers
-      // that aren't valid for the current order context are rendered with `disabled: true`
-      // so the merchant can see they exist but can't pick them — preventing the dead-end
-      // scenario where the form populates with packageType / deliveryType radios that have
-      // no valid combo.
+      // that aren't valid for the current order context (e.g. weight below the minimum) are
+      // hidden from the radio entirely — preventing the dead-end scenario where the form
+      // populates with packageType / deliveryType radios that have no valid combo. The
+      // RadioGroup component doesn't honor per-option `disabled` flags, so filter is the
+      // only way to express "not available" today.
       watch(
         () => readOrderCarriers(),
         (state) => setFieldProp(field, PROP_OPTIONS, computeOptions(state)),
@@ -139,7 +140,7 @@ export const createCarrierField = (
     afterUpdate: (field, newCarrier: string) => {
       updateFieldsDefaults(newCarrier, field, inheritedDeliveryOptions);
 
-      const carrier = caps.getCarrierForOrder(field.form);
+      const carrier = capabilities.getCarrierCapabilitiesForOrder(field.form);
 
       setFieldProp(field.form, FIELD_PACKAGE_TYPE, PROP_OPTIONS, getPackageTypes(carrier));
       setFieldProp(field.form, FIELD_DELIVERY_TYPE, PROP_OPTIONS, getDeliveryTypes(carrier));

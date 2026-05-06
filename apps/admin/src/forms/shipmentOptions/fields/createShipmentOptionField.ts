@@ -12,7 +12,7 @@ import {createRef} from './createRef';
  *
  * Default factory for any option from `carrier.options` that doesn't have a custom factory in
  * `fieldFactoryRegistry`. `requires` / `excludes` are sourced from the shipment-scoped
- * response (`getCarrierForShipment`); they're absent while the shipment query is loading or
+ * response (`getCarrierCapabilitiesForShipment`); they're absent while the shipment query is loading or
  * falling back to order-level data — locking doesn't run during those windows.
  *
  * `useFormCapabilities()` is called at factory invocation (setup-time) so visibility, disabled,
@@ -25,26 +25,26 @@ export const createShipmentOptionField = (
   config?: Partial<InteractiveElementConfiguration>,
 ): InteractiveElementConfiguration => {
   const name = fieldName.split('.').pop() ?? fieldName;
-  const caps = useFormCapabilities();
+  const capabilities = useFormCapabilities();
 
   return defineFormField({
     name: fieldName,
     component: resolveFormComponent(AdminComponent.TriStateInput),
     ref: createRef(refs, fieldName, TriState.Inherit),
     label: getFieldLabel(name),
-    visibleWhen: ({form}) => caps.hasShipmentOption(form, name),
+    visibleWhen: ({form}) => capabilities.hasShipmentOption(form, name),
     // Disabled when the carrier doesn't support this option.
     // Required options use readOnlyWhen instead, keeping them enabled
     // so their value is included in the form body by getEnabledValues().
-    disabledWhen: ({form}) => !caps.hasShipmentOption(form, name),
+    disabledWhen: ({form}) => !capabilities.hasShipmentOption(form, name),
     // Read-only prevents the TriState "inherit" toggle from being used,
     // fully locking the field when the carrier requires this option.
     readOnlyWhen: ({form}) => {
-      return caps.getCarrierForShipment(form)?.options?.[name]?.isRequired === true;
+      return capabilities.getCarrierCapabilitiesForShipment(form)?.options?.[name]?.isRequired === true;
     },
 
     afterUpdate(field, value) {
-      const carrier = caps.getCarrierForShipment(field.form);
+      const carrier = capabilities.getCarrierCapabilitiesForShipment(field.form);
       const option = carrier?.options?.[name];
 
       if (!option) {

@@ -42,7 +42,7 @@ const translateMock = vi.fn((key: unknown) => {
   return a ? `${k}(${Object.entries(a).map(([k2, v]) => `${k2}=${v}`).join(',')})` : k;
 });
 
-const getCarrierForOrderMock = vi.fn();
+const getCarrierCapabilitiesForOrderMock = vi.fn();
 const addCapabilitiesClearNotificationMock = vi.fn();
 
 vi.mock('../../stores', () => ({
@@ -57,7 +57,7 @@ vi.mock('../../composables', () => ({
 vi.mock('../helpers', () => ({
   addCapabilitiesClearNotification: addCapabilitiesClearNotificationMock,
   CAPABILITIES_CLEARED_NOTIFICATION_ID: 'capabilities_cleared',
-  useFormCapabilities: () => ({getCarrierForOrder: getCarrierForOrderMock}),
+  useFormCapabilities: () => ({getCarrierCapabilitiesForOrder: getCarrierCapabilitiesForOrderMock}),
 }));
 
 const setFieldRefMock = vi.fn();
@@ -104,7 +104,7 @@ beforeEach(() => {
   notificationStoreMock.add.mockClear();
   notificationStoreMock.remove.mockClear();
   translateMock.mockClear();
-  getCarrierForOrderMock.mockReset();
+  getCarrierCapabilitiesForOrderMock.mockReset();
   addCapabilitiesClearNotificationMock.mockClear();
   setFieldRefMock.mockReset();
 });
@@ -137,14 +137,14 @@ describe('useCapabilitiesAutoClear', () => {
     });
 
     wireSetFieldRef(form);
-    // Order-query "available carriers" — getCarrierForOrder resolves through form.getValue(FIELD_CARRIER)
+    // Order-query "available carriers" — getCarrierCapabilitiesForOrder resolves through form.getValue(FIELD_CARRIER)
     // so the order watcher sees fresh data for whichever carrier is currently selected.
     const orderCarriers = [
       buildCarrier({carrier: 'DPD', packageTypes: ['PACKAGE'], deliveryTypes: ['PICKUP']}),
       buildCarrier({carrier: 'POSTNL', packageTypes: ['PACKAGE'], deliveryTypes: ['STANDARD']}),
     ];
 
-    getCarrierForOrderMock.mockImplementation((f: {getValue: (n: string) => unknown}) =>
+    getCarrierCapabilitiesForOrderMock.mockImplementation((f: {getValue: (n: string) => unknown}) =>
       orderCarriers.find((c) => c.carrier === f.getValue(FIELD_CARRIER)),
     );
     const shipmentEntry = registerShipmentQuery('order-1');
@@ -190,7 +190,7 @@ describe('useCapabilitiesAutoClear', () => {
     });
 
     wireSetFieldRef(form);
-    getCarrierForOrderMock.mockReturnValue(
+    getCarrierCapabilitiesForOrderMock.mockReturnValue(
       buildCarrier({carrier: 'POSTNL', packageTypes: ['PACKAGE', 'MAILBOX'], deliveryTypes: ['STANDARD']}),
     );
     const shipmentEntry = registerShipmentQuery('order-1');
@@ -220,7 +220,7 @@ describe('useCapabilitiesAutoClear', () => {
 
     const lines = addCapabilitiesClearNotificationMock.mock.calls[0][2] as string[];
 
-    expect(lines[0]).toContain('capabilities_field_reverted');
+    expect(lines[0]).toContain('capabilities_cleared_field_reverted');
 
     scope.stop();
   });
@@ -233,7 +233,7 @@ describe('useCapabilitiesAutoClear', () => {
     });
 
     wireSetFieldRef(form);
-    getCarrierForOrderMock.mockReturnValue(
+    getCarrierCapabilitiesForOrderMock.mockReturnValue(
       buildCarrier({carrier: 'POSTNL', packageTypes: ['MAILBOX'], deliveryTypes: ['STANDARD']}),
     );
     const shipmentEntry = registerShipmentQuery('order-1');
@@ -261,7 +261,7 @@ describe('useCapabilitiesAutoClear', () => {
     expect(form.state[FIELD_PACKAGE_TYPE]).toBeUndefined();
     const lines = addCapabilitiesClearNotificationMock.mock.calls[0][2] as string[];
 
-    expect(lines[0]).toContain('capabilities_field_cleared');
+    expect(lines[0]).toContain('capabilities_cleared_field_cleared');
 
     scope.stop();
   });
@@ -276,7 +276,7 @@ describe('useCapabilitiesAutoClear', () => {
     });
 
     wireSetFieldRef(form);
-    getCarrierForOrderMock.mockReturnValue(buildCarrier({carrier: 'DPD'}));
+    getCarrierCapabilitiesForOrderMock.mockReturnValue(buildCarrier({carrier: 'DPD'}));
     const shipmentEntry = registerShipmentQuery('order-1');
 
     const selection = ref({carrier: 'DPD', packageType: 'PACKAGE', deliveryType: 'PICKUP'}) as Ref<{
@@ -314,7 +314,7 @@ describe('useCapabilitiesAutoClear', () => {
     });
 
     wireSetFieldRef(form);
-    getCarrierForOrderMock.mockReturnValue(
+    getCarrierCapabilitiesForOrderMock.mockReturnValue(
       buildCarrier({carrier: 'POSTNL', packageTypes: ['PACKAGE'], deliveryTypes: ['STANDARD']}),
     );
     const shipmentEntry = registerShipmentQuery('order-1');

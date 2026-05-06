@@ -15,10 +15,6 @@ interface InsuranceAmountData {
   };
 }
 
-const LOW_STEPS = 250;
-const HIGH_STEPS = 500;
-const LOW_THRESHOLD = 500;
-
 /**
  * Bag of capability resolvers, each pre-bound to a Pinia store + orderId snapshot captured at
  * the composable's invocation time. Returned by {@link useFormCapabilities}.
@@ -32,9 +28,9 @@ export type FormCapabilities = {
   /**
    * Resolve the chosen carrier's order-level capability data — destination + weight scope only.
    * Used to populate carrier / packageType / deliveryType dropdowns. `requires` / `excludes`
-   * are NEVER populated through this path; they only appear on `getCarrierForShipment`.
+   * are NEVER populated through this path; they only appear on `getCarrierCapabilitiesForShipment`.
    */
-  getCarrierForOrder: (form: FormInstance) => CarrierModel | undefined;
+  getCarrierCapabilitiesForOrder: (form: FormInstance) => CarrierModel | undefined;
 
   /**
    * Resolve the chosen carrier's shipment-level capability data — narrowed to the full
@@ -43,11 +39,11 @@ export type FormCapabilities = {
    * 1. **Shipment-narrow carrier** — query is `success` AND its results contain the chosen
    *    carrier. Returns that carrier with the narrow option set.
    * 2. **Order-level fallback** — query isn't registered, loading, or errored. Falls back to
-   *    `getCarrierForOrder` so transient loading windows don't empty the form.
+   *    `getCarrierCapabilitiesForOrder` so transient loading windows don't empty the form.
    * 3. **`undefined`** — query is `success` but its results don't contain the chosen carrier.
    *    Server has confirmed the combo is invalid; consumers must handle gracefully.
    */
-  getCarrierForShipment: (form: FormInstance) => CarrierModel | undefined;
+  getCarrierCapabilitiesForShipment: (form: FormInstance) => CarrierModel | undefined;
 
   /**
    * Whether the chosen shipment configuration supports a given option. Reads from the
@@ -75,7 +71,7 @@ export type FormCapabilities = {
  * instance, breaking reactive dep tracking on `queries.value[modifier]`.
  *
  * Capturing once here, then closing over those references in the returned resolvers, gives
- * factories a single seam to call from setup — `const caps = useFormCapabilities()` — without
+ * factories a single seam to call from setup — `const capabilities = useFormCapabilities()` — without
  * threading a context object through every helper signature.
  *
  * Pinia is a singleton, so all `useFormCapabilities()` callers within the same Pinia instance
@@ -110,7 +106,7 @@ export const useFormCapabilities = (): FormCapabilities => {
     return data?.carriers ?? [];
   };
 
-  const getCarrierForOrder = (form: FormInstance): CarrierModel | undefined => {
+  const getCarrierCapabilitiesForOrder = (form: FormInstance): CarrierModel | undefined => {
     const chosenCarrier = form.getValue(FIELD_CARRIER);
 
     if (orderModifier) {
@@ -123,12 +119,12 @@ export const useFormCapabilities = (): FormCapabilities => {
     return liveDynamicCarriers().find((carrier) => carrier.carrier === chosenCarrier);
   };
 
-  const getCarrierForShipment = (form: FormInstance): CarrierModel | undefined => {
-    if (!shipmentModifier) return getCarrierForOrder(form);
+  const getCarrierCapabilitiesForShipment = (form: FormInstance): CarrierModel | undefined => {
+    if (!shipmentModifier) return getCarrierCapabilitiesForOrder(form);
 
     const carriers = carriersFromQuery(shipmentModifier);
 
-    if (!carriers) return getCarrierForOrder(form);
+    if (!carriers) return getCarrierCapabilitiesForOrder(form);
 
     const chosenCarrier = form.getValue(FIELD_CARRIER);
 
@@ -136,13 +132,19 @@ export const useFormCapabilities = (): FormCapabilities => {
   };
 
   const hasShipmentOption = (form: FormInstance, option: string): boolean => {
-    const carrier = getCarrierForShipment(form);
+    const carrier = getCarrierCapabilitiesForShipment(form);
 
     return Object.hasOwn(carrier?.options ?? {}, option);
   };
 
   const getInsuranceOptions = (form: FormInstance, formatter: Formatter): SelectOption[] => {
-    const carrier = getCarrierForShipment(form);
+    // Insurance bracket steps: €250 increments below €500, €500 increments above. Switching
+    // step size at the threshold keeps the dropdown short for high-value shipments.
+    const STEP_BELOW_THRESHOLD = 250;
+    const STEP_ABOVE_THRESHOLD = 500;
+    const STEP_THRESHOLD = 500;
+
+    const carrier = getCarrierCapabilitiesForShipment(form);
     const insuranceData = (carrier?.options?.insurance ?? {}) as InsuranceAmountData;
 
     const min = insuranceData.insuredAmount?.min.amount ? insuranceData.insuredAmount.min.amount / 100 : 0;
@@ -152,7 +154,7 @@ export const useFormCapabilities = (): FormCapabilities => {
 
     const insurancePossibilities: number[] = [];
 
-    for (let i = min; i <= max; i += i < LOW_THRESHOLD ? LOW_STEPS : HIGH_STEPS) {
+    for (let i = min; i <= max; i += i < STEP_THRESHOLD ? STEP_BELOW_THRESHOLD : STEP_ABOVE_THRESHOLD) {
       insurancePossibilities.push(i * 100);
     }
 
@@ -166,8 +168,8 @@ export const useFormCapabilities = (): FormCapabilities => {
   };
 
   return {
-    getCarrierForOrder,
-    getCarrierForShipment,
+    getCarrierCapabilitiesForOrder,
+    getCarrierCapabilitiesForShipment,
     hasShipmentOption,
     getInsuranceOptions,
   };

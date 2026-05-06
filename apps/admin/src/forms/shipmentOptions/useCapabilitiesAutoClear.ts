@@ -62,7 +62,7 @@ type ShipmentResponseSnapshot =
 
 /**
  * Read the shipment query's state directly so the auto-clear can distinguish three cases the
- * helper-level `getCarrierForShipment` collapses for its consumers:
+ * helper-level `getCarrierCapabilitiesForShipment` collapses for its consumers:
  *
  * - **`pending`**: query not registered, loading, errored, or has no data yet. No clear should
  *   fire — transient state. Errored requests are logged via `globalLogger.error` inside the
@@ -143,7 +143,7 @@ export const useCapabilitiesAutoClear = (
   const queryStore = useQueryStore();
   const notificationStore = useNotificationStore();
   const {translate} = useLanguage();
-  const {getCarrierForOrder} = useFormCapabilities();
+  const {getCarrierCapabilitiesForOrder} = useFormCapabilities();
 
   let lastModifiedAxis: AxisField | undefined;
   /**
@@ -300,20 +300,20 @@ export const useCapabilitiesAutoClear = (
     const fieldLabel = translate(FIELD_TO_LABEL_KEY[axis]);
 
     return restored
-      ? translate({key: 'capabilities_field_reverted', args: {field: fieldLabel}})
-      : translate({key: 'capabilities_field_cleared', args: {field: fieldLabel}});
+      ? translate({key: 'capabilities_cleared_field_reverted', args: {field: fieldLabel}})
+      : translate({key: 'capabilities_cleared_field_cleared', args: {field: fieldLabel}});
   };
 
   const lineForOptionClear = (optionKey: string): string => {
     const fieldLabel = translate(optionLabelKey(optionKey));
 
-    return translate({key: 'capabilities_option_cleared', args: {field: fieldLabel}});
+    return translate({key: 'capabilities_cleared_option_cleared', args: {field: fieldLabel}});
   };
 
   const notifyClears = (lines: string[]): void => {
     if (lines.length === 0) return;
 
-    addCapabilitiesClearNotification(notificationStore, translate('capabilities_cleared_title'), lines);
+    addCapabilitiesClearNotification(notificationStore, translate('capabilities_cleared'), lines);
   };
 
   /**
@@ -348,22 +348,13 @@ export const useCapabilitiesAutoClear = (
   };
 
   /**
-   * Pick which axis to roll back when the order or shipment data invalidates the current
-   * combination. If the user just touched packageType / deliveryType (or carrier) and that
-   * change is the cause, we clear that axis. If we don't have a recent action attributable
-   * to the user (e.g. modal pre-fill, weight slider), we default to clearing deliveryType
-   * as the most permissive re-pick.
-   */
-  const pickAxisToClear = (): AxisField => lastModifiedAxis ?? FIELD_DELIVERY_TYPE;
-
-  /**
    * Synchronous cross-axis validation against the order query — runs whenever the carrier
    * dropdown or its underlying data changes. Catches "current packageType isn't even in the
    * carrier's order-level union" without waiting for the shipment query round trip.
    */
   watch(
     () => {
-      const carrier = getCarrierForOrder(form);
+      const carrier = getCarrierCapabilitiesForOrder(form);
       const packageType = form.getValue<string | undefined>(FIELD_PACKAGE_TYPE);
       const deliveryType = form.getValue<string | undefined>(FIELD_DELIVERY_TYPE);
 
@@ -394,18 +385,21 @@ export const useCapabilitiesAutoClear = (
 
       const lines: string[] = [];
 
+      // Clear / revert the axis that's actually invalid for the current carrier — not
+      // `lastModifiedAxis`. The order-data watcher fires on weight / cc changes too, where
+      // `lastModifiedAxis` may not point at the field that's now out-of-list. Targeting the
+      // invalid axis directly avoids clearing deliveryType in response to an invalid
+      // packageType, and vice versa.
       if (packageTypeInvalid) {
-        const target = pickAxisToClear();
-        const {restored, changed} = revertAxis(target);
+        const {restored, changed} = revertAxis(FIELD_PACKAGE_TYPE);
 
-        if (changed) lines.push(lineForAxisClear(target, restored));
+        if (changed) lines.push(lineForAxisClear(FIELD_PACKAGE_TYPE, restored));
       }
 
       if (deliveryTypeInvalid) {
-        const target = pickAxisToClear();
-        const {restored, changed} = revertAxis(target);
+        const {restored, changed} = revertAxis(FIELD_DELIVERY_TYPE);
 
-        if (changed) lines.push(lineForAxisClear(target, restored));
+        if (changed) lines.push(lineForAxisClear(FIELD_DELIVERY_TYPE, restored));
       }
 
       notifyClears(lines);

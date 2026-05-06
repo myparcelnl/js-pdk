@@ -5,7 +5,7 @@ import {type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {createShipmentOptionField} from './createShipmentOptionField';
 
 /**
- * Mutable carrier context — tests set this to control what the bag's `getCarrierForShipment`
+ * Mutable carrier context — tests set this to control what the bag's `getCarrierCapabilitiesForShipment`
  * and `hasShipmentOption` return without needing per-test mock overrides.
  */
 let mockCarrier: Record<string, unknown> | undefined;
@@ -17,8 +17,8 @@ vi.mock('../../helpers', () => ({
   defineFormField: (config: Record<string, unknown>) => config,
   getFieldLabel: (name: string) => name,
   useFormCapabilities: () => ({
-    getCarrierForShipment: () => mockCarrier,
-    getCarrierForOrder: () => mockCarrier,
+    getCarrierCapabilitiesForShipment: () => mockCarrier,
+    getCarrierCapabilitiesForOrder: () => mockCarrier,
     hasShipmentOption: (_form: unknown, option: string) => {
       return Object.hasOwn((mockCarrier?.options as Record<string, unknown>) ?? {}, option);
     },

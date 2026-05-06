@@ -26,7 +26,7 @@ export const createInsuranceField = (
   fieldName: string,
 ): InteractiveElementConfiguration => {
   const formatter = useLocalizedFormatter();
-  const caps = useFormCapabilities();
+  const capabilities = useFormCapabilities();
   let stopWatcher: (() => void) | undefined;
 
   return createShipmentOptionField(refs, fieldName, {
@@ -41,7 +41,7 @@ export const createInsuranceField = (
         stopWatcher = watch(
           () => toValue(carrierField.ref),
           () => {
-            setFieldProp(field, PROP_OPTIONS, caps.getInsuranceOptions(field.form, formatter));
+            setFieldProp(field, PROP_OPTIONS, capabilities.getInsuranceOptions(field.form, formatter));
           },
           {immediate: true},
         );
