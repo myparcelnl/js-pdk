@@ -1,24 +1,41 @@
 import {toValue, watch, type Ref} from 'vue';
+import {snakeCase} from 'lodash-unified';
 import {type FormInstance, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {BackendEndpoint, type CarrierModel, type Plugin, TriState} from '@myparcel-dev/pdk-common';
 import {addCapabilitiesClearNotification, useFormCapabilities} from '../helpers';
-import type {CapabilitiesClearEntry} from '../helpers';
 import {setFieldRef} from '../form-builder/utils/createValueSetter';
+import {useLanguage} from '../../composables';
 import {useNotificationStore, useQueryStore} from '../../stores';
 import {type CapabilitiesSelection} from './wireProxyCapabilities';
-import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_PACKAGE_TYPE, FIELD_SHIPMENT_OPTIONS_PREFIX} from './field';
+import {
+  FIELD_CARRIER,
+  FIELD_DELIVERY_TYPE,
+  FIELD_PACKAGE_TYPE,
+  FIELD_SHIPMENT_OPTIONS_PREFIX,
+  SHIPMENT_OPTIONS,
+} from './field';
 
 type InheritedDeliveryOptions = Plugin.ModelContextOrderDataContext['inheritedDeliveryOptions'];
 
 type AxisField = typeof FIELD_CARRIER | typeof FIELD_PACKAGE_TYPE | typeof FIELD_DELIVERY_TYPE;
 
-const FIELD_TO_LABEL: Record<AxisField, string> = {
+/**
+ * Translation key per axis. Carrier uses the form-builder's bare `'carrier'` key (matching
+ * `createCarrierField`); packageType / deliveryType use the existing field labels.
+ */
+const FIELD_TO_LABEL_KEY: Record<AxisField, string> = {
   [FIELD_CARRIER]: 'carrier',
-  [FIELD_PACKAGE_TYPE]: 'package_type',
-  [FIELD_DELIVERY_TYPE]: 'delivery_type',
+  [FIELD_PACKAGE_TYPE]: snakeCase(`${SHIPMENT_OPTIONS}_package_type`),
+  [FIELD_DELIVERY_TYPE]: snakeCase(`${SHIPMENT_OPTIONS}_delivery_type`),
 };
 
 const optionFieldName = (key: string): string => `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${key}`;
+
+/**
+ * Translation key for an option's field label (matches `getFieldLabel(name)` from the
+ * shipment-option factories).
+ */
+const optionLabelKey = (key: string): string => snakeCase(`${SHIPMENT_OPTIONS}_${key}`);
 
 /**
  * Set a form field's value safely. `vue-form-builder` swaps `field.ref` from a Vue Ref to a
@@ -44,17 +61,14 @@ type ShipmentResponseSnapshot =
  * helper-level `getCarrierForShipment` collapses for its consumers:
  *
  * - **`pending`**: query not registered, loading, errored, or has no data yet. No clear should
- *   fire — transient state.
+ *   fire — transient state. Errored requests are logged via `globalLogger.error` inside the
+ *   query composable; the form keeps its current selection rather than blocking the merchant
+ *   on an intermittent failure.
  * - **`invalid_combo`**: query is `success` but `results` is empty or doesn't contain the
  *   chosen carrier. The server has confirmed this combination isn't valid; trigger an
  *   axis-rollback.
  * - **`matched`**: query is `success` and the carrier was found. Use the response's narrow
  *   `options` to decide which active option fields are now orphaned.
- *
- * `queryStore` is captured at composable setup time and passed in here — calling
- * `useQueryStore()` inside a watcher tick fires Vue's `inject() can only be used inside
- * setup()` warning AND can return a disconnected store instance, breaking dep tracking on
- * `queries.value[key]`.
  */
 const readShipmentSnapshot = (
   selection: Readonly<Ref<CapabilitiesSelection>>,
@@ -96,10 +110,10 @@ const readShipmentSnapshot = (
  *
  * 1. **Cross-axis (synchronous) — order data**: when the chosen carrier's `packageTypes` /
  *    `deliveryTypes` (from the order query) no longer contain the form's current value,
- *    we clear that field. The clear targets the user's most-recently-modified axis when
- *    that axis is one of (carrier / packageType / deliveryType); when no axis was just
- *    touched (pre-fill on modal open, or weight slider edits), we default to clearing
- *    deliveryType as the most permissive re-pick.
+ *    we clear that field. Carrier-change is special-cased through the same silent +
+ *    inherited-defaults flow as the shipment-query path; without that, the order watcher
+ *    (which fires synchronously) would emit a noisy notification before the debounced
+ *    shipment watcher gets a chance to apply the silent reset.
  * 2. **Shipment-empty — server invalidation**: when the shipment query returns no entry for
  *    the chosen carrier (empty `results` or carrier not present), the server has confirmed
  *    the combination isn't valid. Clears the just-touched axis (or deliveryType by default).
@@ -118,12 +132,13 @@ export const useCapabilitiesAutoClear = (
   inheritedDeliveryOptions: InheritedDeliveryOptions,
   selection: Readonly<Ref<CapabilitiesSelection>>,
 ): void => {
-  // Capture Pinia stores at setup time so watcher callbacks don't call `useQueryStore()` /
-  // `useNotificationStore()` in non-setup contexts (which fires Vue's "inject() can only be
-  // used inside setup()" warning AND can yield a disconnected store instance, breaking
-  // reactive dep tracking on `queries.value[key]`).
+  // Capture Pinia stores + translator at setup time so watcher callbacks don't call
+  // `useQueryStore()` / `useNotificationStore()` / `useLanguage()` in non-setup contexts (which
+  // fires Vue's "inject() can only be used inside setup()" warning AND can yield a disconnected
+  // store instance, breaking reactive dep tracking on `queries.value[key]`).
   const queryStore = useQueryStore();
   const notificationStore = useNotificationStore();
+  const {translate} = useLanguage();
   const {getCarrierForOrder} = useFormCapabilities();
 
   let lastModifiedAxis: AxisField | undefined;
@@ -163,22 +178,25 @@ export const useCapabilitiesAutoClear = (
       () => form.getValue(FIELD_DELIVERY_TYPE),
     ],
     ([carrierValue, packageTypeValue, deliveryTypeValue]) => {
-      if (suppressTracking) return;
-
-      // Capture both the axis that just changed AND its prior value before we overwrite the
-      // snapshot — the prior value is the revert target if the new selection turns out to be
-      // an invalid combination.
-      if (carrierValue !== previousAxisValues[FIELD_CARRIER]) {
-        lastModifiedAxis = FIELD_CARRIER;
-        lastModifiedPreviousValue = previousAxisValues[FIELD_CARRIER];
-      } else if (packageTypeValue !== previousAxisValues[FIELD_PACKAGE_TYPE]) {
-        lastModifiedAxis = FIELD_PACKAGE_TYPE;
-        lastModifiedPreviousValue = previousAxisValues[FIELD_PACKAGE_TYPE];
-      } else if (deliveryTypeValue !== previousAxisValues[FIELD_DELIVERY_TYPE]) {
-        lastModifiedAxis = FIELD_DELIVERY_TYPE;
-        lastModifiedPreviousValue = previousAxisValues[FIELD_DELIVERY_TYPE];
+      // Capture lastModified attribution ONLY for genuine user changes — silent writes from
+      // the auto-clear itself shouldn't masquerade as user intent.
+      if (!suppressTracking) {
+        if (carrierValue !== previousAxisValues[FIELD_CARRIER]) {
+          lastModifiedAxis = FIELD_CARRIER;
+          lastModifiedPreviousValue = previousAxisValues[FIELD_CARRIER];
+        } else if (packageTypeValue !== previousAxisValues[FIELD_PACKAGE_TYPE]) {
+          lastModifiedAxis = FIELD_PACKAGE_TYPE;
+          lastModifiedPreviousValue = previousAxisValues[FIELD_PACKAGE_TYPE];
+        } else if (deliveryTypeValue !== previousAxisValues[FIELD_DELIVERY_TYPE]) {
+          lastModifiedAxis = FIELD_DELIVERY_TYPE;
+          lastModifiedPreviousValue = previousAxisValues[FIELD_DELIVERY_TYPE];
+        }
       }
 
+      // Always mirror current values into the snapshot — under suppressTracking the prior
+      // snapshot becomes stale (the auto-clear just rewrote a field), and a future genuine
+      // user change would otherwise capture the pre-clear value as `lastModifiedPreviousValue`
+      // and revert to a value already known to be invalid.
       previousAxisValues[FIELD_CARRIER] = carrierValue;
       previousAxisValues[FIELD_PACKAGE_TYPE] = packageTypeValue;
       previousAxisValues[FIELD_DELIVERY_TYPE] = deliveryTypeValue;
@@ -190,15 +208,15 @@ export const useCapabilitiesAutoClear = (
    * picked something invalid AFTER having a valid choice), restore that — preserves the
    * previous selection so the form doesn't surprise the user with an emptied field. If there's
    * no revert target (axis was never set, or this is the first-ever change on a freshly-opened
-   * modal), clear the field instead.
+   * modal), clear the field. Returns whether a previous value was actually restored so the
+   * caller can pick the right notification line.
    */
-  const revertAxis = (axis: AxisField): {revertedTo: unknown} => {
+  const revertAxis = (axis: AxisField): {restored: boolean} => {
     const target = lastModifiedAxis === axis ? lastModifiedPreviousValue : undefined;
-    const valueToSet = target as string | number | boolean | undefined;
 
-    setSilently(axis, valueToSet);
+    setSilently(axis, target as string | number | boolean | undefined);
 
-    return {revertedTo: valueToSet};
+    return {restored: target !== undefined};
   };
 
   /**
@@ -215,52 +233,85 @@ export const useCapabilitiesAutoClear = (
   };
 
   /**
-   * Decide how to react when the current selection turns out to be an invalid combo.
+   * Carrier-switch reset: keep the new carrier (switching is "fresh start" intent), apply the
+   * inherited defaults for `packageType` / `deliveryType`, and emit no notification (the UI
+   * already shifts significantly on carrier change). Called from BOTH the order watcher and
+   * the shipment watcher's invalid-combo branch — both paths converge on the same reset.
+   */
+  const applyCarrierDefaults = (): void => {
+    const carrierName = form.getValue<string | undefined>(FIELD_CARRIER);
+
+    if (carrierName) {
+      setSilently(FIELD_PACKAGE_TYPE, inheritedDefault(carrierName, FIELD_PACKAGE_TYPE) as
+        | string
+        | number
+        | boolean
+        | undefined);
+      setSilently(FIELD_DELIVERY_TYPE, inheritedDefault(carrierName, FIELD_DELIVERY_TYPE) as
+        | string
+        | number
+        | boolean
+        | undefined);
+    } else {
+      setSilently(FIELD_PACKAGE_TYPE, undefined);
+      setSilently(FIELD_DELIVERY_TYPE, undefined);
+    }
+  };
+
+  /**
+   * Build the user-visible notification line for an axis revert/clear. `restored: true` means
+   * the prior valid value was put back; `false` means the field was nulled because there was
+   * no prior valid value to fall back to.
+   */
+  const lineForAxisClear = (axis: AxisField, restored: boolean): string => {
+    const fieldLabel = translate(FIELD_TO_LABEL_KEY[axis]);
+
+    return restored
+      ? translate({key: 'capabilities_field_reverted', args: {field: fieldLabel}})
+      : translate({key: 'capabilities_field_cleared', args: {field: fieldLabel}});
+  };
+
+  const lineForOptionClear = (optionKey: string): string => {
+    const fieldLabel = translate(optionLabelKey(optionKey));
+
+    return translate({key: 'capabilities_option_cleared', args: {field: fieldLabel}});
+  };
+
+  const notifyClears = (lines: string[]): void => {
+    if (lines.length === 0) return;
+
+    addCapabilitiesClearNotification(notificationStore, translate('capabilities_cleared_title'), lines);
+  };
+
+  /**
+   * Decide how to react when the shipment query confirms the current selection is an invalid
+   * combo.
    *
-   * - Carrier change: KEEP the user's new carrier (switching carrier is "fresh start" intent).
-   *   For `packageType` / `deliveryType`, switch to the inherited default for the new carrier
-   *   when one exists, else clear. Silent (no notification) — the UI already shifts
-   *   significantly when carrier changes, and an extra notification adds noise.
-   * - PackageType / deliveryType change: revert THAT axis to its prior valid value, with a
-   *   notification (the user's tweak was invalid; their previous selection was fine).
-   * - No recent user action (modal pre-fill, weight slider): default-clear deliveryType, with
+   * - Carrier change: silent reset via `applyCarrierDefaults` (no notification).
+   * - PackageType / deliveryType change: revert THAT axis to its prior valid value (or clear
+   *   if there's no revert target), with a notification explaining which path was taken.
+   * - No recent user action (modal pre-fill, weight slider): default-clear deliveryType with
    *   a notification.
    *
-   * Returns `entries` for the notification builder. An empty array means "carrier change —
+   * Returns the lines for the rolling notification. An empty array means "carrier change —
    * silent."
    */
-  const resolveInvalidCombo = (): CapabilitiesClearEntry[] => {
+  const resolveInvalidCombo = (): string[] => {
     if (lastModifiedAxis === FIELD_CARRIER) {
-      const carrierName = form.getValue<string | undefined>(FIELD_CARRIER);
-
-      if (carrierName) {
-        setSilently(FIELD_PACKAGE_TYPE, inheritedDefault(carrierName, FIELD_PACKAGE_TYPE) as
-          | string
-          | number
-          | boolean
-          | undefined);
-        setSilently(FIELD_DELIVERY_TYPE, inheritedDefault(carrierName, FIELD_DELIVERY_TYPE) as
-          | string
-          | number
-          | boolean
-          | undefined);
-      } else {
-        setSilently(FIELD_PACKAGE_TYPE, undefined);
-        setSilently(FIELD_DELIVERY_TYPE, undefined);
-      }
+      applyCarrierDefaults();
 
       return [];
     }
 
     if (lastModifiedAxis === FIELD_PACKAGE_TYPE || lastModifiedAxis === FIELD_DELIVERY_TYPE) {
-      revertAxis(lastModifiedAxis);
+      const {restored} = revertAxis(lastModifiedAxis);
 
-      return [{field: FIELD_TO_LABEL[lastModifiedAxis], reason: 'invalid_combination'}];
+      return [lineForAxisClear(lastModifiedAxis, restored)];
     }
 
     setSilently(FIELD_DELIVERY_TYPE, undefined);
 
-    return [{field: FIELD_TO_LABEL[FIELD_DELIVERY_TYPE], reason: 'invalid_combination'}];
+    return [lineForAxisClear(FIELD_DELIVERY_TYPE, false)];
   };
 
   /**
@@ -294,26 +345,37 @@ export const useCapabilitiesAutoClear = (
     ({carrierName, packageTypesInCarrier, deliveryTypesInCarrier, packageType, deliveryType}) => {
       if (!carrierName) return;
 
-      const clears: CapabilitiesClearEntry[] = [];
-      const reason = `not_available_for_${carrierName}`;
+      const packageTypeInvalid = Boolean(packageType) && !packageTypesInCarrier.includes(packageType as string);
+      const deliveryTypeInvalid = Boolean(deliveryType) && !deliveryTypesInCarrier.includes(deliveryType as string);
 
-      if (packageType && !packageTypesInCarrier.includes(packageType)) {
-        const target = lastModifiedAxis === FIELD_CARRIER ? FIELD_PACKAGE_TYPE : pickAxisToClear();
+      if (!packageTypeInvalid && !deliveryTypeInvalid) return;
 
-        revertAxis(target);
-        clears.push({field: FIELD_TO_LABEL[target], reason});
+      // Carrier-change special case: silent reset via inherited defaults. Without this branch
+      // the order watcher would clear/notify before the (debounced) shipment watcher gets a
+      // chance to apply the same silent reset, contradicting the silent-on-carrier rule.
+      if (lastModifiedAxis === FIELD_CARRIER) {
+        applyCarrierDefaults();
+
+        return;
       }
 
-      if (deliveryType && !deliveryTypesInCarrier.includes(deliveryType)) {
-        const target = lastModifiedAxis === FIELD_CARRIER ? FIELD_DELIVERY_TYPE : pickAxisToClear();
+      const lines: string[] = [];
 
-        revertAxis(target);
-        clears.push({field: FIELD_TO_LABEL[target], reason});
+      if (packageTypeInvalid) {
+        const target = pickAxisToClear();
+        const {restored} = revertAxis(target);
+
+        lines.push(lineForAxisClear(target, restored));
       }
 
-      if (clears.length > 0) {
-        addCapabilitiesClearNotification(notificationStore, clears);
+      if (deliveryTypeInvalid) {
+        const target = pickAxisToClear();
+        const {restored} = revertAxis(target);
+
+        lines.push(lineForAxisClear(target, restored));
       }
+
+      notifyClears(lines);
     },
     {deep: true},
   );
@@ -330,18 +392,13 @@ export const useCapabilitiesAutoClear = (
       if (snapshot.state === 'pending') return;
 
       if (snapshot.state === 'invalid_combo') {
-        const entries = resolveInvalidCombo();
-
-        if (entries.length > 0) {
-          addCapabilitiesClearNotification(notificationStore, entries);
-        }
+        notifyClears(resolveInvalidCombo());
 
         return;
       }
 
       const availableOptionKeys = Object.keys(snapshot.carrier.options);
-      const carrierName = snapshot.carrier.carrier;
-      const clears: CapabilitiesClearEntry[] = [];
+      const lines: string[] = [];
       // Carrier switches reshape the form heavily already (different option set, different
       // packageType/deliveryType lists). Notifying on top of that adds noise — silently turn
       // off any orphaned options. Notify only when the change came from a non-carrier axis.
@@ -358,13 +415,11 @@ export const useCapabilitiesAutoClear = (
         setSilently(fieldName, TriState.Inherit);
 
         if (!silent) {
-          clears.push({field: optionKey, reason: `not_available_for_${carrierName}_combination`});
+          lines.push(lineForOptionClear(optionKey));
         }
       }
 
-      if (clears.length > 0) {
-        addCapabilitiesClearNotification(notificationStore, clears);
-      }
+      notifyClears(lines);
     },
   );
 };

@@ -3,9 +3,9 @@ import {type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {AdminContextKey, BackendEndpoint, type CarrierModel, TriState} from '@myparcel-dev/pdk-common';
 import {FIELD_CARRIER} from '../shipmentOptions/field';
 import {getOrderId} from '../../utils';
-import {useQueryStore} from '../../stores';
-import {type SelectOption} from '../../types';
-import {useContext, Format, type Formatter} from '../../composables';
+import {type AdminContext, type SelectOption} from '../../types';
+import {useQueryStore, type ResolvedQuery} from '../../stores';
+import {Format, type Formatter} from '../../composables';
 
 interface InsuranceAmountData {
   insuredAmount?: {
@@ -23,8 +23,8 @@ const LOW_THRESHOLD = 500;
  * Bag of capability resolvers, each pre-bound to a Pinia store + orderId snapshot captured at
  * the composable's invocation time. Returned by {@link useFormCapabilities}.
  *
- * The functions are plain — they don't call `useQueryStore()` / `useContext()` / `getOrderId()`
- * on each invocation, so they're safe to call from outside Vue setup context (e.g. inside
+ * The functions are plain — they don't call `useQueryStore()` / `getOrderId()` on each
+ * invocation, so they're safe to call from outside Vue setup context (e.g. inside
  * vue-form-builder's `visibleWhen` / `disabledWhen` / `readOnlyWhen` / `afterUpdate`
  * watchEffect-driven re-evaluators, where `inject()` is not available).
  */
@@ -65,9 +65,8 @@ export type FormCapabilities = {
 };
 
 /**
- * Closure-factory composable that captures Pinia + dynamic-context + orderId references ONCE at
- * its setup-context invocation, and returns plain resolver functions pre-bound to those
- * captures.
+ * Closure-factory composable that captures Pinia + orderId references ONCE at its
+ * setup-context invocation, and returns plain resolver functions pre-bound to those captures.
  *
  * Why this exists: form-builder's `visibleWhen` / `disabledWhen` / `readOnlyWhen` / `afterUpdate`
  * re-evaluators run inside an internal `watchEffect`, NOT inside Vue setup. Calling
@@ -80,13 +79,16 @@ export type FormCapabilities = {
  * threading a context object through every helper signature.
  *
  * Pinia is a singleton, so all `useFormCapabilities()` callers within the same Pinia instance
- * reference the same underlying store. The dynamic-context carriers list is a static page-load
- * dump that doesn't change during a form's lifetime, so a snapshot is safe.
+ * reference the same underlying store. The dynamic-context entry in the store is itself a
+ * TanStack query whose `data` is reactive — `useFetchContextQuery` refetches `Dynamic` on
+ * window focus, so we read `query.data` live on every resolver call rather than snapshotting
+ * the carriers array at setup time.
  */
 export const useFormCapabilities = (): FormCapabilities => {
   const queryStore = useQueryStore();
-  const dynamicContext = useContext(AdminContextKey.Dynamic);
-  const dynamicCarriers = dynamicContext.carriers;
+  const dynamicContextQuery = queryStore.get(BackendEndpoint.FetchContext, AdminContextKey.Dynamic) as ResolvedQuery<
+    BackendEndpoint.FetchContext
+  >;
   const orderId = getOrderId();
 
   const orderModifier = typeof orderId === 'string' ? `${orderId}.order` : undefined;
@@ -102,6 +104,12 @@ export const useFormCapabilities = (): FormCapabilities => {
     return (toValue(query.data) ?? []) as CarrierModel[];
   };
 
+  const liveDynamicCarriers = (): CarrierModel[] => {
+    const data = toValue(dynamicContextQuery.data) as AdminContext<AdminContextKey.Dynamic> | undefined;
+
+    return data?.carriers ?? [];
+  };
+
   const getCarrierForOrder = (form: FormInstance): CarrierModel | undefined => {
     const chosenCarrier = form.getValue(FIELD_CARRIER);
 
@@ -112,7 +120,7 @@ export const useFormCapabilities = (): FormCapabilities => {
       if (fromQuery) return fromQuery;
     }
 
-    return dynamicCarriers.find((carrier) => carrier.carrier === chosenCarrier);
+    return liveDynamicCarriers().find((carrier) => carrier.carrier === chosenCarrier);
   };
 
   const getCarrierForShipment = (form: FormInstance): CarrierModel | undefined => {

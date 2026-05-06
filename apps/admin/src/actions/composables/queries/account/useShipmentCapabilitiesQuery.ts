@@ -1,22 +1,10 @@
 import {computed, type Ref} from 'vue';
 import {useQuery} from '@tanstack/vue-query';
-import {BackendEndpoint, type ExtractEndpointDefinition} from '@myparcel-dev/pdk-common';
-import {type BackendEndpointDefinition} from '../../../../types';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
+import {type ProxyCapabilitiesBody, type ProxyCapabilitiesCall} from '../../../../types';
+import {globalLogger} from '../../../../services';
 import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
-
-/**
- * The full endpoint definition we declared in `sdk.types.ts`. Every other type in this file
- * derives from this single source so changes to the body or response shape there flow through
- * here automatically — no manual sync needed.
- */
-type ProxyCapabilitiesDefinition = ExtractEndpointDefinition<
-  BackendEndpoint.ProxyCapabilities,
-  BackendEndpointDefinition
->;
-
-type ProxyCapabilitiesBody = NonNullable<ProxyCapabilitiesDefinition['body']>;
-type ProxyCapabilitiesParameters = NonNullable<ProxyCapabilitiesDefinition['parameters']>;
 
 /**
  * The form-facing selection input — flat fields the form already has. The composable maps this
@@ -40,18 +28,6 @@ export type CapabilitiesSelection = {
 };
 
 /**
- * Typed view of `pdk.proxyCapabilities` — the shared `MyParcelSdk` helper widens every
- * `pdk.<endpoint>(...)` method's body to `undefined` and response to `never` because all
- * registered endpoints share a single `AbstractPdkEndpoint` base type. This signature tells
- * TypeScript what we actually know about this specific endpoint's contract from
- * `ProxyCapabilitiesDefinition`.
- */
-type ProxyCapabilitiesCall = (options: {
-  body: ProxyCapabilitiesBody;
-  parameters?: ProxyCapabilitiesParameters;
-}) => Promise<ProxyCapabilitiesDefinition['response']>;
-
-/**
  * Shipment-scoped capabilities query — fires the shared CapabilitiesAction with the FULL
  * selection (carrier + packageType + deliveryType + cc + weight) and returns the matching
  * carrier entry (the one shipment configuration the user has chosen). Drives the option panel
@@ -62,9 +38,17 @@ type ProxyCapabilitiesCall = (options: {
  * Server-side option filtering is opted in via the `filterOptions` query parameter so admin sees
  * the same option allowlist that `Carrier::attributesToArray` applies on the contract-definition
  * path.
+ *
+ * Errors are logged via `globalLogger.error` so we have a breadcrumb for support, but we
+ * deliberately don't surface a user-facing toast — an intermittent capabilities failure
+ * shouldn't block the form, and the auto-clear treats the errored state as still-loading.
+ *
+ * The selection ref is accepted as `Readonly<Ref>` because callers typically pass the
+ * debounced ref from `refDebounced`, which is read-only — and the composable never mutates
+ * the selection internally.
  */
 export const useShipmentCapabilitiesQuery = (
-  selection: Ref<CapabilitiesSelection>,
+  selection: Readonly<Ref<CapabilitiesSelection>>,
 ): ResolvedQuery<BackendEndpoint.ProxyCapabilities> => {
   const enabled = computed(() =>
     Boolean(selection.value.cc && selection.value.carrier && selection.value.packageType && selection.value.deliveryType),
@@ -102,6 +86,9 @@ export const useShipmentCapabilitiesQuery = (
       refetchOnWindowFocus: false,
       refetchOnMount: false,
       refetchOnReconnect: false,
+      onError: (error) => {
+        globalLogger.error('shipment-capabilities-query', 'request failed', error);
+      },
     },
   );
 };

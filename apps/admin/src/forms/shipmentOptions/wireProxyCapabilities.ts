@@ -1,6 +1,7 @@
 import {computed, onScopeDispose, type Ref} from 'vue';
 import {type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {BackendEndpoint, type Plugin} from '@myparcel-dev/pdk-common';
+import {globalLogger} from '../../services';
 import {useQueryStore} from '../../stores';
 import {
   useShipmentCapabilitiesQuery,
@@ -41,7 +42,11 @@ export const wireProxyCapabilities = (
 ): {selection: Readonly<Ref<CapabilitiesSelection>>} | undefined => {
   const orderId = order.externalIdentifier;
 
-  if (!orderId) return undefined;
+  if (!orderId) {
+    globalLogger.debug('wireProxyCapabilities', 'skipped — order has no externalIdentifier', {order});
+
+    return undefined;
+  }
 
   const orderModifier = `${orderId}.order`;
   const shipmentModifier = `${orderId}.shipment`;
@@ -75,7 +80,7 @@ export const wireProxyCapabilities = (
   }));
 
   const orderQuery = useOrderCapabilitiesQuery(orderInputForQuery);
-  const shipmentQuery = useShipmentCapabilitiesQuery(selection as ReturnType<typeof useCapabilitiesWatcher>);
+  const shipmentQuery = useShipmentCapabilitiesQuery(selection);
 
   const queryStore = useQueryStore();
 

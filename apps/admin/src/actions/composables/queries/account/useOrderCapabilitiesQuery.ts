@@ -1,20 +1,10 @@
 import {computed, type Ref} from 'vue';
 import {useQuery} from '@tanstack/vue-query';
-import {BackendEndpoint, type ExtractEndpointDefinition} from '@myparcel-dev/pdk-common';
-import {type BackendEndpointDefinition} from '../../../../types';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
+import {type ProxyCapabilitiesBody, type ProxyCapabilitiesCall} from '../../../../types';
+import {globalLogger} from '../../../../services';
 import {type ResolvedQuery} from '../../../../stores';
 import {usePdkAdminApi} from '../../../../sdk';
-
-type ProxyCapabilitiesDefinition = ExtractEndpointDefinition<
-  BackendEndpoint.ProxyCapabilities,
-  BackendEndpointDefinition
->;
-
-type ProxyCapabilitiesBody = NonNullable<ProxyCapabilitiesDefinition['body']>;
-
-type ProxyCapabilitiesCall = (options: {
-  body: ProxyCapabilitiesBody;
-}) => Promise<ProxyCapabilitiesDefinition['response']>;
 
 /**
  * The form-facing input for {@link useOrderCapabilitiesQuery} — flat fields from the order
@@ -38,6 +28,10 @@ export type OrderCapabilitiesInput = {
  * Server-side option allowlist filtering is NOT applied here (no `filterOptions` parameter).
  * The shipment-scoped query is the source for option metadata (`requires` / `excludes`); the
  * order query response is consumed for type lists only.
+ *
+ * Errors are logged via `globalLogger.error` so we have a breadcrumb for support, but we
+ * deliberately don't surface a user-facing toast — an intermittent capabilities failure
+ * shouldn't block the form, and the auto-clear treats the errored state as still-loading.
  */
 export const useOrderCapabilitiesQuery = (
   input: Ref<OrderCapabilitiesInput>,
@@ -69,6 +63,9 @@ export const useOrderCapabilitiesQuery = (
       refetchOnWindowFocus: false,
       refetchOnMount: false,
       refetchOnReconnect: false,
+      onError: (error) => {
+        globalLogger.error('order-capabilities-query', 'request failed', error);
+      },
     },
   );
 };

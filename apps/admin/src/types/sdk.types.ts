@@ -221,6 +221,19 @@ interface ProxyCapabilitiesDefinition extends PdkEndpointDefinition {
   formattedResponse: CarrierModel[];
 }
 
+/**
+ * Body / parameters / call shape for `pdk.proxyCapabilities`. Both order-scoped and
+ * shipment-scoped query composables share these — the order-scoped call simply omits
+ * `parameters` at the call site. Derived from {@link ProxyCapabilitiesDefinition} so any
+ * change to the endpoint contract flows through automatically.
+ */
+export type ProxyCapabilitiesBody = NonNullable<ProxyCapabilitiesDefinition['body']>;
+export type ProxyCapabilitiesParameters = NonNullable<ProxyCapabilitiesDefinition['parameters']>;
+export type ProxyCapabilitiesCall = (options: {
+  body: ProxyCapabilitiesBody;
+  parameters?: ProxyCapabilitiesParameters;
+}) => Promise<ProxyCapabilitiesDefinition['response']>;
+
 export type BackendEndpointDefinition =
   | CreateWebhooksDefinition
   | DebugDownloadLogsDefinition
