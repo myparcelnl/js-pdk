@@ -46,9 +46,18 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
     fields: createShipmentOptionsFields(refs, order, allOptionKeys),
   });
 
-  if (!isBulk) {
-    wireProxyCapabilities(form, order);
-    useCapabilitiesAutoClear(form);
+  if (!isBulk && order.externalIdentifier) {
+    const wired = wireProxyCapabilities(form, order);
+
+    if (wired) {
+      useCapabilitiesAutoClear(
+        form,
+        allOptionKeys,
+        order.externalIdentifier,
+        order.inheritedDeliveryOptions,
+        wired.selection,
+      );
+    }
   }
 
   return form;

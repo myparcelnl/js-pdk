@@ -1,4 +1,4 @@
-import {computed, onScopeDispose} from 'vue';
+import {computed, onScopeDispose, type Ref} from 'vue';
 import {type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {BackendEndpoint, type Plugin} from '@myparcel-dev/pdk-common';
 import {useQueryStore} from '../../stores';
@@ -35,16 +35,25 @@ import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_T
  * Skipped for bulk forms (no single orderId) and for orders without an externalIdentifier (no
  * key to register under).
  */
-export const wireProxyCapabilities = (form: FormInstance, order: Plugin.ModelContextOrderDataContext): void => {
+export const wireProxyCapabilities = (
+  form: FormInstance,
+  order: Plugin.ModelContextOrderDataContext,
+): {selection: Readonly<Ref<CapabilitiesSelection>>} | undefined => {
   const orderId = order.externalIdentifier;
 
-  if (!orderId) return;
+  if (!orderId) return undefined;
 
   const orderModifier = `${orderId}.order`;
   const shipmentModifier = `${orderId}.shipment`;
 
+  // Use `form.getValue(name)` (which goes through `q(field.ref)` / `toValue` internally) rather
+  // than `form.values[name]` so reactive deps are tracked correctly inside computed/watchers.
   const orderInput = computed<OrderInput>(() => {
-    const manualWeight = form.values[FIELD_MANUAL_WEIGHT] as number | undefined;
+    // FIELD_MANUAL_WEIGHT carries `TriState.Inherit` (-1) when the user hasn't entered a manual
+    // override; only positive numbers represent an actual weight. Treat anything else as "unset"
+    // and fall back to the order's initial weight.
+    const manualWeightRaw = form.getValue(FIELD_MANUAL_WEIGHT);
+    const manualWeight = typeof manualWeightRaw === 'number' && manualWeightRaw > 0 ? manualWeightRaw : undefined;
 
     return {
       cc: order.shippingAddress?.cc,
@@ -53,9 +62,9 @@ export const wireProxyCapabilities = (form: FormInstance, order: Plugin.ModelCon
   });
 
   const formInput = computed<FormInput>(() => ({
-    carrier: form.values[FIELD_CARRIER] as string | undefined,
-    packageType: form.values[FIELD_PACKAGE_TYPE] as string | undefined,
-    deliveryType: form.values[FIELD_DELIVERY_TYPE] as string | undefined,
+    carrier: form.getValue<string | undefined>(FIELD_CARRIER),
+    packageType: form.getValue<string | undefined>(FIELD_PACKAGE_TYPE),
+    deliveryType: form.getValue<string | undefined>(FIELD_DELIVERY_TYPE),
   }));
 
   const selection = useCapabilitiesWatcher(orderInput, formInput);
@@ -80,6 +89,8 @@ export const wireProxyCapabilities = (form: FormInstance, order: Plugin.ModelCon
     queryStore.unregister(BackendEndpoint.ProxyCapabilities, orderModifier);
     queryStore.unregister(BackendEndpoint.ProxyCapabilities, shipmentModifier);
   });
+
+  return {selection};
 };
 
 // Re-exported for the auto-clear composable so it can refer to the same selection-shape type.

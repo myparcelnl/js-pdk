@@ -4,13 +4,14 @@ import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-build
 import {AdminContextKey, type Plugin} from '@myparcel-dev/pdk-common';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_PACKAGE_TYPE, PROP_OPTIONS} from '../field';
-import {getDeliveryTypes} from '../../helpers/getDeliveryTypes';
 import {
   defineFormField,
+  getDeliveryTypes,
   getPackageTypes,
   resolveFormComponent,
   setFieldProp,
   updateFieldsDefaults,
+  useFormCapabilities,
 } from '../../helpers';
 import {createAssetUrl} from '../../../utils';
 import {type RadioGroupOption} from '../../../types';
@@ -25,6 +26,7 @@ export const createCarrierField = (
   inheritedDeliveryOptions: Plugin.ModelContextOrderDataContext['inheritedDeliveryOptions'],
 ): InteractiveElementConfiguration => {
   const dynamicContext = useContext(AdminContextKey.Dynamic);
+  const caps = useFormCapabilities();
 
   const {translate} = useLanguage();
 
@@ -65,8 +67,10 @@ export const createCarrierField = (
     afterUpdate: (field, newCarrier: string) => {
       updateFieldsDefaults(newCarrier, field, inheritedDeliveryOptions);
 
-      setFieldProp(field.form, FIELD_PACKAGE_TYPE, PROP_OPTIONS, getPackageTypes(field.form));
-      setFieldProp(field.form, FIELD_DELIVERY_TYPE, PROP_OPTIONS, getDeliveryTypes(field.form));
+      const carrier = caps.getCarrierForOrder(field.form);
+
+      setFieldProp(field.form, FIELD_PACKAGE_TYPE, PROP_OPTIONS, getPackageTypes(carrier));
+      setFieldProp(field.form, FIELD_DELIVERY_TYPE, PROP_OPTIONS, getDeliveryTypes(carrier));
     },
   });
 };

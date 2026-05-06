@@ -5,8 +5,8 @@ import {type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {createShipmentOptionField} from './createShipmentOptionField';
 
 /**
- * Mutable carrier context — tests set this to control what `getCarrierForShipment()` and
- * `hasShipmentOption()` return without needing per-test mock overrides.
+ * Mutable carrier context — tests set this to control what the bag's `getCarrierForShipment`
+ * and `hasShipmentOption` return without needing per-test mock overrides.
  */
 let mockCarrier: Record<string, unknown> | undefined;
 
@@ -14,13 +14,16 @@ let mockCarrier: Record<string, unknown> | undefined;
 // that triggers "Install @vitejs/plugin-vue" errors.
 vi.mock('../../helpers', () => ({
   resolveFormComponent: () => 'MockTriStateInput',
-  createHasShipmentOptionWatcher: () => () => true,
   defineFormField: (config: Record<string, unknown>) => config,
   getFieldLabel: (name: string) => name,
-  getCarrierForShipment: () => mockCarrier,
-  hasShipmentOption: (_form: unknown, option: string) => {
-    return Object.hasOwn((mockCarrier?.options as Record<string, unknown>) ?? {}, option);
-  },
+  useFormCapabilities: () => ({
+    getCarrierForShipment: () => mockCarrier,
+    getCarrierForOrder: () => mockCarrier,
+    hasShipmentOption: (_form: unknown, option: string) => {
+      return Object.hasOwn((mockCarrier?.options as Record<string, unknown>) ?? {}, option);
+    },
+    getInsuranceOptions: () => [],
+  }),
 }));
 
 /** Create a minimal mock field instance with a reactive ref and mutable props. */

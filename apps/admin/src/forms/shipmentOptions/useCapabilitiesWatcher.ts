@@ -2,7 +2,7 @@ import {computed, toValue, type MaybeRefOrGetter, type Ref} from 'vue';
 import {refDebounced} from '@vueuse/core';
 import {type CapabilitiesSelection} from '../../actions/composables/queries/account/useShipmentCapabilitiesQuery';
 
-const DEBOUNCE_MS = 300;
+const DEBOUNCE_MS = 100;
 
 export type OrderInput = {cc?: string; weight?: number};
 export type FormInput = {carrier?: string; packageType?: string; deliveryType?: string};

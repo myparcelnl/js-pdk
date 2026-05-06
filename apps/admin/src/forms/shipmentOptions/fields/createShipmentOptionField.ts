@@ -2,13 +2,7 @@ import {type InteractiveElementConfiguration, type InteractiveElementInstance} f
 import {TriState} from '@myparcel-dev/pdk-common';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_SHIPMENT_OPTIONS_PREFIX} from '../field';
-import {
-  defineFormField,
-  getCarrierForShipment,
-  getFieldLabel,
-  hasShipmentOption,
-  resolveFormComponent,
-} from '../../helpers';
+import {defineFormField, getFieldLabel, resolveFormComponent, useFormCapabilities} from '../../helpers';
 import {setFieldRef} from '../../form-builder/utils/createValueSetter';
 import {AdminComponent} from '../../../data';
 import {createRef} from './createRef';
@@ -16,17 +10,14 @@ import {createRef} from './createRef';
 /**
  * Creates a generic shipment option field as a TriState toggle.
  *
- * This is the default factory for any option from `carrier.options` that does not have a
- * custom factory in the field factory registry.
+ * Default factory for any option from `carrier.options` that doesn't have a custom factory in
+ * `fieldFactoryRegistry`. `requires` / `excludes` are sourced from the shipment-scoped
+ * response (`getCarrierForShipment`); they're absent while the shipment query is loading or
+ * falling back to order-level data — locking doesn't run during those windows.
  *
- * `requires` / `excludes` are sourced from the shipment-scoped capabilities response
- * (`getCarrierForShipment`). They're undefined while the shipment query is loading or when
- * the helper is falling back to order-level data — locking simply doesn't run in those
- * windows. Once shipment data arrives, the next `afterUpdate` call will apply the rules.
- *
- * @param refs - current form field refs built from order data
- * @param fieldName - full dotted path, e.g. `deliveryOptions.shipmentOptions.requiresSignature`
- * @param config - optional overrides (used by custom factories that extend this base)
+ * `useFormCapabilities()` is called at factory invocation (setup-time) so visibility, disabled,
+ * readOnly and afterUpdate handlers close over a captured Pinia store + orderId — no
+ * `inject()` calls during form-builder's watchEffect-driven re-evaluators.
  */
 export const createShipmentOptionField = (
   refs: ShipmentOptionsRefs,
@@ -34,25 +25,26 @@ export const createShipmentOptionField = (
   config?: Partial<InteractiveElementConfiguration>,
 ): InteractiveElementConfiguration => {
   const name = fieldName.split('.').pop() ?? fieldName;
+  const caps = useFormCapabilities();
 
   return defineFormField({
     name: fieldName,
     component: resolveFormComponent(AdminComponent.TriStateInput),
     ref: createRef(refs, fieldName, TriState.Inherit),
     label: getFieldLabel(name),
-    visibleWhen: ({form}) => hasShipmentOption(form, name),
+    visibleWhen: ({form}) => caps.hasShipmentOption(form, name),
     // Disabled when the carrier doesn't support this option.
     // Required options use readOnlyWhen instead, keeping them enabled
     // so their value is included in the form body by getEnabledValues().
-    disabledWhen: ({form}) => !hasShipmentOption(form, name),
+    disabledWhen: ({form}) => !caps.hasShipmentOption(form, name),
     // Read-only prevents the TriState "inherit" toggle from being used,
     // fully locking the field when the carrier requires this option.
     readOnlyWhen: ({form}) => {
-      return getCarrierForShipment(form)?.options?.[name]?.isRequired === true;
+      return caps.getCarrierForShipment(form)?.options?.[name]?.isRequired === true;
     },
 
     afterUpdate(field, value) {
-      const carrier = getCarrierForShipment(field.form);
+      const carrier = caps.getCarrierForShipment(field.form);
       const option = carrier?.options?.[name];
 
       if (!option) {
