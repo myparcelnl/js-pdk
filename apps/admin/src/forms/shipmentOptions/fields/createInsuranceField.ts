@@ -1,7 +1,7 @@
-import {toValue, watch} from 'vue';
-import {type InteractiveElementConfiguration, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
+import {watch} from 'vue';
+import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
 import {type ShipmentOptionsRefs} from '../types';
-import {FIELD_CARRIER, PROP_OPTIONS} from '../field';
+import {PROP_OPTIONS} from '../field';
 import {resolveFormComponent, setFieldProp, useFormCapabilities} from '../../helpers';
 import {type ElementInstance} from '../../../types';
 import {AdminComponent} from '../../../data';
@@ -13,8 +13,10 @@ import {createRef} from './createRef';
  * Custom field factory for the insurance shipment option.
  *
  * Renders as a select/dropdown instead of a TriState toggle. Insurance amount brackets are
- * derived from the currently selected carrier's `insuredAmount` data (min/max) and refresh
- * automatically on carrier switch.
+ * derived from the currently selected carrier's shipment-scoped `insuredAmount` data (min/max)
+ * and refresh automatically whenever that data changes — i.e. on carrier change AND on
+ * packageType / deliveryType / weight / cc change, since those all narrow the shipment-scoped
+ * capabilities response.
  *
  * Visibility / disabled state is inherited from {@link createShipmentOptionField} — driven
  * purely by `hasShipmentOption` (i.e. by the capabilities response). No manual package-type
@@ -35,17 +37,16 @@ export const createInsuranceField = (
     onBeforeMount(field: ElementInstance) {
       stopWatcher?.();
 
-      const carrierField = field.form.getField(FIELD_CARRIER) as InteractiveElementInstance | undefined;
-
-      if (carrierField) {
-        stopWatcher = watch(
-          () => toValue(carrierField.ref),
-          () => {
-            setFieldProp(field, PROP_OPTIONS, capabilities.getInsuranceOptions(field.form, formatter));
-          },
-          {immediate: true},
-        );
-      }
+      // Watch the shipment-scoped carrier capabilities directly. The resolver tracks both the
+      // selected carrier (via `form.getValue(FIELD_CARRIER)`) and the shipment-capabilities
+      // query data, so any axis change that updates `insuredAmount` triggers a refresh.
+      stopWatcher = watch(
+        () => capabilities.getCarrierCapabilitiesForShipment(field.form),
+        () => {
+          setFieldProp(field, PROP_OPTIONS, capabilities.getInsuranceOptions(field.form, formatter));
+        },
+        {immediate: true},
+      );
     },
   });
 };
