@@ -1,9 +1,8 @@
 import {type InteractiveElementConfiguration, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {TriState} from '@myparcel-dev/pdk-common';
 import {type ShipmentOptionsRefs} from '../types';
-import {getFieldDependencies} from '../fieldDependencies';
 import {FIELD_SHIPMENT_OPTIONS_PREFIX} from '../field';
-import {defineFormField, getCarrier, getFieldLabel, hasShipmentOption, resolveFormComponent} from '../../helpers';
+import {defineFormField, getFieldLabel, resolveFormComponent, useFormCapabilities} from '../../helpers';
 import {setFieldRef} from '../../form-builder/utils/createValueSetter';
 import {AdminComponent} from '../../../data';
 import {createRef} from './createRef';
@@ -11,12 +10,14 @@ import {createRef} from './createRef';
 /**
  * Creates a generic shipment option field as a TriState toggle.
  *
- * This is the default factory for any option from `carrier.options` that
- * does not have a custom factory in the field factory registry.
+ * Default factory for any option from `carrier.options` that doesn't have a custom factory in
+ * `fieldFactoryRegistry`. `requires` / `excludes` are sourced from the shipment-scoped
+ * response (`getCarrierCapabilitiesForShipment`); they're absent while the shipment query is loading or
+ * falling back to order-level data — locking doesn't run during those windows.
  *
- * @param refs - current form field refs built from order data
- * @param fieldName - full dotted path, e.g. `deliveryOptions.shipmentOptions.requiresSignature`
- * @param config - optional overrides (used by custom factories that extend this base)
+ * `useFormCapabilities()` is called at factory invocation (setup-time) so visibility, disabled,
+ * readOnly and afterUpdate handlers close over a captured Pinia store + orderId — no
+ * `inject()` calls during form-builder's watchEffect-driven re-evaluators.
  */
 export const createShipmentOptionField = (
   refs: ShipmentOptionsRefs,
@@ -24,47 +25,42 @@ export const createShipmentOptionField = (
   config?: Partial<InteractiveElementConfiguration>,
 ): InteractiveElementConfiguration => {
   const name = fieldName.split('.').pop() ?? fieldName;
+  const capabilities = useFormCapabilities();
 
   return defineFormField({
     name: fieldName,
     component: resolveFormComponent(AdminComponent.TriStateInput),
     ref: createRef(refs, fieldName, TriState.Inherit),
     label: getFieldLabel(name),
-    visibleWhen: ({form}) => hasShipmentOption(form, name),
+    visibleWhen: ({form}) => capabilities.hasShipmentOption(form, name),
     // Disabled when the carrier doesn't support this option.
     // Required options use readOnlyWhen instead, keeping them enabled
     // so their value is included in the form body by getEnabledValues().
-    disabledWhen: ({form}) => !hasShipmentOption(form, name),
+    disabledWhen: ({form}) => !capabilities.hasShipmentOption(form, name),
     // Read-only prevents the TriState "inherit" toggle from being used,
     // fully locking the field when the carrier requires this option.
     readOnlyWhen: ({form}) => {
-      return getCarrier(form)?.options?.[name]?.isRequired === true;
+      return capabilities.getCarrierCapabilitiesForShipment(form)?.options?.[name]?.isRequired === true;
     },
 
     afterUpdate(field, value) {
-      const carrier = getCarrier(field.form);
-      const carrierName = carrier?.carrier;
+      const carrier = capabilities.getCarrierCapabilitiesForShipment(field.form);
+      const option = carrier?.options?.[name];
 
-      if (!carrierName) {
+      if (!option) {
         return;
       }
 
       // Enforce isRequired: revert any user change back to TriState.On.
-      if (carrier.options?.[name]?.isRequired === true && value !== TriState.On) {
+      if (option.isRequired === true && value !== TriState.On) {
         setFieldRef(field, TriState.On);
 
         return;
       }
 
-      const deps = getFieldDependencies(carrierName, name);
-
-      if (!deps) {
-        return;
-      }
-
       const isEnabled = TriState.On === value;
 
-      for (const requiredOption of deps.requires ?? []) {
+      for (const requiredOption of option.requires ?? []) {
         const targetFieldName = `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${requiredOption}`;
         const targetField = field.form.getField(targetFieldName);
 
@@ -77,7 +73,7 @@ export const createShipmentOptionField = (
           targetField.props.readOnly = true;
         } else {
           // Only clear readOnly if the carrier doesn't independently require this option.
-          const isRequiredByCarrier = carrier.options?.[requiredOption]?.isRequired === true;
+          const isRequiredByCarrier = carrier?.options?.[requiredOption]?.isRequired === true;
 
           if (!isRequiredByCarrier) {
             targetField.props.readOnly = false;
@@ -85,7 +81,7 @@ export const createShipmentOptionField = (
         }
       }
 
-      for (const excludedOption of deps.excludes ?? []) {
+      for (const excludedOption of option.excludes ?? []) {
         const targetFieldName = `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${excludedOption}`;
         const targetField = field.form.getField(targetFieldName);
 
@@ -97,7 +93,7 @@ export const createShipmentOptionField = (
           setFieldRef(targetField as InteractiveElementInstance, TriState.Off);
           targetField.props.readOnly = true;
         } else {
-          const isRequiredByCarrier = carrier.options?.[excludedOption]?.isRequired === true;
+          const isRequiredByCarrier = carrier?.options?.[excludedOption]?.isRequired === true;
 
           if (!isRequiredByCarrier) {
             targetField.props.readOnly = false;

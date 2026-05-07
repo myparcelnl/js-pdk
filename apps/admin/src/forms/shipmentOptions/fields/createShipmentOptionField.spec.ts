@@ -5,8 +5,8 @@ import {type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {createShipmentOptionField} from './createShipmentOptionField';
 
 /**
- * Mutable carrier context — tests set this to control what `getCarrier()`
- * and `hasShipmentOption()` return without needing per-test mock overrides.
+ * Mutable carrier context — tests set this to control what the bag's `getCarrierCapabilitiesForShipment`
+ * and `hasShipmentOption` return without needing per-test mock overrides.
  */
 let mockCarrier: Record<string, unknown> | undefined;
 
@@ -14,33 +14,16 @@ let mockCarrier: Record<string, unknown> | undefined;
 // that triggers "Install @vitejs/plugin-vue" errors.
 vi.mock('../../helpers', () => ({
   resolveFormComponent: () => 'MockTriStateInput',
-  createHasShipmentOptionWatcher: () => () => true,
   defineFormField: (config: Record<string, unknown>) => config,
   getFieldLabel: (name: string) => name,
-  getCarrier: () => mockCarrier,
-  hasShipmentOption: (_form: unknown, option: string) => {
-    return Object.hasOwn(mockCarrier?.options as Record<string, unknown> ?? {}, option);
-  },
-}));
-
-/**
- * Stub the dependency map so the tests don't depend on the real carrier
- * dependency data, which may change over time.
- *
- * POSTNL → requiresAgeVerification requires signature + only-recipient,
- *          excludes receiptCode. This mirrors the real-world POSTNL rules.
- */
-vi.mock('../fieldDependencies', () => ({
-  getFieldDependencies: (carrierName: string, optionName: string) => {
-    if (carrierName === 'POSTNL' && optionName === 'requiresAgeVerification') {
-      return {
-        requires: ['recipientOnlyDelivery', 'requiresSignature'],
-        excludes: ['requiresReceiptCode'],
-      };
-    }
-
-    return undefined;
-  },
+  useFormCapabilities: () => ({
+    getCarrierCapabilitiesForShipment: () => mockCarrier,
+    getCarrierCapabilitiesForOrder: () => mockCarrier,
+    hasShipmentOption: (_form: unknown, option: string) => {
+      return Object.hasOwn((mockCarrier?.options as Record<string, unknown>) ?? {}, option);
+    },
+    getInsuranceOptions: () => [],
+  }),
 }));
 
 /** Create a minimal mock field instance with a reactive ref and mutable props. */
@@ -75,18 +58,24 @@ describe('createShipmentOptionField', () => {
 
   describe('afterUpdate dependency logic', () => {
     /**
-     * Helper that creates a POSTNL carrier context, sets up the dependent
-     * fields, and returns everything needed to invoke afterUpdate on the
-     * age verification field.
+     * Helper that sets up a POSTNL carrier with `requires` / `excludes` declared on the
+     * `requiresAgeVerification` option (mirroring what the live capabilities response carries),
+     * the dependent fields, and a triggerAfterUpdate to invoke the just-toggled age-check field.
      *
-     * @param optionOverrides - per-option overrides merged into the default
-     *   carrier options (e.g. `{ requiresSignature: { isRequired: true } }`)
+     * The `requires` / `excludes` rules live directly on the option entry in the carrier model
+     * — sourced from the shipment-scoped capabilities response on the live path.
+     *
+     * @param optionOverrides - per-option overrides merged into the default carrier options
+     *   (e.g. `{ requiresSignature: { isRequired: true } }`)
      */
-    const setupAgeVerificationScenario = (
-      optionOverrides: Record<string, Record<string, unknown>> = {},
-    ) => {
+    const setupAgeVerificationScenario = (optionOverrides: Record<string, Record<string, unknown>> = {}) => {
       const defaultOptions: Record<string, Record<string, unknown>> = {
-        requiresAgeVerification: {isRequired: false, isSelectedByDefault: false},
+        requiresAgeVerification: {
+          isRequired: false,
+          isSelectedByDefault: false,
+          requires: ['recipientOnlyDelivery', 'requiresSignature'],
+          excludes: ['requiresReceiptCode'],
+        },
         requiresSignature: {isRequired: false, isSelectedByDefault: false},
         recipientOnlyDelivery: {isRequired: false, isSelectedByDefault: false},
         requiresReceiptCode: {isRequired: false, isSelectedByDefault: false},
@@ -154,11 +143,10 @@ describe('createShipmentOptionField', () => {
       expect(receiptCodeField.props.readOnly).toBe(false);
     });
 
-    // When the carrier independently requires an option (isRequired: true),
-    // disabling the dependency source must NOT clear that field's readOnly
-    // or change its value.
-    // Regression: previously, turning off 18+ check would blindly set
-    // readOnly = false on all dependents, overriding the carrier's isRequired lock.
+    // When the carrier independently requires an option (isRequired: true), disabling the
+    // dependency source must NOT clear that field's readOnly or change its value. Regression:
+    // previously, turning off 18+ check would blindly set readOnly = false on all dependents,
+    // overriding the carrier's isRequired lock.
     it('preserves readOnly and value on carrier-required fields when dependency source is disabled', () => {
       const {signatureField, onlyRecipientField, receiptCodeField, triggerAfterUpdate} =
         setupAgeVerificationScenario({
@@ -176,8 +164,8 @@ describe('createShipmentOptionField', () => {
       // …then disable — signature should stay locked and ON, others should unlock.
       triggerAfterUpdate(TriState.Off);
 
-      // Signature must remain ON and readOnly because the carrier requires it,
-      // regardless of the 18+ dependency being turned off.
+      // Signature must remain ON and readOnly because the carrier requires it, regardless of
+      // the 18+ dependency being turned off.
       expect(signatureField.ref.value).toBe(TriState.On);
       expect(signatureField.props.readOnly).toBe(true);
       // Only-recipient is not independently required, so it should unlock.
