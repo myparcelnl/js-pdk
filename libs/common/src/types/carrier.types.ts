@@ -11,6 +11,8 @@ export type CarrierModel = {
     insurance?: {
       isRequired: boolean;
       isSelectedByDefault: boolean;
+      requires?: string[];
+      excludes?: string[];
       insuredAmount: {
         min: {
           amount: number;
@@ -31,6 +33,17 @@ export type CarrierModel = {
     {
       isRequired: boolean;
       isSelectedByDefault: boolean;
+      /**
+       * Other option keys that must also be enabled when this option is enabled. Only populated
+       * when the carrier model came from the proxy-capabilities response (`getCarrierForShipment`);
+       * absent on contract-definition data (`DynamicContext` / `getCarrierForOrder`).
+       */
+      requires?: string[];
+      /**
+       * Other option keys that must NOT be enabled when this option is enabled. Same source
+       * constraints as `requires`.
+       */
+      excludes?: string[];
       [key: string]: unknown;
     }
   >;

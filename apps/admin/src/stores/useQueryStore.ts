@@ -80,6 +80,20 @@ export const useQueryStore = defineStore('query', () => {
     return query;
   };
 
+  /**
+   * Drop the entry for {endpoint, modifier?} from the store. Used when a feature that registered
+   * its own query is unmounted (e.g. shipment-options modal closing) so a fresh registration on
+   * the next open isn't shadowed by stale data.
+   */
+  const unregister = <E extends BackendEndpoint>(endpoint: E, modifier?: PlainModifier): void => {
+    const key = createQueryCacheKey(endpoint, modifier);
+
+    if (queries.value[key] === undefined) return;
+
+    globalLogger.debug(`Unregistering query ${key}`);
+    delete queries.value[key];
+  };
+
   const registerShipmentQueries = (
     shipmentIds: MaybeRef<OneOrMore<number>>,
     orderIds?: MaybeRef<OneOrMore<string>>,
@@ -125,6 +139,7 @@ export const useQueryStore = defineStore('query', () => {
     get,
     has,
     register,
+    unregister,
 
     registerShipmentQueries,
 
