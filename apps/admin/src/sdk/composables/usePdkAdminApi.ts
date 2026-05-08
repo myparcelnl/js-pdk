@@ -16,7 +16,7 @@ export const usePdkAdminApi = createGlobalState((): MyParcelSdk<AbstractPdkEndpo
   });
 
   const pdkEndpoints = Object.entries(globalContext.endpoints).map(([endpointName, options]) => {
-    // Effectively cast null as 'undefined' to prevent the the SDK casting the prefix property to the string 'null'.
+    // Effectively cast null as 'undefined' to prevent the SDK casting the prefix property to the string 'null'.
     const property = typeof options.property === 'string' ? options.property : undefined;
     const responseProperty = typeof options.responseProperty === 'string' ? options.responseProperty : undefined;
     class PdkEndpoint extends AbstractPdkEndpoint {
