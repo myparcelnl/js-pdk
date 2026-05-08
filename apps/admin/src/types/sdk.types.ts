@@ -192,9 +192,10 @@ interface ProxyCapabilitiesDefinition extends PdkEndpointDefinition {
    * Action-control parameters live in the query string so the request body stays a clean
    * mirror of the actual capabilities API contract.
    *
-   * `filterSupported` (opt-in): when `'true'`, the action applies the registered-option allowlist
-   * server-side (`Carrier::filterRegisteredOptions`). Absent / any other value preserves the
-   * unfiltered SDK passthrough for existing callers.
+   * `filterSupported` (opt-in): when `true`, the action applies the registered-option allowlist
+   * server-side (`Carrier::filterRegisteredOptions`). When `false` or `undefined`, the backend
+   * should treat it as not opted in, preserving the existing unfiltered SDK passthrough
+   * behavior for callers.
    */
   parameters?: {filterSupported?: boolean};
   /**
