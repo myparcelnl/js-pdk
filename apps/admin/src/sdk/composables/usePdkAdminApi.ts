@@ -24,7 +24,7 @@ export const usePdkAdminApi = createGlobalState((): MyParcelSdk<AbstractPdkEndpo
       public readonly name = endpointName as BackendEndpoint;
       public readonly path = options.path;
       public readonly property = property;
-      // SDK will use `options.property` as fallback if this is undefined.
+      // If this is undefined, the SDK falls back to the endpoint instance's `property` value above.
       public readonly responseProperty = responseProperty;
       public readonly useDataEnvelope = typeof options.useDataEnvelope === 'undefined' ? true : options.useDataEnvelope;
     }
