@@ -1,3 +1,4 @@
+import {type RecursivePartial} from '@myparcel-dev/ts-utils';
 import {
   type AdminContextKey,
   type BackendEndpoint,
@@ -11,7 +12,6 @@ import {
   type Settings,
   type Shipment,
 } from '@myparcel-dev/pdk-common';
-import {type RecursivePartial} from '@myparcel-dev/ts-utils';
 import {type AdminContextObject} from './context.types';
 import {type WebhookDefinition} from './common.types';
 
@@ -192,11 +192,11 @@ interface ProxyCapabilitiesDefinition extends PdkEndpointDefinition {
    * Action-control parameters live in the query string so the request body stays a clean
    * mirror of the actual capabilities API contract.
    *
-   * `filterOptions` (opt-in): when `'true'`, the action applies the registered-option allowlist
+   * `filterSupported` (opt-in): when `'true'`, the action applies the registered-option allowlist
    * server-side (`Carrier::filterRegisteredOptions`). Absent / any other value preserves the
    * unfiltered SDK passthrough for existing callers.
    */
-  parameters?: {filterOptions?: 'true'};
+  parameters?: {filterSupported?: boolean};
   /**
    * Body shape mirrors the actual capabilities API request: camelCase keys at every level
    * matching the SDK's attribute maps (`countryCode`, `physicalProperties`, `packageType`,
@@ -228,7 +228,9 @@ interface ProxyCapabilitiesDefinition extends PdkEndpointDefinition {
  * change to the endpoint contract flows through automatically.
  */
 export type ProxyCapabilitiesBody = NonNullable<ProxyCapabilitiesDefinition['body']>;
+
 export type ProxyCapabilitiesParameters = NonNullable<ProxyCapabilitiesDefinition['parameters']>;
+
 export type ProxyCapabilitiesCall = (options: {
   body: ProxyCapabilitiesBody;
   parameters?: ProxyCapabilitiesParameters;

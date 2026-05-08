@@ -2,8 +2,8 @@ import {computed, type Ref} from 'vue';
 import {useQuery} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {type ProxyCapabilitiesBody, type ProxyCapabilitiesCall} from '../../../../types';
-import {globalLogger} from '../../../../services';
 import {type ResolvedQuery} from '../../../../stores';
+import {globalLogger} from '../../../../services';
 import {usePdkAdminApi} from '../../../../sdk';
 
 /**
@@ -15,9 +15,9 @@ import {usePdkAdminApi} from '../../../../sdk';
  * `packageType` AND `deliveryType` to be set before firing — anything less wouldn't yield
  * shipment-specific metadata.
  *
- * `options` and `filterOptions` are intentionally not part of the selection: option toggles
+ * `options` and `filterSupported` are intentionally not part of the selection: option toggles
  * don't drive refetches (option interactions resolve client-side), and the composable always
- * opts in to server-side allowlist filtering via the `filterOptions` query parameter.
+ * opts in to server-side allowlist filtering via the `filterSupported` query parameter.
  */
 export type CapabilitiesSelection = {
   cc?: string;
@@ -35,7 +35,7 @@ export type CapabilitiesSelection = {
  * valid for the order context.
  *
  * The selection ref is the only refetch trigger — no window-focus, mount, or reconnect refetches.
- * Server-side option filtering is opted in via the `filterOptions` query parameter so admin sees
+ * Server-side option filtering is opted in via the `filterSupported` query parameter so admin sees
  * the same option allowlist that `Carrier::attributesToArray` applies on the contract-definition
  * path.
  *
@@ -51,7 +51,9 @@ export const useShipmentCapabilitiesQuery = (
   selection: Readonly<Ref<CapabilitiesSelection>>,
 ): ResolvedQuery<BackendEndpoint.ProxyCapabilities> => {
   const enabled = computed(() =>
-    Boolean(selection.value.cc && selection.value.carrier && selection.value.packageType && selection.value.deliveryType),
+    Boolean(
+      selection.value.cc && selection.value.carrier && selection.value.packageType && selection.value.deliveryType,
+    ),
   );
   const queryKey = computed(() => [BackendEndpoint.ProxyCapabilities, 'shipment', selection.value] as const);
 
@@ -77,7 +79,7 @@ export const useShipmentCapabilitiesQuery = (
         deliveryType,
       };
 
-      const response = await proxyCapabilities({body, parameters: {filterOptions: 'true'}});
+      const response = await proxyCapabilities({body, parameters: {filterSupported: true}});
 
       return response.results ?? [];
     },
