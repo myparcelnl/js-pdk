@@ -1,7 +1,7 @@
 import {Variant} from '@myparcel-dev/pdk-common';
 import {type PdkNotification} from '../../types';
-import {type useNotificationStore} from '../../stores';
-import {NotificationCategory} from '../../data';
+import {useModalStore, type useNotificationStore} from '../../stores';
+import {AdminModalKey, NotificationCategory} from '../../data';
 
 export const CAPABILITIES_CLEARED_NOTIFICATION_ID = 'capabilities_cleared';
 
@@ -13,9 +13,9 @@ export const CAPABILITIES_CLEARED_NOTIFICATION_ID = 'capabilities_cleared';
  * already-localized `title` and `lines` — translation happens at the call site (auto-clear)
  * because that's the layer holding the carrier name + axis context for parameterized lookups.
  *
- * Renders in `NotificationCategory.Action` because that's the slot the shipment-options modal
- * mounts (`<NotificationContainer category="Action" />`). `NotificationCategory.Modal` exists
- * but isn't rendered by this form's modal.
+ * Targets `NotificationCategory.Modal` when the shipment-options modal is open and
+ * `NotificationCategory.Action` otherwise — the modal shells (preset packages) only mount a
+ * `Modal` container, while the order-detail `ShipmentOptionsBox` mounts an `Action` container.
  */
 export const addCapabilitiesClearNotification = (
   notificationStore: ReturnType<typeof useNotificationStore>,
@@ -24,6 +24,8 @@ export const addCapabilitiesClearNotification = (
 ): void => {
   if (lines.length === 0) return;
 
+  const isModal = AdminModalKey.ShipmentOptions === useModalStore().opened;
+
   notificationStore.remove(CAPABILITIES_CLEARED_NOTIFICATION_ID);
 
   notificationStore.add({
@@ -31,7 +33,7 @@ export const addCapabilitiesClearNotification = (
     variant: Variant.Warning,
     title,
     content: lines,
-    category: NotificationCategory.Action,
+    category: isModal ? NotificationCategory.Modal : NotificationCategory.Action,
     timeout: false,
   } as PdkNotification);
 };
