@@ -2,8 +2,8 @@ import {computed, type Ref} from 'vue';
 import {useQuery} from '@tanstack/vue-query';
 import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {type ProxyCapabilitiesBody, type ProxyCapabilitiesCall} from '../../../../types';
-import {globalLogger} from '../../../../services';
 import {type ResolvedQuery} from '../../../../stores';
+import {globalLogger} from '../../../../services';
 import {usePdkAdminApi} from '../../../../sdk';
 
 /**
@@ -24,10 +24,6 @@ export type OrderCapabilitiesInput = {
  *
  * Drives the carrier / packageType / deliveryType dropdowns. Refetches only on cc / weight
  * changes so option toggles and dropdown picks don't trigger needless network round-trips.
- *
- * Server-side option allowlist filtering is NOT applied here (no `filterOptions` parameter).
- * The shipment-scoped query is the source for option metadata (`requires` / `excludes`); the
- * order query response is consumed for type lists only.
  *
  * Errors are logged via `globalLogger.error` so we have a breadcrumb for support, but we
  * deliberately don't surface a user-facing toast — an intermittent capabilities failure
@@ -54,7 +50,7 @@ export const useOrderCapabilitiesQuery = (
         ...(weight !== undefined ? {physicalProperties: {weight: {value: weight, unit: 'g'}}} : null),
       };
 
-      const response = await proxyCapabilities({body});
+      const response = await proxyCapabilities({body, parameters: {filterSupported: true}});
 
       return response.results ?? [];
     },

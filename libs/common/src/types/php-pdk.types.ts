@@ -107,8 +107,9 @@ export namespace Base {
     method: string;
     parameters: Record<string, string>;
     path: string;
-    property: string;
-    responseProperty?: string;
+    property?: string | null;
+    useDataEnvelope?: boolean;
+    responseProperty?: string | null;
   }
 }
 
