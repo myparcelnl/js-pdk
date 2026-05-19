@@ -1,5 +1,5 @@
 import {PdkUtil, StoreListener, useCheckoutStore, useUtil} from '@myparcel-dev/pdk-checkout-common';
-import {CarrierSetting, type InputDeliveryOptionsConfiguration} from '@myparcel-dev/delivery-options';
+import {CarrierSetting} from '@myparcel-dev/delivery-options';
 import {getDeliveryOptionsAddress, getResolvedSettings} from '../utils';
 import {type CheckoutDeliveryOptionsSettingsInput, type DeliveryOptionsStoreState} from '../types';
 import {showOrHideDeliveryOptions, updateConfigOrAddress} from '../listeners';
@@ -10,7 +10,7 @@ export const createDeliveryOptionsStore = (settings?: CheckoutDeliveryOptionsSet
 
   const checkout = useCheckoutStore();
 
-  const {config, strings, platformConfig} = checkout.state.context;
+  const {config, strings} = checkout.state.context;
 
   return createStore<DeliveryOptionsStoreState>(Symbol('deliveryOptions'), () => {
     return {
@@ -24,7 +24,6 @@ export const createDeliveryOptionsStore = (settings?: CheckoutDeliveryOptionsSet
           address: getDeliveryOptionsAddress(),
           config,
           strings,
-          platformConfig: platformConfig as InputDeliveryOptionsConfiguration['platformConfig'],
         },
 
         /**
