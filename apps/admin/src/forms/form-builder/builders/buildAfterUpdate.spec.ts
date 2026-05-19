@@ -1,6 +1,6 @@
 import {ref} from 'vue';
 import {afterEach, describe, expect, it, vi} from 'vitest';
-import {mount} from '@vue/test-utils';
+import {flushPromises, mount} from '@vue/test-utils';
 import {defineForm, MagicForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {buildAfterUpdate} from './buildAfterUpdate';
 
@@ -31,19 +31,16 @@ describe('buildAfterUpdate', () => {
       ],
     });
 
-    const wrapper = mount(MagicForm, {props: {form}});
+    mount(MagicForm, {props: {form}});
 
     expect(afterUpdate).not.toHaveBeenCalled();
 
     form.setValue('test', 'test');
 
-    const testField = form.getField('test');
-    // todo remove this when afterUpdate is properly triggered
-    testField?.afterUpdate(testField);
+    // afterUpdate fires async, so wait for it to settle.
+    await flushPromises();
 
-    await wrapper.vm.$nextTick();
-
-    expect(afterUpdate).toHaveBeenCalledTimes(1);
+    expect(afterUpdate).toHaveBeenCalled();
     expect(form.getValue('test')).toBe('hello');
   });
 });

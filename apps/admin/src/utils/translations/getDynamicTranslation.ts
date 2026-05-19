@@ -3,5 +3,5 @@ export const getDynamicTranslation = (prefix: string, input?: string): string =>
     return prefix;
   }
 
-  return `${prefix}_${input}`;
+  return `${prefix}_${input.toLowerCase()}`;
 };

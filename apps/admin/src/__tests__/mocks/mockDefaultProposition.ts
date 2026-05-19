@@ -1,11 +1,10 @@
 import {vi} from 'vitest';
 import {type GlobalAdminContext} from '../../types';
 
-export const mockDefaultPlatform = vi.fn((): GlobalAdminContext['platform'] => {
+export const mockDefaultProposition = vi.fn((): GlobalAdminContext['proposition'] => {
   return {
     backofficeUrl: 'https://backoffice.test.myparcel.nl',
-    defaultCarrier: 'postnl',
-    defaultCarrierId: 1,
+    defaultCarrier: 'POSTNL',
     human: 'Test',
     localCountry: 'NL',
     name: 'test',
