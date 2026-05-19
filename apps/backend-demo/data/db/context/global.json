@@ -228,9 +228,7 @@
       "human": "MyParcel",
       "supportUrl": "https://developer.myparcel.nl/contact",
       "backofficeUrl": "https://backoffice.myparcel.nl",
-      "localCountry": "NL",
-      "defaultCarrier": "postnl",
-      "defaultCarrierId": 1
+      "localCountry": "NL"
     },
     "translations": {
       "apple_tree": "Appelboom"
