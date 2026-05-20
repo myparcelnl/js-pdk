@@ -105,8 +105,19 @@ describe('filterPluginSettingsView', () => {
     });
   });
 
-  describe('OrderV2 mode', () => {
-    it('removes the entire General section including its divider', () => {
+  describe('OrderV2 mode (hybrid: surfaces the same fields and tabs as Shipments)', () => {
+    it('keeps all General section fields visible, including the shipment-export-only ones', () => {
+      const result = filterPluginSettingsView(createFullView(), OrderMode.OrderV2);
+      const fieldNames = getFieldNames(result.order.elements);
+
+      expect(fieldNames).toContain('conceptShipments');
+      expect(fieldNames).toContain('saveCustomerAddress');
+      expect(fieldNames).toContain('processDirectly');
+      expect(fieldNames).toContain('sendReturnEmail');
+      expect(fieldNames).toContain('shareCustomerInformation');
+    });
+
+    it('keeps the General section divider in place', () => {
       const result = filterPluginSettingsView(createFullView(), OrderMode.OrderV2);
       const elements = result.order.elements ?? [];
 
@@ -114,32 +125,13 @@ describe('filterPluginSettingsView', () => {
         (el) => (el as Record<string, unknown>).heading === 'settings_order_general_title',
       );
 
-      expect(hasGeneralDivider).toBe(false);
-
-      expect(getFieldNames(elements)).not.toContain('conceptShipments');
-      expect(getFieldNames(elements)).not.toContain('saveCustomerAddress');
-      expect(getFieldNames(elements)).not.toContain('processDirectly');
-      expect(getFieldNames(elements)).not.toContain('sendReturnEmail');
-      expect(getFieldNames(elements)).not.toContain('shareCustomerInformation');
+      expect(hasGeneralDivider).toBe(true);
     });
 
-    it('hides the label tab', () => {
+    it('keeps all tabs visible (label and customs return alongside Shipments-mode behaviour)', () => {
       const result = filterPluginSettingsView(createFullView(), OrderMode.OrderV2);
 
-      expect(getTabIds(result)).not.toContain('label');
-    });
-
-    it('hides the customs tab', () => {
-      const result = filterPluginSettingsView(createFullView(), OrderMode.OrderV2);
-
-      expect(getTabIds(result)).not.toContain('customs');
-    });
-
-    it('keeps checkout and carrier tabs visible', () => {
-      const result = filterPluginSettingsView(createFullView(), OrderMode.OrderV2);
-
-      expect(getTabIds(result)).toContain('checkout');
-      expect(getTabIds(result)).toContain('carrier');
+      expect(getTabIds(result)).toEqual(['order', 'label', 'customs', 'checkout', 'carrier']);
     });
 
     it('keeps non-General sections in the order tab', () => {

@@ -78,17 +78,18 @@ describe('useActionStore', () => {
       expect(store.get(AdminAction.ShipmentsPrint)).toBeUndefined();
     });
 
-    it('registers no export or print actions in OrderV2 mode', () => {
+    it('registers the same shipment-specific action set as Shipments in OrderV2 mode (hybrid)', () => {
       const store = mountWithStore(OrderMode.OrderV2);
 
-      expect(store.get(AdminAction.OrdersPrint)).toBeUndefined();
-      expect(store.get(AdminAction.OrdersExport)).toBeUndefined();
-      expect(store.get(AdminAction.OrdersExportPrint)).toBeUndefined();
+      expect(store.get(AdminAction.OrdersPrint)).toBeDefined();
+      expect(store.get(AdminAction.OrdersExport)).toBeDefined();
+      expect(store.get(AdminAction.OrdersExportPrint)).toBeDefined();
+      expect(store.get(AdminAction.ShipmentsExportReturn)).toBeDefined();
+      expect(store.get(AdminAction.ShipmentsDelete)).toBeDefined();
+      expect(store.get(AdminAction.ShipmentsUpdate)).toBeDefined();
+      expect(store.get(AdminAction.ShipmentsPrint)).toBeDefined();
+      // The backoffice view is V1-only and should still not appear in V2.
       expect(store.get(ORDER_VIEW_IN_BACKOFFICE_ID)).toBeUndefined();
-      expect(store.get(AdminAction.ShipmentsExportReturn)).toBeUndefined();
-      expect(store.get(AdminAction.ShipmentsDelete)).toBeUndefined();
-      expect(store.get(AdminAction.ShipmentsUpdate)).toBeUndefined();
-      expect(store.get(AdminAction.ShipmentsPrint)).toBeUndefined();
     });
 
     it('registers shipmentsExportReturn exactly once in Shipments mode', () => {

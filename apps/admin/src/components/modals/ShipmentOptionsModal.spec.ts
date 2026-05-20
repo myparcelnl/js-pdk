@@ -64,11 +64,16 @@ describe('ShipmentOptionsModal', () => {
     expect(ids).not.toContain(AdminAction.OrdersExportPrint);
   });
 
-  it('shows only close and update in OrderV2 mode', () => {
+  it('shows close, update, export and export-print in OrderV2 mode (hybrid)', () => {
     mockedUseOrderMode.mockReturnValue(computed(() => OrderMode.OrderV2));
     const wrapper = mount(ShipmentOptionsModal);
     const ids = getModalActionIds(wrapper);
 
-    expect(ids).toEqual([MODAL_CLOSE_ID, AdminAction.OrdersUpdate]);
+    expect(ids).toContain(MODAL_CLOSE_ID);
+    expect(ids).toContain(AdminAction.OrdersUpdate);
+    expect(ids).toContain(AdminAction.OrdersExport);
+    expect(ids).toContain(AdminAction.OrdersExportPrint);
+    // Standalone print is intentionally absent from the modal in both Shipments and V2.
+    expect(ids).not.toContain(AdminAction.OrdersPrint);
   });
 });
