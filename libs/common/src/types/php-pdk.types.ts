@@ -54,6 +54,7 @@ export namespace Account {
     trackTrace: Record<string, unknown>;
     carrierConfigurations: ShopCarrierConfigurationCollection;
     carriers: CarrierCollection;
+    defaultCarrier: string | null;
   };
 
   export type ModelShopCarrierConfiguration = {
@@ -374,7 +375,6 @@ export namespace Plugin {
       backofficeUrl: string;
       supportUrl: string;
       localCountry: string;
-      defaultCarrier: string;
     };
     translations: Record<string, string>;
   };
