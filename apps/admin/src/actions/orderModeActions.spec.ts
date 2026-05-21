@@ -32,10 +32,10 @@ describe('orderModeActions', () => {
       expect(ids).toEqual([AdminAction.OrdersEdit, AdminAction.OrdersExport]);
     });
 
-    it('includes only edit for OrderV2', () => {
+    it('includes edit and export-to-shipments for OrderV2 (hybrid)', () => {
       const ids = getDefinitionIds(LIST_ITEM_MODE_ACTIONS[OrderMode.OrderV2]);
 
-      expect(ids).toEqual([AdminAction.OrdersEdit]);
+      expect(ids).toEqual([AdminAction.OrdersEdit, AdminAction.OrdersExport]);
     });
 
     it('has no actions for Shipments mode', () => {
@@ -63,8 +63,16 @@ describe('orderModeActions', () => {
       expect(ids).toContain(AdminAction.ShipmentsPrint);
     });
 
-    it('registers no additional actions for OrderV2', () => {
-      expect(STORE_MODE_ACTIONS[OrderMode.OrderV2]).toHaveLength(0);
+    it('registers the full shipment action set for OrderV2 (hybrid mirrors Shipments)', () => {
+      const ids = getDefinitionIds(STORE_MODE_ACTIONS[OrderMode.OrderV2]);
+
+      expect(ids).toContain(AdminAction.OrdersPrint);
+      expect(ids).toContain(AdminAction.OrdersExport);
+      expect(ids).toContain(AdminAction.OrdersExportPrint);
+      expect(ids).toContain(AdminAction.ShipmentsExportReturn);
+      expect(ids).toContain(AdminAction.ShipmentsDelete);
+      expect(ids).toContain(AdminAction.ShipmentsUpdate);
+      expect(ids).toContain(AdminAction.ShipmentsPrint);
     });
   });
 
@@ -83,8 +91,12 @@ describe('orderModeActions', () => {
       expect(ids).toContain(AdminAction.OrdersExportPrint);
     });
 
-    it('has no actions for OrderV2', () => {
-      expect(BOX_MODE_ACTIONS[OrderMode.OrderV2]).toHaveLength(0);
+    it('mirrors the Shipments set for OrderV2 (hybrid)', () => {
+      const ids = getDefinitionIds(BOX_MODE_ACTIONS[OrderMode.OrderV2]);
+
+      expect(ids).toContain(AdminAction.OrdersExport);
+      expect(ids).toContain(AdminAction.OrdersPrint);
+      expect(ids).toContain(AdminAction.OrdersExportPrint);
     });
   });
 
@@ -103,8 +115,12 @@ describe('orderModeActions', () => {
       expect(ids).not.toContain(AdminAction.OrdersPrint);
     });
 
-    it('has no actions for OrderV2', () => {
-      expect(MODAL_MODE_ACTIONS[OrderMode.OrderV2]).toHaveLength(0);
+    it('mirrors the Shipments set for OrderV2 (hybrid)', () => {
+      const ids = getDefinitionIds(MODAL_MODE_ACTIONS[OrderMode.OrderV2]);
+
+      expect(ids).toContain(AdminAction.OrdersExport);
+      expect(ids).toContain(AdminAction.OrdersExportPrint);
+      expect(ids).not.toContain(AdminAction.OrdersPrint);
     });
   });
 
