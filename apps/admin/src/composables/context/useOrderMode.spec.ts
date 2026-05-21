@@ -9,8 +9,8 @@ vi.mock('./useContext', () => ({
 
 const mockedUseContext = vi.mocked(useContext);
 
-const mockAccount = (subscriptionFeatures: string[]) => {
-  mockedUseContext.mockReturnValue({account: {subscriptionFeatures}} as any);
+const mockAccount = (subscriptionFeatures: string[], effectiveOrderMode?: unknown) => {
+  mockedUseContext.mockReturnValue({account: {subscriptionFeatures, effectiveOrderMode}} as any);
 };
 
 describe('useOrderMode', () => {
@@ -47,5 +47,29 @@ describe('useOrderMode', () => {
   it('returns Shipments when account is undefined', () => {
     mockedUseContext.mockReturnValue({} as any);
     expect(useOrderMode().value).toBe(OrderMode.Shipments);
+  });
+
+  it('prefers a PHP-supplied effectiveOrderMode of 2 (V2) over the feature derivation', () => {
+    // Feature would resolve to Shipments here; effectiveOrderMode overrides it.
+    mockAccount([], 2);
+    expect(useOrderMode().value).toBe(OrderMode.OrderV2);
+  });
+
+  it('prefers a PHP-supplied effectiveOrderMode of 1 (V1) over the feature derivation', () => {
+    // Feature would resolve to OrderV2; effectiveOrderMode overrides to V1.
+    mockAccount([SubscriptionFeature.OrderManagement], 1);
+    expect(useOrderMode().value).toBe(OrderMode.OrderV1);
+  });
+
+  it('prefers a PHP-supplied effectiveOrderMode of 0 (Shipments) over the feature derivation', () => {
+    // Feature would resolve to OrderV2; effectiveOrderMode downgrades to Shipments
+    // (the shape INT-1590 will produce).
+    mockAccount([SubscriptionFeature.OrderManagement], 0);
+    expect(useOrderMode().value).toBe(OrderMode.Shipments);
+  });
+
+  it('falls back to feature derivation when effectiveOrderMode is not a known numeric mode', () => {
+    mockAccount([SubscriptionFeature.LegacyOrderManagement], 'unexpected-string');
+    expect(useOrderMode().value).toBe(OrderMode.OrderV1);
   });
 });

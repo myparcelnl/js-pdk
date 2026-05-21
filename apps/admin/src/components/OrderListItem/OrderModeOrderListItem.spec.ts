@@ -84,22 +84,20 @@ describe('OrderModeOrderListItem', () => {
       mockedUseOrderMode.mockReturnValue(computed(() => OrderMode.OrderV2));
     });
 
-    it('shows only the edit action', () => {
+    it('shows the edit action and the shipment-export action (hybrid)', () => {
       mockOrderData(mockedUseOrderData);
       const wrapper = mount(OrderModeOrderListItem);
       const html = wrapper.html();
 
       expect(html).toContain(AdminAction.OrdersEdit);
+      expect(html).toContain(AdminAction.OrdersExport);
     });
 
-    it('does not show export, print, or backoffice actions, even when the order is exported', () => {
+    it('does not show the V1 backoffice link, even when the order is exported', () => {
       mockOrderData(mockedUseOrderData, {exported: true});
       const wrapper = mount(OrderModeOrderListItem);
       const html = wrapper.html();
 
-      expect(html).not.toContain(AdminAction.OrdersExport);
-      expect(html).not.toContain(AdminAction.OrdersPrint);
-      expect(html).not.toContain(AdminAction.OrdersExportPrint);
       expect(html).not.toContain(ORDER_VIEW_IN_BACKOFFICE_ID);
     });
   });

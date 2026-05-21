@@ -84,22 +84,26 @@ describe('ShipmentOptionsBox', () => {
     expect(ids).toEqual([ORDER_VIEW_IN_BACKOFFICE_ID]);
   });
 
-  it('shows only update in OrderV2 mode', () => {
+  it('shows update plus the shipment-export action set in OrderV2 mode (hybrid)', () => {
     mockedUseOrderMode.mockReturnValue(computed(() => OrderMode.OrderV2));
     mockOrderData(mockedUseOrderData);
     const wrapper = mount(ShipmentOptionsBox);
     const ids = getBoxActionIds(wrapper);
 
-    expect(ids).toEqual([AdminAction.OrdersUpdate]);
+    expect(ids).toContain(AdminAction.OrdersUpdate);
+    expect(ids).toContain(AdminAction.OrdersExport);
+    expect(ids).toContain(AdminAction.OrdersPrint);
+    expect(ids).toContain(AdminAction.OrdersExportPrint);
   });
 
-  it('never shows exported state in OrderV2 mode even if order has exported flag', () => {
+  it('does not show the V1 backoffice link in OrderV2 mode, even if order has exported flag', () => {
     mockedUseOrderMode.mockReturnValue(computed(() => OrderMode.OrderV2));
     mockOrderData(mockedUseOrderData, {exported: true});
     const wrapper = mount(ShipmentOptionsBox);
     const ids = getBoxActionIds(wrapper);
 
-    expect(ids).toEqual([AdminAction.OrdersUpdate]);
     expect(ids).not.toContain(ORDER_VIEW_IN_BACKOFFICE_ID);
+    // Hybrid actions still appear regardless of the exported flag.
+    expect(ids).toContain(AdminAction.OrdersExport);
   });
 });

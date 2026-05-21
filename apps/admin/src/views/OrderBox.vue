@@ -1,7 +1,14 @@
 <template>
   <ShipmentOptionsBox />
 
-  <ShipmentTableBox v-if="orderMode === OrderMode.Shipments && data?.shipments.some((item) => !item.deleted)" />
+  <!--
+    Shipments mode plus V2 hybrid both surface manual shipments here.
+    @TODO INT-1590: restrict to OrderMode.Shipments once V2 with an active sales
+          channel hides the manual paths again. Original gate preserved as a
+          comment below for easy restoration.
+  -->
+  <!-- <ShipmentTableBox v-if="orderMode === OrderMode.Shipments && data?.shipments.some((item) => !item.deleted)" /> -->
+  <ShipmentTableBox v-if="orderMode !== OrderMode.OrderV1 && data?.shipments.some((item) => !item.deleted)" />
 </template>
 
 <script lang="ts" setup>
