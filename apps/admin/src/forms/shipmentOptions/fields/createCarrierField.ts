@@ -18,7 +18,7 @@ import {type RadioGroupOption} from '../../../types';
 import {useQueryStore} from '../../../stores';
 import {useFetchCarrier} from '../../../sdk';
 import {AdminComponent} from '../../../data';
-import {useContext, useGlobalContext, useLanguage} from '../../../composables';
+import {useContext, useLanguage} from '../../../composables';
 import {createRef} from './createRef';
 
 type CarrierMeta = {label: string; image?: string};
@@ -103,7 +103,7 @@ export const createCarrierField = (
   return defineFormField({
     name: FIELD_CARRIER,
     label: 'carrier',
-    ref: createRef<string>(refs, FIELD_CARRIER, useGlobalContext().proposition.defaultCarrier),
+    ref: createRef<string>(refs, FIELD_CARRIER, dynamicContext.shop.defaultCarrier ?? undefined),
     component: resolveFormComponent(AdminComponent.RadioGroup),
     props: {
       options: [],

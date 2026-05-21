@@ -4,7 +4,6 @@ import {type GlobalAdminContext} from '../../types';
 export const mockDefaultProposition = vi.fn((): GlobalAdminContext['proposition'] => {
   return {
     backofficeUrl: 'https://backoffice.test.myparcel.nl',
-    defaultCarrier: 'POSTNL',
     human: 'Test',
     localCountry: 'NL',
     name: 'test',
