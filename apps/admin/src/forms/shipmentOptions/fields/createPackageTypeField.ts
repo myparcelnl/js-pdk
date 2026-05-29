@@ -1,6 +1,5 @@
 import {snakeCase} from 'lodash-unified';
 import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
-import {PackageTypeName} from '@myparcel-dev/constants';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_PACKAGE_TYPE, SHIPMENT_OPTIONS} from '../field';
 import {defineFormField, resolveFormComponent} from '../../helpers';
@@ -11,7 +10,7 @@ export const createPackageTypeField = (refs: ShipmentOptionsRefs): InteractiveEl
   return defineFormField({
     name: FIELD_PACKAGE_TYPE,
     label: snakeCase(`${SHIPMENT_OPTIONS}_package_type`),
-    ref: createRef<PackageTypeName>(refs, FIELD_PACKAGE_TYPE, PackageTypeName.Package),
+    ref: createRef<string>(refs, FIELD_PACKAGE_TYPE, 'PACKAGE'),
     component: resolveFormComponent(AdminComponent.RadioGroup),
     // options defined in afterUpdate of `createCarrierField`
   });

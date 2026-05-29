@@ -12,15 +12,15 @@ declare module '*.vue' {
 declare const __VUE_PROD_DEVTOOLS__: boolean;
 
 declare module '@vue/test-utils' {
-  export class VueWrapper {
-    public findByTestId<K extends keyof HTMLElementTagNameMap>(
+  export interface VueWrapper {
+    findByTestId<K extends keyof HTMLElementTagNameMap>(
       selector: string | string[],
     ): DOMWrapper<HTMLElementTagNameMap[K]>;
 
-    public findByTestId<K extends keyof SVGElementTagNameMap>(
+    findByTestId<K extends keyof SVGElementTagNameMap>(
       selector: string | string[],
     ): DOMWrapper<SVGElementTagNameMap[K]>;
 
-    public findByTestId<T extends Element | Node = Node>(selector: string | string[]): DOMWrapper<T>;
+    findByTestId<T extends Element | Node = Node>(selector: string | string[]): DOMWrapper<T>;
   }
 }

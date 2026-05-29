@@ -13,6 +13,7 @@ export const mockDefaultAccount = vi.fn((): Account.ModelAccount => {
       hasCarrierContract: false,
       orderMode: false,
     },
+    subscriptionFeatures: [],
     shops: [mockDefaultShop()],
   };
 });

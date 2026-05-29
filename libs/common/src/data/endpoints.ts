@@ -90,6 +90,11 @@ export enum BackendEndpoint {
   DownloadLogs = 'downloadLogs',
   SwitchToAcceptanceApi = 'switchToAcceptanceApi',
   SwitchToProductionApi = 'switchToProductionApi',
+
+  /**
+   * Proxy for fetching carrier capabilities through the Microservice.
+   */
+  ProxyCapabilities = 'proxyCapabilities',
 }
 
 /**
@@ -111,4 +116,8 @@ export enum FrontendEndpoint {
    * Proxy for validating addresses through the Microservice.
    */
   ProxyAddressValidate = 'proxyAddressValidate',
+  /**
+   * Proxy for fetching carrier capabilities through the Microservice.
+   */
+  ProxyCapabilities = 'proxyCapabilities',
 }
