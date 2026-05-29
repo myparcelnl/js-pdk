@@ -2,6 +2,11 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [1.12.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-common@1.12.0...@myparcel-dev/pdk-common@1.12.1) "@myparcel-dev/pdk-common" (2026-05-29)
+
+
+
+
 ## [1.12.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-common@1.11.1...@myparcel-dev/pdk-common@1.12.0) "@myparcel-dev/pdk-common" (2026-02-06)
 
 
