@@ -22,6 +22,7 @@ vi.mock('../../utils', () => ({
 
 vi.mock('@myparcel-dev/vue-form-builder', () => ({
   defineForm: vi.fn((_name: string, config: {fields: unknown[]}) => config),
+  MagicForm: {name: 'MagicForm', render: () => null},
 }));
 
 vi.mock('./fields', () => ({
