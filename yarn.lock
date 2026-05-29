@@ -3370,17 +3370,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel-dev/sdk@npm:^5.0.0":
-  version: 5.1.0
-  resolution: "@myparcel-dev/sdk@npm:5.1.0"
-  dependencies:
-    "@myparcel-dev/constants": "npm:^2.7.0"
-    "@myparcel-dev/ts-utils": "npm:^1.15.0"
-  checksum: 10c0/c518a06b3c54827bdcf8e22418ef844c3bc1490a52086a612d7576ba4561488aa512b4aed37dbbb9ccdb65f060edf5232e0905b4980ddd8b4c1bb1cf6fec2630
-  languageName: node
-  linkType: hard
-
-"@myparcel-dev/sdk@npm:^5.1.0":
+"@myparcel-dev/sdk@npm:^5.0.0, @myparcel-dev/sdk@npm:^5.1.0":
   version: 5.1.0
   resolution: "@myparcel-dev/sdk@npm:5.1.0"
   dependencies:
