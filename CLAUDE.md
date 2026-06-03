@@ -54,17 +54,19 @@ yarn typecheck                # Typecheck all packages
 ### Workspace Layout
 
 **`apps/`** - Publishable packages and applications:
+
 - `admin` - Core admin library (Vue 3 components, Pinia stores, TanStack Query)
 - `admin-js` - Bundled admin entry point (Vite library build)
 - `admin-preset-*` - UI component presets (Bootstrap 4, Dashicons, Font Awesome, default)
 - `admin-component-tests` - Shared test utilities for admin component presets
 - `admin-demo` - Demo app for development
-- `checkout` - Core checkout library (aggregates checkout-* libs)
+- `checkout` - Core checkout library (aggregates checkout-\* libs)
 - `checkout-js` - Bundled checkout entry point
 - `app-builder` - CLI tool (`pdk-builder`) for building apps, uses tsup
 - `backend-demo` - Backend demo server
 
 **`libs/`** - Internal shared libraries:
+
 - `common` - Shared types and utilities across admin and checkout
 - `build-vite` - Shared Vite/Vitest configuration factory (`createViteConfig`)
 - `checkout-common`, `checkout-delivery-options`, `checkout-separate-address-fields`, `checkout-tax-fields` - Checkout sub-modules
@@ -79,13 +81,22 @@ yarn typecheck                # Typecheck all packages
 - **Packages publish `src/` and `dist/`** - exports point to `src/index.ts` for dev, `dist/` for types.
 - **Deploy groups**: Packages have a `deployGroup` field (`admin`, `checkout`, `app-builder`) used by monoweave for versioning.
 
+### Capabilities (runtime model)
+
+Admin shipment/delivery-option forms resolve what a carrier supports at runtime via the PHP-PDK `ProxyCapabilities` endpoint, not from hardcoded carrier/option constants:
+
+- Two queries: an **order-scoped** one (keyed on country + weight) drives the carrier / package-type / delivery-type dropdowns, and a **shipment-scoped** one (full selection) drives per-option metadata. Refetch is narrow and debounced — only `cc` / `carrier` / `packageType` / `deliveryType` / `weight` trigger it; option toggles resolve client-side.
+- Shipment-option fields are data-driven: `createShipmentOptionField` renders any option from `carrier.options` as a TriState. Only options needing non-TriState UI get a custom factory (`fieldFactoryRegistry`, currently just `insurance`).
+- When a server-confirmed invalid combination empties the results, conflicting options are auto-cleared and a notification is shown (`useCapabilitiesAutoClear`).
+- **Order mode v2** is read from the PHP context (`effectiveOrderMode`, fallback `subscriptionFeatures`) and gates export/print actions and settings tabs.
+
 ### Commit Convention
 
 Uses [Conventional Commits](https://www.conventionalcommits.org/) with conventional-changelog. Releases are managed by monoweave.
 
 ## Future plans
 
-We are creating plans for a major simplification of the JS-PDK. This is provided here as context not to do a major refactor now, but to ensure new features are added in a way that they can be easily migrated to the new structure when the time comes. The main goals of the refactor are:
+We are creating plans for a major simplification of the JS-PDK. This is provided here as context not to do a major refactor now, but to ensure new features are added in a way that they can be easily migrated to the new structure when the time comes. The admin shipment-options area has already started down this path — per-carrier field factories were replaced by capabilities-driven generic rendering (see "Capabilities (runtime model)" above). The main goals of the refactor are:
 
 - Simplify the codebase by removing unnecessary abstractions and layers.
 - Improve maintainability and readability of the code.
