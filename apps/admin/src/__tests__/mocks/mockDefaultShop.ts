@@ -16,5 +16,6 @@ export const mockDefaultShop = vi.fn((): Account.ModelShop => {
     hidden: false,
     shipmentOptions: {},
     trackTrace: {},
+    defaultCarrier: 'POSTNL',
   };
 });

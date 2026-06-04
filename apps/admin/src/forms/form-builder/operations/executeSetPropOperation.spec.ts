@@ -1,6 +1,6 @@
 import {ref} from 'vue';
 import {afterEach, describe, expect, it} from 'vitest';
-import {mount} from '@vue/test-utils';
+import {flushPromises, mount} from '@vue/test-utils';
 import {defineForm, MagicForm, useFormBuilder} from '@myparcel-dev/vue-form-builder';
 import {type FormSetPropOperation, type PropVal} from '../types';
 import {buildAfterUpdate} from '../builders';
@@ -147,15 +147,12 @@ describe('executeSetPropOperation', () => {
       ],
     });
 
-    const wrapper = mount(MagicForm, {props: {form}});
+    mount(MagicForm, {props: {form}});
 
     form.setValue('aardbei', 'test');
 
-    const testField = form.getField('aardbei');
-    // todo remove this when afterUpdate is properly triggered
-    testField?.afterUpdate(testField);
-
-    await wrapper.vm.$nextTick();
+    // afterUpdate fires async, so wait for it to settle.
+    await flushPromises();
 
     expect({
       aardbei: form.getField('aardbei')?.props,

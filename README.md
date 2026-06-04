@@ -10,7 +10,7 @@ The MyParcel PDK (Plugin Development Kit) is meant for developing entire plugins
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/en/) (v16 or higher)
+- [Node.js](https://nodejs.org/en/) (v24 or higher)
 
 ## Documentation
 
@@ -26,7 +26,7 @@ View our [contribution guidelines] for information on how to contribute to the P
 
 ### Prerequisites
 
-- Node 18
+- Node 24
 - Yarn
 - Docker
 

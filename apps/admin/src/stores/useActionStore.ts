@@ -4,22 +4,14 @@ import {type OneOrMore, type PromiseOr, toArray} from '@myparcel-dev/ts-utils';
 import {type ActionParameters, type AnyActionDefinition, type ResolvedAction} from '../types';
 import {createAction, getActionIdentifier} from '../services';
 import {type AdminAction} from '../data';
-import {usePluginSettings} from '../composables';
+import {useOrderMode} from '../composables';
 import {
   modalCloseAction,
   modalSubmitFormAction,
-  orderExportAction,
-  orderExportToShipmentsAction,
   ordersEditAction,
-  ordersExportPrintShipmentsAction,
   ordersFetchAction,
-  ordersPrintAction,
   ordersUpdateAction,
-  orderViewInBackofficeAction,
-  shipmentsDeleteAction,
-  shipmentsExportReturnAction,
-  shipmentsPrintAction,
-  shipmentsUpdateAction,
+  STORE_MODE_ACTIONS,
   webhooksCreateAction,
   webhooksDeleteAction,
   webhooksFetchAction,
@@ -62,25 +54,9 @@ export const useActionStore = defineStore('actions', () => {
     dispatch,
 
     registerOrderActions: () => {
-      const pluginSettings = usePluginSettings();
+      const orderMode = useOrderMode();
 
-      register([
-        ordersEditAction,
-        ordersFetchAction,
-        ordersPrintAction,
-        ordersUpdateAction,
-        ...(pluginSettings.order.orderMode
-          ? [orderExportAction, orderViewInBackofficeAction]
-          : [
-              orderExportToShipmentsAction,
-              ordersExportPrintShipmentsAction,
-              shipmentsExportReturnAction,
-              shipmentsExportReturnAction,
-              shipmentsDeleteAction,
-              shipmentsUpdateAction,
-              shipmentsPrintAction,
-            ]),
-      ]);
+      register([ordersEditAction, ordersFetchAction, ordersUpdateAction, ...STORE_MODE_ACTIONS[orderMode.value]]);
     },
 
     registerModalActions: () => {

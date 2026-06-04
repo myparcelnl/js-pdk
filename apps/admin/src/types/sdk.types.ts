@@ -1,6 +1,8 @@
+import {type RecursivePartial} from '@myparcel-dev/ts-utils';
 import {
   type AdminContextKey,
   type BackendEndpoint,
+  type CarrierModel,
   type ExtractEndpointDefinition,
   type LabelFormat,
   type LabelOutput,
@@ -10,7 +12,6 @@ import {
   type Settings,
   type Shipment,
 } from '@myparcel-dev/pdk-common';
-import {type RecursivePartial} from '@myparcel-dev/ts-utils';
 import {type AdminContextObject} from './context.types';
 import {type WebhookDefinition} from './common.types';
 
@@ -185,6 +186,57 @@ interface DebugSwitchToProductionApiDefinition extends PdkEndpointDefinition {
   response: void;
 }
 
+interface ProxyCapabilitiesDefinition extends PdkEndpointDefinition {
+  name: BackendEndpoint.ProxyCapabilities;
+  /**
+   * Action-control parameters live in the query string so the request body stays a clean
+   * mirror of the actual capabilities API contract.
+   *
+   * `filterSupported` (opt-in): when `true`, the action applies the registered-option allowlist
+   * server-side (`Carrier::filterRegisteredOptions`). When `false` or `undefined`, the backend
+   * should treat it as not opted in, preserving the existing unfiltered SDK passthrough
+   * behavior for callers.
+   */
+  parameters?: {filterSupported?: boolean};
+  /**
+   * Body shape mirrors the actual capabilities API request: camelCase keys at every level
+   * matching the SDK's attribute maps (`countryCode`, `physicalProperties`, `packageType`,
+   * `deliveryType`). The PHP action translates these top-level camelCase keys to the
+   * snake_case names the SDK PHP model uses internally — generic translation read from the
+   * SDK's own attribute map.
+   *
+   * `physicalProperties.weight` is an object `{value, unit}`, not a primitive — that's how the
+   * SDK's `PhysicalPropertiesWeightV2` model defines it on the wire.
+   */
+  body: {
+    recipient: {countryCode: string};
+    physicalProperties?: {
+      weight?: {value: number; unit: 'g' | 'kg'};
+    };
+    carrier?: string;
+    packageType?: string;
+    deliveryType?: string;
+    options?: string[];
+  };
+  response: {results: CarrierModel[]};
+  formattedResponse: CarrierModel[];
+}
+
+/**
+ * Body / parameters / call shape for `pdk.proxyCapabilities`. Both order-scoped and
+ * shipment-scoped query composables share these — the order-scoped call simply omits
+ * `parameters` at the call site. Derived from {@link ProxyCapabilitiesDefinition} so any
+ * change to the endpoint contract flows through automatically.
+ */
+export type ProxyCapabilitiesBody = NonNullable<ProxyCapabilitiesDefinition['body']>;
+
+export type ProxyCapabilitiesParameters = NonNullable<ProxyCapabilitiesDefinition['parameters']>;
+
+export type ProxyCapabilitiesCall = (options: {
+  body: ProxyCapabilitiesBody;
+  parameters?: ProxyCapabilitiesParameters;
+}) => Promise<ProxyCapabilitiesDefinition['response']>;
+
 export type BackendEndpointDefinition =
   | CreateWebhooksDefinition
   | DebugDownloadLogsDefinition
@@ -201,6 +253,7 @@ export type BackendEndpointDefinition =
   | FetchWebhooksDefinition
   | PrintOrdersDefinition
   | PrintShipmentsDefinition
+  | ProxyCapabilitiesDefinition
   | UpdateAccountDefinition
   | UpdateOrdersDefinition
   | UpdatePluginSettingsDefinition
