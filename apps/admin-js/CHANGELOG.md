@@ -2,6 +2,20 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.0.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin-js@1.14.2...@myparcel-dev/pdk-admin-js@2.0.0) "@myparcel-dev/pdk-admin-js" (2026-06-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* drive admin shipment options and checkout from the PDK capabilities API (#346)
+
+### Features
+
+* drive admin shipment options and checkout from the PDK capabilities API ([#346](https://github.com/myparcelnl/js-pdk/issues/346)) ([f62b934](https://github.com/myparcelnl/js-pdk/commit/f62b9348d4f4316da28dbb97e4c335fc8aa9df80)), closes [myparcelnl/pdk#459](https://github.com/myparcelnl/pdk/issues/459) [myparcelnl/pdk#459](https://github.com/myparcelnl/pdk/issues/459) [myparcelnl/pdk#459](https://github.com/myparcelnl/pdk/issues/459)
+
+
+
+
 ## [1.13.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin-js@1.13.0...@myparcel-dev/pdk-admin-js@1.13.1) "@myparcel-dev/pdk-admin-js" (2026-02-05)
 
 
