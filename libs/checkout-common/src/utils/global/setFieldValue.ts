@@ -13,6 +13,7 @@ export const setFieldValue = (
 
   if (field) {
     field.value = value ?? '';
+    field.dispatchEvent(new Event('input', {bubbles: true}));
 
     if (dispatchEvent) {
       const triggerEvent = useUtil(PdkUtil.TriggerEvent);
