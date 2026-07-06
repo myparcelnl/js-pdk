@@ -1,6 +1,6 @@
-import {getAddressType, useCheckoutStore, useConfig} from '../utils';
+import {useCheckoutStore, useConfig} from '../utils';
 import {type PdkCheckoutForm, type PdkFormData} from '../types';
-import {type AddressField, AddressType, type PdkField} from '../data';
+import {type AddressField, AddressType, PdkField} from '../data';
 
 const getEntry = (data: PdkFormData, value: undefined | string): string => {
   return (data[value as string] as string | undefined) ?? '';
@@ -28,11 +28,11 @@ export const updateCheckoutForm = (): void => {
       return;
     }
 
-    transformedData[key as PdkField] = getEntry(data, value as string);
+    (transformedData as Record<PdkField, string>)[key as PdkField] = getEntry(data, value as string);
   });
 
   void checkout.set({
-    addressType: getAddressType(),
+    addressType: config.getAddressType(transformedData[PdkField.AddressType]),
     form: Object.freeze({...transformedData}),
   });
 };
