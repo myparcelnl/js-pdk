@@ -7,7 +7,7 @@ export * from './mockDefaultDynamicContext';
 export * from './mockDefaultEndpoints';
 export * from './mockDefaultGlobalContext';
 export * from './mockDefaultLogger';
-export * from './mockDefaultPlatform';
+export * from './mockDefaultProposition';
 export * from './mockDefaultPluginSettings';
 export * from './mockDefaultPrintOptionsView';
 export * from './mockDefaultShop';

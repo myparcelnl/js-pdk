@@ -1,19 +1,14 @@
-import {type FormInstance} from '@myparcel-dev/vue-form-builder';
-import {PackageTypeName} from '@myparcel-dev/constants';
+import {type CarrierModel} from '@myparcel-dev/pdk-common';
 import {getPackageTypeTranslation} from '../../utils';
 import {type SelectOption} from '../../types';
-import {getCarrier} from './getCarrier';
 
-export const getPackageTypes = (form?: FormInstance): SelectOption[] => {
-  let array = Object.values(PackageTypeName);
-
-  if (form) {
-    const carrier = getCarrier(form);
-    array = array.filter((name) => carrier?.capabilities.packageTypes.includes(name));
+export const getPackageTypes = (carrier: CarrierModel | undefined): SelectOption[] => {
+  if (!carrier) {
+    return [];
   }
 
-  return array.map((name) => ({
-    label: getPackageTypeTranslation(name),
-    value: name,
+  return carrier.packageTypes.map((packageType) => ({
+    label: getPackageTypeTranslation(packageType),
+    value: packageType,
   }));
 };

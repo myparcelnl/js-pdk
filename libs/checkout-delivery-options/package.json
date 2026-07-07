@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-dev/pdk-checkout-delivery-options",
-  "version": "1.7.3",
+  "version": "2.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -28,8 +28,8 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-dev/delivery-options": "^6.25.0",
-    "@myparcel-dev/pdk-checkout-common": "workspace:^1.7.3",
+    "@myparcel-dev/delivery-options": "^7.0.0",
+    "@myparcel-dev/pdk-checkout-common": "workspace:^2.0.0",
     "@myparcel-dev/ts-utils": "^1.15.0"
   },
   "devDependencies": {
