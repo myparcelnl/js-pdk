@@ -38,8 +38,10 @@ const currentDeliveryCc = (): undefined | string => useDeliveryOptionsStore().st
 
 describe('updateDeliveryOptions - ship-to-different-address toggle (billing NL / shipping FR)', () => {
   beforeEach(async () => {
-    // updateContext() -> fetchCheckoutContext() calls doRequest; give it a valid shape in case it runs.
-    tests.doRequestSpy.mockResolvedValue({data: {context: [{checkout: {config: {}, strings: {}}}]}});
+    // updateContext() -> fetchCheckoutContext() calls doRequest; return a full checkout context so the
+    // refetch installs valid settings (allowedShippingMethods), mirroring production. A minimal shape
+    // would wipe settings and break the downstream shippingMethodHasDeliveryOptions read.
+    tests.doRequestSpy.mockResolvedValue({data: {context: [{checkout: tests.getMockCheckoutContext()}]}});
     // Start on the billing address (separate shipping address off), like a fresh checkout.
     tests.getFormDataSpy.mockReturnValue(formDataFor(AddressType.Billing));
 
@@ -58,5 +60,37 @@ describe('updateDeliveryOptions - ship-to-different-address toggle (billing NL /
     // Turn the checkbox off again: should immediately fall back to billing (NL). Today it shows the lagged 'FR'.
     await changeAddressTypeTo(AddressType.Billing);
     expect(currentDeliveryCc()).toBe(BILLING_CC);
+  });
+
+  it('refetches the context when toggling to an address in a different country', async () => {
+    // updateContext() -> fetchCheckoutContext() is the only doRequest in this path, so the spy proves
+    // the reset+refresh branch ran. This is what re-notifies the widget of the new country's carriers.
+    tests.doRequestSpy.mockClear();
+
+    // Billing (NL) -> shipping (FR): the effective delivery country changes, so the context must refetch.
+    await changeAddressTypeTo(AddressType.Shipping);
+
+    expect(tests.doRequestSpy).toHaveBeenCalled();
+  });
+
+  it('does not refetch the context when toggling between addresses in the same country', async () => {
+    // Both buckets NL: toggling flips addressType but the effective delivery country is unchanged,
+    // so we must NOT trigger a needless hide/reshow of the widget.
+    const sameCountry = (addressType: AddressType): Record<string, string> => ({
+      ...formDataFor(addressType),
+      's-country': BILLING_CC,
+    });
+
+    tests.getFormDataSpy.mockReturnValue(sameCountry(AddressType.Billing));
+    updateCheckoutForm();
+    await flush();
+
+    tests.doRequestSpy.mockClear();
+
+    tests.getFormDataSpy.mockReturnValue(sameCountry(AddressType.Shipping));
+    updateCheckoutForm();
+    await flush();
+
+    expect(tests.doRequestSpy).not.toHaveBeenCalled();
   });
 });
