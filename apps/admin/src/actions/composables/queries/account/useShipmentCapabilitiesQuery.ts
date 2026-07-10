@@ -22,6 +22,7 @@ import {usePdkAdminApi} from '../../../../sdk';
 export type CapabilitiesSelection = {
   cc?: string;
   weight?: number;
+  isBusiness?: boolean;
   carrier?: string;
   packageType?: string;
   deliveryType?: string;
@@ -60,7 +61,7 @@ export const useShipmentCapabilitiesQuery = (
   return useQuery(
     queryKey,
     async () => {
-      const {cc, weight, carrier, packageType, deliveryType} = selection.value;
+      const {cc, weight, isBusiness, carrier, packageType, deliveryType} = selection.value;
 
       // The `enabled` gate guarantees these are all present when this runs; TypeScript can't
       // see through the runtime check, so we narrow explicitly here.
@@ -70,10 +71,10 @@ export const useShipmentCapabilitiesQuery = (
       const proxyCapabilities = pdk.proxyCapabilities as unknown as ProxyCapabilitiesCall;
 
       const body: ProxyCapabilitiesBody = {
-        recipient: {countryCode: cc},
+        recipient: {countryCode: cc, ...(isBusiness === undefined ? null : {isBusiness})},
         // PDK orders carry physical-properties weight in grams (see WeightServiceInterface::UNIT_GRAMS),
         // and the SDK's PhysicalPropertiesWeightV2 expects a {value, unit} object — not a primitive.
-        ...(weight !== undefined ? {physicalProperties: {weight: {value: weight, unit: 'g'}}} : null),
+        ...(weight === undefined ? null : {physicalProperties: {weight: {value: weight, unit: 'g'}}}),
         carrier,
         packageType,
         deliveryType,
