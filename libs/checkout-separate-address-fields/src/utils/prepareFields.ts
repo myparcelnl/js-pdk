@@ -1,12 +1,11 @@
 import {AddressField, PdkUtil, useCheckoutStore, useUtil} from '@myparcel-dev/pdk-checkout-common';
 import {fillSeparateAddressFields} from '../listeners';
-import {ATTRIBUTE_AUTOCOMPLETE, SeparateAddressField} from '../constants';
+import {SeparateAddressField} from '../constants';
 import {triggerFormChange} from './triggerFormChange';
 import {setFullStreet} from './setFullStreet';
+import {fillAddressFields} from './fillAddressFields';
+import {splitFullStreet} from './splitFullStreet';
 
-/**
- * Set the correct autocomplete attribute on the street fields if none is present.
- */
 export function prepareFields(): void {
   const getAddressField = useUtil(PdkUtil.GetAddressField);
 
@@ -21,12 +20,21 @@ export function prepareFields(): void {
 
     const address1Field = getAddressField(AddressField.Address1, addressType);
 
-    if (!streetField?.getAttribute(ATTRIBUTE_AUTOCOMPLETE)) {
-      streetField?.setAttribute(ATTRIBUTE_AUTOCOMPLETE, 'street-address');
-    }
+    address1Field?.addEventListener('load', (event) => fillSeparateAddressFields(event, addressType));
+    address1Field?.addEventListener('animationend', (event) => fillSeparateAddressFields(event, addressType));
 
-    address1Field?.addEventListener('load', fillSeparateAddressFields);
-    address1Field?.addEventListener('animationend', fillSeparateAddressFields);
+    // If the street field already contains a full address (e.g. from browser autofill that fired
+    // before this code ran), split it immediately rather than letting the combined value persist.
+    const currentStreet = streetField.value;
+
+    if (currentStreet) {
+      const parsed = splitFullStreet(currentStreet);
+
+      if (parsed[SeparateAddressField.Number]) {
+        fillAddressFields(parsed, addressType);
+        return;
+      }
+    }
 
     setFullStreet(addressType, false);
   });
