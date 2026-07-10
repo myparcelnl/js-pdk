@@ -80,6 +80,7 @@ export namespace Base {
     boxNumber?: string;
     cc?: string;
     city?: string;
+    isBusiness?: boolean;
     postalCode?: string;
     region?: string;
     state?: string;

@@ -1,8 +1,8 @@
 import {computed, onScopeDispose, type Ref} from 'vue';
 import {type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {BackendEndpoint, type Plugin} from '@myparcel-dev/pdk-common';
-import {globalLogger} from '../../services';
 import {useQueryStore} from '../../stores';
+import {globalLogger} from '../../services';
 import {
   useShipmentCapabilitiesQuery,
   type CapabilitiesSelection,
@@ -13,6 +13,28 @@ import {
 } from '../../actions/composables/queries/account/useOrderCapabilitiesQuery';
 import {useCapabilitiesWatcher, type FormInput, type OrderInput} from './useCapabilitiesWatcher';
 import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from './field';
+
+/**
+ * Resolve the order-scoped capabilities input from the form + order.
+ *
+ * Read weight through `form.getValue()` (which goes through `q(field.ref)` / `toValue`) rather
+ * than `form.values` so reactive deps are tracked when called inside a computed. Manual weight from
+ * `FIELD_MANUAL_WEIGHT` wins when set — it carries `TriState.Inherit` (-1) when unset, and only a
+ * positive number is a real override; otherwise fall back to the order's initial weight.
+ *
+ * `isBusiness` is the PDK-derived recipient flag (from the company name), forwarded as-is — no
+ * company or other PII is handled here.
+ */
+const resolveOrderInput = (form: FormInstance, order: Plugin.ModelContextOrderDataContext): OrderInput => {
+  const manualWeightRaw = form.getValue(FIELD_MANUAL_WEIGHT);
+  const manualWeight = typeof manualWeightRaw === 'number' && manualWeightRaw > 0 ? manualWeightRaw : undefined;
+
+  return {
+    cc: order.shippingAddress?.cc,
+    weight: manualWeight ?? order.physicalProperties?.initialWeight,
+    isBusiness: order.shippingAddress?.isBusiness,
+  };
+};
 
 /**
  * Wire BOTH capabilities queries — order-scoped (cc + weight) and shipment-scoped (full
@@ -51,20 +73,7 @@ export const wireProxyCapabilities = (
   const orderModifier = `${orderId}.order`;
   const shipmentModifier = `${orderId}.shipment`;
 
-  // Use `form.getValue(name)` (which goes through `q(field.ref)` / `toValue` internally) rather
-  // than `form.values[name]` so reactive deps are tracked correctly inside computed/watchers.
-  const orderInput = computed<OrderInput>(() => {
-    // FIELD_MANUAL_WEIGHT carries `TriState.Inherit` (-1) when the user hasn't entered a manual
-    // override; only positive numbers represent an actual weight. Treat anything else as "unset"
-    // and fall back to the order's initial weight.
-    const manualWeightRaw = form.getValue(FIELD_MANUAL_WEIGHT);
-    const manualWeight = typeof manualWeightRaw === 'number' && manualWeightRaw > 0 ? manualWeightRaw : undefined;
-
-    return {
-      cc: order.shippingAddress?.cc,
-      weight: manualWeight ?? order.physicalProperties?.initialWeight,
-    };
-  });
+  const orderInput = computed<OrderInput>(() => resolveOrderInput(form, order));
 
   const formInput = computed<FormInput>(() => ({
     carrier: form.getValue<string | undefined>(FIELD_CARRIER),
@@ -77,6 +86,7 @@ export const wireProxyCapabilities = (
   const orderInputForQuery = computed<OrderCapabilitiesInput>(() => ({
     cc: selection.value.cc,
     weight: selection.value.weight,
+    isBusiness: selection.value.isBusiness,
   }));
 
   const orderQuery = useOrderCapabilitiesQuery(orderInputForQuery);

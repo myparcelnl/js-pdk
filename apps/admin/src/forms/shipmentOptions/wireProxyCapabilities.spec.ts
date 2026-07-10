@@ -1,5 +1,5 @@
-import {describe, expect, it, vi, beforeEach} from 'vitest';
 import {effectScope, nextTick, ref} from 'vue';
+import {describe, expect, it, vi, beforeEach} from 'vitest';
 import {BackendEndpoint, TriState} from '@myparcel-dev/pdk-common';
 import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE} from './field';
 
@@ -35,12 +35,12 @@ const buildForm = (initial: Record<string, unknown>) => {
   });
 
   return {
-    getValue: <T,>(name: string): T => fields.get(name)?.ref.value as T,
+    getValue: <T>(name: string): T => fields.get(name)?.ref.value as T,
     setExternally: (name: string, value: unknown) => {
       const field = fields.get(name);
 
       if (field) {
-        (field.ref as ReturnType<typeof ref>).value = value;
+        field.ref.value = value;
       } else {
         fields.set(name, {ref: ref(value)});
       }
@@ -55,12 +55,12 @@ beforeEach(() => {
   useShipmentCapabilitiesQueryMock.mockClear();
 });
 
-const orderShape = (cc = 'NL', initialWeight = 1500) =>
+const orderShape = (cc = 'NL', initialWeight = 1500, isBusiness = false) =>
   ({
     externalIdentifier: 'order-1',
-    shippingAddress: {cc},
+    shippingAddress: {cc, isBusiness},
     physicalProperties: {initialWeight},
-  }) as never;
+  } as never);
 
 describe('wireProxyCapabilities', () => {
   it('treats TriState.Inherit (-1) as "no manual override" and falls back to initialWeight', async () => {
@@ -105,10 +105,36 @@ describe('wireProxyCapabilities', () => {
     const orderInputRef = useOrderCapabilitiesQueryMock.mock.calls[0][0] as {value: {weight?: number}};
 
     // Wait for the debounce (refDebounced default 100ms in this codebase).
-    await new Promise((resolve) => setTimeout(resolve, 150));
+    await new Promise((resolve) => {
+      setTimeout(resolve, 150);
+    });
     await nextTick();
 
     expect(orderInputRef.value.weight).toBe(4200);
+
+    scope.stop();
+  });
+
+  it('forwards the recipient business flag from the order shipping address to both queries', async () => {
+    const form = buildForm({
+      [FIELD_CARRIER]: 'POSTNL',
+      [FIELD_PACKAGE_TYPE]: 'PACKAGE',
+      [FIELD_DELIVERY_TYPE]: 'STANDARD',
+      [FIELD_MANUAL_WEIGHT]: TriState.Inherit,
+    });
+
+    const scope = effectScope();
+    const {wireProxyCapabilities} = await import('./wireProxyCapabilities');
+
+    scope.run(() => {
+      wireProxyCapabilities(form as never, orderShape('NL', 1500, true));
+    });
+
+    const orderInputRef = useOrderCapabilitiesQueryMock.mock.calls[0][0] as {value: {isBusiness?: boolean}};
+    const selectionRef = useShipmentCapabilitiesQueryMock.mock.calls[0][0] as {value: {isBusiness?: boolean}};
+
+    expect(orderInputRef.value.isBusiness).toBe(true);
+    expect(selectionRef.value.isBusiness).toBe(true);
 
     scope.stop();
   });
