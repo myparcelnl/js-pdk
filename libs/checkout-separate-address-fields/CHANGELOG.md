@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.0.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-separate-address-fields@2.0.0...@myparcel-dev/pdk-checkout-separate-address-fields@2.0.1) "@myparcel-dev/pdk-checkout-separate-address-fields" (2026-07-10)
+
+
+### Bug Fixes
+
+* **checkout-separate-address-fields:** prevent and correct autofill of full address into street name field ([#355](https://github.com/myparcelnl/js-pdk/issues/355)) ([e9bc548](https://github.com/myparcelnl/js-pdk/commit/e9bc54841e8d4dafbc7c0072a7af1b9795069387))
+
+
+
+
 ## [1.7.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-separate-address-fields@1.7.0...@myparcel-dev/pdk-checkout-separate-address-fields@1.7.1) "@myparcel-dev/pdk-checkout-separate-address-fields" (2026-01-02)
 
 
