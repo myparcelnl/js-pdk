@@ -2,6 +2,11 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.0.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin-preset-bootstrap4@2.0.0...@myparcel-dev/pdk-admin-preset-bootstrap4@2.0.1) "@myparcel-dev/pdk-admin-preset-bootstrap4" (2026-07-20)
+
+
+
+
 ## [1.14.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin-preset-bootstrap4@1.14.1...@myparcel-dev/pdk-admin-preset-bootstrap4@1.14.2) "@myparcel-dev/pdk-admin-preset-bootstrap4" (2026-05-29)
 
 

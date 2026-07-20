@@ -2,6 +2,11 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.0.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-delivery-options@2.0.1...@myparcel-dev/pdk-checkout-delivery-options@2.0.2) "@myparcel-dev/pdk-checkout-delivery-options" (2026-07-20)
+
+
+
+
 ## [2.0.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-delivery-options@1.7.4...@myparcel-dev/pdk-checkout-delivery-options@2.0.0) "@myparcel-dev/pdk-checkout-delivery-options" (2026-06-04)
 
 
