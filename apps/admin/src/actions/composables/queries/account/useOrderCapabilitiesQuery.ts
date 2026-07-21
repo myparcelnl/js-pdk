@@ -15,15 +15,18 @@ import {usePdkAdminApi} from '../../../../sdk';
 export type OrderCapabilitiesInput = {
   cc?: string;
   weight?: number;
+  isBusiness?: boolean;
 };
 
 /**
- * Order-scoped capabilities query — fires the shared CapabilitiesAction with ONLY destination
- * and weight, no carrier/packageType/deliveryType filters. Returns one entry per carrier with
- * the union of `packageTypes`, `deliveryTypes`, and `options` valid for the order context.
+ * Order-scoped capabilities query — fires the shared CapabilitiesAction with ONLY destination,
+ * weight and the recipient business flag, no carrier/packageType/deliveryType filters. Returns
+ * one entry per carrier with the union of `packageTypes`, `deliveryTypes`, and `options` valid
+ * for the order context.
  *
- * Drives the carrier / packageType / deliveryType dropdowns. Refetches only on cc / weight
- * changes so option toggles and dropdown picks don't trigger needless network round-trips.
+ * Drives the carrier / packageType / deliveryType dropdowns. Refetches only on cc / weight /
+ * isBusiness changes so option toggles and dropdown picks don't trigger needless network
+ * round-trips.
  *
  * Errors are logged via `globalLogger.error` so we have a breadcrumb for support, but we
  * deliberately don't surface a user-facing toast — an intermittent capabilities failure
@@ -38,7 +41,7 @@ export const useOrderCapabilitiesQuery = (
   return useQuery(
     queryKey,
     async () => {
-      const {cc, weight} = input.value;
+      const {cc, weight, isBusiness} = input.value;
 
       if (!cc) return [];
 
@@ -46,8 +49,8 @@ export const useOrderCapabilitiesQuery = (
       const proxyCapabilities = pdk.proxyCapabilities as unknown as ProxyCapabilitiesCall;
 
       const body: ProxyCapabilitiesBody = {
-        recipient: {countryCode: cc},
-        ...(weight !== undefined ? {physicalProperties: {weight: {value: weight, unit: 'g'}}} : null),
+        recipient: {countryCode: cc, ...(isBusiness === undefined ? null : {isBusiness})},
+        ...(weight === undefined ? null : {physicalProperties: {weight: {value: weight, unit: 'g'}}}),
       };
 
       const response = await proxyCapabilities({body, parameters: {filterSupported: true}});

@@ -4,7 +4,8 @@ import {type CapabilitiesSelection} from '../../actions/composables/queries/acco
 
 const DEBOUNCE_MS = 100;
 
-export type OrderInput = {cc?: string; weight?: number};
+export type OrderInput = {cc?: string; weight?: number; isBusiness?: boolean};
+
 export type FormInput = {carrier?: string; packageType?: string; deliveryType?: string};
 
 /**
