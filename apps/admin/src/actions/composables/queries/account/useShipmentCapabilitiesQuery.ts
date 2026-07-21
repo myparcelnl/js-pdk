@@ -30,10 +30,10 @@ export type CapabilitiesSelection = {
 
 /**
  * Shipment-scoped capabilities query — fires the shared CapabilitiesAction with the FULL
- * selection (carrier + packageType + deliveryType + cc + weight) and returns the matching
- * carrier entry (the one shipment configuration the user has chosen). Drives the option panel
- * and acts as the invalid-combo signal: when `results` is empty, the chosen combination isn't
- * valid for the order context.
+ * selection (carrier + packageType + deliveryType + cc + weight + isBusiness) and returns the
+ * matching carrier entry (the one shipment configuration the user has chosen). Drives the option
+ * panel and acts as the invalid-combo signal: when `results` is empty, the chosen combination
+ * isn't valid for the order context.
  *
  * The selection ref is the only refetch trigger — no window-focus, mount, or reconnect refetches.
  * Server-side option filtering is opted in via the `filterSupported` query parameter so admin sees
