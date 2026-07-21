@@ -37,15 +37,16 @@ const resolveOrderInput = (form: FormInstance, order: Plugin.ModelContextOrderDa
 };
 
 /**
- * Wire BOTH capabilities queries — order-scoped (cc + weight) and shipment-scoped (full
- * selection) — into the shipment-options form for a single order, register them in the query
- * store under composite-string modifiers (`${orderId}.order` and `${orderId}.shipment`), and
- * tear them down when the form's scope disposes (modal close).
+ * Wire BOTH capabilities queries — order-scoped (cc + weight + isBusiness) and shipment-scoped
+ * (full selection) — into the shipment-options form for a single order, register them in the
+ * query store under composite-string modifiers (`${orderId}.order` and `${orderId}.shipment`),
+ * and tear them down when the form's scope disposes (modal close).
  *
  * The two queries serve different concerns:
  *
  * - **Order query** drives the carrier / packageType / deliveryType dropdowns from each
- *   carrier's flat union arrays. Refetches only when destination or weight change.
+ *   carrier's flat union arrays. Refetches only when destination, weight or the recipient
+ *   business flag change.
  * - **Shipment query** drives per-option metadata (`isRequired`, `requires`, `excludes`,
  *   `insuredAmount`) for the chosen combination. Refetches when any axis of the selection
  *   changes; the empty-result case is the invalid-combo signal consumed by
