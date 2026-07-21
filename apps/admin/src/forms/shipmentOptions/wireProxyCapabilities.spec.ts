@@ -55,10 +55,12 @@ beforeEach(() => {
   useShipmentCapabilitiesQueryMock.mockClear();
 });
 
-const orderShape = (cc = 'NL', initialWeight = 1500, isBusiness = false) =>
+// `isBusiness` is omitted from the shipping address unless explicitly passed — production
+// orders may not carry the flag at all, so the flag-absent shape is the representative default.
+const orderShape = (cc = 'NL', initialWeight = 1500, isBusiness: boolean | undefined = undefined) =>
   ({
     externalIdentifier: 'order-1',
-    shippingAddress: {cc, isBusiness},
+    shippingAddress: {cc, ...(isBusiness === undefined ? null : {isBusiness})},
     physicalProperties: {initialWeight},
   } as never);
 
@@ -135,6 +137,30 @@ describe('wireProxyCapabilities', () => {
 
     expect(orderInputRef.value.isBusiness).toBe(true);
     expect(selectionRef.value.isBusiness).toBe(true);
+
+    scope.stop();
+  });
+
+  it('leaves isBusiness undefined for both queries when the order has no flag', async () => {
+    const form = buildForm({
+      [FIELD_CARRIER]: 'POSTNL',
+      [FIELD_PACKAGE_TYPE]: 'PACKAGE',
+      [FIELD_DELIVERY_TYPE]: 'STANDARD',
+      [FIELD_MANUAL_WEIGHT]: TriState.Inherit,
+    });
+
+    const scope = effectScope();
+    const {wireProxyCapabilities} = await import('./wireProxyCapabilities');
+
+    scope.run(() => {
+      wireProxyCapabilities(form as never, orderShape());
+    });
+
+    const orderInputRef = useOrderCapabilitiesQueryMock.mock.calls[0][0] as {value: {isBusiness?: boolean}};
+    const selectionRef = useShipmentCapabilitiesQueryMock.mock.calls[0][0] as {value: {isBusiness?: boolean}};
+
+    expect(orderInputRef.value.isBusiness).toBeUndefined();
+    expect(selectionRef.value.isBusiness).toBeUndefined();
 
     scope.stop();
   });
