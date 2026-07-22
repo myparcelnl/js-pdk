@@ -229,6 +229,14 @@ export enum AdminComponent {
   MultiDateInput = 'MultiDateInput',
 }
 
+/**
+ * Components whose v-model must carry tri-state ints in form state. Their
+ * rendered instances are wrapped with the tri-state adapter when resolved as
+ * form components, so boolean emits from plugin implementations are converted
+ * at the component boundary.
+ */
+export const triStateModelComponentNames = [AdminComponent.ToggleInput, AdminComponent.TriStateInput] as const;
+
 export const requiredAdminComponentNames = [
   AdminComponent.Box,
   AdminComponent.Button,
