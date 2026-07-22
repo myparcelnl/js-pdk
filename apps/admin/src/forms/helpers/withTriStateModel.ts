@@ -3,12 +3,16 @@ import {type AnyVal} from '../form-builder/types';
 import {booleanToTriState} from '../../utils';
 
 /**
- * Wraps a form component so its v-model always carries tri-state ints in form
- * state. Plugin toggle components are native checkboxes that emit booleans;
- * this adapter converts those emits at the component boundary, so strict $eq
- * conditions, afterUpdate operations, submitted values and stored settings all
- * see the same canonical tri-state representation. Int emits (including
- * Inherit) pass through untouched; the value passed down is never converted.
+ * Wraps a form component so its v-model always carries tri-state ints (1/0/-1)
+ * in form state. Plugin toggle components are native checkboxes that emit
+ * booleans; this wrapper converts those emits right where the component hands
+ * its value to the form, so strict $eq conditions, afterUpdate operations,
+ * submitted values and stored settings all see the same tri-state ints. Int
+ * emits (including Inherit) pass through untouched; the value passed down into
+ * the component is never converted.
+ *
+ * @param component - The component to wrap: the resolved (registered) plugin component, or a
+ *   component name string when resolution happens at render time.
  */
 export const withTriStateModel = (component: Component | string): Component =>
   defineComponent({
