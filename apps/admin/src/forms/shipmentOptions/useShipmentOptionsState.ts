@@ -1,12 +1,12 @@
 import {ref, watch, type Ref} from 'vue';
 import {type FormInstance, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {type CarrierModel, TriState} from '@myparcel-dev/pdk-common';
-import {useFormCapabilities} from '../helpers';
+import {triStateValueIsEnabled, useFormCapabilities} from '../helpers';
 import {setFieldRef} from '../form-builder/utils/createValueSetter';
 import {useQueryStore} from '../../stores';
 import {type CapabilitiesSelection} from './wireProxyCapabilities';
 import {readShipmentSnapshot} from './readShipmentSnapshot';
-import {FIELD_CARRIER, FIELD_SHIPMENT_OPTIONS_PREFIX} from './field';
+import {FIELD_CARRIER, optionFieldName} from './field';
 
 /**
  * THE single point of reference for shipment-option field state. Every rule that decides an
@@ -21,11 +21,11 @@ import {FIELD_CARRIER, FIELD_SHIPMENT_OPTIONS_PREFIX} from './field';
  *     carrier capability options ──┘         │
  *                                            ▼
  *                            Map<optionKey, OptionState>
- *                 {supported, visible, readOnly, forcedOn, forcedOff, targetValue}
+ *                       {supported, readOnly, forcedOn, forcedOff}
  *                          │                             │
- *              field hooks read flags          one watcher writes targetValue
- *              (visibleWhen/disabledWhen/      into the fields (locked with readOnly,
- *               readOnlyWhen = one lookup)      not disabled, so values still submit)
+ *              field hooks read flags          one watcher writes the forced
+ *              (visibleWhen/disabledWhen/      values into the fields (locked with
+ *               readOnlyWhen = one lookup)      readOnly, not disabled, so they submit)
  *
  * Why this shape (not a data-returning composable): the state is read by field hook closures
  * (`visibleWhen` / `readOnlyWhen` / `disabledWhen`) that vue-form-builder invokes outside Vue
@@ -35,23 +35,22 @@ import {FIELD_CARRIER, FIELD_SHIPMENT_OPTIONS_PREFIX} from './field';
  * `useFormCapabilities`.
  *
  * @TODO: fold useCapabilitiesAutoClear's option-reset (clearing active options the carrier no
- *        longer supports) into resolveOptionStates as well, so option-state truly has a single
- *        module.
+ *        longer supports) into resolveOptionStates as well — including one shared, silent
+ *        field-write path for both modules — so option-state truly has a single module.
+ * @TODO: non-toggle options (insurance, an int amount) are never treated as enabled here, so
+ *        their requires/excludes rules are not applied yet; scope per-option kinds when that
+ *        becomes relevant (the DO widget defers the same case).
  */
 
 export type OptionState = {
-  /** The current capability data contains this option at all. */
+  /** The current capability data contains this option at all; drives visibility. */
   supported: boolean;
-  /** The field is rendered (currently equal to `supported`). */
-  visible: boolean;
-  /** The field is locked: carrier-required, or forced on/off by another enabled option. */
+  /** The field is locked because the option is forced on or off. */
   readOnly: boolean;
-  /** Forced on through a requires relation or carrier isRequired. */
+  /** Forced on: carrier-required, or required by another enabled option. */
   forcedOn: boolean;
-  /** Forced off through an excludes relation. */
+  /** Forced off: excluded by another enabled option. */
   forcedOff: boolean;
-  /** The value the field must hold; written through by the composable so it persists. */
-  targetValue?: TriState;
 };
 
 export type OptionStateEntry = {
@@ -65,7 +64,7 @@ export type OptionStateEntry = {
 export type ResolveOptionStatesInput = {
   /**
    * Options from the regular fallback chain (shipment query → order query → dynamic context).
-   * Decides which options exist for the current carrier — i.e. `supported` / `visible`.
+   * Decides which options exist for the current carrier — i.e. `supported`.
    */
   availabilityOptions: CarrierModel['options'] | undefined;
   /**
@@ -79,21 +78,61 @@ export type ResolveOptionStatesInput = {
   entries: OptionStateEntry[];
 };
 
-/** State for options we know nothing about: visible and editable, nothing locked or forced. */
-const NEUTRAL_OPTION_STATE: OptionState = Object.freeze({
-  supported: true,
-  visible: true,
-  readOnly: false,
-  forcedOn: false,
-  forcedOff: false,
-});
+/* ---------------------------------------------------------------------------------------------
+ * Pure resolver — every option-state rule lives here.
+ * ------------------------------------------------------------------------------------------- */
 
 /**
- * An option counts as enabled when it's explicitly on, or inheriting while its inherited
- * default is on — the same interpretation `triStateFieldIsEnabled` applies elsewhere.
+ * Compute the complete state of every shipment option. Pure — all inputs in, one map out.
+ *
+ * Forcing rules, mirroring the server-side CapabilitiesOptionCalculator:
+ * - carrier-required options (`isRequired`) are forced on, including everything their
+ *   `requires` lists point to, directly or indirectly;
+ * - enabled options pull in everything their `requires` lists point to (the option itself
+ *   stays free — its own value is the user's choice);
+ * - `excludes` of every active option force the excluded options off;
+ * - on conflict, forced-off wins (the PHP calculator depends on iteration order here; real
+ *   data has no conflicting rules).
+ *
+ * @param input - See {@link ResolveOptionStatesInput}: the option map used for availability,
+ *   the option map used for rules (only from a matched shipment response), and one entry per
+ *   option field with its current form value and inherited default.
  */
-const isEffectivelyEnabled = (entry: OptionStateEntry): boolean =>
-  TriState.On === entry.value || (TriState.Inherit === entry.value && TriState.On === entry.defaultValue);
+export const resolveOptionStates = (input: ResolveOptionStatesInput): Map<string, OptionState> => {
+  const {availabilityOptions, shipmentOptions, entries} = input;
+
+  let forcedOn = new Set<string>();
+  let forcedOff = new Set<string>();
+
+  if (shipmentOptions) {
+    const enabledKeys = entries
+      .filter((entry) => triStateValueIsEnabled(entry.value, entry.defaultValue))
+      .map((entry) => entry.key);
+
+    forcedOn = resolveForcedOn(shipmentOptions, enabledKeys);
+    forcedOff = resolveForcedOff(shipmentOptions, new Set([...enabledKeys, ...forcedOn]));
+
+    for (const key of forcedOff) {
+      forcedOn.delete(key);
+    }
+  }
+
+  const states = new Map<string, OptionState>();
+
+  for (const entry of entries) {
+    const isForcedOn = forcedOn.has(entry.key);
+    const isForcedOff = forcedOff.has(entry.key);
+
+    states.set(entry.key, {
+      supported: Object.hasOwn(availabilityOptions ?? {}, entry.key),
+      readOnly: isForcedOn || isForcedOff,
+      forcedOn: isForcedOn,
+      forcedOff: isForcedOff,
+    });
+  }
+
+  return states;
+};
 
 /**
  * Collect every option that must be turned on. Starting from the carrier-required options and
@@ -102,24 +141,22 @@ const isEffectivelyEnabled = (entry: OptionStateEntry): boolean =>
  * so circular requires can't loop forever). Carrier-required options are included in the
  * result themselves; enabled options are not — their own value is the user's choice.
  *
- * @param shipmentOptions - The option map from the matched shipment-scoped capabilities response,
- *   keyed by capability option key (e.g. `requiresSignature`). Each entry may carry
+ * @param shipmentOptions - The option map from the matched shipment-scoped capabilities
+ *   response, keyed by capability option key (e.g. `requiresSignature`). Each entry may carry
  *   `isRequired`, `requires` and `excludes`.
  * @param enabledKeys - Capability option keys of the options that are currently on in the
  *   form (explicitly, or through their inherited default).
  */
 const resolveForcedOn = (shipmentOptions: NonNullable<CarrierModel['options']>, enabledKeys: string[]): Set<string> => {
-  const forcedOn = new Set<string>();
   const requiredKeys = Object.keys(shipmentOptions).filter((key) => shipmentOptions[key]?.isRequired === true);
-
-  requiredKeys.forEach((key) => forcedOn.add(key));
+  const forcedOn = new Set(requiredKeys);
 
   const queue = [...requiredKeys, ...enabledKeys];
   const visited = new Set(queue);
 
-  while (queue.length > 0) {
-    const key = queue.shift() as string;
-
+  // A for-of loop over an array visits items pushed during the loop, so the queue grows as
+  // new requires are discovered.
+  for (const key of queue) {
     for (const required of shipmentOptions[key]?.requires ?? []) {
       forcedOn.add(required);
 
@@ -155,78 +192,9 @@ const resolveForcedOff = (
   return forcedOff;
 };
 
-/**
- * Decide which value a field must be set to, if any. Returns undefined when the field may
- * keep its current value.
- *
- * @param entry - The option's key plus its current form value and inherited default.
- * @param isForcedOn - Whether the option is in the forced-on set.
- * @param isForcedOff - Whether the option is in the forced-off set.
- */
-const resolveTargetValue = (
-  entry: OptionStateEntry,
-  isForcedOn: boolean,
-  isForcedOff: boolean,
-): TriState | undefined => {
-  if (isForcedOn && TriState.On !== entry.value) return TriState.On;
-
-  if (isForcedOff && TriState.Off !== entry.value) return TriState.Off;
-
-  return undefined;
-};
-
-/**
- * Compute the complete state of every shipment option. Pure — all inputs in, one map out.
- *
- * Forcing rules, mirroring the server-side CapabilitiesOptionCalculator:
- * - carrier-required options (`isRequired`) are forced on, including everything their
- *   `requires` lists point to, directly or indirectly;
- * - enabled options pull in everything their `requires` lists point to (the option itself
- *   stays free — its own value is the user's choice);
- * - `excludes` of every active option force the excluded options off;
- * - on conflict, forced-off wins (the PHP calculator depends on iteration order here; real
- *   data has no conflicting rules).
- *
- * @param input - See {@link ResolveOptionStatesInput}: the option map used for availability,
- *   the option map used for rules (only from a matched shipment response), and one entry per
- *   option field with its current form value and inherited default.
- */
-export const resolveOptionStates = (input: ResolveOptionStatesInput): Map<string, OptionState> => {
-  const {availabilityOptions, shipmentOptions, entries} = input;
-
-  let forcedOn = new Set<string>();
-  let forcedOff = new Set<string>();
-
-  if (shipmentOptions) {
-    const enabledKeys = entries.filter(isEffectivelyEnabled).map((entry) => entry.key);
-
-    forcedOn = resolveForcedOn(shipmentOptions, enabledKeys);
-    forcedOff = resolveForcedOff(shipmentOptions, new Set([...enabledKeys, ...forcedOn]));
-
-    for (const key of forcedOff) {
-      forcedOn.delete(key);
-    }
-  }
-
-  const states = new Map<string, OptionState>();
-
-  for (const entry of entries) {
-    const supported = Object.hasOwn(availabilityOptions ?? {}, entry.key);
-    const isForcedOn = forcedOn.has(entry.key);
-    const isForcedOff = forcedOff.has(entry.key);
-
-    states.set(entry.key, {
-      supported,
-      visible: supported,
-      readOnly: isForcedOn || isForcedOff,
-      forcedOn: isForcedOn,
-      forcedOff: isForcedOff,
-      targetValue: resolveTargetValue(entry, isForcedOn, isForcedOff),
-    });
-  }
-
-  return states;
-};
+/* ---------------------------------------------------------------------------------------------
+ * Form wiring — feeds the resolver reactively and exposes the resolved states.
+ * ------------------------------------------------------------------------------------------- */
 
 /**
  * Identifies the per-order shipment capabilities query: the order id it is registered under
@@ -239,26 +207,13 @@ type ShipmentQueryContext = {
 
 const formStates = new WeakMap<FormInstance, Ref<Map<string, OptionState>>>();
 
-const optionFieldName = (key: string): string => `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${key}`;
-
-/**
- * Read a single option's resolved state. Field hooks (`visibleWhen` / `disabledWhen` /
- * `readOnlyWhen`) call this — reading `states.value` inside those reactive re-evaluators
- * makes them re-run whenever the states are recomputed. Forms that never registered with
- * {@link useShipmentOptionsState} (e.g. field-factory unit tests) get a neutral state that
- * leaves the field visible and editable.
- *
- * @param form - The shipment-options form the option field belongs to.
- * @param optionKey - The capability option key: the part after the last dot of the field
- *   name (`requiresSignature` for the field `deliveryOptions.shipmentOptions.requiresSignature`).
- */
-export const getOptionState = (form: FormInstance, optionKey: string): OptionState => {
-  const states = formStates.get(form);
-
-  if (!states) return NEUTRAL_OPTION_STATE;
-
-  return states.value.get(optionKey) ?? NEUTRAL_OPTION_STATE;
-};
+/** State for options we know nothing about: visible and editable, nothing locked or forced. */
+const NEUTRAL_OPTION_STATE: OptionState = Object.freeze({
+  supported: true,
+  readOnly: false,
+  forcedOn: false,
+  forcedOff: false,
+});
 
 /**
  * Connect the option-state resolver to a shipment-options form. States are recomputed when
@@ -301,15 +256,15 @@ export const useShipmentOptionsState = (
       snapshot: shipmentQuery
         ? readShipmentSnapshot(shipmentQuery.selection, queryStore, shipmentQuery.orderId)
         : undefined,
+      // The shipment response only applies while the form still shows the carrier it was
+      // fetched for; right after a carrier switch the (debounced) query still holds the old
+      // carrier's data.
+      selectionMatchesForm:
+        Boolean(shipmentQuery) && form.getValue(FIELD_CARRIER) === shipmentQuery?.selection.value.carrier,
       availabilityOptions: capabilities.getCarrierCapabilitiesForShipment(form)?.options,
       entries: readEntries(form, allOptionKeys),
-      carrier: form.getValue(FIELD_CARRIER) as string | undefined,
     }),
-    ({snapshot, availabilityOptions, entries, carrier}) => {
-      // The response only applies when the form still shows the carrier it was fetched for;
-      // right after a carrier switch the (debounced) query still holds the old carrier's data.
-      const selectionMatchesForm = Boolean(shipmentQuery) && carrier === shipmentQuery?.selection.value.carrier;
-
+    ({snapshot, selectionMatchesForm, availabilityOptions, entries}) => {
       // A reload for the same carrier (e.g. after a weight change): keep the current locks
       // until the new response arrives, instead of unlocking everything in the meantime.
       if (snapshot?.state === 'pending' && selectionMatchesForm && states.value.size > 0) {
@@ -322,10 +277,29 @@ export const useShipmentOptionsState = (
       const next = resolveOptionStates({availabilityOptions, shipmentOptions, entries});
 
       states.value = next;
-      applyTargetValues(form, next);
+      applyForcedValues(form, next);
     },
     {immediate: true},
   );
+};
+
+/**
+ * Read a single option's resolved state. Field hooks (`visibleWhen` / `disabledWhen` /
+ * `readOnlyWhen`) call this — reading `states.value` inside those reactive re-evaluators
+ * makes them re-run whenever the states are recomputed. Forms that never registered with
+ * {@link useShipmentOptionsState} (e.g. field-factory unit tests) get a neutral state that
+ * leaves the field visible and editable.
+ *
+ * @param form - The shipment-options form the option field belongs to.
+ * @param optionKey - The capability option key: the part after the last dot of the field
+ *   name (`requiresSignature` for the field `deliveryOptions.shipmentOptions.requiresSignature`).
+ */
+export const getOptionState = (form: FormInstance, optionKey: string): OptionState => {
+  const states = formStates.get(form);
+
+  if (!states) return NEUTRAL_OPTION_STATE;
+
+  return states.value.get(optionKey) ?? NEUTRAL_OPTION_STATE;
 };
 
 /**
@@ -347,23 +321,25 @@ const readEntries = (form: FormInstance, allOptionKeys: string[]): OptionStateEn
   });
 
 /**
- * Write every resolved `targetValue` into its field. Fields that already hold the value are
- * skipped — the watcher runs again after each write, and because unchanged values are skipped
- * it stops by itself once every forced value is in place.
+ * Write the forced value (on for forced-on, off for forced-off) into every affected field.
+ * Fields that already hold the value are skipped — the watcher runs again after each write,
+ * and because unchanged values are skipped it stops by itself once every forced value is in
+ * place.
  *
  * @param form - The form whose option fields receive the forced values.
  * @param states - The resolved states from {@link resolveOptionStates}, keyed by capability
  *   option key.
  */
-const applyTargetValues = (form: FormInstance, states: Map<string, OptionState>): void => {
+const applyForcedValues = (form: FormInstance, states: Map<string, OptionState>): void => {
   for (const [key, state] of states) {
-    if (state.targetValue === undefined) continue;
+    if (!state.forcedOn && !state.forcedOff) continue;
 
+    const forcedValue = state.forcedOn ? TriState.On : TriState.Off;
     const fieldName = optionFieldName(key);
     const field = form.getField(fieldName);
 
-    if (!field || form.getValue(fieldName) === state.targetValue) continue;
+    if (!field || form.getValue(fieldName) === forcedValue) continue;
 
-    setFieldRef(field as InteractiveElementInstance, state.targetValue);
+    setFieldRef(field as InteractiveElementInstance, forcedValue);
   }
 };
