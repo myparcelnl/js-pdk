@@ -24,7 +24,6 @@ vi.mock('../../helpers', () => ({
 
 const state = (overrides: Partial<OptionState>): OptionState => ({
   supported: true,
-  visible: true,
   readOnly: false,
   forcedOn: false,
   forcedOff: false,
@@ -45,7 +44,7 @@ describe('createShipmentOptionField', () => {
   });
 
   it('is visible and enabled when the option is supported', () => {
-    mockState = state({supported: true, visible: true});
+    mockState = state({supported: true});
     const field = createField();
 
     expect(field.visibleWhen!.call(field, {form} as never)).toBe(true);
@@ -53,22 +52,15 @@ describe('createShipmentOptionField', () => {
   });
 
   it('is hidden and disabled when the option is not supported', () => {
-    mockState = state({supported: false, visible: false});
+    mockState = state({supported: false});
     const field = createField();
 
     expect(field.visibleWhen!.call(field, {form} as never)).toBe(false);
     expect(field.disabledWhen!.call(field, {form} as never)).toBe(true);
   });
 
-  it('is read-only when the option is forced on', () => {
+  it('is read-only when the state says so', () => {
     mockState = state({forcedOn: true, readOnly: true});
-    const field = createField();
-
-    expect(field.readOnlyWhen!.call(field, {form} as never)).toBe(true);
-  });
-
-  it('is read-only when the option is forced off', () => {
-    mockState = state({forcedOff: true, readOnly: true});
     const field = createField();
 
     expect(field.readOnlyWhen!.call(field, {form} as never)).toBe(true);

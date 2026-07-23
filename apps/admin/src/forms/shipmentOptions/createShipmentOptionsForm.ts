@@ -26,7 +26,7 @@ import {
   FIELD_LABEL_AMOUNT,
   FIELD_MANUAL_WEIGHT,
   FIELD_PACKAGE_TYPE,
-  FIELD_SHIPMENT_OPTIONS_PREFIX,
+  optionFieldName,
 } from './field';
 
 export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrder>): FormInstance => {
@@ -80,15 +80,18 @@ const wireCapabilitiesBehavior = (
 ): void => {
   const orderId = order.externalIdentifier;
   const proxyQueries = !isBulk && orderId ? wireProxyCapabilities(form, order) : undefined;
+  const shipmentQuery = proxyQueries && orderId ? {orderId, selection: proxyQueries.selection} : undefined;
 
-  useShipmentOptionsState(
-    form,
-    allOptionKeys,
-    proxyQueries && orderId ? {orderId, selection: proxyQueries.selection} : undefined,
-  );
+  useShipmentOptionsState(form, allOptionKeys, shipmentQuery);
 
-  if (proxyQueries && orderId) {
-    useCapabilitiesAutoClear(form, allOptionKeys, orderId, order.inheritedDeliveryOptions, proxyQueries.selection);
+  if (shipmentQuery) {
+    useCapabilitiesAutoClear(
+      form,
+      allOptionKeys,
+      shipmentQuery.orderId,
+      order.inheritedDeliveryOptions,
+      shipmentQuery.selection,
+    );
   }
 };
 
@@ -96,13 +99,9 @@ const wireCapabilitiesBehavior = (
  * Collect the union of all option keys across all carriers from the dynamic context.
  *
  * Fields are created for every unique option key so they exist when the user
- * switches carriers. Visibility and disabled state are controlled by
- * `hasShipmentOption`, which checks whether the currently selected carrier
- * supports each option.
- *
- * Runtime carrier-specific data (isRequired, insuredAmount, etc.) is read
- * from the currently selected carrier via `getCarrier(form)`, not from
- * creation-time option data.
+ * switches carriers. Visibility, disabled state and locking are resolved per
+ * option by the option-state module (`useShipmentOptionsState`) for whichever
+ * carrier is currently selected — not from creation-time option data.
  */
 const collectAllOptionKeys = (carriers: {options?: Record<string, unknown> | null}[]): string[] => {
   const keys = new Set<string>();
@@ -136,7 +135,7 @@ const buildDynamicRefs = (order: Plugin.ModelContextOrderDataContext, optionKeys
 
   // Dynamic shipment option refs from carrier options
   for (const key of optionKeys) {
-    const fieldName = `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${key}`;
+    const fieldName = optionFieldName(key);
     refs[fieldName] = get(order, fieldName);
   }
 
@@ -159,7 +158,7 @@ const createShipmentOptionsFields = (
 
   // Dynamic shipment option fields — driven by carrier.options
   const dynamicFields = optionKeys.map((key) => {
-    const fieldName = `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${key}`;
+    const fieldName = optionFieldName(key);
     const factory = fieldFactoryRegistry[key];
 
     if (factory) {

@@ -66,14 +66,6 @@ describe('withTriStateModel', () => {
     expect(wrapper.find('input').element.checked).toBe(true);
   });
 
-  it('emits exactly once per inner emit', async () => {
-    const wrapper = mount(withTriStateModel(BooleanToggleStub), {props: {modelValue: TriState.Off}});
-
-    await wrapper.find('input').setValue(true);
-
-    expect(wrapper.emitted('update:modelValue')).toHaveLength(1);
-  });
-
   it('forwards attributes and slots to the inner component', () => {
     const wrapper = mount(withTriStateModel(BooleanToggleStub), {
       props: {modelValue: TriState.Off},

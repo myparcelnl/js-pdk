@@ -36,7 +36,7 @@ export const createShipmentOptionField = (
     component: resolveFormComponent(AdminComponent.TriStateInput),
     ref: createRef(refs, fieldName, TriState.Inherit),
     label: getFieldLabel(name),
-    visibleWhen: ({form}) => getOptionState(form, name).visible,
+    visibleWhen: ({form}) => getOptionState(form, name).supported,
     disabledWhen: ({form}) => !getOptionState(form, name).supported,
     readOnlyWhen: ({form}) => getOptionState(form, name).readOnly,
 

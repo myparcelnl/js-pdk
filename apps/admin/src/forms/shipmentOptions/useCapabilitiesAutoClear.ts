@@ -2,23 +2,13 @@ import {watch, type Ref} from 'vue';
 import {snakeCase} from 'lodash-unified';
 import {type FormInstance, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {type Plugin, TriState} from '@myparcel-dev/pdk-common';
-import {
-  addCapabilitiesClearNotification,
-  CAPABILITIES_CLEARED_NOTIFICATION_ID,
-  useFormCapabilities,
-} from '../helpers';
+import {addCapabilitiesClearNotification, CAPABILITIES_CLEARED_NOTIFICATION_ID, useFormCapabilities} from '../helpers';
 import {setFieldRef} from '../form-builder/utils/createValueSetter';
-import {useLanguage} from '../../composables';
 import {useNotificationStore, useQueryStore} from '../../stores';
+import {useLanguage} from '../../composables';
 import {type CapabilitiesSelection} from './wireProxyCapabilities';
 import {readShipmentSnapshot} from './readShipmentSnapshot';
-import {
-  FIELD_CARRIER,
-  FIELD_DELIVERY_TYPE,
-  FIELD_PACKAGE_TYPE,
-  FIELD_SHIPMENT_OPTIONS_PREFIX,
-  SHIPMENT_OPTIONS,
-} from './field';
+import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_PACKAGE_TYPE, optionFieldName, SHIPMENT_OPTIONS} from './field';
 
 type InheritedDeliveryOptions = Plugin.ModelContextOrderDataContext['inheritedDeliveryOptions'];
 
@@ -33,8 +23,6 @@ const FIELD_TO_LABEL_KEY: Record<AxisField, string> = {
   [FIELD_PACKAGE_TYPE]: snakeCase(`${SHIPMENT_OPTIONS}_package_type`),
   [FIELD_DELIVERY_TYPE]: snakeCase(`${SHIPMENT_OPTIONS}_delivery_type`),
 };
-
-const optionFieldName = (key: string): string => `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${key}`;
 
 /**
  * Translation key for an option's field label (matches `getFieldLabel(name)` from the
@@ -242,6 +230,7 @@ export const useCapabilitiesAutoClear = (
     if (pkgDefault !== undefined) {
       setSilently(FIELD_PACKAGE_TYPE, pkgDefault as string | number | boolean | undefined);
     }
+
     if (dtDefault !== undefined) {
       setSilently(FIELD_DELIVERY_TYPE, dtDefault as string | number | boolean | undefined);
     }
@@ -393,6 +382,7 @@ export const useCapabilitiesAutoClear = (
         const isActive = value !== undefined && value !== TriState.Inherit && Boolean(value);
 
         if (!isActive) continue;
+
         if (availableOptionKeys.includes(optionKey)) continue;
 
         setSilently(fieldName, TriState.Inherit);
