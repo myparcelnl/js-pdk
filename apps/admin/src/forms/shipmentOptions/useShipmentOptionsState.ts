@@ -1,4 +1,4 @@
-import {reactive, ref, watch, type Ref} from 'vue';
+import {getCurrentScope, onScopeDispose, reactive, ref, watch, type Ref} from 'vue';
 import {type FormInstance, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {type CarrierModel, TriState} from '@myparcel-dev/pdk-common';
 import {triStateValueIsEnabled, useFormCapabilities} from '../helpers';
@@ -212,6 +212,18 @@ export const useShipmentOptionsState = (
   const states = ref(new Map<string, OptionState>());
 
   formStates.set(form.name, states.value);
+
+  // Drop the entry when the form's scope disposes (e.g. modal close), like wireProxyCapabilities
+  // does for its queries. Only when the registry still holds OUR states: a reopened modal may
+  // have re-registered under the same form name before the old scope is disposed. Guarded
+  // because unit tests may call this outside a scope.
+  if (getCurrentScope()) {
+    onScopeDispose(() => {
+      if (formStates.get(form.name) === states.value) {
+        formStates.delete(form.name);
+      }
+    });
+  }
 
   watch(
     () => ({
