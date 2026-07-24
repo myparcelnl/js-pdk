@@ -25,6 +25,9 @@ export const updateContext = async (): Promise<void> => {
           ...deliveryOptions.state.configuration.strings,
           ...context.strings,
         },
+        // Pass **all** the shipment options from the cart, so that the delivery options can render excludes/requires
+        // Ex. "age check" is not selectable in the DO but it makes signature/onlyRecipient mandatory.
+        cartShipmentOptions: context.cartShipmentOptions,
       },
     }),
   ]);
