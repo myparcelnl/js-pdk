@@ -33,3 +33,9 @@ export const FIELD_DELIVERY_TYPE: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${DELI
 export const FIELD_MANUAL_WEIGHT: FieldName = `${PHYSICAL_PROPERTIES_PREFIX}.${MANUAL_WEIGHT}`;
 
 export const FIELD_SHIPMENT_OPTIONS_PREFIX: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${SHIPMENT_OPTIONS}`;
+
+/**
+ * Full field name of a shipment option, from its capability option key
+ * (e.g. `requiresSignature` → `deliveryOptions.shipmentOptions.requiresSignature`).
+ */
+export const optionFieldName = (optionKey: string): FieldName => `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${optionKey}`;

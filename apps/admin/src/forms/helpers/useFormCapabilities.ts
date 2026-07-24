@@ -4,7 +4,7 @@ import {AdminContextKey, BackendEndpoint, type CarrierModel, TriState} from '@my
 import {FIELD_CARRIER} from '../shipmentOptions/field';
 import {getOrderId} from '../../utils';
 import {type AdminContext, type SelectOption} from '../../types';
-import {useQueryStore, type ResolvedQuery} from '../../stores';
+import {useQueryStore} from '../../stores';
 import {Format, type Formatter} from '../../composables';
 
 interface InsuranceAmountData {
@@ -46,13 +46,6 @@ export type FormCapabilities = {
   getCarrierCapabilitiesForShipment: (form: FormInstance) => CarrierModel | undefined;
 
   /**
-   * Whether the chosen shipment configuration supports a given option. Reads from the
-   * shipment-scoped carrier; falls through to order-level data when shipment data isn't
-   * available yet.
-   */
-  hasShipmentOption: (form: FormInstance, option: string) => boolean;
-
-  /**
    * Insurance amount bracket options derived from the currently selected carrier's
    * `insuredAmount` data. Amounts in the context are in cents; emitted values are strings
    * representing cent amounts so they round-trip through form select inputs unchanged.
@@ -82,9 +75,7 @@ export type FormCapabilities = {
  */
 export const useFormCapabilities = (): FormCapabilities => {
   const queryStore = useQueryStore();
-  const dynamicContextQuery = queryStore.get(BackendEndpoint.FetchContext, AdminContextKey.Dynamic) as ResolvedQuery<
-    BackendEndpoint.FetchContext
-  >;
+  const dynamicContextQuery = queryStore.get(BackendEndpoint.FetchContext, AdminContextKey.Dynamic);
   const orderId = getOrderId();
 
   const orderModifier = typeof orderId === 'string' ? `${orderId}.order` : undefined;
@@ -97,7 +88,7 @@ export const useFormCapabilities = (): FormCapabilities => {
 
     if (toValue(query.status) !== 'success') return undefined;
 
-    return (toValue(query.data) ?? []) as CarrierModel[];
+    return toValue(query.data) ?? [];
   };
 
   const liveDynamicCarriers = (): CarrierModel[] => {
@@ -129,12 +120,6 @@ export const useFormCapabilities = (): FormCapabilities => {
     const chosenCarrier = form.getValue(FIELD_CARRIER);
 
     return carriers.find((carrier) => carrier.carrier === chosenCarrier);
-  };
-
-  const hasShipmentOption = (form: FormInstance, option: string): boolean => {
-    const carrier = getCarrierCapabilitiesForShipment(form);
-
-    return Object.hasOwn(carrier?.options ?? {}, option);
   };
 
   const getInsuranceOptions = (form: FormInstance, formatter: Formatter): SelectOption[] => {
@@ -170,7 +155,6 @@ export const useFormCapabilities = (): FormCapabilities => {
   return {
     getCarrierCapabilitiesForOrder,
     getCarrierCapabilitiesForShipment,
-    hasShipmentOption,
     getInsuranceOptions,
   };
 };

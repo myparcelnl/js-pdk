@@ -18,15 +18,12 @@ import {createRef} from './createRef';
  * packageType / deliveryType / weight / cc change, since those all narrow the shipment-scoped
  * capabilities response.
  *
- * Visibility / disabled state is inherited from {@link createShipmentOptionField} — driven
- * purely by `hasShipmentOption` (i.e. by the capabilities response). No manual package-type
+ * Visibility / disabled state is inherited from {@link createShipmentOptionField} — resolved
+ * by the option-state module from the capabilities response. No manual package-type
  * gating: if insurance isn't valid for the current combination, the API won't include it in
  * `carrier.options` and the field will hide.
  */
-export const createInsuranceField = (
-  refs: ShipmentOptionsRefs,
-  fieldName: string,
-): InteractiveElementConfiguration => {
+export const createInsuranceField = (refs: ShipmentOptionsRefs, fieldName: string): InteractiveElementConfiguration => {
   const formatter = useLocalizedFormatter();
   const capabilities = useFormCapabilities();
   let stopWatcher: (() => void) | undefined;

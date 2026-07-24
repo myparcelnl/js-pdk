@@ -12,3 +12,4 @@ export * from './setFieldProp';
 export * from './triStateFieldIsEnabled';
 export * from './updateFieldsDefaults';
 export * from './useFormCapabilities';
+export * from './withTriStateModel';

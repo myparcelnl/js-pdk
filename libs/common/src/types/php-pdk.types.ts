@@ -347,6 +347,8 @@ export namespace Plugin {
   };
 
   export type ModelContextCheckoutContext = {
+    // Per carrier: camelCase option name → whether the cart's calculated order ships with it.
+    cartShipmentOptions?: Record<string, Record<string, boolean>>;
     config: Shipment.ModelDeliveryOptions;
     platformConfig: Record<'carriers', unknown[]>; // @todo this is a temporary generic type, until capabilities is implemented in the deliveryOptions
     endpoints: EndpointRequestCollection;
