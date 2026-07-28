@@ -237,6 +237,13 @@ export enum AdminComponent {
  */
 export const triStateModelComponentNames = [AdminComponent.ToggleInput, AdminComponent.TriStateInput] as const;
 
+/**
+ * Of the components above, the ones that model their value as a boolean: plain toggles, which
+ * are checkboxes in the plugins. They get a boolean for their modelValue while the form keeps
+ * tri-state ints. TriStateInput is absent on purpose — it handles the ints itself.
+ */
+export const booleanModelComponentNames = [AdminComponent.ToggleInput] as const;
+
 export const requiredAdminComponentNames = [
   AdminComponent.Box,
   AdminComponent.Button,
