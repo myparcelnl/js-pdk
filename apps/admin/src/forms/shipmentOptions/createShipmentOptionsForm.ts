@@ -86,7 +86,7 @@ export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrde
  * `hasShipmentOption`, which checks whether the currently selected carrier
  * supports each option.
  *
- * Runtime carrier-specific data (isRequired, insuredAmount, etc.) is read
+ * Runtime carrier-specific data (isRequired, insurance limits, etc.) is read
  * from the currently selected carrier via `getCarrier(form)`, not from
  * creation-time option data.
  */

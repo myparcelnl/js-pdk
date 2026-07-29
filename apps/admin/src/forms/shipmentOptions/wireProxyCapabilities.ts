@@ -47,8 +47,8 @@ const resolveOrderInput = (form: FormInstance, order: Plugin.ModelContextOrderDa
  * - **Order query** drives the carrier / packageType / deliveryType dropdowns from each
  *   carrier's flat union arrays. Refetches only when destination, weight or the recipient
  *   business flag change.
- * - **Shipment query** drives per-option metadata (`isRequired`, `requires`, `excludes`,
- *   `insuredAmount`) for the chosen combination. Refetches when any axis of the selection
+ * - **Shipment query** drives per-option metadata (`isRequired`, `requires`, `excludes`, and the
+ *   insurance `min` / `max`) for the chosen combination. Refetches when any axis of the selection
  *   changes; the empty-result case is the invalid-combo signal consumed by
  *   `useCapabilitiesAutoClear`.
  *

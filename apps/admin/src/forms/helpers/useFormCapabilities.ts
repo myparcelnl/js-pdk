@@ -8,11 +8,9 @@ import {useQueryStore, type ResolvedQuery} from '../../stores';
 import {Format, type Formatter} from '../../composables';
 
 interface InsuranceAmountData {
-  insuredAmount?: {
-    min: {amount: number; currency: string};
-    max: {amount: number; currency: string};
-    default: {amount: number; currency: string};
-  };
+  min?: {amount: number; currency: string};
+  max?: {amount: number; currency: string};
+  default?: {amount: number; currency: string};
 }
 
 /**
@@ -53,8 +51,8 @@ export type FormCapabilities = {
   hasShipmentOption: (form: FormInstance, option: string) => boolean;
 
   /**
-   * Insurance amount bracket options derived from the currently selected carrier's
-   * `insuredAmount` data. Amounts in the context are in cents; emitted values are strings
+   * Insurance amount bracket options derived from the currently selected carrier's insurance
+   * limits (`min` / `max`). Amounts in the context are in cents; emitted values are strings
    * representing cent amounts so they round-trip through form select inputs unchanged.
    */
   getInsuranceOptions: (form: FormInstance, formatter: Formatter) => SelectOption[];
@@ -147,8 +145,8 @@ export const useFormCapabilities = (): FormCapabilities => {
     const carrier = getCarrierCapabilitiesForShipment(form);
     const insuranceData = (carrier?.options?.insurance ?? {}) as InsuranceAmountData;
 
-    const min = insuranceData.insuredAmount?.min.amount ? insuranceData.insuredAmount.min.amount / 100 : 0;
-    const max = insuranceData.insuredAmount?.max.amount ? insuranceData.insuredAmount.max.amount / 100 : 0;
+    const min = insuranceData.min?.amount ? insuranceData.min.amount / 100 : 0;
+    const max = insuranceData.max?.amount ? insuranceData.max.amount / 100 : 0;
 
     if (max === 0) return [];
 

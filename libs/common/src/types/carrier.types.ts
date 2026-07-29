@@ -13,19 +13,21 @@ export type CarrierModel = {
       isSelectedByDefault: boolean;
       requires?: string[];
       excludes?: string[];
-      insuredAmount: {
-        min: {
-          amount: number;
-          currency: string;
-        };
-        max: {
-          amount: number;
-          currency: string;
-        };
-        default: {
-          amount: number;
-          currency: string;
-        };
+      /**
+       * Insurance limits, in cents. Each is optional: a missing `max` means the carrier sets no
+       * ceiling, and a missing `min` means it sets no floor.
+       */
+      min?: {
+        amount: number;
+        currency: string;
+      };
+      max?: {
+        amount: number;
+        currency: string;
+      };
+      default?: {
+        amount: number;
+        currency: string;
       };
     };
   } & Record<

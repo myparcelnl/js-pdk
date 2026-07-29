@@ -182,11 +182,9 @@ describe('useFormCapabilities', () => {
         carrier: 'POSTNL',
         options: {
           insurance: {
-            insuredAmount: {
-              min: {amount: 0, currency: 'EUR'},
-              max: {amount: 0, currency: 'EUR'},
-              default: {amount: 0, currency: 'EUR'},
-            },
+            min: {amount: 0, currency: 'EUR'},
+            max: {amount: 0, currency: 'EUR'},
+            default: {amount: 0, currency: 'EUR'},
           } as never,
         },
       });
@@ -202,12 +200,10 @@ describe('useFormCapabilities', () => {
         carrier: 'POSTNL',
         options: {
           insurance: {
-            insuredAmount: {
-              min: {amount: 0, currency: 'EUR'},
-              // max is 1000€ in cents
-              max: {amount: 100_000, currency: 'EUR'},
-              default: {amount: 0, currency: 'EUR'},
-            },
+            min: {amount: 0, currency: 'EUR'},
+            // max is 1000€ in cents
+            max: {amount: 100_000, currency: 'EUR'},
+            default: {amount: 0, currency: 'EUR'},
           } as never,
         },
       });
@@ -222,6 +218,22 @@ describe('useFormCapabilities', () => {
       // 0, 250, 500 (low steps) — then 1000 (high step from 500). Exact sequence verifies
       // the boundary semantics — replacing `<` with `<=` on LOW_THRESHOLD would shift these.
       expect(values.slice(1)).toEqual(['0', '25000', '50000', '100000']);
+    });
+
+    it('returns [] when the carrier advertises insurance without limits', async () => {
+      // Stored carrier data that predates the flat limits: insurance is offered, but there is
+      // no max to build brackets up to, so there is nothing to enumerate into the dropdown.
+      const shipment = buildCarrier({
+        carrier: 'POSTNL',
+        options: {
+          insurance: {isRequired: false, isSelectedByDefault: false} as never,
+        },
+      });
+      queryStore.setQuery(shipmentModifier('order-1'), 'success', [shipment]);
+
+      const {useFormCapabilities} = await import('./useFormCapabilities');
+
+      expect(useFormCapabilities().getInsuranceOptions(formStub('POSTNL'), formatter)).toEqual([]);
     });
   });
 });

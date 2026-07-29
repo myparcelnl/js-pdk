@@ -13,7 +13,7 @@ import {createRef} from './createRef';
  * Custom field factory for the insurance shipment option.
  *
  * Renders as a select/dropdown instead of a TriState toggle. Insurance amount brackets are
- * derived from the currently selected carrier's shipment-scoped `insuredAmount` data (min/max)
+ * derived from the currently selected carrier's shipment-scoped insurance limits (min/max)
  * and refresh automatically whenever that data changes — i.e. on carrier change AND on
  * packageType / deliveryType / weight / cc change, since those all narrow the shipment-scoped
  * capabilities response.
@@ -39,7 +39,7 @@ export const createInsuranceField = (
 
       // Watch the shipment-scoped carrier capabilities directly. The resolver tracks both the
       // selected carrier (via `form.getValue(FIELD_CARRIER)`) and the shipment-capabilities
-      // query data, so any axis change that updates `insuredAmount` triggers a refresh.
+      // query data, so any axis change that updates the insurance limits triggers a refresh.
       stopWatcher = watch(
         () => capabilities.getCarrierCapabilitiesForShipment(field.form),
         () => {

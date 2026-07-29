@@ -18,8 +18,8 @@ export type FieldFactory = (refs: ShipmentOptionsRefs, fieldName: string) => Int
  * `carrier.options`) to its custom factory function.
  *
  * Current exceptions:
- * - `insurance`: renders as a select/dropdown with amount brackets derived from
- *   `insuredAmount` in the option data.
+ * - `insurance`: renders as a select/dropdown with amount brackets derived from the
+ *   `min` / `max` limits in the option data.
  */
 export const fieldFactoryRegistry: Record<string, FieldFactory> = {
   insurance: createInsuranceField,
