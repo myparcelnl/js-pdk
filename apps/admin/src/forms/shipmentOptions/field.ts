@@ -16,6 +16,12 @@ export const DELIVERY_TYPE = 'deliveryType';
 
 export const MANUAL_WEIGHT = 'manualWeight';
 
+export const LENGTH = 'length';
+
+export const WIDTH = 'width';
+
+export const HEIGHT = 'height';
+
 export const PROP_OPTIONS = 'options';
 
 export const KEY_DESCRIPTION = 'description';
@@ -31,5 +37,11 @@ export const FIELD_PACKAGE_TYPE: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${PACKA
 export const FIELD_DELIVERY_TYPE: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${DELIVERY_TYPE}`;
 
 export const FIELD_MANUAL_WEIGHT: FieldName = `${PHYSICAL_PROPERTIES_PREFIX}.${MANUAL_WEIGHT}`;
+
+export const FIELD_LENGTH: FieldName = `${PHYSICAL_PROPERTIES_PREFIX}.${LENGTH}`;
+
+export const FIELD_WIDTH: FieldName = `${PHYSICAL_PROPERTIES_PREFIX}.${WIDTH}`;
+
+export const FIELD_HEIGHT: FieldName = `${PHYSICAL_PROPERTIES_PREFIX}.${HEIGHT}`;
 
 export const FIELD_SHIPMENT_OPTIONS_PREFIX: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${SHIPMENT_OPTIONS}`;
