@@ -7,8 +7,9 @@ import {createRef} from './createRef';
 
 /**
  * The parcel dimensions the merchant may fill in manually, in centimeters — the same unit the API
- * expects and the backoffice shows, so nothing is converted. Values are passed through verbatim:
- * there is deliberately no min/max, so 0 and negative numbers reach the API and it decides.
+ * expects and the backoffice shows, so nothing is converted.
+ *
+ * `min` is a UX guard, not validation
  *
  * The refs have no fallback on purpose. An untouched field must stay undefined so it is left out of
  * the request entirely; defaulting to 0 would send a dimension the merchant never entered.
@@ -26,5 +27,6 @@ export const createDimensionFields = (refs: ShipmentOptionsRefs): InteractiveEle
       label,
       ref: createRef<number | undefined>(refs, name),
       component: resolveFormComponent(AdminComponent.NumberInput),
+      attributes: {min: 0},
     }),
   );
