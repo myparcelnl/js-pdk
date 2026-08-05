@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "paths": {
-      "@myparcel-dev/pdk-backend-*": ["./libs/backend/*/src"],
       "@myparcel-dev/pdk-*": ["./apps/*/src", "./libs/*/src"]
     }
   }
