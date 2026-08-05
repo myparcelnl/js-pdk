@@ -44,7 +44,7 @@
     "mypa-google-docs-importer": "^1.0.1",
     "radash": "^12.1.0",
     "semver": "^7.5.4",
-    "supports-color": "^9.3.1"
+    "supports-color": "^11.0.0"
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",
