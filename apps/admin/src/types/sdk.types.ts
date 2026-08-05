@@ -209,7 +209,7 @@ interface ProxyCapabilitiesDefinition extends PdkEndpointDefinition {
    * SDK's `PhysicalPropertiesWeightV2` model defines it on the wire.
    */
   body: {
-    recipient: {countryCode: string};
+    recipient: {countryCode: string; isBusiness?: boolean};
     physicalProperties?: {
       weight?: {value: number; unit: 'g' | 'kg'};
     };
