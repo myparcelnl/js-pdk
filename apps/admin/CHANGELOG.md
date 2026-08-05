@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.1.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.0.1...@myparcel-dev/pdk-admin@2.1.0) "@myparcel-dev/pdk-admin" (2026-08-05)
+
+
+### Features
+
+* **admin:** send business/consumer flag when loading shipment options ([#359](https://github.com/myparcelnl/js-pdk/issues/359)) ([d1cb75a](https://github.com/myparcelnl/js-pdk/commit/d1cb75a3530df89e0b3b94407a567d7b6efb497e))
+
+
+
+
 ## [2.0.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.0.0...@myparcel-dev/pdk-admin@2.0.1) "@myparcel-dev/pdk-admin" (2026-07-20)
 
 
