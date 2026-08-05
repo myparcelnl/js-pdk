@@ -20,7 +20,6 @@ export const getMockDeliveryOptionsConfig = vi.fn(
           [CarrierName.DhlForYou]: {},
         },
       },
-      // @ts-expect-error radash types are not great
       config,
     );
   },

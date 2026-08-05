@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "@myparcel-dev/pdk-build-vite": "workspace:*",
-    "typescript": "^5.2.2",
     "vite": "^5.4.10",
     "vitest": "^3.2.6"
   },

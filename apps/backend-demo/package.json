@@ -19,18 +19,13 @@
     "translations:init": "test -f data/translations/en.json || yarn translations:import"
   },
   "devDependencies": {
-    "@apollo/server": "^5.5.0",
     "@myparcel-dev/pdk-app-builder": "workspace:*",
     "@myparcel-dev/pdk-common": "workspace:*",
     "@myparcel-dev/ts-utils": "^1.15.0",
     "@types/node": "^20.0.0",
-    "graphql": "^16.6.0",
     "h3": "^1.5.0",
     "nitropack": "^2.2.3",
-    "serverless": "^3.28.1",
-    "serverless-plugin-typescript": "^2.1.4",
-    "typescript": "^5.2.2",
-    "vitest": "^3.2.6"
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=20"

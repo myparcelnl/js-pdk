@@ -28,10 +28,10 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
-    "@myparcel-dev/constants": "^2.7.0",
     "@myparcel-dev/pdk-checkout-common": "workspace:^2.0.3"
   },
   "devDependencies": {
+    "@myparcel-dev/constants": "^2.7.0",
     "@myparcel-dev/pdk-build-vite": "workspace:*",
     "typescript": "^5.2.2",
     "vitest": "^3.2.6"
