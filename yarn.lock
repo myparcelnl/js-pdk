@@ -3060,7 +3060,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel-dev/constants@npm:^2.7.0, @myparcel-dev/constants@npm:^2.9.0":
+"@myparcel-dev/constants@npm:^2.10.0, @myparcel-dev/constants@npm:^2.7.0, @myparcel-dev/constants@npm:^2.9.0":
   version: 2.10.0
   resolution: "@myparcel-dev/constants@npm:2.10.0"
   dependencies:
@@ -3069,44 +3069,44 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@myparcel-dev/delivery-options@npm:^6.25.0":
-  version: 6.25.0
-  resolution: "@myparcel-dev/delivery-options@npm:6.25.0"
-  dependencies:
-    "@myparcel-dev/constants": "npm:^2.9.0"
-    "@myparcel-dev/do-shared": "npm:^6.25.0"
-    "@myparcel-dev/sdk": "npm:^5.0.0"
-    "@myparcel-dev/ts-utils": "npm:^1.15.0"
-    "@vueuse/core": "npm:^10.0.0"
-    leaflet: "npm:^1.9.4"
-    radash: "npm:^12.0.0"
-    vue: "npm:^3.5.26"
-  checksum: 10c0/0a1324d312fb8a5a77298d7a32b6acaefa20269fc73c7f0ac74b2b29097fa48970ad9eeea06ee7eaecf7949502089f0e959b4e0acedb4ab31438c01004357a70
-  languageName: node
-  linkType: hard
-
 "@myparcel-dev/delivery-options@npm:^7.0.0":
-  version: 7.2.0
-  resolution: "@myparcel-dev/delivery-options@npm:7.2.0"
+  version: 7.4.3
+  resolution: "@myparcel-dev/delivery-options@npm:7.4.3"
   dependencies:
-    "@myparcel-dev/constants": "npm:^2.9.0"
-    "@myparcel-dev/do-shared": "npm:^7.2.0"
+    "@myparcel-dev/constants": "npm:^2.10.0"
+    "@myparcel-dev/do-shared": "npm:^7.4.3"
     "@myparcel-dev/sdk": "npm:^5.0.0"
     "@myparcel-dev/ts-utils": "npm:^1.15.0"
     "@vueuse/core": "npm:^10.0.0"
     leaflet: "npm:^1.9.4"
     radash: "npm:^12.0.0"
     vue: "npm:^3.5.26"
-  checksum: 10c0/6a8c210d30f8da0eb43a7260e143b5acade7682cf379fed3821850132c59a1f07d549d9517805f49c0002fb7c23f7f6208c045af00a0d324a2d1ffd06929e450
+  checksum: 10c0/005a5ac2732f4eeb2bac07cb69ae970420717e0037b8c06913673af47b6696185de069e54a4f515c4d8ada8c635f49ff9dcf9408d72ca83ea0c5f2609d3b924e
   languageName: node
   linkType: hard
 
-"@myparcel-dev/do-shared@npm:^6.25.0":
-  version: 6.25.0
-  resolution: "@myparcel-dev/do-shared@npm:6.25.0"
+"@myparcel-dev/delivery-options@npm:^7.4.3":
+  version: 7.5.0
+  resolution: "@myparcel-dev/delivery-options@npm:7.5.0"
   dependencies:
-    "@myparcel-dev/constants": "npm:^2.9.0"
-    "@myparcel-dev/do-shared": "npm:^6.25.0"
+    "@myparcel-dev/constants": "npm:^2.10.0"
+    "@myparcel-dev/do-shared": "npm:^7.5.0"
+    "@myparcel-dev/sdk": "npm:^5.0.0"
+    "@myparcel-dev/ts-utils": "npm:^1.15.0"
+    "@vueuse/core": "npm:^10.0.0"
+    leaflet: "npm:^1.9.4"
+    radash: "npm:^12.0.0"
+    vue: "npm:^3.5.26"
+  checksum: 10c0/e9111baf69d10216d6c2f1a9f73382a92f0f62ea0bd42166197a155ce03f8fbec580bacca77106fee656b31b9704f4d453d4b9662df27cd87496235c42c87869
+  languageName: node
+  linkType: hard
+
+"@myparcel-dev/do-shared@npm:^7.4.3, @myparcel-dev/do-shared@npm:^7.5.0":
+  version: 7.5.0
+  resolution: "@myparcel-dev/do-shared@npm:7.5.0"
+  dependencies:
+    "@myparcel-dev/constants": "npm:^2.10.0"
+    "@myparcel-dev/do-shared": "npm:^7.5.0"
     "@myparcel-dev/sdk": "npm:^5.0.0"
     "@myparcel-dev/ts-utils": "npm:^1.15.0"
     "@vueuse/core": "npm:^10.6.0"
@@ -3115,25 +3115,7 @@ __metadata:
     radash: "npm:^12.0.0"
     vue: "npm:^3.5.26"
     vue-tsc: "npm:^3.2.2"
-  checksum: 10c0/c87b42eabf563930727cf0ecec251ed15331f30d58105eada807f70094cfe12a13546162db6ea0f6875bec847c263747f1b622117f292b564fb164b5af1b3a03
-  languageName: node
-  linkType: hard
-
-"@myparcel-dev/do-shared@npm:^7.2.0":
-  version: 7.2.0
-  resolution: "@myparcel-dev/do-shared@npm:7.2.0"
-  dependencies:
-    "@myparcel-dev/constants": "npm:^2.9.0"
-    "@myparcel-dev/do-shared": "npm:^7.2.0"
-    "@myparcel-dev/sdk": "npm:^5.0.0"
-    "@myparcel-dev/ts-utils": "npm:^1.15.0"
-    "@vueuse/core": "npm:^10.6.0"
-    date-fns: "npm:^3.0.0"
-    pinia: "npm:^2.1.7"
-    radash: "npm:^12.0.0"
-    vue: "npm:^3.5.26"
-    vue-tsc: "npm:^3.2.2"
-  checksum: 10c0/12b335d80f3e2ace5c79555b7042ded5d3d825a4d6c7a2f4bde4236c72a340db05c0951b511453295aa4ce65eff24aa755542296f1ba38b12bc4bbabc4354c96
+  checksum: 10c0/d0af8fdc23e05d99b9aa86c4570b7c7c4ffd8209a761931688d5832d2bb80d93c5b4e10af985ee833bfd9ea041d84554cfe09c72789a706d74df8f68e814ba4d
   languageName: node
   linkType: hard
 
@@ -3520,7 +3502,7 @@ __metadata:
   resolution: "@myparcel-dev/pdk-checkout-common@workspace:libs/checkout-common"
   dependencies:
     "@myparcel-dev/constants": "npm:^2.7.0"
-    "@myparcel-dev/delivery-options": "npm:^6.25.0"
+    "@myparcel-dev/delivery-options": "npm:^7.4.3"
     "@myparcel-dev/pdk-common": "workspace:^2.0.1"
     radash: "npm:^12.1.0"
     typescript: "npm:^5.2.2"
@@ -3595,7 +3577,7 @@ __metadata:
   resolution: "@myparcel-dev/pdk-common@workspace:libs/common"
   dependencies:
     "@myparcel-dev/constants": "npm:^2.7.0"
-    "@myparcel-dev/delivery-options": "npm:^6.25.0"
+    "@myparcel-dev/delivery-options": "npm:^7.4.3"
     typescript: "npm:^5.2.2"
     vitest: "npm:^3.2.6"
     vue: "npm:3.5.40"
