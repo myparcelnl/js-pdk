@@ -28,7 +28,7 @@
     "@myparcel-dev/pdk-admin-preset-fontawesome": "workspace:*",
     "@myparcel-dev/ts-utils": "^1.15.0",
     "@tanstack/vue-query": "~4.43.0",
-    "vue": "3.5.40",
+    "vue": "3.4.31",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {

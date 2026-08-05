@@ -2030,10 +2030,10 @@ __metadata:
     pinia: "npm:^2.0.0"
     typescript: "npm:^5.2.2"
     vitest: "npm:^3.2.6"
-    vue: "npm:3.5.40"
+    vue: "npm:3.4.31"
     vue-tsc: "npm:^3.3.9"
   peerDependencies:
-    vue: 3.5.40
+    vue: 3.4.31
   languageName: unknown
   linkType: soft
 
@@ -2057,7 +2057,7 @@ __metadata:
     vite: "npm:^5.4.10"
     vite-plugin-custom-tsconfig: "npm:^1.0.4"
     vitest: "npm:^3.2.6"
-    vue: "npm:3.5.40"
+    vue: "npm:3.4.31"
     vue-router: "npm:^4.1.6"
   languageName: unknown
   linkType: soft
@@ -2089,7 +2089,7 @@ __metadata:
     typescript: "npm:^5.2.2"
     vite: "npm:^5.4.10"
     vitest: "npm:^3.2.6"
-    vue: "npm:3.5.40"
+    vue: "npm:3.4.31"
     vue-tsc: "npm:^3.3.9"
   languageName: unknown
   linkType: soft
@@ -2104,7 +2104,7 @@ __metadata:
     typescript: "npm:^5.2.2"
     vite: "npm:^5.4.10"
     vitest: "npm:^3.2.6"
-    vue: "npm:3.5.40"
+    vue: "npm:3.4.31"
     vue-tsc: "npm:^3.3.9"
   languageName: unknown
   linkType: soft
@@ -2122,7 +2122,7 @@ __metadata:
     typescript: "npm:^5.2.2"
     vite: "npm:^5.4.10"
     vitest: "npm:^3.2.6"
-    vue: "npm:3.5.40"
+    vue: "npm:3.4.31"
     vue-tsc: "npm:^3.3.9"
   languageName: unknown
   linkType: soft
@@ -2137,7 +2137,7 @@ __metadata:
     typescript: "npm:^5.2.2"
     vite: "npm:^5.4.10"
     vitest: "npm:^3.2.6"
-    vue: "npm:3.5.40"
+    vue: "npm:3.4.31"
     vue-tsc: "npm:^3.3.9"
   languageName: unknown
   linkType: soft
@@ -2162,7 +2162,7 @@ __metadata:
     typescript: "npm:^5.2.2"
     vite: "npm:^5.4.10"
     vitest: "npm:^3.2.6"
-    vue: "npm:3.5.40"
+    vue: "npm:3.4.31"
     vue-tsc: "npm:^3.3.9"
   languageName: unknown
   linkType: soft
@@ -2218,7 +2218,7 @@ __metadata:
     vite-plugin-custom-tsconfig: "npm:^1.0.4"
     vite-plugin-dts: "npm:^4.3.0"
     vitest: "npm:^3.2.6"
-    vue: "npm:3.5.40"
+    vue: "npm:3.4.31"
   languageName: unknown
   linkType: soft
 
