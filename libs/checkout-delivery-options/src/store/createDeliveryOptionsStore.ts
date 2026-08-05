@@ -1,5 +1,4 @@
 import {PdkUtil, StoreListener, useCheckoutStore, useUtil} from '@myparcel-dev/pdk-checkout-common';
-import {CarrierSetting} from '@myparcel-dev/delivery-options';
 import {getDeliveryOptionsAddress, getResolvedSettings} from '../utils';
 import {type CheckoutDeliveryOptionsSettingsInput, type DeliveryOptionsStoreState} from '../types';
 import {showOrHideDeliveryOptions, updateConfigOrAddress} from '../listeners';
@@ -39,7 +38,7 @@ export const createDeliveryOptionsStore = (settings?: CheckoutDeliveryOptionsSet
         /**
          * The original package type that was passed initially. Used to reset the package type when the shipping method changes.
          */
-        originalPackageType: config?.[CarrierSetting.PackageType],
+        originalPackageType: config?.packageType,
 
         /**
          * Output data
