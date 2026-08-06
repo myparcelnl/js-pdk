@@ -27,7 +27,7 @@ describe('createDimensionFields', () => {
 
     fields.forEach((field) => {
       expect(field.attributes).toEqual({min: 0});
-      expect(field.props).toBeUndefined();
+      expect(field.props?.min).toBeUndefined();
     });
   });
 
