@@ -17,9 +17,24 @@ import {type ShipmentOptionsRefs} from './types';
 import {createShipmentOptionField} from './fields/createShipmentOptionField';
 import {createDeliveryTypeField} from './fields/createDeliveryTypeField';
 import {createCarrierField} from './fields/createCarrierField';
-import {createDigitalStampRangeField, createLabelAmountField, createPackageTypeField} from './fields';
+import {
+  createDigitalStampRangeField,
+  createDimensionFields,
+  createLabelAmountField,
+  createPackageTypeField,
+} from './fields';
 import {fieldFactoryRegistry} from './fieldFactoryRegistry';
-import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_LABEL_AMOUNT, FIELD_MANUAL_WEIGHT, FIELD_PACKAGE_TYPE, FIELD_SHIPMENT_OPTIONS_PREFIX} from './field';
+import {
+  FIELD_CARRIER,
+  FIELD_DELIVERY_TYPE,
+  FIELD_HEIGHT,
+  FIELD_LABEL_AMOUNT,
+  FIELD_LENGTH,
+  FIELD_MANUAL_WEIGHT,
+  FIELD_PACKAGE_TYPE,
+  FIELD_SHIPMENT_OPTIONS_PREFIX,
+  FIELD_WIDTH,
+} from './field';
 
 export const createShipmentOptionsForm = (orders?: OneOrMore<Plugin.ModelPdkOrder>): FormInstance => {
   const ordersArray = toArray(orders ?? []).map(toRaw);
@@ -107,6 +122,9 @@ const buildDynamicRefs = (
   refs[FIELD_PACKAGE_TYPE] = get(order, FIELD_PACKAGE_TYPE);
   refs[FIELD_DELIVERY_TYPE] = get(order, FIELD_DELIVERY_TYPE);
   refs[FIELD_MANUAL_WEIGHT] = get(order, FIELD_MANUAL_WEIGHT);
+  refs[FIELD_LENGTH] = get(order, FIELD_LENGTH);
+  refs[FIELD_WIDTH] = get(order, FIELD_WIDTH);
+  refs[FIELD_HEIGHT] = get(order, FIELD_HEIGHT);
 
   // Dynamic shipment option refs from carrier options
   for (const key of optionKeys) {
@@ -129,6 +147,7 @@ const createShipmentOptionsFields = (
     createDeliveryTypeField(refs),
     createLabelAmountField(refs),
     createDigitalStampRangeField(refs, order),
+    ...createDimensionFields(refs),
   ];
 
   // Dynamic shipment option fields — driven by carrier.options

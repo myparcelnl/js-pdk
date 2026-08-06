@@ -27,6 +27,7 @@ vi.mock('@myparcel-dev/vue-form-builder', () => ({
 
 vi.mock('./fields', () => ({
   createDigitalStampRangeField: () => ({name: '__static_digitalStampRange'}),
+  createDimensionFields: () => [{name: '__static_length'}, {name: '__static_width'}, {name: '__static_height'}],
   createLabelAmountField: () => ({name: '__static_labelAmount'}),
   createPackageTypeField: () => ({name: '__static_packageType'}),
 }));

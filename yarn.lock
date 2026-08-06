@@ -3502,7 +3502,7 @@ __metadata:
   resolution: "@myparcel-dev/pdk-checkout-common@workspace:libs/checkout-common"
   dependencies:
     "@myparcel-dev/constants": "npm:^2.7.0"
-    "@myparcel-dev/delivery-options": "npm:^6.25.0"
+    "@myparcel-dev/delivery-options": "npm:^7.4.3"
     "@myparcel-dev/pdk-common": "workspace:^2.1.0"
     radash: "npm:^12.1.0"
     typescript: "npm:^5.2.2"
