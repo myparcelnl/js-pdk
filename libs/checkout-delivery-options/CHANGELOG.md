@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.1.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-delivery-options@2.0.3...@myparcel-dev/pdk-checkout-delivery-options@2.1.0) "@myparcel-dev/pdk-checkout-delivery-options" (2026-08-06)
+
+
+### Features
+
+* send width height length during export ([#387](https://github.com/myparcelnl/js-pdk/issues/387)) ([5350f88](https://github.com/myparcelnl/js-pdk/commit/5350f8814c8892b57cc9cc0b1e5d8faf54c05144))
+
+
+
+
 ## [2.0.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-delivery-options@2.0.1...@myparcel-dev/pdk-checkout-delivery-options@2.0.2) "@myparcel-dev/pdk-checkout-delivery-options" (2026-07-20)
 
 
