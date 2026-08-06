@@ -46,7 +46,7 @@
     "@types/debug": "^4.1.7",
     "@types/interpret": "^1.1.1",
     "@types/liftoff": "^4.0.0",
-    "tsup": "^7.1.0",
+    "tsup": "^8.5.1",
     "typescript": "^5.2.2",
     "vitest": "^3.2.6"
   },
