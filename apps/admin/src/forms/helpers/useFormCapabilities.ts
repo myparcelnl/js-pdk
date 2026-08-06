@@ -7,12 +7,6 @@ import {type AdminContext, type SelectOption} from '../../types';
 import {useQueryStore, type ResolvedQuery} from '../../stores';
 import {Format, type Formatter} from '../../composables';
 
-interface InsuranceAmountData {
-  min?: {amount: number; currency: string};
-  max?: {amount: number; currency: string};
-  default?: {amount: number; currency: string};
-}
-
 /**
  * Bag of capability resolvers, each pre-bound to a Pinia store + orderId snapshot captured at
  * the composable's invocation time. Returned by {@link useFormCapabilities}.
@@ -78,11 +72,10 @@ export type FormCapabilities = {
  * window focus, so we read `query.data` live on every resolver call rather than snapshotting
  * the carriers array at setup time.
  */
+// eslint-disable-next-line max-lines-per-function
 export const useFormCapabilities = (): FormCapabilities => {
   const queryStore = useQueryStore();
-  const dynamicContextQuery = queryStore.get(BackendEndpoint.FetchContext, AdminContextKey.Dynamic) as ResolvedQuery<
-    BackendEndpoint.FetchContext
-  >;
+  const dynamicContextQuery = queryStore.get(BackendEndpoint.FetchContext, AdminContextKey.Dynamic);
   const orderId = getOrderId();
 
   const orderModifier = typeof orderId === 'string' ? `${orderId}.order` : undefined;
@@ -95,7 +88,7 @@ export const useFormCapabilities = (): FormCapabilities => {
 
     if (toValue(query.status) !== 'success') return undefined;
 
-    return (toValue(query.data) ?? []) as CarrierModel[];
+    return toValue(query.data) ?? [];
   };
 
   const liveDynamicCarriers = (): CarrierModel[] => {
@@ -143,10 +136,10 @@ export const useFormCapabilities = (): FormCapabilities => {
     const STEP_THRESHOLD = 500;
 
     const carrier = getCarrierCapabilitiesForShipment(form);
-    const insuranceData = (carrier?.options?.insurance ?? {}) as InsuranceAmountData;
+    const insuranceData = carrier?.options?.insurance;
 
-    const min = insuranceData.min?.amount ? insuranceData.min.amount / 100 : 0;
-    const max = insuranceData.max?.amount ? insuranceData.max.amount / 100 : 0;
+    const min = insuranceData?.min?.amount ? insuranceData.min.amount / 100 : 0;
+    const max = insuranceData?.max?.amount ? insuranceData.max.amount / 100 : 0;
 
     if (max === 0) return [];
 
