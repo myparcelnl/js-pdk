@@ -29,14 +29,13 @@
   "dependencies": {
     "@myparcel-dev/pdk-admin": "workspace:^2.2.0",
     "@myparcel-dev/ts-utils": "^1.15.0",
-    "vue": "3.5.40"
+    "vue": "3.4.31"
   },
   "devDependencies": {
     "@myparcel-dev/pdk-admin-component-tests": "workspace:*",
     "@myparcel-dev/pdk-build-vite": "workspace:*",
     "@types/bootstrap": "^5.2.6",
     "@types/jquery": "^3.5.16",
-    "pinia": "^2.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.4.10",
     "vitest": "^3.2.6",

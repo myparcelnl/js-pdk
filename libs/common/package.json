@@ -29,12 +29,11 @@
   },
   "dependencies": {
     "@myparcel-dev/constants": "^2.7.0",
-    "@myparcel-dev/delivery-options": "^7.4.3"
+    "@myparcel-dev/delivery-options": "^7.5.0"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
-    "vitest": "^3.2.6",
-    "vue": "3.5.40"
+    "vitest": "^3.2.6"
   },
   "engines": {
     "node": ">=20"
