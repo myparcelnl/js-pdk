@@ -2027,7 +2027,7 @@ __metadata:
     "@myparcel-dev/pdk-admin": "workspace:^2.2.1"
     "@pinia/testing": "npm:>= 0.1.0 < 1"
     "@vue/test-utils": "npm:^2.0.0"
-    pinia: "npm:^2.0.0"
+    pinia: "npm:^4.0.2"
     typescript: "npm:^5.2.2"
     vitest: "npm:^3.2.6"
     vue: "npm:3.4.31"
@@ -2158,7 +2158,7 @@ __metadata:
     lodash: "npm:^4.17.21"
     lodash-es: "npm:^4.17.21"
     lodash-unified: "npm:^1.0.3"
-    pinia: "npm:^2.0.0"
+    pinia: "npm:^4.0.2"
     typescript: "npm:^5.2.2"
     vite: "npm:^5.4.10"
     vitest: "npm:^3.2.6"
@@ -10714,6 +10714,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nostics@npm:^1.1.4":
+  version: 1.2.0
+  resolution: "nostics@npm:1.2.0"
+  checksum: 10c0/fae2da4abce570a55837957a95dd93b75e3c36987015dfb6c96158844fedbc3f53421486dde3bce5d26209abc1d4250703d2166f639553204187f7209cc56cae
+  languageName: node
+  linkType: hard
+
 "npm-run-path@npm:^4.0.1":
   version: 4.0.1
   resolution: "npm-run-path@npm:4.0.1"
@@ -11235,7 +11242,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinia@npm:^2.0.0, pinia@npm:^2.1.7":
+"pinia@npm:^2.1.7":
   version: 2.1.7
   resolution: "pinia@npm:2.1.7"
   dependencies:
@@ -11251,6 +11258,24 @@ __metadata:
     typescript:
       optional: true
   checksum: 10c0/f4380a4db04b5b8565ed8a6843821d91f8f650d79dd9f0094005248bd963521b8a73419032fda76541e59b895b0e7852e67ca9d0408162cc391ce5a1bcbda445
+  languageName: node
+  linkType: hard
+
+"pinia@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "pinia@npm:4.0.2"
+  dependencies:
+    nostics: "npm:^1.1.4"
+  peerDependencies:
+    "@vue/devtools-api": ^8.1.5
+    typescript: ">=5.6.0"
+    vue: ^3.5.11
+  peerDependenciesMeta:
+    "@vue/devtools-api":
+      optional: false
+    typescript:
+      optional: true
+  checksum: 10c0/210f76c147cadf379437abc0150763add506e0328204f4f42adb14e74967bd60f3036eae5e06b572ee6666047bbfb9158db2f0cf9b9016c1f94c724eba4b30d4
   languageName: node
   linkType: hard
 
