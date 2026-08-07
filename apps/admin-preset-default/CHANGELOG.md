@@ -2,6 +2,11 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.2.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin-preset-default@2.2.0...@myparcel-dev/pdk-admin-preset-default@2.2.1) "@myparcel-dev/pdk-admin-preset-default" (2026-08-07)
+
+
+
+
 ## [2.0.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin-preset-default@2.0.0...@myparcel-dev/pdk-admin-preset-default@2.0.1) "@myparcel-dev/pdk-admin-preset-default" (2026-07-20)
 
 
