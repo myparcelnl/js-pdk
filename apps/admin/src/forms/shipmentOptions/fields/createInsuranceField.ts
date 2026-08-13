@@ -1,5 +1,6 @@
 import {watch} from 'vue';
 import {type InteractiveElementConfiguration} from '@myparcel-dev/vue-form-builder';
+import {getOptionState} from '../useShipmentOptionsState';
 import {type ShipmentOptionsRefs} from '../types';
 import {PROP_OPTIONS} from '../field';
 import {resolveFormComponent, setFieldProp, useFormCapabilities} from '../../helpers';
@@ -18,22 +19,25 @@ import {createRef} from './createRef';
  * packageType / deliveryType / weight / cc change, since those all narrow the shipment-scoped
  * capabilities response.
  *
- * Visibility / disabled state is inherited from {@link createShipmentOptionField} — driven
- * purely by `hasShipmentOption` (i.e. by the capabilities response). No manual package-type
+ * Visibility / disabled state is inherited from {@link createShipmentOptionField} — resolved
+ * by the option-state module from the capabilities response. No manual package-type
  * gating: if insurance isn't valid for the current combination, the API won't include it in
  * `carrier.options` and the field will hide.
  */
-export const createInsuranceField = (
-  refs: ShipmentOptionsRefs,
-  fieldName: string,
-): InteractiveElementConfiguration => {
+export const createInsuranceField = (refs: ShipmentOptionsRefs, fieldName: string): InteractiveElementConfiguration => {
   const formatter = useLocalizedFormatter();
   const capabilities = useFormCapabilities();
+  const optionKey = fieldName.split('.').pop() ?? fieldName;
   let stopWatcher: (() => void) | undefined;
 
   return createShipmentOptionField(refs, fieldName, {
     ref: createRef(refs, fieldName, 0),
     component: resolveFormComponent(AdminComponent.SelectInput),
+
+    // The field holds a range of amounts. A rule that requires insurance does not give one
+    // amount, and thus the user keeps control of the field. A rule that excludes insurance gives
+    // one amount, and the field is then read-only.
+    readOnlyWhen: ({form}) => getOptionState(form, optionKey).forcedOff,
     onBeforeMount(field: ElementInstance) {
       stopWatcher?.();
 

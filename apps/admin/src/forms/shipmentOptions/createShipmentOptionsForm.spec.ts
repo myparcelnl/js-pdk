@@ -48,6 +48,10 @@ vi.mock('./fieldFactoryRegistry', () => ({
   fieldFactoryRegistry: {},
 }));
 
+vi.mock('./useShipmentOptionsState', () => ({
+  useShipmentOptionsState: vi.fn(),
+}));
+
 const mockedUseContext = vi.mocked(useContext);
 
 const dynamicOptionKeys = (form: unknown): string[] => {

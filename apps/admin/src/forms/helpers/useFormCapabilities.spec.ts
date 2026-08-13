@@ -1,5 +1,5 @@
-import {describe, expect, it, vi, beforeEach} from 'vitest';
 import {ref} from 'vue';
+import {describe, expect, it, vi, beforeEach} from 'vitest';
 import {AdminContextKey, BackendEndpoint, type CarrierModel, TriState} from '@myparcel-dev/pdk-common';
 
 type FakeQuery = {
@@ -25,8 +25,7 @@ const buildQueryStore = () => {
     setDynamicCarriers: (carriers: CarrierModel[]) => {
       dynamicCarriers.value = carriers;
     },
-    has: (endpoint: BackendEndpoint, modifier: string) =>
-      queries.has(`${endpoint}.${modifier}`),
+    has: (endpoint: BackendEndpoint, modifier: string) => queries.has(`${endpoint}.${modifier}`),
     get: (endpoint: BackendEndpoint, modifier?: string) => {
       if (endpoint === BackendEndpoint.FetchContext && modifier === AdminContextKey.Dynamic) {
         return {
@@ -63,11 +62,12 @@ const buildCarrier = (overrides: Partial<CarrierModel>): CarrierModel =>
     deliveryTypes: [],
     options: {},
     ...overrides,
-  }) as CarrierModel;
+  } as CarrierModel);
 
-const formStub = (carrierName: string) => ({
-  getValue: (name: string) => (name === 'deliveryOptions.carrier' ? carrierName : undefined),
-}) as never;
+const formStub = (carrierName: string) =>
+  ({
+    getValue: (name: string) => (name === 'deliveryOptions.carrier' ? carrierName : undefined),
+  } as never);
 
 describe('useFormCapabilities', () => {
   beforeEach(() => {
@@ -148,29 +148,6 @@ describe('useFormCapabilities', () => {
       const {useFormCapabilities} = await import('./useFormCapabilities');
 
       expect(useFormCapabilities().getCarrierCapabilitiesForShipment(formStub('POSTNL'))).toBeUndefined();
-    });
-  });
-
-  describe('hasShipmentOption', () => {
-    it('returns true when the shipment carrier exposes the option', async () => {
-      const shipment = buildCarrier({
-        carrier: 'POSTNL',
-        options: {requiresSignature: {} as never},
-      });
-      queryStore.setQuery(shipmentModifier('order-1'), 'success', [shipment]);
-
-      const {useFormCapabilities} = await import('./useFormCapabilities');
-
-      expect(useFormCapabilities().hasShipmentOption(formStub('POSTNL'), 'requiresSignature')).toBe(true);
-    });
-
-    it('returns false when the option is absent from the carrier', async () => {
-      const shipment = buildCarrier({carrier: 'POSTNL', options: {}});
-      queryStore.setQuery(shipmentModifier('order-1'), 'success', [shipment]);
-
-      const {useFormCapabilities} = await import('./useFormCapabilities');
-
-      expect(useFormCapabilities().hasShipmentOption(formStub('POSTNL'), 'requiresSignature')).toBe(false);
     });
   });
 

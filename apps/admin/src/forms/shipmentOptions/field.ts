@@ -45,3 +45,9 @@ export const FIELD_WIDTH: FieldName = `${PHYSICAL_PROPERTIES_PREFIX}.${WIDTH}`;
 export const FIELD_HEIGHT: FieldName = `${PHYSICAL_PROPERTIES_PREFIX}.${HEIGHT}`;
 
 export const FIELD_SHIPMENT_OPTIONS_PREFIX: FieldName = `${DELIVERY_OPTIONS_PREFIX}.${SHIPMENT_OPTIONS}`;
+
+/**
+ * Full field name of a shipment option, from its capability option key
+ * (e.g. `requiresSignature` → `deliveryOptions.shipmentOptions.requiresSignature`).
+ */
+export const optionFieldName = (optionKey: string): FieldName => `${FIELD_SHIPMENT_OPTIONS_PREFIX}.${optionKey}`;
