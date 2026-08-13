@@ -1,12 +1,10 @@
+import {objectIsEqual} from '@myparcel-dev/ts-utils';
 import {
   AddressField,
   type CheckoutStoreState,
   PdkField,
-  PdkUtil,
   type StoreCallbackUpdate,
-  useUtil,
 } from '@myparcel-dev/pdk-checkout-common';
-import {objectIsEqual} from '@myparcel-dev/ts-utils';
 import {
   getDeliveryOptionsAddress,
   shippingMethodHasDeliveryOptions,
@@ -15,15 +13,17 @@ import {
 } from '../utils';
 
 export const updateDeliveryOptions: StoreCallbackUpdate<CheckoutStoreState> = async (newState, oldState) => {
-  const fieldsEqual = useUtil(PdkUtil.FieldsEqual);
-
   if (oldState && objectIsEqual(newState.form, oldState.form)) {
     return;
   }
 
   const deliveryOptions = useDeliveryOptionsStore();
 
-  if (oldState && !fieldsEqual(newState.form, oldState.form, AddressField.Country)) {
+  // Compare the *effective* delivery country: the country of the active address in each state.
+  const oldCountry = oldState?.form[oldState.addressType]?.[AddressField.Country];
+  const newCountry = newState.form[newState.addressType]?.[AddressField.Country];
+
+  if (oldState && oldCountry !== newCountry) {
     await deliveryOptions.set({enabled: false});
     await updateContext();
   }
