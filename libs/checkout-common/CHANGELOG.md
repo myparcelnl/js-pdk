@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.1.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-common@2.1.1...@myparcel-dev/pdk-checkout-common@2.1.2) "@myparcel-dev/pdk-checkout-common" (2026-08-13)
+
+
+### Bug Fixes
+
+* prevent using stale address data ([#358](https://github.com/myparcelnl/js-pdk/issues/358)) ([1231e1c](https://github.com/myparcelnl/js-pdk/commit/1231e1c1456f6759e87bcbb5496658c58b6a973a))
+
+
+
+
 ## [2.1.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-common@2.1.0...@myparcel-dev/pdk-checkout-common@2.1.1) "@myparcel-dev/pdk-checkout-common" (2026-08-07)
 
 

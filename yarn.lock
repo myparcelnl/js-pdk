@@ -2222,7 +2222,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-dev/pdk-checkout-common@workspace:^2.1.1, @myparcel-dev/pdk-checkout-common@workspace:libs/checkout-common":
+"@myparcel-dev/pdk-checkout-common@workspace:^2.1.2, @myparcel-dev/pdk-checkout-common@workspace:libs/checkout-common":
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-checkout-common@workspace:libs/checkout-common"
   dependencies:
@@ -2235,13 +2235,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-dev/pdk-checkout-delivery-options@workspace:^2.1.1, @myparcel-dev/pdk-checkout-delivery-options@workspace:libs/checkout-delivery-options":
+"@myparcel-dev/pdk-checkout-delivery-options@workspace:^2.1.2, @myparcel-dev/pdk-checkout-delivery-options@workspace:libs/checkout-delivery-options":
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-checkout-delivery-options@workspace:libs/checkout-delivery-options"
   dependencies:
     "@myparcel-dev/delivery-options": "npm:^7.5.0"
     "@myparcel-dev/pdk-build-vite": "workspace:*"
-    "@myparcel-dev/pdk-checkout-common": "workspace:^2.1.1"
+    "@myparcel-dev/pdk-checkout-common": "workspace:^2.1.2"
     "@myparcel-dev/ts-utils": "npm:^1.15.0"
     typescript: "npm:^5.2.2"
     vitest: "npm:^3.2.6"
@@ -2253,43 +2253,43 @@ __metadata:
   resolution: "@myparcel-dev/pdk-checkout-js@workspace:apps/checkout-js"
   dependencies:
     "@myparcel-dev/pdk-build-vite": "workspace:*"
-    "@myparcel-dev/pdk-checkout": "workspace:^2.1.1"
+    "@myparcel-dev/pdk-checkout": "workspace:^2.1.2"
     vite: "npm:^5.4.10"
     vitest: "npm:^3.2.6"
   languageName: unknown
   linkType: soft
 
-"@myparcel-dev/pdk-checkout-separate-address-fields@workspace:^2.1.1, @myparcel-dev/pdk-checkout-separate-address-fields@workspace:libs/checkout-separate-address-fields":
+"@myparcel-dev/pdk-checkout-separate-address-fields@workspace:^2.1.2, @myparcel-dev/pdk-checkout-separate-address-fields@workspace:libs/checkout-separate-address-fields":
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-checkout-separate-address-fields@workspace:libs/checkout-separate-address-fields"
   dependencies:
     "@myparcel-dev/pdk-build-vite": "workspace:*"
-    "@myparcel-dev/pdk-checkout-common": "workspace:^2.1.1"
+    "@myparcel-dev/pdk-checkout-common": "workspace:^2.1.2"
     typescript: "npm:^5.2.2"
     vitest: "npm:^3.2.6"
   languageName: unknown
   linkType: soft
 
-"@myparcel-dev/pdk-checkout-tax-fields@workspace:^2.1.1, @myparcel-dev/pdk-checkout-tax-fields@workspace:libs/checkout-tax-fields":
+"@myparcel-dev/pdk-checkout-tax-fields@workspace:^2.1.2, @myparcel-dev/pdk-checkout-tax-fields@workspace:libs/checkout-tax-fields":
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-checkout-tax-fields@workspace:libs/checkout-tax-fields"
   dependencies:
     "@myparcel-dev/constants": "npm:^2.7.0"
     "@myparcel-dev/pdk-build-vite": "workspace:*"
-    "@myparcel-dev/pdk-checkout-common": "workspace:^2.1.1"
+    "@myparcel-dev/pdk-checkout-common": "workspace:^2.1.2"
     typescript: "npm:^5.2.2"
     vitest: "npm:^3.2.6"
   languageName: unknown
   linkType: soft
 
-"@myparcel-dev/pdk-checkout@workspace:^2.1.1, @myparcel-dev/pdk-checkout@workspace:apps/checkout":
+"@myparcel-dev/pdk-checkout@workspace:^2.1.2, @myparcel-dev/pdk-checkout@workspace:apps/checkout":
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-checkout@workspace:apps/checkout"
   dependencies:
-    "@myparcel-dev/pdk-checkout-common": "workspace:^2.1.1"
-    "@myparcel-dev/pdk-checkout-delivery-options": "workspace:^2.1.1"
-    "@myparcel-dev/pdk-checkout-separate-address-fields": "workspace:^2.1.1"
-    "@myparcel-dev/pdk-checkout-tax-fields": "workspace:^2.1.1"
+    "@myparcel-dev/pdk-checkout-common": "workspace:^2.1.2"
+    "@myparcel-dev/pdk-checkout-delivery-options": "workspace:^2.1.2"
+    "@myparcel-dev/pdk-checkout-separate-address-fields": "workspace:^2.1.2"
+    "@myparcel-dev/pdk-checkout-tax-fields": "workspace:^2.1.2"
     typescript: "npm:^5.2.2"
     vitest: "npm:^3.2.6"
   languageName: unknown
