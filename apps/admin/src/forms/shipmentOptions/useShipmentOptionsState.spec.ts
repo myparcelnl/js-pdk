@@ -104,6 +104,48 @@ const realOptions = (): CarrierModel['options'] =>
 
 const ALL_KEYS = ['requiresAgeVerification', 'requiresSignature', 'recipientOnlyDelivery', 'requiresReceiptCode'];
 
+/**
+ * Verbatim option rules from a real POSTNL proxyCapabilities response. Receipt code requires
+ * insurance while excluding signature and only recipient, and insurance requires those same two
+ * options — the data asks for and rules out the same pair. Signature and only recipient exclude
+ * receipt code in return.
+ */
+const receiptCodeOptions = (): CarrierModel['options'] =>
+  ({
+    insurance: {
+      isRequired: false,
+      isSelectedByDefault: false,
+      requires: ['requiresSignature', 'recipientOnlyDelivery'],
+      excludes: ['printReturnLabelAtDropOff'],
+    },
+    recipientOnlyDelivery: {
+      isRequired: false,
+      isSelectedByDefault: false,
+      requires: [],
+      excludes: ['printReturnLabelAtDropOff', 'requiresReceiptCode'],
+    },
+    requiresReceiptCode: {
+      isRequired: false,
+      isSelectedByDefault: false,
+      requires: ['insurance'],
+      excludes: [
+        'requiresAgeVerification',
+        'recipientOnlyDelivery',
+        'printReturnLabelAtDropOff',
+        'returnOnFirstFailedDelivery',
+        'requiresSignature',
+      ],
+    },
+    requiresSignature: {
+      isRequired: false,
+      isSelectedByDefault: false,
+      requires: [],
+      excludes: ['printReturnLabelAtDropOff', 'requiresReceiptCode'],
+    },
+  } as CarrierModel['options']);
+
+const RECEIPT_CODE_KEYS = ['requiresReceiptCode', 'requiresSignature', 'recipientOnlyDelivery', 'insurance'];
+
 const buildCarrier = (overrides: Partial<CarrierModel>): CarrierModel =>
   ({
     carrier: 'POSTNL',
@@ -211,7 +253,12 @@ describe('resolveOptionStates (pure)', () => {
     expect(states.get('optionB')).toMatchObject({forcedOn: true});
   });
 
-  it('lets forced-off win over forced-on', () => {
+  it.each([
+    [['optionA', 'optionB'], {forcedOn: true, forcedOff: false}],
+    [['optionB', 'optionA'], {forcedOn: false, forcedOff: true}],
+  ])('applies whichever rule comes first when two enabled options disagree, read as %j', (order, expected) => {
+    // Option A requires option C, and option B excludes option C. The two kinds of rule have equal
+    // rank. The option that the resolver reads first has effect, and it reports the other rule.
     const options = {
       optionA: {requires: ['optionC']},
       optionB: {excludes: ['optionC']},
@@ -221,10 +268,91 @@ describe('resolveOptionStates (pure)', () => {
     const states = resolveOptionStates({
       availabilityOptions: options,
       shipmentOptions: options,
-      entries: [entry('optionA', TriState.On), entry('optionB', TriState.On), entry('optionC', TriState.Inherit)],
+      entries: [...order.map((key) => entry(key, TriState.On)), entry('optionC', TriState.Inherit)],
     });
 
-    expect(states.get('optionC')).toMatchObject({forcedOn: false, forcedOff: true});
+    expect(states.get('optionC')).toMatchObject(expected);
+    expect(states.get('optionC')?.readOnly).toBe(true);
+  });
+
+  it('forces off what an enabled option excludes, even when a requires chain asks for them', () => {
+    const states = resolveOptionStates({
+      availabilityOptions: receiptCodeOptions(),
+      shipmentOptions: receiptCodeOptions(),
+      entries: [
+        entry('requiresReceiptCode', TriState.Inherit, TriState.On),
+        entry('requiresSignature', TriState.Off),
+        entry('recipientOnlyDelivery', TriState.Off),
+        entry('insurance', TriState.Off),
+      ],
+    });
+
+    // Receipt code excludes the two options. The requires chain through insurance must not set
+    // them to on.
+    expect(states.get('requiresSignature')).toMatchObject({forcedOn: false, forcedOff: true, readOnly: true});
+    expect(states.get('recipientOnlyDelivery')).toMatchObject({forcedOn: false, forcedOff: true, readOnly: true});
+
+    // What receipt code does require is still forced on.
+    expect(states.get('insurance')).toMatchObject({forcedOn: true});
+
+    // The merchant's own option keeps its value and stays editable.
+    expect(states.get('requiresReceiptCode')).toMatchObject({forcedOn: false, forcedOff: false, readOnly: false});
+  });
+
+  it('settles immediately: applying the forced values produces the same states again', () => {
+    const entries = [
+      entry('requiresReceiptCode', TriState.Inherit, TriState.On),
+      entry('requiresSignature', TriState.Off),
+      entry('recipientOnlyDelivery', TriState.Off),
+      entry('insurance', TriState.Off),
+    ];
+
+    const forcedFlags = (states: Map<string, {forcedOn: boolean; forcedOff: boolean}>) =>
+      [...states].map(([key, state]) => [key, state.forcedOn, state.forcedOff]);
+
+    const resolve = () =>
+      resolveOptionStates({
+        availabilityOptions: receiptCodeOptions(),
+        shipmentOptions: receiptCodeOptions(),
+        entries,
+      });
+
+    const first = resolve();
+
+    // Do the same as applyForcedValues. Write each forced value, but do not change an option that
+    // is not a toggle.
+    entries.forEach((current) => {
+      const state = first.get(current.key);
+
+      if (current.key === 'insurance' || !state || (!state.forcedOn && !state.forcedOff)) {
+        return;
+      }
+
+      current.value = state.forcedOn ? TriState.On : TriState.Off;
+    });
+
+    // A write to insurance makes insurance an enabled option. Its requires rules then set the
+    // options that receipt code excludes, and the next pass locks receipt code to off.
+    expect(forcedFlags(resolve())).toEqual(forcedFlags(first));
+  });
+
+  it('drops every conflicting option when an order was stored with a combination the rules forbid', () => {
+    // An order from an earlier version can hold all three options at the same time. No rule can
+    // satisfy this data, and thus the resolver sets the three options to off.
+    const states = resolveOptionStates({
+      availabilityOptions: receiptCodeOptions(),
+      shipmentOptions: receiptCodeOptions(),
+      entries: [
+        entry('requiresReceiptCode', TriState.On),
+        entry('requiresSignature', TriState.On),
+        entry('recipientOnlyDelivery', TriState.On),
+        entry('insurance', TriState.Off),
+      ],
+    });
+
+    expect(states.get('requiresSignature')).toMatchObject({forcedOff: true});
+    expect(states.get('recipientOnlyDelivery')).toMatchObject({forcedOff: true});
+    expect(states.get('requiresReceiptCode')).toMatchObject({forcedOff: true});
   });
 
   it('marks options missing from availability data as unsupported and hidden', () => {
@@ -266,6 +394,7 @@ describe('useShipmentOptionsState (reactive)', () => {
     initialValues: Record<string, unknown>,
     defaults: Record<string, TriState> = {},
     selectionCarrier = 'POSTNL',
+    keys: string[] = ALL_KEYS,
   ) => {
     const form = buildForm({[FIELD_CARRIER]: 'POSTNL', ...initialValues}, defaults);
 
@@ -280,7 +409,7 @@ describe('useShipmentOptionsState (reactive)', () => {
 
     const scope = effectScope();
     scope.run(() => {
-      useShipmentOptionsState(form as never, ALL_KEYS, {orderId: 'order-1', selection});
+      useShipmentOptionsState(form as never, keys, {orderId: 'order-1', selection});
     });
 
     return {form, shipmentEntry, selection, scope, getOptionState};
@@ -309,6 +438,77 @@ describe('useShipmentOptionsState (reactive)', () => {
     expect(getOptionState(form as never, 'recipientOnlyDelivery').readOnly).toBe(true);
     expect(getOptionState(form as never, 'requiresReceiptCode').readOnly).toBe(true);
     expect(getOptionState(form as never, 'requiresAgeVerification').readOnly).toBe(false);
+
+    scope.stop();
+  });
+
+  it('keeps the amount of a required option that holds a range', async () => {
+    const insuranceField = optionFieldName('insurance');
+
+    const {form, shipmentEntry, scope} = setup(
+      {
+        [optionFieldName('requiresReceiptCode')]: TriState.Inherit,
+        [optionFieldName('requiresSignature')]: TriState.Off,
+        [optionFieldName('recipientOnlyDelivery')]: TriState.Off,
+        // An amount in cents, not a tri-state.
+        [insuranceField]: 25_000,
+      },
+      {[optionFieldName('requiresReceiptCode')]: TriState.On},
+      'POSTNL',
+      RECEIPT_CODE_KEYS,
+    );
+
+    resolveShipment(shipmentEntry, receiptCodeOptions());
+    await nextTick();
+
+    // Receipt code requires insurance. A requires rule gives a range of amounts, and thus the
+    // field keeps its amount. Export applies the rule again.
+    expect(form.state[insuranceField]).toBe(25_000);
+    expect(setFieldRefMock).not.toHaveBeenCalledWith(
+      expect.objectContaining({name: insuranceField}),
+      expect.anything(),
+    );
+
+    // Receipt code stays on, and the two options it excludes are off and locked.
+    expect(form.state[optionFieldName('requiresSignature')]).toBe(TriState.Off);
+    expect(form.state[optionFieldName('recipientOnlyDelivery')]).toBe(TriState.Off);
+    expect(form.state[optionFieldName('requiresReceiptCode')]).toBe(TriState.Inherit);
+    expect(getOptionState(form as never, 'requiresReceiptCode').readOnly).toBe(false);
+
+    scope.stop();
+  });
+
+  it('clears the amount of an excluded option that holds a range', async () => {
+    const insuranceField = optionFieldName('insurance');
+
+    const options = {
+      requiresSignature: {isRequired: false, requires: [], excludes: ['insurance']},
+      insurance: {isRequired: false, requires: ['recipientOnlyDelivery'], excludes: []},
+      recipientOnlyDelivery: {isRequired: false, requires: [], excludes: []},
+    } as unknown as CarrierModel['options'];
+
+    const {form, shipmentEntry, scope} = setup(
+      {
+        [optionFieldName('requiresSignature')]: TriState.On,
+        [optionFieldName('recipientOnlyDelivery')]: TriState.Off,
+        [insuranceField]: 25_000,
+      },
+      {},
+      'POSTNL',
+      ['requiresSignature', 'recipientOnlyDelivery', 'insurance'],
+    );
+
+    resolveShipment(shipmentEntry, options);
+    await nextTick();
+
+    // An excludes rule gives one value. The resolver clears the old amount and does not lock the
+    // field on that amount.
+    expect(form.state[insuranceField]).toBe(TriState.Off);
+
+    // An amount of off is not an enabled option. Insurance therefore cannot set only recipient
+    // to on.
+    expect(form.state[optionFieldName('recipientOnlyDelivery')]).toBe(TriState.Off);
+    expect(getOptionState(form as never, 'recipientOnlyDelivery').forcedOn).toBe(false);
 
     scope.stop();
   });

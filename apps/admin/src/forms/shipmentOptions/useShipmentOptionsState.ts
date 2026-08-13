@@ -4,8 +4,10 @@ import {type CarrierModel, TriState} from '@myparcel-dev/pdk-common';
 import {triStateValueIsEnabled, useFormCapabilities} from '../helpers';
 import {setFieldRef} from '../form-builder/utils/createValueSetter';
 import {useQueryStore} from '../../stores';
+import {globalLogger} from '../../services';
 import {type CapabilitiesSelection} from './wireProxyCapabilities';
 import {readShipmentSnapshot} from './readShipmentSnapshot';
+import {fieldFactoryRegistry} from './fieldFactoryRegistry';
 import {FIELD_CARRIER, optionFieldName} from './field';
 
 /**
@@ -82,13 +84,7 @@ export const resolveOptionStates = (input: ResolveOptionStatesInput): Map<string
       .filter((entry) => triStateValueIsEnabled(entry.value, entry.defaultValue))
       .map((entry) => entry.key);
 
-    forcedOn = resolveForcedOn(shipmentOptions, enabledKeys);
-    forcedOff = resolveForcedOff(shipmentOptions, new Set([...enabledKeys, ...forcedOn]));
-
-    // On conflict, forced-off wins -- normally data should have no conflicting rules.
-    for (const key of forcedOff) {
-      forcedOn.delete(key);
-    }
+    ({forcedOn, forcedOff} = resolveForcedStates(shipmentOptions, enabledKeys));
   }
 
   const states = new Map<string, OptionState>();
@@ -109,54 +105,82 @@ export const resolveOptionStates = (input: ResolveOptionStatesInput): Map<string
 };
 
 /**
- * Collect every option that must be turned on, following `requires` lists transitively.
+ * Apply the requires and excludes rules of the enabled options. If two rules disagree, the first
+ * rule has effect. The resolver writes a warning about the other rule.
  *
  * @param shipmentOptions - The option map from the matched shipment-scoped response.
  * @param enabledKeys - Capability option keys of the options that are currently on.
  */
-const resolveForcedOn = (shipmentOptions: NonNullable<CarrierModel['options']>, enabledKeys: string[]): Set<string> => {
+const resolveForcedStates = (
+  shipmentOptions: NonNullable<CarrierModel['options']>,
+  enabledKeys: string[],
+): {forcedOn: Set<string>; forcedOff: Set<string>} => {
   const requiredKeys = Object.keys(shipmentOptions).filter((key) => shipmentOptions[key]?.isRequired === true);
 
-  // Carrier-required options force themselves; enabled options only force what they require —
-  // their own value stays the user's choice.
+  // The carrier requires these options. These options are on and locked.
   const forcedOn = new Set(requiredKeys);
+  const forcedOff = new Set<string>();
 
-  // `visited` skips options that were already walked, so circular requires can't loop forever.
-  const queue = [...requiredKeys, ...enabledKeys];
-  const visited = new Set(queue);
+  // The rules come from two groups of options: the group that the carrier requires, and the group
+  // that is enabled on the order. An option can be in both groups, and thus the set removes the
+  // duplicates. An enabled option is a source of rules only. It does not force its own value, and
+  // the user keeps control of that value.
+  const ruleSources = new Set([...requiredKeys, ...enabledKeys]);
 
-  // A for-of loop over an array visits items pushed during the loop, so the queue grows as
-  // new requires are discovered.
+  // The queue holds the options that the loop must still read. The visited set prevents an endless
+  // loop if two options require each other.
+  const queue = [...ruleSources];
+  const visited = new Set(ruleSources);
+
+  // A for-of loop over an array also reads the items that the loop adds. The queue thus becomes
+  // longer while the loop finds more requires rules.
   for (const key of queue) {
     for (const required of shipmentOptions[key]?.requires ?? []) {
+      if (forcedOff.has(required)) {
+        logRuleConflict(required, key, 'require', 'excluded');
+
+        continue;
+      }
+
       forcedOn.add(required);
 
       if (!visited.has(required)) {
+        // Add the option to the end of the queue. The rules of the enabled options apply first.
+        // The rules of an option from a requires chain apply after them.
         visited.add(required);
         queue.push(required);
       }
     }
-  }
 
-  return forcedOn;
-};
-
-/**
- * Collect the `excludes` of every active option (enabled plus forced-on) into the forced-off set.
- */
-const resolveForcedOff = (
-  shipmentOptions: NonNullable<CarrierModel['options']>,
-  activeKeys: Set<string>,
-): Set<string> => {
-  const forcedOff = new Set<string>();
-
-  for (const key of activeKeys) {
     for (const excluded of shipmentOptions[key]?.excludes ?? []) {
+      if (forcedOn.has(excluded)) {
+        logRuleConflict(excluded, key, 'exclude', 'required');
+
+        continue;
+      }
+
       forcedOff.add(excluded);
     }
   }
 
-  return forcedOff;
+  return {forcedOn, forcedOff};
+};
+
+/**
+ * Write a warning about a rule that the resolver does not apply. The capabilities data has a
+ * conflict. Correct the data at the source.
+ *
+ * @param optionKey - Option the rule points at.
+ * @param sourceKey - Option that holds the rule.
+ * @param action - `require` or `exclude`.
+ * @param state - `required` or `excluded`.
+ */
+const logRuleConflict = (optionKey: string, sourceKey: string, action: string, state: string): void => {
+  globalLogger.warn(
+    'useShipmentOptionsState',
+    `Can't ${action} "${optionKey}", it's already ${state} by another option; capabilities rules contradict each other.`,
+    {option: optionKey, source: sourceKey, action, state},
+  );
 };
 
 /* ---------------------------------------------------------------------------------------------
@@ -290,10 +314,16 @@ const readEntries = (form: FormInstance, allOptionKeys: string[]): OptionStateEn
  * Write the forced value (on for forced-on, off for forced-off) into every affected field.
  * Forced fields are locked with readOnly, not disabled, so their values still submit and
  * end up stored on the order.
+ *
+ * A required option that has a custom field factory keeps its value. The user must set that value.
  */
 const applyForcedValues = (form: FormInstance, states: Map<string, OptionState>): void => {
   for (const [key, state] of states) {
     if (!state.forcedOn && !state.forcedOff) continue;
+
+    // A custom field holds a range of values instead of a toggle. A rule that requires the option
+    // does not give one value. The user must set the amount, and export applies the rule again.
+    if (state.forcedOn && Object.hasOwn(fieldFactoryRegistry, key)) continue;
 
     const forcedValue = state.forcedOn ? TriState.On : TriState.Off;
     const fieldName = optionFieldName(key);
