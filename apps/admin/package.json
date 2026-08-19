@@ -45,7 +45,7 @@
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3",
-    "pinia": "^2.0.0",
+    "pinia": "^4.0.3",
     "vue": "3.4.31"
   },
   "devDependencies": {
