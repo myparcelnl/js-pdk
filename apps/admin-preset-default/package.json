@@ -36,7 +36,7 @@
   "devDependencies": {
     "@myparcel-dev/pdk-admin-component-tests": "workspace:*",
     "@myparcel-dev/pdk-build-vite": "workspace:*",
-    "typescript": "^5.2.2",
+    "typescript": "^7.0.2",
     "vite": "^5.4.10",
     "vitest": "^3.2.6",
     "vue-tsc": "^3.3.9"
