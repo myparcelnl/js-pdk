@@ -30,7 +30,7 @@
     "@myparcel-dev/pdk-admin": "workspace:^2.2.2",
     "@myparcel-dev/ts-utils": "^1.15.0",
     "@vuepic/vue-datepicker": "^11.0.2",
-    "@vueuse/core": "^10.0.0",
+    "@vueuse/core": "^14.4.0",
     "vue": "3.4.31"
   },
   "devDependencies": {
