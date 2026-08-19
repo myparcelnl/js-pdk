@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.2.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.2.1...@myparcel-dev/pdk-admin@2.2.2) "@myparcel-dev/pdk-admin" (2026-08-19)
+
+
+### Bug Fixes
+
+* **insurance:** read insurance limits from the flat capabilities format ([#383](https://github.com/myparcelnl/js-pdk/issues/383)) ([8794c46](https://github.com/myparcelnl/js-pdk/commit/8794c46ee0ffce36fdad9b3e7dc95e44ee56af23)), closes [myparcelnl/pdk#511](https://github.com/myparcelnl/pdk/issues/511)
+
+
+
+
 ## [2.2.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.2.0...@myparcel-dev/pdk-admin@2.2.1) "@myparcel-dev/pdk-admin" (2026-08-07)
 
 
