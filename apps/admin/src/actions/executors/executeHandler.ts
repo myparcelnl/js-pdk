@@ -1,3 +1,4 @@
+import {Variant} from '@myparcel-dev/pdk-common';
 import {type ActionResponse, type MaybeAdminAction} from '../../types';
 import {useNotificationStore} from '../../stores';
 import {NotificationCategory} from '../../data';
@@ -13,6 +14,10 @@ export async function executeHandler<A extends MaybeAdminAction>(
 
   store.remove(NotificationCategory.Action);
 
+  const countErrors = () => store.notifications.filter(({variant}) => variant === Variant.Error).length;
+
+  const errorCount = countErrors();
+
   try {
     // @ts-expect-error todo
     const response = await action.handler(context);
@@ -25,7 +30,12 @@ export async function executeHandler<A extends MaybeAdminAction>(
 
     return response as ActionResponse<A>;
   } catch (error) {
-    if (notifications?.error && error instanceof Error) {
+    // A failing request reports itself through the notifications the backend sends along with the
+    // error response. Only fall back to a generic message when it did not, for example because the
+    // request never reached the backend.
+    const reported = countErrors() > errorCount;
+
+    if (!reported && notifications?.error && error instanceof Error) {
       store.add({...notifications.error, timeout: false, content: error.message}, context.parameters);
     }
 
