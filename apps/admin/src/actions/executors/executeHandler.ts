@@ -1,4 +1,4 @@
-import {Variant} from '@myparcel-dev/pdk-common';
+import {ApiException} from '@myparcel-dev/sdk';
 import {type ActionResponse, type MaybeAdminAction} from '../../types';
 import {useNotificationStore} from '../../stores';
 import {NotificationCategory} from '../../data';
@@ -14,10 +14,6 @@ export async function executeHandler<A extends MaybeAdminAction>(
 
   store.remove(NotificationCategory.Action);
 
-  const countErrors = () => store.notifications.filter(({variant}) => variant === Variant.Error).length;
-
-  const errorCount = countErrors();
-
   try {
     // @ts-expect-error todo
     const response = await action.handler(context);
@@ -30,10 +26,11 @@ export async function executeHandler<A extends MaybeAdminAction>(
 
     return response as ActionResponse<A>;
   } catch (error) {
-    // A failing request reports itself through the notifications the backend sends along with the
-    // error response. Only fall back to a generic message when it did not, for example because the
-    // request never reached the backend.
-    const reported = countErrors() > errorCount;
+    // The backend reports a failure through the notifications in its error response, which
+    // PdkFetchClient adds to the store. Only fall back to a generic message when the response
+    // carried none, for example because the request never reached the backend.
+    const reported =
+      error instanceof ApiException && Boolean((error.data as {notifications?: unknown[]}).notifications?.length);
 
     if (!reported && notifications?.error && error instanceof Error) {
       store.add({...notifications.error, timeout: false, content: error.message}, context.parameters);
