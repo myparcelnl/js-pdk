@@ -11,7 +11,7 @@ module.exports = {
   conventionalChangelogConfig: 'conventional-changelog-conventionalcommits',
   packageGroupManifestField: 'deployGroup',
   persistVersions: true,
-  plugins: ['@monoweave/plugin-github', '@edielemoine/monodeploy-plugin-github-actions'],
+  plugins: ['@monoweave/plugin-github'],
   prerelease: prereleaseBranches.includes(branch),
   prereleaseId: branch,
   prereleaseNPMTag: branch,

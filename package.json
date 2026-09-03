@@ -55,7 +55,6 @@
     "axios": "1.15.0"
   },
   "devDependencies": {
-    "@edielemoine/monodeploy-plugin-github-actions": "^1.0.0",
     "@monoweave/cli": "^1.21.0",
     "@monoweave/plugin-github": "^2.17.1",
     "@myparcel-dev/eslint-config-esnext": "^1.4.0",

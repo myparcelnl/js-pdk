@@ -404,15 +404,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@edielemoine/monodeploy-plugin-github-actions@npm:^1.0.0":
-  version: 1.0.1
-  resolution: "@edielemoine/monodeploy-plugin-github-actions@npm:1.0.1"
-  dependencies:
-    "@monodeploy/types": "npm:^5.0.0"
-  checksum: 10c0/b2693964648917b43c91c829fbf0a6127bf26c2885f68af1226daf71e4e18067f77ad39875f2eed9c723ec520876e63d934a81d6fa217fad5d14af7e23403e9f
-  languageName: node
-  linkType: hard
-
 "@esbuild/aix-ppc64@npm:0.21.5":
   version: 0.21.5
   resolution: "@esbuild/aix-ppc64@npm:0.21.5"
@@ -1605,17 +1596,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@monodeploy/types@npm:^5.0.0":
-  version: 5.0.1
-  resolution: "@monodeploy/types@npm:5.0.1"
-  dependencies:
-    tapable: "npm:^2.2.1"
-  peerDependencies:
-    "@yarnpkg/core": ^4.0.2
-  checksum: 10c0/15c07af3d8f3472c44f86b330d2a570f520fc175279c86dde1d3e389c7b107f67579a673ba1c3fbfa22448e1f6d084dfef4568c374838247bb6f69950b9fd3d1
-  languageName: node
-  linkType: hard
-
 "@monoweave/changelog@npm:^1.20.1":
   version: 1.20.1
   resolution: "@monoweave/changelog@npm:1.20.1"
@@ -2310,7 +2290,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-monorepo@workspace:."
   dependencies:
-    "@edielemoine/monodeploy-plugin-github-actions": "npm:^1.0.0"
     "@monoweave/cli": "npm:^1.21.0"
     "@monoweave/plugin-github": "npm:^2.17.1"
     "@myparcel-dev/eslint-config-esnext": "npm:^1.4.0"
