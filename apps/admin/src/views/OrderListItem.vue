@@ -21,6 +21,7 @@ import {useActionStore, useQueryStore} from '../stores';
 import {NotificationCategory, OrderMode} from '../data';
 import {useOrderData, useOrderMode} from '../composables';
 import {NotificationContainer} from '../components';
+import {notificationBelongsToOrder} from '../utils';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 const OrderModeOrderListItem = defineAsyncComponent(() => {
@@ -46,6 +47,6 @@ const orderMode = useOrderMode();
 const {query} = useOrderData();
 
 const notificationFilter: NotificationFilter = (notification) => {
-  return notification.tags?.orderIds === toValue(query.data)?.externalIdentifier;
+  return notificationBelongsToOrder(notification, toValue(query.data)?.externalIdentifier);
 };
 </script>

@@ -22,14 +22,18 @@ export const createNotification = (
     return notification;
   }
 
-  const title = `${PREFIX}${identifier ?? options?.category ?? NotificationCategory.General}_${variant}`;
-  const contentKey = `${title}_body`;
+  const titleKey = `${PREFIX}${identifier ?? options?.category ?? NotificationCategory.General}_${variant}`;
+  const contentKey = `${titleKey}_body`;
 
   const content = language.has(contentKey) ? language.translate(contentKey) : undefined;
 
-  if (!language.has(title) && !content) {
+  if (!language.has(titleKey) && !content) {
     return undefined;
   }
+
+  // No notification component translates the title, so resolve it here instead of handing them a
+  // translation key to render verbatim.
+  const title = language.has(titleKey) ? language.translate(titleKey) : undefined;
 
   return {...notification, title, content};
 };
