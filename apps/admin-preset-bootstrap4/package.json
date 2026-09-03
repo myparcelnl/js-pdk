@@ -36,7 +36,7 @@
     "@myparcel-dev/pdk-build-vite": "workspace:*",
     "@types/bootstrap": "^5.2.6",
     "@types/jquery": "^3.5.16",
-    "typescript": "^5.2.2",
+    "typescript": "^7.0.2",
     "vite": "^5.4.10",
     "vitest": "^3.2.6",
     "vue-tsc": "^3.3.9"
