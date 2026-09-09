@@ -2065,7 +2065,7 @@ __metadata:
     "@myparcel-dev/pdk-build-vite": "workspace:*"
     "@myparcel-dev/ts-utils": "npm:^1.15.0"
     "@types/bootstrap": "npm:^5.2.6"
-    "@types/jquery": "npm:^3.5.16"
+    "@types/jquery": "npm:^4.0.1"
     typescript: "npm:^5.2.2"
     vite: "npm:^5.4.10"
     vitest: "npm:^3.2.6"
@@ -3999,12 +3999,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jquery@npm:^3.5.16":
-  version: 3.5.29
-  resolution: "@types/jquery@npm:3.5.29"
-  dependencies:
-    "@types/sizzle": "npm:*"
-  checksum: 10c0/17409b551956c54d641264895790b9e63a2179bacdabe2a87d5f8f2baebe2f16625d111b17b1441cdffbf9e059e683bb25bf04ba6ea56b36e39ea50cc77f5b8c
+"@types/jquery@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@types/jquery@npm:4.0.1"
+  checksum: 10c0/8cacbee3ec548cca54079212ef0722882df53fa5e47ee7b082ed541d288487fd830faf6fb535b996d4c3e9b99e7ffa6bbc463da1b7f9e22a9b95005c55aba862
   languageName: node
   linkType: hard
 
@@ -4104,13 +4102,6 @@ __metadata:
   version: 7.5.8
   resolution: "@types/semver@npm:7.5.8"
   checksum: 10c0/8663ff927234d1c5fcc04b33062cb2b9fcfbe0f5f351ed26c4d1e1581657deebd506b41ff7fdf89e787e3d33ce05854bc01686379b89e9c49b564c4cfa988efa
-  languageName: node
-  linkType: hard
-
-"@types/sizzle@npm:*":
-  version: 2.3.8
-  resolution: "@types/sizzle@npm:2.3.8"
-  checksum: 10c0/ab5460147ae6680cc20c2223a8f17d9f7c97144b70f00a222a1c32d68b5207696d48177ab9784dda88c74d93ed5a78dd31f74d271b15382520b423c81b4aac89
   languageName: node
   linkType: hard
 

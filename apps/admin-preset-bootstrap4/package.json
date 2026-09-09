@@ -35,7 +35,7 @@
     "@myparcel-dev/pdk-admin-component-tests": "workspace:*",
     "@myparcel-dev/pdk-build-vite": "workspace:*",
     "@types/bootstrap": "^5.2.6",
-    "@types/jquery": "^3.5.16",
+    "@types/jquery": "^4.0.1",
     "typescript": "^5.2.2",
     "vite": "^5.4.10",
     "vitest": "^3.2.6",
