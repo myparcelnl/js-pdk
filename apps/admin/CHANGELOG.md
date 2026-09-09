@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.2.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.2.2...@myparcel-dev/pdk-admin@2.2.3) "@myparcel-dev/pdk-admin" (2026-09-09)
+
+
+### Bug Fixes
+
+* **notifications:** show action errors and match bulk order tags ([#432](https://github.com/myparcelnl/js-pdk/issues/432)) ([81a476e](https://github.com/myparcelnl/js-pdk/commit/81a476ea092bc3b0bcdc7da03715b5b6a82362bc)), closes [myparcelnl/pdk#528](https://github.com/myparcelnl/pdk/issues/528)
+
+
+
+
 ## [2.2.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.2.1...@myparcel-dev/pdk-admin@2.2.2) "@myparcel-dev/pdk-admin" (2026-08-19)
 
 
