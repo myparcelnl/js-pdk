@@ -41,7 +41,7 @@
     "@myparcel-dev/sdk": "^5.1.0",
     "@myparcel-dev/vue-form-builder": "1.0.0-beta.42.6",
     "@tanstack/vue-query": "~4.43.0",
-    "@vueuse/core": "^10.0.0",
+    "@vueuse/core": "^14.4.0",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3",
