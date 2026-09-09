@@ -10,6 +10,7 @@ export * from './forms';
 export * from './generateLabelFilename';
 export * from './getOrderId';
 export * from './getOrderShipmentIds';
+export * from './notificationBelongsToOrder';
 export * from './openUrlInNewTab';
 export * from './prefixComponent';
 export * from './query';

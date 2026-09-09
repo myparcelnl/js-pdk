@@ -38,6 +38,9 @@ export const createActionContext = <A extends MaybeAdminAction>(
       (acc, variant) => ({
         ...acc,
         [variant]: createNotification(variant, {
+          // Action notifications are the only ones rendered next to the order and in the order
+          // box, which is where a failing action has to report itself.
+          category: NotificationCategory.Action,
           tags: {
             action: identifier,
           },
