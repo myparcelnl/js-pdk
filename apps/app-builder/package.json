@@ -48,7 +48,7 @@
     "@types/liftoff": "^4.0.0",
     "tsup": "^7.1.0",
     "typescript": "^5.2.2",
-    "vitest": "^3.2.6"
+    "vitest": "^4.1.10"
   },
   "engines": {
     "node": ">=20"
