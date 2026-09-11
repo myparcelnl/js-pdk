@@ -5,7 +5,7 @@ import {createOrdersMutationHandler, createQueryHandler, executeNextAction, reso
 import {defineAction} from '../defineAction';
 import {getOrderShipmentIds} from '../../utils';
 import {type OrderIds} from '../../types';
-import {useModalStore} from '../../stores';
+import {useActionStore, useModalStore} from '../../stores';
 import {AdminAction, AdminIcon, AdminModalKey} from '../../data';
 import {shipmentsUpdateAction} from './shipments';
 import {useGlobalContext} from '../../composables/context/useGlobalContext';
@@ -17,11 +17,16 @@ export const ordersEditAction = defineAction({
   name: AdminAction.OrdersEdit,
   icon: AdminIcon.Edit,
   label: 'action_edit',
-  handler(context) {
-    const modalStore = useModalStore();
-    const {parameters} = context;
+  async handler(context) {
+    const {orderIds} = context.parameters;
 
-    modalStore.open(AdminModalKey.ShipmentOptions, {orderIds: parameters.orderIds});
+    // The order list seeds the cache with an order without its lines, so load the full one first.
+    // Bulk skips this: that form reads no per-order data.
+    if (toArray(orderIds ?? []).length === 1) {
+      await useActionStore().dispatch(AdminAction.OrdersFetch, {orderIds});
+    }
+
+    useModalStore().open(AdminModalKey.ShipmentOptions, {orderIds});
   },
 });
 
