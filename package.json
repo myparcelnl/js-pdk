@@ -52,7 +52,11 @@
     "eslint-plugin-prettier": "^4.2.1",
     "vue": "3.4.31",
     "tar": "^7.5.21",
-    "axios": "1.15.0"
+    "axios": "^1.18.0",
+    "undici": "^6.28.1",
+    "nx/js-yaml": "^4.3.2",
+    "nx/minimatch": "^9.0.7",
+    "editorconfig/minimatch": "^9.0.7"
   },
   "devDependencies": {
     "@monoweave/cli": "^1.21.0",
