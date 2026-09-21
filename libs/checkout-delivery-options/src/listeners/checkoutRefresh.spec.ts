@@ -6,13 +6,14 @@ import {
   SHOW_DELIVERY_OPTIONS,
   UPDATED_DELIVERY_OPTIONS,
   UPDATE_CONFIG_IN,
+  UPDATE_DELIVERY_OPTIONS,
 } from '@myparcel-dev/delivery-options';
 import {updateContext, useDeliveryOptionsStore} from '../utils';
 import {initializeCheckoutDeliveryOptions} from '../initializeCheckoutDeliveryOptions';
 
 const weight = (value: number) => ({weight: {value, unit: 'g' as const}});
 const events: CustomEvent[] = [];
-const eventNames = [HIDE_DELIVERY_OPTIONS, SHOW_DELIVERY_OPTIONS, UPDATE_CONFIG_IN];
+const eventNames = [HIDE_DELIVERY_OPTIONS, SHOW_DELIVERY_OPTIONS, UPDATE_CONFIG_IN, UPDATE_DELIVERY_OPTIONS];
 const receive = (event: Event): void => {
   events.push(event as CustomEvent);
 };
@@ -91,6 +92,27 @@ describe('checkout context responses', () => {
     expect(checkout.state.context.settings).toBe(settings);
   });
 
+  it.each([
+    ['missing actions', {actions: undefined}],
+    ['invalid action URL', {actions: {baseUrl: 12, endpoints: {}}}],
+    ['missing endpoints', {actions: {baseUrl: '/checkout'}}],
+    ['missing context endpoint', {actions: {baseUrl: '/checkout', endpoints: {}}}],
+    ['missing shipping methods', {allowedShippingMethods: undefined}],
+    ['invalid shipping methods', {allowedShippingMethods: 'package'}],
+    ['invalid shipping method entry', {allowedShippingMethods: {package: ['standard', 12]}}],
+  ])('rejects %s and preserves settings needed for recovery', async (...[, invalidSettings]) => {
+    const checkout = useCheckoutStore();
+    const {settings} = checkout.state.context;
+    const context = tests.getMockCheckoutContext();
+    tests.doRequestSpy.mockResolvedValueOnce({
+      data: {context: [{checkout: {...context, settings: {...context.settings, ...invalidSettings}}}]},
+    });
+
+    await expect(updateContext()).rejects.toThrow('Invalid checkout context response');
+    expect(checkout.state.context.settings).toBe(settings);
+    expect(useDeliveryOptionsStore().state.configuration.config.physicalProperties).toBeNull();
+  });
+
   it('does not fetch when the Delivery Options module is absent', async () => {
     tests.doRequestSpy.mockClear();
     // The core module initializes this slot to null until Delivery Options is loaded.
@@ -135,6 +157,32 @@ describe('consecutive store updates', () => {
     const updates = events.filter((event) => event.type === UPDATE_CONFIG_IN);
     expect(updates).toHaveLength(1);
     expect(updates[0].detail.config.physicalProperties).toBeNull();
+  });
+
+  it('forwards a new address when the delivery configuration is unchanged', async () => {
+    vi.useFakeTimers();
+    const store = useDeliveryOptionsStore();
+    const address = {...store.state.configuration.address, cc: 'BE'};
+    await store.set({configuration: {...store.state.configuration, address}});
+    await vi.advanceTimersByTimeAsync(110);
+
+    const updates = events.filter((event) => event.type === UPDATE_DELIVERY_OPTIONS);
+    expect(updates).toHaveLength(1);
+    expect(updates[0].detail.address).toEqual(address);
+    expect(events.filter((event) => event.type === UPDATE_CONFIG_IN)).toHaveLength(0);
+  });
+
+  it('does not render an address change while the widget is disabled', async () => {
+    vi.useFakeTimers();
+    const store = useDeliveryOptionsStore();
+    await store.set({enabled: false});
+    await vi.advanceTimersByTimeAsync(110);
+    events.length = 0;
+
+    await store.set({configuration: {...store.state.configuration, address: {cc: 'BE'}}});
+    await vi.advanceTimersByTimeAsync(110);
+
+    expect(events.filter((event) => event.type === UPDATE_DELIVERY_OPTIONS)).toHaveLength(0);
   });
 
   it('does not toggle visibility when a burst ends in the original state', async () => {
