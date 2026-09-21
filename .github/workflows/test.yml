@@ -26,7 +26,9 @@ jobs:
 
       - uses: myparcelnl/actions/codecov-coverage@v4
         with:
-          files: coverage/*.xml
+          files: |
+            apps/**/coverage/lcov.info
+            libs/**/coverage/lcov.info
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - uses: myparcelnl/actions/codecov-test-results@v4
