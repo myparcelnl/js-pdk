@@ -85,6 +85,38 @@ describe('updateContext', () => {
     expect(mocks.deliveryOptions.state.configuration.config).not.toHaveProperty('physicalProperties');
   });
 
+  it('keeps legacy configuration and package selection when the response omits configuration', async () => {
+    delete mocks.deliveryOptions.state.configuration.config.physicalProperties;
+    const configuration = {...mocks.deliveryOptions.state.configuration};
+    mocks.fetch.mockResolvedValueOnce({strings: {label: 'Updated delivery'}});
+
+    await updateContext();
+
+    expect(mocks.deliveryOptions.state.originalPackageType).toBe('package');
+    expect(mocks.deliveryOptions.state.configuration.config).toEqual(configuration.config);
+    expect(mocks.deliveryOptions.state.configuration.address).toEqual(configuration.address);
+    expect(mocks.deliveryOptions.state.configuration.strings).toEqual({label: 'Updated delivery'});
+  });
+
+  it('clears a checkout weight even when the widget has not received its configuration', async () => {
+    delete mocks.deliveryOptions.state.configuration.config;
+    mocks.fetch.mockRejectedValueOnce(new Error('Network error'));
+
+    await expect(updateContext()).rejects.toThrow('Network error');
+
+    expect(mocks.checkout.state.context.config.physicalProperties).toBeNull();
+    expect(mocks.deliveryOptions.state.configuration.config).toEqual({physicalProperties: null});
+  });
+
+  it('does not replace a request error with an error from a reset listener', async () => {
+    mocks.fetch.mockRejectedValueOnce(new Error('Network error'));
+    mocks.checkout.set.mockRejectedValueOnce(new Error('Listener error'));
+
+    await expect(updateContext()).rejects.toThrow('Network error');
+
+    expect(mocks.deliveryOptions.set).not.toHaveBeenCalled();
+  });
+
   it('applies the platform carrier filter after installing the fresh checkout context', async () => {
     mocks.fetch.mockResolvedValueOnce({
       config: {carrierSettings: {dpd: {pricePickup: 3}, postnl: {pricePickup: 4}}},
