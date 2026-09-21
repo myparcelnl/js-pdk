@@ -1,3 +1,4 @@
+import {fileURLToPath} from 'node:url';
 import dts from 'vite-plugin-dts';
 import customTsConfig from 'vite-plugin-custom-tsconfig';
 import {mergeConfig} from 'vite';
@@ -32,7 +33,12 @@ const createCommonViteConfig = (env) => {
         enabled: false,
         // Absolute, because vitest matches coverage globs anywhere in the path and treats apps/admin-* as inside apps/admin.
         include: [`${process.cwd()}/src/**/*.{ts,vue}`],
-        reporter: ['clover', 'text', ...(isProd ? [] : ['html'])],
+        reporter: [
+          'clover',
+          ['lcovonly', {projectRoot: fileURLToPath(new URL('../../', import.meta.url))}],
+          'text',
+          ...(isProd ? [] : ['html']),
+        ],
       },
       environment: 'happy-dom',
       include: ['src/**/*.spec.ts'],
