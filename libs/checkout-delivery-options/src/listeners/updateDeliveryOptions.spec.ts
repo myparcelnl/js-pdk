@@ -1,7 +1,13 @@
 /** @vitest-environment happy-dom */
-import {beforeEach, describe, expect, it} from 'vitest';
-import {AddressType, tests, updateCheckoutForm, usePdkCheckout} from '@myparcel-dev/pdk-checkout-common';
-import {useDeliveryOptionsStore} from '../utils';
+import {beforeEach, describe, expect, it, vi} from 'vitest';
+import {
+  AddressType,
+  tests,
+  updateCheckoutForm,
+  useCheckoutStore,
+  usePdkCheckout,
+} from '@myparcel-dev/pdk-checkout-common';
+import {updateContext, useDeliveryOptionsStore} from '../utils';
 import {initializeCheckoutDeliveryOptions} from '../initializeCheckoutDeliveryOptions';
 
 const BILLING_CC = 'NL';
@@ -71,6 +77,51 @@ describe('updateDeliveryOptions - ship-to-different-address toggle (billing NL /
     await changeAddressTypeTo(AddressType.Shipping);
 
     expect(tests.doRequestSpy).toHaveBeenCalled();
+  });
+
+  it('keeps a newly selected non-MyParcel method disabled after an older country refresh finishes', async () => {
+    await flush();
+    expect(useDeliveryOptionsStore().state.enabled).toBe(true);
+
+    let resolveContext!: (response: unknown) => void;
+    tests.doRequestSpy.mockReturnValueOnce(
+      new Promise((resolve) => {
+        resolveContext = resolve;
+      }),
+    );
+
+    // The first listener waits for the new country's context while its MyParcel method is selected.
+    await changeAddressTypeTo(AddressType.Shipping);
+    tests.getFormDataSpy.mockReturnValue({...formDataFor(AddressType.Shipping), 'shipping-method': 'local_pickup'});
+    updateCheckoutForm();
+    await flush();
+
+    // A newer platform refresh completes for the non-MyParcel method before the older request.
+    await updateContext();
+    expect(useDeliveryOptionsStore().state.enabled).toBe(false);
+
+    resolveContext({data: {context: [{checkout: tests.getMockCheckoutContext()}]}});
+    await flush();
+
+    expect(useDeliveryOptionsStore().state.enabled).toBe(false);
+    expect(currentDeliveryCc()).toBe(SHIPPING_CC);
+  });
+
+  it('keeps responding to form changes after an invalid country context response', async () => {
+    await flush();
+    const {settings} = useCheckoutStore().state.context;
+    const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+    tests.doRequestSpy.mockResolvedValueOnce({data: {context: []}});
+
+    try {
+      await changeAddressTypeTo(AddressType.Shipping);
+      expect(useCheckoutStore().state.context.settings).toBe(settings);
+      expect(useDeliveryOptionsStore().state.enabled).toBe(true);
+      expect(currentDeliveryCc()).toBe(SHIPPING_CC);
+      expect(warning).toHaveBeenCalledOnce();
+    } finally {
+      warning.mockRestore();
+    }
   });
 
   it('does not refetch the context when toggling between addresses in the same country', async () => {
