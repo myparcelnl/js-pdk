@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.2.4](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.2.3...@myparcel-dev/pdk-admin@2.2.4) "@myparcel-dev/pdk-admin" (2026-09-22)
+
+
+### Bug Fixes
+
+* **print:** print on every press when the label prompt is enabled ([#446](https://github.com/myparcelnl/js-pdk/issues/446)) ([1d6e022](https://github.com/myparcelnl/js-pdk/commit/1d6e02225b61cd794396063dd1ea8d34870a1557))
+
+
+
+
 ## [2.2.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.2.2...@myparcel-dev/pdk-admin@2.2.3) "@myparcel-dev/pdk-admin" (2026-09-09)
 
 
