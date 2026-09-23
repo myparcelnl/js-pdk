@@ -1,10 +1,17 @@
 /** @vitest-environment happy-dom */
 import {beforeEach, describe, expect, it} from 'vitest';
-import {PdkField, tests, updateCheckoutForm, useCheckoutStore, usePdkCheckout} from '@myparcel-dev/pdk-checkout-common';
+import {
+  ADDRESS_FIELD_IS_BUSINESS,
+  AddressType,
+  tests,
+  updateCheckoutForm,
+  useCheckoutStore,
+  usePdkCheckout,
+} from '@myparcel-dev/pdk-checkout-common';
 import {initializeCheckoutDeliveryOptions} from '../initializeCheckoutDeliveryOptions';
 import {refreshContextIfBusinessChanged} from './refreshContextIfBusinessChanged';
 
-const IS_BUSINESS_KEY = 'is-business';
+const IS_BUSINESS_KEY = 'b-is-business';
 
 const formData = (isBusiness: boolean): Record<string, string> => ({
   'address-type': 'billing',
@@ -40,7 +47,11 @@ const setContextBusiness = async (isBusiness: boolean): Promise<void> => {
 
 /** Start a checkout where the platform reports the business flag, unless told otherwise. */
 const start = async (reportsField = true): Promise<void> => {
-  await tests.mockPdkCheckout(reportsField ? {formData: {[PdkField.IsBusiness]: IS_BUSINESS_KEY}} : undefined);
+  await tests.mockPdkCheckout(
+    reportsField
+      ? {formData: {[AddressType.Billing]: {[ADDRESS_FIELD_IS_BUSINESS]: IS_BUSINESS_KEY}}}
+      : undefined,
+  );
   usePdkCheckout().onInitialize(() => initializeCheckoutDeliveryOptions());
   await flush();
 };
