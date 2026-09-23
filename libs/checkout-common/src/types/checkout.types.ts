@@ -22,7 +22,12 @@ export type PdkCheckoutConfigInput = Omit<
 /**
  * Includes our own address fields, and any additional fields described by optional packages.
  */
-export type PdkCheckoutForm = Record<PdkField, string> & {
+export type PdkCheckoutForm = Record<Exclude<PdkField, PdkField.IsBusiness>, string> & {
+  /**
+   * Only a platform that can tell when its address reached the server reports this, so it stays
+   * optional. A platform that leaves it out keeps the behaviour it had before.
+   */
+  [PdkField.IsBusiness]?: string;
   [AddressType.Billing]: AddressFields & Record<string, string>;
   [AddressType.Shipping]: AddressFields & Record<string, string>;
 };

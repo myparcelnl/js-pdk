@@ -4,6 +4,7 @@ export * from './fetchCheckoutContext';
 export * from './getDeliveryOptionsAddress';
 export * from './getPackageTypeFromShippingMethod';
 export * from './getResolvedSettings';
+export * from './refreshContextIfBusinessChanged';
 export * from './shippingMethodHasDeliveryOptions';
 export * from './toggleDeliveryOptions';
 export * from './updateContext';
