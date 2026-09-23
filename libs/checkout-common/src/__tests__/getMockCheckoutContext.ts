@@ -1,11 +1,12 @@
 import {vi} from 'vitest';
+import {type RecursivePartial} from '@myparcel-dev/ts-utils';
 import {FrontendEndpoint, type Plugin} from '@myparcel-dev/pdk-common';
 import {KEY_CONFIG} from '@myparcel-dev/delivery-options';
 import {PackageTypeName} from '@myparcel-dev/constants';
 import {getMockDeliveryOptionsConfig} from './getMockDeliveryOptionsConfig';
 
 export const getMockCheckoutContext = vi.fn(
-  (context?: Partial<Plugin.ModelContextCheckoutContext>): Plugin.ModelContextCheckoutContext => {
+  (context?: RecursivePartial<Plugin.ModelContextCheckoutContext>): Plugin.ModelContextCheckoutContext => {
     return {
       settings: {
         hasDeliveryOptions: true,

@@ -1,11 +1,12 @@
 import {vi} from 'vitest';
+import {type RecursivePartial} from '@myparcel-dev/ts-utils';
 import {type PdkCheckoutConfigInput} from '../types';
 import {AddressField, AddressType, PdkField} from '../data';
 import {doRequestSpy, getFormDataSpy, getFormSpy, hasAddressTypeSpy, initializeSpy, toggleFieldSpy} from './spies';
 import {getMockFormData} from './getMockFormData';
 
 export const getMockPdkCheckoutConfig = vi.fn(
-  (config?: Partial<PdkCheckoutConfigInput>): PdkCheckoutConfigInput => ({
+  (config?: RecursivePartial<PdkCheckoutConfigInput>): PdkCheckoutConfigInput => ({
     doRequest: doRequestSpy,
     getForm: getFormSpy,
     getFormData: getFormDataSpy,
@@ -39,7 +40,8 @@ export const getMockPdkCheckoutConfig = vi.fn(
         ...config?.fields?.[AddressType.Shipping],
       },
       ...config?.fields,
-    },
+      // A recursive partial makes every value optional; the defaults above fill the gaps.
+    } as PdkCheckoutConfigInput['fields'],
 
     formData: getMockFormData(config?.formData),
   }),
