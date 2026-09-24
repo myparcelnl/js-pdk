@@ -1,12 +1,11 @@
-import isCi from 'is-ci';
 import {type BaseElementNode, type Node} from '@vue/compiler-core';
 import vue from '@vitejs/plugin-vue';
 import {createViteConfig} from '@myparcel-dev/pdk-build-vite';
 import {isOfType} from '@myparcel-dev/ts-utils';
-import {codecovVitePlugin} from '@codecov/vite-plugin';
-import {name} from './package.json';
 
 const PROP_TYPE_DIRECTIVE = 7;
+
+const SHARED_CHUNK_MIN_IMPORTERS = 2;
 
 const stripDirective = (name: string) => (node: Node) => {
   if (!isOfType<BaseElementNode>(node, 'props')) {
@@ -20,12 +19,6 @@ const stripDirective = (name: string) => (node: Node) => {
 
 export default createViteConfig((env) => ({
   plugins: [
-    codecovVitePlugin({
-      enableBundleAnalysis: isCi && process.env.CODECOV_TOKEN !== undefined,
-      bundleName: name,
-      uploadToken: process.env.CODECOV_TOKEN,
-    }),
-
     vue({
       template: {
         compilerOptions: {
@@ -37,5 +30,13 @@ export default createViteConfig((env) => ({
 
   build: {
     minify: false,
+    rolldownOptions: {
+      output: {
+        // Unminified output keeps JSDoc by default, which adds about 100 KB of dependency comments.
+        comments: {jsdoc: false},
+        // Without this group, Rolldown splits the shared code into about 25 chunks that all load at startup.
+        codeSplitting: {groups: [{name: 'shared', minShareCount: SHARED_CHUNK_MIN_IMPORTERS}]},
+      },
+    },
   },
 }));
