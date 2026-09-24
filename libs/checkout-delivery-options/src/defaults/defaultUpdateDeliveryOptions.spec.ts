@@ -37,6 +37,19 @@ const doTestSetup = async (originalPackageType?: PackageTypeName): Promise<void>
 };
 
 describe('defaultUpdateDeliveryOptions', () => {
+  it('uses the refreshed state argument before the live store has been updated', async () => {
+    await doTestSetup(PackageTypeName.Mailbox);
+    const deliveryOptions = useDeliveryOptionsStore();
+    const state = {
+      ...deliveryOptions.state,
+      originalPackageType: PackageTypeName.Package,
+      settings: {...deliveryOptions.state.settings, getPackageType: () => undefined},
+    };
+
+    expect(defaultUpdateDeliveryOptions(state).packageType).toBe(PackageTypeName.Package);
+    expect(deliveryOptions.state.originalPackageType).toBe(PackageTypeName.Mailbox);
+  });
+
   it.each([
     {
       originalPackageType: undefined,

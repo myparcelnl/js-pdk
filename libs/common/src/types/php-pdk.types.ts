@@ -324,6 +324,10 @@ export namespace Plugin {
     pickupLocationsDefaultView: string;
     priceStandardDelivery: number;
     carrierSettings: unknown[];
+    /** Null clears a previous cart weight; older PDK versions omit this field. */
+    physicalProperties?: {
+      weight: {value: number; unit: 'g'};
+    } | null;
   };
 
   export type ModelContextCheckoutContextSettings = {
@@ -348,7 +352,7 @@ export namespace Plugin {
   };
 
   export type ModelContextCheckoutContext = {
-    config: Shipment.ModelDeliveryOptions;
+    config: Shipment.ModelDeliveryOptions & Pick<ModelContextDeliveryOptionsConfig, 'physicalProperties'>;
     platformConfig: Record<'carriers', unknown[]>; // @todo this is a temporary generic type, until capabilities is implemented in the deliveryOptions
     endpoints: EndpointRequestCollection;
     settings: ModelContextCheckoutContextSettings;
