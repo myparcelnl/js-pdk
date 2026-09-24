@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.2.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-common@2.1.2...@myparcel-dev/pdk-common@2.2.0) "@myparcel-dev/pdk-common" (2026-09-24)
+
+
+### Features
+
+* **checkout:** refresh the context when the recipient business flag changes ([#461](https://github.com/myparcelnl/js-pdk/issues/461)) ([0689762](https://github.com/myparcelnl/js-pdk/commit/0689762ae5b14c592e664b286612796aed0c7a9d)), closes [myparcelnl/woocommerce#1848](https://github.com/myparcelnl/woocommerce/issues/1848) [#359](https://github.com/myparcelnl/js-pdk/issues/359)
+
+
+
+
 ## [2.1.2](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-common@2.1.1...@myparcel-dev/pdk-common@2.1.2) "@myparcel-dev/pdk-common" (2026-08-19)
 
 
