@@ -37,8 +37,8 @@
     "@myparcel-dev/pdk-admin-component-tests": "workspace:*",
     "@myparcel-dev/pdk-build-vite": "workspace:*",
     "typescript": "^5.2.2",
-    "vite": "^6.4.3",
-    "vitest": "^3.2.6",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.1",
     "vue-tsc": "^3.3.9"
   },
   "engines": {
