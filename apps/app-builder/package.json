@@ -33,20 +33,20 @@
     "typecheck": "run ws:ts:typecheck \"$(pwd)\""
   },
   "dependencies": {
+    "@myparcel-dev/google-docs-importer": "^1.0.2",
     "@myparcel-dev/ts-utils": "^1.15.0",
     "chalk": "^6.0.0",
     "commander": "^12.0.0",
     "debug": "^4.3.4",
     "interpret": "^3.1.1",
     "liftoff": "^5.0.0",
-    "mypa-google-docs-importer": "^1.0.1",
     "radash": "^12.1.0"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
     "@types/interpret": "^1.1.1",
     "@types/liftoff": "^4.0.0",
-    "tsup": "^7.1.0",
+    "tsup": "^8.5.1",
     "typescript": "^5.2.2",
     "vitest": "^3.2.6"
   },
