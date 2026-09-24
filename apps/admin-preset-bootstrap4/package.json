@@ -38,7 +38,7 @@
     "@types/jquery": "^3.5.16",
     "typescript": "^5.2.2",
     "vite": "^5.4.10",
-    "vitest": "^3.2.6",
+    "vitest": "^4.1.10",
     "vue-tsc": "^3.3.9"
   },
   "engines": {
