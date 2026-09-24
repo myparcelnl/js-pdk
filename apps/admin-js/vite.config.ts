@@ -8,6 +8,8 @@ import {name} from './package.json';
 
 const PROP_TYPE_DIRECTIVE = 7;
 
+const SHARED_CHUNK_MIN_IMPORTERS = 2;
+
 const stripDirective = (name: string) => (node: Node) => {
   if (!isOfType<BaseElementNode>(node, 'props')) {
     return;
@@ -37,5 +39,13 @@ export default createViteConfig((env) => ({
 
   build: {
     minify: false,
+    rolldownOptions: {
+      output: {
+        // Unminified output keeps JSDoc by default, which adds about 100 KB of dependency comments.
+        comments: {jsdoc: false},
+        // Without this group, Rolldown splits the shared code into about 25 chunks that all load at startup.
+        codeSplitting: {groups: [{name: 'shared', minShareCount: SHARED_CHUNK_MIN_IMPORTERS}]},
+      },
+    },
   },
 }));
