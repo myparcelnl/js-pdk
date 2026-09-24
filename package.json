@@ -50,8 +50,7 @@
   "prettier": "@myparcel-dev/prettier-config",
   "resolutions": {
     "eslint-plugin-prettier": "^4.2.1",
-    "vue": "3.4.31",
-    "csv-parse": "^7.0.2"
+    "vue": "3.4.31"
   },
   "devDependencies": {
     "@monoweave/cli": "^1.21.0",
