@@ -48,7 +48,7 @@ Vue templates use `Pdk*` components (for example `PdkButton`) without importing 
 
 Admin shipment/delivery-option forms resolve what a carrier supports at runtime via the PHP-PDK `ProxyCapabilities` endpoint, not from hardcoded carrier/option constants:
 
-- Two queries: an **order-scoped** one (keyed on country + weight) drives the carrier / package-type / delivery-type dropdowns, and a **shipment-scoped** one (full selection) drives per-option metadata. Refetch is narrow and debounced — only `cc` / `carrier` / `packageType` / `deliveryType` / `weight` / `isBusiness` trigger it; option toggles resolve client-side.
+- Two queries. The **order-scoped** one asks what is possible for the order across all carriers and drives the carrier / package-type / delivery-type dropdowns. The **shipment-scoped** one asks about the chosen combination and drives per-option metadata. Both are keyed on a debounced selection from `useCapabilitiesWatcher`, so a query refetches only when a field in its key changes. Shipment options are not part of any key, so option toggles resolve client-side without a request.
 - Shipment-option fields are data-driven: `createShipmentOptionField` renders any option from `carrier.options` as a TriState. Only options needing non-TriState UI get a custom factory (`fieldFactoryRegistry`, currently just `insurance`).
 - When a server-confirmed invalid combination empties the results, conflicting options are auto-cleared and a notification is shown (`useCapabilitiesAutoClear`).
 - **Order mode v2** is read from the PHP context (`effectiveOrderMode`, fallback `subscriptionFeatures`) and gates export/print actions and settings tabs.
