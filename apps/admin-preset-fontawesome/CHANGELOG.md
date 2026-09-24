@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.2.6](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin-preset-fontawesome@2.2.5...@myparcel-dev/pdk-admin-preset-fontawesome@2.2.6) "@myparcel-dev/pdk-admin-preset-fontawesome" (2026-09-24)
+
+
+### Reverts
+
+* build(deps): update vitest to 4 and vite to 8 ([7696c6f](https://github.com/myparcelnl/js-pdk/commit/7696c6f8d344619c2e554f0fae5ed5db2d5c71f8)), closes [#463](https://github.com/myparcelnl/js-pdk/issues/463)
+
+
+
+
 ## [2.2.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin-preset-fontawesome@2.2.0...@myparcel-dev/pdk-admin-preset-fontawesome@2.2.1) "@myparcel-dev/pdk-admin-preset-fontawesome" (2026-08-07)
 
 

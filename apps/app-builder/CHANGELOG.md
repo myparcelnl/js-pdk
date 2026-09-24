@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [4.1.4](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-app-builder@4.1.3...@myparcel-dev/pdk-app-builder@4.1.4) "@myparcel-dev/pdk-app-builder" (2026-09-24)
+
+
+### Reverts
+
+* build(deps): update vitest to 4 and vite to 8 ([7696c6f](https://github.com/myparcelnl/js-pdk/commit/7696c6f8d344619c2e554f0fae5ed5db2d5c71f8)), closes [#463](https://github.com/myparcelnl/js-pdk/issues/463)
+
+
+
+
 ## [4.1.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-app-builder@4.1.2...@myparcel-dev/pdk-app-builder@4.1.3) "@myparcel-dev/pdk-app-builder" (2026-08-07)
 
 
