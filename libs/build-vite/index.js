@@ -29,8 +29,9 @@ const createCommonViteConfig = (env) => {
     test: {
       reporters: ['default', ['junit', {outputFile: './junit.xml'}]],
       coverage: {
-        all: true,
         enabled: false,
+        // Absolute, because vitest matches coverage globs anywhere in the path and treats apps/admin-* as inside apps/admin.
+        include: [`${process.cwd()}/src/**/*.{ts,vue}`],
         reporter: ['clover', 'text', ...(isProd ? [] : ['html'])],
       },
       environment: 'happy-dom',
