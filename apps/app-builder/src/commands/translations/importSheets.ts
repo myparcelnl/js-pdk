@@ -1,4 +1,4 @@
-import {importTranslations} from 'mypa-google-docs-importer';
+import {importTranslations} from '@myparcel-dev/google-docs-importer';
 import chalk from 'chalk';
 import {getRelativePath} from '../../utils/getRelativePath';
 import {executePromises} from '../../utils/executePromises';
