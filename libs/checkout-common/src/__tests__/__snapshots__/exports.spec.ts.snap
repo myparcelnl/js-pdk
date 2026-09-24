@@ -2,6 +2,7 @@
 
 exports[`exports > exports from index.ts 1`] = `
 [
+  "ADDRESS_FIELD_IS_BUSINESS",
   "ATTRIBUTE_CONTEXT",
   "AddressField",
   "AddressType",

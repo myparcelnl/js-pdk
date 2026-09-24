@@ -324,6 +324,8 @@ export namespace Plugin {
     pickupLocationsDefaultView: string;
     priceStandardDelivery: number;
     carrierSettings: unknown[];
+    /** Whether the context was built for a business recipient. Decides which carriers it holds. */
+    isBusiness: boolean;
   };
 
   export type ModelContextCheckoutContextSettings = {
@@ -348,7 +350,7 @@ export namespace Plugin {
   };
 
   export type ModelContextCheckoutContext = {
-    config: Shipment.ModelDeliveryOptions;
+    config: ModelContextDeliveryOptionsConfig;
     platformConfig: Record<'carriers', unknown[]>; // @todo this is a temporary generic type, until capabilities is implemented in the deliveryOptions
     endpoints: EndpointRequestCollection;
     settings: ModelContextCheckoutContextSettings;

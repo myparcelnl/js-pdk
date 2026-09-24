@@ -1,3 +1,4 @@
+import {type RecursivePartial} from '@myparcel-dev/ts-utils';
 import {usePdkCheckout} from '../utils';
 import {type PdkCheckoutConfigInput} from '../types';
 import {createPdkCheckout} from '../createPdkCheckout';
@@ -13,7 +14,10 @@ function reset() {
   document.getElementById('test-wrapper')?.remove();
 }
 
-export const mockPdkCheckout = (config?: Partial<PdkCheckoutConfigInput>, includeElements = true): Promise<void> => {
+export const mockPdkCheckout = (
+  config?: RecursivePartial<PdkCheckoutConfigInput>,
+  includeElements = true,
+): Promise<void> => {
   reset();
 
   return new Promise((resolve, reject) => {
