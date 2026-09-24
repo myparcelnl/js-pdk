@@ -42,7 +42,7 @@ The marketplace is private, so only MyParcel employees can install it.
 
 ## Admin components
 
-Vue templates use `Pdk*` components (for example `PdkButton`) without importing them. The plugin passes the components in its admin config, usually from a `@myparcel-dev/pdk-admin-preset-*` package, and `createRegisterComponentsPlugin` registers them globally. A missing required component logs an error; a missing optional component falls back to a plain element. ESLint allows `Pdk*` as undefined components for this reason.
+Vue templates use `Pdk*` components (for example `PdkButton`) without importing them. The plugin passes the components in its admin config, usually from a `@myparcel-dev/pdk-admin-preset-*` package, and `createRegisterComponentsPlugin` registers them globally. A missing required component logs an error. A missing optional component falls back to the default that `getOptionalComponents` sets for its group. ESLint allows `Pdk*` as undefined components for this reason.
 
 ## Capabilities (runtime model)
 
