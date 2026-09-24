@@ -2,9 +2,9 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "myparcel-pdk",
   "affected": {
-    "defaultBase": "alpha"
+    "defaultBase": "main"
   },
-  "defaultBase": "alpha",
+  "defaultBase": "main",
   "namedInputs": {
     "default": [
       "{workspaceRoot}/libs/build-vite/index.js",
