@@ -1687,7 +1687,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-admin-component-tests@workspace:apps/admin-component-tests"
   dependencies:
-    "@myparcel-dev/pdk-admin": "workspace:^2.2.6"
+    "@myparcel-dev/pdk-admin": "workspace:^2.2.7"
     "@pinia/testing": "npm:>= 0.1.0 < 1"
     "@vue/test-utils": "npm:^2.5.1"
     pinia: "npm:^2.0.0"
@@ -1729,7 +1729,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-admin-js@workspace:apps/admin-js"
   dependencies:
-    "@myparcel-dev/pdk-admin": "workspace:^2.2.6"
+    "@myparcel-dev/pdk-admin": "workspace:^2.2.7"
     "@myparcel-dev/pdk-build-vite": "workspace:*"
     typescript: "npm:^5.2.2"
     vite: "npm:^8.3.1"
@@ -1743,7 +1743,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-admin-preset-bootstrap4@workspace:apps/admin-preset-bootstrap4"
   dependencies:
-    "@myparcel-dev/pdk-admin": "workspace:^2.2.6"
+    "@myparcel-dev/pdk-admin": "workspace:^2.2.7"
     "@myparcel-dev/pdk-admin-component-tests": "workspace:*"
     "@myparcel-dev/pdk-build-vite": "workspace:*"
     "@myparcel-dev/ts-utils": "npm:^1.15.0"
@@ -1761,7 +1761,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-admin-preset-dashicons@workspace:apps/admin-preset-dashicons"
   dependencies:
-    "@myparcel-dev/pdk-admin": "workspace:^2.2.6"
+    "@myparcel-dev/pdk-admin": "workspace:^2.2.7"
     "@myparcel-dev/pdk-admin-component-tests": "workspace:*"
     "@myparcel-dev/pdk-build-vite": "workspace:*"
     typescript: "npm:^5.2.2"
@@ -1776,7 +1776,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-admin-preset-default@workspace:apps/admin-preset-default"
   dependencies:
-    "@myparcel-dev/pdk-admin": "workspace:^2.2.6"
+    "@myparcel-dev/pdk-admin": "workspace:^2.2.7"
     "@myparcel-dev/pdk-admin-component-tests": "workspace:*"
     "@myparcel-dev/pdk-build-vite": "workspace:*"
     "@myparcel-dev/ts-utils": "npm:^1.15.0"
@@ -1794,7 +1794,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-admin-preset-fontawesome@workspace:apps/admin-preset-fontawesome"
   dependencies:
-    "@myparcel-dev/pdk-admin": "workspace:^2.2.6"
+    "@myparcel-dev/pdk-admin": "workspace:^2.2.7"
     "@myparcel-dev/pdk-admin-component-tests": "workspace:*"
     "@myparcel-dev/pdk-build-vite": "workspace:*"
     typescript: "npm:^5.2.2"
@@ -1805,7 +1805,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@myparcel-dev/pdk-admin@workspace:*, @myparcel-dev/pdk-admin@workspace:^2.2.6, @myparcel-dev/pdk-admin@workspace:apps/admin":
+"@myparcel-dev/pdk-admin@workspace:*, @myparcel-dev/pdk-admin@workspace:^2.2.7, @myparcel-dev/pdk-admin@workspace:apps/admin":
   version: 0.0.0-use.local
   resolution: "@myparcel-dev/pdk-admin@workspace:apps/admin"
   dependencies:

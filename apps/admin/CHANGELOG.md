@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.2.7](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.2.6...@myparcel-dev/pdk-admin@2.2.7) "@myparcel-dev/pdk-admin" (2026-09-25)
+
+
+### Bug Fixes
+
+* **admin:** load the full order when the shipment options modal opens ([#445](https://github.com/myparcelnl/js-pdk/issues/445)) ([5ac4d1c](https://github.com/myparcelnl/js-pdk/commit/5ac4d1c87d469829cb25a9518239977d8e38e923))
+
+
+
+
 ## [2.2.6](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.2.5...@myparcel-dev/pdk-admin@2.2.6) "@myparcel-dev/pdk-admin" (2026-09-24)
 
 
