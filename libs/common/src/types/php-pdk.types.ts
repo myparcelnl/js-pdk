@@ -328,7 +328,8 @@ export namespace Plugin {
     isBusiness: boolean;
     /** Null clears a previous cart weight; older PDK versions omit this field. */
     physicalProperties?: {
-      weight: {value: number; unit: 'g'};
+      /** Weight in grams. */
+      weight: number;
     } | null;
   };
 
