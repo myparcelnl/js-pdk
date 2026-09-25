@@ -18,7 +18,7 @@ vi.mock('@myparcel-dev/pdk-checkout-common', () => ({useCheckoutStore: () => moc
 vi.mock('./useDeliveryOptionsStore', () => ({useDeliveryOptionsStore: () => mocks.deliveryOptions}));
 vi.mock('./fetchCheckoutContext', () => ({fetchCheckoutContext: mocks.fetch}));
 
-const physicalProperties = (grams: number) => ({weight: {value: grams, unit: 'g'}});
+const physicalProperties = (grams: number) => ({weight: grams});
 const context = (grams: number | null) => ({
   config: {physicalProperties: grams === null ? null : physicalProperties(grams)},
   strings: {},
