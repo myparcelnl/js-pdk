@@ -11,7 +11,7 @@ import {
 import {updateContext, useDeliveryOptionsStore} from '../utils';
 import {initializeCheckoutDeliveryOptions} from '../initializeCheckoutDeliveryOptions';
 
-const weight = (value: number) => ({weight: {value, unit: 'g' as const}});
+const weight = (value: number) => ({weight: value});
 const events: CustomEvent[] = [];
 const eventNames = [HIDE_DELIVERY_OPTIONS, SHOW_DELIVERY_OPTIONS, UPDATE_CONFIG_IN, UPDATE_DELIVERY_OPTIONS];
 const receive = (event: Event): void => {

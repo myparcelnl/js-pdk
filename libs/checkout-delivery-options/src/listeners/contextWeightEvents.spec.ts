@@ -12,7 +12,7 @@ const receiveConfig = (event: Event): void => {
 
 const setContextWeight = async (weight: number | null): Promise<void> => {
   const context = tests.getMockCheckoutContext();
-  context.config.physicalProperties = weight === null ? null : {weight: {value: weight, unit: 'g'}};
+  context.config.physicalProperties = weight === null ? null : {weight};
   tests.doRequestSpy.mockResolvedValueOnce({data: {context: [{checkout: context}]}});
   await updateContext();
 };
@@ -41,7 +41,7 @@ describe('checkout context weight events', () => {
 
   it('forwards known, changed and cleared weights through the real widget config event', async () => {
     for (const weight of [30000, 15000, null]) {
-      const expected = weight === null ? null : {weight: {value: weight, unit: 'g'}};
+      const expected = weight === null ? null : {weight};
       await setContextWeight(weight);
       await vi.waitFor(() => {
         expect(events.at(-1)?.detail.config.physicalProperties).toEqual(expected);
@@ -53,7 +53,7 @@ describe('checkout context weight events', () => {
 
   it('does not send another config event for an unchanged cart context', async () => {
     await setContextWeight(30000);
-    await vi.waitFor(() => expect(events.at(-1)?.detail.config.physicalProperties.weight.value).toBe(30000));
+    await vi.waitFor(() => expect(events.at(-1)?.detail.config.physicalProperties.weight).toBe(30000));
     const count = events.length;
     await setContextWeight(30000);
     await new Promise((resolve) => {
