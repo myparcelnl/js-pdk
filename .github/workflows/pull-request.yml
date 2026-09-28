@@ -21,19 +21,19 @@ jobs:
   bundlewatch:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: myparcelnl/actions/yarn-install@v4
+      - uses: myparcelnl/actions/yarn-install@v5
         with:
           node-version: ${{ vars.NODE_VERSION }}
 
-      - uses: myparcelnl/actions/nx-run-many@v4
+      - uses: myparcelnl/actions/nx-run-many@v5
         env:
           NX_BRANCH: production
         with:
           target: 'build'
 
-      - uses: myparcelnl/actions/setup-git-credentials@v4
+      - uses: myparcelnl/actions/setup-git-credentials@v5
         id: credentials
         with:
           app-id: ${{ secrets.MYPARCEL_APP_ID }}
@@ -43,6 +43,6 @@ jobs:
         shell: bash
         run: git fetch --no-tags --prune --depth=1 origin ${{ github.base_ref }}
 
-      - uses: myparcelnl/actions/bundlewatch@v4
+      - uses: myparcelnl/actions/bundlewatch@v5
         with:
           token: ${{ inputs.bundlewatch-token }}

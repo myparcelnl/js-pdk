@@ -20,28 +20,28 @@ jobs:
     runs-on: ubuntu-22.04
     needs: test
     steps:
-      - uses: myparcelnl/actions/setup-git-credentials@v4
+      - uses: myparcelnl/actions/setup-git-credentials@v5
         id: credentials
         with:
           app-id: ${{ secrets.MYPARCEL_APP_ID }}
           private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           token: ${{ steps.credentials.outputs.token }}
           fetch-depth: 0
 
-      - uses: myparcelnl/actions/yarn-install@v4
+      - uses: myparcelnl/actions/yarn-install@v5
         with:
           node-version: ${{ vars.NODE_VERSION }}
 
-      - uses: myparcelnl/actions/nx-run-many@v4
+      - uses: myparcelnl/actions/nx-run-many@v5
         env:
           NX_BRANCH: production
         with:
           target: 'build'
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: ./apps/admin-demo/dist
 
@@ -71,7 +71,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
   notify-on-failure:
     needs:
@@ -79,5 +79,5 @@ jobs:
       - release
       - deploy
     if: always() && contains(needs.*.result, 'failure')
-    uses: myparcelnl/actions/.github/workflows/notify-on-failure.yml@v4
+    uses: myparcelnl/actions/.github/workflows/notify-on-failure.yml@v5
     secrets: inherit
