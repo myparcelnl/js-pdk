@@ -32,6 +32,7 @@ const openPreparedPdf = async <A extends PrintAction>(
   if (parameters?.output === 'download') {
     hideLabelsNotification();
     downloadFileFromUrl(url, generateLabelFilename(parameters));
+    URL.revokeObjectURL(url);
     return;
   }
 

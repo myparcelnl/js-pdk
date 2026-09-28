@@ -48,6 +48,7 @@ describe('openOrPrintPdf with a label link', () => {
     openUrlInNewTab.mockReset();
     downloadFileFromUrl.mockReset();
     URL.createObjectURL = vi.fn(() => 'blob:labels');
+    URL.revokeObjectURL = vi.fn();
     showLabelsLoading();
   });
 
@@ -83,6 +84,7 @@ describe('openOrPrintPdf with a label link', () => {
     await print('download');
 
     expect(downloadFileFromUrl).toHaveBeenCalledWith('blob:labels', 'myparcel-labels.pdf');
+    expect(URL.revokeObjectURL).toHaveBeenCalledWith('blob:labels');
     expect(labelsNotification()).toBeUndefined();
   });
 
