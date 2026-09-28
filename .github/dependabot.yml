@@ -28,6 +28,9 @@ updates:
         - '@myparcel-dev/*'
         - '@myparcel-eslint/*'
         - '@myparcel-pdk/*'
+    ignore:
+      # @myparcel-dev/vue-form-builder does not work with vue > 3.4.31. Remove this when that package goes (INT-1354).
+      - dependency-name: 'vue'
     groups:
       minor-js-updates:
         applies-to: version-updates
