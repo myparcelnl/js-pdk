@@ -4,6 +4,7 @@
     name="fade">
     <div
       v-test="AdminComponent.Notification"
+      :aria-busy="notification.loading ? 'true' : undefined"
       :class="alertClasses"
       class="alert"
       role="alert">
@@ -17,6 +18,18 @@
           v-for="(item, index) in contentArray"
           :key="`alert_${index}_${item}`"
           v-text="item" />
+
+        <span
+          v-if="notification.loading"
+          class="spinner-border spinner-border-sm"
+          role="status" />
+
+        <button
+          v-if="notification.action"
+          class="btn btn-primary btn-sm"
+          type="button"
+          @click="notification.action.onClick()"
+          v-text="notification.action.label" />
       </div>
     </div>
   </Transition>
