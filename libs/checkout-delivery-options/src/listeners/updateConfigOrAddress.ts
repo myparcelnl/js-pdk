@@ -1,7 +1,7 @@
 import {objectIsEqual} from '@myparcel-dev/ts-utils';
 import {PdkUtil, type StoreCallbackUpdate, useUtil} from '@myparcel-dev/pdk-checkout-common';
 import {UPDATE_CONFIG_IN, UPDATE_DELIVERY_OPTIONS} from '@myparcel-dev/delivery-options';
-import {debounceStoreUpdate} from '../utils/debounceStoreUpdate';
+import {debounceUpdateListener} from '../utils/debounceUpdateListener';
 import {deliveryOptionsIsRendered} from '../utils';
 import {type DeliveryOptionsStoreState} from '../types';
 
@@ -9,7 +9,7 @@ import {type DeliveryOptionsStoreState} from '../types';
  * Send events to the delivery options when the configuration or address has changed.
  */
 // eslint-disable-next-line complexity
-export const updateConfigOrAddress: StoreCallbackUpdate<DeliveryOptionsStoreState> = debounceStoreUpdate(
+export const updateConfigOrAddress: StoreCallbackUpdate<DeliveryOptionsStoreState> = debounceUpdateListener(
   (newState, oldState) => {
     const triggerEvent = useUtil(PdkUtil.TriggerEvent);
 
