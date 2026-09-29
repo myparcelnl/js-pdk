@@ -37,7 +37,7 @@ const doTestSetup = async (originalPackageType?: PackageTypeName): Promise<void>
 };
 
 describe('defaultUpdateDeliveryOptions', () => {
-  it('uses the refreshed state argument before the live store has been updated', async () => {
+  it('reads the package type from the state it receives, not from the store', async () => {
     await doTestSetup(PackageTypeName.Mailbox);
     const deliveryOptions = useDeliveryOptionsStore();
     const state = {
