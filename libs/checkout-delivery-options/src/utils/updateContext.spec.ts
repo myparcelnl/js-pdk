@@ -23,6 +23,7 @@ const context = (grams: number | null) => ({
   config: {physicalProperties: grams === null ? null : physicalProperties(grams)},
   strings: {},
 });
+/** A promise that the test resolves or rejects itself, to control when a request or a listener finishes. */
 const deferred = <T>() => {
   let resolve!: (value: T) => void;
   let reject!: (reason: Error) => void;
@@ -37,8 +38,8 @@ describe('updateContext', () => {
   beforeEach(() => {
     vi.resetAllMocks();
     mocks.checkout.state.context = context(30000);
-    mocks.checkout.set.mockImplementation(({context: fresh}) => {
-      mocks.checkout.state.context = fresh;
+    mocks.checkout.set.mockImplementation(({context: newContext}) => {
+      mocks.checkout.state.context = newContext;
     });
     mocks.deliveryOptions = {
       state: {
@@ -59,7 +60,7 @@ describe('updateContext', () => {
     };
   });
 
-  it('updates the weight while keeping address, prices and translations', async () => {
+  it('updates the weight and keeps the address, prices and strings', async () => {
     mocks.fetch.mockResolvedValueOnce(context(15000));
     await updateContext();
     expect(mocks.deliveryOptions.state.configuration).toEqual({
@@ -72,20 +73,20 @@ describe('updateContext', () => {
     });
   });
 
-  it('clears a previously known weight with explicit null', async () => {
+  it('removes the weight when the new context has a null weight', async () => {
     mocks.fetch.mockResolvedValueOnce(context(null));
     await updateContext();
     expect(mocks.deliveryOptions.state.configuration.config.physicalProperties).toBeNull();
   });
 
-  it('keeps compatibility with an older PDK that omits the optional field', async () => {
+  it('does not add a weight when an older PDK sends none', async () => {
     delete mocks.deliveryOptions.state.configuration.config.physicalProperties;
     mocks.fetch.mockResolvedValueOnce({config: {}, strings: {}});
     await updateContext();
     expect(mocks.deliveryOptions.state.configuration.config).not.toHaveProperty('physicalProperties');
   });
 
-  it('keeps legacy configuration and package selection when the response omits configuration', async () => {
+  it('keeps the current config and package type when the new context has no config', async () => {
     delete mocks.deliveryOptions.state.configuration.config.physicalProperties;
     const configuration = {...mocks.deliveryOptions.state.configuration};
     mocks.fetch.mockResolvedValueOnce({strings: {label: 'Updated delivery'}});
@@ -98,7 +99,7 @@ describe('updateContext', () => {
     expect(mocks.deliveryOptions.state.configuration.strings).toEqual({label: 'Updated delivery'});
   });
 
-  it('clears a checkout weight even when the widget has not received its configuration', async () => {
+  it('removes the weight from the checkout context when the delivery options have no config yet', async () => {
     delete mocks.deliveryOptions.state.configuration.config;
     mocks.fetch.mockRejectedValueOnce(new Error('Network error'));
 
@@ -108,7 +109,7 @@ describe('updateContext', () => {
     expect(mocks.deliveryOptions.state.configuration.config).toEqual({physicalProperties: null});
   });
 
-  it('does not replace a request error with an error from a reset listener', async () => {
+  it('throws the request error when a store listener fails while the weight is removed', async () => {
     mocks.fetch.mockRejectedValueOnce(new Error('Network error'));
     mocks.checkout.set.mockRejectedValueOnce(new Error('Listener error'));
 
@@ -117,7 +118,7 @@ describe('updateContext', () => {
     expect(mocks.deliveryOptions.set).not.toHaveBeenCalled();
   });
 
-  it('applies the platform carrier filter after installing the fresh checkout context', async () => {
+  it('lets the platform change the config after the new context is in the checkout store', async () => {
     mocks.fetch.mockResolvedValueOnce({
       config: {carrierSettings: {dpd: {pricePickup: 3}, postnl: {pricePickup: 4}}},
       strings: {},
@@ -130,7 +131,7 @@ describe('updateContext', () => {
     expect(mocks.deliveryOptions.state.configuration.config.carrierSettings).toEqual({dpd: {pricePickup: 3}});
   });
 
-  it('makes the fresh package type available to the platform mapping', async () => {
+  it('passes the package type of the new context to the platform', async () => {
     mocks.fetch.mockResolvedValueOnce({config: {packageType: 'mailbox'}, strings: {}});
     mocks.deliveryOptions.state.settings.updateDeliveryOptions.mockImplementation((state) => ({
       ...state.configuration.config,
@@ -141,7 +142,7 @@ describe('updateContext', () => {
     expect(mocks.deliveryOptions.state.configuration.config.packageType).toBe('mailbox');
   });
 
-  it('ignores an older response that arrives after a newer cart response', async () => {
+  it('ignores an older response that arrives after a newer one', async () => {
     const older = deferred<ReturnType<typeof context>>();
     const newer = deferred<ReturnType<typeof context>>();
     mocks.fetch.mockReturnValueOnce(older.promise).mockReturnValueOnce(newer.promise);
@@ -155,7 +156,7 @@ describe('updateContext', () => {
     expect(mocks.checkout.set).toHaveBeenCalledTimes(1);
   });
 
-  it('does not apply a response after checkout reinitialization', async () => {
+  it('ignores a response that arrives after the checkout was initialized again', async () => {
     const pending = deferred<ReturnType<typeof context>>();
     mocks.fetch.mockReturnValueOnce(pending.promise);
     const request = updateContext();
@@ -168,7 +169,7 @@ describe('updateContext', () => {
     expect(mocks.checkout.set).not.toHaveBeenCalled();
   });
 
-  it('clears only the old weight when the latest context request fails', async () => {
+  it('removes only the weight when the latest request fails', async () => {
     mocks.fetch.mockRejectedValueOnce(new Error('Network error'));
     await expect(updateContext()).rejects.toThrow('Network error');
     expect(mocks.checkout.state.context.config.physicalProperties).toBeNull();
@@ -179,7 +180,7 @@ describe('updateContext', () => {
     });
   });
 
-  it('does not update stores after a failed request for an unweighted legacy cart', async () => {
+  it('does not change the stores when a request fails and there is no weight', async () => {
     delete mocks.deliveryOptions.state.configuration.config.physicalProperties;
     mocks.checkout.state.context = {config: {}, strings: {}};
     mocks.fetch.mockRejectedValueOnce(new Error('Network error'));
@@ -188,7 +189,7 @@ describe('updateContext', () => {
     expect(mocks.deliveryOptions.set).not.toHaveBeenCalled();
   });
 
-  it('does not restore an older weight after the latest request fails', async () => {
+  it('does not put back an older weight after the latest request fails', async () => {
     const older = deferred<ReturnType<typeof context>>();
     mocks.fetch.mockReturnValueOnce(older.promise).mockRejectedValueOnce(new Error('Network error'));
     const first = updateContext();
@@ -198,7 +199,7 @@ describe('updateContext', () => {
     expect(mocks.deliveryOptions.state.configuration.config.physicalProperties).toBeNull();
   });
 
-  it('does not clear a newer weight when an older request fails', async () => {
+  it('does not remove a newer weight when an older request fails', async () => {
     const older = deferred<ReturnType<typeof context>>();
     mocks.fetch.mockReturnValueOnce(older.promise).mockResolvedValueOnce(context(15000));
     const first = updateContext();
@@ -208,7 +209,7 @@ describe('updateContext', () => {
     expect(mocks.deliveryOptions.state.configuration.config.physicalProperties).toEqual(physicalProperties(15000));
   });
 
-  it('does not clear a reinitialized checkout after an old request fails', async () => {
+  it('does not change a checkout that was initialized again when an older request fails', async () => {
     const pending = deferred<ReturnType<typeof context>>();
     mocks.fetch.mockReturnValueOnce(pending.promise);
     const request = updateContext();
@@ -221,11 +222,11 @@ describe('updateContext', () => {
     expect(mocks.deliveryOptions.set).not.toHaveBeenCalled();
   });
 
-  it('rechecks the request after asynchronous checkout listeners complete', async () => {
+  it('ignores the response when a newer request starts while the checkout store listeners run', async () => {
     const listeners = deferred<void>();
     mocks.fetch.mockResolvedValueOnce(context(30000)).mockResolvedValueOnce(context(15000));
-    mocks.checkout.set.mockImplementationOnce(({context: fresh}) => {
-      mocks.checkout.state.context = fresh;
+    mocks.checkout.set.mockImplementationOnce(({context: newContext}) => {
+      mocks.checkout.state.context = newContext;
       return listeners.promise;
     });
     const first = updateContext();
@@ -237,11 +238,11 @@ describe('updateContext', () => {
     expect(mocks.deliveryOptions.set).toHaveBeenCalledTimes(1);
   });
 
-  it('does not let a waiting failure reset overwrite a newer successful response', async () => {
+  it('does not remove the weight of a newer response when an older failed request finishes later', async () => {
     const listeners = deferred<void>();
     mocks.fetch.mockRejectedValueOnce(new Error('Network error')).mockResolvedValueOnce(context(15000));
-    mocks.checkout.set.mockImplementationOnce(({context: fresh}) => {
-      mocks.checkout.state.context = fresh;
+    mocks.checkout.set.mockImplementationOnce(({context: newContext}) => {
+      mocks.checkout.state.context = newContext;
       return listeners.promise;
     });
     const failed = updateContext();

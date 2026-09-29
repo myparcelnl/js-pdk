@@ -21,5 +21,9 @@ export interface CheckoutDeliveryOptionsSettings {
    */
   getPackageType(): PackageTypeName | undefined;
 
+  /**
+   * Return the delivery options config for the given state. Read the state from the argument, not from
+   * the store: updateContext calls this with the new checkout context before it is in the store.
+   */
   updateDeliveryOptions(state: DeliveryOptionsStoreState): InputDeliveryOptionsConfig;
 }

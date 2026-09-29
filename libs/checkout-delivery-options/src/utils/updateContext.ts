@@ -1,23 +1,33 @@
+import {type Plugin} from '@myparcel-dev/pdk-common';
 import {useCheckoutStore} from '@myparcel-dev/pdk-checkout-common';
 import {useDeliveryOptionsStore} from './useDeliveryOptionsStore';
 import {fetchCheckoutContext} from './fetchCheckoutContext';
 
-const clearKnownWeight = async (
+/**
+ * Remove the cart weight from the checkout context and from the delivery options config.
+ *
+ * updateContext calls this when the request for a new checkout context fails. The cart can have
+ * changed since the last context, so the weight in that context can be wrong. Without a weight, the
+ * delivery options do not filter on weight. The other settings stay, because later requests need them.
+ */
+const removeCartWeight = async (
   checkout: ReturnType<typeof useCheckoutStore>,
   deliveryOptions: ReturnType<typeof useDeliveryOptionsStore>,
   isCurrent: () => boolean,
 ): Promise<void> => {
-  if (
-    !isCurrent() ||
-    !(
-      deliveryOptions.state.configuration.config?.physicalProperties?.weight ||
-      checkout.state.context.config?.physicalProperties?.weight
-    )
-  ) {
+  if (!isCurrent()) {
     return;
   }
 
-  // A failed cart refresh cannot confirm the previous weight. Keep the other settings.
+  const hasWeight = Boolean(
+    deliveryOptions.state.configuration.config?.physicalProperties?.weight ||
+      checkout.state.context.config?.physicalProperties?.weight,
+  );
+
+  if (!hasWeight) {
+    return;
+  }
+
   await checkout.set({
     context: {
       ...checkout.state.context,
@@ -25,14 +35,17 @@ const clearKnownWeight = async (
     },
   });
 
-  if (isCurrent()) {
-    await deliveryOptions.set({
-      configuration: {
-        ...deliveryOptions.state.configuration,
-        config: {...deliveryOptions.state.configuration.config, physicalProperties: null},
-      },
-    });
+  // The checkout store listeners can take time. Check again that no newer request has started.
+  if (!isCurrent()) {
+    return;
   }
+
+  await deliveryOptions.set({
+    configuration: {
+      ...deliveryOptions.state.configuration,
+      config: {...deliveryOptions.state.configuration.config, physicalProperties: null},
+    },
+  });
 };
 
 /**
@@ -42,40 +55,53 @@ const clearKnownWeight = async (
 let latestRequest = 0;
 
 /**
- * Fetch and update the delivery options config. For use with changing shipping methods, for example, as doing so
- *  changes the prices of delivery and any extra options.
+ * Fetch a new checkout context and put it in the checkout store and the delivery options config.
+ * For use when the shipping method or the cart changes, because that changes the prices, the
+ * package type and the cart weight.
+ *
+ * A response is used only while no newer call has started and the checkout was not initialized
+ * again. An older response is ignored.
+ *
+ * @throws {Error} When the request fails or its response has no usable settings. The stores keep
+ *  their settings, and the cart weight is removed.
  */
 export const updateContext = async (): Promise<void> => {
   const checkout = useCheckoutStore();
   const deliveryOptions = useDeliveryOptionsStore();
 
-  // Core checkout scripts can be loaded without the Delivery Options module.
+  // The core checkout script can run without the delivery options script.
   if (!deliveryOptions) {
     return;
   }
 
   const request = (latestRequest += 1);
+  // Initializing the checkout again creates a new delivery options store.
   const isCurrent = (): boolean => request === latestRequest && useDeliveryOptionsStore() === deliveryOptions;
 
-  const context = await fetchCheckoutContext().catch(async (error: unknown) => {
-    // Keep the original request error for the integration's error handler.
-    await clearKnownWeight(checkout, deliveryOptions, isCurrent).catch(() => undefined);
-    throw error;
-  });
+  let context: Plugin.ModelContextCheckoutContext;
 
-  // An older response must not overwrite a newer cart or a reinitialized checkout.
+  try {
+    context = await fetchCheckoutContext();
+  } catch (error) {
+    // Throw the error of the request, also when removing the weight fails.
+    await removeCartWeight(checkout, deliveryOptions, isCurrent).catch(() => undefined);
+    throw error;
+  }
+
   if (!isCurrent()) {
     return;
   }
 
   await checkout.set({context});
 
+  // The checkout store listeners can take time. Check again that no newer request has started.
   if (!isCurrent()) {
     return;
   }
 
   const state = {
     ...deliveryOptions.state,
+    // The package type of the new context is the fallback when the shipping method has no package type.
     originalPackageType: context.config?.packageType ?? deliveryOptions.state.originalPackageType,
     configuration: {
       ...deliveryOptions.state.configuration,
@@ -84,7 +110,7 @@ export const updateContext = async (): Promise<void> => {
     },
   };
 
-  // Apply the platform's carrier and package rules to the fresh checkout context.
+  // Let the platform set the package type and its own changes on the new config, as after a form change.
   state.configuration.config = state.settings.updateDeliveryOptions(state);
 
   await deliveryOptions.set({
