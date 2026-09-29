@@ -251,11 +251,20 @@ describe('updateContext', () => {
     await expect(failed).rejects.toThrow('Network error');
     expect(mocks.deliveryOptions.state.configuration.config.physicalProperties).toEqual(physicalProperties(15000));
   });
+
   it('keeps the context of the response that came back last', async () => {
     mocks.fetch.mockResolvedValueOnce({config: {isBusiness: true}, strings: {}});
 
     await updateContext();
 
     expect(mocks.checkout.state.context.config.isBusiness).toBe(true);
+  });
+
+  it('does not fetch when the Delivery Options module is absent', async () => {
+    // The core module initializes this slot to null until Delivery Options is loaded.
+    mocks.deliveryOptions = null as unknown as typeof mocks.deliveryOptions;
+
+    await expect(updateContext()).resolves.toBeUndefined();
+    expect(mocks.fetch).not.toHaveBeenCalled();
   });
 });
