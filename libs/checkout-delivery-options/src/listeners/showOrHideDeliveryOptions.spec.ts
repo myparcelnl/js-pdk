@@ -51,7 +51,7 @@ describe('showOrHideDeliveryOptions', () => {
     ).toHaveLength(1);
   });
 
-  it('does not toggle visibility when a burst ends in the original state', async () => {
+  it('does not show or hide the delivery options when enabled changes and changes back within the delay', async () => {
     vi.useFakeTimers();
     const store = useDeliveryOptionsStore();
     await store.set({enabled: false});

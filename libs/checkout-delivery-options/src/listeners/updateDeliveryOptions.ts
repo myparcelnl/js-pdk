@@ -12,18 +12,26 @@ import {
   useDeliveryOptionsStore,
 } from '../utils';
 
-const updates = new WeakMap<ReturnType<typeof useDeliveryOptionsStore>, number>();
+/**
+ * The last form change that this listener started to handle. A form change can wait for a new checkout
+ * context, and a newer form change can start in the meantime.
+ */
+let latestFormChange = 0;
 
+/**
+ * Update the delivery options after a change in the checkout form. When the delivery country changes,
+ * fetch a new checkout context first.
+ */
 export const updateDeliveryOptions: StoreCallbackUpdate<CheckoutStoreState> = async (newState, oldState) => {
   if (oldState && objectIsEqual(newState.form, oldState.form)) {
     return;
   }
 
   const deliveryOptions = useDeliveryOptionsStore();
-  const update = (updates.get(deliveryOptions) ?? 0) + 1;
-  updates.set(deliveryOptions, update);
-  const isCurrent = (): boolean =>
-    updates.get(deliveryOptions) === update && useDeliveryOptionsStore() === deliveryOptions;
+  latestFormChange += 1;
+  const formChange = latestFormChange;
+  // Initializing the checkout again creates a new delivery options store.
+  const isCurrent = (): boolean => formChange === latestFormChange && useDeliveryOptionsStore() === deliveryOptions;
 
   // Compare the *effective* delivery country: the country of the active address in each state.
   const oldCountry = oldState?.form[oldState.addressType]?.[AddressField.Country];
@@ -39,10 +47,10 @@ export const updateDeliveryOptions: StoreCallbackUpdate<CheckoutStoreState> = as
     try {
       await updateContext();
     } catch (error) {
-      // The previous settings remain usable and the unconfirmed weight has been cleared.
-      // Continue applying the current form so a failed request cannot leave the widget disabled.
+      // updateContext keeps the current settings when it fails. Continue with the current form,
+      // so that a failed request does not leave the delivery options disabled.
       // eslint-disable-next-line no-console
-      console.warn('[myparcel-pdk] Could not refresh the checkout context', error);
+      console.warn('[myparcel-pdk] Could not update the checkout context', error);
     }
 
     if (!isCurrent()) {
@@ -52,7 +60,7 @@ export const updateDeliveryOptions: StoreCallbackUpdate<CheckoutStoreState> = as
 
   const enabled = await shippingMethodHasDeliveryOptions(newState.form[PdkField.ShippingMethod]);
 
-  // A previous form change must not restore its shipping method after a newer selection.
+  // A newer form change started while this one waited. Stop, so that this older form does not overwrite it.
   if (!isCurrent()) {
     return;
   }

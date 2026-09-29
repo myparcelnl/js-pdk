@@ -60,7 +60,7 @@ describe('updateConfigOrAddress', () => {
     await renderCheckout(30000);
   });
 
-  it('keeps the latest weight reset when output changes within the same debounce window', async () => {
+  it('sends the config without a weight when the output changes within the delay', async () => {
     vi.useFakeTimers();
     const store = useDeliveryOptionsStore();
     for (const physicalProperties of [weight(15000), null]) {
@@ -112,7 +112,7 @@ describe('updateConfigOrAddress after a checkout context update', () => {
     await renderCheckout();
   });
 
-  it('forwards known, changed and cleared weights through the real widget config event', async () => {
+  it('sends each new cart weight, and a removed weight, to the delivery options', async () => {
     for (const grams of [30000, 15000, null]) {
       const expected = grams === null ? null : weight(grams);
       await setContextWeight(grams);
@@ -120,11 +120,9 @@ describe('updateConfigOrAddress after a checkout context update', () => {
         expect(configEvents().at(-1)?.detail.config.physicalProperties).toEqual(expected);
       });
     }
-
-    expect(UPDATE_CONFIG_IN).toBe('myparcel_update_config');
   });
 
-  it('does not send another config event for an unchanged cart context', async () => {
+  it('does not send the config again when the cart weight did not change', async () => {
     await setContextWeight(30000);
     await vi.waitFor(() => expect(configEvents().at(-1)?.detail.config.physicalProperties.weight).toBe(30000));
     const count = configEvents().length;

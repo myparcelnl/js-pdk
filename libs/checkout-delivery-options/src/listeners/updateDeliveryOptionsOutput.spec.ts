@@ -15,7 +15,7 @@ beforeEach(async () => {
 });
 
 describe('updateDeliveryOptionsOutput', () => {
-  it('clears the submitted selection through the real CustomEvent boundary', () => {
+  it('writes null to the hidden input when the delivery options send an empty selection', () => {
     const store = useDeliveryOptionsStore();
     const {hiddenInput} = store.state;
 
