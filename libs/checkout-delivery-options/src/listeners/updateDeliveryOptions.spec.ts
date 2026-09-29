@@ -79,7 +79,7 @@ describe('updateDeliveryOptions - ship-to-different-address toggle (billing NL /
     expect(tests.doRequestSpy).toHaveBeenCalled();
   });
 
-  it('keeps a newly selected non-MyParcel method disabled after an older country refresh finishes', async () => {
+  it('keeps the delivery options disabled for a newer shipping method without them when an older country change finishes', async () => {
     await flush();
     expect(useDeliveryOptionsStore().state.enabled).toBe(true);
 
@@ -96,7 +96,7 @@ describe('updateDeliveryOptions - ship-to-different-address toggle (billing NL /
     updateCheckoutForm();
     await flush();
 
-    // A newer platform refresh completes for the non-MyParcel method before the older request.
+    // A newer context update for that shipping method finishes before the older request.
     await updateContext();
     expect(useDeliveryOptionsStore().state.enabled).toBe(false);
 
@@ -107,7 +107,7 @@ describe('updateDeliveryOptions - ship-to-different-address toggle (billing NL /
     expect(currentDeliveryCc()).toBe(SHIPPING_CC);
   });
 
-  it('keeps responding to form changes after an invalid country context response', async () => {
+  it('continues with the new country when the checkout context response is unusable', async () => {
     await flush();
     const {settings} = useCheckoutStore().state.context;
     const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);

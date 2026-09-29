@@ -326,7 +326,7 @@ export namespace Plugin {
     carrierSettings: unknown[];
     /** Whether the context was built for a business recipient. Decides which carriers it holds. */
     isBusiness: boolean;
-    /** Null clears a previous cart weight; older PDK versions omit this field. */
+    /** The cart weight, when the PDK knows it. Null means the weight is not known. An older PDK does not send this field. */
     physicalProperties?: {
       /** Weight in grams. */
       weight: number;
