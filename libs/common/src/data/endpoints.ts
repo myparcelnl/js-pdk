@@ -51,6 +51,11 @@ export enum BackendEndpoint {
   PrintShipments = 'printShipments',
 
   /**
+   * Fetch a labels pdf that the API prepares in the background.
+   */
+  FetchLabelPdf = 'fetchLabelPdf',
+
+  /**
    * Tell the plugin to update given shipments by fetching data from MyParcel.
    */
   UpdateShipments = 'updateShipments',

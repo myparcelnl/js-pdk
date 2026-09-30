@@ -24,6 +24,13 @@ export interface PdkNotification {
   timeout?: boolean | number;
   title?: string;
   variant: Variant;
+  /** Shows a spinner next to the content. */
+  loading?: boolean;
+  /** Shows a button that runs onClick. */
+  action?: {
+    label: string;
+    onClick(): void;
+  };
 }
 
 export type ResolvedNotification = PdkNotification & {
