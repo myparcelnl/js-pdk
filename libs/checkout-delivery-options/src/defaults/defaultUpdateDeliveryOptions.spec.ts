@@ -37,6 +37,19 @@ const doTestSetup = async (originalPackageType?: PackageTypeName): Promise<void>
 };
 
 describe('defaultUpdateDeliveryOptions', () => {
+  it('reads the package type from the state it receives, not from the store', async () => {
+    await doTestSetup(PackageTypeName.Mailbox);
+    const deliveryOptions = useDeliveryOptionsStore();
+    const state = {
+      ...deliveryOptions.state,
+      originalPackageType: PackageTypeName.Package,
+      settings: {...deliveryOptions.state.settings, getPackageType: () => undefined},
+    };
+
+    expect(defaultUpdateDeliveryOptions(state).packageType).toBe(PackageTypeName.Package);
+    expect(deliveryOptions.state.originalPackageType).toBe(PackageTypeName.Mailbox);
+  });
+
   it.each([
     {
       originalPackageType: undefined,
