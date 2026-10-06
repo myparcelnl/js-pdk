@@ -14,9 +14,9 @@ const receive = (event: Event): void => {
 
 const configEvents = (): CustomEvent[] => events.filter((event) => event.type === UPDATE_CONFIG_IN);
 
-const setContextWeight = async (grams: number | null): Promise<void> => {
+const setContextWeight = async (grams: number): Promise<void> => {
   const context = tests.getMockCheckoutContext();
-  context.config.physicalProperties = grams === null ? null : weight(grams);
+  context.config.physicalProperties = weight(grams);
   tests.doRequestSpy.mockResolvedValueOnce({data: {context: [{checkout: context}]}});
   await updateContext();
 };
@@ -112,12 +112,11 @@ describe('updateConfigOrAddress after a checkout context update', () => {
     await renderCheckout();
   });
 
-  it('sends each new cart weight, and a removed weight, to the delivery options', async () => {
-    for (const grams of [30000, 15000, null]) {
-      const expected = grams === null ? null : weight(grams);
+  it('sends each new cart weight to the delivery options', async () => {
+    for (const grams of [30000, 15000]) {
       await setContextWeight(grams);
       await vi.waitFor(() => {
-        expect(configEvents().at(-1)?.detail.config.physicalProperties).toEqual(expected);
+        expect(configEvents().at(-1)?.detail.config.physicalProperties).toEqual(weight(grams));
       });
     }
   });

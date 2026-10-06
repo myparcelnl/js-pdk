@@ -57,6 +57,6 @@ describe('showOrHideDeliveryOptions', () => {
     await store.set({enabled: false});
     await store.set({enabled: true});
     await vi.advanceTimersByTimeAsync(110);
-    expect(events.filter((event) => [HIDE_DELIVERY_OPTIONS, SHOW_DELIVERY_OPTIONS].includes(event.type))).toEqual([]);
+    expect(events.filter((event) => eventNames.includes(event.type))).toEqual([]);
   });
 });
