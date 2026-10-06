@@ -43,7 +43,7 @@ export class TestSuite<
 
     this.runHasPropTest('element', resolvedOptions?.props?.element);
 
-    it('can be disabled', () => {
+    it('can be disabled', async () => {
       const wrapper = mount(
         this.component,
         merge({}, resolvedOptions, {
@@ -55,6 +55,9 @@ export class TestSuite<
           },
         }),
       );
+
+      // Components may set the attribute in a watcher, which runs after mount.
+      await flushPromises();
 
       const select = this.getSelectWrapper(wrapper);
       const input = this.getInputWrapper(wrapper);

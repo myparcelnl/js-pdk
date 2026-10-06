@@ -50,8 +50,7 @@ executePdkComponentTests({
   [AdminComponent.CodeEditor]: DefaultCodeEditor,
   [AdminComponent.Col]: DefaultCol,
   [AdminComponent.CurrencyInput]: DefaultCurrencyInput,
-  // TODO: fix error caused by weekdaysObject being undefined in DefaultDropOffInput
-  // [AdminComponent.DropOffInput]: DefaultDropOffInput,
+  [AdminComponent.DropOffInput]: DefaultDropOffInput,
   [AdminComponent.DropdownButton]: DefaultDropdownButton,
   [AdminComponent.FormGroup]: DefaultFormGroup,
   [AdminComponent.Heading]: DefaultHeading,
