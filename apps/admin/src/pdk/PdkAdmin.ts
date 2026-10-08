@@ -24,9 +24,10 @@ export class PdkAdmin {
   }
 
   /**
-   * Render a views in given selector.
+   * Render a view in the given selector. Returns the app, so the caller can
+   * unmount it, or undefined when mounting failed.
    */
-  public async render(view: AdminView, selector: string): Promise<void> {
+  public async render(view: AdminView, selector: string): Promise<App | undefined> {
     const config: AdminConfiguration = {...this.config};
     const context: AdminContextObject = {...this.context, ...getElementContext(selector)};
 
@@ -38,12 +39,19 @@ export class PdkAdmin {
     const app = await this.createApp(view, {appName, config, context, logger, view});
 
     try {
-      app.mount(selector);
+      if (!app.mount(selector)) {
+        logger.error(`Element "${selector}" not found`);
+        return undefined;
+      }
+
       this.renderedComponents.push(view);
       config?.onRendered?.(config);
       logger.debug(`Rendered in ${selector}`);
+
+      return app;
     } catch (e) {
       logger.error('Error mounting app', e);
+      return undefined;
     }
   }
 
