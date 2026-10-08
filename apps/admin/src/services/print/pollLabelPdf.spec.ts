@@ -48,4 +48,11 @@ describe('pollLabelPdf', () => {
     await expect(pollLabelPdf('label_hash', {interval: 1000, timeout: 3000})).rejects.toThrow('api error');
     expect(fetchLabelPdf).toHaveBeenCalledTimes(1);
   });
+
+  it('stops when the backend returns an unknown response', async () => {
+    fetchLabelPdf.mockResolvedValueOnce('<html>Fatal error</html>');
+
+    await expect(pollLabelPdf('label_hash', {interval: 1000, timeout: 3000})).rejects.toThrow('Unexpected response');
+    expect(fetchLabelPdf).toHaveBeenCalledTimes(1);
+  });
 });
