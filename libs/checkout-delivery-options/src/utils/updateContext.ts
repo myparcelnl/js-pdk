@@ -26,7 +26,8 @@ export const updateContext = async (): Promise<void> => {
 
   await Promise.all([
     checkout.set({context}),
-    deliveryOptions.set({
+    // The core checkout script can run without the delivery options script.
+    deliveryOptions?.set({
       configuration: {
         ...deliveryOptions.state.configuration,
         config: {

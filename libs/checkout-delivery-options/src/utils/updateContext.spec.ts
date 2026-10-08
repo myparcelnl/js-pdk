@@ -2,6 +2,7 @@
 import {beforeEach, describe, expect, it} from 'vitest';
 import {tests, useCheckoutStore, usePdkCheckout} from '@myparcel-dev/pdk-checkout-common';
 import {initializeCheckoutDeliveryOptions} from '../initializeCheckoutDeliveryOptions';
+import {useDeliveryOptionsStore} from './useDeliveryOptionsStore';
 import {updateContext} from './updateContext';
 
 const flush = async (): Promise<void> => {
@@ -52,6 +53,25 @@ describe('updateContext', () => {
     releaseFirst(response(false));
     await slow;
     await flush();
+
+    expect(businessInContext()).toBe(true);
+  });
+
+  it('puts the cart weight of the new context in the delivery options config', async () => {
+    tests.doRequestSpy.mockResolvedValue({
+      data: {context: [{checkout: tests.getMockCheckoutContext({config: {physicalProperties: {weight: 15000}}})}]},
+    });
+
+    await updateContext();
+
+    expect(useDeliveryOptionsStore().state.configuration.config.physicalProperties).toEqual({weight: 15000});
+  });
+
+  it('updates the checkout context when the delivery options script is not loaded', async () => {
+    tests.doRequestSpy.mockResolvedValue(response(true));
+    window.MyParcelPdk.stores.deliveryOptions = undefined;
+
+    await expect(updateContext()).resolves.toBeUndefined();
 
     expect(businessInContext()).toBe(true);
   });
