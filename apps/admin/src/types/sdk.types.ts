@@ -17,7 +17,7 @@ import {type WebhookDefinition} from './common.types';
 
 export type PdfUrlResponse = {
   url: string;
-  /** Set when the pdf can be polled for with the fetchLabelPdf endpoint. */
+  /** Hash of the `/pdfs/{hash}` link for the whole batch, not a label id. Poll it with fetchLabelPdf. */
   labelId?: string;
 };
 
