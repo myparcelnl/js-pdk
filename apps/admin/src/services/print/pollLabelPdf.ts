@@ -32,6 +32,10 @@ export const pollLabelPdf = async (
       return response.data;
     }
 
+    if (!isOfType<PdfPendingResponse>(response, 'pending')) {
+      throw new Error(`Unexpected response while polling for label pdf ${labelId}`);
+    }
+
     if (Date.now() - start >= timeout) {
       throw new Error(`Polling for label pdf ${labelId} timed out`);
     }
