@@ -21,8 +21,13 @@
 
         <span
           v-if="notification.loading"
+          :title="translate('loading')"
           class="spinner-border spinner-border-sm"
-          role="status" />
+          role="status">
+          <span
+            class="sr-only"
+            v-text="translate('loading')" />
+        </span>
 
         <button
           v-if="notification.action"
@@ -37,12 +42,14 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue';
-import {AdminComponent, type NotificationProps} from '@myparcel-dev/pdk-admin';
+import {AdminComponent, type NotificationProps, useLanguage} from '@myparcel-dev/pdk-admin';
 import {toArray} from '@myparcel-dev/ts-utils';
 
 const props = defineProps<NotificationProps>();
 
 const contentArray = computed(() => toArray(props.notification.content));
+
+const {translate} = useLanguage();
 
 const alertClasses = computed(() => {
   switch (props.notification?.variant) {
