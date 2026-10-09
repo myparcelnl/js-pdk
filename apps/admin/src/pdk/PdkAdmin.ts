@@ -1,18 +1,28 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import {type App, createApp} from 'vue';
+import {createPinia} from 'pinia';
 import {type AdminAppConfig, type AdminConfiguration, type AdminContextObject} from '../types';
 import {INJECT_GLOBAL_PDK_ADMIN} from '../symbols';
 import {createLogger, getElementContext} from '../services';
 import {AdminView} from '../data';
 import {setupAdminApp} from './setupAdminApp';
 import {renderViewComponent} from './renderMap';
+import {createQueryClient} from './instance/createQueryClient';
 
 export class PdkAdmin {
   public readonly config: AdminConfiguration;
   public readonly context: AdminContextObject;
 
   public readonly renderedComponents: string[] = [];
+
+  /**
+   * One store and one query client per instance, shared by its apps. A page that
+   * creates a new instance after unmounting the apps of the previous one (for
+   * example a single-page admin) then starts without stale queries.
+   */
+  protected readonly store = createPinia();
+  protected readonly queryClient = createQueryClient();
 
   public constructor(config: AdminConfiguration, context: AdminContextObject) {
     config.beforeInitialize?.(config, context);
@@ -36,7 +46,15 @@ export class PdkAdmin {
 
     logger.debug(`Rendering "${view}" in "${selector}"`);
 
-    const app = await this.createApp(view, {appName, config, context, logger, view});
+    const app = await this.createApp(view, {
+      appName,
+      config,
+      context,
+      logger,
+      view,
+      store: this.store,
+      queryClient: this.queryClient,
+    });
 
     try {
       if (!app.mount(selector)) {
