@@ -109,6 +109,13 @@ export type AdminConfiguration = {
    * Callback to generate a field id.
    */
   generateFieldId(element: InteractiveElementInstance): string;
+
+  /**
+   * Read and write the active tab in window.location.hash. Turn it off when the
+   * host app routes with the hash, such as the Shopware administration.
+   * Defaults to true.
+   */
+  useLocationHash?: boolean;
 };
 
 export type AdminConfigurationPreset = Omit<Partial<AdminConfiguration>, 'components'>;
