@@ -79,8 +79,13 @@ const props = defineProps({
 
 const activeTab = ref<string | null>(null);
 
+const config = useAdminConfig();
+const {translate} = useLanguage();
+
+const useLocationHash = config.useLocationHash !== false;
+
 const handleClick = (tab: TabDefinition) => {
-  if (props.initialTab !== false) {
+  if (useLocationHash && props.initialTab !== false) {
     window.location.hash = props.hashPrefix + tab.name;
   }
 
@@ -96,9 +101,6 @@ const activeTabContents = computed(() => {
   return (props.tabs as unknown as TabDefinition[])?.find((tab) => tab.name === activeTab.value);
 });
 
-const config = useAdminConfig();
-const {translate} = useLanguage();
-
 watch(
   () => [props.tabs, props.initialTab],
   () => {
@@ -113,7 +115,7 @@ watch(
 
     let initialTab = props.initialTab === true ? null : props.initialTab;
 
-    if (!props.initialTab) {
+    if (!props.initialTab && useLocationHash) {
       const hash = window.location.hash.replace('#', '').replace(props.hashPrefix ?? '', '');
       const tabName = hash.split(HASH_SEPARATOR)[0];
 
