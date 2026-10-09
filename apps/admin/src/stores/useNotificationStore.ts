@@ -54,7 +54,7 @@ export const useNotificationStore = defineStore('notifications', () => {
       let filter: (notification: ResolvedNotification) => boolean;
 
       if (isEnumValue(input, NotificationSource)) {
-        filter = (notification) => notification.tags?.source === input;
+        filter = (notification) => notification.tags?.source !== input;
       } else {
         filter = (notification) => notification.id !== input;
       }
