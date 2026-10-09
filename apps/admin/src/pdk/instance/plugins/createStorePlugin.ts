@@ -4,12 +4,12 @@ import {type PdkAppPlugin} from './plugins.types';
 let store: Pinia;
 let initialized = false;
 
-export const createStorePlugin: PdkAppPlugin = ({config, logger}) => {
-  store ??= createPinia();
+export const createStorePlugin: PdkAppPlugin = ({config, logger, store: instanceStore}) => {
+  const pinia = instanceStore ?? (store ??= createPinia());
 
   logger.debug('Preparing store plugin');
 
-  store.use((storeContext) => {
+  pinia.use((storeContext) => {
     if (initialized || !config.onCreateStore) {
       return;
     }
@@ -19,5 +19,5 @@ export const createStorePlugin: PdkAppPlugin = ({config, logger}) => {
     config.onCreateStore(storeContext);
   });
 
-  return store;
+  return pinia;
 };

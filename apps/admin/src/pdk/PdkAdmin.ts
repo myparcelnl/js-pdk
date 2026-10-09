@@ -1,18 +1,28 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import {type App, createApp} from 'vue';
+import {createPinia} from 'pinia';
 import {type AdminAppConfig, type AdminConfiguration, type AdminContextObject} from '../types';
 import {INJECT_GLOBAL_PDK_ADMIN} from '../symbols';
 import {createLogger, getElementContext} from '../services';
 import {AdminView} from '../data';
 import {setupAdminApp} from './setupAdminApp';
 import {renderViewComponent} from './renderMap';
+import {createQueryClient} from './instance/createQueryClient';
 
 export class PdkAdmin {
   public readonly config: AdminConfiguration;
   public readonly context: AdminContextObject;
 
   public readonly renderedComponents: string[] = [];
+
+  /**
+   * One store and one query client per instance, shared by its apps. A page that
+   * creates a new instance after unmounting the apps of the previous one (for
+   * example a single-page admin) then starts without stale queries.
+   */
+  protected readonly store = createPinia();
+  protected readonly queryClient = createQueryClient();
 
   public constructor(config: AdminConfiguration, context: AdminContextObject) {
     config.beforeInitialize?.(config, context);
@@ -24,9 +34,10 @@ export class PdkAdmin {
   }
 
   /**
-   * Render a views in given selector.
+   * Render a view in the given selector. Returns the app, so the caller can
+   * unmount it, or undefined when mounting failed.
    */
-  public async render(view: AdminView, selector: string): Promise<void> {
+  public async render(view: AdminView, selector: string): Promise<App | undefined> {
     const config: AdminConfiguration = {...this.config};
     const context: AdminContextObject = {...this.context, ...getElementContext(selector)};
 
@@ -35,15 +46,30 @@ export class PdkAdmin {
 
     logger.debug(`Rendering "${view}" in "${selector}"`);
 
-    const app = await this.createApp(view, {appName, config, context, logger, view});
+    const app = await this.createApp(view, {
+      appName,
+      config,
+      context,
+      logger,
+      view,
+      store: this.store,
+      queryClient: this.queryClient,
+    });
 
     try {
-      app.mount(selector);
+      if (!app.mount(selector)) {
+        logger.error(`Element "${selector}" not found`);
+        return undefined;
+      }
+
       this.renderedComponents.push(view);
       config?.onRendered?.(config);
       logger.debug(`Rendered in ${selector}`);
+
+      return app;
     } catch (e) {
       logger.error('Error mounting app', e);
+      return undefined;
     }
   }
 
