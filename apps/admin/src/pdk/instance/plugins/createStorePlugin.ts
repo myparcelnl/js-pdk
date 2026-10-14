@@ -2,7 +2,12 @@ import {createPinia, type Pinia} from 'pinia';
 import {type PdkAppPlugin} from './plugins.types';
 
 let store: Pinia;
-let initialized = false;
+
+/**
+ * The stores that ran the onCreateStore hook. Per store, because every PdkAdmin
+ * instance has its own.
+ */
+const initializedStores = new WeakSet<Pinia>();
 
 export const createStorePlugin: PdkAppPlugin = ({config, logger, store: instanceStore}) => {
   const pinia = instanceStore ?? (store ??= createPinia());
@@ -10,11 +15,11 @@ export const createStorePlugin: PdkAppPlugin = ({config, logger, store: instance
   logger.debug('Preparing store plugin');
 
   pinia.use((storeContext) => {
-    if (initialized || !config.onCreateStore) {
+    if (initializedStores.has(pinia) || !config.onCreateStore) {
       return;
     }
 
-    initialized = true;
+    initializedStores.add(pinia);
     logger.debug('Calling store renderer hook');
     config.onCreateStore(storeContext);
   });
