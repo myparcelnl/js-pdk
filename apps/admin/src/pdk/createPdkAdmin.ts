@@ -27,7 +27,7 @@ export const createPdkAdmin: CreatePdkAdmin = (configuration?) => {
 
     const pdkAdmin = new PdkAdmin(config, context);
 
-    boot(pdkAdmin, context);
+    pdkAdmin.onDispose(boot(pdkAdmin, context));
 
     return pdkAdmin;
   } catch (e) {

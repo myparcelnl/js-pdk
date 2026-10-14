@@ -24,6 +24,8 @@ export class PdkAdmin {
   protected readonly store = createPinia();
   protected readonly queryClient = createQueryClient();
 
+  private readonly disposers: (() => void)[] = [];
+
   public constructor(config: AdminConfiguration, context: AdminContextObject) {
     config.beforeInitialize?.(config, context);
 
@@ -31,6 +33,21 @@ export class PdkAdmin {
     this.context = context;
 
     config.onInitialized?.(config, context);
+  }
+
+  /**
+   * Register cleanup work for dispose().
+   */
+  public onDispose(disposer: () => void): void {
+    this.disposers.push(disposer);
+  }
+
+  /**
+   * Stop this instance, for example when a single-page app leaves the page.
+   * Unmount the apps that render() returned first. Safe to call twice.
+   */
+  public dispose(): void {
+    this.disposers.splice(0).forEach((disposer) => disposer());
   }
 
   /**
