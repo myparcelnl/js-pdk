@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [4.1.5](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-app-builder@4.1.4...@myparcel-dev/pdk-app-builder@4.1.5) "@myparcel-dev/pdk-app-builder" (2026-10-14)
+
+
+### Bug Fixes
+
+* **app-builder:** declare fast-glob as a dependency ([#496](https://github.com/myparcelnl/js-pdk/issues/496)) ([34e5973](https://github.com/myparcelnl/js-pdk/commit/34e59737a55783e8da98a1900040b0cfff4624a5))
+
+
+
+
 ## [4.1.4](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-app-builder@4.1.3...@myparcel-dev/pdk-app-builder@4.1.4) "@myparcel-dev/pdk-app-builder" (2026-09-24)
 
 
