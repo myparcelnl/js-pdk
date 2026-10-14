@@ -1,6 +1,7 @@
 import {createGlobalState} from '@vueuse/core';
 import {createMyParcelSdk, type HttpMethod, type MyParcelSdk} from '@myparcel-dev/sdk';
 import {type BackendEndpoint} from '@myparcel-dev/pdk-common';
+import {addRequestHeaders} from '../requestHeaders';
 import {AbstractPdkEndpoint} from '../endpoints';
 import {PdkFetchClient} from '../PdkFetchClient';
 import {useGlobalContext} from '../../composables';
@@ -14,6 +15,8 @@ export const usePdkAdminApi = createGlobalState((): MyParcelSdk<AbstractPdkEndpo
   const client = new PdkFetchClient({
     baseUrl: globalContext.baseUrl,
   });
+
+  client.interceptors.request.use(addRequestHeaders);
 
   const pdkEndpoints = Object.entries(globalContext.endpoints).map(([endpointName, options]) => {
     // Effectively cast null as 'undefined' to prevent the SDK casting the prefix property to the string 'null'.
