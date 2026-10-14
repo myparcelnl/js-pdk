@@ -61,16 +61,22 @@ export class PdkAdmin {
         logger.error(`Element "${selector}" not found`);
         return undefined;
       }
-
-      this.renderedComponents.push(view);
-      config?.onRendered?.(config);
-      logger.debug(`Rendered in ${selector}`);
-
-      return app;
     } catch (e) {
       logger.error('Error mounting app', e);
       return undefined;
     }
+
+    this.renderedComponents.push(view);
+    logger.debug(`Rendered in ${selector}`);
+
+    // The app is mounted now, so return it even when the hook fails: the caller needs it to unmount.
+    try {
+      config?.onRendered?.(config);
+    } catch (e) {
+      logger.error('Error in the onRendered hook', e);
+    }
+
+    return app;
   }
 
   protected async createApp(view: AdminView, appConfig: AdminAppConfig): Promise<App> {
