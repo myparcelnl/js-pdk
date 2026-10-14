@@ -64,4 +64,19 @@ describe('PdkAdmin.render', () => {
     expect(second.store).not.toBe(first.store);
     expect(second.queryClient).not.toBe(first.queryClient);
   });
+
+  it('returns the mounted app when the onRendered hook fails, so the caller can still unmount it', async () => {
+    document.body.innerHTML = '<div id="target"></div>';
+    const config = createAdminConfig({
+      components: {},
+      onRendered: () => {
+        throw new Error('hook failed');
+      },
+    } as never);
+
+    const app = await new PdkAdmin(config, {} as never).render(AdminView.PluginSettings, '#target');
+
+    expect(app).toBeDefined();
+    expect(document.querySelector('#target')?.textContent).toBe('rendered');
+  });
 });
