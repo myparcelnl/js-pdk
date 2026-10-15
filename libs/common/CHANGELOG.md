@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.3.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-common@2.2.1...@myparcel-dev/pdk-common@2.3.0) "@myparcel-dev/pdk-common" (2026-10-15)
+
+
+### Features
+
+* **admin:** wait for bulk label pdfs and show progress while printing ([#490](https://github.com/myparcelnl/js-pdk/issues/490)) ([c093d2d](https://github.com/myparcelnl/js-pdk/commit/c093d2d8fcaef29b5b2b6fbbce20570f76b631b9))
+
+
+
+
 ## [2.2.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-common@2.2.0...@myparcel-dev/pdk-common@2.2.1) "@myparcel-dev/pdk-common" (2026-09-24)
 
 

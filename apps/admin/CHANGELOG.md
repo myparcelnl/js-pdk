@@ -2,6 +2,22 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.3.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.2.7...@myparcel-dev/pdk-admin@2.3.0) "@myparcel-dev/pdk-admin" (2026-10-15)
+
+
+### Features
+
+* **admin:** wait for bulk label pdfs and show progress while printing ([#490](https://github.com/myparcelnl/js-pdk/issues/490)) ([c093d2d](https://github.com/myparcelnl/js-pdk/commit/c093d2d8fcaef29b5b2b6fbbce20570f76b631b9))
+
+
+### Bug Fixes
+
+* **admin:** encode array parameters so proxies keep all ids ([#488](https://github.com/myparcelnl/js-pdk/issues/488)) ([acd1a2a](https://github.com/myparcelnl/js-pdk/commit/acd1a2ad5f8133f187516259bcecb85f5fb6f106))
+* **admin:** stop removing all notifications when a mutation starts ([#489](https://github.com/myparcelnl/js-pdk/issues/489)) ([0a49a1d](https://github.com/myparcelnl/js-pdk/commit/0a49a1d4ee1c7de0793eac17c19417e102c71eee))
+
+
+
+
 ## [2.2.7](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.2.6...@myparcel-dev/pdk-admin@2.2.7) "@myparcel-dev/pdk-admin" (2026-09-25)
 
 
