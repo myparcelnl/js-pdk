@@ -1,4 +1,3 @@
-import customTsConfig from 'vite-plugin-custom-tsconfig';
 import {defineConfig} from 'vite';
 import {visualizer} from 'rollup-plugin-visualizer';
 import vue from '@vitejs/plugin-vue';
@@ -9,7 +8,7 @@ export default defineConfig((env) => {
   const isProd = env.mode === 'production';
 
   return {
-    plugins: [vue(), customTsConfig({tsConfigPath: 'tsconfig.base.json'})],
+    plugins: [vue()],
     base: isProd ? '/js-pdk/' : '/',
 
     server: {
