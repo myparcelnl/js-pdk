@@ -26,6 +26,7 @@ export type BackendMutationEndpoints =
  */
 export type BackendQueryEndpoints =
   | BackendEndpoint.FetchContext
+  | BackendEndpoint.FetchLabelPdf
   | BackendEndpoint.FetchOrders
   | BackendEndpoint.FetchProducts
   | BackendEndpoint.FetchShipments

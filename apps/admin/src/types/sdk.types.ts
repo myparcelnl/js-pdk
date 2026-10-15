@@ -17,10 +17,16 @@ import {type WebhookDefinition} from './common.types';
 
 export type PdfUrlResponse = {
   url: string;
+  /** Hash of the `/pdfs/{hash}` link for the whole batch, not a label id. Poll it with fetchLabelPdf. */
+  labelId?: string;
 };
 
 export type PdfDataResponse = {
   data: string;
+};
+
+export type PdfPendingResponse = {
+  pending: true;
 };
 
 interface BasePrintDefinition extends PdkEndpointDefinition {
@@ -149,6 +155,15 @@ interface PrintOrdersDefinition extends BasePrintDefinition {
   name: BackendEndpoint.PrintOrders;
 }
 
+interface FetchLabelPdfDefinition extends PdkEndpointDefinition {
+  formattedResponse: PdfDataResponse | PdfPendingResponse;
+  name: BackendEndpoint.FetchLabelPdf;
+  parameters: {
+    labelId: string;
+  };
+  response: PdfDataResponse | PdfPendingResponse;
+}
+
 interface FetchWebhooksDefinition extends PdkEndpointDefinition {
   name: BackendEndpoint.FetchWebhooks;
   parameters: never;
@@ -247,6 +262,7 @@ export type BackendEndpointDefinition =
   | DeleteWebhooksDefinition
   | ExportOrdersDefinition
   | FetchContextDefinition
+  | FetchLabelPdfDefinition
   | FetchOrdersDefinition
   | FetchProductsDefinition
   | FetchShipmentsDefinition
