@@ -1,5 +1,6 @@
 import {type InputAdminConfiguration} from '../types';
 import {getElementContext, globalLogger} from '../services';
+import {resetLanguageCache} from '../composables/language/useLanguage';
 import {createAdminConfig} from './createAdminConfig';
 import {boot} from './boot';
 import {PdkAdmin} from './PdkAdmin';
@@ -22,6 +23,7 @@ export const createPdkAdmin: CreatePdkAdmin = (configuration?) => {
     const config = createAdminConfig(configuration);
 
     globalLogger.level = config.logLevel;
+    resetLanguageCache();
 
     const context = getElementContext(BOOTSTRAP_CONTAINER_SELECTOR);
 

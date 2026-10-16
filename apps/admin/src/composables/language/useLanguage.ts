@@ -104,6 +104,19 @@ const memoizedAll = useMemoize(all);
 const memoizedHas = useMemoize(has);
 const memoizedTranslate = useMemoize(translate);
 
+/**
+ * Clears the cached translations. createPdkAdmin() calls it, so a new admin
+ * instance, for example after a language change in a single-page app, uses its
+ * own translations.
+ */
+export const resetLanguageCache = (): void => {
+  memoizedAll.clear();
+  memoizedHas.clear();
+  memoizedTranslate.clear();
+  useCache().clear();
+  useMissingKeys().value = [];
+};
+
 export const useLanguage = (): UseLanguage => {
   const missingKeys = useMissingKeys();
 
