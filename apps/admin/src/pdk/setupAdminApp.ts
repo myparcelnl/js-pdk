@@ -1,5 +1,6 @@
 import {type App} from 'vue';
 import {type AdminAppConfig} from '../types';
+import {setRequestHeadersProvider} from '../sdk/requestHeaders';
 import {testIdDirective} from './testIdDirective';
 import {
   createContextPlugin,
@@ -10,6 +11,8 @@ import {
 } from './instance';
 
 export const setupAdminApp = (app: App<Element>, appConfig: AdminAppConfig): void => {
+  setRequestHeadersProvider(appConfig.config.getRequestHeaders);
+
   app.use(createStorePlugin(appConfig));
   app.use(createVueQueryPlugin(appConfig));
   app.use(createContextPlugin(appConfig));

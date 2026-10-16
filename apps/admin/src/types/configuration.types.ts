@@ -2,6 +2,7 @@ import {type PiniaPluginContext} from 'pinia';
 import {type FormConfiguration, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {type MakeOptional} from '@myparcel-dev/ts-utils';
 import {type LogLevel} from '../services';
+import {type RequestHeadersProvider} from '../sdk/requestHeaders';
 import {type FORM_KEYS} from '../forms';
 import {type FormatterObject} from '../composables';
 import {type AdminContextObject} from './context.types';
@@ -109,6 +110,12 @@ export type AdminConfiguration = {
    * Callback to generate a field id.
    */
   generateFieldId(element: InteractiveElementInstance): string;
+
+  /**
+   * Gives extra headers for every request to the PDK backend endpoint, for
+   * example a short-lived bearer token. Called once per request.
+   */
+  getRequestHeaders?: RequestHeadersProvider;
 };
 
 export type AdminConfigurationPreset = Omit<Partial<AdminConfiguration>, 'components'>;
