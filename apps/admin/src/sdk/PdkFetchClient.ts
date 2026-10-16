@@ -25,6 +25,9 @@ export class PdkFetchClient extends FetchClient {
    * Prepare and execute the final request and handle the response.
    */
   public async doRequest<E extends AbstractEndpoint>(endpoint: E, options: Options<E>): Promise<EndpointResponse<E>> {
+    // Take the store before the request: a late response must not reach the
+    // store of an admin instance that mounted in the meantime.
+    const notificationStore = useNotificationStore();
     const newOptions = this.normalizeOptions(endpoint, {...options, ...this.options});
     this.validateHeaders(endpoint, newOptions);
 
@@ -32,8 +35,6 @@ export class PdkFetchClient extends FetchClient {
 
     if (isOfType<ErrorResponse>(response, 'errors')) {
       if (isOfType<EndpointResponseBodyWithNotifications>(response, 'notifications')) {
-        const notificationStore = useNotificationStore();
-
         response.notifications.forEach((notification) => {
           notificationStore.add(notification);
         });
@@ -46,8 +47,6 @@ export class PdkFetchClient extends FetchClient {
       const property = endpoint.getResponseProperty() as EndpointResponseProperty<E>;
 
       if (isOfType<EndpointResponseBodyWithNotifications>(response.data, 'notifications')) {
-        const notificationStore = useNotificationStore();
-
         response.data.notifications.forEach((notification) => {
           notificationStore.add(notification);
         });
