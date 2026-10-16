@@ -13,6 +13,17 @@ export const setRequestHeadersProvider = (newProvider: RequestHeadersProvider | 
 };
 
 /**
+ * Header names are case-insensitive: drop an existing header that the provider
+ * sets in another casing, so fetch does not send both values.
+ */
+const mergeHeaders = (headers: RequestHeaders, extraHeaders: RequestHeaders): RequestHeaders => {
+  const extraNames = Object.keys(extraHeaders).map((name) => name.toLowerCase());
+  const kept = Object.entries(headers).filter(([name]) => !extraNames.includes(name.toLowerCase()));
+
+  return {...Object.fromEntries(kept), ...extraHeaders};
+};
+
+/**
  * Request interceptor. Calls the provider for every request, so a short-lived
  * token is always current.
  */
@@ -21,5 +32,5 @@ export const addRequestHeaders = async <T extends {headers?: RequestHeaders}>(op
     return options;
   }
 
-  return {...options, headers: {...options.headers, ...(await provider())}};
+  return {...options, headers: mergeHeaders(options.headers ?? {}, await provider())};
 };

@@ -43,4 +43,12 @@ describe('addRequestHeaders', () => {
       headers: {Authorization: 'Bearer new'},
     });
   });
+
+  it('replaces a header with the same name in another casing', async () => {
+    setRequestHeadersProvider(() => ({Authorization: 'Bearer fresh'}));
+
+    expect(await addRequestHeaders({headers: {Accept: 'application/json', authorization: 'Bearer expired'}})).toEqual({
+      headers: {Accept: 'application/json', Authorization: 'Bearer fresh'},
+    });
+  });
 });
