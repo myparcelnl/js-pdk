@@ -1,6 +1,7 @@
 // @vitest-environment happy-dom
 
 import {afterEach, describe, expect, it, vi} from 'vitest';
+import {useLanguage} from '../composables/language/useLanguage';
 import {createPdkAdmin} from './createPdkAdmin';
 
 const PING = 'test_pdk_ping';
@@ -60,5 +61,15 @@ describe('createPdkAdmin', () => {
     expect(pong).not.toHaveBeenCalled();
 
     document.removeEventListener(PONG, pong);
+  });
+
+  it('starts without the translation cache of a previous instance', () => {
+    addBootElement();
+    const {missingKeys} = useLanguage();
+    missingKeys.value = ['key_from_the_previous_instance'];
+
+    createPdkAdmin({components: {}} as never);
+
+    expect(missingKeys.value).toEqual([]);
   });
 });
