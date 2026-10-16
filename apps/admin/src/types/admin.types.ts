@@ -1,4 +1,6 @@
 import {type Component} from 'vue';
+import {type Pinia} from 'pinia';
+import {type QueryClient} from '@tanstack/vue-query';
 import {type PdkLogger} from '../services';
 import {
   type ADMIN_COMPONENT_PREFIX,
@@ -40,6 +42,16 @@ export interface AdminAppConfig {
   context: AdminContextObject;
   logger: PdkLogger;
   view?: AdminView;
+
+  /**
+   * Store of the PdkAdmin instance, shared by its apps. Without it, all apps share one store.
+   */
+  store?: Pinia;
+
+  /**
+   * Query client of the PdkAdmin instance, shared by its apps. Without it, all apps share one client.
+   */
+  queryClient?: QueryClient;
 }
 
 export interface AdminInstance extends Omit<AdminAppConfig, 'context'> {

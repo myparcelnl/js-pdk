@@ -1,18 +1,30 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import {type App, createApp} from 'vue';
+import {createPinia} from 'pinia';
 import {type AdminAppConfig, type AdminConfiguration, type AdminContextObject} from '../types';
 import {INJECT_GLOBAL_PDK_ADMIN} from '../symbols';
 import {createLogger, getElementContext} from '../services';
 import {AdminView} from '../data';
 import {setupAdminApp} from './setupAdminApp';
 import {renderViewComponent} from './renderMap';
+import {createQueryClient} from './instance/createQueryClient';
 
 export class PdkAdmin {
   public readonly config: AdminConfiguration;
   public readonly context: AdminContextObject;
 
   public readonly renderedComponents: string[] = [];
+
+  /**
+   * One store and one query client per instance, shared by its apps. A page that
+   * creates a new instance after unmounting the apps of the previous one (for
+   * example a single-page admin) then starts without stale queries.
+   */
+  protected readonly store = createPinia();
+  protected readonly queryClient = createQueryClient();
+
+  private readonly disposers: (() => void)[] = [];
 
   public constructor(config: AdminConfiguration, context: AdminContextObject) {
     config.beforeInitialize?.(config, context);
@@ -24,9 +36,28 @@ export class PdkAdmin {
   }
 
   /**
-   * Render a views in given selector.
+   * Register cleanup work for dispose().
    */
-  public async render(view: AdminView, selector: string): Promise<void> {
+  public onDispose(disposer: () => void): void {
+    this.disposers.push(disposer);
+  }
+
+  /**
+   * Stop this instance, for example when a single-page app leaves the page.
+   * Unmount the apps that render() returned first. Safe to call twice.
+   *
+   * createPdkAdmin() reads the context from the boot element once. To create
+   * the next instance, render a new boot element.
+   */
+  public dispose(): void {
+    this.disposers.splice(0).forEach((disposer) => disposer());
+  }
+
+  /**
+   * Render a view in the given selector. Returns the app, so the caller can
+   * unmount it, or undefined when mounting failed.
+   */
+  public async render(view: AdminView, selector: string): Promise<App | undefined> {
     const config: AdminConfiguration = {...this.config};
     const context: AdminContextObject = {...this.context, ...getElementContext(selector)};
 
@@ -35,16 +66,37 @@ export class PdkAdmin {
 
     logger.debug(`Rendering "${view}" in "${selector}"`);
 
-    const app = await this.createApp(view, {appName, config, context, logger, view});
+    const app = await this.createApp(view, {
+      appName,
+      config,
+      context,
+      logger,
+      view,
+      store: this.store,
+      queryClient: this.queryClient,
+    });
 
     try {
-      app.mount(selector);
-      this.renderedComponents.push(view);
-      config?.onRendered?.(config);
-      logger.debug(`Rendered in ${selector}`);
+      if (!app.mount(selector)) {
+        logger.error(`Element "${selector}" not found`);
+        return undefined;
+      }
     } catch (e) {
       logger.error('Error mounting app', e);
+      return undefined;
     }
+
+    this.renderedComponents.push(view);
+    logger.debug(`Rendered in ${selector}`);
+
+    // The app is mounted now, so return it even when the hook fails: the caller needs it to unmount.
+    try {
+      config?.onRendered?.(config);
+    } catch (e) {
+      logger.error('Error in the onRendered hook', e);
+    }
+
+    return app;
   }
 
   protected async createApp(view: AdminView, appConfig: AdminAppConfig): Promise<App> {
