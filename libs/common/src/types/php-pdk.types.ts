@@ -326,6 +326,11 @@ export namespace Plugin {
     carrierSettings: unknown[];
     /** Whether the context was built for a business recipient. Decides which carriers it holds. */
     isBusiness: boolean;
+    /** The cart weight. Missing or null when no deliverable line has a weight. */
+    physicalProperties?: {
+      /** Weight in grams. */
+      weight: number;
+    } | null;
   };
 
   export type ModelContextCheckoutContextSettings = {
