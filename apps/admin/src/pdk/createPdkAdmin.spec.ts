@@ -45,4 +45,20 @@ describe('createPdkAdmin', () => {
 
     expect(() => pdkAdmin?.dispose()).not.toThrow();
   });
+
+  it('stops answering pings when a pong handler disposes it right away', () => {
+    addBootElement();
+    const disposeOnPong = (event: Event) => (event as CustomEvent).detail.dispose();
+    document.addEventListener(PONG, disposeOnPong, {once: true});
+
+    createPdkAdmin({components: {}} as never);
+
+    const pong = vi.fn();
+    document.addEventListener(PONG, pong);
+    document.dispatchEvent(new Event(PING));
+
+    expect(pong).not.toHaveBeenCalled();
+
+    document.removeEventListener(PONG, pong);
+  });
 });
