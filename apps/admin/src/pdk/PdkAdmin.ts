@@ -45,6 +45,9 @@ export class PdkAdmin {
   /**
    * Stop this instance, for example when a single-page app leaves the page.
    * Unmount the apps that render() returned first. Safe to call twice.
+   *
+   * createPdkAdmin() reads the context from the boot element once. To create
+   * the next instance, render a new boot element.
    */
   public dispose(): void {
     this.disposers.splice(0).forEach((disposer) => disposer());
