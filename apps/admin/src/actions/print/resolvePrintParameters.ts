@@ -28,7 +28,7 @@ export const resolvePrintParameters = async <A extends PrintAction>(
 ): Promise<ActionParameters<A>> => {
   const parameters = await resolveParameters(context);
 
-  showLabelsLoading();
+  showLabelsLoading(context.instance?.store);
 
   return parameters;
 };

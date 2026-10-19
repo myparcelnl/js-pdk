@@ -1,14 +1,20 @@
+import {type Pinia} from 'pinia';
 import {QueryClient} from '@tanstack/vue-query';
 import {useNotificationStore} from '../../stores';
 import {addErrorToNotifications} from '../../services';
 import {NotificationCategory} from '../../data';
 
-const clearApiNotifications = () => {
-  useNotificationStore().remove(NotificationCategory.Api);
-};
+/**
+ * Creates the query client of one PdkAdmin instance. Pass the store of that
+ * instance: the default callbacks run after async work, when the active Pinia
+ * can already belong to a newer instance.
+ */
+export const createQueryClient = (store?: Pinia): QueryClient => {
+  const clearApiNotifications = () => {
+    useNotificationStore(store).remove(NotificationCategory.Api);
+  };
 
-export const createQueryClient = (): QueryClient =>
-  new QueryClient({
+  return new QueryClient({
     defaultOptions: {
       mutations: {
         onMutate: clearApiNotifications,
@@ -29,3 +35,4 @@ export const createQueryClient = (): QueryClient =>
       },
     },
   });
+};

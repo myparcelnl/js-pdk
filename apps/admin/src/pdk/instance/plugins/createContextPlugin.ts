@@ -2,7 +2,7 @@ import {createInstanceContext} from '../createInstanceContext';
 import {INJECT_ADMIN_INSTANCE} from '../../../symbols';
 import {type PdkAppPlugin} from './plugins.types';
 
-export const createContextPlugin: PdkAppPlugin = ({appName, config, context, logger, view}) => ({
+export const createContextPlugin: PdkAppPlugin = ({appName, config, context, logger, view, store, queryClient}) => ({
   install(app) {
     logger.debug('Installing context plugin');
 
@@ -12,6 +12,8 @@ export const createContextPlugin: PdkAppPlugin = ({appName, config, context, log
       context: createInstanceContext(context),
       logger,
       view,
+      store,
+      queryClient,
     });
   },
 });
