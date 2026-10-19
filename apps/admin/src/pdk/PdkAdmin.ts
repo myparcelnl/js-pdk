@@ -48,6 +48,10 @@ export class PdkAdmin {
    *
    * createPdkAdmin() reads the context from the boot element once. To create
    * the next instance, render a new boot element.
+   *
+   * Dispose the old instance before you create the next one. The fetch client
+   * takes the active store when a request starts, so a request that the old
+   * instance starts after the next one mounted reports to the next one.
    */
   public dispose(): void {
     this.disposers.splice(0).forEach((disposer) => disposer());
