@@ -65,6 +65,21 @@ describe('PdkAdmin.render', () => {
     expect(second.queryClient).not.toBe(first.queryClient);
   });
 
+  it('removes the cached queries on dispose', async () => {
+    document.body.innerHTML = '<div id="target"></div>';
+    vi.mocked(setupAdminApp).mockClear();
+    const pdkAdmin = createPdkAdmin();
+
+    await pdkAdmin.render(AdminView.PluginSettings, '#target');
+
+    const [[, {queryClient}]] = vi.mocked(setupAdminApp).mock.calls;
+
+    queryClient.setQueryData(['orders'], ['order']);
+    pdkAdmin.dispose();
+
+    expect(queryClient.getQueryCache().getAll()).toHaveLength(0);
+  });
+
   it('returns the mounted app when the onRendered hook fails, so the caller can still unmount it', async () => {
     document.body.innerHTML = '<div id="target"></div>';
     const config = createAdminConfig({
