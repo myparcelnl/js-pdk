@@ -22,7 +22,7 @@ export class PdkAdmin {
    * example a single-page admin) then starts without stale queries.
    */
   protected readonly store = createPinia();
-  protected readonly queryClient = createQueryClient(this.store);
+  protected readonly queryClient = createQueryClient();
 
   private readonly disposers: (() => void)[] = [];
 

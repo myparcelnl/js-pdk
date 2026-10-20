@@ -10,8 +10,8 @@ export const addErrorToNotifications = (
   error: unknown,
   category: NotificationCategory,
   timeout: boolean | number = false,
-  store = useNotificationStore(),
 ): void => {
+  const store = useNotificationStore();
   const options: Partial<PdkNotification> = {category, timeout};
 
   if (isOfType<Error>(error, 'message')) {

@@ -14,15 +14,12 @@ export const useExportOrdersMutation = (
   mode: MutationMode = MutationMode.Default,
 ): ResolvedQuery<BackendEndpoint.ExportOrders> => {
   const queryClient = useQueryClient();
-  // Taken in setup, so a late export does not reach a newer admin instance.
-  const modalStore = useModalStore();
-  const onMutationStart = getCallbackForMutationMode(mode);
 
   return usePdkMutation(
     BackendEndpoint.ExportOrders,
     async (input) => {
       const pdk = usePdkAdminApi();
-      onMutationStart?.();
+      getCallbackForMutationMode(mode)?.();
 
       const options: BackendEndpointOptions<BackendEndpoint.ExportOrders> = {
         parameters: {
@@ -39,7 +36,7 @@ export const useExportOrdersMutation = (
       ...(mode === MutationMode.Modal ? getModalMutationOptions() : {}),
 
       async onSuccess(data, input) {
-        modalStore.close();
+        useModalStore().close();
 
         toArray(data).forEach((order) => {
           fillShipmentsQueryData(queryClient, order.shipments?.slice(-1) ?? [], order);
