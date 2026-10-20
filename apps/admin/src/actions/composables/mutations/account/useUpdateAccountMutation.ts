@@ -14,8 +14,6 @@ export const useUpdateAccountMutation = (): ResolvedQuery<BackendEndpoint.Update
   const queryClient = useQueryClient();
   const defaultMutationOptions = queryClient.defaultMutationOptions();
   const {translate} = useLanguage();
-  // Taken in setup, so an error after a remount reaches the store of this instance.
-  const notificationStore = useNotificationStore();
 
   return usePdkMutation(
     BackendEndpoint.UpdateAccount,
@@ -46,6 +44,7 @@ export const useUpdateAccountMutation = (): ResolvedQuery<BackendEndpoint.Update
           defaultMutationOptions.onError?.(error, variables, context);
         }
 
+        const notificationStore = useNotificationStore();
         const translation = 'error_invalid_api_key';
 
         notificationStore.add({
