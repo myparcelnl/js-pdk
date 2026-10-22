@@ -1,11 +1,17 @@
 import {useQueryClient} from '@tanstack/vue-query';
-import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {type OneOrMore, toArray} from '@myparcel-dev/ts-utils';
+import {BackendEndpoint} from '@myparcel-dev/pdk-common';
 import {usePdkMutation} from '../usePdkMutation';
 import {encodeArrayParameter, formToBody} from '../../../../utils';
 import {type BackendEndpointOptions} from '../../../../types';
 import {type ResolvedQuery, useModalStore} from '../../../../stores';
-import {getCallbackForMutationMode, getModalMutationOptions, MutationMode} from '../../../../services';
+import {
+  getCallbackForMutationMode,
+  getModalMutationOptions,
+  isSameModal,
+  keepModalToken,
+  MutationMode,
+} from '../../../../services';
 import {usePdkAdminApi} from '../../../../sdk';
 import {fillShipmentsQueryData} from '../../../../pdk';
 
@@ -14,6 +20,7 @@ export const useExportOrdersMutation = (
   mode: MutationMode = MutationMode.Default,
 ): ResolvedQuery<BackendEndpoint.ExportOrders> => {
   const queryClient = useQueryClient();
+  const defaultMutationOptions = queryClient.defaultMutationOptions();
 
   return usePdkMutation(
     BackendEndpoint.ExportOrders,
@@ -32,11 +39,15 @@ export const useExportOrdersMutation = (
       return pdk.exportOrders(options);
     },
     {
-      ...queryClient.defaultMutationOptions(),
-      ...(mode === MutationMode.Modal ? getModalMutationOptions() : {}),
+      ...defaultMutationOptions,
+      ...(mode === MutationMode.Modal ? getModalMutationOptions(defaultMutationOptions) : {}),
+      // Also in the default mode: onSuccess closes the modal that started the export.
+      onMutate: keepModalToken(defaultMutationOptions.onMutate),
 
-      async onSuccess(data, input) {
-        useModalStore().close();
+      async onSuccess(data, input, context) {
+        if (isSameModal(context)) {
+          useModalStore().close();
+        }
 
         toArray(data).forEach((order) => {
           fillShipmentsQueryData(queryClient, order.shipments?.slice(-1) ?? [], order);

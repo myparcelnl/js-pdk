@@ -1,4 +1,4 @@
-import {ref, type Ref, type UnwrapNestedRefs} from 'vue';
+import {ref, type Ref, shallowRef, type UnwrapNestedRefs} from 'vue';
 import {defineStore} from 'pinia';
 import {type AdminModalContext} from '../types';
 import {type AdminModalKey, NotificationCategory} from '../data';
@@ -9,10 +9,17 @@ type ModalOpenFn = <K extends AdminModalKey>(modal: K, context?: AdminModalConte
 
 type ModalCloseFn = <K extends AdminModalKey>(modal: K) => void;
 
+/**
+ * Identifies one opened modal. Every open() creates a new object, so a token
+ * never matches another modal, also not a modal in another admin instance.
+ */
+export type ModalToken = Readonly<{modal: AdminModalKey}>;
+
 type ModalStore = {
   loading: Ref<boolean>;
   opened: Ref<AdminModalKey | null>;
   context: Ref<UnwrapNestedRefs<AdminModalContext>>;
+  token: Ref<ModalToken | null>;
   onOpen(callback: ModalOpenFn): void;
   onClose(callback: ModalCloseFn): void;
   open<K extends AdminModalKey>(modal: K, newContext?: AdminModalContext<K>): void;
@@ -24,6 +31,7 @@ export const useModalStore = defineStore('modal', (): ModalStore => {
 
   const opened = ref<AdminModalKey | null>(null);
   const context = ref<AdminModalContext>(null);
+  const token = shallowRef<ModalToken | null>(null);
 
   const openHooks = ref<ModalOpenFn[]>([]);
   const closeHooks = ref<ModalCloseFn[]>([]);
@@ -34,6 +42,8 @@ export const useModalStore = defineStore('modal', (): ModalStore => {
     opened,
 
     context,
+
+    token,
 
     onOpen(callback) {
       openHooks.value.push(callback);
@@ -49,6 +59,7 @@ export const useModalStore = defineStore('modal', (): ModalStore => {
       // @ts-ignore
       context.value = newContext;
       opened.value = modal;
+      token.value = {modal};
 
       openHooks.value.forEach((hook) => hook(modal, newContext));
     },
@@ -59,6 +70,7 @@ export const useModalStore = defineStore('modal', (): ModalStore => {
 
       opened.value = null;
       context.value = null;
+      token.value = null;
       closeHooks.value.forEach((hook) => hook(modal));
     },
   };

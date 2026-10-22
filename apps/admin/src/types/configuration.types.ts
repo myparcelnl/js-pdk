@@ -116,6 +116,13 @@ export type AdminConfiguration = {
    * example a short-lived bearer token. Called once per request.
    */
   getRequestHeaders?: RequestHeadersProvider;
+
+  /**
+   * Read and write the active tab in window.location.hash. Turn it off when the
+   * host app routes with the hash, such as the Shopware administration.
+   * Defaults to true.
+   */
+  useLocationHash?: boolean;
 };
 
 export type AdminConfigurationPreset = Omit<Partial<AdminConfiguration>, 'components'>;
