@@ -2,6 +2,16 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.2.3](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-delivery-options@2.2.2...@myparcel-dev/pdk-checkout-delivery-options@2.2.3) "@myparcel-dev/pdk-checkout-delivery-options" (2026-10-22)
+
+
+### Bug Fixes
+
+* **checkout:** send each new cart weight to Delivery Options ([#454](https://github.com/myparcelnl/js-pdk/issues/454)) ([814f4b5](https://github.com/myparcelnl/js-pdk/commit/814f4b560adfe4ba098bc1795ee162a5f32b0f39)), closes [myparcelnl/prestashop#671](https://github.com/myparcelnl/prestashop/issues/671)
+
+
+
+
 ## [2.2.1](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-checkout-delivery-options@2.2.0...@myparcel-dev/pdk-checkout-delivery-options@2.2.1) "@myparcel-dev/pdk-checkout-delivery-options" (2026-09-24)
 
 

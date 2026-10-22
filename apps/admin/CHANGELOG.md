@@ -2,6 +2,18 @@
 
 <!-- MONOWEAVE:BELOW -->
 
+## [2.4.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.3.0...@myparcel-dev/pdk-admin@2.4.0) "@myparcel-dev/pdk-admin" (2026-10-22)
+
+
+### Features
+
+* **admin:** allow dynamic request headers ([#499](https://github.com/myparcelnl/js-pdk/issues/499)) ([35c3b02](https://github.com/myparcelnl/js-pdk/commit/35c3b02f7307043e5c6a7a3fa8cae545703b067c))
+* **admin:** allow turning off the tab hash ([#502](https://github.com/myparcelnl/js-pdk/issues/502)) ([f1bb842](https://github.com/myparcelnl/js-pdk/commit/f1bb8424b155958cf2d7cc1541758142b94eb8a0))
+* **admin:** support remounting the admin in a single-page app ([#501](https://github.com/myparcelnl/js-pdk/issues/501)) ([9912af5](https://github.com/myparcelnl/js-pdk/commit/9912af591f2e72ef128d5bd5f7a5cc4389ab13d8))
+
+
+
+
 ## [2.3.0](https://github.com/myparcelnl/js-pdk/compare/@myparcel-dev/pdk-admin@2.2.7...@myparcel-dev/pdk-admin@2.3.0) "@myparcel-dev/pdk-admin" (2026-10-15)
 
 
