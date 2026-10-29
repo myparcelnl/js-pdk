@@ -34,7 +34,7 @@
     "@myparcel-dev/pdk-admin": "workspace:^2.4.0",
     "@pinia/testing": ">= 0.1.0 < 1",
     "@vue/test-utils": "^2.5.1",
-    "pinia": "^2.0.0",
+    "pinia": "^4.1.0",
     "vitest": "^4.1.11"
   },
   "devDependencies": {
