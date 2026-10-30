@@ -6,14 +6,14 @@ A monorepo of npm packages for building e-commerce plugins that integrate with t
 
 This repository is one part of the MyParcel plugin stack:
 
-| Repository | Role |
-| --- | --- |
-| [myparcelnl/sdk](https://github.com/myparcelnl/sdk) | PHP client generated from the MyParcel API OpenAPI spec. Source of carriers, delivery types, package types and API types. |
-| [myparcelnl/pdk](https://github.com/myparcelnl/pdk) | PHP Plugin Development Kit. Business logic, models, settings, migrations and API calls shared by all plugins. |
-| [myparcelnl/js-pdk](https://github.com/myparcelnl/js-pdk) **(this repository)** | JS Plugin Development Kit. Admin UI and checkout scripts that the plugins build on. |
-| [myparcelnl/delivery-options](https://github.com/myparcelnl/delivery-options) | Checkout widget in which the consumer picks a delivery or pickup option. |
-| [myparcelnl/woocommerce](https://github.com/myparcelnl/woocommerce) | WooCommerce plugin. Thin adapter on top of the PDK. |
-| [myparcelnl/prestashop](https://github.com/myparcelnl/prestashop) | PrestaShop module. Thin adapter on top of the PDK. |
+| Repository                                                                      | Role                                                                                                                      |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| [myparcelnl/sdk](https://github.com/myparcelnl/sdk)                             | PHP client generated from the MyParcel API OpenAPI spec. Source of carriers, delivery types, package types and API types. |
+| [myparcelnl/pdk](https://github.com/myparcelnl/pdk)                             | PHP Plugin Development Kit. Business logic, models, settings, migrations and API calls shared by all plugins.             |
+| [myparcelnl/js-pdk](https://github.com/myparcelnl/js-pdk) **(this repository)** | JS Plugin Development Kit. Admin UI and checkout scripts that the plugins build on.                                       |
+| [myparcelnl/delivery-options](https://github.com/myparcelnl/delivery-options)   | Checkout widget in which the consumer picks a delivery or pickup option.                                                  |
+| [myparcelnl/woocommerce](https://github.com/myparcelnl/woocommerce)             | WooCommerce plugin. Thin adapter on top of the PDK.                                                                       |
+| [myparcelnl/prestashop](https://github.com/myparcelnl/prestashop)               | PrestaShop module. Thin adapter on top of the PDK.                                                                        |
 
 How they connect:
 
@@ -39,6 +39,10 @@ If no skills from the `external-integrations-basekit` plugin are available in th
 ```
 
 The marketplace is private, so only MyParcel employees can install it.
+
+## Working in this repository
+
+The requirements, the shared nx targets and the release setup are in the "Contributing" section of `README.md`. Run a target in one package with `pnpm nx <target> <package name>`. Inside a package folder, `pnpm <target>` does not work for the shared targets, because they are nx targets and not package scripts.
 
 ## Admin components
 

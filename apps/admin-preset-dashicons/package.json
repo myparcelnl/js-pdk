@@ -16,36 +16,37 @@
     "./dist"
   ],
   "scripts": {
-    "build": "run ws:vue:build \"$(pwd)\" || true",
-    "clean": "run ws:clean \"$(pwd)\"",
-    "lint": "run ws:lint \"$(pwd)\"",
-    "lint:fix": "run ws:lint:fix \"$(pwd)\"",
-    "test": "run ws:test \"$(pwd)\"",
-    "test:coverage": "run ws:test:coverage \"$(pwd)\"",
-    "test:run": "run ws:test:run \"$(pwd)\"",
-    "test:update": "run ws:test:update \"$(pwd)\"",
-    "typecheck": "run ws:vue:typecheck \"$(pwd)\""
+    "build": "vue-tsc --project tsconfig.base.json --noEmit false --declaration --emitDeclarationOnly --declarationDir dist || true",
+    "typecheck": "vue-tsc --project tsconfig.base.json --noEmit"
   },
   "dependencies": {
     "@myparcel-dev/pdk-admin": "workspace:^2.4.0",
+    "lodash-unified": "^1.0.3",
     "vue": "3.4.31"
   },
   "devDependencies": {
     "@myparcel-dev/pdk-admin-component-tests": "workspace:*",
     "@myparcel-dev/pdk-build-vite": "workspace:*",
+    "@vitejs/plugin-vue": "^6.0.9",
     "typescript": "^5.2.2",
     "vite": "^8.3.1",
-    "vitest": "^4.1.11",
     "vue-tsc": "^3.3.9"
   },
   "engines": {
     "node": ">=20"
   },
-  "volta": {
-    "extends": "../../package.json"
-  },
   "publishConfig": {
     "access": "public"
   },
-  "deployGroup": "admin"
+  "nx": {
+    "targets": {
+      "clean": {},
+      "lint": {},
+      "lint:fix": {},
+      "test": {},
+      "test:coverage": {},
+      "test:run": {},
+      "test:update": {}
+    }
+  }
 }
