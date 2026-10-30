@@ -35,7 +35,6 @@
   },
   "targetDefaults": {
     "build": {
-      "cache": true,
       "inputs": ["prod", "^prod"],
       "dependsOn": ["^build"],
       "outputs": [
@@ -44,7 +43,6 @@
       ]
     },
     "build:dev": {
-      "cache": true,
       "inputs": ["prod", "^prod"],
       "dependsOn": ["^build:dev"],
       "outputs": [
@@ -53,37 +51,153 @@
       ]
     },
     "lint": {
-      "cache": true,
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}",
+        "command": "eslint --cache --cache-location {projectRoot}/.eslintcache {projectRoot}"
+      },
       "inputs": ["lint"],
       "outputs": ["{projectRoot}/.eslintcache"]
     },
     "lint:fix": {
-      "cache": true,
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}",
+        "command": "eslint --cache --cache-location {projectRoot}/.eslintcache --fix {projectRoot}"
+      },
       "inputs": ["lint"],
       "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
     },
     "test:coverage": {
-      "cache": true,
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "vitest run --coverage --passWithNoTests"
+      },
       "inputs": ["^test"],
       "outputs": ["{projectRoot}/coverage", "{projectRoot}/junit.xml"]
     },
     "test:run": {
-      "cache": true,
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "vitest run --passWithNoTests"
+      },
       "inputs": ["^test"],
       "outputs": ["{projectRoot}/junit.xml"]
     },
     "test:update": {
-      "cache": true,
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "vitest run -u --passWithNoTests"
+      },
       "inputs": ["^test"],
       "outputs": [
         "{projectRoot}/src/__tests__/__snapshots__",
         "{projectRoot}/junit.xml"
       ]
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "rimraf dist coverage .eslintcache tsconfig.build.tsbuildinfo"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "vitest --passWithNoTests"
+      }
     }
   },
-  "parallel": 10,
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "parallel": 10,
+        "cacheableOperations": [
+          "build",
+          "build:dev",
+          "lint",
+          "lint:fix",
+          "test:run",
+          "test:update",
+          "test:coverage"
+        ]
+      }
+    }
+  },
   "workspaceLayout": {
     "appsDir": "apps",
     "libsDir": "libs"
+  },
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": false
+    }
+  },
+  "release": {
+    "groups": {
+      "admin": {
+        "projects": [
+          "@myparcel-dev/pdk-admin",
+          "@myparcel-dev/pdk-admin-component-tests",
+          "@myparcel-dev/pdk-admin-js",
+          "@myparcel-dev/pdk-admin-preset-bootstrap4",
+          "@myparcel-dev/pdk-admin-preset-dashicons",
+          "@myparcel-dev/pdk-admin-preset-default",
+          "@myparcel-dev/pdk-admin-preset-fontawesome"
+        ],
+        "projectsRelationship": "fixed",
+        "releaseTag": {
+          "pattern": "admin@{version}"
+        }
+      },
+      "app-builder": {
+        "projects": ["@myparcel-dev/pdk-app-builder"],
+        "releaseTag": {
+          "pattern": "app-builder@{version}"
+        }
+      },
+      "checkout": {
+        "projects": [
+          "@myparcel-dev/pdk-checkout",
+          "@myparcel-dev/pdk-checkout-js",
+          "@myparcel-dev/pdk-checkout-common",
+          "@myparcel-dev/pdk-checkout-delivery-options",
+          "@myparcel-dev/pdk-checkout-separate-address-fields",
+          "@myparcel-dev/pdk-checkout-tax-fields"
+        ],
+        "projectsRelationship": "fixed",
+        "releaseTag": {
+          "pattern": "checkout@{version}"
+        }
+      },
+      "common": {
+        "projects": ["@myparcel-dev/pdk-common"],
+        "releaseTag": {
+          "pattern": "{projectName}@{version}"
+        },
+        "projectsRelationship": "independent"
+      }
+    },
+    "version": {
+      "conventionalCommits": true
+    },
+    "changelog": {
+      "automaticFromRef": true,
+      "workspaceChangelog": false,
+      "projectChangelogs": {
+        "file": "{projectRoot}/CHANGELOG.md",
+        "createRelease": "github"
+      }
+    },
+    "git": {
+      "commitMessage": "chore: release [skip ci]",
+      "push": true
+    }
   }
 }

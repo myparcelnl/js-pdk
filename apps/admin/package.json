@@ -25,21 +25,16 @@
     "./dist"
   ],
   "scripts": {
-    "build": "run ws:vue:build \"$(pwd)\"",
-    "clean": "run ws:clean \"$(pwd)\"",
-    "lint": "run ws:lint \"$(pwd)\"",
-    "lint:fix": "run ws:lint:fix \"$(pwd)\"",
-    "test": "run ws:test \"$(pwd)\"",
-    "test:coverage": "run ws:test:coverage \"$(pwd)\"",
-    "test:run": "run ws:test:run \"$(pwd)\"",
-    "test:update": "run ws:test:update \"$(pwd)\"",
-    "typecheck": "run ws:vue:typecheck \"$(pwd)\""
+    "build": "vue-tsc --project tsconfig.base.json --noEmit false --declaration --emitDeclarationOnly --declarationDir dist",
+    "typecheck": "vue-tsc --project tsconfig.base.json --noEmit"
   },
   "dependencies": {
     "@myparcel-dev/constants": "^2.9.0",
     "@myparcel-dev/pdk-common": "workspace:^2.3.1",
     "@myparcel-dev/sdk": "^5.1.0",
+    "@myparcel-dev/ts-utils": "^1.15.0",
     "@myparcel-dev/vue-form-builder": "1.0.0-beta.42.6",
+    "@tanstack/query-core": "^4.43.0",
     "@tanstack/vue-query": "~4.43.0",
     "@vueuse/core": "^10.0.0",
     "lodash": "^4.17.21",
@@ -49,22 +44,31 @@
     "vue": "3.4.31"
   },
   "devDependencies": {
+    "@myparcel-dev/do-shared": "^7.5.3",
     "@myparcel-dev/pdk-build-vite": "workspace:*",
+    "@pinia/testing": ">= 0.1.0 < 1",
     "@types/lodash-es": "^4.17.6",
+    "@vitejs/plugin-vue": "^6.0.9",
     "@vue/test-utils": "^2.5.1",
     "typescript": "^5.2.2",
     "vite": "^8.3.1",
-    "vitest": "^4.1.11",
     "vue-tsc": "^3.3.9"
   },
   "engines": {
     "node": ">=20"
   },
-  "volta": {
-    "extends": "../../package.json"
-  },
   "publishConfig": {
     "access": "public"
   },
-  "deployGroup": "admin"
+  "nx": {
+    "targets": {
+      "clean": {},
+      "lint": {},
+      "lint:fix": {},
+      "test": {},
+      "test:coverage": {},
+      "test:run": {},
+      "test:update": {}
+    }
+  }
 }

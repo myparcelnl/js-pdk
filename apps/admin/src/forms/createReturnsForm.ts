@@ -1,7 +1,6 @@
-import {defineForm} from '@myparcel-dev/vue-form-builder';
+import {defineForm, type FormInstance} from '@myparcel-dev/vue-form-builder';
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const createReturnsForm = (id: string) => {
+export const createReturnsForm = (id: string): FormInstance => {
   return defineForm(`returns${id}`, {
     fields: [],
   });
