@@ -195,14 +195,19 @@ describe('useFormCapabilities', () => {
       expect(useFormCapabilities().getInsuranceOptions(formStub('POSTNL'), formatter)).toEqual([]);
     });
 
-    it('switches step from 250 to 500 across the 500€ threshold', async () => {
+    // Same cases as InsuranceTierMathTest in the PHP PDK, so both sides offer the same tiers.
+    it.each([
+      [0, 200_000, ['0', '10000', '25000', '50000', '100000', '150000', '200000']],
+      [30_000, 100_000, ['30000', '50000', '100000']],
+      [50_000, 150_000, ['50000', '100000', '150000']],
+      [0, 37_500, ['0', '10000', '25000', '37500']],
+    ])('builds the tier ladder for min %i and max %i', async (min, max, expected) => {
       const shipment = buildCarrier({
         carrier: 'POSTNL',
         options: {
           insurance: {
-            min: {amount: 0, currency: 'EUR'},
-            // max is 1000€ in cents
-            max: {amount: 100_000, currency: 'EUR'},
+            min: {amount: min, currency: 'EUR'},
+            max: {amount: max, currency: 'EUR'},
             default: {amount: 0, currency: 'EUR'},
           } as never,
         },
@@ -210,14 +215,13 @@ describe('useFormCapabilities', () => {
       queryStore.setQuery(shipmentModifier('order-1'), 'success', [shipment]);
 
       const {useFormCapabilities} = await import('./useFormCapabilities');
-      const opts = useFormCapabilities().getInsuranceOptions(formStub('POSTNL'), formatter);
-      const values = opts.map((o) => o.value);
+      const values = useFormCapabilities()
+        .getInsuranceOptions(formStub('POSTNL'), formatter)
+        .map((o) => o.value);
 
       // First entry is the inherit default; subsequent values are cent amounts as strings.
       expect(values[0]).toBe(TriState.Inherit);
-      // 0, 250, 500 (low steps) — then 1000 (high step from 500). Exact sequence verifies
-      // the boundary semantics — replacing `<` with `<=` on LOW_THRESHOLD would shift these.
-      expect(values.slice(1)).toEqual(['0', '25000', '50000', '100000']);
+      expect(values.slice(1)).toEqual(expected);
     });
 
     it('returns [] when the carrier advertises insurance without limits', async () => {

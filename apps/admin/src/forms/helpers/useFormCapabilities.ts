@@ -7,6 +7,30 @@ import {type AdminContext, type SelectOption} from '../../types';
 import {useQueryStore, type ResolvedQuery} from '../../stores';
 import {Format, type Formatter} from '../../composables';
 
+const INSURANCE_FLOOR_TIERS = [10_000, 25_000, 50_000];
+const INSURANCE_STEP = 50_000;
+
+/**
+ * Build the insurance tier ladder for a min/max range, in cents. Mirrors
+ * `InsuranceTierMath::buildTiers` in the PHP PDK, so the dropdown offers the same amounts the
+ * backend accepts: min, the floor tiers €100, €250 and €500, then €500 steps, then max.
+ */
+const buildInsuranceTiers = (min: number, max: number): number[] => {
+  if (min >= max) {
+    return [min];
+  }
+
+  const tiers = [min, ...INSURANCE_FLOOR_TIERS.filter((tier) => tier > min && tier < max)];
+
+  for (let tier = Math.max(min, INSURANCE_STEP) + INSURANCE_STEP; tier < max; tier += INSURANCE_STEP) {
+    tiers.push(tier);
+  }
+
+  tiers.push(max);
+
+  return [...new Set(tiers)];
+};
+
 /**
  * Bag of capability resolvers, each pre-bound to a Pinia store + orderId snapshot captured at
  * the composable's invocation time. Returned by {@link useFormCapabilities}.
@@ -129,25 +153,15 @@ export const useFormCapabilities = (): FormCapabilities => {
   };
 
   const getInsuranceOptions = (form: FormInstance, formatter: Formatter): SelectOption[] => {
-    // Insurance bracket steps: €250 increments below €500, €500 increments above. Switching
-    // step size at the threshold keeps the dropdown short for high-value shipments.
-    const STEP_BELOW_THRESHOLD = 250;
-    const STEP_ABOVE_THRESHOLD = 500;
-    const STEP_THRESHOLD = 500;
-
     const carrier = getCarrierCapabilitiesForShipment(form);
     const insuranceData = carrier?.options?.insurance;
 
-    const min = insuranceData?.min?.amount ? insuranceData.min.amount / 100 : 0;
-    const max = insuranceData?.max?.amount ? insuranceData.max.amount / 100 : 0;
+    const min = insuranceData?.min?.amount ?? 0;
+    const max = insuranceData?.max?.amount ?? 0;
 
     if (max === 0) return [];
 
-    const insurancePossibilities: number[] = [];
-
-    for (let i = min; i <= max; i += i < STEP_THRESHOLD ? STEP_BELOW_THRESHOLD : STEP_ABOVE_THRESHOLD) {
-      insurancePossibilities.push(i * 100);
-    }
+    const insurancePossibilities = buildInsuranceTiers(min, max);
 
     return [
       {label: 'option_default', value: TriState.Inherit},
