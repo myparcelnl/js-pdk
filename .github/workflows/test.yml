@@ -11,25 +11,26 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: myparcelnl/actions/yarn-install@v5
+      - uses: pnpm/setup@v3
         with:
-          node-version: ${{ vars.NODE_VERSION }}
+          cache: true
+          require-lockfile: true
 
-      - uses: myparcelnl/actions/nx-run-many@v5
+      - uses: myparcelnl/actions/nx-run-many@v6
         env:
           NX_BRANCH: ${{ github.event.inputs.branch || github.head_ref || github.ref }}
         with:
           target: 'test:coverage'
           parallel: 1
 
-      - uses: myparcelnl/actions/collect-test-results@v5
+      - uses: myparcelnl/actions/collect-test-results@v6
 
-      - uses: myparcelnl/actions/codecov-coverage@v5
+      - uses: myparcelnl/actions/codecov-coverage@v6
         with:
           files: coverage/*.xml
           token: ${{ secrets.CODECOV_TOKEN }}
 
-      - uses: myparcelnl/actions/codecov-test-results@v5
+      - uses: myparcelnl/actions/codecov-test-results@v6
         with:
           files: junit/*.xml
           token: ${{ secrets.CODECOV_TOKEN }}

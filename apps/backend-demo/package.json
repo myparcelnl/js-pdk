@@ -9,14 +9,11 @@
   },
   "type": "module",
   "scripts": {
-    "build": "run translations:init && nitropack build",
-    "clean": "run ws:clean \"$(pwd)\"",
-    "postinstall": "npx nitropack prepare",
-    "lint": "run ws:lint \"$(pwd)\"",
-    "lint:fix": "run ws:lint:fix \"$(pwd)\"",
-    "serve": "run translations:init && nitropack dev",
-    "translations:import": "yarn pdk-builder translations",
-    "translations:init": "test -f data/translations/en.json || yarn translations:import"
+    "build": "pnpm translations:init && nitropack build",
+    "postinstall": "nitropack prepare",
+    "serve": "pnpm translations:init && nitropack dev",
+    "translations:import": "pdk-builder translations",
+    "translations:init": "test -f data/translations/en.json || pnpm translations:import"
   },
   "devDependencies": {
     "@myparcel-dev/pdk-app-builder": "workspace:*",
@@ -30,10 +27,6 @@
   "engines": {
     "node": ">=20"
   },
-  "volta": {
-    "extends": "../../package.json"
-  },
-  "deployGroup": "demo",
   "nx": {
     "targets": {
       "build": {
@@ -48,7 +41,10 @@
           "{projectRoot}/.output",
           "{projectRoot}/.nitro"
         ]
-      }
+      },
+      "clean": {},
+      "lint": {},
+      "lint:fix": {}
     }
   }
 }
