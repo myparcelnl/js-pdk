@@ -197,6 +197,8 @@ describe('useFormCapabilities', () => {
 
     // Same cases as InsuranceTierMathTest in the PHP PDK, so both sides offer the same tiers.
     it.each([
+      [100, 100, ['100']],
+      [500, 100, ['500']],
       [0, 200_000, ['0', '10000', '25000', '50000', '100000', '150000', '200000']],
       [30_000, 100_000, ['30000', '50000', '100000']],
       [50_000, 150_000, ['50000', '100000', '150000']],
