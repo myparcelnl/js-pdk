@@ -1859,7 +1859,7 @@ __metadata:
     "@myparcel-dev/pdk-app-builder": "workspace:*"
     "@myparcel-dev/pdk-common": "workspace:*"
     "@myparcel-dev/ts-utils": "npm:^1.15.0"
-    "@types/node": "npm:^20.0.0"
+    "@types/node": "npm:^26.6.5"
     h3: "npm:^1.5.0"
     nitropack: "npm:^2.2.3"
     typescript: "npm:^5.2.2"
@@ -3455,12 +3455,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.0.0":
-  version: 20.12.7
-  resolution: "@types/node@npm:20.12.7"
+"@types/node@npm:^26.6.5":
+  version: 26.6.5
+  resolution: "@types/node@npm:26.6.5"
   dependencies:
-    undici-types: "npm:~5.26.4"
-  checksum: 10c0/dce80d63a3b91892b321af823d624995c61e39c6a223cc0ac481a44d337640cc46931d33efb3beeed75f5c85c3bda1d97cef4c5cd4ec333caf5dee59cff6eca0
+    undici-types: "npm:~8.9.0"
+  checksum: 10c0/4f791f69466ace7842c09e7bef96cb1ddbb65cf3db916ef7e84f0e2b2a17220b6b816dc7539d01520cadfb17ed7169b8214910900493e0a83be8bc7d124ec20a
   languageName: node
   linkType: hard
 
