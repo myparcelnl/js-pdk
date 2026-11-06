@@ -16,33 +16,32 @@
     "./dist"
   ],
   "scripts": {
-    "build": "run ws:ts:build \"$(pwd)\"",
-    "clean": "run ws:clean \"$(pwd)\"",
-    "emit": "run ws:ts:emit \"$(pwd)\"",
-    "lint": "run ws:lint \"$(pwd)\"",
-    "lint:fix": "run ws:lint:fix \"$(pwd)\"",
-    "test": "run ws:test \"$(pwd)\"",
-    "test:coverage": "run ws:test:coverage \"$(pwd)\"",
-    "test:run": "run ws:test:run \"$(pwd)\"",
-    "test:update": "run ws:test:update \"$(pwd)\"",
-    "typecheck": "run ws:ts:typecheck \"$(pwd)\""
+    "build": "tsc --project tsconfig.base.json --noEmit false --declaration --emitDeclarationOnly --declarationDir dist",
+    "typecheck": "tsc --project tsconfig.base.json --noEmit"
   },
   "dependencies": {
-    "@myparcel-dev/pdk-checkout-common": "workspace:^2.2.3"
+    "@myparcel-dev/pdk-checkout-common": "workspace:^2.2.3",
+    "@myparcel-dev/ts-utils": "^1.15.0"
   },
   "devDependencies": {
     "@myparcel-dev/pdk-build-vite": "workspace:*",
-    "typescript": "^5.2.2",
-    "vitest": "^4.1.11"
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=20"
   },
-  "volta": {
-    "extends": "../../package.json"
-  },
   "publishConfig": {
     "access": "public"
   },
-  "deployGroup": "checkout"
+  "nx": {
+    "targets": {
+      "clean": {},
+      "lint": {},
+      "lint:fix": {},
+      "test": {},
+      "test:coverage": {},
+      "test:run": {},
+      "test:update": {}
+    }
+  }
 }

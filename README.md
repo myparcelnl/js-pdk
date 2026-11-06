@@ -26,9 +26,33 @@ View our [contribution guidelines] for information on how to contribute to the P
 
 ### Prerequisites
 
-- Node 24
-- Yarn
+- Node 24.21 or later
+- pnpm 12.6 or later
 - Docker
+- No Volta on your machine. Its `yarn` does not go through corepack, so the `packageManager` field in `package.json`
+  does not stop it.
+
+### Targets
+
+The nx targets `clean`, `lint`, `lint:fix`, `test`, `test:coverage`, `test:run` and `test:update` have one command each,
+in `targetDefaults` in `nx.json`. A package lists the targets it uses under `nx.targets` in its `package.json`. Run a
+target from the repository root, for one package or through a root script:
+
+```shell
+pnpm nx test:run @myparcel-dev/pdk-common
+pnpm test:run
+```
+
+The root scripts run a target for every package, except `lint` and `lint:fix`. These run only for the packages that
+changed (`nx affected`).
+
+`build` and `typecheck` stay as scripts in each `package.json`, because their command differs per package.
+
+### Releases
+
+`nx release` versions and tags the packages from conventional commits, and the release workflow publishes them with
+`pnpm -r publish`. Packages that share a version form a group under `release.groups` in `nx.json`. Add a new published
+package to a group, or it is not released.
 
 ## Packages
 

@@ -21,21 +21,18 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "vite build",
-    "clean": "run ws:clean \"$(pwd)\"",
-    "test": "run ws:test \"$(pwd)\"",
-    "test:coverage": "run ws:test:coverage \"$(pwd)\"",
-    "test:run": "run ws:test:run \"$(pwd)\"",
-    "test:update": "run ws:test:update \"$(pwd)\""
+    "build": "vite build"
   },
   "dependencies": {
     "@myparcel-dev/pdk-admin": "workspace:^2.4.0"
   },
   "devDependencies": {
     "@myparcel-dev/pdk-build-vite": "workspace:*",
+    "@myparcel-dev/ts-utils": "^1.15.0",
+    "@vitejs/plugin-vue": "^6.0.9",
+    "@vue/compiler-core": "3.4.31",
     "typescript": "^5.2.2",
-    "vite": "^8.3.1",
-    "vitest": "^4.1.11"
+    "vite": "^8.3.1"
   },
   "peerDependencies": {
     "vue": "3.4.31"
@@ -43,11 +40,16 @@
   "engines": {
     "node": ">=20"
   },
-  "volta": {
-    "extends": "../../package.json"
-  },
   "publishConfig": {
     "access": "public"
   },
-  "deployGroup": "admin"
+  "nx": {
+    "targets": {
+      "clean": {},
+      "test": {},
+      "test:coverage": {},
+      "test:run": {},
+      "test:update": {}
+    }
+  }
 }

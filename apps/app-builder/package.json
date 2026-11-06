@@ -22,15 +22,8 @@
   "scripts": {
     "build": "tsup-node src/main.ts --format esm --minify && tsup-node src/index.ts --format esm,cjs --dts --minify",
     "build:dev": "tsup-node src/main.ts --format esm && tsup-node src/index.ts --format esm,cjs --dts",
-    "clean": "run ws:clean \"$(pwd)\"",
-    "lint": "run ws:lint \"$(pwd)\"",
-    "lint:fix": "run ws:lint:fix \"$(pwd)\"",
     "start": "ts-node --project ./tsconfig.base.json src/main.ts",
-    "test": "run ws:test \"$(pwd)\"",
-    "test:coverage": "run ws:test:coverage \"$(pwd)\"",
-    "test:run": "run ws:test:run \"$(pwd)\"",
-    "test:update": "run ws:test:update \"$(pwd)\"",
-    "typecheck": "run ws:ts:typecheck \"$(pwd)\""
+    "typecheck": "tsc --project tsconfig.base.json --noEmit"
   },
   "dependencies": {
     "@myparcel-dev/google-docs-importer": "^1.0.2",
@@ -44,21 +37,28 @@
     "radash": "^12.1.0"
   },
   "devDependencies": {
+    "@myparcel-dev/pdk-build-vite": "workspace:*",
     "@types/debug": "^4.1.7",
     "@types/interpret": "^1.1.1",
     "@types/liftoff": "^4.0.0",
     "tsup": "^8.5.1",
-    "typescript": "^5.2.2",
-    "vitest": "^4.1.11"
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=20"
   },
-  "volta": {
-    "extends": "../../package.json"
-  },
   "publishConfig": {
     "access": "public"
   },
-  "deployGroup": "app-builder"
+  "nx": {
+    "targets": {
+      "clean": {},
+      "lint": {},
+      "lint:fix": {},
+      "test": {},
+      "test:coverage": {},
+      "test:run": {},
+      "test:update": {}
+    }
+  }
 }

@@ -19,17 +19,18 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: myparcelnl/actions/yarn-install@v5
+      - uses: pnpm/setup@v3
         with:
-          node-version: ${{ vars.NODE_VERSION }}
+          cache: true
+          require-lockfile: true
 
-      - uses: myparcelnl/actions/nx-run-many@v5
+      - uses: myparcelnl/actions/nx-run-many@v6
         env:
           NX_BRANCH: production
         with:
           target: 'build'
 
-      - uses: myparcelnl/actions/setup-git-credentials@v5
+      - uses: myparcelnl/actions/setup-git-credentials@v6
         id: credentials
         with:
           app-id: ${{ secrets.MYPARCEL_APP_ID }}
@@ -39,6 +40,6 @@ jobs:
         shell: bash
         run: git fetch --no-tags --prune --depth=1 origin ${{ github.base_ref }}
 
-      - uses: myparcelnl/actions/bundlewatch@v5
+      - uses: myparcelnl/actions/bundlewatch@v6
         with:
           token: ${{ inputs.bundlewatch-token }}
