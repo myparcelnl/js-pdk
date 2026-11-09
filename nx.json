@@ -185,7 +185,8 @@
       }
     },
     "version": {
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "applyPreidToDependents": true
     },
     "changelog": {
       "automaticFromRef": true,
