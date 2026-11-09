@@ -50,12 +50,12 @@ jobs:
       - name: 'Release'
         #language=bash
         run: |
-          case "$GITHUB_REF_NAME" in
-            next|alpha|beta|rc)
-              PREID=(--preid "$GITHUB_REF_NAME")
-              TAG=(--tag "$GITHUB_REF_NAME")
-              ;;
-          esac
+          DEFAULT_BRANCH=$(gh api "repos/$GITHUB_REPOSITORY" --jq .default_branch)
+
+          if [ "$GITHUB_REF_NAME" != "$DEFAULT_BRANCH" ]; then
+            PREID=(--preid "$GITHUB_REF_NAME")
+            TAG=(--tag "$GITHUB_REF_NAME")
+          fi
 
           pnpm nx release --skip-publish --yes "${PREID[@]}"
 
