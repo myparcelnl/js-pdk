@@ -17,7 +17,8 @@
   },
   "files": [
     "./bin",
-    "./dist"
+    "./dist",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "tsup-node src/main.ts --format esm --minify && tsup-node src/index.ts --format esm,cjs --dts --minify",

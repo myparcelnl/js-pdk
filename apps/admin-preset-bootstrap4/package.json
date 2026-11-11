@@ -1,6 +1,6 @@
 {
   "name": "@myparcel-dev/pdk-admin-preset-bootstrap4",
-  "version": "2.4.1",
+  "version": "2.4.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/myparcelnl/js-pdk.git",
@@ -13,14 +13,15 @@
   "types": "./dist/index.d.ts",
   "files": [
     "./src",
-    "./dist"
+    "./dist",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "vue-tsc --project tsconfig.base.json --noEmit false --declaration --emitDeclarationOnly --declarationDir dist || true",
     "typecheck": "vue-tsc --project tsconfig.base.json --noEmit"
   },
   "dependencies": {
-    "@myparcel-dev/pdk-admin": "workspace:^2.4.1",
+    "@myparcel-dev/pdk-admin": "workspace:^",
     "@myparcel-dev/ts-utils": "^1.15.0",
     "@myparcel-dev/vue-form-builder": "1.0.0-beta.42.6",
     "vue": "3.4.31"

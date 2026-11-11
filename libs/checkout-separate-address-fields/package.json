@@ -13,14 +13,15 @@
   "types": "./dist/index.d.ts",
   "files": [
     "./src",
-    "./dist"
+    "./dist",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "tsc --project tsconfig.base.json --noEmit false --declaration --emitDeclarationOnly --declarationDir dist",
     "typecheck": "tsc --project tsconfig.base.json --noEmit"
   },
   "dependencies": {
-    "@myparcel-dev/pdk-checkout-common": "workspace:^2.2.3",
+    "@myparcel-dev/pdk-checkout-common": "workspace:^",
     "@myparcel-dev/ts-utils": "^1.15.0"
   },
   "devDependencies": {

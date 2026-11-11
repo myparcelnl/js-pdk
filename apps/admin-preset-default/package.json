@@ -13,7 +13,8 @@
   "types": "./dist/index.d.ts",
   "files": [
     "./src",
-    "./dist"
+    "./dist",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "vue-tsc --project tsconfig.base.json --noEmit false --declaration --emitDeclarationOnly --declarationDir dist || true",
@@ -21,7 +22,7 @@
   },
   "dependencies": {
     "@myparcel-dev/constants": "^2.9.0",
-    "@myparcel-dev/pdk-admin": "workspace:^2.4.0",
+    "@myparcel-dev/pdk-admin": "workspace:^",
     "@myparcel-dev/pdk-common": "workspace:^",
     "@myparcel-dev/ts-utils": "^1.15.0",
     "@vuepic/vue-datepicker": "^11.0.2",

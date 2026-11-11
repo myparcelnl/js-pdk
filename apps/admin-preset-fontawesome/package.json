@@ -13,14 +13,15 @@
   "types": "./dist/index.d.ts",
   "files": [
     "./src",
-    "./dist"
+    "./dist",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "vue-tsc --project tsconfig.base.json --noEmit false --declaration --emitDeclarationOnly --declarationDir dist || true",
     "typecheck": "vue-tsc --project tsconfig.base.json --noEmit"
   },
   "dependencies": {
-    "@myparcel-dev/pdk-admin": "workspace:^2.4.0",
+    "@myparcel-dev/pdk-admin": "workspace:^",
     "lodash-unified": "^1.0.3",
     "vue": "3.4.31"
   },

@@ -13,7 +13,8 @@
   "types": "./dist/index.d.ts",
   "files": [
     "./src",
-    "./dist"
+    "./dist",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "tsc --project tsconfig.base.json --noEmit false --declaration --emitDeclarationOnly --declarationDir dist",
@@ -21,7 +22,7 @@
   },
   "dependencies": {
     "@myparcel-dev/constants": "^2.7.0",
-    "@myparcel-dev/pdk-checkout-common": "workspace:^2.2.3"
+    "@myparcel-dev/pdk-checkout-common": "workspace:^"
   },
   "devDependencies": {
     "@myparcel-dev/pdk-build-vite": "workspace:*",

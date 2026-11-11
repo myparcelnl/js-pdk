@@ -16,14 +16,15 @@
   "types": "./dist/index.d.ts",
   "files": [
     "./src",
-    "./dist"
+    "./dist",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "vue-tsc --project tsconfig.base.json --noEmit false --declaration --emitDeclarationOnly --declarationDir dist",
     "typecheck": "vue-tsc --project tsconfig.base.json --noEmit"
   },
   "dependencies": {
-    "@myparcel-dev/pdk-admin": "workspace:^2.4.0",
+    "@myparcel-dev/pdk-admin": "workspace:^",
     "@myparcel-dev/pdk-common": "workspace:^",
     "@myparcel-dev/vue-form-builder": "1.0.0-beta.42.6",
     "@pinia/testing": ">= 0.1.0 < 1",
