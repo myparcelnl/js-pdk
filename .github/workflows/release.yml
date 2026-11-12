@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-22.04
     needs: test
     steps:
-      - uses: myparcelnl/actions/setup-git-credentials@v5
+      - uses: myparcelnl/actions/setup-git-credentials@v6
         id: credentials
         with:
           app-id: ${{ secrets.MYPARCEL_APP_ID }}
@@ -31,11 +31,11 @@ jobs:
           token: ${{ steps.credentials.outputs.token }}
           fetch-depth: 0
 
-      - uses: myparcelnl/actions/yarn-install@v5
+      - uses: myparcelnl/actions/yarn-install@v6
         with:
           node-version: ${{ vars.NODE_VERSION }}
 
-      - uses: myparcelnl/actions/nx-run-many@v5
+      - uses: myparcelnl/actions/nx-run-many@v6
         env:
           NX_BRANCH: production
         with:
@@ -79,5 +79,5 @@ jobs:
       - release
       - deploy
     if: always() && contains(needs.*.result, 'failure')
-    uses: myparcelnl/actions/.github/workflows/notify-on-failure.yml@v5
+    uses: myparcelnl/actions/.github/workflows/notify-on-failure.yml@v6
     secrets: inherit
