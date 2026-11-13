@@ -1,8 +1,8 @@
 // @vitest-environment happy-dom
 
-import {defineComponent, h} from 'vue';
+import {defineComponent, h, type PropType} from 'vue';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
-import {config, flushPromises, mount} from '@vue/test-utils';
+import {config, flushPromises, mount, type VueWrapper} from '@vue/test-utils';
 import {sendDeactivationFeedback} from '../services/deactivation/sendDeactivationFeedback';
 import {doComponentTestSetup, doComponentTestTeardown} from '../__tests__';
 import DeactivationFeedback from './DeactivationFeedback.vue';
@@ -43,14 +43,6 @@ vi.mock('../services/deactivation/sendDeactivationFeedback', () => ({
 }));
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const SlotComponent = defineComponent({
-  setup:
-    (_, {slots}) =>
-    () =>
-      h('div', [slots.header?.(), slots.default?.(), slots.footer?.()]),
-});
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
 const TestButton = defineComponent({
   props: {disabled: Boolean, variant: {type: String, default: undefined}},
   emits: ['click'],
@@ -58,6 +50,45 @@ const TestButton = defineComponent({
     (props, {slots, emit}) =>
     () =>
       h('button', {disabled: props.disabled, type: 'button', onClick: () => emit('click')}, slots.default?.()),
+});
+
+/**
+ * Renders a radio input per option, like the radio groups of the presets.
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const TestRadioGroup = defineComponent({
+  props: {
+    modelValue: {type: String, default: undefined},
+    element: {type: Object as PropType<{props: {options: {value: string; plainLabel: string}[]}}>, required: true},
+  },
+  emits: ['update:modelValue'],
+  setup:
+    (props, {emit}) =>
+    () =>
+      h(
+        'div',
+        props.element.props.options.map((option) =>
+          h('input', {
+            type: 'radio',
+            value: option.value,
+            checked: props.modelValue === option.value,
+            onChange: () => emit('update:modelValue', option.value),
+          }),
+        ),
+      ),
+});
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const TestTextArea = defineComponent({
+  props: {modelValue: {type: String, default: ''}},
+  emits: ['update:modelValue'],
+  setup:
+    (props, {emit}) =>
+    () =>
+      h('textarea', {
+        value: props.modelValue,
+        onInput: (event: Event) => emit('update:modelValue', (event.target as HTMLTextAreaElement).value),
+      }),
 });
 
 const renderPluginsOverview = (): HTMLAnchorElement => {
@@ -79,7 +110,7 @@ const click = (element: HTMLElement, init: MouseEventInit = {}): MouseEvent => {
   return event;
 };
 
-const findButton = (wrapper: ReturnType<typeof mount>, text: string) => {
+const findButton = (wrapper: VueWrapper, text: string) => {
   const button = wrapper
     .findAll('button')
     .find((item) => item.text() === text || item.attributes('aria-label') === text);
@@ -91,15 +122,29 @@ const findButton = (wrapper: ReturnType<typeof mount>, text: string) => {
   return button;
 };
 
+const openModal = async (): Promise<VueWrapper> => {
+  const link = renderPluginsOverview();
+  const wrapper = mount(DeactivationFeedback);
+
+  click(link);
+  await flushPromises();
+
+  return wrapper;
+};
+
+const selectReason = async (wrapper: VueWrapper, value: string): Promise<void> => {
+  await wrapper.find(`input[value="${value}"]`).trigger('change');
+};
+
 describe('DeactivationFeedback', () => {
   let location: {href: string};
 
   beforeEach(() => {
     doComponentTestSetup();
 
-    config.global.stubs.PdkBox = SlotComponent;
-    config.global.stubs.PdkButtonGroup = SlotComponent;
     config.global.stubs.PdkButton = TestButton;
+    config.global.stubs.PdkRadioGroup = TestRadioGroup;
+    config.global.stubs.PdkTextArea = TestTextArea;
 
     location = {href: ''};
     vi.stubGlobal('location', location);
@@ -153,13 +198,17 @@ describe('DeactivationFeedback', () => {
     wrapper.unmount();
   });
 
-  it('closes on cancel without deactivating', async () => {
-    const link = renderPluginsOverview();
-    const wrapper = mount(DeactivationFeedback);
+  it.each([
+    ['the close button', async (wrapper: VueWrapper) => findButton(wrapper, 'Cancel').trigger('click')],
+    ['escape', async (wrapper: VueWrapper) => wrapper.find('[role="dialog"]').trigger('keydown', {key: 'Escape'})],
+    [
+      'a click outside the dialog',
+      async (wrapper: VueWrapper) => wrapper.find('.pdk-deactivation-feedback').trigger('click'),
+    ],
+  ])('closes on %s without deactivating', async (_, close) => {
+    const wrapper = await openModal();
 
-    click(link);
-    await flushPromises();
-    await findButton(wrapper, 'Cancel').trigger('click');
+    await close(wrapper);
 
     expect(wrapper.find('[role="dialog"]').exists()).toBe(false);
     expect(location.href).toBe('');
@@ -168,11 +217,8 @@ describe('DeactivationFeedback', () => {
   });
 
   it('deactivates without feedback on skip', async () => {
-    const link = renderPluginsOverview();
-    const wrapper = mount(DeactivationFeedback);
+    const wrapper = await openModal();
 
-    click(link);
-    await flushPromises();
     await findButton(wrapper, 'Skip').trigger('click');
     await flushPromises();
 
@@ -183,14 +229,117 @@ describe('DeactivationFeedback', () => {
   });
 
   it('disables submit until a reason is selected', async () => {
-    const link = renderPluginsOverview();
-    const wrapper = mount(DeactivationFeedback);
-
-    click(link);
-    await flushPromises();
+    const wrapper = await openModal();
 
     expect(findButton(wrapper, 'Submit').attributes('disabled')).toBeDefined();
 
+    await selectReason(wrapper, 'no_longer_needed');
+
+    expect(findButton(wrapper, 'Submit').attributes('disabled')).toBeUndefined();
+
+    wrapper.unmount();
+  });
+
+  it('shows the details field only for reasons that ask for details', async () => {
+    const wrapper = await openModal();
+
+    await selectReason(wrapper, 'no_longer_needed');
+    expect(wrapper.find('textarea').exists()).toBe(false);
+
+    await selectReason(wrapper, 'other');
+    expect(wrapper.find('textarea').exists()).toBe(true);
+
+    wrapper.unmount();
+  });
+
+  it('sends the reason and details, then deactivates', async () => {
+    const wrapper = await openModal();
+
+    await selectReason(wrapper, 'other');
+    await wrapper.find('textarea').setValue('  Too expensive  ');
+    await findButton(wrapper, 'Submit').trigger('click');
+    await flushPromises();
+
+    expect(sendDeactivationFeedback).toHaveBeenCalledWith({reason: 'other', details: 'Too expensive'});
+    expect(location.href).toBe(DEACTIVATE_URL);
+
+    wrapper.unmount();
+  });
+
+  it('drops the details when the selected reason does not ask for them', async () => {
+    const wrapper = await openModal();
+
+    await selectReason(wrapper, 'other');
+    await wrapper.find('textarea').setValue('Text');
+    await selectReason(wrapper, 'no_longer_needed');
+    await findButton(wrapper, 'Submit').trigger('click');
+    await flushPromises();
+
+    expect(sendDeactivationFeedback).toHaveBeenCalledWith({reason: 'no_longer_needed', details: ''});
+
+    wrapper.unmount();
+  });
+
+  it('still deactivates when sending the feedback fails', async () => {
+    vi.mocked(sendDeactivationFeedback).mockRejectedValueOnce(new Error('Network error'));
+    vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const wrapper = await openModal();
+
+    await selectReason(wrapper, 'no_longer_needed');
+    await findButton(wrapper, 'Submit').trigger('click');
+    await flushPromises();
+
+    expect(location.href).toBe(DEACTIVATE_URL);
+
+    wrapper.unmount();
+  });
+
+  it('ignores cancel and a second submit once the deactivation started', async () => {
+    let resolve: () => void = () => undefined;
+    vi.mocked(sendDeactivationFeedback).mockImplementationOnce(
+      async () =>
+        new Promise((done) => {
+          resolve = done;
+        }),
+    );
+    const wrapper = await openModal();
+
+    await selectReason(wrapper, 'no_longer_needed');
+    await findButton(wrapper, 'Submit').trigger('click');
+    await wrapper.find('[role="dialog"]').trigger('keydown', {key: 'Escape'});
+    await findButton(wrapper, 'Submit').trigger('click');
+
+    expect(wrapper.find('[role="dialog"]').exists()).toBe(true);
+    expect(sendDeactivationFeedback).toHaveBeenCalledTimes(1);
+
+    resolve();
+    await flushPromises();
+
+    expect(location.href).toBe(DEACTIVATE_URL);
+
+    wrapper.unmount();
+  });
+
+  it('keeps the focus inside the dialog', async () => {
+    const wrapper = await openModal();
+
+    // The attachTo option needs Vue 3.5, so attach the element by hand to make focus() work.
+    document.body.appendChild(wrapper.element);
+
+    const dialog = wrapper.find('[role="dialog"]');
+    const close = findButton(wrapper, 'Cancel').element as HTMLButtonElement;
+    // Submit is disabled, so "Skip" is the last focusable element.
+    const skip = findButton(wrapper, 'Skip').element as HTMLButtonElement;
+
+    skip.focus();
+    await dialog.trigger('keydown', {key: 'Tab'});
+    expect(document.activeElement).toBe(close);
+
+    close.focus();
+    await dialog.trigger('keydown', {key: 'Tab', shiftKey: true});
+    expect(document.activeElement).toBe(skip);
+
+    wrapper.element.remove();
     wrapper.unmount();
   });
 });
