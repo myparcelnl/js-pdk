@@ -43,7 +43,7 @@
     "@myparcel-dev/pdk-admin-component-tests": "workspace:*",
     "@myparcel-dev/pdk-admin-preset-default": "workspace:*",
     "@myparcel-dev/prettier-config": "^2.0.0",
-    "@nx/js": "^23.3.1",
+    "@nx/js": "^24.0.6",
     "@types/is-ci": "^3",
     "@types/node": "^20.12.7",
     "@vitest/coverage-v8": "^4.1.11",

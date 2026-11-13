@@ -35,6 +35,7 @@
   },
   "targetDefaults": {
     "build": {
+      "cache": true,
       "inputs": ["prod", "^prod"],
       "dependsOn": ["^build"],
       "outputs": [
@@ -43,6 +44,7 @@
       ]
     },
     "build:dev": {
+      "cache": true,
       "inputs": ["prod", "^prod"],
       "dependsOn": ["^build:dev"],
       "outputs": [
@@ -51,6 +53,7 @@
       ]
     },
     "lint": {
+      "cache": true,
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{workspaceRoot}",
@@ -60,6 +63,7 @@
       "outputs": ["{projectRoot}/.eslintcache"]
     },
     "lint:fix": {
+      "cache": true,
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{workspaceRoot}",
@@ -69,6 +73,7 @@
       "outputs": ["{projectRoot}/.eslintcache", "{projectRoot}/src/**/*"]
     },
     "test:coverage": {
+      "cache": true,
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
@@ -78,6 +83,7 @@
       "outputs": ["{projectRoot}/coverage", "{projectRoot}/junit.xml"]
     },
     "test:run": {
+      "cache": true,
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
@@ -87,6 +93,7 @@
       "outputs": ["{projectRoot}/junit.xml"]
     },
     "test:update": {
+      "cache": true,
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
@@ -113,23 +120,7 @@
       }
     }
   },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "parallel": 10,
-        "cacheableOperations": [
-          "build",
-          "build:dev",
-          "lint",
-          "lint:fix",
-          "test:run",
-          "test:update",
-          "test:coverage"
-        ]
-      }
-    }
-  },
+  "parallel": 10,
   "workspaceLayout": {
     "appsDir": "apps",
     "libsDir": "libs"
