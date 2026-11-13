@@ -80,7 +80,9 @@ const click = (element: HTMLElement, init: MouseEventInit = {}): MouseEvent => {
 };
 
 const findButton = (wrapper: ReturnType<typeof mount>, text: string) => {
-  const button = wrapper.findAll('button').find((item) => item.text() === text);
+  const button = wrapper
+    .findAll('button')
+    .find((item) => item.text() === text || item.attributes('aria-label') === text);
 
   if (!button) {
     throw new Error(`Button "${text}" not found`);
