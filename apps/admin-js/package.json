@@ -35,7 +35,7 @@
     "@myparcel-dev/pdk-build-vite": "workspace:*",
     "@myparcel-dev/ts-utils": "^1.15.0",
     "@vitejs/plugin-vue": "^6.0.9",
-    "@vue/compiler-core": "3.4.31",
+    "@vue/compiler-core": "3.5.45",
     "typescript": "^5.2.2",
     "vite": "^8.3.1"
   },
