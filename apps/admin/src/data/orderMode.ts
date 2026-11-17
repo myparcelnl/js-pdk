@@ -38,7 +38,7 @@ export const orderModeFromContextValue = (value: unknown): OrderMode | undefined
  *
  * Use this only as a fallback for environments where the PDK admin context does
  * not yet surface a pre-computed `effectiveOrderMode`. Prefer the context value
- * so any business rules layered on top in PHP (e.g. INT-1590's sales-channel
+ * so any business rules layered on top in PHP (e.g. INT-2218's sales-channel
  * downgrade) take effect on the JS side automatically.
  */
 export const resolveOrderMode = (features: string[]): OrderMode => {

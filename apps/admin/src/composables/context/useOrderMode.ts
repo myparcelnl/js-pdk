@@ -6,7 +6,7 @@ import {useContext} from './useContext';
  * Resolve the order mode the admin UI should adapt to.
  *
  * Prefers the pre-computed `effectiveOrderMode` emitted by the PDK admin context
- * (so any business rules applied on the PHP side — e.g. INT-1590's
+ * (so any business rules applied on the PHP side — e.g. INT-2218's
  * sales-channel-conditional downgrade — naturally flow through). Falls back to
  * resolving from the raw IAM subscription features when the context does not
  * (yet) carry that value, which keeps older PDK versions working.
