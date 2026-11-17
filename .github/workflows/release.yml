@@ -39,12 +39,6 @@ jobs:
           cache: true
           require-lockfile: true
 
-      - name: Prepare the one-time OIDC beta
-        if: github.ref == 'refs/tags/int-2236-oidc-beta'
-        run: |
-          pnpm nx release version prerelease --preid beta \
-            --git-commit=false --git-tag=false --git-push=false --stage-changes=false
-
       - uses: myparcelnl/actions/nx-run-many@v6
         env:
           NX_BRANCH: production
@@ -52,17 +46,11 @@ jobs:
           target: 'build'
 
       - uses: actions/upload-pages-artifact@v5
-        if: github.ref != 'refs/tags/int-2236-oidc-beta'
         with:
           path: ./apps/admin-demo/dist
 
-      - name: Publish the one-time OIDC beta
-        if: github.ref == 'refs/tags/int-2236-oidc-beta'
-        run: pnpm -r publish --no-git-checks --tag beta
-
       # Not nx release publish: it runs npm view, which npm refuses in a repository whose devEngines names pnpm.
       - name: 'Release'
-        if: github.ref != 'refs/tags/int-2236-oidc-beta'
         #language=bash
         run: |
           case "$GITHUB_REF_NAME" in
@@ -79,13 +67,11 @@ jobs:
           GH_TOKEN: ${{ steps.credentials.outputs.token }}
 
   rebase-prs:
-    if: github.ref != 'refs/tags/int-2236-oidc-beta'
     needs: release
     uses: ./.github/workflows/rebase-prs.yml
     secrets: inherit
 
   deploy:
-    if: github.ref != 'refs/tags/int-2236-oidc-beta'
     needs: release
     runs-on: ubuntu-22.04
     permissions:
