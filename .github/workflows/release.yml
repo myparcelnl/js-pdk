@@ -1,43 +1,39 @@
-name: 'Release new version 🚀'
+name: 'Verify npm trusted publishing'
 
 on:
   workflow_dispatch:
 
-  schedule:
-    # every day at 18:00 UTC
-    - cron: '0 18 * * *'
-
 concurrency:
-  group: '${{ github.workflow }}-${{ github.ref }}'
-  cancel-in-progress: true
+  group: int-2236-oidc-pilot
+  cancel-in-progress: false
 
 jobs:
   test:
+    if: github.ref == 'refs/heads/feat/int-2236-oidc-pilot'
     uses: ./.github/workflows/test.yml
     secrets: inherit
 
   release:
-    runs-on: ubuntu-22.04
     needs: test
+    runs-on: ubuntu-22.04
     permissions:
-      id-token: write # npm trusted publishing (OIDC) exchanges this token for a short-lived npm token
       contents: read
+      id-token: write
     steps:
-      - uses: myparcelnl/actions/setup-git-credentials@v6
-        id: credentials
-        with:
-          app-id: ${{ secrets.MYPARCEL_APP_ID }}
-          private-key: ${{ secrets.MYPARCEL_APP_PRIVATE_KEY }}
-
       - uses: actions/checkout@v7
         with:
-          token: ${{ steps.credentials.outputs.token }}
           fetch-depth: 0
+          persist-credentials: false
 
       - uses: pnpm/setup@v3
         with:
           cache: true
           require-lockfile: true
+
+      - name: Prepare beta versions for all release groups
+        run: |
+          pnpm nx release version prerelease --preid beta-oidc \
+            --git-commit=false --git-tag=false --git-push=false --stage-changes=false
 
       - uses: myparcelnl/actions/nx-run-many@v6
         env:
@@ -45,50 +41,5 @@ jobs:
         with:
           target: 'build'
 
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: ./apps/admin-demo/dist
-
-      # Not nx release publish: it runs npm view, which npm refuses in a repository whose devEngines names pnpm.
-      - name: 'Release'
-        #language=bash
-        run: |
-          case "$GITHUB_REF_NAME" in
-            next|alpha|beta|rc)
-              PREID=(--preid "$GITHUB_REF_NAME")
-              TAG=(--tag "$GITHUB_REF_NAME")
-              ;;
-          esac
-
-          pnpm nx release --skip-publish "${PREID[@]}"
-
-          pnpm -r publish --no-git-checks "${TAG[@]}"
-        env:
-          GH_TOKEN: ${{ steps.credentials.outputs.token }}
-
-  rebase-prs:
-    needs: release
-    uses: ./.github/workflows/rebase-prs.yml
-    secrets: inherit
-
-  deploy:
-    needs: release
-    runs-on: ubuntu-22.04
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5
-
-  notify-on-failure:
-    needs:
-      - test
-      - release
-      - deploy
-    if: always() && contains(needs.*.result, 'failure')
-    uses: myparcelnl/actions/.github/workflows/notify-on-failure.yml@v6
-    secrets: inherit
+      - name: Publish the OIDC beta versions
+        run: pnpm -r publish --no-git-checks --tag beta-oidc
