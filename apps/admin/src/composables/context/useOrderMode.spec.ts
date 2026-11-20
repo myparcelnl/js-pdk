@@ -63,7 +63,7 @@ describe('useOrderMode', () => {
 
   it('prefers a PHP-supplied effectiveOrderMode of 0 (Shipments) over the feature derivation', () => {
     // Feature would resolve to OrderV2; effectiveOrderMode downgrades to Shipments
-    // (the shape INT-1590 will produce).
+    // (the shape INT-2218 will produce).
     mockAccount([SubscriptionFeature.OrderManagement], 0);
     expect(useOrderMode().value).toBe(OrderMode.Shipments);
   });

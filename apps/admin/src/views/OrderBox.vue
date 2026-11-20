@@ -3,7 +3,7 @@
 
   <!--
     Shipments mode plus V2 hybrid both surface manual shipments here.
-    @TODO INT-1590: restrict to OrderMode.Shipments once V2 with an active sales
+    @TODO INT-2218: restrict to OrderMode.Shipments once V2 with an active sales
           channel hides the manual paths again. Original gate preserved as a
           comment below for easy restoration.
   -->
