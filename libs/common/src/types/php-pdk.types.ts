@@ -305,12 +305,26 @@ export namespace Plugin {
 
   export type ModelContextContextBag = {
     checkout?: ModelContextCheckoutContext;
+    deactivationFeedback?: ModelContextDeactivationFeedbackContext;
     dynamic?: ModelContextDynamicContext;
     global: ModelContextGlobalContext;
     orderData?: OrderDataContextCollection;
     pluginSettingsView?: ModelContextPluginSettingsViewContext;
     productData?: ProductDataContextCollection;
     productSettingsView?: ModelContextProductSettingsViewContext;
+  };
+
+  export type ModelContextDeactivationFeedbackContext = {
+    linkSelector: string | null;
+    reasons: {value: string; label: string; hasDetails: boolean}[];
+    translations: {
+      title: string;
+      description: string;
+      detailsPlaceholder: string;
+      submit: string;
+      skip: string;
+      cancel: string;
+    };
   };
 
   export type ModelContextDeliveryOptionsConfig = {

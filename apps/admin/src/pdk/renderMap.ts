@@ -8,6 +8,7 @@ import {AdminView} from '../data';
  */
 const renderMap = Object.freeze<Record<AdminView, ComponentImportFunction>>({
   [AdminView.ChildProductSettings]: async () => import('../views/ChildProductSettings.vue'),
+  [AdminView.DeactivationFeedback]: async () => import('../views/DeactivationFeedback.vue'),
   [AdminView.Modals]: async () => import('../views/Modals.vue'),
   [AdminView.Notifications]: async () => import('../views/Notifications.vue'),
   [AdminView.OrderBox]: async () => import('../views/OrderBox.vue'),

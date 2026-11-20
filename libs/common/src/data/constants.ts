@@ -16,6 +16,7 @@ export enum AdminContextKey {
   PluginSettingsView = 'pluginSettingsView',
   ProductData = 'productData',
   ProductSettingsView = 'productSettingsView',
+  DeactivationFeedback = 'deactivationFeedback',
 
   Instance = 'instance',
 }

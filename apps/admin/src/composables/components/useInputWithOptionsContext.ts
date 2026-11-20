@@ -25,6 +25,11 @@ export const useInputWithOptionsContext = <
   const {options} = useElementOptions<T>(props);
 
   onMounted(() => {
+    // A field can opt out, for example a question that must not have a preselected answer.
+    if (props.element.props?.autoSelectFirstOption === false) {
+      return;
+    }
+
     watch(
       options,
       (newOptions) => {
