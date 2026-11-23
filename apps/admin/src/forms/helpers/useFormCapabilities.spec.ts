@@ -1,5 +1,5 @@
-import {describe, expect, it, vi, beforeEach} from 'vitest';
 import {ref} from 'vue';
+import {describe, expect, it, vi, beforeEach} from 'vitest';
 import {AdminContextKey, BackendEndpoint, type CarrierModel, TriState} from '@myparcel-dev/pdk-common';
 
 type FakeQuery = {
@@ -25,8 +25,7 @@ const buildQueryStore = () => {
     setDynamicCarriers: (carriers: CarrierModel[]) => {
       dynamicCarriers.value = carriers;
     },
-    has: (endpoint: BackendEndpoint, modifier: string) =>
-      queries.has(`${endpoint}.${modifier}`),
+    has: (endpoint: BackendEndpoint, modifier: string) => queries.has(`${endpoint}.${modifier}`),
     get: (endpoint: BackendEndpoint, modifier?: string) => {
       if (endpoint === BackendEndpoint.FetchContext && modifier === AdminContextKey.Dynamic) {
         return {
@@ -49,6 +48,7 @@ vi.mock('../../stores', () => ({
 
 vi.mock('../../utils', () => ({
   getOrderId: () => mockOrderId,
+  getDynamicTranslation: (prefix: string, input: string) => `${prefix}_${input.toLowerCase()}`,
 }));
 
 vi.mock('../../composables', () => ({
@@ -63,11 +63,12 @@ const buildCarrier = (overrides: Partial<CarrierModel>): CarrierModel =>
     deliveryTypes: [],
     options: {},
     ...overrides,
-  }) as CarrierModel;
+  } as CarrierModel);
 
-const formStub = (carrierName: string) => ({
-  getValue: (name: string) => (name === 'deliveryOptions.carrier' ? carrierName : undefined),
-}) as never;
+const formStub = (carrierName: string) =>
+  ({
+    getValue: (name: string) => (name === 'deliveryOptions.carrier' ? carrierName : undefined),
+  } as never);
 
 describe('useFormCapabilities', () => {
   beforeEach(() => {
@@ -240,6 +241,44 @@ describe('useFormCapabilities', () => {
       const {useFormCapabilities} = await import('./useFormCapabilities');
 
       expect(useFormCapabilities().getInsuranceOptions(formStub('POSTNL'), formatter)).toEqual([]);
+    });
+  });
+
+  describe('getIncotermsOptions', () => {
+    const shipmentWithIncoterms = (values: string[]) =>
+      buildCarrier({carrier: 'UPS_EXPRESS_SAVER', incoterms: {rule: {values, default: values[0]}}});
+
+    it('returns [] when the shipment has no incoterms', async () => {
+      queryStore.setQuery(shipmentModifier('order-1'), 'success', [buildCarrier({carrier: 'UPS_EXPRESS_SAVER'})]);
+
+      const {useFormCapabilities} = await import('./useFormCapabilities');
+
+      expect(useFormCapabilities().getIncotermsOptions(formStub('UPS_EXPRESS_SAVER'))).toEqual([]);
+    });
+
+    it('returns only the rule when the capabilities allow one rule', async () => {
+      queryStore.setQuery(shipmentModifier('order-1'), 'success', [shipmentWithIncoterms(['DAP'])]);
+
+      const {useFormCapabilities} = await import('./useFormCapabilities');
+
+      expect(useFormCapabilities().getIncotermsOptions(formStub('UPS_EXPRESS_SAVER'))).toEqual([
+        {label: 'incoterms_rule_dap', value: 'DAP'},
+      ]);
+    });
+
+    it('returns the default entry and every rule when the capabilities allow several rules', async () => {
+      queryStore.setQuery(shipmentModifier('order-1'), 'success', [
+        shipmentWithIncoterms(['DAP', 'DDP', 'DDP_VAT_UNPAID']),
+      ]);
+
+      const {useFormCapabilities} = await import('./useFormCapabilities');
+
+      expect(useFormCapabilities().getIncotermsOptions(formStub('UPS_EXPRESS_SAVER'))).toEqual([
+        {label: 'option_default', value: TriState.Inherit},
+        {label: 'incoterms_rule_dap', value: 'DAP'},
+        {label: 'incoterms_rule_ddp', value: 'DDP'},
+        {label: 'incoterms_rule_ddp_vat_unpaid', value: 'DDP_VAT_UNPAID'},
+      ]);
     });
   });
 });

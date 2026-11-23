@@ -2,7 +2,7 @@ import {toValue} from 'vue';
 import {type FormInstance} from '@myparcel-dev/vue-form-builder';
 import {AdminContextKey, BackendEndpoint, type CarrierModel, TriState} from '@myparcel-dev/pdk-common';
 import {FIELD_CARRIER} from '../shipmentOptions/field';
-import {getOrderId} from '../../utils';
+import {getDynamicTranslation, getOrderId} from '../../utils';
 import {type AdminContext, type SelectOption} from '../../types';
 import {useQueryStore, type ResolvedQuery} from '../../stores';
 import {Format, type Formatter} from '../../composables';
@@ -74,6 +74,15 @@ export type FormCapabilities = {
    * representing cent amounts so they round-trip through form select inputs unchanged.
    */
   getInsuranceOptions: (form: FormInstance, formatter: Formatter) => SelectOption[];
+
+  /**
+   * Get the Incoterms rules that the capabilities allow for the shipment, as select options.
+   *
+   * - No rules: an empty list.
+   * - One rule: only that rule.
+   * - More rules: a "Default" option first, which uses the carrier setting, then the rules.
+   */
+  getIncotermsOptions: (form: FormInstance) => SelectOption<string | TriState>[];
 };
 
 /**
@@ -172,10 +181,18 @@ export const useFormCapabilities = (): FormCapabilities => {
     ];
   };
 
+  const getIncotermsOptions = (form: FormInstance): SelectOption<string | TriState>[] => {
+    const values = getCarrierCapabilitiesForShipment(form)?.incoterms?.rule.values ?? [];
+    const rules = values.map((value) => ({label: getDynamicTranslation('incoterms_rule', value), value}));
+
+    return rules.length > 1 ? [{label: 'option_default', value: TriState.Inherit}, ...rules] : rules;
+  };
+
   return {
     getCarrierCapabilitiesForOrder,
     getCarrierCapabilitiesForShipment,
     hasShipmentOption,
     getInsuranceOptions,
+    getIncotermsOptions,
   };
 };
