@@ -1,7 +1,13 @@
-import {describe, expect, it, vi, beforeEach} from 'vitest';
 import {effectScope, nextTick, ref, type Ref} from 'vue';
+import {describe, expect, it, vi, beforeEach} from 'vitest';
 import {BackendEndpoint, type CarrierModel, TriState} from '@myparcel-dev/pdk-common';
-import {FIELD_CARRIER, FIELD_DELIVERY_TYPE, FIELD_PACKAGE_TYPE, FIELD_SHIPMENT_OPTIONS_PREFIX} from './field';
+import {
+  FIELD_CARRIER,
+  FIELD_DELIVERY_TYPE,
+  FIELD_INCOTERMS,
+  FIELD_PACKAGE_TYPE,
+  FIELD_SHIPMENT_OPTIONS_PREFIX,
+} from './field';
 
 type FakeQuery = {
   status: ReturnType<typeof ref<string>>;
@@ -36,10 +42,15 @@ const notificationStoreMock = {
 
 const translateMock = vi.fn((key: unknown) => {
   if (typeof key === 'string') return key;
+
   const k = (key as {key: string}).key;
   const a = (key as {args?: Record<string, string>}).args;
 
-  return a ? `${k}(${Object.entries(a).map(([k2, v]) => `${k2}=${v}`).join(',')})` : k;
+  return a
+    ? `${k}(${Object.entries(a)
+        .map(([k2, v]) => `${k2}=${v}`)
+        .join(',')})`
+    : k;
 });
 
 const getCarrierCapabilitiesForOrderMock = vi.fn();
@@ -79,7 +90,7 @@ const buildForm = (initial: Record<string, unknown>) => {
     state: new Proxy({} as Record<string, unknown>, {
       get: (_, name: string) => fieldByName.get(name)?.ref.value,
     }),
-    getValue: <T,>(name: string): T => fieldByName.get(name)?.ref.value as T,
+    getValue: <T>(name: string): T => fieldByName.get(name)?.ref.value as T,
     getField: (name: string) => {
       if (!fieldByName.has(name)) {
         fieldByName.set(name, {name, ref: ref(undefined)});
@@ -91,7 +102,7 @@ const buildForm = (initial: Record<string, unknown>) => {
       const field = fieldByName.get(name);
 
       if (field) {
-        (field.ref as Ref<unknown>).value = value;
+        field.ref.value = value;
       } else {
         fieldByName.set(name, {name, ref: ref(value)});
       }
@@ -116,7 +127,7 @@ const buildCarrier = (overrides: Partial<CarrierModel>): CarrierModel =>
     deliveryTypes: [],
     options: {},
     ...overrides,
-  }) as CarrierModel;
+  } as CarrierModel);
 
 /**
  * Wire `setFieldRef` to mutate the form state so the auto-clear's silent rewrites surface
@@ -343,5 +354,114 @@ describe('useCapabilitiesAutoClear', () => {
     expect(form.state[FIELD_PACKAGE_TYPE]).toBe('PACKAGE');
 
     scope.stop();
+  });
+
+  describe('incoterms', () => {
+    const incoterms = (values: string[]) => ({rule: {values, default: values[0]}});
+
+    /**
+     * Mount the auto-clear for a PACKAGE order with the given Incoterms rule, then change the
+     * given axis and let the shipment query return a carrier with the given rules.
+     */
+    const changeAxis = async (
+      orderRule: unknown,
+      axis: typeof FIELD_CARRIER | typeof FIELD_PACKAGE_TYPE,
+      response: CarrierModel,
+    ) => {
+      const form = buildForm({
+        [FIELD_CARRIER]: 'UPS_EXPRESS_SAVER',
+        [FIELD_PACKAGE_TYPE]: 'PACKAGE',
+        [FIELD_DELIVERY_TYPE]: 'STANDARD',
+        [FIELD_INCOTERMS]: orderRule,
+      });
+
+      wireSetFieldRef(form);
+      getCarrierCapabilitiesForOrderMock.mockReturnValue(
+        buildCarrier({carrier: response.carrier, packageTypes: ['PACKAGE', 'MAILBOX'], deliveryTypes: ['STANDARD']}),
+      );
+      const shipmentEntry = registerShipmentQuery('order-1');
+      const selection = ref({carrier: 'UPS_EXPRESS_SAVER', packageType: 'PACKAGE', deliveryType: 'STANDARD'}) as Ref<{
+        carrier?: string;
+        packageType?: string;
+        deliveryType?: string;
+      }>;
+
+      const scope = effectScope();
+      const {useCapabilitiesAutoClear} = await import('./useCapabilitiesAutoClear');
+
+      scope.run(() => {
+        useCapabilitiesAutoClear(form as never, [], 'order-1', {} as never, selection);
+      });
+
+      const next = axis === FIELD_CARRIER ? response.carrier : 'MAILBOX';
+
+      form.setExternally(axis, next);
+      selection.value = {
+        carrier: axis === FIELD_CARRIER ? next : 'UPS_EXPRESS_SAVER',
+        packageType: axis === FIELD_PACKAGE_TYPE ? next : 'PACKAGE',
+        deliveryType: 'STANDARD',
+      };
+      shipmentEntry.status.value = 'success';
+      shipmentEntry.data.value = [response];
+      await nextTick();
+
+      scope.stop();
+
+      return form;
+    };
+
+    it('puts a rule that is no longer allowed back on the default WITH notification', async () => {
+      const form = await changeAxis(
+        'DDP',
+        FIELD_PACKAGE_TYPE,
+        buildCarrier({carrier: 'UPS_EXPRESS_SAVER', incoterms: incoterms(['DAP'])}),
+      );
+
+      expect(form.state[FIELD_INCOTERMS]).toBe(TriState.Inherit);
+
+      const lines = addCapabilitiesClearNotificationMock.mock.calls[0][2] as string[];
+
+      expect(lines).toEqual(['capabilities_cleared_option_cleared(field=shipment_options_incoterms)']);
+    });
+
+    it('keeps a rule that is still allowed', async () => {
+      const form = await changeAxis(
+        'DDP',
+        FIELD_PACKAGE_TYPE,
+        buildCarrier({carrier: 'UPS_EXPRESS_SAVER', incoterms: incoterms(['DAP', 'DDP'])}),
+      );
+
+      expect(form.state[FIELD_INCOTERMS]).toBe('DDP');
+      expect(addCapabilitiesClearNotificationMock).not.toHaveBeenCalled();
+    });
+
+    it('puts a rule back on the default silently when the carrier changed', async () => {
+      const form = await changeAxis('DDP', FIELD_CARRIER, buildCarrier({carrier: 'POSTNL'}));
+
+      expect(form.state[FIELD_INCOTERMS]).toBe(TriState.Inherit);
+      expect(addCapabilitiesClearNotificationMock).not.toHaveBeenCalled();
+    });
+
+    it('puts a stored "no rule" back on the default silently when the shipment gets rules', async () => {
+      const form = await changeAxis(
+        TriState.Off,
+        FIELD_PACKAGE_TYPE,
+        buildCarrier({carrier: 'UPS_EXPRESS_SAVER', incoterms: incoterms(['DAP', 'DDP'])}),
+      );
+
+      expect(form.state[FIELD_INCOTERMS]).toBe(TriState.Inherit);
+      expect(addCapabilitiesClearNotificationMock).not.toHaveBeenCalled();
+    });
+
+    it('leaves an order without a chosen rule alone', async () => {
+      const form = await changeAxis(
+        TriState.Inherit,
+        FIELD_PACKAGE_TYPE,
+        buildCarrier({carrier: 'UPS_EXPRESS_SAVER', incoterms: incoterms(['DAP'])}),
+      );
+
+      expect(form.state[FIELD_INCOTERMS]).toBe(TriState.Inherit);
+      expect(addCapabilitiesClearNotificationMock).not.toHaveBeenCalled();
+    });
   });
 });

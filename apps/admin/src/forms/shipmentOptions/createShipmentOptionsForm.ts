@@ -11,8 +11,8 @@ import {createShipmentFormName} from '../../utils';
 import {useModalStore} from '../../stores';
 import {AdminModalKey} from '../../data';
 import {useAdminConfig, useContext} from '../../composables';
-import {useCapabilitiesAutoClear} from './useCapabilitiesAutoClear';
 import {wireProxyCapabilities} from './wireProxyCapabilities';
+import {useCapabilitiesAutoClear} from './useCapabilitiesAutoClear';
 import {type ShipmentOptionsRefs} from './types';
 import {createShipmentOptionField} from './fields/createShipmentOptionField';
 import {createDeliveryTypeField} from './fields/createDeliveryTypeField';
@@ -20,6 +20,7 @@ import {createCarrierField} from './fields/createCarrierField';
 import {
   createDigitalStampRangeField,
   createDimensionFields,
+  createIncotermsField,
   createLabelAmountField,
   createPackageTypeField,
 } from './fields';
@@ -28,6 +29,7 @@ import {
   FIELD_CARRIER,
   FIELD_DELIVERY_TYPE,
   FIELD_HEIGHT,
+  FIELD_INCOTERMS,
   FIELD_LABEL_AMOUNT,
   FIELD_LENGTH,
   FIELD_MANUAL_WEIGHT,
@@ -110,10 +112,7 @@ const collectAllOptionKeys = (carriers: {options?: Record<string, unknown> | nul
  * Instead of a hardcoded ALL_FIELDS list, refs are built from the union of
  * all carrier options in the dynamic context.
  */
-const buildDynamicRefs = (
-  order: Plugin.ModelContextOrderDataContext,
-  optionKeys: string[],
-): ShipmentOptionsRefs => {
+const buildDynamicRefs = (order: Plugin.ModelContextOrderDataContext, optionKeys: string[]): ShipmentOptionsRefs => {
   const refs: ShipmentOptionsRefs = {};
 
   // Static field refs
@@ -125,6 +124,7 @@ const buildDynamicRefs = (
   refs[FIELD_LENGTH] = get(order, FIELD_LENGTH);
   refs[FIELD_WIDTH] = get(order, FIELD_WIDTH);
   refs[FIELD_HEIGHT] = get(order, FIELD_HEIGHT);
+  refs[FIELD_INCOTERMS] = get(order, FIELD_INCOTERMS);
 
   // Dynamic shipment option refs from carrier options
   for (const key of optionKeys) {
@@ -148,6 +148,7 @@ const createShipmentOptionsFields = (
     createLabelAmountField(refs),
     createDigitalStampRangeField(refs, order),
     ...createDimensionFields(refs),
+    createIncotermsField(refs),
   ];
 
   // Dynamic shipment option fields — driven by carrier.options

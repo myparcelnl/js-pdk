@@ -2,18 +2,15 @@ import {toValue, watch, type Ref} from 'vue';
 import {snakeCase} from 'lodash-unified';
 import {type FormInstance, type InteractiveElementInstance} from '@myparcel-dev/vue-form-builder';
 import {BackendEndpoint, type CarrierModel, type Plugin, TriState} from '@myparcel-dev/pdk-common';
-import {
-  addCapabilitiesClearNotification,
-  CAPABILITIES_CLEARED_NOTIFICATION_ID,
-  useFormCapabilities,
-} from '../helpers';
+import {addCapabilitiesClearNotification, CAPABILITIES_CLEARED_NOTIFICATION_ID, useFormCapabilities} from '../helpers';
 import {setFieldRef} from '../form-builder/utils/createValueSetter';
-import {useLanguage} from '../../composables';
 import {useNotificationStore, useQueryStore} from '../../stores';
+import {useLanguage} from '../../composables';
 import {type CapabilitiesSelection} from './wireProxyCapabilities';
 import {
   FIELD_CARRIER,
   FIELD_DELIVERY_TYPE,
+  FIELD_INCOTERMS,
   FIELD_PACKAGE_TYPE,
   FIELD_SHIPMENT_OPTIONS_PREFIX,
   SHIPMENT_OPTIONS,
@@ -87,7 +84,7 @@ const readShipmentSnapshot = (
 
   if (toValue(query.status) !== 'success') return {state: 'pending'};
 
-  const carriers = (toValue(query.data) ?? []) as CarrierModel[];
+  const carriers = toValue(query.data) ?? [];
   // Compare against the carrier from the *debounced* selection — the same selection the
   // shipment query was last fetched for. Reading directly from `form.getValue(carrier)` here
   // would race: when the user just changed an axis, the form value updates immediately while
@@ -124,6 +121,7 @@ const readShipmentSnapshot = (
  * 3. **Option key dropped — cross-axis effect on options**: when the shipment query has the
  *    chosen carrier but its `options` no longer carries an option key the form has active,
  *    that option is cleared (`TriState.Inherit`). Axis intent wins over an active option.
+ *    The same goes for a chosen Incoterms rule that is no longer in `incoterms.rule.values`.
  *
  * Form values are read via `form.getValue(name)` rather than `form.values[name]` so reactive
  * dep tracking inside `computed` / `watch` callbacks fires correctly (the PDK's existing
@@ -286,6 +284,7 @@ export const useCapabilitiesAutoClear = (
     if (pkgDefault !== undefined) {
       setSilently(FIELD_PACKAGE_TYPE, pkgDefault as string | number | boolean | undefined);
     }
+
     if (dtDefault !== undefined) {
       setSilently(FIELD_DELIVERY_TYPE, dtDefault as string | number | boolean | undefined);
     }
@@ -437,12 +436,30 @@ export const useCapabilitiesAutoClear = (
         const isActive = value !== undefined && value !== TriState.Inherit && Boolean(value);
 
         if (!isActive) continue;
+
         if (availableOptionKeys.includes(optionKey)) continue;
 
         setSilently(fieldName, TriState.Inherit);
 
         if (!silent) {
           lines.push(lineForOptionClear(optionKey));
+        }
+      }
+
+      // The Incoterms value must be INHERIT or a rule the shipment allows. A stored "no rule" (0)
+      // is reset too, but only a rule the merchant chose (a string) is announced.
+      const incotermsValue = form.getValue(FIELD_INCOTERMS);
+      const allowedRules = snapshot.carrier.incoterms?.rule.values ?? [];
+
+      if (
+        incotermsValue !== undefined &&
+        incotermsValue !== TriState.Inherit &&
+        !allowedRules.includes(incotermsValue as string)
+      ) {
+        setSilently(FIELD_INCOTERMS, TriState.Inherit);
+
+        if (!silent && typeof incotermsValue === 'string') {
+          lines.push(lineForOptionClear('incoterms'));
         }
       }
 

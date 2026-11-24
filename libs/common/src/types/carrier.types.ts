@@ -49,6 +49,17 @@ export type CarrierModel = {
       [key: string]: unknown;
     }
   >;
+  /**
+   * The Incoterms rules that the capabilities allow for the shipment, and the rule that applies when
+   * none is chosen. Absent when the shipment has no Incoterms, such as a domestic one, and on
+   * contract-definition data.
+   */
+  incoterms?: {
+    rule: {
+      values: string[];
+      default: string;
+    };
+  };
   packageTypes: string[];
   transactionTypes: string[];
 };

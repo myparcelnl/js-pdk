@@ -28,6 +28,7 @@ vi.mock('@myparcel-dev/vue-form-builder', () => ({
 vi.mock('./fields', () => ({
   createDigitalStampRangeField: () => ({name: '__static_digitalStampRange'}),
   createDimensionFields: () => [{name: '__static_length'}, {name: '__static_width'}, {name: '__static_height'}],
+  createIncotermsField: () => ({name: '__static_incoterms'}),
   createLabelAmountField: () => ({name: '__static_labelAmount'}),
   createPackageTypeField: () => ({name: '__static_packageType'}),
 }));
@@ -51,7 +52,7 @@ vi.mock('./fieldFactoryRegistry', () => ({
 const mockedUseContext = vi.mocked(useContext);
 
 const dynamicOptionKeys = (form: unknown): string[] => {
-  const fields = (form as {fields: {name: string}[]}).fields;
+  const {fields} = form as {fields: {name: string}[]};
   const prefix = `${FIELD_SHIPMENT_OPTIONS_PREFIX}.`;
 
   return fields.filter((f) => f.name.startsWith(prefix)).map((f) => f.name.slice(prefix.length));
@@ -64,10 +65,7 @@ describe('createShipmentOptionsForm — dynamic option fields from carrier conte
 
   it('creates a field for the union of option keys across carriers', () => {
     mockedUseContext.mockReturnValue({
-      carriers: [
-        {options: {signature: {}, insurance: {}}},
-        {options: {insurance: {}, ageCheck: {}}},
-      ],
+      carriers: [{options: {signature: {}, insurance: {}}}, {options: {insurance: {}, ageCheck: {}}}],
     } as never);
 
     const form = createShipmentOptionsForm();
@@ -90,12 +88,7 @@ describe('createShipmentOptionsForm — dynamic option fields from carrier conte
 
   it('skips carriers without options but still collects keys from siblings', () => {
     mockedUseContext.mockReturnValue({
-      carriers: [
-        {options: {signature: {}}},
-        {},
-        {options: null},
-        {options: {ageCheck: {}}},
-      ],
+      carriers: [{options: {signature: {}}}, {}, {options: null}, {options: {ageCheck: {}}}],
     } as never);
 
     expect(dynamicOptionKeys(createShipmentOptionsForm()).sort()).toEqual(['ageCheck', 'signature']);
