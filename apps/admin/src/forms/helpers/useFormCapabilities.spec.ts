@@ -256,12 +256,13 @@ describe('useFormCapabilities', () => {
       expect(useFormCapabilities().getIncotermsOptions(formStub('UPS_EXPRESS_SAVER'))).toEqual([]);
     });
 
-    it('returns only the rule when the capabilities allow one rule', async () => {
+    it('returns the default entry and the rule when the capabilities allow one rule', async () => {
       queryStore.setQuery(shipmentModifier('order-1'), 'success', [shipmentWithIncoterms(['DAP'])]);
 
       const {useFormCapabilities} = await import('./useFormCapabilities');
 
       expect(useFormCapabilities().getIncotermsOptions(formStub('UPS_EXPRESS_SAVER'))).toEqual([
+        {label: 'option_default', value: TriState.Inherit},
         {label: 'incoterms_rule_dap', value: 'DAP'},
       ]);
     });

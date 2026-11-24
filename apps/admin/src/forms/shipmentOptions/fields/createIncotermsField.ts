@@ -4,7 +4,6 @@ import {TriState} from '@myparcel-dev/pdk-common';
 import {type ShipmentOptionsRefs} from '../types';
 import {FIELD_INCOTERMS, PROP_OPTIONS} from '../field';
 import {defineFormField, getFieldLabel, resolveFormComponent, setFieldProp, useFormCapabilities} from '../../helpers';
-import {setFieldRef} from '../../form-builder/utils/createValueSetter';
 import {type ElementInstance} from '../../../types';
 import {AdminComponent} from '../../../data';
 import {createRef} from './createRef';
@@ -15,7 +14,6 @@ import {createRef} from './createRef';
  * - The options come from getIncotermsOptions(). The capabilities return the rules outside
  *   `carrier.options`, so this field is added on its own and not per carrier option.
  * - No options: the field is hidden and not sent, so the shipment goes without a rule.
- * - One rule: the field gets that rule as value, because the select has no "Default" option then.
  * - A chosen rule that is no longer allowed is reset by useCapabilitiesAutoClear.
  */
 export const createIncotermsField = (refs: ShipmentOptionsRefs): InteractiveElementConfiguration => {
@@ -36,10 +34,6 @@ export const createIncotermsField = (refs: ShipmentOptionsRefs): InteractiveElem
         () => capabilities.getIncotermsOptions(field.form),
         (options) => {
           setFieldProp(field, PROP_OPTIONS, options);
-
-          if (options.length === 1 && field.ref.value !== options[0].value) {
-            setFieldRef(field, options[0].value);
-          }
         },
         {immediate: true},
       );

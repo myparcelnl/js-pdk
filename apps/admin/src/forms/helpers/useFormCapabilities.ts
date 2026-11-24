@@ -79,8 +79,7 @@ export type FormCapabilities = {
    * Get the Incoterms rules that the capabilities allow for the shipment, as select options.
    *
    * - No rules: an empty list.
-   * - One rule: only that rule.
-   * - More rules: a "Default" option first, which uses the carrier setting, then the rules.
+   * - Rules: a "Default" option first, which uses the carrier setting, then the rules.
    */
   getIncotermsOptions: (form: FormInstance) => SelectOption<string | TriState>[];
 };
@@ -185,7 +184,7 @@ export const useFormCapabilities = (): FormCapabilities => {
     const values = getCarrierCapabilitiesForShipment(form)?.incoterms?.rule.values ?? [];
     const rules = values.map((value) => ({label: getDynamicTranslation('incoterms_rule', value), value}));
 
-    return rules.length > 1 ? [{label: 'option_default', value: TriState.Inherit}, ...rules] : rules;
+    return rules.length > 0 ? [{label: 'option_default', value: TriState.Inherit}, ...rules] : rules;
   };
 
   return {

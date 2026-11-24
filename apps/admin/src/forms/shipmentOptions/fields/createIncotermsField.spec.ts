@@ -69,11 +69,11 @@ describe('createIncotermsField', () => {
     expect(field.ref.value).toBe('DDP');
   });
 
-  it('sets the only rule when the capabilities allow one rule', () => {
-    const {field} = mountField(TriState.Inherit, ruleOptions('DAP'));
+  it('keeps an order without a chosen rule on the default entry when the capabilities allow one rule', () => {
+    const {field} = mountField(TriState.Inherit, severalRules('DAP'));
 
-    expect(field.props.options).toEqual(ruleOptions('DAP'));
-    expect(field.ref.value).toBe('DAP');
+    expect(field.props.options).toEqual(severalRules('DAP'));
+    expect(field.ref.value).toBe(TriState.Inherit);
   });
 
   it('updates the options after a refetch and leaves the value to the auto-clear', async () => {
