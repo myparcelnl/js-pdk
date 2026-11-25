@@ -45,7 +45,7 @@
     "@myparcel-dev/prettier-config": "^2.0.0",
     "@nx/js": "^24.0.6",
     "@types/is-ci": "^3",
-    "@types/node": "^20.12.7",
+    "@types/node": "^26.6.6",
     "@vitest/coverage-v8": "^4.1.11",
     "@vue/tsconfig": "^0.9.1",
     "bundlewatch": "^1.1.0",
